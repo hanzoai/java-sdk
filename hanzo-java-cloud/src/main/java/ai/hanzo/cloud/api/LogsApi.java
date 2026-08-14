@@ -72,12 +72,12 @@ public class LogsApi {
     }
 
     /**
-     * Build call for getV1LogsHealth
+     * Build call for getLogsHealth
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1LogsHealthCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getLogsHealthCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -121,8 +121,8 @@ public class LogsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1LogsHealthValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1LogsHealthCall(_callback);
+    private okhttp3.Call getLogsHealthValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getLogsHealthCall(_callback);
 
     }
 
@@ -131,8 +131,8 @@ public class LogsApi {
      * Reports the native log store&#39;s live state for the calling tenant: the subsystem version and &#x60;records&#x60;, the count actually held right now rather than a constant. Not a dependency probe — the store is in-process, so this answers 200 whenever the process is up.  The tenant is the gateway-minted &#x60;X-Org-Id&#x60; header, falling back to the deployment brand and then &#x60;default&#x60;.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1LogsHealth() throws ApiException {
-        getV1LogsHealthWithHttpInfo();
+    public void getLogsHealth() throws ApiException {
+        getLogsHealthWithHttpInfo();
     }
 
     /**
@@ -141,8 +141,8 @@ public class LogsApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1LogsHealthWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1LogsHealthValidateBeforeCall(null);
+    public ApiResponse<Void> getLogsHealthWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getLogsHealthValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -153,19 +153,19 @@ public class LogsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1LogsHealthAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getLogsHealthAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1LogsHealthValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getLogsHealthValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1LogsQuery
+     * Build call for getLogsQuery
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1LogsQueryCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getLogsQueryCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -209,8 +209,8 @@ public class LogsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1LogsQueryValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1LogsQueryCall(_callback);
+    private okhttp3.Call getLogsQueryValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getLogsQueryCall(_callback);
 
     }
 
@@ -219,8 +219,8 @@ public class LogsApi {
      * Answers &#x60;{count, records}&#x60;, newest first. &#x60;match&#x60; is the same &#x60;k&#x3D;v,k2&#x3D;v2&#x60; superset label matcher the metrics query uses; &#x60;contains&#x60; is a case-insensitive substring test against the record body; &#x60;start&#x60; and &#x60;end&#x60; are nanosecond bounds.  A bound that is absent, empty or unparseable becomes 0, which means UNBOUNDED — a malformed &#x60;start&#x60; widens the search rather than failing it. &#x60;limit&#x60; caps the page and defaults to 100 when absent or non-positive, so an unfiltered read is never the whole ring.  The tenant is the gateway-minted &#x60;X-Org-Id&#x60; header, falling back to the deployment brand and then &#x60;default&#x60;, so a search can only reach the org the edge asserted.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1LogsQuery() throws ApiException {
-        getV1LogsQueryWithHttpInfo();
+    public void getLogsQuery() throws ApiException {
+        getLogsQueryWithHttpInfo();
     }
 
     /**
@@ -229,8 +229,8 @@ public class LogsApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1LogsQueryWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1LogsQueryValidateBeforeCall(null);
+    public ApiResponse<Void> getLogsQueryWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getLogsQueryValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -241,19 +241,19 @@ public class LogsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1LogsQueryAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getLogsQueryAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1LogsQueryValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getLogsQueryValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1LogsWrite
+     * Build call for postLogsWrite
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1LogsWriteCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postLogsWriteCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -297,8 +297,8 @@ public class LogsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1LogsWriteValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1LogsWriteCall(_callback);
+    private okhttp3.Call postLogsWriteValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postLogsWriteCall(_callback);
 
     }
 
@@ -307,8 +307,8 @@ public class LogsApi {
      * Takes &#x60;{records:[{t, level, body, labels}]}&#x60;, appends each one, and answers &#x60;{written}&#x60;. Bodies are stored verbatim; &#x60;labels&#x60; are the indexed dimensions a query filters on, so what you do not label you can only find by substring.  &#x60;t&#x60; is NANOSECONDS since the Unix epoch. A record sent without one is stored at 0 and then falls outside any query carrying a lower bound — the usual reason a successful write does not read back. Retention is a bounded ring, 1048576 records per org, oldest evicted first. No record is validated or rejected, so &#x60;written&#x60; is the number of records SENT; only a body that does not decode at all is 400.  The tenant is the gateway-minted &#x60;X-Org-Id&#x60; header, falling back to the deployment brand and then &#x60;default&#x60;; each org&#39;s records live in its own WAL-durable store.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1LogsWrite() throws ApiException {
-        postV1LogsWriteWithHttpInfo();
+    public void postLogsWrite() throws ApiException {
+        postLogsWriteWithHttpInfo();
     }
 
     /**
@@ -317,8 +317,8 @@ public class LogsApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1LogsWriteWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1LogsWriteValidateBeforeCall(null);
+    public ApiResponse<Void> postLogsWriteWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postLogsWriteValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -329,9 +329,9 @@ public class LogsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1LogsWriteAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postLogsWriteAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1LogsWriteValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postLogsWriteValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

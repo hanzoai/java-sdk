@@ -74,7 +74,7 @@ public class ChainsApi {
     }
 
     /**
-     * Build call for getV1Chains
+     * Build call for getChains
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -85,7 +85,7 @@ public class ChainsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1ChainsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getChainsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -130,8 +130,8 @@ public class ChainsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1ChainsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1ChainsCall(_callback);
+    private okhttp3.Call getChainsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getChainsCall(_callback);
 
     }
 
@@ -147,8 +147,8 @@ public class ChainsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ChainList getV1Chains() throws ApiException {
-        ApiResponse<ChainList> localVarResp = getV1ChainsWithHttpInfo();
+    public ChainList getChains() throws ApiException {
+        ApiResponse<ChainList> localVarResp = getChainsWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -164,8 +164,8 @@ public class ChainsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ChainList> getV1ChainsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1ChainsValidateBeforeCall(null);
+    public ApiResponse<ChainList> getChainsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getChainsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<ChainList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -183,15 +183,15 @@ public class ChainsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1ChainsAsync(final ApiCallback<ChainList> _callback) throws ApiException {
+    public okhttp3.Call getChainsAsync(final ApiCallback<ChainList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1ChainsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getChainsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<ChainList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1ChainsByChain
+     * Build call for getChainsByChain
      * @param chain Chain is the registry id, as in /v1/chains/lux. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -203,7 +203,7 @@ public class ChainsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1ChainsByChainCall(@javax.annotation.Nonnull String chain, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getChainsByChainCall(@javax.annotation.Nonnull String chain, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -249,13 +249,13 @@ public class ChainsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1ChainsByChainValidateBeforeCall(@javax.annotation.Nonnull String chain, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getChainsByChainValidateBeforeCall(@javax.annotation.Nonnull String chain, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'chain' is set
         if (chain == null) {
-            throw new ApiException("Missing the required parameter 'chain' when calling getV1ChainsByChain(Async)");
+            throw new ApiException("Missing the required parameter 'chain' when calling getChainsByChain(Async)");
         }
 
-        return getV1ChainsByChainCall(chain, _callback);
+        return getChainsByChainCall(chain, _callback);
 
     }
 
@@ -272,8 +272,8 @@ public class ChainsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ChainStatus getV1ChainsByChain(@javax.annotation.Nonnull String chain) throws ApiException {
-        ApiResponse<ChainStatus> localVarResp = getV1ChainsByChainWithHttpInfo(chain);
+    public ChainStatus getChainsByChain(@javax.annotation.Nonnull String chain) throws ApiException {
+        ApiResponse<ChainStatus> localVarResp = getChainsByChainWithHttpInfo(chain);
         return localVarResp.getData();
     }
 
@@ -290,8 +290,8 @@ public class ChainsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ChainStatus> getV1ChainsByChainWithHttpInfo(@javax.annotation.Nonnull String chain) throws ApiException {
-        okhttp3.Call localVarCall = getV1ChainsByChainValidateBeforeCall(chain, null);
+    public ApiResponse<ChainStatus> getChainsByChainWithHttpInfo(@javax.annotation.Nonnull String chain) throws ApiException {
+        okhttp3.Call localVarCall = getChainsByChainValidateBeforeCall(chain, null);
         Type localVarReturnType = new TypeToken<ChainStatus>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -310,9 +310,9 @@ public class ChainsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1ChainsByChainAsync(@javax.annotation.Nonnull String chain, final ApiCallback<ChainStatus> _callback) throws ApiException {
+    public okhttp3.Call getChainsByChainAsync(@javax.annotation.Nonnull String chain, final ApiCallback<ChainStatus> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1ChainsByChainValidateBeforeCall(chain, _callback);
+        okhttp3.Call localVarCall = getChainsByChainValidateBeforeCall(chain, _callback);
         Type localVarReturnType = new TypeToken<ChainStatus>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

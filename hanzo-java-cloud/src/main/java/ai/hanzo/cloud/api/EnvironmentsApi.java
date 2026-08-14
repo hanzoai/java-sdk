@@ -73,7 +73,7 @@ public class EnvironmentsApi {
     }
 
     /**
-     * Build call for getV1Environments
+     * Build call for getEnvironments
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -84,7 +84,7 @@ public class EnvironmentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1EnvironmentsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getEnvironmentsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -129,8 +129,8 @@ public class EnvironmentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1EnvironmentsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1EnvironmentsCall(_callback);
+    private okhttp3.Call getEnvironmentsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getEnvironmentsCall(_callback);
 
     }
 
@@ -146,8 +146,8 @@ public class EnvironmentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public EnvironmentBoard getV1Environments() throws ApiException {
-        ApiResponse<EnvironmentBoard> localVarResp = getV1EnvironmentsWithHttpInfo();
+    public EnvironmentBoard getEnvironments() throws ApiException {
+        ApiResponse<EnvironmentBoard> localVarResp = getEnvironmentsWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -163,8 +163,8 @@ public class EnvironmentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<EnvironmentBoard> getV1EnvironmentsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1EnvironmentsValidateBeforeCall(null);
+    public ApiResponse<EnvironmentBoard> getEnvironmentsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getEnvironmentsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<EnvironmentBoard>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -182,9 +182,9 @@ public class EnvironmentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1EnvironmentsAsync(final ApiCallback<EnvironmentBoard> _callback) throws ApiException {
+    public okhttp3.Call getEnvironmentsAsync(final ApiCallback<EnvironmentBoard> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1EnvironmentsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getEnvironmentsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<EnvironmentBoard>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

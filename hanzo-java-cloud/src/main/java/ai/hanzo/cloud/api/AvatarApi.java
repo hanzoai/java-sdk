@@ -72,7 +72,7 @@ public class AvatarApi {
     }
 
     /**
-     * Build call for getV1AvatarByOrgByUserByDigest
+     * Build call for getAvatarByOrgByUserByDigest
      * @param org  (required)
      * @param user  (required)
      * @param digest  (required)
@@ -80,7 +80,7 @@ public class AvatarApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1AvatarByOrgByUserByDigestCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String user, @javax.annotation.Nonnull String digest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAvatarByOrgByUserByDigestCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String user, @javax.annotation.Nonnull String digest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -127,23 +127,23 @@ public class AvatarApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1AvatarByOrgByUserByDigestValidateBeforeCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String user, @javax.annotation.Nonnull String digest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getAvatarByOrgByUserByDigestValidateBeforeCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String user, @javax.annotation.Nonnull String digest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'org' is set
         if (org == null) {
-            throw new ApiException("Missing the required parameter 'org' when calling getV1AvatarByOrgByUserByDigest(Async)");
+            throw new ApiException("Missing the required parameter 'org' when calling getAvatarByOrgByUserByDigest(Async)");
         }
 
         // verify the required parameter 'user' is set
         if (user == null) {
-            throw new ApiException("Missing the required parameter 'user' when calling getV1AvatarByOrgByUserByDigest(Async)");
+            throw new ApiException("Missing the required parameter 'user' when calling getAvatarByOrgByUserByDigest(Async)");
         }
 
         // verify the required parameter 'digest' is set
         if (digest == null) {
-            throw new ApiException("Missing the required parameter 'digest' when calling getV1AvatarByOrgByUserByDigest(Async)");
+            throw new ApiException("Missing the required parameter 'digest' when calling getAvatarByOrgByUserByDigest(Async)");
         }
 
-        return getV1AvatarByOrgByUserByDigestCall(org, user, digest, _callback);
+        return getAvatarByOrgByUserByDigestCall(org, user, digest, _callback);
 
     }
 
@@ -155,8 +155,8 @@ public class AvatarApi {
      * @param digest  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1AvatarByOrgByUserByDigest(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String user, @javax.annotation.Nonnull String digest) throws ApiException {
-        getV1AvatarByOrgByUserByDigestWithHttpInfo(org, user, digest);
+    public void getAvatarByOrgByUserByDigest(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String user, @javax.annotation.Nonnull String digest) throws ApiException {
+        getAvatarByOrgByUserByDigestWithHttpInfo(org, user, digest);
     }
 
     /**
@@ -168,8 +168,8 @@ public class AvatarApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1AvatarByOrgByUserByDigestWithHttpInfo(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String user, @javax.annotation.Nonnull String digest) throws ApiException {
-        okhttp3.Call localVarCall = getV1AvatarByOrgByUserByDigestValidateBeforeCall(org, user, digest, null);
+    public ApiResponse<Void> getAvatarByOrgByUserByDigestWithHttpInfo(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String user, @javax.annotation.Nonnull String digest) throws ApiException {
+        okhttp3.Call localVarCall = getAvatarByOrgByUserByDigestValidateBeforeCall(org, user, digest, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -183,19 +183,19 @@ public class AvatarApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1AvatarByOrgByUserByDigestAsync(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String user, @javax.annotation.Nonnull String digest, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getAvatarByOrgByUserByDigestAsync(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String user, @javax.annotation.Nonnull String digest, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1AvatarByOrgByUserByDigestValidateBeforeCall(org, user, digest, _callback);
+        okhttp3.Call localVarCall = getAvatarByOrgByUserByDigestValidateBeforeCall(org, user, digest, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1Avatar
+     * Build call for postAvatar
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1AvatarCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAvatarCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -239,8 +239,8 @@ public class AvatarApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1AvatarValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1AvatarCall(_callback);
+    private okhttp3.Call postAvatarValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postAvatarCall(_callback);
 
     }
 
@@ -249,8 +249,8 @@ public class AvatarApi {
      * Stores one image as the signed-in user&#39;s profile photo and answers the URL it is served from, which is also written to the user&#39;s IAM record — so every surface that already renders &#x60;avatar&#x60; picks it up with no further call.  The body is a multipart form with a &#x60;file&#x60; part. The format is decided by the BYTES, never the filename or the part&#39;s Content-Type: png, jpeg, gif and webp are accepted and everything else is refused with 415, so an SVG cannot be stored as a picture and later served as a program. Over 8 MiB is 413; empty is 400.  The photo is addressed by the sha256 of its bytes, so setting a new one yields a new URL rather than a stale cache of the old face. The caller is taken from the validated identity ONLY — there is no way to name a different subject — so this always sets your own photo, and a caller with no organization yet is refused.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1Avatar() throws ApiException {
-        postV1AvatarWithHttpInfo();
+    public void postAvatar() throws ApiException {
+        postAvatarWithHttpInfo();
     }
 
     /**
@@ -259,8 +259,8 @@ public class AvatarApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1AvatarWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1AvatarValidateBeforeCall(null);
+    public ApiResponse<Void> postAvatarWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postAvatarValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -271,9 +271,9 @@ public class AvatarApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1AvatarAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postAvatarAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1AvatarValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postAvatarValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

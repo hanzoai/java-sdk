@@ -72,12 +72,12 @@ public class DocsApi {
     }
 
     /**
-     * Build call for postV1DocsIngest
+     * Build call for postDocsIngest
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1DocsIngestCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postDocsIngestCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -121,8 +121,8 @@ public class DocsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1DocsIngestValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1DocsIngestCall(_callback);
+    private okhttp3.Call postDocsIngestValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postDocsIngestCall(_callback);
 
     }
 
@@ -131,8 +131,8 @@ public class DocsApi {
      * Unified RAG ingest: parse + chunk + embed documents and pipe them to BOTH Hanzo Vector (semantic) AND Hanzo Search (keyword) under the tenant index {owner}-{store}-docs — the same index /v1/chat retrieval reads. The source is pluggable: \&quot;upload\&quot; (inline files/documents), \&quot;github\&quot; (index a repo), \&quot;crawl\&quot; (web), or \&quot;s3\&quot; (the store&#39;s object-storage space). The owner is bound to the authenticated principal; the client-supplied owner is never trusted.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1DocsIngest() throws ApiException {
-        postV1DocsIngestWithHttpInfo();
+    public void postDocsIngest() throws ApiException {
+        postDocsIngestWithHttpInfo();
     }
 
     /**
@@ -141,8 +141,8 @@ public class DocsApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1DocsIngestWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1DocsIngestValidateBeforeCall(null);
+    public ApiResponse<Void> postDocsIngestWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postDocsIngestValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -153,9 +153,9 @@ public class DocsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1DocsIngestAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postDocsIngestAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1DocsIngestValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postDocsIngestValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

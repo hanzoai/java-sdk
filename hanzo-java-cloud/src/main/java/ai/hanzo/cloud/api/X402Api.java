@@ -73,7 +73,7 @@ public class X402Api {
     }
 
     /**
-     * Build call for getV1X402SettlementsById
+     * Build call for getX402SettlementsById
      * @param id ID is the settlement id from the URL — the deterministic keccak(from|nonce) key an x402 receipt is issued under (the &#x60;id&#x60; field of a Receipt, and the &#x60;transaction&#x60; of the SettlementResponse on the PAYMENT-RESPONSE header a paid request answers with). (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -85,7 +85,7 @@ public class X402Api {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1X402SettlementsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getX402SettlementsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -131,13 +131,13 @@ public class X402Api {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1X402SettlementsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getX402SettlementsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getV1X402SettlementsById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getX402SettlementsById(Async)");
         }
 
-        return getV1X402SettlementsByIdCall(id, _callback);
+        return getX402SettlementsByIdCall(id, _callback);
 
     }
 
@@ -154,8 +154,8 @@ public class X402Api {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Receipt getV1X402SettlementsById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<Receipt> localVarResp = getV1X402SettlementsByIdWithHttpInfo(id);
+    public Receipt getX402SettlementsById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<Receipt> localVarResp = getX402SettlementsByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -172,8 +172,8 @@ public class X402Api {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Receipt> getV1X402SettlementsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = getV1X402SettlementsByIdValidateBeforeCall(id, null);
+    public ApiResponse<Receipt> getX402SettlementsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getX402SettlementsByIdValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<Receipt>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -192,9 +192,9 @@ public class X402Api {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1X402SettlementsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Receipt> _callback) throws ApiException {
+    public okhttp3.Call getX402SettlementsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Receipt> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1X402SettlementsByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = getX402SettlementsByIdValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<Receipt>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

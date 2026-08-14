@@ -72,13 +72,13 @@ public class KmsApi {
     }
 
     /**
-     * Build call for deleteV1KmsSecretsByWildcard1
+     * Build call for deleteKmsSecretsByWildcard1
      * @param wildcard1  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call deleteV1KmsSecretsByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteKmsSecretsByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -123,59 +123,59 @@ public class KmsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1KmsSecretsByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteKmsSecretsByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'wildcard1' is set
         if (wildcard1 == null) {
-            throw new ApiException("Missing the required parameter 'wildcard1' when calling deleteV1KmsSecretsByWildcard1(Async)");
+            throw new ApiException("Missing the required parameter 'wildcard1' when calling deleteKmsSecretsByWildcard1(Async)");
         }
 
-        return deleteV1KmsSecretsByWildcard1Call(wildcard1, _callback);
+        return deleteKmsSecretsByWildcard1Call(wildcard1, _callback);
 
     }
 
     /**
      * Delete one secret from your org
-     * Removes one secret from the caller&#39;s own org and confirms the name and environment that were removed. Deleting a secret that is not there is a 404, not a silent success, so a caller can tell a real deletion from a typo.  The trailing path is the secret&#39;s subpath and name beneath the caller&#39;s org root, and &#x60;env&#x60; selects the environment, defaulting when omitted. Scoped to the caller&#39;s own org — the store root comes from the validated claim, never from the request — under the same fail-closed admission as the reads.
+     * Removes one secret from the caller&#39;s own org and confirms the name and environment that were removed. Deleting a secret that is not there is a 404, not a silent success, so a caller can tell a real deletion from a typo.  The trailing path is the secret&#39;s subpath and name beneath the caller&#39;s org root, and &#x60;env&#x60; selects the environment, defaulting when omitted. Scoped to the caller&#39;s own org — the store root comes from the validated claim, never from the request.  Requires ADMIN authority over the org, like the write: destroying a secret is an administrative act, and a credential distributed to read one must not be able to remove it.
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void deleteV1KmsSecretsByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        deleteV1KmsSecretsByWildcard1WithHttpInfo(wildcard1);
+    public void deleteKmsSecretsByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        deleteKmsSecretsByWildcard1WithHttpInfo(wildcard1);
     }
 
     /**
      * Delete one secret from your org
-     * Removes one secret from the caller&#39;s own org and confirms the name and environment that were removed. Deleting a secret that is not there is a 404, not a silent success, so a caller can tell a real deletion from a typo.  The trailing path is the secret&#39;s subpath and name beneath the caller&#39;s org root, and &#x60;env&#x60; selects the environment, defaulting when omitted. Scoped to the caller&#39;s own org — the store root comes from the validated claim, never from the request — under the same fail-closed admission as the reads.
+     * Removes one secret from the caller&#39;s own org and confirms the name and environment that were removed. Deleting a secret that is not there is a 404, not a silent success, so a caller can tell a real deletion from a typo.  The trailing path is the secret&#39;s subpath and name beneath the caller&#39;s org root, and &#x60;env&#x60; selects the environment, defaulting when omitted. Scoped to the caller&#39;s own org — the store root comes from the validated claim, never from the request.  Requires ADMIN authority over the org, like the write: destroying a secret is an administrative act, and a credential distributed to read one must not be able to remove it.
      * @param wildcard1  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> deleteV1KmsSecretsByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1KmsSecretsByWildcard1ValidateBeforeCall(wildcard1, null);
+    public ApiResponse<Void> deleteKmsSecretsByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        okhttp3.Call localVarCall = deleteKmsSecretsByWildcard1ValidateBeforeCall(wildcard1, null);
         return localVarApiClient.execute(localVarCall);
     }
 
     /**
      * Delete one secret from your org (asynchronously)
-     * Removes one secret from the caller&#39;s own org and confirms the name and environment that were removed. Deleting a secret that is not there is a 404, not a silent success, so a caller can tell a real deletion from a typo.  The trailing path is the secret&#39;s subpath and name beneath the caller&#39;s org root, and &#x60;env&#x60; selects the environment, defaulting when omitted. Scoped to the caller&#39;s own org — the store root comes from the validated claim, never from the request — under the same fail-closed admission as the reads.
+     * Removes one secret from the caller&#39;s own org and confirms the name and environment that were removed. Deleting a secret that is not there is a 404, not a silent success, so a caller can tell a real deletion from a typo.  The trailing path is the secret&#39;s subpath and name beneath the caller&#39;s org root, and &#x60;env&#x60; selects the environment, defaulting when omitted. Scoped to the caller&#39;s own org — the store root comes from the validated claim, never from the request.  Requires ADMIN authority over the org, like the write: destroying a secret is an administrative act, and a credential distributed to read one must not be able to remove it.
      * @param wildcard1  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call deleteV1KmsSecretsByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteKmsSecretsByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1KmsSecretsByWildcard1ValidateBeforeCall(wildcard1, _callback);
+        okhttp3.Call localVarCall = deleteKmsSecretsByWildcard1ValidateBeforeCall(wildcard1, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1KmsConfig
+     * Build call for getKmsConfig
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1KmsConfigCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getKmsConfigCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -219,8 +219,8 @@ public class KmsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1KmsConfigValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1KmsConfigCall(_callback);
+    private okhttp3.Call getKmsConfigValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getKmsConfigCall(_callback);
 
     }
 
@@ -229,8 +229,8 @@ public class KmsApi {
      * Returns what the console needs before anyone has signed in: the brand, the OIDC issuer it authenticates against, the API base for this subsystem and the path of the login exchange.  Public on purpose, and it holds nothing sensitive — it is deliberately kept under this subsystem&#39;s own namespace rather than under an admin prefix, so a gateway that admin-gates the admin routes cannot break the console&#39;s legitimate pre-login fetch.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1KmsConfig() throws ApiException {
-        getV1KmsConfigWithHttpInfo();
+    public void getKmsConfig() throws ApiException {
+        getKmsConfigWithHttpInfo();
     }
 
     /**
@@ -239,8 +239,8 @@ public class KmsApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1KmsConfigWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1KmsConfigValidateBeforeCall(null);
+    public ApiResponse<Void> getKmsConfigWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getKmsConfigValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -251,19 +251,19 @@ public class KmsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1KmsConfigAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getKmsConfigAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1KmsConfigValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getKmsConfigValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1KmsHealth
+     * Build call for getKmsHealth
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1KmsHealthCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getKmsHealthCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -307,8 +307,8 @@ public class KmsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1KmsHealthValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1KmsHealthCall(_callback);
+    private okhttp3.Call getKmsHealthValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getKmsHealthCall(_callback);
 
     }
 
@@ -317,8 +317,8 @@ public class KmsApi {
      * A real readiness probe, not a liveness stub: 200 only when the store is open AND a master key is configured, with &#x60;signing&#x60; reporting whether signing keys are set up too. Anything less answers 503 with &#x60;ready:false&#x60; and the reason — no in-process store, or no master key — which are exactly the two states in which the secret operations refuse.  Not token-gated, because the platform must be able to probe it without a credential. It reports the broker&#39;s configuration state only; no secret, no key material and no tenant name appears in it.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1KmsHealth() throws ApiException {
-        getV1KmsHealthWithHttpInfo();
+    public void getKmsHealth() throws ApiException {
+        getKmsHealthWithHttpInfo();
     }
 
     /**
@@ -327,8 +327,8 @@ public class KmsApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1KmsHealthWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1KmsHealthValidateBeforeCall(null);
+    public ApiResponse<Void> getKmsHealthWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getKmsHealthValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -339,19 +339,19 @@ public class KmsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1KmsHealthAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getKmsHealthAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1KmsHealthValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getKmsHealthValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1KmsSecrets
+     * Build call for getKmsSecrets
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1KmsSecretsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getKmsSecretsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -395,8 +395,8 @@ public class KmsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1KmsSecretsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1KmsSecretsCall(_callback);
+    private okhttp3.Call getKmsSecretsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getKmsSecretsCall(_callback);
 
     }
 
@@ -405,8 +405,8 @@ public class KmsApi {
      * Returns the METADATA of the caller&#39;s own secrets: each one&#39;s name, path, environment and sealing scheme. No value and no ciphertext is included — this operation exists to enumerate what is held, and reading a value is a separate, per-secret call.  Scoped to the caller&#39;s own org and nothing else, structurally: there is no org in the path, the store root is derived from the validated org claim, and a caller therefore has no way to name another tenant&#39;s namespace. &#x60;path&#x60; narrows to a subpath and &#x60;env&#x60; selects the environment; both are also accepted under the operator&#39;s spellings, &#x60;secretPath&#x60; and &#x60;environment&#x60;.  Admission is fail-closed and in order: a validated member, an org that is a DNS-1123 label, and a store holding a master key — 403, 400 and 503 respectively, all decided before any record is touched.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1KmsSecrets() throws ApiException {
-        getV1KmsSecretsWithHttpInfo();
+    public void getKmsSecrets() throws ApiException {
+        getKmsSecretsWithHttpInfo();
     }
 
     /**
@@ -415,8 +415,8 @@ public class KmsApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1KmsSecretsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1KmsSecretsValidateBeforeCall(null);
+    public ApiResponse<Void> getKmsSecretsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getKmsSecretsValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -427,20 +427,20 @@ public class KmsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1KmsSecretsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getKmsSecretsAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1KmsSecretsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getKmsSecretsValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1KmsSecretsByWildcard1
+     * Build call for getKmsSecretsByWildcard1
      * @param wildcard1  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1KmsSecretsByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getKmsSecretsByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -485,13 +485,13 @@ public class KmsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1KmsSecretsByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getKmsSecretsByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'wildcard1' is set
         if (wildcard1 == null) {
-            throw new ApiException("Missing the required parameter 'wildcard1' when calling getV1KmsSecretsByWildcard1(Async)");
+            throw new ApiException("Missing the required parameter 'wildcard1' when calling getKmsSecretsByWildcard1(Async)");
         }
 
-        return getV1KmsSecretsByWildcard1Call(wildcard1, _callback);
+        return getKmsSecretsByWildcard1Call(wildcard1, _callback);
 
     }
 
@@ -501,8 +501,8 @@ public class KmsApi {
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1KmsSecretsByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        getV1KmsSecretsByWildcard1WithHttpInfo(wildcard1);
+    public void getKmsSecretsByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        getKmsSecretsByWildcard1WithHttpInfo(wildcard1);
     }
 
     /**
@@ -512,8 +512,8 @@ public class KmsApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1KmsSecretsByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        okhttp3.Call localVarCall = getV1KmsSecretsByWildcard1ValidateBeforeCall(wildcard1, null);
+    public ApiResponse<Void> getKmsSecretsByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        okhttp3.Call localVarCall = getKmsSecretsByWildcard1ValidateBeforeCall(wildcard1, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -525,19 +525,19 @@ public class KmsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1KmsSecretsByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getKmsSecretsByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1KmsSecretsByWildcard1ValidateBeforeCall(wildcard1, _callback);
+        okhttp3.Call localVarCall = getKmsSecretsByWildcard1ValidateBeforeCall(wildcard1, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1KmsAuthLogin
+     * Build call for postKmsAuthLogin
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1KmsAuthLoginCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postKmsAuthLoginCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -581,8 +581,8 @@ public class KmsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1KmsAuthLoginValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1KmsAuthLoginCall(_callback);
+    private okhttp3.Call postKmsAuthLoginValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postKmsAuthLoginCall(_callback);
 
     }
 
@@ -591,8 +591,8 @@ public class KmsApi {
      * Takes a tenant&#39;s machine credential — a client id and client secret — and returns an owner-scoped IAM access token with its lifetime, which is the bearer the caller then carries on the org-scoped secret operations.  It is deliberately public and unauthenticated, because it IS the credential exchange and runs before any principal exists. That makes it the one route in this subsystem rate-limited PER SOURCE IP, keyed on the real TCP peer rather than on any caller-supplied header.  The submitted secret is never logged and never echoed, and failures collapse to one clean status with no upstream detail: 401 when the credential does not authenticate, 502 when the identity provider is unreachable, 503 when no issuer is configured. That is on purpose — a richer error would be a validity oracle for guessed credentials.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1KmsAuthLogin() throws ApiException {
-        postV1KmsAuthLoginWithHttpInfo();
+    public void postKmsAuthLogin() throws ApiException {
+        postKmsAuthLoginWithHttpInfo();
     }
 
     /**
@@ -601,8 +601,8 @@ public class KmsApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1KmsAuthLoginWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1KmsAuthLoginValidateBeforeCall(null);
+    public ApiResponse<Void> postKmsAuthLoginWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postKmsAuthLoginValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -613,19 +613,19 @@ public class KmsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1KmsAuthLoginAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postKmsAuthLoginAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1KmsAuthLoginValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postKmsAuthLoginValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1KmsSecrets
+     * Build call for postKmsSecrets
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1KmsSecretsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postKmsSecretsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -669,41 +669,41 @@ public class KmsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1KmsSecretsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1KmsSecretsCall(_callback);
+    private okhttp3.Call postKmsSecretsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postKmsSecretsCall(_callback);
 
     }
 
     /**
      * Store or replace one secret in your org
-     * Upserts one secret under the caller&#39;s own org. The value is sealed before it is written — a fresh per-secret data key, itself wrapped by the master key — so plaintext never reaches disk. The receipt confirms the name and environment that were written and does not echo the value.  &#x60;env&#x60; is REQUIRED on a write and has no default, which is the rule most easily got wrong here: reads and deletes still fall back to the default environment for older callers, but a write must not, because the environment is part of the storage key. A silently defaulted write lands in a bucket the readers that resolve project, environment and path never look in, and the stale value keeps being served — so the write fails loudly instead.  &#x60;name&#x60; is required, &#x60;path&#x60; is an optional subpath beneath the org root, and the org is taken from the validated claim rather than the body. Same fail-closed admission as the rest of the secret surface: validated member, well-formed org, master key present.
+     * Upserts one secret under the caller&#39;s own org. The value is sealed before it is written — a fresh per-secret data key, itself wrapped by the master key — so plaintext never reaches disk. The receipt confirms the name and environment that were written and does not echo the value.  &#x60;env&#x60; is REQUIRED on a write and has no default, which is the rule most easily got wrong here: reads and deletes still fall back to the default environment for older callers, but a write must not, because the environment is part of the storage key. A silently defaulted write lands in a bucket the readers that resolve project, environment and path never look in, and the stale value keeps being served — so the write fails loudly instead.  &#x60;name&#x60; is required, &#x60;path&#x60; is an optional subpath beneath the org root, and the org is taken from the validated claim rather than the body.  Requires ADMIN authority over the org — a member reads, an admin writes. A machine credential holds no membership and so is never an org admin: it can read the secrets it was issued for and cannot replace one. Fail-closed admission, in order: admin of the org, well-formed org, master key present — 403, 400 and 503, all decided before any record is touched.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1KmsSecrets() throws ApiException {
-        postV1KmsSecretsWithHttpInfo();
+    public void postKmsSecrets() throws ApiException {
+        postKmsSecretsWithHttpInfo();
     }
 
     /**
      * Store or replace one secret in your org
-     * Upserts one secret under the caller&#39;s own org. The value is sealed before it is written — a fresh per-secret data key, itself wrapped by the master key — so plaintext never reaches disk. The receipt confirms the name and environment that were written and does not echo the value.  &#x60;env&#x60; is REQUIRED on a write and has no default, which is the rule most easily got wrong here: reads and deletes still fall back to the default environment for older callers, but a write must not, because the environment is part of the storage key. A silently defaulted write lands in a bucket the readers that resolve project, environment and path never look in, and the stale value keeps being served — so the write fails loudly instead.  &#x60;name&#x60; is required, &#x60;path&#x60; is an optional subpath beneath the org root, and the org is taken from the validated claim rather than the body. Same fail-closed admission as the rest of the secret surface: validated member, well-formed org, master key present.
+     * Upserts one secret under the caller&#39;s own org. The value is sealed before it is written — a fresh per-secret data key, itself wrapped by the master key — so plaintext never reaches disk. The receipt confirms the name and environment that were written and does not echo the value.  &#x60;env&#x60; is REQUIRED on a write and has no default, which is the rule most easily got wrong here: reads and deletes still fall back to the default environment for older callers, but a write must not, because the environment is part of the storage key. A silently defaulted write lands in a bucket the readers that resolve project, environment and path never look in, and the stale value keeps being served — so the write fails loudly instead.  &#x60;name&#x60; is required, &#x60;path&#x60; is an optional subpath beneath the org root, and the org is taken from the validated claim rather than the body.  Requires ADMIN authority over the org — a member reads, an admin writes. A machine credential holds no membership and so is never an org admin: it can read the secrets it was issued for and cannot replace one. Fail-closed admission, in order: admin of the org, well-formed org, master key present — 403, 400 and 503, all decided before any record is touched.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1KmsSecretsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1KmsSecretsValidateBeforeCall(null);
+    public ApiResponse<Void> postKmsSecretsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postKmsSecretsValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
     /**
      * Store or replace one secret in your org (asynchronously)
-     * Upserts one secret under the caller&#39;s own org. The value is sealed before it is written — a fresh per-secret data key, itself wrapped by the master key — so plaintext never reaches disk. The receipt confirms the name and environment that were written and does not echo the value.  &#x60;env&#x60; is REQUIRED on a write and has no default, which is the rule most easily got wrong here: reads and deletes still fall back to the default environment for older callers, but a write must not, because the environment is part of the storage key. A silently defaulted write lands in a bucket the readers that resolve project, environment and path never look in, and the stale value keeps being served — so the write fails loudly instead.  &#x60;name&#x60; is required, &#x60;path&#x60; is an optional subpath beneath the org root, and the org is taken from the validated claim rather than the body. Same fail-closed admission as the rest of the secret surface: validated member, well-formed org, master key present.
+     * Upserts one secret under the caller&#39;s own org. The value is sealed before it is written — a fresh per-secret data key, itself wrapped by the master key — so plaintext never reaches disk. The receipt confirms the name and environment that were written and does not echo the value.  &#x60;env&#x60; is REQUIRED on a write and has no default, which is the rule most easily got wrong here: reads and deletes still fall back to the default environment for older callers, but a write must not, because the environment is part of the storage key. A silently defaulted write lands in a bucket the readers that resolve project, environment and path never look in, and the stale value keeps being served — so the write fails loudly instead.  &#x60;name&#x60; is required, &#x60;path&#x60; is an optional subpath beneath the org root, and the org is taken from the validated claim rather than the body.  Requires ADMIN authority over the org — a member reads, an admin writes. A machine credential holds no membership and so is never an org admin: it can read the secrets it was issued for and cannot replace one. Fail-closed admission, in order: admin of the org, well-formed org, master key present — 403, 400 and 503, all decided before any record is touched.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1KmsSecretsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postKmsSecretsAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1KmsSecretsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postKmsSecretsValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

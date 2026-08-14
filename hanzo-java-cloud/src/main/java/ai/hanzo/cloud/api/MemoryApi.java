@@ -72,12 +72,12 @@ public class MemoryApi {
     }
 
     /**
-     * Build call for getV1MemoryFacts
+     * Build call for getMemoryFacts
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1MemoryFactsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getMemoryFactsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -121,8 +121,8 @@ public class MemoryApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1MemoryFactsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1MemoryFactsCall(_callback);
+    private okhttp3.Call getMemoryFactsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getMemoryFactsCall(_callback);
 
     }
 
@@ -131,8 +131,8 @@ public class MemoryApi {
      * List the authenticated user&#39;s stored facts
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1MemoryFacts() throws ApiException {
-        getV1MemoryFactsWithHttpInfo();
+    public void getMemoryFacts() throws ApiException {
+        getMemoryFactsWithHttpInfo();
     }
 
     /**
@@ -141,8 +141,8 @@ public class MemoryApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1MemoryFactsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1MemoryFactsValidateBeforeCall(null);
+    public ApiResponse<Void> getMemoryFactsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getMemoryFactsValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -153,19 +153,19 @@ public class MemoryApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1MemoryFactsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getMemoryFactsAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1MemoryFactsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getMemoryFactsValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1MemoryList
+     * Build call for getMemoryList
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1MemoryListCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getMemoryListCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -209,8 +209,8 @@ public class MemoryApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1MemoryListValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1MemoryListCall(_callback);
+    private okhttp3.Call getMemoryListValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getMemoryListCall(_callback);
 
     }
 
@@ -219,8 +219,8 @@ public class MemoryApi {
      * List the authenticated user&#39;s memories, newest first
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1MemoryList() throws ApiException {
-        getV1MemoryListWithHttpInfo();
+    public void getMemoryList() throws ApiException {
+        getMemoryListWithHttpInfo();
     }
 
     /**
@@ -229,8 +229,8 @@ public class MemoryApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1MemoryListWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1MemoryListValidateBeforeCall(null);
+    public ApiResponse<Void> getMemoryListWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getMemoryListValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -241,19 +241,19 @@ public class MemoryApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1MemoryListAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getMemoryListAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1MemoryListValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getMemoryListValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1MemoryRecall
+     * Build call for getMemoryRecall
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1MemoryRecallCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getMemoryRecallCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -297,8 +297,8 @@ public class MemoryApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1MemoryRecallValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1MemoryRecallCall(_callback);
+    private okhttp3.Call getMemoryRecallValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getMemoryRecallCall(_callback);
 
     }
 
@@ -307,8 +307,8 @@ public class MemoryApi {
      * Recall recent/relevant memories for context injection; with q it ranks semantically, without q it returns the most recent
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1MemoryRecall() throws ApiException {
-        getV1MemoryRecallWithHttpInfo();
+    public void getMemoryRecall() throws ApiException {
+        getMemoryRecallWithHttpInfo();
     }
 
     /**
@@ -317,8 +317,8 @@ public class MemoryApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1MemoryRecallWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1MemoryRecallValidateBeforeCall(null);
+    public ApiResponse<Void> getMemoryRecallWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getMemoryRecallValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -329,19 +329,19 @@ public class MemoryApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1MemoryRecallAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getMemoryRecallAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1MemoryRecallValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getMemoryRecallValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1MemorySearch
+     * Build call for getMemorySearch
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1MemorySearchCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getMemorySearchCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -385,8 +385,8 @@ public class MemoryApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1MemorySearchValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1MemorySearchCall(_callback);
+    private okhttp3.Call getMemorySearchValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getMemorySearchCall(_callback);
 
     }
 
@@ -395,8 +395,8 @@ public class MemoryApi {
      * Search the authenticated user&#39;s memories (semantic, text fallback)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1MemorySearch() throws ApiException {
-        getV1MemorySearchWithHttpInfo();
+    public void getMemorySearch() throws ApiException {
+        getMemorySearchWithHttpInfo();
     }
 
     /**
@@ -405,8 +405,8 @@ public class MemoryApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1MemorySearchWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1MemorySearchValidateBeforeCall(null);
+    public ApiResponse<Void> getMemorySearchWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getMemorySearchValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -417,19 +417,19 @@ public class MemoryApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1MemorySearchAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getMemorySearchAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1MemorySearchValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getMemorySearchValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1MemoryDelete
+     * Build call for postMemoryDelete
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1MemoryDeleteCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postMemoryDeleteCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -473,8 +473,8 @@ public class MemoryApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1MemoryDeleteValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1MemoryDeleteCall(_callback);
+    private okhttp3.Call postMemoryDeleteValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postMemoryDeleteCall(_callback);
 
     }
 
@@ -483,8 +483,8 @@ public class MemoryApi {
      * Delete one of the authenticated user&#39;s memories
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1MemoryDelete() throws ApiException {
-        postV1MemoryDeleteWithHttpInfo();
+    public void postMemoryDelete() throws ApiException {
+        postMemoryDeleteWithHttpInfo();
     }
 
     /**
@@ -493,8 +493,8 @@ public class MemoryApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1MemoryDeleteWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1MemoryDeleteValidateBeforeCall(null);
+    public ApiResponse<Void> postMemoryDeleteWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postMemoryDeleteValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -505,19 +505,19 @@ public class MemoryApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1MemoryDeleteAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postMemoryDeleteAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1MemoryDeleteValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postMemoryDeleteValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1MemoryRemember
+     * Build call for postMemoryRemember
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1MemoryRememberCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postMemoryRememberCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -561,8 +561,8 @@ public class MemoryApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1MemoryRememberValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1MemoryRememberCall(_callback);
+    private okhttp3.Call postMemoryRememberValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postMemoryRememberCall(_callback);
 
     }
 
@@ -571,8 +571,8 @@ public class MemoryApi {
      * Store a memory for the authenticated user
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1MemoryRemember() throws ApiException {
-        postV1MemoryRememberWithHttpInfo();
+    public void postMemoryRemember() throws ApiException {
+        postMemoryRememberWithHttpInfo();
     }
 
     /**
@@ -581,8 +581,8 @@ public class MemoryApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1MemoryRememberWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1MemoryRememberValidateBeforeCall(null);
+    public ApiResponse<Void> postMemoryRememberWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postMemoryRememberValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -593,19 +593,19 @@ public class MemoryApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1MemoryRememberAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postMemoryRememberAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1MemoryRememberValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postMemoryRememberValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1MemoryUpdate
+     * Build call for postMemoryUpdate
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1MemoryUpdateCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postMemoryUpdateCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -649,8 +649,8 @@ public class MemoryApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1MemoryUpdateValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1MemoryUpdateCall(_callback);
+    private okhttp3.Call postMemoryUpdateValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postMemoryUpdateCall(_callback);
 
     }
 
@@ -659,8 +659,8 @@ public class MemoryApi {
      * Update one of the authenticated user&#39;s memories
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1MemoryUpdate() throws ApiException {
-        postV1MemoryUpdateWithHttpInfo();
+    public void postMemoryUpdate() throws ApiException {
+        postMemoryUpdateWithHttpInfo();
     }
 
     /**
@@ -669,8 +669,8 @@ public class MemoryApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1MemoryUpdateWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1MemoryUpdateValidateBeforeCall(null);
+    public ApiResponse<Void> postMemoryUpdateWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postMemoryUpdateValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -681,9 +681,9 @@ public class MemoryApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1MemoryUpdateAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postMemoryUpdateAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1MemoryUpdateValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postMemoryUpdateValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

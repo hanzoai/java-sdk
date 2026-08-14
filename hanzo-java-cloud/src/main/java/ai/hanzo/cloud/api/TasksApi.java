@@ -72,12 +72,12 @@ public class TasksApi {
     }
 
     /**
-     * Build call for deleteV1Tasks
+     * Build call for deleteTasks
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call deleteV1TasksCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteTasksCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -121,8 +121,8 @@ public class TasksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1TasksValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return deleteV1TasksCall(_callback);
+    private okhttp3.Call deleteTasksValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return deleteTasksCall(_callback);
 
     }
 
@@ -131,8 +131,8 @@ public class TasksApi {
      * Answers 307 with Location /v1/tasks/ — this address serves nothing itself. The redirect is a routing fact derived from the engine&#39;s subtree, decided before any handler runs, so it is the same on every method.  A 307 preserves both the method and the body, so a client that follows redirects re-sends the request unchanged to /v1/tasks/ and nothing is lost. A client that does NOT follow redirects sees only the 307 and performs no work — address /v1/tasks/ directly and the hop disappears.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void deleteV1Tasks() throws ApiException {
-        deleteV1TasksWithHttpInfo();
+    public void deleteTasks() throws ApiException {
+        deleteTasksWithHttpInfo();
     }
 
     /**
@@ -141,8 +141,8 @@ public class TasksApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> deleteV1TasksWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = deleteV1TasksValidateBeforeCall(null);
+    public ApiResponse<Void> deleteTasksWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = deleteTasksValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -153,20 +153,20 @@ public class TasksApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call deleteV1TasksAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteTasksAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1TasksValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = deleteTasksValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for deleteV1TasksByWildcard1
+     * Build call for deleteTasksByWildcard1
      * @param wildcard1  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call deleteV1TasksByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteTasksByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -211,13 +211,13 @@ public class TasksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1TasksByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteTasksByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'wildcard1' is set
         if (wildcard1 == null) {
-            throw new ApiException("Missing the required parameter 'wildcard1' when calling deleteV1TasksByWildcard1(Async)");
+            throw new ApiException("Missing the required parameter 'wildcard1' when calling deleteTasksByWildcard1(Async)");
         }
 
-        return deleteV1TasksByWildcard1Call(wildcard1, _callback);
+        return deleteTasksByWildcard1Call(wildcard1, _callback);
 
     }
 
@@ -227,8 +227,8 @@ public class TasksApi {
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void deleteV1TasksByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        deleteV1TasksByWildcard1WithHttpInfo(wildcard1);
+    public void deleteTasksByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        deleteTasksByWildcard1WithHttpInfo(wildcard1);
     }
 
     /**
@@ -238,8 +238,8 @@ public class TasksApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> deleteV1TasksByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1TasksByWildcard1ValidateBeforeCall(wildcard1, null);
+    public ApiResponse<Void> deleteTasksByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        okhttp3.Call localVarCall = deleteTasksByWildcard1ValidateBeforeCall(wildcard1, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -251,19 +251,19 @@ public class TasksApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call deleteV1TasksByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteTasksByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1TasksByWildcard1ValidateBeforeCall(wildcard1, _callback);
+        okhttp3.Call localVarCall = deleteTasksByWildcard1ValidateBeforeCall(wildcard1, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1Tasks
+     * Build call for getTasks
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1TasksCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getTasksCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -307,8 +307,8 @@ public class TasksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1TasksValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1TasksCall(_callback);
+    private okhttp3.Call getTasksValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getTasksCall(_callback);
 
     }
 
@@ -317,8 +317,8 @@ public class TasksApi {
      * Answers 307 with Location /v1/tasks/ — this address serves nothing itself. The redirect is a routing fact derived from the engine&#39;s subtree, decided before any handler runs, so it is the same on every method.  A 307 preserves both the method and the body, so a client that follows redirects re-sends the request unchanged to /v1/tasks/ and nothing is lost. A client that does NOT follow redirects sees only the 307 and performs no work — address /v1/tasks/ directly and the hop disappears.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1Tasks() throws ApiException {
-        getV1TasksWithHttpInfo();
+    public void getTasks() throws ApiException {
+        getTasksWithHttpInfo();
     }
 
     /**
@@ -327,8 +327,8 @@ public class TasksApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1TasksWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1TasksValidateBeforeCall(null);
+    public ApiResponse<Void> getTasksWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getTasksValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -339,20 +339,20 @@ public class TasksApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1TasksAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getTasksAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1TasksValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getTasksValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1TasksByWildcard1
+     * Build call for getTasksByWildcard1
      * @param wildcard1  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1TasksByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getTasksByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -397,13 +397,13 @@ public class TasksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1TasksByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getTasksByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'wildcard1' is set
         if (wildcard1 == null) {
-            throw new ApiException("Missing the required parameter 'wildcard1' when calling getV1TasksByWildcard1(Async)");
+            throw new ApiException("Missing the required parameter 'wildcard1' when calling getTasksByWildcard1(Async)");
         }
 
-        return getV1TasksByWildcard1Call(wildcard1, _callback);
+        return getTasksByWildcard1Call(wildcard1, _callback);
 
     }
 
@@ -413,8 +413,8 @@ public class TasksApi {
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1TasksByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        getV1TasksByWildcard1WithHttpInfo(wildcard1);
+    public void getTasksByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        getTasksByWildcard1WithHttpInfo(wildcard1);
     }
 
     /**
@@ -424,8 +424,8 @@ public class TasksApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1TasksByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        okhttp3.Call localVarCall = getV1TasksByWildcard1ValidateBeforeCall(wildcard1, null);
+    public ApiResponse<Void> getTasksByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        okhttp3.Call localVarCall = getTasksByWildcard1ValidateBeforeCall(wildcard1, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -437,19 +437,19 @@ public class TasksApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1TasksByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getTasksByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1TasksByWildcard1ValidateBeforeCall(wildcard1, _callback);
+        okhttp3.Call localVarCall = getTasksByWildcard1ValidateBeforeCall(wildcard1, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for patchV1Tasks
+     * Build call for patchTasks
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call patchV1TasksCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call patchTasksCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -493,8 +493,8 @@ public class TasksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchV1TasksValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return patchV1TasksCall(_callback);
+    private okhttp3.Call patchTasksValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return patchTasksCall(_callback);
 
     }
 
@@ -503,8 +503,8 @@ public class TasksApi {
      * Answers 307 with Location /v1/tasks/ — this address serves nothing itself. The redirect is a routing fact derived from the engine&#39;s subtree, decided before any handler runs, so it is the same on every method.  A 307 preserves both the method and the body, so a client that follows redirects re-sends the request unchanged to /v1/tasks/ and nothing is lost. A client that does NOT follow redirects sees only the 307 and performs no work — address /v1/tasks/ directly and the hop disappears.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void patchV1Tasks() throws ApiException {
-        patchV1TasksWithHttpInfo();
+    public void patchTasks() throws ApiException {
+        patchTasksWithHttpInfo();
     }
 
     /**
@@ -513,8 +513,8 @@ public class TasksApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> patchV1TasksWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = patchV1TasksValidateBeforeCall(null);
+    public ApiResponse<Void> patchTasksWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = patchTasksValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -525,20 +525,20 @@ public class TasksApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call patchV1TasksAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call patchTasksAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchV1TasksValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = patchTasksValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for patchV1TasksByWildcard1
+     * Build call for patchTasksByWildcard1
      * @param wildcard1  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call patchV1TasksByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call patchTasksByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -583,13 +583,13 @@ public class TasksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchV1TasksByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call patchTasksByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'wildcard1' is set
         if (wildcard1 == null) {
-            throw new ApiException("Missing the required parameter 'wildcard1' when calling patchV1TasksByWildcard1(Async)");
+            throw new ApiException("Missing the required parameter 'wildcard1' when calling patchTasksByWildcard1(Async)");
         }
 
-        return patchV1TasksByWildcard1Call(wildcard1, _callback);
+        return patchTasksByWildcard1Call(wildcard1, _callback);
 
     }
 
@@ -599,8 +599,8 @@ public class TasksApi {
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void patchV1TasksByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        patchV1TasksByWildcard1WithHttpInfo(wildcard1);
+    public void patchTasksByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        patchTasksByWildcard1WithHttpInfo(wildcard1);
     }
 
     /**
@@ -610,8 +610,8 @@ public class TasksApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> patchV1TasksByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        okhttp3.Call localVarCall = patchV1TasksByWildcard1ValidateBeforeCall(wildcard1, null);
+    public ApiResponse<Void> patchTasksByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        okhttp3.Call localVarCall = patchTasksByWildcard1ValidateBeforeCall(wildcard1, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -623,19 +623,19 @@ public class TasksApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call patchV1TasksByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call patchTasksByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchV1TasksByWildcard1ValidateBeforeCall(wildcard1, _callback);
+        okhttp3.Call localVarCall = patchTasksByWildcard1ValidateBeforeCall(wildcard1, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1Tasks
+     * Build call for postTasks
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1TasksCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postTasksCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -679,8 +679,8 @@ public class TasksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1TasksValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1TasksCall(_callback);
+    private okhttp3.Call postTasksValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postTasksCall(_callback);
 
     }
 
@@ -689,8 +689,8 @@ public class TasksApi {
      * Answers 307 with Location /v1/tasks/ — this address serves nothing itself. The redirect is a routing fact derived from the engine&#39;s subtree, decided before any handler runs, so it is the same on every method.  A 307 preserves both the method and the body, so a client that follows redirects re-sends the request unchanged to /v1/tasks/ and nothing is lost. A client that does NOT follow redirects sees only the 307 and performs no work — address /v1/tasks/ directly and the hop disappears.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1Tasks() throws ApiException {
-        postV1TasksWithHttpInfo();
+    public void postTasks() throws ApiException {
+        postTasksWithHttpInfo();
     }
 
     /**
@@ -699,8 +699,8 @@ public class TasksApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1TasksWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1TasksValidateBeforeCall(null);
+    public ApiResponse<Void> postTasksWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postTasksValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -711,20 +711,20 @@ public class TasksApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1TasksAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postTasksAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1TasksValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postTasksValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1TasksByWildcard1
+     * Build call for postTasksByWildcard1
      * @param wildcard1  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1TasksByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postTasksByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -769,13 +769,13 @@ public class TasksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1TasksByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postTasksByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'wildcard1' is set
         if (wildcard1 == null) {
-            throw new ApiException("Missing the required parameter 'wildcard1' when calling postV1TasksByWildcard1(Async)");
+            throw new ApiException("Missing the required parameter 'wildcard1' when calling postTasksByWildcard1(Async)");
         }
 
-        return postV1TasksByWildcard1Call(wildcard1, _callback);
+        return postTasksByWildcard1Call(wildcard1, _callback);
 
     }
 
@@ -785,8 +785,8 @@ public class TasksApi {
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1TasksByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        postV1TasksByWildcard1WithHttpInfo(wildcard1);
+    public void postTasksByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        postTasksByWildcard1WithHttpInfo(wildcard1);
     }
 
     /**
@@ -796,8 +796,8 @@ public class TasksApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1TasksByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        okhttp3.Call localVarCall = postV1TasksByWildcard1ValidateBeforeCall(wildcard1, null);
+    public ApiResponse<Void> postTasksByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        okhttp3.Call localVarCall = postTasksByWildcard1ValidateBeforeCall(wildcard1, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -809,19 +809,19 @@ public class TasksApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1TasksByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postTasksByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1TasksByWildcard1ValidateBeforeCall(wildcard1, _callback);
+        okhttp3.Call localVarCall = postTasksByWildcard1ValidateBeforeCall(wildcard1, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1Tasks
+     * Build call for putTasks
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call putV1TasksCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putTasksCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -865,8 +865,8 @@ public class TasksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1TasksValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return putV1TasksCall(_callback);
+    private okhttp3.Call putTasksValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return putTasksCall(_callback);
 
     }
 
@@ -875,8 +875,8 @@ public class TasksApi {
      * Answers 307 with Location /v1/tasks/ — this address serves nothing itself. The redirect is a routing fact derived from the engine&#39;s subtree, decided before any handler runs, so it is the same on every method.  A 307 preserves both the method and the body, so a client that follows redirects re-sends the request unchanged to /v1/tasks/ and nothing is lost. A client that does NOT follow redirects sees only the 307 and performs no work — address /v1/tasks/ directly and the hop disappears.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void putV1Tasks() throws ApiException {
-        putV1TasksWithHttpInfo();
+    public void putTasks() throws ApiException {
+        putTasksWithHttpInfo();
     }
 
     /**
@@ -885,8 +885,8 @@ public class TasksApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> putV1TasksWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = putV1TasksValidateBeforeCall(null);
+    public ApiResponse<Void> putTasksWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = putTasksValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -897,20 +897,20 @@ public class TasksApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call putV1TasksAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call putTasksAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1TasksValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = putTasksValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1TasksByWildcard1
+     * Build call for putTasksByWildcard1
      * @param wildcard1  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call putV1TasksByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putTasksByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -955,13 +955,13 @@ public class TasksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1TasksByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putTasksByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'wildcard1' is set
         if (wildcard1 == null) {
-            throw new ApiException("Missing the required parameter 'wildcard1' when calling putV1TasksByWildcard1(Async)");
+            throw new ApiException("Missing the required parameter 'wildcard1' when calling putTasksByWildcard1(Async)");
         }
 
-        return putV1TasksByWildcard1Call(wildcard1, _callback);
+        return putTasksByWildcard1Call(wildcard1, _callback);
 
     }
 
@@ -971,8 +971,8 @@ public class TasksApi {
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void putV1TasksByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        putV1TasksByWildcard1WithHttpInfo(wildcard1);
+    public void putTasksByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        putTasksByWildcard1WithHttpInfo(wildcard1);
     }
 
     /**
@@ -982,8 +982,8 @@ public class TasksApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> putV1TasksByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        okhttp3.Call localVarCall = putV1TasksByWildcard1ValidateBeforeCall(wildcard1, null);
+    public ApiResponse<Void> putTasksByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        okhttp3.Call localVarCall = putTasksByWildcard1ValidateBeforeCall(wildcard1, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -995,9 +995,9 @@ public class TasksApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call putV1TasksByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call putTasksByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1TasksByWildcard1ValidateBeforeCall(wildcard1, _callback);
+        okhttp3.Call localVarCall = putTasksByWildcard1ValidateBeforeCall(wildcard1, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

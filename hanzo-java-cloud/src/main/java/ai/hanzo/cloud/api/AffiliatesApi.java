@@ -87,7 +87,7 @@ public class AffiliatesApi {
     }
 
     /**
-     * Build call for getV1Affiliates
+     * Build call for getAffiliates
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -98,7 +98,7 @@ public class AffiliatesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AffiliatesCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAffiliatesCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -143,8 +143,8 @@ public class AffiliatesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1AffiliatesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1AffiliatesCall(_callback);
+    private okhttp3.Call getAffiliatesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getAffiliatesCall(_callback);
 
     }
 
@@ -160,8 +160,8 @@ public class AffiliatesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public AffiliateStanding getV1Affiliates() throws ApiException {
-        ApiResponse<AffiliateStanding> localVarResp = getV1AffiliatesWithHttpInfo();
+    public AffiliateStanding getAffiliates() throws ApiException {
+        ApiResponse<AffiliateStanding> localVarResp = getAffiliatesWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -177,8 +177,8 @@ public class AffiliatesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AffiliateStanding> getV1AffiliatesWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1AffiliatesValidateBeforeCall(null);
+    public ApiResponse<AffiliateStanding> getAffiliatesWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getAffiliatesValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<AffiliateStanding>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -196,15 +196,15 @@ public class AffiliatesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AffiliatesAsync(final ApiCallback<AffiliateStanding> _callback) throws ApiException {
+    public okhttp3.Call getAffiliatesAsync(final ApiCallback<AffiliateStanding> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1AffiliatesValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getAffiliatesValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<AffiliateStanding>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1AffiliatesLeaderboard
+     * Build call for getAffiliatesLeaderboard
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -215,7 +215,7 @@ public class AffiliatesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AffiliatesLeaderboardCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAffiliatesLeaderboardCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -260,8 +260,8 @@ public class AffiliatesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1AffiliatesLeaderboardValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1AffiliatesLeaderboardCall(_callback);
+    private okhttp3.Call getAffiliatesLeaderboardValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getAffiliatesLeaderboardCall(_callback);
 
     }
 
@@ -277,8 +277,8 @@ public class AffiliatesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public AffiliateBoard getV1AffiliatesLeaderboard() throws ApiException {
-        ApiResponse<AffiliateBoard> localVarResp = getV1AffiliatesLeaderboardWithHttpInfo();
+    public AffiliateBoard getAffiliatesLeaderboard() throws ApiException {
+        ApiResponse<AffiliateBoard> localVarResp = getAffiliatesLeaderboardWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -294,8 +294,8 @@ public class AffiliatesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AffiliateBoard> getV1AffiliatesLeaderboardWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1AffiliatesLeaderboardValidateBeforeCall(null);
+    public ApiResponse<AffiliateBoard> getAffiliatesLeaderboardWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getAffiliatesLeaderboardValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<AffiliateBoard>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -313,15 +313,15 @@ public class AffiliatesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AffiliatesLeaderboardAsync(final ApiCallback<AffiliateBoard> _callback) throws ApiException {
+    public okhttp3.Call getAffiliatesLeaderboardAsync(final ApiCallback<AffiliateBoard> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1AffiliatesLeaderboardValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getAffiliatesLeaderboardValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<AffiliateBoard>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1AffiliatesMe
+     * Build call for getAffiliatesMe
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -332,7 +332,7 @@ public class AffiliatesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AffiliatesMeCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAffiliatesMeCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -377,8 +377,8 @@ public class AffiliatesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1AffiliatesMeValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1AffiliatesMeCall(_callback);
+    private okhttp3.Call getAffiliatesMeValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getAffiliatesMeCall(_callback);
 
     }
 
@@ -394,8 +394,8 @@ public class AffiliatesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public AffiliateSelf getV1AffiliatesMe() throws ApiException {
-        ApiResponse<AffiliateSelf> localVarResp = getV1AffiliatesMeWithHttpInfo();
+    public AffiliateSelf getAffiliatesMe() throws ApiException {
+        ApiResponse<AffiliateSelf> localVarResp = getAffiliatesMeWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -411,8 +411,8 @@ public class AffiliatesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AffiliateSelf> getV1AffiliatesMeWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1AffiliatesMeValidateBeforeCall(null);
+    public ApiResponse<AffiliateSelf> getAffiliatesMeWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getAffiliatesMeValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<AffiliateSelf>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -430,15 +430,15 @@ public class AffiliatesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AffiliatesMeAsync(final ApiCallback<AffiliateSelf> _callback) throws ApiException {
+    public okhttp3.Call getAffiliatesMeAsync(final ApiCallback<AffiliateSelf> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1AffiliatesMeValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getAffiliatesMeValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<AffiliateSelf>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1AffiliatesMeEarnings
+     * Build call for getAffiliatesMeEarnings
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -449,7 +449,7 @@ public class AffiliatesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AffiliatesMeEarningsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAffiliatesMeEarningsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -494,8 +494,8 @@ public class AffiliatesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1AffiliatesMeEarningsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1AffiliatesMeEarningsCall(_callback);
+    private okhttp3.Call getAffiliatesMeEarningsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getAffiliatesMeEarningsCall(_callback);
 
     }
 
@@ -511,8 +511,8 @@ public class AffiliatesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public AffiliateEarnings getV1AffiliatesMeEarnings() throws ApiException {
-        ApiResponse<AffiliateEarnings> localVarResp = getV1AffiliatesMeEarningsWithHttpInfo();
+    public AffiliateEarnings getAffiliatesMeEarnings() throws ApiException {
+        ApiResponse<AffiliateEarnings> localVarResp = getAffiliatesMeEarningsWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -528,8 +528,8 @@ public class AffiliatesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AffiliateEarnings> getV1AffiliatesMeEarningsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1AffiliatesMeEarningsValidateBeforeCall(null);
+    public ApiResponse<AffiliateEarnings> getAffiliatesMeEarningsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getAffiliatesMeEarningsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<AffiliateEarnings>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -547,15 +547,15 @@ public class AffiliatesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AffiliatesMeEarningsAsync(final ApiCallback<AffiliateEarnings> _callback) throws ApiException {
+    public okhttp3.Call getAffiliatesMeEarningsAsync(final ApiCallback<AffiliateEarnings> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1AffiliatesMeEarningsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getAffiliatesMeEarningsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<AffiliateEarnings>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1AffiliatesMeLinks
+     * Build call for getAffiliatesMeLinks
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -566,7 +566,7 @@ public class AffiliatesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AffiliatesMeLinksCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAffiliatesMeLinksCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -611,8 +611,8 @@ public class AffiliatesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1AffiliatesMeLinksValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1AffiliatesMeLinksCall(_callback);
+    private okhttp3.Call getAffiliatesMeLinksValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getAffiliatesMeLinksCall(_callback);
 
     }
 
@@ -628,8 +628,8 @@ public class AffiliatesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public AffiliateLinks getV1AffiliatesMeLinks() throws ApiException {
-        ApiResponse<AffiliateLinks> localVarResp = getV1AffiliatesMeLinksWithHttpInfo();
+    public AffiliateLinks getAffiliatesMeLinks() throws ApiException {
+        ApiResponse<AffiliateLinks> localVarResp = getAffiliatesMeLinksWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -645,8 +645,8 @@ public class AffiliatesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AffiliateLinks> getV1AffiliatesMeLinksWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1AffiliatesMeLinksValidateBeforeCall(null);
+    public ApiResponse<AffiliateLinks> getAffiliatesMeLinksWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getAffiliatesMeLinksValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<AffiliateLinks>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -664,15 +664,15 @@ public class AffiliatesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AffiliatesMeLinksAsync(final ApiCallback<AffiliateLinks> _callback) throws ApiException {
+    public okhttp3.Call getAffiliatesMeLinksAsync(final ApiCallback<AffiliateLinks> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1AffiliatesMeLinksValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getAffiliatesMeLinksValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<AffiliateLinks>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1AffiliatesApply
+     * Build call for postAffiliatesApply
      * @param applyRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -685,7 +685,7 @@ public class AffiliatesApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1AffiliatesApplyCall(@javax.annotation.Nonnull ApplyRequest applyRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAffiliatesApplyCall(@javax.annotation.Nonnull ApplyRequest applyRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -731,13 +731,13 @@ public class AffiliatesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1AffiliatesApplyValidateBeforeCall(@javax.annotation.Nonnull ApplyRequest applyRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postAffiliatesApplyValidateBeforeCall(@javax.annotation.Nonnull ApplyRequest applyRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'applyRequest' is set
         if (applyRequest == null) {
-            throw new ApiException("Missing the required parameter 'applyRequest' when calling postV1AffiliatesApply(Async)");
+            throw new ApiException("Missing the required parameter 'applyRequest' when calling postAffiliatesApply(Async)");
         }
 
-        return postV1AffiliatesApplyCall(applyRequest, _callback);
+        return postAffiliatesApplyCall(applyRequest, _callback);
 
     }
 
@@ -755,8 +755,8 @@ public class AffiliatesApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public Application postV1AffiliatesApply(@javax.annotation.Nonnull ApplyRequest applyRequest) throws ApiException {
-        ApiResponse<Application> localVarResp = postV1AffiliatesApplyWithHttpInfo(applyRequest);
+    public Application postAffiliatesApply(@javax.annotation.Nonnull ApplyRequest applyRequest) throws ApiException {
+        ApiResponse<Application> localVarResp = postAffiliatesApplyWithHttpInfo(applyRequest);
         return localVarResp.getData();
     }
 
@@ -774,8 +774,8 @@ public class AffiliatesApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Application> postV1AffiliatesApplyWithHttpInfo(@javax.annotation.Nonnull ApplyRequest applyRequest) throws ApiException {
-        okhttp3.Call localVarCall = postV1AffiliatesApplyValidateBeforeCall(applyRequest, null);
+    public ApiResponse<Application> postAffiliatesApplyWithHttpInfo(@javax.annotation.Nonnull ApplyRequest applyRequest) throws ApiException {
+        okhttp3.Call localVarCall = postAffiliatesApplyValidateBeforeCall(applyRequest, null);
         Type localVarReturnType = new TypeToken<Application>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -795,15 +795,15 @@ public class AffiliatesApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1AffiliatesApplyAsync(@javax.annotation.Nonnull ApplyRequest applyRequest, final ApiCallback<Application> _callback) throws ApiException {
+    public okhttp3.Call postAffiliatesApplyAsync(@javax.annotation.Nonnull ApplyRequest applyRequest, final ApiCallback<Application> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1AffiliatesApplyValidateBeforeCall(applyRequest, _callback);
+        okhttp3.Call localVarCall = postAffiliatesApplyValidateBeforeCall(applyRequest, _callback);
         Type localVarReturnType = new TypeToken<Application>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1AffiliatesAttribute
+     * Build call for postAffiliatesAttribute
      * @param attributeRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -816,7 +816,7 @@ public class AffiliatesApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1AffiliatesAttributeCall(@javax.annotation.Nonnull AttributeRequest attributeRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAffiliatesAttributeCall(@javax.annotation.Nonnull AttributeRequest attributeRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -862,13 +862,13 @@ public class AffiliatesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1AffiliatesAttributeValidateBeforeCall(@javax.annotation.Nonnull AttributeRequest attributeRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postAffiliatesAttributeValidateBeforeCall(@javax.annotation.Nonnull AttributeRequest attributeRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'attributeRequest' is set
         if (attributeRequest == null) {
-            throw new ApiException("Missing the required parameter 'attributeRequest' when calling postV1AffiliatesAttribute(Async)");
+            throw new ApiException("Missing the required parameter 'attributeRequest' when calling postAffiliatesAttribute(Async)");
         }
 
-        return postV1AffiliatesAttributeCall(attributeRequest, _callback);
+        return postAffiliatesAttributeCall(attributeRequest, _callback);
 
     }
 
@@ -886,8 +886,8 @@ public class AffiliatesApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public Attribution postV1AffiliatesAttribute(@javax.annotation.Nonnull AttributeRequest attributeRequest) throws ApiException {
-        ApiResponse<Attribution> localVarResp = postV1AffiliatesAttributeWithHttpInfo(attributeRequest);
+    public Attribution postAffiliatesAttribute(@javax.annotation.Nonnull AttributeRequest attributeRequest) throws ApiException {
+        ApiResponse<Attribution> localVarResp = postAffiliatesAttributeWithHttpInfo(attributeRequest);
         return localVarResp.getData();
     }
 
@@ -905,8 +905,8 @@ public class AffiliatesApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Attribution> postV1AffiliatesAttributeWithHttpInfo(@javax.annotation.Nonnull AttributeRequest attributeRequest) throws ApiException {
-        okhttp3.Call localVarCall = postV1AffiliatesAttributeValidateBeforeCall(attributeRequest, null);
+    public ApiResponse<Attribution> postAffiliatesAttributeWithHttpInfo(@javax.annotation.Nonnull AttributeRequest attributeRequest) throws ApiException {
+        okhttp3.Call localVarCall = postAffiliatesAttributeValidateBeforeCall(attributeRequest, null);
         Type localVarReturnType = new TypeToken<Attribution>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -926,15 +926,15 @@ public class AffiliatesApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1AffiliatesAttributeAsync(@javax.annotation.Nonnull AttributeRequest attributeRequest, final ApiCallback<Attribution> _callback) throws ApiException {
+    public okhttp3.Call postAffiliatesAttributeAsync(@javax.annotation.Nonnull AttributeRequest attributeRequest, final ApiCallback<Attribution> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1AffiliatesAttributeValidateBeforeCall(attributeRequest, _callback);
+        okhttp3.Call localVarCall = postAffiliatesAttributeValidateBeforeCall(attributeRequest, _callback);
         Type localVarReturnType = new TypeToken<Attribution>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1AffiliatesClick
+     * Build call for postAffiliatesClick
      * @param clickRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -946,7 +946,7 @@ public class AffiliatesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1AffiliatesClickCall(@javax.annotation.Nonnull ClickRequest clickRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAffiliatesClickCall(@javax.annotation.Nonnull ClickRequest clickRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -992,13 +992,13 @@ public class AffiliatesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1AffiliatesClickValidateBeforeCall(@javax.annotation.Nonnull ClickRequest clickRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postAffiliatesClickValidateBeforeCall(@javax.annotation.Nonnull ClickRequest clickRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'clickRequest' is set
         if (clickRequest == null) {
-            throw new ApiException("Missing the required parameter 'clickRequest' when calling postV1AffiliatesClick(Async)");
+            throw new ApiException("Missing the required parameter 'clickRequest' when calling postAffiliatesClick(Async)");
         }
 
-        return postV1AffiliatesClickCall(clickRequest, _callback);
+        return postAffiliatesClickCall(clickRequest, _callback);
 
     }
 
@@ -1015,8 +1015,8 @@ public class AffiliatesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ClickCount postV1AffiliatesClick(@javax.annotation.Nonnull ClickRequest clickRequest) throws ApiException {
-        ApiResponse<ClickCount> localVarResp = postV1AffiliatesClickWithHttpInfo(clickRequest);
+    public ClickCount postAffiliatesClick(@javax.annotation.Nonnull ClickRequest clickRequest) throws ApiException {
+        ApiResponse<ClickCount> localVarResp = postAffiliatesClickWithHttpInfo(clickRequest);
         return localVarResp.getData();
     }
 
@@ -1033,8 +1033,8 @@ public class AffiliatesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ClickCount> postV1AffiliatesClickWithHttpInfo(@javax.annotation.Nonnull ClickRequest clickRequest) throws ApiException {
-        okhttp3.Call localVarCall = postV1AffiliatesClickValidateBeforeCall(clickRequest, null);
+    public ApiResponse<ClickCount> postAffiliatesClickWithHttpInfo(@javax.annotation.Nonnull ClickRequest clickRequest) throws ApiException {
+        okhttp3.Call localVarCall = postAffiliatesClickValidateBeforeCall(clickRequest, null);
         Type localVarReturnType = new TypeToken<ClickCount>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1053,15 +1053,15 @@ public class AffiliatesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1AffiliatesClickAsync(@javax.annotation.Nonnull ClickRequest clickRequest, final ApiCallback<ClickCount> _callback) throws ApiException {
+    public okhttp3.Call postAffiliatesClickAsync(@javax.annotation.Nonnull ClickRequest clickRequest, final ApiCallback<ClickCount> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1AffiliatesClickValidateBeforeCall(clickRequest, _callback);
+        okhttp3.Call localVarCall = postAffiliatesClickValidateBeforeCall(clickRequest, _callback);
         Type localVarReturnType = new TypeToken<ClickCount>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1AffiliatesMeHandle
+     * Build call for postAffiliatesMeHandle
      * @param handleRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1073,7 +1073,7 @@ public class AffiliatesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1AffiliatesMeHandleCall(@javax.annotation.Nonnull HandleRequest handleRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAffiliatesMeHandleCall(@javax.annotation.Nonnull HandleRequest handleRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1119,13 +1119,13 @@ public class AffiliatesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1AffiliatesMeHandleValidateBeforeCall(@javax.annotation.Nonnull HandleRequest handleRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postAffiliatesMeHandleValidateBeforeCall(@javax.annotation.Nonnull HandleRequest handleRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'handleRequest' is set
         if (handleRequest == null) {
-            throw new ApiException("Missing the required parameter 'handleRequest' when calling postV1AffiliatesMeHandle(Async)");
+            throw new ApiException("Missing the required parameter 'handleRequest' when calling postAffiliatesMeHandle(Async)");
         }
 
-        return postV1AffiliatesMeHandleCall(handleRequest, _callback);
+        return postAffiliatesMeHandleCall(handleRequest, _callback);
 
     }
 
@@ -1142,8 +1142,8 @@ public class AffiliatesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public HandleSet postV1AffiliatesMeHandle(@javax.annotation.Nonnull HandleRequest handleRequest) throws ApiException {
-        ApiResponse<HandleSet> localVarResp = postV1AffiliatesMeHandleWithHttpInfo(handleRequest);
+    public HandleSet postAffiliatesMeHandle(@javax.annotation.Nonnull HandleRequest handleRequest) throws ApiException {
+        ApiResponse<HandleSet> localVarResp = postAffiliatesMeHandleWithHttpInfo(handleRequest);
         return localVarResp.getData();
     }
 
@@ -1160,8 +1160,8 @@ public class AffiliatesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<HandleSet> postV1AffiliatesMeHandleWithHttpInfo(@javax.annotation.Nonnull HandleRequest handleRequest) throws ApiException {
-        okhttp3.Call localVarCall = postV1AffiliatesMeHandleValidateBeforeCall(handleRequest, null);
+    public ApiResponse<HandleSet> postAffiliatesMeHandleWithHttpInfo(@javax.annotation.Nonnull HandleRequest handleRequest) throws ApiException {
+        okhttp3.Call localVarCall = postAffiliatesMeHandleValidateBeforeCall(handleRequest, null);
         Type localVarReturnType = new TypeToken<HandleSet>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1180,15 +1180,15 @@ public class AffiliatesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1AffiliatesMeHandleAsync(@javax.annotation.Nonnull HandleRequest handleRequest, final ApiCallback<HandleSet> _callback) throws ApiException {
+    public okhttp3.Call postAffiliatesMeHandleAsync(@javax.annotation.Nonnull HandleRequest handleRequest, final ApiCallback<HandleSet> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1AffiliatesMeHandleValidateBeforeCall(handleRequest, _callback);
+        okhttp3.Call localVarCall = postAffiliatesMeHandleValidateBeforeCall(handleRequest, _callback);
         Type localVarReturnType = new TypeToken<HandleSet>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1AffiliatesMeLinks
+     * Build call for postAffiliatesMeLinks
      * @param createLinkRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1200,7 +1200,7 @@ public class AffiliatesApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1AffiliatesMeLinksCall(@javax.annotation.Nonnull CreateLinkRequest createLinkRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAffiliatesMeLinksCall(@javax.annotation.Nonnull CreateLinkRequest createLinkRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1246,13 +1246,13 @@ public class AffiliatesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1AffiliatesMeLinksValidateBeforeCall(@javax.annotation.Nonnull CreateLinkRequest createLinkRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postAffiliatesMeLinksValidateBeforeCall(@javax.annotation.Nonnull CreateLinkRequest createLinkRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'createLinkRequest' is set
         if (createLinkRequest == null) {
-            throw new ApiException("Missing the required parameter 'createLinkRequest' when calling postV1AffiliatesMeLinks(Async)");
+            throw new ApiException("Missing the required parameter 'createLinkRequest' when calling postAffiliatesMeLinks(Async)");
         }
 
-        return postV1AffiliatesMeLinksCall(createLinkRequest, _callback);
+        return postAffiliatesMeLinksCall(createLinkRequest, _callback);
 
     }
 
@@ -1269,8 +1269,8 @@ public class AffiliatesApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public LinkMint postV1AffiliatesMeLinks(@javax.annotation.Nonnull CreateLinkRequest createLinkRequest) throws ApiException {
-        ApiResponse<LinkMint> localVarResp = postV1AffiliatesMeLinksWithHttpInfo(createLinkRequest);
+    public LinkMint postAffiliatesMeLinks(@javax.annotation.Nonnull CreateLinkRequest createLinkRequest) throws ApiException {
+        ApiResponse<LinkMint> localVarResp = postAffiliatesMeLinksWithHttpInfo(createLinkRequest);
         return localVarResp.getData();
     }
 
@@ -1287,8 +1287,8 @@ public class AffiliatesApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<LinkMint> postV1AffiliatesMeLinksWithHttpInfo(@javax.annotation.Nonnull CreateLinkRequest createLinkRequest) throws ApiException {
-        okhttp3.Call localVarCall = postV1AffiliatesMeLinksValidateBeforeCall(createLinkRequest, null);
+    public ApiResponse<LinkMint> postAffiliatesMeLinksWithHttpInfo(@javax.annotation.Nonnull CreateLinkRequest createLinkRequest) throws ApiException {
+        okhttp3.Call localVarCall = postAffiliatesMeLinksValidateBeforeCall(createLinkRequest, null);
         Type localVarReturnType = new TypeToken<LinkMint>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1307,9 +1307,9 @@ public class AffiliatesApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1AffiliatesMeLinksAsync(@javax.annotation.Nonnull CreateLinkRequest createLinkRequest, final ApiCallback<LinkMint> _callback) throws ApiException {
+    public okhttp3.Call postAffiliatesMeLinksAsync(@javax.annotation.Nonnull CreateLinkRequest createLinkRequest, final ApiCallback<LinkMint> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1AffiliatesMeLinksValidateBeforeCall(createLinkRequest, _callback);
+        okhttp3.Call localVarCall = postAffiliatesMeLinksValidateBeforeCall(createLinkRequest, _callback);
         Type localVarReturnType = new TypeToken<LinkMint>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

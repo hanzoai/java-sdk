@@ -74,7 +74,7 @@ public class ShareApi {
     }
 
     /**
-     * Build call for getV1Share
+     * Build call for getShare
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -85,7 +85,7 @@ public class ShareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1ShareCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getShareCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -130,8 +130,8 @@ public class ShareApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1ShareValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1ShareCall(_callback);
+    private okhttp3.Call getShareValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getShareCall(_callback);
 
     }
 
@@ -147,8 +147,8 @@ public class ShareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public SharesOut getV1Share() throws ApiException {
-        ApiResponse<SharesOut> localVarResp = getV1ShareWithHttpInfo();
+    public SharesOut getShare() throws ApiException {
+        ApiResponse<SharesOut> localVarResp = getShareWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -164,8 +164,8 @@ public class ShareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SharesOut> getV1ShareWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1ShareValidateBeforeCall(null);
+    public ApiResponse<SharesOut> getShareWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getShareValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<SharesOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -183,15 +183,15 @@ public class ShareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1ShareAsync(final ApiCallback<SharesOut> _callback) throws ApiException {
+    public okhttp3.Call getShareAsync(final ApiCallback<SharesOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1ShareValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getShareValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<SharesOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1ShareEnable
+     * Build call for postShareEnable
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -202,7 +202,7 @@ public class ShareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1ShareEnableCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postShareEnableCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -247,8 +247,8 @@ public class ShareApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1ShareEnableValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1ShareEnableCall(_callback);
+    private okhttp3.Call postShareEnableValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postShareEnableCall(_callback);
 
     }
 
@@ -264,8 +264,8 @@ public class ShareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public EnableResp postV1ShareEnable() throws ApiException {
-        ApiResponse<EnableResp> localVarResp = postV1ShareEnableWithHttpInfo();
+    public EnableResp postShareEnable() throws ApiException {
+        ApiResponse<EnableResp> localVarResp = postShareEnableWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -281,8 +281,8 @@ public class ShareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<EnableResp> postV1ShareEnableWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1ShareEnableValidateBeforeCall(null);
+    public ApiResponse<EnableResp> postShareEnableWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postShareEnableValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<EnableResp>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -300,9 +300,9 @@ public class ShareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1ShareEnableAsync(final ApiCallback<EnableResp> _callback) throws ApiException {
+    public okhttp3.Call postShareEnableAsync(final ApiCallback<EnableResp> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1ShareEnableValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postShareEnableValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<EnableResp>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

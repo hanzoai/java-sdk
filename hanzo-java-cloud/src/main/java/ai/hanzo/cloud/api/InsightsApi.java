@@ -74,7 +74,7 @@ public class InsightsApi {
     }
 
     /**
-     * Build call for getV1InsightsEvents
+     * Build call for getInsightsEvents
      * @param limit Limit is how many rows to return, newest first. Default 50, maximum 200; a value at or below zero, or one that is not a number, takes the default. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -86,7 +86,7 @@ public class InsightsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1InsightsEventsCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getInsightsEventsCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -135,8 +135,8 @@ public class InsightsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1InsightsEventsValidateBeforeCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
-        return getV1InsightsEventsCall(limit, _callback);
+    private okhttp3.Call getInsightsEventsValidateBeforeCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+        return getInsightsEventsCall(limit, _callback);
 
     }
 
@@ -153,8 +153,8 @@ public class InsightsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public EventList getV1InsightsEvents(@javax.annotation.Nullable Integer limit) throws ApiException {
-        ApiResponse<EventList> localVarResp = getV1InsightsEventsWithHttpInfo(limit);
+    public EventList getInsightsEvents(@javax.annotation.Nullable Integer limit) throws ApiException {
+        ApiResponse<EventList> localVarResp = getInsightsEventsWithHttpInfo(limit);
         return localVarResp.getData();
     }
 
@@ -171,8 +171,8 @@ public class InsightsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<EventList> getV1InsightsEventsWithHttpInfo(@javax.annotation.Nullable Integer limit) throws ApiException {
-        okhttp3.Call localVarCall = getV1InsightsEventsValidateBeforeCall(limit, null);
+    public ApiResponse<EventList> getInsightsEventsWithHttpInfo(@javax.annotation.Nullable Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = getInsightsEventsValidateBeforeCall(limit, null);
         Type localVarReturnType = new TypeToken<EventList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -191,15 +191,15 @@ public class InsightsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1InsightsEventsAsync(@javax.annotation.Nullable Integer limit, final ApiCallback<EventList> _callback) throws ApiException {
+    public okhttp3.Call getInsightsEventsAsync(@javax.annotation.Nullable Integer limit, final ApiCallback<EventList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1InsightsEventsValidateBeforeCall(limit, _callback);
+        okhttp3.Call localVarCall = getInsightsEventsValidateBeforeCall(limit, _callback);
         Type localVarReturnType = new TypeToken<EventList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1InsightsHealth
+     * Build call for getInsightsHealth
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -210,7 +210,7 @@ public class InsightsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1InsightsHealthCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getInsightsHealthCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -255,8 +255,8 @@ public class InsightsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1InsightsHealthValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1InsightsHealthCall(_callback);
+    private okhttp3.Call getInsightsHealthValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getInsightsHealthCall(_callback);
 
     }
 
@@ -272,8 +272,8 @@ public class InsightsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public InsightsStatus getV1InsightsHealth() throws ApiException {
-        ApiResponse<InsightsStatus> localVarResp = getV1InsightsHealthWithHttpInfo();
+    public InsightsStatus getInsightsHealth() throws ApiException {
+        ApiResponse<InsightsStatus> localVarResp = getInsightsHealthWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -289,8 +289,8 @@ public class InsightsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InsightsStatus> getV1InsightsHealthWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1InsightsHealthValidateBeforeCall(null);
+    public ApiResponse<InsightsStatus> getInsightsHealthWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getInsightsHealthValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<InsightsStatus>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -308,9 +308,9 @@ public class InsightsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1InsightsHealthAsync(final ApiCallback<InsightsStatus> _callback) throws ApiException {
+    public okhttp3.Call getInsightsHealthAsync(final ApiCallback<InsightsStatus> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1InsightsHealthValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getInsightsHealthValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<InsightsStatus>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

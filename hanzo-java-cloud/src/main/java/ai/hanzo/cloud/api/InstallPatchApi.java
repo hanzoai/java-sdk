@@ -72,12 +72,12 @@ public class InstallPatchApi {
     }
 
     /**
-     * Build call for postV1InstallPatch
+     * Build call for postInstallPatch
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1InstallPatchCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postInstallPatchCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -121,8 +121,8 @@ public class InstallPatchApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1InstallPatchValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1InstallPatchCall(_callback);
+    private okhttp3.Call postInstallPatchValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postInstallPatchCall(_callback);
 
     }
 
@@ -131,8 +131,8 @@ public class InstallPatchApi {
      * Install an OS patch by patch ID (KB number or title) asynchronously
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1InstallPatch() throws ApiException {
-        postV1InstallPatchWithHttpInfo();
+    public void postInstallPatch() throws ApiException {
+        postInstallPatchWithHttpInfo();
     }
 
     /**
@@ -141,8 +141,8 @@ public class InstallPatchApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1InstallPatchWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1InstallPatchValidateBeforeCall(null);
+    public ApiResponse<Void> postInstallPatchWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postInstallPatchValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -153,9 +153,9 @@ public class InstallPatchApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1InstallPatchAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postInstallPatchAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1InstallPatchValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postInstallPatchValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

@@ -72,12 +72,12 @@ public class WecomBotApi {
     }
 
     /**
-     * Build call for getV1WecomBotCallbackByBotid
+     * Build call for getWecomBotCallbackByBotid
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1WecomBotCallbackByBotidCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getWecomBotCallbackByBotidCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -121,8 +121,8 @@ public class WecomBotApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1WecomBotCallbackByBotidValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1WecomBotCallbackByBotidCall(_callback);
+    private okhttp3.Call getWecomBotCallbackByBotidValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getWecomBotCallbackByBotidCall(_callback);
 
     }
 
@@ -131,8 +131,8 @@ public class WecomBotApi {
      * Verify WeChat work bot callback URL
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1WecomBotCallbackByBotid() throws ApiException {
-        getV1WecomBotCallbackByBotidWithHttpInfo();
+    public void getWecomBotCallbackByBotid() throws ApiException {
+        getWecomBotCallbackByBotidWithHttpInfo();
     }
 
     /**
@@ -141,8 +141,8 @@ public class WecomBotApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1WecomBotCallbackByBotidWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1WecomBotCallbackByBotidValidateBeforeCall(null);
+    public ApiResponse<Void> getWecomBotCallbackByBotidWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getWecomBotCallbackByBotidValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -153,19 +153,19 @@ public class WecomBotApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1WecomBotCallbackByBotidAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getWecomBotCallbackByBotidAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1WecomBotCallbackByBotidValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getWecomBotCallbackByBotidValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1WecomBotCallbackByBotid
+     * Build call for postWecomBotCallbackByBotid
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1WecomBotCallbackByBotidCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postWecomBotCallbackByBotidCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -209,8 +209,8 @@ public class WecomBotApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1WecomBotCallbackByBotidValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1WecomBotCallbackByBotidCall(_callback);
+    private okhttp3.Call postWecomBotCallbackByBotidValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postWecomBotCallbackByBotidCall(_callback);
 
     }
 
@@ -219,8 +219,8 @@ public class WecomBotApi {
      * Process WeChat work bot messages
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1WecomBotCallbackByBotid() throws ApiException {
-        postV1WecomBotCallbackByBotidWithHttpInfo();
+    public void postWecomBotCallbackByBotid() throws ApiException {
+        postWecomBotCallbackByBotidWithHttpInfo();
     }
 
     /**
@@ -229,8 +229,8 @@ public class WecomBotApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1WecomBotCallbackByBotidWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1WecomBotCallbackByBotidValidateBeforeCall(null);
+    public ApiResponse<Void> postWecomBotCallbackByBotidWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postWecomBotCallbackByBotidValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -241,9 +241,9 @@ public class WecomBotApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1WecomBotCallbackByBotidAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postWecomBotCallbackByBotidAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1WecomBotCallbackByBotidValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postWecomBotCallbackByBotidValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

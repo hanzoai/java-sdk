@@ -73,7 +73,7 @@ public class MeetApi {
     }
 
     /**
-     * Build call for getV1MeetHealth
+     * Build call for getMeetHealth
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -85,7 +85,7 @@ public class MeetApi {
         <tr><td> 503 </td><td> service unavailable </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1MeetHealthCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getMeetHealthCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -130,8 +130,8 @@ public class MeetApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1MeetHealthValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1MeetHealthCall(_callback);
+    private okhttp3.Call getMeetHealthValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getMeetHealthCall(_callback);
 
     }
 
@@ -148,8 +148,8 @@ public class MeetApi {
         <tr><td> 503 </td><td> service unavailable </td><td>  -  </td></tr>
      </table>
      */
-    public MeetHealth getV1MeetHealth() throws ApiException {
-        ApiResponse<MeetHealth> localVarResp = getV1MeetHealthWithHttpInfo();
+    public MeetHealth getMeetHealth() throws ApiException {
+        ApiResponse<MeetHealth> localVarResp = getMeetHealthWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -166,8 +166,8 @@ public class MeetApi {
         <tr><td> 503 </td><td> service unavailable </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<MeetHealth> getV1MeetHealthWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1MeetHealthValidateBeforeCall(null);
+    public ApiResponse<MeetHealth> getMeetHealthWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getMeetHealthValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<MeetHealth>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -186,20 +186,20 @@ public class MeetApi {
         <tr><td> 503 </td><td> service unavailable </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1MeetHealthAsync(final ApiCallback<MeetHealth> _callback) throws ApiException {
+    public okhttp3.Call getMeetHealthAsync(final ApiCallback<MeetHealth> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1MeetHealthValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getMeetHealthValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<MeetHealth>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1MeetSession
+     * Build call for getMeetSession
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1MeetSessionCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getMeetSessionCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -243,8 +243,8 @@ public class MeetApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1MeetSessionValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1MeetSessionCall(_callback);
+    private okhttp3.Call getMeetSessionValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getMeetSessionCall(_callback);
 
     }
 
@@ -253,8 +253,8 @@ public class MeetApi {
      * Answers the three facts the native lobby cannot know on its own: the identity a seat would be taken under, the LiveKit address the browser dials, and the workspaces this caller may open a room in.  It is the SAME decision getToken makes, asked before the room exists rather than after it is named. A room is bound to its tenant by its name&#39;s leading workspace segment, and only a workspace this answer lists will be admitted — so the lobby offers exactly what the mint would grant, and a person is never shown a room they would then be refused. Workspaces the caller holds only a guest role in are omitted for that reason.  An empty list is a real answer, not a fault: an IAM identity with no workspace has no room to open, and the lobby says so instead of failing.  &#x60;ws&#x60; is empty when this deployment has not been told where its media plane is (LIVEKIT_WS). Token minting is unaffected — the published office client supplies its own address — so this is a degraded native UI, not a degraded service, and the lobby refuses to dial rather than guessing a host.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1MeetSession() throws ApiException {
-        getV1MeetSessionWithHttpInfo();
+    public void getMeetSession() throws ApiException {
+        getMeetSessionWithHttpInfo();
     }
 
     /**
@@ -263,8 +263,8 @@ public class MeetApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1MeetSessionWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1MeetSessionValidateBeforeCall(null);
+    public ApiResponse<Void> getMeetSessionWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getMeetSessionValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -275,19 +275,19 @@ public class MeetApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1MeetSessionAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getMeetSessionAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1MeetSessionValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getMeetSessionValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1MeetGettoken
+     * Build call for postMeetGettoken
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1MeetGettokenCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postMeetGettokenCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -331,8 +331,8 @@ public class MeetApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1MeetGettokenValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1MeetGettokenCall(_callback);
+    private okhttp3.Call postMeetGettokenValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postMeetGettokenCall(_callback);
 
     }
 
@@ -341,8 +341,8 @@ public class MeetApi {
      * Answers with a LiveKit join token for exactly the room named in the body. The body is the RAW token as text/plain — one opaque string, not JSON and not wrapped in an envelope, which is what the office client reads.  The caller presents its workspace session as a Bearer. Every clause is a refusal: the session must verify, its SIGNED workspace claim must equal the room&#39;s leading name segment — rooms are named &#x60;&lt;workspace&gt;_&lt;room&gt;_&lt;id&gt;&#x60;, and that prefix is the only thing binding a room to a tenant — and the session must carry a privileged workspace role, so a guest is refused rather than seated.  The participant identity is the SESSION&#39;S, never the body&#39;s. &#x60;_id&#x60; is accepted for compatibility with the published client bundle and deliberately ignored: LiveKit treats the identity as unique and ejects a duplicate, so honouring a caller-chosen one would let anyone in a workspace kick out a colleague and impersonate them. &#x60;participantName&#x60; is a display name only.  An unconfigured deployment answers 503 under its own name rather than 404, and the refusal states only that the office is unconfigured — the reason names key material and stays in the boot log.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1MeetGettoken() throws ApiException {
-        postV1MeetGettokenWithHttpInfo();
+    public void postMeetGettoken() throws ApiException {
+        postMeetGettokenWithHttpInfo();
     }
 
     /**
@@ -351,8 +351,8 @@ public class MeetApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1MeetGettokenWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1MeetGettokenValidateBeforeCall(null);
+    public ApiResponse<Void> postMeetGettokenWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postMeetGettokenValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -363,9 +363,9 @@ public class MeetApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1MeetGettokenAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postMeetGettokenAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1MeetGettokenValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postMeetGettokenValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

@@ -177,7 +177,7 @@ public class UsageAnalyticsView {
   }
 
   /**
-   * Range is the window label that was served, which is what was asked for.
+   * Range is the label that was ASKED for. A plan whose retention is shorter than that window is served the retention instead, so read start and end for the window the rows actually cover and retentionDays for the reason — on a clamped read the label is longer than what was served.
    * @return range
    */
   @javax.annotation.Nullable

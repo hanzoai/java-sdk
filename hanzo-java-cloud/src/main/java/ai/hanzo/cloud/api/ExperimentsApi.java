@@ -80,7 +80,7 @@ public class ExperimentsApi {
     }
 
     /**
-     * Build call for getV1Experiments
+     * Build call for getExperiments
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -91,7 +91,7 @@ public class ExperimentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1ExperimentsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getExperimentsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -136,8 +136,8 @@ public class ExperimentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1ExperimentsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1ExperimentsCall(_callback);
+    private okhttp3.Call getExperimentsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getExperimentsCall(_callback);
 
     }
 
@@ -153,8 +153,8 @@ public class ExperimentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ExperimentList getV1Experiments() throws ApiException {
-        ApiResponse<ExperimentList> localVarResp = getV1ExperimentsWithHttpInfo();
+    public ExperimentList getExperiments() throws ApiException {
+        ApiResponse<ExperimentList> localVarResp = getExperimentsWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -170,8 +170,8 @@ public class ExperimentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ExperimentList> getV1ExperimentsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1ExperimentsValidateBeforeCall(null);
+    public ApiResponse<ExperimentList> getExperimentsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getExperimentsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<ExperimentList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -189,15 +189,15 @@ public class ExperimentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1ExperimentsAsync(final ApiCallback<ExperimentList> _callback) throws ApiException {
+    public okhttp3.Call getExperimentsAsync(final ApiCallback<ExperimentList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1ExperimentsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getExperimentsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<ExperimentList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1ExperimentsById
+     * Build call for getExperimentsById
      * @param id ID is the experiment the URL names. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -209,7 +209,7 @@ public class ExperimentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1ExperimentsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getExperimentsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -255,13 +255,13 @@ public class ExperimentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1ExperimentsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getExperimentsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getV1ExperimentsById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getExperimentsById(Async)");
         }
 
-        return getV1ExperimentsByIdCall(id, _callback);
+        return getExperimentsByIdCall(id, _callback);
 
     }
 
@@ -278,8 +278,8 @@ public class ExperimentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Trial getV1ExperimentsById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<Trial> localVarResp = getV1ExperimentsByIdWithHttpInfo(id);
+    public Trial getExperimentsById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<Trial> localVarResp = getExperimentsByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -296,8 +296,8 @@ public class ExperimentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Trial> getV1ExperimentsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = getV1ExperimentsByIdValidateBeforeCall(id, null);
+    public ApiResponse<Trial> getExperimentsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getExperimentsByIdValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<Trial>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -316,15 +316,15 @@ public class ExperimentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1ExperimentsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Trial> _callback) throws ApiException {
+    public okhttp3.Call getExperimentsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Trial> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1ExperimentsByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = getExperimentsByIdValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<Trial>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1ExperimentsByIdAssign
+     * Build call for getExperimentsByIdAssign
      * @param id ID is the experiment the URL names. (required)
      * @param subject Subject is the unit to bucket — a user, org, session or audience key, matching the experiment&#39;s subjectKind. (required)
      * @param props Props is a JSON object of person properties for targeting. A value that is not valid JSON is dropped rather than refused, so a malformed one changes the bucketing without saying so. (optional)
@@ -338,7 +338,7 @@ public class ExperimentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1ExperimentsByIdAssignCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String subject, @javax.annotation.Nullable String props, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getExperimentsByIdAssignCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String subject, @javax.annotation.Nullable String props, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -392,18 +392,18 @@ public class ExperimentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1ExperimentsByIdAssignValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String subject, @javax.annotation.Nullable String props, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getExperimentsByIdAssignValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String subject, @javax.annotation.Nullable String props, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getV1ExperimentsByIdAssign(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getExperimentsByIdAssign(Async)");
         }
 
         // verify the required parameter 'subject' is set
         if (subject == null) {
-            throw new ApiException("Missing the required parameter 'subject' when calling getV1ExperimentsByIdAssign(Async)");
+            throw new ApiException("Missing the required parameter 'subject' when calling getExperimentsByIdAssign(Async)");
         }
 
-        return getV1ExperimentsByIdAssignCall(id, subject, props, _callback);
+        return getExperimentsByIdAssignCall(id, subject, props, _callback);
 
     }
 
@@ -422,8 +422,8 @@ public class ExperimentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Assignment getV1ExperimentsByIdAssign(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String subject, @javax.annotation.Nullable String props) throws ApiException {
-        ApiResponse<Assignment> localVarResp = getV1ExperimentsByIdAssignWithHttpInfo(id, subject, props);
+    public Assignment getExperimentsByIdAssign(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String subject, @javax.annotation.Nullable String props) throws ApiException {
+        ApiResponse<Assignment> localVarResp = getExperimentsByIdAssignWithHttpInfo(id, subject, props);
         return localVarResp.getData();
     }
 
@@ -442,8 +442,8 @@ public class ExperimentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Assignment> getV1ExperimentsByIdAssignWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String subject, @javax.annotation.Nullable String props) throws ApiException {
-        okhttp3.Call localVarCall = getV1ExperimentsByIdAssignValidateBeforeCall(id, subject, props, null);
+    public ApiResponse<Assignment> getExperimentsByIdAssignWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String subject, @javax.annotation.Nullable String props) throws ApiException {
+        okhttp3.Call localVarCall = getExperimentsByIdAssignValidateBeforeCall(id, subject, props, null);
         Type localVarReturnType = new TypeToken<Assignment>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -464,15 +464,15 @@ public class ExperimentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1ExperimentsByIdAssignAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String subject, @javax.annotation.Nullable String props, final ApiCallback<Assignment> _callback) throws ApiException {
+    public okhttp3.Call getExperimentsByIdAssignAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String subject, @javax.annotation.Nullable String props, final ApiCallback<Assignment> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1ExperimentsByIdAssignValidateBeforeCall(id, subject, props, _callback);
+        okhttp3.Call localVarCall = getExperimentsByIdAssignValidateBeforeCall(id, subject, props, _callback);
         Type localVarReturnType = new TypeToken<Assignment>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1ExperimentsHealth
+     * Build call for getExperimentsHealth
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -483,7 +483,7 @@ public class ExperimentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1ExperimentsHealthCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getExperimentsHealthCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -528,8 +528,8 @@ public class ExperimentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1ExperimentsHealthValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1ExperimentsHealthCall(_callback);
+    private okhttp3.Call getExperimentsHealthValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getExperimentsHealthCall(_callback);
 
     }
 
@@ -545,8 +545,8 @@ public class ExperimentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Health getV1ExperimentsHealth() throws ApiException {
-        ApiResponse<Health> localVarResp = getV1ExperimentsHealthWithHttpInfo();
+    public Health getExperimentsHealth() throws ApiException {
+        ApiResponse<Health> localVarResp = getExperimentsHealthWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -562,8 +562,8 @@ public class ExperimentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Health> getV1ExperimentsHealthWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1ExperimentsHealthValidateBeforeCall(null);
+    public ApiResponse<Health> getExperimentsHealthWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getExperimentsHealthValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<Health>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -581,15 +581,15 @@ public class ExperimentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1ExperimentsHealthAsync(final ApiCallback<Health> _callback) throws ApiException {
+    public okhttp3.Call getExperimentsHealthAsync(final ApiCallback<Health> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1ExperimentsHealthValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getExperimentsHealthValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<Health>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1Experiments
+     * Build call for postExperiments
      * @param createBody  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -601,7 +601,7 @@ public class ExperimentsApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1ExperimentsCall(@javax.annotation.Nonnull CreateBody createBody, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postExperimentsCall(@javax.annotation.Nonnull CreateBody createBody, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -647,13 +647,13 @@ public class ExperimentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1ExperimentsValidateBeforeCall(@javax.annotation.Nonnull CreateBody createBody, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postExperimentsValidateBeforeCall(@javax.annotation.Nonnull CreateBody createBody, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'createBody' is set
         if (createBody == null) {
-            throw new ApiException("Missing the required parameter 'createBody' when calling postV1Experiments(Async)");
+            throw new ApiException("Missing the required parameter 'createBody' when calling postExperiments(Async)");
         }
 
-        return postV1ExperimentsCall(createBody, _callback);
+        return postExperimentsCall(createBody, _callback);
 
     }
 
@@ -670,8 +670,8 @@ public class ExperimentsApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public Trial postV1Experiments(@javax.annotation.Nonnull CreateBody createBody) throws ApiException {
-        ApiResponse<Trial> localVarResp = postV1ExperimentsWithHttpInfo(createBody);
+    public Trial postExperiments(@javax.annotation.Nonnull CreateBody createBody) throws ApiException {
+        ApiResponse<Trial> localVarResp = postExperimentsWithHttpInfo(createBody);
         return localVarResp.getData();
     }
 
@@ -688,8 +688,8 @@ public class ExperimentsApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Trial> postV1ExperimentsWithHttpInfo(@javax.annotation.Nonnull CreateBody createBody) throws ApiException {
-        okhttp3.Call localVarCall = postV1ExperimentsValidateBeforeCall(createBody, null);
+    public ApiResponse<Trial> postExperimentsWithHttpInfo(@javax.annotation.Nonnull CreateBody createBody) throws ApiException {
+        okhttp3.Call localVarCall = postExperimentsValidateBeforeCall(createBody, null);
         Type localVarReturnType = new TypeToken<Trial>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -708,15 +708,15 @@ public class ExperimentsApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1ExperimentsAsync(@javax.annotation.Nonnull CreateBody createBody, final ApiCallback<Trial> _callback) throws ApiException {
+    public okhttp3.Call postExperimentsAsync(@javax.annotation.Nonnull CreateBody createBody, final ApiCallback<Trial> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1ExperimentsValidateBeforeCall(createBody, _callback);
+        okhttp3.Call localVarCall = postExperimentsValidateBeforeCall(createBody, _callback);
         Type localVarReturnType = new TypeToken<Trial>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1ExperimentsByIdAnalyze
+     * Build call for postExperimentsByIdAnalyze
      * @param id ID is the experiment the URL names. (required)
      * @param analyzeQuery  (required)
      * @param _callback Callback for upload/download progress
@@ -729,7 +729,7 @@ public class ExperimentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1ExperimentsByIdAnalyzeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AnalyzeQuery analyzeQuery, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postExperimentsByIdAnalyzeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AnalyzeQuery analyzeQuery, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -776,18 +776,18 @@ public class ExperimentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1ExperimentsByIdAnalyzeValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AnalyzeQuery analyzeQuery, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postExperimentsByIdAnalyzeValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AnalyzeQuery analyzeQuery, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling postV1ExperimentsByIdAnalyze(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling postExperimentsByIdAnalyze(Async)");
         }
 
         // verify the required parameter 'analyzeQuery' is set
         if (analyzeQuery == null) {
-            throw new ApiException("Missing the required parameter 'analyzeQuery' when calling postV1ExperimentsByIdAnalyze(Async)");
+            throw new ApiException("Missing the required parameter 'analyzeQuery' when calling postExperimentsByIdAnalyze(Async)");
         }
 
-        return postV1ExperimentsByIdAnalyzeCall(id, analyzeQuery, _callback);
+        return postExperimentsByIdAnalyzeCall(id, analyzeQuery, _callback);
 
     }
 
@@ -805,8 +805,8 @@ public class ExperimentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Analysis postV1ExperimentsByIdAnalyze(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AnalyzeQuery analyzeQuery) throws ApiException {
-        ApiResponse<Analysis> localVarResp = postV1ExperimentsByIdAnalyzeWithHttpInfo(id, analyzeQuery);
+    public Analysis postExperimentsByIdAnalyze(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AnalyzeQuery analyzeQuery) throws ApiException {
+        ApiResponse<Analysis> localVarResp = postExperimentsByIdAnalyzeWithHttpInfo(id, analyzeQuery);
         return localVarResp.getData();
     }
 
@@ -824,8 +824,8 @@ public class ExperimentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Analysis> postV1ExperimentsByIdAnalyzeWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AnalyzeQuery analyzeQuery) throws ApiException {
-        okhttp3.Call localVarCall = postV1ExperimentsByIdAnalyzeValidateBeforeCall(id, analyzeQuery, null);
+    public ApiResponse<Analysis> postExperimentsByIdAnalyzeWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AnalyzeQuery analyzeQuery) throws ApiException {
+        okhttp3.Call localVarCall = postExperimentsByIdAnalyzeValidateBeforeCall(id, analyzeQuery, null);
         Type localVarReturnType = new TypeToken<Analysis>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -845,15 +845,15 @@ public class ExperimentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1ExperimentsByIdAnalyzeAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AnalyzeQuery analyzeQuery, final ApiCallback<Analysis> _callback) throws ApiException {
+    public okhttp3.Call postExperimentsByIdAnalyzeAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AnalyzeQuery analyzeQuery, final ApiCallback<Analysis> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1ExperimentsByIdAnalyzeValidateBeforeCall(id, analyzeQuery, _callback);
+        okhttp3.Call localVarCall = postExperimentsByIdAnalyzeValidateBeforeCall(id, analyzeQuery, _callback);
         Type localVarReturnType = new TypeToken<Analysis>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1ExperimentsByIdDecide
+     * Build call for postExperimentsByIdDecide
      * @param id  (required)
      * @param decideBody  (required)
      * @param _callback Callback for upload/download progress
@@ -866,7 +866,7 @@ public class ExperimentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1ExperimentsByIdDecideCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull DecideBody decideBody, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postExperimentsByIdDecideCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull DecideBody decideBody, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -913,18 +913,18 @@ public class ExperimentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1ExperimentsByIdDecideValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull DecideBody decideBody, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postExperimentsByIdDecideValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull DecideBody decideBody, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling postV1ExperimentsByIdDecide(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling postExperimentsByIdDecide(Async)");
         }
 
         // verify the required parameter 'decideBody' is set
         if (decideBody == null) {
-            throw new ApiException("Missing the required parameter 'decideBody' when calling postV1ExperimentsByIdDecide(Async)");
+            throw new ApiException("Missing the required parameter 'decideBody' when calling postExperimentsByIdDecide(Async)");
         }
 
-        return postV1ExperimentsByIdDecideCall(id, decideBody, _callback);
+        return postExperimentsByIdDecideCall(id, decideBody, _callback);
 
     }
 
@@ -942,8 +942,8 @@ public class ExperimentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Trial postV1ExperimentsByIdDecide(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull DecideBody decideBody) throws ApiException {
-        ApiResponse<Trial> localVarResp = postV1ExperimentsByIdDecideWithHttpInfo(id, decideBody);
+    public Trial postExperimentsByIdDecide(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull DecideBody decideBody) throws ApiException {
+        ApiResponse<Trial> localVarResp = postExperimentsByIdDecideWithHttpInfo(id, decideBody);
         return localVarResp.getData();
     }
 
@@ -961,8 +961,8 @@ public class ExperimentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Trial> postV1ExperimentsByIdDecideWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull DecideBody decideBody) throws ApiException {
-        okhttp3.Call localVarCall = postV1ExperimentsByIdDecideValidateBeforeCall(id, decideBody, null);
+    public ApiResponse<Trial> postExperimentsByIdDecideWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull DecideBody decideBody) throws ApiException {
+        okhttp3.Call localVarCall = postExperimentsByIdDecideValidateBeforeCall(id, decideBody, null);
         Type localVarReturnType = new TypeToken<Trial>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -982,9 +982,9 @@ public class ExperimentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1ExperimentsByIdDecideAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull DecideBody decideBody, final ApiCallback<Trial> _callback) throws ApiException {
+    public okhttp3.Call postExperimentsByIdDecideAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull DecideBody decideBody, final ApiCallback<Trial> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1ExperimentsByIdDecideValidateBeforeCall(id, decideBody, _callback);
+        okhttp3.Call localVarCall = postExperimentsByIdDecideValidateBeforeCall(id, decideBody, _callback);
         Type localVarReturnType = new TypeToken<Trial>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

@@ -83,13 +83,13 @@ public class SandboxesApi {
     }
 
     /**
-     * Build call for deleteV1SandboxesById
+     * Build call for deleteSandboxesById
      * @param id  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call deleteV1SandboxesByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteSandboxesByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -134,13 +134,13 @@ public class SandboxesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1SandboxesByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteSandboxesByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling deleteV1SandboxesById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling deleteSandboxesById(Async)");
         }
 
-        return deleteV1SandboxesByIdCall(id, _callback);
+        return deleteSandboxesByIdCall(id, _callback);
 
     }
 
@@ -150,8 +150,8 @@ public class SandboxesApi {
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void deleteV1SandboxesById(@javax.annotation.Nonnull String id) throws ApiException {
-        deleteV1SandboxesByIdWithHttpInfo(id);
+    public void deleteSandboxesById(@javax.annotation.Nonnull String id) throws ApiException {
+        deleteSandboxesByIdWithHttpInfo(id);
     }
 
     /**
@@ -161,8 +161,8 @@ public class SandboxesApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> deleteV1SandboxesByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1SandboxesByIdValidateBeforeCall(id, null);
+    public ApiResponse<Void> deleteSandboxesByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = deleteSandboxesByIdValidateBeforeCall(id, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -174,9 +174,9 @@ public class SandboxesApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call deleteV1SandboxesByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteSandboxesByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1SandboxesByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = deleteSandboxesByIdValidateBeforeCall(id, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
@@ -303,12 +303,12 @@ public class SandboxesApi {
         return localVarCall;
     }
     /**
-     * Build call for getV1Sandboxes
+     * Build call for getSandboxes
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1SandboxesCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getSandboxesCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -352,8 +352,8 @@ public class SandboxesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1SandboxesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1SandboxesCall(_callback);
+    private okhttp3.Call getSandboxesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getSandboxesCall(_callback);
 
     }
 
@@ -362,8 +362,8 @@ public class SandboxesApi {
      * Lists the caller org&#39;s sandboxes, newest first. &#x60;project&#x60; and &#x60;status&#x60; narrow it, and both are read from the QUERY STRING.  It answers from the org&#39;s own store rather than from the cluster, so a sandbox whose pod has since died still appears, carrying the status it was last known to have. That is deliberate: a lease you are being charged for should not vanish from the list because the thing behind it fell over.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1Sandboxes() throws ApiException {
-        getV1SandboxesWithHttpInfo();
+    public void getSandboxes() throws ApiException {
+        getSandboxesWithHttpInfo();
     }
 
     /**
@@ -372,8 +372,8 @@ public class SandboxesApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1SandboxesWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1SandboxesValidateBeforeCall(null);
+    public ApiResponse<Void> getSandboxesWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getSandboxesValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -384,20 +384,20 @@ public class SandboxesApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1SandboxesAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getSandboxesAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1SandboxesValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getSandboxesValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1SandboxesById
+     * Build call for getSandboxesById
      * @param id  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1SandboxesByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getSandboxesByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -442,13 +442,13 @@ public class SandboxesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1SandboxesByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getSandboxesByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getV1SandboxesById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getSandboxesById(Async)");
         }
 
-        return getV1SandboxesByIdCall(id, _callback);
+        return getSandboxesByIdCall(id, _callback);
 
     }
 
@@ -458,8 +458,8 @@ public class SandboxesApi {
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1SandboxesById(@javax.annotation.Nonnull String id) throws ApiException {
-        getV1SandboxesByIdWithHttpInfo(id);
+    public void getSandboxesById(@javax.annotation.Nonnull String id) throws ApiException {
+        getSandboxesByIdWithHttpInfo(id);
     }
 
     /**
@@ -469,8 +469,8 @@ public class SandboxesApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1SandboxesByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = getV1SandboxesByIdValidateBeforeCall(id, null);
+    public ApiResponse<Void> getSandboxesByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getSandboxesByIdValidateBeforeCall(id, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -482,20 +482,20 @@ public class SandboxesApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1SandboxesByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getSandboxesByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1SandboxesByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = getSandboxesByIdValidateBeforeCall(id, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1SandboxesByIdFs
+     * Build call for getSandboxesByIdFs
      * @param id  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1SandboxesByIdFsCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getSandboxesByIdFsCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -540,13 +540,13 @@ public class SandboxesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1SandboxesByIdFsValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getSandboxesByIdFsValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getV1SandboxesByIdFs(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getSandboxesByIdFs(Async)");
         }
 
-        return getV1SandboxesByIdFsCall(id, _callback);
+        return getSandboxesByIdFsCall(id, _callback);
 
     }
 
@@ -556,8 +556,8 @@ public class SandboxesApi {
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1SandboxesByIdFs(@javax.annotation.Nonnull String id) throws ApiException {
-        getV1SandboxesByIdFsWithHttpInfo(id);
+    public void getSandboxesByIdFs(@javax.annotation.Nonnull String id) throws ApiException {
+        getSandboxesByIdFsWithHttpInfo(id);
     }
 
     /**
@@ -567,8 +567,8 @@ public class SandboxesApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1SandboxesByIdFsWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = getV1SandboxesByIdFsValidateBeforeCall(id, null);
+    public ApiResponse<Void> getSandboxesByIdFsWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getSandboxesByIdFsValidateBeforeCall(id, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -580,20 +580,216 @@ public class SandboxesApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1SandboxesByIdFsAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getSandboxesByIdFsAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1SandboxesByIdFsValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = getSandboxesByIdFsValidateBeforeCall(id, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1SandboxesByIdTerminal
+     * Build call for getSandboxesByIdScreen
      * @param id  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1SandboxesByIdTerminalCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getSandboxesByIdScreenCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/sandboxes/{id}/screen"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getSandboxesByIdScreenValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling getSandboxesByIdScreen(Async)");
+        }
+
+        return getSandboxesByIdScreenCall(id, _callback);
+
+    }
+
+    /**
+     * The screen, as a page
+     * A complete, self-contained desktop — noVNC inline, no other origin — that opens its own socket and draws this sandbox&#39;s display. Embed it in an iframe and there is nothing else to build.  &#x60;ticket&#x60; is the credential from the POST above, carried through to the socket. The page is NOT gated: it is inert markup and does not redeem the ticket, because a ticket is spent once and a page that spent it would hold a credential that no longer opens anything. &#x60;frame-ancestors&#x60; admits our own brands&#39; hosts and nothing further.  It is served for every class, not only for &#x60;desktop&#x60;. The class is a fact about the image, and a sandbox with no VNC server already fails exactly — the connection is refused and the page says so — where a check here would be a second opinion about what is running inside a pod, formed from a label rather than from the pod.
+     * @param id  (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void getSandboxesByIdScreen(@javax.annotation.Nonnull String id) throws ApiException {
+        getSandboxesByIdScreenWithHttpInfo(id);
+    }
+
+    /**
+     * The screen, as a page
+     * A complete, self-contained desktop — noVNC inline, no other origin — that opens its own socket and draws this sandbox&#39;s display. Embed it in an iframe and there is nothing else to build.  &#x60;ticket&#x60; is the credential from the POST above, carried through to the socket. The page is NOT gated: it is inert markup and does not redeem the ticket, because a ticket is spent once and a page that spent it would hold a credential that no longer opens anything. &#x60;frame-ancestors&#x60; admits our own brands&#39; hosts and nothing further.  It is served for every class, not only for &#x60;desktop&#x60;. The class is a fact about the image, and a sandbox with no VNC server already fails exactly — the connection is refused and the page says so — where a check here would be a second opinion about what is running inside a pod, formed from a label rather than from the pod.
+     * @param id  (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> getSandboxesByIdScreenWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getSandboxesByIdScreenValidateBeforeCall(id, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * The screen, as a page (asynchronously)
+     * A complete, self-contained desktop — noVNC inline, no other origin — that opens its own socket and draws this sandbox&#39;s display. Embed it in an iframe and there is nothing else to build.  &#x60;ticket&#x60; is the credential from the POST above, carried through to the socket. The page is NOT gated: it is inert markup and does not redeem the ticket, because a ticket is spent once and a page that spent it would hold a credential that no longer opens anything. &#x60;frame-ancestors&#x60; admits our own brands&#39; hosts and nothing further.  It is served for every class, not only for &#x60;desktop&#x60;. The class is a fact about the image, and a sandbox with no VNC server already fails exactly — the connection is refused and the page says so — where a check here would be a second opinion about what is running inside a pod, formed from a label rather than from the pod.
+     * @param id  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call getSandboxesByIdScreenAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getSandboxesByIdScreenValidateBeforeCall(id, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getSandboxesByIdScreenWs
+     * @param id  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call getSandboxesByIdScreenWsCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/sandboxes/{id}/screen/ws"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getSandboxesByIdScreenWsValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling getSandboxesByIdScreenWs(Async)");
+        }
+
+        return getSandboxesByIdScreenWsCall(id, _callback);
+
+    }
+
+    /**
+     * The screen, as a socket
+     * Upgrades to a WebSocket carrying RFB — the VNC wire protocol — from the sandbox&#39;s display, for a host that brings its own client. Requires &#x60;ticket&#x60;; a missing, expired or already-spent one answers 401 without upgrading.  THE WIRE IS RFB, in BINARY frames both ways, and it is not interpreted here: this is a pipe between the caller&#39;s client and the server inside the pod.  THE PIXELS COME OUT THROUGH THE EXEC CHANNEL. The display binds 127.0.0.1 only and deliberately nothing else, so there is no address to dial — &#x60;socat&#x60; joins the stream to that loopback port over the same Kubernetes exec subresource every other call into a sandbox uses. One way in, one thing to authorize, nothing further exposed.  The window size is ignored. A browser pane is not the X server&#39;s geometry, and the client scales what it is given rather than asking a server with no RandR to resize itself.
+     * @param id  (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void getSandboxesByIdScreenWs(@javax.annotation.Nonnull String id) throws ApiException {
+        getSandboxesByIdScreenWsWithHttpInfo(id);
+    }
+
+    /**
+     * The screen, as a socket
+     * Upgrades to a WebSocket carrying RFB — the VNC wire protocol — from the sandbox&#39;s display, for a host that brings its own client. Requires &#x60;ticket&#x60;; a missing, expired or already-spent one answers 401 without upgrading.  THE WIRE IS RFB, in BINARY frames both ways, and it is not interpreted here: this is a pipe between the caller&#39;s client and the server inside the pod.  THE PIXELS COME OUT THROUGH THE EXEC CHANNEL. The display binds 127.0.0.1 only and deliberately nothing else, so there is no address to dial — &#x60;socat&#x60; joins the stream to that loopback port over the same Kubernetes exec subresource every other call into a sandbox uses. One way in, one thing to authorize, nothing further exposed.  The window size is ignored. A browser pane is not the X server&#39;s geometry, and the client scales what it is given rather than asking a server with no RandR to resize itself.
+     * @param id  (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> getSandboxesByIdScreenWsWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getSandboxesByIdScreenWsValidateBeforeCall(id, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * The screen, as a socket (asynchronously)
+     * Upgrades to a WebSocket carrying RFB — the VNC wire protocol — from the sandbox&#39;s display, for a host that brings its own client. Requires &#x60;ticket&#x60;; a missing, expired or already-spent one answers 401 without upgrading.  THE WIRE IS RFB, in BINARY frames both ways, and it is not interpreted here: this is a pipe between the caller&#39;s client and the server inside the pod.  THE PIXELS COME OUT THROUGH THE EXEC CHANNEL. The display binds 127.0.0.1 only and deliberately nothing else, so there is no address to dial — &#x60;socat&#x60; joins the stream to that loopback port over the same Kubernetes exec subresource every other call into a sandbox uses. One way in, one thing to authorize, nothing further exposed.  The window size is ignored. A browser pane is not the X server&#39;s geometry, and the client scales what it is given rather than asking a server with no RandR to resize itself.
+     * @param id  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call getSandboxesByIdScreenWsAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getSandboxesByIdScreenWsValidateBeforeCall(id, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getSandboxesByIdTerminal
+     * @param id  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call getSandboxesByIdTerminalCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -638,13 +834,13 @@ public class SandboxesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1SandboxesByIdTerminalValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getSandboxesByIdTerminalValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getV1SandboxesByIdTerminal(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getSandboxesByIdTerminal(Async)");
         }
 
-        return getV1SandboxesByIdTerminalCall(id, _callback);
+        return getSandboxesByIdTerminalCall(id, _callback);
 
     }
 
@@ -654,8 +850,8 @@ public class SandboxesApi {
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1SandboxesByIdTerminal(@javax.annotation.Nonnull String id) throws ApiException {
-        getV1SandboxesByIdTerminalWithHttpInfo(id);
+    public void getSandboxesByIdTerminal(@javax.annotation.Nonnull String id) throws ApiException {
+        getSandboxesByIdTerminalWithHttpInfo(id);
     }
 
     /**
@@ -665,8 +861,8 @@ public class SandboxesApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1SandboxesByIdTerminalWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = getV1SandboxesByIdTerminalValidateBeforeCall(id, null);
+    public ApiResponse<Void> getSandboxesByIdTerminalWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getSandboxesByIdTerminalValidateBeforeCall(id, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -678,20 +874,20 @@ public class SandboxesApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1SandboxesByIdTerminalAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getSandboxesByIdTerminalAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1SandboxesByIdTerminalValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = getSandboxesByIdTerminalValidateBeforeCall(id, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1SandboxesByIdTerminalWs
+     * Build call for getSandboxesByIdTerminalWs
      * @param id  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1SandboxesByIdTerminalWsCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getSandboxesByIdTerminalWsCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -736,13 +932,13 @@ public class SandboxesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1SandboxesByIdTerminalWsValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getSandboxesByIdTerminalWsValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getV1SandboxesByIdTerminalWs(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getSandboxesByIdTerminalWs(Async)");
         }
 
-        return getV1SandboxesByIdTerminalWsCall(id, _callback);
+        return getSandboxesByIdTerminalWsCall(id, _callback);
 
     }
 
@@ -752,8 +948,8 @@ public class SandboxesApi {
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1SandboxesByIdTerminalWs(@javax.annotation.Nonnull String id) throws ApiException {
-        getV1SandboxesByIdTerminalWsWithHttpInfo(id);
+    public void getSandboxesByIdTerminalWs(@javax.annotation.Nonnull String id) throws ApiException {
+        getSandboxesByIdTerminalWsWithHttpInfo(id);
     }
 
     /**
@@ -763,8 +959,8 @@ public class SandboxesApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1SandboxesByIdTerminalWsWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = getV1SandboxesByIdTerminalWsValidateBeforeCall(id, null);
+    public ApiResponse<Void> getSandboxesByIdTerminalWsWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getSandboxesByIdTerminalWsValidateBeforeCall(id, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -776,9 +972,9 @@ public class SandboxesApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1SandboxesByIdTerminalWsAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getSandboxesByIdTerminalWsAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1SandboxesByIdTerminalWsValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = getSandboxesByIdTerminalWsValidateBeforeCall(id, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
@@ -910,12 +1106,12 @@ public class SandboxesApi {
         return localVarCall;
     }
     /**
-     * Build call for postV1Sandboxes
+     * Build call for postSandboxes
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1SandboxesCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postSandboxesCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -959,52 +1155,52 @@ public class SandboxesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1SandboxesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1SandboxesCall(_callback);
+    private okhttp3.Call postSandboxesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postSandboxesCall(_callback);
 
     }
 
     /**
      * Lease a sandbox
-     * Creates a sandbox and returns it. &#x60;class&#x60; is one of &#x60;exec&#x60;, &#x60;dev&#x60; or &#x60;desktop&#x60;; &#x60;dev&#x60; and &#x60;desktop&#x60; are attached to a &#x60;project&#x60;, which is required for them and names the volume the work persists on. &#x60;ttlSec&#x60; bounds the lease, and &#x60;image&#x60; overrides the class default.  This is the ONLY path that creates cluster objects. The isolation boundary is the pod&#39;s runtime class, one field, so what a sandbox is confined by is a deployment decision rather than anything this operation negotiates.
+     * Creates a sandbox and returns it. &#x60;class&#x60; is one of &#x60;exec&#x60;, &#x60;dev&#x60;, &#x60;desktop&#x60; or &#x60;android&#x60;; &#x60;dev&#x60; and &#x60;desktop&#x60; are attached to a &#x60;project&#x60;, which is required for them and names the volume the work persists on. &#x60;ttlSec&#x60; bounds the lease, and &#x60;image&#x60; overrides the class default.  This is the ONLY path that creates cluster objects. The isolation boundary is the pod&#39;s runtime class, one field, so what a sandbox is confined by is a deployment decision rather than anything this operation negotiates.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1Sandboxes() throws ApiException {
-        postV1SandboxesWithHttpInfo();
+    public void postSandboxes() throws ApiException {
+        postSandboxesWithHttpInfo();
     }
 
     /**
      * Lease a sandbox
-     * Creates a sandbox and returns it. &#x60;class&#x60; is one of &#x60;exec&#x60;, &#x60;dev&#x60; or &#x60;desktop&#x60;; &#x60;dev&#x60; and &#x60;desktop&#x60; are attached to a &#x60;project&#x60;, which is required for them and names the volume the work persists on. &#x60;ttlSec&#x60; bounds the lease, and &#x60;image&#x60; overrides the class default.  This is the ONLY path that creates cluster objects. The isolation boundary is the pod&#39;s runtime class, one field, so what a sandbox is confined by is a deployment decision rather than anything this operation negotiates.
+     * Creates a sandbox and returns it. &#x60;class&#x60; is one of &#x60;exec&#x60;, &#x60;dev&#x60;, &#x60;desktop&#x60; or &#x60;android&#x60;; &#x60;dev&#x60; and &#x60;desktop&#x60; are attached to a &#x60;project&#x60;, which is required for them and names the volume the work persists on. &#x60;ttlSec&#x60; bounds the lease, and &#x60;image&#x60; overrides the class default.  This is the ONLY path that creates cluster objects. The isolation boundary is the pod&#39;s runtime class, one field, so what a sandbox is confined by is a deployment decision rather than anything this operation negotiates.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1SandboxesWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1SandboxesValidateBeforeCall(null);
+    public ApiResponse<Void> postSandboxesWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postSandboxesValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
     /**
      * Lease a sandbox (asynchronously)
-     * Creates a sandbox and returns it. &#x60;class&#x60; is one of &#x60;exec&#x60;, &#x60;dev&#x60; or &#x60;desktop&#x60;; &#x60;dev&#x60; and &#x60;desktop&#x60; are attached to a &#x60;project&#x60;, which is required for them and names the volume the work persists on. &#x60;ttlSec&#x60; bounds the lease, and &#x60;image&#x60; overrides the class default.  This is the ONLY path that creates cluster objects. The isolation boundary is the pod&#39;s runtime class, one field, so what a sandbox is confined by is a deployment decision rather than anything this operation negotiates.
+     * Creates a sandbox and returns it. &#x60;class&#x60; is one of &#x60;exec&#x60;, &#x60;dev&#x60;, &#x60;desktop&#x60; or &#x60;android&#x60;; &#x60;dev&#x60; and &#x60;desktop&#x60; are attached to a &#x60;project&#x60;, which is required for them and names the volume the work persists on. &#x60;ttlSec&#x60; bounds the lease, and &#x60;image&#x60; overrides the class default.  This is the ONLY path that creates cluster objects. The isolation boundary is the pod&#39;s runtime class, one field, so what a sandbox is confined by is a deployment decision rather than anything this operation negotiates.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1SandboxesAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postSandboxesAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1SandboxesValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postSandboxesValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1SandboxesByIdExec
+     * Build call for postSandboxesByIdExec
      * @param id  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1SandboxesByIdExecCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postSandboxesByIdExecCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1049,13 +1245,13 @@ public class SandboxesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1SandboxesByIdExecValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postSandboxesByIdExecValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling postV1SandboxesByIdExec(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling postSandboxesByIdExec(Async)");
         }
 
-        return postV1SandboxesByIdExecCall(id, _callback);
+        return postSandboxesByIdExecCall(id, _callback);
 
     }
 
@@ -1065,8 +1261,8 @@ public class SandboxesApi {
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1SandboxesByIdExec(@javax.annotation.Nonnull String id) throws ApiException {
-        postV1SandboxesByIdExecWithHttpInfo(id);
+    public void postSandboxesByIdExec(@javax.annotation.Nonnull String id) throws ApiException {
+        postSandboxesByIdExecWithHttpInfo(id);
     }
 
     /**
@@ -1076,8 +1272,8 @@ public class SandboxesApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1SandboxesByIdExecWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = postV1SandboxesByIdExecValidateBeforeCall(id, null);
+    public ApiResponse<Void> postSandboxesByIdExecWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = postSandboxesByIdExecValidateBeforeCall(id, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1089,20 +1285,20 @@ public class SandboxesApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1SandboxesByIdExecAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postSandboxesByIdExecAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1SandboxesByIdExecValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = postSandboxesByIdExecValidateBeforeCall(id, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1SandboxesByIdFs
+     * Build call for postSandboxesByIdFs
      * @param id  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1SandboxesByIdFsCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postSandboxesByIdFsCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1147,13 +1343,13 @@ public class SandboxesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1SandboxesByIdFsValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postSandboxesByIdFsValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling postV1SandboxesByIdFs(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling postSandboxesByIdFs(Async)");
         }
 
-        return postV1SandboxesByIdFsCall(id, _callback);
+        return postSandboxesByIdFsCall(id, _callback);
 
     }
 
@@ -1163,8 +1359,8 @@ public class SandboxesApi {
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1SandboxesByIdFs(@javax.annotation.Nonnull String id) throws ApiException {
-        postV1SandboxesByIdFsWithHttpInfo(id);
+    public void postSandboxesByIdFs(@javax.annotation.Nonnull String id) throws ApiException {
+        postSandboxesByIdFsWithHttpInfo(id);
     }
 
     /**
@@ -1174,8 +1370,8 @@ public class SandboxesApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1SandboxesByIdFsWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = postV1SandboxesByIdFsValidateBeforeCall(id, null);
+    public ApiResponse<Void> postSandboxesByIdFsWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = postSandboxesByIdFsValidateBeforeCall(id, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1187,20 +1383,118 @@ public class SandboxesApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1SandboxesByIdFsAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postSandboxesByIdFsAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1SandboxesByIdFsValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = postSandboxesByIdFsValidateBeforeCall(id, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1SandboxesByIdTerminalTicket
+     * Build call for postSandboxesByIdScreenTicket
      * @param id  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1SandboxesByIdTerminalTicketCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postSandboxesByIdScreenTicketCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/sandboxes/{id}/screen/ticket"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postSandboxesByIdScreenTicketValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling postSandboxesByIdScreenTicket(Async)");
+        }
+
+        return postSandboxesByIdScreenTicketCall(id, _callback);
+
+    }
+
+    /**
+     * Open a screen
+     * Mints a SINGLE-USE ticket for this sandbox&#39;s DISPLAY and returns &#x60;{ticket, expiresIn, url}&#x60;, where url is the desktop PAGE with the ticket already on it. The same ticket as the terminal&#39;s, minted for a different door.  A ticket says which org and which sandbox, and the terminal and the screen are two views of one machine: a caller who may type in a sandbox may look at it. What the door decides is the URL handed back, which is the only part that differs.  Mint one per screen, and mint a fresh one to reconnect.
+     * @param id  (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void postSandboxesByIdScreenTicket(@javax.annotation.Nonnull String id) throws ApiException {
+        postSandboxesByIdScreenTicketWithHttpInfo(id);
+    }
+
+    /**
+     * Open a screen
+     * Mints a SINGLE-USE ticket for this sandbox&#39;s DISPLAY and returns &#x60;{ticket, expiresIn, url}&#x60;, where url is the desktop PAGE with the ticket already on it. The same ticket as the terminal&#39;s, minted for a different door.  A ticket says which org and which sandbox, and the terminal and the screen are two views of one machine: a caller who may type in a sandbox may look at it. What the door decides is the URL handed back, which is the only part that differs.  Mint one per screen, and mint a fresh one to reconnect.
+     * @param id  (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> postSandboxesByIdScreenTicketWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = postSandboxesByIdScreenTicketValidateBeforeCall(id, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Open a screen (asynchronously)
+     * Mints a SINGLE-USE ticket for this sandbox&#39;s DISPLAY and returns &#x60;{ticket, expiresIn, url}&#x60;, where url is the desktop PAGE with the ticket already on it. The same ticket as the terminal&#39;s, minted for a different door.  A ticket says which org and which sandbox, and the terminal and the screen are two views of one machine: a caller who may type in a sandbox may look at it. What the door decides is the URL handed back, which is the only part that differs.  Mint one per screen, and mint a fresh one to reconnect.
+     * @param id  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call postSandboxesByIdScreenTicketAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postSandboxesByIdScreenTicketValidateBeforeCall(id, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postSandboxesByIdTerminalTicket
+     * @param id  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call postSandboxesByIdTerminalTicketCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1245,13 +1539,13 @@ public class SandboxesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1SandboxesByIdTerminalTicketValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postSandboxesByIdTerminalTicketValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling postV1SandboxesByIdTerminalTicket(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling postSandboxesByIdTerminalTicket(Async)");
         }
 
-        return postV1SandboxesByIdTerminalTicketCall(id, _callback);
+        return postSandboxesByIdTerminalTicketCall(id, _callback);
 
     }
 
@@ -1261,8 +1555,8 @@ public class SandboxesApi {
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1SandboxesByIdTerminalTicket(@javax.annotation.Nonnull String id) throws ApiException {
-        postV1SandboxesByIdTerminalTicketWithHttpInfo(id);
+    public void postSandboxesByIdTerminalTicket(@javax.annotation.Nonnull String id) throws ApiException {
+        postSandboxesByIdTerminalTicketWithHttpInfo(id);
     }
 
     /**
@@ -1272,8 +1566,8 @@ public class SandboxesApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1SandboxesByIdTerminalTicketWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = postV1SandboxesByIdTerminalTicketValidateBeforeCall(id, null);
+    public ApiResponse<Void> postSandboxesByIdTerminalTicketWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = postSandboxesByIdTerminalTicketValidateBeforeCall(id, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1285,9 +1579,9 @@ public class SandboxesApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1SandboxesByIdTerminalTicketAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postSandboxesByIdTerminalTicketAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1SandboxesByIdTerminalTicketValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = postSandboxesByIdTerminalTicketValidateBeforeCall(id, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

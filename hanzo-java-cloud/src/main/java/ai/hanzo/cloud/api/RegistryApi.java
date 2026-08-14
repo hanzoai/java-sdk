@@ -79,7 +79,7 @@ public class RegistryApi {
     }
 
     /**
-     * Build call for getV1RegistryImages
+     * Build call for getRegistryImages
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -90,7 +90,7 @@ public class RegistryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1RegistryImagesCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getRegistryImagesCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -135,8 +135,8 @@ public class RegistryApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1RegistryImagesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1RegistryImagesCall(_callback);
+    private okhttp3.Call getRegistryImagesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getRegistryImagesCall(_callback);
 
     }
 
@@ -152,8 +152,8 @@ public class RegistryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public RegistryImageList getV1RegistryImages() throws ApiException {
-        ApiResponse<RegistryImageList> localVarResp = getV1RegistryImagesWithHttpInfo();
+    public RegistryImageList getRegistryImages() throws ApiException {
+        ApiResponse<RegistryImageList> localVarResp = getRegistryImagesWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -169,8 +169,8 @@ public class RegistryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RegistryImageList> getV1RegistryImagesWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1RegistryImagesValidateBeforeCall(null);
+    public ApiResponse<RegistryImageList> getRegistryImagesWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getRegistryImagesValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<RegistryImageList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -188,15 +188,15 @@ public class RegistryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1RegistryImagesAsync(final ApiCallback<RegistryImageList> _callback) throws ApiException {
+    public okhttp3.Call getRegistryImagesAsync(final ApiCallback<RegistryImageList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1RegistryImagesValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getRegistryImagesValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<RegistryImageList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1RegistryPackages
+     * Build call for getRegistryPackages
      * @param query Query narrows the listing within the org&#39;s scope when present; the org boundary itself is never widened by it. It rides the query string. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -208,7 +208,7 @@ public class RegistryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1RegistryPackagesCall(@javax.annotation.Nullable String query, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getRegistryPackagesCall(@javax.annotation.Nullable String query, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -257,8 +257,8 @@ public class RegistryApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1RegistryPackagesValidateBeforeCall(@javax.annotation.Nullable String query, final ApiCallback _callback) throws ApiException {
-        return getV1RegistryPackagesCall(query, _callback);
+    private okhttp3.Call getRegistryPackagesValidateBeforeCall(@javax.annotation.Nullable String query, final ApiCallback _callback) throws ApiException {
+        return getRegistryPackagesCall(query, _callback);
 
     }
 
@@ -275,8 +275,8 @@ public class RegistryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public RegistryPackageList getV1RegistryPackages(@javax.annotation.Nullable String query) throws ApiException {
-        ApiResponse<RegistryPackageList> localVarResp = getV1RegistryPackagesWithHttpInfo(query);
+    public RegistryPackageList getRegistryPackages(@javax.annotation.Nullable String query) throws ApiException {
+        ApiResponse<RegistryPackageList> localVarResp = getRegistryPackagesWithHttpInfo(query);
         return localVarResp.getData();
     }
 
@@ -293,8 +293,8 @@ public class RegistryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RegistryPackageList> getV1RegistryPackagesWithHttpInfo(@javax.annotation.Nullable String query) throws ApiException {
-        okhttp3.Call localVarCall = getV1RegistryPackagesValidateBeforeCall(query, null);
+    public ApiResponse<RegistryPackageList> getRegistryPackagesWithHttpInfo(@javax.annotation.Nullable String query) throws ApiException {
+        okhttp3.Call localVarCall = getRegistryPackagesValidateBeforeCall(query, null);
         Type localVarReturnType = new TypeToken<RegistryPackageList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -313,15 +313,15 @@ public class RegistryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1RegistryPackagesAsync(@javax.annotation.Nullable String query, final ApiCallback<RegistryPackageList> _callback) throws ApiException {
+    public okhttp3.Call getRegistryPackagesAsync(@javax.annotation.Nullable String query, final ApiCallback<RegistryPackageList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1RegistryPackagesValidateBeforeCall(query, _callback);
+        okhttp3.Call localVarCall = getRegistryPackagesValidateBeforeCall(query, _callback);
         Type localVarReturnType = new TypeToken<RegistryPackageList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1RegistryProjects
+     * Build call for getRegistryProjects
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -332,7 +332,7 @@ public class RegistryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1RegistryProjectsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getRegistryProjectsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -377,8 +377,8 @@ public class RegistryApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1RegistryProjectsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1RegistryProjectsCall(_callback);
+    private okhttp3.Call getRegistryProjectsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getRegistryProjectsCall(_callback);
 
     }
 
@@ -394,8 +394,8 @@ public class RegistryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public RegistryProjectList getV1RegistryProjects() throws ApiException {
-        ApiResponse<RegistryProjectList> localVarResp = getV1RegistryProjectsWithHttpInfo();
+    public RegistryProjectList getRegistryProjects() throws ApiException {
+        ApiResponse<RegistryProjectList> localVarResp = getRegistryProjectsWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -411,8 +411,8 @@ public class RegistryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RegistryProjectList> getV1RegistryProjectsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1RegistryProjectsValidateBeforeCall(null);
+    public ApiResponse<RegistryProjectList> getRegistryProjectsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getRegistryProjectsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<RegistryProjectList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -430,15 +430,15 @@ public class RegistryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1RegistryProjectsAsync(final ApiCallback<RegistryProjectList> _callback) throws ApiException {
+    public okhttp3.Call getRegistryProjectsAsync(final ApiCallback<RegistryProjectList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1RegistryProjectsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getRegistryProjectsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<RegistryProjectList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1RegistryStatus
+     * Build call for getRegistryStatus
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -449,7 +449,7 @@ public class RegistryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1RegistryStatusCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getRegistryStatusCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -494,8 +494,8 @@ public class RegistryApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1RegistryStatusValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1RegistryStatusCall(_callback);
+    private okhttp3.Call getRegistryStatusValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getRegistryStatusCall(_callback);
 
     }
 
@@ -511,8 +511,8 @@ public class RegistryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public RegistryStatus getV1RegistryStatus() throws ApiException {
-        ApiResponse<RegistryStatus> localVarResp = getV1RegistryStatusWithHttpInfo();
+    public RegistryStatus getRegistryStatus() throws ApiException {
+        ApiResponse<RegistryStatus> localVarResp = getRegistryStatusWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -528,8 +528,8 @@ public class RegistryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RegistryStatus> getV1RegistryStatusWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1RegistryStatusValidateBeforeCall(null);
+    public ApiResponse<RegistryStatus> getRegistryStatusWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getRegistryStatusValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<RegistryStatus>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -547,15 +547,15 @@ public class RegistryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1RegistryStatusAsync(final ApiCallback<RegistryStatus> _callback) throws ApiException {
+    public okhttp3.Call getRegistryStatusAsync(final ApiCallback<RegistryStatus> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1RegistryStatusValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getRegistryStatusValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<RegistryStatus>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1RegistryTags
+     * Build call for getRegistryTags
      * @param image Image is the repository name inside the org&#39;s namespace, as returned by the images op. It rides the query string. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -567,7 +567,7 @@ public class RegistryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1RegistryTagsCall(@javax.annotation.Nullable String image, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getRegistryTagsCall(@javax.annotation.Nullable String image, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -616,8 +616,8 @@ public class RegistryApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1RegistryTagsValidateBeforeCall(@javax.annotation.Nullable String image, final ApiCallback _callback) throws ApiException {
-        return getV1RegistryTagsCall(image, _callback);
+    private okhttp3.Call getRegistryTagsValidateBeforeCall(@javax.annotation.Nullable String image, final ApiCallback _callback) throws ApiException {
+        return getRegistryTagsCall(image, _callback);
 
     }
 
@@ -634,8 +634,8 @@ public class RegistryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public RegistryTagList getV1RegistryTags(@javax.annotation.Nullable String image) throws ApiException {
-        ApiResponse<RegistryTagList> localVarResp = getV1RegistryTagsWithHttpInfo(image);
+    public RegistryTagList getRegistryTags(@javax.annotation.Nullable String image) throws ApiException {
+        ApiResponse<RegistryTagList> localVarResp = getRegistryTagsWithHttpInfo(image);
         return localVarResp.getData();
     }
 
@@ -652,8 +652,8 @@ public class RegistryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RegistryTagList> getV1RegistryTagsWithHttpInfo(@javax.annotation.Nullable String image) throws ApiException {
-        okhttp3.Call localVarCall = getV1RegistryTagsValidateBeforeCall(image, null);
+    public ApiResponse<RegistryTagList> getRegistryTagsWithHttpInfo(@javax.annotation.Nullable String image) throws ApiException {
+        okhttp3.Call localVarCall = getRegistryTagsValidateBeforeCall(image, null);
         Type localVarReturnType = new TypeToken<RegistryTagList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -672,15 +672,15 @@ public class RegistryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1RegistryTagsAsync(@javax.annotation.Nullable String image, final ApiCallback<RegistryTagList> _callback) throws ApiException {
+    public okhttp3.Call getRegistryTagsAsync(@javax.annotation.Nullable String image, final ApiCallback<RegistryTagList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1RegistryTagsValidateBeforeCall(image, _callback);
+        okhttp3.Call localVarCall = getRegistryTagsValidateBeforeCall(image, _callback);
         Type localVarReturnType = new TypeToken<RegistryTagList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1RegistryToken
+     * Build call for postRegistryToken
      * @param registryMint  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -692,7 +692,7 @@ public class RegistryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1RegistryTokenCall(@javax.annotation.Nonnull RegistryMint registryMint, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postRegistryTokenCall(@javax.annotation.Nonnull RegistryMint registryMint, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -738,13 +738,13 @@ public class RegistryApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1RegistryTokenValidateBeforeCall(@javax.annotation.Nonnull RegistryMint registryMint, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postRegistryTokenValidateBeforeCall(@javax.annotation.Nonnull RegistryMint registryMint, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'registryMint' is set
         if (registryMint == null) {
-            throw new ApiException("Missing the required parameter 'registryMint' when calling postV1RegistryToken(Async)");
+            throw new ApiException("Missing the required parameter 'registryMint' when calling postRegistryToken(Async)");
         }
 
-        return postV1RegistryTokenCall(registryMint, _callback);
+        return postRegistryTokenCall(registryMint, _callback);
 
     }
 
@@ -761,8 +761,8 @@ public class RegistryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public RegistryToken postV1RegistryToken(@javax.annotation.Nonnull RegistryMint registryMint) throws ApiException {
-        ApiResponse<RegistryToken> localVarResp = postV1RegistryTokenWithHttpInfo(registryMint);
+    public RegistryToken postRegistryToken(@javax.annotation.Nonnull RegistryMint registryMint) throws ApiException {
+        ApiResponse<RegistryToken> localVarResp = postRegistryTokenWithHttpInfo(registryMint);
         return localVarResp.getData();
     }
 
@@ -779,8 +779,8 @@ public class RegistryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RegistryToken> postV1RegistryTokenWithHttpInfo(@javax.annotation.Nonnull RegistryMint registryMint) throws ApiException {
-        okhttp3.Call localVarCall = postV1RegistryTokenValidateBeforeCall(registryMint, null);
+    public ApiResponse<RegistryToken> postRegistryTokenWithHttpInfo(@javax.annotation.Nonnull RegistryMint registryMint) throws ApiException {
+        okhttp3.Call localVarCall = postRegistryTokenValidateBeforeCall(registryMint, null);
         Type localVarReturnType = new TypeToken<RegistryToken>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -799,9 +799,9 @@ public class RegistryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1RegistryTokenAsync(@javax.annotation.Nonnull RegistryMint registryMint, final ApiCallback<RegistryToken> _callback) throws ApiException {
+    public okhttp3.Call postRegistryTokenAsync(@javax.annotation.Nonnull RegistryMint registryMint, final ApiCallback<RegistryToken> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1RegistryTokenValidateBeforeCall(registryMint, _callback);
+        okhttp3.Call localVarCall = postRegistryTokenValidateBeforeCall(registryMint, _callback);
         Type localVarReturnType = new TypeToken<RegistryToken>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

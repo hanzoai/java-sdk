@@ -72,12 +72,12 @@ public class DocumentsApi {
     }
 
     /**
-     * Build call for deleteV1Documents
+     * Build call for deleteDocuments
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call deleteV1DocumentsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteDocumentsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -121,8 +121,8 @@ public class DocumentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1DocumentsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return deleteV1DocumentsCall(_callback);
+    private okhttp3.Call deleteDocumentsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return deleteDocumentsCall(_callback);
 
     }
 
@@ -131,8 +131,8 @@ public class DocumentsApi {
      * Handles DELETE /v1/documents — a JSON array of file_ids.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void deleteV1Documents() throws ApiException {
-        deleteV1DocumentsWithHttpInfo();
+    public void deleteDocuments() throws ApiException {
+        deleteDocumentsWithHttpInfo();
     }
 
     /**
@@ -141,8 +141,8 @@ public class DocumentsApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> deleteV1DocumentsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = deleteV1DocumentsValidateBeforeCall(null);
+    public ApiResponse<Void> deleteDocumentsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = deleteDocumentsValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -153,19 +153,19 @@ public class DocumentsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call deleteV1DocumentsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteDocumentsAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1DocumentsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = deleteDocumentsValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1DocumentsByFileIdContext
+     * Build call for getDocumentsByFileIdContext
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1DocumentsByFileIdContextCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getDocumentsByFileIdContextCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -209,8 +209,8 @@ public class DocumentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1DocumentsByFileIdContextValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1DocumentsByFileIdContextCall(_callback);
+    private okhttp3.Call getDocumentsByFileIdContextValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getDocumentsByFileIdContextCall(_callback);
 
     }
 
@@ -219,8 +219,8 @@ public class DocumentsApi {
      * Handles GET /v1/documents/:file_id/context — every chunk of a file, as LangChain Documents (used when RAG_USE_FULL_CONTEXT is on).
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1DocumentsByFileIdContext() throws ApiException {
-        getV1DocumentsByFileIdContextWithHttpInfo();
+    public void getDocumentsByFileIdContext() throws ApiException {
+        getDocumentsByFileIdContextWithHttpInfo();
     }
 
     /**
@@ -229,8 +229,8 @@ public class DocumentsApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1DocumentsByFileIdContextWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1DocumentsByFileIdContextValidateBeforeCall(null);
+    public ApiResponse<Void> getDocumentsByFileIdContextWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getDocumentsByFileIdContextValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -241,9 +241,9 @@ public class DocumentsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1DocumentsByFileIdContextAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getDocumentsByFileIdContextAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1DocumentsByFileIdContextValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getDocumentsByFileIdContextValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

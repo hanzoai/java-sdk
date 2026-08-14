@@ -76,7 +76,7 @@ public class DestinationsApi {
     }
 
     /**
-     * Build call for deleteV1DestinationsByPlatform
+     * Build call for deleteDestinationsByPlatform
      * @param platform Platform is the destination to act on, from the path: ga4 | meta | tiktok | linkedin | x | reddit | posthog | umami. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -88,7 +88,7 @@ public class DestinationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1DestinationsByPlatformCall(@javax.annotation.Nonnull String platform, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteDestinationsByPlatformCall(@javax.annotation.Nonnull String platform, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -134,13 +134,13 @@ public class DestinationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1DestinationsByPlatformValidateBeforeCall(@javax.annotation.Nonnull String platform, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteDestinationsByPlatformValidateBeforeCall(@javax.annotation.Nonnull String platform, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'platform' is set
         if (platform == null) {
-            throw new ApiException("Missing the required parameter 'platform' when calling deleteV1DestinationsByPlatform(Async)");
+            throw new ApiException("Missing the required parameter 'platform' when calling deleteDestinationsByPlatform(Async)");
         }
 
-        return deleteV1DestinationsByPlatformCall(platform, _callback);
+        return deleteDestinationsByPlatformCall(platform, _callback);
 
     }
 
@@ -157,8 +157,8 @@ public class DestinationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public DestinationDisconnected deleteV1DestinationsByPlatform(@javax.annotation.Nonnull String platform) throws ApiException {
-        ApiResponse<DestinationDisconnected> localVarResp = deleteV1DestinationsByPlatformWithHttpInfo(platform);
+    public DestinationDisconnected deleteDestinationsByPlatform(@javax.annotation.Nonnull String platform) throws ApiException {
+        ApiResponse<DestinationDisconnected> localVarResp = deleteDestinationsByPlatformWithHttpInfo(platform);
         return localVarResp.getData();
     }
 
@@ -175,8 +175,8 @@ public class DestinationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DestinationDisconnected> deleteV1DestinationsByPlatformWithHttpInfo(@javax.annotation.Nonnull String platform) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1DestinationsByPlatformValidateBeforeCall(platform, null);
+    public ApiResponse<DestinationDisconnected> deleteDestinationsByPlatformWithHttpInfo(@javax.annotation.Nonnull String platform) throws ApiException {
+        okhttp3.Call localVarCall = deleteDestinationsByPlatformValidateBeforeCall(platform, null);
         Type localVarReturnType = new TypeToken<DestinationDisconnected>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -195,15 +195,15 @@ public class DestinationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1DestinationsByPlatformAsync(@javax.annotation.Nonnull String platform, final ApiCallback<DestinationDisconnected> _callback) throws ApiException {
+    public okhttp3.Call deleteDestinationsByPlatformAsync(@javax.annotation.Nonnull String platform, final ApiCallback<DestinationDisconnected> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1DestinationsByPlatformValidateBeforeCall(platform, _callback);
+        okhttp3.Call localVarCall = deleteDestinationsByPlatformValidateBeforeCall(platform, _callback);
         Type localVarReturnType = new TypeToken<DestinationDisconnected>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1Destinations
+     * Build call for getDestinations
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -214,7 +214,7 @@ public class DestinationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1DestinationsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getDestinationsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -259,8 +259,8 @@ public class DestinationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1DestinationsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1DestinationsCall(_callback);
+    private okhttp3.Call getDestinationsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getDestinationsCall(_callback);
 
     }
 
@@ -276,8 +276,8 @@ public class DestinationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public DestinationList getV1Destinations() throws ApiException {
-        ApiResponse<DestinationList> localVarResp = getV1DestinationsWithHttpInfo();
+    public DestinationList getDestinations() throws ApiException {
+        ApiResponse<DestinationList> localVarResp = getDestinationsWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -293,8 +293,8 @@ public class DestinationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DestinationList> getV1DestinationsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1DestinationsValidateBeforeCall(null);
+    public ApiResponse<DestinationList> getDestinationsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getDestinationsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<DestinationList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -312,15 +312,15 @@ public class DestinationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1DestinationsAsync(final ApiCallback<DestinationList> _callback) throws ApiException {
+    public okhttp3.Call getDestinationsAsync(final ApiCallback<DestinationList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1DestinationsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getDestinationsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<DestinationList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1DestinationsByPlatform
+     * Build call for getDestinationsByPlatform
      * @param platform Platform is the destination to act on, from the path: ga4 | meta | tiktok | linkedin | x | reddit | posthog | umami. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -332,7 +332,7 @@ public class DestinationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1DestinationsByPlatformCall(@javax.annotation.Nonnull String platform, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getDestinationsByPlatformCall(@javax.annotation.Nonnull String platform, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -378,13 +378,13 @@ public class DestinationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1DestinationsByPlatformValidateBeforeCall(@javax.annotation.Nonnull String platform, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getDestinationsByPlatformValidateBeforeCall(@javax.annotation.Nonnull String platform, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'platform' is set
         if (platform == null) {
-            throw new ApiException("Missing the required parameter 'platform' when calling getV1DestinationsByPlatform(Async)");
+            throw new ApiException("Missing the required parameter 'platform' when calling getDestinationsByPlatform(Async)");
         }
 
-        return getV1DestinationsByPlatformCall(platform, _callback);
+        return getDestinationsByPlatformCall(platform, _callback);
 
     }
 
@@ -401,8 +401,8 @@ public class DestinationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public DestinationStatus getV1DestinationsByPlatform(@javax.annotation.Nonnull String platform) throws ApiException {
-        ApiResponse<DestinationStatus> localVarResp = getV1DestinationsByPlatformWithHttpInfo(platform);
+    public DestinationStatus getDestinationsByPlatform(@javax.annotation.Nonnull String platform) throws ApiException {
+        ApiResponse<DestinationStatus> localVarResp = getDestinationsByPlatformWithHttpInfo(platform);
         return localVarResp.getData();
     }
 
@@ -419,8 +419,8 @@ public class DestinationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DestinationStatus> getV1DestinationsByPlatformWithHttpInfo(@javax.annotation.Nonnull String platform) throws ApiException {
-        okhttp3.Call localVarCall = getV1DestinationsByPlatformValidateBeforeCall(platform, null);
+    public ApiResponse<DestinationStatus> getDestinationsByPlatformWithHttpInfo(@javax.annotation.Nonnull String platform) throws ApiException {
+        okhttp3.Call localVarCall = getDestinationsByPlatformValidateBeforeCall(platform, null);
         Type localVarReturnType = new TypeToken<DestinationStatus>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -439,15 +439,15 @@ public class DestinationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1DestinationsByPlatformAsync(@javax.annotation.Nonnull String platform, final ApiCallback<DestinationStatus> _callback) throws ApiException {
+    public okhttp3.Call getDestinationsByPlatformAsync(@javax.annotation.Nonnull String platform, final ApiCallback<DestinationStatus> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1DestinationsByPlatformValidateBeforeCall(platform, _callback);
+        okhttp3.Call localVarCall = getDestinationsByPlatformValidateBeforeCall(platform, _callback);
         Type localVarReturnType = new TypeToken<DestinationStatus>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1DestinationsByPlatform
+     * Build call for postDestinationsByPlatform
      * @param platform  (required)
      * @param requestBody  (optional)
      * @param _callback Callback for upload/download progress
@@ -460,7 +460,7 @@ public class DestinationsApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1DestinationsByPlatformCall(@javax.annotation.Nonnull String platform, @javax.annotation.Nullable Map<String, Object> requestBody, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postDestinationsByPlatformCall(@javax.annotation.Nonnull String platform, @javax.annotation.Nullable Map<String, Object> requestBody, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -507,13 +507,13 @@ public class DestinationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1DestinationsByPlatformValidateBeforeCall(@javax.annotation.Nonnull String platform, @javax.annotation.Nullable Map<String, Object> requestBody, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postDestinationsByPlatformValidateBeforeCall(@javax.annotation.Nonnull String platform, @javax.annotation.Nullable Map<String, Object> requestBody, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'platform' is set
         if (platform == null) {
-            throw new ApiException("Missing the required parameter 'platform' when calling postV1DestinationsByPlatform(Async)");
+            throw new ApiException("Missing the required parameter 'platform' when calling postDestinationsByPlatform(Async)");
         }
 
-        return postV1DestinationsByPlatformCall(platform, requestBody, _callback);
+        return postDestinationsByPlatformCall(platform, requestBody, _callback);
 
     }
 
@@ -531,8 +531,8 @@ public class DestinationsApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public DestinationStatus postV1DestinationsByPlatform(@javax.annotation.Nonnull String platform, @javax.annotation.Nullable Map<String, Object> requestBody) throws ApiException {
-        ApiResponse<DestinationStatus> localVarResp = postV1DestinationsByPlatformWithHttpInfo(platform, requestBody);
+    public DestinationStatus postDestinationsByPlatform(@javax.annotation.Nonnull String platform, @javax.annotation.Nullable Map<String, Object> requestBody) throws ApiException {
+        ApiResponse<DestinationStatus> localVarResp = postDestinationsByPlatformWithHttpInfo(platform, requestBody);
         return localVarResp.getData();
     }
 
@@ -550,8 +550,8 @@ public class DestinationsApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DestinationStatus> postV1DestinationsByPlatformWithHttpInfo(@javax.annotation.Nonnull String platform, @javax.annotation.Nullable Map<String, Object> requestBody) throws ApiException {
-        okhttp3.Call localVarCall = postV1DestinationsByPlatformValidateBeforeCall(platform, requestBody, null);
+    public ApiResponse<DestinationStatus> postDestinationsByPlatformWithHttpInfo(@javax.annotation.Nonnull String platform, @javax.annotation.Nullable Map<String, Object> requestBody) throws ApiException {
+        okhttp3.Call localVarCall = postDestinationsByPlatformValidateBeforeCall(platform, requestBody, null);
         Type localVarReturnType = new TypeToken<DestinationStatus>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -571,15 +571,15 @@ public class DestinationsApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1DestinationsByPlatformAsync(@javax.annotation.Nonnull String platform, @javax.annotation.Nullable Map<String, Object> requestBody, final ApiCallback<DestinationStatus> _callback) throws ApiException {
+    public okhttp3.Call postDestinationsByPlatformAsync(@javax.annotation.Nonnull String platform, @javax.annotation.Nullable Map<String, Object> requestBody, final ApiCallback<DestinationStatus> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1DestinationsByPlatformValidateBeforeCall(platform, requestBody, _callback);
+        okhttp3.Call localVarCall = postDestinationsByPlatformValidateBeforeCall(platform, requestBody, _callback);
         Type localVarReturnType = new TypeToken<DestinationStatus>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1DestinationsByPlatformTest
+     * Build call for postDestinationsByPlatformTest
      * @param platform Platform is the destination to act on, from the path: ga4 | meta | tiktok | linkedin | x | reddit | posthog | umami. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -591,7 +591,7 @@ public class DestinationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1DestinationsByPlatformTestCall(@javax.annotation.Nonnull String platform, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postDestinationsByPlatformTestCall(@javax.annotation.Nonnull String platform, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -637,13 +637,13 @@ public class DestinationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1DestinationsByPlatformTestValidateBeforeCall(@javax.annotation.Nonnull String platform, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postDestinationsByPlatformTestValidateBeforeCall(@javax.annotation.Nonnull String platform, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'platform' is set
         if (platform == null) {
-            throw new ApiException("Missing the required parameter 'platform' when calling postV1DestinationsByPlatformTest(Async)");
+            throw new ApiException("Missing the required parameter 'platform' when calling postDestinationsByPlatformTest(Async)");
         }
 
-        return postV1DestinationsByPlatformTestCall(platform, _callback);
+        return postDestinationsByPlatformTestCall(platform, _callback);
 
     }
 
@@ -660,8 +660,8 @@ public class DestinationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public DestinationTest postV1DestinationsByPlatformTest(@javax.annotation.Nonnull String platform) throws ApiException {
-        ApiResponse<DestinationTest> localVarResp = postV1DestinationsByPlatformTestWithHttpInfo(platform);
+    public DestinationTest postDestinationsByPlatformTest(@javax.annotation.Nonnull String platform) throws ApiException {
+        ApiResponse<DestinationTest> localVarResp = postDestinationsByPlatformTestWithHttpInfo(platform);
         return localVarResp.getData();
     }
 
@@ -678,8 +678,8 @@ public class DestinationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DestinationTest> postV1DestinationsByPlatformTestWithHttpInfo(@javax.annotation.Nonnull String platform) throws ApiException {
-        okhttp3.Call localVarCall = postV1DestinationsByPlatformTestValidateBeforeCall(platform, null);
+    public ApiResponse<DestinationTest> postDestinationsByPlatformTestWithHttpInfo(@javax.annotation.Nonnull String platform) throws ApiException {
+        okhttp3.Call localVarCall = postDestinationsByPlatformTestValidateBeforeCall(platform, null);
         Type localVarReturnType = new TypeToken<DestinationTest>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -698,9 +698,9 @@ public class DestinationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1DestinationsByPlatformTestAsync(@javax.annotation.Nonnull String platform, final ApiCallback<DestinationTest> _callback) throws ApiException {
+    public okhttp3.Call postDestinationsByPlatformTestAsync(@javax.annotation.Nonnull String platform, final ApiCallback<DestinationTest> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1DestinationsByPlatformTestValidateBeforeCall(platform, _callback);
+        okhttp3.Call localVarCall = postDestinationsByPlatformTestValidateBeforeCall(platform, _callback);
         Type localVarReturnType = new TypeToken<DestinationTest>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

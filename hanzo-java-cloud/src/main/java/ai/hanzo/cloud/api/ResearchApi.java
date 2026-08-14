@@ -82,7 +82,7 @@ public class ResearchApi {
     }
 
     /**
-     * Build call for getV1ResearchArtifacts
+     * Build call for getResearchArtifacts
      * @param project Project narrows to one project. Empty takes the caller&#39;s project scope. (optional)
      * @param run Run narrows to one run&#39;s artifacts by its stable id. (optional)
      * @param since Since bounds the feed to artifacts recorded at or after this unix second. (optional)
@@ -96,7 +96,7 @@ public class ResearchApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1ResearchArtifactsCall(@javax.annotation.Nullable String project, @javax.annotation.Nullable String run, @javax.annotation.Nullable Integer since, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getResearchArtifactsCall(@javax.annotation.Nullable String project, @javax.annotation.Nullable String run, @javax.annotation.Nullable Integer since, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -153,8 +153,8 @@ public class ResearchApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1ResearchArtifactsValidateBeforeCall(@javax.annotation.Nullable String project, @javax.annotation.Nullable String run, @javax.annotation.Nullable Integer since, final ApiCallback _callback) throws ApiException {
-        return getV1ResearchArtifactsCall(project, run, since, _callback);
+    private okhttp3.Call getResearchArtifactsValidateBeforeCall(@javax.annotation.Nullable String project, @javax.annotation.Nullable String run, @javax.annotation.Nullable Integer since, final ApiCallback _callback) throws ApiException {
+        return getResearchArtifactsCall(project, run, since, _callback);
 
     }
 
@@ -173,8 +173,8 @@ public class ResearchApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ArtifactsOut getV1ResearchArtifacts(@javax.annotation.Nullable String project, @javax.annotation.Nullable String run, @javax.annotation.Nullable Integer since) throws ApiException {
-        ApiResponse<ArtifactsOut> localVarResp = getV1ResearchArtifactsWithHttpInfo(project, run, since);
+    public ArtifactsOut getResearchArtifacts(@javax.annotation.Nullable String project, @javax.annotation.Nullable String run, @javax.annotation.Nullable Integer since) throws ApiException {
+        ApiResponse<ArtifactsOut> localVarResp = getResearchArtifactsWithHttpInfo(project, run, since);
         return localVarResp.getData();
     }
 
@@ -193,8 +193,8 @@ public class ResearchApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ArtifactsOut> getV1ResearchArtifactsWithHttpInfo(@javax.annotation.Nullable String project, @javax.annotation.Nullable String run, @javax.annotation.Nullable Integer since) throws ApiException {
-        okhttp3.Call localVarCall = getV1ResearchArtifactsValidateBeforeCall(project, run, since, null);
+    public ApiResponse<ArtifactsOut> getResearchArtifactsWithHttpInfo(@javax.annotation.Nullable String project, @javax.annotation.Nullable String run, @javax.annotation.Nullable Integer since) throws ApiException {
+        okhttp3.Call localVarCall = getResearchArtifactsValidateBeforeCall(project, run, since, null);
         Type localVarReturnType = new TypeToken<ArtifactsOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -215,21 +215,21 @@ public class ResearchApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1ResearchArtifactsAsync(@javax.annotation.Nullable String project, @javax.annotation.Nullable String run, @javax.annotation.Nullable Integer since, final ApiCallback<ArtifactsOut> _callback) throws ApiException {
+    public okhttp3.Call getResearchArtifactsAsync(@javax.annotation.Nullable String project, @javax.annotation.Nullable String run, @javax.annotation.Nullable Integer since, final ApiCallback<ArtifactsOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1ResearchArtifactsValidateBeforeCall(project, run, since, _callback);
+        okhttp3.Call localVarCall = getResearchArtifactsValidateBeforeCall(project, run, since, _callback);
         Type localVarReturnType = new TypeToken<ArtifactsOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1ResearchArtifactsBySha256
+     * Build call for getResearchArtifactsBySha256
      * @param sha256  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1ResearchArtifactsBySha256Call(@javax.annotation.Nonnull String sha256, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getResearchArtifactsBySha256Call(@javax.annotation.Nonnull String sha256, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -274,13 +274,13 @@ public class ResearchApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1ResearchArtifactsBySha256ValidateBeforeCall(@javax.annotation.Nonnull String sha256, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getResearchArtifactsBySha256ValidateBeforeCall(@javax.annotation.Nonnull String sha256, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'sha256' is set
         if (sha256 == null) {
-            throw new ApiException("Missing the required parameter 'sha256' when calling getV1ResearchArtifactsBySha256(Async)");
+            throw new ApiException("Missing the required parameter 'sha256' when calling getResearchArtifactsBySha256(Async)");
         }
 
-        return getV1ResearchArtifactsBySha256Call(sha256, _callback);
+        return getResearchArtifactsBySha256Call(sha256, _callback);
 
     }
 
@@ -290,8 +290,8 @@ public class ResearchApi {
      * @param sha256  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1ResearchArtifactsBySha256(@javax.annotation.Nonnull String sha256) throws ApiException {
-        getV1ResearchArtifactsBySha256WithHttpInfo(sha256);
+    public void getResearchArtifactsBySha256(@javax.annotation.Nonnull String sha256) throws ApiException {
+        getResearchArtifactsBySha256WithHttpInfo(sha256);
     }
 
     /**
@@ -301,8 +301,8 @@ public class ResearchApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1ResearchArtifactsBySha256WithHttpInfo(@javax.annotation.Nonnull String sha256) throws ApiException {
-        okhttp3.Call localVarCall = getV1ResearchArtifactsBySha256ValidateBeforeCall(sha256, null);
+    public ApiResponse<Void> getResearchArtifactsBySha256WithHttpInfo(@javax.annotation.Nonnull String sha256) throws ApiException {
+        okhttp3.Call localVarCall = getResearchArtifactsBySha256ValidateBeforeCall(sha256, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -314,14 +314,14 @@ public class ResearchApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1ResearchArtifactsBySha256Async(@javax.annotation.Nonnull String sha256, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getResearchArtifactsBySha256Async(@javax.annotation.Nonnull String sha256, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1ResearchArtifactsBySha256ValidateBeforeCall(sha256, _callback);
+        okhttp3.Call localVarCall = getResearchArtifactsBySha256ValidateBeforeCall(sha256, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1ResearchExperiments
+     * Build call for getResearchExperiments
      * @param project Project narrows to one project. Empty reads the org&#39;s whole set across projects. (optional)
      * @param kind Kind narrows to one discriminator: benchmark, kernel-perf, training, ablation or policy-eval. (optional)
      * @param _callback Callback for upload/download progress
@@ -334,7 +334,7 @@ public class ResearchApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1ResearchExperimentsCall(@javax.annotation.Nullable String project, @javax.annotation.Nullable String kind, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getResearchExperimentsCall(@javax.annotation.Nullable String project, @javax.annotation.Nullable String kind, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -387,8 +387,8 @@ public class ResearchApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1ResearchExperimentsValidateBeforeCall(@javax.annotation.Nullable String project, @javax.annotation.Nullable String kind, final ApiCallback _callback) throws ApiException {
-        return getV1ResearchExperimentsCall(project, kind, _callback);
+    private okhttp3.Call getResearchExperimentsValidateBeforeCall(@javax.annotation.Nullable String project, @javax.annotation.Nullable String kind, final ApiCallback _callback) throws ApiException {
+        return getResearchExperimentsCall(project, kind, _callback);
 
     }
 
@@ -406,8 +406,8 @@ public class ResearchApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ExperimentsOut getV1ResearchExperiments(@javax.annotation.Nullable String project, @javax.annotation.Nullable String kind) throws ApiException {
-        ApiResponse<ExperimentsOut> localVarResp = getV1ResearchExperimentsWithHttpInfo(project, kind);
+    public ExperimentsOut getResearchExperiments(@javax.annotation.Nullable String project, @javax.annotation.Nullable String kind) throws ApiException {
+        ApiResponse<ExperimentsOut> localVarResp = getResearchExperimentsWithHttpInfo(project, kind);
         return localVarResp.getData();
     }
 
@@ -425,8 +425,8 @@ public class ResearchApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ExperimentsOut> getV1ResearchExperimentsWithHttpInfo(@javax.annotation.Nullable String project, @javax.annotation.Nullable String kind) throws ApiException {
-        okhttp3.Call localVarCall = getV1ResearchExperimentsValidateBeforeCall(project, kind, null);
+    public ApiResponse<ExperimentsOut> getResearchExperimentsWithHttpInfo(@javax.annotation.Nullable String project, @javax.annotation.Nullable String kind) throws ApiException {
+        okhttp3.Call localVarCall = getResearchExperimentsValidateBeforeCall(project, kind, null);
         Type localVarReturnType = new TypeToken<ExperimentsOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -446,15 +446,15 @@ public class ResearchApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1ResearchExperimentsAsync(@javax.annotation.Nullable String project, @javax.annotation.Nullable String kind, final ApiCallback<ExperimentsOut> _callback) throws ApiException {
+    public okhttp3.Call getResearchExperimentsAsync(@javax.annotation.Nullable String project, @javax.annotation.Nullable String kind, final ApiCallback<ExperimentsOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1ResearchExperimentsValidateBeforeCall(project, kind, _callback);
+        okhttp3.Call localVarCall = getResearchExperimentsValidateBeforeCall(project, kind, _callback);
         Type localVarReturnType = new TypeToken<ExperimentsOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1ResearchProjects
+     * Build call for getResearchProjects
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -465,7 +465,7 @@ public class ResearchApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1ResearchProjectsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getResearchProjectsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -510,8 +510,8 @@ public class ResearchApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1ResearchProjectsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1ResearchProjectsCall(_callback);
+    private okhttp3.Call getResearchProjectsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getResearchProjectsCall(_callback);
 
     }
 
@@ -527,8 +527,8 @@ public class ResearchApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ProjectsOut getV1ResearchProjects() throws ApiException {
-        ApiResponse<ProjectsOut> localVarResp = getV1ResearchProjectsWithHttpInfo();
+    public ProjectsOut getResearchProjects() throws ApiException {
+        ApiResponse<ProjectsOut> localVarResp = getResearchProjectsWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -544,8 +544,8 @@ public class ResearchApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ProjectsOut> getV1ResearchProjectsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1ResearchProjectsValidateBeforeCall(null);
+    public ApiResponse<ProjectsOut> getResearchProjectsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getResearchProjectsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<ProjectsOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -563,15 +563,15 @@ public class ResearchApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1ResearchProjectsAsync(final ApiCallback<ProjectsOut> _callback) throws ApiException {
+    public okhttp3.Call getResearchProjectsAsync(final ApiCallback<ProjectsOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1ResearchProjectsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getResearchProjectsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<ProjectsOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1ResearchTotals
+     * Build call for getResearchTotals
      * @param project Project narrows the aggregate to one project. Empty aggregates the whole org. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -583,7 +583,7 @@ public class ResearchApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1ResearchTotalsCall(@javax.annotation.Nullable String project, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getResearchTotalsCall(@javax.annotation.Nullable String project, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -632,8 +632,8 @@ public class ResearchApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1ResearchTotalsValidateBeforeCall(@javax.annotation.Nullable String project, final ApiCallback _callback) throws ApiException {
-        return getV1ResearchTotalsCall(project, _callback);
+    private okhttp3.Call getResearchTotalsValidateBeforeCall(@javax.annotation.Nullable String project, final ApiCallback _callback) throws ApiException {
+        return getResearchTotalsCall(project, _callback);
 
     }
 
@@ -650,8 +650,8 @@ public class ResearchApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ResearchTotals getV1ResearchTotals(@javax.annotation.Nullable String project) throws ApiException {
-        ApiResponse<ResearchTotals> localVarResp = getV1ResearchTotalsWithHttpInfo(project);
+    public ResearchTotals getResearchTotals(@javax.annotation.Nullable String project) throws ApiException {
+        ApiResponse<ResearchTotals> localVarResp = getResearchTotalsWithHttpInfo(project);
         return localVarResp.getData();
     }
 
@@ -668,8 +668,8 @@ public class ResearchApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ResearchTotals> getV1ResearchTotalsWithHttpInfo(@javax.annotation.Nullable String project) throws ApiException {
-        okhttp3.Call localVarCall = getV1ResearchTotalsValidateBeforeCall(project, null);
+    public ApiResponse<ResearchTotals> getResearchTotalsWithHttpInfo(@javax.annotation.Nullable String project) throws ApiException {
+        okhttp3.Call localVarCall = getResearchTotalsValidateBeforeCall(project, null);
         Type localVarReturnType = new TypeToken<ResearchTotals>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -688,15 +688,15 @@ public class ResearchApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1ResearchTotalsAsync(@javax.annotation.Nullable String project, final ApiCallback<ResearchTotals> _callback) throws ApiException {
+    public okhttp3.Call getResearchTotalsAsync(@javax.annotation.Nullable String project, final ApiCallback<ResearchTotals> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1ResearchTotalsValidateBeforeCall(project, _callback);
+        okhttp3.Call localVarCall = getResearchTotalsValidateBeforeCall(project, _callback);
         Type localVarReturnType = new TypeToken<ResearchTotals>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1ResearchArtifacts
+     * Build call for postResearchArtifacts
      * @param researchArtifact  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -708,7 +708,7 @@ public class ResearchApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1ResearchArtifactsCall(@javax.annotation.Nonnull ResearchArtifact researchArtifact, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postResearchArtifactsCall(@javax.annotation.Nonnull ResearchArtifact researchArtifact, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -754,13 +754,13 @@ public class ResearchApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1ResearchArtifactsValidateBeforeCall(@javax.annotation.Nonnull ResearchArtifact researchArtifact, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postResearchArtifactsValidateBeforeCall(@javax.annotation.Nonnull ResearchArtifact researchArtifact, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'researchArtifact' is set
         if (researchArtifact == null) {
-            throw new ApiException("Missing the required parameter 'researchArtifact' when calling postV1ResearchArtifacts(Async)");
+            throw new ApiException("Missing the required parameter 'researchArtifact' when calling postResearchArtifacts(Async)");
         }
 
-        return postV1ResearchArtifactsCall(researchArtifact, _callback);
+        return postResearchArtifactsCall(researchArtifact, _callback);
 
     }
 
@@ -777,8 +777,8 @@ public class ResearchApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ArtifactOut postV1ResearchArtifacts(@javax.annotation.Nonnull ResearchArtifact researchArtifact) throws ApiException {
-        ApiResponse<ArtifactOut> localVarResp = postV1ResearchArtifactsWithHttpInfo(researchArtifact);
+    public ArtifactOut postResearchArtifacts(@javax.annotation.Nonnull ResearchArtifact researchArtifact) throws ApiException {
+        ApiResponse<ArtifactOut> localVarResp = postResearchArtifactsWithHttpInfo(researchArtifact);
         return localVarResp.getData();
     }
 
@@ -795,8 +795,8 @@ public class ResearchApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ArtifactOut> postV1ResearchArtifactsWithHttpInfo(@javax.annotation.Nonnull ResearchArtifact researchArtifact) throws ApiException {
-        okhttp3.Call localVarCall = postV1ResearchArtifactsValidateBeforeCall(researchArtifact, null);
+    public ApiResponse<ArtifactOut> postResearchArtifactsWithHttpInfo(@javax.annotation.Nonnull ResearchArtifact researchArtifact) throws ApiException {
+        okhttp3.Call localVarCall = postResearchArtifactsValidateBeforeCall(researchArtifact, null);
         Type localVarReturnType = new TypeToken<ArtifactOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -815,15 +815,15 @@ public class ResearchApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1ResearchArtifactsAsync(@javax.annotation.Nonnull ResearchArtifact researchArtifact, final ApiCallback<ArtifactOut> _callback) throws ApiException {
+    public okhttp3.Call postResearchArtifactsAsync(@javax.annotation.Nonnull ResearchArtifact researchArtifact, final ApiCallback<ArtifactOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1ResearchArtifactsValidateBeforeCall(researchArtifact, _callback);
+        okhttp3.Call localVarCall = postResearchArtifactsValidateBeforeCall(researchArtifact, _callback);
         Type localVarReturnType = new TypeToken<ArtifactOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1ResearchExperiments
+     * Build call for postResearchExperiments
      * @param ingestRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -835,7 +835,7 @@ public class ResearchApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1ResearchExperimentsCall(@javax.annotation.Nonnull IngestRequest ingestRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postResearchExperimentsCall(@javax.annotation.Nonnull IngestRequest ingestRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -881,13 +881,13 @@ public class ResearchApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1ResearchExperimentsValidateBeforeCall(@javax.annotation.Nonnull IngestRequest ingestRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postResearchExperimentsValidateBeforeCall(@javax.annotation.Nonnull IngestRequest ingestRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'ingestRequest' is set
         if (ingestRequest == null) {
-            throw new ApiException("Missing the required parameter 'ingestRequest' when calling postV1ResearchExperiments(Async)");
+            throw new ApiException("Missing the required parameter 'ingestRequest' when calling postResearchExperiments(Async)");
         }
 
-        return postV1ResearchExperimentsCall(ingestRequest, _callback);
+        return postResearchExperimentsCall(ingestRequest, _callback);
 
     }
 
@@ -904,8 +904,8 @@ public class ResearchApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public IngestOut postV1ResearchExperiments(@javax.annotation.Nonnull IngestRequest ingestRequest) throws ApiException {
-        ApiResponse<IngestOut> localVarResp = postV1ResearchExperimentsWithHttpInfo(ingestRequest);
+    public IngestOut postResearchExperiments(@javax.annotation.Nonnull IngestRequest ingestRequest) throws ApiException {
+        ApiResponse<IngestOut> localVarResp = postResearchExperimentsWithHttpInfo(ingestRequest);
         return localVarResp.getData();
     }
 
@@ -922,8 +922,8 @@ public class ResearchApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IngestOut> postV1ResearchExperimentsWithHttpInfo(@javax.annotation.Nonnull IngestRequest ingestRequest) throws ApiException {
-        okhttp3.Call localVarCall = postV1ResearchExperimentsValidateBeforeCall(ingestRequest, null);
+    public ApiResponse<IngestOut> postResearchExperimentsWithHttpInfo(@javax.annotation.Nonnull IngestRequest ingestRequest) throws ApiException {
+        okhttp3.Call localVarCall = postResearchExperimentsValidateBeforeCall(ingestRequest, null);
         Type localVarReturnType = new TypeToken<IngestOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -942,15 +942,15 @@ public class ResearchApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1ResearchExperimentsAsync(@javax.annotation.Nonnull IngestRequest ingestRequest, final ApiCallback<IngestOut> _callback) throws ApiException {
+    public okhttp3.Call postResearchExperimentsAsync(@javax.annotation.Nonnull IngestRequest ingestRequest, final ApiCallback<IngestOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1ResearchExperimentsValidateBeforeCall(ingestRequest, _callback);
+        okhttp3.Call localVarCall = postResearchExperimentsValidateBeforeCall(ingestRequest, _callback);
         Type localVarReturnType = new TypeToken<IngestOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1ResearchGrants
+     * Build call for postResearchGrants
      * @param grantRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -962,7 +962,7 @@ public class ResearchApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1ResearchGrantsCall(@javax.annotation.Nonnull GrantRequest grantRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postResearchGrantsCall(@javax.annotation.Nonnull GrantRequest grantRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1008,13 +1008,13 @@ public class ResearchApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1ResearchGrantsValidateBeforeCall(@javax.annotation.Nonnull GrantRequest grantRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postResearchGrantsValidateBeforeCall(@javax.annotation.Nonnull GrantRequest grantRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'grantRequest' is set
         if (grantRequest == null) {
-            throw new ApiException("Missing the required parameter 'grantRequest' when calling postV1ResearchGrants(Async)");
+            throw new ApiException("Missing the required parameter 'grantRequest' when calling postResearchGrants(Async)");
         }
 
-        return postV1ResearchGrantsCall(grantRequest, _callback);
+        return postResearchGrantsCall(grantRequest, _callback);
 
     }
 
@@ -1031,8 +1031,8 @@ public class ResearchApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public GrantOut postV1ResearchGrants(@javax.annotation.Nonnull GrantRequest grantRequest) throws ApiException {
-        ApiResponse<GrantOut> localVarResp = postV1ResearchGrantsWithHttpInfo(grantRequest);
+    public GrantOut postResearchGrants(@javax.annotation.Nonnull GrantRequest grantRequest) throws ApiException {
+        ApiResponse<GrantOut> localVarResp = postResearchGrantsWithHttpInfo(grantRequest);
         return localVarResp.getData();
     }
 
@@ -1049,8 +1049,8 @@ public class ResearchApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GrantOut> postV1ResearchGrantsWithHttpInfo(@javax.annotation.Nonnull GrantRequest grantRequest) throws ApiException {
-        okhttp3.Call localVarCall = postV1ResearchGrantsValidateBeforeCall(grantRequest, null);
+    public ApiResponse<GrantOut> postResearchGrantsWithHttpInfo(@javax.annotation.Nonnull GrantRequest grantRequest) throws ApiException {
+        okhttp3.Call localVarCall = postResearchGrantsValidateBeforeCall(grantRequest, null);
         Type localVarReturnType = new TypeToken<GrantOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1069,9 +1069,9 @@ public class ResearchApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1ResearchGrantsAsync(@javax.annotation.Nonnull GrantRequest grantRequest, final ApiCallback<GrantOut> _callback) throws ApiException {
+    public okhttp3.Call postResearchGrantsAsync(@javax.annotation.Nonnull GrantRequest grantRequest, final ApiCallback<GrantOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1ResearchGrantsValidateBeforeCall(grantRequest, _callback);
+        okhttp3.Call localVarCall = postResearchGrantsValidateBeforeCall(grantRequest, _callback);
         Type localVarReturnType = new TypeToken<GrantOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

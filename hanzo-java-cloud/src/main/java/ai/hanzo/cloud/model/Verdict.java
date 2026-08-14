@@ -14,16 +14,13 @@
 package ai.hanzo.cloud.model;
 
 import java.util.Objects;
-import ai.hanzo.cloud.model.DriftFlag;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -53,62 +50,174 @@ import ai.hanzo.cloud.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class Verdict {
-  public static final String SERIALIZED_NAME_FLAGS = "flags";
-  @SerializedName(SERIALIZED_NAME_FLAGS)
+  public static final String SERIALIZED_NAME_BUILDS = "builds";
+  @SerializedName(SERIALIZED_NAME_BUILDS)
   @javax.annotation.Nullable
-  private List<DriftFlag> flags = new ArrayList<>();
+  private Integer builds;
 
-  public static final String SERIALIZED_NAME_SEVERITY = "severity";
-  @SerializedName(SERIALIZED_NAME_SEVERITY)
+  public static final String SERIALIZED_NAME_COMMIT = "commit";
+  @SerializedName(SERIALIZED_NAME_COMMIT)
   @javax.annotation.Nullable
-  private String severity;
+  private String commit;
+
+  public static final String SERIALIZED_NAME_FIRED = "fired";
+  @SerializedName(SERIALIZED_NAME_FIRED)
+  @javax.annotation.Nullable
+  private Boolean fired;
+
+  public static final String SERIALIZED_NAME_ORG = "org";
+  @SerializedName(SERIALIZED_NAME_ORG)
+  @javax.annotation.Nullable
+  private String org;
+
+  public static final String SERIALIZED_NAME_REASON = "reason";
+  @SerializedName(SERIALIZED_NAME_REASON)
+  @javax.annotation.Nullable
+  private String reason;
+
+  public static final String SERIALIZED_NAME_REF = "ref";
+  @SerializedName(SERIALIZED_NAME_REF)
+  @javax.annotation.Nullable
+  private String ref;
+
+  public static final String SERIALIZED_NAME_REPO = "repo";
+  @SerializedName(SERIALIZED_NAME_REPO)
+  @javax.annotation.Nullable
+  private String repo;
 
   public Verdict() {
   }
 
-  public Verdict flags(@javax.annotation.Nullable List<DriftFlag> flags) {
-    this.flags = flags;
-    return this;
-  }
-
-  public Verdict addFlagsItem(DriftFlag flagsItem) {
-    if (this.flags == null) {
-      this.flags = new ArrayList<>();
-    }
-    this.flags.add(flagsItem);
+  public Verdict builds(@javax.annotation.Nullable Integer builds) {
+    this.builds = builds;
     return this;
   }
 
   /**
-   * Get flags
-   * @return flags
+   * Get builds
+   * @return builds
    */
   @javax.annotation.Nullable
-  public List<DriftFlag> getFlags() {
-    return flags;
+  public Integer getBuilds() {
+    return builds;
   }
 
-  public void setFlags(@javax.annotation.Nullable List<DriftFlag> flags) {
-    this.flags = flags;
+  public void setBuilds(@javax.annotation.Nullable Integer builds) {
+    this.builds = builds;
   }
 
 
-  public Verdict severity(@javax.annotation.Nullable String severity) {
-    this.severity = severity;
+  public Verdict commit(@javax.annotation.Nullable String commit) {
+    this.commit = commit;
     return this;
   }
 
   /**
-   * Get severity
-   * @return severity
+   * Get commit
+   * @return commit
    */
   @javax.annotation.Nullable
-  public String getSeverity() {
-    return severity;
+  public String getCommit() {
+    return commit;
   }
 
-  public void setSeverity(@javax.annotation.Nullable String severity) {
-    this.severity = severity;
+  public void setCommit(@javax.annotation.Nullable String commit) {
+    this.commit = commit;
+  }
+
+
+  public Verdict fired(@javax.annotation.Nullable Boolean fired) {
+    this.fired = fired;
+    return this;
+  }
+
+  /**
+   * Get fired
+   * @return fired
+   */
+  @javax.annotation.Nullable
+  public Boolean getFired() {
+    return fired;
+  }
+
+  public void setFired(@javax.annotation.Nullable Boolean fired) {
+    this.fired = fired;
+  }
+
+
+  public Verdict org(@javax.annotation.Nullable String org) {
+    this.org = org;
+    return this;
+  }
+
+  /**
+   * Get org
+   * @return org
+   */
+  @javax.annotation.Nullable
+  public String getOrg() {
+    return org;
+  }
+
+  public void setOrg(@javax.annotation.Nullable String org) {
+    this.org = org;
+  }
+
+
+  public Verdict reason(@javax.annotation.Nullable String reason) {
+    this.reason = reason;
+    return this;
+  }
+
+  /**
+   * Get reason
+   * @return reason
+   */
+  @javax.annotation.Nullable
+  public String getReason() {
+    return reason;
+  }
+
+  public void setReason(@javax.annotation.Nullable String reason) {
+    this.reason = reason;
+  }
+
+
+  public Verdict ref(@javax.annotation.Nullable String ref) {
+    this.ref = ref;
+    return this;
+  }
+
+  /**
+   * Get ref
+   * @return ref
+   */
+  @javax.annotation.Nullable
+  public String getRef() {
+    return ref;
+  }
+
+  public void setRef(@javax.annotation.Nullable String ref) {
+    this.ref = ref;
+  }
+
+
+  public Verdict repo(@javax.annotation.Nullable String repo) {
+    this.repo = repo;
+    return this;
+  }
+
+  /**
+   * Get repo
+   * @return repo
+   */
+  @javax.annotation.Nullable
+  public String getRepo() {
+    return repo;
+  }
+
+  public void setRepo(@javax.annotation.Nullable String repo) {
+    this.repo = repo;
   }
 
 
@@ -122,21 +231,31 @@ public class Verdict {
       return false;
     }
     Verdict verdict = (Verdict) o;
-    return Objects.equals(this.flags, verdict.flags) &&
-        Objects.equals(this.severity, verdict.severity);
+    return Objects.equals(this.builds, verdict.builds) &&
+        Objects.equals(this.commit, verdict.commit) &&
+        Objects.equals(this.fired, verdict.fired) &&
+        Objects.equals(this.org, verdict.org) &&
+        Objects.equals(this.reason, verdict.reason) &&
+        Objects.equals(this.ref, verdict.ref) &&
+        Objects.equals(this.repo, verdict.repo);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(flags, severity);
+    return Objects.hash(builds, commit, fired, org, reason, ref, repo);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Verdict {\n");
-    sb.append("    flags: ").append(toIndentedString(flags)).append("\n");
-    sb.append("    severity: ").append(toIndentedString(severity)).append("\n");
+    sb.append("    builds: ").append(toIndentedString(builds)).append("\n");
+    sb.append("    commit: ").append(toIndentedString(commit)).append("\n");
+    sb.append("    fired: ").append(toIndentedString(fired)).append("\n");
+    sb.append("    org: ").append(toIndentedString(org)).append("\n");
+    sb.append("    reason: ").append(toIndentedString(reason)).append("\n");
+    sb.append("    ref: ").append(toIndentedString(ref)).append("\n");
+    sb.append("    repo: ").append(toIndentedString(repo)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -158,7 +277,7 @@ public class Verdict {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("flags", "severity"));
+    openapiFields = new HashSet<String>(Arrays.asList("builds", "commit", "fired", "org", "reason", "ref", "repo"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -185,22 +304,20 @@ public class Verdict {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (jsonObj.get("flags") != null && !jsonObj.get("flags").isJsonNull()) {
-        JsonArray jsonArrayflags = jsonObj.getAsJsonArray("flags");
-        if (jsonArrayflags != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("flags").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `flags` to be an array in the JSON string but got `%s`", jsonObj.get("flags").toString()));
-          }
-
-          // validate the optional field `flags` (array)
-          for (int i = 0; i < jsonArrayflags.size(); i++) {
-            DriftFlag.validateJsonElement(jsonArrayflags.get(i));
-          };
-        }
+      if ((jsonObj.get("commit") != null && !jsonObj.get("commit").isJsonNull()) && !jsonObj.get("commit").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `commit` to be a primitive type in the JSON string but got `%s`", jsonObj.get("commit").toString()));
       }
-      if ((jsonObj.get("severity") != null && !jsonObj.get("severity").isJsonNull()) && !jsonObj.get("severity").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `severity` to be a primitive type in the JSON string but got `%s`", jsonObj.get("severity").toString()));
+      if ((jsonObj.get("org") != null && !jsonObj.get("org").isJsonNull()) && !jsonObj.get("org").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `org` to be a primitive type in the JSON string but got `%s`", jsonObj.get("org").toString()));
+      }
+      if ((jsonObj.get("reason") != null && !jsonObj.get("reason").isJsonNull()) && !jsonObj.get("reason").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `reason` to be a primitive type in the JSON string but got `%s`", jsonObj.get("reason").toString()));
+      }
+      if ((jsonObj.get("ref") != null && !jsonObj.get("ref").isJsonNull()) && !jsonObj.get("ref").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ref` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ref").toString()));
+      }
+      if ((jsonObj.get("repo") != null && !jsonObj.get("repo").isJsonNull()) && !jsonObj.get("repo").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `repo` to be a primitive type in the JSON string but got `%s`", jsonObj.get("repo").toString()));
       }
   }
 

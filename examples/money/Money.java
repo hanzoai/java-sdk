@@ -30,8 +30,8 @@ public final class Money {
     public static void main(String[] args) {
         BillingApi billing = new BillingApi(Hanzo.client());
         try {
-            System.out.printf("balance  HTTP %d%n", billing.getV1BillingBalanceWithHttpInfo().getStatusCode());
-            System.out.printf("usage    HTTP %d%n", billing.getV1BillingUsageWithHttpInfo().getStatusCode());
+            System.out.printf("balance  HTTP %d%n", billing.getBillingBalanceWithHttpInfo().getStatusCode());
+            System.out.printf("usage    HTTP %d%n", billing.getBillingUsageWithHttpInfo().getStatusCode());
         } catch (ApiException e) {
             System.err.printf("billing failed: HTTP %d %s%n", e.getCode(), e.getResponseBody());
             System.exit(1);

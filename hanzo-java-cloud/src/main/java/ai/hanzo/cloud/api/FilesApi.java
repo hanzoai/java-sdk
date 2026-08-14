@@ -72,13 +72,13 @@ public class FilesApi {
     }
 
     /**
-     * Build call for getV1FilesBySid
+     * Build call for getFilesBySid
      * @param sid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1FilesBySidCall(@javax.annotation.Nonnull String sid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getFilesBySidCall(@javax.annotation.Nonnull String sid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -123,13 +123,13 @@ public class FilesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1FilesBySidValidateBeforeCall(@javax.annotation.Nonnull String sid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getFilesBySidValidateBeforeCall(@javax.annotation.Nonnull String sid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'sid' is set
         if (sid == null) {
-            throw new ApiException("Missing the required parameter 'sid' when calling getV1FilesBySid(Async)");
+            throw new ApiException("Missing the required parameter 'sid' when calling getFilesBySid(Async)");
         }
 
-        return getV1FilesBySidCall(sid, _callback);
+        return getFilesBySidCall(sid, _callback);
 
     }
 
@@ -139,8 +139,8 @@ public class FilesApi {
      * @param sid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1FilesBySid(@javax.annotation.Nonnull String sid) throws ApiException {
-        getV1FilesBySidWithHttpInfo(sid);
+    public void getFilesBySid(@javax.annotation.Nonnull String sid) throws ApiException {
+        getFilesBySidWithHttpInfo(sid);
     }
 
     /**
@@ -150,8 +150,8 @@ public class FilesApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1FilesBySidWithHttpInfo(@javax.annotation.Nonnull String sid) throws ApiException {
-        okhttp3.Call localVarCall = getV1FilesBySidValidateBeforeCall(sid, null);
+    public ApiResponse<Void> getFilesBySidWithHttpInfo(@javax.annotation.Nonnull String sid) throws ApiException {
+        okhttp3.Call localVarCall = getFilesBySidValidateBeforeCall(sid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -163,9 +163,9 @@ public class FilesApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1FilesBySidAsync(@javax.annotation.Nonnull String sid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getFilesBySidAsync(@javax.annotation.Nonnull String sid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1FilesBySidValidateBeforeCall(sid, _callback);
+        okhttp3.Call localVarCall = getFilesBySidValidateBeforeCall(sid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

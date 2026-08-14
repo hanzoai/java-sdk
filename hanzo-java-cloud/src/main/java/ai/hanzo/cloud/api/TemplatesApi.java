@@ -76,7 +76,7 @@ public class TemplatesApi {
     }
 
     /**
-     * Build call for deleteV1TemplatesBySlug
+     * Build call for deleteTemplatesBySlug
      * @param slug Slug is the starter kit to act on, from the path. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -88,7 +88,7 @@ public class TemplatesApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1TemplatesBySlugCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteTemplatesBySlugCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -133,13 +133,13 @@ public class TemplatesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1TemplatesBySlugValidateBeforeCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteTemplatesBySlugValidateBeforeCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'slug' is set
         if (slug == null) {
-            throw new ApiException("Missing the required parameter 'slug' when calling deleteV1TemplatesBySlug(Async)");
+            throw new ApiException("Missing the required parameter 'slug' when calling deleteTemplatesBySlug(Async)");
         }
 
-        return deleteV1TemplatesBySlugCall(slug, _callback);
+        return deleteTemplatesBySlugCall(slug, _callback);
 
     }
 
@@ -155,8 +155,8 @@ public class TemplatesApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteV1TemplatesBySlug(@javax.annotation.Nonnull String slug) throws ApiException {
-        deleteV1TemplatesBySlugWithHttpInfo(slug);
+    public void deleteTemplatesBySlug(@javax.annotation.Nonnull String slug) throws ApiException {
+        deleteTemplatesBySlugWithHttpInfo(slug);
     }
 
     /**
@@ -172,8 +172,8 @@ public class TemplatesApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteV1TemplatesBySlugWithHttpInfo(@javax.annotation.Nonnull String slug) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1TemplatesBySlugValidateBeforeCall(slug, null);
+    public ApiResponse<Void> deleteTemplatesBySlugWithHttpInfo(@javax.annotation.Nonnull String slug) throws ApiException {
+        okhttp3.Call localVarCall = deleteTemplatesBySlugValidateBeforeCall(slug, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -191,14 +191,14 @@ public class TemplatesApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1TemplatesBySlugAsync(@javax.annotation.Nonnull String slug, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteTemplatesBySlugAsync(@javax.annotation.Nonnull String slug, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1TemplatesBySlugValidateBeforeCall(slug, _callback);
+        okhttp3.Call localVarCall = deleteTemplatesBySlugValidateBeforeCall(slug, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1Templates
+     * Build call for getTemplates
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -209,7 +209,7 @@ public class TemplatesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1TemplatesCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getTemplatesCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -254,8 +254,8 @@ public class TemplatesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1TemplatesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1TemplatesCall(_callback);
+    private okhttp3.Call getTemplatesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getTemplatesCall(_callback);
 
     }
 
@@ -271,8 +271,8 @@ public class TemplatesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public KitList getV1Templates() throws ApiException {
-        ApiResponse<KitList> localVarResp = getV1TemplatesWithHttpInfo();
+    public KitList getTemplates() throws ApiException {
+        ApiResponse<KitList> localVarResp = getTemplatesWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -288,8 +288,8 @@ public class TemplatesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<KitList> getV1TemplatesWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1TemplatesValidateBeforeCall(null);
+    public ApiResponse<KitList> getTemplatesWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getTemplatesValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<KitList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -307,15 +307,15 @@ public class TemplatesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1TemplatesAsync(final ApiCallback<KitList> _callback) throws ApiException {
+    public okhttp3.Call getTemplatesAsync(final ApiCallback<KitList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1TemplatesValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getTemplatesValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<KitList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1TemplatesBySlug
+     * Build call for getTemplatesBySlug
      * @param slug Slug is the starter kit to act on, from the path. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -327,7 +327,7 @@ public class TemplatesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1TemplatesBySlugCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getTemplatesBySlugCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -373,13 +373,13 @@ public class TemplatesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1TemplatesBySlugValidateBeforeCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getTemplatesBySlugValidateBeforeCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'slug' is set
         if (slug == null) {
-            throw new ApiException("Missing the required parameter 'slug' when calling getV1TemplatesBySlug(Async)");
+            throw new ApiException("Missing the required parameter 'slug' when calling getTemplatesBySlug(Async)");
         }
 
-        return getV1TemplatesBySlugCall(slug, _callback);
+        return getTemplatesBySlugCall(slug, _callback);
 
     }
 
@@ -396,8 +396,8 @@ public class TemplatesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public StarterKit getV1TemplatesBySlug(@javax.annotation.Nonnull String slug) throws ApiException {
-        ApiResponse<StarterKit> localVarResp = getV1TemplatesBySlugWithHttpInfo(slug);
+    public StarterKit getTemplatesBySlug(@javax.annotation.Nonnull String slug) throws ApiException {
+        ApiResponse<StarterKit> localVarResp = getTemplatesBySlugWithHttpInfo(slug);
         return localVarResp.getData();
     }
 
@@ -414,8 +414,8 @@ public class TemplatesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<StarterKit> getV1TemplatesBySlugWithHttpInfo(@javax.annotation.Nonnull String slug) throws ApiException {
-        okhttp3.Call localVarCall = getV1TemplatesBySlugValidateBeforeCall(slug, null);
+    public ApiResponse<StarterKit> getTemplatesBySlugWithHttpInfo(@javax.annotation.Nonnull String slug) throws ApiException {
+        okhttp3.Call localVarCall = getTemplatesBySlugValidateBeforeCall(slug, null);
         Type localVarReturnType = new TypeToken<StarterKit>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -434,15 +434,15 @@ public class TemplatesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1TemplatesBySlugAsync(@javax.annotation.Nonnull String slug, final ApiCallback<StarterKit> _callback) throws ApiException {
+    public okhttp3.Call getTemplatesBySlugAsync(@javax.annotation.Nonnull String slug, final ApiCallback<StarterKit> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1TemplatesBySlugValidateBeforeCall(slug, _callback);
+        okhttp3.Call localVarCall = getTemplatesBySlugValidateBeforeCall(slug, _callback);
         Type localVarReturnType = new TypeToken<StarterKit>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1Templates
+     * Build call for postTemplates
      * @param publishKitIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -454,7 +454,7 @@ public class TemplatesApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1TemplatesCall(@javax.annotation.Nonnull PublishKitIn publishKitIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postTemplatesCall(@javax.annotation.Nonnull PublishKitIn publishKitIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -500,13 +500,13 @@ public class TemplatesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1TemplatesValidateBeforeCall(@javax.annotation.Nonnull PublishKitIn publishKitIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postTemplatesValidateBeforeCall(@javax.annotation.Nonnull PublishKitIn publishKitIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'publishKitIn' is set
         if (publishKitIn == null) {
-            throw new ApiException("Missing the required parameter 'publishKitIn' when calling postV1Templates(Async)");
+            throw new ApiException("Missing the required parameter 'publishKitIn' when calling postTemplates(Async)");
         }
 
-        return postV1TemplatesCall(publishKitIn, _callback);
+        return postTemplatesCall(publishKitIn, _callback);
 
     }
 
@@ -523,8 +523,8 @@ public class TemplatesApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public StarterKit postV1Templates(@javax.annotation.Nonnull PublishKitIn publishKitIn) throws ApiException {
-        ApiResponse<StarterKit> localVarResp = postV1TemplatesWithHttpInfo(publishKitIn);
+    public StarterKit postTemplates(@javax.annotation.Nonnull PublishKitIn publishKitIn) throws ApiException {
+        ApiResponse<StarterKit> localVarResp = postTemplatesWithHttpInfo(publishKitIn);
         return localVarResp.getData();
     }
 
@@ -541,8 +541,8 @@ public class TemplatesApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<StarterKit> postV1TemplatesWithHttpInfo(@javax.annotation.Nonnull PublishKitIn publishKitIn) throws ApiException {
-        okhttp3.Call localVarCall = postV1TemplatesValidateBeforeCall(publishKitIn, null);
+    public ApiResponse<StarterKit> postTemplatesWithHttpInfo(@javax.annotation.Nonnull PublishKitIn publishKitIn) throws ApiException {
+        okhttp3.Call localVarCall = postTemplatesValidateBeforeCall(publishKitIn, null);
         Type localVarReturnType = new TypeToken<StarterKit>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -561,15 +561,15 @@ public class TemplatesApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1TemplatesAsync(@javax.annotation.Nonnull PublishKitIn publishKitIn, final ApiCallback<StarterKit> _callback) throws ApiException {
+    public okhttp3.Call postTemplatesAsync(@javax.annotation.Nonnull PublishKitIn publishKitIn, final ApiCallback<StarterKit> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1TemplatesValidateBeforeCall(publishKitIn, _callback);
+        okhttp3.Call localVarCall = postTemplatesValidateBeforeCall(publishKitIn, _callback);
         Type localVarReturnType = new TypeToken<StarterKit>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1TemplatesBySlug
+     * Build call for putTemplatesBySlug
      * @param slug Slug is the kit to replace, from the path. (required)
      * @param replaceKitIn  (required)
      * @param _callback Callback for upload/download progress
@@ -582,7 +582,7 @@ public class TemplatesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putV1TemplatesBySlugCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ReplaceKitIn replaceKitIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putTemplatesBySlugCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ReplaceKitIn replaceKitIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -629,18 +629,18 @@ public class TemplatesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1TemplatesBySlugValidateBeforeCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ReplaceKitIn replaceKitIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putTemplatesBySlugValidateBeforeCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ReplaceKitIn replaceKitIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'slug' is set
         if (slug == null) {
-            throw new ApiException("Missing the required parameter 'slug' when calling putV1TemplatesBySlug(Async)");
+            throw new ApiException("Missing the required parameter 'slug' when calling putTemplatesBySlug(Async)");
         }
 
         // verify the required parameter 'replaceKitIn' is set
         if (replaceKitIn == null) {
-            throw new ApiException("Missing the required parameter 'replaceKitIn' when calling putV1TemplatesBySlug(Async)");
+            throw new ApiException("Missing the required parameter 'replaceKitIn' when calling putTemplatesBySlug(Async)");
         }
 
-        return putV1TemplatesBySlugCall(slug, replaceKitIn, _callback);
+        return putTemplatesBySlugCall(slug, replaceKitIn, _callback);
 
     }
 
@@ -658,8 +658,8 @@ public class TemplatesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public StarterKit putV1TemplatesBySlug(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ReplaceKitIn replaceKitIn) throws ApiException {
-        ApiResponse<StarterKit> localVarResp = putV1TemplatesBySlugWithHttpInfo(slug, replaceKitIn);
+    public StarterKit putTemplatesBySlug(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ReplaceKitIn replaceKitIn) throws ApiException {
+        ApiResponse<StarterKit> localVarResp = putTemplatesBySlugWithHttpInfo(slug, replaceKitIn);
         return localVarResp.getData();
     }
 
@@ -677,8 +677,8 @@ public class TemplatesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<StarterKit> putV1TemplatesBySlugWithHttpInfo(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ReplaceKitIn replaceKitIn) throws ApiException {
-        okhttp3.Call localVarCall = putV1TemplatesBySlugValidateBeforeCall(slug, replaceKitIn, null);
+    public ApiResponse<StarterKit> putTemplatesBySlugWithHttpInfo(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ReplaceKitIn replaceKitIn) throws ApiException {
+        okhttp3.Call localVarCall = putTemplatesBySlugValidateBeforeCall(slug, replaceKitIn, null);
         Type localVarReturnType = new TypeToken<StarterKit>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -698,9 +698,9 @@ public class TemplatesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putV1TemplatesBySlugAsync(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ReplaceKitIn replaceKitIn, final ApiCallback<StarterKit> _callback) throws ApiException {
+    public okhttp3.Call putTemplatesBySlugAsync(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ReplaceKitIn replaceKitIn, final ApiCallback<StarterKit> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1TemplatesBySlugValidateBeforeCall(slug, replaceKitIn, _callback);
+        okhttp3.Call localVarCall = putTemplatesBySlugValidateBeforeCall(slug, replaceKitIn, _callback);
         Type localVarReturnType = new TypeToken<StarterKit>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

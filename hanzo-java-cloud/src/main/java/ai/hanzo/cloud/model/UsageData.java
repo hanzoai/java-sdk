@@ -14,7 +14,7 @@
 package ai.hanzo.cloud.model;
 
 import java.util.Objects;
-import ai.hanzo.cloud.model.UsageByProduct;
+import ai.hanzo.cloud.model.UsageByModel;
 import ai.hanzo.cloud.model.UsagePoint;
 import ai.hanzo.cloud.model.UsageTotals;
 import com.google.gson.TypeAdapter;
@@ -55,10 +55,10 @@ import ai.hanzo.cloud.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class UsageData {
-  public static final String SERIALIZED_NAME_BY_PRODUCT = "byProduct";
-  @SerializedName(SERIALIZED_NAME_BY_PRODUCT)
+  public static final String SERIALIZED_NAME_BY_MODEL = "byModel";
+  @SerializedName(SERIALIZED_NAME_BY_MODEL)
   @javax.annotation.Nullable
-  private List<UsageByProduct> byProduct = new ArrayList<>();
+  private List<UsageByModel> byModel = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_SERIES = "series";
   @SerializedName(SERIALIZED_NAME_SERIES)
@@ -73,30 +73,30 @@ public class UsageData {
   public UsageData() {
   }
 
-  public UsageData byProduct(@javax.annotation.Nullable List<UsageByProduct> byProduct) {
-    this.byProduct = byProduct;
+  public UsageData byModel(@javax.annotation.Nullable List<UsageByModel> byModel) {
+    this.byModel = byModel;
     return this;
   }
 
-  public UsageData addByProductItem(UsageByProduct byProductItem) {
-    if (this.byProduct == null) {
-      this.byProduct = new ArrayList<>();
+  public UsageData addByModelItem(UsageByModel byModelItem) {
+    if (this.byModel == null) {
+      this.byModel = new ArrayList<>();
     }
-    this.byProduct.add(byProductItem);
+    this.byModel.add(byModelItem);
     return this;
   }
 
   /**
-   * Get byProduct
-   * @return byProduct
+   * Get byModel
+   * @return byModel
    */
   @javax.annotation.Nullable
-  public List<UsageByProduct> getByProduct() {
-    return byProduct;
+  public List<UsageByModel> getByModel() {
+    return byModel;
   }
 
-  public void setByProduct(@javax.annotation.Nullable List<UsageByProduct> byProduct) {
-    this.byProduct = byProduct;
+  public void setByModel(@javax.annotation.Nullable List<UsageByModel> byModel) {
+    this.byModel = byModel;
   }
 
 
@@ -156,21 +156,21 @@ public class UsageData {
       return false;
     }
     UsageData usageData = (UsageData) o;
-    return Objects.equals(this.byProduct, usageData.byProduct) &&
+    return Objects.equals(this.byModel, usageData.byModel) &&
         Objects.equals(this.series, usageData.series) &&
         Objects.equals(this.totals, usageData.totals);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(byProduct, series, totals);
+    return Objects.hash(byModel, series, totals);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class UsageData {\n");
-    sb.append("    byProduct: ").append(toIndentedString(byProduct)).append("\n");
+    sb.append("    byModel: ").append(toIndentedString(byModel)).append("\n");
     sb.append("    series: ").append(toIndentedString(series)).append("\n");
     sb.append("    totals: ").append(toIndentedString(totals)).append("\n");
     sb.append("}");
@@ -194,7 +194,7 @@ public class UsageData {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("byProduct", "series", "totals"));
+    openapiFields = new HashSet<String>(Arrays.asList("byModel", "series", "totals"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -221,17 +221,17 @@ public class UsageData {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (jsonObj.get("byProduct") != null && !jsonObj.get("byProduct").isJsonNull()) {
-        JsonArray jsonArraybyProduct = jsonObj.getAsJsonArray("byProduct");
-        if (jsonArraybyProduct != null) {
+      if (jsonObj.get("byModel") != null && !jsonObj.get("byModel").isJsonNull()) {
+        JsonArray jsonArraybyModel = jsonObj.getAsJsonArray("byModel");
+        if (jsonArraybyModel != null) {
           // ensure the json data is an array
-          if (!jsonObj.get("byProduct").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `byProduct` to be an array in the JSON string but got `%s`", jsonObj.get("byProduct").toString()));
+          if (!jsonObj.get("byModel").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `byModel` to be an array in the JSON string but got `%s`", jsonObj.get("byModel").toString()));
           }
 
-          // validate the optional field `byProduct` (array)
-          for (int i = 0; i < jsonArraybyProduct.size(); i++) {
-            UsageByProduct.validateJsonElement(jsonArraybyProduct.get(i));
+          // validate the optional field `byModel` (array)
+          for (int i = 0; i < jsonArraybyModel.size(); i++) {
+            UsageByModel.validateJsonElement(jsonArraybyModel.get(i));
           };
         }
       }

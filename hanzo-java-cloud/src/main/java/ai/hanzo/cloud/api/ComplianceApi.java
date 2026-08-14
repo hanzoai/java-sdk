@@ -87,7 +87,7 @@ public class ComplianceApi {
     }
 
     /**
-     * Build call for getV1ComplianceAccreditation
+     * Build call for getComplianceAccreditation
      * @param limit Limit caps the rows returned; non-positive means the server default. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -99,7 +99,7 @@ public class ComplianceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1ComplianceAccreditationCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getComplianceAccreditationCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -148,8 +148,8 @@ public class ComplianceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1ComplianceAccreditationValidateBeforeCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
-        return getV1ComplianceAccreditationCall(limit, _callback);
+    private okhttp3.Call getComplianceAccreditationValidateBeforeCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+        return getComplianceAccreditationCall(limit, _callback);
 
     }
 
@@ -166,8 +166,8 @@ public class ComplianceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public AccList getV1ComplianceAccreditation(@javax.annotation.Nullable Integer limit) throws ApiException {
-        ApiResponse<AccList> localVarResp = getV1ComplianceAccreditationWithHttpInfo(limit);
+    public AccList getComplianceAccreditation(@javax.annotation.Nullable Integer limit) throws ApiException {
+        ApiResponse<AccList> localVarResp = getComplianceAccreditationWithHttpInfo(limit);
         return localVarResp.getData();
     }
 
@@ -184,8 +184,8 @@ public class ComplianceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AccList> getV1ComplianceAccreditationWithHttpInfo(@javax.annotation.Nullable Integer limit) throws ApiException {
-        okhttp3.Call localVarCall = getV1ComplianceAccreditationValidateBeforeCall(limit, null);
+    public ApiResponse<AccList> getComplianceAccreditationWithHttpInfo(@javax.annotation.Nullable Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = getComplianceAccreditationValidateBeforeCall(limit, null);
         Type localVarReturnType = new TypeToken<AccList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -204,15 +204,15 @@ public class ComplianceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1ComplianceAccreditationAsync(@javax.annotation.Nullable Integer limit, final ApiCallback<AccList> _callback) throws ApiException {
+    public okhttp3.Call getComplianceAccreditationAsync(@javax.annotation.Nullable Integer limit, final ApiCallback<AccList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1ComplianceAccreditationValidateBeforeCall(limit, _callback);
+        okhttp3.Call localVarCall = getComplianceAccreditationValidateBeforeCall(limit, _callback);
         Type localVarReturnType = new TypeToken<AccList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1ComplianceAccreditationById
+     * Build call for getComplianceAccreditationById
      * @param id ID is the accreditation record to read, from the path. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -224,7 +224,7 @@ public class ComplianceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1ComplianceAccreditationByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getComplianceAccreditationByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -270,13 +270,13 @@ public class ComplianceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1ComplianceAccreditationByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getComplianceAccreditationByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getV1ComplianceAccreditationById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getComplianceAccreditationById(Async)");
         }
 
-        return getV1ComplianceAccreditationByIdCall(id, _callback);
+        return getComplianceAccreditationByIdCall(id, _callback);
 
     }
 
@@ -293,8 +293,8 @@ public class ComplianceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public AccView getV1ComplianceAccreditationById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<AccView> localVarResp = getV1ComplianceAccreditationByIdWithHttpInfo(id);
+    public AccView getComplianceAccreditationById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<AccView> localVarResp = getComplianceAccreditationByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -311,8 +311,8 @@ public class ComplianceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AccView> getV1ComplianceAccreditationByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = getV1ComplianceAccreditationByIdValidateBeforeCall(id, null);
+    public ApiResponse<AccView> getComplianceAccreditationByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getComplianceAccreditationByIdValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<AccView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -331,15 +331,15 @@ public class ComplianceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1ComplianceAccreditationByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<AccView> _callback) throws ApiException {
+    public okhttp3.Call getComplianceAccreditationByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<AccView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1ComplianceAccreditationByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = getComplianceAccreditationByIdValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<AccView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1ComplianceAudit
+     * Build call for getComplianceAudit
      * @param result Result filters rows by outcome result: success, deny, or error; empty means all. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -351,7 +351,7 @@ public class ComplianceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1ComplianceAuditCall(@javax.annotation.Nullable String result, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getComplianceAuditCall(@javax.annotation.Nullable String result, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -400,8 +400,8 @@ public class ComplianceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1ComplianceAuditValidateBeforeCall(@javax.annotation.Nullable String result, final ApiCallback _callback) throws ApiException {
-        return getV1ComplianceAuditCall(result, _callback);
+    private okhttp3.Call getComplianceAuditValidateBeforeCall(@javax.annotation.Nullable String result, final ApiCallback _callback) throws ApiException {
+        return getComplianceAuditCall(result, _callback);
 
     }
 
@@ -418,8 +418,8 @@ public class ComplianceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public AuditList getV1ComplianceAudit(@javax.annotation.Nullable String result) throws ApiException {
-        ApiResponse<AuditList> localVarResp = getV1ComplianceAuditWithHttpInfo(result);
+    public AuditList getComplianceAudit(@javax.annotation.Nullable String result) throws ApiException {
+        ApiResponse<AuditList> localVarResp = getComplianceAuditWithHttpInfo(result);
         return localVarResp.getData();
     }
 
@@ -436,8 +436,8 @@ public class ComplianceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AuditList> getV1ComplianceAuditWithHttpInfo(@javax.annotation.Nullable String result) throws ApiException {
-        okhttp3.Call localVarCall = getV1ComplianceAuditValidateBeforeCall(result, null);
+    public ApiResponse<AuditList> getComplianceAuditWithHttpInfo(@javax.annotation.Nullable String result) throws ApiException {
+        okhttp3.Call localVarCall = getComplianceAuditValidateBeforeCall(result, null);
         Type localVarReturnType = new TypeToken<AuditList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -456,15 +456,15 @@ public class ComplianceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1ComplianceAuditAsync(@javax.annotation.Nullable String result, final ApiCallback<AuditList> _callback) throws ApiException {
+    public okhttp3.Call getComplianceAuditAsync(@javax.annotation.Nullable String result, final ApiCallback<AuditList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1ComplianceAuditValidateBeforeCall(result, _callback);
+        okhttp3.Call localVarCall = getComplianceAuditValidateBeforeCall(result, _callback);
         Type localVarReturnType = new TypeToken<AuditList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1ComplianceHealth
+     * Build call for getComplianceHealth
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -475,7 +475,7 @@ public class ComplianceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1ComplianceHealthCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getComplianceHealthCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -520,8 +520,8 @@ public class ComplianceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1ComplianceHealthValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1ComplianceHealthCall(_callback);
+    private okhttp3.Call getComplianceHealthValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getComplianceHealthCall(_callback);
 
     }
 
@@ -537,8 +537,8 @@ public class ComplianceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public HealthView getV1ComplianceHealth() throws ApiException {
-        ApiResponse<HealthView> localVarResp = getV1ComplianceHealthWithHttpInfo();
+    public HealthView getComplianceHealth() throws ApiException {
+        ApiResponse<HealthView> localVarResp = getComplianceHealthWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -554,8 +554,8 @@ public class ComplianceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<HealthView> getV1ComplianceHealthWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1ComplianceHealthValidateBeforeCall(null);
+    public ApiResponse<HealthView> getComplianceHealthWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getComplianceHealthValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<HealthView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -573,15 +573,15 @@ public class ComplianceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1ComplianceHealthAsync(final ApiCallback<HealthView> _callback) throws ApiException {
+    public okhttp3.Call getComplianceHealthAsync(final ApiCallback<HealthView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1ComplianceHealthValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getComplianceHealthValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<HealthView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1ComplianceRecords
+     * Build call for getComplianceRecords
      * @param limit Limit caps the rows returned; non-positive means the server default. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -593,7 +593,7 @@ public class ComplianceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1ComplianceRecordsCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getComplianceRecordsCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -642,8 +642,8 @@ public class ComplianceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1ComplianceRecordsValidateBeforeCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
-        return getV1ComplianceRecordsCall(limit, _callback);
+    private okhttp3.Call getComplianceRecordsValidateBeforeCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+        return getComplianceRecordsCall(limit, _callback);
 
     }
 
@@ -660,8 +660,8 @@ public class ComplianceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public RecordList getV1ComplianceRecords(@javax.annotation.Nullable Integer limit) throws ApiException {
-        ApiResponse<RecordList> localVarResp = getV1ComplianceRecordsWithHttpInfo(limit);
+    public RecordList getComplianceRecords(@javax.annotation.Nullable Integer limit) throws ApiException {
+        ApiResponse<RecordList> localVarResp = getComplianceRecordsWithHttpInfo(limit);
         return localVarResp.getData();
     }
 
@@ -678,8 +678,8 @@ public class ComplianceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RecordList> getV1ComplianceRecordsWithHttpInfo(@javax.annotation.Nullable Integer limit) throws ApiException {
-        okhttp3.Call localVarCall = getV1ComplianceRecordsValidateBeforeCall(limit, null);
+    public ApiResponse<RecordList> getComplianceRecordsWithHttpInfo(@javax.annotation.Nullable Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = getComplianceRecordsValidateBeforeCall(limit, null);
         Type localVarReturnType = new TypeToken<RecordList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -698,15 +698,15 @@ public class ComplianceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1ComplianceRecordsAsync(@javax.annotation.Nullable Integer limit, final ApiCallback<RecordList> _callback) throws ApiException {
+    public okhttp3.Call getComplianceRecordsAsync(@javax.annotation.Nullable Integer limit, final ApiCallback<RecordList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1ComplianceRecordsValidateBeforeCall(limit, _callback);
+        okhttp3.Call localVarCall = getComplianceRecordsValidateBeforeCall(limit, _callback);
         Type localVarReturnType = new TypeToken<RecordList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1ComplianceStatus
+     * Build call for getComplianceStatus
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -717,7 +717,7 @@ public class ComplianceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1ComplianceStatusCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getComplianceStatusCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -762,8 +762,8 @@ public class ComplianceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1ComplianceStatusValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1ComplianceStatusCall(_callback);
+    private okhttp3.Call getComplianceStatusValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getComplianceStatusCall(_callback);
 
     }
 
@@ -779,8 +779,8 @@ public class ComplianceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public StatusView getV1ComplianceStatus() throws ApiException {
-        ApiResponse<StatusView> localVarResp = getV1ComplianceStatusWithHttpInfo();
+    public StatusView getComplianceStatus() throws ApiException {
+        ApiResponse<StatusView> localVarResp = getComplianceStatusWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -796,8 +796,8 @@ public class ComplianceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<StatusView> getV1ComplianceStatusWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1ComplianceStatusValidateBeforeCall(null);
+    public ApiResponse<StatusView> getComplianceStatusWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getComplianceStatusValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<StatusView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -815,15 +815,15 @@ public class ComplianceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1ComplianceStatusAsync(final ApiCallback<StatusView> _callback) throws ApiException {
+    public okhttp3.Call getComplianceStatusAsync(final ApiCallback<StatusView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1ComplianceStatusValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getComplianceStatusValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<StatusView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1ComplianceSubjects
+     * Build call for getComplianceSubjects
      * @param limit Limit caps the rows returned; non-positive means the server default. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -835,7 +835,7 @@ public class ComplianceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1ComplianceSubjectsCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getComplianceSubjectsCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -884,8 +884,8 @@ public class ComplianceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1ComplianceSubjectsValidateBeforeCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
-        return getV1ComplianceSubjectsCall(limit, _callback);
+    private okhttp3.Call getComplianceSubjectsValidateBeforeCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+        return getComplianceSubjectsCall(limit, _callback);
 
     }
 
@@ -902,8 +902,8 @@ public class ComplianceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public SubjectList getV1ComplianceSubjects(@javax.annotation.Nullable Integer limit) throws ApiException {
-        ApiResponse<SubjectList> localVarResp = getV1ComplianceSubjectsWithHttpInfo(limit);
+    public SubjectList getComplianceSubjects(@javax.annotation.Nullable Integer limit) throws ApiException {
+        ApiResponse<SubjectList> localVarResp = getComplianceSubjectsWithHttpInfo(limit);
         return localVarResp.getData();
     }
 
@@ -920,8 +920,8 @@ public class ComplianceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SubjectList> getV1ComplianceSubjectsWithHttpInfo(@javax.annotation.Nullable Integer limit) throws ApiException {
-        okhttp3.Call localVarCall = getV1ComplianceSubjectsValidateBeforeCall(limit, null);
+    public ApiResponse<SubjectList> getComplianceSubjectsWithHttpInfo(@javax.annotation.Nullable Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = getComplianceSubjectsValidateBeforeCall(limit, null);
         Type localVarReturnType = new TypeToken<SubjectList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -940,15 +940,15 @@ public class ComplianceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1ComplianceSubjectsAsync(@javax.annotation.Nullable Integer limit, final ApiCallback<SubjectList> _callback) throws ApiException {
+    public okhttp3.Call getComplianceSubjectsAsync(@javax.annotation.Nullable Integer limit, final ApiCallback<SubjectList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1ComplianceSubjectsValidateBeforeCall(limit, _callback);
+        okhttp3.Call localVarCall = getComplianceSubjectsValidateBeforeCall(limit, _callback);
         Type localVarReturnType = new TypeToken<SubjectList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1ComplianceSubjectsById
+     * Build call for getComplianceSubjectsById
      * @param id ID is the subject to read, from the path. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -960,7 +960,7 @@ public class ComplianceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1ComplianceSubjectsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getComplianceSubjectsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1006,13 +1006,13 @@ public class ComplianceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1ComplianceSubjectsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getComplianceSubjectsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getV1ComplianceSubjectsById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getComplianceSubjectsById(Async)");
         }
 
-        return getV1ComplianceSubjectsByIdCall(id, _callback);
+        return getComplianceSubjectsByIdCall(id, _callback);
 
     }
 
@@ -1029,8 +1029,8 @@ public class ComplianceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Subject getV1ComplianceSubjectsById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<Subject> localVarResp = getV1ComplianceSubjectsByIdWithHttpInfo(id);
+    public Subject getComplianceSubjectsById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<Subject> localVarResp = getComplianceSubjectsByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -1047,8 +1047,8 @@ public class ComplianceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Subject> getV1ComplianceSubjectsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = getV1ComplianceSubjectsByIdValidateBeforeCall(id, null);
+    public ApiResponse<Subject> getComplianceSubjectsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getComplianceSubjectsByIdValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<Subject>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1067,15 +1067,15 @@ public class ComplianceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1ComplianceSubjectsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Subject> _callback) throws ApiException {
+    public okhttp3.Call getComplianceSubjectsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Subject> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1ComplianceSubjectsByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = getComplianceSubjectsByIdValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<Subject>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1ComplianceVerifications
+     * Build call for getComplianceVerifications
      * @param limit Limit caps the rows returned; non-positive means the server default. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1087,7 +1087,7 @@ public class ComplianceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1ComplianceVerificationsCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getComplianceVerificationsCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1136,8 +1136,8 @@ public class ComplianceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1ComplianceVerificationsValidateBeforeCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
-        return getV1ComplianceVerificationsCall(limit, _callback);
+    private okhttp3.Call getComplianceVerificationsValidateBeforeCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+        return getComplianceVerificationsCall(limit, _callback);
 
     }
 
@@ -1154,8 +1154,8 @@ public class ComplianceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public CheckList getV1ComplianceVerifications(@javax.annotation.Nullable Integer limit) throws ApiException {
-        ApiResponse<CheckList> localVarResp = getV1ComplianceVerificationsWithHttpInfo(limit);
+    public CheckList getComplianceVerifications(@javax.annotation.Nullable Integer limit) throws ApiException {
+        ApiResponse<CheckList> localVarResp = getComplianceVerificationsWithHttpInfo(limit);
         return localVarResp.getData();
     }
 
@@ -1172,8 +1172,8 @@ public class ComplianceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CheckList> getV1ComplianceVerificationsWithHttpInfo(@javax.annotation.Nullable Integer limit) throws ApiException {
-        okhttp3.Call localVarCall = getV1ComplianceVerificationsValidateBeforeCall(limit, null);
+    public ApiResponse<CheckList> getComplianceVerificationsWithHttpInfo(@javax.annotation.Nullable Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = getComplianceVerificationsValidateBeforeCall(limit, null);
         Type localVarReturnType = new TypeToken<CheckList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1192,15 +1192,15 @@ public class ComplianceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1ComplianceVerificationsAsync(@javax.annotation.Nullable Integer limit, final ApiCallback<CheckList> _callback) throws ApiException {
+    public okhttp3.Call getComplianceVerificationsAsync(@javax.annotation.Nullable Integer limit, final ApiCallback<CheckList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1ComplianceVerificationsValidateBeforeCall(limit, _callback);
+        okhttp3.Call localVarCall = getComplianceVerificationsValidateBeforeCall(limit, _callback);
         Type localVarReturnType = new TypeToken<CheckList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1ComplianceVerificationsById
+     * Build call for getComplianceVerificationsById
      * @param id ID is the verification to act on, from the path. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1212,7 +1212,7 @@ public class ComplianceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1ComplianceVerificationsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getComplianceVerificationsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1258,13 +1258,13 @@ public class ComplianceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1ComplianceVerificationsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getComplianceVerificationsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getV1ComplianceVerificationsById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getComplianceVerificationsById(Async)");
         }
 
-        return getV1ComplianceVerificationsByIdCall(id, _callback);
+        return getComplianceVerificationsByIdCall(id, _callback);
 
     }
 
@@ -1281,8 +1281,8 @@ public class ComplianceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public CheckView getV1ComplianceVerificationsById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<CheckView> localVarResp = getV1ComplianceVerificationsByIdWithHttpInfo(id);
+    public CheckView getComplianceVerificationsById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<CheckView> localVarResp = getComplianceVerificationsByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -1299,8 +1299,8 @@ public class ComplianceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CheckView> getV1ComplianceVerificationsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = getV1ComplianceVerificationsByIdValidateBeforeCall(id, null);
+    public ApiResponse<CheckView> getComplianceVerificationsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getComplianceVerificationsByIdValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<CheckView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1319,15 +1319,15 @@ public class ComplianceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1ComplianceVerificationsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<CheckView> _callback) throws ApiException {
+    public okhttp3.Call getComplianceVerificationsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<CheckView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1ComplianceVerificationsByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = getComplianceVerificationsByIdValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<CheckView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1ComplianceAccreditation
+     * Build call for postComplianceAccreditation
      * @param accreditationReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1339,7 +1339,7 @@ public class ComplianceApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1ComplianceAccreditationCall(@javax.annotation.Nonnull AccreditationReq accreditationReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postComplianceAccreditationCall(@javax.annotation.Nonnull AccreditationReq accreditationReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1385,13 +1385,13 @@ public class ComplianceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1ComplianceAccreditationValidateBeforeCall(@javax.annotation.Nonnull AccreditationReq accreditationReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postComplianceAccreditationValidateBeforeCall(@javax.annotation.Nonnull AccreditationReq accreditationReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'accreditationReq' is set
         if (accreditationReq == null) {
-            throw new ApiException("Missing the required parameter 'accreditationReq' when calling postV1ComplianceAccreditation(Async)");
+            throw new ApiException("Missing the required parameter 'accreditationReq' when calling postComplianceAccreditation(Async)");
         }
 
-        return postV1ComplianceAccreditationCall(accreditationReq, _callback);
+        return postComplianceAccreditationCall(accreditationReq, _callback);
 
     }
 
@@ -1408,8 +1408,8 @@ public class ComplianceApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public AccView postV1ComplianceAccreditation(@javax.annotation.Nonnull AccreditationReq accreditationReq) throws ApiException {
-        ApiResponse<AccView> localVarResp = postV1ComplianceAccreditationWithHttpInfo(accreditationReq);
+    public AccView postComplianceAccreditation(@javax.annotation.Nonnull AccreditationReq accreditationReq) throws ApiException {
+        ApiResponse<AccView> localVarResp = postComplianceAccreditationWithHttpInfo(accreditationReq);
         return localVarResp.getData();
     }
 
@@ -1426,8 +1426,8 @@ public class ComplianceApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AccView> postV1ComplianceAccreditationWithHttpInfo(@javax.annotation.Nonnull AccreditationReq accreditationReq) throws ApiException {
-        okhttp3.Call localVarCall = postV1ComplianceAccreditationValidateBeforeCall(accreditationReq, null);
+    public ApiResponse<AccView> postComplianceAccreditationWithHttpInfo(@javax.annotation.Nonnull AccreditationReq accreditationReq) throws ApiException {
+        okhttp3.Call localVarCall = postComplianceAccreditationValidateBeforeCall(accreditationReq, null);
         Type localVarReturnType = new TypeToken<AccView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1446,15 +1446,15 @@ public class ComplianceApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1ComplianceAccreditationAsync(@javax.annotation.Nonnull AccreditationReq accreditationReq, final ApiCallback<AccView> _callback) throws ApiException {
+    public okhttp3.Call postComplianceAccreditationAsync(@javax.annotation.Nonnull AccreditationReq accreditationReq, final ApiCallback<AccView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1ComplianceAccreditationValidateBeforeCall(accreditationReq, _callback);
+        okhttp3.Call localVarCall = postComplianceAccreditationValidateBeforeCall(accreditationReq, _callback);
         Type localVarReturnType = new TypeToken<AccView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1ComplianceAccreditationByIdDecision
+     * Build call for postComplianceAccreditationByIdDecision
      * @param id ID is the accreditation record to decide, from the path. (required)
      * @param accreditationDecision  (required)
      * @param _callback Callback for upload/download progress
@@ -1467,7 +1467,7 @@ public class ComplianceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1ComplianceAccreditationByIdDecisionCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AccreditationDecision accreditationDecision, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postComplianceAccreditationByIdDecisionCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AccreditationDecision accreditationDecision, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1514,18 +1514,18 @@ public class ComplianceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1ComplianceAccreditationByIdDecisionValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AccreditationDecision accreditationDecision, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postComplianceAccreditationByIdDecisionValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AccreditationDecision accreditationDecision, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling postV1ComplianceAccreditationByIdDecision(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling postComplianceAccreditationByIdDecision(Async)");
         }
 
         // verify the required parameter 'accreditationDecision' is set
         if (accreditationDecision == null) {
-            throw new ApiException("Missing the required parameter 'accreditationDecision' when calling postV1ComplianceAccreditationByIdDecision(Async)");
+            throw new ApiException("Missing the required parameter 'accreditationDecision' when calling postComplianceAccreditationByIdDecision(Async)");
         }
 
-        return postV1ComplianceAccreditationByIdDecisionCall(id, accreditationDecision, _callback);
+        return postComplianceAccreditationByIdDecisionCall(id, accreditationDecision, _callback);
 
     }
 
@@ -1543,8 +1543,8 @@ public class ComplianceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public AccView postV1ComplianceAccreditationByIdDecision(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AccreditationDecision accreditationDecision) throws ApiException {
-        ApiResponse<AccView> localVarResp = postV1ComplianceAccreditationByIdDecisionWithHttpInfo(id, accreditationDecision);
+    public AccView postComplianceAccreditationByIdDecision(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AccreditationDecision accreditationDecision) throws ApiException {
+        ApiResponse<AccView> localVarResp = postComplianceAccreditationByIdDecisionWithHttpInfo(id, accreditationDecision);
         return localVarResp.getData();
     }
 
@@ -1562,8 +1562,8 @@ public class ComplianceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AccView> postV1ComplianceAccreditationByIdDecisionWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AccreditationDecision accreditationDecision) throws ApiException {
-        okhttp3.Call localVarCall = postV1ComplianceAccreditationByIdDecisionValidateBeforeCall(id, accreditationDecision, null);
+    public ApiResponse<AccView> postComplianceAccreditationByIdDecisionWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AccreditationDecision accreditationDecision) throws ApiException {
+        okhttp3.Call localVarCall = postComplianceAccreditationByIdDecisionValidateBeforeCall(id, accreditationDecision, null);
         Type localVarReturnType = new TypeToken<AccView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1583,15 +1583,15 @@ public class ComplianceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1ComplianceAccreditationByIdDecisionAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AccreditationDecision accreditationDecision, final ApiCallback<AccView> _callback) throws ApiException {
+    public okhttp3.Call postComplianceAccreditationByIdDecisionAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull AccreditationDecision accreditationDecision, final ApiCallback<AccView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1ComplianceAccreditationByIdDecisionValidateBeforeCall(id, accreditationDecision, _callback);
+        okhttp3.Call localVarCall = postComplianceAccreditationByIdDecisionValidateBeforeCall(id, accreditationDecision, _callback);
         Type localVarReturnType = new TypeToken<AccView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1ComplianceSubjects
+     * Build call for postComplianceSubjects
      * @param subjectReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1603,7 +1603,7 @@ public class ComplianceApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1ComplianceSubjectsCall(@javax.annotation.Nonnull SubjectReq subjectReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postComplianceSubjectsCall(@javax.annotation.Nonnull SubjectReq subjectReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1649,13 +1649,13 @@ public class ComplianceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1ComplianceSubjectsValidateBeforeCall(@javax.annotation.Nonnull SubjectReq subjectReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postComplianceSubjectsValidateBeforeCall(@javax.annotation.Nonnull SubjectReq subjectReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'subjectReq' is set
         if (subjectReq == null) {
-            throw new ApiException("Missing the required parameter 'subjectReq' when calling postV1ComplianceSubjects(Async)");
+            throw new ApiException("Missing the required parameter 'subjectReq' when calling postComplianceSubjects(Async)");
         }
 
-        return postV1ComplianceSubjectsCall(subjectReq, _callback);
+        return postComplianceSubjectsCall(subjectReq, _callback);
 
     }
 
@@ -1672,8 +1672,8 @@ public class ComplianceApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public Subject postV1ComplianceSubjects(@javax.annotation.Nonnull SubjectReq subjectReq) throws ApiException {
-        ApiResponse<Subject> localVarResp = postV1ComplianceSubjectsWithHttpInfo(subjectReq);
+    public Subject postComplianceSubjects(@javax.annotation.Nonnull SubjectReq subjectReq) throws ApiException {
+        ApiResponse<Subject> localVarResp = postComplianceSubjectsWithHttpInfo(subjectReq);
         return localVarResp.getData();
     }
 
@@ -1690,8 +1690,8 @@ public class ComplianceApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Subject> postV1ComplianceSubjectsWithHttpInfo(@javax.annotation.Nonnull SubjectReq subjectReq) throws ApiException {
-        okhttp3.Call localVarCall = postV1ComplianceSubjectsValidateBeforeCall(subjectReq, null);
+    public ApiResponse<Subject> postComplianceSubjectsWithHttpInfo(@javax.annotation.Nonnull SubjectReq subjectReq) throws ApiException {
+        okhttp3.Call localVarCall = postComplianceSubjectsValidateBeforeCall(subjectReq, null);
         Type localVarReturnType = new TypeToken<Subject>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1710,15 +1710,15 @@ public class ComplianceApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1ComplianceSubjectsAsync(@javax.annotation.Nonnull SubjectReq subjectReq, final ApiCallback<Subject> _callback) throws ApiException {
+    public okhttp3.Call postComplianceSubjectsAsync(@javax.annotation.Nonnull SubjectReq subjectReq, final ApiCallback<Subject> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1ComplianceSubjectsValidateBeforeCall(subjectReq, _callback);
+        okhttp3.Call localVarCall = postComplianceSubjectsValidateBeforeCall(subjectReq, _callback);
         Type localVarReturnType = new TypeToken<Subject>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1ComplianceVerifications
+     * Build call for postComplianceVerifications
      * @param verificationReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1730,7 +1730,7 @@ public class ComplianceApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1ComplianceVerificationsCall(@javax.annotation.Nonnull VerificationReq verificationReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postComplianceVerificationsCall(@javax.annotation.Nonnull VerificationReq verificationReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1776,13 +1776,13 @@ public class ComplianceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1ComplianceVerificationsValidateBeforeCall(@javax.annotation.Nonnull VerificationReq verificationReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postComplianceVerificationsValidateBeforeCall(@javax.annotation.Nonnull VerificationReq verificationReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'verificationReq' is set
         if (verificationReq == null) {
-            throw new ApiException("Missing the required parameter 'verificationReq' when calling postV1ComplianceVerifications(Async)");
+            throw new ApiException("Missing the required parameter 'verificationReq' when calling postComplianceVerifications(Async)");
         }
 
-        return postV1ComplianceVerificationsCall(verificationReq, _callback);
+        return postComplianceVerificationsCall(verificationReq, _callback);
 
     }
 
@@ -1799,8 +1799,8 @@ public class ComplianceApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public CheckView postV1ComplianceVerifications(@javax.annotation.Nonnull VerificationReq verificationReq) throws ApiException {
-        ApiResponse<CheckView> localVarResp = postV1ComplianceVerificationsWithHttpInfo(verificationReq);
+    public CheckView postComplianceVerifications(@javax.annotation.Nonnull VerificationReq verificationReq) throws ApiException {
+        ApiResponse<CheckView> localVarResp = postComplianceVerificationsWithHttpInfo(verificationReq);
         return localVarResp.getData();
     }
 
@@ -1817,8 +1817,8 @@ public class ComplianceApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CheckView> postV1ComplianceVerificationsWithHttpInfo(@javax.annotation.Nonnull VerificationReq verificationReq) throws ApiException {
-        okhttp3.Call localVarCall = postV1ComplianceVerificationsValidateBeforeCall(verificationReq, null);
+    public ApiResponse<CheckView> postComplianceVerificationsWithHttpInfo(@javax.annotation.Nonnull VerificationReq verificationReq) throws ApiException {
+        okhttp3.Call localVarCall = postComplianceVerificationsValidateBeforeCall(verificationReq, null);
         Type localVarReturnType = new TypeToken<CheckView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1837,15 +1837,15 @@ public class ComplianceApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1ComplianceVerificationsAsync(@javax.annotation.Nonnull VerificationReq verificationReq, final ApiCallback<CheckView> _callback) throws ApiException {
+    public okhttp3.Call postComplianceVerificationsAsync(@javax.annotation.Nonnull VerificationReq verificationReq, final ApiCallback<CheckView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1ComplianceVerificationsValidateBeforeCall(verificationReq, _callback);
+        okhttp3.Call localVarCall = postComplianceVerificationsValidateBeforeCall(verificationReq, _callback);
         Type localVarReturnType = new TypeToken<CheckView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1ComplianceVerificationsByIdDecision
+     * Build call for postComplianceVerificationsByIdDecision
      * @param id ID is the verification to decide, from the path. (required)
      * @param verificationDecision  (required)
      * @param _callback Callback for upload/download progress
@@ -1858,7 +1858,7 @@ public class ComplianceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1ComplianceVerificationsByIdDecisionCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull VerificationDecision verificationDecision, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postComplianceVerificationsByIdDecisionCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull VerificationDecision verificationDecision, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1905,18 +1905,18 @@ public class ComplianceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1ComplianceVerificationsByIdDecisionValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull VerificationDecision verificationDecision, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postComplianceVerificationsByIdDecisionValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull VerificationDecision verificationDecision, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling postV1ComplianceVerificationsByIdDecision(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling postComplianceVerificationsByIdDecision(Async)");
         }
 
         // verify the required parameter 'verificationDecision' is set
         if (verificationDecision == null) {
-            throw new ApiException("Missing the required parameter 'verificationDecision' when calling postV1ComplianceVerificationsByIdDecision(Async)");
+            throw new ApiException("Missing the required parameter 'verificationDecision' when calling postComplianceVerificationsByIdDecision(Async)");
         }
 
-        return postV1ComplianceVerificationsByIdDecisionCall(id, verificationDecision, _callback);
+        return postComplianceVerificationsByIdDecisionCall(id, verificationDecision, _callback);
 
     }
 
@@ -1934,8 +1934,8 @@ public class ComplianceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public CheckView postV1ComplianceVerificationsByIdDecision(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull VerificationDecision verificationDecision) throws ApiException {
-        ApiResponse<CheckView> localVarResp = postV1ComplianceVerificationsByIdDecisionWithHttpInfo(id, verificationDecision);
+    public CheckView postComplianceVerificationsByIdDecision(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull VerificationDecision verificationDecision) throws ApiException {
+        ApiResponse<CheckView> localVarResp = postComplianceVerificationsByIdDecisionWithHttpInfo(id, verificationDecision);
         return localVarResp.getData();
     }
 
@@ -1953,8 +1953,8 @@ public class ComplianceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CheckView> postV1ComplianceVerificationsByIdDecisionWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull VerificationDecision verificationDecision) throws ApiException {
-        okhttp3.Call localVarCall = postV1ComplianceVerificationsByIdDecisionValidateBeforeCall(id, verificationDecision, null);
+    public ApiResponse<CheckView> postComplianceVerificationsByIdDecisionWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull VerificationDecision verificationDecision) throws ApiException {
+        okhttp3.Call localVarCall = postComplianceVerificationsByIdDecisionValidateBeforeCall(id, verificationDecision, null);
         Type localVarReturnType = new TypeToken<CheckView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1974,15 +1974,15 @@ public class ComplianceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1ComplianceVerificationsByIdDecisionAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull VerificationDecision verificationDecision, final ApiCallback<CheckView> _callback) throws ApiException {
+    public okhttp3.Call postComplianceVerificationsByIdDecisionAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull VerificationDecision verificationDecision, final ApiCallback<CheckView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1ComplianceVerificationsByIdDecisionValidateBeforeCall(id, verificationDecision, _callback);
+        okhttp3.Call localVarCall = postComplianceVerificationsByIdDecisionValidateBeforeCall(id, verificationDecision, _callback);
         Type localVarReturnType = new TypeToken<CheckView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1ComplianceVerificationsByIdRefresh
+     * Build call for postComplianceVerificationsByIdRefresh
      * @param id ID is the verification to act on, from the path. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1994,7 +1994,7 @@ public class ComplianceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1ComplianceVerificationsByIdRefreshCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postComplianceVerificationsByIdRefreshCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2040,13 +2040,13 @@ public class ComplianceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1ComplianceVerificationsByIdRefreshValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postComplianceVerificationsByIdRefreshValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling postV1ComplianceVerificationsByIdRefresh(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling postComplianceVerificationsByIdRefresh(Async)");
         }
 
-        return postV1ComplianceVerificationsByIdRefreshCall(id, _callback);
+        return postComplianceVerificationsByIdRefreshCall(id, _callback);
 
     }
 
@@ -2063,8 +2063,8 @@ public class ComplianceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public CheckView postV1ComplianceVerificationsByIdRefresh(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<CheckView> localVarResp = postV1ComplianceVerificationsByIdRefreshWithHttpInfo(id);
+    public CheckView postComplianceVerificationsByIdRefresh(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<CheckView> localVarResp = postComplianceVerificationsByIdRefreshWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -2081,8 +2081,8 @@ public class ComplianceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CheckView> postV1ComplianceVerificationsByIdRefreshWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = postV1ComplianceVerificationsByIdRefreshValidateBeforeCall(id, null);
+    public ApiResponse<CheckView> postComplianceVerificationsByIdRefreshWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = postComplianceVerificationsByIdRefreshValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<CheckView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2101,20 +2101,20 @@ public class ComplianceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1ComplianceVerificationsByIdRefreshAsync(@javax.annotation.Nonnull String id, final ApiCallback<CheckView> _callback) throws ApiException {
+    public okhttp3.Call postComplianceVerificationsByIdRefreshAsync(@javax.annotation.Nonnull String id, final ApiCallback<CheckView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1ComplianceVerificationsByIdRefreshValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = postComplianceVerificationsByIdRefreshValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<CheckView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1ComplianceVerificationsWebhook
+     * Build call for postComplianceVerificationsWebhook
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1ComplianceVerificationsWebhookCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postComplianceVerificationsWebhookCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2158,8 +2158,8 @@ public class ComplianceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1ComplianceVerificationsWebhookValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1ComplianceVerificationsWebhookCall(_callback);
+    private okhttp3.Call postComplianceVerificationsWebhookValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postComplianceVerificationsWebhookCall(_callback);
 
     }
 
@@ -2168,8 +2168,8 @@ public class ComplianceApi {
      * The external PUSH reconcile: a verification provider (or a Hanzo relay) signals that a check settled, and the reconciled check comes back. It authenticates by an HMAC SIGNATURE over the RAW body bytes rather than by a principal — an external caller has no validated org — and the org is then resolved FROM the record the signed provider reference matches, so a call can only ever touch the one tenant that owns that reference.  The body carries NO trusted decision. A valid signature cannot force a status: the reference only says WHICH check to re-read, and the status is then pulled from the wired provider, which stays the source of truth. With no real provider configured a check stays pending, and the only route to a passing status is the role-gated, attributed reviewer decision.  An unknown reference is a benign 200 &#x60;{\&quot;ignored\&quot;: ...}&#x60; no-op, not an error, so a provider replaying stale events neither retry-storms nor learns whether a reference exists in some other tenant. Fails closed otherwise: 501 unless a webhook secret is configured, 401 on a signature that does not verify, 400 with no provider reference, 413 over 1 MiB, and 502 if the secret or the provider is unreachable.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1ComplianceVerificationsWebhook() throws ApiException {
-        postV1ComplianceVerificationsWebhookWithHttpInfo();
+    public void postComplianceVerificationsWebhook() throws ApiException {
+        postComplianceVerificationsWebhookWithHttpInfo();
     }
 
     /**
@@ -2178,8 +2178,8 @@ public class ComplianceApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1ComplianceVerificationsWebhookWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1ComplianceVerificationsWebhookValidateBeforeCall(null);
+    public ApiResponse<Void> postComplianceVerificationsWebhookWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postComplianceVerificationsWebhookValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -2190,9 +2190,9 @@ public class ComplianceApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1ComplianceVerificationsWebhookAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postComplianceVerificationsWebhookAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1ComplianceVerificationsWebhookValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postComplianceVerificationsWebhookValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

@@ -84,7 +84,7 @@ public class CodingStarted {
   }
 
   /**
-   * Get branch
+   * Branch is the ref the run will push its work to, and the ONLY ref it is permitted to write. It exists before the work does, so it is safe to tell somebody where to look while the run is still going.
    * @return branch
    */
   @javax.annotation.Nullable
@@ -103,7 +103,7 @@ public class CodingStarted {
   }
 
   /**
-   * Get repo
+   * Repo is the repository the run was admitted against, echoed back as the engine resolved it.
    * @return repo
    */
   @javax.annotation.Nullable
@@ -122,7 +122,7 @@ public class CodingStarted {
   }
 
   /**
-   * Get routed
+   * Routed says the run went to one of the org&#39;s own registered machines rather than to a sandbox in our cluster. False is the ordinary case.
    * @return routed
    */
   @javax.annotation.Nullable
@@ -141,7 +141,7 @@ public class CodingStarted {
   }
 
   /**
-   * Get sessionId
+   * SessionID is the run&#39;s handle: its durable record, and the id its live progress streams under at /v1/agents/sessions/{sessionId}/stream. Every later question about this run is asked with it.
    * @return sessionId
    */
   @javax.annotation.Nullable
@@ -160,7 +160,7 @@ public class CodingStarted {
   }
 
   /**
-   * Get targetId
+   * TargetID names that machine when Routed is true, and is empty otherwise.
    * @return targetId
    */
   @javax.annotation.Nullable

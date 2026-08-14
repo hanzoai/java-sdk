@@ -74,7 +74,7 @@ public class BotsApi {
     }
 
     /**
-     * Build call for getV1Bots
+     * Build call for getBots
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -85,7 +85,7 @@ public class BotsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1BotsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getBotsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -130,8 +130,8 @@ public class BotsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1BotsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1BotsCall(_callback);
+    private okhttp3.Call getBotsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getBotsCall(_callback);
 
     }
 
@@ -147,8 +147,8 @@ public class BotsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public BotRuns getV1Bots() throws ApiException {
-        ApiResponse<BotRuns> localVarResp = getV1BotsWithHttpInfo();
+    public BotRuns getBots() throws ApiException {
+        ApiResponse<BotRuns> localVarResp = getBotsWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -164,8 +164,8 @@ public class BotsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BotRuns> getV1BotsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1BotsValidateBeforeCall(null);
+    public ApiResponse<BotRuns> getBotsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getBotsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<BotRuns>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -183,15 +183,15 @@ public class BotsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1BotsAsync(final ApiCallback<BotRuns> _callback) throws ApiException {
+    public okhttp3.Call getBotsAsync(final ApiCallback<BotRuns> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1BotsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getBotsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<BotRuns>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1BotsByRunidStop
+     * Build call for postBotsByRunidStop
      * @param runId  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -203,7 +203,7 @@ public class BotsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1BotsByRunidStopCall(@javax.annotation.Nonnull String runId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postBotsByRunidStopCall(@javax.annotation.Nonnull String runId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -249,13 +249,13 @@ public class BotsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1BotsByRunidStopValidateBeforeCall(@javax.annotation.Nonnull String runId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postBotsByRunidStopValidateBeforeCall(@javax.annotation.Nonnull String runId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'runId' is set
         if (runId == null) {
-            throw new ApiException("Missing the required parameter 'runId' when calling postV1BotsByRunidStop(Async)");
+            throw new ApiException("Missing the required parameter 'runId' when calling postBotsByRunidStop(Async)");
         }
 
-        return postV1BotsByRunidStopCall(runId, _callback);
+        return postBotsByRunidStopCall(runId, _callback);
 
     }
 
@@ -272,8 +272,8 @@ public class BotsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public BotStopped postV1BotsByRunidStop(@javax.annotation.Nonnull String runId) throws ApiException {
-        ApiResponse<BotStopped> localVarResp = postV1BotsByRunidStopWithHttpInfo(runId);
+    public BotStopped postBotsByRunidStop(@javax.annotation.Nonnull String runId) throws ApiException {
+        ApiResponse<BotStopped> localVarResp = postBotsByRunidStopWithHttpInfo(runId);
         return localVarResp.getData();
     }
 
@@ -290,8 +290,8 @@ public class BotsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BotStopped> postV1BotsByRunidStopWithHttpInfo(@javax.annotation.Nonnull String runId) throws ApiException {
-        okhttp3.Call localVarCall = postV1BotsByRunidStopValidateBeforeCall(runId, null);
+    public ApiResponse<BotStopped> postBotsByRunidStopWithHttpInfo(@javax.annotation.Nonnull String runId) throws ApiException {
+        okhttp3.Call localVarCall = postBotsByRunidStopValidateBeforeCall(runId, null);
         Type localVarReturnType = new TypeToken<BotStopped>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -310,20 +310,20 @@ public class BotsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1BotsByRunidStopAsync(@javax.annotation.Nonnull String runId, final ApiCallback<BotStopped> _callback) throws ApiException {
+    public okhttp3.Call postBotsByRunidStopAsync(@javax.annotation.Nonnull String runId, final ApiCallback<BotStopped> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1BotsByRunidStopValidateBeforeCall(runId, _callback);
+        okhttp3.Call localVarCall = postBotsByRunidStopValidateBeforeCall(runId, _callback);
         Type localVarReturnType = new TypeToken<BotStopped>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1BotsRun
+     * Build call for postBotsRun
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1BotsRunCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postBotsRunCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -367,8 +367,8 @@ public class BotsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1BotsRunValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1BotsRunCall(_callback);
+    private okhttp3.Call postBotsRunValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postBotsRunCall(_callback);
 
     }
 
@@ -377,8 +377,8 @@ public class BotsApi {
      * Answers 501 to every call. The bot runtime exposes no launch operation, so nothing here can start a sandbox, and this address is published rather than dropped because it is reserved: routes resolve by specificity, so the &#x60;run&#x60; literal can never bind as a run id against its neighbour &#x60;/v1/bots/:runId/stop&#x60;.  The refusal is total and takes no input. The handler never reads the body, so any bytes at all — malformed JSON included — get the same 501; no run id is minted, no session URL is handed back, and no per-run fee is charged. That is the point: the earlier version minted an id the runtime had never heard of, pointed it at a VNC node that did not exist, and took real money for it.  Listing and stopping runs are live and org-scoped. Only the launch is missing, and it returns in the same change that can prove a bot boots.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1BotsRun() throws ApiException {
-        postV1BotsRunWithHttpInfo();
+    public void postBotsRun() throws ApiException {
+        postBotsRunWithHttpInfo();
     }
 
     /**
@@ -387,8 +387,8 @@ public class BotsApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1BotsRunWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1BotsRunValidateBeforeCall(null);
+    public ApiResponse<Void> postBotsRunWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postBotsRunValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -399,9 +399,9 @@ public class BotsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1BotsRunAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postBotsRunAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1BotsRunValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postBotsRunValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

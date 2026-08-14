@@ -83,7 +83,7 @@ public class LinksApi {
     }
 
     /**
-     * Build call for deleteV1LinksById
+     * Build call for deleteLinksById
      * @param id ID is the link to act on, from the path. It is scoped to the caller, so another user&#39;s or org&#39;s id is a 404. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -95,7 +95,7 @@ public class LinksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1LinksByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteLinksByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -141,13 +141,13 @@ public class LinksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1LinksByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteLinksByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling deleteV1LinksById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling deleteLinksById(Async)");
         }
 
-        return deleteV1LinksByIdCall(id, _callback);
+        return deleteLinksByIdCall(id, _callback);
 
     }
 
@@ -164,8 +164,8 @@ public class LinksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public RevokeResp deleteV1LinksById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<RevokeResp> localVarResp = deleteV1LinksByIdWithHttpInfo(id);
+    public RevokeResp deleteLinksById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<RevokeResp> localVarResp = deleteLinksByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -182,8 +182,8 @@ public class LinksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RevokeResp> deleteV1LinksByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1LinksByIdValidateBeforeCall(id, null);
+    public ApiResponse<RevokeResp> deleteLinksByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = deleteLinksByIdValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<RevokeResp>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -202,15 +202,15 @@ public class LinksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1LinksByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<RevokeResp> _callback) throws ApiException {
+    public okhttp3.Call deleteLinksByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<RevokeResp> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1LinksByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = deleteLinksByIdValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<RevokeResp>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1Links
+     * Build call for getLinks
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -221,7 +221,7 @@ public class LinksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1LinksCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getLinksCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -266,8 +266,8 @@ public class LinksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1LinksValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1LinksCall(_callback);
+    private okhttp3.Call getLinksValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getLinksCall(_callback);
 
     }
 
@@ -283,8 +283,8 @@ public class LinksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public LinkList getV1Links() throws ApiException {
-        ApiResponse<LinkList> localVarResp = getV1LinksWithHttpInfo();
+    public LinkList getLinks() throws ApiException {
+        ApiResponse<LinkList> localVarResp = getLinksWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -300,8 +300,8 @@ public class LinksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<LinkList> getV1LinksWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1LinksValidateBeforeCall(null);
+    public ApiResponse<LinkList> getLinksWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getLinksValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<LinkList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -319,15 +319,15 @@ public class LinksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1LinksAsync(final ApiCallback<LinkList> _callback) throws ApiException {
+    public okhttp3.Call getLinksAsync(final ApiCallback<LinkList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1LinksValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getLinksValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<LinkList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1LinksById
+     * Build call for getLinksById
      * @param id ID is the link to act on, from the path. It is scoped to the caller, so another user&#39;s or org&#39;s id is a 404. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -339,7 +339,7 @@ public class LinksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1LinksByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getLinksByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -385,13 +385,13 @@ public class LinksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1LinksByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getLinksByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getV1LinksById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getLinksById(Async)");
         }
 
-        return getV1LinksByIdCall(id, _callback);
+        return getLinksByIdCall(id, _callback);
 
     }
 
@@ -408,8 +408,8 @@ public class LinksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public LinkView getV1LinksById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<LinkView> localVarResp = getV1LinksByIdWithHttpInfo(id);
+    public LinkView getLinksById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<LinkView> localVarResp = getLinksByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -426,8 +426,8 @@ public class LinksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<LinkView> getV1LinksByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = getV1LinksByIdValidateBeforeCall(id, null);
+    public ApiResponse<LinkView> getLinksByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getLinksByIdValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<LinkView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -446,15 +446,15 @@ public class LinksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1LinksByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<LinkView> _callback) throws ApiException {
+    public okhttp3.Call getLinksByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<LinkView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1LinksByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = getLinksByIdValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<LinkView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1LinksDevicesByMachine
+     * Build call for getLinksDevicesByMachine
      * @param machine Machine is the machine to act on, from the path. It is scoped to the caller, so a machine with none of the caller&#39;s accounts is a 404. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -466,7 +466,7 @@ public class LinksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1LinksDevicesByMachineCall(@javax.annotation.Nonnull String machine, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getLinksDevicesByMachineCall(@javax.annotation.Nonnull String machine, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -512,13 +512,13 @@ public class LinksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1LinksDevicesByMachineValidateBeforeCall(@javax.annotation.Nonnull String machine, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getLinksDevicesByMachineValidateBeforeCall(@javax.annotation.Nonnull String machine, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'machine' is set
         if (machine == null) {
-            throw new ApiException("Missing the required parameter 'machine' when calling getV1LinksDevicesByMachine(Async)");
+            throw new ApiException("Missing the required parameter 'machine' when calling getLinksDevicesByMachine(Async)");
         }
 
-        return getV1LinksDevicesByMachineCall(machine, _callback);
+        return getLinksDevicesByMachineCall(machine, _callback);
 
     }
 
@@ -535,8 +535,8 @@ public class LinksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public DeviceView getV1LinksDevicesByMachine(@javax.annotation.Nonnull String machine) throws ApiException {
-        ApiResponse<DeviceView> localVarResp = getV1LinksDevicesByMachineWithHttpInfo(machine);
+    public DeviceView getLinksDevicesByMachine(@javax.annotation.Nonnull String machine) throws ApiException {
+        ApiResponse<DeviceView> localVarResp = getLinksDevicesByMachineWithHttpInfo(machine);
         return localVarResp.getData();
     }
 
@@ -553,8 +553,8 @@ public class LinksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DeviceView> getV1LinksDevicesByMachineWithHttpInfo(@javax.annotation.Nonnull String machine) throws ApiException {
-        okhttp3.Call localVarCall = getV1LinksDevicesByMachineValidateBeforeCall(machine, null);
+    public ApiResponse<DeviceView> getLinksDevicesByMachineWithHttpInfo(@javax.annotation.Nonnull String machine) throws ApiException {
+        okhttp3.Call localVarCall = getLinksDevicesByMachineValidateBeforeCall(machine, null);
         Type localVarReturnType = new TypeToken<DeviceView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -573,15 +573,15 @@ public class LinksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1LinksDevicesByMachineAsync(@javax.annotation.Nonnull String machine, final ApiCallback<DeviceView> _callback) throws ApiException {
+    public okhttp3.Call getLinksDevicesByMachineAsync(@javax.annotation.Nonnull String machine, final ApiCallback<DeviceView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1LinksDevicesByMachineValidateBeforeCall(machine, _callback);
+        okhttp3.Call localVarCall = getLinksDevicesByMachineValidateBeforeCall(machine, _callback);
         Type localVarReturnType = new TypeToken<DeviceView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1LinksRoute
+     * Build call for getLinksRoute
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -592,7 +592,7 @@ public class LinksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1LinksRouteCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getLinksRouteCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -637,8 +637,8 @@ public class LinksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1LinksRouteValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1LinksRouteCall(_callback);
+    private okhttp3.Call getLinksRouteValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getLinksRouteCall(_callback);
 
     }
 
@@ -654,8 +654,8 @@ public class LinksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public RoutePlan getV1LinksRoute() throws ApiException {
-        ApiResponse<RoutePlan> localVarResp = getV1LinksRouteWithHttpInfo();
+    public RoutePlan getLinksRoute() throws ApiException {
+        ApiResponse<RoutePlan> localVarResp = getLinksRouteWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -671,8 +671,8 @@ public class LinksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RoutePlan> getV1LinksRouteWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1LinksRouteValidateBeforeCall(null);
+    public ApiResponse<RoutePlan> getLinksRouteWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getLinksRouteValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<RoutePlan>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -690,15 +690,15 @@ public class LinksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1LinksRouteAsync(final ApiCallback<RoutePlan> _callback) throws ApiException {
+    public okhttp3.Call getLinksRouteAsync(final ApiCallback<RoutePlan> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1LinksRouteValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getLinksRouteValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<RoutePlan>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1LinksUsage
+     * Build call for getLinksUsage
      * @param provider Provider is the provider whose meter to read. Required. (optional)
      * @param account Account narrows to one account when a user has several with the provider. (optional)
      * @param window Window selects a window class: 6h, day, week or month. Empty reads all. (optional)
@@ -713,7 +713,7 @@ public class LinksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1LinksUsageCall(@javax.annotation.Nullable String provider, @javax.annotation.Nullable String account, @javax.annotation.Nullable String window, @javax.annotation.Nullable String range, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getLinksUsageCall(@javax.annotation.Nullable String provider, @javax.annotation.Nullable String account, @javax.annotation.Nullable String window, @javax.annotation.Nullable String range, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -774,8 +774,8 @@ public class LinksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1LinksUsageValidateBeforeCall(@javax.annotation.Nullable String provider, @javax.annotation.Nullable String account, @javax.annotation.Nullable String window, @javax.annotation.Nullable String range, final ApiCallback _callback) throws ApiException {
-        return getV1LinksUsageCall(provider, account, window, range, _callback);
+    private okhttp3.Call getLinksUsageValidateBeforeCall(@javax.annotation.Nullable String provider, @javax.annotation.Nullable String account, @javax.annotation.Nullable String window, @javax.annotation.Nullable String range, final ApiCallback _callback) throws ApiException {
+        return getLinksUsageCall(provider, account, window, range, _callback);
 
     }
 
@@ -795,8 +795,8 @@ public class LinksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public BoardResp getV1LinksUsage(@javax.annotation.Nullable String provider, @javax.annotation.Nullable String account, @javax.annotation.Nullable String window, @javax.annotation.Nullable String range) throws ApiException {
-        ApiResponse<BoardResp> localVarResp = getV1LinksUsageWithHttpInfo(provider, account, window, range);
+    public BoardResp getLinksUsage(@javax.annotation.Nullable String provider, @javax.annotation.Nullable String account, @javax.annotation.Nullable String window, @javax.annotation.Nullable String range) throws ApiException {
+        ApiResponse<BoardResp> localVarResp = getLinksUsageWithHttpInfo(provider, account, window, range);
         return localVarResp.getData();
     }
 
@@ -816,8 +816,8 @@ public class LinksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BoardResp> getV1LinksUsageWithHttpInfo(@javax.annotation.Nullable String provider, @javax.annotation.Nullable String account, @javax.annotation.Nullable String window, @javax.annotation.Nullable String range) throws ApiException {
-        okhttp3.Call localVarCall = getV1LinksUsageValidateBeforeCall(provider, account, window, range, null);
+    public ApiResponse<BoardResp> getLinksUsageWithHttpInfo(@javax.annotation.Nullable String provider, @javax.annotation.Nullable String account, @javax.annotation.Nullable String window, @javax.annotation.Nullable String range) throws ApiException {
+        okhttp3.Call localVarCall = getLinksUsageValidateBeforeCall(provider, account, window, range, null);
         Type localVarReturnType = new TypeToken<BoardResp>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -839,15 +839,15 @@ public class LinksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1LinksUsageAsync(@javax.annotation.Nullable String provider, @javax.annotation.Nullable String account, @javax.annotation.Nullable String window, @javax.annotation.Nullable String range, final ApiCallback<BoardResp> _callback) throws ApiException {
+    public okhttp3.Call getLinksUsageAsync(@javax.annotation.Nullable String provider, @javax.annotation.Nullable String account, @javax.annotation.Nullable String window, @javax.annotation.Nullable String range, final ApiCallback<BoardResp> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1LinksUsageValidateBeforeCall(provider, account, window, range, _callback);
+        okhttp3.Call localVarCall = getLinksUsageValidateBeforeCall(provider, account, window, range, _callback);
         Type localVarReturnType = new TypeToken<BoardResp>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1LinksUsageAccounts
+     * Build call for getLinksUsageAccounts
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -858,7 +858,7 @@ public class LinksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1LinksUsageAccountsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getLinksUsageAccountsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -903,8 +903,8 @@ public class LinksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1LinksUsageAccountsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1LinksUsageAccountsCall(_callback);
+    private okhttp3.Call getLinksUsageAccountsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getLinksUsageAccountsCall(_callback);
 
     }
 
@@ -920,8 +920,8 @@ public class LinksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public AccountsUsage getV1LinksUsageAccounts() throws ApiException {
-        ApiResponse<AccountsUsage> localVarResp = getV1LinksUsageAccountsWithHttpInfo();
+    public AccountsUsage getLinksUsageAccounts() throws ApiException {
+        ApiResponse<AccountsUsage> localVarResp = getLinksUsageAccountsWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -937,8 +937,8 @@ public class LinksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AccountsUsage> getV1LinksUsageAccountsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1LinksUsageAccountsValidateBeforeCall(null);
+    public ApiResponse<AccountsUsage> getLinksUsageAccountsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getLinksUsageAccountsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<AccountsUsage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -956,15 +956,15 @@ public class LinksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1LinksUsageAccountsAsync(final ApiCallback<AccountsUsage> _callback) throws ApiException {
+    public okhttp3.Call getLinksUsageAccountsAsync(final ApiCallback<AccountsUsage> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1LinksUsageAccountsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getLinksUsageAccountsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<AccountsUsage>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1LinksUsageSummary
+     * Build call for getLinksUsageSummary
      * @param range Range is the period, one of 1h, 24h, 7d or 30d; empty means 24h, and an unknown label is 400, never a silent substitution. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -976,7 +976,7 @@ public class LinksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1LinksUsageSummaryCall(@javax.annotation.Nullable String range, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getLinksUsageSummaryCall(@javax.annotation.Nullable String range, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1025,8 +1025,8 @@ public class LinksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1LinksUsageSummaryValidateBeforeCall(@javax.annotation.Nullable String range, final ApiCallback _callback) throws ApiException {
-        return getV1LinksUsageSummaryCall(range, _callback);
+    private okhttp3.Call getLinksUsageSummaryValidateBeforeCall(@javax.annotation.Nullable String range, final ApiCallback _callback) throws ApiException {
+        return getLinksUsageSummaryCall(range, _callback);
 
     }
 
@@ -1043,8 +1043,8 @@ public class LinksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public SummaryResp getV1LinksUsageSummary(@javax.annotation.Nullable String range) throws ApiException {
-        ApiResponse<SummaryResp> localVarResp = getV1LinksUsageSummaryWithHttpInfo(range);
+    public SummaryResp getLinksUsageSummary(@javax.annotation.Nullable String range) throws ApiException {
+        ApiResponse<SummaryResp> localVarResp = getLinksUsageSummaryWithHttpInfo(range);
         return localVarResp.getData();
     }
 
@@ -1061,8 +1061,8 @@ public class LinksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SummaryResp> getV1LinksUsageSummaryWithHttpInfo(@javax.annotation.Nullable String range) throws ApiException {
-        okhttp3.Call localVarCall = getV1LinksUsageSummaryValidateBeforeCall(range, null);
+    public ApiResponse<SummaryResp> getLinksUsageSummaryWithHttpInfo(@javax.annotation.Nullable String range) throws ApiException {
+        okhttp3.Call localVarCall = getLinksUsageSummaryValidateBeforeCall(range, null);
         Type localVarReturnType = new TypeToken<SummaryResp>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1081,15 +1081,15 @@ public class LinksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1LinksUsageSummaryAsync(@javax.annotation.Nullable String range, final ApiCallback<SummaryResp> _callback) throws ApiException {
+    public okhttp3.Call getLinksUsageSummaryAsync(@javax.annotation.Nullable String range, final ApiCallback<SummaryResp> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1LinksUsageSummaryValidateBeforeCall(range, _callback);
+        okhttp3.Call localVarCall = getLinksUsageSummaryValidateBeforeCall(range, _callback);
         Type localVarReturnType = new TypeToken<SummaryResp>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1Links
+     * Build call for postLinks
      * @param enrollReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1101,7 +1101,7 @@ public class LinksApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1LinksCall(@javax.annotation.Nonnull EnrollReq enrollReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postLinksCall(@javax.annotation.Nonnull EnrollReq enrollReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1147,13 +1147,13 @@ public class LinksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1LinksValidateBeforeCall(@javax.annotation.Nonnull EnrollReq enrollReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postLinksValidateBeforeCall(@javax.annotation.Nonnull EnrollReq enrollReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'enrollReq' is set
         if (enrollReq == null) {
-            throw new ApiException("Missing the required parameter 'enrollReq' when calling postV1Links(Async)");
+            throw new ApiException("Missing the required parameter 'enrollReq' when calling postLinks(Async)");
         }
 
-        return postV1LinksCall(enrollReq, _callback);
+        return postLinksCall(enrollReq, _callback);
 
     }
 
@@ -1170,8 +1170,8 @@ public class LinksApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public LinkView postV1Links(@javax.annotation.Nonnull EnrollReq enrollReq) throws ApiException {
-        ApiResponse<LinkView> localVarResp = postV1LinksWithHttpInfo(enrollReq);
+    public LinkView postLinks(@javax.annotation.Nonnull EnrollReq enrollReq) throws ApiException {
+        ApiResponse<LinkView> localVarResp = postLinksWithHttpInfo(enrollReq);
         return localVarResp.getData();
     }
 
@@ -1188,8 +1188,8 @@ public class LinksApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<LinkView> postV1LinksWithHttpInfo(@javax.annotation.Nonnull EnrollReq enrollReq) throws ApiException {
-        okhttp3.Call localVarCall = postV1LinksValidateBeforeCall(enrollReq, null);
+    public ApiResponse<LinkView> postLinksWithHttpInfo(@javax.annotation.Nonnull EnrollReq enrollReq) throws ApiException {
+        okhttp3.Call localVarCall = postLinksValidateBeforeCall(enrollReq, null);
         Type localVarReturnType = new TypeToken<LinkView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1208,15 +1208,15 @@ public class LinksApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1LinksAsync(@javax.annotation.Nonnull EnrollReq enrollReq, final ApiCallback<LinkView> _callback) throws ApiException {
+    public okhttp3.Call postLinksAsync(@javax.annotation.Nonnull EnrollReq enrollReq, final ApiCallback<LinkView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1LinksValidateBeforeCall(enrollReq, _callback);
+        okhttp3.Call localVarCall = postLinksValidateBeforeCall(enrollReq, _callback);
         Type localVarReturnType = new TypeToken<LinkView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1LinksDevicesByMachineRevoke
+     * Build call for postLinksDevicesByMachineRevoke
      * @param machine Machine is the machine to act on, from the path. It is scoped to the caller, so a machine with none of the caller&#39;s accounts is a 404. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1228,7 +1228,7 @@ public class LinksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1LinksDevicesByMachineRevokeCall(@javax.annotation.Nonnull String machine, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postLinksDevicesByMachineRevokeCall(@javax.annotation.Nonnull String machine, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1274,13 +1274,13 @@ public class LinksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1LinksDevicesByMachineRevokeValidateBeforeCall(@javax.annotation.Nonnull String machine, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postLinksDevicesByMachineRevokeValidateBeforeCall(@javax.annotation.Nonnull String machine, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'machine' is set
         if (machine == null) {
-            throw new ApiException("Missing the required parameter 'machine' when calling postV1LinksDevicesByMachineRevoke(Async)");
+            throw new ApiException("Missing the required parameter 'machine' when calling postLinksDevicesByMachineRevoke(Async)");
         }
 
-        return postV1LinksDevicesByMachineRevokeCall(machine, _callback);
+        return postLinksDevicesByMachineRevokeCall(machine, _callback);
 
     }
 
@@ -1297,8 +1297,8 @@ public class LinksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public RevokeResp postV1LinksDevicesByMachineRevoke(@javax.annotation.Nonnull String machine) throws ApiException {
-        ApiResponse<RevokeResp> localVarResp = postV1LinksDevicesByMachineRevokeWithHttpInfo(machine);
+    public RevokeResp postLinksDevicesByMachineRevoke(@javax.annotation.Nonnull String machine) throws ApiException {
+        ApiResponse<RevokeResp> localVarResp = postLinksDevicesByMachineRevokeWithHttpInfo(machine);
         return localVarResp.getData();
     }
 
@@ -1315,8 +1315,8 @@ public class LinksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RevokeResp> postV1LinksDevicesByMachineRevokeWithHttpInfo(@javax.annotation.Nonnull String machine) throws ApiException {
-        okhttp3.Call localVarCall = postV1LinksDevicesByMachineRevokeValidateBeforeCall(machine, null);
+    public ApiResponse<RevokeResp> postLinksDevicesByMachineRevokeWithHttpInfo(@javax.annotation.Nonnull String machine) throws ApiException {
+        okhttp3.Call localVarCall = postLinksDevicesByMachineRevokeValidateBeforeCall(machine, null);
         Type localVarReturnType = new TypeToken<RevokeResp>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1335,15 +1335,15 @@ public class LinksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1LinksDevicesByMachineRevokeAsync(@javax.annotation.Nonnull String machine, final ApiCallback<RevokeResp> _callback) throws ApiException {
+    public okhttp3.Call postLinksDevicesByMachineRevokeAsync(@javax.annotation.Nonnull String machine, final ApiCallback<RevokeResp> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1LinksDevicesByMachineRevokeValidateBeforeCall(machine, _callback);
+        okhttp3.Call localVarCall = postLinksDevicesByMachineRevokeValidateBeforeCall(machine, _callback);
         Type localVarReturnType = new TypeToken<RevokeResp>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1LinksUsage
+     * Build call for postLinksUsage
      * @param ingestReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1355,7 +1355,7 @@ public class LinksApi {
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1LinksUsageCall(@javax.annotation.Nonnull IngestReq ingestReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postLinksUsageCall(@javax.annotation.Nonnull IngestReq ingestReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1401,13 +1401,13 @@ public class LinksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1LinksUsageValidateBeforeCall(@javax.annotation.Nonnull IngestReq ingestReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postLinksUsageValidateBeforeCall(@javax.annotation.Nonnull IngestReq ingestReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'ingestReq' is set
         if (ingestReq == null) {
-            throw new ApiException("Missing the required parameter 'ingestReq' when calling postV1LinksUsage(Async)");
+            throw new ApiException("Missing the required parameter 'ingestReq' when calling postLinksUsage(Async)");
         }
 
-        return postV1LinksUsageCall(ingestReq, _callback);
+        return postLinksUsageCall(ingestReq, _callback);
 
     }
 
@@ -1424,8 +1424,8 @@ public class LinksApi {
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
      </table>
      */
-    public IngestResp postV1LinksUsage(@javax.annotation.Nonnull IngestReq ingestReq) throws ApiException {
-        ApiResponse<IngestResp> localVarResp = postV1LinksUsageWithHttpInfo(ingestReq);
+    public IngestResp postLinksUsage(@javax.annotation.Nonnull IngestReq ingestReq) throws ApiException {
+        ApiResponse<IngestResp> localVarResp = postLinksUsageWithHttpInfo(ingestReq);
         return localVarResp.getData();
     }
 
@@ -1442,8 +1442,8 @@ public class LinksApi {
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IngestResp> postV1LinksUsageWithHttpInfo(@javax.annotation.Nonnull IngestReq ingestReq) throws ApiException {
-        okhttp3.Call localVarCall = postV1LinksUsageValidateBeforeCall(ingestReq, null);
+    public ApiResponse<IngestResp> postLinksUsageWithHttpInfo(@javax.annotation.Nonnull IngestReq ingestReq) throws ApiException {
+        okhttp3.Call localVarCall = postLinksUsageValidateBeforeCall(ingestReq, null);
         Type localVarReturnType = new TypeToken<IngestResp>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1462,9 +1462,9 @@ public class LinksApi {
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1LinksUsageAsync(@javax.annotation.Nonnull IngestReq ingestReq, final ApiCallback<IngestResp> _callback) throws ApiException {
+    public okhttp3.Call postLinksUsageAsync(@javax.annotation.Nonnull IngestReq ingestReq, final ApiCallback<IngestResp> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1LinksUsageValidateBeforeCall(ingestReq, _callback);
+        okhttp3.Call localVarCall = postLinksUsageValidateBeforeCall(ingestReq, _callback);
         Type localVarReturnType = new TypeToken<IngestResp>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

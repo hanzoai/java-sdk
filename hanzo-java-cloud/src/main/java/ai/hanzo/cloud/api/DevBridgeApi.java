@@ -72,12 +72,12 @@ public class DevBridgeApi {
     }
 
     /**
-     * Build call for getV1DevBridge
+     * Build call for getDevBridge
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1DevBridgeCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getDevBridgeCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -121,8 +121,8 @@ public class DevBridgeApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1DevBridgeValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1DevBridgeCall(_callback);
+    private okhttp3.Call getDevBridgeValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getDevBridgeCall(_callback);
 
     }
 
@@ -131,8 +131,8 @@ public class DevBridgeApi {
      * Upgrades to WebSocket and bridges JSON-RPC messages between the browser and a hanzo-app-server instance.  In local mode (default): spawns hanzo-app-server as a child process. In remote mode (?remote&#x3D;host:port): proxies to a remote app-server via TCP.  GET /api/dev-bridge?cwd&#x3D;/path/to/project GET /api/dev-bridge?remote&#x3D;host:port&amp;cwd&#x3D;/path/to/project
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1DevBridge() throws ApiException {
-        getV1DevBridgeWithHttpInfo();
+    public void getDevBridge() throws ApiException {
+        getDevBridgeWithHttpInfo();
     }
 
     /**
@@ -141,8 +141,8 @@ public class DevBridgeApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1DevBridgeWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1DevBridgeValidateBeforeCall(null);
+    public ApiResponse<Void> getDevBridgeWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getDevBridgeValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -153,9 +153,9 @@ public class DevBridgeApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1DevBridgeAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getDevBridgeAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1DevBridgeValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getDevBridgeValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

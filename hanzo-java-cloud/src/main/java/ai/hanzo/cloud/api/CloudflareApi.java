@@ -83,7 +83,7 @@ public class CloudflareApi {
     }
 
     /**
-     * Build call for deleteV1CloudflareD1DatabasesByDatabase
+     * Build call for deleteCloudflareD1DatabasesByDatabase
      * @param database Database is the Cloudflare D1 database id or name. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -95,7 +95,7 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1CloudflareD1DatabasesByDatabaseCall(@javax.annotation.Nonnull String database, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteCloudflareD1DatabasesByDatabaseCall(@javax.annotation.Nonnull String database, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -141,13 +141,13 @@ public class CloudflareApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1CloudflareD1DatabasesByDatabaseValidateBeforeCall(@javax.annotation.Nonnull String database, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteCloudflareD1DatabasesByDatabaseValidateBeforeCall(@javax.annotation.Nonnull String database, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'database' is set
         if (database == null) {
-            throw new ApiException("Missing the required parameter 'database' when calling deleteV1CloudflareD1DatabasesByDatabase(Async)");
+            throw new ApiException("Missing the required parameter 'database' when calling deleteCloudflareD1DatabasesByDatabase(Async)");
         }
 
-        return deleteV1CloudflareD1DatabasesByDatabaseCall(database, _callback);
+        return deleteCloudflareD1DatabasesByDatabaseCall(database, _callback);
 
     }
 
@@ -164,8 +164,8 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Object deleteV1CloudflareD1DatabasesByDatabase(@javax.annotation.Nonnull String database) throws ApiException {
-        ApiResponse<Object> localVarResp = deleteV1CloudflareD1DatabasesByDatabaseWithHttpInfo(database);
+    public Object deleteCloudflareD1DatabasesByDatabase(@javax.annotation.Nonnull String database) throws ApiException {
+        ApiResponse<Object> localVarResp = deleteCloudflareD1DatabasesByDatabaseWithHttpInfo(database);
         return localVarResp.getData();
     }
 
@@ -182,8 +182,8 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> deleteV1CloudflareD1DatabasesByDatabaseWithHttpInfo(@javax.annotation.Nonnull String database) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1CloudflareD1DatabasesByDatabaseValidateBeforeCall(database, null);
+    public ApiResponse<Object> deleteCloudflareD1DatabasesByDatabaseWithHttpInfo(@javax.annotation.Nonnull String database) throws ApiException {
+        okhttp3.Call localVarCall = deleteCloudflareD1DatabasesByDatabaseValidateBeforeCall(database, null);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -202,15 +202,15 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1CloudflareD1DatabasesByDatabaseAsync(@javax.annotation.Nonnull String database, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call deleteCloudflareD1DatabasesByDatabaseAsync(@javax.annotation.Nonnull String database, final ApiCallback<Object> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1CloudflareD1DatabasesByDatabaseValidateBeforeCall(database, _callback);
+        okhttp3.Call localVarCall = deleteCloudflareD1DatabasesByDatabaseValidateBeforeCall(database, _callback);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for deleteV1CloudflareKvNamespacesByNamespace
+     * Build call for deleteCloudflareKvNamespacesByNamespace
      * @param namespace Namespace is the Cloudflare KV namespace id. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -222,7 +222,7 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1CloudflareKvNamespacesByNamespaceCall(@javax.annotation.Nonnull String namespace, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteCloudflareKvNamespacesByNamespaceCall(@javax.annotation.Nonnull String namespace, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -268,13 +268,13 @@ public class CloudflareApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1CloudflareKvNamespacesByNamespaceValidateBeforeCall(@javax.annotation.Nonnull String namespace, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteCloudflareKvNamespacesByNamespaceValidateBeforeCall(@javax.annotation.Nonnull String namespace, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'namespace' is set
         if (namespace == null) {
-            throw new ApiException("Missing the required parameter 'namespace' when calling deleteV1CloudflareKvNamespacesByNamespace(Async)");
+            throw new ApiException("Missing the required parameter 'namespace' when calling deleteCloudflareKvNamespacesByNamespace(Async)");
         }
 
-        return deleteV1CloudflareKvNamespacesByNamespaceCall(namespace, _callback);
+        return deleteCloudflareKvNamespacesByNamespaceCall(namespace, _callback);
 
     }
 
@@ -291,8 +291,8 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Object deleteV1CloudflareKvNamespacesByNamespace(@javax.annotation.Nonnull String namespace) throws ApiException {
-        ApiResponse<Object> localVarResp = deleteV1CloudflareKvNamespacesByNamespaceWithHttpInfo(namespace);
+    public Object deleteCloudflareKvNamespacesByNamespace(@javax.annotation.Nonnull String namespace) throws ApiException {
+        ApiResponse<Object> localVarResp = deleteCloudflareKvNamespacesByNamespaceWithHttpInfo(namespace);
         return localVarResp.getData();
     }
 
@@ -309,8 +309,8 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> deleteV1CloudflareKvNamespacesByNamespaceWithHttpInfo(@javax.annotation.Nonnull String namespace) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1CloudflareKvNamespacesByNamespaceValidateBeforeCall(namespace, null);
+    public ApiResponse<Object> deleteCloudflareKvNamespacesByNamespaceWithHttpInfo(@javax.annotation.Nonnull String namespace) throws ApiException {
+        okhttp3.Call localVarCall = deleteCloudflareKvNamespacesByNamespaceValidateBeforeCall(namespace, null);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -329,15 +329,15 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1CloudflareKvNamespacesByNamespaceAsync(@javax.annotation.Nonnull String namespace, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call deleteCloudflareKvNamespacesByNamespaceAsync(@javax.annotation.Nonnull String namespace, final ApiCallback<Object> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1CloudflareKvNamespacesByNamespaceValidateBeforeCall(namespace, _callback);
+        okhttp3.Call localVarCall = deleteCloudflareKvNamespacesByNamespaceValidateBeforeCall(namespace, _callback);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for deleteV1CloudflareKvNamespacesByNamespaceValuesByKey
+     * Build call for deleteCloudflareKvNamespacesByNamespaceValuesByKey
      * @param namespace Namespace is the Cloudflare KV namespace id. (required)
      * @param key Key is the key within that namespace. KV keys are broad (up to 512 bytes), so this one is escaped rather than charset-restricted. (required)
      * @param _callback Callback for upload/download progress
@@ -350,7 +350,7 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1CloudflareKvNamespacesByNamespaceValuesByKeyCall(@javax.annotation.Nonnull String namespace, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteCloudflareKvNamespacesByNamespaceValuesByKeyCall(@javax.annotation.Nonnull String namespace, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -397,18 +397,18 @@ public class CloudflareApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1CloudflareKvNamespacesByNamespaceValuesByKeyValidateBeforeCall(@javax.annotation.Nonnull String namespace, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteCloudflareKvNamespacesByNamespaceValuesByKeyValidateBeforeCall(@javax.annotation.Nonnull String namespace, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'namespace' is set
         if (namespace == null) {
-            throw new ApiException("Missing the required parameter 'namespace' when calling deleteV1CloudflareKvNamespacesByNamespaceValuesByKey(Async)");
+            throw new ApiException("Missing the required parameter 'namespace' when calling deleteCloudflareKvNamespacesByNamespaceValuesByKey(Async)");
         }
 
         // verify the required parameter 'key' is set
         if (key == null) {
-            throw new ApiException("Missing the required parameter 'key' when calling deleteV1CloudflareKvNamespacesByNamespaceValuesByKey(Async)");
+            throw new ApiException("Missing the required parameter 'key' when calling deleteCloudflareKvNamespacesByNamespaceValuesByKey(Async)");
         }
 
-        return deleteV1CloudflareKvNamespacesByNamespaceValuesByKeyCall(namespace, key, _callback);
+        return deleteCloudflareKvNamespacesByNamespaceValuesByKeyCall(namespace, key, _callback);
 
     }
 
@@ -426,8 +426,8 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Object deleteV1CloudflareKvNamespacesByNamespaceValuesByKey(@javax.annotation.Nonnull String namespace, @javax.annotation.Nonnull String key) throws ApiException {
-        ApiResponse<Object> localVarResp = deleteV1CloudflareKvNamespacesByNamespaceValuesByKeyWithHttpInfo(namespace, key);
+    public Object deleteCloudflareKvNamespacesByNamespaceValuesByKey(@javax.annotation.Nonnull String namespace, @javax.annotation.Nonnull String key) throws ApiException {
+        ApiResponse<Object> localVarResp = deleteCloudflareKvNamespacesByNamespaceValuesByKeyWithHttpInfo(namespace, key);
         return localVarResp.getData();
     }
 
@@ -445,8 +445,8 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> deleteV1CloudflareKvNamespacesByNamespaceValuesByKeyWithHttpInfo(@javax.annotation.Nonnull String namespace, @javax.annotation.Nonnull String key) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1CloudflareKvNamespacesByNamespaceValuesByKeyValidateBeforeCall(namespace, key, null);
+    public ApiResponse<Object> deleteCloudflareKvNamespacesByNamespaceValuesByKeyWithHttpInfo(@javax.annotation.Nonnull String namespace, @javax.annotation.Nonnull String key) throws ApiException {
+        okhttp3.Call localVarCall = deleteCloudflareKvNamespacesByNamespaceValuesByKeyValidateBeforeCall(namespace, key, null);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -466,15 +466,15 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1CloudflareKvNamespacesByNamespaceValuesByKeyAsync(@javax.annotation.Nonnull String namespace, @javax.annotation.Nonnull String key, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call deleteCloudflareKvNamespacesByNamespaceValuesByKeyAsync(@javax.annotation.Nonnull String namespace, @javax.annotation.Nonnull String key, final ApiCallback<Object> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1CloudflareKvNamespacesByNamespaceValuesByKeyValidateBeforeCall(namespace, key, _callback);
+        okhttp3.Call localVarCall = deleteCloudflareKvNamespacesByNamespaceValuesByKeyValidateBeforeCall(namespace, key, _callback);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for deleteV1CloudflarePagesProjectsByProject
+     * Build call for deleteCloudflarePagesProjectsByProject
      * @param project Project is the Pages project name. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -486,7 +486,7 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1CloudflarePagesProjectsByProjectCall(@javax.annotation.Nonnull String project, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteCloudflarePagesProjectsByProjectCall(@javax.annotation.Nonnull String project, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -532,13 +532,13 @@ public class CloudflareApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1CloudflarePagesProjectsByProjectValidateBeforeCall(@javax.annotation.Nonnull String project, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteCloudflarePagesProjectsByProjectValidateBeforeCall(@javax.annotation.Nonnull String project, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'project' is set
         if (project == null) {
-            throw new ApiException("Missing the required parameter 'project' when calling deleteV1CloudflarePagesProjectsByProject(Async)");
+            throw new ApiException("Missing the required parameter 'project' when calling deleteCloudflarePagesProjectsByProject(Async)");
         }
 
-        return deleteV1CloudflarePagesProjectsByProjectCall(project, _callback);
+        return deleteCloudflarePagesProjectsByProjectCall(project, _callback);
 
     }
 
@@ -555,8 +555,8 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Object deleteV1CloudflarePagesProjectsByProject(@javax.annotation.Nonnull String project) throws ApiException {
-        ApiResponse<Object> localVarResp = deleteV1CloudflarePagesProjectsByProjectWithHttpInfo(project);
+    public Object deleteCloudflarePagesProjectsByProject(@javax.annotation.Nonnull String project) throws ApiException {
+        ApiResponse<Object> localVarResp = deleteCloudflarePagesProjectsByProjectWithHttpInfo(project);
         return localVarResp.getData();
     }
 
@@ -573,8 +573,8 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> deleteV1CloudflarePagesProjectsByProjectWithHttpInfo(@javax.annotation.Nonnull String project) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1CloudflarePagesProjectsByProjectValidateBeforeCall(project, null);
+    public ApiResponse<Object> deleteCloudflarePagesProjectsByProjectWithHttpInfo(@javax.annotation.Nonnull String project) throws ApiException {
+        okhttp3.Call localVarCall = deleteCloudflarePagesProjectsByProjectValidateBeforeCall(project, null);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -593,15 +593,15 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1CloudflarePagesProjectsByProjectAsync(@javax.annotation.Nonnull String project, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call deleteCloudflarePagesProjectsByProjectAsync(@javax.annotation.Nonnull String project, final ApiCallback<Object> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1CloudflarePagesProjectsByProjectValidateBeforeCall(project, _callback);
+        okhttp3.Call localVarCall = deleteCloudflarePagesProjectsByProjectValidateBeforeCall(project, _callback);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for deleteV1CloudflarePagesProjectsByProjectDomainsByDomain
+     * Build call for deleteCloudflarePagesProjectsByProjectDomainsByDomain
      * @param project Project is the Pages project name. (required)
      * @param domain Domain is the attached custom domain to detach. (required)
      * @param _callback Callback for upload/download progress
@@ -614,7 +614,7 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1CloudflarePagesProjectsByProjectDomainsByDomainCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String domain, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteCloudflarePagesProjectsByProjectDomainsByDomainCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String domain, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -661,18 +661,18 @@ public class CloudflareApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1CloudflarePagesProjectsByProjectDomainsByDomainValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String domain, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteCloudflarePagesProjectsByProjectDomainsByDomainValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String domain, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'project' is set
         if (project == null) {
-            throw new ApiException("Missing the required parameter 'project' when calling deleteV1CloudflarePagesProjectsByProjectDomainsByDomain(Async)");
+            throw new ApiException("Missing the required parameter 'project' when calling deleteCloudflarePagesProjectsByProjectDomainsByDomain(Async)");
         }
 
         // verify the required parameter 'domain' is set
         if (domain == null) {
-            throw new ApiException("Missing the required parameter 'domain' when calling deleteV1CloudflarePagesProjectsByProjectDomainsByDomain(Async)");
+            throw new ApiException("Missing the required parameter 'domain' when calling deleteCloudflarePagesProjectsByProjectDomainsByDomain(Async)");
         }
 
-        return deleteV1CloudflarePagesProjectsByProjectDomainsByDomainCall(project, domain, _callback);
+        return deleteCloudflarePagesProjectsByProjectDomainsByDomainCall(project, domain, _callback);
 
     }
 
@@ -690,8 +690,8 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Object deleteV1CloudflarePagesProjectsByProjectDomainsByDomain(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String domain) throws ApiException {
-        ApiResponse<Object> localVarResp = deleteV1CloudflarePagesProjectsByProjectDomainsByDomainWithHttpInfo(project, domain);
+    public Object deleteCloudflarePagesProjectsByProjectDomainsByDomain(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String domain) throws ApiException {
+        ApiResponse<Object> localVarResp = deleteCloudflarePagesProjectsByProjectDomainsByDomainWithHttpInfo(project, domain);
         return localVarResp.getData();
     }
 
@@ -709,8 +709,8 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> deleteV1CloudflarePagesProjectsByProjectDomainsByDomainWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String domain) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1CloudflarePagesProjectsByProjectDomainsByDomainValidateBeforeCall(project, domain, null);
+    public ApiResponse<Object> deleteCloudflarePagesProjectsByProjectDomainsByDomainWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String domain) throws ApiException {
+        okhttp3.Call localVarCall = deleteCloudflarePagesProjectsByProjectDomainsByDomainValidateBeforeCall(project, domain, null);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -730,15 +730,15 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1CloudflarePagesProjectsByProjectDomainsByDomainAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String domain, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call deleteCloudflarePagesProjectsByProjectDomainsByDomainAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull String domain, final ApiCallback<Object> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1CloudflarePagesProjectsByProjectDomainsByDomainValidateBeforeCall(project, domain, _callback);
+        okhttp3.Call localVarCall = deleteCloudflarePagesProjectsByProjectDomainsByDomainValidateBeforeCall(project, domain, _callback);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for deleteV1CloudflareR2BucketsByBucket
+     * Build call for deleteCloudflareR2BucketsByBucket
      * @param bucket Bucket is the R2 bucket name. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -750,7 +750,7 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1CloudflareR2BucketsByBucketCall(@javax.annotation.Nonnull String bucket, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteCloudflareR2BucketsByBucketCall(@javax.annotation.Nonnull String bucket, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -796,13 +796,13 @@ public class CloudflareApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1CloudflareR2BucketsByBucketValidateBeforeCall(@javax.annotation.Nonnull String bucket, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteCloudflareR2BucketsByBucketValidateBeforeCall(@javax.annotation.Nonnull String bucket, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'bucket' is set
         if (bucket == null) {
-            throw new ApiException("Missing the required parameter 'bucket' when calling deleteV1CloudflareR2BucketsByBucket(Async)");
+            throw new ApiException("Missing the required parameter 'bucket' when calling deleteCloudflareR2BucketsByBucket(Async)");
         }
 
-        return deleteV1CloudflareR2BucketsByBucketCall(bucket, _callback);
+        return deleteCloudflareR2BucketsByBucketCall(bucket, _callback);
 
     }
 
@@ -819,8 +819,8 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Object deleteV1CloudflareR2BucketsByBucket(@javax.annotation.Nonnull String bucket) throws ApiException {
-        ApiResponse<Object> localVarResp = deleteV1CloudflareR2BucketsByBucketWithHttpInfo(bucket);
+    public Object deleteCloudflareR2BucketsByBucket(@javax.annotation.Nonnull String bucket) throws ApiException {
+        ApiResponse<Object> localVarResp = deleteCloudflareR2BucketsByBucketWithHttpInfo(bucket);
         return localVarResp.getData();
     }
 
@@ -837,8 +837,8 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> deleteV1CloudflareR2BucketsByBucketWithHttpInfo(@javax.annotation.Nonnull String bucket) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1CloudflareR2BucketsByBucketValidateBeforeCall(bucket, null);
+    public ApiResponse<Object> deleteCloudflareR2BucketsByBucketWithHttpInfo(@javax.annotation.Nonnull String bucket) throws ApiException {
+        okhttp3.Call localVarCall = deleteCloudflareR2BucketsByBucketValidateBeforeCall(bucket, null);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -857,15 +857,15 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1CloudflareR2BucketsByBucketAsync(@javax.annotation.Nonnull String bucket, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call deleteCloudflareR2BucketsByBucketAsync(@javax.annotation.Nonnull String bucket, final ApiCallback<Object> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1CloudflareR2BucketsByBucketValidateBeforeCall(bucket, _callback);
+        okhttp3.Call localVarCall = deleteCloudflareR2BucketsByBucketValidateBeforeCall(bucket, _callback);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for deleteV1CloudflareWorkersScriptsByScript
+     * Build call for deleteCloudflareWorkersScriptsByScript
      * @param script Script is the Worker script name. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -877,7 +877,7 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1CloudflareWorkersScriptsByScriptCall(@javax.annotation.Nonnull String script, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteCloudflareWorkersScriptsByScriptCall(@javax.annotation.Nonnull String script, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -923,13 +923,13 @@ public class CloudflareApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1CloudflareWorkersScriptsByScriptValidateBeforeCall(@javax.annotation.Nonnull String script, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteCloudflareWorkersScriptsByScriptValidateBeforeCall(@javax.annotation.Nonnull String script, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'script' is set
         if (script == null) {
-            throw new ApiException("Missing the required parameter 'script' when calling deleteV1CloudflareWorkersScriptsByScript(Async)");
+            throw new ApiException("Missing the required parameter 'script' when calling deleteCloudflareWorkersScriptsByScript(Async)");
         }
 
-        return deleteV1CloudflareWorkersScriptsByScriptCall(script, _callback);
+        return deleteCloudflareWorkersScriptsByScriptCall(script, _callback);
 
     }
 
@@ -946,8 +946,8 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Object deleteV1CloudflareWorkersScriptsByScript(@javax.annotation.Nonnull String script) throws ApiException {
-        ApiResponse<Object> localVarResp = deleteV1CloudflareWorkersScriptsByScriptWithHttpInfo(script);
+    public Object deleteCloudflareWorkersScriptsByScript(@javax.annotation.Nonnull String script) throws ApiException {
+        ApiResponse<Object> localVarResp = deleteCloudflareWorkersScriptsByScriptWithHttpInfo(script);
         return localVarResp.getData();
     }
 
@@ -964,8 +964,8 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> deleteV1CloudflareWorkersScriptsByScriptWithHttpInfo(@javax.annotation.Nonnull String script) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1CloudflareWorkersScriptsByScriptValidateBeforeCall(script, null);
+    public ApiResponse<Object> deleteCloudflareWorkersScriptsByScriptWithHttpInfo(@javax.annotation.Nonnull String script) throws ApiException {
+        okhttp3.Call localVarCall = deleteCloudflareWorkersScriptsByScriptValidateBeforeCall(script, null);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -984,15 +984,15 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1CloudflareWorkersScriptsByScriptAsync(@javax.annotation.Nonnull String script, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call deleteCloudflareWorkersScriptsByScriptAsync(@javax.annotation.Nonnull String script, final ApiCallback<Object> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1CloudflareWorkersScriptsByScriptValidateBeforeCall(script, _callback);
+        okhttp3.Call localVarCall = deleteCloudflareWorkersScriptsByScriptValidateBeforeCall(script, _callback);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for deleteV1CloudflareWorkersZonesByZoneRoutesByRoute
+     * Build call for deleteCloudflareWorkersZonesByZoneRoutesByRoute
      * @param zone Zone is the 32-hex Cloudflare zone id. (required)
      * @param route Route is the 32-hex Cloudflare route id. (required)
      * @param _callback Callback for upload/download progress
@@ -1005,7 +1005,7 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1CloudflareWorkersZonesByZoneRoutesByRouteCall(@javax.annotation.Nonnull String zone, @javax.annotation.Nonnull String route, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteCloudflareWorkersZonesByZoneRoutesByRouteCall(@javax.annotation.Nonnull String zone, @javax.annotation.Nonnull String route, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1052,18 +1052,18 @@ public class CloudflareApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1CloudflareWorkersZonesByZoneRoutesByRouteValidateBeforeCall(@javax.annotation.Nonnull String zone, @javax.annotation.Nonnull String route, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteCloudflareWorkersZonesByZoneRoutesByRouteValidateBeforeCall(@javax.annotation.Nonnull String zone, @javax.annotation.Nonnull String route, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'zone' is set
         if (zone == null) {
-            throw new ApiException("Missing the required parameter 'zone' when calling deleteV1CloudflareWorkersZonesByZoneRoutesByRoute(Async)");
+            throw new ApiException("Missing the required parameter 'zone' when calling deleteCloudflareWorkersZonesByZoneRoutesByRoute(Async)");
         }
 
         // verify the required parameter 'route' is set
         if (route == null) {
-            throw new ApiException("Missing the required parameter 'route' when calling deleteV1CloudflareWorkersZonesByZoneRoutesByRoute(Async)");
+            throw new ApiException("Missing the required parameter 'route' when calling deleteCloudflareWorkersZonesByZoneRoutesByRoute(Async)");
         }
 
-        return deleteV1CloudflareWorkersZonesByZoneRoutesByRouteCall(zone, route, _callback);
+        return deleteCloudflareWorkersZonesByZoneRoutesByRouteCall(zone, route, _callback);
 
     }
 
@@ -1081,8 +1081,8 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Object deleteV1CloudflareWorkersZonesByZoneRoutesByRoute(@javax.annotation.Nonnull String zone, @javax.annotation.Nonnull String route) throws ApiException {
-        ApiResponse<Object> localVarResp = deleteV1CloudflareWorkersZonesByZoneRoutesByRouteWithHttpInfo(zone, route);
+    public Object deleteCloudflareWorkersZonesByZoneRoutesByRoute(@javax.annotation.Nonnull String zone, @javax.annotation.Nonnull String route) throws ApiException {
+        ApiResponse<Object> localVarResp = deleteCloudflareWorkersZonesByZoneRoutesByRouteWithHttpInfo(zone, route);
         return localVarResp.getData();
     }
 
@@ -1100,8 +1100,8 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> deleteV1CloudflareWorkersZonesByZoneRoutesByRouteWithHttpInfo(@javax.annotation.Nonnull String zone, @javax.annotation.Nonnull String route) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1CloudflareWorkersZonesByZoneRoutesByRouteValidateBeforeCall(zone, route, null);
+    public ApiResponse<Object> deleteCloudflareWorkersZonesByZoneRoutesByRouteWithHttpInfo(@javax.annotation.Nonnull String zone, @javax.annotation.Nonnull String route) throws ApiException {
+        okhttp3.Call localVarCall = deleteCloudflareWorkersZonesByZoneRoutesByRouteValidateBeforeCall(zone, route, null);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1121,15 +1121,15 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1CloudflareWorkersZonesByZoneRoutesByRouteAsync(@javax.annotation.Nonnull String zone, @javax.annotation.Nonnull String route, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call deleteCloudflareWorkersZonesByZoneRoutesByRouteAsync(@javax.annotation.Nonnull String zone, @javax.annotation.Nonnull String route, final ApiCallback<Object> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1CloudflareWorkersZonesByZoneRoutesByRouteValidateBeforeCall(zone, route, _callback);
+        okhttp3.Call localVarCall = deleteCloudflareWorkersZonesByZoneRoutesByRouteValidateBeforeCall(zone, route, _callback);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CloudflareD1Databases
+     * Build call for getCloudflareD1Databases
      * @param page Page is the 1-based page of databases to return. (optional)
      * @param perPage PerPage is how many databases one page holds. (optional)
      * @param name Name filters to the database with this name. (optional)
@@ -1143,7 +1143,7 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CloudflareD1DatabasesCall(@javax.annotation.Nullable String page, @javax.annotation.Nullable String perPage, @javax.annotation.Nullable String name, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCloudflareD1DatabasesCall(@javax.annotation.Nullable String page, @javax.annotation.Nullable String perPage, @javax.annotation.Nullable String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1200,8 +1200,8 @@ public class CloudflareApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CloudflareD1DatabasesValidateBeforeCall(@javax.annotation.Nullable String page, @javax.annotation.Nullable String perPage, @javax.annotation.Nullable String name, final ApiCallback _callback) throws ApiException {
-        return getV1CloudflareD1DatabasesCall(page, perPage, name, _callback);
+    private okhttp3.Call getCloudflareD1DatabasesValidateBeforeCall(@javax.annotation.Nullable String page, @javax.annotation.Nullable String perPage, @javax.annotation.Nullable String name, final ApiCallback _callback) throws ApiException {
+        return getCloudflareD1DatabasesCall(page, perPage, name, _callback);
 
     }
 
@@ -1220,8 +1220,8 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Object getV1CloudflareD1Databases(@javax.annotation.Nullable String page, @javax.annotation.Nullable String perPage, @javax.annotation.Nullable String name) throws ApiException {
-        ApiResponse<Object> localVarResp = getV1CloudflareD1DatabasesWithHttpInfo(page, perPage, name);
+    public Object getCloudflareD1Databases(@javax.annotation.Nullable String page, @javax.annotation.Nullable String perPage, @javax.annotation.Nullable String name) throws ApiException {
+        ApiResponse<Object> localVarResp = getCloudflareD1DatabasesWithHttpInfo(page, perPage, name);
         return localVarResp.getData();
     }
 
@@ -1240,8 +1240,8 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> getV1CloudflareD1DatabasesWithHttpInfo(@javax.annotation.Nullable String page, @javax.annotation.Nullable String perPage, @javax.annotation.Nullable String name) throws ApiException {
-        okhttp3.Call localVarCall = getV1CloudflareD1DatabasesValidateBeforeCall(page, perPage, name, null);
+    public ApiResponse<Object> getCloudflareD1DatabasesWithHttpInfo(@javax.annotation.Nullable String page, @javax.annotation.Nullable String perPage, @javax.annotation.Nullable String name) throws ApiException {
+        okhttp3.Call localVarCall = getCloudflareD1DatabasesValidateBeforeCall(page, perPage, name, null);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1262,15 +1262,15 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CloudflareD1DatabasesAsync(@javax.annotation.Nullable String page, @javax.annotation.Nullable String perPage, @javax.annotation.Nullable String name, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call getCloudflareD1DatabasesAsync(@javax.annotation.Nullable String page, @javax.annotation.Nullable String perPage, @javax.annotation.Nullable String name, final ApiCallback<Object> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CloudflareD1DatabasesValidateBeforeCall(page, perPage, name, _callback);
+        okhttp3.Call localVarCall = getCloudflareD1DatabasesValidateBeforeCall(page, perPage, name, _callback);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CloudflareKvNamespaces
+     * Build call for getCloudflareKvNamespaces
      * @param page Page is the 1-based page of namespaces to return. (optional)
      * @param perPage PerPage is how many namespaces one page holds. (optional)
      * @param order Order names the field to sort by, and Direction sorts asc or desc. (optional)
@@ -1285,7 +1285,7 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CloudflareKvNamespacesCall(@javax.annotation.Nullable String page, @javax.annotation.Nullable String perPage, @javax.annotation.Nullable String order, @javax.annotation.Nullable String direction, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCloudflareKvNamespacesCall(@javax.annotation.Nullable String page, @javax.annotation.Nullable String perPage, @javax.annotation.Nullable String order, @javax.annotation.Nullable String direction, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1346,8 +1346,8 @@ public class CloudflareApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CloudflareKvNamespacesValidateBeforeCall(@javax.annotation.Nullable String page, @javax.annotation.Nullable String perPage, @javax.annotation.Nullable String order, @javax.annotation.Nullable String direction, final ApiCallback _callback) throws ApiException {
-        return getV1CloudflareKvNamespacesCall(page, perPage, order, direction, _callback);
+    private okhttp3.Call getCloudflareKvNamespacesValidateBeforeCall(@javax.annotation.Nullable String page, @javax.annotation.Nullable String perPage, @javax.annotation.Nullable String order, @javax.annotation.Nullable String direction, final ApiCallback _callback) throws ApiException {
+        return getCloudflareKvNamespacesCall(page, perPage, order, direction, _callback);
 
     }
 
@@ -1367,8 +1367,8 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Object getV1CloudflareKvNamespaces(@javax.annotation.Nullable String page, @javax.annotation.Nullable String perPage, @javax.annotation.Nullable String order, @javax.annotation.Nullable String direction) throws ApiException {
-        ApiResponse<Object> localVarResp = getV1CloudflareKvNamespacesWithHttpInfo(page, perPage, order, direction);
+    public Object getCloudflareKvNamespaces(@javax.annotation.Nullable String page, @javax.annotation.Nullable String perPage, @javax.annotation.Nullable String order, @javax.annotation.Nullable String direction) throws ApiException {
+        ApiResponse<Object> localVarResp = getCloudflareKvNamespacesWithHttpInfo(page, perPage, order, direction);
         return localVarResp.getData();
     }
 
@@ -1388,8 +1388,8 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> getV1CloudflareKvNamespacesWithHttpInfo(@javax.annotation.Nullable String page, @javax.annotation.Nullable String perPage, @javax.annotation.Nullable String order, @javax.annotation.Nullable String direction) throws ApiException {
-        okhttp3.Call localVarCall = getV1CloudflareKvNamespacesValidateBeforeCall(page, perPage, order, direction, null);
+    public ApiResponse<Object> getCloudflareKvNamespacesWithHttpInfo(@javax.annotation.Nullable String page, @javax.annotation.Nullable String perPage, @javax.annotation.Nullable String order, @javax.annotation.Nullable String direction) throws ApiException {
+        okhttp3.Call localVarCall = getCloudflareKvNamespacesValidateBeforeCall(page, perPage, order, direction, null);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1411,22 +1411,22 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CloudflareKvNamespacesAsync(@javax.annotation.Nullable String page, @javax.annotation.Nullable String perPage, @javax.annotation.Nullable String order, @javax.annotation.Nullable String direction, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call getCloudflareKvNamespacesAsync(@javax.annotation.Nullable String page, @javax.annotation.Nullable String perPage, @javax.annotation.Nullable String order, @javax.annotation.Nullable String direction, final ApiCallback<Object> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CloudflareKvNamespacesValidateBeforeCall(page, perPage, order, direction, _callback);
+        okhttp3.Call localVarCall = getCloudflareKvNamespacesValidateBeforeCall(page, perPage, order, direction, _callback);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CloudflareKvNamespacesByNamespaceValuesByKey
+     * Build call for getCloudflareKvNamespacesByNamespaceValuesByKey
      * @param namespace  (required)
      * @param key  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1CloudflareKvNamespacesByNamespaceValuesByKeyCall(@javax.annotation.Nonnull String namespace, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCloudflareKvNamespacesByNamespaceValuesByKeyCall(@javax.annotation.Nonnull String namespace, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1472,18 +1472,18 @@ public class CloudflareApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CloudflareKvNamespacesByNamespaceValuesByKeyValidateBeforeCall(@javax.annotation.Nonnull String namespace, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getCloudflareKvNamespacesByNamespaceValuesByKeyValidateBeforeCall(@javax.annotation.Nonnull String namespace, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'namespace' is set
         if (namespace == null) {
-            throw new ApiException("Missing the required parameter 'namespace' when calling getV1CloudflareKvNamespacesByNamespaceValuesByKey(Async)");
+            throw new ApiException("Missing the required parameter 'namespace' when calling getCloudflareKvNamespacesByNamespaceValuesByKey(Async)");
         }
 
         // verify the required parameter 'key' is set
         if (key == null) {
-            throw new ApiException("Missing the required parameter 'key' when calling getV1CloudflareKvNamespacesByNamespaceValuesByKey(Async)");
+            throw new ApiException("Missing the required parameter 'key' when calling getCloudflareKvNamespacesByNamespaceValuesByKey(Async)");
         }
 
-        return getV1CloudflareKvNamespacesByNamespaceValuesByKeyCall(namespace, key, _callback);
+        return getCloudflareKvNamespacesByNamespaceValuesByKeyCall(namespace, key, _callback);
 
     }
 
@@ -1494,8 +1494,8 @@ public class CloudflareApi {
      * @param key  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1CloudflareKvNamespacesByNamespaceValuesByKey(@javax.annotation.Nonnull String namespace, @javax.annotation.Nonnull String key) throws ApiException {
-        getV1CloudflareKvNamespacesByNamespaceValuesByKeyWithHttpInfo(namespace, key);
+    public void getCloudflareKvNamespacesByNamespaceValuesByKey(@javax.annotation.Nonnull String namespace, @javax.annotation.Nonnull String key) throws ApiException {
+        getCloudflareKvNamespacesByNamespaceValuesByKeyWithHttpInfo(namespace, key);
     }
 
     /**
@@ -1506,8 +1506,8 @@ public class CloudflareApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1CloudflareKvNamespacesByNamespaceValuesByKeyWithHttpInfo(@javax.annotation.Nonnull String namespace, @javax.annotation.Nonnull String key) throws ApiException {
-        okhttp3.Call localVarCall = getV1CloudflareKvNamespacesByNamespaceValuesByKeyValidateBeforeCall(namespace, key, null);
+    public ApiResponse<Void> getCloudflareKvNamespacesByNamespaceValuesByKeyWithHttpInfo(@javax.annotation.Nonnull String namespace, @javax.annotation.Nonnull String key) throws ApiException {
+        okhttp3.Call localVarCall = getCloudflareKvNamespacesByNamespaceValuesByKeyValidateBeforeCall(namespace, key, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1520,14 +1520,14 @@ public class CloudflareApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1CloudflareKvNamespacesByNamespaceValuesByKeyAsync(@javax.annotation.Nonnull String namespace, @javax.annotation.Nonnull String key, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getCloudflareKvNamespacesByNamespaceValuesByKeyAsync(@javax.annotation.Nonnull String namespace, @javax.annotation.Nonnull String key, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CloudflareKvNamespacesByNamespaceValuesByKeyValidateBeforeCall(namespace, key, _callback);
+        okhttp3.Call localVarCall = getCloudflareKvNamespacesByNamespaceValuesByKeyValidateBeforeCall(namespace, key, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CloudflarePagesProjects
+     * Build call for getCloudflarePagesProjects
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1538,7 +1538,7 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CloudflarePagesProjectsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCloudflarePagesProjectsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1583,8 +1583,8 @@ public class CloudflareApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CloudflarePagesProjectsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1CloudflarePagesProjectsCall(_callback);
+    private okhttp3.Call getCloudflarePagesProjectsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getCloudflarePagesProjectsCall(_callback);
 
     }
 
@@ -1600,8 +1600,8 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Object getV1CloudflarePagesProjects() throws ApiException {
-        ApiResponse<Object> localVarResp = getV1CloudflarePagesProjectsWithHttpInfo();
+    public Object getCloudflarePagesProjects() throws ApiException {
+        ApiResponse<Object> localVarResp = getCloudflarePagesProjectsWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -1617,8 +1617,8 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> getV1CloudflarePagesProjectsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1CloudflarePagesProjectsValidateBeforeCall(null);
+    public ApiResponse<Object> getCloudflarePagesProjectsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getCloudflarePagesProjectsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1636,15 +1636,15 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CloudflarePagesProjectsAsync(final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call getCloudflarePagesProjectsAsync(final ApiCallback<Object> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CloudflarePagesProjectsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getCloudflarePagesProjectsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CloudflarePagesProjectsByProject
+     * Build call for getCloudflarePagesProjectsByProject
      * @param project Project is the Pages project name. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1656,7 +1656,7 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CloudflarePagesProjectsByProjectCall(@javax.annotation.Nonnull String project, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCloudflarePagesProjectsByProjectCall(@javax.annotation.Nonnull String project, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1702,13 +1702,13 @@ public class CloudflareApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CloudflarePagesProjectsByProjectValidateBeforeCall(@javax.annotation.Nonnull String project, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getCloudflarePagesProjectsByProjectValidateBeforeCall(@javax.annotation.Nonnull String project, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'project' is set
         if (project == null) {
-            throw new ApiException("Missing the required parameter 'project' when calling getV1CloudflarePagesProjectsByProject(Async)");
+            throw new ApiException("Missing the required parameter 'project' when calling getCloudflarePagesProjectsByProject(Async)");
         }
 
-        return getV1CloudflarePagesProjectsByProjectCall(project, _callback);
+        return getCloudflarePagesProjectsByProjectCall(project, _callback);
 
     }
 
@@ -1725,8 +1725,8 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Object getV1CloudflarePagesProjectsByProject(@javax.annotation.Nonnull String project) throws ApiException {
-        ApiResponse<Object> localVarResp = getV1CloudflarePagesProjectsByProjectWithHttpInfo(project);
+    public Object getCloudflarePagesProjectsByProject(@javax.annotation.Nonnull String project) throws ApiException {
+        ApiResponse<Object> localVarResp = getCloudflarePagesProjectsByProjectWithHttpInfo(project);
         return localVarResp.getData();
     }
 
@@ -1743,8 +1743,8 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> getV1CloudflarePagesProjectsByProjectWithHttpInfo(@javax.annotation.Nonnull String project) throws ApiException {
-        okhttp3.Call localVarCall = getV1CloudflarePagesProjectsByProjectValidateBeforeCall(project, null);
+    public ApiResponse<Object> getCloudflarePagesProjectsByProjectWithHttpInfo(@javax.annotation.Nonnull String project) throws ApiException {
+        okhttp3.Call localVarCall = getCloudflarePagesProjectsByProjectValidateBeforeCall(project, null);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1763,15 +1763,15 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CloudflarePagesProjectsByProjectAsync(@javax.annotation.Nonnull String project, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call getCloudflarePagesProjectsByProjectAsync(@javax.annotation.Nonnull String project, final ApiCallback<Object> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CloudflarePagesProjectsByProjectValidateBeforeCall(project, _callback);
+        okhttp3.Call localVarCall = getCloudflarePagesProjectsByProjectValidateBeforeCall(project, _callback);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CloudflareR2Buckets
+     * Build call for getCloudflareR2Buckets
      * @param perPage PerPage is how many buckets one page holds. (optional)
      * @param cursor Cursor continues from the position a previous page returned. (optional)
      * @param nameContains NameContains filters to buckets whose name contains this substring. (optional)
@@ -1787,7 +1787,7 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CloudflareR2BucketsCall(@javax.annotation.Nullable String perPage, @javax.annotation.Nullable String cursor, @javax.annotation.Nullable String nameContains, @javax.annotation.Nullable String order, @javax.annotation.Nullable String direction, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCloudflareR2BucketsCall(@javax.annotation.Nullable String perPage, @javax.annotation.Nullable String cursor, @javax.annotation.Nullable String nameContains, @javax.annotation.Nullable String order, @javax.annotation.Nullable String direction, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1852,8 +1852,8 @@ public class CloudflareApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CloudflareR2BucketsValidateBeforeCall(@javax.annotation.Nullable String perPage, @javax.annotation.Nullable String cursor, @javax.annotation.Nullable String nameContains, @javax.annotation.Nullable String order, @javax.annotation.Nullable String direction, final ApiCallback _callback) throws ApiException {
-        return getV1CloudflareR2BucketsCall(perPage, cursor, nameContains, order, direction, _callback);
+    private okhttp3.Call getCloudflareR2BucketsValidateBeforeCall(@javax.annotation.Nullable String perPage, @javax.annotation.Nullable String cursor, @javax.annotation.Nullable String nameContains, @javax.annotation.Nullable String order, @javax.annotation.Nullable String direction, final ApiCallback _callback) throws ApiException {
+        return getCloudflareR2BucketsCall(perPage, cursor, nameContains, order, direction, _callback);
 
     }
 
@@ -1874,8 +1874,8 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Object getV1CloudflareR2Buckets(@javax.annotation.Nullable String perPage, @javax.annotation.Nullable String cursor, @javax.annotation.Nullable String nameContains, @javax.annotation.Nullable String order, @javax.annotation.Nullable String direction) throws ApiException {
-        ApiResponse<Object> localVarResp = getV1CloudflareR2BucketsWithHttpInfo(perPage, cursor, nameContains, order, direction);
+    public Object getCloudflareR2Buckets(@javax.annotation.Nullable String perPage, @javax.annotation.Nullable String cursor, @javax.annotation.Nullable String nameContains, @javax.annotation.Nullable String order, @javax.annotation.Nullable String direction) throws ApiException {
+        ApiResponse<Object> localVarResp = getCloudflareR2BucketsWithHttpInfo(perPage, cursor, nameContains, order, direction);
         return localVarResp.getData();
     }
 
@@ -1896,8 +1896,8 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> getV1CloudflareR2BucketsWithHttpInfo(@javax.annotation.Nullable String perPage, @javax.annotation.Nullable String cursor, @javax.annotation.Nullable String nameContains, @javax.annotation.Nullable String order, @javax.annotation.Nullable String direction) throws ApiException {
-        okhttp3.Call localVarCall = getV1CloudflareR2BucketsValidateBeforeCall(perPage, cursor, nameContains, order, direction, null);
+    public ApiResponse<Object> getCloudflareR2BucketsWithHttpInfo(@javax.annotation.Nullable String perPage, @javax.annotation.Nullable String cursor, @javax.annotation.Nullable String nameContains, @javax.annotation.Nullable String order, @javax.annotation.Nullable String direction) throws ApiException {
+        okhttp3.Call localVarCall = getCloudflareR2BucketsValidateBeforeCall(perPage, cursor, nameContains, order, direction, null);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1920,15 +1920,15 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CloudflareR2BucketsAsync(@javax.annotation.Nullable String perPage, @javax.annotation.Nullable String cursor, @javax.annotation.Nullable String nameContains, @javax.annotation.Nullable String order, @javax.annotation.Nullable String direction, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call getCloudflareR2BucketsAsync(@javax.annotation.Nullable String perPage, @javax.annotation.Nullable String cursor, @javax.annotation.Nullable String nameContains, @javax.annotation.Nullable String order, @javax.annotation.Nullable String direction, final ApiCallback<Object> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CloudflareR2BucketsValidateBeforeCall(perPage, cursor, nameContains, order, direction, _callback);
+        okhttp3.Call localVarCall = getCloudflareR2BucketsValidateBeforeCall(perPage, cursor, nameContains, order, direction, _callback);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CloudflareWorkersScripts
+     * Build call for getCloudflareWorkersScripts
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1939,7 +1939,7 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CloudflareWorkersScriptsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCloudflareWorkersScriptsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1984,8 +1984,8 @@ public class CloudflareApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CloudflareWorkersScriptsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1CloudflareWorkersScriptsCall(_callback);
+    private okhttp3.Call getCloudflareWorkersScriptsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getCloudflareWorkersScriptsCall(_callback);
 
     }
 
@@ -2001,8 +2001,8 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Object getV1CloudflareWorkersScripts() throws ApiException {
-        ApiResponse<Object> localVarResp = getV1CloudflareWorkersScriptsWithHttpInfo();
+    public Object getCloudflareWorkersScripts() throws ApiException {
+        ApiResponse<Object> localVarResp = getCloudflareWorkersScriptsWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -2018,8 +2018,8 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> getV1CloudflareWorkersScriptsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1CloudflareWorkersScriptsValidateBeforeCall(null);
+    public ApiResponse<Object> getCloudflareWorkersScriptsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getCloudflareWorkersScriptsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2037,15 +2037,15 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CloudflareWorkersScriptsAsync(final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call getCloudflareWorkersScriptsAsync(final ApiCallback<Object> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CloudflareWorkersScriptsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getCloudflareWorkersScriptsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CloudflareWorkersSubdomain
+     * Build call for getCloudflareWorkersSubdomain
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2056,7 +2056,7 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CloudflareWorkersSubdomainCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCloudflareWorkersSubdomainCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2101,8 +2101,8 @@ public class CloudflareApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CloudflareWorkersSubdomainValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1CloudflareWorkersSubdomainCall(_callback);
+    private okhttp3.Call getCloudflareWorkersSubdomainValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getCloudflareWorkersSubdomainCall(_callback);
 
     }
 
@@ -2118,8 +2118,8 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Object getV1CloudflareWorkersSubdomain() throws ApiException {
-        ApiResponse<Object> localVarResp = getV1CloudflareWorkersSubdomainWithHttpInfo();
+    public Object getCloudflareWorkersSubdomain() throws ApiException {
+        ApiResponse<Object> localVarResp = getCloudflareWorkersSubdomainWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -2135,8 +2135,8 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> getV1CloudflareWorkersSubdomainWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1CloudflareWorkersSubdomainValidateBeforeCall(null);
+    public ApiResponse<Object> getCloudflareWorkersSubdomainWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getCloudflareWorkersSubdomainValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2154,15 +2154,15 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CloudflareWorkersSubdomainAsync(final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call getCloudflareWorkersSubdomainAsync(final ApiCallback<Object> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CloudflareWorkersSubdomainValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getCloudflareWorkersSubdomainValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CloudflareWorkersZonesByZoneRoutes
+     * Build call for getCloudflareWorkersZonesByZoneRoutes
      * @param zone Zone is the 32-hex Cloudflare zone id. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2174,7 +2174,7 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CloudflareWorkersZonesByZoneRoutesCall(@javax.annotation.Nonnull String zone, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCloudflareWorkersZonesByZoneRoutesCall(@javax.annotation.Nonnull String zone, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2220,13 +2220,13 @@ public class CloudflareApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CloudflareWorkersZonesByZoneRoutesValidateBeforeCall(@javax.annotation.Nonnull String zone, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getCloudflareWorkersZonesByZoneRoutesValidateBeforeCall(@javax.annotation.Nonnull String zone, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'zone' is set
         if (zone == null) {
-            throw new ApiException("Missing the required parameter 'zone' when calling getV1CloudflareWorkersZonesByZoneRoutes(Async)");
+            throw new ApiException("Missing the required parameter 'zone' when calling getCloudflareWorkersZonesByZoneRoutes(Async)");
         }
 
-        return getV1CloudflareWorkersZonesByZoneRoutesCall(zone, _callback);
+        return getCloudflareWorkersZonesByZoneRoutesCall(zone, _callback);
 
     }
 
@@ -2243,8 +2243,8 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Object getV1CloudflareWorkersZonesByZoneRoutes(@javax.annotation.Nonnull String zone) throws ApiException {
-        ApiResponse<Object> localVarResp = getV1CloudflareWorkersZonesByZoneRoutesWithHttpInfo(zone);
+    public Object getCloudflareWorkersZonesByZoneRoutes(@javax.annotation.Nonnull String zone) throws ApiException {
+        ApiResponse<Object> localVarResp = getCloudflareWorkersZonesByZoneRoutesWithHttpInfo(zone);
         return localVarResp.getData();
     }
 
@@ -2261,8 +2261,8 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> getV1CloudflareWorkersZonesByZoneRoutesWithHttpInfo(@javax.annotation.Nonnull String zone) throws ApiException {
-        okhttp3.Call localVarCall = getV1CloudflareWorkersZonesByZoneRoutesValidateBeforeCall(zone, null);
+    public ApiResponse<Object> getCloudflareWorkersZonesByZoneRoutesWithHttpInfo(@javax.annotation.Nonnull String zone) throws ApiException {
+        okhttp3.Call localVarCall = getCloudflareWorkersZonesByZoneRoutesValidateBeforeCall(zone, null);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2281,15 +2281,15 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CloudflareWorkersZonesByZoneRoutesAsync(@javax.annotation.Nonnull String zone, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call getCloudflareWorkersZonesByZoneRoutesAsync(@javax.annotation.Nonnull String zone, final ApiCallback<Object> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CloudflareWorkersZonesByZoneRoutesValidateBeforeCall(zone, _callback);
+        okhttp3.Call localVarCall = getCloudflareWorkersZonesByZoneRoutesValidateBeforeCall(zone, _callback);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CloudflareZones
+     * Build call for getCloudflareZones
      * @param page Page is the 1-based page of zones to return. (optional)
      * @param perPage PerPage is how many zones one page holds. (optional)
      * @param name Name filters to the zone with this domain name. (optional)
@@ -2306,7 +2306,7 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CloudflareZonesCall(@javax.annotation.Nullable String page, @javax.annotation.Nullable String perPage, @javax.annotation.Nullable String name, @javax.annotation.Nullable String status, @javax.annotation.Nullable String order, @javax.annotation.Nullable String direction, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCloudflareZonesCall(@javax.annotation.Nullable String page, @javax.annotation.Nullable String perPage, @javax.annotation.Nullable String name, @javax.annotation.Nullable String status, @javax.annotation.Nullable String order, @javax.annotation.Nullable String direction, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2375,8 +2375,8 @@ public class CloudflareApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CloudflareZonesValidateBeforeCall(@javax.annotation.Nullable String page, @javax.annotation.Nullable String perPage, @javax.annotation.Nullable String name, @javax.annotation.Nullable String status, @javax.annotation.Nullable String order, @javax.annotation.Nullable String direction, final ApiCallback _callback) throws ApiException {
-        return getV1CloudflareZonesCall(page, perPage, name, status, order, direction, _callback);
+    private okhttp3.Call getCloudflareZonesValidateBeforeCall(@javax.annotation.Nullable String page, @javax.annotation.Nullable String perPage, @javax.annotation.Nullable String name, @javax.annotation.Nullable String status, @javax.annotation.Nullable String order, @javax.annotation.Nullable String direction, final ApiCallback _callback) throws ApiException {
+        return getCloudflareZonesCall(page, perPage, name, status, order, direction, _callback);
 
     }
 
@@ -2398,8 +2398,8 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Object getV1CloudflareZones(@javax.annotation.Nullable String page, @javax.annotation.Nullable String perPage, @javax.annotation.Nullable String name, @javax.annotation.Nullable String status, @javax.annotation.Nullable String order, @javax.annotation.Nullable String direction) throws ApiException {
-        ApiResponse<Object> localVarResp = getV1CloudflareZonesWithHttpInfo(page, perPage, name, status, order, direction);
+    public Object getCloudflareZones(@javax.annotation.Nullable String page, @javax.annotation.Nullable String perPage, @javax.annotation.Nullable String name, @javax.annotation.Nullable String status, @javax.annotation.Nullable String order, @javax.annotation.Nullable String direction) throws ApiException {
+        ApiResponse<Object> localVarResp = getCloudflareZonesWithHttpInfo(page, perPage, name, status, order, direction);
         return localVarResp.getData();
     }
 
@@ -2421,8 +2421,8 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> getV1CloudflareZonesWithHttpInfo(@javax.annotation.Nullable String page, @javax.annotation.Nullable String perPage, @javax.annotation.Nullable String name, @javax.annotation.Nullable String status, @javax.annotation.Nullable String order, @javax.annotation.Nullable String direction) throws ApiException {
-        okhttp3.Call localVarCall = getV1CloudflareZonesValidateBeforeCall(page, perPage, name, status, order, direction, null);
+    public ApiResponse<Object> getCloudflareZonesWithHttpInfo(@javax.annotation.Nullable String page, @javax.annotation.Nullable String perPage, @javax.annotation.Nullable String name, @javax.annotation.Nullable String status, @javax.annotation.Nullable String order, @javax.annotation.Nullable String direction) throws ApiException {
+        okhttp3.Call localVarCall = getCloudflareZonesValidateBeforeCall(page, perPage, name, status, order, direction, null);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2446,15 +2446,15 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CloudflareZonesAsync(@javax.annotation.Nullable String page, @javax.annotation.Nullable String perPage, @javax.annotation.Nullable String name, @javax.annotation.Nullable String status, @javax.annotation.Nullable String order, @javax.annotation.Nullable String direction, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call getCloudflareZonesAsync(@javax.annotation.Nullable String page, @javax.annotation.Nullable String perPage, @javax.annotation.Nullable String name, @javax.annotation.Nullable String status, @javax.annotation.Nullable String order, @javax.annotation.Nullable String direction, final ApiCallback<Object> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CloudflareZonesValidateBeforeCall(page, perPage, name, status, order, direction, _callback);
+        okhttp3.Call localVarCall = getCloudflareZonesValidateBeforeCall(page, perPage, name, status, order, direction, _callback);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CloudflareZonesByZone
+     * Build call for getCloudflareZonesByZone
      * @param zone Zone is the 32-hex Cloudflare zone id. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2466,7 +2466,7 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CloudflareZonesByZoneCall(@javax.annotation.Nonnull String zone, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCloudflareZonesByZoneCall(@javax.annotation.Nonnull String zone, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2512,13 +2512,13 @@ public class CloudflareApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CloudflareZonesByZoneValidateBeforeCall(@javax.annotation.Nonnull String zone, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getCloudflareZonesByZoneValidateBeforeCall(@javax.annotation.Nonnull String zone, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'zone' is set
         if (zone == null) {
-            throw new ApiException("Missing the required parameter 'zone' when calling getV1CloudflareZonesByZone(Async)");
+            throw new ApiException("Missing the required parameter 'zone' when calling getCloudflareZonesByZone(Async)");
         }
 
-        return getV1CloudflareZonesByZoneCall(zone, _callback);
+        return getCloudflareZonesByZoneCall(zone, _callback);
 
     }
 
@@ -2535,8 +2535,8 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Object getV1CloudflareZonesByZone(@javax.annotation.Nonnull String zone) throws ApiException {
-        ApiResponse<Object> localVarResp = getV1CloudflareZonesByZoneWithHttpInfo(zone);
+    public Object getCloudflareZonesByZone(@javax.annotation.Nonnull String zone) throws ApiException {
+        ApiResponse<Object> localVarResp = getCloudflareZonesByZoneWithHttpInfo(zone);
         return localVarResp.getData();
     }
 
@@ -2553,8 +2553,8 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> getV1CloudflareZonesByZoneWithHttpInfo(@javax.annotation.Nonnull String zone) throws ApiException {
-        okhttp3.Call localVarCall = getV1CloudflareZonesByZoneValidateBeforeCall(zone, null);
+    public ApiResponse<Object> getCloudflareZonesByZoneWithHttpInfo(@javax.annotation.Nonnull String zone) throws ApiException {
+        okhttp3.Call localVarCall = getCloudflareZonesByZoneValidateBeforeCall(zone, null);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2573,15 +2573,15 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CloudflareZonesByZoneAsync(@javax.annotation.Nonnull String zone, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call getCloudflareZonesByZoneAsync(@javax.annotation.Nonnull String zone, final ApiCallback<Object> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CloudflareZonesByZoneValidateBeforeCall(zone, _callback);
+        okhttp3.Call localVarCall = getCloudflareZonesByZoneValidateBeforeCall(zone, _callback);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CloudflareZonesByZoneAnalytics
+     * Build call for getCloudflareZonesByZoneAnalytics
      * @param zone Zone is the 32-hex Cloudflare zone id. (required)
      * @param since Since and Until bound the window, in the form Cloudflare accepts — an RFC 3339 time or a negative number of minutes from now (\&quot;-1440\&quot; is the last day). (optional)
      * @param until  (optional)
@@ -2596,7 +2596,7 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CloudflareZonesByZoneAnalyticsCall(@javax.annotation.Nonnull String zone, @javax.annotation.Nullable String since, @javax.annotation.Nullable String until, @javax.annotation.Nullable String continuous, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCloudflareZonesByZoneAnalyticsCall(@javax.annotation.Nonnull String zone, @javax.annotation.Nullable String since, @javax.annotation.Nullable String until, @javax.annotation.Nullable String continuous, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2654,13 +2654,13 @@ public class CloudflareApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CloudflareZonesByZoneAnalyticsValidateBeforeCall(@javax.annotation.Nonnull String zone, @javax.annotation.Nullable String since, @javax.annotation.Nullable String until, @javax.annotation.Nullable String continuous, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getCloudflareZonesByZoneAnalyticsValidateBeforeCall(@javax.annotation.Nonnull String zone, @javax.annotation.Nullable String since, @javax.annotation.Nullable String until, @javax.annotation.Nullable String continuous, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'zone' is set
         if (zone == null) {
-            throw new ApiException("Missing the required parameter 'zone' when calling getV1CloudflareZonesByZoneAnalytics(Async)");
+            throw new ApiException("Missing the required parameter 'zone' when calling getCloudflareZonesByZoneAnalytics(Async)");
         }
 
-        return getV1CloudflareZonesByZoneAnalyticsCall(zone, since, until, continuous, _callback);
+        return getCloudflareZonesByZoneAnalyticsCall(zone, since, until, continuous, _callback);
 
     }
 
@@ -2680,8 +2680,8 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Object getV1CloudflareZonesByZoneAnalytics(@javax.annotation.Nonnull String zone, @javax.annotation.Nullable String since, @javax.annotation.Nullable String until, @javax.annotation.Nullable String continuous) throws ApiException {
-        ApiResponse<Object> localVarResp = getV1CloudflareZonesByZoneAnalyticsWithHttpInfo(zone, since, until, continuous);
+    public Object getCloudflareZonesByZoneAnalytics(@javax.annotation.Nonnull String zone, @javax.annotation.Nullable String since, @javax.annotation.Nullable String until, @javax.annotation.Nullable String continuous) throws ApiException {
+        ApiResponse<Object> localVarResp = getCloudflareZonesByZoneAnalyticsWithHttpInfo(zone, since, until, continuous);
         return localVarResp.getData();
     }
 
@@ -2701,8 +2701,8 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> getV1CloudflareZonesByZoneAnalyticsWithHttpInfo(@javax.annotation.Nonnull String zone, @javax.annotation.Nullable String since, @javax.annotation.Nullable String until, @javax.annotation.Nullable String continuous) throws ApiException {
-        okhttp3.Call localVarCall = getV1CloudflareZonesByZoneAnalyticsValidateBeforeCall(zone, since, until, continuous, null);
+    public ApiResponse<Object> getCloudflareZonesByZoneAnalyticsWithHttpInfo(@javax.annotation.Nonnull String zone, @javax.annotation.Nullable String since, @javax.annotation.Nullable String until, @javax.annotation.Nullable String continuous) throws ApiException {
+        okhttp3.Call localVarCall = getCloudflareZonesByZoneAnalyticsValidateBeforeCall(zone, since, until, continuous, null);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2724,21 +2724,21 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CloudflareZonesByZoneAnalyticsAsync(@javax.annotation.Nonnull String zone, @javax.annotation.Nullable String since, @javax.annotation.Nullable String until, @javax.annotation.Nullable String continuous, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call getCloudflareZonesByZoneAnalyticsAsync(@javax.annotation.Nonnull String zone, @javax.annotation.Nullable String since, @javax.annotation.Nullable String until, @javax.annotation.Nullable String continuous, final ApiCallback<Object> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CloudflareZonesByZoneAnalyticsValidateBeforeCall(zone, since, until, continuous, _callback);
+        okhttp3.Call localVarCall = getCloudflareZonesByZoneAnalyticsValidateBeforeCall(zone, since, until, continuous, _callback);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CloudflareAiRunByWildcard1
+     * Build call for postCloudflareAiRunByWildcard1
      * @param wildcard1  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1CloudflareAiRunByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCloudflareAiRunByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2783,13 +2783,13 @@ public class CloudflareApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CloudflareAiRunByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postCloudflareAiRunByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'wildcard1' is set
         if (wildcard1 == null) {
-            throw new ApiException("Missing the required parameter 'wildcard1' when calling postV1CloudflareAiRunByWildcard1(Async)");
+            throw new ApiException("Missing the required parameter 'wildcard1' when calling postCloudflareAiRunByWildcard1(Async)");
         }
 
-        return postV1CloudflareAiRunByWildcard1Call(wildcard1, _callback);
+        return postCloudflareAiRunByWildcard1Call(wildcard1, _callback);
 
     }
 
@@ -2799,8 +2799,8 @@ public class CloudflareApi {
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1CloudflareAiRunByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        postV1CloudflareAiRunByWildcard1WithHttpInfo(wildcard1);
+    public void postCloudflareAiRunByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        postCloudflareAiRunByWildcard1WithHttpInfo(wildcard1);
     }
 
     /**
@@ -2810,8 +2810,8 @@ public class CloudflareApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1CloudflareAiRunByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        okhttp3.Call localVarCall = postV1CloudflareAiRunByWildcard1ValidateBeforeCall(wildcard1, null);
+    public ApiResponse<Void> postCloudflareAiRunByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        okhttp3.Call localVarCall = postCloudflareAiRunByWildcard1ValidateBeforeCall(wildcard1, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -2823,14 +2823,14 @@ public class CloudflareApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1CloudflareAiRunByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postCloudflareAiRunByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CloudflareAiRunByWildcard1ValidateBeforeCall(wildcard1, _callback);
+        okhttp3.Call localVarCall = postCloudflareAiRunByWildcard1ValidateBeforeCall(wildcard1, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CloudflareD1Databases
+     * Build call for postCloudflareD1Databases
      * @param databaseCreateIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2842,7 +2842,7 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CloudflareD1DatabasesCall(@javax.annotation.Nonnull DatabaseCreateIn databaseCreateIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCloudflareD1DatabasesCall(@javax.annotation.Nonnull DatabaseCreateIn databaseCreateIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2888,13 +2888,13 @@ public class CloudflareApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CloudflareD1DatabasesValidateBeforeCall(@javax.annotation.Nonnull DatabaseCreateIn databaseCreateIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postCloudflareD1DatabasesValidateBeforeCall(@javax.annotation.Nonnull DatabaseCreateIn databaseCreateIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'databaseCreateIn' is set
         if (databaseCreateIn == null) {
-            throw new ApiException("Missing the required parameter 'databaseCreateIn' when calling postV1CloudflareD1Databases(Async)");
+            throw new ApiException("Missing the required parameter 'databaseCreateIn' when calling postCloudflareD1Databases(Async)");
         }
 
-        return postV1CloudflareD1DatabasesCall(databaseCreateIn, _callback);
+        return postCloudflareD1DatabasesCall(databaseCreateIn, _callback);
 
     }
 
@@ -2911,8 +2911,8 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Object postV1CloudflareD1Databases(@javax.annotation.Nonnull DatabaseCreateIn databaseCreateIn) throws ApiException {
-        ApiResponse<Object> localVarResp = postV1CloudflareD1DatabasesWithHttpInfo(databaseCreateIn);
+    public Object postCloudflareD1Databases(@javax.annotation.Nonnull DatabaseCreateIn databaseCreateIn) throws ApiException {
+        ApiResponse<Object> localVarResp = postCloudflareD1DatabasesWithHttpInfo(databaseCreateIn);
         return localVarResp.getData();
     }
 
@@ -2929,8 +2929,8 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> postV1CloudflareD1DatabasesWithHttpInfo(@javax.annotation.Nonnull DatabaseCreateIn databaseCreateIn) throws ApiException {
-        okhttp3.Call localVarCall = postV1CloudflareD1DatabasesValidateBeforeCall(databaseCreateIn, null);
+    public ApiResponse<Object> postCloudflareD1DatabasesWithHttpInfo(@javax.annotation.Nonnull DatabaseCreateIn databaseCreateIn) throws ApiException {
+        okhttp3.Call localVarCall = postCloudflareD1DatabasesValidateBeforeCall(databaseCreateIn, null);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2949,15 +2949,15 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CloudflareD1DatabasesAsync(@javax.annotation.Nonnull DatabaseCreateIn databaseCreateIn, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call postCloudflareD1DatabasesAsync(@javax.annotation.Nonnull DatabaseCreateIn databaseCreateIn, final ApiCallback<Object> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CloudflareD1DatabasesValidateBeforeCall(databaseCreateIn, _callback);
+        okhttp3.Call localVarCall = postCloudflareD1DatabasesValidateBeforeCall(databaseCreateIn, _callback);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CloudflareD1DatabasesByDatabaseQuery
+     * Build call for postCloudflareD1DatabasesByDatabaseQuery
      * @param database  (required)
      * @param d1Query  (optional)
      * @param _callback Callback for upload/download progress
@@ -2970,7 +2970,7 @@ public class CloudflareApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CloudflareD1DatabasesByDatabaseQueryCall(@javax.annotation.Nonnull String database, @javax.annotation.Nullable D1Query d1Query, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCloudflareD1DatabasesByDatabaseQueryCall(@javax.annotation.Nonnull String database, @javax.annotation.Nullable D1Query d1Query, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3017,13 +3017,13 @@ public class CloudflareApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CloudflareD1DatabasesByDatabaseQueryValidateBeforeCall(@javax.annotation.Nonnull String database, @javax.annotation.Nullable D1Query d1Query, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postCloudflareD1DatabasesByDatabaseQueryValidateBeforeCall(@javax.annotation.Nonnull String database, @javax.annotation.Nullable D1Query d1Query, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'database' is set
         if (database == null) {
-            throw new ApiException("Missing the required parameter 'database' when calling postV1CloudflareD1DatabasesByDatabaseQuery(Async)");
+            throw new ApiException("Missing the required parameter 'database' when calling postCloudflareD1DatabasesByDatabaseQuery(Async)");
         }
 
-        return postV1CloudflareD1DatabasesByDatabaseQueryCall(database, d1Query, _callback);
+        return postCloudflareD1DatabasesByDatabaseQueryCall(database, d1Query, _callback);
 
     }
 
@@ -3041,8 +3041,8 @@ public class CloudflareApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public Object postV1CloudflareD1DatabasesByDatabaseQuery(@javax.annotation.Nonnull String database, @javax.annotation.Nullable D1Query d1Query) throws ApiException {
-        ApiResponse<Object> localVarResp = postV1CloudflareD1DatabasesByDatabaseQueryWithHttpInfo(database, d1Query);
+    public Object postCloudflareD1DatabasesByDatabaseQuery(@javax.annotation.Nonnull String database, @javax.annotation.Nullable D1Query d1Query) throws ApiException {
+        ApiResponse<Object> localVarResp = postCloudflareD1DatabasesByDatabaseQueryWithHttpInfo(database, d1Query);
         return localVarResp.getData();
     }
 
@@ -3060,8 +3060,8 @@ public class CloudflareApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> postV1CloudflareD1DatabasesByDatabaseQueryWithHttpInfo(@javax.annotation.Nonnull String database, @javax.annotation.Nullable D1Query d1Query) throws ApiException {
-        okhttp3.Call localVarCall = postV1CloudflareD1DatabasesByDatabaseQueryValidateBeforeCall(database, d1Query, null);
+    public ApiResponse<Object> postCloudflareD1DatabasesByDatabaseQueryWithHttpInfo(@javax.annotation.Nonnull String database, @javax.annotation.Nullable D1Query d1Query) throws ApiException {
+        okhttp3.Call localVarCall = postCloudflareD1DatabasesByDatabaseQueryValidateBeforeCall(database, d1Query, null);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -3081,15 +3081,15 @@ public class CloudflareApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CloudflareD1DatabasesByDatabaseQueryAsync(@javax.annotation.Nonnull String database, @javax.annotation.Nullable D1Query d1Query, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call postCloudflareD1DatabasesByDatabaseQueryAsync(@javax.annotation.Nonnull String database, @javax.annotation.Nullable D1Query d1Query, final ApiCallback<Object> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CloudflareD1DatabasesByDatabaseQueryValidateBeforeCall(database, d1Query, _callback);
+        okhttp3.Call localVarCall = postCloudflareD1DatabasesByDatabaseQueryValidateBeforeCall(database, d1Query, _callback);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CloudflareKvNamespaces
+     * Build call for postCloudflareKvNamespaces
      * @param namespaceCreateIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -3101,7 +3101,7 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CloudflareKvNamespacesCall(@javax.annotation.Nonnull NamespaceCreateIn namespaceCreateIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCloudflareKvNamespacesCall(@javax.annotation.Nonnull NamespaceCreateIn namespaceCreateIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3147,13 +3147,13 @@ public class CloudflareApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CloudflareKvNamespacesValidateBeforeCall(@javax.annotation.Nonnull NamespaceCreateIn namespaceCreateIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postCloudflareKvNamespacesValidateBeforeCall(@javax.annotation.Nonnull NamespaceCreateIn namespaceCreateIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'namespaceCreateIn' is set
         if (namespaceCreateIn == null) {
-            throw new ApiException("Missing the required parameter 'namespaceCreateIn' when calling postV1CloudflareKvNamespaces(Async)");
+            throw new ApiException("Missing the required parameter 'namespaceCreateIn' when calling postCloudflareKvNamespaces(Async)");
         }
 
-        return postV1CloudflareKvNamespacesCall(namespaceCreateIn, _callback);
+        return postCloudflareKvNamespacesCall(namespaceCreateIn, _callback);
 
     }
 
@@ -3170,8 +3170,8 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Object postV1CloudflareKvNamespaces(@javax.annotation.Nonnull NamespaceCreateIn namespaceCreateIn) throws ApiException {
-        ApiResponse<Object> localVarResp = postV1CloudflareKvNamespacesWithHttpInfo(namespaceCreateIn);
+    public Object postCloudflareKvNamespaces(@javax.annotation.Nonnull NamespaceCreateIn namespaceCreateIn) throws ApiException {
+        ApiResponse<Object> localVarResp = postCloudflareKvNamespacesWithHttpInfo(namespaceCreateIn);
         return localVarResp.getData();
     }
 
@@ -3188,8 +3188,8 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> postV1CloudflareKvNamespacesWithHttpInfo(@javax.annotation.Nonnull NamespaceCreateIn namespaceCreateIn) throws ApiException {
-        okhttp3.Call localVarCall = postV1CloudflareKvNamespacesValidateBeforeCall(namespaceCreateIn, null);
+    public ApiResponse<Object> postCloudflareKvNamespacesWithHttpInfo(@javax.annotation.Nonnull NamespaceCreateIn namespaceCreateIn) throws ApiException {
+        okhttp3.Call localVarCall = postCloudflareKvNamespacesValidateBeforeCall(namespaceCreateIn, null);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -3208,15 +3208,15 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CloudflareKvNamespacesAsync(@javax.annotation.Nonnull NamespaceCreateIn namespaceCreateIn, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call postCloudflareKvNamespacesAsync(@javax.annotation.Nonnull NamespaceCreateIn namespaceCreateIn, final ApiCallback<Object> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CloudflareKvNamespacesValidateBeforeCall(namespaceCreateIn, _callback);
+        okhttp3.Call localVarCall = postCloudflareKvNamespacesValidateBeforeCall(namespaceCreateIn, _callback);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CloudflarePagesProjects
+     * Build call for postCloudflarePagesProjects
      * @param pagesProjectCreate  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -3228,7 +3228,7 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CloudflarePagesProjectsCall(@javax.annotation.Nonnull PagesProjectCreate pagesProjectCreate, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCloudflarePagesProjectsCall(@javax.annotation.Nonnull PagesProjectCreate pagesProjectCreate, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3274,13 +3274,13 @@ public class CloudflareApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CloudflarePagesProjectsValidateBeforeCall(@javax.annotation.Nonnull PagesProjectCreate pagesProjectCreate, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postCloudflarePagesProjectsValidateBeforeCall(@javax.annotation.Nonnull PagesProjectCreate pagesProjectCreate, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'pagesProjectCreate' is set
         if (pagesProjectCreate == null) {
-            throw new ApiException("Missing the required parameter 'pagesProjectCreate' when calling postV1CloudflarePagesProjects(Async)");
+            throw new ApiException("Missing the required parameter 'pagesProjectCreate' when calling postCloudflarePagesProjects(Async)");
         }
 
-        return postV1CloudflarePagesProjectsCall(pagesProjectCreate, _callback);
+        return postCloudflarePagesProjectsCall(pagesProjectCreate, _callback);
 
     }
 
@@ -3297,8 +3297,8 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Object postV1CloudflarePagesProjects(@javax.annotation.Nonnull PagesProjectCreate pagesProjectCreate) throws ApiException {
-        ApiResponse<Object> localVarResp = postV1CloudflarePagesProjectsWithHttpInfo(pagesProjectCreate);
+    public Object postCloudflarePagesProjects(@javax.annotation.Nonnull PagesProjectCreate pagesProjectCreate) throws ApiException {
+        ApiResponse<Object> localVarResp = postCloudflarePagesProjectsWithHttpInfo(pagesProjectCreate);
         return localVarResp.getData();
     }
 
@@ -3315,8 +3315,8 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> postV1CloudflarePagesProjectsWithHttpInfo(@javax.annotation.Nonnull PagesProjectCreate pagesProjectCreate) throws ApiException {
-        okhttp3.Call localVarCall = postV1CloudflarePagesProjectsValidateBeforeCall(pagesProjectCreate, null);
+    public ApiResponse<Object> postCloudflarePagesProjectsWithHttpInfo(@javax.annotation.Nonnull PagesProjectCreate pagesProjectCreate) throws ApiException {
+        okhttp3.Call localVarCall = postCloudflarePagesProjectsValidateBeforeCall(pagesProjectCreate, null);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -3335,15 +3335,15 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CloudflarePagesProjectsAsync(@javax.annotation.Nonnull PagesProjectCreate pagesProjectCreate, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call postCloudflarePagesProjectsAsync(@javax.annotation.Nonnull PagesProjectCreate pagesProjectCreate, final ApiCallback<Object> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CloudflarePagesProjectsValidateBeforeCall(pagesProjectCreate, _callback);
+        okhttp3.Call localVarCall = postCloudflarePagesProjectsValidateBeforeCall(pagesProjectCreate, _callback);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CloudflarePagesProjectsByProjectDeployments
+     * Build call for postCloudflarePagesProjectsByProjectDeployments
      * @param project  (required)
      * @param pagesDeploy  (optional)
      * @param _callback Callback for upload/download progress
@@ -3356,7 +3356,7 @@ public class CloudflareApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CloudflarePagesProjectsByProjectDeploymentsCall(@javax.annotation.Nonnull String project, @javax.annotation.Nullable PagesDeploy pagesDeploy, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCloudflarePagesProjectsByProjectDeploymentsCall(@javax.annotation.Nonnull String project, @javax.annotation.Nullable PagesDeploy pagesDeploy, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3403,13 +3403,13 @@ public class CloudflareApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CloudflarePagesProjectsByProjectDeploymentsValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nullable PagesDeploy pagesDeploy, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postCloudflarePagesProjectsByProjectDeploymentsValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nullable PagesDeploy pagesDeploy, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'project' is set
         if (project == null) {
-            throw new ApiException("Missing the required parameter 'project' when calling postV1CloudflarePagesProjectsByProjectDeployments(Async)");
+            throw new ApiException("Missing the required parameter 'project' when calling postCloudflarePagesProjectsByProjectDeployments(Async)");
         }
 
-        return postV1CloudflarePagesProjectsByProjectDeploymentsCall(project, pagesDeploy, _callback);
+        return postCloudflarePagesProjectsByProjectDeploymentsCall(project, pagesDeploy, _callback);
 
     }
 
@@ -3427,8 +3427,8 @@ public class CloudflareApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public Object postV1CloudflarePagesProjectsByProjectDeployments(@javax.annotation.Nonnull String project, @javax.annotation.Nullable PagesDeploy pagesDeploy) throws ApiException {
-        ApiResponse<Object> localVarResp = postV1CloudflarePagesProjectsByProjectDeploymentsWithHttpInfo(project, pagesDeploy);
+    public Object postCloudflarePagesProjectsByProjectDeployments(@javax.annotation.Nonnull String project, @javax.annotation.Nullable PagesDeploy pagesDeploy) throws ApiException {
+        ApiResponse<Object> localVarResp = postCloudflarePagesProjectsByProjectDeploymentsWithHttpInfo(project, pagesDeploy);
         return localVarResp.getData();
     }
 
@@ -3446,8 +3446,8 @@ public class CloudflareApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> postV1CloudflarePagesProjectsByProjectDeploymentsWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nullable PagesDeploy pagesDeploy) throws ApiException {
-        okhttp3.Call localVarCall = postV1CloudflarePagesProjectsByProjectDeploymentsValidateBeforeCall(project, pagesDeploy, null);
+    public ApiResponse<Object> postCloudflarePagesProjectsByProjectDeploymentsWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nullable PagesDeploy pagesDeploy) throws ApiException {
+        okhttp3.Call localVarCall = postCloudflarePagesProjectsByProjectDeploymentsValidateBeforeCall(project, pagesDeploy, null);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -3467,15 +3467,15 @@ public class CloudflareApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CloudflarePagesProjectsByProjectDeploymentsAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nullable PagesDeploy pagesDeploy, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call postCloudflarePagesProjectsByProjectDeploymentsAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nullable PagesDeploy pagesDeploy, final ApiCallback<Object> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CloudflarePagesProjectsByProjectDeploymentsValidateBeforeCall(project, pagesDeploy, _callback);
+        okhttp3.Call localVarCall = postCloudflarePagesProjectsByProjectDeploymentsValidateBeforeCall(project, pagesDeploy, _callback);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CloudflarePagesProjectsByProjectDomains
+     * Build call for postCloudflarePagesProjectsByProjectDomains
      * @param project Project is the Pages project name, from the path. (required)
      * @param domainAddIn  (required)
      * @param _callback Callback for upload/download progress
@@ -3488,7 +3488,7 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CloudflarePagesProjectsByProjectDomainsCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull DomainAddIn domainAddIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCloudflarePagesProjectsByProjectDomainsCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull DomainAddIn domainAddIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3535,18 +3535,18 @@ public class CloudflareApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CloudflarePagesProjectsByProjectDomainsValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull DomainAddIn domainAddIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postCloudflarePagesProjectsByProjectDomainsValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull DomainAddIn domainAddIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'project' is set
         if (project == null) {
-            throw new ApiException("Missing the required parameter 'project' when calling postV1CloudflarePagesProjectsByProjectDomains(Async)");
+            throw new ApiException("Missing the required parameter 'project' when calling postCloudflarePagesProjectsByProjectDomains(Async)");
         }
 
         // verify the required parameter 'domainAddIn' is set
         if (domainAddIn == null) {
-            throw new ApiException("Missing the required parameter 'domainAddIn' when calling postV1CloudflarePagesProjectsByProjectDomains(Async)");
+            throw new ApiException("Missing the required parameter 'domainAddIn' when calling postCloudflarePagesProjectsByProjectDomains(Async)");
         }
 
-        return postV1CloudflarePagesProjectsByProjectDomainsCall(project, domainAddIn, _callback);
+        return postCloudflarePagesProjectsByProjectDomainsCall(project, domainAddIn, _callback);
 
     }
 
@@ -3564,8 +3564,8 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Object postV1CloudflarePagesProjectsByProjectDomains(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull DomainAddIn domainAddIn) throws ApiException {
-        ApiResponse<Object> localVarResp = postV1CloudflarePagesProjectsByProjectDomainsWithHttpInfo(project, domainAddIn);
+    public Object postCloudflarePagesProjectsByProjectDomains(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull DomainAddIn domainAddIn) throws ApiException {
+        ApiResponse<Object> localVarResp = postCloudflarePagesProjectsByProjectDomainsWithHttpInfo(project, domainAddIn);
         return localVarResp.getData();
     }
 
@@ -3583,8 +3583,8 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> postV1CloudflarePagesProjectsByProjectDomainsWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull DomainAddIn domainAddIn) throws ApiException {
-        okhttp3.Call localVarCall = postV1CloudflarePagesProjectsByProjectDomainsValidateBeforeCall(project, domainAddIn, null);
+    public ApiResponse<Object> postCloudflarePagesProjectsByProjectDomainsWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull DomainAddIn domainAddIn) throws ApiException {
+        okhttp3.Call localVarCall = postCloudflarePagesProjectsByProjectDomainsValidateBeforeCall(project, domainAddIn, null);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -3604,15 +3604,15 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CloudflarePagesProjectsByProjectDomainsAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull DomainAddIn domainAddIn, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call postCloudflarePagesProjectsByProjectDomainsAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nonnull DomainAddIn domainAddIn, final ApiCallback<Object> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CloudflarePagesProjectsByProjectDomainsValidateBeforeCall(project, domainAddIn, _callback);
+        okhttp3.Call localVarCall = postCloudflarePagesProjectsByProjectDomainsValidateBeforeCall(project, domainAddIn, _callback);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CloudflareR2Buckets
+     * Build call for postCloudflareR2Buckets
      * @param bucketCreateIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -3624,7 +3624,7 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CloudflareR2BucketsCall(@javax.annotation.Nonnull BucketCreateIn bucketCreateIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCloudflareR2BucketsCall(@javax.annotation.Nonnull BucketCreateIn bucketCreateIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3670,13 +3670,13 @@ public class CloudflareApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CloudflareR2BucketsValidateBeforeCall(@javax.annotation.Nonnull BucketCreateIn bucketCreateIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postCloudflareR2BucketsValidateBeforeCall(@javax.annotation.Nonnull BucketCreateIn bucketCreateIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'bucketCreateIn' is set
         if (bucketCreateIn == null) {
-            throw new ApiException("Missing the required parameter 'bucketCreateIn' when calling postV1CloudflareR2Buckets(Async)");
+            throw new ApiException("Missing the required parameter 'bucketCreateIn' when calling postCloudflareR2Buckets(Async)");
         }
 
-        return postV1CloudflareR2BucketsCall(bucketCreateIn, _callback);
+        return postCloudflareR2BucketsCall(bucketCreateIn, _callback);
 
     }
 
@@ -3693,8 +3693,8 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Object postV1CloudflareR2Buckets(@javax.annotation.Nonnull BucketCreateIn bucketCreateIn) throws ApiException {
-        ApiResponse<Object> localVarResp = postV1CloudflareR2BucketsWithHttpInfo(bucketCreateIn);
+    public Object postCloudflareR2Buckets(@javax.annotation.Nonnull BucketCreateIn bucketCreateIn) throws ApiException {
+        ApiResponse<Object> localVarResp = postCloudflareR2BucketsWithHttpInfo(bucketCreateIn);
         return localVarResp.getData();
     }
 
@@ -3711,8 +3711,8 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> postV1CloudflareR2BucketsWithHttpInfo(@javax.annotation.Nonnull BucketCreateIn bucketCreateIn) throws ApiException {
-        okhttp3.Call localVarCall = postV1CloudflareR2BucketsValidateBeforeCall(bucketCreateIn, null);
+    public ApiResponse<Object> postCloudflareR2BucketsWithHttpInfo(@javax.annotation.Nonnull BucketCreateIn bucketCreateIn) throws ApiException {
+        okhttp3.Call localVarCall = postCloudflareR2BucketsValidateBeforeCall(bucketCreateIn, null);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -3731,15 +3731,15 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CloudflareR2BucketsAsync(@javax.annotation.Nonnull BucketCreateIn bucketCreateIn, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call postCloudflareR2BucketsAsync(@javax.annotation.Nonnull BucketCreateIn bucketCreateIn, final ApiCallback<Object> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CloudflareR2BucketsValidateBeforeCall(bucketCreateIn, _callback);
+        okhttp3.Call localVarCall = postCloudflareR2BucketsValidateBeforeCall(bucketCreateIn, _callback);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CloudflareWorkersScriptsByScriptSubdomain
+     * Build call for postCloudflareWorkersScriptsByScriptSubdomain
      * @param script Script is the Worker script name, from the path. (required)
      * @param subdomainSetIn  (required)
      * @param _callback Callback for upload/download progress
@@ -3752,7 +3752,7 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CloudflareWorkersScriptsByScriptSubdomainCall(@javax.annotation.Nonnull String script, @javax.annotation.Nonnull SubdomainSetIn subdomainSetIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCloudflareWorkersScriptsByScriptSubdomainCall(@javax.annotation.Nonnull String script, @javax.annotation.Nonnull SubdomainSetIn subdomainSetIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3799,18 +3799,18 @@ public class CloudflareApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CloudflareWorkersScriptsByScriptSubdomainValidateBeforeCall(@javax.annotation.Nonnull String script, @javax.annotation.Nonnull SubdomainSetIn subdomainSetIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postCloudflareWorkersScriptsByScriptSubdomainValidateBeforeCall(@javax.annotation.Nonnull String script, @javax.annotation.Nonnull SubdomainSetIn subdomainSetIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'script' is set
         if (script == null) {
-            throw new ApiException("Missing the required parameter 'script' when calling postV1CloudflareWorkersScriptsByScriptSubdomain(Async)");
+            throw new ApiException("Missing the required parameter 'script' when calling postCloudflareWorkersScriptsByScriptSubdomain(Async)");
         }
 
         // verify the required parameter 'subdomainSetIn' is set
         if (subdomainSetIn == null) {
-            throw new ApiException("Missing the required parameter 'subdomainSetIn' when calling postV1CloudflareWorkersScriptsByScriptSubdomain(Async)");
+            throw new ApiException("Missing the required parameter 'subdomainSetIn' when calling postCloudflareWorkersScriptsByScriptSubdomain(Async)");
         }
 
-        return postV1CloudflareWorkersScriptsByScriptSubdomainCall(script, subdomainSetIn, _callback);
+        return postCloudflareWorkersScriptsByScriptSubdomainCall(script, subdomainSetIn, _callback);
 
     }
 
@@ -3828,8 +3828,8 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Object postV1CloudflareWorkersScriptsByScriptSubdomain(@javax.annotation.Nonnull String script, @javax.annotation.Nonnull SubdomainSetIn subdomainSetIn) throws ApiException {
-        ApiResponse<Object> localVarResp = postV1CloudflareWorkersScriptsByScriptSubdomainWithHttpInfo(script, subdomainSetIn);
+    public Object postCloudflareWorkersScriptsByScriptSubdomain(@javax.annotation.Nonnull String script, @javax.annotation.Nonnull SubdomainSetIn subdomainSetIn) throws ApiException {
+        ApiResponse<Object> localVarResp = postCloudflareWorkersScriptsByScriptSubdomainWithHttpInfo(script, subdomainSetIn);
         return localVarResp.getData();
     }
 
@@ -3847,8 +3847,8 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> postV1CloudflareWorkersScriptsByScriptSubdomainWithHttpInfo(@javax.annotation.Nonnull String script, @javax.annotation.Nonnull SubdomainSetIn subdomainSetIn) throws ApiException {
-        okhttp3.Call localVarCall = postV1CloudflareWorkersScriptsByScriptSubdomainValidateBeforeCall(script, subdomainSetIn, null);
+    public ApiResponse<Object> postCloudflareWorkersScriptsByScriptSubdomainWithHttpInfo(@javax.annotation.Nonnull String script, @javax.annotation.Nonnull SubdomainSetIn subdomainSetIn) throws ApiException {
+        okhttp3.Call localVarCall = postCloudflareWorkersScriptsByScriptSubdomainValidateBeforeCall(script, subdomainSetIn, null);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -3868,15 +3868,15 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CloudflareWorkersScriptsByScriptSubdomainAsync(@javax.annotation.Nonnull String script, @javax.annotation.Nonnull SubdomainSetIn subdomainSetIn, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call postCloudflareWorkersScriptsByScriptSubdomainAsync(@javax.annotation.Nonnull String script, @javax.annotation.Nonnull SubdomainSetIn subdomainSetIn, final ApiCallback<Object> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CloudflareWorkersScriptsByScriptSubdomainValidateBeforeCall(script, subdomainSetIn, _callback);
+        okhttp3.Call localVarCall = postCloudflareWorkersScriptsByScriptSubdomainValidateBeforeCall(script, subdomainSetIn, _callback);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CloudflareWorkersZonesByZoneRoutes
+     * Build call for postCloudflareWorkersZonesByZoneRoutes
      * @param zone Zone is the 32-hex Cloudflare zone id, from the path. (required)
      * @param routeCreateIn  (required)
      * @param _callback Callback for upload/download progress
@@ -3889,7 +3889,7 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CloudflareWorkersZonesByZoneRoutesCall(@javax.annotation.Nonnull String zone, @javax.annotation.Nonnull RouteCreateIn routeCreateIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCloudflareWorkersZonesByZoneRoutesCall(@javax.annotation.Nonnull String zone, @javax.annotation.Nonnull RouteCreateIn routeCreateIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3936,18 +3936,18 @@ public class CloudflareApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CloudflareWorkersZonesByZoneRoutesValidateBeforeCall(@javax.annotation.Nonnull String zone, @javax.annotation.Nonnull RouteCreateIn routeCreateIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postCloudflareWorkersZonesByZoneRoutesValidateBeforeCall(@javax.annotation.Nonnull String zone, @javax.annotation.Nonnull RouteCreateIn routeCreateIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'zone' is set
         if (zone == null) {
-            throw new ApiException("Missing the required parameter 'zone' when calling postV1CloudflareWorkersZonesByZoneRoutes(Async)");
+            throw new ApiException("Missing the required parameter 'zone' when calling postCloudflareWorkersZonesByZoneRoutes(Async)");
         }
 
         // verify the required parameter 'routeCreateIn' is set
         if (routeCreateIn == null) {
-            throw new ApiException("Missing the required parameter 'routeCreateIn' when calling postV1CloudflareWorkersZonesByZoneRoutes(Async)");
+            throw new ApiException("Missing the required parameter 'routeCreateIn' when calling postCloudflareWorkersZonesByZoneRoutes(Async)");
         }
 
-        return postV1CloudflareWorkersZonesByZoneRoutesCall(zone, routeCreateIn, _callback);
+        return postCloudflareWorkersZonesByZoneRoutesCall(zone, routeCreateIn, _callback);
 
     }
 
@@ -3965,8 +3965,8 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Object postV1CloudflareWorkersZonesByZoneRoutes(@javax.annotation.Nonnull String zone, @javax.annotation.Nonnull RouteCreateIn routeCreateIn) throws ApiException {
-        ApiResponse<Object> localVarResp = postV1CloudflareWorkersZonesByZoneRoutesWithHttpInfo(zone, routeCreateIn);
+    public Object postCloudflareWorkersZonesByZoneRoutes(@javax.annotation.Nonnull String zone, @javax.annotation.Nonnull RouteCreateIn routeCreateIn) throws ApiException {
+        ApiResponse<Object> localVarResp = postCloudflareWorkersZonesByZoneRoutesWithHttpInfo(zone, routeCreateIn);
         return localVarResp.getData();
     }
 
@@ -3984,8 +3984,8 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> postV1CloudflareWorkersZonesByZoneRoutesWithHttpInfo(@javax.annotation.Nonnull String zone, @javax.annotation.Nonnull RouteCreateIn routeCreateIn) throws ApiException {
-        okhttp3.Call localVarCall = postV1CloudflareWorkersZonesByZoneRoutesValidateBeforeCall(zone, routeCreateIn, null);
+    public ApiResponse<Object> postCloudflareWorkersZonesByZoneRoutesWithHttpInfo(@javax.annotation.Nonnull String zone, @javax.annotation.Nonnull RouteCreateIn routeCreateIn) throws ApiException {
+        okhttp3.Call localVarCall = postCloudflareWorkersZonesByZoneRoutesValidateBeforeCall(zone, routeCreateIn, null);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -4005,15 +4005,15 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CloudflareWorkersZonesByZoneRoutesAsync(@javax.annotation.Nonnull String zone, @javax.annotation.Nonnull RouteCreateIn routeCreateIn, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call postCloudflareWorkersZonesByZoneRoutesAsync(@javax.annotation.Nonnull String zone, @javax.annotation.Nonnull RouteCreateIn routeCreateIn, final ApiCallback<Object> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CloudflareWorkersZonesByZoneRoutesValidateBeforeCall(zone, routeCreateIn, _callback);
+        okhttp3.Call localVarCall = postCloudflareWorkersZonesByZoneRoutesValidateBeforeCall(zone, routeCreateIn, _callback);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CloudflareZonesByZonePurge
+     * Build call for postCloudflareZonesByZonePurge
      * @param zone Zone is the 32-hex Cloudflare zone id, from the path. (required)
      * @param purgeIn  (required)
      * @param _callback Callback for upload/download progress
@@ -4026,7 +4026,7 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CloudflareZonesByZonePurgeCall(@javax.annotation.Nonnull String zone, @javax.annotation.Nonnull PurgeIn purgeIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCloudflareZonesByZonePurgeCall(@javax.annotation.Nonnull String zone, @javax.annotation.Nonnull PurgeIn purgeIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4073,18 +4073,18 @@ public class CloudflareApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CloudflareZonesByZonePurgeValidateBeforeCall(@javax.annotation.Nonnull String zone, @javax.annotation.Nonnull PurgeIn purgeIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postCloudflareZonesByZonePurgeValidateBeforeCall(@javax.annotation.Nonnull String zone, @javax.annotation.Nonnull PurgeIn purgeIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'zone' is set
         if (zone == null) {
-            throw new ApiException("Missing the required parameter 'zone' when calling postV1CloudflareZonesByZonePurge(Async)");
+            throw new ApiException("Missing the required parameter 'zone' when calling postCloudflareZonesByZonePurge(Async)");
         }
 
         // verify the required parameter 'purgeIn' is set
         if (purgeIn == null) {
-            throw new ApiException("Missing the required parameter 'purgeIn' when calling postV1CloudflareZonesByZonePurge(Async)");
+            throw new ApiException("Missing the required parameter 'purgeIn' when calling postCloudflareZonesByZonePurge(Async)");
         }
 
-        return postV1CloudflareZonesByZonePurgeCall(zone, purgeIn, _callback);
+        return postCloudflareZonesByZonePurgeCall(zone, purgeIn, _callback);
 
     }
 
@@ -4102,8 +4102,8 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Object postV1CloudflareZonesByZonePurge(@javax.annotation.Nonnull String zone, @javax.annotation.Nonnull PurgeIn purgeIn) throws ApiException {
-        ApiResponse<Object> localVarResp = postV1CloudflareZonesByZonePurgeWithHttpInfo(zone, purgeIn);
+    public Object postCloudflareZonesByZonePurge(@javax.annotation.Nonnull String zone, @javax.annotation.Nonnull PurgeIn purgeIn) throws ApiException {
+        ApiResponse<Object> localVarResp = postCloudflareZonesByZonePurgeWithHttpInfo(zone, purgeIn);
         return localVarResp.getData();
     }
 
@@ -4121,8 +4121,8 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> postV1CloudflareZonesByZonePurgeWithHttpInfo(@javax.annotation.Nonnull String zone, @javax.annotation.Nonnull PurgeIn purgeIn) throws ApiException {
-        okhttp3.Call localVarCall = postV1CloudflareZonesByZonePurgeValidateBeforeCall(zone, purgeIn, null);
+    public ApiResponse<Object> postCloudflareZonesByZonePurgeWithHttpInfo(@javax.annotation.Nonnull String zone, @javax.annotation.Nonnull PurgeIn purgeIn) throws ApiException {
+        okhttp3.Call localVarCall = postCloudflareZonesByZonePurgeValidateBeforeCall(zone, purgeIn, null);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -4142,22 +4142,22 @@ public class CloudflareApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CloudflareZonesByZonePurgeAsync(@javax.annotation.Nonnull String zone, @javax.annotation.Nonnull PurgeIn purgeIn, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call postCloudflareZonesByZonePurgeAsync(@javax.annotation.Nonnull String zone, @javax.annotation.Nonnull PurgeIn purgeIn, final ApiCallback<Object> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CloudflareZonesByZonePurgeValidateBeforeCall(zone, purgeIn, _callback);
+        okhttp3.Call localVarCall = postCloudflareZonesByZonePurgeValidateBeforeCall(zone, purgeIn, _callback);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1CloudflareKvNamespacesByNamespaceValuesByKey
+     * Build call for putCloudflareKvNamespacesByNamespaceValuesByKey
      * @param namespace  (required)
      * @param key  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call putV1CloudflareKvNamespacesByNamespaceValuesByKeyCall(@javax.annotation.Nonnull String namespace, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putCloudflareKvNamespacesByNamespaceValuesByKeyCall(@javax.annotation.Nonnull String namespace, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4203,18 +4203,18 @@ public class CloudflareApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1CloudflareKvNamespacesByNamespaceValuesByKeyValidateBeforeCall(@javax.annotation.Nonnull String namespace, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putCloudflareKvNamespacesByNamespaceValuesByKeyValidateBeforeCall(@javax.annotation.Nonnull String namespace, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'namespace' is set
         if (namespace == null) {
-            throw new ApiException("Missing the required parameter 'namespace' when calling putV1CloudflareKvNamespacesByNamespaceValuesByKey(Async)");
+            throw new ApiException("Missing the required parameter 'namespace' when calling putCloudflareKvNamespacesByNamespaceValuesByKey(Async)");
         }
 
         // verify the required parameter 'key' is set
         if (key == null) {
-            throw new ApiException("Missing the required parameter 'key' when calling putV1CloudflareKvNamespacesByNamespaceValuesByKey(Async)");
+            throw new ApiException("Missing the required parameter 'key' when calling putCloudflareKvNamespacesByNamespaceValuesByKey(Async)");
         }
 
-        return putV1CloudflareKvNamespacesByNamespaceValuesByKeyCall(namespace, key, _callback);
+        return putCloudflareKvNamespacesByNamespaceValuesByKeyCall(namespace, key, _callback);
 
     }
 
@@ -4225,8 +4225,8 @@ public class CloudflareApi {
      * @param key  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void putV1CloudflareKvNamespacesByNamespaceValuesByKey(@javax.annotation.Nonnull String namespace, @javax.annotation.Nonnull String key) throws ApiException {
-        putV1CloudflareKvNamespacesByNamespaceValuesByKeyWithHttpInfo(namespace, key);
+    public void putCloudflareKvNamespacesByNamespaceValuesByKey(@javax.annotation.Nonnull String namespace, @javax.annotation.Nonnull String key) throws ApiException {
+        putCloudflareKvNamespacesByNamespaceValuesByKeyWithHttpInfo(namespace, key);
     }
 
     /**
@@ -4237,8 +4237,8 @@ public class CloudflareApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> putV1CloudflareKvNamespacesByNamespaceValuesByKeyWithHttpInfo(@javax.annotation.Nonnull String namespace, @javax.annotation.Nonnull String key) throws ApiException {
-        okhttp3.Call localVarCall = putV1CloudflareKvNamespacesByNamespaceValuesByKeyValidateBeforeCall(namespace, key, null);
+    public ApiResponse<Void> putCloudflareKvNamespacesByNamespaceValuesByKeyWithHttpInfo(@javax.annotation.Nonnull String namespace, @javax.annotation.Nonnull String key) throws ApiException {
+        okhttp3.Call localVarCall = putCloudflareKvNamespacesByNamespaceValuesByKeyValidateBeforeCall(namespace, key, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -4251,14 +4251,14 @@ public class CloudflareApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call putV1CloudflareKvNamespacesByNamespaceValuesByKeyAsync(@javax.annotation.Nonnull String namespace, @javax.annotation.Nonnull String key, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call putCloudflareKvNamespacesByNamespaceValuesByKeyAsync(@javax.annotation.Nonnull String namespace, @javax.annotation.Nonnull String key, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1CloudflareKvNamespacesByNamespaceValuesByKeyValidateBeforeCall(namespace, key, _callback);
+        okhttp3.Call localVarCall = putCloudflareKvNamespacesByNamespaceValuesByKeyValidateBeforeCall(namespace, key, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1CloudflareWorkersScriptsByScript
+     * Build call for putCloudflareWorkersScriptsByScript
      * @param script  (required)
      * @param workerScriptPut  (optional)
      * @param _callback Callback for upload/download progress
@@ -4271,7 +4271,7 @@ public class CloudflareApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putV1CloudflareWorkersScriptsByScriptCall(@javax.annotation.Nonnull String script, @javax.annotation.Nullable WorkerScriptPut workerScriptPut, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putCloudflareWorkersScriptsByScriptCall(@javax.annotation.Nonnull String script, @javax.annotation.Nullable WorkerScriptPut workerScriptPut, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4318,13 +4318,13 @@ public class CloudflareApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1CloudflareWorkersScriptsByScriptValidateBeforeCall(@javax.annotation.Nonnull String script, @javax.annotation.Nullable WorkerScriptPut workerScriptPut, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putCloudflareWorkersScriptsByScriptValidateBeforeCall(@javax.annotation.Nonnull String script, @javax.annotation.Nullable WorkerScriptPut workerScriptPut, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'script' is set
         if (script == null) {
-            throw new ApiException("Missing the required parameter 'script' when calling putV1CloudflareWorkersScriptsByScript(Async)");
+            throw new ApiException("Missing the required parameter 'script' when calling putCloudflareWorkersScriptsByScript(Async)");
         }
 
-        return putV1CloudflareWorkersScriptsByScriptCall(script, workerScriptPut, _callback);
+        return putCloudflareWorkersScriptsByScriptCall(script, workerScriptPut, _callback);
 
     }
 
@@ -4342,8 +4342,8 @@ public class CloudflareApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public Object putV1CloudflareWorkersScriptsByScript(@javax.annotation.Nonnull String script, @javax.annotation.Nullable WorkerScriptPut workerScriptPut) throws ApiException {
-        ApiResponse<Object> localVarResp = putV1CloudflareWorkersScriptsByScriptWithHttpInfo(script, workerScriptPut);
+    public Object putCloudflareWorkersScriptsByScript(@javax.annotation.Nonnull String script, @javax.annotation.Nullable WorkerScriptPut workerScriptPut) throws ApiException {
+        ApiResponse<Object> localVarResp = putCloudflareWorkersScriptsByScriptWithHttpInfo(script, workerScriptPut);
         return localVarResp.getData();
     }
 
@@ -4361,8 +4361,8 @@ public class CloudflareApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> putV1CloudflareWorkersScriptsByScriptWithHttpInfo(@javax.annotation.Nonnull String script, @javax.annotation.Nullable WorkerScriptPut workerScriptPut) throws ApiException {
-        okhttp3.Call localVarCall = putV1CloudflareWorkersScriptsByScriptValidateBeforeCall(script, workerScriptPut, null);
+    public ApiResponse<Object> putCloudflareWorkersScriptsByScriptWithHttpInfo(@javax.annotation.Nonnull String script, @javax.annotation.Nullable WorkerScriptPut workerScriptPut) throws ApiException {
+        okhttp3.Call localVarCall = putCloudflareWorkersScriptsByScriptValidateBeforeCall(script, workerScriptPut, null);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -4382,9 +4382,9 @@ public class CloudflareApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putV1CloudflareWorkersScriptsByScriptAsync(@javax.annotation.Nonnull String script, @javax.annotation.Nullable WorkerScriptPut workerScriptPut, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call putCloudflareWorkersScriptsByScriptAsync(@javax.annotation.Nonnull String script, @javax.annotation.Nullable WorkerScriptPut workerScriptPut, final ApiCallback<Object> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1CloudflareWorkersScriptsByScriptValidateBeforeCall(script, workerScriptPut, _callback);
+        okhttp3.Call localVarCall = putCloudflareWorkersScriptsByScriptValidateBeforeCall(script, workerScriptPut, _callback);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

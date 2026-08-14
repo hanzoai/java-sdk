@@ -73,12 +73,12 @@ public class RouterApi {
     }
 
     /**
-     * Build call for deleteV1RouterArtifactMeta
+     * Build call for deleteRouterArtifactMeta
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call deleteV1RouterArtifactMetaCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteRouterArtifactMetaCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -122,8 +122,8 @@ public class RouterApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1RouterArtifactMetaValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return deleteV1RouterArtifactMetaCall(_callback);
+    private okhttp3.Call deleteRouterArtifactMetaValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return deleteRouterArtifactMetaCall(_callback);
 
     }
 
@@ -132,8 +132,8 @@ public class RouterApi {
      * The HTTP transport binding for the RESTful router-config nouns (/v1/router/{policy,defaults,ledger,rewards,artifact-meta} and /v1/org/settings[/list]). It dispatches IN-PROCESS through dispatchGateway — the SAME canonical ZAP gateway registry (zap_registry.go) that the MsgType 200 handler serves over the gateway transport. The native ZAP handler is the ONE and ONLY implementation of these routes; this is purely the api.hanzo.ai HTTP binding, so there is NO controller twin to drift from and the split-brain the router refactor removed stays removed.  Why a bridge and not a twin controller method: every other migrated route (get-records, get-connections, …) carries BOTH a controller method and a ZAP handler — the exact dual-impl drift that silently NULLed customer router settings (the update-router-policy data-wipe). Routing these nouns through the ZAP handler over one adapter keeps a single source of truth.  Identity is the request&#39;s own Bearer credential (Authorization header), which the native handlers resolve exactly as the gateway does — every caller (console, chat, app) already sends it. The dispatched handler returns a ZAP message whose status is field 0 and body is field 4 (BuildCloudResponse / BuildGatewayResponse layout); both are relayed verbatim. The route is mapped \&quot;*\&quot; (any verb) because the native handler is method-aware: /v1/router/policy splits GET (read) vs PUT (write), /v1/org/settings GET/PUT/DELETE, and returns 405 for a verb it does not own.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void deleteV1RouterArtifactMeta() throws ApiException {
-        deleteV1RouterArtifactMetaWithHttpInfo();
+    public void deleteRouterArtifactMeta() throws ApiException {
+        deleteRouterArtifactMetaWithHttpInfo();
     }
 
     /**
@@ -142,8 +142,8 @@ public class RouterApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> deleteV1RouterArtifactMetaWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = deleteV1RouterArtifactMetaValidateBeforeCall(null);
+    public ApiResponse<Void> deleteRouterArtifactMetaWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = deleteRouterArtifactMetaValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -154,14 +154,14 @@ public class RouterApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call deleteV1RouterArtifactMetaAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteRouterArtifactMetaAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1RouterArtifactMetaValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = deleteRouterArtifactMetaValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for deleteV1RouterData
+     * Build call for deleteRouterData
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -174,7 +174,7 @@ public class RouterApi {
         <tr><td> 403 </td><td> A valid credential that may not do this. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1RouterDataCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteRouterDataCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -219,8 +219,8 @@ public class RouterApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1RouterDataValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return deleteV1RouterDataCall(_callback);
+    private okhttp3.Call deleteRouterDataValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return deleteRouterDataCall(_callback);
 
     }
 
@@ -238,8 +238,8 @@ public class RouterApi {
         <tr><td> 403 </td><td> A valid credential that may not do this. </td><td>  -  </td></tr>
      </table>
      */
-    public Envelope deleteV1RouterData() throws ApiException {
-        ApiResponse<Envelope> localVarResp = deleteV1RouterDataWithHttpInfo();
+    public Envelope deleteRouterData() throws ApiException {
+        ApiResponse<Envelope> localVarResp = deleteRouterDataWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -257,8 +257,8 @@ public class RouterApi {
         <tr><td> 403 </td><td> A valid credential that may not do this. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Envelope> deleteV1RouterDataWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = deleteV1RouterDataValidateBeforeCall(null);
+    public ApiResponse<Envelope> deleteRouterDataWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = deleteRouterDataValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<Envelope>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -278,20 +278,20 @@ public class RouterApi {
         <tr><td> 403 </td><td> A valid credential that may not do this. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1RouterDataAsync(final ApiCallback<Envelope> _callback) throws ApiException {
+    public okhttp3.Call deleteRouterDataAsync(final ApiCallback<Envelope> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1RouterDataValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = deleteRouterDataValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<Envelope>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for deleteV1RouterDefaults
+     * Build call for deleteRouterDefaults
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call deleteV1RouterDefaultsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteRouterDefaultsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -335,8 +335,8 @@ public class RouterApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1RouterDefaultsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return deleteV1RouterDefaultsCall(_callback);
+    private okhttp3.Call deleteRouterDefaultsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return deleteRouterDefaultsCall(_callback);
 
     }
 
@@ -345,8 +345,8 @@ public class RouterApi {
      * The HTTP transport binding for the RESTful router-config nouns (/v1/router/{policy,defaults,ledger,rewards,artifact-meta} and /v1/org/settings[/list]). It dispatches IN-PROCESS through dispatchGateway — the SAME canonical ZAP gateway registry (zap_registry.go) that the MsgType 200 handler serves over the gateway transport. The native ZAP handler is the ONE and ONLY implementation of these routes; this is purely the api.hanzo.ai HTTP binding, so there is NO controller twin to drift from and the split-brain the router refactor removed stays removed.  Why a bridge and not a twin controller method: every other migrated route (get-records, get-connections, …) carries BOTH a controller method and a ZAP handler — the exact dual-impl drift that silently NULLed customer router settings (the update-router-policy data-wipe). Routing these nouns through the ZAP handler over one adapter keeps a single source of truth.  Identity is the request&#39;s own Bearer credential (Authorization header), which the native handlers resolve exactly as the gateway does — every caller (console, chat, app) already sends it. The dispatched handler returns a ZAP message whose status is field 0 and body is field 4 (BuildCloudResponse / BuildGatewayResponse layout); both are relayed verbatim. The route is mapped \&quot;*\&quot; (any verb) because the native handler is method-aware: /v1/router/policy splits GET (read) vs PUT (write), /v1/org/settings GET/PUT/DELETE, and returns 405 for a verb it does not own.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void deleteV1RouterDefaults() throws ApiException {
-        deleteV1RouterDefaultsWithHttpInfo();
+    public void deleteRouterDefaults() throws ApiException {
+        deleteRouterDefaultsWithHttpInfo();
     }
 
     /**
@@ -355,8 +355,8 @@ public class RouterApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> deleteV1RouterDefaultsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = deleteV1RouterDefaultsValidateBeforeCall(null);
+    public ApiResponse<Void> deleteRouterDefaultsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = deleteRouterDefaultsValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -367,19 +367,19 @@ public class RouterApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call deleteV1RouterDefaultsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteRouterDefaultsAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1RouterDefaultsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = deleteRouterDefaultsValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for deleteV1RouterLedger
+     * Build call for deleteRouterLedger
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call deleteV1RouterLedgerCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteRouterLedgerCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -423,8 +423,8 @@ public class RouterApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1RouterLedgerValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return deleteV1RouterLedgerCall(_callback);
+    private okhttp3.Call deleteRouterLedgerValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return deleteRouterLedgerCall(_callback);
 
     }
 
@@ -433,8 +433,8 @@ public class RouterApi {
      * The HTTP transport binding for the RESTful router-config nouns (/v1/router/{policy,defaults,ledger,rewards,artifact-meta} and /v1/org/settings[/list]). It dispatches IN-PROCESS through dispatchGateway — the SAME canonical ZAP gateway registry (zap_registry.go) that the MsgType 200 handler serves over the gateway transport. The native ZAP handler is the ONE and ONLY implementation of these routes; this is purely the api.hanzo.ai HTTP binding, so there is NO controller twin to drift from and the split-brain the router refactor removed stays removed.  Why a bridge and not a twin controller method: every other migrated route (get-records, get-connections, …) carries BOTH a controller method and a ZAP handler — the exact dual-impl drift that silently NULLed customer router settings (the update-router-policy data-wipe). Routing these nouns through the ZAP handler over one adapter keeps a single source of truth.  Identity is the request&#39;s own Bearer credential (Authorization header), which the native handlers resolve exactly as the gateway does — every caller (console, chat, app) already sends it. The dispatched handler returns a ZAP message whose status is field 0 and body is field 4 (BuildCloudResponse / BuildGatewayResponse layout); both are relayed verbatim. The route is mapped \&quot;*\&quot; (any verb) because the native handler is method-aware: /v1/router/policy splits GET (read) vs PUT (write), /v1/org/settings GET/PUT/DELETE, and returns 405 for a verb it does not own.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void deleteV1RouterLedger() throws ApiException {
-        deleteV1RouterLedgerWithHttpInfo();
+    public void deleteRouterLedger() throws ApiException {
+        deleteRouterLedgerWithHttpInfo();
     }
 
     /**
@@ -443,8 +443,8 @@ public class RouterApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> deleteV1RouterLedgerWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = deleteV1RouterLedgerValidateBeforeCall(null);
+    public ApiResponse<Void> deleteRouterLedgerWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = deleteRouterLedgerValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -455,19 +455,19 @@ public class RouterApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call deleteV1RouterLedgerAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteRouterLedgerAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1RouterLedgerValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = deleteRouterLedgerValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for deleteV1RouterPolicy
+     * Build call for deleteRouterPolicy
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call deleteV1RouterPolicyCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteRouterPolicyCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -511,8 +511,8 @@ public class RouterApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1RouterPolicyValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return deleteV1RouterPolicyCall(_callback);
+    private okhttp3.Call deleteRouterPolicyValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return deleteRouterPolicyCall(_callback);
 
     }
 
@@ -521,8 +521,8 @@ public class RouterApi {
      * The HTTP transport binding for the RESTful router-config nouns (/v1/router/{policy,defaults,ledger,rewards,artifact-meta} and /v1/org/settings[/list]). It dispatches IN-PROCESS through dispatchGateway — the SAME canonical ZAP gateway registry (zap_registry.go) that the MsgType 200 handler serves over the gateway transport. The native ZAP handler is the ONE and ONLY implementation of these routes; this is purely the api.hanzo.ai HTTP binding, so there is NO controller twin to drift from and the split-brain the router refactor removed stays removed.  Why a bridge and not a twin controller method: every other migrated route (get-records, get-connections, …) carries BOTH a controller method and a ZAP handler — the exact dual-impl drift that silently NULLed customer router settings (the update-router-policy data-wipe). Routing these nouns through the ZAP handler over one adapter keeps a single source of truth.  Identity is the request&#39;s own Bearer credential (Authorization header), which the native handlers resolve exactly as the gateway does — every caller (console, chat, app) already sends it. The dispatched handler returns a ZAP message whose status is field 0 and body is field 4 (BuildCloudResponse / BuildGatewayResponse layout); both are relayed verbatim. The route is mapped \&quot;*\&quot; (any verb) because the native handler is method-aware: /v1/router/policy splits GET (read) vs PUT (write), /v1/org/settings GET/PUT/DELETE, and returns 405 for a verb it does not own.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void deleteV1RouterPolicy() throws ApiException {
-        deleteV1RouterPolicyWithHttpInfo();
+    public void deleteRouterPolicy() throws ApiException {
+        deleteRouterPolicyWithHttpInfo();
     }
 
     /**
@@ -531,8 +531,8 @@ public class RouterApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> deleteV1RouterPolicyWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = deleteV1RouterPolicyValidateBeforeCall(null);
+    public ApiResponse<Void> deleteRouterPolicyWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = deleteRouterPolicyValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -543,19 +543,19 @@ public class RouterApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call deleteV1RouterPolicyAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteRouterPolicyAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1RouterPolicyValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = deleteRouterPolicyValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for deleteV1RouterRewards
+     * Build call for deleteRouterRewards
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call deleteV1RouterRewardsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteRouterRewardsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -599,8 +599,8 @@ public class RouterApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1RouterRewardsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return deleteV1RouterRewardsCall(_callback);
+    private okhttp3.Call deleteRouterRewardsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return deleteRouterRewardsCall(_callback);
 
     }
 
@@ -609,8 +609,8 @@ public class RouterApi {
      * The HTTP transport binding for the RESTful router-config nouns (/v1/router/{policy,defaults,ledger,rewards,artifact-meta} and /v1/org/settings[/list]). It dispatches IN-PROCESS through dispatchGateway — the SAME canonical ZAP gateway registry (zap_registry.go) that the MsgType 200 handler serves over the gateway transport. The native ZAP handler is the ONE and ONLY implementation of these routes; this is purely the api.hanzo.ai HTTP binding, so there is NO controller twin to drift from and the split-brain the router refactor removed stays removed.  Why a bridge and not a twin controller method: every other migrated route (get-records, get-connections, …) carries BOTH a controller method and a ZAP handler — the exact dual-impl drift that silently NULLed customer router settings (the update-router-policy data-wipe). Routing these nouns through the ZAP handler over one adapter keeps a single source of truth.  Identity is the request&#39;s own Bearer credential (Authorization header), which the native handlers resolve exactly as the gateway does — every caller (console, chat, app) already sends it. The dispatched handler returns a ZAP message whose status is field 0 and body is field 4 (BuildCloudResponse / BuildGatewayResponse layout); both are relayed verbatim. The route is mapped \&quot;*\&quot; (any verb) because the native handler is method-aware: /v1/router/policy splits GET (read) vs PUT (write), /v1/org/settings GET/PUT/DELETE, and returns 405 for a verb it does not own.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void deleteV1RouterRewards() throws ApiException {
-        deleteV1RouterRewardsWithHttpInfo();
+    public void deleteRouterRewards() throws ApiException {
+        deleteRouterRewardsWithHttpInfo();
     }
 
     /**
@@ -619,8 +619,8 @@ public class RouterApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> deleteV1RouterRewardsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = deleteV1RouterRewardsValidateBeforeCall(null);
+    public ApiResponse<Void> deleteRouterRewardsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = deleteRouterRewardsValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -631,19 +631,19 @@ public class RouterApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call deleteV1RouterRewardsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteRouterRewardsAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1RouterRewardsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = deleteRouterRewardsValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1RouterArtifactMeta
+     * Build call for getRouterArtifactMeta
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1RouterArtifactMetaCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getRouterArtifactMetaCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -687,8 +687,8 @@ public class RouterApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1RouterArtifactMetaValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1RouterArtifactMetaCall(_callback);
+    private okhttp3.Call getRouterArtifactMetaValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getRouterArtifactMetaCall(_callback);
 
     }
 
@@ -697,8 +697,8 @@ public class RouterApi {
      * The HTTP transport binding for the RESTful router-config nouns (/v1/router/{policy,defaults,ledger,rewards,artifact-meta} and /v1/org/settings[/list]). It dispatches IN-PROCESS through dispatchGateway — the SAME canonical ZAP gateway registry (zap_registry.go) that the MsgType 200 handler serves over the gateway transport. The native ZAP handler is the ONE and ONLY implementation of these routes; this is purely the api.hanzo.ai HTTP binding, so there is NO controller twin to drift from and the split-brain the router refactor removed stays removed.  Why a bridge and not a twin controller method: every other migrated route (get-records, get-connections, …) carries BOTH a controller method and a ZAP handler — the exact dual-impl drift that silently NULLed customer router settings (the update-router-policy data-wipe). Routing these nouns through the ZAP handler over one adapter keeps a single source of truth.  Identity is the request&#39;s own Bearer credential (Authorization header), which the native handlers resolve exactly as the gateway does — every caller (console, chat, app) already sends it. The dispatched handler returns a ZAP message whose status is field 0 and body is field 4 (BuildCloudResponse / BuildGatewayResponse layout); both are relayed verbatim. The route is mapped \&quot;*\&quot; (any verb) because the native handler is method-aware: /v1/router/policy splits GET (read) vs PUT (write), /v1/org/settings GET/PUT/DELETE, and returns 405 for a verb it does not own.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1RouterArtifactMeta() throws ApiException {
-        getV1RouterArtifactMetaWithHttpInfo();
+    public void getRouterArtifactMeta() throws ApiException {
+        getRouterArtifactMetaWithHttpInfo();
     }
 
     /**
@@ -707,8 +707,8 @@ public class RouterApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1RouterArtifactMetaWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1RouterArtifactMetaValidateBeforeCall(null);
+    public ApiResponse<Void> getRouterArtifactMetaWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getRouterArtifactMetaValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -719,14 +719,14 @@ public class RouterApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1RouterArtifactMetaAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getRouterArtifactMetaAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1RouterArtifactMetaValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getRouterArtifactMetaValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1RouterData
+     * Build call for getRouterData
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -739,7 +739,7 @@ public class RouterApi {
         <tr><td> 403 </td><td> A valid credential that may not do this. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1RouterDataCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getRouterDataCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -784,8 +784,8 @@ public class RouterApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1RouterDataValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1RouterDataCall(_callback);
+    private okhttp3.Call getRouterDataValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getRouterDataCall(_callback);
 
     }
 
@@ -803,8 +803,8 @@ public class RouterApi {
         <tr><td> 403 </td><td> A valid credential that may not do this. </td><td>  -  </td></tr>
      </table>
      */
-    public Envelope getV1RouterData() throws ApiException {
-        ApiResponse<Envelope> localVarResp = getV1RouterDataWithHttpInfo();
+    public Envelope getRouterData() throws ApiException {
+        ApiResponse<Envelope> localVarResp = getRouterDataWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -822,8 +822,8 @@ public class RouterApi {
         <tr><td> 403 </td><td> A valid credential that may not do this. </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Envelope> getV1RouterDataWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1RouterDataValidateBeforeCall(null);
+    public ApiResponse<Envelope> getRouterDataWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getRouterDataValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<Envelope>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -843,20 +843,20 @@ public class RouterApi {
         <tr><td> 403 </td><td> A valid credential that may not do this. </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1RouterDataAsync(final ApiCallback<Envelope> _callback) throws ApiException {
+    public okhttp3.Call getRouterDataAsync(final ApiCallback<Envelope> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1RouterDataValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getRouterDataValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<Envelope>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1RouterDefaults
+     * Build call for getRouterDefaults
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1RouterDefaultsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getRouterDefaultsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -900,8 +900,8 @@ public class RouterApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1RouterDefaultsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1RouterDefaultsCall(_callback);
+    private okhttp3.Call getRouterDefaultsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getRouterDefaultsCall(_callback);
 
     }
 
@@ -910,8 +910,8 @@ public class RouterApi {
      * The HTTP transport binding for the RESTful router-config nouns (/v1/router/{policy,defaults,ledger,rewards,artifact-meta} and /v1/org/settings[/list]). It dispatches IN-PROCESS through dispatchGateway — the SAME canonical ZAP gateway registry (zap_registry.go) that the MsgType 200 handler serves over the gateway transport. The native ZAP handler is the ONE and ONLY implementation of these routes; this is purely the api.hanzo.ai HTTP binding, so there is NO controller twin to drift from and the split-brain the router refactor removed stays removed.  Why a bridge and not a twin controller method: every other migrated route (get-records, get-connections, …) carries BOTH a controller method and a ZAP handler — the exact dual-impl drift that silently NULLed customer router settings (the update-router-policy data-wipe). Routing these nouns through the ZAP handler over one adapter keeps a single source of truth.  Identity is the request&#39;s own Bearer credential (Authorization header), which the native handlers resolve exactly as the gateway does — every caller (console, chat, app) already sends it. The dispatched handler returns a ZAP message whose status is field 0 and body is field 4 (BuildCloudResponse / BuildGatewayResponse layout); both are relayed verbatim. The route is mapped \&quot;*\&quot; (any verb) because the native handler is method-aware: /v1/router/policy splits GET (read) vs PUT (write), /v1/org/settings GET/PUT/DELETE, and returns 405 for a verb it does not own.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1RouterDefaults() throws ApiException {
-        getV1RouterDefaultsWithHttpInfo();
+    public void getRouterDefaults() throws ApiException {
+        getRouterDefaultsWithHttpInfo();
     }
 
     /**
@@ -920,8 +920,8 @@ public class RouterApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1RouterDefaultsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1RouterDefaultsValidateBeforeCall(null);
+    public ApiResponse<Void> getRouterDefaultsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getRouterDefaultsValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -932,19 +932,19 @@ public class RouterApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1RouterDefaultsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getRouterDefaultsAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1RouterDefaultsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getRouterDefaultsValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1RouterHistory
+     * Build call for getRouterHistory
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1RouterHistoryCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getRouterHistoryCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -988,8 +988,8 @@ public class RouterApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1RouterHistoryValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1RouterHistoryCall(_callback);
+    private okhttp3.Call getRouterHistoryValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getRouterHistoryCall(_callback);
 
     }
 
@@ -998,8 +998,8 @@ public class RouterApi {
      * Returns the router-improvement time-series. Two scopes, one route, mirroring /v1/router/stats:    - ?scope&#x3D;platform — PUBLIC-safe aggregate over ALL orgs, no authentication. Emits     the daily reward/cost-saved/adoption series (task mix included, model ids NOT)     and the retrain timeline. This is what world.hanzo.ai polls.   - default (org scope) — requires a signed-in principal, scoped to the caller&#39;s OWN     org (a super admin may pass ?org&#x3D; to target another or \&quot;\&quot; for all).  Window: ?days&#x3D;N (default 30, capped at 90). Aggregates only.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1RouterHistory() throws ApiException {
-        getV1RouterHistoryWithHttpInfo();
+    public void getRouterHistory() throws ApiException {
+        getRouterHistoryWithHttpInfo();
     }
 
     /**
@@ -1008,8 +1008,8 @@ public class RouterApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1RouterHistoryWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1RouterHistoryValidateBeforeCall(null);
+    public ApiResponse<Void> getRouterHistoryWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getRouterHistoryValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1020,19 +1020,19 @@ public class RouterApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1RouterHistoryAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getRouterHistoryAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1RouterHistoryValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getRouterHistoryValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1RouterJudgePanel
+     * Build call for getRouterJudgePanel
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1RouterJudgePanelCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getRouterJudgePanelCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1076,8 +1076,8 @@ public class RouterApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1RouterJudgePanelValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1RouterJudgePanelCall(_callback);
+    private okhttp3.Call getRouterJudgePanelValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getRouterJudgePanelCall(_callback);
 
     }
 
@@ -1086,8 +1086,8 @@ public class RouterApi {
      * Returns the LIVE Mean-Field Judge Panel state: the configured panel + dynamic judge posture (enabled/sample) resolved from the \&quot;*\&quot; GlobalDefaultOwner row, the live in-process per-judge calibration (weight/mean/n), and the static published benchmark. PUBLIC-safe and platform-global (model ids + scalars only), so it rides the same unauthenticated, balance-exempt class as /v1/router/stats?scope&#x3D;platform — the world widget polls it with no auth. The judge state is a single in-process population (not per-org), so there is nothing to scope; ?scope&#x3D;platform is accepted for symmetry with router-stats.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1RouterJudgePanel() throws ApiException {
-        getV1RouterJudgePanelWithHttpInfo();
+    public void getRouterJudgePanel() throws ApiException {
+        getRouterJudgePanelWithHttpInfo();
     }
 
     /**
@@ -1096,8 +1096,8 @@ public class RouterApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1RouterJudgePanelWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1RouterJudgePanelValidateBeforeCall(null);
+    public ApiResponse<Void> getRouterJudgePanelWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getRouterJudgePanelValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1108,19 +1108,19 @@ public class RouterApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1RouterJudgePanelAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getRouterJudgePanelAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1RouterJudgePanelValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getRouterJudgePanelValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1RouterLedger
+     * Build call for getRouterLedger
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1RouterLedgerCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getRouterLedgerCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1164,8 +1164,8 @@ public class RouterApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1RouterLedgerValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1RouterLedgerCall(_callback);
+    private okhttp3.Call getRouterLedgerValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getRouterLedgerCall(_callback);
 
     }
 
@@ -1174,8 +1174,8 @@ public class RouterApi {
      * The HTTP transport binding for the RESTful router-config nouns (/v1/router/{policy,defaults,ledger,rewards,artifact-meta} and /v1/org/settings[/list]). It dispatches IN-PROCESS through dispatchGateway — the SAME canonical ZAP gateway registry (zap_registry.go) that the MsgType 200 handler serves over the gateway transport. The native ZAP handler is the ONE and ONLY implementation of these routes; this is purely the api.hanzo.ai HTTP binding, so there is NO controller twin to drift from and the split-brain the router refactor removed stays removed.  Why a bridge and not a twin controller method: every other migrated route (get-records, get-connections, …) carries BOTH a controller method and a ZAP handler — the exact dual-impl drift that silently NULLed customer router settings (the update-router-policy data-wipe). Routing these nouns through the ZAP handler over one adapter keeps a single source of truth.  Identity is the request&#39;s own Bearer credential (Authorization header), which the native handlers resolve exactly as the gateway does — every caller (console, chat, app) already sends it. The dispatched handler returns a ZAP message whose status is field 0 and body is field 4 (BuildCloudResponse / BuildGatewayResponse layout); both are relayed verbatim. The route is mapped \&quot;*\&quot; (any verb) because the native handler is method-aware: /v1/router/policy splits GET (read) vs PUT (write), /v1/org/settings GET/PUT/DELETE, and returns 405 for a verb it does not own.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1RouterLedger() throws ApiException {
-        getV1RouterLedgerWithHttpInfo();
+    public void getRouterLedger() throws ApiException {
+        getRouterLedgerWithHttpInfo();
     }
 
     /**
@@ -1184,8 +1184,8 @@ public class RouterApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1RouterLedgerWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1RouterLedgerValidateBeforeCall(null);
+    public ApiResponse<Void> getRouterLedgerWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getRouterLedgerValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1196,19 +1196,19 @@ public class RouterApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1RouterLedgerAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getRouterLedgerAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1RouterLedgerValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getRouterLedgerValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1RouterPolicy
+     * Build call for getRouterPolicy
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1RouterPolicyCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getRouterPolicyCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1252,8 +1252,8 @@ public class RouterApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1RouterPolicyValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1RouterPolicyCall(_callback);
+    private okhttp3.Call getRouterPolicyValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getRouterPolicyCall(_callback);
 
     }
 
@@ -1262,8 +1262,8 @@ public class RouterApi {
      * The HTTP transport binding for the RESTful router-config nouns (/v1/router/{policy,defaults,ledger,rewards,artifact-meta} and /v1/org/settings[/list]). It dispatches IN-PROCESS through dispatchGateway — the SAME canonical ZAP gateway registry (zap_registry.go) that the MsgType 200 handler serves over the gateway transport. The native ZAP handler is the ONE and ONLY implementation of these routes; this is purely the api.hanzo.ai HTTP binding, so there is NO controller twin to drift from and the split-brain the router refactor removed stays removed.  Why a bridge and not a twin controller method: every other migrated route (get-records, get-connections, …) carries BOTH a controller method and a ZAP handler — the exact dual-impl drift that silently NULLed customer router settings (the update-router-policy data-wipe). Routing these nouns through the ZAP handler over one adapter keeps a single source of truth.  Identity is the request&#39;s own Bearer credential (Authorization header), which the native handlers resolve exactly as the gateway does — every caller (console, chat, app) already sends it. The dispatched handler returns a ZAP message whose status is field 0 and body is field 4 (BuildCloudResponse / BuildGatewayResponse layout); both are relayed verbatim. The route is mapped \&quot;*\&quot; (any verb) because the native handler is method-aware: /v1/router/policy splits GET (read) vs PUT (write), /v1/org/settings GET/PUT/DELETE, and returns 405 for a verb it does not own.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1RouterPolicy() throws ApiException {
-        getV1RouterPolicyWithHttpInfo();
+    public void getRouterPolicy() throws ApiException {
+        getRouterPolicyWithHttpInfo();
     }
 
     /**
@@ -1272,8 +1272,8 @@ public class RouterApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1RouterPolicyWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1RouterPolicyValidateBeforeCall(null);
+    public ApiResponse<Void> getRouterPolicyWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getRouterPolicyValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1284,19 +1284,19 @@ public class RouterApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1RouterPolicyAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getRouterPolicyAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1RouterPolicyValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getRouterPolicyValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1RouterRewards
+     * Build call for getRouterRewards
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1RouterRewardsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getRouterRewardsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1340,8 +1340,8 @@ public class RouterApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1RouterRewardsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1RouterRewardsCall(_callback);
+    private okhttp3.Call getRouterRewardsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getRouterRewardsCall(_callback);
 
     }
 
@@ -1350,8 +1350,8 @@ public class RouterApi {
      * The HTTP transport binding for the RESTful router-config nouns (/v1/router/{policy,defaults,ledger,rewards,artifact-meta} and /v1/org/settings[/list]). It dispatches IN-PROCESS through dispatchGateway — the SAME canonical ZAP gateway registry (zap_registry.go) that the MsgType 200 handler serves over the gateway transport. The native ZAP handler is the ONE and ONLY implementation of these routes; this is purely the api.hanzo.ai HTTP binding, so there is NO controller twin to drift from and the split-brain the router refactor removed stays removed.  Why a bridge and not a twin controller method: every other migrated route (get-records, get-connections, …) carries BOTH a controller method and a ZAP handler — the exact dual-impl drift that silently NULLed customer router settings (the update-router-policy data-wipe). Routing these nouns through the ZAP handler over one adapter keeps a single source of truth.  Identity is the request&#39;s own Bearer credential (Authorization header), which the native handlers resolve exactly as the gateway does — every caller (console, chat, app) already sends it. The dispatched handler returns a ZAP message whose status is field 0 and body is field 4 (BuildCloudResponse / BuildGatewayResponse layout); both are relayed verbatim. The route is mapped \&quot;*\&quot; (any verb) because the native handler is method-aware: /v1/router/policy splits GET (read) vs PUT (write), /v1/org/settings GET/PUT/DELETE, and returns 405 for a verb it does not own.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1RouterRewards() throws ApiException {
-        getV1RouterRewardsWithHttpInfo();
+    public void getRouterRewards() throws ApiException {
+        getRouterRewardsWithHttpInfo();
     }
 
     /**
@@ -1360,8 +1360,8 @@ public class RouterApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1RouterRewardsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1RouterRewardsValidateBeforeCall(null);
+    public ApiResponse<Void> getRouterRewardsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getRouterRewardsValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1372,19 +1372,19 @@ public class RouterApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1RouterRewardsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getRouterRewardsAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1RouterRewardsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getRouterRewardsValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1RouterStats
+     * Build call for getRouterStats
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1RouterStatsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getRouterStatsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1428,8 +1428,8 @@ public class RouterApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1RouterStatsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1RouterStatsCall(_callback);
+    private okhttp3.Call getRouterStatsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getRouterStatsCall(_callback);
 
     }
 
@@ -1438,8 +1438,8 @@ public class RouterApi {
      * Returns the router observability aggregate. Two scopes, one route:    - ?scope&#x3D;platform — PUBLIC-safe aggregate over ALL orgs, no authentication.     Emits rates, shares, per-task/per-model counts, throughput, and the cost     RATIO (saved_pct) + counterfactual model id, but NEVER absolute $ levels,     org identity, raw events, or feature vectors. This is what world.hanzo.ai     polls.   - default (org scope) — requires a signed-in principal; scoped to the caller&#39;s     OWN org (a super admin may pass ?org&#x3D; to target another org or \&quot;\&quot; for all).     Carries the absolute $/MTok indices for the admin savings panel.  Window: ?since&#x3D; (RFC3339) or ?hours&#x3D; (default 24, capped). Aggregates only.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1RouterStats() throws ApiException {
-        getV1RouterStatsWithHttpInfo();
+    public void getRouterStats() throws ApiException {
+        getRouterStatsWithHttpInfo();
     }
 
     /**
@@ -1448,8 +1448,8 @@ public class RouterApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1RouterStatsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1RouterStatsValidateBeforeCall(null);
+    public ApiResponse<Void> getRouterStatsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getRouterStatsValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1460,19 +1460,19 @@ public class RouterApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1RouterStatsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getRouterStatsAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1RouterStatsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getRouterStatsValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for patchV1RouterArtifactMeta
+     * Build call for patchRouterArtifactMeta
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call patchV1RouterArtifactMetaCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call patchRouterArtifactMetaCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1516,8 +1516,8 @@ public class RouterApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchV1RouterArtifactMetaValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return patchV1RouterArtifactMetaCall(_callback);
+    private okhttp3.Call patchRouterArtifactMetaValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return patchRouterArtifactMetaCall(_callback);
 
     }
 
@@ -1526,8 +1526,8 @@ public class RouterApi {
      * The HTTP transport binding for the RESTful router-config nouns (/v1/router/{policy,defaults,ledger,rewards,artifact-meta} and /v1/org/settings[/list]). It dispatches IN-PROCESS through dispatchGateway — the SAME canonical ZAP gateway registry (zap_registry.go) that the MsgType 200 handler serves over the gateway transport. The native ZAP handler is the ONE and ONLY implementation of these routes; this is purely the api.hanzo.ai HTTP binding, so there is NO controller twin to drift from and the split-brain the router refactor removed stays removed.  Why a bridge and not a twin controller method: every other migrated route (get-records, get-connections, …) carries BOTH a controller method and a ZAP handler — the exact dual-impl drift that silently NULLed customer router settings (the update-router-policy data-wipe). Routing these nouns through the ZAP handler over one adapter keeps a single source of truth.  Identity is the request&#39;s own Bearer credential (Authorization header), which the native handlers resolve exactly as the gateway does — every caller (console, chat, app) already sends it. The dispatched handler returns a ZAP message whose status is field 0 and body is field 4 (BuildCloudResponse / BuildGatewayResponse layout); both are relayed verbatim. The route is mapped \&quot;*\&quot; (any verb) because the native handler is method-aware: /v1/router/policy splits GET (read) vs PUT (write), /v1/org/settings GET/PUT/DELETE, and returns 405 for a verb it does not own.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void patchV1RouterArtifactMeta() throws ApiException {
-        patchV1RouterArtifactMetaWithHttpInfo();
+    public void patchRouterArtifactMeta() throws ApiException {
+        patchRouterArtifactMetaWithHttpInfo();
     }
 
     /**
@@ -1536,8 +1536,8 @@ public class RouterApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> patchV1RouterArtifactMetaWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = patchV1RouterArtifactMetaValidateBeforeCall(null);
+    public ApiResponse<Void> patchRouterArtifactMetaWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = patchRouterArtifactMetaValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1548,19 +1548,19 @@ public class RouterApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call patchV1RouterArtifactMetaAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call patchRouterArtifactMetaAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchV1RouterArtifactMetaValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = patchRouterArtifactMetaValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for patchV1RouterDefaults
+     * Build call for patchRouterDefaults
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call patchV1RouterDefaultsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call patchRouterDefaultsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1604,8 +1604,8 @@ public class RouterApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchV1RouterDefaultsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return patchV1RouterDefaultsCall(_callback);
+    private okhttp3.Call patchRouterDefaultsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return patchRouterDefaultsCall(_callback);
 
     }
 
@@ -1614,8 +1614,8 @@ public class RouterApi {
      * The HTTP transport binding for the RESTful router-config nouns (/v1/router/{policy,defaults,ledger,rewards,artifact-meta} and /v1/org/settings[/list]). It dispatches IN-PROCESS through dispatchGateway — the SAME canonical ZAP gateway registry (zap_registry.go) that the MsgType 200 handler serves over the gateway transport. The native ZAP handler is the ONE and ONLY implementation of these routes; this is purely the api.hanzo.ai HTTP binding, so there is NO controller twin to drift from and the split-brain the router refactor removed stays removed.  Why a bridge and not a twin controller method: every other migrated route (get-records, get-connections, …) carries BOTH a controller method and a ZAP handler — the exact dual-impl drift that silently NULLed customer router settings (the update-router-policy data-wipe). Routing these nouns through the ZAP handler over one adapter keeps a single source of truth.  Identity is the request&#39;s own Bearer credential (Authorization header), which the native handlers resolve exactly as the gateway does — every caller (console, chat, app) already sends it. The dispatched handler returns a ZAP message whose status is field 0 and body is field 4 (BuildCloudResponse / BuildGatewayResponse layout); both are relayed verbatim. The route is mapped \&quot;*\&quot; (any verb) because the native handler is method-aware: /v1/router/policy splits GET (read) vs PUT (write), /v1/org/settings GET/PUT/DELETE, and returns 405 for a verb it does not own.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void patchV1RouterDefaults() throws ApiException {
-        patchV1RouterDefaultsWithHttpInfo();
+    public void patchRouterDefaults() throws ApiException {
+        patchRouterDefaultsWithHttpInfo();
     }
 
     /**
@@ -1624,8 +1624,8 @@ public class RouterApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> patchV1RouterDefaultsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = patchV1RouterDefaultsValidateBeforeCall(null);
+    public ApiResponse<Void> patchRouterDefaultsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = patchRouterDefaultsValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1636,19 +1636,19 @@ public class RouterApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call patchV1RouterDefaultsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call patchRouterDefaultsAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchV1RouterDefaultsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = patchRouterDefaultsValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for patchV1RouterLedger
+     * Build call for patchRouterLedger
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call patchV1RouterLedgerCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call patchRouterLedgerCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1692,8 +1692,8 @@ public class RouterApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchV1RouterLedgerValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return patchV1RouterLedgerCall(_callback);
+    private okhttp3.Call patchRouterLedgerValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return patchRouterLedgerCall(_callback);
 
     }
 
@@ -1702,8 +1702,8 @@ public class RouterApi {
      * The HTTP transport binding for the RESTful router-config nouns (/v1/router/{policy,defaults,ledger,rewards,artifact-meta} and /v1/org/settings[/list]). It dispatches IN-PROCESS through dispatchGateway — the SAME canonical ZAP gateway registry (zap_registry.go) that the MsgType 200 handler serves over the gateway transport. The native ZAP handler is the ONE and ONLY implementation of these routes; this is purely the api.hanzo.ai HTTP binding, so there is NO controller twin to drift from and the split-brain the router refactor removed stays removed.  Why a bridge and not a twin controller method: every other migrated route (get-records, get-connections, …) carries BOTH a controller method and a ZAP handler — the exact dual-impl drift that silently NULLed customer router settings (the update-router-policy data-wipe). Routing these nouns through the ZAP handler over one adapter keeps a single source of truth.  Identity is the request&#39;s own Bearer credential (Authorization header), which the native handlers resolve exactly as the gateway does — every caller (console, chat, app) already sends it. The dispatched handler returns a ZAP message whose status is field 0 and body is field 4 (BuildCloudResponse / BuildGatewayResponse layout); both are relayed verbatim. The route is mapped \&quot;*\&quot; (any verb) because the native handler is method-aware: /v1/router/policy splits GET (read) vs PUT (write), /v1/org/settings GET/PUT/DELETE, and returns 405 for a verb it does not own.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void patchV1RouterLedger() throws ApiException {
-        patchV1RouterLedgerWithHttpInfo();
+    public void patchRouterLedger() throws ApiException {
+        patchRouterLedgerWithHttpInfo();
     }
 
     /**
@@ -1712,8 +1712,8 @@ public class RouterApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> patchV1RouterLedgerWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = patchV1RouterLedgerValidateBeforeCall(null);
+    public ApiResponse<Void> patchRouterLedgerWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = patchRouterLedgerValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1724,19 +1724,19 @@ public class RouterApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call patchV1RouterLedgerAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call patchRouterLedgerAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchV1RouterLedgerValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = patchRouterLedgerValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for patchV1RouterPolicy
+     * Build call for patchRouterPolicy
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call patchV1RouterPolicyCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call patchRouterPolicyCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1780,8 +1780,8 @@ public class RouterApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchV1RouterPolicyValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return patchV1RouterPolicyCall(_callback);
+    private okhttp3.Call patchRouterPolicyValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return patchRouterPolicyCall(_callback);
 
     }
 
@@ -1790,8 +1790,8 @@ public class RouterApi {
      * The HTTP transport binding for the RESTful router-config nouns (/v1/router/{policy,defaults,ledger,rewards,artifact-meta} and /v1/org/settings[/list]). It dispatches IN-PROCESS through dispatchGateway — the SAME canonical ZAP gateway registry (zap_registry.go) that the MsgType 200 handler serves over the gateway transport. The native ZAP handler is the ONE and ONLY implementation of these routes; this is purely the api.hanzo.ai HTTP binding, so there is NO controller twin to drift from and the split-brain the router refactor removed stays removed.  Why a bridge and not a twin controller method: every other migrated route (get-records, get-connections, …) carries BOTH a controller method and a ZAP handler — the exact dual-impl drift that silently NULLed customer router settings (the update-router-policy data-wipe). Routing these nouns through the ZAP handler over one adapter keeps a single source of truth.  Identity is the request&#39;s own Bearer credential (Authorization header), which the native handlers resolve exactly as the gateway does — every caller (console, chat, app) already sends it. The dispatched handler returns a ZAP message whose status is field 0 and body is field 4 (BuildCloudResponse / BuildGatewayResponse layout); both are relayed verbatim. The route is mapped \&quot;*\&quot; (any verb) because the native handler is method-aware: /v1/router/policy splits GET (read) vs PUT (write), /v1/org/settings GET/PUT/DELETE, and returns 405 for a verb it does not own.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void patchV1RouterPolicy() throws ApiException {
-        patchV1RouterPolicyWithHttpInfo();
+    public void patchRouterPolicy() throws ApiException {
+        patchRouterPolicyWithHttpInfo();
     }
 
     /**
@@ -1800,8 +1800,8 @@ public class RouterApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> patchV1RouterPolicyWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = patchV1RouterPolicyValidateBeforeCall(null);
+    public ApiResponse<Void> patchRouterPolicyWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = patchRouterPolicyValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1812,19 +1812,19 @@ public class RouterApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call patchV1RouterPolicyAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call patchRouterPolicyAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchV1RouterPolicyValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = patchRouterPolicyValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for patchV1RouterRewards
+     * Build call for patchRouterRewards
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call patchV1RouterRewardsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call patchRouterRewardsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1868,8 +1868,8 @@ public class RouterApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchV1RouterRewardsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return patchV1RouterRewardsCall(_callback);
+    private okhttp3.Call patchRouterRewardsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return patchRouterRewardsCall(_callback);
 
     }
 
@@ -1878,8 +1878,8 @@ public class RouterApi {
      * The HTTP transport binding for the RESTful router-config nouns (/v1/router/{policy,defaults,ledger,rewards,artifact-meta} and /v1/org/settings[/list]). It dispatches IN-PROCESS through dispatchGateway — the SAME canonical ZAP gateway registry (zap_registry.go) that the MsgType 200 handler serves over the gateway transport. The native ZAP handler is the ONE and ONLY implementation of these routes; this is purely the api.hanzo.ai HTTP binding, so there is NO controller twin to drift from and the split-brain the router refactor removed stays removed.  Why a bridge and not a twin controller method: every other migrated route (get-records, get-connections, …) carries BOTH a controller method and a ZAP handler — the exact dual-impl drift that silently NULLed customer router settings (the update-router-policy data-wipe). Routing these nouns through the ZAP handler over one adapter keeps a single source of truth.  Identity is the request&#39;s own Bearer credential (Authorization header), which the native handlers resolve exactly as the gateway does — every caller (console, chat, app) already sends it. The dispatched handler returns a ZAP message whose status is field 0 and body is field 4 (BuildCloudResponse / BuildGatewayResponse layout); both are relayed verbatim. The route is mapped \&quot;*\&quot; (any verb) because the native handler is method-aware: /v1/router/policy splits GET (read) vs PUT (write), /v1/org/settings GET/PUT/DELETE, and returns 405 for a verb it does not own.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void patchV1RouterRewards() throws ApiException {
-        patchV1RouterRewardsWithHttpInfo();
+    public void patchRouterRewards() throws ApiException {
+        patchRouterRewardsWithHttpInfo();
     }
 
     /**
@@ -1888,8 +1888,8 @@ public class RouterApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> patchV1RouterRewardsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = patchV1RouterRewardsValidateBeforeCall(null);
+    public ApiResponse<Void> patchRouterRewardsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = patchRouterRewardsValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1900,19 +1900,19 @@ public class RouterApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call patchV1RouterRewardsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call patchRouterRewardsAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchV1RouterRewardsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = patchRouterRewardsValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1RouterArtifactMeta
+     * Build call for postRouterArtifactMeta
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1RouterArtifactMetaCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postRouterArtifactMetaCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1956,8 +1956,8 @@ public class RouterApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1RouterArtifactMetaValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1RouterArtifactMetaCall(_callback);
+    private okhttp3.Call postRouterArtifactMetaValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postRouterArtifactMetaCall(_callback);
 
     }
 
@@ -1966,8 +1966,8 @@ public class RouterApi {
      * The HTTP transport binding for the RESTful router-config nouns (/v1/router/{policy,defaults,ledger,rewards,artifact-meta} and /v1/org/settings[/list]). It dispatches IN-PROCESS through dispatchGateway — the SAME canonical ZAP gateway registry (zap_registry.go) that the MsgType 200 handler serves over the gateway transport. The native ZAP handler is the ONE and ONLY implementation of these routes; this is purely the api.hanzo.ai HTTP binding, so there is NO controller twin to drift from and the split-brain the router refactor removed stays removed.  Why a bridge and not a twin controller method: every other migrated route (get-records, get-connections, …) carries BOTH a controller method and a ZAP handler — the exact dual-impl drift that silently NULLed customer router settings (the update-router-policy data-wipe). Routing these nouns through the ZAP handler over one adapter keeps a single source of truth.  Identity is the request&#39;s own Bearer credential (Authorization header), which the native handlers resolve exactly as the gateway does — every caller (console, chat, app) already sends it. The dispatched handler returns a ZAP message whose status is field 0 and body is field 4 (BuildCloudResponse / BuildGatewayResponse layout); both are relayed verbatim. The route is mapped \&quot;*\&quot; (any verb) because the native handler is method-aware: /v1/router/policy splits GET (read) vs PUT (write), /v1/org/settings GET/PUT/DELETE, and returns 405 for a verb it does not own.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1RouterArtifactMeta() throws ApiException {
-        postV1RouterArtifactMetaWithHttpInfo();
+    public void postRouterArtifactMeta() throws ApiException {
+        postRouterArtifactMetaWithHttpInfo();
     }
 
     /**
@@ -1976,8 +1976,8 @@ public class RouterApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1RouterArtifactMetaWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1RouterArtifactMetaValidateBeforeCall(null);
+    public ApiResponse<Void> postRouterArtifactMetaWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postRouterArtifactMetaValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1988,19 +1988,19 @@ public class RouterApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1RouterArtifactMetaAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postRouterArtifactMetaAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1RouterArtifactMetaValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postRouterArtifactMetaValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1RouterDefaults
+     * Build call for postRouterDefaults
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1RouterDefaultsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postRouterDefaultsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2044,8 +2044,8 @@ public class RouterApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1RouterDefaultsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1RouterDefaultsCall(_callback);
+    private okhttp3.Call postRouterDefaultsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postRouterDefaultsCall(_callback);
 
     }
 
@@ -2054,8 +2054,8 @@ public class RouterApi {
      * The HTTP transport binding for the RESTful router-config nouns (/v1/router/{policy,defaults,ledger,rewards,artifact-meta} and /v1/org/settings[/list]). It dispatches IN-PROCESS through dispatchGateway — the SAME canonical ZAP gateway registry (zap_registry.go) that the MsgType 200 handler serves over the gateway transport. The native ZAP handler is the ONE and ONLY implementation of these routes; this is purely the api.hanzo.ai HTTP binding, so there is NO controller twin to drift from and the split-brain the router refactor removed stays removed.  Why a bridge and not a twin controller method: every other migrated route (get-records, get-connections, …) carries BOTH a controller method and a ZAP handler — the exact dual-impl drift that silently NULLed customer router settings (the update-router-policy data-wipe). Routing these nouns through the ZAP handler over one adapter keeps a single source of truth.  Identity is the request&#39;s own Bearer credential (Authorization header), which the native handlers resolve exactly as the gateway does — every caller (console, chat, app) already sends it. The dispatched handler returns a ZAP message whose status is field 0 and body is field 4 (BuildCloudResponse / BuildGatewayResponse layout); both are relayed verbatim. The route is mapped \&quot;*\&quot; (any verb) because the native handler is method-aware: /v1/router/policy splits GET (read) vs PUT (write), /v1/org/settings GET/PUT/DELETE, and returns 405 for a verb it does not own.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1RouterDefaults() throws ApiException {
-        postV1RouterDefaultsWithHttpInfo();
+    public void postRouterDefaults() throws ApiException {
+        postRouterDefaultsWithHttpInfo();
     }
 
     /**
@@ -2064,8 +2064,8 @@ public class RouterApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1RouterDefaultsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1RouterDefaultsValidateBeforeCall(null);
+    public ApiResponse<Void> postRouterDefaultsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postRouterDefaultsValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -2076,19 +2076,19 @@ public class RouterApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1RouterDefaultsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postRouterDefaultsAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1RouterDefaultsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postRouterDefaultsValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1RouterLedger
+     * Build call for postRouterLedger
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1RouterLedgerCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postRouterLedgerCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2132,8 +2132,8 @@ public class RouterApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1RouterLedgerValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1RouterLedgerCall(_callback);
+    private okhttp3.Call postRouterLedgerValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postRouterLedgerCall(_callback);
 
     }
 
@@ -2142,8 +2142,8 @@ public class RouterApi {
      * The HTTP transport binding for the RESTful router-config nouns (/v1/router/{policy,defaults,ledger,rewards,artifact-meta} and /v1/org/settings[/list]). It dispatches IN-PROCESS through dispatchGateway — the SAME canonical ZAP gateway registry (zap_registry.go) that the MsgType 200 handler serves over the gateway transport. The native ZAP handler is the ONE and ONLY implementation of these routes; this is purely the api.hanzo.ai HTTP binding, so there is NO controller twin to drift from and the split-brain the router refactor removed stays removed.  Why a bridge and not a twin controller method: every other migrated route (get-records, get-connections, …) carries BOTH a controller method and a ZAP handler — the exact dual-impl drift that silently NULLed customer router settings (the update-router-policy data-wipe). Routing these nouns through the ZAP handler over one adapter keeps a single source of truth.  Identity is the request&#39;s own Bearer credential (Authorization header), which the native handlers resolve exactly as the gateway does — every caller (console, chat, app) already sends it. The dispatched handler returns a ZAP message whose status is field 0 and body is field 4 (BuildCloudResponse / BuildGatewayResponse layout); both are relayed verbatim. The route is mapped \&quot;*\&quot; (any verb) because the native handler is method-aware: /v1/router/policy splits GET (read) vs PUT (write), /v1/org/settings GET/PUT/DELETE, and returns 405 for a verb it does not own.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1RouterLedger() throws ApiException {
-        postV1RouterLedgerWithHttpInfo();
+    public void postRouterLedger() throws ApiException {
+        postRouterLedgerWithHttpInfo();
     }
 
     /**
@@ -2152,8 +2152,8 @@ public class RouterApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1RouterLedgerWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1RouterLedgerValidateBeforeCall(null);
+    public ApiResponse<Void> postRouterLedgerWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postRouterLedgerValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -2164,19 +2164,19 @@ public class RouterApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1RouterLedgerAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postRouterLedgerAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1RouterLedgerValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postRouterLedgerValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1RouterPolicy
+     * Build call for postRouterPolicy
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1RouterPolicyCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postRouterPolicyCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2220,8 +2220,8 @@ public class RouterApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1RouterPolicyValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1RouterPolicyCall(_callback);
+    private okhttp3.Call postRouterPolicyValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postRouterPolicyCall(_callback);
 
     }
 
@@ -2230,8 +2230,8 @@ public class RouterApi {
      * The HTTP transport binding for the RESTful router-config nouns (/v1/router/{policy,defaults,ledger,rewards,artifact-meta} and /v1/org/settings[/list]). It dispatches IN-PROCESS through dispatchGateway — the SAME canonical ZAP gateway registry (zap_registry.go) that the MsgType 200 handler serves over the gateway transport. The native ZAP handler is the ONE and ONLY implementation of these routes; this is purely the api.hanzo.ai HTTP binding, so there is NO controller twin to drift from and the split-brain the router refactor removed stays removed.  Why a bridge and not a twin controller method: every other migrated route (get-records, get-connections, …) carries BOTH a controller method and a ZAP handler — the exact dual-impl drift that silently NULLed customer router settings (the update-router-policy data-wipe). Routing these nouns through the ZAP handler over one adapter keeps a single source of truth.  Identity is the request&#39;s own Bearer credential (Authorization header), which the native handlers resolve exactly as the gateway does — every caller (console, chat, app) already sends it. The dispatched handler returns a ZAP message whose status is field 0 and body is field 4 (BuildCloudResponse / BuildGatewayResponse layout); both are relayed verbatim. The route is mapped \&quot;*\&quot; (any verb) because the native handler is method-aware: /v1/router/policy splits GET (read) vs PUT (write), /v1/org/settings GET/PUT/DELETE, and returns 405 for a verb it does not own.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1RouterPolicy() throws ApiException {
-        postV1RouterPolicyWithHttpInfo();
+    public void postRouterPolicy() throws ApiException {
+        postRouterPolicyWithHttpInfo();
     }
 
     /**
@@ -2240,8 +2240,8 @@ public class RouterApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1RouterPolicyWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1RouterPolicyValidateBeforeCall(null);
+    public ApiResponse<Void> postRouterPolicyWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postRouterPolicyValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -2252,19 +2252,19 @@ public class RouterApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1RouterPolicyAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postRouterPolicyAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1RouterPolicyValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postRouterPolicyValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1RouterRewards
+     * Build call for postRouterRewards
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1RouterRewardsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postRouterRewardsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2308,8 +2308,8 @@ public class RouterApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1RouterRewardsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1RouterRewardsCall(_callback);
+    private okhttp3.Call postRouterRewardsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postRouterRewardsCall(_callback);
 
     }
 
@@ -2318,8 +2318,8 @@ public class RouterApi {
      * The HTTP transport binding for the RESTful router-config nouns (/v1/router/{policy,defaults,ledger,rewards,artifact-meta} and /v1/org/settings[/list]). It dispatches IN-PROCESS through dispatchGateway — the SAME canonical ZAP gateway registry (zap_registry.go) that the MsgType 200 handler serves over the gateway transport. The native ZAP handler is the ONE and ONLY implementation of these routes; this is purely the api.hanzo.ai HTTP binding, so there is NO controller twin to drift from and the split-brain the router refactor removed stays removed.  Why a bridge and not a twin controller method: every other migrated route (get-records, get-connections, …) carries BOTH a controller method and a ZAP handler — the exact dual-impl drift that silently NULLed customer router settings (the update-router-policy data-wipe). Routing these nouns through the ZAP handler over one adapter keeps a single source of truth.  Identity is the request&#39;s own Bearer credential (Authorization header), which the native handlers resolve exactly as the gateway does — every caller (console, chat, app) already sends it. The dispatched handler returns a ZAP message whose status is field 0 and body is field 4 (BuildCloudResponse / BuildGatewayResponse layout); both are relayed verbatim. The route is mapped \&quot;*\&quot; (any verb) because the native handler is method-aware: /v1/router/policy splits GET (read) vs PUT (write), /v1/org/settings GET/PUT/DELETE, and returns 405 for a verb it does not own.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1RouterRewards() throws ApiException {
-        postV1RouterRewardsWithHttpInfo();
+    public void postRouterRewards() throws ApiException {
+        postRouterRewardsWithHttpInfo();
     }
 
     /**
@@ -2328,8 +2328,8 @@ public class RouterApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1RouterRewardsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1RouterRewardsValidateBeforeCall(null);
+    public ApiResponse<Void> postRouterRewardsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postRouterRewardsValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -2340,19 +2340,19 @@ public class RouterApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1RouterRewardsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postRouterRewardsAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1RouterRewardsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postRouterRewardsValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1RouterArtifactMeta
+     * Build call for putRouterArtifactMeta
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call putV1RouterArtifactMetaCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putRouterArtifactMetaCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2396,8 +2396,8 @@ public class RouterApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1RouterArtifactMetaValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return putV1RouterArtifactMetaCall(_callback);
+    private okhttp3.Call putRouterArtifactMetaValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return putRouterArtifactMetaCall(_callback);
 
     }
 
@@ -2406,8 +2406,8 @@ public class RouterApi {
      * The HTTP transport binding for the RESTful router-config nouns (/v1/router/{policy,defaults,ledger,rewards,artifact-meta} and /v1/org/settings[/list]). It dispatches IN-PROCESS through dispatchGateway — the SAME canonical ZAP gateway registry (zap_registry.go) that the MsgType 200 handler serves over the gateway transport. The native ZAP handler is the ONE and ONLY implementation of these routes; this is purely the api.hanzo.ai HTTP binding, so there is NO controller twin to drift from and the split-brain the router refactor removed stays removed.  Why a bridge and not a twin controller method: every other migrated route (get-records, get-connections, …) carries BOTH a controller method and a ZAP handler — the exact dual-impl drift that silently NULLed customer router settings (the update-router-policy data-wipe). Routing these nouns through the ZAP handler over one adapter keeps a single source of truth.  Identity is the request&#39;s own Bearer credential (Authorization header), which the native handlers resolve exactly as the gateway does — every caller (console, chat, app) already sends it. The dispatched handler returns a ZAP message whose status is field 0 and body is field 4 (BuildCloudResponse / BuildGatewayResponse layout); both are relayed verbatim. The route is mapped \&quot;*\&quot; (any verb) because the native handler is method-aware: /v1/router/policy splits GET (read) vs PUT (write), /v1/org/settings GET/PUT/DELETE, and returns 405 for a verb it does not own.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void putV1RouterArtifactMeta() throws ApiException {
-        putV1RouterArtifactMetaWithHttpInfo();
+    public void putRouterArtifactMeta() throws ApiException {
+        putRouterArtifactMetaWithHttpInfo();
     }
 
     /**
@@ -2416,8 +2416,8 @@ public class RouterApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> putV1RouterArtifactMetaWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = putV1RouterArtifactMetaValidateBeforeCall(null);
+    public ApiResponse<Void> putRouterArtifactMetaWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = putRouterArtifactMetaValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -2428,19 +2428,19 @@ public class RouterApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call putV1RouterArtifactMetaAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call putRouterArtifactMetaAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1RouterArtifactMetaValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = putRouterArtifactMetaValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1RouterDefaults
+     * Build call for putRouterDefaults
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call putV1RouterDefaultsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putRouterDefaultsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2484,8 +2484,8 @@ public class RouterApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1RouterDefaultsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return putV1RouterDefaultsCall(_callback);
+    private okhttp3.Call putRouterDefaultsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return putRouterDefaultsCall(_callback);
 
     }
 
@@ -2494,8 +2494,8 @@ public class RouterApi {
      * The HTTP transport binding for the RESTful router-config nouns (/v1/router/{policy,defaults,ledger,rewards,artifact-meta} and /v1/org/settings[/list]). It dispatches IN-PROCESS through dispatchGateway — the SAME canonical ZAP gateway registry (zap_registry.go) that the MsgType 200 handler serves over the gateway transport. The native ZAP handler is the ONE and ONLY implementation of these routes; this is purely the api.hanzo.ai HTTP binding, so there is NO controller twin to drift from and the split-brain the router refactor removed stays removed.  Why a bridge and not a twin controller method: every other migrated route (get-records, get-connections, …) carries BOTH a controller method and a ZAP handler — the exact dual-impl drift that silently NULLed customer router settings (the update-router-policy data-wipe). Routing these nouns through the ZAP handler over one adapter keeps a single source of truth.  Identity is the request&#39;s own Bearer credential (Authorization header), which the native handlers resolve exactly as the gateway does — every caller (console, chat, app) already sends it. The dispatched handler returns a ZAP message whose status is field 0 and body is field 4 (BuildCloudResponse / BuildGatewayResponse layout); both are relayed verbatim. The route is mapped \&quot;*\&quot; (any verb) because the native handler is method-aware: /v1/router/policy splits GET (read) vs PUT (write), /v1/org/settings GET/PUT/DELETE, and returns 405 for a verb it does not own.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void putV1RouterDefaults() throws ApiException {
-        putV1RouterDefaultsWithHttpInfo();
+    public void putRouterDefaults() throws ApiException {
+        putRouterDefaultsWithHttpInfo();
     }
 
     /**
@@ -2504,8 +2504,8 @@ public class RouterApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> putV1RouterDefaultsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = putV1RouterDefaultsValidateBeforeCall(null);
+    public ApiResponse<Void> putRouterDefaultsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = putRouterDefaultsValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -2516,19 +2516,19 @@ public class RouterApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call putV1RouterDefaultsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call putRouterDefaultsAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1RouterDefaultsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = putRouterDefaultsValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1RouterLedger
+     * Build call for putRouterLedger
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call putV1RouterLedgerCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putRouterLedgerCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2572,8 +2572,8 @@ public class RouterApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1RouterLedgerValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return putV1RouterLedgerCall(_callback);
+    private okhttp3.Call putRouterLedgerValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return putRouterLedgerCall(_callback);
 
     }
 
@@ -2582,8 +2582,8 @@ public class RouterApi {
      * The HTTP transport binding for the RESTful router-config nouns (/v1/router/{policy,defaults,ledger,rewards,artifact-meta} and /v1/org/settings[/list]). It dispatches IN-PROCESS through dispatchGateway — the SAME canonical ZAP gateway registry (zap_registry.go) that the MsgType 200 handler serves over the gateway transport. The native ZAP handler is the ONE and ONLY implementation of these routes; this is purely the api.hanzo.ai HTTP binding, so there is NO controller twin to drift from and the split-brain the router refactor removed stays removed.  Why a bridge and not a twin controller method: every other migrated route (get-records, get-connections, …) carries BOTH a controller method and a ZAP handler — the exact dual-impl drift that silently NULLed customer router settings (the update-router-policy data-wipe). Routing these nouns through the ZAP handler over one adapter keeps a single source of truth.  Identity is the request&#39;s own Bearer credential (Authorization header), which the native handlers resolve exactly as the gateway does — every caller (console, chat, app) already sends it. The dispatched handler returns a ZAP message whose status is field 0 and body is field 4 (BuildCloudResponse / BuildGatewayResponse layout); both are relayed verbatim. The route is mapped \&quot;*\&quot; (any verb) because the native handler is method-aware: /v1/router/policy splits GET (read) vs PUT (write), /v1/org/settings GET/PUT/DELETE, and returns 405 for a verb it does not own.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void putV1RouterLedger() throws ApiException {
-        putV1RouterLedgerWithHttpInfo();
+    public void putRouterLedger() throws ApiException {
+        putRouterLedgerWithHttpInfo();
     }
 
     /**
@@ -2592,8 +2592,8 @@ public class RouterApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> putV1RouterLedgerWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = putV1RouterLedgerValidateBeforeCall(null);
+    public ApiResponse<Void> putRouterLedgerWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = putRouterLedgerValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -2604,19 +2604,19 @@ public class RouterApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call putV1RouterLedgerAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call putRouterLedgerAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1RouterLedgerValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = putRouterLedgerValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1RouterPolicy
+     * Build call for putRouterPolicy
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call putV1RouterPolicyCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putRouterPolicyCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2660,8 +2660,8 @@ public class RouterApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1RouterPolicyValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return putV1RouterPolicyCall(_callback);
+    private okhttp3.Call putRouterPolicyValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return putRouterPolicyCall(_callback);
 
     }
 
@@ -2670,8 +2670,8 @@ public class RouterApi {
      * The HTTP transport binding for the RESTful router-config nouns (/v1/router/{policy,defaults,ledger,rewards,artifact-meta} and /v1/org/settings[/list]). It dispatches IN-PROCESS through dispatchGateway — the SAME canonical ZAP gateway registry (zap_registry.go) that the MsgType 200 handler serves over the gateway transport. The native ZAP handler is the ONE and ONLY implementation of these routes; this is purely the api.hanzo.ai HTTP binding, so there is NO controller twin to drift from and the split-brain the router refactor removed stays removed.  Why a bridge and not a twin controller method: every other migrated route (get-records, get-connections, …) carries BOTH a controller method and a ZAP handler — the exact dual-impl drift that silently NULLed customer router settings (the update-router-policy data-wipe). Routing these nouns through the ZAP handler over one adapter keeps a single source of truth.  Identity is the request&#39;s own Bearer credential (Authorization header), which the native handlers resolve exactly as the gateway does — every caller (console, chat, app) already sends it. The dispatched handler returns a ZAP message whose status is field 0 and body is field 4 (BuildCloudResponse / BuildGatewayResponse layout); both are relayed verbatim. The route is mapped \&quot;*\&quot; (any verb) because the native handler is method-aware: /v1/router/policy splits GET (read) vs PUT (write), /v1/org/settings GET/PUT/DELETE, and returns 405 for a verb it does not own.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void putV1RouterPolicy() throws ApiException {
-        putV1RouterPolicyWithHttpInfo();
+    public void putRouterPolicy() throws ApiException {
+        putRouterPolicyWithHttpInfo();
     }
 
     /**
@@ -2680,8 +2680,8 @@ public class RouterApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> putV1RouterPolicyWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = putV1RouterPolicyValidateBeforeCall(null);
+    public ApiResponse<Void> putRouterPolicyWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = putRouterPolicyValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -2692,19 +2692,19 @@ public class RouterApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call putV1RouterPolicyAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call putRouterPolicyAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1RouterPolicyValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = putRouterPolicyValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1RouterRewards
+     * Build call for putRouterRewards
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call putV1RouterRewardsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putRouterRewardsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2748,8 +2748,8 @@ public class RouterApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1RouterRewardsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return putV1RouterRewardsCall(_callback);
+    private okhttp3.Call putRouterRewardsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return putRouterRewardsCall(_callback);
 
     }
 
@@ -2758,8 +2758,8 @@ public class RouterApi {
      * The HTTP transport binding for the RESTful router-config nouns (/v1/router/{policy,defaults,ledger,rewards,artifact-meta} and /v1/org/settings[/list]). It dispatches IN-PROCESS through dispatchGateway — the SAME canonical ZAP gateway registry (zap_registry.go) that the MsgType 200 handler serves over the gateway transport. The native ZAP handler is the ONE and ONLY implementation of these routes; this is purely the api.hanzo.ai HTTP binding, so there is NO controller twin to drift from and the split-brain the router refactor removed stays removed.  Why a bridge and not a twin controller method: every other migrated route (get-records, get-connections, …) carries BOTH a controller method and a ZAP handler — the exact dual-impl drift that silently NULLed customer router settings (the update-router-policy data-wipe). Routing these nouns through the ZAP handler over one adapter keeps a single source of truth.  Identity is the request&#39;s own Bearer credential (Authorization header), which the native handlers resolve exactly as the gateway does — every caller (console, chat, app) already sends it. The dispatched handler returns a ZAP message whose status is field 0 and body is field 4 (BuildCloudResponse / BuildGatewayResponse layout); both are relayed verbatim. The route is mapped \&quot;*\&quot; (any verb) because the native handler is method-aware: /v1/router/policy splits GET (read) vs PUT (write), /v1/org/settings GET/PUT/DELETE, and returns 405 for a verb it does not own.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void putV1RouterRewards() throws ApiException {
-        putV1RouterRewardsWithHttpInfo();
+    public void putRouterRewards() throws ApiException {
+        putRouterRewardsWithHttpInfo();
     }
 
     /**
@@ -2768,8 +2768,8 @@ public class RouterApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> putV1RouterRewardsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = putV1RouterRewardsValidateBeforeCall(null);
+    public ApiResponse<Void> putRouterRewardsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = putRouterRewardsValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -2780,9 +2780,9 @@ public class RouterApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call putV1RouterRewardsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call putRouterRewardsAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1RouterRewardsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = putRouterRewardsValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

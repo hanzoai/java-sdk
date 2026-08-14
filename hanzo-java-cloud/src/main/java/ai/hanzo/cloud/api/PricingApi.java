@@ -81,7 +81,7 @@ public class PricingApi {
     }
 
     /**
-     * Build call for getV1Pricing
+     * Build call for getPricing
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -92,7 +92,7 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PricingCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPricingCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -137,8 +137,8 @@ public class PricingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PricingValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1PricingCall(_callback);
+    private okhttp3.Call getPricingValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getPricingCall(_callback);
 
     }
 
@@ -154,8 +154,8 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Map<String, Object> getV1Pricing() throws ApiException {
-        ApiResponse<Map<String, Object>> localVarResp = getV1PricingWithHttpInfo();
+    public Map<String, Object> getPricing() throws ApiException {
+        ApiResponse<Map<String, Object>> localVarResp = getPricingWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -171,8 +171,8 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Map<String, Object>> getV1PricingWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1PricingValidateBeforeCall(null);
+    public ApiResponse<Map<String, Object>> getPricingWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getPricingValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<Map<String, Object>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -190,15 +190,15 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PricingAsync(final ApiCallback<Map<String, Object>> _callback) throws ApiException {
+    public okhttp3.Call getPricingAsync(final ApiCallback<Map<String, Object>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PricingValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getPricingValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<Map<String, Object>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1PricingBase
+     * Build call for getPricingBase
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -209,7 +209,7 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PricingBaseCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPricingBaseCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -254,8 +254,8 @@ public class PricingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PricingBaseValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1PricingBaseCall(_callback);
+    private okhttp3.Call getPricingBaseValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getPricingBaseCall(_callback);
 
     }
 
@@ -271,8 +271,8 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public PricingPlanList getV1PricingBase() throws ApiException {
-        ApiResponse<PricingPlanList> localVarResp = getV1PricingBaseWithHttpInfo();
+    public PricingPlanList getPricingBase() throws ApiException {
+        ApiResponse<PricingPlanList> localVarResp = getPricingBaseWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -288,8 +288,8 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PricingPlanList> getV1PricingBaseWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1PricingBaseValidateBeforeCall(null);
+    public ApiResponse<PricingPlanList> getPricingBaseWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getPricingBaseValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<PricingPlanList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -307,15 +307,15 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PricingBaseAsync(final ApiCallback<PricingPlanList> _callback) throws ApiException {
+    public okhttp3.Call getPricingBaseAsync(final ApiCallback<PricingPlanList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PricingBaseValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getPricingBaseValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<PricingPlanList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1PricingBlockchain
+     * Build call for getPricingBlockchain
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -326,7 +326,7 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PricingBlockchainCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPricingBlockchainCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -371,8 +371,8 @@ public class PricingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PricingBlockchainValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1PricingBlockchainCall(_callback);
+    private okhttp3.Call getPricingBlockchainValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getPricingBlockchainCall(_callback);
 
     }
 
@@ -388,8 +388,8 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public PricingPlanList getV1PricingBlockchain() throws ApiException {
-        ApiResponse<PricingPlanList> localVarResp = getV1PricingBlockchainWithHttpInfo();
+    public PricingPlanList getPricingBlockchain() throws ApiException {
+        ApiResponse<PricingPlanList> localVarResp = getPricingBlockchainWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -405,8 +405,8 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PricingPlanList> getV1PricingBlockchainWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1PricingBlockchainValidateBeforeCall(null);
+    public ApiResponse<PricingPlanList> getPricingBlockchainWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getPricingBlockchainValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<PricingPlanList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -424,15 +424,15 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PricingBlockchainAsync(final ApiCallback<PricingPlanList> _callback) throws ApiException {
+    public okhttp3.Call getPricingBlockchainAsync(final ApiCallback<PricingPlanList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PricingBlockchainValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getPricingBlockchainValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<PricingPlanList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1PricingCloud
+     * Build call for getPricingCloud
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -443,7 +443,7 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PricingCloudCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPricingCloudCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -488,8 +488,8 @@ public class PricingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PricingCloudValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1PricingCloudCall(_callback);
+    private okhttp3.Call getPricingCloudValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getPricingCloudCall(_callback);
 
     }
 
@@ -505,8 +505,8 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Map<String, Object> getV1PricingCloud() throws ApiException {
-        ApiResponse<Map<String, Object>> localVarResp = getV1PricingCloudWithHttpInfo();
+    public Map<String, Object> getPricingCloud() throws ApiException {
+        ApiResponse<Map<String, Object>> localVarResp = getPricingCloudWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -522,8 +522,8 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Map<String, Object>> getV1PricingCloudWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1PricingCloudValidateBeforeCall(null);
+    public ApiResponse<Map<String, Object>> getPricingCloudWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getPricingCloudValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<Map<String, Object>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -541,15 +541,15 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PricingCloudAsync(final ApiCallback<Map<String, Object>> _callback) throws ApiException {
+    public okhttp3.Call getPricingCloudAsync(final ApiCallback<Map<String, Object>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PricingCloudValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getPricingCloudValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<Map<String, Object>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1PricingCloudPlans
+     * Build call for getPricingCloudPlans
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -560,7 +560,7 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PricingCloudPlansCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPricingCloudPlansCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -605,8 +605,8 @@ public class PricingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PricingCloudPlansValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1PricingCloudPlansCall(_callback);
+    private okhttp3.Call getPricingCloudPlansValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getPricingCloudPlansCall(_callback);
 
     }
 
@@ -622,8 +622,8 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public PricingPlanList getV1PricingCloudPlans() throws ApiException {
-        ApiResponse<PricingPlanList> localVarResp = getV1PricingCloudPlansWithHttpInfo();
+    public PricingPlanList getPricingCloudPlans() throws ApiException {
+        ApiResponse<PricingPlanList> localVarResp = getPricingCloudPlansWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -639,8 +639,8 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PricingPlanList> getV1PricingCloudPlansWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1PricingCloudPlansValidateBeforeCall(null);
+    public ApiResponse<PricingPlanList> getPricingCloudPlansWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getPricingCloudPlansValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<PricingPlanList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -658,15 +658,15 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PricingCloudPlansAsync(final ApiCallback<PricingPlanList> _callback) throws ApiException {
+    public okhttp3.Call getPricingCloudPlansAsync(final ApiCallback<PricingPlanList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PricingCloudPlansValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getPricingCloudPlansValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<PricingPlanList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1PricingCloudRegions
+     * Build call for getPricingCloudRegions
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -677,7 +677,7 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PricingCloudRegionsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPricingCloudRegionsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -722,8 +722,8 @@ public class PricingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PricingCloudRegionsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1PricingCloudRegionsCall(_callback);
+    private okhttp3.Call getPricingCloudRegionsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getPricingCloudRegionsCall(_callback);
 
     }
 
@@ -739,8 +739,8 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public PricingRegionList getV1PricingCloudRegions() throws ApiException {
-        ApiResponse<PricingRegionList> localVarResp = getV1PricingCloudRegionsWithHttpInfo();
+    public PricingRegionList getPricingCloudRegions() throws ApiException {
+        ApiResponse<PricingRegionList> localVarResp = getPricingCloudRegionsWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -756,8 +756,8 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PricingRegionList> getV1PricingCloudRegionsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1PricingCloudRegionsValidateBeforeCall(null);
+    public ApiResponse<PricingRegionList> getPricingCloudRegionsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getPricingCloudRegionsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<PricingRegionList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -775,15 +775,15 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PricingCloudRegionsAsync(final ApiCallback<PricingRegionList> _callback) throws ApiException {
+    public okhttp3.Call getPricingCloudRegionsAsync(final ApiCallback<PricingRegionList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PricingCloudRegionsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getPricingCloudRegionsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<PricingRegionList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1PricingCloudStorage
+     * Build call for getPricingCloudStorage
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -794,7 +794,7 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PricingCloudStorageCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPricingCloudStorageCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -839,8 +839,8 @@ public class PricingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PricingCloudStorageValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1PricingCloudStorageCall(_callback);
+    private okhttp3.Call getPricingCloudStorageValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getPricingCloudStorageCall(_callback);
 
     }
 
@@ -856,8 +856,8 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Map<String, Object> getV1PricingCloudStorage() throws ApiException {
-        ApiResponse<Map<String, Object>> localVarResp = getV1PricingCloudStorageWithHttpInfo();
+    public Map<String, Object> getPricingCloudStorage() throws ApiException {
+        ApiResponse<Map<String, Object>> localVarResp = getPricingCloudStorageWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -873,8 +873,8 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Map<String, Object>> getV1PricingCloudStorageWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1PricingCloudStorageValidateBeforeCall(null);
+    public ApiResponse<Map<String, Object>> getPricingCloudStorageWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getPricingCloudStorageValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<Map<String, Object>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -892,15 +892,15 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PricingCloudStorageAsync(final ApiCallback<Map<String, Object>> _callback) throws ApiException {
+    public okhttp3.Call getPricingCloudStorageAsync(final ApiCallback<Map<String, Object>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PricingCloudStorageValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getPricingCloudStorageValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<Map<String, Object>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1PricingCompute
+     * Build call for getPricingCompute
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -911,7 +911,7 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PricingComputeCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPricingComputeCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -956,8 +956,8 @@ public class PricingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PricingComputeValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1PricingComputeCall(_callback);
+    private okhttp3.Call getPricingComputeValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getPricingComputeCall(_callback);
 
     }
 
@@ -973,8 +973,8 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Map<String, Object> getV1PricingCompute() throws ApiException {
-        ApiResponse<Map<String, Object>> localVarResp = getV1PricingComputeWithHttpInfo();
+    public Map<String, Object> getPricingCompute() throws ApiException {
+        ApiResponse<Map<String, Object>> localVarResp = getPricingComputeWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -990,8 +990,8 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Map<String, Object>> getV1PricingComputeWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1PricingComputeValidateBeforeCall(null);
+    public ApiResponse<Map<String, Object>> getPricingComputeWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getPricingComputeValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<Map<String, Object>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1009,15 +1009,15 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PricingComputeAsync(final ApiCallback<Map<String, Object>> _callback) throws ApiException {
+    public okhttp3.Call getPricingComputeAsync(final ApiCallback<Map<String, Object>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PricingComputeValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getPricingComputeValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<Map<String, Object>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1PricingComputePresets
+     * Build call for getPricingComputePresets
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1028,7 +1028,7 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PricingComputePresetsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPricingComputePresetsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1073,8 +1073,8 @@ public class PricingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PricingComputePresetsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1PricingComputePresetsCall(_callback);
+    private okhttp3.Call getPricingComputePresetsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getPricingComputePresetsCall(_callback);
 
     }
 
@@ -1090,8 +1090,8 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public PricingPresetList getV1PricingComputePresets() throws ApiException {
-        ApiResponse<PricingPresetList> localVarResp = getV1PricingComputePresetsWithHttpInfo();
+    public PricingPresetList getPricingComputePresets() throws ApiException {
+        ApiResponse<PricingPresetList> localVarResp = getPricingComputePresetsWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -1107,8 +1107,8 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PricingPresetList> getV1PricingComputePresetsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1PricingComputePresetsValidateBeforeCall(null);
+    public ApiResponse<PricingPresetList> getPricingComputePresetsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getPricingComputePresetsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<PricingPresetList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1126,15 +1126,15 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PricingComputePresetsAsync(final ApiCallback<PricingPresetList> _callback) throws ApiException {
+    public okhttp3.Call getPricingComputePresetsAsync(final ApiCallback<PricingPresetList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PricingComputePresetsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getPricingComputePresetsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<PricingPresetList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1PricingDatastore
+     * Build call for getPricingDatastore
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1145,7 +1145,7 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PricingDatastoreCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPricingDatastoreCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1190,8 +1190,8 @@ public class PricingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PricingDatastoreValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1PricingDatastoreCall(_callback);
+    private okhttp3.Call getPricingDatastoreValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getPricingDatastoreCall(_callback);
 
     }
 
@@ -1207,8 +1207,8 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Map<String, Object> getV1PricingDatastore() throws ApiException {
-        ApiResponse<Map<String, Object>> localVarResp = getV1PricingDatastoreWithHttpInfo();
+    public Map<String, Object> getPricingDatastore() throws ApiException {
+        ApiResponse<Map<String, Object>> localVarResp = getPricingDatastoreWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -1224,8 +1224,8 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Map<String, Object>> getV1PricingDatastoreWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1PricingDatastoreValidateBeforeCall(null);
+    public ApiResponse<Map<String, Object>> getPricingDatastoreWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getPricingDatastoreValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<Map<String, Object>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1243,15 +1243,15 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PricingDatastoreAsync(final ApiCallback<Map<String, Object>> _callback) throws ApiException {
+    public okhttp3.Call getPricingDatastoreAsync(final ApiCallback<Map<String, Object>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PricingDatastoreValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getPricingDatastoreValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<Map<String, Object>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1PricingFeatured
+     * Build call for getPricingFeatured
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1262,7 +1262,7 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PricingFeaturedCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPricingFeaturedCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1307,8 +1307,8 @@ public class PricingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PricingFeaturedValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1PricingFeaturedCall(_callback);
+    private okhttp3.Call getPricingFeaturedValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getPricingFeaturedCall(_callback);
 
     }
 
@@ -1324,8 +1324,8 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public PricingModelList getV1PricingFeatured() throws ApiException {
-        ApiResponse<PricingModelList> localVarResp = getV1PricingFeaturedWithHttpInfo();
+    public PricingModelList getPricingFeatured() throws ApiException {
+        ApiResponse<PricingModelList> localVarResp = getPricingFeaturedWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -1341,8 +1341,8 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PricingModelList> getV1PricingFeaturedWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1PricingFeaturedValidateBeforeCall(null);
+    public ApiResponse<PricingModelList> getPricingFeaturedWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getPricingFeaturedValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<PricingModelList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1360,15 +1360,15 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PricingFeaturedAsync(final ApiCallback<PricingModelList> _callback) throws ApiException {
+    public okhttp3.Call getPricingFeaturedAsync(final ApiCallback<PricingModelList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PricingFeaturedValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getPricingFeaturedValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<PricingModelList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1PricingFree
+     * Build call for getPricingFree
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1379,7 +1379,7 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PricingFreeCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPricingFreeCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1424,8 +1424,8 @@ public class PricingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PricingFreeValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1PricingFreeCall(_callback);
+    private okhttp3.Call getPricingFreeValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getPricingFreeCall(_callback);
 
     }
 
@@ -1441,8 +1441,8 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public PricingModelList getV1PricingFree() throws ApiException {
-        ApiResponse<PricingModelList> localVarResp = getV1PricingFreeWithHttpInfo();
+    public PricingModelList getPricingFree() throws ApiException {
+        ApiResponse<PricingModelList> localVarResp = getPricingFreeWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -1458,8 +1458,8 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PricingModelList> getV1PricingFreeWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1PricingFreeValidateBeforeCall(null);
+    public ApiResponse<PricingModelList> getPricingFreeWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getPricingFreeValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<PricingModelList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1477,15 +1477,15 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PricingFreeAsync(final ApiCallback<PricingModelList> _callback) throws ApiException {
+    public okhttp3.Call getPricingFreeAsync(final ApiCallback<PricingModelList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PricingFreeValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getPricingFreeValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<PricingModelList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1PricingGpu
+     * Build call for getPricingGpu
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1496,7 +1496,7 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PricingGpuCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPricingGpuCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1541,8 +1541,8 @@ public class PricingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PricingGpuValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1PricingGpuCall(_callback);
+    private okhttp3.Call getPricingGpuValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getPricingGpuCall(_callback);
 
     }
 
@@ -1558,8 +1558,8 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public PricingTierList getV1PricingGpu() throws ApiException {
-        ApiResponse<PricingTierList> localVarResp = getV1PricingGpuWithHttpInfo();
+    public PricingTierList getPricingGpu() throws ApiException {
+        ApiResponse<PricingTierList> localVarResp = getPricingGpuWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -1575,8 +1575,8 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PricingTierList> getV1PricingGpuWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1PricingGpuValidateBeforeCall(null);
+    public ApiResponse<PricingTierList> getPricingGpuWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getPricingGpuValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<PricingTierList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1594,15 +1594,15 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PricingGpuAsync(final ApiCallback<PricingTierList> _callback) throws ApiException {
+    public okhttp3.Call getPricingGpuAsync(final ApiCallback<PricingTierList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PricingGpuValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getPricingGpuValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<PricingTierList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1PricingHealth
+     * Build call for getPricingHealth
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1613,7 +1613,7 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PricingHealthCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPricingHealthCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1658,8 +1658,8 @@ public class PricingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PricingHealthValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1PricingHealthCall(_callback);
+    private okhttp3.Call getPricingHealthValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getPricingHealthCall(_callback);
 
     }
 
@@ -1675,8 +1675,8 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public PricingHealth getV1PricingHealth() throws ApiException {
-        ApiResponse<PricingHealth> localVarResp = getV1PricingHealthWithHttpInfo();
+    public PricingHealth getPricingHealth() throws ApiException {
+        ApiResponse<PricingHealth> localVarResp = getPricingHealthWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -1692,8 +1692,8 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PricingHealth> getV1PricingHealthWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1PricingHealthValidateBeforeCall(null);
+    public ApiResponse<PricingHealth> getPricingHealthWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getPricingHealthValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<PricingHealth>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1711,15 +1711,15 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PricingHealthAsync(final ApiCallback<PricingHealth> _callback) throws ApiException {
+    public okhttp3.Call getPricingHealthAsync(final ApiCallback<PricingHealth> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PricingHealthValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getPricingHealthValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<PricingHealth>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1PricingIam
+     * Build call for getPricingIam
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1730,7 +1730,7 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PricingIamCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPricingIamCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1775,8 +1775,8 @@ public class PricingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PricingIamValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1PricingIamCall(_callback);
+    private okhttp3.Call getPricingIamValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getPricingIamCall(_callback);
 
     }
 
@@ -1792,8 +1792,8 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public PricingPlanList getV1PricingIam() throws ApiException {
-        ApiResponse<PricingPlanList> localVarResp = getV1PricingIamWithHttpInfo();
+    public PricingPlanList getPricingIam() throws ApiException {
+        ApiResponse<PricingPlanList> localVarResp = getPricingIamWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -1809,8 +1809,8 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PricingPlanList> getV1PricingIamWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1PricingIamValidateBeforeCall(null);
+    public ApiResponse<PricingPlanList> getPricingIamWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getPricingIamValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<PricingPlanList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1828,15 +1828,15 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PricingIamAsync(final ApiCallback<PricingPlanList> _callback) throws ApiException {
+    public okhttp3.Call getPricingIamAsync(final ApiCallback<PricingPlanList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PricingIamValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getPricingIamValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<PricingPlanList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1PricingModelByName
+     * Build call for getPricingModelByName
      * @param name Name is the model&#39;s name or its slugged id (\&quot;zen4\&quot;, \&quot;acme/some-model-1\&quot;), matched case-insensitively. It comes from the path: the URL is the addressing authority. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1848,7 +1848,7 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PricingModelByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPricingModelByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1894,13 +1894,13 @@ public class PricingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PricingModelByNameValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getPricingModelByNameValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling getV1PricingModelByName(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling getPricingModelByName(Async)");
         }
 
-        return getV1PricingModelByNameCall(name, _callback);
+        return getPricingModelByNameCall(name, _callback);
 
     }
 
@@ -1917,8 +1917,8 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Map<String, Object> getV1PricingModelByName(@javax.annotation.Nonnull String name) throws ApiException {
-        ApiResponse<Map<String, Object>> localVarResp = getV1PricingModelByNameWithHttpInfo(name);
+    public Map<String, Object> getPricingModelByName(@javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<Map<String, Object>> localVarResp = getPricingModelByNameWithHttpInfo(name);
         return localVarResp.getData();
     }
 
@@ -1935,8 +1935,8 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Map<String, Object>> getV1PricingModelByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
-        okhttp3.Call localVarCall = getV1PricingModelByNameValidateBeforeCall(name, null);
+    public ApiResponse<Map<String, Object>> getPricingModelByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = getPricingModelByNameValidateBeforeCall(name, null);
         Type localVarReturnType = new TypeToken<Map<String, Object>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1955,15 +1955,15 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PricingModelByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<Map<String, Object>> _callback) throws ApiException {
+    public okhttp3.Call getPricingModelByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<Map<String, Object>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PricingModelByNameValidateBeforeCall(name, _callback);
+        okhttp3.Call localVarCall = getPricingModelByNameValidateBeforeCall(name, _callback);
         Type localVarReturnType = new TypeToken<Map<String, Object>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1PricingModels
+     * Build call for getPricingModels
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1974,7 +1974,7 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PricingModelsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPricingModelsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2019,14 +2019,14 @@ public class PricingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PricingModelsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1PricingModelsCall(_callback);
+    private okhttp3.Call getPricingModelsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getPricingModelsCall(_callback);
 
     }
 
     /**
-     * Returns the whole model catalog — Hanzo&#39;s own Zen models and every third-party model — filtered to what the caller&#39;s org may see.
-     * Returns the whole model catalog — Hanzo&#39;s own Zen models and every third-party model — filtered to what the caller&#39;s org may see. A model an admin has disabled is absent; one in beta appears only for an org granted it. A SuperAdmin sees every model, each annotated with its enablement state.
+     * Returns the whole model catalog — every model the gateway serves, Zen and third-party alike — filtered to what the caller&#39;s org may see.
+     * Returns the whole model catalog — every model the gateway serves, Zen and third-party alike — filtered to what the caller&#39;s org may see. A model an admin has disabled is absent; one in beta appears only for an org granted it. A SuperAdmin sees every model, each annotated with its enablement state.
      * @return PricingModelList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2036,14 +2036,14 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public PricingModelList getV1PricingModels() throws ApiException {
-        ApiResponse<PricingModelList> localVarResp = getV1PricingModelsWithHttpInfo();
+    public PricingModelList getPricingModels() throws ApiException {
+        ApiResponse<PricingModelList> localVarResp = getPricingModelsWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
-     * Returns the whole model catalog — Hanzo&#39;s own Zen models and every third-party model — filtered to what the caller&#39;s org may see.
-     * Returns the whole model catalog — Hanzo&#39;s own Zen models and every third-party model — filtered to what the caller&#39;s org may see. A model an admin has disabled is absent; one in beta appears only for an org granted it. A SuperAdmin sees every model, each annotated with its enablement state.
+     * Returns the whole model catalog — every model the gateway serves, Zen and third-party alike — filtered to what the caller&#39;s org may see.
+     * Returns the whole model catalog — every model the gateway serves, Zen and third-party alike — filtered to what the caller&#39;s org may see. A model an admin has disabled is absent; one in beta appears only for an org granted it. A SuperAdmin sees every model, each annotated with its enablement state.
      * @return ApiResponse&lt;PricingModelList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2053,15 +2053,15 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PricingModelList> getV1PricingModelsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1PricingModelsValidateBeforeCall(null);
+    public ApiResponse<PricingModelList> getPricingModelsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getPricingModelsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<PricingModelList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Returns the whole model catalog — Hanzo&#39;s own Zen models and every third-party model — filtered to what the caller&#39;s org may see. (asynchronously)
-     * Returns the whole model catalog — Hanzo&#39;s own Zen models and every third-party model — filtered to what the caller&#39;s org may see. A model an admin has disabled is absent; one in beta appears only for an org granted it. A SuperAdmin sees every model, each annotated with its enablement state.
+     * Returns the whole model catalog — every model the gateway serves, Zen and third-party alike — filtered to what the caller&#39;s org may see. (asynchronously)
+     * Returns the whole model catalog — every model the gateway serves, Zen and third-party alike — filtered to what the caller&#39;s org may see. A model an admin has disabled is absent; one in beta appears only for an org granted it. A SuperAdmin sees every model, each annotated with its enablement state.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2072,15 +2072,15 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PricingModelsAsync(final ApiCallback<PricingModelList> _callback) throws ApiException {
+    public okhttp3.Call getPricingModelsAsync(final ApiCallback<PricingModelList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PricingModelsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getPricingModelsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<PricingModelList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1PricingPaas
+     * Build call for getPricingPaas
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2091,7 +2091,7 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PricingPaasCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPricingPaasCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2136,8 +2136,8 @@ public class PricingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PricingPaasValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1PricingPaasCall(_callback);
+    private okhttp3.Call getPricingPaasValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getPricingPaasCall(_callback);
 
     }
 
@@ -2153,8 +2153,8 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public PricingPlanList getV1PricingPaas() throws ApiException {
-        ApiResponse<PricingPlanList> localVarResp = getV1PricingPaasWithHttpInfo();
+    public PricingPlanList getPricingPaas() throws ApiException {
+        ApiResponse<PricingPlanList> localVarResp = getPricingPaasWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -2170,8 +2170,8 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PricingPlanList> getV1PricingPaasWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1PricingPaasValidateBeforeCall(null);
+    public ApiResponse<PricingPlanList> getPricingPaasWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getPricingPaasValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<PricingPlanList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2189,15 +2189,15 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PricingPaasAsync(final ApiCallback<PricingPlanList> _callback) throws ApiException {
+    public okhttp3.Call getPricingPaasAsync(final ApiCallback<PricingPlanList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PricingPaasValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getPricingPaasValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<PricingPlanList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1PricingPolicy
+     * Build call for getPricingPolicy
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2208,7 +2208,7 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PricingPolicyCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPricingPolicyCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2253,8 +2253,8 @@ public class PricingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PricingPolicyValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1PricingPolicyCall(_callback);
+    private okhttp3.Call getPricingPolicyValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getPricingPolicyCall(_callback);
 
     }
 
@@ -2270,8 +2270,8 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Map<String, Object> getV1PricingPolicy() throws ApiException {
-        ApiResponse<Map<String, Object>> localVarResp = getV1PricingPolicyWithHttpInfo();
+    public Map<String, Object> getPricingPolicy() throws ApiException {
+        ApiResponse<Map<String, Object>> localVarResp = getPricingPolicyWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -2287,8 +2287,8 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Map<String, Object>> getV1PricingPolicyWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1PricingPolicyValidateBeforeCall(null);
+    public ApiResponse<Map<String, Object>> getPricingPolicyWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getPricingPolicyValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<Map<String, Object>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2306,15 +2306,15 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PricingPolicyAsync(final ApiCallback<Map<String, Object>> _callback) throws ApiException {
+    public okhttp3.Call getPricingPolicyAsync(final ApiCallback<Map<String, Object>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PricingPolicyValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getPricingPolicyValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<Map<String, Object>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1PricingProviders
+     * Build call for getPricingProviders
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2325,7 +2325,7 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PricingProvidersCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPricingProvidersCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2370,8 +2370,8 @@ public class PricingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PricingProvidersValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1PricingProvidersCall(_callback);
+    private okhttp3.Call getPricingProvidersValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getPricingProvidersCall(_callback);
 
     }
 
@@ -2387,8 +2387,8 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public PricingProviderList getV1PricingProviders() throws ApiException {
-        ApiResponse<PricingProviderList> localVarResp = getV1PricingProvidersWithHttpInfo();
+    public PricingProviderList getPricingProviders() throws ApiException {
+        ApiResponse<PricingProviderList> localVarResp = getPricingProvidersWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -2404,8 +2404,8 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PricingProviderList> getV1PricingProvidersWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1PricingProvidersValidateBeforeCall(null);
+    public ApiResponse<PricingProviderList> getPricingProvidersWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getPricingProvidersValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<PricingProviderList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2423,15 +2423,15 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PricingProvidersAsync(final ApiCallback<PricingProviderList> _callback) throws ApiException {
+    public okhttp3.Call getPricingProvidersAsync(final ApiCallback<PricingProviderList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PricingProvidersValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getPricingProvidersValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<PricingProviderList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1PricingServices
+     * Build call for getPricingServices
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2442,7 +2442,7 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PricingServicesCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPricingServicesCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2487,8 +2487,8 @@ public class PricingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PricingServicesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1PricingServicesCall(_callback);
+    private okhttp3.Call getPricingServicesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getPricingServicesCall(_callback);
 
     }
 
@@ -2504,8 +2504,8 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Map<String, Object> getV1PricingServices() throws ApiException {
-        ApiResponse<Map<String, Object>> localVarResp = getV1PricingServicesWithHttpInfo();
+    public Map<String, Object> getPricingServices() throws ApiException {
+        ApiResponse<Map<String, Object>> localVarResp = getPricingServicesWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -2521,8 +2521,8 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Map<String, Object>> getV1PricingServicesWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1PricingServicesValidateBeforeCall(null);
+    public ApiResponse<Map<String, Object>> getPricingServicesWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getPricingServicesValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<Map<String, Object>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2540,15 +2540,15 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PricingServicesAsync(final ApiCallback<Map<String, Object>> _callback) throws ApiException {
+    public okhttp3.Call getPricingServicesAsync(final ApiCallback<Map<String, Object>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PricingServicesValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getPricingServicesValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<Map<String, Object>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1PricingSubscriptions
+     * Build call for getPricingSubscriptions
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2559,7 +2559,7 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PricingSubscriptionsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPricingSubscriptionsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2604,8 +2604,8 @@ public class PricingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PricingSubscriptionsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1PricingSubscriptionsCall(_callback);
+    private okhttp3.Call getPricingSubscriptionsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getPricingSubscriptionsCall(_callback);
 
     }
 
@@ -2621,8 +2621,8 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public PricingPlanList getV1PricingSubscriptions() throws ApiException {
-        ApiResponse<PricingPlanList> localVarResp = getV1PricingSubscriptionsWithHttpInfo();
+    public PricingPlanList getPricingSubscriptions() throws ApiException {
+        ApiResponse<PricingPlanList> localVarResp = getPricingSubscriptionsWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -2638,8 +2638,8 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PricingPlanList> getV1PricingSubscriptionsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1PricingSubscriptionsValidateBeforeCall(null);
+    public ApiResponse<PricingPlanList> getPricingSubscriptionsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getPricingSubscriptionsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<PricingPlanList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2657,15 +2657,15 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PricingSubscriptionsAsync(final ApiCallback<PricingPlanList> _callback) throws ApiException {
+    public okhttp3.Call getPricingSubscriptionsAsync(final ApiCallback<PricingPlanList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PricingSubscriptionsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getPricingSubscriptionsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<PricingPlanList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1PricingSummary
+     * Build call for getPricingSummary
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2676,7 +2676,7 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PricingSummaryCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPricingSummaryCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2721,8 +2721,8 @@ public class PricingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PricingSummaryValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1PricingSummaryCall(_callback);
+    private okhttp3.Call getPricingSummaryValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getPricingSummaryCall(_callback);
 
     }
 
@@ -2738,8 +2738,8 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Map<String, Object> getV1PricingSummary() throws ApiException {
-        ApiResponse<Map<String, Object>> localVarResp = getV1PricingSummaryWithHttpInfo();
+    public Map<String, Object> getPricingSummary() throws ApiException {
+        ApiResponse<Map<String, Object>> localVarResp = getPricingSummaryWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -2755,8 +2755,8 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Map<String, Object>> getV1PricingSummaryWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1PricingSummaryValidateBeforeCall(null);
+    public ApiResponse<Map<String, Object>> getPricingSummaryWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getPricingSummaryValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<Map<String, Object>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2774,15 +2774,15 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PricingSummaryAsync(final ApiCallback<Map<String, Object>> _callback) throws ApiException {
+    public okhttp3.Call getPricingSummaryAsync(final ApiCallback<Map<String, Object>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PricingSummaryValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getPricingSummaryValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<Map<String, Object>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1PricingTools
+     * Build call for getPricingTools
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2793,7 +2793,7 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PricingToolsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPricingToolsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2838,8 +2838,8 @@ public class PricingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PricingToolsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1PricingToolsCall(_callback);
+    private okhttp3.Call getPricingToolsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getPricingToolsCall(_callback);
 
     }
 
@@ -2855,8 +2855,8 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public PricingToolList getV1PricingTools() throws ApiException {
-        ApiResponse<PricingToolList> localVarResp = getV1PricingToolsWithHttpInfo();
+    public PricingToolList getPricingTools() throws ApiException {
+        ApiResponse<PricingToolList> localVarResp = getPricingToolsWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -2872,8 +2872,8 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PricingToolList> getV1PricingToolsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1PricingToolsValidateBeforeCall(null);
+    public ApiResponse<PricingToolList> getPricingToolsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getPricingToolsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<PricingToolList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2891,15 +2891,15 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PricingToolsAsync(final ApiCallback<PricingToolList> _callback) throws ApiException {
+    public okhttp3.Call getPricingToolsAsync(final ApiCallback<PricingToolList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PricingToolsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getPricingToolsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<PricingToolList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1PricingSync
+     * Build call for postPricingSync
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2910,7 +2910,7 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1PricingSyncCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postPricingSyncCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2955,8 +2955,8 @@ public class PricingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1PricingSyncValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1PricingSyncCall(_callback);
+    private okhttp3.Call postPricingSyncValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postPricingSyncCall(_callback);
 
     }
 
@@ -2972,8 +2972,8 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public PricingSyncOut postV1PricingSync() throws ApiException {
-        ApiResponse<PricingSyncOut> localVarResp = postV1PricingSyncWithHttpInfo();
+    public PricingSyncOut postPricingSync() throws ApiException {
+        ApiResponse<PricingSyncOut> localVarResp = postPricingSyncWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -2989,8 +2989,8 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PricingSyncOut> postV1PricingSyncWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1PricingSyncValidateBeforeCall(null);
+    public ApiResponse<PricingSyncOut> postPricingSyncWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postPricingSyncValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<PricingSyncOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -3008,9 +3008,9 @@ public class PricingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1PricingSyncAsync(final ApiCallback<PricingSyncOut> _callback) throws ApiException {
+    public okhttp3.Call postPricingSyncAsync(final ApiCallback<PricingSyncOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1PricingSyncValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postPricingSyncValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<PricingSyncOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

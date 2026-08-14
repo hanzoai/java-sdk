@@ -50,6 +50,11 @@ import ai.hanzo.cloud.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class CodingStartIn {
+  public static final String SERIALIZED_NAME_AFTER = "after";
+  @SerializedName(SERIALIZED_NAME_AFTER)
+  @javax.annotation.Nullable
+  private String after;
+
   public static final String SERIALIZED_NAME_AGENT_REF = "agentRef";
   @SerializedName(SERIALIZED_NAME_AGENT_REF)
   @javax.annotation.Nullable
@@ -90,11 +95,6 @@ public class CodingStartIn {
   @javax.annotation.Nullable
   private String repo;
 
-  public static final String SERIALIZED_NAME_SUBJECT = "subject";
-  @SerializedName(SERIALIZED_NAME_SUBJECT)
-  @javax.annotation.Nullable
-  private String subject;
-
   public static final String SERIALIZED_NAME_TARGET_ID = "targetId";
   @SerializedName(SERIALIZED_NAME_TARGET_ID)
   @javax.annotation.Nullable
@@ -112,6 +112,25 @@ public class CodingStartIn {
 
   public CodingStartIn() {
   }
+
+  public CodingStartIn after(@javax.annotation.Nullable String after) {
+    this.after = after;
+    return this;
+  }
+
+  /**
+   * After names a previous run&#39;s session, and starts this one from where that one stopped instead of from the repository&#39;s default. It is how a follow-up instruction — \&quot;now add tests for it\&quot; — builds on work already done rather than beginning again on a fresh clone.  It sets the base and nothing else, so this run still writes its OWN branch. One run, one branch: a run that wrote back onto an earlier run&#39;s branch would break the rule the forge&#39;s ref policy is built on, and would leave two turns of work with one name to review.  A caller who already knows the branch may pass Base directly; this exists because the branch is derived from a session id and nobody should have to know how. Base wins if both are given.
+   * @return after
+   */
+  @javax.annotation.Nullable
+  public String getAfter() {
+    return after;
+  }
+
+  public void setAfter(@javax.annotation.Nullable String after) {
+    this.after = after;
+  }
+
 
   public CodingStartIn agentRef(@javax.annotation.Nullable String agentRef) {
     this.agentRef = agentRef;
@@ -157,7 +176,7 @@ public class CodingStartIn {
   }
 
   /**
-   * Get desktop
+   * Desktop asks for a run with a SCREEN — an image carrying an X server — for a task that has to drive a browser or another windowed program. False, the default, is a headless checkout, which is what writing code needs.
    * @return desktop
    */
   @javax.annotation.Nullable
@@ -265,25 +284,6 @@ public class CodingStartIn {
   }
 
 
-  public CodingStartIn subject(@javax.annotation.Nullable String subject) {
-    this.subject = subject;
-    return this;
-  }
-
-  /**
-   * Subject is the person the run is attributed to — a linked Hanzo identity the door already proved, never a name the caller picks. Empty is refused rather than defaulted: a run that lost its human must not execute as the org.
-   * @return subject
-   */
-  @javax.annotation.Nullable
-  public String getSubject() {
-    return subject;
-  }
-
-  public void setSubject(@javax.annotation.Nullable String subject) {
-    this.subject = subject;
-  }
-
-
   public CodingStartIn targetId(@javax.annotation.Nullable String targetId) {
     this.targetId = targetId;
     return this;
@@ -351,7 +351,8 @@ public class CodingStartIn {
       return false;
     }
     CodingStartIn codingStartIn = (CodingStartIn) o;
-    return Objects.equals(this.agentRef, codingStartIn.agentRef) &&
+    return Objects.equals(this.after, codingStartIn.after) &&
+        Objects.equals(this.agentRef, codingStartIn.agentRef) &&
         Objects.equals(this.base, codingStartIn.base) &&
         Objects.equals(this.desktop, codingStartIn.desktop) &&
         Objects.equals(this.project, codingStartIn.project) &&
@@ -359,7 +360,6 @@ public class CodingStartIn {
         Objects.equals(this.replyChannel, codingStartIn.replyChannel) &&
         Objects.equals(this.replyThread, codingStartIn.replyThread) &&
         Objects.equals(this.repo, codingStartIn.repo) &&
-        Objects.equals(this.subject, codingStartIn.subject) &&
         Objects.equals(this.targetId, codingStartIn.targetId) &&
         Objects.equals(this.timeoutSeconds, codingStartIn.timeoutSeconds) &&
         Objects.equals(this.tool, codingStartIn.tool);
@@ -367,13 +367,14 @@ public class CodingStartIn {
 
   @Override
   public int hashCode() {
-    return Objects.hash(agentRef, base, desktop, project, prompt, replyChannel, replyThread, repo, subject, targetId, timeoutSeconds, tool);
+    return Objects.hash(after, agentRef, base, desktop, project, prompt, replyChannel, replyThread, repo, targetId, timeoutSeconds, tool);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CodingStartIn {\n");
+    sb.append("    after: ").append(toIndentedString(after)).append("\n");
     sb.append("    agentRef: ").append(toIndentedString(agentRef)).append("\n");
     sb.append("    base: ").append(toIndentedString(base)).append("\n");
     sb.append("    desktop: ").append(toIndentedString(desktop)).append("\n");
@@ -382,7 +383,6 @@ public class CodingStartIn {
     sb.append("    replyChannel: ").append(toIndentedString(replyChannel)).append("\n");
     sb.append("    replyThread: ").append(toIndentedString(replyThread)).append("\n");
     sb.append("    repo: ").append(toIndentedString(repo)).append("\n");
-    sb.append("    subject: ").append(toIndentedString(subject)).append("\n");
     sb.append("    targetId: ").append(toIndentedString(targetId)).append("\n");
     sb.append("    timeoutSeconds: ").append(toIndentedString(timeoutSeconds)).append("\n");
     sb.append("    tool: ").append(toIndentedString(tool)).append("\n");
@@ -407,7 +407,7 @@ public class CodingStartIn {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("agentRef", "base", "desktop", "project", "prompt", "replyChannel", "replyThread", "repo", "subject", "targetId", "timeoutSeconds", "tool"));
+    openapiFields = new HashSet<String>(Arrays.asList("after", "agentRef", "base", "desktop", "project", "prompt", "replyChannel", "replyThread", "repo", "targetId", "timeoutSeconds", "tool"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -434,6 +434,9 @@ public class CodingStartIn {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if ((jsonObj.get("after") != null && !jsonObj.get("after").isJsonNull()) && !jsonObj.get("after").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `after` to be a primitive type in the JSON string but got `%s`", jsonObj.get("after").toString()));
+      }
       if ((jsonObj.get("agentRef") != null && !jsonObj.get("agentRef").isJsonNull()) && !jsonObj.get("agentRef").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `agentRef` to be a primitive type in the JSON string but got `%s`", jsonObj.get("agentRef").toString()));
       }
@@ -454,9 +457,6 @@ public class CodingStartIn {
       }
       if ((jsonObj.get("repo") != null && !jsonObj.get("repo").isJsonNull()) && !jsonObj.get("repo").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `repo` to be a primitive type in the JSON string but got `%s`", jsonObj.get("repo").toString()));
-      }
-      if ((jsonObj.get("subject") != null && !jsonObj.get("subject").isJsonNull()) && !jsonObj.get("subject").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `subject` to be a primitive type in the JSON string but got `%s`", jsonObj.get("subject").toString()));
       }
       if ((jsonObj.get("targetId") != null && !jsonObj.get("targetId").isJsonNull()) && !jsonObj.get("targetId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `targetId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("targetId").toString()));

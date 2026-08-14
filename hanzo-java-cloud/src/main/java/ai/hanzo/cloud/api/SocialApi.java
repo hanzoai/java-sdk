@@ -72,13 +72,13 @@ public class SocialApi {
     }
 
     /**
-     * Build call for deleteV1SocialAccountsById
+     * Build call for deleteSocialAccountsById
      * @param id  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call deleteV1SocialAccountsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteSocialAccountsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -123,13 +123,13 @@ public class SocialApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1SocialAccountsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteSocialAccountsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling deleteV1SocialAccountsById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling deleteSocialAccountsById(Async)");
         }
 
-        return deleteV1SocialAccountsByIdCall(id, _callback);
+        return deleteSocialAccountsByIdCall(id, _callback);
 
     }
 
@@ -139,8 +139,8 @@ public class SocialApi {
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void deleteV1SocialAccountsById(@javax.annotation.Nonnull String id) throws ApiException {
-        deleteV1SocialAccountsByIdWithHttpInfo(id);
+    public void deleteSocialAccountsById(@javax.annotation.Nonnull String id) throws ApiException {
+        deleteSocialAccountsByIdWithHttpInfo(id);
     }
 
     /**
@@ -150,8 +150,8 @@ public class SocialApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> deleteV1SocialAccountsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1SocialAccountsByIdValidateBeforeCall(id, null);
+    public ApiResponse<Void> deleteSocialAccountsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = deleteSocialAccountsByIdValidateBeforeCall(id, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -163,20 +163,20 @@ public class SocialApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call deleteV1SocialAccountsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteSocialAccountsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1SocialAccountsByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = deleteSocialAccountsByIdValidateBeforeCall(id, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for deleteV1SocialPostsById
+     * Build call for deleteSocialPostsById
      * @param id  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call deleteV1SocialPostsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteSocialPostsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -221,13 +221,13 @@ public class SocialApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1SocialPostsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteSocialPostsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling deleteV1SocialPostsById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling deleteSocialPostsById(Async)");
         }
 
-        return deleteV1SocialPostsByIdCall(id, _callback);
+        return deleteSocialPostsByIdCall(id, _callback);
 
     }
 
@@ -237,8 +237,8 @@ public class SocialApi {
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void deleteV1SocialPostsById(@javax.annotation.Nonnull String id) throws ApiException {
-        deleteV1SocialPostsByIdWithHttpInfo(id);
+    public void deleteSocialPostsById(@javax.annotation.Nonnull String id) throws ApiException {
+        deleteSocialPostsByIdWithHttpInfo(id);
     }
 
     /**
@@ -248,8 +248,8 @@ public class SocialApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> deleteV1SocialPostsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1SocialPostsByIdValidateBeforeCall(id, null);
+    public ApiResponse<Void> deleteSocialPostsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = deleteSocialPostsByIdValidateBeforeCall(id, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -261,19 +261,19 @@ public class SocialApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call deleteV1SocialPostsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteSocialPostsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1SocialPostsByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = deleteSocialPostsByIdValidateBeforeCall(id, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1SocialAccounts
+     * Build call for getSocialAccounts
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1SocialAccountsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getSocialAccountsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -317,8 +317,8 @@ public class SocialApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1SocialAccountsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1SocialAccountsCall(_callback);
+    private okhttp3.Call getSocialAccountsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getSocialAccountsCall(_callback);
 
     }
 
@@ -327,8 +327,8 @@ public class SocialApi {
      * Returns the org&#39;s connected accounts — each one&#39;s id, network, handle, status and timestamps. &#x60;provider&#x60; filters to one network; &#x60;limit&#x60; bounds the page, defaulting to 200 and capped at 1000.  An account&#39;s provider access token is NEVER included in any response on this surface. Only the publisher reads it.  A validated principal is required; 403 without one. Every row is keyed by the caller&#39;s org taken from that principal and never from the request, so an id belonging to another tenant reads as not found rather than as a refusal.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1SocialAccounts() throws ApiException {
-        getV1SocialAccountsWithHttpInfo();
+    public void getSocialAccounts() throws ApiException {
+        getSocialAccountsWithHttpInfo();
     }
 
     /**
@@ -337,8 +337,8 @@ public class SocialApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1SocialAccountsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1SocialAccountsValidateBeforeCall(null);
+    public ApiResponse<Void> getSocialAccountsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getSocialAccountsValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -349,20 +349,20 @@ public class SocialApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1SocialAccountsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getSocialAccountsAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1SocialAccountsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getSocialAccountsValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1SocialAccountsById
+     * Build call for getSocialAccountsById
      * @param id  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1SocialAccountsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getSocialAccountsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -407,13 +407,13 @@ public class SocialApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1SocialAccountsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getSocialAccountsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getV1SocialAccountsById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getSocialAccountsById(Async)");
         }
 
-        return getV1SocialAccountsByIdCall(id, _callback);
+        return getSocialAccountsByIdCall(id, _callback);
 
     }
 
@@ -423,8 +423,8 @@ public class SocialApi {
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1SocialAccountsById(@javax.annotation.Nonnull String id) throws ApiException {
-        getV1SocialAccountsByIdWithHttpInfo(id);
+    public void getSocialAccountsById(@javax.annotation.Nonnull String id) throws ApiException {
+        getSocialAccountsByIdWithHttpInfo(id);
     }
 
     /**
@@ -434,8 +434,8 @@ public class SocialApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1SocialAccountsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = getV1SocialAccountsByIdValidateBeforeCall(id, null);
+    public ApiResponse<Void> getSocialAccountsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getSocialAccountsByIdValidateBeforeCall(id, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -447,19 +447,19 @@ public class SocialApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1SocialAccountsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getSocialAccountsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1SocialAccountsByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = getSocialAccountsByIdValidateBeforeCall(id, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1SocialPosts
+     * Build call for getSocialPosts
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1SocialPostsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getSocialPostsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -503,8 +503,8 @@ public class SocialApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1SocialPostsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1SocialPostsCall(_callback);
+    private okhttp3.Call getSocialPostsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getSocialPostsCall(_callback);
 
     }
 
@@ -513,8 +513,8 @@ public class SocialApi {
      * Returns the org&#39;s posts — content, channel, status, scheduled time, media and timestamps. &#x60;status&#x60; filters to one of draft, scheduled, published or failed; &#x60;limit&#x60; bounds the page, defaulting to 200 and capped at 1000.  A validated principal is required; 403 without one. Every row is keyed by the caller&#39;s org taken from that principal and never from the request, so an id belonging to another tenant reads as not found rather than as a refusal.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1SocialPosts() throws ApiException {
-        getV1SocialPostsWithHttpInfo();
+    public void getSocialPosts() throws ApiException {
+        getSocialPostsWithHttpInfo();
     }
 
     /**
@@ -523,8 +523,8 @@ public class SocialApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1SocialPostsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1SocialPostsValidateBeforeCall(null);
+    public ApiResponse<Void> getSocialPostsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getSocialPostsValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -535,20 +535,20 @@ public class SocialApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1SocialPostsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getSocialPostsAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1SocialPostsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getSocialPostsValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1SocialPostsById
+     * Build call for getSocialPostsById
      * @param id  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1SocialPostsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getSocialPostsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -593,13 +593,13 @@ public class SocialApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1SocialPostsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getSocialPostsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getV1SocialPostsById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getSocialPostsById(Async)");
         }
 
-        return getV1SocialPostsByIdCall(id, _callback);
+        return getSocialPostsByIdCall(id, _callback);
 
     }
 
@@ -609,8 +609,8 @@ public class SocialApi {
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1SocialPostsById(@javax.annotation.Nonnull String id) throws ApiException {
-        getV1SocialPostsByIdWithHttpInfo(id);
+    public void getSocialPostsById(@javax.annotation.Nonnull String id) throws ApiException {
+        getSocialPostsByIdWithHttpInfo(id);
     }
 
     /**
@@ -620,8 +620,8 @@ public class SocialApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1SocialPostsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = getV1SocialPostsByIdValidateBeforeCall(id, null);
+    public ApiResponse<Void> getSocialPostsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getSocialPostsByIdValidateBeforeCall(id, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -633,19 +633,19 @@ public class SocialApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1SocialPostsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getSocialPostsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1SocialPostsByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = getSocialPostsByIdValidateBeforeCall(id, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1SocialProviders
+     * Build call for getSocialProviders
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1SocialProvidersCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getSocialProvidersCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -689,8 +689,8 @@ public class SocialApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1SocialProvidersValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1SocialProvidersCall(_callback);
+    private okhttp3.Call getSocialProvidersValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getSocialProvidersCall(_callback);
 
     }
 
@@ -699,8 +699,8 @@ public class SocialApi {
      * Reports each supported network&#39;s publish-readiness: whether this deployment holds the OAuth application credentials for it and, when it does not, exactly which environment variables are missing.  This is a live read of the deployment&#39;s own configuration, not a static list of networks — it answers \&quot;can I connect this today\&quot;, which is what a connect affordance and a pre-cutover checklist both need. It says nothing about whether the caller has connected an account; that is the accounts listing.  A validated principal is required; 403 without one. Every row is keyed by the caller&#39;s org taken from that principal and never from the request, so an id belonging to another tenant reads as not found rather than as a refusal.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1SocialProviders() throws ApiException {
-        getV1SocialProvidersWithHttpInfo();
+    public void getSocialProviders() throws ApiException {
+        getSocialProvidersWithHttpInfo();
     }
 
     /**
@@ -709,8 +709,8 @@ public class SocialApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1SocialProvidersWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1SocialProvidersValidateBeforeCall(null);
+    public ApiResponse<Void> getSocialProvidersWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getSocialProvidersValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -721,19 +721,19 @@ public class SocialApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1SocialProvidersAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getSocialProvidersAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1SocialProvidersValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getSocialProvidersValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1SocialSummary
+     * Build call for getSocialSummary
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1SocialSummaryCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getSocialSummaryCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -777,8 +777,8 @@ public class SocialApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1SocialSummaryValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1SocialSummaryCall(_callback);
+    private okhttp3.Call getSocialSummaryValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getSocialSummaryCall(_callback);
 
     }
 
@@ -787,8 +787,8 @@ public class SocialApi {
      * Returns four counts for the caller&#39;s org: total posts, how many are scheduled, how many have published, and how many accounts are connected. It is the dashboard roll-up, computed over the org&#39;s own rows in one read.  A validated principal is required; 403 without one. Every row is keyed by the caller&#39;s org taken from that principal and never from the request, so an id belonging to another tenant reads as not found rather than as a refusal.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1SocialSummary() throws ApiException {
-        getV1SocialSummaryWithHttpInfo();
+    public void getSocialSummary() throws ApiException {
+        getSocialSummaryWithHttpInfo();
     }
 
     /**
@@ -797,8 +797,8 @@ public class SocialApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1SocialSummaryWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1SocialSummaryValidateBeforeCall(null);
+    public ApiResponse<Void> getSocialSummaryWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getSocialSummaryValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -809,19 +809,19 @@ public class SocialApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1SocialSummaryAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getSocialSummaryAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1SocialSummaryValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getSocialSummaryValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1SocialAccounts
+     * Build call for postSocialAccounts
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1SocialAccountsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postSocialAccountsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -865,8 +865,8 @@ public class SocialApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1SocialAccountsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1SocialAccountsCall(_callback);
+    private okhttp3.Call postSocialAccountsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postSocialAccountsCall(_callback);
 
     }
 
@@ -875,8 +875,8 @@ public class SocialApi {
      * Records a social account for the org and answers 201 with the stored row, including the generated id later calls address it by.  &#x60;provider&#x60; must be one of x, facebook, instagram, linkedin, tiktok, youtube or threads, defaulting to x when omitted. &#x60;status&#x60; is one of connected, disconnected or error, defaulting to connected. The handle is trimmed and bounded at 1024 characters.  A validated principal is required; 403 without one. Every row is keyed by the caller&#39;s org taken from that principal and never from the request, so an id belonging to another tenant reads as not found rather than as a refusal.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1SocialAccounts() throws ApiException {
-        postV1SocialAccountsWithHttpInfo();
+    public void postSocialAccounts() throws ApiException {
+        postSocialAccountsWithHttpInfo();
     }
 
     /**
@@ -885,8 +885,8 @@ public class SocialApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1SocialAccountsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1SocialAccountsValidateBeforeCall(null);
+    public ApiResponse<Void> postSocialAccountsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postSocialAccountsValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -897,19 +897,19 @@ public class SocialApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1SocialAccountsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postSocialAccountsAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1SocialAccountsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postSocialAccountsValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1SocialPosts
+     * Build call for postSocialPosts
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1SocialPostsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postSocialPostsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -953,8 +953,8 @@ public class SocialApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1SocialPostsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1SocialPostsCall(_callback);
+    private okhttp3.Call postSocialPostsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postSocialPostsCall(_callback);
 
     }
 
@@ -963,8 +963,8 @@ public class SocialApi {
      * Stores a post for the org and answers 201 with the stored row.  A post created as scheduled for a time that has already passed is published IMMEDIATELY, and the row returned carries that outcome — this is the one behaviour a reader would otherwise miss. A future-scheduled post is left for the scheduler, and a draft is left alone. Publishing never fails the creation: the post is stored either way, and a publish that could not run leaves the row for the scheduler to retry.  &#x60;content&#x60; is required and bounded at 8192 characters; &#x60;channel&#x60; is one of the seven supported networks, defaulting to x; &#x60;status&#x60; is one of draft, scheduled, published or failed, defaulting to draft; up to 10 media URLs are kept, each bounded at 1024 characters.  A validated principal is required; 403 without one. Every row is keyed by the caller&#39;s org taken from that principal and never from the request, so an id belonging to another tenant reads as not found rather than as a refusal.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1SocialPosts() throws ApiException {
-        postV1SocialPostsWithHttpInfo();
+    public void postSocialPosts() throws ApiException {
+        postSocialPostsWithHttpInfo();
     }
 
     /**
@@ -973,8 +973,8 @@ public class SocialApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1SocialPostsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1SocialPostsValidateBeforeCall(null);
+    public ApiResponse<Void> postSocialPostsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postSocialPostsValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -985,20 +985,20 @@ public class SocialApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1SocialPostsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postSocialPostsAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1SocialPostsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postSocialPostsValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1SocialPostsByIdPublish
+     * Build call for postSocialPostsByIdPublish
      * @param id  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1SocialPostsByIdPublishCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postSocialPostsByIdPublishCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1043,13 +1043,13 @@ public class SocialApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1SocialPostsByIdPublishValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postSocialPostsByIdPublishValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling postV1SocialPostsByIdPublish(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling postSocialPostsByIdPublish(Async)");
         }
 
-        return postV1SocialPostsByIdPublishCall(id, _callback);
+        return postSocialPostsByIdPublishCall(id, _callback);
 
     }
 
@@ -1059,8 +1059,8 @@ public class SocialApi {
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1SocialPostsByIdPublish(@javax.annotation.Nonnull String id) throws ApiException {
-        postV1SocialPostsByIdPublishWithHttpInfo(id);
+    public void postSocialPostsByIdPublish(@javax.annotation.Nonnull String id) throws ApiException {
+        postSocialPostsByIdPublishWithHttpInfo(id);
     }
 
     /**
@@ -1070,8 +1070,8 @@ public class SocialApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1SocialPostsByIdPublishWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = postV1SocialPostsByIdPublishValidateBeforeCall(id, null);
+    public ApiResponse<Void> postSocialPostsByIdPublishWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = postSocialPostsByIdPublishValidateBeforeCall(id, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1083,20 +1083,20 @@ public class SocialApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1SocialPostsByIdPublishAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postSocialPostsByIdPublishAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1SocialPostsByIdPublishValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = postSocialPostsByIdPublishValidateBeforeCall(id, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1SocialAccountsById
+     * Build call for putSocialAccountsById
      * @param id  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call putV1SocialAccountsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putSocialAccountsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1141,13 +1141,13 @@ public class SocialApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1SocialAccountsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putSocialAccountsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling putV1SocialAccountsById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling putSocialAccountsById(Async)");
         }
 
-        return putV1SocialAccountsByIdCall(id, _callback);
+        return putSocialAccountsByIdCall(id, _callback);
 
     }
 
@@ -1157,8 +1157,8 @@ public class SocialApi {
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void putV1SocialAccountsById(@javax.annotation.Nonnull String id) throws ApiException {
-        putV1SocialAccountsByIdWithHttpInfo(id);
+    public void putSocialAccountsById(@javax.annotation.Nonnull String id) throws ApiException {
+        putSocialAccountsByIdWithHttpInfo(id);
     }
 
     /**
@@ -1168,8 +1168,8 @@ public class SocialApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> putV1SocialAccountsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = putV1SocialAccountsByIdValidateBeforeCall(id, null);
+    public ApiResponse<Void> putSocialAccountsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = putSocialAccountsByIdValidateBeforeCall(id, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1181,20 +1181,20 @@ public class SocialApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call putV1SocialAccountsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call putSocialAccountsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1SocialAccountsByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = putSocialAccountsByIdValidateBeforeCall(id, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1SocialPostsById
+     * Build call for putSocialPostsById
      * @param id  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call putV1SocialPostsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putSocialPostsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1239,13 +1239,13 @@ public class SocialApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1SocialPostsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putSocialPostsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling putV1SocialPostsById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling putSocialPostsById(Async)");
         }
 
-        return putV1SocialPostsByIdCall(id, _callback);
+        return putSocialPostsByIdCall(id, _callback);
 
     }
 
@@ -1255,8 +1255,8 @@ public class SocialApi {
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void putV1SocialPostsById(@javax.annotation.Nonnull String id) throws ApiException {
-        putV1SocialPostsByIdWithHttpInfo(id);
+    public void putSocialPostsById(@javax.annotation.Nonnull String id) throws ApiException {
+        putSocialPostsByIdWithHttpInfo(id);
     }
 
     /**
@@ -1266,8 +1266,8 @@ public class SocialApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> putV1SocialPostsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = putV1SocialPostsByIdValidateBeforeCall(id, null);
+    public ApiResponse<Void> putSocialPostsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = putSocialPostsByIdValidateBeforeCall(id, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1279,9 +1279,9 @@ public class SocialApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call putV1SocialPostsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call putSocialPostsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1SocialPostsByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = putSocialPostsByIdValidateBeforeCall(id, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

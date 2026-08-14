@@ -72,12 +72,12 @@ public class FeedbackApi {
     }
 
     /**
-     * Build call for postV1Feedback
+     * Build call for postFeedback
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1FeedbackCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postFeedbackCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -121,8 +121,8 @@ public class FeedbackApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1FeedbackValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1FeedbackCall(_callback);
+    private okhttp3.Call postFeedbackValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postFeedbackCall(_callback);
 
     }
 
@@ -131,8 +131,8 @@ public class FeedbackApi {
      * Attaches a per-request outcome reward to the routing decision that served request_id — the enso training loop&#39;s quality signal. Org-scoped via the same session-OR-Bearer principal the usage read uses (RequirePrincipal): the reward lands only on the caller&#39;s OWN org&#39;s event, so a request_id from another org (or unknown) is a 404 — cross-org writes are impossible and unknown ids are indistinguishable from foreign ones. Idempotent: a repeat overwrites. The body carries NO prompt text — only {request_id, reward|rating}.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1Feedback() throws ApiException {
-        postV1FeedbackWithHttpInfo();
+    public void postFeedback() throws ApiException {
+        postFeedbackWithHttpInfo();
     }
 
     /**
@@ -141,8 +141,8 @@ public class FeedbackApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1FeedbackWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1FeedbackValidateBeforeCall(null);
+    public ApiResponse<Void> postFeedbackWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postFeedbackValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -153,9 +153,9 @@ public class FeedbackApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1FeedbackAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postFeedbackAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1FeedbackValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postFeedbackValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

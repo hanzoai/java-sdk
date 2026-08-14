@@ -74,7 +74,7 @@ public class MlApi {
     }
 
     /**
-     * Build call for deleteV1MlModelsByName
+     * Build call for deleteMlModelsByName
      * @param name Name is the resource to act on, taken from the path. Lower-cased and trimmed to the DNS-1123 label a CustomResource&#39;s metadata.name must be. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -86,7 +86,7 @@ public class MlApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1MlModelsByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteMlModelsByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -131,13 +131,13 @@ public class MlApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1MlModelsByNameValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteMlModelsByNameValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling deleteV1MlModelsByName(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling deleteMlModelsByName(Async)");
         }
 
-        return deleteV1MlModelsByNameCall(name, _callback);
+        return deleteMlModelsByNameCall(name, _callback);
 
     }
 
@@ -153,8 +153,8 @@ public class MlApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteV1MlModelsByName(@javax.annotation.Nonnull String name) throws ApiException {
-        deleteV1MlModelsByNameWithHttpInfo(name);
+    public void deleteMlModelsByName(@javax.annotation.Nonnull String name) throws ApiException {
+        deleteMlModelsByNameWithHttpInfo(name);
     }
 
     /**
@@ -170,8 +170,8 @@ public class MlApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteV1MlModelsByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1MlModelsByNameValidateBeforeCall(name, null);
+    public ApiResponse<Void> deleteMlModelsByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = deleteMlModelsByNameValidateBeforeCall(name, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -189,19 +189,19 @@ public class MlApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1MlModelsByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteMlModelsByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1MlModelsByNameValidateBeforeCall(name, _callback);
+        okhttp3.Call localVarCall = deleteMlModelsByNameValidateBeforeCall(name, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1MlHealth
+     * Build call for getMlHealth
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1MlHealthCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getMlHealthCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -245,8 +245,8 @@ public class MlApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1MlHealthValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1MlHealthCall(_callback);
+    private okhttp3.Call getMlHealthValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getMlHealthCall(_callback);
 
     }
 
@@ -255,8 +255,8 @@ public class MlApi {
      * Reports whether the model-serving plane is genuinely usable: that the Kubernetes API answers, that the InferenceService CRD is actually served by this cluster, and that the cluster holds at least one serving runtime to run a model ON. It is a REAL probe, not status theatre — it makes a live call rather than reporting a flag set at boot.  200 only when everything checks out. Otherwise 503 CARRYING THE REPORT — which component failed, and the real error — and that body is the reason this is not a typed op: a typed op reaches a non-2xx by returning an error, and the envelope that produces would drop exactly the detail the probe exists to deliver.  The runtime count is reported as its own field and is a SEPARATE fact from the CRD being served: a cluster with the CRD but no runtime accepts a deploy and then never schedules it, so reporting only the CRD would answer 200 while every model hangs. A runtime list this service cannot read reports the read error instead of a count, because a missing grant is a broken probe and not an empty cluster.  It answers about the cluster, not about a tenant, so it takes no org and reveals no tenant data. A cluster with no kserve CRD reports degraded honestly rather than failing later at the first deploy.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1MlHealth() throws ApiException {
-        getV1MlHealthWithHttpInfo();
+    public void getMlHealth() throws ApiException {
+        getMlHealthWithHttpInfo();
     }
 
     /**
@@ -265,8 +265,8 @@ public class MlApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1MlHealthWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1MlHealthValidateBeforeCall(null);
+    public ApiResponse<Void> getMlHealthWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getMlHealthValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -277,14 +277,14 @@ public class MlApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1MlHealthAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getMlHealthAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1MlHealthValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getMlHealthValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1MlModels
+     * Build call for getMlModels
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -295,7 +295,7 @@ public class MlApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1MlModelsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getMlModelsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -340,8 +340,8 @@ public class MlApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1MlModelsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1MlModelsCall(_callback);
+    private okhttp3.Call getMlModelsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getMlModelsCall(_callback);
 
     }
 
@@ -357,8 +357,8 @@ public class MlApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public MlResourceList getV1MlModels() throws ApiException {
-        ApiResponse<MlResourceList> localVarResp = getV1MlModelsWithHttpInfo();
+    public MlResourceList getMlModels() throws ApiException {
+        ApiResponse<MlResourceList> localVarResp = getMlModelsWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -374,8 +374,8 @@ public class MlApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<MlResourceList> getV1MlModelsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1MlModelsValidateBeforeCall(null);
+    public ApiResponse<MlResourceList> getMlModelsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getMlModelsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<MlResourceList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -393,15 +393,15 @@ public class MlApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1MlModelsAsync(final ApiCallback<MlResourceList> _callback) throws ApiException {
+    public okhttp3.Call getMlModelsAsync(final ApiCallback<MlResourceList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1MlModelsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getMlModelsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<MlResourceList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1MlModelsByName
+     * Build call for getMlModelsByName
      * @param name Name is the resource to act on, taken from the path. Lower-cased and trimmed to the DNS-1123 label a CustomResource&#39;s metadata.name must be. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -413,7 +413,7 @@ public class MlApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1MlModelsByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getMlModelsByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -459,13 +459,13 @@ public class MlApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1MlModelsByNameValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getMlModelsByNameValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling getV1MlModelsByName(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling getMlModelsByName(Async)");
         }
 
-        return getV1MlModelsByNameCall(name, _callback);
+        return getMlModelsByNameCall(name, _callback);
 
     }
 
@@ -482,8 +482,8 @@ public class MlApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public MlResource getV1MlModelsByName(@javax.annotation.Nonnull String name) throws ApiException {
-        ApiResponse<MlResource> localVarResp = getV1MlModelsByNameWithHttpInfo(name);
+    public MlResource getMlModelsByName(@javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<MlResource> localVarResp = getMlModelsByNameWithHttpInfo(name);
         return localVarResp.getData();
     }
 
@@ -500,8 +500,8 @@ public class MlApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<MlResource> getV1MlModelsByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
-        okhttp3.Call localVarCall = getV1MlModelsByNameValidateBeforeCall(name, null);
+    public ApiResponse<MlResource> getMlModelsByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = getMlModelsByNameValidateBeforeCall(name, null);
         Type localVarReturnType = new TypeToken<MlResource>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -520,21 +520,21 @@ public class MlApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1MlModelsByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<MlResource> _callback) throws ApiException {
+    public okhttp3.Call getMlModelsByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<MlResource> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1MlModelsByNameValidateBeforeCall(name, _callback);
+        okhttp3.Call localVarCall = getMlModelsByNameValidateBeforeCall(name, _callback);
         Type localVarReturnType = new TypeToken<MlResource>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for patchV1MlModelsByName
+     * Build call for patchMlModelsByName
      * @param name  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call patchV1MlModelsByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call patchMlModelsByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -579,13 +579,13 @@ public class MlApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchV1MlModelsByNameValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call patchMlModelsByNameValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling patchV1MlModelsByName(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling patchMlModelsByName(Async)");
         }
 
-        return patchV1MlModelsByNameCall(name, _callback);
+        return patchMlModelsByNameCall(name, _callback);
 
     }
 
@@ -595,8 +595,8 @@ public class MlApi {
      * @param name  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void patchV1MlModelsByName(@javax.annotation.Nonnull String name) throws ApiException {
-        patchV1MlModelsByNameWithHttpInfo(name);
+    public void patchMlModelsByName(@javax.annotation.Nonnull String name) throws ApiException {
+        patchMlModelsByNameWithHttpInfo(name);
     }
 
     /**
@@ -606,8 +606,8 @@ public class MlApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> patchV1MlModelsByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
-        okhttp3.Call localVarCall = patchV1MlModelsByNameValidateBeforeCall(name, null);
+    public ApiResponse<Void> patchMlModelsByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = patchMlModelsByNameValidateBeforeCall(name, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -619,19 +619,19 @@ public class MlApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call patchV1MlModelsByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call patchMlModelsByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchV1MlModelsByNameValidateBeforeCall(name, _callback);
+        okhttp3.Call localVarCall = patchMlModelsByNameValidateBeforeCall(name, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1MlModels
+     * Build call for postMlModels
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1MlModelsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postMlModelsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -675,8 +675,8 @@ public class MlApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1MlModelsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1MlModelsCall(_callback);
+    private okhttp3.Call postMlModelsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postMlModelsCall(_callback);
 
     }
 
@@ -685,8 +685,8 @@ public class MlApi {
      * Deploys a model into the caller&#39;s own tenant namespace and answers the created resource, 201. The spec is the kserve InferenceService spec, relayed as given, so anything kserve serves is deployable here without this layer knowing what it is.  THE BALANCE GATE RUNS FIRST, before a namespace or a resource exists, so an unfunded org cannot start GPU compute and then be billed for it. It fails CLOSED: a commerce that cannot be reached refuses rather than admits. The refusal carries the fleet&#39;s nested error body — the 402 shape a funded-balance client already parses — which is precisely why this route is not a typed op. On success the submission fee is debited from the caller org&#39;s own ledger, asynchronously and best-effort; ongoing GPU-hour cost is metered elsewhere.  The tenant namespace is derived from the VALIDATED org and project — never from a field — and the mapping is injective in both, so two tenants can never land in one namespace. An unvalidated caller is refused before any of that. The name must be a DNS-1123 label; a name already taken in the tenant&#39;s namespace is a 409.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1MlModels() throws ApiException {
-        postV1MlModelsWithHttpInfo();
+    public void postMlModels() throws ApiException {
+        postMlModelsWithHttpInfo();
     }
 
     /**
@@ -695,8 +695,8 @@ public class MlApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1MlModelsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1MlModelsValidateBeforeCall(null);
+    public ApiResponse<Void> postMlModelsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postMlModelsValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -707,20 +707,20 @@ public class MlApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1MlModelsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postMlModelsAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1MlModelsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postMlModelsValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1MlModelsByNamePredict
+     * Build call for postMlModelsByNamePredict
      * @param name  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1MlModelsByNamePredictCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postMlModelsByNamePredictCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -765,13 +765,13 @@ public class MlApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1MlModelsByNamePredictValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postMlModelsByNamePredictValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling postV1MlModelsByNamePredict(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling postMlModelsByNamePredict(Async)");
         }
 
-        return postV1MlModelsByNamePredictCall(name, _callback);
+        return postMlModelsByNamePredictCall(name, _callback);
 
     }
 
@@ -781,8 +781,8 @@ public class MlApi {
      * @param name  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1MlModelsByNamePredict(@javax.annotation.Nonnull String name) throws ApiException {
-        postV1MlModelsByNamePredictWithHttpInfo(name);
+    public void postMlModelsByNamePredict(@javax.annotation.Nonnull String name) throws ApiException {
+        postMlModelsByNamePredictWithHttpInfo(name);
     }
 
     /**
@@ -792,8 +792,8 @@ public class MlApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1MlModelsByNamePredictWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
-        okhttp3.Call localVarCall = postV1MlModelsByNamePredictValidateBeforeCall(name, null);
+    public ApiResponse<Void> postMlModelsByNamePredictWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = postMlModelsByNamePredictValidateBeforeCall(name, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -805,9 +805,9 @@ public class MlApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1MlModelsByNamePredictAsync(@javax.annotation.Nonnull String name, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postMlModelsByNamePredictAsync(@javax.annotation.Nonnull String name, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1MlModelsByNamePredictValidateBeforeCall(name, _callback);
+        okhttp3.Call localVarCall = postMlModelsByNamePredictValidateBeforeCall(name, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

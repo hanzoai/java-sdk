@@ -75,7 +75,7 @@ public class VpcsApi {
     }
 
     /**
-     * Build call for deleteV1VpcsById
+     * Build call for deleteVpcsById
      * @param id ID is the DigitalOcean resource id (a UUID), from the path. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -87,7 +87,7 @@ public class VpcsApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1VpcsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteVpcsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -132,13 +132,13 @@ public class VpcsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1VpcsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteVpcsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling deleteV1VpcsById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling deleteVpcsById(Async)");
         }
 
-        return deleteV1VpcsByIdCall(id, _callback);
+        return deleteVpcsByIdCall(id, _callback);
 
     }
 
@@ -154,8 +154,8 @@ public class VpcsApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteV1VpcsById(@javax.annotation.Nonnull String id) throws ApiException {
-        deleteV1VpcsByIdWithHttpInfo(id);
+    public void deleteVpcsById(@javax.annotation.Nonnull String id) throws ApiException {
+        deleteVpcsByIdWithHttpInfo(id);
     }
 
     /**
@@ -171,8 +171,8 @@ public class VpcsApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteV1VpcsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1VpcsByIdValidateBeforeCall(id, null);
+    public ApiResponse<Void> deleteVpcsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = deleteVpcsByIdValidateBeforeCall(id, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -190,14 +190,14 @@ public class VpcsApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1VpcsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteVpcsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1VpcsByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = deleteVpcsByIdValidateBeforeCall(id, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1Vpcs
+     * Build call for getVpcs
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -208,7 +208,7 @@ public class VpcsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1VpcsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getVpcsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -253,8 +253,8 @@ public class VpcsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1VpcsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1VpcsCall(_callback);
+    private okhttp3.Call getVpcsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getVpcsCall(_callback);
 
     }
 
@@ -270,8 +270,8 @@ public class VpcsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public VpcList getV1Vpcs() throws ApiException {
-        ApiResponse<VpcList> localVarResp = getV1VpcsWithHttpInfo();
+    public VpcList getVpcs() throws ApiException {
+        ApiResponse<VpcList> localVarResp = getVpcsWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -287,8 +287,8 @@ public class VpcsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<VpcList> getV1VpcsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1VpcsValidateBeforeCall(null);
+    public ApiResponse<VpcList> getVpcsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getVpcsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<VpcList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -306,15 +306,15 @@ public class VpcsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1VpcsAsync(final ApiCallback<VpcList> _callback) throws ApiException {
+    public okhttp3.Call getVpcsAsync(final ApiCallback<VpcList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1VpcsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getVpcsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<VpcList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1VpcsById
+     * Build call for getVpcsById
      * @param id ID is the DigitalOcean resource id (a UUID), from the path. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -326,7 +326,7 @@ public class VpcsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1VpcsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getVpcsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -372,13 +372,13 @@ public class VpcsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1VpcsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getVpcsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getV1VpcsById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getVpcsById(Async)");
         }
 
-        return getV1VpcsByIdCall(id, _callback);
+        return getVpcsByIdCall(id, _callback);
 
     }
 
@@ -395,8 +395,8 @@ public class VpcsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public VpcView getV1VpcsById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<VpcView> localVarResp = getV1VpcsByIdWithHttpInfo(id);
+    public VpcView getVpcsById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<VpcView> localVarResp = getVpcsByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -413,8 +413,8 @@ public class VpcsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<VpcView> getV1VpcsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = getV1VpcsByIdValidateBeforeCall(id, null);
+    public ApiResponse<VpcView> getVpcsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getVpcsByIdValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<VpcView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -433,15 +433,15 @@ public class VpcsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1VpcsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<VpcView> _callback) throws ApiException {
+    public okhttp3.Call getVpcsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<VpcView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1VpcsByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = getVpcsByIdValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<VpcView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1Vpcs
+     * Build call for postVpcs
      * @param createVPCReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -453,7 +453,7 @@ public class VpcsApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1VpcsCall(@javax.annotation.Nonnull CreateVPCReq createVPCReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postVpcsCall(@javax.annotation.Nonnull CreateVPCReq createVPCReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -499,13 +499,13 @@ public class VpcsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1VpcsValidateBeforeCall(@javax.annotation.Nonnull CreateVPCReq createVPCReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postVpcsValidateBeforeCall(@javax.annotation.Nonnull CreateVPCReq createVPCReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'createVPCReq' is set
         if (createVPCReq == null) {
-            throw new ApiException("Missing the required parameter 'createVPCReq' when calling postV1Vpcs(Async)");
+            throw new ApiException("Missing the required parameter 'createVPCReq' when calling postVpcs(Async)");
         }
 
-        return postV1VpcsCall(createVPCReq, _callback);
+        return postVpcsCall(createVPCReq, _callback);
 
     }
 
@@ -522,8 +522,8 @@ public class VpcsApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public VpcView postV1Vpcs(@javax.annotation.Nonnull CreateVPCReq createVPCReq) throws ApiException {
-        ApiResponse<VpcView> localVarResp = postV1VpcsWithHttpInfo(createVPCReq);
+    public VpcView postVpcs(@javax.annotation.Nonnull CreateVPCReq createVPCReq) throws ApiException {
+        ApiResponse<VpcView> localVarResp = postVpcsWithHttpInfo(createVPCReq);
         return localVarResp.getData();
     }
 
@@ -540,8 +540,8 @@ public class VpcsApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<VpcView> postV1VpcsWithHttpInfo(@javax.annotation.Nonnull CreateVPCReq createVPCReq) throws ApiException {
-        okhttp3.Call localVarCall = postV1VpcsValidateBeforeCall(createVPCReq, null);
+    public ApiResponse<VpcView> postVpcsWithHttpInfo(@javax.annotation.Nonnull CreateVPCReq createVPCReq) throws ApiException {
+        okhttp3.Call localVarCall = postVpcsValidateBeforeCall(createVPCReq, null);
         Type localVarReturnType = new TypeToken<VpcView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -560,9 +560,9 @@ public class VpcsApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1VpcsAsync(@javax.annotation.Nonnull CreateVPCReq createVPCReq, final ApiCallback<VpcView> _callback) throws ApiException {
+    public okhttp3.Call postVpcsAsync(@javax.annotation.Nonnull CreateVPCReq createVPCReq, final ApiCallback<VpcView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1VpcsValidateBeforeCall(createVPCReq, _callback);
+        okhttp3.Call localVarCall = postVpcsValidateBeforeCall(createVPCReq, _callback);
         Type localVarReturnType = new TypeToken<VpcView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

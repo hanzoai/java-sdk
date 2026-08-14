@@ -78,7 +78,7 @@ public class MarketplaceApi {
     }
 
     /**
-     * Build call for deleteV1MarketplaceListingsById
+     * Build call for deleteMarketplaceListingsById
      * @param id ID is the listing to unpublish, from the path. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -90,7 +90,7 @@ public class MarketplaceApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1MarketplaceListingsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteMarketplaceListingsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -135,13 +135,13 @@ public class MarketplaceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1MarketplaceListingsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteMarketplaceListingsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling deleteV1MarketplaceListingsById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling deleteMarketplaceListingsById(Async)");
         }
 
-        return deleteV1MarketplaceListingsByIdCall(id, _callback);
+        return deleteMarketplaceListingsByIdCall(id, _callback);
 
     }
 
@@ -157,8 +157,8 @@ public class MarketplaceApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteV1MarketplaceListingsById(@javax.annotation.Nonnull String id) throws ApiException {
-        deleteV1MarketplaceListingsByIdWithHttpInfo(id);
+    public void deleteMarketplaceListingsById(@javax.annotation.Nonnull String id) throws ApiException {
+        deleteMarketplaceListingsByIdWithHttpInfo(id);
     }
 
     /**
@@ -174,8 +174,8 @@ public class MarketplaceApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteV1MarketplaceListingsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1MarketplaceListingsByIdValidateBeforeCall(id, null);
+    public ApiResponse<Void> deleteMarketplaceListingsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = deleteMarketplaceListingsByIdValidateBeforeCall(id, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -193,14 +193,14 @@ public class MarketplaceApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1MarketplaceListingsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteMarketplaceListingsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1MarketplaceListingsByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = deleteMarketplaceListingsByIdValidateBeforeCall(id, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1Marketplace
+     * Build call for getMarketplace
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -211,7 +211,7 @@ public class MarketplaceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1MarketplaceCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getMarketplaceCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -256,8 +256,8 @@ public class MarketplaceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1MarketplaceValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1MarketplaceCall(_callback);
+    private okhttp3.Call getMarketplaceValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getMarketplaceCall(_callback);
 
     }
 
@@ -273,8 +273,8 @@ public class MarketplaceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public MarketCatalog getV1Marketplace() throws ApiException {
-        ApiResponse<MarketCatalog> localVarResp = getV1MarketplaceWithHttpInfo();
+    public MarketCatalog getMarketplace() throws ApiException {
+        ApiResponse<MarketCatalog> localVarResp = getMarketplaceWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -290,8 +290,8 @@ public class MarketplaceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<MarketCatalog> getV1MarketplaceWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1MarketplaceValidateBeforeCall(null);
+    public ApiResponse<MarketCatalog> getMarketplaceWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getMarketplaceValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<MarketCatalog>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -309,15 +309,15 @@ public class MarketplaceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1MarketplaceAsync(final ApiCallback<MarketCatalog> _callback) throws ApiException {
+    public okhttp3.Call getMarketplaceAsync(final ApiCallback<MarketCatalog> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1MarketplaceValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getMarketplaceValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<MarketCatalog>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1MarketplaceListings
+     * Build call for getMarketplaceListings
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -328,7 +328,7 @@ public class MarketplaceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1MarketplaceListingsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getMarketplaceListingsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -373,8 +373,8 @@ public class MarketplaceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1MarketplaceListingsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1MarketplaceListingsCall(_callback);
+    private okhttp3.Call getMarketplaceListingsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getMarketplaceListingsCall(_callback);
 
     }
 
@@ -390,8 +390,8 @@ public class MarketplaceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ListingPage getV1MarketplaceListings() throws ApiException {
-        ApiResponse<ListingPage> localVarResp = getV1MarketplaceListingsWithHttpInfo();
+    public ListingPage getMarketplaceListings() throws ApiException {
+        ApiResponse<ListingPage> localVarResp = getMarketplaceListingsWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -407,8 +407,8 @@ public class MarketplaceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ListingPage> getV1MarketplaceListingsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1MarketplaceListingsValidateBeforeCall(null);
+    public ApiResponse<ListingPage> getMarketplaceListingsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getMarketplaceListingsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<ListingPage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -426,15 +426,15 @@ public class MarketplaceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1MarketplaceListingsAsync(final ApiCallback<ListingPage> _callback) throws ApiException {
+    public okhttp3.Call getMarketplaceListingsAsync(final ApiCallback<ListingPage> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1MarketplaceListingsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getMarketplaceListingsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<ListingPage>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1MarketplaceInstall
+     * Build call for postMarketplaceInstall
      * @param installReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -446,7 +446,7 @@ public class MarketplaceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1MarketplaceInstallCall(@javax.annotation.Nonnull InstallReq installReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postMarketplaceInstallCall(@javax.annotation.Nonnull InstallReq installReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -492,13 +492,13 @@ public class MarketplaceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1MarketplaceInstallValidateBeforeCall(@javax.annotation.Nonnull InstallReq installReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postMarketplaceInstallValidateBeforeCall(@javax.annotation.Nonnull InstallReq installReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'installReq' is set
         if (installReq == null) {
-            throw new ApiException("Missing the required parameter 'installReq' when calling postV1MarketplaceInstall(Async)");
+            throw new ApiException("Missing the required parameter 'installReq' when calling postMarketplaceInstall(Async)");
         }
 
-        return postV1MarketplaceInstallCall(installReq, _callback);
+        return postMarketplaceInstallCall(installReq, _callback);
 
     }
 
@@ -515,8 +515,8 @@ public class MarketplaceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public InstallState postV1MarketplaceInstall(@javax.annotation.Nonnull InstallReq installReq) throws ApiException {
-        ApiResponse<InstallState> localVarResp = postV1MarketplaceInstallWithHttpInfo(installReq);
+    public InstallState postMarketplaceInstall(@javax.annotation.Nonnull InstallReq installReq) throws ApiException {
+        ApiResponse<InstallState> localVarResp = postMarketplaceInstallWithHttpInfo(installReq);
         return localVarResp.getData();
     }
 
@@ -533,8 +533,8 @@ public class MarketplaceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InstallState> postV1MarketplaceInstallWithHttpInfo(@javax.annotation.Nonnull InstallReq installReq) throws ApiException {
-        okhttp3.Call localVarCall = postV1MarketplaceInstallValidateBeforeCall(installReq, null);
+    public ApiResponse<InstallState> postMarketplaceInstallWithHttpInfo(@javax.annotation.Nonnull InstallReq installReq) throws ApiException {
+        okhttp3.Call localVarCall = postMarketplaceInstallValidateBeforeCall(installReq, null);
         Type localVarReturnType = new TypeToken<InstallState>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -553,15 +553,15 @@ public class MarketplaceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1MarketplaceInstallAsync(@javax.annotation.Nonnull InstallReq installReq, final ApiCallback<InstallState> _callback) throws ApiException {
+    public okhttp3.Call postMarketplaceInstallAsync(@javax.annotation.Nonnull InstallReq installReq, final ApiCallback<InstallState> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1MarketplaceInstallValidateBeforeCall(installReq, _callback);
+        okhttp3.Call localVarCall = postMarketplaceInstallValidateBeforeCall(installReq, _callback);
         Type localVarReturnType = new TypeToken<InstallState>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1MarketplaceListings
+     * Build call for postMarketplaceListings
      * @param publishReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -573,7 +573,7 @@ public class MarketplaceApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1MarketplaceListingsCall(@javax.annotation.Nonnull PublishReq publishReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postMarketplaceListingsCall(@javax.annotation.Nonnull PublishReq publishReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -619,13 +619,13 @@ public class MarketplaceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1MarketplaceListingsValidateBeforeCall(@javax.annotation.Nonnull PublishReq publishReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postMarketplaceListingsValidateBeforeCall(@javax.annotation.Nonnull PublishReq publishReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'publishReq' is set
         if (publishReq == null) {
-            throw new ApiException("Missing the required parameter 'publishReq' when calling postV1MarketplaceListings(Async)");
+            throw new ApiException("Missing the required parameter 'publishReq' when calling postMarketplaceListings(Async)");
         }
 
-        return postV1MarketplaceListingsCall(publishReq, _callback);
+        return postMarketplaceListingsCall(publishReq, _callback);
 
     }
 
@@ -642,8 +642,8 @@ public class MarketplaceApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public Listing postV1MarketplaceListings(@javax.annotation.Nonnull PublishReq publishReq) throws ApiException {
-        ApiResponse<Listing> localVarResp = postV1MarketplaceListingsWithHttpInfo(publishReq);
+    public Listing postMarketplaceListings(@javax.annotation.Nonnull PublishReq publishReq) throws ApiException {
+        ApiResponse<Listing> localVarResp = postMarketplaceListingsWithHttpInfo(publishReq);
         return localVarResp.getData();
     }
 
@@ -660,8 +660,8 @@ public class MarketplaceApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Listing> postV1MarketplaceListingsWithHttpInfo(@javax.annotation.Nonnull PublishReq publishReq) throws ApiException {
-        okhttp3.Call localVarCall = postV1MarketplaceListingsValidateBeforeCall(publishReq, null);
+    public ApiResponse<Listing> postMarketplaceListingsWithHttpInfo(@javax.annotation.Nonnull PublishReq publishReq) throws ApiException {
+        okhttp3.Call localVarCall = postMarketplaceListingsValidateBeforeCall(publishReq, null);
         Type localVarReturnType = new TypeToken<Listing>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -680,15 +680,15 @@ public class MarketplaceApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1MarketplaceListingsAsync(@javax.annotation.Nonnull PublishReq publishReq, final ApiCallback<Listing> _callback) throws ApiException {
+    public okhttp3.Call postMarketplaceListingsAsync(@javax.annotation.Nonnull PublishReq publishReq, final ApiCallback<Listing> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1MarketplaceListingsValidateBeforeCall(publishReq, _callback);
+        okhttp3.Call localVarCall = postMarketplaceListingsValidateBeforeCall(publishReq, _callback);
         Type localVarReturnType = new TypeToken<Listing>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1MarketplaceUninstall
+     * Build call for postMarketplaceUninstall
      * @param installReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -700,7 +700,7 @@ public class MarketplaceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1MarketplaceUninstallCall(@javax.annotation.Nonnull InstallReq installReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postMarketplaceUninstallCall(@javax.annotation.Nonnull InstallReq installReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -746,13 +746,13 @@ public class MarketplaceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1MarketplaceUninstallValidateBeforeCall(@javax.annotation.Nonnull InstallReq installReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postMarketplaceUninstallValidateBeforeCall(@javax.annotation.Nonnull InstallReq installReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'installReq' is set
         if (installReq == null) {
-            throw new ApiException("Missing the required parameter 'installReq' when calling postV1MarketplaceUninstall(Async)");
+            throw new ApiException("Missing the required parameter 'installReq' when calling postMarketplaceUninstall(Async)");
         }
 
-        return postV1MarketplaceUninstallCall(installReq, _callback);
+        return postMarketplaceUninstallCall(installReq, _callback);
 
     }
 
@@ -769,8 +769,8 @@ public class MarketplaceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public InstallState postV1MarketplaceUninstall(@javax.annotation.Nonnull InstallReq installReq) throws ApiException {
-        ApiResponse<InstallState> localVarResp = postV1MarketplaceUninstallWithHttpInfo(installReq);
+    public InstallState postMarketplaceUninstall(@javax.annotation.Nonnull InstallReq installReq) throws ApiException {
+        ApiResponse<InstallState> localVarResp = postMarketplaceUninstallWithHttpInfo(installReq);
         return localVarResp.getData();
     }
 
@@ -787,8 +787,8 @@ public class MarketplaceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InstallState> postV1MarketplaceUninstallWithHttpInfo(@javax.annotation.Nonnull InstallReq installReq) throws ApiException {
-        okhttp3.Call localVarCall = postV1MarketplaceUninstallValidateBeforeCall(installReq, null);
+    public ApiResponse<InstallState> postMarketplaceUninstallWithHttpInfo(@javax.annotation.Nonnull InstallReq installReq) throws ApiException {
+        okhttp3.Call localVarCall = postMarketplaceUninstallValidateBeforeCall(installReq, null);
         Type localVarReturnType = new TypeToken<InstallState>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -807,9 +807,9 @@ public class MarketplaceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1MarketplaceUninstallAsync(@javax.annotation.Nonnull InstallReq installReq, final ApiCallback<InstallState> _callback) throws ApiException {
+    public okhttp3.Call postMarketplaceUninstallAsync(@javax.annotation.Nonnull InstallReq installReq, final ApiCallback<InstallState> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1MarketplaceUninstallValidateBeforeCall(installReq, _callback);
+        okhttp3.Call localVarCall = postMarketplaceUninstallValidateBeforeCall(installReq, _callback);
         Type localVarReturnType = new TypeToken<InstallState>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

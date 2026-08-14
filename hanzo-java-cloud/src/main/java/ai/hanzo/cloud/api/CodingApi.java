@@ -74,7 +74,7 @@ public class CodingApi {
     }
 
     /**
-     * Build call for postV1Coding
+     * Build call for postCoding
      * @param codingStartIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -86,7 +86,7 @@ public class CodingApi {
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CodingCall(@javax.annotation.Nonnull CodingStartIn codingStartIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCodingCall(@javax.annotation.Nonnull CodingStartIn codingStartIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -132,19 +132,19 @@ public class CodingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CodingValidateBeforeCall(@javax.annotation.Nonnull CodingStartIn codingStartIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postCodingValidateBeforeCall(@javax.annotation.Nonnull CodingStartIn codingStartIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'codingStartIn' is set
         if (codingStartIn == null) {
-            throw new ApiException("Missing the required parameter 'codingStartIn' when calling postV1Coding(Async)");
+            throw new ApiException("Missing the required parameter 'codingStartIn' when calling postCoding(Async)");
         }
 
-        return postV1CodingCall(codingStartIn, _callback);
+        return postCodingCall(codingStartIn, _callback);
 
     }
 
     /**
      * Start one autonomous coding run against a repo in the caller&#39;s org
-     * Is the app&#39;s door. It answers 202 with the run&#39;s handle the moment the run is ADMITTED — not when it finishes. A coding run takes minutes; holding a request open for one would tie a connection to a model loop and give the caller nothing it cannot get better from the session stream.  The handle is a session id, and that is deliberate: the session is already the run&#39;s durable record and its live stream (/v1/agents/sessions/{id}/stream), so this door does not grow a progress endpoint, a status endpoint or a cancel endpoint of its own. One way to watch a run, whoever started it.
+     * Runs a coding task on a repository: clones it into a sandbox, lets a model read and edit the code, run the tests, and push the work to a branch. Say the thing you want done — \&quot;fix the failing auth test in hanzoai/cloud\&quot; — and the run infers the repo, the branch and the plan. No prefix, no ceremony.  It answers 202 with the run&#39;s handle the moment the run is ADMITTED — not when it finishes. A coding run takes minutes; holding a request open for one would tie a connection to a model loop and give the caller nothing it cannot get better from the session stream.  The handle is a session id, and that is deliberate: the session is already the run&#39;s durable record and its live stream (/v1/agents/sessions/{id}/stream), so this door does not grow a progress endpoint, a status endpoint or a cancel endpoint of its own. One way to watch a run, whoever started it.  It is also how work CONTINUES. Pass an earlier run&#39;s session as &#x60;after&#x60; and this one starts from where that one stopped, so \&quot;now add tests for it\&quot; builds on the branch already pushed instead of a fresh clone. The follow-up still gets its own branch and its own session — one run, one branch, always reviewable on its own.
      * @param codingStartIn  (required)
      * @return CodingStarted
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -155,14 +155,14 @@ public class CodingApi {
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
      </table>
      */
-    public CodingStarted postV1Coding(@javax.annotation.Nonnull CodingStartIn codingStartIn) throws ApiException {
-        ApiResponse<CodingStarted> localVarResp = postV1CodingWithHttpInfo(codingStartIn);
+    public CodingStarted postCoding(@javax.annotation.Nonnull CodingStartIn codingStartIn) throws ApiException {
+        ApiResponse<CodingStarted> localVarResp = postCodingWithHttpInfo(codingStartIn);
         return localVarResp.getData();
     }
 
     /**
      * Start one autonomous coding run against a repo in the caller&#39;s org
-     * Is the app&#39;s door. It answers 202 with the run&#39;s handle the moment the run is ADMITTED — not when it finishes. A coding run takes minutes; holding a request open for one would tie a connection to a model loop and give the caller nothing it cannot get better from the session stream.  The handle is a session id, and that is deliberate: the session is already the run&#39;s durable record and its live stream (/v1/agents/sessions/{id}/stream), so this door does not grow a progress endpoint, a status endpoint or a cancel endpoint of its own. One way to watch a run, whoever started it.
+     * Runs a coding task on a repository: clones it into a sandbox, lets a model read and edit the code, run the tests, and push the work to a branch. Say the thing you want done — \&quot;fix the failing auth test in hanzoai/cloud\&quot; — and the run infers the repo, the branch and the plan. No prefix, no ceremony.  It answers 202 with the run&#39;s handle the moment the run is ADMITTED — not when it finishes. A coding run takes minutes; holding a request open for one would tie a connection to a model loop and give the caller nothing it cannot get better from the session stream.  The handle is a session id, and that is deliberate: the session is already the run&#39;s durable record and its live stream (/v1/agents/sessions/{id}/stream), so this door does not grow a progress endpoint, a status endpoint or a cancel endpoint of its own. One way to watch a run, whoever started it.  It is also how work CONTINUES. Pass an earlier run&#39;s session as &#x60;after&#x60; and this one starts from where that one stopped, so \&quot;now add tests for it\&quot; builds on the branch already pushed instead of a fresh clone. The follow-up still gets its own branch and its own session — one run, one branch, always reviewable on its own.
      * @param codingStartIn  (required)
      * @return ApiResponse&lt;CodingStarted&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -173,15 +173,15 @@ public class CodingApi {
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CodingStarted> postV1CodingWithHttpInfo(@javax.annotation.Nonnull CodingStartIn codingStartIn) throws ApiException {
-        okhttp3.Call localVarCall = postV1CodingValidateBeforeCall(codingStartIn, null);
+    public ApiResponse<CodingStarted> postCodingWithHttpInfo(@javax.annotation.Nonnull CodingStartIn codingStartIn) throws ApiException {
+        okhttp3.Call localVarCall = postCodingValidateBeforeCall(codingStartIn, null);
         Type localVarReturnType = new TypeToken<CodingStarted>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Start one autonomous coding run against a repo in the caller&#39;s org (asynchronously)
-     * Is the app&#39;s door. It answers 202 with the run&#39;s handle the moment the run is ADMITTED — not when it finishes. A coding run takes minutes; holding a request open for one would tie a connection to a model loop and give the caller nothing it cannot get better from the session stream.  The handle is a session id, and that is deliberate: the session is already the run&#39;s durable record and its live stream (/v1/agents/sessions/{id}/stream), so this door does not grow a progress endpoint, a status endpoint or a cancel endpoint of its own. One way to watch a run, whoever started it.
+     * Runs a coding task on a repository: clones it into a sandbox, lets a model read and edit the code, run the tests, and push the work to a branch. Say the thing you want done — \&quot;fix the failing auth test in hanzoai/cloud\&quot; — and the run infers the repo, the branch and the plan. No prefix, no ceremony.  It answers 202 with the run&#39;s handle the moment the run is ADMITTED — not when it finishes. A coding run takes minutes; holding a request open for one would tie a connection to a model loop and give the caller nothing it cannot get better from the session stream.  The handle is a session id, and that is deliberate: the session is already the run&#39;s durable record and its live stream (/v1/agents/sessions/{id}/stream), so this door does not grow a progress endpoint, a status endpoint or a cancel endpoint of its own. One way to watch a run, whoever started it.  It is also how work CONTINUES. Pass an earlier run&#39;s session as &#x60;after&#x60; and this one starts from where that one stopped, so \&quot;now add tests for it\&quot; builds on the branch already pushed instead of a fresh clone. The follow-up still gets its own branch and its own session — one run, one branch, always reviewable on its own.
      * @param codingStartIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -193,9 +193,9 @@ public class CodingApi {
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CodingAsync(@javax.annotation.Nonnull CodingStartIn codingStartIn, final ApiCallback<CodingStarted> _callback) throws ApiException {
+    public okhttp3.Call postCodingAsync(@javax.annotation.Nonnull CodingStartIn codingStartIn, final ApiCallback<CodingStarted> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CodingValidateBeforeCall(codingStartIn, _callback);
+        okhttp3.Call localVarCall = postCodingValidateBeforeCall(codingStartIn, _callback);
         Type localVarReturnType = new TypeToken<CodingStarted>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

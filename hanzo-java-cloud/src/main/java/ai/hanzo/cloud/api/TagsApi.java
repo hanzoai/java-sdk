@@ -73,7 +73,7 @@ public class TagsApi {
     }
 
     /**
-     * Build call for getV1Tags
+     * Build call for getTags
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -84,7 +84,7 @@ public class TagsApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1TagsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getTagsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -129,8 +129,8 @@ public class TagsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1TagsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1TagsCall(_callback);
+    private okhttp3.Call getTagsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getTagsCall(_callback);
 
     }
 
@@ -146,8 +146,8 @@ public class TagsApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public TagConfig getV1Tags() throws ApiException {
-        ApiResponse<TagConfig> localVarResp = getV1TagsWithHttpInfo();
+    public TagConfig getTags() throws ApiException {
+        ApiResponse<TagConfig> localVarResp = getTagsWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -163,8 +163,8 @@ public class TagsApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<TagConfig> getV1TagsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1TagsValidateBeforeCall(null);
+    public ApiResponse<TagConfig> getTagsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getTagsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<TagConfig>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -182,9 +182,9 @@ public class TagsApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1TagsAsync(final ApiCallback<TagConfig> _callback) throws ApiException {
+    public okhttp3.Call getTagsAsync(final ApiCallback<TagConfig> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1TagsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getTagsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<TagConfig>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

@@ -76,7 +76,7 @@ public class AnalyticsApi {
     }
 
     /**
-     * Build call for getV1AnalyticsHealth
+     * Build call for getAnalyticsHealth
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -88,7 +88,7 @@ public class AnalyticsApi {
         <tr><td> 503 </td><td> service unavailable </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AnalyticsHealthCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAnalyticsHealthCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -133,8 +133,8 @@ public class AnalyticsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1AnalyticsHealthValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1AnalyticsHealthCall(_callback);
+    private okhttp3.Call getAnalyticsHealthValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getAnalyticsHealthCall(_callback);
 
     }
 
@@ -151,8 +151,8 @@ public class AnalyticsApi {
         <tr><td> 503 </td><td> service unavailable </td><td>  -  </td></tr>
      </table>
      */
-    public HealthReport getV1AnalyticsHealth() throws ApiException {
-        ApiResponse<HealthReport> localVarResp = getV1AnalyticsHealthWithHttpInfo();
+    public HealthReport getAnalyticsHealth() throws ApiException {
+        ApiResponse<HealthReport> localVarResp = getAnalyticsHealthWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -169,8 +169,8 @@ public class AnalyticsApi {
         <tr><td> 503 </td><td> service unavailable </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<HealthReport> getV1AnalyticsHealthWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1AnalyticsHealthValidateBeforeCall(null);
+    public ApiResponse<HealthReport> getAnalyticsHealthWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getAnalyticsHealthValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<HealthReport>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -189,16 +189,16 @@ public class AnalyticsApi {
         <tr><td> 503 </td><td> service unavailable </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AnalyticsHealthAsync(final ApiCallback<HealthReport> _callback) throws ApiException {
+    public okhttp3.Call getAnalyticsHealthAsync(final ApiCallback<HealthReport> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1AnalyticsHealthValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getAnalyticsHealthValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<HealthReport>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1AnalyticsOverview
-     * @param range Range is a relative window: 24h, 7d or 30d. Default 24h. Ignored when both start and end are given. An unknown value is a 400. (optional)
+     * Build call for getAnalyticsOverview
+     * @param range Range is a relative window: a count and a unit — 24h, 7d, 90d, any &lt;N&gt;h or &lt;N&gt;d — or day, week, month, all. Default 24h. Ignored when both start and end are given. An unknown value, or one past the 730-day horizon, is a 400. (optional)
      * @param start Start is the inclusive lower bound of a custom window, RFC3339. Requires end. (optional)
      * @param end End is the exclusive upper bound of a custom window, RFC3339. Requires start. (optional)
      * @param _callback Callback for upload/download progress
@@ -211,7 +211,7 @@ public class AnalyticsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AnalyticsOverviewCall(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAnalyticsOverviewCall(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -268,15 +268,15 @@ public class AnalyticsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1AnalyticsOverviewValidateBeforeCall(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end, final ApiCallback _callback) throws ApiException {
-        return getV1AnalyticsOverviewCall(range, start, end, _callback);
+    private okhttp3.Call getAnalyticsOverviewValidateBeforeCall(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end, final ApiCallback _callback) throws ApiException {
+        return getAnalyticsOverviewCall(range, start, end, _callback);
 
     }
 
     /**
      * Overview returns the caller org&#39;s analytics KPIs for one time window.
      * Overview returns the caller org&#39;s analytics KPIs for one time window. Three lenses over one warehouse: llm is the live per-org LLM usage ledger (requests, tokens, spend, models, providers, errors) and is always real; web (pageviews, visitors, sessions) and commerce (orders, revenue, AOV) read the product-event table and report available&#x3D;false rather than fabricating zeros when it holds nothing yet.  The org is the validated principal&#39;s — never a parameter — so a caller can only ever read its own tenant. 403 without a validated bearer, 400 on an unknown range, 503 when the warehouse is unreachable.
-     * @param range Range is a relative window: 24h, 7d or 30d. Default 24h. Ignored when both start and end are given. An unknown value is a 400. (optional)
+     * @param range Range is a relative window: a count and a unit — 24h, 7d, 90d, any &lt;N&gt;h or &lt;N&gt;d — or day, week, month, all. Default 24h. Ignored when both start and end are given. An unknown value, or one past the 730-day horizon, is a 400. (optional)
      * @param start Start is the inclusive lower bound of a custom window, RFC3339. Requires end. (optional)
      * @param end End is the exclusive upper bound of a custom window, RFC3339. Requires start. (optional)
      * @return Overview
@@ -288,15 +288,15 @@ public class AnalyticsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Overview getV1AnalyticsOverview(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end) throws ApiException {
-        ApiResponse<Overview> localVarResp = getV1AnalyticsOverviewWithHttpInfo(range, start, end);
+    public Overview getAnalyticsOverview(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end) throws ApiException {
+        ApiResponse<Overview> localVarResp = getAnalyticsOverviewWithHttpInfo(range, start, end);
         return localVarResp.getData();
     }
 
     /**
      * Overview returns the caller org&#39;s analytics KPIs for one time window.
      * Overview returns the caller org&#39;s analytics KPIs for one time window. Three lenses over one warehouse: llm is the live per-org LLM usage ledger (requests, tokens, spend, models, providers, errors) and is always real; web (pageviews, visitors, sessions) and commerce (orders, revenue, AOV) read the product-event table and report available&#x3D;false rather than fabricating zeros when it holds nothing yet.  The org is the validated principal&#39;s — never a parameter — so a caller can only ever read its own tenant. 403 without a validated bearer, 400 on an unknown range, 503 when the warehouse is unreachable.
-     * @param range Range is a relative window: 24h, 7d or 30d. Default 24h. Ignored when both start and end are given. An unknown value is a 400. (optional)
+     * @param range Range is a relative window: a count and a unit — 24h, 7d, 90d, any &lt;N&gt;h or &lt;N&gt;d — or day, week, month, all. Default 24h. Ignored when both start and end are given. An unknown value, or one past the 730-day horizon, is a 400. (optional)
      * @param start Start is the inclusive lower bound of a custom window, RFC3339. Requires end. (optional)
      * @param end End is the exclusive upper bound of a custom window, RFC3339. Requires start. (optional)
      * @return ApiResponse&lt;Overview&gt;
@@ -308,8 +308,8 @@ public class AnalyticsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Overview> getV1AnalyticsOverviewWithHttpInfo(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end) throws ApiException {
-        okhttp3.Call localVarCall = getV1AnalyticsOverviewValidateBeforeCall(range, start, end, null);
+    public ApiResponse<Overview> getAnalyticsOverviewWithHttpInfo(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end) throws ApiException {
+        okhttp3.Call localVarCall = getAnalyticsOverviewValidateBeforeCall(range, start, end, null);
         Type localVarReturnType = new TypeToken<Overview>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -317,7 +317,7 @@ public class AnalyticsApi {
     /**
      * Overview returns the caller org&#39;s analytics KPIs for one time window. (asynchronously)
      * Overview returns the caller org&#39;s analytics KPIs for one time window. Three lenses over one warehouse: llm is the live per-org LLM usage ledger (requests, tokens, spend, models, providers, errors) and is always real; web (pageviews, visitors, sessions) and commerce (orders, revenue, AOV) read the product-event table and report available&#x3D;false rather than fabricating zeros when it holds nothing yet.  The org is the validated principal&#39;s — never a parameter — so a caller can only ever read its own tenant. 403 without a validated bearer, 400 on an unknown range, 503 when the warehouse is unreachable.
-     * @param range Range is a relative window: 24h, 7d or 30d. Default 24h. Ignored when both start and end are given. An unknown value is a 400. (optional)
+     * @param range Range is a relative window: a count and a unit — 24h, 7d, 90d, any &lt;N&gt;h or &lt;N&gt;d — or day, week, month, all. Default 24h. Ignored when both start and end are given. An unknown value, or one past the 730-day horizon, is a 400. (optional)
      * @param start Start is the inclusive lower bound of a custom window, RFC3339. Requires end. (optional)
      * @param end End is the exclusive upper bound of a custom window, RFC3339. Requires start. (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -330,16 +330,16 @@ public class AnalyticsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AnalyticsOverviewAsync(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end, final ApiCallback<Overview> _callback) throws ApiException {
+    public okhttp3.Call getAnalyticsOverviewAsync(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end, final ApiCallback<Overview> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1AnalyticsOverviewValidateBeforeCall(range, start, end, _callback);
+        okhttp3.Call localVarCall = getAnalyticsOverviewValidateBeforeCall(range, start, end, _callback);
         Type localVarReturnType = new TypeToken<Overview>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1AnalyticsTimeseries
-     * @param range Range is a relative window: 24h, 7d or 30d. Default 24h. Ignored when both start and end are given. An unknown value is a 400. (optional)
+     * Build call for getAnalyticsTimeseries
+     * @param range Range is a relative window: a count and a unit — 24h, 7d, 90d, any &lt;N&gt;h or &lt;N&gt;d — or day, week, month, all. Default 24h. Ignored when both start and end are given. An unknown value, or one past the 730-day horizon, is a 400. (optional)
      * @param start Start is the inclusive lower bound of a custom window, RFC3339. Requires end. (optional)
      * @param end End is the exclusive upper bound of a custom window, RFC3339. Requires start. (optional)
      * @param _callback Callback for upload/download progress
@@ -352,7 +352,7 @@ public class AnalyticsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AnalyticsTimeseriesCall(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAnalyticsTimeseriesCall(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -409,15 +409,15 @@ public class AnalyticsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1AnalyticsTimeseriesValidateBeforeCall(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end, final ApiCallback _callback) throws ApiException {
-        return getV1AnalyticsTimeseriesCall(range, start, end, _callback);
+    private okhttp3.Call getAnalyticsTimeseriesValidateBeforeCall(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end, final ApiCallback _callback) throws ApiException {
+        return getAnalyticsTimeseriesCall(range, start, end, _callback);
 
     }
 
     /**
      * Timeseries returns the caller org&#39;s LLM usage over time as an evenly-spaced series.
      * Timeseries returns the caller org&#39;s LLM usage over time as an evenly-spaced series. One point per hour or per day — the bucket the window implies, 24h giving hours and 7d/30d giving days — carrying requests, total tokens and spend in cents. Empty buckets are filled with zeros so a client charts a continuous line.  The org is the validated principal&#39;s — never a parameter. 403 without a validated bearer, 400 on an unknown range, 503 when the warehouse is unreachable.
-     * @param range Range is a relative window: 24h, 7d or 30d. Default 24h. Ignored when both start and end are given. An unknown value is a 400. (optional)
+     * @param range Range is a relative window: a count and a unit — 24h, 7d, 90d, any &lt;N&gt;h or &lt;N&gt;d — or day, week, month, all. Default 24h. Ignored when both start and end are given. An unknown value, or one past the 730-day horizon, is a 400. (optional)
      * @param start Start is the inclusive lower bound of a custom window, RFC3339. Requires end. (optional)
      * @param end End is the exclusive upper bound of a custom window, RFC3339. Requires start. (optional)
      * @return Timeseries
@@ -429,15 +429,15 @@ public class AnalyticsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Timeseries getV1AnalyticsTimeseries(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end) throws ApiException {
-        ApiResponse<Timeseries> localVarResp = getV1AnalyticsTimeseriesWithHttpInfo(range, start, end);
+    public Timeseries getAnalyticsTimeseries(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end) throws ApiException {
+        ApiResponse<Timeseries> localVarResp = getAnalyticsTimeseriesWithHttpInfo(range, start, end);
         return localVarResp.getData();
     }
 
     /**
      * Timeseries returns the caller org&#39;s LLM usage over time as an evenly-spaced series.
      * Timeseries returns the caller org&#39;s LLM usage over time as an evenly-spaced series. One point per hour or per day — the bucket the window implies, 24h giving hours and 7d/30d giving days — carrying requests, total tokens and spend in cents. Empty buckets are filled with zeros so a client charts a continuous line.  The org is the validated principal&#39;s — never a parameter. 403 without a validated bearer, 400 on an unknown range, 503 when the warehouse is unreachable.
-     * @param range Range is a relative window: 24h, 7d or 30d. Default 24h. Ignored when both start and end are given. An unknown value is a 400. (optional)
+     * @param range Range is a relative window: a count and a unit — 24h, 7d, 90d, any &lt;N&gt;h or &lt;N&gt;d — or day, week, month, all. Default 24h. Ignored when both start and end are given. An unknown value, or one past the 730-day horizon, is a 400. (optional)
      * @param start Start is the inclusive lower bound of a custom window, RFC3339. Requires end. (optional)
      * @param end End is the exclusive upper bound of a custom window, RFC3339. Requires start. (optional)
      * @return ApiResponse&lt;Timeseries&gt;
@@ -449,8 +449,8 @@ public class AnalyticsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Timeseries> getV1AnalyticsTimeseriesWithHttpInfo(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end) throws ApiException {
-        okhttp3.Call localVarCall = getV1AnalyticsTimeseriesValidateBeforeCall(range, start, end, null);
+    public ApiResponse<Timeseries> getAnalyticsTimeseriesWithHttpInfo(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end) throws ApiException {
+        okhttp3.Call localVarCall = getAnalyticsTimeseriesValidateBeforeCall(range, start, end, null);
         Type localVarReturnType = new TypeToken<Timeseries>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -458,7 +458,7 @@ public class AnalyticsApi {
     /**
      * Timeseries returns the caller org&#39;s LLM usage over time as an evenly-spaced series. (asynchronously)
      * Timeseries returns the caller org&#39;s LLM usage over time as an evenly-spaced series. One point per hour or per day — the bucket the window implies, 24h giving hours and 7d/30d giving days — carrying requests, total tokens and spend in cents. Empty buckets are filled with zeros so a client charts a continuous line.  The org is the validated principal&#39;s — never a parameter. 403 without a validated bearer, 400 on an unknown range, 503 when the warehouse is unreachable.
-     * @param range Range is a relative window: 24h, 7d or 30d. Default 24h. Ignored when both start and end are given. An unknown value is a 400. (optional)
+     * @param range Range is a relative window: a count and a unit — 24h, 7d, 90d, any &lt;N&gt;h or &lt;N&gt;d — or day, week, month, all. Default 24h. Ignored when both start and end are given. An unknown value, or one past the 730-day horizon, is a 400. (optional)
      * @param start Start is the inclusive lower bound of a custom window, RFC3339. Requires end. (optional)
      * @param end End is the exclusive upper bound of a custom window, RFC3339. Requires start. (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -471,16 +471,16 @@ public class AnalyticsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AnalyticsTimeseriesAsync(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end, final ApiCallback<Timeseries> _callback) throws ApiException {
+    public okhttp3.Call getAnalyticsTimeseriesAsync(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end, final ApiCallback<Timeseries> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1AnalyticsTimeseriesValidateBeforeCall(range, start, end, _callback);
+        okhttp3.Call localVarCall = getAnalyticsTimeseriesValidateBeforeCall(range, start, end, _callback);
         Type localVarReturnType = new TypeToken<Timeseries>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1AnalyticsTop
-     * @param range Range is a relative window: 24h, 7d or 30d. Default 24h. Ignored when both start and end are given. An unknown value is a 400. (optional)
+     * Build call for getAnalyticsTop
+     * @param range Range is a relative window: a count and a unit — 24h, 7d, 90d, any &lt;N&gt;h or &lt;N&gt;d — or day, week, month, all. Default 24h. Ignored when both start and end are given. An unknown value, or one past the 730-day horizon, is a 400. (optional)
      * @param start Start is the inclusive lower bound of a custom window, RFC3339. Requires end. (optional)
      * @param end End is the exclusive upper bound of a custom window, RFC3339. Requires start. (optional)
      * @param limit Limit bounds every ranked lens in the response. Default 10, maximum 100; a value at or below zero, or one that is not a number, takes the default. (optional)
@@ -494,7 +494,7 @@ public class AnalyticsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AnalyticsTopCall(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAnalyticsTopCall(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -555,15 +555,15 @@ public class AnalyticsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1AnalyticsTopValidateBeforeCall(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
-        return getV1AnalyticsTopCall(range, start, end, limit, _callback);
+    private okhttp3.Call getAnalyticsTopValidateBeforeCall(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+        return getAnalyticsTopCall(range, start, end, limit, _callback);
 
     }
 
     /**
      * Top returns the caller org&#39;s ranked lenses for one window, five of them at once.
      * Top returns the caller org&#39;s ranked lenses for one window, five of them at once. models ranks LLM models by spend and is always real; products ranks commerce orders by revenue; topPages ranks requested paths, topReferrers the external referrer domains (\&quot;(direct)\&quot; for a missing or same-origin one) and topSources the utm_source campaigns (\&quot;(none)\&quot; when absent), each by pageviews. Every lens carries each row&#39;s share of the in-window total, so a top-N honestly shows the long tail.  The four event lenses report available&#x3D;false rather than fabricating zeros when the product-event table holds nothing yet. The org is the validated principal&#39;s — never a parameter. 403 without a validated bearer, 400 on an unknown range, 503 when the warehouse is unreachable.
-     * @param range Range is a relative window: 24h, 7d or 30d. Default 24h. Ignored when both start and end are given. An unknown value is a 400. (optional)
+     * @param range Range is a relative window: a count and a unit — 24h, 7d, 90d, any &lt;N&gt;h or &lt;N&gt;d — or day, week, month, all. Default 24h. Ignored when both start and end are given. An unknown value, or one past the 730-day horizon, is a 400. (optional)
      * @param start Start is the inclusive lower bound of a custom window, RFC3339. Requires end. (optional)
      * @param end End is the exclusive upper bound of a custom window, RFC3339. Requires start. (optional)
      * @param limit Limit bounds every ranked lens in the response. Default 10, maximum 100; a value at or below zero, or one that is not a number, takes the default. (optional)
@@ -576,15 +576,15 @@ public class AnalyticsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Top getV1AnalyticsTop(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end, @javax.annotation.Nullable Integer limit) throws ApiException {
-        ApiResponse<Top> localVarResp = getV1AnalyticsTopWithHttpInfo(range, start, end, limit);
+    public Top getAnalyticsTop(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end, @javax.annotation.Nullable Integer limit) throws ApiException {
+        ApiResponse<Top> localVarResp = getAnalyticsTopWithHttpInfo(range, start, end, limit);
         return localVarResp.getData();
     }
 
     /**
      * Top returns the caller org&#39;s ranked lenses for one window, five of them at once.
      * Top returns the caller org&#39;s ranked lenses for one window, five of them at once. models ranks LLM models by spend and is always real; products ranks commerce orders by revenue; topPages ranks requested paths, topReferrers the external referrer domains (\&quot;(direct)\&quot; for a missing or same-origin one) and topSources the utm_source campaigns (\&quot;(none)\&quot; when absent), each by pageviews. Every lens carries each row&#39;s share of the in-window total, so a top-N honestly shows the long tail.  The four event lenses report available&#x3D;false rather than fabricating zeros when the product-event table holds nothing yet. The org is the validated principal&#39;s — never a parameter. 403 without a validated bearer, 400 on an unknown range, 503 when the warehouse is unreachable.
-     * @param range Range is a relative window: 24h, 7d or 30d. Default 24h. Ignored when both start and end are given. An unknown value is a 400. (optional)
+     * @param range Range is a relative window: a count and a unit — 24h, 7d, 90d, any &lt;N&gt;h or &lt;N&gt;d — or day, week, month, all. Default 24h. Ignored when both start and end are given. An unknown value, or one past the 730-day horizon, is a 400. (optional)
      * @param start Start is the inclusive lower bound of a custom window, RFC3339. Requires end. (optional)
      * @param end End is the exclusive upper bound of a custom window, RFC3339. Requires start. (optional)
      * @param limit Limit bounds every ranked lens in the response. Default 10, maximum 100; a value at or below zero, or one that is not a number, takes the default. (optional)
@@ -597,8 +597,8 @@ public class AnalyticsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Top> getV1AnalyticsTopWithHttpInfo(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end, @javax.annotation.Nullable Integer limit) throws ApiException {
-        okhttp3.Call localVarCall = getV1AnalyticsTopValidateBeforeCall(range, start, end, limit, null);
+    public ApiResponse<Top> getAnalyticsTopWithHttpInfo(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end, @javax.annotation.Nullable Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = getAnalyticsTopValidateBeforeCall(range, start, end, limit, null);
         Type localVarReturnType = new TypeToken<Top>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -606,7 +606,7 @@ public class AnalyticsApi {
     /**
      * Top returns the caller org&#39;s ranked lenses for one window, five of them at once. (asynchronously)
      * Top returns the caller org&#39;s ranked lenses for one window, five of them at once. models ranks LLM models by spend and is always real; products ranks commerce orders by revenue; topPages ranks requested paths, topReferrers the external referrer domains (\&quot;(direct)\&quot; for a missing or same-origin one) and topSources the utm_source campaigns (\&quot;(none)\&quot; when absent), each by pageviews. Every lens carries each row&#39;s share of the in-window total, so a top-N honestly shows the long tail.  The four event lenses report available&#x3D;false rather than fabricating zeros when the product-event table holds nothing yet. The org is the validated principal&#39;s — never a parameter. 403 without a validated bearer, 400 on an unknown range, 503 when the warehouse is unreachable.
-     * @param range Range is a relative window: 24h, 7d or 30d. Default 24h. Ignored when both start and end are given. An unknown value is a 400. (optional)
+     * @param range Range is a relative window: a count and a unit — 24h, 7d, 90d, any &lt;N&gt;h or &lt;N&gt;d — or day, week, month, all. Default 24h. Ignored when both start and end are given. An unknown value, or one past the 730-day horizon, is a 400. (optional)
      * @param start Start is the inclusive lower bound of a custom window, RFC3339. Requires end. (optional)
      * @param end End is the exclusive upper bound of a custom window, RFC3339. Requires start. (optional)
      * @param limit Limit bounds every ranked lens in the response. Default 10, maximum 100; a value at or below zero, or one that is not a number, takes the default. (optional)
@@ -620,9 +620,9 @@ public class AnalyticsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AnalyticsTopAsync(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end, @javax.annotation.Nullable Integer limit, final ApiCallback<Top> _callback) throws ApiException {
+    public okhttp3.Call getAnalyticsTopAsync(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end, @javax.annotation.Nullable Integer limit, final ApiCallback<Top> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1AnalyticsTopValidateBeforeCall(range, start, end, limit, _callback);
+        okhttp3.Call localVarCall = getAnalyticsTopValidateBeforeCall(range, start, end, limit, _callback);
         Type localVarReturnType = new TypeToken<Top>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

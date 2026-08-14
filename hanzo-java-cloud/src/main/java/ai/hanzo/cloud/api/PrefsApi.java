@@ -73,7 +73,7 @@ public class PrefsApi {
     }
 
     /**
-     * Build call for getV1Prefs
+     * Build call for getPrefs
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -84,7 +84,7 @@ public class PrefsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PrefsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPrefsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -129,8 +129,8 @@ public class PrefsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1PrefsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1PrefsCall(_callback);
+    private okhttp3.Call getPrefsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getPrefsCall(_callback);
 
     }
 
@@ -146,8 +146,8 @@ public class PrefsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public PrefsView getV1Prefs() throws ApiException {
-        ApiResponse<PrefsView> localVarResp = getV1PrefsWithHttpInfo();
+    public PrefsView getPrefs() throws ApiException {
+        ApiResponse<PrefsView> localVarResp = getPrefsWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -163,8 +163,8 @@ public class PrefsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PrefsView> getV1PrefsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1PrefsValidateBeforeCall(null);
+    public ApiResponse<PrefsView> getPrefsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getPrefsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<PrefsView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -182,20 +182,20 @@ public class PrefsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1PrefsAsync(final ApiCallback<PrefsView> _callback) throws ApiException {
+    public okhttp3.Call getPrefsAsync(final ApiCallback<PrefsView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1PrefsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getPrefsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<PrefsView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for patchV1Prefs
+     * Build call for patchPrefs
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call patchV1PrefsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call patchPrefsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -239,8 +239,8 @@ public class PrefsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchV1PrefsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return patchV1PrefsCall(_callback);
+    private okhttp3.Call patchPrefsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return patchPrefsCall(_callback);
 
     }
 
@@ -249,8 +249,8 @@ public class PrefsApi {
      * Merges a JSON object key-wise into the signed-in caller&#39;s OWN preference document and answers with the whole document after the merge, so a surface saves &#x60;theme&#x60; without having to send back the &#x60;density&#x60; another surface owns. The merge is SHALLOW and the key space is open: an unnamed key is left untouched, a named key is replaced whole, and a key sent with a &#x60;null&#x60; value is DELETED. The subject is the &#x60;&lt;owner&gt;/&lt;name&gt;&#x60; identity built from the validated credential and is the mandatory predicate on the write, so there is no path to another user&#39;s preferences — not for an org admin, not for a platform SuperAdmin. Fails closed: no validated principal is 403; an empty body or a literal &#x60;null&#x60; is 400; and a patch or a resulting document over 16 KiB or 128 keys is 413.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void patchV1Prefs() throws ApiException {
-        patchV1PrefsWithHttpInfo();
+    public void patchPrefs() throws ApiException {
+        patchPrefsWithHttpInfo();
     }
 
     /**
@@ -259,8 +259,8 @@ public class PrefsApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> patchV1PrefsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = patchV1PrefsValidateBeforeCall(null);
+    public ApiResponse<Void> patchPrefsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = patchPrefsValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -271,9 +271,9 @@ public class PrefsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call patchV1PrefsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call patchPrefsAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchV1PrefsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = patchPrefsValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

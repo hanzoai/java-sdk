@@ -72,12 +72,12 @@ public class EmbeddingsApi {
     }
 
     /**
-     * Build call for postV1Embeddings
+     * Build call for postEmbeddings
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1EmbeddingsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postEmbeddingsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -121,8 +121,8 @@ public class EmbeddingsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1EmbeddingsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1EmbeddingsCall(_callback);
+    private okhttp3.Call postEmbeddingsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postEmbeddingsCall(_callback);
 
     }
 
@@ -131,8 +131,8 @@ public class EmbeddingsApi {
      * Implements POST /v1/embeddings (OpenAI-compatible).  Body: {\&quot;model\&quot;: \&quot;...\&quot;, \&quot;input\&quot;: \&quot;...\&quot;|[\&quot;...\&quot;, ...], \&quot;encoding_format\&quot;?, \&quot;dimensions\&quot;?} It authenticates the caller, resolves the model to its upstream provider via the shared routing table, rewrites the user-facing model name to the upstream id, and proxies the request to the provider&#39;s /embeddings endpoint verbatim.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1Embeddings() throws ApiException {
-        postV1EmbeddingsWithHttpInfo();
+    public void postEmbeddings() throws ApiException {
+        postEmbeddingsWithHttpInfo();
     }
 
     /**
@@ -141,8 +141,8 @@ public class EmbeddingsApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1EmbeddingsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1EmbeddingsValidateBeforeCall(null);
+    public ApiResponse<Void> postEmbeddingsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postEmbeddingsValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -153,9 +153,9 @@ public class EmbeddingsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1EmbeddingsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postEmbeddingsAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1EmbeddingsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postEmbeddingsValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

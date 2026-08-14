@@ -75,13 +75,13 @@ public class AskApi {
     }
 
     /**
-     * Build call for postV1Ask
+     * Build call for postAsk
      * @param askRequest  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1AskCall(@javax.annotation.Nullable AskRequest askRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAskCall(@javax.annotation.Nullable AskRequest askRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -126,8 +126,8 @@ public class AskApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1AskValidateBeforeCall(@javax.annotation.Nullable AskRequest askRequest, final ApiCallback _callback) throws ApiException {
-        return postV1AskCall(askRequest, _callback);
+    private okhttp3.Call postAskValidateBeforeCall(@javax.annotation.Nullable AskRequest askRequest, final ApiCallback _callback) throws ApiException {
+        return postAskCall(askRequest, _callback);
 
     }
 
@@ -137,8 +137,8 @@ public class AskApi {
      * @param askRequest  (optional)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1Ask(@javax.annotation.Nullable AskRequest askRequest) throws ApiException {
-        postV1AskWithHttpInfo(askRequest);
+    public void postAsk(@javax.annotation.Nullable AskRequest askRequest) throws ApiException {
+        postAskWithHttpInfo(askRequest);
     }
 
     /**
@@ -148,8 +148,8 @@ public class AskApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1AskWithHttpInfo(@javax.annotation.Nullable AskRequest askRequest) throws ApiException {
-        okhttp3.Call localVarCall = postV1AskValidateBeforeCall(askRequest, null);
+    public ApiResponse<Void> postAskWithHttpInfo(@javax.annotation.Nullable AskRequest askRequest) throws ApiException {
+        okhttp3.Call localVarCall = postAskValidateBeforeCall(askRequest, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -161,9 +161,9 @@ public class AskApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1AskAsync(@javax.annotation.Nullable AskRequest askRequest, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postAskAsync(@javax.annotation.Nullable AskRequest askRequest, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1AskValidateBeforeCall(askRequest, _callback);
+        okhttp3.Call localVarCall = postAskValidateBeforeCall(askRequest, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

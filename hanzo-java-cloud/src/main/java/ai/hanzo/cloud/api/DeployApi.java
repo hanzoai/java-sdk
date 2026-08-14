@@ -83,13 +83,13 @@ public class DeployApi {
     }
 
     /**
-     * Build call for getV1DeployAccountCanIByWildcard1
+     * Build call for getDeployAccountCanIByWildcard1
      * @param wildcard1  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1DeployAccountCanIByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getDeployAccountCanIByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -134,13 +134,13 @@ public class DeployApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1DeployAccountCanIByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getDeployAccountCanIByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'wildcard1' is set
         if (wildcard1 == null) {
-            throw new ApiException("Missing the required parameter 'wildcard1' when calling getV1DeployAccountCanIByWildcard1(Async)");
+            throw new ApiException("Missing the required parameter 'wildcard1' when calling getDeployAccountCanIByWildcard1(Async)");
         }
 
-        return getV1DeployAccountCanIByWildcard1Call(wildcard1, _callback);
+        return getDeployAccountCanIByWildcard1Call(wildcard1, _callback);
 
     }
 
@@ -150,8 +150,8 @@ public class DeployApi {
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1DeployAccountCanIByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        getV1DeployAccountCanIByWildcard1WithHttpInfo(wildcard1);
+    public void getDeployAccountCanIByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        getDeployAccountCanIByWildcard1WithHttpInfo(wildcard1);
     }
 
     /**
@@ -161,8 +161,8 @@ public class DeployApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1DeployAccountCanIByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        okhttp3.Call localVarCall = getV1DeployAccountCanIByWildcard1ValidateBeforeCall(wildcard1, null);
+    public ApiResponse<Void> getDeployAccountCanIByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        okhttp3.Call localVarCall = getDeployAccountCanIByWildcard1ValidateBeforeCall(wildcard1, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -174,14 +174,14 @@ public class DeployApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1DeployAccountCanIByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getDeployAccountCanIByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1DeployAccountCanIByWildcard1ValidateBeforeCall(wildcard1, _callback);
+        okhttp3.Call localVarCall = getDeployAccountCanIByWildcard1ValidateBeforeCall(wildcard1, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1DeployApplications
+     * Build call for getDeployApplications
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -192,7 +192,7 @@ public class DeployApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1DeployApplicationsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getDeployApplicationsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -237,8 +237,8 @@ public class DeployApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1DeployApplicationsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1DeployApplicationsCall(_callback);
+    private okhttp3.Call getDeployApplicationsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getDeployApplicationsCall(_callback);
 
     }
 
@@ -254,8 +254,8 @@ public class DeployApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ArgoAppList getV1DeployApplications() throws ApiException {
-        ApiResponse<ArgoAppList> localVarResp = getV1DeployApplicationsWithHttpInfo();
+    public ArgoAppList getDeployApplications() throws ApiException {
+        ApiResponse<ArgoAppList> localVarResp = getDeployApplicationsWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -271,8 +271,8 @@ public class DeployApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ArgoAppList> getV1DeployApplicationsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1DeployApplicationsValidateBeforeCall(null);
+    public ApiResponse<ArgoAppList> getDeployApplicationsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getDeployApplicationsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<ArgoAppList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -290,15 +290,15 @@ public class DeployApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1DeployApplicationsAsync(final ApiCallback<ArgoAppList> _callback) throws ApiException {
+    public okhttp3.Call getDeployApplicationsAsync(final ApiCallback<ArgoAppList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1DeployApplicationsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getDeployApplicationsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<ArgoAppList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1DeployApplicationsByName
+     * Build call for getDeployApplicationsByName
      * @param name Name is the application to read, from the path. It must be a DNS-1123 label (lowercase alphanumerics and hyphens, starting and ending alphanumeric) — every operator App CR&#39;s metadata.name satisfies that, and anything else is a 400 rather than a lookup. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -310,7 +310,7 @@ public class DeployApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1DeployApplicationsByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getDeployApplicationsByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -356,13 +356,13 @@ public class DeployApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1DeployApplicationsByNameValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getDeployApplicationsByNameValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling getV1DeployApplicationsByName(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling getDeployApplicationsByName(Async)");
         }
 
-        return getV1DeployApplicationsByNameCall(name, _callback);
+        return getDeployApplicationsByNameCall(name, _callback);
 
     }
 
@@ -379,8 +379,8 @@ public class DeployApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ArgoApp getV1DeployApplicationsByName(@javax.annotation.Nonnull String name) throws ApiException {
-        ApiResponse<ArgoApp> localVarResp = getV1DeployApplicationsByNameWithHttpInfo(name);
+    public ArgoApp getDeployApplicationsByName(@javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<ArgoApp> localVarResp = getDeployApplicationsByNameWithHttpInfo(name);
         return localVarResp.getData();
     }
 
@@ -397,8 +397,8 @@ public class DeployApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ArgoApp> getV1DeployApplicationsByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
-        okhttp3.Call localVarCall = getV1DeployApplicationsByNameValidateBeforeCall(name, null);
+    public ApiResponse<ArgoApp> getDeployApplicationsByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = getDeployApplicationsByNameValidateBeforeCall(name, null);
         Type localVarReturnType = new TypeToken<ArgoApp>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -417,15 +417,15 @@ public class DeployApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1DeployApplicationsByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<ArgoApp> _callback) throws ApiException {
+    public okhttp3.Call getDeployApplicationsByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<ArgoApp> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1DeployApplicationsByNameValidateBeforeCall(name, _callback);
+        okhttp3.Call localVarCall = getDeployApplicationsByNameValidateBeforeCall(name, _callback);
         Type localVarReturnType = new TypeToken<ArgoApp>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1DeployApplicationsByNameResourceTree
+     * Build call for getDeployApplicationsByNameResourceTree
      * @param name Name is the application to read, from the path. It must be a DNS-1123 label (lowercase alphanumerics and hyphens, starting and ending alphanumeric) — every operator App CR&#39;s metadata.name satisfies that, and anything else is a 400 rather than a lookup. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -437,7 +437,7 @@ public class DeployApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1DeployApplicationsByNameResourceTreeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getDeployApplicationsByNameResourceTreeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -483,13 +483,13 @@ public class DeployApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1DeployApplicationsByNameResourceTreeValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getDeployApplicationsByNameResourceTreeValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling getV1DeployApplicationsByNameResourceTree(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling getDeployApplicationsByNameResourceTree(Async)");
         }
 
-        return getV1DeployApplicationsByNameResourceTreeCall(name, _callback);
+        return getDeployApplicationsByNameResourceTreeCall(name, _callback);
 
     }
 
@@ -506,8 +506,8 @@ public class DeployApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ArgoTree getV1DeployApplicationsByNameResourceTree(@javax.annotation.Nonnull String name) throws ApiException {
-        ApiResponse<ArgoTree> localVarResp = getV1DeployApplicationsByNameResourceTreeWithHttpInfo(name);
+    public ArgoTree getDeployApplicationsByNameResourceTree(@javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<ArgoTree> localVarResp = getDeployApplicationsByNameResourceTreeWithHttpInfo(name);
         return localVarResp.getData();
     }
 
@@ -524,8 +524,8 @@ public class DeployApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ArgoTree> getV1DeployApplicationsByNameResourceTreeWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
-        okhttp3.Call localVarCall = getV1DeployApplicationsByNameResourceTreeValidateBeforeCall(name, null);
+    public ApiResponse<ArgoTree> getDeployApplicationsByNameResourceTreeWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = getDeployApplicationsByNameResourceTreeValidateBeforeCall(name, null);
         Type localVarReturnType = new TypeToken<ArgoTree>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -544,15 +544,15 @@ public class DeployApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1DeployApplicationsByNameResourceTreeAsync(@javax.annotation.Nonnull String name, final ApiCallback<ArgoTree> _callback) throws ApiException {
+    public okhttp3.Call getDeployApplicationsByNameResourceTreeAsync(@javax.annotation.Nonnull String name, final ApiCallback<ArgoTree> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1DeployApplicationsByNameResourceTreeValidateBeforeCall(name, _callback);
+        okhttp3.Call localVarCall = getDeployApplicationsByNameResourceTreeValidateBeforeCall(name, _callback);
         Type localVarReturnType = new TypeToken<ArgoTree>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1DeployApplicationsByNameRevisionsByRevisionMetadata
+     * Build call for getDeployApplicationsByNameRevisionsByRevisionMetadata
      * @param name Name is the application to read, from the path. It must be a DNS-1123 label. (required)
      * @param revision Revision is the revision to describe, from the path. The empty revision and \&quot;HEAD\&quot; both mean \&quot;whatever this application currently declares\&quot;. (required)
      * @param _callback Callback for upload/download progress
@@ -565,7 +565,7 @@ public class DeployApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1DeployApplicationsByNameRevisionsByRevisionMetadataCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull String revision, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getDeployApplicationsByNameRevisionsByRevisionMetadataCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull String revision, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -612,18 +612,18 @@ public class DeployApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1DeployApplicationsByNameRevisionsByRevisionMetadataValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull String revision, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getDeployApplicationsByNameRevisionsByRevisionMetadataValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull String revision, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling getV1DeployApplicationsByNameRevisionsByRevisionMetadata(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling getDeployApplicationsByNameRevisionsByRevisionMetadata(Async)");
         }
 
         // verify the required parameter 'revision' is set
         if (revision == null) {
-            throw new ApiException("Missing the required parameter 'revision' when calling getV1DeployApplicationsByNameRevisionsByRevisionMetadata(Async)");
+            throw new ApiException("Missing the required parameter 'revision' when calling getDeployApplicationsByNameRevisionsByRevisionMetadata(Async)");
         }
 
-        return getV1DeployApplicationsByNameRevisionsByRevisionMetadataCall(name, revision, _callback);
+        return getDeployApplicationsByNameRevisionsByRevisionMetadataCall(name, revision, _callback);
 
     }
 
@@ -641,8 +641,8 @@ public class DeployApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ArgoRevisionMetadata getV1DeployApplicationsByNameRevisionsByRevisionMetadata(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull String revision) throws ApiException {
-        ApiResponse<ArgoRevisionMetadata> localVarResp = getV1DeployApplicationsByNameRevisionsByRevisionMetadataWithHttpInfo(name, revision);
+    public ArgoRevisionMetadata getDeployApplicationsByNameRevisionsByRevisionMetadata(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull String revision) throws ApiException {
+        ApiResponse<ArgoRevisionMetadata> localVarResp = getDeployApplicationsByNameRevisionsByRevisionMetadataWithHttpInfo(name, revision);
         return localVarResp.getData();
     }
 
@@ -660,8 +660,8 @@ public class DeployApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ArgoRevisionMetadata> getV1DeployApplicationsByNameRevisionsByRevisionMetadataWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull String revision) throws ApiException {
-        okhttp3.Call localVarCall = getV1DeployApplicationsByNameRevisionsByRevisionMetadataValidateBeforeCall(name, revision, null);
+    public ApiResponse<ArgoRevisionMetadata> getDeployApplicationsByNameRevisionsByRevisionMetadataWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull String revision) throws ApiException {
+        okhttp3.Call localVarCall = getDeployApplicationsByNameRevisionsByRevisionMetadataValidateBeforeCall(name, revision, null);
         Type localVarReturnType = new TypeToken<ArgoRevisionMetadata>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -681,15 +681,15 @@ public class DeployApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1DeployApplicationsByNameRevisionsByRevisionMetadataAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull String revision, final ApiCallback<ArgoRevisionMetadata> _callback) throws ApiException {
+    public okhttp3.Call getDeployApplicationsByNameRevisionsByRevisionMetadataAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull String revision, final ApiCallback<ArgoRevisionMetadata> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1DeployApplicationsByNameRevisionsByRevisionMetadataValidateBeforeCall(name, revision, _callback);
+        okhttp3.Call localVarCall = getDeployApplicationsByNameRevisionsByRevisionMetadataValidateBeforeCall(name, revision, _callback);
         Type localVarReturnType = new TypeToken<ArgoRevisionMetadata>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1DeployApplicationsByNameSyncwindows
+     * Build call for getDeployApplicationsByNameSyncwindows
      * @param name Name is the application to read, from the path. It must be a DNS-1123 label (lowercase alphanumerics and hyphens, starting and ending alphanumeric) — every operator App CR&#39;s metadata.name satisfies that, and anything else is a 400 rather than a lookup. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -701,7 +701,7 @@ public class DeployApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1DeployApplicationsByNameSyncwindowsCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getDeployApplicationsByNameSyncwindowsCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -747,13 +747,13 @@ public class DeployApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1DeployApplicationsByNameSyncwindowsValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getDeployApplicationsByNameSyncwindowsValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling getV1DeployApplicationsByNameSyncwindows(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling getDeployApplicationsByNameSyncwindows(Async)");
         }
 
-        return getV1DeployApplicationsByNameSyncwindowsCall(name, _callback);
+        return getDeployApplicationsByNameSyncwindowsCall(name, _callback);
 
     }
 
@@ -770,8 +770,8 @@ public class DeployApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ArgoSyncWindows getV1DeployApplicationsByNameSyncwindows(@javax.annotation.Nonnull String name) throws ApiException {
-        ApiResponse<ArgoSyncWindows> localVarResp = getV1DeployApplicationsByNameSyncwindowsWithHttpInfo(name);
+    public ArgoSyncWindows getDeployApplicationsByNameSyncwindows(@javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<ArgoSyncWindows> localVarResp = getDeployApplicationsByNameSyncwindowsWithHttpInfo(name);
         return localVarResp.getData();
     }
 
@@ -788,8 +788,8 @@ public class DeployApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ArgoSyncWindows> getV1DeployApplicationsByNameSyncwindowsWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
-        okhttp3.Call localVarCall = getV1DeployApplicationsByNameSyncwindowsValidateBeforeCall(name, null);
+    public ApiResponse<ArgoSyncWindows> getDeployApplicationsByNameSyncwindowsWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = getDeployApplicationsByNameSyncwindowsValidateBeforeCall(name, null);
         Type localVarReturnType = new TypeToken<ArgoSyncWindows>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -808,20 +808,20 @@ public class DeployApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1DeployApplicationsByNameSyncwindowsAsync(@javax.annotation.Nonnull String name, final ApiCallback<ArgoSyncWindows> _callback) throws ApiException {
+    public okhttp3.Call getDeployApplicationsByNameSyncwindowsAsync(@javax.annotation.Nonnull String name, final ApiCallback<ArgoSyncWindows> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1DeployApplicationsByNameSyncwindowsValidateBeforeCall(name, _callback);
+        okhttp3.Call localVarCall = getDeployApplicationsByNameSyncwindowsValidateBeforeCall(name, _callback);
         Type localVarReturnType = new TypeToken<ArgoSyncWindows>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1DeployCallback
+     * Build call for getDeployCallback
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1DeployCallbackCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getDeployCallbackCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -865,8 +865,8 @@ public class DeployApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1DeployCallbackValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1DeployCallbackCall(_callback);
+    private okhttp3.Call getDeployCallbackValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getDeployCallbackCall(_callback);
 
     }
 
@@ -875,8 +875,8 @@ public class DeployApi {
      * Completes the redirect from IAM: it validates &#x60;state&#x60; against the single-use flow cookie in constant time, redeems the authorization code with the PKCE verifier, and then VERIFIES the resulting token exactly as this deployment&#39;s identity boundary will on every later request — so a token that would be refused next request fails here with the real reason instead of producing a sign-in loop. On success it sets the session cookie, bounded by the token&#39;s own expiry, and redirects to the validated return path.  It fails closed, and closes on the ADMIN ORG: a principal whose verified owner claim is not the reserved admin org is told plainly that it lacks the role (403) and no cookie is minted for it. That check is not the authorization decision — every gated route re-derives SuperAdmin from the verified JWT — it exists so nobody is handed a session that silently 403s everything. No flow in progress, or a mismatched &#x60;state&#x60;, is a 400; a refused or unexchangeable code is a 401.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1DeployCallback() throws ApiException {
-        getV1DeployCallbackWithHttpInfo();
+    public void getDeployCallback() throws ApiException {
+        getDeployCallbackWithHttpInfo();
     }
 
     /**
@@ -885,8 +885,8 @@ public class DeployApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1DeployCallbackWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1DeployCallbackValidateBeforeCall(null);
+    public ApiResponse<Void> getDeployCallbackWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getDeployCallbackValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -897,14 +897,14 @@ public class DeployApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1DeployCallbackAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getDeployCallbackAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1DeployCallbackValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getDeployCallbackValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1DeployClusters
+     * Build call for getDeployClusters
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -915,7 +915,7 @@ public class DeployApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1DeployClustersCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getDeployClustersCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -960,8 +960,8 @@ public class DeployApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1DeployClustersValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1DeployClustersCall(_callback);
+    private okhttp3.Call getDeployClustersValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getDeployClustersCall(_callback);
 
     }
 
@@ -977,8 +977,8 @@ public class DeployApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ArgoClusterList getV1DeployClusters() throws ApiException {
-        ApiResponse<ArgoClusterList> localVarResp = getV1DeployClustersWithHttpInfo();
+    public ArgoClusterList getDeployClusters() throws ApiException {
+        ApiResponse<ArgoClusterList> localVarResp = getDeployClustersWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -994,8 +994,8 @@ public class DeployApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ArgoClusterList> getV1DeployClustersWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1DeployClustersValidateBeforeCall(null);
+    public ApiResponse<ArgoClusterList> getDeployClustersWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getDeployClustersValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<ArgoClusterList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1013,15 +1013,15 @@ public class DeployApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1DeployClustersAsync(final ApiCallback<ArgoClusterList> _callback) throws ApiException {
+    public okhttp3.Call getDeployClustersAsync(final ApiCallback<ArgoClusterList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1DeployClustersValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getDeployClustersValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<ArgoClusterList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1DeployGitops
+     * Build call for getDeployGitops
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1032,7 +1032,7 @@ public class DeployApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1DeployGitopsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getDeployGitopsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1077,8 +1077,8 @@ public class DeployApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1DeployGitopsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1DeployGitopsCall(_callback);
+    private okhttp3.Call getDeployGitopsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getDeployGitopsCall(_callback);
 
     }
 
@@ -1094,8 +1094,8 @@ public class DeployApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public GitOpsPlane getV1DeployGitops() throws ApiException {
-        ApiResponse<GitOpsPlane> localVarResp = getV1DeployGitopsWithHttpInfo();
+    public GitOpsPlane getDeployGitops() throws ApiException {
+        ApiResponse<GitOpsPlane> localVarResp = getDeployGitopsWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -1111,8 +1111,8 @@ public class DeployApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GitOpsPlane> getV1DeployGitopsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1DeployGitopsValidateBeforeCall(null);
+    public ApiResponse<GitOpsPlane> getDeployGitopsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getDeployGitopsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<GitOpsPlane>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1130,20 +1130,20 @@ public class DeployApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1DeployGitopsAsync(final ApiCallback<GitOpsPlane> _callback) throws ApiException {
+    public okhttp3.Call getDeployGitopsAsync(final ApiCallback<GitOpsPlane> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1DeployGitopsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getDeployGitopsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<GitOpsPlane>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1DeployHealth
+     * Build call for getDeployHealth
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1DeployHealthCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getDeployHealthCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1187,8 +1187,8 @@ public class DeployApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1DeployHealthValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1DeployHealthCall(_callback);
+    private okhttp3.Call getDeployHealthValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getDeployHealthCall(_callback);
 
     }
 
@@ -1197,8 +1197,8 @@ public class DeployApi {
      * Reports the plane&#39;s real reachability: 200 only when the Kubernetes API server answers AND the App CRD is served, 503 with the same body shape otherwise, so a caller reads the same &#x60;k8s&#x60; and &#x60;crd&#x60; booleans either way rather than parsing an error envelope. It is a genuine dependency probe, not a process liveness ping — a running plane with no cluster behind it reports degraded.  This is the ONE unauthenticated route that reports state, because liveness must be probe-able without a JWT. It therefore discloses booleans only: the underlying failure — the API server address, an RBAC refusal — is logged server-side and never put on the wire.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1DeployHealth() throws ApiException {
-        getV1DeployHealthWithHttpInfo();
+    public void getDeployHealth() throws ApiException {
+        getDeployHealthWithHttpInfo();
     }
 
     /**
@@ -1207,8 +1207,8 @@ public class DeployApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1DeployHealthWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1DeployHealthValidateBeforeCall(null);
+    public ApiResponse<Void> getDeployHealthWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getDeployHealthValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1219,19 +1219,19 @@ public class DeployApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1DeployHealthAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getDeployHealthAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1DeployHealthValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getDeployHealthValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1DeployLogin
+     * Build call for getDeployLogin
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1DeployLoginCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getDeployLoginCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1275,8 +1275,8 @@ public class DeployApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1DeployLoginValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1DeployLoginCall(_callback);
+    private okhttp3.Call getDeployLoginValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getDeployLoginCall(_callback);
 
     }
 
@@ -1285,8 +1285,8 @@ public class DeployApi {
      * Redirects the browser to IAM&#39;s authorize endpoint, having minted a nonce and a PKCE verifier into a short-lived, single-use flow cookie. The nonce comes back as &#x60;state&#x60; and is what proves the code belongs to the round trip THIS browser started; the verifier never appears in the address bar.  Necessarily public — this is how a browser gets a principal for this host in the first place — and it grants nothing by itself. An optional &#x60;returnTo&#x60; names where to land afterwards and is run through the open-redirect guard, so only a same-host path survives. A deployment with no sign-in configured answers 503 rather than redirecting nowhere.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1DeployLogin() throws ApiException {
-        getV1DeployLoginWithHttpInfo();
+    public void getDeployLogin() throws ApiException {
+        getDeployLoginWithHttpInfo();
     }
 
     /**
@@ -1295,8 +1295,8 @@ public class DeployApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1DeployLoginWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1DeployLoginValidateBeforeCall(null);
+    public ApiResponse<Void> getDeployLoginWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getDeployLoginValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1307,14 +1307,14 @@ public class DeployApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1DeployLoginAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getDeployLoginAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1DeployLoginValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getDeployLoginValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1DeployProjects
+     * Build call for getDeployProjects
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1325,7 +1325,7 @@ public class DeployApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1DeployProjectsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getDeployProjectsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1370,8 +1370,8 @@ public class DeployApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1DeployProjectsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1DeployProjectsCall(_callback);
+    private okhttp3.Call getDeployProjectsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getDeployProjectsCall(_callback);
 
     }
 
@@ -1387,8 +1387,8 @@ public class DeployApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ArgoProjectList getV1DeployProjects() throws ApiException {
-        ApiResponse<ArgoProjectList> localVarResp = getV1DeployProjectsWithHttpInfo();
+    public ArgoProjectList getDeployProjects() throws ApiException {
+        ApiResponse<ArgoProjectList> localVarResp = getDeployProjectsWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -1404,8 +1404,8 @@ public class DeployApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ArgoProjectList> getV1DeployProjectsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1DeployProjectsValidateBeforeCall(null);
+    public ApiResponse<ArgoProjectList> getDeployProjectsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getDeployProjectsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<ArgoProjectList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1423,15 +1423,15 @@ public class DeployApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1DeployProjectsAsync(final ApiCallback<ArgoProjectList> _callback) throws ApiException {
+    public okhttp3.Call getDeployProjectsAsync(final ApiCallback<ArgoProjectList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1DeployProjectsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getDeployProjectsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<ArgoProjectList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1DeploySessionUserinfo
+     * Build call for getDeploySessionUserinfo
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1442,7 +1442,7 @@ public class DeployApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1DeploySessionUserinfoCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getDeploySessionUserinfoCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1487,8 +1487,8 @@ public class DeployApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1DeploySessionUserinfoValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1DeploySessionUserinfoCall(_callback);
+    private okhttp3.Call getDeploySessionUserinfoValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getDeploySessionUserinfoCall(_callback);
 
     }
 
@@ -1504,8 +1504,8 @@ public class DeployApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public SessionUser getV1DeploySessionUserinfo() throws ApiException {
-        ApiResponse<SessionUser> localVarResp = getV1DeploySessionUserinfoWithHttpInfo();
+    public SessionUser getDeploySessionUserinfo() throws ApiException {
+        ApiResponse<SessionUser> localVarResp = getDeploySessionUserinfoWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -1521,8 +1521,8 @@ public class DeployApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SessionUser> getV1DeploySessionUserinfoWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1DeploySessionUserinfoValidateBeforeCall(null);
+    public ApiResponse<SessionUser> getDeploySessionUserinfoWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getDeploySessionUserinfoValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<SessionUser>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1540,15 +1540,15 @@ public class DeployApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1DeploySessionUserinfoAsync(final ApiCallback<SessionUser> _callback) throws ApiException {
+    public okhttp3.Call getDeploySessionUserinfoAsync(final ApiCallback<SessionUser> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1DeploySessionUserinfoValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getDeploySessionUserinfoValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<SessionUser>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1DeploySettings
+     * Build call for getDeploySettings
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1559,7 +1559,7 @@ public class DeployApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1DeploySettingsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getDeploySettingsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1604,8 +1604,8 @@ public class DeployApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1DeploySettingsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1DeploySettingsCall(_callback);
+    private okhttp3.Call getDeploySettingsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getDeploySettingsCall(_callback);
 
     }
 
@@ -1621,8 +1621,8 @@ public class DeployApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ConsoleSettings getV1DeploySettings() throws ApiException {
-        ApiResponse<ConsoleSettings> localVarResp = getV1DeploySettingsWithHttpInfo();
+    public ConsoleSettings getDeploySettings() throws ApiException {
+        ApiResponse<ConsoleSettings> localVarResp = getDeploySettingsWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -1638,8 +1638,8 @@ public class DeployApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ConsoleSettings> getV1DeploySettingsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1DeploySettingsValidateBeforeCall(null);
+    public ApiResponse<ConsoleSettings> getDeploySettingsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getDeploySettingsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<ConsoleSettings>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1657,20 +1657,20 @@ public class DeployApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1DeploySettingsAsync(final ApiCallback<ConsoleSettings> _callback) throws ApiException {
+    public okhttp3.Call getDeploySettingsAsync(final ApiCallback<ConsoleSettings> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1DeploySettingsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getDeploySettingsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<ConsoleSettings>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1DeployStreamApplications
+     * Build call for getDeployStreamApplications
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1DeployStreamApplicationsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getDeployStreamApplicationsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1714,8 +1714,8 @@ public class DeployApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1DeployStreamApplicationsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1DeployStreamApplicationsCall(_callback);
+    private okhttp3.Call getDeployStreamApplicationsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getDeployStreamApplicationsCall(_callback);
 
     }
 
@@ -1724,8 +1724,8 @@ public class DeployApi {
      * Holds the connection open as text/event-stream and pushes one watch event per application change. It opens with an &#x60;ADDED&#x60; frame for every application currently present — the same projection the applications list serves, so a client renders a complete fleet from the stream alone — and then forwards &#x60;ADDED&#x60;, &#x60;MODIFIED&#x60; and &#x60;DELETED&#x60; as they happen, with a keep-alive every 25 seconds that is also how a vanished client is noticed and its watch torn down.  Read-only and TENANT-SCOPED, fail-closed: a platform SuperAdmin streams the whole fleet, a validated org member streams only its own org&#39;s applications, anyone else gets 403 and no stream. No cluster client configured is 503. If the deployment is not granted the watch verb the stream degrades to keep-alives only — the initial state still renders, it simply stops updating — rather than failing the connection.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1DeployStreamApplications() throws ApiException {
-        getV1DeployStreamApplicationsWithHttpInfo();
+    public void getDeployStreamApplications() throws ApiException {
+        getDeployStreamApplicationsWithHttpInfo();
     }
 
     /**
@@ -1734,8 +1734,8 @@ public class DeployApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1DeployStreamApplicationsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1DeployStreamApplicationsValidateBeforeCall(null);
+    public ApiResponse<Void> getDeployStreamApplicationsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getDeployStreamApplicationsValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1746,20 +1746,20 @@ public class DeployApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1DeployStreamApplicationsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getDeployStreamApplicationsAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1DeployStreamApplicationsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getDeployStreamApplicationsValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1DeployStreamApplicationsByNameResourceTree
+     * Build call for getDeployStreamApplicationsByNameResourceTree
      * @param name  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1DeployStreamApplicationsByNameResourceTreeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getDeployStreamApplicationsByNameResourceTreeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1804,13 +1804,13 @@ public class DeployApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1DeployStreamApplicationsByNameResourceTreeValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getDeployStreamApplicationsByNameResourceTreeValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling getV1DeployStreamApplicationsByNameResourceTree(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling getDeployStreamApplicationsByNameResourceTree(Async)");
         }
 
-        return getV1DeployStreamApplicationsByNameResourceTreeCall(name, _callback);
+        return getDeployStreamApplicationsByNameResourceTreeCall(name, _callback);
 
     }
 
@@ -1820,8 +1820,8 @@ public class DeployApi {
      * @param name  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1DeployStreamApplicationsByNameResourceTree(@javax.annotation.Nonnull String name) throws ApiException {
-        getV1DeployStreamApplicationsByNameResourceTreeWithHttpInfo(name);
+    public void getDeployStreamApplicationsByNameResourceTree(@javax.annotation.Nonnull String name) throws ApiException {
+        getDeployStreamApplicationsByNameResourceTreeWithHttpInfo(name);
     }
 
     /**
@@ -1831,8 +1831,8 @@ public class DeployApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1DeployStreamApplicationsByNameResourceTreeWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
-        okhttp3.Call localVarCall = getV1DeployStreamApplicationsByNameResourceTreeValidateBeforeCall(name, null);
+    public ApiResponse<Void> getDeployStreamApplicationsByNameResourceTreeWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = getDeployStreamApplicationsByNameResourceTreeValidateBeforeCall(name, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1844,14 +1844,14 @@ public class DeployApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1DeployStreamApplicationsByNameResourceTreeAsync(@javax.annotation.Nonnull String name, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getDeployStreamApplicationsByNameResourceTreeAsync(@javax.annotation.Nonnull String name, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1DeployStreamApplicationsByNameResourceTreeValidateBeforeCall(name, _callback);
+        okhttp3.Call localVarCall = getDeployStreamApplicationsByNameResourceTreeValidateBeforeCall(name, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1DeployVersion
+     * Build call for getDeployVersion
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1862,7 +1862,7 @@ public class DeployApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1DeployVersionCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getDeployVersionCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1907,8 +1907,8 @@ public class DeployApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1DeployVersionValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1DeployVersionCall(_callback);
+    private okhttp3.Call getDeployVersionValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getDeployVersionCall(_callback);
 
     }
 
@@ -1924,8 +1924,8 @@ public class DeployApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public VersionMessage getV1DeployVersion() throws ApiException {
-        ApiResponse<VersionMessage> localVarResp = getV1DeployVersionWithHttpInfo();
+    public VersionMessage getDeployVersion() throws ApiException {
+        ApiResponse<VersionMessage> localVarResp = getDeployVersionWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -1941,8 +1941,8 @@ public class DeployApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<VersionMessage> getV1DeployVersionWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1DeployVersionValidateBeforeCall(null);
+    public ApiResponse<VersionMessage> getDeployVersionWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getDeployVersionValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<VersionMessage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1960,21 +1960,21 @@ public class DeployApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1DeployVersionAsync(final ApiCallback<VersionMessage> _callback) throws ApiException {
+    public okhttp3.Call getDeployVersionAsync(final ApiCallback<VersionMessage> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1DeployVersionValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getDeployVersionValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<VersionMessage>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1DeployApplicationsByNameRollback
+     * Build call for postDeployApplicationsByNameRollback
      * @param name  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1DeployApplicationsByNameRollbackCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postDeployApplicationsByNameRollbackCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2019,13 +2019,13 @@ public class DeployApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1DeployApplicationsByNameRollbackValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postDeployApplicationsByNameRollbackValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling postV1DeployApplicationsByNameRollback(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling postDeployApplicationsByNameRollback(Async)");
         }
 
-        return postV1DeployApplicationsByNameRollbackCall(name, _callback);
+        return postDeployApplicationsByNameRollbackCall(name, _callback);
 
     }
 
@@ -2035,8 +2035,8 @@ public class DeployApi {
      * @param name  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1DeployApplicationsByNameRollback(@javax.annotation.Nonnull String name) throws ApiException {
-        postV1DeployApplicationsByNameRollbackWithHttpInfo(name);
+    public void postDeployApplicationsByNameRollback(@javax.annotation.Nonnull String name) throws ApiException {
+        postDeployApplicationsByNameRollbackWithHttpInfo(name);
     }
 
     /**
@@ -2046,8 +2046,8 @@ public class DeployApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1DeployApplicationsByNameRollbackWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
-        okhttp3.Call localVarCall = postV1DeployApplicationsByNameRollbackValidateBeforeCall(name, null);
+    public ApiResponse<Void> postDeployApplicationsByNameRollbackWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = postDeployApplicationsByNameRollbackValidateBeforeCall(name, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -2059,20 +2059,20 @@ public class DeployApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1DeployApplicationsByNameRollbackAsync(@javax.annotation.Nonnull String name, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postDeployApplicationsByNameRollbackAsync(@javax.annotation.Nonnull String name, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1DeployApplicationsByNameRollbackValidateBeforeCall(name, _callback);
+        okhttp3.Call localVarCall = postDeployApplicationsByNameRollbackValidateBeforeCall(name, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1DeployApplicationsByNameSync
+     * Build call for postDeployApplicationsByNameSync
      * @param name  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1DeployApplicationsByNameSyncCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postDeployApplicationsByNameSyncCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2117,13 +2117,13 @@ public class DeployApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1DeployApplicationsByNameSyncValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postDeployApplicationsByNameSyncValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling postV1DeployApplicationsByNameSync(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling postDeployApplicationsByNameSync(Async)");
         }
 
-        return postV1DeployApplicationsByNameSyncCall(name, _callback);
+        return postDeployApplicationsByNameSyncCall(name, _callback);
 
     }
 
@@ -2133,8 +2133,8 @@ public class DeployApi {
      * @param name  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1DeployApplicationsByNameSync(@javax.annotation.Nonnull String name) throws ApiException {
-        postV1DeployApplicationsByNameSyncWithHttpInfo(name);
+    public void postDeployApplicationsByNameSync(@javax.annotation.Nonnull String name) throws ApiException {
+        postDeployApplicationsByNameSyncWithHttpInfo(name);
     }
 
     /**
@@ -2144,8 +2144,8 @@ public class DeployApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1DeployApplicationsByNameSyncWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
-        okhttp3.Call localVarCall = postV1DeployApplicationsByNameSyncValidateBeforeCall(name, null);
+    public ApiResponse<Void> postDeployApplicationsByNameSyncWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = postDeployApplicationsByNameSyncValidateBeforeCall(name, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -2157,19 +2157,19 @@ public class DeployApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1DeployApplicationsByNameSyncAsync(@javax.annotation.Nonnull String name, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postDeployApplicationsByNameSyncAsync(@javax.annotation.Nonnull String name, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1DeployApplicationsByNameSyncValidateBeforeCall(name, _callback);
+        okhttp3.Call localVarCall = postDeployApplicationsByNameSyncValidateBeforeCall(name, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1DeployLogout
+     * Build call for postDeployLogout
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1DeployLogoutCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postDeployLogoutCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2213,8 +2213,8 @@ public class DeployApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1DeployLogoutValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1DeployLogoutCall(_callback);
+    private okhttp3.Call postDeployLogoutValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postDeployLogoutCall(_callback);
 
     }
 
@@ -2223,8 +2223,8 @@ public class DeployApi {
      * Clears this console&#39;s session cookie and answers the signed-out state with the sign-in URL to start again. IAM&#39;s own session is untouched — this ends the console session only, so signing back in may not prompt for credentials.  It is a POST because it changes state. As a GET it was reachable by a cross-site top-level navigation, which a SameSite&#x3D;Lax cookie still rides, so any page could sign a SuperAdmin out; a POST is not carried cross-site by that cookie.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1DeployLogout() throws ApiException {
-        postV1DeployLogoutWithHttpInfo();
+    public void postDeployLogout() throws ApiException {
+        postDeployLogoutWithHttpInfo();
     }
 
     /**
@@ -2233,8 +2233,8 @@ public class DeployApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1DeployLogoutWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1DeployLogoutValidateBeforeCall(null);
+    public ApiResponse<Void> postDeployLogoutWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postDeployLogoutValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -2245,19 +2245,19 @@ public class DeployApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1DeployLogoutAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postDeployLogoutAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1DeployLogoutValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postDeployLogoutValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1DeployReconcile
+     * Build call for postDeployReconcile
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1DeployReconcileCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postDeployReconcileCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2301,8 +2301,8 @@ public class DeployApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1DeployReconcileValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1DeployReconcileCall(_callback);
+    private okhttp3.Call postDeployReconcileValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postDeployReconcileCall(_callback);
 
     }
 
@@ -2311,8 +2311,8 @@ public class DeployApi {
      * Runs one full GitOps sync through the embedded engine — render the configured repo, ref and path, then three-way server-side apply with scoped prune — and answers the revision it applied, the source it came from, the declared/synced/pruned/failed counts and a per-resource result. This is the WRITE half of the plane: it mutates live cluster objects and, with prune enabled, deletes objects the source no longer declares.  SuperAdmin-only and fail-closed — a non-SuperAdmin is refused before any cluster object is read or touched. The git source is read AS THE CALLER, so the source plane scopes the answer itself rather than trusting this one to have scoped it. It reads no request body; the source is configuration, not a parameter. A deployment with the engine switched off, or with no usable cluster config, answers 503; a failure to start, render or sync is a 502.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1DeployReconcile() throws ApiException {
-        postV1DeployReconcileWithHttpInfo();
+    public void postDeployReconcile() throws ApiException {
+        postDeployReconcileWithHttpInfo();
     }
 
     /**
@@ -2321,8 +2321,8 @@ public class DeployApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1DeployReconcileWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1DeployReconcileValidateBeforeCall(null);
+    public ApiResponse<Void> postDeployReconcileWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postDeployReconcileValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -2333,9 +2333,9 @@ public class DeployApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1DeployReconcileAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postDeployReconcileAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1DeployReconcileValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postDeployReconcileValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

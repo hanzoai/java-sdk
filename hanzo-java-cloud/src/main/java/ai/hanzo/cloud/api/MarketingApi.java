@@ -99,7 +99,7 @@ public class MarketingApi {
     }
 
     /**
-     * Build call for deleteV1MarketingAudiencesById
+     * Build call for deleteMarketingAudiencesById
      * @param id ID is the audience id from the path, as returned by create. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -111,7 +111,7 @@ public class MarketingApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1MarketingAudiencesByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteMarketingAudiencesByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -156,13 +156,13 @@ public class MarketingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1MarketingAudiencesByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteMarketingAudiencesByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling deleteV1MarketingAudiencesById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling deleteMarketingAudiencesById(Async)");
         }
 
-        return deleteV1MarketingAudiencesByIdCall(id, _callback);
+        return deleteMarketingAudiencesByIdCall(id, _callback);
 
     }
 
@@ -178,8 +178,8 @@ public class MarketingApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteV1MarketingAudiencesById(@javax.annotation.Nonnull String id) throws ApiException {
-        deleteV1MarketingAudiencesByIdWithHttpInfo(id);
+    public void deleteMarketingAudiencesById(@javax.annotation.Nonnull String id) throws ApiException {
+        deleteMarketingAudiencesByIdWithHttpInfo(id);
     }
 
     /**
@@ -195,8 +195,8 @@ public class MarketingApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteV1MarketingAudiencesByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1MarketingAudiencesByIdValidateBeforeCall(id, null);
+    public ApiResponse<Void> deleteMarketingAudiencesByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = deleteMarketingAudiencesByIdValidateBeforeCall(id, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -214,14 +214,14 @@ public class MarketingApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1MarketingAudiencesByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteMarketingAudiencesByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1MarketingAudiencesByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = deleteMarketingAudiencesByIdValidateBeforeCall(id, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for deleteV1MarketingCalendarById
+     * Build call for deleteMarketingCalendarById
      * @param id ID is the post id from the path, as returned by create. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -233,7 +233,7 @@ public class MarketingApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1MarketingCalendarByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteMarketingCalendarByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -278,13 +278,13 @@ public class MarketingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1MarketingCalendarByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteMarketingCalendarByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling deleteV1MarketingCalendarById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling deleteMarketingCalendarById(Async)");
         }
 
-        return deleteV1MarketingCalendarByIdCall(id, _callback);
+        return deleteMarketingCalendarByIdCall(id, _callback);
 
     }
 
@@ -300,8 +300,8 @@ public class MarketingApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteV1MarketingCalendarById(@javax.annotation.Nonnull String id) throws ApiException {
-        deleteV1MarketingCalendarByIdWithHttpInfo(id);
+    public void deleteMarketingCalendarById(@javax.annotation.Nonnull String id) throws ApiException {
+        deleteMarketingCalendarByIdWithHttpInfo(id);
     }
 
     /**
@@ -317,8 +317,8 @@ public class MarketingApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteV1MarketingCalendarByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1MarketingCalendarByIdValidateBeforeCall(id, null);
+    public ApiResponse<Void> deleteMarketingCalendarByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = deleteMarketingCalendarByIdValidateBeforeCall(id, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -336,14 +336,14 @@ public class MarketingApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1MarketingCalendarByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteMarketingCalendarByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1MarketingCalendarByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = deleteMarketingCalendarByIdValidateBeforeCall(id, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for deleteV1MarketingCampaignsById
+     * Build call for deleteMarketingCampaignsById
      * @param id ID is the campaign id from the path, as returned by create. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -355,7 +355,7 @@ public class MarketingApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1MarketingCampaignsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteMarketingCampaignsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -400,13 +400,13 @@ public class MarketingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1MarketingCampaignsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteMarketingCampaignsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling deleteV1MarketingCampaignsById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling deleteMarketingCampaignsById(Async)");
         }
 
-        return deleteV1MarketingCampaignsByIdCall(id, _callback);
+        return deleteMarketingCampaignsByIdCall(id, _callback);
 
     }
 
@@ -422,8 +422,8 @@ public class MarketingApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteV1MarketingCampaignsById(@javax.annotation.Nonnull String id) throws ApiException {
-        deleteV1MarketingCampaignsByIdWithHttpInfo(id);
+    public void deleteMarketingCampaignsById(@javax.annotation.Nonnull String id) throws ApiException {
+        deleteMarketingCampaignsByIdWithHttpInfo(id);
     }
 
     /**
@@ -439,8 +439,8 @@ public class MarketingApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteV1MarketingCampaignsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1MarketingCampaignsByIdValidateBeforeCall(id, null);
+    public ApiResponse<Void> deleteMarketingCampaignsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = deleteMarketingCampaignsByIdValidateBeforeCall(id, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -458,14 +458,14 @@ public class MarketingApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1MarketingCampaignsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteMarketingCampaignsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1MarketingCampaignsByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = deleteMarketingCampaignsByIdValidateBeforeCall(id, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for deleteV1MarketingSuppressions
+     * Build call for deleteMarketingSuppressions
      * @param channel Channel is the surface opted out of: email, sms, social, meta, google or tiktok. Empty means email. Opting out of one leaves the others reachable. (optional)
      * @param address Address is the recipient, normalized (lower-cased, trimmed) so an opt-out cannot be slipped past on a case or whitespace difference. Required. (optional)
      * @param reason Reason is a free-text note, capped at 1024 bytes. The public one-click endpoint records \&quot;one-click unsubscribe\&quot;. (optional)
@@ -480,7 +480,7 @@ public class MarketingApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1MarketingSuppressionsCall(@javax.annotation.Nullable String channel, @javax.annotation.Nullable String address, @javax.annotation.Nullable String reason, @javax.annotation.Nullable Integer createdAt, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteMarketingSuppressionsCall(@javax.annotation.Nullable String channel, @javax.annotation.Nullable String address, @javax.annotation.Nullable String reason, @javax.annotation.Nullable Integer createdAt, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -540,8 +540,8 @@ public class MarketingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1MarketingSuppressionsValidateBeforeCall(@javax.annotation.Nullable String channel, @javax.annotation.Nullable String address, @javax.annotation.Nullable String reason, @javax.annotation.Nullable Integer createdAt, final ApiCallback _callback) throws ApiException {
-        return deleteV1MarketingSuppressionsCall(channel, address, reason, createdAt, _callback);
+    private okhttp3.Call deleteMarketingSuppressionsValidateBeforeCall(@javax.annotation.Nullable String channel, @javax.annotation.Nullable String address, @javax.annotation.Nullable String reason, @javax.annotation.Nullable Integer createdAt, final ApiCallback _callback) throws ApiException {
+        return deleteMarketingSuppressionsCall(channel, address, reason, createdAt, _callback);
 
     }
 
@@ -560,8 +560,8 @@ public class MarketingApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteV1MarketingSuppressions(@javax.annotation.Nullable String channel, @javax.annotation.Nullable String address, @javax.annotation.Nullable String reason, @javax.annotation.Nullable Integer createdAt) throws ApiException {
-        deleteV1MarketingSuppressionsWithHttpInfo(channel, address, reason, createdAt);
+    public void deleteMarketingSuppressions(@javax.annotation.Nullable String channel, @javax.annotation.Nullable String address, @javax.annotation.Nullable String reason, @javax.annotation.Nullable Integer createdAt) throws ApiException {
+        deleteMarketingSuppressionsWithHttpInfo(channel, address, reason, createdAt);
     }
 
     /**
@@ -580,8 +580,8 @@ public class MarketingApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteV1MarketingSuppressionsWithHttpInfo(@javax.annotation.Nullable String channel, @javax.annotation.Nullable String address, @javax.annotation.Nullable String reason, @javax.annotation.Nullable Integer createdAt) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1MarketingSuppressionsValidateBeforeCall(channel, address, reason, createdAt, null);
+    public ApiResponse<Void> deleteMarketingSuppressionsWithHttpInfo(@javax.annotation.Nullable String channel, @javax.annotation.Nullable String address, @javax.annotation.Nullable String reason, @javax.annotation.Nullable Integer createdAt) throws ApiException {
+        okhttp3.Call localVarCall = deleteMarketingSuppressionsValidateBeforeCall(channel, address, reason, createdAt, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -602,14 +602,14 @@ public class MarketingApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1MarketingSuppressionsAsync(@javax.annotation.Nullable String channel, @javax.annotation.Nullable String address, @javax.annotation.Nullable String reason, @javax.annotation.Nullable Integer createdAt, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteMarketingSuppressionsAsync(@javax.annotation.Nullable String channel, @javax.annotation.Nullable String address, @javax.annotation.Nullable String reason, @javax.annotation.Nullable Integer createdAt, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1MarketingSuppressionsValidateBeforeCall(channel, address, reason, createdAt, _callback);
+        okhttp3.Call localVarCall = deleteMarketingSuppressionsValidateBeforeCall(channel, address, reason, createdAt, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1MarketingAudiences
+     * Build call for getMarketingAudiences
      * @param limit Limit caps the rows returned; 0 means 200 and nothing above 1000 is honoured. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -621,7 +621,7 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1MarketingAudiencesCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getMarketingAudiencesCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -670,8 +670,8 @@ public class MarketingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1MarketingAudiencesValidateBeforeCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
-        return getV1MarketingAudiencesCall(limit, _callback);
+    private okhttp3.Call getMarketingAudiencesValidateBeforeCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+        return getMarketingAudiencesCall(limit, _callback);
 
     }
 
@@ -688,8 +688,8 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public AudienceList getV1MarketingAudiences(@javax.annotation.Nullable Integer limit) throws ApiException {
-        ApiResponse<AudienceList> localVarResp = getV1MarketingAudiencesWithHttpInfo(limit);
+    public AudienceList getMarketingAudiences(@javax.annotation.Nullable Integer limit) throws ApiException {
+        ApiResponse<AudienceList> localVarResp = getMarketingAudiencesWithHttpInfo(limit);
         return localVarResp.getData();
     }
 
@@ -706,8 +706,8 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AudienceList> getV1MarketingAudiencesWithHttpInfo(@javax.annotation.Nullable Integer limit) throws ApiException {
-        okhttp3.Call localVarCall = getV1MarketingAudiencesValidateBeforeCall(limit, null);
+    public ApiResponse<AudienceList> getMarketingAudiencesWithHttpInfo(@javax.annotation.Nullable Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = getMarketingAudiencesValidateBeforeCall(limit, null);
         Type localVarReturnType = new TypeToken<AudienceList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -726,15 +726,15 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1MarketingAudiencesAsync(@javax.annotation.Nullable Integer limit, final ApiCallback<AudienceList> _callback) throws ApiException {
+    public okhttp3.Call getMarketingAudiencesAsync(@javax.annotation.Nullable Integer limit, final ApiCallback<AudienceList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1MarketingAudiencesValidateBeforeCall(limit, _callback);
+        okhttp3.Call localVarCall = getMarketingAudiencesValidateBeforeCall(limit, _callback);
         Type localVarReturnType = new TypeToken<AudienceList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1MarketingAudiencesById
+     * Build call for getMarketingAudiencesById
      * @param id ID is the audience id from the path, as returned by create. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -746,7 +746,7 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1MarketingAudiencesByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getMarketingAudiencesByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -792,13 +792,13 @@ public class MarketingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1MarketingAudiencesByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getMarketingAudiencesByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getV1MarketingAudiencesById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getMarketingAudiencesById(Async)");
         }
 
-        return getV1MarketingAudiencesByIdCall(id, _callback);
+        return getMarketingAudiencesByIdCall(id, _callback);
 
     }
 
@@ -815,8 +815,8 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Audience getV1MarketingAudiencesById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<Audience> localVarResp = getV1MarketingAudiencesByIdWithHttpInfo(id);
+    public Audience getMarketingAudiencesById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<Audience> localVarResp = getMarketingAudiencesByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -833,8 +833,8 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Audience> getV1MarketingAudiencesByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = getV1MarketingAudiencesByIdValidateBeforeCall(id, null);
+    public ApiResponse<Audience> getMarketingAudiencesByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getMarketingAudiencesByIdValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<Audience>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -853,15 +853,15 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1MarketingAudiencesByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Audience> _callback) throws ApiException {
+    public okhttp3.Call getMarketingAudiencesByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Audience> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1MarketingAudiencesByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = getMarketingAudiencesByIdValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<Audience>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1MarketingAudiencesByIdPreview
+     * Build call for getMarketingAudiencesByIdPreview
      * @param id ID is the audience id from the path, as returned by create. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -873,7 +873,7 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1MarketingAudiencesByIdPreviewCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getMarketingAudiencesByIdPreviewCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -919,13 +919,13 @@ public class MarketingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1MarketingAudiencesByIdPreviewValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getMarketingAudiencesByIdPreviewValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getV1MarketingAudiencesByIdPreview(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getMarketingAudiencesByIdPreview(Async)");
         }
 
-        return getV1MarketingAudiencesByIdPreviewCall(id, _callback);
+        return getMarketingAudiencesByIdPreviewCall(id, _callback);
 
     }
 
@@ -942,8 +942,8 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public AudiencePreview getV1MarketingAudiencesByIdPreview(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<AudiencePreview> localVarResp = getV1MarketingAudiencesByIdPreviewWithHttpInfo(id);
+    public AudiencePreview getMarketingAudiencesByIdPreview(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<AudiencePreview> localVarResp = getMarketingAudiencesByIdPreviewWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -960,8 +960,8 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AudiencePreview> getV1MarketingAudiencesByIdPreviewWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = getV1MarketingAudiencesByIdPreviewValidateBeforeCall(id, null);
+    public ApiResponse<AudiencePreview> getMarketingAudiencesByIdPreviewWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getMarketingAudiencesByIdPreviewValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<AudiencePreview>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -980,15 +980,15 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1MarketingAudiencesByIdPreviewAsync(@javax.annotation.Nonnull String id, final ApiCallback<AudiencePreview> _callback) throws ApiException {
+    public okhttp3.Call getMarketingAudiencesByIdPreviewAsync(@javax.annotation.Nonnull String id, final ApiCallback<AudiencePreview> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1MarketingAudiencesByIdPreviewValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = getMarketingAudiencesByIdPreviewValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<AudiencePreview>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1MarketingCalendar
+     * Build call for getMarketingCalendar
      * @param status Status keeps only posts in that state (draft, scheduled, published, failed, canceled). Empty means every post. (optional)
      * @param limit Limit caps the rows returned; 0 means 200 and nothing above 1000 is honoured. (optional)
      * @param _callback Callback for upload/download progress
@@ -1001,7 +1001,7 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1MarketingCalendarCall(@javax.annotation.Nullable String status, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getMarketingCalendarCall(@javax.annotation.Nullable String status, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1054,8 +1054,8 @@ public class MarketingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1MarketingCalendarValidateBeforeCall(@javax.annotation.Nullable String status, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
-        return getV1MarketingCalendarCall(status, limit, _callback);
+    private okhttp3.Call getMarketingCalendarValidateBeforeCall(@javax.annotation.Nullable String status, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+        return getMarketingCalendarCall(status, limit, _callback);
 
     }
 
@@ -1073,8 +1073,8 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public PostList getV1MarketingCalendar(@javax.annotation.Nullable String status, @javax.annotation.Nullable Integer limit) throws ApiException {
-        ApiResponse<PostList> localVarResp = getV1MarketingCalendarWithHttpInfo(status, limit);
+    public PostList getMarketingCalendar(@javax.annotation.Nullable String status, @javax.annotation.Nullable Integer limit) throws ApiException {
+        ApiResponse<PostList> localVarResp = getMarketingCalendarWithHttpInfo(status, limit);
         return localVarResp.getData();
     }
 
@@ -1092,8 +1092,8 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PostList> getV1MarketingCalendarWithHttpInfo(@javax.annotation.Nullable String status, @javax.annotation.Nullable Integer limit) throws ApiException {
-        okhttp3.Call localVarCall = getV1MarketingCalendarValidateBeforeCall(status, limit, null);
+    public ApiResponse<PostList> getMarketingCalendarWithHttpInfo(@javax.annotation.Nullable String status, @javax.annotation.Nullable Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = getMarketingCalendarValidateBeforeCall(status, limit, null);
         Type localVarReturnType = new TypeToken<PostList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1113,15 +1113,15 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1MarketingCalendarAsync(@javax.annotation.Nullable String status, @javax.annotation.Nullable Integer limit, final ApiCallback<PostList> _callback) throws ApiException {
+    public okhttp3.Call getMarketingCalendarAsync(@javax.annotation.Nullable String status, @javax.annotation.Nullable Integer limit, final ApiCallback<PostList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1MarketingCalendarValidateBeforeCall(status, limit, _callback);
+        okhttp3.Call localVarCall = getMarketingCalendarValidateBeforeCall(status, limit, _callback);
         Type localVarReturnType = new TypeToken<PostList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1MarketingCalendarById
+     * Build call for getMarketingCalendarById
      * @param id ID is the post id from the path, as returned by create. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1133,7 +1133,7 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1MarketingCalendarByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getMarketingCalendarByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1179,13 +1179,13 @@ public class MarketingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1MarketingCalendarByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getMarketingCalendarByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getV1MarketingCalendarById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getMarketingCalendarById(Async)");
         }
 
-        return getV1MarketingCalendarByIdCall(id, _callback);
+        return getMarketingCalendarByIdCall(id, _callback);
 
     }
 
@@ -1202,8 +1202,8 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public CalendarPost getV1MarketingCalendarById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<CalendarPost> localVarResp = getV1MarketingCalendarByIdWithHttpInfo(id);
+    public CalendarPost getMarketingCalendarById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<CalendarPost> localVarResp = getMarketingCalendarByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -1220,8 +1220,8 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CalendarPost> getV1MarketingCalendarByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = getV1MarketingCalendarByIdValidateBeforeCall(id, null);
+    public ApiResponse<CalendarPost> getMarketingCalendarByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getMarketingCalendarByIdValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<CalendarPost>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1240,15 +1240,15 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1MarketingCalendarByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<CalendarPost> _callback) throws ApiException {
+    public okhttp3.Call getMarketingCalendarByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<CalendarPost> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1MarketingCalendarByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = getMarketingCalendarByIdValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<CalendarPost>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1MarketingCampaigns
+     * Build call for getMarketingCampaigns
      * @param status Status keeps only campaigns in that lifecycle state (draft, scheduled, active, paused, completed). Empty means every campaign. (optional)
      * @param limit Limit caps the rows returned; 0 means 200 and nothing above 1000 is honoured. (optional)
      * @param _callback Callback for upload/download progress
@@ -1261,7 +1261,7 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1MarketingCampaignsCall(@javax.annotation.Nullable String status, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getMarketingCampaignsCall(@javax.annotation.Nullable String status, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1314,8 +1314,8 @@ public class MarketingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1MarketingCampaignsValidateBeforeCall(@javax.annotation.Nullable String status, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
-        return getV1MarketingCampaignsCall(status, limit, _callback);
+    private okhttp3.Call getMarketingCampaignsValidateBeforeCall(@javax.annotation.Nullable String status, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+        return getMarketingCampaignsCall(status, limit, _callback);
 
     }
 
@@ -1333,8 +1333,8 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public CampaignList getV1MarketingCampaigns(@javax.annotation.Nullable String status, @javax.annotation.Nullable Integer limit) throws ApiException {
-        ApiResponse<CampaignList> localVarResp = getV1MarketingCampaignsWithHttpInfo(status, limit);
+    public CampaignList getMarketingCampaigns(@javax.annotation.Nullable String status, @javax.annotation.Nullable Integer limit) throws ApiException {
+        ApiResponse<CampaignList> localVarResp = getMarketingCampaignsWithHttpInfo(status, limit);
         return localVarResp.getData();
     }
 
@@ -1352,8 +1352,8 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CampaignList> getV1MarketingCampaignsWithHttpInfo(@javax.annotation.Nullable String status, @javax.annotation.Nullable Integer limit) throws ApiException {
-        okhttp3.Call localVarCall = getV1MarketingCampaignsValidateBeforeCall(status, limit, null);
+    public ApiResponse<CampaignList> getMarketingCampaignsWithHttpInfo(@javax.annotation.Nullable String status, @javax.annotation.Nullable Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = getMarketingCampaignsValidateBeforeCall(status, limit, null);
         Type localVarReturnType = new TypeToken<CampaignList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1373,15 +1373,15 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1MarketingCampaignsAsync(@javax.annotation.Nullable String status, @javax.annotation.Nullable Integer limit, final ApiCallback<CampaignList> _callback) throws ApiException {
+    public okhttp3.Call getMarketingCampaignsAsync(@javax.annotation.Nullable String status, @javax.annotation.Nullable Integer limit, final ApiCallback<CampaignList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1MarketingCampaignsValidateBeforeCall(status, limit, _callback);
+        okhttp3.Call localVarCall = getMarketingCampaignsValidateBeforeCall(status, limit, _callback);
         Type localVarReturnType = new TypeToken<CampaignList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1MarketingCampaignsById
+     * Build call for getMarketingCampaignsById
      * @param id ID is the campaign id from the path, as returned by create. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1393,7 +1393,7 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1MarketingCampaignsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getMarketingCampaignsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1439,13 +1439,13 @@ public class MarketingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1MarketingCampaignsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getMarketingCampaignsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getV1MarketingCampaignsById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getMarketingCampaignsById(Async)");
         }
 
-        return getV1MarketingCampaignsByIdCall(id, _callback);
+        return getMarketingCampaignsByIdCall(id, _callback);
 
     }
 
@@ -1462,8 +1462,8 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Campaign getV1MarketingCampaignsById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<Campaign> localVarResp = getV1MarketingCampaignsByIdWithHttpInfo(id);
+    public Campaign getMarketingCampaignsById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<Campaign> localVarResp = getMarketingCampaignsByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -1480,8 +1480,8 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Campaign> getV1MarketingCampaignsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = getV1MarketingCampaignsByIdValidateBeforeCall(id, null);
+    public ApiResponse<Campaign> getMarketingCampaignsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getMarketingCampaignsByIdValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<Campaign>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1500,15 +1500,15 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1MarketingCampaignsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Campaign> _callback) throws ApiException {
+    public okhttp3.Call getMarketingCampaignsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Campaign> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1MarketingCampaignsByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = getMarketingCampaignsByIdValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<Campaign>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1MarketingPromos
+     * Build call for getMarketingPromos
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1519,7 +1519,7 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1MarketingPromosCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getMarketingPromosCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1564,8 +1564,8 @@ public class MarketingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1MarketingPromosValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1MarketingPromosCall(_callback);
+    private okhttp3.Call getMarketingPromosValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getMarketingPromosCall(_callback);
 
     }
 
@@ -1581,8 +1581,8 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public PromoList getV1MarketingPromos() throws ApiException {
-        ApiResponse<PromoList> localVarResp = getV1MarketingPromosWithHttpInfo();
+    public PromoList getMarketingPromos() throws ApiException {
+        ApiResponse<PromoList> localVarResp = getMarketingPromosWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -1598,8 +1598,8 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PromoList> getV1MarketingPromosWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1MarketingPromosValidateBeforeCall(null);
+    public ApiResponse<PromoList> getMarketingPromosWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getMarketingPromosValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<PromoList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1617,15 +1617,15 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1MarketingPromosAsync(final ApiCallback<PromoList> _callback) throws ApiException {
+    public okhttp3.Call getMarketingPromosAsync(final ApiCallback<PromoList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1MarketingPromosValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getMarketingPromosValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<PromoList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1MarketingPromosByCodeEligibility
+     * Build call for getMarketingPromosByCodeEligibility
      * @param code Code is the promo code from the path. (required)
      * @param plan Plan is the plan being priced: pro, max or team. Anything else (including the free Developer plan) has no list price and so nothing to discount. (optional)
      * @param seats Seats is the Team seat count; 0 means 1, and it is ignored for the single-seat plans. (optional)
@@ -1639,7 +1639,7 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1MarketingPromosByCodeEligibilityCall(@javax.annotation.Nonnull String code, @javax.annotation.Nullable String plan, @javax.annotation.Nullable Integer seats, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getMarketingPromosByCodeEligibilityCall(@javax.annotation.Nonnull String code, @javax.annotation.Nullable String plan, @javax.annotation.Nullable Integer seats, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1693,13 +1693,13 @@ public class MarketingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1MarketingPromosByCodeEligibilityValidateBeforeCall(@javax.annotation.Nonnull String code, @javax.annotation.Nullable String plan, @javax.annotation.Nullable Integer seats, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getMarketingPromosByCodeEligibilityValidateBeforeCall(@javax.annotation.Nonnull String code, @javax.annotation.Nullable String plan, @javax.annotation.Nullable Integer seats, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'code' is set
         if (code == null) {
-            throw new ApiException("Missing the required parameter 'code' when calling getV1MarketingPromosByCodeEligibility(Async)");
+            throw new ApiException("Missing the required parameter 'code' when calling getMarketingPromosByCodeEligibility(Async)");
         }
 
-        return getV1MarketingPromosByCodeEligibilityCall(code, plan, seats, _callback);
+        return getMarketingPromosByCodeEligibilityCall(code, plan, seats, _callback);
 
     }
 
@@ -1718,8 +1718,8 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Quote getV1MarketingPromosByCodeEligibility(@javax.annotation.Nonnull String code, @javax.annotation.Nullable String plan, @javax.annotation.Nullable Integer seats) throws ApiException {
-        ApiResponse<Quote> localVarResp = getV1MarketingPromosByCodeEligibilityWithHttpInfo(code, plan, seats);
+    public Quote getMarketingPromosByCodeEligibility(@javax.annotation.Nonnull String code, @javax.annotation.Nullable String plan, @javax.annotation.Nullable Integer seats) throws ApiException {
+        ApiResponse<Quote> localVarResp = getMarketingPromosByCodeEligibilityWithHttpInfo(code, plan, seats);
         return localVarResp.getData();
     }
 
@@ -1738,8 +1738,8 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Quote> getV1MarketingPromosByCodeEligibilityWithHttpInfo(@javax.annotation.Nonnull String code, @javax.annotation.Nullable String plan, @javax.annotation.Nullable Integer seats) throws ApiException {
-        okhttp3.Call localVarCall = getV1MarketingPromosByCodeEligibilityValidateBeforeCall(code, plan, seats, null);
+    public ApiResponse<Quote> getMarketingPromosByCodeEligibilityWithHttpInfo(@javax.annotation.Nonnull String code, @javax.annotation.Nullable String plan, @javax.annotation.Nullable Integer seats) throws ApiException {
+        okhttp3.Call localVarCall = getMarketingPromosByCodeEligibilityValidateBeforeCall(code, plan, seats, null);
         Type localVarReturnType = new TypeToken<Quote>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1760,15 +1760,15 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1MarketingPromosByCodeEligibilityAsync(@javax.annotation.Nonnull String code, @javax.annotation.Nullable String plan, @javax.annotation.Nullable Integer seats, final ApiCallback<Quote> _callback) throws ApiException {
+    public okhttp3.Call getMarketingPromosByCodeEligibilityAsync(@javax.annotation.Nonnull String code, @javax.annotation.Nullable String plan, @javax.annotation.Nullable Integer seats, final ApiCallback<Quote> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1MarketingPromosByCodeEligibilityValidateBeforeCall(code, plan, seats, _callback);
+        okhttp3.Call localVarCall = getMarketingPromosByCodeEligibilityValidateBeforeCall(code, plan, seats, _callback);
         Type localVarReturnType = new TypeToken<Quote>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1MarketingPromosByCodeRedemption
+     * Build call for getMarketingPromosByCodeRedemption
      * @param code Code is the promo code from the path, e.g. \&quot;first1000\&quot;. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1780,7 +1780,7 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1MarketingPromosByCodeRedemptionCall(@javax.annotation.Nonnull String code, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getMarketingPromosByCodeRedemptionCall(@javax.annotation.Nonnull String code, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1826,13 +1826,13 @@ public class MarketingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1MarketingPromosByCodeRedemptionValidateBeforeCall(@javax.annotation.Nonnull String code, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getMarketingPromosByCodeRedemptionValidateBeforeCall(@javax.annotation.Nonnull String code, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'code' is set
         if (code == null) {
-            throw new ApiException("Missing the required parameter 'code' when calling getV1MarketingPromosByCodeRedemption(Async)");
+            throw new ApiException("Missing the required parameter 'code' when calling getMarketingPromosByCodeRedemption(Async)");
         }
 
-        return getV1MarketingPromosByCodeRedemptionCall(code, _callback);
+        return getMarketingPromosByCodeRedemptionCall(code, _callback);
 
     }
 
@@ -1849,8 +1849,8 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Redemption getV1MarketingPromosByCodeRedemption(@javax.annotation.Nonnull String code) throws ApiException {
-        ApiResponse<Redemption> localVarResp = getV1MarketingPromosByCodeRedemptionWithHttpInfo(code);
+    public Redemption getMarketingPromosByCodeRedemption(@javax.annotation.Nonnull String code) throws ApiException {
+        ApiResponse<Redemption> localVarResp = getMarketingPromosByCodeRedemptionWithHttpInfo(code);
         return localVarResp.getData();
     }
 
@@ -1867,8 +1867,8 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Redemption> getV1MarketingPromosByCodeRedemptionWithHttpInfo(@javax.annotation.Nonnull String code) throws ApiException {
-        okhttp3.Call localVarCall = getV1MarketingPromosByCodeRedemptionValidateBeforeCall(code, null);
+    public ApiResponse<Redemption> getMarketingPromosByCodeRedemptionWithHttpInfo(@javax.annotation.Nonnull String code) throws ApiException {
+        okhttp3.Call localVarCall = getMarketingPromosByCodeRedemptionValidateBeforeCall(code, null);
         Type localVarReturnType = new TypeToken<Redemption>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1887,15 +1887,15 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1MarketingPromosByCodeRedemptionAsync(@javax.annotation.Nonnull String code, final ApiCallback<Redemption> _callback) throws ApiException {
+    public okhttp3.Call getMarketingPromosByCodeRedemptionAsync(@javax.annotation.Nonnull String code, final ApiCallback<Redemption> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1MarketingPromosByCodeRedemptionValidateBeforeCall(code, _callback);
+        okhttp3.Call localVarCall = getMarketingPromosByCodeRedemptionValidateBeforeCall(code, _callback);
         Type localVarReturnType = new TypeToken<Redemption>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1MarketingSequences
+     * Build call for getMarketingSequences
      * @param limit Limit caps the rows returned; 0 means 200 and nothing above 1000 is honoured. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1907,7 +1907,7 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1MarketingSequencesCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getMarketingSequencesCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1956,8 +1956,8 @@ public class MarketingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1MarketingSequencesValidateBeforeCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
-        return getV1MarketingSequencesCall(limit, _callback);
+    private okhttp3.Call getMarketingSequencesValidateBeforeCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+        return getMarketingSequencesCall(limit, _callback);
 
     }
 
@@ -1974,8 +1974,8 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public SequenceList getV1MarketingSequences(@javax.annotation.Nullable Integer limit) throws ApiException {
-        ApiResponse<SequenceList> localVarResp = getV1MarketingSequencesWithHttpInfo(limit);
+    public SequenceList getMarketingSequences(@javax.annotation.Nullable Integer limit) throws ApiException {
+        ApiResponse<SequenceList> localVarResp = getMarketingSequencesWithHttpInfo(limit);
         return localVarResp.getData();
     }
 
@@ -1992,8 +1992,8 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SequenceList> getV1MarketingSequencesWithHttpInfo(@javax.annotation.Nullable Integer limit) throws ApiException {
-        okhttp3.Call localVarCall = getV1MarketingSequencesValidateBeforeCall(limit, null);
+    public ApiResponse<SequenceList> getMarketingSequencesWithHttpInfo(@javax.annotation.Nullable Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = getMarketingSequencesValidateBeforeCall(limit, null);
         Type localVarReturnType = new TypeToken<SequenceList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2012,15 +2012,15 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1MarketingSequencesAsync(@javax.annotation.Nullable Integer limit, final ApiCallback<SequenceList> _callback) throws ApiException {
+    public okhttp3.Call getMarketingSequencesAsync(@javax.annotation.Nullable Integer limit, final ApiCallback<SequenceList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1MarketingSequencesValidateBeforeCall(limit, _callback);
+        okhttp3.Call localVarCall = getMarketingSequencesValidateBeforeCall(limit, _callback);
         Type localVarReturnType = new TypeToken<SequenceList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1MarketingSequencesById
+     * Build call for getMarketingSequencesById
      * @param id ID is the sequence id from the path, as returned by create. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2032,7 +2032,7 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1MarketingSequencesByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getMarketingSequencesByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2078,13 +2078,13 @@ public class MarketingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1MarketingSequencesByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getMarketingSequencesByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getV1MarketingSequencesById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getMarketingSequencesById(Async)");
         }
 
-        return getV1MarketingSequencesByIdCall(id, _callback);
+        return getMarketingSequencesByIdCall(id, _callback);
 
     }
 
@@ -2101,8 +2101,8 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public SequenceView getV1MarketingSequencesById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<SequenceView> localVarResp = getV1MarketingSequencesByIdWithHttpInfo(id);
+    public SequenceView getMarketingSequencesById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<SequenceView> localVarResp = getMarketingSequencesByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -2119,8 +2119,8 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SequenceView> getV1MarketingSequencesByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = getV1MarketingSequencesByIdValidateBeforeCall(id, null);
+    public ApiResponse<SequenceView> getMarketingSequencesByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getMarketingSequencesByIdValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<SequenceView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2139,15 +2139,15 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1MarketingSequencesByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<SequenceView> _callback) throws ApiException {
+    public okhttp3.Call getMarketingSequencesByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<SequenceView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1MarketingSequencesByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = getMarketingSequencesByIdValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<SequenceView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1MarketingSequencesByIdEnrollments
+     * Build call for getMarketingSequencesByIdEnrollments
      * @param id ID is the sequence id from the path. (required)
      * @param limit Limit caps the rows returned; 0 means 200 and nothing above 1000 is honoured. (optional)
      * @param _callback Callback for upload/download progress
@@ -2160,7 +2160,7 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1MarketingSequencesByIdEnrollmentsCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getMarketingSequencesByIdEnrollmentsCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2210,13 +2210,13 @@ public class MarketingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1MarketingSequencesByIdEnrollmentsValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getMarketingSequencesByIdEnrollmentsValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getV1MarketingSequencesByIdEnrollments(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getMarketingSequencesByIdEnrollments(Async)");
         }
 
-        return getV1MarketingSequencesByIdEnrollmentsCall(id, limit, _callback);
+        return getMarketingSequencesByIdEnrollmentsCall(id, limit, _callback);
 
     }
 
@@ -2234,8 +2234,8 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public EnrollmentList getV1MarketingSequencesByIdEnrollments(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Integer limit) throws ApiException {
-        ApiResponse<EnrollmentList> localVarResp = getV1MarketingSequencesByIdEnrollmentsWithHttpInfo(id, limit);
+    public EnrollmentList getMarketingSequencesByIdEnrollments(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Integer limit) throws ApiException {
+        ApiResponse<EnrollmentList> localVarResp = getMarketingSequencesByIdEnrollmentsWithHttpInfo(id, limit);
         return localVarResp.getData();
     }
 
@@ -2253,8 +2253,8 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<EnrollmentList> getV1MarketingSequencesByIdEnrollmentsWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Integer limit) throws ApiException {
-        okhttp3.Call localVarCall = getV1MarketingSequencesByIdEnrollmentsValidateBeforeCall(id, limit, null);
+    public ApiResponse<EnrollmentList> getMarketingSequencesByIdEnrollmentsWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = getMarketingSequencesByIdEnrollmentsValidateBeforeCall(id, limit, null);
         Type localVarReturnType = new TypeToken<EnrollmentList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2274,15 +2274,15 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1MarketingSequencesByIdEnrollmentsAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Integer limit, final ApiCallback<EnrollmentList> _callback) throws ApiException {
+    public okhttp3.Call getMarketingSequencesByIdEnrollmentsAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Integer limit, final ApiCallback<EnrollmentList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1MarketingSequencesByIdEnrollmentsValidateBeforeCall(id, limit, _callback);
+        okhttp3.Call localVarCall = getMarketingSequencesByIdEnrollmentsValidateBeforeCall(id, limit, _callback);
         Type localVarReturnType = new TypeToken<EnrollmentList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1MarketingSequencesByIdSteps
+     * Build call for getMarketingSequencesByIdSteps
      * @param id ID is the sequence id from the path, as returned by create. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2294,7 +2294,7 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1MarketingSequencesByIdStepsCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getMarketingSequencesByIdStepsCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2340,13 +2340,13 @@ public class MarketingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1MarketingSequencesByIdStepsValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getMarketingSequencesByIdStepsValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getV1MarketingSequencesByIdSteps(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getMarketingSequencesByIdSteps(Async)");
         }
 
-        return getV1MarketingSequencesByIdStepsCall(id, _callback);
+        return getMarketingSequencesByIdStepsCall(id, _callback);
 
     }
 
@@ -2363,8 +2363,8 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public StepList getV1MarketingSequencesByIdSteps(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<StepList> localVarResp = getV1MarketingSequencesByIdStepsWithHttpInfo(id);
+    public StepList getMarketingSequencesByIdSteps(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<StepList> localVarResp = getMarketingSequencesByIdStepsWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -2381,8 +2381,8 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<StepList> getV1MarketingSequencesByIdStepsWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = getV1MarketingSequencesByIdStepsValidateBeforeCall(id, null);
+    public ApiResponse<StepList> getMarketingSequencesByIdStepsWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getMarketingSequencesByIdStepsValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<StepList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2401,15 +2401,15 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1MarketingSequencesByIdStepsAsync(@javax.annotation.Nonnull String id, final ApiCallback<StepList> _callback) throws ApiException {
+    public okhttp3.Call getMarketingSequencesByIdStepsAsync(@javax.annotation.Nonnull String id, final ApiCallback<StepList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1MarketingSequencesByIdStepsValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = getMarketingSequencesByIdStepsValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<StepList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1MarketingSummary
+     * Build call for getMarketingSummary
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2420,7 +2420,7 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1MarketingSummaryCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getMarketingSummaryCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2465,8 +2465,8 @@ public class MarketingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1MarketingSummaryValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1MarketingSummaryCall(_callback);
+    private okhttp3.Call getMarketingSummaryValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getMarketingSummaryCall(_callback);
 
     }
 
@@ -2482,8 +2482,8 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Summary getV1MarketingSummary() throws ApiException {
-        ApiResponse<Summary> localVarResp = getV1MarketingSummaryWithHttpInfo();
+    public Summary getMarketingSummary() throws ApiException {
+        ApiResponse<Summary> localVarResp = getMarketingSummaryWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -2499,8 +2499,8 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Summary> getV1MarketingSummaryWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1MarketingSummaryValidateBeforeCall(null);
+    public ApiResponse<Summary> getMarketingSummaryWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getMarketingSummaryValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<Summary>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2518,15 +2518,15 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1MarketingSummaryAsync(final ApiCallback<Summary> _callback) throws ApiException {
+    public okhttp3.Call getMarketingSummaryAsync(final ApiCallback<Summary> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1MarketingSummaryValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getMarketingSummaryValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<Summary>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1MarketingSuppressions
+     * Build call for getMarketingSuppressions
      * @param limit Limit caps the rows returned; 0 means 200 and nothing above 1000 is honoured. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2538,7 +2538,7 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1MarketingSuppressionsCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getMarketingSuppressionsCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2587,8 +2587,8 @@ public class MarketingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1MarketingSuppressionsValidateBeforeCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
-        return getV1MarketingSuppressionsCall(limit, _callback);
+    private okhttp3.Call getMarketingSuppressionsValidateBeforeCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+        return getMarketingSuppressionsCall(limit, _callback);
 
     }
 
@@ -2605,8 +2605,8 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public SuppressionList getV1MarketingSuppressions(@javax.annotation.Nullable Integer limit) throws ApiException {
-        ApiResponse<SuppressionList> localVarResp = getV1MarketingSuppressionsWithHttpInfo(limit);
+    public SuppressionList getMarketingSuppressions(@javax.annotation.Nullable Integer limit) throws ApiException {
+        ApiResponse<SuppressionList> localVarResp = getMarketingSuppressionsWithHttpInfo(limit);
         return localVarResp.getData();
     }
 
@@ -2623,8 +2623,8 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SuppressionList> getV1MarketingSuppressionsWithHttpInfo(@javax.annotation.Nullable Integer limit) throws ApiException {
-        okhttp3.Call localVarCall = getV1MarketingSuppressionsValidateBeforeCall(limit, null);
+    public ApiResponse<SuppressionList> getMarketingSuppressionsWithHttpInfo(@javax.annotation.Nullable Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = getMarketingSuppressionsValidateBeforeCall(limit, null);
         Type localVarReturnType = new TypeToken<SuppressionList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2643,15 +2643,15 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1MarketingSuppressionsAsync(@javax.annotation.Nullable Integer limit, final ApiCallback<SuppressionList> _callback) throws ApiException {
+    public okhttp3.Call getMarketingSuppressionsAsync(@javax.annotation.Nullable Integer limit, final ApiCallback<SuppressionList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1MarketingSuppressionsValidateBeforeCall(limit, _callback);
+        okhttp3.Call localVarCall = getMarketingSuppressionsValidateBeforeCall(limit, _callback);
         Type localVarReturnType = new TypeToken<SuppressionList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1MarketingUnsubscribe
+     * Build call for getMarketingUnsubscribe
      * @param org Org is the org the link was minted for. (optional)
      * @param channel Channel is the surface to opt out of. (optional)
      * @param address Address is the recipient to opt out. (optional)
@@ -2666,7 +2666,7 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1MarketingUnsubscribeCall(@javax.annotation.Nullable String org, @javax.annotation.Nullable String channel, @javax.annotation.Nullable String address, @javax.annotation.Nullable String token, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getMarketingUnsubscribeCall(@javax.annotation.Nullable String org, @javax.annotation.Nullable String channel, @javax.annotation.Nullable String address, @javax.annotation.Nullable String token, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2727,8 +2727,8 @@ public class MarketingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1MarketingUnsubscribeValidateBeforeCall(@javax.annotation.Nullable String org, @javax.annotation.Nullable String channel, @javax.annotation.Nullable String address, @javax.annotation.Nullable String token, final ApiCallback _callback) throws ApiException {
-        return getV1MarketingUnsubscribeCall(org, channel, address, token, _callback);
+    private okhttp3.Call getMarketingUnsubscribeValidateBeforeCall(@javax.annotation.Nullable String org, @javax.annotation.Nullable String channel, @javax.annotation.Nullable String address, @javax.annotation.Nullable String token, final ApiCallback _callback) throws ApiException {
+        return getMarketingUnsubscribeCall(org, channel, address, token, _callback);
 
     }
 
@@ -2748,8 +2748,8 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Unsubscribed getV1MarketingUnsubscribe(@javax.annotation.Nullable String org, @javax.annotation.Nullable String channel, @javax.annotation.Nullable String address, @javax.annotation.Nullable String token) throws ApiException {
-        ApiResponse<Unsubscribed> localVarResp = getV1MarketingUnsubscribeWithHttpInfo(org, channel, address, token);
+    public Unsubscribed getMarketingUnsubscribe(@javax.annotation.Nullable String org, @javax.annotation.Nullable String channel, @javax.annotation.Nullable String address, @javax.annotation.Nullable String token) throws ApiException {
+        ApiResponse<Unsubscribed> localVarResp = getMarketingUnsubscribeWithHttpInfo(org, channel, address, token);
         return localVarResp.getData();
     }
 
@@ -2769,8 +2769,8 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Unsubscribed> getV1MarketingUnsubscribeWithHttpInfo(@javax.annotation.Nullable String org, @javax.annotation.Nullable String channel, @javax.annotation.Nullable String address, @javax.annotation.Nullable String token) throws ApiException {
-        okhttp3.Call localVarCall = getV1MarketingUnsubscribeValidateBeforeCall(org, channel, address, token, null);
+    public ApiResponse<Unsubscribed> getMarketingUnsubscribeWithHttpInfo(@javax.annotation.Nullable String org, @javax.annotation.Nullable String channel, @javax.annotation.Nullable String address, @javax.annotation.Nullable String token) throws ApiException {
+        okhttp3.Call localVarCall = getMarketingUnsubscribeValidateBeforeCall(org, channel, address, token, null);
         Type localVarReturnType = new TypeToken<Unsubscribed>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2792,15 +2792,15 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1MarketingUnsubscribeAsync(@javax.annotation.Nullable String org, @javax.annotation.Nullable String channel, @javax.annotation.Nullable String address, @javax.annotation.Nullable String token, final ApiCallback<Unsubscribed> _callback) throws ApiException {
+    public okhttp3.Call getMarketingUnsubscribeAsync(@javax.annotation.Nullable String org, @javax.annotation.Nullable String channel, @javax.annotation.Nullable String address, @javax.annotation.Nullable String token, final ApiCallback<Unsubscribed> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1MarketingUnsubscribeValidateBeforeCall(org, channel, address, token, _callback);
+        okhttp3.Call localVarCall = getMarketingUnsubscribeValidateBeforeCall(org, channel, address, token, _callback);
         Type localVarReturnType = new TypeToken<Unsubscribed>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1MarketingAudiences
+     * Build call for postMarketingAudiences
      * @param audience  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2812,7 +2812,7 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1MarketingAudiencesCall(@javax.annotation.Nonnull Audience audience, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postMarketingAudiencesCall(@javax.annotation.Nonnull Audience audience, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2858,13 +2858,13 @@ public class MarketingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1MarketingAudiencesValidateBeforeCall(@javax.annotation.Nonnull Audience audience, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postMarketingAudiencesValidateBeforeCall(@javax.annotation.Nonnull Audience audience, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'audience' is set
         if (audience == null) {
-            throw new ApiException("Missing the required parameter 'audience' when calling postV1MarketingAudiences(Async)");
+            throw new ApiException("Missing the required parameter 'audience' when calling postMarketingAudiences(Async)");
         }
 
-        return postV1MarketingAudiencesCall(audience, _callback);
+        return postMarketingAudiencesCall(audience, _callback);
 
     }
 
@@ -2881,8 +2881,8 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Audience postV1MarketingAudiences(@javax.annotation.Nonnull Audience audience) throws ApiException {
-        ApiResponse<Audience> localVarResp = postV1MarketingAudiencesWithHttpInfo(audience);
+    public Audience postMarketingAudiences(@javax.annotation.Nonnull Audience audience) throws ApiException {
+        ApiResponse<Audience> localVarResp = postMarketingAudiencesWithHttpInfo(audience);
         return localVarResp.getData();
     }
 
@@ -2899,8 +2899,8 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Audience> postV1MarketingAudiencesWithHttpInfo(@javax.annotation.Nonnull Audience audience) throws ApiException {
-        okhttp3.Call localVarCall = postV1MarketingAudiencesValidateBeforeCall(audience, null);
+    public ApiResponse<Audience> postMarketingAudiencesWithHttpInfo(@javax.annotation.Nonnull Audience audience) throws ApiException {
+        okhttp3.Call localVarCall = postMarketingAudiencesValidateBeforeCall(audience, null);
         Type localVarReturnType = new TypeToken<Audience>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2919,15 +2919,15 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1MarketingAudiencesAsync(@javax.annotation.Nonnull Audience audience, final ApiCallback<Audience> _callback) throws ApiException {
+    public okhttp3.Call postMarketingAudiencesAsync(@javax.annotation.Nonnull Audience audience, final ApiCallback<Audience> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1MarketingAudiencesValidateBeforeCall(audience, _callback);
+        okhttp3.Call localVarCall = postMarketingAudiencesValidateBeforeCall(audience, _callback);
         Type localVarReturnType = new TypeToken<Audience>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1MarketingCalendar
+     * Build call for postMarketingCalendar
      * @param calendarPost  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2939,7 +2939,7 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1MarketingCalendarCall(@javax.annotation.Nonnull CalendarPost calendarPost, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postMarketingCalendarCall(@javax.annotation.Nonnull CalendarPost calendarPost, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2985,13 +2985,13 @@ public class MarketingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1MarketingCalendarValidateBeforeCall(@javax.annotation.Nonnull CalendarPost calendarPost, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postMarketingCalendarValidateBeforeCall(@javax.annotation.Nonnull CalendarPost calendarPost, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'calendarPost' is set
         if (calendarPost == null) {
-            throw new ApiException("Missing the required parameter 'calendarPost' when calling postV1MarketingCalendar(Async)");
+            throw new ApiException("Missing the required parameter 'calendarPost' when calling postMarketingCalendar(Async)");
         }
 
-        return postV1MarketingCalendarCall(calendarPost, _callback);
+        return postMarketingCalendarCall(calendarPost, _callback);
 
     }
 
@@ -3008,8 +3008,8 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public CalendarPost postV1MarketingCalendar(@javax.annotation.Nonnull CalendarPost calendarPost) throws ApiException {
-        ApiResponse<CalendarPost> localVarResp = postV1MarketingCalendarWithHttpInfo(calendarPost);
+    public CalendarPost postMarketingCalendar(@javax.annotation.Nonnull CalendarPost calendarPost) throws ApiException {
+        ApiResponse<CalendarPost> localVarResp = postMarketingCalendarWithHttpInfo(calendarPost);
         return localVarResp.getData();
     }
 
@@ -3026,8 +3026,8 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CalendarPost> postV1MarketingCalendarWithHttpInfo(@javax.annotation.Nonnull CalendarPost calendarPost) throws ApiException {
-        okhttp3.Call localVarCall = postV1MarketingCalendarValidateBeforeCall(calendarPost, null);
+    public ApiResponse<CalendarPost> postMarketingCalendarWithHttpInfo(@javax.annotation.Nonnull CalendarPost calendarPost) throws ApiException {
+        okhttp3.Call localVarCall = postMarketingCalendarValidateBeforeCall(calendarPost, null);
         Type localVarReturnType = new TypeToken<CalendarPost>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -3046,15 +3046,15 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1MarketingCalendarAsync(@javax.annotation.Nonnull CalendarPost calendarPost, final ApiCallback<CalendarPost> _callback) throws ApiException {
+    public okhttp3.Call postMarketingCalendarAsync(@javax.annotation.Nonnull CalendarPost calendarPost, final ApiCallback<CalendarPost> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1MarketingCalendarValidateBeforeCall(calendarPost, _callback);
+        okhttp3.Call localVarCall = postMarketingCalendarValidateBeforeCall(calendarPost, _callback);
         Type localVarReturnType = new TypeToken<CalendarPost>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1MarketingCalendarByIdPublish
+     * Build call for postMarketingCalendarByIdPublish
      * @param id ID is the post id from the path, as returned by create. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -3066,7 +3066,7 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1MarketingCalendarByIdPublishCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postMarketingCalendarByIdPublishCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3112,13 +3112,13 @@ public class MarketingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1MarketingCalendarByIdPublishValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postMarketingCalendarByIdPublishValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling postV1MarketingCalendarByIdPublish(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling postMarketingCalendarByIdPublish(Async)");
         }
 
-        return postV1MarketingCalendarByIdPublishCall(id, _callback);
+        return postMarketingCalendarByIdPublishCall(id, _callback);
 
     }
 
@@ -3135,8 +3135,8 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public CalendarPost postV1MarketingCalendarByIdPublish(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<CalendarPost> localVarResp = postV1MarketingCalendarByIdPublishWithHttpInfo(id);
+    public CalendarPost postMarketingCalendarByIdPublish(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<CalendarPost> localVarResp = postMarketingCalendarByIdPublishWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -3153,8 +3153,8 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CalendarPost> postV1MarketingCalendarByIdPublishWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = postV1MarketingCalendarByIdPublishValidateBeforeCall(id, null);
+    public ApiResponse<CalendarPost> postMarketingCalendarByIdPublishWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = postMarketingCalendarByIdPublishValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<CalendarPost>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -3173,15 +3173,15 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1MarketingCalendarByIdPublishAsync(@javax.annotation.Nonnull String id, final ApiCallback<CalendarPost> _callback) throws ApiException {
+    public okhttp3.Call postMarketingCalendarByIdPublishAsync(@javax.annotation.Nonnull String id, final ApiCallback<CalendarPost> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1MarketingCalendarByIdPublishValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = postMarketingCalendarByIdPublishValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<CalendarPost>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1MarketingCampaigns
+     * Build call for postMarketingCampaigns
      * @param campaign  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -3193,7 +3193,7 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1MarketingCampaignsCall(@javax.annotation.Nonnull Campaign campaign, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postMarketingCampaignsCall(@javax.annotation.Nonnull Campaign campaign, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3239,13 +3239,13 @@ public class MarketingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1MarketingCampaignsValidateBeforeCall(@javax.annotation.Nonnull Campaign campaign, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postMarketingCampaignsValidateBeforeCall(@javax.annotation.Nonnull Campaign campaign, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'campaign' is set
         if (campaign == null) {
-            throw new ApiException("Missing the required parameter 'campaign' when calling postV1MarketingCampaigns(Async)");
+            throw new ApiException("Missing the required parameter 'campaign' when calling postMarketingCampaigns(Async)");
         }
 
-        return postV1MarketingCampaignsCall(campaign, _callback);
+        return postMarketingCampaignsCall(campaign, _callback);
 
     }
 
@@ -3262,8 +3262,8 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Campaign postV1MarketingCampaigns(@javax.annotation.Nonnull Campaign campaign) throws ApiException {
-        ApiResponse<Campaign> localVarResp = postV1MarketingCampaignsWithHttpInfo(campaign);
+    public Campaign postMarketingCampaigns(@javax.annotation.Nonnull Campaign campaign) throws ApiException {
+        ApiResponse<Campaign> localVarResp = postMarketingCampaignsWithHttpInfo(campaign);
         return localVarResp.getData();
     }
 
@@ -3280,8 +3280,8 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Campaign> postV1MarketingCampaignsWithHttpInfo(@javax.annotation.Nonnull Campaign campaign) throws ApiException {
-        okhttp3.Call localVarCall = postV1MarketingCampaignsValidateBeforeCall(campaign, null);
+    public ApiResponse<Campaign> postMarketingCampaignsWithHttpInfo(@javax.annotation.Nonnull Campaign campaign) throws ApiException {
+        okhttp3.Call localVarCall = postMarketingCampaignsValidateBeforeCall(campaign, null);
         Type localVarReturnType = new TypeToken<Campaign>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -3300,15 +3300,15 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1MarketingCampaignsAsync(@javax.annotation.Nonnull Campaign campaign, final ApiCallback<Campaign> _callback) throws ApiException {
+    public okhttp3.Call postMarketingCampaignsAsync(@javax.annotation.Nonnull Campaign campaign, final ApiCallback<Campaign> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1MarketingCampaignsValidateBeforeCall(campaign, _callback);
+        okhttp3.Call localVarCall = postMarketingCampaignsValidateBeforeCall(campaign, _callback);
         Type localVarReturnType = new TypeToken<Campaign>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1MarketingCampaignsByIdSchedule
+     * Build call for postMarketingCampaignsByIdSchedule
      * @param id ID is the campaign id from the path. (required)
      * @param scheduleInput  (required)
      * @param _callback Callback for upload/download progress
@@ -3321,7 +3321,7 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1MarketingCampaignsByIdScheduleCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ScheduleInput scheduleInput, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postMarketingCampaignsByIdScheduleCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ScheduleInput scheduleInput, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3368,18 +3368,18 @@ public class MarketingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1MarketingCampaignsByIdScheduleValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ScheduleInput scheduleInput, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postMarketingCampaignsByIdScheduleValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ScheduleInput scheduleInput, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling postV1MarketingCampaignsByIdSchedule(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling postMarketingCampaignsByIdSchedule(Async)");
         }
 
         // verify the required parameter 'scheduleInput' is set
         if (scheduleInput == null) {
-            throw new ApiException("Missing the required parameter 'scheduleInput' when calling postV1MarketingCampaignsByIdSchedule(Async)");
+            throw new ApiException("Missing the required parameter 'scheduleInput' when calling postMarketingCampaignsByIdSchedule(Async)");
         }
 
-        return postV1MarketingCampaignsByIdScheduleCall(id, scheduleInput, _callback);
+        return postMarketingCampaignsByIdScheduleCall(id, scheduleInput, _callback);
 
     }
 
@@ -3397,8 +3397,8 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Campaign postV1MarketingCampaignsByIdSchedule(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ScheduleInput scheduleInput) throws ApiException {
-        ApiResponse<Campaign> localVarResp = postV1MarketingCampaignsByIdScheduleWithHttpInfo(id, scheduleInput);
+    public Campaign postMarketingCampaignsByIdSchedule(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ScheduleInput scheduleInput) throws ApiException {
+        ApiResponse<Campaign> localVarResp = postMarketingCampaignsByIdScheduleWithHttpInfo(id, scheduleInput);
         return localVarResp.getData();
     }
 
@@ -3416,8 +3416,8 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Campaign> postV1MarketingCampaignsByIdScheduleWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ScheduleInput scheduleInput) throws ApiException {
-        okhttp3.Call localVarCall = postV1MarketingCampaignsByIdScheduleValidateBeforeCall(id, scheduleInput, null);
+    public ApiResponse<Campaign> postMarketingCampaignsByIdScheduleWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ScheduleInput scheduleInput) throws ApiException {
+        okhttp3.Call localVarCall = postMarketingCampaignsByIdScheduleValidateBeforeCall(id, scheduleInput, null);
         Type localVarReturnType = new TypeToken<Campaign>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -3437,15 +3437,15 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1MarketingCampaignsByIdScheduleAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ScheduleInput scheduleInput, final ApiCallback<Campaign> _callback) throws ApiException {
+    public okhttp3.Call postMarketingCampaignsByIdScheduleAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ScheduleInput scheduleInput, final ApiCallback<Campaign> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1MarketingCampaignsByIdScheduleValidateBeforeCall(id, scheduleInput, _callback);
+        okhttp3.Call localVarCall = postMarketingCampaignsByIdScheduleValidateBeforeCall(id, scheduleInput, _callback);
         Type localVarReturnType = new TypeToken<Campaign>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1MarketingPromosByCodeRedeem
+     * Build call for postMarketingPromosByCodeRedeem
      * @param code Code is the promo code from the path. (required)
      * @param redeemInput  (required)
      * @param _callback Callback for upload/download progress
@@ -3458,7 +3458,7 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1MarketingPromosByCodeRedeemCall(@javax.annotation.Nonnull String code, @javax.annotation.Nonnull RedeemInput redeemInput, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postMarketingPromosByCodeRedeemCall(@javax.annotation.Nonnull String code, @javax.annotation.Nonnull RedeemInput redeemInput, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3505,18 +3505,18 @@ public class MarketingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1MarketingPromosByCodeRedeemValidateBeforeCall(@javax.annotation.Nonnull String code, @javax.annotation.Nonnull RedeemInput redeemInput, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postMarketingPromosByCodeRedeemValidateBeforeCall(@javax.annotation.Nonnull String code, @javax.annotation.Nonnull RedeemInput redeemInput, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'code' is set
         if (code == null) {
-            throw new ApiException("Missing the required parameter 'code' when calling postV1MarketingPromosByCodeRedeem(Async)");
+            throw new ApiException("Missing the required parameter 'code' when calling postMarketingPromosByCodeRedeem(Async)");
         }
 
         // verify the required parameter 'redeemInput' is set
         if (redeemInput == null) {
-            throw new ApiException("Missing the required parameter 'redeemInput' when calling postV1MarketingPromosByCodeRedeem(Async)");
+            throw new ApiException("Missing the required parameter 'redeemInput' when calling postMarketingPromosByCodeRedeem(Async)");
         }
 
-        return postV1MarketingPromosByCodeRedeemCall(code, redeemInput, _callback);
+        return postMarketingPromosByCodeRedeemCall(code, redeemInput, _callback);
 
     }
 
@@ -3534,8 +3534,8 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public RedeemResult postV1MarketingPromosByCodeRedeem(@javax.annotation.Nonnull String code, @javax.annotation.Nonnull RedeemInput redeemInput) throws ApiException {
-        ApiResponse<RedeemResult> localVarResp = postV1MarketingPromosByCodeRedeemWithHttpInfo(code, redeemInput);
+    public RedeemResult postMarketingPromosByCodeRedeem(@javax.annotation.Nonnull String code, @javax.annotation.Nonnull RedeemInput redeemInput) throws ApiException {
+        ApiResponse<RedeemResult> localVarResp = postMarketingPromosByCodeRedeemWithHttpInfo(code, redeemInput);
         return localVarResp.getData();
     }
 
@@ -3553,8 +3553,8 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RedeemResult> postV1MarketingPromosByCodeRedeemWithHttpInfo(@javax.annotation.Nonnull String code, @javax.annotation.Nonnull RedeemInput redeemInput) throws ApiException {
-        okhttp3.Call localVarCall = postV1MarketingPromosByCodeRedeemValidateBeforeCall(code, redeemInput, null);
+    public ApiResponse<RedeemResult> postMarketingPromosByCodeRedeemWithHttpInfo(@javax.annotation.Nonnull String code, @javax.annotation.Nonnull RedeemInput redeemInput) throws ApiException {
+        okhttp3.Call localVarCall = postMarketingPromosByCodeRedeemValidateBeforeCall(code, redeemInput, null);
         Type localVarReturnType = new TypeToken<RedeemResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -3574,15 +3574,15 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1MarketingPromosByCodeRedeemAsync(@javax.annotation.Nonnull String code, @javax.annotation.Nonnull RedeemInput redeemInput, final ApiCallback<RedeemResult> _callback) throws ApiException {
+    public okhttp3.Call postMarketingPromosByCodeRedeemAsync(@javax.annotation.Nonnull String code, @javax.annotation.Nonnull RedeemInput redeemInput, final ApiCallback<RedeemResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1MarketingPromosByCodeRedeemValidateBeforeCall(code, redeemInput, _callback);
+        okhttp3.Call localVarCall = postMarketingPromosByCodeRedeemValidateBeforeCall(code, redeemInput, _callback);
         Type localVarReturnType = new TypeToken<RedeemResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1MarketingSequences
+     * Build call for postMarketingSequences
      * @param sequence  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -3594,7 +3594,7 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1MarketingSequencesCall(@javax.annotation.Nonnull Sequence sequence, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postMarketingSequencesCall(@javax.annotation.Nonnull Sequence sequence, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3640,13 +3640,13 @@ public class MarketingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1MarketingSequencesValidateBeforeCall(@javax.annotation.Nonnull Sequence sequence, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postMarketingSequencesValidateBeforeCall(@javax.annotation.Nonnull Sequence sequence, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'sequence' is set
         if (sequence == null) {
-            throw new ApiException("Missing the required parameter 'sequence' when calling postV1MarketingSequences(Async)");
+            throw new ApiException("Missing the required parameter 'sequence' when calling postMarketingSequences(Async)");
         }
 
-        return postV1MarketingSequencesCall(sequence, _callback);
+        return postMarketingSequencesCall(sequence, _callback);
 
     }
 
@@ -3663,8 +3663,8 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Sequence postV1MarketingSequences(@javax.annotation.Nonnull Sequence sequence) throws ApiException {
-        ApiResponse<Sequence> localVarResp = postV1MarketingSequencesWithHttpInfo(sequence);
+    public Sequence postMarketingSequences(@javax.annotation.Nonnull Sequence sequence) throws ApiException {
+        ApiResponse<Sequence> localVarResp = postMarketingSequencesWithHttpInfo(sequence);
         return localVarResp.getData();
     }
 
@@ -3681,8 +3681,8 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Sequence> postV1MarketingSequencesWithHttpInfo(@javax.annotation.Nonnull Sequence sequence) throws ApiException {
-        okhttp3.Call localVarCall = postV1MarketingSequencesValidateBeforeCall(sequence, null);
+    public ApiResponse<Sequence> postMarketingSequencesWithHttpInfo(@javax.annotation.Nonnull Sequence sequence) throws ApiException {
+        okhttp3.Call localVarCall = postMarketingSequencesValidateBeforeCall(sequence, null);
         Type localVarReturnType = new TypeToken<Sequence>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -3701,15 +3701,15 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1MarketingSequencesAsync(@javax.annotation.Nonnull Sequence sequence, final ApiCallback<Sequence> _callback) throws ApiException {
+    public okhttp3.Call postMarketingSequencesAsync(@javax.annotation.Nonnull Sequence sequence, final ApiCallback<Sequence> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1MarketingSequencesValidateBeforeCall(sequence, _callback);
+        okhttp3.Call localVarCall = postMarketingSequencesValidateBeforeCall(sequence, _callback);
         Type localVarReturnType = new TypeToken<Sequence>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1MarketingSequencesByIdEnroll
+     * Build call for postMarketingSequencesByIdEnroll
      * @param id ID is the sequence id from the path. (required)
      * @param enrollInput  (required)
      * @param _callback Callback for upload/download progress
@@ -3722,7 +3722,7 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1MarketingSequencesByIdEnrollCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull EnrollInput enrollInput, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postMarketingSequencesByIdEnrollCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull EnrollInput enrollInput, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3769,18 +3769,18 @@ public class MarketingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1MarketingSequencesByIdEnrollValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull EnrollInput enrollInput, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postMarketingSequencesByIdEnrollValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull EnrollInput enrollInput, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling postV1MarketingSequencesByIdEnroll(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling postMarketingSequencesByIdEnroll(Async)");
         }
 
         // verify the required parameter 'enrollInput' is set
         if (enrollInput == null) {
-            throw new ApiException("Missing the required parameter 'enrollInput' when calling postV1MarketingSequencesByIdEnroll(Async)");
+            throw new ApiException("Missing the required parameter 'enrollInput' when calling postMarketingSequencesByIdEnroll(Async)");
         }
 
-        return postV1MarketingSequencesByIdEnrollCall(id, enrollInput, _callback);
+        return postMarketingSequencesByIdEnrollCall(id, enrollInput, _callback);
 
     }
 
@@ -3798,8 +3798,8 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public EnrollResult postV1MarketingSequencesByIdEnroll(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull EnrollInput enrollInput) throws ApiException {
-        ApiResponse<EnrollResult> localVarResp = postV1MarketingSequencesByIdEnrollWithHttpInfo(id, enrollInput);
+    public EnrollResult postMarketingSequencesByIdEnroll(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull EnrollInput enrollInput) throws ApiException {
+        ApiResponse<EnrollResult> localVarResp = postMarketingSequencesByIdEnrollWithHttpInfo(id, enrollInput);
         return localVarResp.getData();
     }
 
@@ -3817,8 +3817,8 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<EnrollResult> postV1MarketingSequencesByIdEnrollWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull EnrollInput enrollInput) throws ApiException {
-        okhttp3.Call localVarCall = postV1MarketingSequencesByIdEnrollValidateBeforeCall(id, enrollInput, null);
+    public ApiResponse<EnrollResult> postMarketingSequencesByIdEnrollWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull EnrollInput enrollInput) throws ApiException {
+        okhttp3.Call localVarCall = postMarketingSequencesByIdEnrollValidateBeforeCall(id, enrollInput, null);
         Type localVarReturnType = new TypeToken<EnrollResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -3838,15 +3838,15 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1MarketingSequencesByIdEnrollAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull EnrollInput enrollInput, final ApiCallback<EnrollResult> _callback) throws ApiException {
+    public okhttp3.Call postMarketingSequencesByIdEnrollAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull EnrollInput enrollInput, final ApiCallback<EnrollResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1MarketingSequencesByIdEnrollValidateBeforeCall(id, enrollInput, _callback);
+        okhttp3.Call localVarCall = postMarketingSequencesByIdEnrollValidateBeforeCall(id, enrollInput, _callback);
         Type localVarReturnType = new TypeToken<EnrollResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1MarketingSequencesByIdEnrollmentsByEidCancel
+     * Build call for postMarketingSequencesByIdEnrollmentsByEidCancel
      * @param id ID is the sequence id from the path. (required)
      * @param eid EID is the enrollment id from the path, as returned by a single-address enroll. (required)
      * @param _callback Callback for upload/download progress
@@ -3859,7 +3859,7 @@ public class MarketingApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1MarketingSequencesByIdEnrollmentsByEidCancelCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String eid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postMarketingSequencesByIdEnrollmentsByEidCancelCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String eid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3905,18 +3905,18 @@ public class MarketingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1MarketingSequencesByIdEnrollmentsByEidCancelValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String eid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postMarketingSequencesByIdEnrollmentsByEidCancelValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String eid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling postV1MarketingSequencesByIdEnrollmentsByEidCancel(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling postMarketingSequencesByIdEnrollmentsByEidCancel(Async)");
         }
 
         // verify the required parameter 'eid' is set
         if (eid == null) {
-            throw new ApiException("Missing the required parameter 'eid' when calling postV1MarketingSequencesByIdEnrollmentsByEidCancel(Async)");
+            throw new ApiException("Missing the required parameter 'eid' when calling postMarketingSequencesByIdEnrollmentsByEidCancel(Async)");
         }
 
-        return postV1MarketingSequencesByIdEnrollmentsByEidCancelCall(id, eid, _callback);
+        return postMarketingSequencesByIdEnrollmentsByEidCancelCall(id, eid, _callback);
 
     }
 
@@ -3933,8 +3933,8 @@ public class MarketingApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public void postV1MarketingSequencesByIdEnrollmentsByEidCancel(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String eid) throws ApiException {
-        postV1MarketingSequencesByIdEnrollmentsByEidCancelWithHttpInfo(id, eid);
+    public void postMarketingSequencesByIdEnrollmentsByEidCancel(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String eid) throws ApiException {
+        postMarketingSequencesByIdEnrollmentsByEidCancelWithHttpInfo(id, eid);
     }
 
     /**
@@ -3951,8 +3951,8 @@ public class MarketingApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> postV1MarketingSequencesByIdEnrollmentsByEidCancelWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String eid) throws ApiException {
-        okhttp3.Call localVarCall = postV1MarketingSequencesByIdEnrollmentsByEidCancelValidateBeforeCall(id, eid, null);
+    public ApiResponse<Void> postMarketingSequencesByIdEnrollmentsByEidCancelWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String eid) throws ApiException {
+        okhttp3.Call localVarCall = postMarketingSequencesByIdEnrollmentsByEidCancelValidateBeforeCall(id, eid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -3971,14 +3971,14 @@ public class MarketingApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1MarketingSequencesByIdEnrollmentsByEidCancelAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String eid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postMarketingSequencesByIdEnrollmentsByEidCancelAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String eid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1MarketingSequencesByIdEnrollmentsByEidCancelValidateBeforeCall(id, eid, _callback);
+        okhttp3.Call localVarCall = postMarketingSequencesByIdEnrollmentsByEidCancelValidateBeforeCall(id, eid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1MarketingSequencesByIdStatus
+     * Build call for postMarketingSequencesByIdStatus
      * @param id ID is the sequence id from the path. (required)
      * @param sequenceStatus  (required)
      * @param _callback Callback for upload/download progress
@@ -3991,7 +3991,7 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1MarketingSequencesByIdStatusCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SequenceStatus sequenceStatus, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postMarketingSequencesByIdStatusCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SequenceStatus sequenceStatus, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4038,18 +4038,18 @@ public class MarketingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1MarketingSequencesByIdStatusValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SequenceStatus sequenceStatus, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postMarketingSequencesByIdStatusValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SequenceStatus sequenceStatus, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling postV1MarketingSequencesByIdStatus(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling postMarketingSequencesByIdStatus(Async)");
         }
 
         // verify the required parameter 'sequenceStatus' is set
         if (sequenceStatus == null) {
-            throw new ApiException("Missing the required parameter 'sequenceStatus' when calling postV1MarketingSequencesByIdStatus(Async)");
+            throw new ApiException("Missing the required parameter 'sequenceStatus' when calling postMarketingSequencesByIdStatus(Async)");
         }
 
-        return postV1MarketingSequencesByIdStatusCall(id, sequenceStatus, _callback);
+        return postMarketingSequencesByIdStatusCall(id, sequenceStatus, _callback);
 
     }
 
@@ -4067,8 +4067,8 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public SequenceStatus postV1MarketingSequencesByIdStatus(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SequenceStatus sequenceStatus) throws ApiException {
-        ApiResponse<SequenceStatus> localVarResp = postV1MarketingSequencesByIdStatusWithHttpInfo(id, sequenceStatus);
+    public SequenceStatus postMarketingSequencesByIdStatus(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SequenceStatus sequenceStatus) throws ApiException {
+        ApiResponse<SequenceStatus> localVarResp = postMarketingSequencesByIdStatusWithHttpInfo(id, sequenceStatus);
         return localVarResp.getData();
     }
 
@@ -4086,8 +4086,8 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SequenceStatus> postV1MarketingSequencesByIdStatusWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SequenceStatus sequenceStatus) throws ApiException {
-        okhttp3.Call localVarCall = postV1MarketingSequencesByIdStatusValidateBeforeCall(id, sequenceStatus, null);
+    public ApiResponse<SequenceStatus> postMarketingSequencesByIdStatusWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SequenceStatus sequenceStatus) throws ApiException {
+        okhttp3.Call localVarCall = postMarketingSequencesByIdStatusValidateBeforeCall(id, sequenceStatus, null);
         Type localVarReturnType = new TypeToken<SequenceStatus>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -4107,15 +4107,15 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1MarketingSequencesByIdStatusAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SequenceStatus sequenceStatus, final ApiCallback<SequenceStatus> _callback) throws ApiException {
+    public okhttp3.Call postMarketingSequencesByIdStatusAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull SequenceStatus sequenceStatus, final ApiCallback<SequenceStatus> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1MarketingSequencesByIdStatusValidateBeforeCall(id, sequenceStatus, _callback);
+        okhttp3.Call localVarCall = postMarketingSequencesByIdStatusValidateBeforeCall(id, sequenceStatus, _callback);
         Type localVarReturnType = new TypeToken<SequenceStatus>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1MarketingSequencesByIdSteps
+     * Build call for postMarketingSequencesByIdSteps
      * @param id SequenceID is the sequence id from the path (the route&#39;s :id). (required)
      * @param stepInput  (required)
      * @param _callback Callback for upload/download progress
@@ -4128,7 +4128,7 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1MarketingSequencesByIdStepsCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull StepInput stepInput, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postMarketingSequencesByIdStepsCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull StepInput stepInput, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4175,18 +4175,18 @@ public class MarketingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1MarketingSequencesByIdStepsValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull StepInput stepInput, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postMarketingSequencesByIdStepsValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull StepInput stepInput, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling postV1MarketingSequencesByIdSteps(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling postMarketingSequencesByIdSteps(Async)");
         }
 
         // verify the required parameter 'stepInput' is set
         if (stepInput == null) {
-            throw new ApiException("Missing the required parameter 'stepInput' when calling postV1MarketingSequencesByIdSteps(Async)");
+            throw new ApiException("Missing the required parameter 'stepInput' when calling postMarketingSequencesByIdSteps(Async)");
         }
 
-        return postV1MarketingSequencesByIdStepsCall(id, stepInput, _callback);
+        return postMarketingSequencesByIdStepsCall(id, stepInput, _callback);
 
     }
 
@@ -4204,8 +4204,8 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Step postV1MarketingSequencesByIdSteps(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull StepInput stepInput) throws ApiException {
-        ApiResponse<Step> localVarResp = postV1MarketingSequencesByIdStepsWithHttpInfo(id, stepInput);
+    public Step postMarketingSequencesByIdSteps(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull StepInput stepInput) throws ApiException {
+        ApiResponse<Step> localVarResp = postMarketingSequencesByIdStepsWithHttpInfo(id, stepInput);
         return localVarResp.getData();
     }
 
@@ -4223,8 +4223,8 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Step> postV1MarketingSequencesByIdStepsWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull StepInput stepInput) throws ApiException {
-        okhttp3.Call localVarCall = postV1MarketingSequencesByIdStepsValidateBeforeCall(id, stepInput, null);
+    public ApiResponse<Step> postMarketingSequencesByIdStepsWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull StepInput stepInput) throws ApiException {
+        okhttp3.Call localVarCall = postMarketingSequencesByIdStepsValidateBeforeCall(id, stepInput, null);
         Type localVarReturnType = new TypeToken<Step>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -4244,15 +4244,15 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1MarketingSequencesByIdStepsAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull StepInput stepInput, final ApiCallback<Step> _callback) throws ApiException {
+    public okhttp3.Call postMarketingSequencesByIdStepsAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull StepInput stepInput, final ApiCallback<Step> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1MarketingSequencesByIdStepsValidateBeforeCall(id, stepInput, _callback);
+        okhttp3.Call localVarCall = postMarketingSequencesByIdStepsValidateBeforeCall(id, stepInput, _callback);
         Type localVarReturnType = new TypeToken<Step>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1MarketingSuppressions
+     * Build call for postMarketingSuppressions
      * @param suppression  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -4264,7 +4264,7 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1MarketingSuppressionsCall(@javax.annotation.Nonnull Suppression suppression, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postMarketingSuppressionsCall(@javax.annotation.Nonnull Suppression suppression, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4310,13 +4310,13 @@ public class MarketingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1MarketingSuppressionsValidateBeforeCall(@javax.annotation.Nonnull Suppression suppression, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postMarketingSuppressionsValidateBeforeCall(@javax.annotation.Nonnull Suppression suppression, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'suppression' is set
         if (suppression == null) {
-            throw new ApiException("Missing the required parameter 'suppression' when calling postV1MarketingSuppressions(Async)");
+            throw new ApiException("Missing the required parameter 'suppression' when calling postMarketingSuppressions(Async)");
         }
 
-        return postV1MarketingSuppressionsCall(suppression, _callback);
+        return postMarketingSuppressionsCall(suppression, _callback);
 
     }
 
@@ -4333,8 +4333,8 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Suppression postV1MarketingSuppressions(@javax.annotation.Nonnull Suppression suppression) throws ApiException {
-        ApiResponse<Suppression> localVarResp = postV1MarketingSuppressionsWithHttpInfo(suppression);
+    public Suppression postMarketingSuppressions(@javax.annotation.Nonnull Suppression suppression) throws ApiException {
+        ApiResponse<Suppression> localVarResp = postMarketingSuppressionsWithHttpInfo(suppression);
         return localVarResp.getData();
     }
 
@@ -4351,8 +4351,8 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Suppression> postV1MarketingSuppressionsWithHttpInfo(@javax.annotation.Nonnull Suppression suppression) throws ApiException {
-        okhttp3.Call localVarCall = postV1MarketingSuppressionsValidateBeforeCall(suppression, null);
+    public ApiResponse<Suppression> postMarketingSuppressionsWithHttpInfo(@javax.annotation.Nonnull Suppression suppression) throws ApiException {
+        okhttp3.Call localVarCall = postMarketingSuppressionsValidateBeforeCall(suppression, null);
         Type localVarReturnType = new TypeToken<Suppression>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -4371,15 +4371,15 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1MarketingSuppressionsAsync(@javax.annotation.Nonnull Suppression suppression, final ApiCallback<Suppression> _callback) throws ApiException {
+    public okhttp3.Call postMarketingSuppressionsAsync(@javax.annotation.Nonnull Suppression suppression, final ApiCallback<Suppression> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1MarketingSuppressionsValidateBeforeCall(suppression, _callback);
+        okhttp3.Call localVarCall = postMarketingSuppressionsValidateBeforeCall(suppression, _callback);
         Type localVarReturnType = new TypeToken<Suppression>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1MarketingCalendarById
+     * Build call for putMarketingCalendarById
      * @param id ID is the server-assigned post id (\&quot;cal_\&quot; + 128 random bits). (required)
      * @param calendarPost  (required)
      * @param _callback Callback for upload/download progress
@@ -4392,7 +4392,7 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putV1MarketingCalendarByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CalendarPost calendarPost, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putMarketingCalendarByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CalendarPost calendarPost, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4439,18 +4439,18 @@ public class MarketingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1MarketingCalendarByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CalendarPost calendarPost, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putMarketingCalendarByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CalendarPost calendarPost, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling putV1MarketingCalendarById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling putMarketingCalendarById(Async)");
         }
 
         // verify the required parameter 'calendarPost' is set
         if (calendarPost == null) {
-            throw new ApiException("Missing the required parameter 'calendarPost' when calling putV1MarketingCalendarById(Async)");
+            throw new ApiException("Missing the required parameter 'calendarPost' when calling putMarketingCalendarById(Async)");
         }
 
-        return putV1MarketingCalendarByIdCall(id, calendarPost, _callback);
+        return putMarketingCalendarByIdCall(id, calendarPost, _callback);
 
     }
 
@@ -4468,8 +4468,8 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public CalendarPost putV1MarketingCalendarById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CalendarPost calendarPost) throws ApiException {
-        ApiResponse<CalendarPost> localVarResp = putV1MarketingCalendarByIdWithHttpInfo(id, calendarPost);
+    public CalendarPost putMarketingCalendarById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CalendarPost calendarPost) throws ApiException {
+        ApiResponse<CalendarPost> localVarResp = putMarketingCalendarByIdWithHttpInfo(id, calendarPost);
         return localVarResp.getData();
     }
 
@@ -4487,8 +4487,8 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CalendarPost> putV1MarketingCalendarByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CalendarPost calendarPost) throws ApiException {
-        okhttp3.Call localVarCall = putV1MarketingCalendarByIdValidateBeforeCall(id, calendarPost, null);
+    public ApiResponse<CalendarPost> putMarketingCalendarByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CalendarPost calendarPost) throws ApiException {
+        okhttp3.Call localVarCall = putMarketingCalendarByIdValidateBeforeCall(id, calendarPost, null);
         Type localVarReturnType = new TypeToken<CalendarPost>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -4508,15 +4508,15 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putV1MarketingCalendarByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CalendarPost calendarPost, final ApiCallback<CalendarPost> _callback) throws ApiException {
+    public okhttp3.Call putMarketingCalendarByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CalendarPost calendarPost, final ApiCallback<CalendarPost> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1MarketingCalendarByIdValidateBeforeCall(id, calendarPost, _callback);
+        okhttp3.Call localVarCall = putMarketingCalendarByIdValidateBeforeCall(id, calendarPost, _callback);
         Type localVarReturnType = new TypeToken<CalendarPost>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1MarketingCampaignsById
+     * Build call for putMarketingCampaignsById
      * @param id ID is the server-assigned campaign id (\&quot;camp_\&quot; + 128 random bits). (required)
      * @param campaign  (required)
      * @param _callback Callback for upload/download progress
@@ -4529,7 +4529,7 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putV1MarketingCampaignsByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Campaign campaign, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putMarketingCampaignsByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Campaign campaign, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4576,18 +4576,18 @@ public class MarketingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1MarketingCampaignsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Campaign campaign, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putMarketingCampaignsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Campaign campaign, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling putV1MarketingCampaignsById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling putMarketingCampaignsById(Async)");
         }
 
         // verify the required parameter 'campaign' is set
         if (campaign == null) {
-            throw new ApiException("Missing the required parameter 'campaign' when calling putV1MarketingCampaignsById(Async)");
+            throw new ApiException("Missing the required parameter 'campaign' when calling putMarketingCampaignsById(Async)");
         }
 
-        return putV1MarketingCampaignsByIdCall(id, campaign, _callback);
+        return putMarketingCampaignsByIdCall(id, campaign, _callback);
 
     }
 
@@ -4605,8 +4605,8 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Campaign putV1MarketingCampaignsById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Campaign campaign) throws ApiException {
-        ApiResponse<Campaign> localVarResp = putV1MarketingCampaignsByIdWithHttpInfo(id, campaign);
+    public Campaign putMarketingCampaignsById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Campaign campaign) throws ApiException {
+        ApiResponse<Campaign> localVarResp = putMarketingCampaignsByIdWithHttpInfo(id, campaign);
         return localVarResp.getData();
     }
 
@@ -4624,8 +4624,8 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Campaign> putV1MarketingCampaignsByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Campaign campaign) throws ApiException {
-        okhttp3.Call localVarCall = putV1MarketingCampaignsByIdValidateBeforeCall(id, campaign, null);
+    public ApiResponse<Campaign> putMarketingCampaignsByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Campaign campaign) throws ApiException {
+        okhttp3.Call localVarCall = putMarketingCampaignsByIdValidateBeforeCall(id, campaign, null);
         Type localVarReturnType = new TypeToken<Campaign>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -4645,9 +4645,9 @@ public class MarketingApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putV1MarketingCampaignsByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Campaign campaign, final ApiCallback<Campaign> _callback) throws ApiException {
+    public okhttp3.Call putMarketingCampaignsByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Campaign campaign, final ApiCallback<Campaign> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1MarketingCampaignsByIdValidateBeforeCall(id, campaign, _callback);
+        okhttp3.Call localVarCall = putMarketingCampaignsByIdValidateBeforeCall(id, campaign, _callback);
         Type localVarReturnType = new TypeToken<Campaign>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

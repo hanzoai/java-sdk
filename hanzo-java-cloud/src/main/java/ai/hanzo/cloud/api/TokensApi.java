@@ -73,7 +73,7 @@ public class TokensApi {
     }
 
     /**
-     * Build call for getV1TokensByChainByAddress
+     * Build call for getTokensByChainByAddress
      * @param chain Chain is the registry id. (required)
      * @param address Address is the account, 0x-prefixed. (required)
      * @param _callback Callback for upload/download progress
@@ -86,7 +86,7 @@ public class TokensApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1TokensByChainByAddressCall(@javax.annotation.Nonnull String chain, @javax.annotation.Nonnull String address, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getTokensByChainByAddressCall(@javax.annotation.Nonnull String chain, @javax.annotation.Nonnull String address, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -133,18 +133,18 @@ public class TokensApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1TokensByChainByAddressValidateBeforeCall(@javax.annotation.Nonnull String chain, @javax.annotation.Nonnull String address, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getTokensByChainByAddressValidateBeforeCall(@javax.annotation.Nonnull String chain, @javax.annotation.Nonnull String address, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'chain' is set
         if (chain == null) {
-            throw new ApiException("Missing the required parameter 'chain' when calling getV1TokensByChainByAddress(Async)");
+            throw new ApiException("Missing the required parameter 'chain' when calling getTokensByChainByAddress(Async)");
         }
 
         // verify the required parameter 'address' is set
         if (address == null) {
-            throw new ApiException("Missing the required parameter 'address' when calling getV1TokensByChainByAddress(Async)");
+            throw new ApiException("Missing the required parameter 'address' when calling getTokensByChainByAddress(Async)");
         }
 
-        return getV1TokensByChainByAddressCall(chain, address, _callback);
+        return getTokensByChainByAddressCall(chain, address, _callback);
 
     }
 
@@ -162,8 +162,8 @@ public class TokensApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Balances getV1TokensByChainByAddress(@javax.annotation.Nonnull String chain, @javax.annotation.Nonnull String address) throws ApiException {
-        ApiResponse<Balances> localVarResp = getV1TokensByChainByAddressWithHttpInfo(chain, address);
+    public Balances getTokensByChainByAddress(@javax.annotation.Nonnull String chain, @javax.annotation.Nonnull String address) throws ApiException {
+        ApiResponse<Balances> localVarResp = getTokensByChainByAddressWithHttpInfo(chain, address);
         return localVarResp.getData();
     }
 
@@ -181,8 +181,8 @@ public class TokensApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Balances> getV1TokensByChainByAddressWithHttpInfo(@javax.annotation.Nonnull String chain, @javax.annotation.Nonnull String address) throws ApiException {
-        okhttp3.Call localVarCall = getV1TokensByChainByAddressValidateBeforeCall(chain, address, null);
+    public ApiResponse<Balances> getTokensByChainByAddressWithHttpInfo(@javax.annotation.Nonnull String chain, @javax.annotation.Nonnull String address) throws ApiException {
+        okhttp3.Call localVarCall = getTokensByChainByAddressValidateBeforeCall(chain, address, null);
         Type localVarReturnType = new TypeToken<Balances>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -202,9 +202,9 @@ public class TokensApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1TokensByChainByAddressAsync(@javax.annotation.Nonnull String chain, @javax.annotation.Nonnull String address, final ApiCallback<Balances> _callback) throws ApiException {
+    public okhttp3.Call getTokensByChainByAddressAsync(@javax.annotation.Nonnull String chain, @javax.annotation.Nonnull String address, final ApiCallback<Balances> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1TokensByChainByAddressValidateBeforeCall(chain, address, _callback);
+        okhttp3.Call localVarCall = getTokensByChainByAddressValidateBeforeCall(chain, address, _callback);
         Type localVarReturnType = new TypeToken<Balances>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

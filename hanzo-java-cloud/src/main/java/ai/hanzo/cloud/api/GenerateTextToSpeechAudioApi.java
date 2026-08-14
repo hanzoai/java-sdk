@@ -72,12 +72,12 @@ public class GenerateTextToSpeechAudioApi {
     }
 
     /**
-     * Build call for postV1GenerateTextToSpeechAudio
+     * Build call for postGenerateTextToSpeechAudio
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1GenerateTextToSpeechAudioCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postGenerateTextToSpeechAudioCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -121,8 +121,8 @@ public class GenerateTextToSpeechAudioApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1GenerateTextToSpeechAudioValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1GenerateTextToSpeechAudioCall(_callback);
+    private okhttp3.Call postGenerateTextToSpeechAudioValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postGenerateTextToSpeechAudioCall(_callback);
 
     }
 
@@ -131,8 +131,8 @@ public class GenerateTextToSpeechAudioApi {
      * Convert text to speech
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1GenerateTextToSpeechAudio() throws ApiException {
-        postV1GenerateTextToSpeechAudioWithHttpInfo();
+    public void postGenerateTextToSpeechAudio() throws ApiException {
+        postGenerateTextToSpeechAudioWithHttpInfo();
     }
 
     /**
@@ -141,8 +141,8 @@ public class GenerateTextToSpeechAudioApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1GenerateTextToSpeechAudioWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1GenerateTextToSpeechAudioValidateBeforeCall(null);
+    public ApiResponse<Void> postGenerateTextToSpeechAudioWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postGenerateTextToSpeechAudioValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -153,9 +153,9 @@ public class GenerateTextToSpeechAudioApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1GenerateTextToSpeechAudioAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postGenerateTextToSpeechAudioAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1GenerateTextToSpeechAudioValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postGenerateTextToSpeechAudioValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

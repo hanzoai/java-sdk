@@ -85,7 +85,7 @@ public class CrmApi {
     }
 
     /**
-     * Build call for deleteV1CrmCompaniesById
+     * Build call for deleteCrmCompaniesById
      * @param id ID is the record to act on, from the path. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -97,7 +97,7 @@ public class CrmApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1CrmCompaniesByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteCrmCompaniesByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -142,13 +142,13 @@ public class CrmApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1CrmCompaniesByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteCrmCompaniesByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling deleteV1CrmCompaniesById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling deleteCrmCompaniesById(Async)");
         }
 
-        return deleteV1CrmCompaniesByIdCall(id, _callback);
+        return deleteCrmCompaniesByIdCall(id, _callback);
 
     }
 
@@ -164,8 +164,8 @@ public class CrmApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteV1CrmCompaniesById(@javax.annotation.Nonnull String id) throws ApiException {
-        deleteV1CrmCompaniesByIdWithHttpInfo(id);
+    public void deleteCrmCompaniesById(@javax.annotation.Nonnull String id) throws ApiException {
+        deleteCrmCompaniesByIdWithHttpInfo(id);
     }
 
     /**
@@ -181,8 +181,8 @@ public class CrmApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteV1CrmCompaniesByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1CrmCompaniesByIdValidateBeforeCall(id, null);
+    public ApiResponse<Void> deleteCrmCompaniesByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = deleteCrmCompaniesByIdValidateBeforeCall(id, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -200,14 +200,14 @@ public class CrmApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1CrmCompaniesByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteCrmCompaniesByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1CrmCompaniesByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = deleteCrmCompaniesByIdValidateBeforeCall(id, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for deleteV1CrmContactsById
+     * Build call for deleteCrmContactsById
      * @param id ID is the record to act on, from the path. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -219,7 +219,7 @@ public class CrmApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1CrmContactsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteCrmContactsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -264,13 +264,13 @@ public class CrmApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1CrmContactsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteCrmContactsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling deleteV1CrmContactsById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling deleteCrmContactsById(Async)");
         }
 
-        return deleteV1CrmContactsByIdCall(id, _callback);
+        return deleteCrmContactsByIdCall(id, _callback);
 
     }
 
@@ -286,8 +286,8 @@ public class CrmApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteV1CrmContactsById(@javax.annotation.Nonnull String id) throws ApiException {
-        deleteV1CrmContactsByIdWithHttpInfo(id);
+    public void deleteCrmContactsById(@javax.annotation.Nonnull String id) throws ApiException {
+        deleteCrmContactsByIdWithHttpInfo(id);
     }
 
     /**
@@ -303,8 +303,8 @@ public class CrmApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteV1CrmContactsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1CrmContactsByIdValidateBeforeCall(id, null);
+    public ApiResponse<Void> deleteCrmContactsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = deleteCrmContactsByIdValidateBeforeCall(id, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -322,14 +322,14 @@ public class CrmApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1CrmContactsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteCrmContactsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1CrmContactsByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = deleteCrmContactsByIdValidateBeforeCall(id, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for deleteV1CrmOpportunitiesById
+     * Build call for deleteCrmOpportunitiesById
      * @param id ID is the record to act on, from the path. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -341,7 +341,7 @@ public class CrmApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1CrmOpportunitiesByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteCrmOpportunitiesByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -386,13 +386,13 @@ public class CrmApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1CrmOpportunitiesByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteCrmOpportunitiesByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling deleteV1CrmOpportunitiesById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling deleteCrmOpportunitiesById(Async)");
         }
 
-        return deleteV1CrmOpportunitiesByIdCall(id, _callback);
+        return deleteCrmOpportunitiesByIdCall(id, _callback);
 
     }
 
@@ -408,8 +408,8 @@ public class CrmApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteV1CrmOpportunitiesById(@javax.annotation.Nonnull String id) throws ApiException {
-        deleteV1CrmOpportunitiesByIdWithHttpInfo(id);
+    public void deleteCrmOpportunitiesById(@javax.annotation.Nonnull String id) throws ApiException {
+        deleteCrmOpportunitiesByIdWithHttpInfo(id);
     }
 
     /**
@@ -425,8 +425,8 @@ public class CrmApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteV1CrmOpportunitiesByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1CrmOpportunitiesByIdValidateBeforeCall(id, null);
+    public ApiResponse<Void> deleteCrmOpportunitiesByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = deleteCrmOpportunitiesByIdValidateBeforeCall(id, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -444,14 +444,14 @@ public class CrmApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1CrmOpportunitiesByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteCrmOpportunitiesByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1CrmOpportunitiesByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = deleteCrmOpportunitiesByIdValidateBeforeCall(id, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CrmApplications
+     * Build call for getCrmApplications
      * @param stage Stage returns only the applications at that pipeline stage when set: applied, screened, qualified, credits-offered, onboarded or rejected. (optional)
      * @param limit Limit caps the rows returned: 200 by default, 1000 at most. (optional)
      * @param _callback Callback for upload/download progress
@@ -464,7 +464,7 @@ public class CrmApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CrmApplicationsCall(@javax.annotation.Nullable String stage, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCrmApplicationsCall(@javax.annotation.Nullable String stage, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -517,8 +517,8 @@ public class CrmApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CrmApplicationsValidateBeforeCall(@javax.annotation.Nullable String stage, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
-        return getV1CrmApplicationsCall(stage, limit, _callback);
+    private okhttp3.Call getCrmApplicationsValidateBeforeCall(@javax.annotation.Nullable String stage, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+        return getCrmApplicationsCall(stage, limit, _callback);
 
     }
 
@@ -536,8 +536,8 @@ public class CrmApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApplicationList getV1CrmApplications(@javax.annotation.Nullable String stage, @javax.annotation.Nullable Integer limit) throws ApiException {
-        ApiResponse<ApplicationList> localVarResp = getV1CrmApplicationsWithHttpInfo(stage, limit);
+    public ApplicationList getCrmApplications(@javax.annotation.Nullable String stage, @javax.annotation.Nullable Integer limit) throws ApiException {
+        ApiResponse<ApplicationList> localVarResp = getCrmApplicationsWithHttpInfo(stage, limit);
         return localVarResp.getData();
     }
 
@@ -555,8 +555,8 @@ public class CrmApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ApplicationList> getV1CrmApplicationsWithHttpInfo(@javax.annotation.Nullable String stage, @javax.annotation.Nullable Integer limit) throws ApiException {
-        okhttp3.Call localVarCall = getV1CrmApplicationsValidateBeforeCall(stage, limit, null);
+    public ApiResponse<ApplicationList> getCrmApplicationsWithHttpInfo(@javax.annotation.Nullable String stage, @javax.annotation.Nullable Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = getCrmApplicationsValidateBeforeCall(stage, limit, null);
         Type localVarReturnType = new TypeToken<ApplicationList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -576,15 +576,15 @@ public class CrmApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CrmApplicationsAsync(@javax.annotation.Nullable String stage, @javax.annotation.Nullable Integer limit, final ApiCallback<ApplicationList> _callback) throws ApiException {
+    public okhttp3.Call getCrmApplicationsAsync(@javax.annotation.Nullable String stage, @javax.annotation.Nullable Integer limit, final ApiCallback<ApplicationList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CrmApplicationsValidateBeforeCall(stage, limit, _callback);
+        okhttp3.Call localVarCall = getCrmApplicationsValidateBeforeCall(stage, limit, _callback);
         Type localVarReturnType = new TypeToken<ApplicationList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CrmApplicationsById
+     * Build call for getCrmApplicationsById
      * @param id ID is the record to act on, from the path. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -596,7 +596,7 @@ public class CrmApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CrmApplicationsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCrmApplicationsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -642,13 +642,13 @@ public class CrmApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CrmApplicationsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getCrmApplicationsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getV1CrmApplicationsById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getCrmApplicationsById(Async)");
         }
 
-        return getV1CrmApplicationsByIdCall(id, _callback);
+        return getCrmApplicationsByIdCall(id, _callback);
 
     }
 
@@ -665,8 +665,8 @@ public class CrmApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ProgramApplication getV1CrmApplicationsById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<ProgramApplication> localVarResp = getV1CrmApplicationsByIdWithHttpInfo(id);
+    public ProgramApplication getCrmApplicationsById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<ProgramApplication> localVarResp = getCrmApplicationsByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -683,8 +683,8 @@ public class CrmApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ProgramApplication> getV1CrmApplicationsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = getV1CrmApplicationsByIdValidateBeforeCall(id, null);
+    public ApiResponse<ProgramApplication> getCrmApplicationsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getCrmApplicationsByIdValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<ProgramApplication>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -703,15 +703,15 @@ public class CrmApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CrmApplicationsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<ProgramApplication> _callback) throws ApiException {
+    public okhttp3.Call getCrmApplicationsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<ProgramApplication> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CrmApplicationsByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = getCrmApplicationsByIdValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<ProgramApplication>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CrmCompanies
+     * Build call for getCrmCompanies
      * @param limit Limit caps the rows returned: 200 by default, 1000 at most. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -723,7 +723,7 @@ public class CrmApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CrmCompaniesCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCrmCompaniesCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -772,8 +772,8 @@ public class CrmApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CrmCompaniesValidateBeforeCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
-        return getV1CrmCompaniesCall(limit, _callback);
+    private okhttp3.Call getCrmCompaniesValidateBeforeCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+        return getCrmCompaniesCall(limit, _callback);
 
     }
 
@@ -790,8 +790,8 @@ public class CrmApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public CompanyList getV1CrmCompanies(@javax.annotation.Nullable Integer limit) throws ApiException {
-        ApiResponse<CompanyList> localVarResp = getV1CrmCompaniesWithHttpInfo(limit);
+    public CompanyList getCrmCompanies(@javax.annotation.Nullable Integer limit) throws ApiException {
+        ApiResponse<CompanyList> localVarResp = getCrmCompaniesWithHttpInfo(limit);
         return localVarResp.getData();
     }
 
@@ -808,8 +808,8 @@ public class CrmApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CompanyList> getV1CrmCompaniesWithHttpInfo(@javax.annotation.Nullable Integer limit) throws ApiException {
-        okhttp3.Call localVarCall = getV1CrmCompaniesValidateBeforeCall(limit, null);
+    public ApiResponse<CompanyList> getCrmCompaniesWithHttpInfo(@javax.annotation.Nullable Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = getCrmCompaniesValidateBeforeCall(limit, null);
         Type localVarReturnType = new TypeToken<CompanyList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -828,15 +828,15 @@ public class CrmApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CrmCompaniesAsync(@javax.annotation.Nullable Integer limit, final ApiCallback<CompanyList> _callback) throws ApiException {
+    public okhttp3.Call getCrmCompaniesAsync(@javax.annotation.Nullable Integer limit, final ApiCallback<CompanyList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CrmCompaniesValidateBeforeCall(limit, _callback);
+        okhttp3.Call localVarCall = getCrmCompaniesValidateBeforeCall(limit, _callback);
         Type localVarReturnType = new TypeToken<CompanyList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CrmCompaniesById
+     * Build call for getCrmCompaniesById
      * @param id ID is the record to act on, from the path. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -848,7 +848,7 @@ public class CrmApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CrmCompaniesByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCrmCompaniesByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -894,13 +894,13 @@ public class CrmApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CrmCompaniesByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getCrmCompaniesByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getV1CrmCompaniesById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getCrmCompaniesById(Async)");
         }
 
-        return getV1CrmCompaniesByIdCall(id, _callback);
+        return getCrmCompaniesByIdCall(id, _callback);
 
     }
 
@@ -917,8 +917,8 @@ public class CrmApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Company getV1CrmCompaniesById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<Company> localVarResp = getV1CrmCompaniesByIdWithHttpInfo(id);
+    public Company getCrmCompaniesById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<Company> localVarResp = getCrmCompaniesByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -935,8 +935,8 @@ public class CrmApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Company> getV1CrmCompaniesByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = getV1CrmCompaniesByIdValidateBeforeCall(id, null);
+    public ApiResponse<Company> getCrmCompaniesByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getCrmCompaniesByIdValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<Company>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -955,15 +955,15 @@ public class CrmApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CrmCompaniesByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Company> _callback) throws ApiException {
+    public okhttp3.Call getCrmCompaniesByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Company> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CrmCompaniesByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = getCrmCompaniesByIdValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<Company>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CrmContacts
+     * Build call for getCrmContacts
      * @param companyId CompanyID returns only the contacts at that company when set. (optional)
      * @param limit Limit caps the rows returned: 200 by default, 1000 at most. (optional)
      * @param _callback Callback for upload/download progress
@@ -976,7 +976,7 @@ public class CrmApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CrmContactsCall(@javax.annotation.Nullable String companyId, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCrmContactsCall(@javax.annotation.Nullable String companyId, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1029,8 +1029,8 @@ public class CrmApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CrmContactsValidateBeforeCall(@javax.annotation.Nullable String companyId, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
-        return getV1CrmContactsCall(companyId, limit, _callback);
+    private okhttp3.Call getCrmContactsValidateBeforeCall(@javax.annotation.Nullable String companyId, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+        return getCrmContactsCall(companyId, limit, _callback);
 
     }
 
@@ -1048,8 +1048,8 @@ public class CrmApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ContactList getV1CrmContacts(@javax.annotation.Nullable String companyId, @javax.annotation.Nullable Integer limit) throws ApiException {
-        ApiResponse<ContactList> localVarResp = getV1CrmContactsWithHttpInfo(companyId, limit);
+    public ContactList getCrmContacts(@javax.annotation.Nullable String companyId, @javax.annotation.Nullable Integer limit) throws ApiException {
+        ApiResponse<ContactList> localVarResp = getCrmContactsWithHttpInfo(companyId, limit);
         return localVarResp.getData();
     }
 
@@ -1067,8 +1067,8 @@ public class CrmApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ContactList> getV1CrmContactsWithHttpInfo(@javax.annotation.Nullable String companyId, @javax.annotation.Nullable Integer limit) throws ApiException {
-        okhttp3.Call localVarCall = getV1CrmContactsValidateBeforeCall(companyId, limit, null);
+    public ApiResponse<ContactList> getCrmContactsWithHttpInfo(@javax.annotation.Nullable String companyId, @javax.annotation.Nullable Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = getCrmContactsValidateBeforeCall(companyId, limit, null);
         Type localVarReturnType = new TypeToken<ContactList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1088,15 +1088,15 @@ public class CrmApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CrmContactsAsync(@javax.annotation.Nullable String companyId, @javax.annotation.Nullable Integer limit, final ApiCallback<ContactList> _callback) throws ApiException {
+    public okhttp3.Call getCrmContactsAsync(@javax.annotation.Nullable String companyId, @javax.annotation.Nullable Integer limit, final ApiCallback<ContactList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CrmContactsValidateBeforeCall(companyId, limit, _callback);
+        okhttp3.Call localVarCall = getCrmContactsValidateBeforeCall(companyId, limit, _callback);
         Type localVarReturnType = new TypeToken<ContactList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CrmContactsById
+     * Build call for getCrmContactsById
      * @param id ID is the record to act on, from the path. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1108,7 +1108,7 @@ public class CrmApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CrmContactsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCrmContactsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1154,13 +1154,13 @@ public class CrmApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CrmContactsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getCrmContactsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getV1CrmContactsById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getCrmContactsById(Async)");
         }
 
-        return getV1CrmContactsByIdCall(id, _callback);
+        return getCrmContactsByIdCall(id, _callback);
 
     }
 
@@ -1177,8 +1177,8 @@ public class CrmApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Contact getV1CrmContactsById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<Contact> localVarResp = getV1CrmContactsByIdWithHttpInfo(id);
+    public Contact getCrmContactsById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<Contact> localVarResp = getCrmContactsByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -1195,8 +1195,8 @@ public class CrmApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Contact> getV1CrmContactsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = getV1CrmContactsByIdValidateBeforeCall(id, null);
+    public ApiResponse<Contact> getCrmContactsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getCrmContactsByIdValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<Contact>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1215,15 +1215,15 @@ public class CrmApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CrmContactsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Contact> _callback) throws ApiException {
+    public okhttp3.Call getCrmContactsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Contact> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CrmContactsByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = getCrmContactsByIdValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<Contact>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CrmOpportunities
+     * Build call for getCrmOpportunities
      * @param stage Stage returns only the opportunities at that pipeline stage when set (NEW, SCREENING, MEETING, PROPOSAL or CUSTOMER; case-insensitive). (optional)
      * @param limit Limit caps the rows returned: 200 by default, 1000 at most. (optional)
      * @param _callback Callback for upload/download progress
@@ -1236,7 +1236,7 @@ public class CrmApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CrmOpportunitiesCall(@javax.annotation.Nullable String stage, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCrmOpportunitiesCall(@javax.annotation.Nullable String stage, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1289,8 +1289,8 @@ public class CrmApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CrmOpportunitiesValidateBeforeCall(@javax.annotation.Nullable String stage, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
-        return getV1CrmOpportunitiesCall(stage, limit, _callback);
+    private okhttp3.Call getCrmOpportunitiesValidateBeforeCall(@javax.annotation.Nullable String stage, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+        return getCrmOpportunitiesCall(stage, limit, _callback);
 
     }
 
@@ -1308,8 +1308,8 @@ public class CrmApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public OppList getV1CrmOpportunities(@javax.annotation.Nullable String stage, @javax.annotation.Nullable Integer limit) throws ApiException {
-        ApiResponse<OppList> localVarResp = getV1CrmOpportunitiesWithHttpInfo(stage, limit);
+    public OppList getCrmOpportunities(@javax.annotation.Nullable String stage, @javax.annotation.Nullable Integer limit) throws ApiException {
+        ApiResponse<OppList> localVarResp = getCrmOpportunitiesWithHttpInfo(stage, limit);
         return localVarResp.getData();
     }
 
@@ -1327,8 +1327,8 @@ public class CrmApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<OppList> getV1CrmOpportunitiesWithHttpInfo(@javax.annotation.Nullable String stage, @javax.annotation.Nullable Integer limit) throws ApiException {
-        okhttp3.Call localVarCall = getV1CrmOpportunitiesValidateBeforeCall(stage, limit, null);
+    public ApiResponse<OppList> getCrmOpportunitiesWithHttpInfo(@javax.annotation.Nullable String stage, @javax.annotation.Nullable Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = getCrmOpportunitiesValidateBeforeCall(stage, limit, null);
         Type localVarReturnType = new TypeToken<OppList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1348,15 +1348,15 @@ public class CrmApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CrmOpportunitiesAsync(@javax.annotation.Nullable String stage, @javax.annotation.Nullable Integer limit, final ApiCallback<OppList> _callback) throws ApiException {
+    public okhttp3.Call getCrmOpportunitiesAsync(@javax.annotation.Nullable String stage, @javax.annotation.Nullable Integer limit, final ApiCallback<OppList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CrmOpportunitiesValidateBeforeCall(stage, limit, _callback);
+        okhttp3.Call localVarCall = getCrmOpportunitiesValidateBeforeCall(stage, limit, _callback);
         Type localVarReturnType = new TypeToken<OppList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CrmOpportunitiesById
+     * Build call for getCrmOpportunitiesById
      * @param id ID is the record to act on, from the path. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1368,7 +1368,7 @@ public class CrmApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CrmOpportunitiesByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCrmOpportunitiesByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1414,13 +1414,13 @@ public class CrmApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CrmOpportunitiesByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getCrmOpportunitiesByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getV1CrmOpportunitiesById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getCrmOpportunitiesById(Async)");
         }
 
-        return getV1CrmOpportunitiesByIdCall(id, _callback);
+        return getCrmOpportunitiesByIdCall(id, _callback);
 
     }
 
@@ -1437,8 +1437,8 @@ public class CrmApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Opportunity getV1CrmOpportunitiesById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<Opportunity> localVarResp = getV1CrmOpportunitiesByIdWithHttpInfo(id);
+    public Opportunity getCrmOpportunitiesById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<Opportunity> localVarResp = getCrmOpportunitiesByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -1455,8 +1455,8 @@ public class CrmApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Opportunity> getV1CrmOpportunitiesByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = getV1CrmOpportunitiesByIdValidateBeforeCall(id, null);
+    public ApiResponse<Opportunity> getCrmOpportunitiesByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getCrmOpportunitiesByIdValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<Opportunity>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1475,15 +1475,15 @@ public class CrmApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CrmOpportunitiesByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Opportunity> _callback) throws ApiException {
+    public okhttp3.Call getCrmOpportunitiesByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Opportunity> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CrmOpportunitiesByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = getCrmOpportunitiesByIdValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<Opportunity>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CrmSummary
+     * Build call for getCrmSummary
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1494,7 +1494,7 @@ public class CrmApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CrmSummaryCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCrmSummaryCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1539,8 +1539,8 @@ public class CrmApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CrmSummaryValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1CrmSummaryCall(_callback);
+    private okhttp3.Call getCrmSummaryValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getCrmSummaryCall(_callback);
 
     }
 
@@ -1556,8 +1556,8 @@ public class CrmApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public CrmSummary getV1CrmSummary() throws ApiException {
-        ApiResponse<CrmSummary> localVarResp = getV1CrmSummaryWithHttpInfo();
+    public CrmSummary getCrmSummary() throws ApiException {
+        ApiResponse<CrmSummary> localVarResp = getCrmSummaryWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -1573,8 +1573,8 @@ public class CrmApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CrmSummary> getV1CrmSummaryWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1CrmSummaryValidateBeforeCall(null);
+    public ApiResponse<CrmSummary> getCrmSummaryWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getCrmSummaryValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<CrmSummary>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1592,15 +1592,15 @@ public class CrmApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CrmSummaryAsync(final ApiCallback<CrmSummary> _callback) throws ApiException {
+    public okhttp3.Call getCrmSummaryAsync(final ApiCallback<CrmSummary> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CrmSummaryValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getCrmSummaryValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<CrmSummary>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for patchV1CrmApplicationsById
+     * Build call for patchCrmApplicationsById
      * @param id ID is the application to move, from the path. (required)
      * @param patchApplicationIn  (required)
      * @param _callback Callback for upload/download progress
@@ -1613,7 +1613,7 @@ public class CrmApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call patchV1CrmApplicationsByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull PatchApplicationIn patchApplicationIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call patchCrmApplicationsByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull PatchApplicationIn patchApplicationIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1660,18 +1660,18 @@ public class CrmApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchV1CrmApplicationsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull PatchApplicationIn patchApplicationIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call patchCrmApplicationsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull PatchApplicationIn patchApplicationIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling patchV1CrmApplicationsById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling patchCrmApplicationsById(Async)");
         }
 
         // verify the required parameter 'patchApplicationIn' is set
         if (patchApplicationIn == null) {
-            throw new ApiException("Missing the required parameter 'patchApplicationIn' when calling patchV1CrmApplicationsById(Async)");
+            throw new ApiException("Missing the required parameter 'patchApplicationIn' when calling patchCrmApplicationsById(Async)");
         }
 
-        return patchV1CrmApplicationsByIdCall(id, patchApplicationIn, _callback);
+        return patchCrmApplicationsByIdCall(id, patchApplicationIn, _callback);
 
     }
 
@@ -1689,8 +1689,8 @@ public class CrmApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ProgramApplication patchV1CrmApplicationsById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull PatchApplicationIn patchApplicationIn) throws ApiException {
-        ApiResponse<ProgramApplication> localVarResp = patchV1CrmApplicationsByIdWithHttpInfo(id, patchApplicationIn);
+    public ProgramApplication patchCrmApplicationsById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull PatchApplicationIn patchApplicationIn) throws ApiException {
+        ApiResponse<ProgramApplication> localVarResp = patchCrmApplicationsByIdWithHttpInfo(id, patchApplicationIn);
         return localVarResp.getData();
     }
 
@@ -1708,8 +1708,8 @@ public class CrmApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ProgramApplication> patchV1CrmApplicationsByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull PatchApplicationIn patchApplicationIn) throws ApiException {
-        okhttp3.Call localVarCall = patchV1CrmApplicationsByIdValidateBeforeCall(id, patchApplicationIn, null);
+    public ApiResponse<ProgramApplication> patchCrmApplicationsByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull PatchApplicationIn patchApplicationIn) throws ApiException {
+        okhttp3.Call localVarCall = patchCrmApplicationsByIdValidateBeforeCall(id, patchApplicationIn, null);
         Type localVarReturnType = new TypeToken<ProgramApplication>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1729,20 +1729,20 @@ public class CrmApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call patchV1CrmApplicationsByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull PatchApplicationIn patchApplicationIn, final ApiCallback<ProgramApplication> _callback) throws ApiException {
+    public okhttp3.Call patchCrmApplicationsByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull PatchApplicationIn patchApplicationIn, final ApiCallback<ProgramApplication> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchV1CrmApplicationsByIdValidateBeforeCall(id, patchApplicationIn, _callback);
+        okhttp3.Call localVarCall = patchCrmApplicationsByIdValidateBeforeCall(id, patchApplicationIn, _callback);
         Type localVarReturnType = new TypeToken<ProgramApplication>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CrmApplications
+     * Build call for postCrmApplications
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1CrmApplicationsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCrmApplicationsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1786,8 +1786,8 @@ public class CrmApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CrmApplicationsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1CrmApplicationsCall(_callback);
+    private okhttp3.Call postCrmApplicationsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postCrmApplicationsCall(_callback);
 
     }
 
@@ -1796,8 +1796,8 @@ public class CrmApi {
      * Files an application to the Startup Program and answers the id and pipeline stage it landed at.  This is the ONE unauthenticated route in crm. It takes no principal and never reads a caller org: the application is filed against the DEPLOYMENT&#39;s own program org — the brand, hanzo unless white-labelled — so there is no tenant to name and none to leak. Reading the application back is staff-only and lives elsewhere.  company, contactName and a parseable email are required; everything else is optional context. Re-submitting the same (email, company) REFRESHES the existing application instead of filing a second one, so an impatient applicant cannot duplicate their own lead — that is a 200 where a first submission is a 201. A filled &#x60;hp&#x60; honeypot field is answered exactly like a success and stored nowhere, so a bot cannot tell a drop from an accept.  Filing is not screening: the application lands at stage &#x60;applied&#x60; with its AI screen still pending, and the screen runs afterwards on its own clock. A company and contact are also projected into the program org&#39;s ordinary CRM lists, best-effort — that projection failing does not fail the application. Bodies over 64 KiB are refused, and submissions are rate-limited.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1CrmApplications() throws ApiException {
-        postV1CrmApplicationsWithHttpInfo();
+    public void postCrmApplications() throws ApiException {
+        postCrmApplicationsWithHttpInfo();
     }
 
     /**
@@ -1806,8 +1806,8 @@ public class CrmApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1CrmApplicationsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1CrmApplicationsValidateBeforeCall(null);
+    public ApiResponse<Void> postCrmApplicationsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postCrmApplicationsValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1818,14 +1818,14 @@ public class CrmApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1CrmApplicationsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postCrmApplicationsAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CrmApplicationsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postCrmApplicationsValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CrmCompanies
+     * Build call for postCrmCompanies
      * @param companyReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1837,7 +1837,7 @@ public class CrmApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CrmCompaniesCall(@javax.annotation.Nonnull CompanyReq companyReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCrmCompaniesCall(@javax.annotation.Nonnull CompanyReq companyReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1883,13 +1883,13 @@ public class CrmApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CrmCompaniesValidateBeforeCall(@javax.annotation.Nonnull CompanyReq companyReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postCrmCompaniesValidateBeforeCall(@javax.annotation.Nonnull CompanyReq companyReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'companyReq' is set
         if (companyReq == null) {
-            throw new ApiException("Missing the required parameter 'companyReq' when calling postV1CrmCompanies(Async)");
+            throw new ApiException("Missing the required parameter 'companyReq' when calling postCrmCompanies(Async)");
         }
 
-        return postV1CrmCompaniesCall(companyReq, _callback);
+        return postCrmCompaniesCall(companyReq, _callback);
 
     }
 
@@ -1906,8 +1906,8 @@ public class CrmApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public Company postV1CrmCompanies(@javax.annotation.Nonnull CompanyReq companyReq) throws ApiException {
-        ApiResponse<Company> localVarResp = postV1CrmCompaniesWithHttpInfo(companyReq);
+    public Company postCrmCompanies(@javax.annotation.Nonnull CompanyReq companyReq) throws ApiException {
+        ApiResponse<Company> localVarResp = postCrmCompaniesWithHttpInfo(companyReq);
         return localVarResp.getData();
     }
 
@@ -1924,8 +1924,8 @@ public class CrmApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Company> postV1CrmCompaniesWithHttpInfo(@javax.annotation.Nonnull CompanyReq companyReq) throws ApiException {
-        okhttp3.Call localVarCall = postV1CrmCompaniesValidateBeforeCall(companyReq, null);
+    public ApiResponse<Company> postCrmCompaniesWithHttpInfo(@javax.annotation.Nonnull CompanyReq companyReq) throws ApiException {
+        okhttp3.Call localVarCall = postCrmCompaniesValidateBeforeCall(companyReq, null);
         Type localVarReturnType = new TypeToken<Company>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1944,15 +1944,15 @@ public class CrmApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CrmCompaniesAsync(@javax.annotation.Nonnull CompanyReq companyReq, final ApiCallback<Company> _callback) throws ApiException {
+    public okhttp3.Call postCrmCompaniesAsync(@javax.annotation.Nonnull CompanyReq companyReq, final ApiCallback<Company> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CrmCompaniesValidateBeforeCall(companyReq, _callback);
+        okhttp3.Call localVarCall = postCrmCompaniesValidateBeforeCall(companyReq, _callback);
         Type localVarReturnType = new TypeToken<Company>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CrmContacts
+     * Build call for postCrmContacts
      * @param contactReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1964,7 +1964,7 @@ public class CrmApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CrmContactsCall(@javax.annotation.Nonnull ContactReq contactReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCrmContactsCall(@javax.annotation.Nonnull ContactReq contactReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2010,13 +2010,13 @@ public class CrmApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CrmContactsValidateBeforeCall(@javax.annotation.Nonnull ContactReq contactReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postCrmContactsValidateBeforeCall(@javax.annotation.Nonnull ContactReq contactReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'contactReq' is set
         if (contactReq == null) {
-            throw new ApiException("Missing the required parameter 'contactReq' when calling postV1CrmContacts(Async)");
+            throw new ApiException("Missing the required parameter 'contactReq' when calling postCrmContacts(Async)");
         }
 
-        return postV1CrmContactsCall(contactReq, _callback);
+        return postCrmContactsCall(contactReq, _callback);
 
     }
 
@@ -2033,8 +2033,8 @@ public class CrmApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public Contact postV1CrmContacts(@javax.annotation.Nonnull ContactReq contactReq) throws ApiException {
-        ApiResponse<Contact> localVarResp = postV1CrmContactsWithHttpInfo(contactReq);
+    public Contact postCrmContacts(@javax.annotation.Nonnull ContactReq contactReq) throws ApiException {
+        ApiResponse<Contact> localVarResp = postCrmContactsWithHttpInfo(contactReq);
         return localVarResp.getData();
     }
 
@@ -2051,8 +2051,8 @@ public class CrmApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Contact> postV1CrmContactsWithHttpInfo(@javax.annotation.Nonnull ContactReq contactReq) throws ApiException {
-        okhttp3.Call localVarCall = postV1CrmContactsValidateBeforeCall(contactReq, null);
+    public ApiResponse<Contact> postCrmContactsWithHttpInfo(@javax.annotation.Nonnull ContactReq contactReq) throws ApiException {
+        okhttp3.Call localVarCall = postCrmContactsValidateBeforeCall(contactReq, null);
         Type localVarReturnType = new TypeToken<Contact>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2071,15 +2071,15 @@ public class CrmApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CrmContactsAsync(@javax.annotation.Nonnull ContactReq contactReq, final ApiCallback<Contact> _callback) throws ApiException {
+    public okhttp3.Call postCrmContactsAsync(@javax.annotation.Nonnull ContactReq contactReq, final ApiCallback<Contact> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CrmContactsValidateBeforeCall(contactReq, _callback);
+        okhttp3.Call localVarCall = postCrmContactsValidateBeforeCall(contactReq, _callback);
         Type localVarReturnType = new TypeToken<Contact>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CrmOpportunities
+     * Build call for postCrmOpportunities
      * @param oppReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2091,7 +2091,7 @@ public class CrmApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CrmOpportunitiesCall(@javax.annotation.Nonnull OppReq oppReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCrmOpportunitiesCall(@javax.annotation.Nonnull OppReq oppReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2137,13 +2137,13 @@ public class CrmApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CrmOpportunitiesValidateBeforeCall(@javax.annotation.Nonnull OppReq oppReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postCrmOpportunitiesValidateBeforeCall(@javax.annotation.Nonnull OppReq oppReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'oppReq' is set
         if (oppReq == null) {
-            throw new ApiException("Missing the required parameter 'oppReq' when calling postV1CrmOpportunities(Async)");
+            throw new ApiException("Missing the required parameter 'oppReq' when calling postCrmOpportunities(Async)");
         }
 
-        return postV1CrmOpportunitiesCall(oppReq, _callback);
+        return postCrmOpportunitiesCall(oppReq, _callback);
 
     }
 
@@ -2160,8 +2160,8 @@ public class CrmApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public Opportunity postV1CrmOpportunities(@javax.annotation.Nonnull OppReq oppReq) throws ApiException {
-        ApiResponse<Opportunity> localVarResp = postV1CrmOpportunitiesWithHttpInfo(oppReq);
+    public Opportunity postCrmOpportunities(@javax.annotation.Nonnull OppReq oppReq) throws ApiException {
+        ApiResponse<Opportunity> localVarResp = postCrmOpportunitiesWithHttpInfo(oppReq);
         return localVarResp.getData();
     }
 
@@ -2178,8 +2178,8 @@ public class CrmApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Opportunity> postV1CrmOpportunitiesWithHttpInfo(@javax.annotation.Nonnull OppReq oppReq) throws ApiException {
-        okhttp3.Call localVarCall = postV1CrmOpportunitiesValidateBeforeCall(oppReq, null);
+    public ApiResponse<Opportunity> postCrmOpportunitiesWithHttpInfo(@javax.annotation.Nonnull OppReq oppReq) throws ApiException {
+        okhttp3.Call localVarCall = postCrmOpportunitiesValidateBeforeCall(oppReq, null);
         Type localVarReturnType = new TypeToken<Opportunity>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2198,15 +2198,15 @@ public class CrmApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CrmOpportunitiesAsync(@javax.annotation.Nonnull OppReq oppReq, final ApiCallback<Opportunity> _callback) throws ApiException {
+    public okhttp3.Call postCrmOpportunitiesAsync(@javax.annotation.Nonnull OppReq oppReq, final ApiCallback<Opportunity> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CrmOpportunitiesValidateBeforeCall(oppReq, _callback);
+        okhttp3.Call localVarCall = postCrmOpportunitiesValidateBeforeCall(oppReq, _callback);
         Type localVarReturnType = new TypeToken<Opportunity>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1CrmCompaniesById
+     * Build call for putCrmCompaniesById
      * @param id ID names the company to update and comes from the path. A create ignores it: the server mints the id. (required)
      * @param companyReq  (required)
      * @param _callback Callback for upload/download progress
@@ -2219,7 +2219,7 @@ public class CrmApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putV1CrmCompaniesByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CompanyReq companyReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putCrmCompaniesByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CompanyReq companyReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2266,18 +2266,18 @@ public class CrmApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1CrmCompaniesByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CompanyReq companyReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putCrmCompaniesByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CompanyReq companyReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling putV1CrmCompaniesById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling putCrmCompaniesById(Async)");
         }
 
         // verify the required parameter 'companyReq' is set
         if (companyReq == null) {
-            throw new ApiException("Missing the required parameter 'companyReq' when calling putV1CrmCompaniesById(Async)");
+            throw new ApiException("Missing the required parameter 'companyReq' when calling putCrmCompaniesById(Async)");
         }
 
-        return putV1CrmCompaniesByIdCall(id, companyReq, _callback);
+        return putCrmCompaniesByIdCall(id, companyReq, _callback);
 
     }
 
@@ -2295,8 +2295,8 @@ public class CrmApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Company putV1CrmCompaniesById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CompanyReq companyReq) throws ApiException {
-        ApiResponse<Company> localVarResp = putV1CrmCompaniesByIdWithHttpInfo(id, companyReq);
+    public Company putCrmCompaniesById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CompanyReq companyReq) throws ApiException {
+        ApiResponse<Company> localVarResp = putCrmCompaniesByIdWithHttpInfo(id, companyReq);
         return localVarResp.getData();
     }
 
@@ -2314,8 +2314,8 @@ public class CrmApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Company> putV1CrmCompaniesByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CompanyReq companyReq) throws ApiException {
-        okhttp3.Call localVarCall = putV1CrmCompaniesByIdValidateBeforeCall(id, companyReq, null);
+    public ApiResponse<Company> putCrmCompaniesByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CompanyReq companyReq) throws ApiException {
+        okhttp3.Call localVarCall = putCrmCompaniesByIdValidateBeforeCall(id, companyReq, null);
         Type localVarReturnType = new TypeToken<Company>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2335,15 +2335,15 @@ public class CrmApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putV1CrmCompaniesByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CompanyReq companyReq, final ApiCallback<Company> _callback) throws ApiException {
+    public okhttp3.Call putCrmCompaniesByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CompanyReq companyReq, final ApiCallback<Company> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1CrmCompaniesByIdValidateBeforeCall(id, companyReq, _callback);
+        okhttp3.Call localVarCall = putCrmCompaniesByIdValidateBeforeCall(id, companyReq, _callback);
         Type localVarReturnType = new TypeToken<Company>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1CrmContactsById
+     * Build call for putCrmContactsById
      * @param id ID names the contact to update and comes from the path. A create ignores it: the server mints the id. (required)
      * @param contactReq  (required)
      * @param _callback Callback for upload/download progress
@@ -2356,7 +2356,7 @@ public class CrmApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putV1CrmContactsByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ContactReq contactReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putCrmContactsByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ContactReq contactReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2403,18 +2403,18 @@ public class CrmApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1CrmContactsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ContactReq contactReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putCrmContactsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ContactReq contactReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling putV1CrmContactsById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling putCrmContactsById(Async)");
         }
 
         // verify the required parameter 'contactReq' is set
         if (contactReq == null) {
-            throw new ApiException("Missing the required parameter 'contactReq' when calling putV1CrmContactsById(Async)");
+            throw new ApiException("Missing the required parameter 'contactReq' when calling putCrmContactsById(Async)");
         }
 
-        return putV1CrmContactsByIdCall(id, contactReq, _callback);
+        return putCrmContactsByIdCall(id, contactReq, _callback);
 
     }
 
@@ -2432,8 +2432,8 @@ public class CrmApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Contact putV1CrmContactsById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ContactReq contactReq) throws ApiException {
-        ApiResponse<Contact> localVarResp = putV1CrmContactsByIdWithHttpInfo(id, contactReq);
+    public Contact putCrmContactsById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ContactReq contactReq) throws ApiException {
+        ApiResponse<Contact> localVarResp = putCrmContactsByIdWithHttpInfo(id, contactReq);
         return localVarResp.getData();
     }
 
@@ -2451,8 +2451,8 @@ public class CrmApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Contact> putV1CrmContactsByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ContactReq contactReq) throws ApiException {
-        okhttp3.Call localVarCall = putV1CrmContactsByIdValidateBeforeCall(id, contactReq, null);
+    public ApiResponse<Contact> putCrmContactsByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ContactReq contactReq) throws ApiException {
+        okhttp3.Call localVarCall = putCrmContactsByIdValidateBeforeCall(id, contactReq, null);
         Type localVarReturnType = new TypeToken<Contact>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2472,15 +2472,15 @@ public class CrmApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putV1CrmContactsByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ContactReq contactReq, final ApiCallback<Contact> _callback) throws ApiException {
+    public okhttp3.Call putCrmContactsByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ContactReq contactReq, final ApiCallback<Contact> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1CrmContactsByIdValidateBeforeCall(id, contactReq, _callback);
+        okhttp3.Call localVarCall = putCrmContactsByIdValidateBeforeCall(id, contactReq, _callback);
         Type localVarReturnType = new TypeToken<Contact>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1CrmOpportunitiesById
+     * Build call for putCrmOpportunitiesById
      * @param id ID names the opportunity to update and comes from the path. A create ignores it: the server mints the id. (required)
      * @param oppReq  (required)
      * @param _callback Callback for upload/download progress
@@ -2493,7 +2493,7 @@ public class CrmApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putV1CrmOpportunitiesByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull OppReq oppReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putCrmOpportunitiesByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull OppReq oppReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2540,18 +2540,18 @@ public class CrmApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1CrmOpportunitiesByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull OppReq oppReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putCrmOpportunitiesByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull OppReq oppReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling putV1CrmOpportunitiesById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling putCrmOpportunitiesById(Async)");
         }
 
         // verify the required parameter 'oppReq' is set
         if (oppReq == null) {
-            throw new ApiException("Missing the required parameter 'oppReq' when calling putV1CrmOpportunitiesById(Async)");
+            throw new ApiException("Missing the required parameter 'oppReq' when calling putCrmOpportunitiesById(Async)");
         }
 
-        return putV1CrmOpportunitiesByIdCall(id, oppReq, _callback);
+        return putCrmOpportunitiesByIdCall(id, oppReq, _callback);
 
     }
 
@@ -2569,8 +2569,8 @@ public class CrmApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Opportunity putV1CrmOpportunitiesById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull OppReq oppReq) throws ApiException {
-        ApiResponse<Opportunity> localVarResp = putV1CrmOpportunitiesByIdWithHttpInfo(id, oppReq);
+    public Opportunity putCrmOpportunitiesById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull OppReq oppReq) throws ApiException {
+        ApiResponse<Opportunity> localVarResp = putCrmOpportunitiesByIdWithHttpInfo(id, oppReq);
         return localVarResp.getData();
     }
 
@@ -2588,8 +2588,8 @@ public class CrmApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Opportunity> putV1CrmOpportunitiesByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull OppReq oppReq) throws ApiException {
-        okhttp3.Call localVarCall = putV1CrmOpportunitiesByIdValidateBeforeCall(id, oppReq, null);
+    public ApiResponse<Opportunity> putCrmOpportunitiesByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull OppReq oppReq) throws ApiException {
+        okhttp3.Call localVarCall = putCrmOpportunitiesByIdValidateBeforeCall(id, oppReq, null);
         Type localVarReturnType = new TypeToken<Opportunity>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2609,9 +2609,9 @@ public class CrmApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putV1CrmOpportunitiesByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull OppReq oppReq, final ApiCallback<Opportunity> _callback) throws ApiException {
+    public okhttp3.Call putCrmOpportunitiesByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull OppReq oppReq, final ApiCallback<Opportunity> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1CrmOpportunitiesByIdValidateBeforeCall(id, oppReq, _callback);
+        okhttp3.Call localVarCall = putCrmOpportunitiesByIdValidateBeforeCall(id, oppReq, _callback);
         Type localVarReturnType = new TypeToken<Opportunity>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

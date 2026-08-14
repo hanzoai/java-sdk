@@ -72,12 +72,12 @@ public class ModelsApi {
     }
 
     /**
-     * Build call for getV1Models
+     * Build call for getModels
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1ModelsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getModelsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -121,8 +121,8 @@ public class ModelsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1ModelsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1ModelsCall(_callback);
+    private okhttp3.Call getModelsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getModelsCall(_callback);
 
     }
 
@@ -131,8 +131,8 @@ public class ModelsApi {
      * Returns the list of available models from the routing table.  PUBLIC BY DESIGN, AND IT DOES NOT AUTHENTICATE — that is the whole contract, so it is stated here rather than left to be inferred. The catalogue is the same for everyone (listAvailableModels takes no principal), docs.hanzo.ai fetches it from the browser, and every policy layer around it already says so out loud: the authz filter lists \&quot;models\&quot; as public, filter_balance refuses to gate it (a 402 here was a console-wide outage), the rate limiter excludes it, and cloud&#39;s spend.Reachable carries /v1/models/ as \&quot;the model catalog the shell reads for discovery\&quot;.  SO THE Authorization HEADER IS NOT AN ADMISSION CHECK HERE. It is read for ONE thing — annotating gated SKUs with the caller&#39;s own access standing — and annotation degrades to nothing when there is no verified principal.  It used to hold a \&quot;require authentication\&quot; gate that authenticated nobody: it rejected an ABSENT credential and a MALFORMED one, then accepted any string that merely looked like a key. &#x60;Bearer sk-&#x60; followed by 36 zeroes returned 200 in production; so did a JWT three days expired. It was a shape check wearing an auth check&#39;s clothes, and its cost was diagnostic: /v1/models is the natural \&quot;is my auth working?\&quot; probe, and answering 200 to a dead credential sent people debugging the wrong system. A public endpoint must not appear to validate. Either check the credential or ignore it — this one ignores it, deliberately and visibly.  Removing that gate discloses nothing new: the catalogue was already reachable by anyone willing to type three characters, so there is no confidentiality delta, only an honesty one.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1Models() throws ApiException {
-        getV1ModelsWithHttpInfo();
+    public void getModels() throws ApiException {
+        getModelsWithHttpInfo();
     }
 
     /**
@@ -141,8 +141,8 @@ public class ModelsApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1ModelsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1ModelsValidateBeforeCall(null);
+    public ApiResponse<Void> getModelsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getModelsValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -153,20 +153,20 @@ public class ModelsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1ModelsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getModelsAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1ModelsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getModelsValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1ModelsByModelAccess
+     * Build call for getModelsByModelAccess
      * @param model  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1ModelsByModelAccessCall(@javax.annotation.Nonnull String model, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getModelsByModelAccessCall(@javax.annotation.Nonnull String model, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -211,13 +211,13 @@ public class ModelsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1ModelsByModelAccessValidateBeforeCall(@javax.annotation.Nonnull String model, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getModelsByModelAccessValidateBeforeCall(@javax.annotation.Nonnull String model, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'model' is set
         if (model == null) {
-            throw new ApiException("Missing the required parameter 'model' when calling getV1ModelsByModelAccess(Async)");
+            throw new ApiException("Missing the required parameter 'model' when calling getModelsByModelAccess(Async)");
         }
 
-        return getV1ModelsByModelAccessCall(model, _callback);
+        return getModelsByModelAccessCall(model, _callback);
 
     }
 
@@ -227,8 +227,8 @@ public class ModelsApi {
      * @param model  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1ModelsByModelAccess(@javax.annotation.Nonnull String model) throws ApiException {
-        getV1ModelsByModelAccessWithHttpInfo(model);
+    public void getModelsByModelAccess(@javax.annotation.Nonnull String model) throws ApiException {
+        getModelsByModelAccessWithHttpInfo(model);
     }
 
     /**
@@ -238,8 +238,8 @@ public class ModelsApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1ModelsByModelAccessWithHttpInfo(@javax.annotation.Nonnull String model) throws ApiException {
-        okhttp3.Call localVarCall = getV1ModelsByModelAccessValidateBeforeCall(model, null);
+    public ApiResponse<Void> getModelsByModelAccessWithHttpInfo(@javax.annotation.Nonnull String model) throws ApiException {
+        okhttp3.Call localVarCall = getModelsByModelAccessValidateBeforeCall(model, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -251,19 +251,19 @@ public class ModelsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1ModelsByModelAccessAsync(@javax.annotation.Nonnull String model, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getModelsByModelAccessAsync(@javax.annotation.Nonnull String model, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1ModelsByModelAccessValidateBeforeCall(model, _callback);
+        okhttp3.Call localVarCall = getModelsByModelAccessValidateBeforeCall(model, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1ModelsProviders
+     * Build call for getModelsProviders
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1ModelsProvidersCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getModelsProvidersCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -307,8 +307,8 @@ public class ModelsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1ModelsProvidersValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1ModelsProvidersCall(_callback);
+    private okhttp3.Call getModelsProvidersValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getModelsProvidersCall(_callback);
 
     }
 
@@ -317,8 +317,8 @@ public class ModelsApi {
      * Public, secret-free list of the providers serving the models that GET /v1/models lists — the same source, projected. Safe unauthenticated: no keys, URLs, or config are returned, and it reports a SET of names, never which provider serves which model.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1ModelsProviders() throws ApiException {
-        getV1ModelsProvidersWithHttpInfo();
+    public void getModelsProviders() throws ApiException {
+        getModelsProvidersWithHttpInfo();
     }
 
     /**
@@ -327,8 +327,8 @@ public class ModelsApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1ModelsProvidersWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1ModelsProvidersValidateBeforeCall(null);
+    public ApiResponse<Void> getModelsProvidersWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getModelsProvidersValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -339,20 +339,20 @@ public class ModelsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1ModelsProvidersAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getModelsProvidersAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1ModelsProvidersValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getModelsProvidersValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1ModelsByModelAccess
+     * Build call for postModelsByModelAccess
      * @param model  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1ModelsByModelAccessCall(@javax.annotation.Nonnull String model, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postModelsByModelAccessCall(@javax.annotation.Nonnull String model, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -397,13 +397,13 @@ public class ModelsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1ModelsByModelAccessValidateBeforeCall(@javax.annotation.Nonnull String model, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postModelsByModelAccessValidateBeforeCall(@javax.annotation.Nonnull String model, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'model' is set
         if (model == null) {
-            throw new ApiException("Missing the required parameter 'model' when calling postV1ModelsByModelAccess(Async)");
+            throw new ApiException("Missing the required parameter 'model' when calling postModelsByModelAccess(Async)");
         }
 
-        return postV1ModelsByModelAccessCall(model, _callback);
+        return postModelsByModelAccessCall(model, _callback);
 
     }
 
@@ -413,8 +413,8 @@ public class ModelsApi {
      * @param model  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1ModelsByModelAccess(@javax.annotation.Nonnull String model) throws ApiException {
-        postV1ModelsByModelAccessWithHttpInfo(model);
+    public void postModelsByModelAccess(@javax.annotation.Nonnull String model) throws ApiException {
+        postModelsByModelAccessWithHttpInfo(model);
     }
 
     /**
@@ -424,8 +424,8 @@ public class ModelsApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1ModelsByModelAccessWithHttpInfo(@javax.annotation.Nonnull String model) throws ApiException {
-        okhttp3.Call localVarCall = postV1ModelsByModelAccessValidateBeforeCall(model, null);
+    public ApiResponse<Void> postModelsByModelAccessWithHttpInfo(@javax.annotation.Nonnull String model) throws ApiException {
+        okhttp3.Call localVarCall = postModelsByModelAccessValidateBeforeCall(model, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -437,9 +437,9 @@ public class ModelsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1ModelsByModelAccessAsync(@javax.annotation.Nonnull String model, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postModelsByModelAccessAsync(@javax.annotation.Nonnull String model, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1ModelsByModelAccessValidateBeforeCall(model, _callback);
+        okhttp3.Call localVarCall = postModelsByModelAccessValidateBeforeCall(model, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

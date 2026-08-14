@@ -75,7 +75,7 @@ public class BalancersApi {
     }
 
     /**
-     * Build call for deleteV1BalancersById
+     * Build call for deleteBalancersById
      * @param id ID is the DigitalOcean resource id (a UUID), from the path. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -87,7 +87,7 @@ public class BalancersApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1BalancersByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteBalancersByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -132,13 +132,13 @@ public class BalancersApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1BalancersByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteBalancersByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling deleteV1BalancersById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling deleteBalancersById(Async)");
         }
 
-        return deleteV1BalancersByIdCall(id, _callback);
+        return deleteBalancersByIdCall(id, _callback);
 
     }
 
@@ -154,8 +154,8 @@ public class BalancersApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteV1BalancersById(@javax.annotation.Nonnull String id) throws ApiException {
-        deleteV1BalancersByIdWithHttpInfo(id);
+    public void deleteBalancersById(@javax.annotation.Nonnull String id) throws ApiException {
+        deleteBalancersByIdWithHttpInfo(id);
     }
 
     /**
@@ -171,8 +171,8 @@ public class BalancersApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteV1BalancersByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1BalancersByIdValidateBeforeCall(id, null);
+    public ApiResponse<Void> deleteBalancersByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = deleteBalancersByIdValidateBeforeCall(id, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -190,14 +190,14 @@ public class BalancersApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1BalancersByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteBalancersByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1BalancersByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = deleteBalancersByIdValidateBeforeCall(id, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1Balancers
+     * Build call for getBalancers
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -208,7 +208,7 @@ public class BalancersApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1BalancersCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getBalancersCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -253,8 +253,8 @@ public class BalancersApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1BalancersValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1BalancersCall(_callback);
+    private okhttp3.Call getBalancersValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getBalancersCall(_callback);
 
     }
 
@@ -270,8 +270,8 @@ public class BalancersApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public LbList getV1Balancers() throws ApiException {
-        ApiResponse<LbList> localVarResp = getV1BalancersWithHttpInfo();
+    public LbList getBalancers() throws ApiException {
+        ApiResponse<LbList> localVarResp = getBalancersWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -287,8 +287,8 @@ public class BalancersApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<LbList> getV1BalancersWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1BalancersValidateBeforeCall(null);
+    public ApiResponse<LbList> getBalancersWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getBalancersValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<LbList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -306,15 +306,15 @@ public class BalancersApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1BalancersAsync(final ApiCallback<LbList> _callback) throws ApiException {
+    public okhttp3.Call getBalancersAsync(final ApiCallback<LbList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1BalancersValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getBalancersValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<LbList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1BalancersById
+     * Build call for getBalancersById
      * @param id ID is the DigitalOcean resource id (a UUID), from the path. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -326,7 +326,7 @@ public class BalancersApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1BalancersByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getBalancersByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -372,13 +372,13 @@ public class BalancersApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1BalancersByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getBalancersByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getV1BalancersById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getBalancersById(Async)");
         }
 
-        return getV1BalancersByIdCall(id, _callback);
+        return getBalancersByIdCall(id, _callback);
 
     }
 
@@ -395,8 +395,8 @@ public class BalancersApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public LbView getV1BalancersById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<LbView> localVarResp = getV1BalancersByIdWithHttpInfo(id);
+    public LbView getBalancersById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<LbView> localVarResp = getBalancersByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -413,8 +413,8 @@ public class BalancersApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<LbView> getV1BalancersByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = getV1BalancersByIdValidateBeforeCall(id, null);
+    public ApiResponse<LbView> getBalancersByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getBalancersByIdValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<LbView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -433,15 +433,15 @@ public class BalancersApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1BalancersByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<LbView> _callback) throws ApiException {
+    public okhttp3.Call getBalancersByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<LbView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1BalancersByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = getBalancersByIdValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<LbView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1Balancers
+     * Build call for postBalancers
      * @param createLBReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -453,7 +453,7 @@ public class BalancersApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1BalancersCall(@javax.annotation.Nonnull CreateLBReq createLBReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postBalancersCall(@javax.annotation.Nonnull CreateLBReq createLBReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -499,13 +499,13 @@ public class BalancersApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1BalancersValidateBeforeCall(@javax.annotation.Nonnull CreateLBReq createLBReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postBalancersValidateBeforeCall(@javax.annotation.Nonnull CreateLBReq createLBReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'createLBReq' is set
         if (createLBReq == null) {
-            throw new ApiException("Missing the required parameter 'createLBReq' when calling postV1Balancers(Async)");
+            throw new ApiException("Missing the required parameter 'createLBReq' when calling postBalancers(Async)");
         }
 
-        return postV1BalancersCall(createLBReq, _callback);
+        return postBalancersCall(createLBReq, _callback);
 
     }
 
@@ -522,8 +522,8 @@ public class BalancersApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public LbView postV1Balancers(@javax.annotation.Nonnull CreateLBReq createLBReq) throws ApiException {
-        ApiResponse<LbView> localVarResp = postV1BalancersWithHttpInfo(createLBReq);
+    public LbView postBalancers(@javax.annotation.Nonnull CreateLBReq createLBReq) throws ApiException {
+        ApiResponse<LbView> localVarResp = postBalancersWithHttpInfo(createLBReq);
         return localVarResp.getData();
     }
 
@@ -540,8 +540,8 @@ public class BalancersApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<LbView> postV1BalancersWithHttpInfo(@javax.annotation.Nonnull CreateLBReq createLBReq) throws ApiException {
-        okhttp3.Call localVarCall = postV1BalancersValidateBeforeCall(createLBReq, null);
+    public ApiResponse<LbView> postBalancersWithHttpInfo(@javax.annotation.Nonnull CreateLBReq createLBReq) throws ApiException {
+        okhttp3.Call localVarCall = postBalancersValidateBeforeCall(createLBReq, null);
         Type localVarReturnType = new TypeToken<LbView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -560,9 +560,9 @@ public class BalancersApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1BalancersAsync(@javax.annotation.Nonnull CreateLBReq createLBReq, final ApiCallback<LbView> _callback) throws ApiException {
+    public okhttp3.Call postBalancersAsync(@javax.annotation.Nonnull CreateLBReq createLBReq, final ApiCallback<LbView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1BalancersValidateBeforeCall(createLBReq, _callback);
+        okhttp3.Call localVarCall = postBalancersValidateBeforeCall(createLBReq, _callback);
         Type localVarReturnType = new TypeToken<LbView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

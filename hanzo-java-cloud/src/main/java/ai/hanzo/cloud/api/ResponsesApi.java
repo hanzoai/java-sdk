@@ -72,12 +72,12 @@ public class ResponsesApi {
     }
 
     /**
-     * Build call for postV1Responses
+     * Build call for postResponses
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1ResponsesCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postResponsesCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -121,8 +121,8 @@ public class ResponsesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1ResponsesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1ResponsesCall(_callback);
+    private okhttp3.Call postResponsesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postResponsesCall(_callback);
 
     }
 
@@ -131,8 +131,8 @@ public class ResponsesApi {
      * Implements POST /v1/responses. The converted request is passed to ChatCompletions and an installed ResponseWriter converts its OpenAI chat JSON or SSE back into Responses JSON/SSE on the fly.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1Responses() throws ApiException {
-        postV1ResponsesWithHttpInfo();
+    public void postResponses() throws ApiException {
+        postResponsesWithHttpInfo();
     }
 
     /**
@@ -141,8 +141,8 @@ public class ResponsesApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1ResponsesWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1ResponsesValidateBeforeCall(null);
+    public ApiResponse<Void> postResponsesWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postResponsesValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -153,9 +153,9 @@ public class ResponsesApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1ResponsesAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postResponsesAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1ResponsesValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postResponsesValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

@@ -73,13 +73,13 @@ public class CatalogApi {
     }
 
     /**
-     * Build call for deleteV1CatalogEntriesByWildcard1
+     * Build call for deleteCatalogEntriesByWildcard1
      * @param wildcard1  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call deleteV1CatalogEntriesByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteCatalogEntriesByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -124,13 +124,13 @@ public class CatalogApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1CatalogEntriesByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteCatalogEntriesByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'wildcard1' is set
         if (wildcard1 == null) {
-            throw new ApiException("Missing the required parameter 'wildcard1' when calling deleteV1CatalogEntriesByWildcard1(Async)");
+            throw new ApiException("Missing the required parameter 'wildcard1' when calling deleteCatalogEntriesByWildcard1(Async)");
         }
 
-        return deleteV1CatalogEntriesByWildcard1Call(wildcard1, _callback);
+        return deleteCatalogEntriesByWildcard1Call(wildcard1, _callback);
 
     }
 
@@ -140,8 +140,8 @@ public class CatalogApi {
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void deleteV1CatalogEntriesByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        deleteV1CatalogEntriesByWildcard1WithHttpInfo(wildcard1);
+    public void deleteCatalogEntriesByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        deleteCatalogEntriesByWildcard1WithHttpInfo(wildcard1);
     }
 
     /**
@@ -151,8 +151,8 @@ public class CatalogApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> deleteV1CatalogEntriesByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1CatalogEntriesByWildcard1ValidateBeforeCall(wildcard1, null);
+    public ApiResponse<Void> deleteCatalogEntriesByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        okhttp3.Call localVarCall = deleteCatalogEntriesByWildcard1ValidateBeforeCall(wildcard1, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -164,14 +164,14 @@ public class CatalogApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call deleteV1CatalogEntriesByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteCatalogEntriesByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1CatalogEntriesByWildcard1ValidateBeforeCall(wildcard1, _callback);
+        okhttp3.Call localVarCall = deleteCatalogEntriesByWildcard1ValidateBeforeCall(wildcard1, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1Catalog
+     * Build call for getCatalog
      * @param q Q is the free-text query the lexical index scores relevance on. Empty is a browse rather than a search — the same request either way. (optional)
      * @param org Org narrows to one builder org: hanzo | lux | zoo. Case-insensitive. (optional)
      * @param kind Kind narrows to repo | site. Case-insensitive. (optional)
@@ -192,7 +192,7 @@ public class CatalogApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CatalogCall(@javax.annotation.Nullable String q, @javax.annotation.Nullable String org, @javax.annotation.Nullable String kind, @javax.annotation.Nullable String origin, @javax.annotation.Nullable String archetype, @javax.annotation.Nullable String language, @javax.annotation.Nullable String template, @javax.annotation.Nullable String forkable, @javax.annotation.Nullable String limit, @javax.annotation.Nullable String offset, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCatalogCall(@javax.annotation.Nullable String q, @javax.annotation.Nullable String org, @javax.annotation.Nullable String kind, @javax.annotation.Nullable String origin, @javax.annotation.Nullable String archetype, @javax.annotation.Nullable String language, @javax.annotation.Nullable String template, @javax.annotation.Nullable String forkable, @javax.annotation.Nullable String limit, @javax.annotation.Nullable String offset, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -277,8 +277,8 @@ public class CatalogApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CatalogValidateBeforeCall(@javax.annotation.Nullable String q, @javax.annotation.Nullable String org, @javax.annotation.Nullable String kind, @javax.annotation.Nullable String origin, @javax.annotation.Nullable String archetype, @javax.annotation.Nullable String language, @javax.annotation.Nullable String template, @javax.annotation.Nullable String forkable, @javax.annotation.Nullable String limit, @javax.annotation.Nullable String offset, final ApiCallback _callback) throws ApiException {
-        return getV1CatalogCall(q, org, kind, origin, archetype, language, template, forkable, limit, offset, _callback);
+    private okhttp3.Call getCatalogValidateBeforeCall(@javax.annotation.Nullable String q, @javax.annotation.Nullable String org, @javax.annotation.Nullable String kind, @javax.annotation.Nullable String origin, @javax.annotation.Nullable String archetype, @javax.annotation.Nullable String language, @javax.annotation.Nullable String template, @javax.annotation.Nullable String forkable, @javax.annotation.Nullable String limit, @javax.annotation.Nullable String offset, final ApiCallback _callback) throws ApiException {
+        return getCatalogCall(q, org, kind, origin, archetype, language, template, forkable, limit, offset, _callback);
 
     }
 
@@ -304,8 +304,8 @@ public class CatalogApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public CatalogPage getV1Catalog(@javax.annotation.Nullable String q, @javax.annotation.Nullable String org, @javax.annotation.Nullable String kind, @javax.annotation.Nullable String origin, @javax.annotation.Nullable String archetype, @javax.annotation.Nullable String language, @javax.annotation.Nullable String template, @javax.annotation.Nullable String forkable, @javax.annotation.Nullable String limit, @javax.annotation.Nullable String offset) throws ApiException {
-        ApiResponse<CatalogPage> localVarResp = getV1CatalogWithHttpInfo(q, org, kind, origin, archetype, language, template, forkable, limit, offset);
+    public CatalogPage getCatalog(@javax.annotation.Nullable String q, @javax.annotation.Nullable String org, @javax.annotation.Nullable String kind, @javax.annotation.Nullable String origin, @javax.annotation.Nullable String archetype, @javax.annotation.Nullable String language, @javax.annotation.Nullable String template, @javax.annotation.Nullable String forkable, @javax.annotation.Nullable String limit, @javax.annotation.Nullable String offset) throws ApiException {
+        ApiResponse<CatalogPage> localVarResp = getCatalogWithHttpInfo(q, org, kind, origin, archetype, language, template, forkable, limit, offset);
         return localVarResp.getData();
     }
 
@@ -331,8 +331,8 @@ public class CatalogApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CatalogPage> getV1CatalogWithHttpInfo(@javax.annotation.Nullable String q, @javax.annotation.Nullable String org, @javax.annotation.Nullable String kind, @javax.annotation.Nullable String origin, @javax.annotation.Nullable String archetype, @javax.annotation.Nullable String language, @javax.annotation.Nullable String template, @javax.annotation.Nullable String forkable, @javax.annotation.Nullable String limit, @javax.annotation.Nullable String offset) throws ApiException {
-        okhttp3.Call localVarCall = getV1CatalogValidateBeforeCall(q, org, kind, origin, archetype, language, template, forkable, limit, offset, null);
+    public ApiResponse<CatalogPage> getCatalogWithHttpInfo(@javax.annotation.Nullable String q, @javax.annotation.Nullable String org, @javax.annotation.Nullable String kind, @javax.annotation.Nullable String origin, @javax.annotation.Nullable String archetype, @javax.annotation.Nullable String language, @javax.annotation.Nullable String template, @javax.annotation.Nullable String forkable, @javax.annotation.Nullable String limit, @javax.annotation.Nullable String offset) throws ApiException {
+        okhttp3.Call localVarCall = getCatalogValidateBeforeCall(q, org, kind, origin, archetype, language, template, forkable, limit, offset, null);
         Type localVarReturnType = new TypeToken<CatalogPage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -360,20 +360,20 @@ public class CatalogApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CatalogAsync(@javax.annotation.Nullable String q, @javax.annotation.Nullable String org, @javax.annotation.Nullable String kind, @javax.annotation.Nullable String origin, @javax.annotation.Nullable String archetype, @javax.annotation.Nullable String language, @javax.annotation.Nullable String template, @javax.annotation.Nullable String forkable, @javax.annotation.Nullable String limit, @javax.annotation.Nullable String offset, final ApiCallback<CatalogPage> _callback) throws ApiException {
+    public okhttp3.Call getCatalogAsync(@javax.annotation.Nullable String q, @javax.annotation.Nullable String org, @javax.annotation.Nullable String kind, @javax.annotation.Nullable String origin, @javax.annotation.Nullable String archetype, @javax.annotation.Nullable String language, @javax.annotation.Nullable String template, @javax.annotation.Nullable String forkable, @javax.annotation.Nullable String limit, @javax.annotation.Nullable String offset, final ApiCallback<CatalogPage> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CatalogValidateBeforeCall(q, org, kind, origin, archetype, language, template, forkable, limit, offset, _callback);
+        okhttp3.Call localVarCall = getCatalogValidateBeforeCall(q, org, kind, origin, archetype, language, template, forkable, limit, offset, _callback);
         Type localVarReturnType = new TypeToken<CatalogPage>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CatalogEntries
+     * Build call for getCatalogEntries
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1CatalogEntriesCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCatalogEntriesCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -417,8 +417,8 @@ public class CatalogApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CatalogEntriesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1CatalogEntriesCall(_callback);
+    private okhttp3.Call getCatalogEntriesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getCatalogEntriesCall(_callback);
 
     }
 
@@ -427,8 +427,8 @@ public class CatalogApi {
      * Returns every catalog row as stored — the admin view, which unlike the public projection includes entries that are not published. It is cross-tenant platform data, so the gate is a PLATFORM admin: an org-level admin is refused 403 no matter how privileged they are inside their own org, enforced by the handler itself and not only by the route&#39;s token middleware.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1CatalogEntries() throws ApiException {
-        getV1CatalogEntriesWithHttpInfo();
+    public void getCatalogEntries() throws ApiException {
+        getCatalogEntriesWithHttpInfo();
     }
 
     /**
@@ -437,8 +437,8 @@ public class CatalogApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1CatalogEntriesWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1CatalogEntriesValidateBeforeCall(null);
+    public ApiResponse<Void> getCatalogEntriesWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getCatalogEntriesValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -449,19 +449,19 @@ public class CatalogApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1CatalogEntriesAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getCatalogEntriesAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CatalogEntriesValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getCatalogEntriesValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CatalogEntries
+     * Build call for postCatalogEntries
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1CatalogEntriesCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCatalogEntriesCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -505,8 +505,8 @@ public class CatalogApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CatalogEntriesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1CatalogEntriesCall(_callback);
+    private okhttp3.Call postCatalogEntriesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postCatalogEntriesCall(_callback);
 
     }
 
@@ -515,8 +515,8 @@ public class CatalogApi {
      * Creates a catalog row from the body and answers it at 201. The slug is required and is the globally-unique catalog key, so a second entry claiming a slug already in use is refused 409 rather than shadowing the first. PLATFORM admin only — this is cross-tenant pricing and packaging data, and an org-level admin is refused 403.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1CatalogEntries() throws ApiException {
-        postV1CatalogEntriesWithHttpInfo();
+    public void postCatalogEntries() throws ApiException {
+        postCatalogEntriesWithHttpInfo();
     }
 
     /**
@@ -525,8 +525,8 @@ public class CatalogApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1CatalogEntriesWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1CatalogEntriesValidateBeforeCall(null);
+    public ApiResponse<Void> postCatalogEntriesWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postCatalogEntriesValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -537,19 +537,19 @@ public class CatalogApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1CatalogEntriesAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postCatalogEntriesAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CatalogEntriesValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postCatalogEntriesValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CatalogModels
+     * Build call for postCatalogModels
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1CatalogModelsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCatalogModelsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -593,8 +593,8 @@ public class CatalogApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CatalogModelsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1CatalogModelsCall(_callback);
+    private okhttp3.Call postCatalogModelsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postCatalogModelsCall(_callback);
 
     }
 
@@ -603,8 +603,8 @@ public class CatalogApi {
      * Takes a batch of model rows and upserts each one&#39;s upstream COST and machine-observable facts, answering what was created and changed. It deliberately touches nothing a human owns — not the retail price, not the markup, not the entitlement tier — so a sync can never overwrite an administrator&#39;s pricing decision. The gate is a PLATFORM principal rather than a platform ADMIN, because the caller is normally a scheduled job holding the internal service token, which carries platform scope but no admin claim.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1CatalogModels() throws ApiException {
-        postV1CatalogModelsWithHttpInfo();
+    public void postCatalogModels() throws ApiException {
+        postCatalogModelsWithHttpInfo();
     }
 
     /**
@@ -613,8 +613,8 @@ public class CatalogApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1CatalogModelsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1CatalogModelsValidateBeforeCall(null);
+    public ApiResponse<Void> postCatalogModelsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postCatalogModelsValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -625,19 +625,19 @@ public class CatalogApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1CatalogModelsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postCatalogModelsAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CatalogModelsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postCatalogModelsValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CatalogModelsRefresh
+     * Build call for postCatalogModelsRefresh
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1CatalogModelsRefreshCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCatalogModelsRefreshCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -681,8 +681,8 @@ public class CatalogApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CatalogModelsRefreshValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1CatalogModelsRefreshCall(_callback);
+    private okhttp3.Call postCatalogModelsRefreshValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postCatalogModelsRefreshCall(_callback);
 
     }
 
@@ -691,8 +691,8 @@ public class CatalogApi {
      * Pulls the upstream model list and lands it through the same upsert the push door uses, so the rule that a sync owns cost and an administrator owns price holds no matter which door a row came through. It takes no body — the upstream is READ rather than told. If that upstream cannot be read the call answers 502 and writes NOTHING: a sync that cannot see its source must never conclude the source is empty, because that conclusion would withdraw every model on sale. The gate is a PLATFORM principal so the scheduled job&#39;s service token qualifies.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1CatalogModelsRefresh() throws ApiException {
-        postV1CatalogModelsRefreshWithHttpInfo();
+    public void postCatalogModelsRefresh() throws ApiException {
+        postCatalogModelsRefreshWithHttpInfo();
     }
 
     /**
@@ -701,8 +701,8 @@ public class CatalogApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1CatalogModelsRefreshWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1CatalogModelsRefreshValidateBeforeCall(null);
+    public ApiResponse<Void> postCatalogModelsRefreshWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postCatalogModelsRefreshValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -713,19 +713,19 @@ public class CatalogApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1CatalogModelsRefreshAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postCatalogModelsRefreshAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CatalogModelsRefreshValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postCatalogModelsRefreshValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CatalogSeed
+     * Build call for postCatalogSeed
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1CatalogSeedCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCatalogSeedCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -769,8 +769,8 @@ public class CatalogApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CatalogSeedValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1CatalogSeedCall(_callback);
+    private okhttp3.Call postCatalogSeedValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postCatalogSeedCall(_callback);
 
     }
 
@@ -779,8 +779,8 @@ public class CatalogApi {
      * Upserts the shipped catalog seed and answers how many entries it created. It is idempotent and non-destructive — an entry an administrator has since edited is left alone — so it is safe to run against a live catalog to fill in what is missing. PLATFORM admin only; an org-level admin is refused 403.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1CatalogSeed() throws ApiException {
-        postV1CatalogSeedWithHttpInfo();
+    public void postCatalogSeed() throws ApiException {
+        postCatalogSeedWithHttpInfo();
     }
 
     /**
@@ -789,8 +789,8 @@ public class CatalogApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1CatalogSeedWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1CatalogSeedValidateBeforeCall(null);
+    public ApiResponse<Void> postCatalogSeedWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postCatalogSeedValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -801,20 +801,20 @@ public class CatalogApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1CatalogSeedAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postCatalogSeedAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CatalogSeedValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postCatalogSeedValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1CatalogEntriesByWildcard1
+     * Build call for putCatalogEntriesByWildcard1
      * @param wildcard1  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call putV1CatalogEntriesByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putCatalogEntriesByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -859,13 +859,13 @@ public class CatalogApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1CatalogEntriesByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putCatalogEntriesByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'wildcard1' is set
         if (wildcard1 == null) {
-            throw new ApiException("Missing the required parameter 'wildcard1' when calling putV1CatalogEntriesByWildcard1(Async)");
+            throw new ApiException("Missing the required parameter 'wildcard1' when calling putCatalogEntriesByWildcard1(Async)");
         }
 
-        return putV1CatalogEntriesByWildcard1Call(wildcard1, _callback);
+        return putCatalogEntriesByWildcard1Call(wildcard1, _callback);
 
     }
 
@@ -875,8 +875,8 @@ public class CatalogApi {
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void putV1CatalogEntriesByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        putV1CatalogEntriesByWildcard1WithHttpInfo(wildcard1);
+    public void putCatalogEntriesByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        putCatalogEntriesByWildcard1WithHttpInfo(wildcard1);
     }
 
     /**
@@ -886,8 +886,8 @@ public class CatalogApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> putV1CatalogEntriesByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        okhttp3.Call localVarCall = putV1CatalogEntriesByWildcard1ValidateBeforeCall(wildcard1, null);
+    public ApiResponse<Void> putCatalogEntriesByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        okhttp3.Call localVarCall = putCatalogEntriesByWildcard1ValidateBeforeCall(wildcard1, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -899,9 +899,9 @@ public class CatalogApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call putV1CatalogEntriesByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call putCatalogEntriesByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1CatalogEntriesByWildcard1ValidateBeforeCall(wildcard1, _callback);
+        okhttp3.Call localVarCall = putCatalogEntriesByWildcard1ValidateBeforeCall(wildcard1, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

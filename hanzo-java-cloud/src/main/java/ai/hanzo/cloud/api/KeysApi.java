@@ -76,7 +76,7 @@ public class KeysApi {
     }
 
     /**
-     * Build call for deleteV1Keys
+     * Build call for deleteKeys
      * @param type Type is the key class to act on: \&quot;secret\&quot; (sk-, session-equivalent, belongs on a server) or \&quot;publishable\&quot; (pk-, org-identifying, safe in a browser bundle). Omitted means secret, which is what every existing caller means. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -88,7 +88,7 @@ public class KeysApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1KeysCall(@javax.annotation.Nullable String type, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteKeysCall(@javax.annotation.Nullable String type, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -137,8 +137,8 @@ public class KeysApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1KeysValidateBeforeCall(@javax.annotation.Nullable String type, final ApiCallback _callback) throws ApiException {
-        return deleteV1KeysCall(type, _callback);
+    private okhttp3.Call deleteKeysValidateBeforeCall(@javax.annotation.Nullable String type, final ApiCallback _callback) throws ApiException {
+        return deleteKeysCall(type, _callback);
 
     }
 
@@ -155,8 +155,8 @@ public class KeysApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public RevokedKey deleteV1Keys(@javax.annotation.Nullable String type) throws ApiException {
-        ApiResponse<RevokedKey> localVarResp = deleteV1KeysWithHttpInfo(type);
+    public RevokedKey deleteKeys(@javax.annotation.Nullable String type) throws ApiException {
+        ApiResponse<RevokedKey> localVarResp = deleteKeysWithHttpInfo(type);
         return localVarResp.getData();
     }
 
@@ -173,8 +173,8 @@ public class KeysApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RevokedKey> deleteV1KeysWithHttpInfo(@javax.annotation.Nullable String type) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1KeysValidateBeforeCall(type, null);
+    public ApiResponse<RevokedKey> deleteKeysWithHttpInfo(@javax.annotation.Nullable String type) throws ApiException {
+        okhttp3.Call localVarCall = deleteKeysValidateBeforeCall(type, null);
         Type localVarReturnType = new TypeToken<RevokedKey>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -193,15 +193,15 @@ public class KeysApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1KeysAsync(@javax.annotation.Nullable String type, final ApiCallback<RevokedKey> _callback) throws ApiException {
+    public okhttp3.Call deleteKeysAsync(@javax.annotation.Nullable String type, final ApiCallback<RevokedKey> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1KeysValidateBeforeCall(type, _callback);
+        okhttp3.Call localVarCall = deleteKeysValidateBeforeCall(type, _callback);
         Type localVarReturnType = new TypeToken<RevokedKey>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1Keys
+     * Build call for getKeys
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -212,7 +212,7 @@ public class KeysApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1KeysCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getKeysCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -257,8 +257,8 @@ public class KeysApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1KeysValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1KeysCall(_callback);
+    private okhttp3.Call getKeysValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getKeysCall(_callback);
 
     }
 
@@ -274,8 +274,8 @@ public class KeysApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiKeyList getV1Keys() throws ApiException {
-        ApiResponse<ApiKeyList> localVarResp = getV1KeysWithHttpInfo();
+    public ApiKeyList getKeys() throws ApiException {
+        ApiResponse<ApiKeyList> localVarResp = getKeysWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -291,8 +291,8 @@ public class KeysApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ApiKeyList> getV1KeysWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1KeysValidateBeforeCall(null);
+    public ApiResponse<ApiKeyList> getKeysWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getKeysValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<ApiKeyList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -310,15 +310,15 @@ public class KeysApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1KeysAsync(final ApiCallback<ApiKeyList> _callback) throws ApiException {
+    public okhttp3.Call getKeysAsync(final ApiCallback<ApiKeyList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1KeysValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getKeysValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<ApiKeyList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1Keys
+     * Build call for postKeys
      * @param keyTypeIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -330,7 +330,7 @@ public class KeysApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1KeysCall(@javax.annotation.Nonnull KeyTypeIn keyTypeIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postKeysCall(@javax.annotation.Nonnull KeyTypeIn keyTypeIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -376,13 +376,13 @@ public class KeysApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1KeysValidateBeforeCall(@javax.annotation.Nonnull KeyTypeIn keyTypeIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postKeysValidateBeforeCall(@javax.annotation.Nonnull KeyTypeIn keyTypeIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'keyTypeIn' is set
         if (keyTypeIn == null) {
-            throw new ApiException("Missing the required parameter 'keyTypeIn' when calling postV1Keys(Async)");
+            throw new ApiException("Missing the required parameter 'keyTypeIn' when calling postKeys(Async)");
         }
 
-        return postV1KeysCall(keyTypeIn, _callback);
+        return postKeysCall(keyTypeIn, _callback);
 
     }
 
@@ -399,8 +399,8 @@ public class KeysApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public MintedKey postV1Keys(@javax.annotation.Nonnull KeyTypeIn keyTypeIn) throws ApiException {
-        ApiResponse<MintedKey> localVarResp = postV1KeysWithHttpInfo(keyTypeIn);
+    public MintedKey postKeys(@javax.annotation.Nonnull KeyTypeIn keyTypeIn) throws ApiException {
+        ApiResponse<MintedKey> localVarResp = postKeysWithHttpInfo(keyTypeIn);
         return localVarResp.getData();
     }
 
@@ -417,8 +417,8 @@ public class KeysApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<MintedKey> postV1KeysWithHttpInfo(@javax.annotation.Nonnull KeyTypeIn keyTypeIn) throws ApiException {
-        okhttp3.Call localVarCall = postV1KeysValidateBeforeCall(keyTypeIn, null);
+    public ApiResponse<MintedKey> postKeysWithHttpInfo(@javax.annotation.Nonnull KeyTypeIn keyTypeIn) throws ApiException {
+        okhttp3.Call localVarCall = postKeysValidateBeforeCall(keyTypeIn, null);
         Type localVarReturnType = new TypeToken<MintedKey>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -437,9 +437,9 @@ public class KeysApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1KeysAsync(@javax.annotation.Nonnull KeyTypeIn keyTypeIn, final ApiCallback<MintedKey> _callback) throws ApiException {
+    public okhttp3.Call postKeysAsync(@javax.annotation.Nonnull KeyTypeIn keyTypeIn, final ApiCallback<MintedKey> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1KeysValidateBeforeCall(keyTypeIn, _callback);
+        okhttp3.Call localVarCall = postKeysValidateBeforeCall(keyTypeIn, _callback);
         Type localVarReturnType = new TypeToken<MintedKey>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

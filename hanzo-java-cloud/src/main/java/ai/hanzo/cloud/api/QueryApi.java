@@ -72,12 +72,12 @@ public class QueryApi {
     }
 
     /**
-     * Build call for postV1Query
+     * Build call for postQuery
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1QueryCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postQueryCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -121,8 +121,8 @@ public class QueryApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1QueryValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1QueryCall(_callback);
+    private okhttp3.Call postQueryValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postQueryCall(_callback);
 
     }
 
@@ -131,8 +131,8 @@ public class QueryApi {
      * Handles POST /v1/query — {file_id,query,k}. Returns LangChain (document,score) tuples.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1Query() throws ApiException {
-        postV1QueryWithHttpInfo();
+    public void postQuery() throws ApiException {
+        postQueryWithHttpInfo();
     }
 
     /**
@@ -141,8 +141,8 @@ public class QueryApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1QueryWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1QueryValidateBeforeCall(null);
+    public ApiResponse<Void> postQueryWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postQueryValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -153,9 +153,9 @@ public class QueryApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1QueryAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postQueryAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1QueryValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postQueryValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

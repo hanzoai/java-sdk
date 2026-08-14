@@ -20,7 +20,9 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -59,6 +61,11 @@ public class ApiKey {
   @SerializedName(SERIALIZED_NAME_KEY)
   @javax.annotation.Nullable
   private String key;
+
+  public static final String SERIALIZED_NAME_LIMIT = "limit";
+  @SerializedName(SERIALIZED_NAME_LIMIT)
+  @javax.annotation.Nullable
+  private List<String> limit = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_PREFIX = "prefix";
   @SerializedName(SERIALIZED_NAME_PREFIX)
@@ -108,6 +115,33 @@ public class ApiKey {
 
   public void setKey(@javax.annotation.Nullable String key) {
     this.key = key;
+  }
+
+
+  public ApiKey limit(@javax.annotation.Nullable List<String> limit) {
+    this.limit = limit;
+    return this;
+  }
+
+  public ApiKey addLimitItem(String limitItem) {
+    if (this.limit == null) {
+      this.limit = new ArrayList<>();
+    }
+    this.limit.add(limitItem);
+    return this;
+  }
+
+  /**
+   * Limit is what this key may reach, as &#x60;kind:name&#x60; entries — &#x60;model:zen5&#x60;, &#x60;project:acme&#x60;, &#x60;product:commerce&#x60;. Absent means the key reaches whatever its holder does, which is what every key minted before limits existed does and must keep doing.
+   * @return limit
+   */
+  @javax.annotation.Nullable
+  public List<String> getLimit() {
+    return limit;
+  }
+
+  public void setLimit(@javax.annotation.Nullable List<String> limit) {
+    this.limit = limit;
   }
 
 
@@ -161,13 +195,14 @@ public class ApiKey {
     ApiKey apiKey = (ApiKey) o;
     return Objects.equals(this.createdAt, apiKey.createdAt) &&
         Objects.equals(this.key, apiKey.key) &&
+        Objects.equals(this.limit, apiKey.limit) &&
         Objects.equals(this.prefix, apiKey.prefix) &&
         Objects.equals(this.type, apiKey.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdAt, key, prefix, type);
+    return Objects.hash(createdAt, key, limit, prefix, type);
   }
 
   @Override
@@ -176,6 +211,7 @@ public class ApiKey {
     sb.append("class ApiKey {\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    key: ").append(toIndentedString(key)).append("\n");
+    sb.append("    limit: ").append(toIndentedString(limit)).append("\n");
     sb.append("    prefix: ").append(toIndentedString(prefix)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
@@ -199,7 +235,7 @@ public class ApiKey {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("createdAt", "key", "prefix", "type"));
+    openapiFields = new HashSet<String>(Arrays.asList("createdAt", "key", "limit", "prefix", "type"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -231,6 +267,10 @@ public class ApiKey {
       }
       if ((jsonObj.get("key") != null && !jsonObj.get("key").isJsonNull()) && !jsonObj.get("key").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `key` to be a primitive type in the JSON string but got `%s`", jsonObj.get("key").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("limit") != null && !jsonObj.get("limit").isJsonNull() && !jsonObj.get("limit").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `limit` to be an array in the JSON string but got `%s`", jsonObj.get("limit").toString()));
       }
       if ((jsonObj.get("prefix") != null && !jsonObj.get("prefix").isJsonNull()) && !jsonObj.get("prefix").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `prefix` to be a primitive type in the JSON string but got `%s`", jsonObj.get("prefix").toString()));

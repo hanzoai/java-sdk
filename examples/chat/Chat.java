@@ -24,7 +24,7 @@ import ai.hanzo.cloud.api.ChatApi;
  *
  * <p>So the flow calls the operation the document declares and prints what the
  * route answered. When the shapes land, this becomes
- * {@code chat.postV1ChatCompletions(request)} and prints
+ * {@code chat.postChatCompletions(request)} and prints
  * {@code choices[0].message.content} — a regeneration away, with no decision
  * left in this file.
  *
@@ -37,7 +37,7 @@ public final class Chat {
     public static void main(String[] args) {
         ChatApi chat = new ChatApi(Hanzo.client());
         try {
-            System.out.printf("completion  HTTP %d%n", chat.postV1ChatCompletionsWithHttpInfo().getStatusCode());
+            System.out.printf("completion  HTTP %d%n", chat.postChatCompletionsWithHttpInfo().getStatusCode());
         } catch (ApiException e) {
             System.err.printf("chat failed: HTTP %d %s%n", e.getCode(), e.getResponseBody());
             System.exit(1);

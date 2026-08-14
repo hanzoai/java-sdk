@@ -87,13 +87,13 @@ public class SentryApi {
     }
 
     /**
-     * Build call for deleteV1SentryByWildcard1
+     * Build call for deleteSentryByWildcard1
      * @param wildcard1  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call deleteV1SentryByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteSentryByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -138,13 +138,13 @@ public class SentryApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1SentryByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteSentryByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'wildcard1' is set
         if (wildcard1 == null) {
-            throw new ApiException("Missing the required parameter 'wildcard1' when calling deleteV1SentryByWildcard1(Async)");
+            throw new ApiException("Missing the required parameter 'wildcard1' when calling deleteSentryByWildcard1(Async)");
         }
 
-        return deleteV1SentryByWildcard1Call(wildcard1, _callback);
+        return deleteSentryByWildcard1Call(wildcard1, _callback);
 
     }
 
@@ -154,8 +154,8 @@ public class SentryApi {
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void deleteV1SentryByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        deleteV1SentryByWildcard1WithHttpInfo(wildcard1);
+    public void deleteSentryByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        deleteSentryByWildcard1WithHttpInfo(wildcard1);
     }
 
     /**
@@ -165,8 +165,8 @@ public class SentryApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> deleteV1SentryByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1SentryByWildcard1ValidateBeforeCall(wildcard1, null);
+    public ApiResponse<Void> deleteSentryByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        okhttp3.Call localVarCall = deleteSentryByWildcard1ValidateBeforeCall(wildcard1, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -178,14 +178,14 @@ public class SentryApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call deleteV1SentryByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteSentryByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1SentryByWildcard1ValidateBeforeCall(wildcard1, _callback);
+        okhttp3.Call localVarCall = deleteSentryByWildcard1ValidateBeforeCall(wildcard1, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for deleteV1SentryProjectsById
+     * Build call for deleteSentryProjectsById
      * @param id ID is the project id. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -197,7 +197,7 @@ public class SentryApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1SentryProjectsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteSentryProjectsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -242,13 +242,13 @@ public class SentryApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1SentryProjectsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteSentryProjectsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling deleteV1SentryProjectsById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling deleteSentryProjectsById(Async)");
         }
 
-        return deleteV1SentryProjectsByIdCall(id, _callback);
+        return deleteSentryProjectsByIdCall(id, _callback);
 
     }
 
@@ -264,8 +264,8 @@ public class SentryApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteV1SentryProjectsById(@javax.annotation.Nonnull String id) throws ApiException {
-        deleteV1SentryProjectsByIdWithHttpInfo(id);
+    public void deleteSentryProjectsById(@javax.annotation.Nonnull String id) throws ApiException {
+        deleteSentryProjectsByIdWithHttpInfo(id);
     }
 
     /**
@@ -281,8 +281,8 @@ public class SentryApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteV1SentryProjectsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1SentryProjectsByIdValidateBeforeCall(id, null);
+    public ApiResponse<Void> deleteSentryProjectsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = deleteSentryProjectsByIdValidateBeforeCall(id, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -300,20 +300,20 @@ public class SentryApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1SentryProjectsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteSentryProjectsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1SentryProjectsByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = deleteSentryProjectsByIdValidateBeforeCall(id, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1SentryByWildcard1
+     * Build call for getSentryByWildcard1
      * @param wildcard1  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1SentryByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getSentryByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -358,13 +358,13 @@ public class SentryApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1SentryByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getSentryByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'wildcard1' is set
         if (wildcard1 == null) {
-            throw new ApiException("Missing the required parameter 'wildcard1' when calling getV1SentryByWildcard1(Async)");
+            throw new ApiException("Missing the required parameter 'wildcard1' when calling getSentryByWildcard1(Async)");
         }
 
-        return getV1SentryByWildcard1Call(wildcard1, _callback);
+        return getSentryByWildcard1Call(wildcard1, _callback);
 
     }
 
@@ -374,8 +374,8 @@ public class SentryApi {
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1SentryByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        getV1SentryByWildcard1WithHttpInfo(wildcard1);
+    public void getSentryByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        getSentryByWildcard1WithHttpInfo(wildcard1);
     }
 
     /**
@@ -385,8 +385,8 @@ public class SentryApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1SentryByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        okhttp3.Call localVarCall = getV1SentryByWildcard1ValidateBeforeCall(wildcard1, null);
+    public ApiResponse<Void> getSentryByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        okhttp3.Call localVarCall = getSentryByWildcard1ValidateBeforeCall(wildcard1, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -398,14 +398,14 @@ public class SentryApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1SentryByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getSentryByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1SentryByWildcard1ValidateBeforeCall(wildcard1, _callback);
+        okhttp3.Call localVarCall = getSentryByWildcard1ValidateBeforeCall(wildcard1, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1SentryEventsById
+     * Build call for getSentryEventsById
      * @param id ID is the event id. (required)
      * @param project Project is the project the event belongs to, by its id. Required. (required)
      * @param _callback Callback for upload/download progress
@@ -418,7 +418,7 @@ public class SentryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1SentryEventsByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String project, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getSentryEventsByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String project, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -468,18 +468,18 @@ public class SentryApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1SentryEventsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String project, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getSentryEventsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String project, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getV1SentryEventsById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getSentryEventsById(Async)");
         }
 
         // verify the required parameter 'project' is set
         if (project == null) {
-            throw new ApiException("Missing the required parameter 'project' when calling getV1SentryEventsById(Async)");
+            throw new ApiException("Missing the required parameter 'project' when calling getSentryEventsById(Async)");
         }
 
-        return getV1SentryEventsByIdCall(id, project, _callback);
+        return getSentryEventsByIdCall(id, project, _callback);
 
     }
 
@@ -497,8 +497,8 @@ public class SentryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yO11ySentryEventOut getV1SentryEventsById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String project) throws ApiException {
-        ApiResponse<O11yO11ySentryEventOut> localVarResp = getV1SentryEventsByIdWithHttpInfo(id, project);
+    public O11yO11ySentryEventOut getSentryEventsById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String project) throws ApiException {
+        ApiResponse<O11yO11ySentryEventOut> localVarResp = getSentryEventsByIdWithHttpInfo(id, project);
         return localVarResp.getData();
     }
 
@@ -516,8 +516,8 @@ public class SentryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yO11ySentryEventOut> getV1SentryEventsByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String project) throws ApiException {
-        okhttp3.Call localVarCall = getV1SentryEventsByIdValidateBeforeCall(id, project, null);
+    public ApiResponse<O11yO11ySentryEventOut> getSentryEventsByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String project) throws ApiException {
+        okhttp3.Call localVarCall = getSentryEventsByIdValidateBeforeCall(id, project, null);
         Type localVarReturnType = new TypeToken<O11yO11ySentryEventOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -537,15 +537,15 @@ public class SentryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1SentryEventsByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String project, final ApiCallback<O11yO11ySentryEventOut> _callback) throws ApiException {
+    public okhttp3.Call getSentryEventsByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String project, final ApiCallback<O11yO11ySentryEventOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1SentryEventsByIdValidateBeforeCall(id, project, _callback);
+        okhttp3.Call localVarCall = getSentryEventsByIdValidateBeforeCall(id, project, _callback);
         Type localVarReturnType = new TypeToken<O11yO11ySentryEventOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1SentryIssues
+     * Build call for getSentryIssues
      * @param status Status narrows to one lifecycle state: unresolved, resolved or ignored. (optional)
      * @param level Level narrows to one severity, e.g. error, warning, info. (optional)
      * @param environment Environment narrows to one deployment environment. (optional)
@@ -566,7 +566,7 @@ public class SentryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1SentryIssuesCall(@javax.annotation.Nullable String status, @javax.annotation.Nullable String level, @javax.annotation.Nullable String environment, @javax.annotation.Nullable String serviceName, @javax.annotation.Nullable String query, @javax.annotation.Nullable String sort, @javax.annotation.Nullable Integer offset, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String project, @javax.annotation.Nullable String period, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getSentryIssuesCall(@javax.annotation.Nullable String status, @javax.annotation.Nullable String level, @javax.annotation.Nullable String environment, @javax.annotation.Nullable String serviceName, @javax.annotation.Nullable String query, @javax.annotation.Nullable String sort, @javax.annotation.Nullable Integer offset, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String project, @javax.annotation.Nullable String period, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -651,8 +651,8 @@ public class SentryApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1SentryIssuesValidateBeforeCall(@javax.annotation.Nullable String status, @javax.annotation.Nullable String level, @javax.annotation.Nullable String environment, @javax.annotation.Nullable String serviceName, @javax.annotation.Nullable String query, @javax.annotation.Nullable String sort, @javax.annotation.Nullable Integer offset, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String project, @javax.annotation.Nullable String period, final ApiCallback _callback) throws ApiException {
-        return getV1SentryIssuesCall(status, level, environment, serviceName, query, sort, offset, limit, project, period, _callback);
+    private okhttp3.Call getSentryIssuesValidateBeforeCall(@javax.annotation.Nullable String status, @javax.annotation.Nullable String level, @javax.annotation.Nullable String environment, @javax.annotation.Nullable String serviceName, @javax.annotation.Nullable String query, @javax.annotation.Nullable String sort, @javax.annotation.Nullable Integer offset, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String project, @javax.annotation.Nullable String period, final ApiCallback _callback) throws ApiException {
+        return getSentryIssuesCall(status, level, environment, serviceName, query, sort, offset, limit, project, period, _callback);
 
     }
 
@@ -678,8 +678,8 @@ public class SentryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yO11yErrorIssuesOut getV1SentryIssues(@javax.annotation.Nullable String status, @javax.annotation.Nullable String level, @javax.annotation.Nullable String environment, @javax.annotation.Nullable String serviceName, @javax.annotation.Nullable String query, @javax.annotation.Nullable String sort, @javax.annotation.Nullable Integer offset, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String project, @javax.annotation.Nullable String period) throws ApiException {
-        ApiResponse<O11yO11yErrorIssuesOut> localVarResp = getV1SentryIssuesWithHttpInfo(status, level, environment, serviceName, query, sort, offset, limit, project, period);
+    public O11yO11yErrorIssuesOut getSentryIssues(@javax.annotation.Nullable String status, @javax.annotation.Nullable String level, @javax.annotation.Nullable String environment, @javax.annotation.Nullable String serviceName, @javax.annotation.Nullable String query, @javax.annotation.Nullable String sort, @javax.annotation.Nullable Integer offset, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String project, @javax.annotation.Nullable String period) throws ApiException {
+        ApiResponse<O11yO11yErrorIssuesOut> localVarResp = getSentryIssuesWithHttpInfo(status, level, environment, serviceName, query, sort, offset, limit, project, period);
         return localVarResp.getData();
     }
 
@@ -705,8 +705,8 @@ public class SentryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yO11yErrorIssuesOut> getV1SentryIssuesWithHttpInfo(@javax.annotation.Nullable String status, @javax.annotation.Nullable String level, @javax.annotation.Nullable String environment, @javax.annotation.Nullable String serviceName, @javax.annotation.Nullable String query, @javax.annotation.Nullable String sort, @javax.annotation.Nullable Integer offset, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String project, @javax.annotation.Nullable String period) throws ApiException {
-        okhttp3.Call localVarCall = getV1SentryIssuesValidateBeforeCall(status, level, environment, serviceName, query, sort, offset, limit, project, period, null);
+    public ApiResponse<O11yO11yErrorIssuesOut> getSentryIssuesWithHttpInfo(@javax.annotation.Nullable String status, @javax.annotation.Nullable String level, @javax.annotation.Nullable String environment, @javax.annotation.Nullable String serviceName, @javax.annotation.Nullable String query, @javax.annotation.Nullable String sort, @javax.annotation.Nullable Integer offset, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String project, @javax.annotation.Nullable String period) throws ApiException {
+        okhttp3.Call localVarCall = getSentryIssuesValidateBeforeCall(status, level, environment, serviceName, query, sort, offset, limit, project, period, null);
         Type localVarReturnType = new TypeToken<O11yO11yErrorIssuesOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -734,15 +734,15 @@ public class SentryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1SentryIssuesAsync(@javax.annotation.Nullable String status, @javax.annotation.Nullable String level, @javax.annotation.Nullable String environment, @javax.annotation.Nullable String serviceName, @javax.annotation.Nullable String query, @javax.annotation.Nullable String sort, @javax.annotation.Nullable Integer offset, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String project, @javax.annotation.Nullable String period, final ApiCallback<O11yO11yErrorIssuesOut> _callback) throws ApiException {
+    public okhttp3.Call getSentryIssuesAsync(@javax.annotation.Nullable String status, @javax.annotation.Nullable String level, @javax.annotation.Nullable String environment, @javax.annotation.Nullable String serviceName, @javax.annotation.Nullable String query, @javax.annotation.Nullable String sort, @javax.annotation.Nullable Integer offset, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String project, @javax.annotation.Nullable String period, final ApiCallback<O11yO11yErrorIssuesOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1SentryIssuesValidateBeforeCall(status, level, environment, serviceName, query, sort, offset, limit, project, period, _callback);
+        okhttp3.Call localVarCall = getSentryIssuesValidateBeforeCall(status, level, environment, serviceName, query, sort, offset, limit, project, period, _callback);
         Type localVarReturnType = new TypeToken<O11yO11yErrorIssuesOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1SentryIssuesById
+     * Build call for getSentryIssuesById
      * @param id ID is the issue id. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -754,7 +754,7 @@ public class SentryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1SentryIssuesByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getSentryIssuesByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -800,13 +800,13 @@ public class SentryApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1SentryIssuesByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getSentryIssuesByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getV1SentryIssuesById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getSentryIssuesById(Async)");
         }
 
-        return getV1SentryIssuesByIdCall(id, _callback);
+        return getSentryIssuesByIdCall(id, _callback);
 
     }
 
@@ -823,8 +823,8 @@ public class SentryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yO11yErrorGettableIssueOut getV1SentryIssuesById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<O11yO11yErrorGettableIssueOut> localVarResp = getV1SentryIssuesByIdWithHttpInfo(id);
+    public O11yO11yErrorGettableIssueOut getSentryIssuesById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<O11yO11yErrorGettableIssueOut> localVarResp = getSentryIssuesByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -841,8 +841,8 @@ public class SentryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yO11yErrorGettableIssueOut> getV1SentryIssuesByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = getV1SentryIssuesByIdValidateBeforeCall(id, null);
+    public ApiResponse<O11yO11yErrorGettableIssueOut> getSentryIssuesByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getSentryIssuesByIdValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<O11yO11yErrorGettableIssueOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -861,15 +861,15 @@ public class SentryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1SentryIssuesByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<O11yO11yErrorGettableIssueOut> _callback) throws ApiException {
+    public okhttp3.Call getSentryIssuesByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<O11yO11yErrorGettableIssueOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1SentryIssuesByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = getSentryIssuesByIdValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<O11yO11yErrorGettableIssueOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1SentryIssuesByIdEvents
+     * Build call for getSentryIssuesByIdEvents
      * @param id ID is the issue id. (required)
      * @param project Project is the project whose occurrences to read, by its id. Required. (required)
      * @param limit Limit caps how many occurrences come back. Zero means the default. (optional)
@@ -883,7 +883,7 @@ public class SentryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1SentryIssuesByIdEventsCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String project, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getSentryIssuesByIdEventsCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String project, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -937,18 +937,18 @@ public class SentryApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1SentryIssuesByIdEventsValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String project, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getSentryIssuesByIdEventsValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String project, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getV1SentryIssuesByIdEvents(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getSentryIssuesByIdEvents(Async)");
         }
 
         // verify the required parameter 'project' is set
         if (project == null) {
-            throw new ApiException("Missing the required parameter 'project' when calling getV1SentryIssuesByIdEvents(Async)");
+            throw new ApiException("Missing the required parameter 'project' when calling getSentryIssuesByIdEvents(Async)");
         }
 
-        return getV1SentryIssuesByIdEventsCall(id, project, limit, _callback);
+        return getSentryIssuesByIdEventsCall(id, project, limit, _callback);
 
     }
 
@@ -967,8 +967,8 @@ public class SentryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yO11ySentryIssueEventsOut getV1SentryIssuesByIdEvents(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String project, @javax.annotation.Nullable Integer limit) throws ApiException {
-        ApiResponse<O11yO11ySentryIssueEventsOut> localVarResp = getV1SentryIssuesByIdEventsWithHttpInfo(id, project, limit);
+    public O11yO11ySentryIssueEventsOut getSentryIssuesByIdEvents(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String project, @javax.annotation.Nullable Integer limit) throws ApiException {
+        ApiResponse<O11yO11ySentryIssueEventsOut> localVarResp = getSentryIssuesByIdEventsWithHttpInfo(id, project, limit);
         return localVarResp.getData();
     }
 
@@ -987,8 +987,8 @@ public class SentryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yO11ySentryIssueEventsOut> getV1SentryIssuesByIdEventsWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String project, @javax.annotation.Nullable Integer limit) throws ApiException {
-        okhttp3.Call localVarCall = getV1SentryIssuesByIdEventsValidateBeforeCall(id, project, limit, null);
+    public ApiResponse<O11yO11ySentryIssueEventsOut> getSentryIssuesByIdEventsWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String project, @javax.annotation.Nullable Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = getSentryIssuesByIdEventsValidateBeforeCall(id, project, limit, null);
         Type localVarReturnType = new TypeToken<O11yO11ySentryIssueEventsOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1009,15 +1009,15 @@ public class SentryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1SentryIssuesByIdEventsAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String project, @javax.annotation.Nullable Integer limit, final ApiCallback<O11yO11ySentryIssueEventsOut> _callback) throws ApiException {
+    public okhttp3.Call getSentryIssuesByIdEventsAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String project, @javax.annotation.Nullable Integer limit, final ApiCallback<O11yO11ySentryIssueEventsOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1SentryIssuesByIdEventsValidateBeforeCall(id, project, limit, _callback);
+        okhttp3.Call localVarCall = getSentryIssuesByIdEventsValidateBeforeCall(id, project, limit, _callback);
         Type localVarReturnType = new TypeToken<O11yO11ySentryIssueEventsOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1SentryLogs
+     * Build call for getSentryLogs
      * @param project Project is the project to read, as its id. Required. (required)
      * @param query Query narrows the page to events whose text contains it. (optional)
      * @param period Period is the window to read, relative to now — 1h, 24h, 7d, 14d, 30d. (optional)
@@ -1032,7 +1032,7 @@ public class SentryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1SentryLogsCall(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String query, @javax.annotation.Nullable String period, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getSentryLogsCall(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String query, @javax.annotation.Nullable String period, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1093,13 +1093,13 @@ public class SentryApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1SentryLogsValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String query, @javax.annotation.Nullable String period, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getSentryLogsValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String query, @javax.annotation.Nullable String period, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'project' is set
         if (project == null) {
-            throw new ApiException("Missing the required parameter 'project' when calling getV1SentryLogs(Async)");
+            throw new ApiException("Missing the required parameter 'project' when calling getSentryLogs(Async)");
         }
 
-        return getV1SentryLogsCall(project, query, period, limit, _callback);
+        return getSentryLogsCall(project, query, period, limit, _callback);
 
     }
 
@@ -1119,8 +1119,8 @@ public class SentryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yO11yLogsOut getV1SentryLogs(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String query, @javax.annotation.Nullable String period, @javax.annotation.Nullable Integer limit) throws ApiException {
-        ApiResponse<O11yO11yLogsOut> localVarResp = getV1SentryLogsWithHttpInfo(project, query, period, limit);
+    public O11yO11yLogsOut getSentryLogs(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String query, @javax.annotation.Nullable String period, @javax.annotation.Nullable Integer limit) throws ApiException {
+        ApiResponse<O11yO11yLogsOut> localVarResp = getSentryLogsWithHttpInfo(project, query, period, limit);
         return localVarResp.getData();
     }
 
@@ -1140,8 +1140,8 @@ public class SentryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yO11yLogsOut> getV1SentryLogsWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String query, @javax.annotation.Nullable String period, @javax.annotation.Nullable Integer limit) throws ApiException {
-        okhttp3.Call localVarCall = getV1SentryLogsValidateBeforeCall(project, query, period, limit, null);
+    public ApiResponse<O11yO11yLogsOut> getSentryLogsWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String query, @javax.annotation.Nullable String period, @javax.annotation.Nullable Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = getSentryLogsValidateBeforeCall(project, query, period, limit, null);
         Type localVarReturnType = new TypeToken<O11yO11yLogsOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1163,15 +1163,15 @@ public class SentryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1SentryLogsAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String query, @javax.annotation.Nullable String period, @javax.annotation.Nullable Integer limit, final ApiCallback<O11yO11yLogsOut> _callback) throws ApiException {
+    public okhttp3.Call getSentryLogsAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String query, @javax.annotation.Nullable String period, @javax.annotation.Nullable Integer limit, final ApiCallback<O11yO11yLogsOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1SentryLogsValidateBeforeCall(project, query, period, limit, _callback);
+        okhttp3.Call localVarCall = getSentryLogsValidateBeforeCall(project, query, period, limit, _callback);
         Type localVarReturnType = new TypeToken<O11yO11yLogsOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1SentryProjects
+     * Build call for getSentryProjects
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1182,7 +1182,7 @@ public class SentryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1SentryProjectsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getSentryProjectsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1227,8 +1227,8 @@ public class SentryApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1SentryProjectsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1SentryProjectsCall(_callback);
+    private okhttp3.Call getSentryProjectsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getSentryProjectsCall(_callback);
 
     }
 
@@ -1244,8 +1244,8 @@ public class SentryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yO11ySentryProjectsOut getV1SentryProjects() throws ApiException {
-        ApiResponse<O11yO11ySentryProjectsOut> localVarResp = getV1SentryProjectsWithHttpInfo();
+    public O11yO11ySentryProjectsOut getSentryProjects() throws ApiException {
+        ApiResponse<O11yO11ySentryProjectsOut> localVarResp = getSentryProjectsWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -1261,8 +1261,8 @@ public class SentryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yO11ySentryProjectsOut> getV1SentryProjectsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1SentryProjectsValidateBeforeCall(null);
+    public ApiResponse<O11yO11ySentryProjectsOut> getSentryProjectsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getSentryProjectsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<O11yO11ySentryProjectsOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1280,15 +1280,15 @@ public class SentryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1SentryProjectsAsync(final ApiCallback<O11yO11ySentryProjectsOut> _callback) throws ApiException {
+    public okhttp3.Call getSentryProjectsAsync(final ApiCallback<O11yO11ySentryProjectsOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1SentryProjectsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getSentryProjectsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<O11yO11ySentryProjectsOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1SentryProjectsById
+     * Build call for getSentryProjectsById
      * @param id ID is the project id. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1300,7 +1300,7 @@ public class SentryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1SentryProjectsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getSentryProjectsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1346,13 +1346,13 @@ public class SentryApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1SentryProjectsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getSentryProjectsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getV1SentryProjectsById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getSentryProjectsById(Async)");
         }
 
-        return getV1SentryProjectsByIdCall(id, _callback);
+        return getSentryProjectsByIdCall(id, _callback);
 
     }
 
@@ -1369,8 +1369,8 @@ public class SentryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yO11ySentryProjectOut getV1SentryProjectsById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<O11yO11ySentryProjectOut> localVarResp = getV1SentryProjectsByIdWithHttpInfo(id);
+    public O11yO11ySentryProjectOut getSentryProjectsById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<O11yO11ySentryProjectOut> localVarResp = getSentryProjectsByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -1387,8 +1387,8 @@ public class SentryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yO11ySentryProjectOut> getV1SentryProjectsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = getV1SentryProjectsByIdValidateBeforeCall(id, null);
+    public ApiResponse<O11yO11ySentryProjectOut> getSentryProjectsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getSentryProjectsByIdValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<O11yO11ySentryProjectOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1407,15 +1407,15 @@ public class SentryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1SentryProjectsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<O11yO11ySentryProjectOut> _callback) throws ApiException {
+    public okhttp3.Call getSentryProjectsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<O11yO11ySentryProjectOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1SentryProjectsByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = getSentryProjectsByIdValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<O11yO11ySentryProjectOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1SentryStats
+     * Build call for getSentryStats
      * @param project Project is the project to read, as its id. Required. (required)
      * @param field Field is the dimension to count over. Empty counts all events. (optional)
      * @param period Period is the window to read, relative to now — 1h, 24h, 7d, 14d, 30d. (optional)
@@ -1429,7 +1429,7 @@ public class SentryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1SentryStatsCall(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String field, @javax.annotation.Nullable String period, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getSentryStatsCall(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String field, @javax.annotation.Nullable String period, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1486,13 +1486,13 @@ public class SentryApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1SentryStatsValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String field, @javax.annotation.Nullable String period, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getSentryStatsValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String field, @javax.annotation.Nullable String period, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'project' is set
         if (project == null) {
-            throw new ApiException("Missing the required parameter 'project' when calling getV1SentryStats(Async)");
+            throw new ApiException("Missing the required parameter 'project' when calling getSentryStats(Async)");
         }
 
-        return getV1SentryStatsCall(project, field, period, _callback);
+        return getSentryStatsCall(project, field, period, _callback);
 
     }
 
@@ -1511,8 +1511,8 @@ public class SentryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yO11yStatsOut getV1SentryStats(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String field, @javax.annotation.Nullable String period) throws ApiException {
-        ApiResponse<O11yO11yStatsOut> localVarResp = getV1SentryStatsWithHttpInfo(project, field, period);
+    public O11yO11yStatsOut getSentryStats(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String field, @javax.annotation.Nullable String period) throws ApiException {
+        ApiResponse<O11yO11yStatsOut> localVarResp = getSentryStatsWithHttpInfo(project, field, period);
         return localVarResp.getData();
     }
 
@@ -1531,8 +1531,8 @@ public class SentryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yO11yStatsOut> getV1SentryStatsWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String field, @javax.annotation.Nullable String period) throws ApiException {
-        okhttp3.Call localVarCall = getV1SentryStatsValidateBeforeCall(project, field, period, null);
+    public ApiResponse<O11yO11yStatsOut> getSentryStatsWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String field, @javax.annotation.Nullable String period) throws ApiException {
+        okhttp3.Call localVarCall = getSentryStatsValidateBeforeCall(project, field, period, null);
         Type localVarReturnType = new TypeToken<O11yO11yStatsOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1553,15 +1553,15 @@ public class SentryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1SentryStatsAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String field, @javax.annotation.Nullable String period, final ApiCallback<O11yO11yStatsOut> _callback) throws ApiException {
+    public okhttp3.Call getSentryStatsAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String field, @javax.annotation.Nullable String period, final ApiCallback<O11yO11yStatsOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1SentryStatsValidateBeforeCall(project, field, period, _callback);
+        okhttp3.Call localVarCall = getSentryStatsValidateBeforeCall(project, field, period, _callback);
         Type localVarReturnType = new TypeToken<O11yO11yStatsOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1SentryTraces
+     * Build call for getSentryTraces
      * @param project Project is the project to read, as its id. Required. (required)
      * @param period Period is the window to read, relative to now — 1h, 24h, 7d, 14d, 30d. (optional)
      * @param limit Limit caps how many traces come back. (optional)
@@ -1575,7 +1575,7 @@ public class SentryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1SentryTracesCall(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String period, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getSentryTracesCall(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String period, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1632,13 +1632,13 @@ public class SentryApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1SentryTracesValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String period, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getSentryTracesValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String period, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'project' is set
         if (project == null) {
-            throw new ApiException("Missing the required parameter 'project' when calling getV1SentryTraces(Async)");
+            throw new ApiException("Missing the required parameter 'project' when calling getSentryTraces(Async)");
         }
 
-        return getV1SentryTracesCall(project, period, limit, _callback);
+        return getSentryTracesCall(project, period, limit, _callback);
 
     }
 
@@ -1657,8 +1657,8 @@ public class SentryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yO11yTracesOut getV1SentryTraces(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String period, @javax.annotation.Nullable Integer limit) throws ApiException {
-        ApiResponse<O11yO11yTracesOut> localVarResp = getV1SentryTracesWithHttpInfo(project, period, limit);
+    public O11yO11yTracesOut getSentryTraces(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String period, @javax.annotation.Nullable Integer limit) throws ApiException {
+        ApiResponse<O11yO11yTracesOut> localVarResp = getSentryTracesWithHttpInfo(project, period, limit);
         return localVarResp.getData();
     }
 
@@ -1677,8 +1677,8 @@ public class SentryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yO11yTracesOut> getV1SentryTracesWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String period, @javax.annotation.Nullable Integer limit) throws ApiException {
-        okhttp3.Call localVarCall = getV1SentryTracesValidateBeforeCall(project, period, limit, null);
+    public ApiResponse<O11yO11yTracesOut> getSentryTracesWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String period, @javax.annotation.Nullable Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = getSentryTracesValidateBeforeCall(project, period, limit, null);
         Type localVarReturnType = new TypeToken<O11yO11yTracesOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1699,15 +1699,15 @@ public class SentryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1SentryTracesAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String period, @javax.annotation.Nullable Integer limit, final ApiCallback<O11yO11yTracesOut> _callback) throws ApiException {
+    public okhttp3.Call getSentryTracesAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String period, @javax.annotation.Nullable Integer limit, final ApiCallback<O11yO11yTracesOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1SentryTracesValidateBeforeCall(project, period, limit, _callback);
+        okhttp3.Call localVarCall = getSentryTracesValidateBeforeCall(project, period, limit, _callback);
         Type localVarReturnType = new TypeToken<O11yO11yTracesOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1SentryTracesById
+     * Build call for getSentryTracesById
      * @param id ID is the trace id. (required)
      * @param project Project is the project the trace&#39;s errors belong to. Required. (required)
      * @param _callback Callback for upload/download progress
@@ -1720,7 +1720,7 @@ public class SentryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1SentryTracesByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String project, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getSentryTracesByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String project, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1770,18 +1770,18 @@ public class SentryApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1SentryTracesByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String project, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getSentryTracesByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String project, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getV1SentryTracesById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getSentryTracesById(Async)");
         }
 
         // verify the required parameter 'project' is set
         if (project == null) {
-            throw new ApiException("Missing the required parameter 'project' when calling getV1SentryTracesById(Async)");
+            throw new ApiException("Missing the required parameter 'project' when calling getSentryTracesById(Async)");
         }
 
-        return getV1SentryTracesByIdCall(id, project, _callback);
+        return getSentryTracesByIdCall(id, project, _callback);
 
     }
 
@@ -1799,8 +1799,8 @@ public class SentryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yO11yTraceOut getV1SentryTracesById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String project) throws ApiException {
-        ApiResponse<O11yO11yTraceOut> localVarResp = getV1SentryTracesByIdWithHttpInfo(id, project);
+    public O11yO11yTraceOut getSentryTracesById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String project) throws ApiException {
+        ApiResponse<O11yO11yTraceOut> localVarResp = getSentryTracesByIdWithHttpInfo(id, project);
         return localVarResp.getData();
     }
 
@@ -1818,8 +1818,8 @@ public class SentryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yO11yTraceOut> getV1SentryTracesByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String project) throws ApiException {
-        okhttp3.Call localVarCall = getV1SentryTracesByIdValidateBeforeCall(id, project, null);
+    public ApiResponse<O11yO11yTraceOut> getSentryTracesByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String project) throws ApiException {
+        okhttp3.Call localVarCall = getSentryTracesByIdValidateBeforeCall(id, project, null);
         Type localVarReturnType = new TypeToken<O11yO11yTraceOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1839,21 +1839,21 @@ public class SentryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1SentryTracesByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String project, final ApiCallback<O11yO11yTraceOut> _callback) throws ApiException {
+    public okhttp3.Call getSentryTracesByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String project, final ApiCallback<O11yO11yTraceOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1SentryTracesByIdValidateBeforeCall(id, project, _callback);
+        okhttp3.Call localVarCall = getSentryTracesByIdValidateBeforeCall(id, project, _callback);
         Type localVarReturnType = new TypeToken<O11yO11yTraceOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for patchV1SentryByWildcard1
+     * Build call for patchSentryByWildcard1
      * @param wildcard1  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call patchV1SentryByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call patchSentryByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1898,13 +1898,13 @@ public class SentryApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchV1SentryByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call patchSentryByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'wildcard1' is set
         if (wildcard1 == null) {
-            throw new ApiException("Missing the required parameter 'wildcard1' when calling patchV1SentryByWildcard1(Async)");
+            throw new ApiException("Missing the required parameter 'wildcard1' when calling patchSentryByWildcard1(Async)");
         }
 
-        return patchV1SentryByWildcard1Call(wildcard1, _callback);
+        return patchSentryByWildcard1Call(wildcard1, _callback);
 
     }
 
@@ -1914,8 +1914,8 @@ public class SentryApi {
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void patchV1SentryByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        patchV1SentryByWildcard1WithHttpInfo(wildcard1);
+    public void patchSentryByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        patchSentryByWildcard1WithHttpInfo(wildcard1);
     }
 
     /**
@@ -1925,8 +1925,8 @@ public class SentryApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> patchV1SentryByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        okhttp3.Call localVarCall = patchV1SentryByWildcard1ValidateBeforeCall(wildcard1, null);
+    public ApiResponse<Void> patchSentryByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        okhttp3.Call localVarCall = patchSentryByWildcard1ValidateBeforeCall(wildcard1, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1938,20 +1938,20 @@ public class SentryApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call patchV1SentryByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call patchSentryByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchV1SentryByWildcard1ValidateBeforeCall(wildcard1, _callback);
+        okhttp3.Call localVarCall = patchSentryByWildcard1ValidateBeforeCall(wildcard1, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1SentryByProjectEnvelope
+     * Build call for postSentryByProjectEnvelope
      * @param project  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1SentryByProjectEnvelopeCall(@javax.annotation.Nonnull String project, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postSentryByProjectEnvelopeCall(@javax.annotation.Nonnull String project, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1996,13 +1996,13 @@ public class SentryApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1SentryByProjectEnvelopeValidateBeforeCall(@javax.annotation.Nonnull String project, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postSentryByProjectEnvelopeValidateBeforeCall(@javax.annotation.Nonnull String project, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'project' is set
         if (project == null) {
-            throw new ApiException("Missing the required parameter 'project' when calling postV1SentryByProjectEnvelope(Async)");
+            throw new ApiException("Missing the required parameter 'project' when calling postSentryByProjectEnvelope(Async)");
         }
 
-        return postV1SentryByProjectEnvelopeCall(project, _callback);
+        return postSentryByProjectEnvelopeCall(project, _callback);
 
     }
 
@@ -2012,8 +2012,8 @@ public class SentryApi {
      * @param project  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1SentryByProjectEnvelope(@javax.annotation.Nonnull String project) throws ApiException {
-        postV1SentryByProjectEnvelopeWithHttpInfo(project);
+    public void postSentryByProjectEnvelope(@javax.annotation.Nonnull String project) throws ApiException {
+        postSentryByProjectEnvelopeWithHttpInfo(project);
     }
 
     /**
@@ -2023,8 +2023,8 @@ public class SentryApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1SentryByProjectEnvelopeWithHttpInfo(@javax.annotation.Nonnull String project) throws ApiException {
-        okhttp3.Call localVarCall = postV1SentryByProjectEnvelopeValidateBeforeCall(project, null);
+    public ApiResponse<Void> postSentryByProjectEnvelopeWithHttpInfo(@javax.annotation.Nonnull String project) throws ApiException {
+        okhttp3.Call localVarCall = postSentryByProjectEnvelopeValidateBeforeCall(project, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -2036,20 +2036,20 @@ public class SentryApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1SentryByProjectEnvelopeAsync(@javax.annotation.Nonnull String project, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postSentryByProjectEnvelopeAsync(@javax.annotation.Nonnull String project, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1SentryByProjectEnvelopeValidateBeforeCall(project, _callback);
+        okhttp3.Call localVarCall = postSentryByProjectEnvelopeValidateBeforeCall(project, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1SentryByProjectStore
+     * Build call for postSentryByProjectStore
      * @param project  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1SentryByProjectStoreCall(@javax.annotation.Nonnull String project, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postSentryByProjectStoreCall(@javax.annotation.Nonnull String project, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2094,13 +2094,13 @@ public class SentryApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1SentryByProjectStoreValidateBeforeCall(@javax.annotation.Nonnull String project, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postSentryByProjectStoreValidateBeforeCall(@javax.annotation.Nonnull String project, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'project' is set
         if (project == null) {
-            throw new ApiException("Missing the required parameter 'project' when calling postV1SentryByProjectStore(Async)");
+            throw new ApiException("Missing the required parameter 'project' when calling postSentryByProjectStore(Async)");
         }
 
-        return postV1SentryByProjectStoreCall(project, _callback);
+        return postSentryByProjectStoreCall(project, _callback);
 
     }
 
@@ -2110,8 +2110,8 @@ public class SentryApi {
      * @param project  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1SentryByProjectStore(@javax.annotation.Nonnull String project) throws ApiException {
-        postV1SentryByProjectStoreWithHttpInfo(project);
+    public void postSentryByProjectStore(@javax.annotation.Nonnull String project) throws ApiException {
+        postSentryByProjectStoreWithHttpInfo(project);
     }
 
     /**
@@ -2121,8 +2121,8 @@ public class SentryApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1SentryByProjectStoreWithHttpInfo(@javax.annotation.Nonnull String project) throws ApiException {
-        okhttp3.Call localVarCall = postV1SentryByProjectStoreValidateBeforeCall(project, null);
+    public ApiResponse<Void> postSentryByProjectStoreWithHttpInfo(@javax.annotation.Nonnull String project) throws ApiException {
+        okhttp3.Call localVarCall = postSentryByProjectStoreValidateBeforeCall(project, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -2134,20 +2134,20 @@ public class SentryApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1SentryByProjectStoreAsync(@javax.annotation.Nonnull String project, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postSentryByProjectStoreAsync(@javax.annotation.Nonnull String project, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1SentryByProjectStoreValidateBeforeCall(project, _callback);
+        okhttp3.Call localVarCall = postSentryByProjectStoreValidateBeforeCall(project, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1SentryByWildcard1
+     * Build call for postSentryByWildcard1
      * @param wildcard1  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1SentryByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postSentryByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2192,13 +2192,13 @@ public class SentryApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1SentryByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postSentryByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'wildcard1' is set
         if (wildcard1 == null) {
-            throw new ApiException("Missing the required parameter 'wildcard1' when calling postV1SentryByWildcard1(Async)");
+            throw new ApiException("Missing the required parameter 'wildcard1' when calling postSentryByWildcard1(Async)");
         }
 
-        return postV1SentryByWildcard1Call(wildcard1, _callback);
+        return postSentryByWildcard1Call(wildcard1, _callback);
 
     }
 
@@ -2208,8 +2208,8 @@ public class SentryApi {
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1SentryByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        postV1SentryByWildcard1WithHttpInfo(wildcard1);
+    public void postSentryByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        postSentryByWildcard1WithHttpInfo(wildcard1);
     }
 
     /**
@@ -2219,8 +2219,8 @@ public class SentryApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1SentryByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        okhttp3.Call localVarCall = postV1SentryByWildcard1ValidateBeforeCall(wildcard1, null);
+    public ApiResponse<Void> postSentryByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        okhttp3.Call localVarCall = postSentryByWildcard1ValidateBeforeCall(wildcard1, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -2232,14 +2232,14 @@ public class SentryApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1SentryByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postSentryByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1SentryByWildcard1ValidateBeforeCall(wildcard1, _callback);
+        okhttp3.Call localVarCall = postSentryByWildcard1ValidateBeforeCall(wildcard1, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1SentryDiscover
+     * Build call for postSentryDiscover
      * @param o11yO11yDiscoverIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2251,7 +2251,7 @@ public class SentryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1SentryDiscoverCall(@javax.annotation.Nonnull O11yO11yDiscoverIn o11yO11yDiscoverIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postSentryDiscoverCall(@javax.annotation.Nonnull O11yO11yDiscoverIn o11yO11yDiscoverIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2297,13 +2297,13 @@ public class SentryApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1SentryDiscoverValidateBeforeCall(@javax.annotation.Nonnull O11yO11yDiscoverIn o11yO11yDiscoverIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postSentryDiscoverValidateBeforeCall(@javax.annotation.Nonnull O11yO11yDiscoverIn o11yO11yDiscoverIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'o11yO11yDiscoverIn' is set
         if (o11yO11yDiscoverIn == null) {
-            throw new ApiException("Missing the required parameter 'o11yO11yDiscoverIn' when calling postV1SentryDiscover(Async)");
+            throw new ApiException("Missing the required parameter 'o11yO11yDiscoverIn' when calling postSentryDiscover(Async)");
         }
 
-        return postV1SentryDiscoverCall(o11yO11yDiscoverIn, _callback);
+        return postSentryDiscoverCall(o11yO11yDiscoverIn, _callback);
 
     }
 
@@ -2320,8 +2320,8 @@ public class SentryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yO11yDiscoverOut postV1SentryDiscover(@javax.annotation.Nonnull O11yO11yDiscoverIn o11yO11yDiscoverIn) throws ApiException {
-        ApiResponse<O11yO11yDiscoverOut> localVarResp = postV1SentryDiscoverWithHttpInfo(o11yO11yDiscoverIn);
+    public O11yO11yDiscoverOut postSentryDiscover(@javax.annotation.Nonnull O11yO11yDiscoverIn o11yO11yDiscoverIn) throws ApiException {
+        ApiResponse<O11yO11yDiscoverOut> localVarResp = postSentryDiscoverWithHttpInfo(o11yO11yDiscoverIn);
         return localVarResp.getData();
     }
 
@@ -2338,8 +2338,8 @@ public class SentryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yO11yDiscoverOut> postV1SentryDiscoverWithHttpInfo(@javax.annotation.Nonnull O11yO11yDiscoverIn o11yO11yDiscoverIn) throws ApiException {
-        okhttp3.Call localVarCall = postV1SentryDiscoverValidateBeforeCall(o11yO11yDiscoverIn, null);
+    public ApiResponse<O11yO11yDiscoverOut> postSentryDiscoverWithHttpInfo(@javax.annotation.Nonnull O11yO11yDiscoverIn o11yO11yDiscoverIn) throws ApiException {
+        okhttp3.Call localVarCall = postSentryDiscoverValidateBeforeCall(o11yO11yDiscoverIn, null);
         Type localVarReturnType = new TypeToken<O11yO11yDiscoverOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2358,15 +2358,15 @@ public class SentryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1SentryDiscoverAsync(@javax.annotation.Nonnull O11yO11yDiscoverIn o11yO11yDiscoverIn, final ApiCallback<O11yO11yDiscoverOut> _callback) throws ApiException {
+    public okhttp3.Call postSentryDiscoverAsync(@javax.annotation.Nonnull O11yO11yDiscoverIn o11yO11yDiscoverIn, final ApiCallback<O11yO11yDiscoverOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1SentryDiscoverValidateBeforeCall(o11yO11yDiscoverIn, _callback);
+        okhttp3.Call localVarCall = postSentryDiscoverValidateBeforeCall(o11yO11yDiscoverIn, _callback);
         Type localVarReturnType = new TypeToken<O11yO11yDiscoverOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1SentryProjects
+     * Build call for postSentryProjects
      * @param o11yO11ySentryPostableProject  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2378,7 +2378,7 @@ public class SentryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1SentryProjectsCall(@javax.annotation.Nonnull O11yO11ySentryPostableProject o11yO11ySentryPostableProject, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postSentryProjectsCall(@javax.annotation.Nonnull O11yO11ySentryPostableProject o11yO11ySentryPostableProject, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2424,13 +2424,13 @@ public class SentryApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1SentryProjectsValidateBeforeCall(@javax.annotation.Nonnull O11yO11ySentryPostableProject o11yO11ySentryPostableProject, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postSentryProjectsValidateBeforeCall(@javax.annotation.Nonnull O11yO11ySentryPostableProject o11yO11ySentryPostableProject, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'o11yO11ySentryPostableProject' is set
         if (o11yO11ySentryPostableProject == null) {
-            throw new ApiException("Missing the required parameter 'o11yO11ySentryPostableProject' when calling postV1SentryProjects(Async)");
+            throw new ApiException("Missing the required parameter 'o11yO11ySentryPostableProject' when calling postSentryProjects(Async)");
         }
 
-        return postV1SentryProjectsCall(o11yO11ySentryPostableProject, _callback);
+        return postSentryProjectsCall(o11yO11ySentryPostableProject, _callback);
 
     }
 
@@ -2447,8 +2447,8 @@ public class SentryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yO11ySentryProjectOut postV1SentryProjects(@javax.annotation.Nonnull O11yO11ySentryPostableProject o11yO11ySentryPostableProject) throws ApiException {
-        ApiResponse<O11yO11ySentryProjectOut> localVarResp = postV1SentryProjectsWithHttpInfo(o11yO11ySentryPostableProject);
+    public O11yO11ySentryProjectOut postSentryProjects(@javax.annotation.Nonnull O11yO11ySentryPostableProject o11yO11ySentryPostableProject) throws ApiException {
+        ApiResponse<O11yO11ySentryProjectOut> localVarResp = postSentryProjectsWithHttpInfo(o11yO11ySentryPostableProject);
         return localVarResp.getData();
     }
 
@@ -2465,8 +2465,8 @@ public class SentryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yO11ySentryProjectOut> postV1SentryProjectsWithHttpInfo(@javax.annotation.Nonnull O11yO11ySentryPostableProject o11yO11ySentryPostableProject) throws ApiException {
-        okhttp3.Call localVarCall = postV1SentryProjectsValidateBeforeCall(o11yO11ySentryPostableProject, null);
+    public ApiResponse<O11yO11ySentryProjectOut> postSentryProjectsWithHttpInfo(@javax.annotation.Nonnull O11yO11ySentryPostableProject o11yO11ySentryPostableProject) throws ApiException {
+        okhttp3.Call localVarCall = postSentryProjectsValidateBeforeCall(o11yO11ySentryPostableProject, null);
         Type localVarReturnType = new TypeToken<O11yO11ySentryProjectOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2485,15 +2485,15 @@ public class SentryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1SentryProjectsAsync(@javax.annotation.Nonnull O11yO11ySentryPostableProject o11yO11ySentryPostableProject, final ApiCallback<O11yO11ySentryProjectOut> _callback) throws ApiException {
+    public okhttp3.Call postSentryProjectsAsync(@javax.annotation.Nonnull O11yO11ySentryPostableProject o11yO11ySentryPostableProject, final ApiCallback<O11yO11ySentryProjectOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1SentryProjectsValidateBeforeCall(o11yO11ySentryPostableProject, _callback);
+        okhttp3.Call localVarCall = postSentryProjectsValidateBeforeCall(o11yO11ySentryPostableProject, _callback);
         Type localVarReturnType = new TypeToken<O11yO11ySentryProjectOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1SentryProjectsByIdKeysRotate
+     * Build call for postSentryProjectsByIdKeysRotate
      * @param id ID is the project id. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2505,7 +2505,7 @@ public class SentryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1SentryProjectsByIdKeysRotateCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postSentryProjectsByIdKeysRotateCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2551,13 +2551,13 @@ public class SentryApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1SentryProjectsByIdKeysRotateValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postSentryProjectsByIdKeysRotateValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling postV1SentryProjectsByIdKeysRotate(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling postSentryProjectsByIdKeysRotate(Async)");
         }
 
-        return postV1SentryProjectsByIdKeysRotateCall(id, _callback);
+        return postSentryProjectsByIdKeysRotateCall(id, _callback);
 
     }
 
@@ -2574,8 +2574,8 @@ public class SentryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yO11ySentryProjectOut postV1SentryProjectsByIdKeysRotate(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<O11yO11ySentryProjectOut> localVarResp = postV1SentryProjectsByIdKeysRotateWithHttpInfo(id);
+    public O11yO11ySentryProjectOut postSentryProjectsByIdKeysRotate(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<O11yO11ySentryProjectOut> localVarResp = postSentryProjectsByIdKeysRotateWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -2592,8 +2592,8 @@ public class SentryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yO11ySentryProjectOut> postV1SentryProjectsByIdKeysRotateWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = postV1SentryProjectsByIdKeysRotateValidateBeforeCall(id, null);
+    public ApiResponse<O11yO11ySentryProjectOut> postSentryProjectsByIdKeysRotateWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = postSentryProjectsByIdKeysRotateValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<O11yO11ySentryProjectOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2612,21 +2612,21 @@ public class SentryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1SentryProjectsByIdKeysRotateAsync(@javax.annotation.Nonnull String id, final ApiCallback<O11yO11ySentryProjectOut> _callback) throws ApiException {
+    public okhttp3.Call postSentryProjectsByIdKeysRotateAsync(@javax.annotation.Nonnull String id, final ApiCallback<O11yO11ySentryProjectOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1SentryProjectsByIdKeysRotateValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = postSentryProjectsByIdKeysRotateValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<O11yO11ySentryProjectOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1SentryByWildcard1
+     * Build call for putSentryByWildcard1
      * @param wildcard1  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call putV1SentryByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putSentryByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2671,13 +2671,13 @@ public class SentryApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1SentryByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putSentryByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'wildcard1' is set
         if (wildcard1 == null) {
-            throw new ApiException("Missing the required parameter 'wildcard1' when calling putV1SentryByWildcard1(Async)");
+            throw new ApiException("Missing the required parameter 'wildcard1' when calling putSentryByWildcard1(Async)");
         }
 
-        return putV1SentryByWildcard1Call(wildcard1, _callback);
+        return putSentryByWildcard1Call(wildcard1, _callback);
 
     }
 
@@ -2687,8 +2687,8 @@ public class SentryApi {
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void putV1SentryByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        putV1SentryByWildcard1WithHttpInfo(wildcard1);
+    public void putSentryByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        putSentryByWildcard1WithHttpInfo(wildcard1);
     }
 
     /**
@@ -2698,8 +2698,8 @@ public class SentryApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> putV1SentryByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        okhttp3.Call localVarCall = putV1SentryByWildcard1ValidateBeforeCall(wildcard1, null);
+    public ApiResponse<Void> putSentryByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        okhttp3.Call localVarCall = putSentryByWildcard1ValidateBeforeCall(wildcard1, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -2711,14 +2711,14 @@ public class SentryApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call putV1SentryByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call putSentryByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1SentryByWildcard1ValidateBeforeCall(wildcard1, _callback);
+        okhttp3.Call localVarCall = putSentryByWildcard1ValidateBeforeCall(wildcard1, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1SentryIssuesById
+     * Build call for putSentryIssuesById
      * @param id ID is the issue id. (required)
      * @param o11yO11ySentryUpdateIssueIn  (required)
      * @param _callback Callback for upload/download progress
@@ -2731,7 +2731,7 @@ public class SentryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putV1SentryIssuesByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull O11yO11ySentryUpdateIssueIn o11yO11ySentryUpdateIssueIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putSentryIssuesByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull O11yO11ySentryUpdateIssueIn o11yO11ySentryUpdateIssueIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2778,18 +2778,18 @@ public class SentryApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1SentryIssuesByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull O11yO11ySentryUpdateIssueIn o11yO11ySentryUpdateIssueIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putSentryIssuesByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull O11yO11ySentryUpdateIssueIn o11yO11ySentryUpdateIssueIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling putV1SentryIssuesById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling putSentryIssuesById(Async)");
         }
 
         // verify the required parameter 'o11yO11ySentryUpdateIssueIn' is set
         if (o11yO11ySentryUpdateIssueIn == null) {
-            throw new ApiException("Missing the required parameter 'o11yO11ySentryUpdateIssueIn' when calling putV1SentryIssuesById(Async)");
+            throw new ApiException("Missing the required parameter 'o11yO11ySentryUpdateIssueIn' when calling putSentryIssuesById(Async)");
         }
 
-        return putV1SentryIssuesByIdCall(id, o11yO11ySentryUpdateIssueIn, _callback);
+        return putSentryIssuesByIdCall(id, o11yO11ySentryUpdateIssueIn, _callback);
 
     }
 
@@ -2807,8 +2807,8 @@ public class SentryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yO11yErrorIssueOut putV1SentryIssuesById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull O11yO11ySentryUpdateIssueIn o11yO11ySentryUpdateIssueIn) throws ApiException {
-        ApiResponse<O11yO11yErrorIssueOut> localVarResp = putV1SentryIssuesByIdWithHttpInfo(id, o11yO11ySentryUpdateIssueIn);
+    public O11yO11yErrorIssueOut putSentryIssuesById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull O11yO11ySentryUpdateIssueIn o11yO11ySentryUpdateIssueIn) throws ApiException {
+        ApiResponse<O11yO11yErrorIssueOut> localVarResp = putSentryIssuesByIdWithHttpInfo(id, o11yO11ySentryUpdateIssueIn);
         return localVarResp.getData();
     }
 
@@ -2826,8 +2826,8 @@ public class SentryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yO11yErrorIssueOut> putV1SentryIssuesByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull O11yO11ySentryUpdateIssueIn o11yO11ySentryUpdateIssueIn) throws ApiException {
-        okhttp3.Call localVarCall = putV1SentryIssuesByIdValidateBeforeCall(id, o11yO11ySentryUpdateIssueIn, null);
+    public ApiResponse<O11yO11yErrorIssueOut> putSentryIssuesByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull O11yO11ySentryUpdateIssueIn o11yO11ySentryUpdateIssueIn) throws ApiException {
+        okhttp3.Call localVarCall = putSentryIssuesByIdValidateBeforeCall(id, o11yO11ySentryUpdateIssueIn, null);
         Type localVarReturnType = new TypeToken<O11yO11yErrorIssueOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2847,9 +2847,9 @@ public class SentryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putV1SentryIssuesByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull O11yO11ySentryUpdateIssueIn o11yO11ySentryUpdateIssueIn, final ApiCallback<O11yO11yErrorIssueOut> _callback) throws ApiException {
+    public okhttp3.Call putSentryIssuesByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull O11yO11ySentryUpdateIssueIn o11yO11ySentryUpdateIssueIn, final ApiCallback<O11yO11yErrorIssueOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1SentryIssuesByIdValidateBeforeCall(id, o11yO11ySentryUpdateIssueIn, _callback);
+        okhttp3.Call localVarCall = putSentryIssuesByIdValidateBeforeCall(id, o11yO11ySentryUpdateIssueIn, _callback);
         Type localVarReturnType = new TypeToken<O11yO11yErrorIssueOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

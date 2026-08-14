@@ -80,7 +80,7 @@ public class KbApi {
     }
 
     /**
-     * Build call for deleteV1KbConnectorsByProvider
+     * Build call for deleteKbConnectorsByProvider
      * @param provider Provider is the connector to act on: github, slack, google or notion. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -92,7 +92,7 @@ public class KbApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1KbConnectorsByProviderCall(@javax.annotation.Nonnull String provider, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteKbConnectorsByProviderCall(@javax.annotation.Nonnull String provider, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -138,13 +138,13 @@ public class KbApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1KbConnectorsByProviderValidateBeforeCall(@javax.annotation.Nonnull String provider, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteKbConnectorsByProviderValidateBeforeCall(@javax.annotation.Nonnull String provider, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'provider' is set
         if (provider == null) {
-            throw new ApiException("Missing the required parameter 'provider' when calling deleteV1KbConnectorsByProvider(Async)");
+            throw new ApiException("Missing the required parameter 'provider' when calling deleteKbConnectorsByProvider(Async)");
         }
 
-        return deleteV1KbConnectorsByProviderCall(provider, _callback);
+        return deleteKbConnectorsByProviderCall(provider, _callback);
 
     }
 
@@ -161,8 +161,8 @@ public class KbApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ConnectionOut deleteV1KbConnectorsByProvider(@javax.annotation.Nonnull String provider) throws ApiException {
-        ApiResponse<ConnectionOut> localVarResp = deleteV1KbConnectorsByProviderWithHttpInfo(provider);
+    public ConnectionOut deleteKbConnectorsByProvider(@javax.annotation.Nonnull String provider) throws ApiException {
+        ApiResponse<ConnectionOut> localVarResp = deleteKbConnectorsByProviderWithHttpInfo(provider);
         return localVarResp.getData();
     }
 
@@ -179,8 +179,8 @@ public class KbApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ConnectionOut> deleteV1KbConnectorsByProviderWithHttpInfo(@javax.annotation.Nonnull String provider) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1KbConnectorsByProviderValidateBeforeCall(provider, null);
+    public ApiResponse<ConnectionOut> deleteKbConnectorsByProviderWithHttpInfo(@javax.annotation.Nonnull String provider) throws ApiException {
+        okhttp3.Call localVarCall = deleteKbConnectorsByProviderValidateBeforeCall(provider, null);
         Type localVarReturnType = new TypeToken<ConnectionOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -199,15 +199,15 @@ public class KbApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1KbConnectorsByProviderAsync(@javax.annotation.Nonnull String provider, final ApiCallback<ConnectionOut> _callback) throws ApiException {
+    public okhttp3.Call deleteKbConnectorsByProviderAsync(@javax.annotation.Nonnull String provider, final ApiCallback<ConnectionOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1KbConnectorsByProviderValidateBeforeCall(provider, _callback);
+        okhttp3.Call localVarCall = deleteKbConnectorsByProviderValidateBeforeCall(provider, _callback);
         Type localVarReturnType = new TypeToken<ConnectionOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1KbConnectors
+     * Build call for getKbConnectors
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -218,7 +218,7 @@ public class KbApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1KbConnectorsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getKbConnectorsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -263,8 +263,8 @@ public class KbApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1KbConnectorsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1KbConnectorsCall(_callback);
+    private okhttp3.Call getKbConnectorsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getKbConnectorsCall(_callback);
 
     }
 
@@ -280,8 +280,8 @@ public class KbApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public KbConnectorsOut getV1KbConnectors() throws ApiException {
-        ApiResponse<KbConnectorsOut> localVarResp = getV1KbConnectorsWithHttpInfo();
+    public KbConnectorsOut getKbConnectors() throws ApiException {
+        ApiResponse<KbConnectorsOut> localVarResp = getKbConnectorsWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -297,8 +297,8 @@ public class KbApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<KbConnectorsOut> getV1KbConnectorsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1KbConnectorsValidateBeforeCall(null);
+    public ApiResponse<KbConnectorsOut> getKbConnectorsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getKbConnectorsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<KbConnectorsOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -316,15 +316,15 @@ public class KbApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1KbConnectorsAsync(final ApiCallback<KbConnectorsOut> _callback) throws ApiException {
+    public okhttp3.Call getKbConnectorsAsync(final ApiCallback<KbConnectorsOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1KbConnectorsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getKbConnectorsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<KbConnectorsOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1KbConnectorsByProviderCallback
+     * Build call for getKbConnectorsByProviderCallback
      * @param provider Provider is the connector completing its flow, from the path. (required)
      * @param code Code is the provider&#39;s authorization code, exchanged for a token. (optional)
      * @param state State is the org-bound value this server signed at connect time. (optional)
@@ -339,7 +339,7 @@ public class KbApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1KbConnectorsByProviderCallbackCall(@javax.annotation.Nonnull String provider, @javax.annotation.Nullable String code, @javax.annotation.Nullable String state, @javax.annotation.Nullable String error, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getKbConnectorsByProviderCallbackCall(@javax.annotation.Nonnull String provider, @javax.annotation.Nullable String code, @javax.annotation.Nullable String state, @javax.annotation.Nullable String error, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -397,13 +397,13 @@ public class KbApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1KbConnectorsByProviderCallbackValidateBeforeCall(@javax.annotation.Nonnull String provider, @javax.annotation.Nullable String code, @javax.annotation.Nullable String state, @javax.annotation.Nullable String error, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getKbConnectorsByProviderCallbackValidateBeforeCall(@javax.annotation.Nonnull String provider, @javax.annotation.Nullable String code, @javax.annotation.Nullable String state, @javax.annotation.Nullable String error, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'provider' is set
         if (provider == null) {
-            throw new ApiException("Missing the required parameter 'provider' when calling getV1KbConnectorsByProviderCallback(Async)");
+            throw new ApiException("Missing the required parameter 'provider' when calling getKbConnectorsByProviderCallback(Async)");
         }
 
-        return getV1KbConnectorsByProviderCallbackCall(provider, code, state, error, _callback);
+        return getKbConnectorsByProviderCallbackCall(provider, code, state, error, _callback);
 
     }
 
@@ -423,8 +423,8 @@ public class KbApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ConnectionOut getV1KbConnectorsByProviderCallback(@javax.annotation.Nonnull String provider, @javax.annotation.Nullable String code, @javax.annotation.Nullable String state, @javax.annotation.Nullable String error) throws ApiException {
-        ApiResponse<ConnectionOut> localVarResp = getV1KbConnectorsByProviderCallbackWithHttpInfo(provider, code, state, error);
+    public ConnectionOut getKbConnectorsByProviderCallback(@javax.annotation.Nonnull String provider, @javax.annotation.Nullable String code, @javax.annotation.Nullable String state, @javax.annotation.Nullable String error) throws ApiException {
+        ApiResponse<ConnectionOut> localVarResp = getKbConnectorsByProviderCallbackWithHttpInfo(provider, code, state, error);
         return localVarResp.getData();
     }
 
@@ -444,8 +444,8 @@ public class KbApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ConnectionOut> getV1KbConnectorsByProviderCallbackWithHttpInfo(@javax.annotation.Nonnull String provider, @javax.annotation.Nullable String code, @javax.annotation.Nullable String state, @javax.annotation.Nullable String error) throws ApiException {
-        okhttp3.Call localVarCall = getV1KbConnectorsByProviderCallbackValidateBeforeCall(provider, code, state, error, null);
+    public ApiResponse<ConnectionOut> getKbConnectorsByProviderCallbackWithHttpInfo(@javax.annotation.Nonnull String provider, @javax.annotation.Nullable String code, @javax.annotation.Nullable String state, @javax.annotation.Nullable String error) throws ApiException {
+        okhttp3.Call localVarCall = getKbConnectorsByProviderCallbackValidateBeforeCall(provider, code, state, error, null);
         Type localVarReturnType = new TypeToken<ConnectionOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -467,15 +467,15 @@ public class KbApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1KbConnectorsByProviderCallbackAsync(@javax.annotation.Nonnull String provider, @javax.annotation.Nullable String code, @javax.annotation.Nullable String state, @javax.annotation.Nullable String error, final ApiCallback<ConnectionOut> _callback) throws ApiException {
+    public okhttp3.Call getKbConnectorsByProviderCallbackAsync(@javax.annotation.Nonnull String provider, @javax.annotation.Nullable String code, @javax.annotation.Nullable String state, @javax.annotation.Nullable String error, final ApiCallback<ConnectionOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1KbConnectorsByProviderCallbackValidateBeforeCall(provider, code, state, error, _callback);
+        okhttp3.Call localVarCall = getKbConnectorsByProviderCallbackValidateBeforeCall(provider, code, state, error, _callback);
         Type localVarReturnType = new TypeToken<ConnectionOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1KbConnectorsByProviderConnect
+     * Build call for getKbConnectorsByProviderConnect
      * @param provider Provider is the connector to act on: github, slack, google or notion. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -487,7 +487,7 @@ public class KbApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1KbConnectorsByProviderConnectCall(@javax.annotation.Nonnull String provider, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getKbConnectorsByProviderConnectCall(@javax.annotation.Nonnull String provider, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -533,13 +533,13 @@ public class KbApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1KbConnectorsByProviderConnectValidateBeforeCall(@javax.annotation.Nonnull String provider, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getKbConnectorsByProviderConnectValidateBeforeCall(@javax.annotation.Nonnull String provider, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'provider' is set
         if (provider == null) {
-            throw new ApiException("Missing the required parameter 'provider' when calling getV1KbConnectorsByProviderConnect(Async)");
+            throw new ApiException("Missing the required parameter 'provider' when calling getKbConnectorsByProviderConnect(Async)");
         }
 
-        return getV1KbConnectorsByProviderConnectCall(provider, _callback);
+        return getKbConnectorsByProviderConnectCall(provider, _callback);
 
     }
 
@@ -556,8 +556,8 @@ public class KbApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public KbAuthorizeOut getV1KbConnectorsByProviderConnect(@javax.annotation.Nonnull String provider) throws ApiException {
-        ApiResponse<KbAuthorizeOut> localVarResp = getV1KbConnectorsByProviderConnectWithHttpInfo(provider);
+    public KbAuthorizeOut getKbConnectorsByProviderConnect(@javax.annotation.Nonnull String provider) throws ApiException {
+        ApiResponse<KbAuthorizeOut> localVarResp = getKbConnectorsByProviderConnectWithHttpInfo(provider);
         return localVarResp.getData();
     }
 
@@ -574,8 +574,8 @@ public class KbApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<KbAuthorizeOut> getV1KbConnectorsByProviderConnectWithHttpInfo(@javax.annotation.Nonnull String provider) throws ApiException {
-        okhttp3.Call localVarCall = getV1KbConnectorsByProviderConnectValidateBeforeCall(provider, null);
+    public ApiResponse<KbAuthorizeOut> getKbConnectorsByProviderConnectWithHttpInfo(@javax.annotation.Nonnull String provider) throws ApiException {
+        okhttp3.Call localVarCall = getKbConnectorsByProviderConnectValidateBeforeCall(provider, null);
         Type localVarReturnType = new TypeToken<KbAuthorizeOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -594,15 +594,15 @@ public class KbApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1KbConnectorsByProviderConnectAsync(@javax.annotation.Nonnull String provider, final ApiCallback<KbAuthorizeOut> _callback) throws ApiException {
+    public okhttp3.Call getKbConnectorsByProviderConnectAsync(@javax.annotation.Nonnull String provider, final ApiCallback<KbAuthorizeOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1KbConnectorsByProviderConnectValidateBeforeCall(provider, _callback);
+        okhttp3.Call localVarCall = getKbConnectorsByProviderConnectValidateBeforeCall(provider, _callback);
         Type localVarReturnType = new TypeToken<KbAuthorizeOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1KbConnectorsCatalog
+     * Build call for getKbConnectorsCatalog
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -613,7 +613,7 @@ public class KbApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1KbConnectorsCatalogCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getKbConnectorsCatalogCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -658,8 +658,8 @@ public class KbApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1KbConnectorsCatalogValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1KbConnectorsCatalogCall(_callback);
+    private okhttp3.Call getKbConnectorsCatalogValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getKbConnectorsCatalogCall(_callback);
 
     }
 
@@ -675,8 +675,8 @@ public class KbApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public CatalogOut getV1KbConnectorsCatalog() throws ApiException {
-        ApiResponse<CatalogOut> localVarResp = getV1KbConnectorsCatalogWithHttpInfo();
+    public CatalogOut getKbConnectorsCatalog() throws ApiException {
+        ApiResponse<CatalogOut> localVarResp = getKbConnectorsCatalogWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -692,8 +692,8 @@ public class KbApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CatalogOut> getV1KbConnectorsCatalogWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1KbConnectorsCatalogValidateBeforeCall(null);
+    public ApiResponse<CatalogOut> getKbConnectorsCatalogWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getKbConnectorsCatalogValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<CatalogOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -711,15 +711,15 @@ public class KbApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1KbConnectorsCatalogAsync(final ApiCallback<CatalogOut> _callback) throws ApiException {
+    public okhttp3.Call getKbConnectorsCatalogAsync(final ApiCallback<CatalogOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1KbConnectorsCatalogValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getKbConnectorsCatalogValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<CatalogOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1KbGraph
+     * Build call for getKbGraph
      * @param project Project narrows the graph to one project scope. Empty reads the whole org. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -731,7 +731,7 @@ public class KbApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1KbGraphCall(@javax.annotation.Nullable String project, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getKbGraphCall(@javax.annotation.Nullable String project, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -780,8 +780,8 @@ public class KbApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1KbGraphValidateBeforeCall(@javax.annotation.Nullable String project, final ApiCallback _callback) throws ApiException {
-        return getV1KbGraphCall(project, _callback);
+    private okhttp3.Call getKbGraphValidateBeforeCall(@javax.annotation.Nullable String project, final ApiCallback _callback) throws ApiException {
+        return getKbGraphCall(project, _callback);
 
     }
 
@@ -798,8 +798,8 @@ public class KbApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public GraphOut getV1KbGraph(@javax.annotation.Nullable String project) throws ApiException {
-        ApiResponse<GraphOut> localVarResp = getV1KbGraphWithHttpInfo(project);
+    public GraphOut getKbGraph(@javax.annotation.Nullable String project) throws ApiException {
+        ApiResponse<GraphOut> localVarResp = getKbGraphWithHttpInfo(project);
         return localVarResp.getData();
     }
 
@@ -816,8 +816,8 @@ public class KbApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GraphOut> getV1KbGraphWithHttpInfo(@javax.annotation.Nullable String project) throws ApiException {
-        okhttp3.Call localVarCall = getV1KbGraphValidateBeforeCall(project, null);
+    public ApiResponse<GraphOut> getKbGraphWithHttpInfo(@javax.annotation.Nullable String project) throws ApiException {
+        okhttp3.Call localVarCall = getKbGraphValidateBeforeCall(project, null);
         Type localVarReturnType = new TypeToken<GraphOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -836,15 +836,15 @@ public class KbApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1KbGraphAsync(@javax.annotation.Nullable String project, final ApiCallback<GraphOut> _callback) throws ApiException {
+    public okhttp3.Call getKbGraphAsync(@javax.annotation.Nullable String project, final ApiCallback<GraphOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1KbGraphValidateBeforeCall(project, _callback);
+        okhttp3.Call localVarCall = getKbGraphValidateBeforeCall(project, _callback);
         Type localVarReturnType = new TypeToken<GraphOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1KbConnectorsByProviderSync
+     * Build call for postKbConnectorsByProviderSync
      * @param provider Provider is the connector to act on: github, slack, google or notion. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -856,7 +856,7 @@ public class KbApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1KbConnectorsByProviderSyncCall(@javax.annotation.Nonnull String provider, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postKbConnectorsByProviderSyncCall(@javax.annotation.Nonnull String provider, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -902,13 +902,13 @@ public class KbApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1KbConnectorsByProviderSyncValidateBeforeCall(@javax.annotation.Nonnull String provider, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postKbConnectorsByProviderSyncValidateBeforeCall(@javax.annotation.Nonnull String provider, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'provider' is set
         if (provider == null) {
-            throw new ApiException("Missing the required parameter 'provider' when calling postV1KbConnectorsByProviderSync(Async)");
+            throw new ApiException("Missing the required parameter 'provider' when calling postKbConnectorsByProviderSync(Async)");
         }
 
-        return postV1KbConnectorsByProviderSyncCall(provider, _callback);
+        return postKbConnectorsByProviderSyncCall(provider, _callback);
 
     }
 
@@ -925,8 +925,8 @@ public class KbApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public KbSyncOut postV1KbConnectorsByProviderSync(@javax.annotation.Nonnull String provider) throws ApiException {
-        ApiResponse<KbSyncOut> localVarResp = postV1KbConnectorsByProviderSyncWithHttpInfo(provider);
+    public KbSyncOut postKbConnectorsByProviderSync(@javax.annotation.Nonnull String provider) throws ApiException {
+        ApiResponse<KbSyncOut> localVarResp = postKbConnectorsByProviderSyncWithHttpInfo(provider);
         return localVarResp.getData();
     }
 
@@ -943,8 +943,8 @@ public class KbApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<KbSyncOut> postV1KbConnectorsByProviderSyncWithHttpInfo(@javax.annotation.Nonnull String provider) throws ApiException {
-        okhttp3.Call localVarCall = postV1KbConnectorsByProviderSyncValidateBeforeCall(provider, null);
+    public ApiResponse<KbSyncOut> postKbConnectorsByProviderSyncWithHttpInfo(@javax.annotation.Nonnull String provider) throws ApiException {
+        okhttp3.Call localVarCall = postKbConnectorsByProviderSyncValidateBeforeCall(provider, null);
         Type localVarReturnType = new TypeToken<KbSyncOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -963,20 +963,20 @@ public class KbApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1KbConnectorsByProviderSyncAsync(@javax.annotation.Nonnull String provider, final ApiCallback<KbSyncOut> _callback) throws ApiException {
+    public okhttp3.Call postKbConnectorsByProviderSyncAsync(@javax.annotation.Nonnull String provider, final ApiCallback<KbSyncOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1KbConnectorsByProviderSyncValidateBeforeCall(provider, _callback);
+        okhttp3.Call localVarCall = postKbConnectorsByProviderSyncValidateBeforeCall(provider, _callback);
         Type localVarReturnType = new TypeToken<KbSyncOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1KbImport
+     * Build call for postKbImport
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1KbImportCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postKbImportCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1020,8 +1020,8 @@ public class KbApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1KbImportValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1KbImportCall(_callback);
+    private okhttp3.Call postKbImportValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postKbImportCall(_callback);
 
     }
 
@@ -1030,8 +1030,8 @@ public class KbApi {
      * Ingests an uploaded export as a tree of kb-page documents with its link structure intact. &#x60;?format&#x3D;&#x60; picks the normalizer — obsidian, notion, roam or evernote — and the export arrives as a multipart &#x60;file&#x60; part, or as the raw request body when there is no multipart part: an Obsidian or Notion vault zip, a Roam JSON (raw or inside the zip Roam downloads), or an Evernote .enex.  The pages are filed through the SAME ingest path a connector sync uses, so the kb-page hook indexes each one for retrieval AND extracts its &#x60;[[wikilinks]]&#x60; into kb-link edges — the imported vault is searchable and its graph is navigable without a second pass. Parents are filed before their children, and each page takes a slug unique within the org (suffixed -2, -3, … on collision), so a re-import adds pages rather than overwriting the ones already there.  Scoped to the caller&#39;s validated org; &#x60;?project&#x3D;&#x60; narrows every imported page to one project. No validated principal is 403, and an org that has not installed the kb module is refused with the install call to make first. The bounds are 64 MB per upload, 5000 pages and 8 MB per archive entry: pages past the five-thousandth are dropped and a larger entry is truncated at its bound, and a page the store rejects is skipped — so the answer&#39;s &#x60;imported&#x60; count is what was actually filed, not what was sent.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1KbImport() throws ApiException {
-        postV1KbImportWithHttpInfo();
+    public void postKbImport() throws ApiException {
+        postKbImportWithHttpInfo();
     }
 
     /**
@@ -1040,8 +1040,8 @@ public class KbApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1KbImportWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1KbImportValidateBeforeCall(null);
+    public ApiResponse<Void> postKbImportWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postKbImportValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1052,14 +1052,14 @@ public class KbApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1KbImportAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postKbImportAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1KbImportValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postKbImportValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1KbSearch
+     * Build call for postKbSearch
      * @param searchIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1071,7 +1071,7 @@ public class KbApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1KbSearchCall(@javax.annotation.Nonnull SearchIn searchIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postKbSearchCall(@javax.annotation.Nonnull SearchIn searchIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1117,13 +1117,13 @@ public class KbApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1KbSearchValidateBeforeCall(@javax.annotation.Nonnull SearchIn searchIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postKbSearchValidateBeforeCall(@javax.annotation.Nonnull SearchIn searchIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'searchIn' is set
         if (searchIn == null) {
-            throw new ApiException("Missing the required parameter 'searchIn' when calling postV1KbSearch(Async)");
+            throw new ApiException("Missing the required parameter 'searchIn' when calling postKbSearch(Async)");
         }
 
-        return postV1KbSearchCall(searchIn, _callback);
+        return postKbSearchCall(searchIn, _callback);
 
     }
 
@@ -1140,8 +1140,8 @@ public class KbApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public SearchOut postV1KbSearch(@javax.annotation.Nonnull SearchIn searchIn) throws ApiException {
-        ApiResponse<SearchOut> localVarResp = postV1KbSearchWithHttpInfo(searchIn);
+    public SearchOut postKbSearch(@javax.annotation.Nonnull SearchIn searchIn) throws ApiException {
+        ApiResponse<SearchOut> localVarResp = postKbSearchWithHttpInfo(searchIn);
         return localVarResp.getData();
     }
 
@@ -1158,8 +1158,8 @@ public class KbApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SearchOut> postV1KbSearchWithHttpInfo(@javax.annotation.Nonnull SearchIn searchIn) throws ApiException {
-        okhttp3.Call localVarCall = postV1KbSearchValidateBeforeCall(searchIn, null);
+    public ApiResponse<SearchOut> postKbSearchWithHttpInfo(@javax.annotation.Nonnull SearchIn searchIn) throws ApiException {
+        okhttp3.Call localVarCall = postKbSearchValidateBeforeCall(searchIn, null);
         Type localVarReturnType = new TypeToken<SearchOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1178,9 +1178,9 @@ public class KbApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1KbSearchAsync(@javax.annotation.Nonnull SearchIn searchIn, final ApiCallback<SearchOut> _callback) throws ApiException {
+    public okhttp3.Call postKbSearchAsync(@javax.annotation.Nonnull SearchIn searchIn, final ApiCallback<SearchOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1KbSearchValidateBeforeCall(searchIn, _callback);
+        okhttp3.Call localVarCall = postKbSearchValidateBeforeCall(searchIn, _callback);
         Type localVarReturnType = new TypeToken<SearchOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

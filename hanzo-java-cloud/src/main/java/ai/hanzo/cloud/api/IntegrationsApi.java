@@ -97,7 +97,7 @@ public class IntegrationsApi {
     }
 
     /**
-     * Build call for deleteV1IntegrationsGithubReposByRepoPages
+     * Build call for deleteIntegrationsGithubReposByRepoPages
      * @param repo Repo is the repository&#39;s short name within the org&#39;s installation, with no owner prefix (the owner is server-derived from the grant). A trailing \&quot;.git\&quot; is stripped. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -109,7 +109,7 @@ public class IntegrationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1IntegrationsGithubReposByRepoPagesCall(@javax.annotation.Nonnull String repo, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteIntegrationsGithubReposByRepoPagesCall(@javax.annotation.Nonnull String repo, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -155,13 +155,13 @@ public class IntegrationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1IntegrationsGithubReposByRepoPagesValidateBeforeCall(@javax.annotation.Nonnull String repo, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteIntegrationsGithubReposByRepoPagesValidateBeforeCall(@javax.annotation.Nonnull String repo, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'repo' is set
         if (repo == null) {
-            throw new ApiException("Missing the required parameter 'repo' when calling deleteV1IntegrationsGithubReposByRepoPages(Async)");
+            throw new ApiException("Missing the required parameter 'repo' when calling deleteIntegrationsGithubReposByRepoPages(Async)");
         }
 
-        return deleteV1IntegrationsGithubReposByRepoPagesCall(repo, _callback);
+        return deleteIntegrationsGithubReposByRepoPagesCall(repo, _callback);
 
     }
 
@@ -178,8 +178,8 @@ public class IntegrationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public GithubPagesDisabledOut deleteV1IntegrationsGithubReposByRepoPages(@javax.annotation.Nonnull String repo) throws ApiException {
-        ApiResponse<GithubPagesDisabledOut> localVarResp = deleteV1IntegrationsGithubReposByRepoPagesWithHttpInfo(repo);
+    public GithubPagesDisabledOut deleteIntegrationsGithubReposByRepoPages(@javax.annotation.Nonnull String repo) throws ApiException {
+        ApiResponse<GithubPagesDisabledOut> localVarResp = deleteIntegrationsGithubReposByRepoPagesWithHttpInfo(repo);
         return localVarResp.getData();
     }
 
@@ -196,8 +196,8 @@ public class IntegrationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GithubPagesDisabledOut> deleteV1IntegrationsGithubReposByRepoPagesWithHttpInfo(@javax.annotation.Nonnull String repo) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1IntegrationsGithubReposByRepoPagesValidateBeforeCall(repo, null);
+    public ApiResponse<GithubPagesDisabledOut> deleteIntegrationsGithubReposByRepoPagesWithHttpInfo(@javax.annotation.Nonnull String repo) throws ApiException {
+        okhttp3.Call localVarCall = deleteIntegrationsGithubReposByRepoPagesValidateBeforeCall(repo, null);
         Type localVarReturnType = new TypeToken<GithubPagesDisabledOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -216,15 +216,15 @@ public class IntegrationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1IntegrationsGithubReposByRepoPagesAsync(@javax.annotation.Nonnull String repo, final ApiCallback<GithubPagesDisabledOut> _callback) throws ApiException {
+    public okhttp3.Call deleteIntegrationsGithubReposByRepoPagesAsync(@javax.annotation.Nonnull String repo, final ApiCallback<GithubPagesDisabledOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1IntegrationsGithubReposByRepoPagesValidateBeforeCall(repo, _callback);
+        okhttp3.Call localVarCall = deleteIntegrationsGithubReposByRepoPagesValidateBeforeCall(repo, _callback);
         Type localVarReturnType = new TypeToken<GithubPagesDisabledOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1Integrations
+     * Build call for getIntegrations
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -235,7 +235,7 @@ public class IntegrationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1IntegrationsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getIntegrationsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -280,8 +280,8 @@ public class IntegrationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1IntegrationsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1IntegrationsCall(_callback);
+    private okhttp3.Call getIntegrationsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getIntegrationsCall(_callback);
 
     }
 
@@ -297,8 +297,8 @@ public class IntegrationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ListOut getV1Integrations() throws ApiException {
-        ApiResponse<ListOut> localVarResp = getV1IntegrationsWithHttpInfo();
+    public ListOut getIntegrations() throws ApiException {
+        ApiResponse<ListOut> localVarResp = getIntegrationsWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -314,8 +314,8 @@ public class IntegrationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ListOut> getV1IntegrationsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1IntegrationsValidateBeforeCall(null);
+    public ApiResponse<ListOut> getIntegrationsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getIntegrationsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<ListOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -333,15 +333,15 @@ public class IntegrationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1IntegrationsAsync(final ApiCallback<ListOut> _callback) throws ApiException {
+    public okhttp3.Call getIntegrationsAsync(final ApiCallback<ListOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1IntegrationsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getIntegrationsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<ListOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1IntegrationsByProvider
+     * Build call for getIntegrationsByProvider
      * @param provider Provider is the registry id of the connector — \&quot;slack\&quot;, \&quot;github\&quot;, \&quot;cloudflare\&quot;. Unknown ids are 404, as are the user-plane (/v1/connectors) providers, which this surface never resolves. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -353,7 +353,7 @@ public class IntegrationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1IntegrationsByProviderCall(@javax.annotation.Nonnull String provider, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getIntegrationsByProviderCall(@javax.annotation.Nonnull String provider, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -399,13 +399,13 @@ public class IntegrationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1IntegrationsByProviderValidateBeforeCall(@javax.annotation.Nonnull String provider, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getIntegrationsByProviderValidateBeforeCall(@javax.annotation.Nonnull String provider, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'provider' is set
         if (provider == null) {
-            throw new ApiException("Missing the required parameter 'provider' when calling getV1IntegrationsByProvider(Async)");
+            throw new ApiException("Missing the required parameter 'provider' when calling getIntegrationsByProvider(Async)");
         }
 
-        return getV1IntegrationsByProviderCall(provider, _callback);
+        return getIntegrationsByProviderCall(provider, _callback);
 
     }
 
@@ -422,8 +422,8 @@ public class IntegrationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ProviderView getV1IntegrationsByProvider(@javax.annotation.Nonnull String provider) throws ApiException {
-        ApiResponse<ProviderView> localVarResp = getV1IntegrationsByProviderWithHttpInfo(provider);
+    public ProviderView getIntegrationsByProvider(@javax.annotation.Nonnull String provider) throws ApiException {
+        ApiResponse<ProviderView> localVarResp = getIntegrationsByProviderWithHttpInfo(provider);
         return localVarResp.getData();
     }
 
@@ -440,8 +440,8 @@ public class IntegrationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ProviderView> getV1IntegrationsByProviderWithHttpInfo(@javax.annotation.Nonnull String provider) throws ApiException {
-        okhttp3.Call localVarCall = getV1IntegrationsByProviderValidateBeforeCall(provider, null);
+    public ApiResponse<ProviderView> getIntegrationsByProviderWithHttpInfo(@javax.annotation.Nonnull String provider) throws ApiException {
+        okhttp3.Call localVarCall = getIntegrationsByProviderValidateBeforeCall(provider, null);
         Type localVarReturnType = new TypeToken<ProviderView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -460,21 +460,21 @@ public class IntegrationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1IntegrationsByProviderAsync(@javax.annotation.Nonnull String provider, final ApiCallback<ProviderView> _callback) throws ApiException {
+    public okhttp3.Call getIntegrationsByProviderAsync(@javax.annotation.Nonnull String provider, final ApiCallback<ProviderView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1IntegrationsByProviderValidateBeforeCall(provider, _callback);
+        okhttp3.Call localVarCall = getIntegrationsByProviderValidateBeforeCall(provider, _callback);
         Type localVarReturnType = new TypeToken<ProviderView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1IntegrationsByProviderCallback
+     * Build call for getIntegrationsByProviderCallback
      * @param provider  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1IntegrationsByProviderCallbackCall(@javax.annotation.Nonnull String provider, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getIntegrationsByProviderCallbackCall(@javax.annotation.Nonnull String provider, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -519,13 +519,13 @@ public class IntegrationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1IntegrationsByProviderCallbackValidateBeforeCall(@javax.annotation.Nonnull String provider, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getIntegrationsByProviderCallbackValidateBeforeCall(@javax.annotation.Nonnull String provider, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'provider' is set
         if (provider == null) {
-            throw new ApiException("Missing the required parameter 'provider' when calling getV1IntegrationsByProviderCallback(Async)");
+            throw new ApiException("Missing the required parameter 'provider' when calling getIntegrationsByProviderCallback(Async)");
         }
 
-        return getV1IntegrationsByProviderCallbackCall(provider, _callback);
+        return getIntegrationsByProviderCallbackCall(provider, _callback);
 
     }
 
@@ -535,8 +535,8 @@ public class IntegrationsApi {
      * @param provider  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1IntegrationsByProviderCallback(@javax.annotation.Nonnull String provider) throws ApiException {
-        getV1IntegrationsByProviderCallbackWithHttpInfo(provider);
+    public void getIntegrationsByProviderCallback(@javax.annotation.Nonnull String provider) throws ApiException {
+        getIntegrationsByProviderCallbackWithHttpInfo(provider);
     }
 
     /**
@@ -546,8 +546,8 @@ public class IntegrationsApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1IntegrationsByProviderCallbackWithHttpInfo(@javax.annotation.Nonnull String provider) throws ApiException {
-        okhttp3.Call localVarCall = getV1IntegrationsByProviderCallbackValidateBeforeCall(provider, null);
+    public ApiResponse<Void> getIntegrationsByProviderCallbackWithHttpInfo(@javax.annotation.Nonnull String provider) throws ApiException {
+        okhttp3.Call localVarCall = getIntegrationsByProviderCallbackValidateBeforeCall(provider, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -559,19 +559,19 @@ public class IntegrationsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1IntegrationsByProviderCallbackAsync(@javax.annotation.Nonnull String provider, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getIntegrationsByProviderCallbackAsync(@javax.annotation.Nonnull String provider, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1IntegrationsByProviderCallbackValidateBeforeCall(provider, _callback);
+        okhttp3.Call localVarCall = getIntegrationsByProviderCallbackValidateBeforeCall(provider, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1IntegrationsDiscordLink
+     * Build call for getIntegrationsDiscordLink
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1IntegrationsDiscordLinkCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getIntegrationsDiscordLinkCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -615,8 +615,8 @@ public class IntegrationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1IntegrationsDiscordLinkValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1IntegrationsDiscordLinkCall(_callback);
+    private okhttp3.Call getIntegrationsDiscordLinkValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getIntegrationsDiscordLinkCall(_callback);
 
     }
 
@@ -625,8 +625,8 @@ public class IntegrationsApi {
      * The entry point behind the connect prompt Hanzo shows in a Discord server. It starts a link session and redirects to Discord&#39;s OAuth &#x60;identify&#x60; consent — the narrowest scope that establishes which Discord user is asking, and nothing more.  This is one leg of a three-leg flow, and the legs are not interchangeable: a browser is expected to arrive here only from the leg before it. The link URL&#39;s state proves the prompt was server-minted and carries the CHAT it started from — it is provenance only, and it never decides which account gets linked. The account identity always comes from the platform&#39;s own verified sign-in and a host-bound cookie, so forwarding a link to someone else cannot bind their account, and a session lifted into another browser is refused rather than completed. Each link is single-use, and a deployment without linking configured answers 503.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1IntegrationsDiscordLink() throws ApiException {
-        getV1IntegrationsDiscordLinkWithHttpInfo();
+    public void getIntegrationsDiscordLink() throws ApiException {
+        getIntegrationsDiscordLinkWithHttpInfo();
     }
 
     /**
@@ -635,8 +635,8 @@ public class IntegrationsApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1IntegrationsDiscordLinkWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1IntegrationsDiscordLinkValidateBeforeCall(null);
+    public ApiResponse<Void> getIntegrationsDiscordLinkWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getIntegrationsDiscordLinkValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -647,19 +647,19 @@ public class IntegrationsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1IntegrationsDiscordLinkAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getIntegrationsDiscordLinkAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1IntegrationsDiscordLinkValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getIntegrationsDiscordLinkValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1IntegrationsDiscordLinkCallback
+     * Build call for getIntegrationsDiscordLinkCallback
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1IntegrationsDiscordLinkCallbackCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getIntegrationsDiscordLinkCallbackCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -703,8 +703,8 @@ public class IntegrationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1IntegrationsDiscordLinkCallbackValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1IntegrationsDiscordLinkCallbackCall(_callback);
+    private okhttp3.Call getIntegrationsDiscordLinkCallbackValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getIntegrationsDiscordLinkCallbackCall(_callback);
 
     }
 
@@ -713,8 +713,8 @@ public class IntegrationsApi {
      * The final leg: it binds the verified Discord user to the Hanzo account that just signed in, and answers a short confirmation page telling them to return to Discord. The Hanzo credential is sealed into the connected org&#39;s KMS namespace rather than stored beside the link.  This is one leg of a three-leg flow, and the legs are not interchangeable: a browser is expected to arrive here only from the leg before it. The link URL&#39;s state proves the prompt was server-minted and carries the CHAT it started from — it is provenance only, and it never decides which account gets linked. The account identity always comes from the platform&#39;s own verified sign-in and a host-bound cookie, so forwarding a link to someone else cannot bind their account, and a session lifted into another browser is refused rather than completed. Each link is single-use, and a deployment without linking configured answers 503.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1IntegrationsDiscordLinkCallback() throws ApiException {
-        getV1IntegrationsDiscordLinkCallbackWithHttpInfo();
+    public void getIntegrationsDiscordLinkCallback() throws ApiException {
+        getIntegrationsDiscordLinkCallbackWithHttpInfo();
     }
 
     /**
@@ -723,8 +723,8 @@ public class IntegrationsApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1IntegrationsDiscordLinkCallbackWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1IntegrationsDiscordLinkCallbackValidateBeforeCall(null);
+    public ApiResponse<Void> getIntegrationsDiscordLinkCallbackWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getIntegrationsDiscordLinkCallbackValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -735,19 +735,19 @@ public class IntegrationsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1IntegrationsDiscordLinkCallbackAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getIntegrationsDiscordLinkCallbackAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1IntegrationsDiscordLinkCallbackValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getIntegrationsDiscordLinkCallbackValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1IntegrationsDiscordLinkDiscord
+     * Build call for getIntegrationsDiscordLinkDiscord
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1IntegrationsDiscordLinkDiscordCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getIntegrationsDiscordLinkDiscordCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -791,8 +791,8 @@ public class IntegrationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1IntegrationsDiscordLinkDiscordValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1IntegrationsDiscordLinkDiscordCall(_callback);
+    private okhttp3.Call getIntegrationsDiscordLinkDiscordValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getIntegrationsDiscordLinkDiscordCall(_callback);
 
     }
 
@@ -801,8 +801,8 @@ public class IntegrationsApi {
      * Where Discord returns the user after the identify consent. It resolves the verified Discord user, confirms the server is connected to an org, and hands the browser to the Hanzo sign-in that completes the link.  This is one leg of a three-leg flow, and the legs are not interchangeable: a browser is expected to arrive here only from the leg before it. The link URL&#39;s state proves the prompt was server-minted and carries the CHAT it started from — it is provenance only, and it never decides which account gets linked. The account identity always comes from the platform&#39;s own verified sign-in and a host-bound cookie, so forwarding a link to someone else cannot bind their account, and a session lifted into another browser is refused rather than completed. Each link is single-use, and a deployment without linking configured answers 503.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1IntegrationsDiscordLinkDiscord() throws ApiException {
-        getV1IntegrationsDiscordLinkDiscordWithHttpInfo();
+    public void getIntegrationsDiscordLinkDiscord() throws ApiException {
+        getIntegrationsDiscordLinkDiscordWithHttpInfo();
     }
 
     /**
@@ -811,8 +811,8 @@ public class IntegrationsApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1IntegrationsDiscordLinkDiscordWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1IntegrationsDiscordLinkDiscordValidateBeforeCall(null);
+    public ApiResponse<Void> getIntegrationsDiscordLinkDiscordWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getIntegrationsDiscordLinkDiscordValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -823,14 +823,14 @@ public class IntegrationsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1IntegrationsDiscordLinkDiscordAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getIntegrationsDiscordLinkDiscordAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1IntegrationsDiscordLinkDiscordValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getIntegrationsDiscordLinkDiscordValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1IntegrationsGithubInstallations
+     * Build call for getIntegrationsGithubInstallations
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -841,7 +841,7 @@ public class IntegrationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1IntegrationsGithubInstallationsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getIntegrationsGithubInstallationsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -886,8 +886,8 @@ public class IntegrationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1IntegrationsGithubInstallationsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1IntegrationsGithubInstallationsCall(_callback);
+    private okhttp3.Call getIntegrationsGithubInstallationsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getIntegrationsGithubInstallationsCall(_callback);
 
     }
 
@@ -903,8 +903,8 @@ public class IntegrationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public GithubInstallationsOut getV1IntegrationsGithubInstallations() throws ApiException {
-        ApiResponse<GithubInstallationsOut> localVarResp = getV1IntegrationsGithubInstallationsWithHttpInfo();
+    public GithubInstallationsOut getIntegrationsGithubInstallations() throws ApiException {
+        ApiResponse<GithubInstallationsOut> localVarResp = getIntegrationsGithubInstallationsWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -920,8 +920,8 @@ public class IntegrationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GithubInstallationsOut> getV1IntegrationsGithubInstallationsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1IntegrationsGithubInstallationsValidateBeforeCall(null);
+    public ApiResponse<GithubInstallationsOut> getIntegrationsGithubInstallationsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getIntegrationsGithubInstallationsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<GithubInstallationsOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -939,15 +939,15 @@ public class IntegrationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1IntegrationsGithubInstallationsAsync(final ApiCallback<GithubInstallationsOut> _callback) throws ApiException {
+    public okhttp3.Call getIntegrationsGithubInstallationsAsync(final ApiCallback<GithubInstallationsOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1IntegrationsGithubInstallationsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getIntegrationsGithubInstallationsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<GithubInstallationsOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1IntegrationsGithubRepos
+     * Build call for getIntegrationsGithubRepos
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -958,7 +958,7 @@ public class IntegrationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1IntegrationsGithubReposCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getIntegrationsGithubReposCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1003,8 +1003,8 @@ public class IntegrationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1IntegrationsGithubReposValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1IntegrationsGithubReposCall(_callback);
+    private okhttp3.Call getIntegrationsGithubReposValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getIntegrationsGithubReposCall(_callback);
 
     }
 
@@ -1020,8 +1020,8 @@ public class IntegrationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public GithubReposOut getV1IntegrationsGithubRepos() throws ApiException {
-        ApiResponse<GithubReposOut> localVarResp = getV1IntegrationsGithubReposWithHttpInfo();
+    public GithubReposOut getIntegrationsGithubRepos() throws ApiException {
+        ApiResponse<GithubReposOut> localVarResp = getIntegrationsGithubReposWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -1037,8 +1037,8 @@ public class IntegrationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GithubReposOut> getV1IntegrationsGithubReposWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1IntegrationsGithubReposValidateBeforeCall(null);
+    public ApiResponse<GithubReposOut> getIntegrationsGithubReposWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getIntegrationsGithubReposValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<GithubReposOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1056,15 +1056,15 @@ public class IntegrationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1IntegrationsGithubReposAsync(final ApiCallback<GithubReposOut> _callback) throws ApiException {
+    public okhttp3.Call getIntegrationsGithubReposAsync(final ApiCallback<GithubReposOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1IntegrationsGithubReposValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getIntegrationsGithubReposValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<GithubReposOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1IntegrationsGithubReposByRepoPages
+     * Build call for getIntegrationsGithubReposByRepoPages
      * @param repo Repo is the repository&#39;s short name within the org&#39;s installation, with no owner prefix (the owner is server-derived from the grant). A trailing \&quot;.git\&quot; is stripped. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1076,7 +1076,7 @@ public class IntegrationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1IntegrationsGithubReposByRepoPagesCall(@javax.annotation.Nonnull String repo, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getIntegrationsGithubReposByRepoPagesCall(@javax.annotation.Nonnull String repo, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1122,13 +1122,13 @@ public class IntegrationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1IntegrationsGithubReposByRepoPagesValidateBeforeCall(@javax.annotation.Nonnull String repo, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getIntegrationsGithubReposByRepoPagesValidateBeforeCall(@javax.annotation.Nonnull String repo, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'repo' is set
         if (repo == null) {
-            throw new ApiException("Missing the required parameter 'repo' when calling getV1IntegrationsGithubReposByRepoPages(Async)");
+            throw new ApiException("Missing the required parameter 'repo' when calling getIntegrationsGithubReposByRepoPages(Async)");
         }
 
-        return getV1IntegrationsGithubReposByRepoPagesCall(repo, _callback);
+        return getIntegrationsGithubReposByRepoPagesCall(repo, _callback);
 
     }
 
@@ -1145,8 +1145,8 @@ public class IntegrationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public GithubPagesView getV1IntegrationsGithubReposByRepoPages(@javax.annotation.Nonnull String repo) throws ApiException {
-        ApiResponse<GithubPagesView> localVarResp = getV1IntegrationsGithubReposByRepoPagesWithHttpInfo(repo);
+    public GithubPagesView getIntegrationsGithubReposByRepoPages(@javax.annotation.Nonnull String repo) throws ApiException {
+        ApiResponse<GithubPagesView> localVarResp = getIntegrationsGithubReposByRepoPagesWithHttpInfo(repo);
         return localVarResp.getData();
     }
 
@@ -1163,8 +1163,8 @@ public class IntegrationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GithubPagesView> getV1IntegrationsGithubReposByRepoPagesWithHttpInfo(@javax.annotation.Nonnull String repo) throws ApiException {
-        okhttp3.Call localVarCall = getV1IntegrationsGithubReposByRepoPagesValidateBeforeCall(repo, null);
+    public ApiResponse<GithubPagesView> getIntegrationsGithubReposByRepoPagesWithHttpInfo(@javax.annotation.Nonnull String repo) throws ApiException {
+        okhttp3.Call localVarCall = getIntegrationsGithubReposByRepoPagesValidateBeforeCall(repo, null);
         Type localVarReturnType = new TypeToken<GithubPagesView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1183,20 +1183,20 @@ public class IntegrationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1IntegrationsGithubReposByRepoPagesAsync(@javax.annotation.Nonnull String repo, final ApiCallback<GithubPagesView> _callback) throws ApiException {
+    public okhttp3.Call getIntegrationsGithubReposByRepoPagesAsync(@javax.annotation.Nonnull String repo, final ApiCallback<GithubPagesView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1IntegrationsGithubReposByRepoPagesValidateBeforeCall(repo, _callback);
+        okhttp3.Call localVarCall = getIntegrationsGithubReposByRepoPagesValidateBeforeCall(repo, _callback);
         Type localVarReturnType = new TypeToken<GithubPagesView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1IntegrationsSlackInstall
+     * Build call for getIntegrationsSlackInstall
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1IntegrationsSlackInstallCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getIntegrationsSlackInstallCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1240,8 +1240,8 @@ public class IntegrationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1IntegrationsSlackInstallValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1IntegrationsSlackInstallCall(_callback);
+    private okhttp3.Call getIntegrationsSlackInstallValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getIntegrationsSlackInstallCall(_callback);
 
     }
 
@@ -1250,8 +1250,8 @@ public class IntegrationsApi {
      * The address behind Slack&#39;s \&quot;Add to Slack\&quot; and Marketplace Install buttons. It answers a 302 to Slack&#39;s own consent screen and does nothing else — it is a redirector by design.  It exists because Slack refuses a slack.com URL in that field and requires one of ours that redirects there, which makes the field an ATTRIBUTION hook: routing the click through our own address is what lets an install be counted, and always answering the redirect is what keeps the counter from becoming a detour that never reaches consent. The destination is the same consent URL every time, built from the same scopes the console&#39;s Connect button asks for, so a workspace is asked to grant one thing however the install began.  It is PUBLIC and carries no principal, because whoever clicks Install in Slack&#39;s directory has no Hanzo session yet. It binds no org either, and that is deliberate rather than missing: the org is resolved at the shared provider callback, from the signed state a console connect minted or from the workspace&#39;s existing connection. Minting an org for an anonymous click is the one thing that would break tenant isolation, so an install begun here finishes under exactly the rules every other install obeys.  Where the app is not configured it answers 503, rather than a consent URL carrying an empty client_id that Slack would render as its own dead-end error page.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1IntegrationsSlackInstall() throws ApiException {
-        getV1IntegrationsSlackInstallWithHttpInfo();
+    public void getIntegrationsSlackInstall() throws ApiException {
+        getIntegrationsSlackInstallWithHttpInfo();
     }
 
     /**
@@ -1260,8 +1260,8 @@ public class IntegrationsApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1IntegrationsSlackInstallWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1IntegrationsSlackInstallValidateBeforeCall(null);
+    public ApiResponse<Void> getIntegrationsSlackInstallWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getIntegrationsSlackInstallValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1272,19 +1272,19 @@ public class IntegrationsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1IntegrationsSlackInstallAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getIntegrationsSlackInstallAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1IntegrationsSlackInstallValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getIntegrationsSlackInstallValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1IntegrationsSlackLink
+     * Build call for getIntegrationsSlackLink
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1IntegrationsSlackLinkCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getIntegrationsSlackLinkCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1328,8 +1328,8 @@ public class IntegrationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1IntegrationsSlackLinkValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1IntegrationsSlackLinkCall(_callback);
+    private okhttp3.Call getIntegrationsSlackLinkValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getIntegrationsSlackLinkCall(_callback);
 
     }
 
@@ -1338,8 +1338,8 @@ public class IntegrationsApi {
      * The entry point behind the connect prompt Hanzo posts in Slack. It starts a link session in the browser and redirects to Slack&#39;s own sign-in, which is what proves which Slack user is asking.  This is one leg of a three-leg flow, and the legs are not interchangeable: a browser is expected to arrive here only from the leg before it. The link URL&#39;s state proves the prompt was server-minted and carries the CHAT it started from — it is provenance only, and it never decides which account gets linked. The account identity always comes from the platform&#39;s own verified sign-in and a host-bound cookie, so forwarding a link to someone else cannot bind their account, and a session lifted into another browser is refused rather than completed. Each link is single-use, and a deployment without linking configured answers 503.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1IntegrationsSlackLink() throws ApiException {
-        getV1IntegrationsSlackLinkWithHttpInfo();
+    public void getIntegrationsSlackLink() throws ApiException {
+        getIntegrationsSlackLinkWithHttpInfo();
     }
 
     /**
@@ -1348,8 +1348,8 @@ public class IntegrationsApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1IntegrationsSlackLinkWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1IntegrationsSlackLinkValidateBeforeCall(null);
+    public ApiResponse<Void> getIntegrationsSlackLinkWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getIntegrationsSlackLinkValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1360,19 +1360,19 @@ public class IntegrationsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1IntegrationsSlackLinkAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getIntegrationsSlackLinkAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1IntegrationsSlackLinkValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getIntegrationsSlackLinkValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1IntegrationsSlackLinkCallback
+     * Build call for getIntegrationsSlackLinkCallback
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1IntegrationsSlackLinkCallbackCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getIntegrationsSlackLinkCallbackCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1416,8 +1416,8 @@ public class IntegrationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1IntegrationsSlackLinkCallbackValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1IntegrationsSlackLinkCallbackCall(_callback);
+    private okhttp3.Call getIntegrationsSlackLinkCallbackValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getIntegrationsSlackLinkCallbackCall(_callback);
 
     }
 
@@ -1426,8 +1426,8 @@ public class IntegrationsApi {
      * The final leg: the user has proved both who they are in Slack and who they are in Hanzo, and this binds the two. It answers a short confirmation page telling them to return to Slack.  The Hanzo credential obtained here is sealed into the connected workspace&#39;s own KMS namespace; it is never written to a database column and never logged. A deployment whose secret store is unavailable refuses the link rather than completing it without custody of the credential.  This is one leg of a three-leg flow, and the legs are not interchangeable: a browser is expected to arrive here only from the leg before it. The link URL&#39;s state proves the prompt was server-minted and carries the CHAT it started from — it is provenance only, and it never decides which account gets linked. The account identity always comes from the platform&#39;s own verified sign-in and a host-bound cookie, so forwarding a link to someone else cannot bind their account, and a session lifted into another browser is refused rather than completed. Each link is single-use, and a deployment without linking configured answers 503.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1IntegrationsSlackLinkCallback() throws ApiException {
-        getV1IntegrationsSlackLinkCallbackWithHttpInfo();
+    public void getIntegrationsSlackLinkCallback() throws ApiException {
+        getIntegrationsSlackLinkCallbackWithHttpInfo();
     }
 
     /**
@@ -1436,8 +1436,8 @@ public class IntegrationsApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1IntegrationsSlackLinkCallbackWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1IntegrationsSlackLinkCallbackValidateBeforeCall(null);
+    public ApiResponse<Void> getIntegrationsSlackLinkCallbackWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getIntegrationsSlackLinkCallbackValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1448,19 +1448,19 @@ public class IntegrationsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1IntegrationsSlackLinkCallbackAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getIntegrationsSlackLinkCallbackAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1IntegrationsSlackLinkCallbackValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getIntegrationsSlackLinkCallbackValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1IntegrationsSlackLinkSlack
+     * Build call for getIntegrationsSlackLinkSlack
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1IntegrationsSlackLinkSlackCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getIntegrationsSlackLinkSlackCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1504,8 +1504,8 @@ public class IntegrationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1IntegrationsSlackLinkSlackValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1IntegrationsSlackLinkSlackCall(_callback);
+    private okhttp3.Call getIntegrationsSlackLinkSlackValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getIntegrationsSlackLinkSlackCall(_callback);
 
     }
 
@@ -1514,8 +1514,8 @@ public class IntegrationsApi {
      * Where Slack returns the user after they sign in. It establishes the verified Slack workspace and user, confirms that workspace is connected to an org, and hands the browser on to the Hanzo sign-in that completes the link.  The verified pair is carried onward in a host-bound cookie rather than in the URL, so the identity being linked cannot be edited in transit.  This is one leg of a three-leg flow, and the legs are not interchangeable: a browser is expected to arrive here only from the leg before it. The link URL&#39;s state proves the prompt was server-minted and carries the CHAT it started from — it is provenance only, and it never decides which account gets linked. The account identity always comes from the platform&#39;s own verified sign-in and a host-bound cookie, so forwarding a link to someone else cannot bind their account, and a session lifted into another browser is refused rather than completed. Each link is single-use, and a deployment without linking configured answers 503.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1IntegrationsSlackLinkSlack() throws ApiException {
-        getV1IntegrationsSlackLinkSlackWithHttpInfo();
+    public void getIntegrationsSlackLinkSlack() throws ApiException {
+        getIntegrationsSlackLinkSlackWithHttpInfo();
     }
 
     /**
@@ -1524,8 +1524,8 @@ public class IntegrationsApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1IntegrationsSlackLinkSlackWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1IntegrationsSlackLinkSlackValidateBeforeCall(null);
+    public ApiResponse<Void> getIntegrationsSlackLinkSlackWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getIntegrationsSlackLinkSlackValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1536,19 +1536,19 @@ public class IntegrationsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1IntegrationsSlackLinkSlackAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getIntegrationsSlackLinkSlackAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1IntegrationsSlackLinkSlackValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getIntegrationsSlackLinkSlackValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1IntegrationsTeamsLink
+     * Build call for getIntegrationsTeamsLink
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1IntegrationsTeamsLinkCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getIntegrationsTeamsLinkCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1592,8 +1592,8 @@ public class IntegrationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1IntegrationsTeamsLinkValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1IntegrationsTeamsLinkCall(_callback);
+    private okhttp3.Call getIntegrationsTeamsLinkValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getIntegrationsTeamsLinkCall(_callback);
 
     }
 
@@ -1602,8 +1602,8 @@ public class IntegrationsApi {
      * The entry point behind the connect prompt Hanzo shows in Teams. It starts a link session and redirects to Microsoft sign-in addressed to the CHAT&#39;S OWN tenant, not the common endpoint, so only a member of that tenant can complete it.  This is one leg of a three-leg flow, and the legs are not interchangeable: a browser is expected to arrive here only from the leg before it. The link URL&#39;s state proves the prompt was server-minted and carries the CHAT it started from — it is provenance only, and it never decides which account gets linked. The account identity always comes from the platform&#39;s own verified sign-in and a host-bound cookie, so forwarding a link to someone else cannot bind their account, and a session lifted into another browser is refused rather than completed. Each link is single-use, and a deployment without linking configured answers 503.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1IntegrationsTeamsLink() throws ApiException {
-        getV1IntegrationsTeamsLinkWithHttpInfo();
+    public void getIntegrationsTeamsLink() throws ApiException {
+        getIntegrationsTeamsLinkWithHttpInfo();
     }
 
     /**
@@ -1612,8 +1612,8 @@ public class IntegrationsApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1IntegrationsTeamsLinkWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1IntegrationsTeamsLinkValidateBeforeCall(null);
+    public ApiResponse<Void> getIntegrationsTeamsLinkWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getIntegrationsTeamsLinkValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1624,19 +1624,19 @@ public class IntegrationsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1IntegrationsTeamsLinkAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getIntegrationsTeamsLinkAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1IntegrationsTeamsLinkValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getIntegrationsTeamsLinkValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1IntegrationsTeamsLinkAad
+     * Build call for getIntegrationsTeamsLinkAad
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1IntegrationsTeamsLinkAadCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getIntegrationsTeamsLinkAadCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1680,8 +1680,8 @@ public class IntegrationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1IntegrationsTeamsLinkAadValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1IntegrationsTeamsLinkAadCall(_callback);
+    private okhttp3.Call getIntegrationsTeamsLinkAadValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getIntegrationsTeamsLinkAadCall(_callback);
 
     }
 
@@ -1690,8 +1690,8 @@ public class IntegrationsApi {
      * Where Microsoft returns the user after sign-in. It resolves the verified directory identity and then re-checks the tenant: the signed-in user&#39;s tenant must equal the tenant of the chat the link started from, so a valid Microsoft sign-in from a different organization is refused here rather than accepted.  This is the leg Teams has and the other platforms do not, which is why the Teams flow has an extra address.  This is one leg of a three-leg flow, and the legs are not interchangeable: a browser is expected to arrive here only from the leg before it. The link URL&#39;s state proves the prompt was server-minted and carries the CHAT it started from — it is provenance only, and it never decides which account gets linked. The account identity always comes from the platform&#39;s own verified sign-in and a host-bound cookie, so forwarding a link to someone else cannot bind their account, and a session lifted into another browser is refused rather than completed. Each link is single-use, and a deployment without linking configured answers 503.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1IntegrationsTeamsLinkAad() throws ApiException {
-        getV1IntegrationsTeamsLinkAadWithHttpInfo();
+    public void getIntegrationsTeamsLinkAad() throws ApiException {
+        getIntegrationsTeamsLinkAadWithHttpInfo();
     }
 
     /**
@@ -1700,8 +1700,8 @@ public class IntegrationsApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1IntegrationsTeamsLinkAadWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1IntegrationsTeamsLinkAadValidateBeforeCall(null);
+    public ApiResponse<Void> getIntegrationsTeamsLinkAadWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getIntegrationsTeamsLinkAadValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1712,19 +1712,19 @@ public class IntegrationsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1IntegrationsTeamsLinkAadAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getIntegrationsTeamsLinkAadAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1IntegrationsTeamsLinkAadValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getIntegrationsTeamsLinkAadValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1IntegrationsTeamsLinkCallback
+     * Build call for getIntegrationsTeamsLinkCallback
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1IntegrationsTeamsLinkCallbackCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getIntegrationsTeamsLinkCallbackCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1768,8 +1768,8 @@ public class IntegrationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1IntegrationsTeamsLinkCallbackValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1IntegrationsTeamsLinkCallbackCall(_callback);
+    private okhttp3.Call getIntegrationsTeamsLinkCallbackValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getIntegrationsTeamsLinkCallbackCall(_callback);
 
     }
 
@@ -1778,8 +1778,8 @@ public class IntegrationsApi {
      * The final leg: it binds the verified directory identity to the Hanzo account that just signed in, and answers a short confirmation page telling them to return to Teams. The Hanzo credential is sealed into the connected org&#39;s KMS namespace.  This is one leg of a three-leg flow, and the legs are not interchangeable: a browser is expected to arrive here only from the leg before it. The link URL&#39;s state proves the prompt was server-minted and carries the CHAT it started from — it is provenance only, and it never decides which account gets linked. The account identity always comes from the platform&#39;s own verified sign-in and a host-bound cookie, so forwarding a link to someone else cannot bind their account, and a session lifted into another browser is refused rather than completed. Each link is single-use, and a deployment without linking configured answers 503.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1IntegrationsTeamsLinkCallback() throws ApiException {
-        getV1IntegrationsTeamsLinkCallbackWithHttpInfo();
+    public void getIntegrationsTeamsLinkCallback() throws ApiException {
+        getIntegrationsTeamsLinkCallbackWithHttpInfo();
     }
 
     /**
@@ -1788,8 +1788,8 @@ public class IntegrationsApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1IntegrationsTeamsLinkCallbackWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1IntegrationsTeamsLinkCallbackValidateBeforeCall(null);
+    public ApiResponse<Void> getIntegrationsTeamsLinkCallbackWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getIntegrationsTeamsLinkCallbackValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1800,19 +1800,19 @@ public class IntegrationsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1IntegrationsTeamsLinkCallbackAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getIntegrationsTeamsLinkCallbackAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1IntegrationsTeamsLinkCallbackValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getIntegrationsTeamsLinkCallbackValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1IntegrationsTelegramLink
+     * Build call for getIntegrationsTelegramLink
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1IntegrationsTelegramLinkCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getIntegrationsTelegramLinkCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1856,8 +1856,8 @@ public class IntegrationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1IntegrationsTelegramLinkValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1IntegrationsTelegramLinkCall(_callback);
+    private okhttp3.Call getIntegrationsTelegramLinkValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getIntegrationsTelegramLinkCall(_callback);
 
     }
 
@@ -1866,8 +1866,8 @@ public class IntegrationsApi {
      * The entry point behind the connect prompt Hanzo sends in Telegram. Unlike the other platforms it answers an HTML PAGE rather than a redirect: Telegram has no OAuth flow, so the page hosts Telegram&#39;s Login Widget, and the browser is sent onward only after the user signs in through it.  The widget only appears on the domain registered for the bot, so a deployment whose bot domain is unset renders a page with nothing on it.  This is one leg of a three-leg flow, and the legs are not interchangeable: a browser is expected to arrive here only from the leg before it. The link URL&#39;s state proves the prompt was server-minted and carries the CHAT it started from — it is provenance only, and it never decides which account gets linked. The account identity always comes from the platform&#39;s own verified sign-in and a host-bound cookie, so forwarding a link to someone else cannot bind their account, and a session lifted into another browser is refused rather than completed. Each link is single-use, and a deployment without linking configured answers 503.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1IntegrationsTelegramLink() throws ApiException {
-        getV1IntegrationsTelegramLinkWithHttpInfo();
+    public void getIntegrationsTelegramLink() throws ApiException {
+        getIntegrationsTelegramLinkWithHttpInfo();
     }
 
     /**
@@ -1876,8 +1876,8 @@ public class IntegrationsApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1IntegrationsTelegramLinkWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1IntegrationsTelegramLinkValidateBeforeCall(null);
+    public ApiResponse<Void> getIntegrationsTelegramLinkWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getIntegrationsTelegramLinkValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1888,19 +1888,19 @@ public class IntegrationsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1IntegrationsTelegramLinkAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getIntegrationsTelegramLinkAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1IntegrationsTelegramLinkValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getIntegrationsTelegramLinkValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1IntegrationsTelegramLinkAuth
+     * Build call for getIntegrationsTelegramLinkAuth
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1IntegrationsTelegramLinkAuthCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getIntegrationsTelegramLinkAuthCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1944,8 +1944,8 @@ public class IntegrationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1IntegrationsTelegramLinkAuthValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1IntegrationsTelegramLinkAuthCall(_callback);
+    private okhttp3.Call getIntegrationsTelegramLinkAuthValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getIntegrationsTelegramLinkAuthCall(_callback);
 
     }
 
@@ -1954,8 +1954,8 @@ public class IntegrationsApi {
      * Where Telegram&#39;s Login Widget sends the user with its signed authentication data. That data is verified against the bot token — this is the identity source, and it is the widget&#39;s signature rather than a code exchange — and the chat is confirmed to be bound to an org before the browser is handed to the Hanzo sign-in.  Widget data is only accepted while it is fresh, so a captured sign-in blob cannot be replayed later even though its signature stays valid.  This is one leg of a three-leg flow, and the legs are not interchangeable: a browser is expected to arrive here only from the leg before it. The link URL&#39;s state proves the prompt was server-minted and carries the CHAT it started from — it is provenance only, and it never decides which account gets linked. The account identity always comes from the platform&#39;s own verified sign-in and a host-bound cookie, so forwarding a link to someone else cannot bind their account, and a session lifted into another browser is refused rather than completed. Each link is single-use, and a deployment without linking configured answers 503.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1IntegrationsTelegramLinkAuth() throws ApiException {
-        getV1IntegrationsTelegramLinkAuthWithHttpInfo();
+    public void getIntegrationsTelegramLinkAuth() throws ApiException {
+        getIntegrationsTelegramLinkAuthWithHttpInfo();
     }
 
     /**
@@ -1964,8 +1964,8 @@ public class IntegrationsApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1IntegrationsTelegramLinkAuthWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1IntegrationsTelegramLinkAuthValidateBeforeCall(null);
+    public ApiResponse<Void> getIntegrationsTelegramLinkAuthWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getIntegrationsTelegramLinkAuthValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1976,19 +1976,19 @@ public class IntegrationsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1IntegrationsTelegramLinkAuthAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getIntegrationsTelegramLinkAuthAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1IntegrationsTelegramLinkAuthValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getIntegrationsTelegramLinkAuthValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1IntegrationsTelegramLinkCallback
+     * Build call for getIntegrationsTelegramLinkCallback
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1IntegrationsTelegramLinkCallbackCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getIntegrationsTelegramLinkCallbackCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2032,8 +2032,8 @@ public class IntegrationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1IntegrationsTelegramLinkCallbackValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1IntegrationsTelegramLinkCallbackCall(_callback);
+    private okhttp3.Call getIntegrationsTelegramLinkCallbackValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getIntegrationsTelegramLinkCallbackCall(_callback);
 
     }
 
@@ -2042,8 +2042,8 @@ public class IntegrationsApi {
      * The final leg: it binds the verified Telegram user to the Hanzo account that just signed in, and answers a short confirmation page telling them to return to Telegram. The Hanzo credential is sealed into the connected org&#39;s KMS namespace.  This is one leg of a three-leg flow, and the legs are not interchangeable: a browser is expected to arrive here only from the leg before it. The link URL&#39;s state proves the prompt was server-minted and carries the CHAT it started from — it is provenance only, and it never decides which account gets linked. The account identity always comes from the platform&#39;s own verified sign-in and a host-bound cookie, so forwarding a link to someone else cannot bind their account, and a session lifted into another browser is refused rather than completed. Each link is single-use, and a deployment without linking configured answers 503.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1IntegrationsTelegramLinkCallback() throws ApiException {
-        getV1IntegrationsTelegramLinkCallbackWithHttpInfo();
+    public void getIntegrationsTelegramLinkCallback() throws ApiException {
+        getIntegrationsTelegramLinkCallbackWithHttpInfo();
     }
 
     /**
@@ -2052,8 +2052,8 @@ public class IntegrationsApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1IntegrationsTelegramLinkCallbackWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1IntegrationsTelegramLinkCallbackValidateBeforeCall(null);
+    public ApiResponse<Void> getIntegrationsTelegramLinkCallbackWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getIntegrationsTelegramLinkCallbackValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -2064,14 +2064,14 @@ public class IntegrationsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1IntegrationsTelegramLinkCallbackAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getIntegrationsTelegramLinkCallbackAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1IntegrationsTelegramLinkCallbackValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getIntegrationsTelegramLinkCallbackValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1IntegrationsByProviderConnect
+     * Build call for postIntegrationsByProviderConnect
      * @param provider Provider is the connector&#39;s registry id, from the :provider path segment. (required)
      * @param connectIn  (required)
      * @param _callback Callback for upload/download progress
@@ -2084,7 +2084,7 @@ public class IntegrationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1IntegrationsByProviderConnectCall(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull ConnectIn connectIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postIntegrationsByProviderConnectCall(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull ConnectIn connectIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2131,18 +2131,18 @@ public class IntegrationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1IntegrationsByProviderConnectValidateBeforeCall(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull ConnectIn connectIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postIntegrationsByProviderConnectValidateBeforeCall(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull ConnectIn connectIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'provider' is set
         if (provider == null) {
-            throw new ApiException("Missing the required parameter 'provider' when calling postV1IntegrationsByProviderConnect(Async)");
+            throw new ApiException("Missing the required parameter 'provider' when calling postIntegrationsByProviderConnect(Async)");
         }
 
         // verify the required parameter 'connectIn' is set
         if (connectIn == null) {
-            throw new ApiException("Missing the required parameter 'connectIn' when calling postV1IntegrationsByProviderConnect(Async)");
+            throw new ApiException("Missing the required parameter 'connectIn' when calling postIntegrationsByProviderConnect(Async)");
         }
 
-        return postV1IntegrationsByProviderConnectCall(provider, connectIn, _callback);
+        return postIntegrationsByProviderConnectCall(provider, connectIn, _callback);
 
     }
 
@@ -2160,8 +2160,8 @@ public class IntegrationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ConnectOut postV1IntegrationsByProviderConnect(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull ConnectIn connectIn) throws ApiException {
-        ApiResponse<ConnectOut> localVarResp = postV1IntegrationsByProviderConnectWithHttpInfo(provider, connectIn);
+    public ConnectOut postIntegrationsByProviderConnect(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull ConnectIn connectIn) throws ApiException {
+        ApiResponse<ConnectOut> localVarResp = postIntegrationsByProviderConnectWithHttpInfo(provider, connectIn);
         return localVarResp.getData();
     }
 
@@ -2179,8 +2179,8 @@ public class IntegrationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ConnectOut> postV1IntegrationsByProviderConnectWithHttpInfo(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull ConnectIn connectIn) throws ApiException {
-        okhttp3.Call localVarCall = postV1IntegrationsByProviderConnectValidateBeforeCall(provider, connectIn, null);
+    public ApiResponse<ConnectOut> postIntegrationsByProviderConnectWithHttpInfo(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull ConnectIn connectIn) throws ApiException {
+        okhttp3.Call localVarCall = postIntegrationsByProviderConnectValidateBeforeCall(provider, connectIn, null);
         Type localVarReturnType = new TypeToken<ConnectOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2200,15 +2200,15 @@ public class IntegrationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1IntegrationsByProviderConnectAsync(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull ConnectIn connectIn, final ApiCallback<ConnectOut> _callback) throws ApiException {
+    public okhttp3.Call postIntegrationsByProviderConnectAsync(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull ConnectIn connectIn, final ApiCallback<ConnectOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1IntegrationsByProviderConnectValidateBeforeCall(provider, connectIn, _callback);
+        okhttp3.Call localVarCall = postIntegrationsByProviderConnectValidateBeforeCall(provider, connectIn, _callback);
         Type localVarReturnType = new TypeToken<ConnectOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1IntegrationsByProviderDisconnect
+     * Build call for postIntegrationsByProviderDisconnect
      * @param provider Provider is the registry id of the connector — \&quot;slack\&quot;, \&quot;github\&quot;, \&quot;cloudflare\&quot;. Unknown ids are 404, as are the user-plane (/v1/connectors) providers, which this surface never resolves. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2220,7 +2220,7 @@ public class IntegrationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1IntegrationsByProviderDisconnectCall(@javax.annotation.Nonnull String provider, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postIntegrationsByProviderDisconnectCall(@javax.annotation.Nonnull String provider, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2266,13 +2266,13 @@ public class IntegrationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1IntegrationsByProviderDisconnectValidateBeforeCall(@javax.annotation.Nonnull String provider, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postIntegrationsByProviderDisconnectValidateBeforeCall(@javax.annotation.Nonnull String provider, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'provider' is set
         if (provider == null) {
-            throw new ApiException("Missing the required parameter 'provider' when calling postV1IntegrationsByProviderDisconnect(Async)");
+            throw new ApiException("Missing the required parameter 'provider' when calling postIntegrationsByProviderDisconnect(Async)");
         }
 
-        return postV1IntegrationsByProviderDisconnectCall(provider, _callback);
+        return postIntegrationsByProviderDisconnectCall(provider, _callback);
 
     }
 
@@ -2289,8 +2289,8 @@ public class IntegrationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public DisconnectOut postV1IntegrationsByProviderDisconnect(@javax.annotation.Nonnull String provider) throws ApiException {
-        ApiResponse<DisconnectOut> localVarResp = postV1IntegrationsByProviderDisconnectWithHttpInfo(provider);
+    public DisconnectOut postIntegrationsByProviderDisconnect(@javax.annotation.Nonnull String provider) throws ApiException {
+        ApiResponse<DisconnectOut> localVarResp = postIntegrationsByProviderDisconnectWithHttpInfo(provider);
         return localVarResp.getData();
     }
 
@@ -2307,8 +2307,8 @@ public class IntegrationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DisconnectOut> postV1IntegrationsByProviderDisconnectWithHttpInfo(@javax.annotation.Nonnull String provider) throws ApiException {
-        okhttp3.Call localVarCall = postV1IntegrationsByProviderDisconnectValidateBeforeCall(provider, null);
+    public ApiResponse<DisconnectOut> postIntegrationsByProviderDisconnectWithHttpInfo(@javax.annotation.Nonnull String provider) throws ApiException {
+        okhttp3.Call localVarCall = postIntegrationsByProviderDisconnectValidateBeforeCall(provider, null);
         Type localVarReturnType = new TypeToken<DisconnectOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2327,15 +2327,15 @@ public class IntegrationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1IntegrationsByProviderDisconnectAsync(@javax.annotation.Nonnull String provider, final ApiCallback<DisconnectOut> _callback) throws ApiException {
+    public okhttp3.Call postIntegrationsByProviderDisconnectAsync(@javax.annotation.Nonnull String provider, final ApiCallback<DisconnectOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1IntegrationsByProviderDisconnectValidateBeforeCall(provider, _callback);
+        okhttp3.Call localVarCall = postIntegrationsByProviderDisconnectValidateBeforeCall(provider, _callback);
         Type localVarReturnType = new TypeToken<DisconnectOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1IntegrationsByProviderVerify
+     * Build call for postIntegrationsByProviderVerify
      * @param provider Provider is the registry id of the connector — \&quot;slack\&quot;, \&quot;github\&quot;, \&quot;cloudflare\&quot;. Unknown ids are 404, as are the user-plane (/v1/connectors) providers, which this surface never resolves. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2347,7 +2347,7 @@ public class IntegrationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1IntegrationsByProviderVerifyCall(@javax.annotation.Nonnull String provider, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postIntegrationsByProviderVerifyCall(@javax.annotation.Nonnull String provider, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2393,13 +2393,13 @@ public class IntegrationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1IntegrationsByProviderVerifyValidateBeforeCall(@javax.annotation.Nonnull String provider, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postIntegrationsByProviderVerifyValidateBeforeCall(@javax.annotation.Nonnull String provider, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'provider' is set
         if (provider == null) {
-            throw new ApiException("Missing the required parameter 'provider' when calling postV1IntegrationsByProviderVerify(Async)");
+            throw new ApiException("Missing the required parameter 'provider' when calling postIntegrationsByProviderVerify(Async)");
         }
 
-        return postV1IntegrationsByProviderVerifyCall(provider, _callback);
+        return postIntegrationsByProviderVerifyCall(provider, _callback);
 
     }
 
@@ -2416,8 +2416,8 @@ public class IntegrationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public VerifyOut postV1IntegrationsByProviderVerify(@javax.annotation.Nonnull String provider) throws ApiException {
-        ApiResponse<VerifyOut> localVarResp = postV1IntegrationsByProviderVerifyWithHttpInfo(provider);
+    public VerifyOut postIntegrationsByProviderVerify(@javax.annotation.Nonnull String provider) throws ApiException {
+        ApiResponse<VerifyOut> localVarResp = postIntegrationsByProviderVerifyWithHttpInfo(provider);
         return localVarResp.getData();
     }
 
@@ -2434,8 +2434,8 @@ public class IntegrationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<VerifyOut> postV1IntegrationsByProviderVerifyWithHttpInfo(@javax.annotation.Nonnull String provider) throws ApiException {
-        okhttp3.Call localVarCall = postV1IntegrationsByProviderVerifyValidateBeforeCall(provider, null);
+    public ApiResponse<VerifyOut> postIntegrationsByProviderVerifyWithHttpInfo(@javax.annotation.Nonnull String provider) throws ApiException {
+        okhttp3.Call localVarCall = postIntegrationsByProviderVerifyValidateBeforeCall(provider, null);
         Type localVarReturnType = new TypeToken<VerifyOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2454,20 +2454,20 @@ public class IntegrationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1IntegrationsByProviderVerifyAsync(@javax.annotation.Nonnull String provider, final ApiCallback<VerifyOut> _callback) throws ApiException {
+    public okhttp3.Call postIntegrationsByProviderVerifyAsync(@javax.annotation.Nonnull String provider, final ApiCallback<VerifyOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1IntegrationsByProviderVerifyValidateBeforeCall(provider, _callback);
+        okhttp3.Call localVarCall = postIntegrationsByProviderVerifyValidateBeforeCall(provider, _callback);
         Type localVarReturnType = new TypeToken<VerifyOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1IntegrationsDiscordInteractions
+     * Build call for postIntegrationsDiscordInteractions
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1IntegrationsDiscordInteractionsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postIntegrationsDiscordInteractionsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2511,8 +2511,8 @@ public class IntegrationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1IntegrationsDiscordInteractionsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1IntegrationsDiscordInteractionsCall(_callback);
+    private okhttp3.Call postIntegrationsDiscordInteractionsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postIntegrationsDiscordInteractionsCall(_callback);
 
     }
 
@@ -2521,8 +2521,8 @@ public class IntegrationsApi {
      * The Interactions Endpoint URL for the Discord app. It answers Discord&#39;s PING with a PONG, and handles the &#x60;/hanzo&#x60; slash command by acknowledging with a deferred ephemeral reply and editing that reply with the answer once the agent has run. Any other interaction is acknowledged and ignored.  Requests are verified by ED25519 SIGNATURE over the timestamp and body against the app&#39;s public key — not by HMAC, unlike the Slack webhooks. Interactions work over plain HTTP, so no gateway connection and no message-content intent is involved.  Discord does not retry, so this is the one channel where being at capacity is shown to the user as an ephemeral ask-to-run-it-again rather than answered as a retriable failure — nothing is recorded either way, so the next attempt is clean.  The caller here is the PLATFORM, not a Hanzo tenant, so there is no bearer and no principal. The signature check IS the authentication, and it fails closed. The tenant is never read from the payload either: it is resolved from the verified platform identifier through the connection map, so an event from a workspace nobody connected does nothing. Refusals are written with their own status rather than being flattened to a 500, so a rejected signature reads as 401 and a malformed body as 400.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1IntegrationsDiscordInteractions() throws ApiException {
-        postV1IntegrationsDiscordInteractionsWithHttpInfo();
+    public void postIntegrationsDiscordInteractions() throws ApiException {
+        postIntegrationsDiscordInteractionsWithHttpInfo();
     }
 
     /**
@@ -2531,8 +2531,8 @@ public class IntegrationsApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1IntegrationsDiscordInteractionsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1IntegrationsDiscordInteractionsValidateBeforeCall(null);
+    public ApiResponse<Void> postIntegrationsDiscordInteractionsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postIntegrationsDiscordInteractionsValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -2543,14 +2543,14 @@ public class IntegrationsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1IntegrationsDiscordInteractionsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postIntegrationsDiscordInteractionsAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1IntegrationsDiscordInteractionsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postIntegrationsDiscordInteractionsValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1IntegrationsGithubClaim
+     * Build call for postIntegrationsGithubClaim
      * @param githubClaimIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2562,7 +2562,7 @@ public class IntegrationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1IntegrationsGithubClaimCall(@javax.annotation.Nonnull GithubClaimIn githubClaimIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postIntegrationsGithubClaimCall(@javax.annotation.Nonnull GithubClaimIn githubClaimIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2608,13 +2608,13 @@ public class IntegrationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1IntegrationsGithubClaimValidateBeforeCall(@javax.annotation.Nonnull GithubClaimIn githubClaimIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postIntegrationsGithubClaimValidateBeforeCall(@javax.annotation.Nonnull GithubClaimIn githubClaimIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'githubClaimIn' is set
         if (githubClaimIn == null) {
-            throw new ApiException("Missing the required parameter 'githubClaimIn' when calling postV1IntegrationsGithubClaim(Async)");
+            throw new ApiException("Missing the required parameter 'githubClaimIn' when calling postIntegrationsGithubClaim(Async)");
         }
 
-        return postV1IntegrationsGithubClaimCall(githubClaimIn, _callback);
+        return postIntegrationsGithubClaimCall(githubClaimIn, _callback);
 
     }
 
@@ -2631,8 +2631,8 @@ public class IntegrationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public GithubClaimOut postV1IntegrationsGithubClaim(@javax.annotation.Nonnull GithubClaimIn githubClaimIn) throws ApiException {
-        ApiResponse<GithubClaimOut> localVarResp = postV1IntegrationsGithubClaimWithHttpInfo(githubClaimIn);
+    public GithubClaimOut postIntegrationsGithubClaim(@javax.annotation.Nonnull GithubClaimIn githubClaimIn) throws ApiException {
+        ApiResponse<GithubClaimOut> localVarResp = postIntegrationsGithubClaimWithHttpInfo(githubClaimIn);
         return localVarResp.getData();
     }
 
@@ -2649,8 +2649,8 @@ public class IntegrationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GithubClaimOut> postV1IntegrationsGithubClaimWithHttpInfo(@javax.annotation.Nonnull GithubClaimIn githubClaimIn) throws ApiException {
-        okhttp3.Call localVarCall = postV1IntegrationsGithubClaimValidateBeforeCall(githubClaimIn, null);
+    public ApiResponse<GithubClaimOut> postIntegrationsGithubClaimWithHttpInfo(@javax.annotation.Nonnull GithubClaimIn githubClaimIn) throws ApiException {
+        okhttp3.Call localVarCall = postIntegrationsGithubClaimValidateBeforeCall(githubClaimIn, null);
         Type localVarReturnType = new TypeToken<GithubClaimOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2669,15 +2669,15 @@ public class IntegrationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1IntegrationsGithubClaimAsync(@javax.annotation.Nonnull GithubClaimIn githubClaimIn, final ApiCallback<GithubClaimOut> _callback) throws ApiException {
+    public okhttp3.Call postIntegrationsGithubClaimAsync(@javax.annotation.Nonnull GithubClaimIn githubClaimIn, final ApiCallback<GithubClaimOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1IntegrationsGithubClaimValidateBeforeCall(githubClaimIn, _callback);
+        okhttp3.Call localVarCall = postIntegrationsGithubClaimValidateBeforeCall(githubClaimIn, _callback);
         Type localVarReturnType = new TypeToken<GithubClaimOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1IntegrationsGithubFork
+     * Build call for postIntegrationsGithubFork
      * @param githubForkReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2689,7 +2689,7 @@ public class IntegrationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1IntegrationsGithubForkCall(@javax.annotation.Nonnull GithubForkReq githubForkReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postIntegrationsGithubForkCall(@javax.annotation.Nonnull GithubForkReq githubForkReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2735,13 +2735,13 @@ public class IntegrationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1IntegrationsGithubForkValidateBeforeCall(@javax.annotation.Nonnull GithubForkReq githubForkReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postIntegrationsGithubForkValidateBeforeCall(@javax.annotation.Nonnull GithubForkReq githubForkReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'githubForkReq' is set
         if (githubForkReq == null) {
-            throw new ApiException("Missing the required parameter 'githubForkReq' when calling postV1IntegrationsGithubFork(Async)");
+            throw new ApiException("Missing the required parameter 'githubForkReq' when calling postIntegrationsGithubFork(Async)");
         }
 
-        return postV1IntegrationsGithubForkCall(githubForkReq, _callback);
+        return postIntegrationsGithubForkCall(githubForkReq, _callback);
 
     }
 
@@ -2758,8 +2758,8 @@ public class IntegrationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public GithubForkOut postV1IntegrationsGithubFork(@javax.annotation.Nonnull GithubForkReq githubForkReq) throws ApiException {
-        ApiResponse<GithubForkOut> localVarResp = postV1IntegrationsGithubForkWithHttpInfo(githubForkReq);
+    public GithubForkOut postIntegrationsGithubFork(@javax.annotation.Nonnull GithubForkReq githubForkReq) throws ApiException {
+        ApiResponse<GithubForkOut> localVarResp = postIntegrationsGithubForkWithHttpInfo(githubForkReq);
         return localVarResp.getData();
     }
 
@@ -2776,8 +2776,8 @@ public class IntegrationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GithubForkOut> postV1IntegrationsGithubForkWithHttpInfo(@javax.annotation.Nonnull GithubForkReq githubForkReq) throws ApiException {
-        okhttp3.Call localVarCall = postV1IntegrationsGithubForkValidateBeforeCall(githubForkReq, null);
+    public ApiResponse<GithubForkOut> postIntegrationsGithubForkWithHttpInfo(@javax.annotation.Nonnull GithubForkReq githubForkReq) throws ApiException {
+        okhttp3.Call localVarCall = postIntegrationsGithubForkValidateBeforeCall(githubForkReq, null);
         Type localVarReturnType = new TypeToken<GithubForkOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2796,15 +2796,15 @@ public class IntegrationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1IntegrationsGithubForkAsync(@javax.annotation.Nonnull GithubForkReq githubForkReq, final ApiCallback<GithubForkOut> _callback) throws ApiException {
+    public okhttp3.Call postIntegrationsGithubForkAsync(@javax.annotation.Nonnull GithubForkReq githubForkReq, final ApiCallback<GithubForkOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1IntegrationsGithubForkValidateBeforeCall(githubForkReq, _callback);
+        okhttp3.Call localVarCall = postIntegrationsGithubForkValidateBeforeCall(githubForkReq, _callback);
         Type localVarReturnType = new TypeToken<GithubForkOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1IntegrationsGithubIssuesBackfill
+     * Build call for postIntegrationsGithubIssuesBackfill
      * @param githubBackfillIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2816,7 +2816,7 @@ public class IntegrationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1IntegrationsGithubIssuesBackfillCall(@javax.annotation.Nonnull GithubBackfillIn githubBackfillIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postIntegrationsGithubIssuesBackfillCall(@javax.annotation.Nonnull GithubBackfillIn githubBackfillIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2862,19 +2862,19 @@ public class IntegrationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1IntegrationsGithubIssuesBackfillValidateBeforeCall(@javax.annotation.Nonnull GithubBackfillIn githubBackfillIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postIntegrationsGithubIssuesBackfillValidateBeforeCall(@javax.annotation.Nonnull GithubBackfillIn githubBackfillIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'githubBackfillIn' is set
         if (githubBackfillIn == null) {
-            throw new ApiException("Missing the required parameter 'githubBackfillIn' when calling postV1IntegrationsGithubIssuesBackfill(Async)");
+            throw new ApiException("Missing the required parameter 'githubBackfillIn' when calling postIntegrationsGithubIssuesBackfill(Async)");
         }
 
-        return postV1IntegrationsGithubIssuesBackfillCall(githubBackfillIn, _callback);
+        return postIntegrationsGithubIssuesBackfillCall(githubBackfillIn, _callback);
 
     }
 
     /**
-     * Seeds the native tracker with the EXISTING issues across the org&#39;s granted repos (default state&#x3D;open); the webhook keeps them live thereafter.
-     * Seeds the native tracker with the EXISTING issues across the org&#39;s granted repos (default state&#x3D;open); the webhook keeps them live thereafter. Org-scoped by the validated principal — a caller only ever backfills its OWN org. Synchronous + bounded (a total time budget and an issue cap) so it returns the counts directly; idempotent by ExtRef, so a re-run continues where a truncated pass left off and never duplicates.
+     * Seeds the native todo with the EXISTING issues across the org&#39;s granted repos (default state&#x3D;open); the webhook keeps them live thereafter.
+     * Seeds the native todo with the EXISTING issues across the org&#39;s granted repos (default state&#x3D;open); the webhook keeps them live thereafter. Org-scoped by the validated principal — a caller only ever backfills its OWN org. Synchronous + bounded (a total time budget and an issue cap) so it returns the counts directly; idempotent by ExtRef, so a re-run continues where a truncated pass left off and never duplicates.
      * @param githubBackfillIn  (required)
      * @return GithubBackfillResult
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2885,14 +2885,14 @@ public class IntegrationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public GithubBackfillResult postV1IntegrationsGithubIssuesBackfill(@javax.annotation.Nonnull GithubBackfillIn githubBackfillIn) throws ApiException {
-        ApiResponse<GithubBackfillResult> localVarResp = postV1IntegrationsGithubIssuesBackfillWithHttpInfo(githubBackfillIn);
+    public GithubBackfillResult postIntegrationsGithubIssuesBackfill(@javax.annotation.Nonnull GithubBackfillIn githubBackfillIn) throws ApiException {
+        ApiResponse<GithubBackfillResult> localVarResp = postIntegrationsGithubIssuesBackfillWithHttpInfo(githubBackfillIn);
         return localVarResp.getData();
     }
 
     /**
-     * Seeds the native tracker with the EXISTING issues across the org&#39;s granted repos (default state&#x3D;open); the webhook keeps them live thereafter.
-     * Seeds the native tracker with the EXISTING issues across the org&#39;s granted repos (default state&#x3D;open); the webhook keeps them live thereafter. Org-scoped by the validated principal — a caller only ever backfills its OWN org. Synchronous + bounded (a total time budget and an issue cap) so it returns the counts directly; idempotent by ExtRef, so a re-run continues where a truncated pass left off and never duplicates.
+     * Seeds the native todo with the EXISTING issues across the org&#39;s granted repos (default state&#x3D;open); the webhook keeps them live thereafter.
+     * Seeds the native todo with the EXISTING issues across the org&#39;s granted repos (default state&#x3D;open); the webhook keeps them live thereafter. Org-scoped by the validated principal — a caller only ever backfills its OWN org. Synchronous + bounded (a total time budget and an issue cap) so it returns the counts directly; idempotent by ExtRef, so a re-run continues where a truncated pass left off and never duplicates.
      * @param githubBackfillIn  (required)
      * @return ApiResponse&lt;GithubBackfillResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2903,15 +2903,15 @@ public class IntegrationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GithubBackfillResult> postV1IntegrationsGithubIssuesBackfillWithHttpInfo(@javax.annotation.Nonnull GithubBackfillIn githubBackfillIn) throws ApiException {
-        okhttp3.Call localVarCall = postV1IntegrationsGithubIssuesBackfillValidateBeforeCall(githubBackfillIn, null);
+    public ApiResponse<GithubBackfillResult> postIntegrationsGithubIssuesBackfillWithHttpInfo(@javax.annotation.Nonnull GithubBackfillIn githubBackfillIn) throws ApiException {
+        okhttp3.Call localVarCall = postIntegrationsGithubIssuesBackfillValidateBeforeCall(githubBackfillIn, null);
         Type localVarReturnType = new TypeToken<GithubBackfillResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Seeds the native tracker with the EXISTING issues across the org&#39;s granted repos (default state&#x3D;open); the webhook keeps them live thereafter. (asynchronously)
-     * Seeds the native tracker with the EXISTING issues across the org&#39;s granted repos (default state&#x3D;open); the webhook keeps them live thereafter. Org-scoped by the validated principal — a caller only ever backfills its OWN org. Synchronous + bounded (a total time budget and an issue cap) so it returns the counts directly; idempotent by ExtRef, so a re-run continues where a truncated pass left off and never duplicates.
+     * Seeds the native todo with the EXISTING issues across the org&#39;s granted repos (default state&#x3D;open); the webhook keeps them live thereafter. (asynchronously)
+     * Seeds the native todo with the EXISTING issues across the org&#39;s granted repos (default state&#x3D;open); the webhook keeps them live thereafter. Org-scoped by the validated principal — a caller only ever backfills its OWN org. Synchronous + bounded (a total time budget and an issue cap) so it returns the counts directly; idempotent by ExtRef, so a re-run continues where a truncated pass left off and never duplicates.
      * @param githubBackfillIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2923,15 +2923,15 @@ public class IntegrationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1IntegrationsGithubIssuesBackfillAsync(@javax.annotation.Nonnull GithubBackfillIn githubBackfillIn, final ApiCallback<GithubBackfillResult> _callback) throws ApiException {
+    public okhttp3.Call postIntegrationsGithubIssuesBackfillAsync(@javax.annotation.Nonnull GithubBackfillIn githubBackfillIn, final ApiCallback<GithubBackfillResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1IntegrationsGithubIssuesBackfillValidateBeforeCall(githubBackfillIn, _callback);
+        okhttp3.Call localVarCall = postIntegrationsGithubIssuesBackfillValidateBeforeCall(githubBackfillIn, _callback);
         Type localVarReturnType = new TypeToken<GithubBackfillResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1IntegrationsGithubReposByRepoPages
+     * Build call for postIntegrationsGithubReposByRepoPages
      * @param repo Repo is the repository, from the :repo path segment. (required)
      * @param githubPagesEnableReq  (required)
      * @param _callback Callback for upload/download progress
@@ -2944,7 +2944,7 @@ public class IntegrationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1IntegrationsGithubReposByRepoPagesCall(@javax.annotation.Nonnull String repo, @javax.annotation.Nonnull GithubPagesEnableReq githubPagesEnableReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postIntegrationsGithubReposByRepoPagesCall(@javax.annotation.Nonnull String repo, @javax.annotation.Nonnull GithubPagesEnableReq githubPagesEnableReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2991,18 +2991,18 @@ public class IntegrationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1IntegrationsGithubReposByRepoPagesValidateBeforeCall(@javax.annotation.Nonnull String repo, @javax.annotation.Nonnull GithubPagesEnableReq githubPagesEnableReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postIntegrationsGithubReposByRepoPagesValidateBeforeCall(@javax.annotation.Nonnull String repo, @javax.annotation.Nonnull GithubPagesEnableReq githubPagesEnableReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'repo' is set
         if (repo == null) {
-            throw new ApiException("Missing the required parameter 'repo' when calling postV1IntegrationsGithubReposByRepoPages(Async)");
+            throw new ApiException("Missing the required parameter 'repo' when calling postIntegrationsGithubReposByRepoPages(Async)");
         }
 
         // verify the required parameter 'githubPagesEnableReq' is set
         if (githubPagesEnableReq == null) {
-            throw new ApiException("Missing the required parameter 'githubPagesEnableReq' when calling postV1IntegrationsGithubReposByRepoPages(Async)");
+            throw new ApiException("Missing the required parameter 'githubPagesEnableReq' when calling postIntegrationsGithubReposByRepoPages(Async)");
         }
 
-        return postV1IntegrationsGithubReposByRepoPagesCall(repo, githubPagesEnableReq, _callback);
+        return postIntegrationsGithubReposByRepoPagesCall(repo, githubPagesEnableReq, _callback);
 
     }
 
@@ -3020,8 +3020,8 @@ public class IntegrationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public GithubPagesView postV1IntegrationsGithubReposByRepoPages(@javax.annotation.Nonnull String repo, @javax.annotation.Nonnull GithubPagesEnableReq githubPagesEnableReq) throws ApiException {
-        ApiResponse<GithubPagesView> localVarResp = postV1IntegrationsGithubReposByRepoPagesWithHttpInfo(repo, githubPagesEnableReq);
+    public GithubPagesView postIntegrationsGithubReposByRepoPages(@javax.annotation.Nonnull String repo, @javax.annotation.Nonnull GithubPagesEnableReq githubPagesEnableReq) throws ApiException {
+        ApiResponse<GithubPagesView> localVarResp = postIntegrationsGithubReposByRepoPagesWithHttpInfo(repo, githubPagesEnableReq);
         return localVarResp.getData();
     }
 
@@ -3039,8 +3039,8 @@ public class IntegrationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GithubPagesView> postV1IntegrationsGithubReposByRepoPagesWithHttpInfo(@javax.annotation.Nonnull String repo, @javax.annotation.Nonnull GithubPagesEnableReq githubPagesEnableReq) throws ApiException {
-        okhttp3.Call localVarCall = postV1IntegrationsGithubReposByRepoPagesValidateBeforeCall(repo, githubPagesEnableReq, null);
+    public ApiResponse<GithubPagesView> postIntegrationsGithubReposByRepoPagesWithHttpInfo(@javax.annotation.Nonnull String repo, @javax.annotation.Nonnull GithubPagesEnableReq githubPagesEnableReq) throws ApiException {
+        okhttp3.Call localVarCall = postIntegrationsGithubReposByRepoPagesValidateBeforeCall(repo, githubPagesEnableReq, null);
         Type localVarReturnType = new TypeToken<GithubPagesView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -3060,15 +3060,15 @@ public class IntegrationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1IntegrationsGithubReposByRepoPagesAsync(@javax.annotation.Nonnull String repo, @javax.annotation.Nonnull GithubPagesEnableReq githubPagesEnableReq, final ApiCallback<GithubPagesView> _callback) throws ApiException {
+    public okhttp3.Call postIntegrationsGithubReposByRepoPagesAsync(@javax.annotation.Nonnull String repo, @javax.annotation.Nonnull GithubPagesEnableReq githubPagesEnableReq, final ApiCallback<GithubPagesView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1IntegrationsGithubReposByRepoPagesValidateBeforeCall(repo, githubPagesEnableReq, _callback);
+        okhttp3.Call localVarCall = postIntegrationsGithubReposByRepoPagesValidateBeforeCall(repo, githubPagesEnableReq, _callback);
         Type localVarReturnType = new TypeToken<GithubPagesView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1IntegrationsGithubReposByRepoPagesBuilds
+     * Build call for postIntegrationsGithubReposByRepoPagesBuilds
      * @param repo Repo is the repository&#39;s short name within the org&#39;s installation, with no owner prefix (the owner is server-derived from the grant). A trailing \&quot;.git\&quot; is stripped. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -3080,7 +3080,7 @@ public class IntegrationsApi {
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1IntegrationsGithubReposByRepoPagesBuildsCall(@javax.annotation.Nonnull String repo, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postIntegrationsGithubReposByRepoPagesBuildsCall(@javax.annotation.Nonnull String repo, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3126,13 +3126,13 @@ public class IntegrationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1IntegrationsGithubReposByRepoPagesBuildsValidateBeforeCall(@javax.annotation.Nonnull String repo, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postIntegrationsGithubReposByRepoPagesBuildsValidateBeforeCall(@javax.annotation.Nonnull String repo, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'repo' is set
         if (repo == null) {
-            throw new ApiException("Missing the required parameter 'repo' when calling postV1IntegrationsGithubReposByRepoPagesBuilds(Async)");
+            throw new ApiException("Missing the required parameter 'repo' when calling postIntegrationsGithubReposByRepoPagesBuilds(Async)");
         }
 
-        return postV1IntegrationsGithubReposByRepoPagesBuildsCall(repo, _callback);
+        return postIntegrationsGithubReposByRepoPagesBuildsCall(repo, _callback);
 
     }
 
@@ -3149,8 +3149,8 @@ public class IntegrationsApi {
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
      </table>
      */
-    public GithubPagesBuildOut postV1IntegrationsGithubReposByRepoPagesBuilds(@javax.annotation.Nonnull String repo) throws ApiException {
-        ApiResponse<GithubPagesBuildOut> localVarResp = postV1IntegrationsGithubReposByRepoPagesBuildsWithHttpInfo(repo);
+    public GithubPagesBuildOut postIntegrationsGithubReposByRepoPagesBuilds(@javax.annotation.Nonnull String repo) throws ApiException {
+        ApiResponse<GithubPagesBuildOut> localVarResp = postIntegrationsGithubReposByRepoPagesBuildsWithHttpInfo(repo);
         return localVarResp.getData();
     }
 
@@ -3167,8 +3167,8 @@ public class IntegrationsApi {
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GithubPagesBuildOut> postV1IntegrationsGithubReposByRepoPagesBuildsWithHttpInfo(@javax.annotation.Nonnull String repo) throws ApiException {
-        okhttp3.Call localVarCall = postV1IntegrationsGithubReposByRepoPagesBuildsValidateBeforeCall(repo, null);
+    public ApiResponse<GithubPagesBuildOut> postIntegrationsGithubReposByRepoPagesBuildsWithHttpInfo(@javax.annotation.Nonnull String repo) throws ApiException {
+        okhttp3.Call localVarCall = postIntegrationsGithubReposByRepoPagesBuildsValidateBeforeCall(repo, null);
         Type localVarReturnType = new TypeToken<GithubPagesBuildOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -3187,15 +3187,15 @@ public class IntegrationsApi {
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1IntegrationsGithubReposByRepoPagesBuildsAsync(@javax.annotation.Nonnull String repo, final ApiCallback<GithubPagesBuildOut> _callback) throws ApiException {
+    public okhttp3.Call postIntegrationsGithubReposByRepoPagesBuildsAsync(@javax.annotation.Nonnull String repo, final ApiCallback<GithubPagesBuildOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1IntegrationsGithubReposByRepoPagesBuildsValidateBeforeCall(repo, _callback);
+        okhttp3.Call localVarCall = postIntegrationsGithubReposByRepoPagesBuildsValidateBeforeCall(repo, _callback);
         Type localVarReturnType = new TypeToken<GithubPagesBuildOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1IntegrationsGithubReposImport
+     * Build call for postIntegrationsGithubReposImport
      * @param githubImportIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -3207,7 +3207,7 @@ public class IntegrationsApi {
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1IntegrationsGithubReposImportCall(@javax.annotation.Nonnull GithubImportIn githubImportIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postIntegrationsGithubReposImportCall(@javax.annotation.Nonnull GithubImportIn githubImportIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3253,13 +3253,13 @@ public class IntegrationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1IntegrationsGithubReposImportValidateBeforeCall(@javax.annotation.Nonnull GithubImportIn githubImportIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postIntegrationsGithubReposImportValidateBeforeCall(@javax.annotation.Nonnull GithubImportIn githubImportIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'githubImportIn' is set
         if (githubImportIn == null) {
-            throw new ApiException("Missing the required parameter 'githubImportIn' when calling postV1IntegrationsGithubReposImport(Async)");
+            throw new ApiException("Missing the required parameter 'githubImportIn' when calling postIntegrationsGithubReposImport(Async)");
         }
 
-        return postV1IntegrationsGithubReposImportCall(githubImportIn, _callback);
+        return postIntegrationsGithubReposImportCall(githubImportIn, _callback);
 
     }
 
@@ -3276,8 +3276,8 @@ public class IntegrationsApi {
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
      </table>
      */
-    public GithubImportOut postV1IntegrationsGithubReposImport(@javax.annotation.Nonnull GithubImportIn githubImportIn) throws ApiException {
-        ApiResponse<GithubImportOut> localVarResp = postV1IntegrationsGithubReposImportWithHttpInfo(githubImportIn);
+    public GithubImportOut postIntegrationsGithubReposImport(@javax.annotation.Nonnull GithubImportIn githubImportIn) throws ApiException {
+        ApiResponse<GithubImportOut> localVarResp = postIntegrationsGithubReposImportWithHttpInfo(githubImportIn);
         return localVarResp.getData();
     }
 
@@ -3294,8 +3294,8 @@ public class IntegrationsApi {
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GithubImportOut> postV1IntegrationsGithubReposImportWithHttpInfo(@javax.annotation.Nonnull GithubImportIn githubImportIn) throws ApiException {
-        okhttp3.Call localVarCall = postV1IntegrationsGithubReposImportValidateBeforeCall(githubImportIn, null);
+    public ApiResponse<GithubImportOut> postIntegrationsGithubReposImportWithHttpInfo(@javax.annotation.Nonnull GithubImportIn githubImportIn) throws ApiException {
+        okhttp3.Call localVarCall = postIntegrationsGithubReposImportValidateBeforeCall(githubImportIn, null);
         Type localVarReturnType = new TypeToken<GithubImportOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -3314,15 +3314,15 @@ public class IntegrationsApi {
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1IntegrationsGithubReposImportAsync(@javax.annotation.Nonnull GithubImportIn githubImportIn, final ApiCallback<GithubImportOut> _callback) throws ApiException {
+    public okhttp3.Call postIntegrationsGithubReposImportAsync(@javax.annotation.Nonnull GithubImportIn githubImportIn, final ApiCallback<GithubImportOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1IntegrationsGithubReposImportValidateBeforeCall(githubImportIn, _callback);
+        okhttp3.Call localVarCall = postIntegrationsGithubReposImportValidateBeforeCall(githubImportIn, _callback);
         Type localVarReturnType = new TypeToken<GithubImportOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1IntegrationsGithubSearch
+     * Build call for postIntegrationsGithubSearch
      * @param githubSearchReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -3334,7 +3334,7 @@ public class IntegrationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1IntegrationsGithubSearchCall(@javax.annotation.Nonnull GithubSearchReq githubSearchReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postIntegrationsGithubSearchCall(@javax.annotation.Nonnull GithubSearchReq githubSearchReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3380,13 +3380,13 @@ public class IntegrationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1IntegrationsGithubSearchValidateBeforeCall(@javax.annotation.Nonnull GithubSearchReq githubSearchReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postIntegrationsGithubSearchValidateBeforeCall(@javax.annotation.Nonnull GithubSearchReq githubSearchReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'githubSearchReq' is set
         if (githubSearchReq == null) {
-            throw new ApiException("Missing the required parameter 'githubSearchReq' when calling postV1IntegrationsGithubSearch(Async)");
+            throw new ApiException("Missing the required parameter 'githubSearchReq' when calling postIntegrationsGithubSearch(Async)");
         }
 
-        return postV1IntegrationsGithubSearchCall(githubSearchReq, _callback);
+        return postIntegrationsGithubSearchCall(githubSearchReq, _callback);
 
     }
 
@@ -3403,8 +3403,8 @@ public class IntegrationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public GithubSearchOut postV1IntegrationsGithubSearch(@javax.annotation.Nonnull GithubSearchReq githubSearchReq) throws ApiException {
-        ApiResponse<GithubSearchOut> localVarResp = postV1IntegrationsGithubSearchWithHttpInfo(githubSearchReq);
+    public GithubSearchOut postIntegrationsGithubSearch(@javax.annotation.Nonnull GithubSearchReq githubSearchReq) throws ApiException {
+        ApiResponse<GithubSearchOut> localVarResp = postIntegrationsGithubSearchWithHttpInfo(githubSearchReq);
         return localVarResp.getData();
     }
 
@@ -3421,8 +3421,8 @@ public class IntegrationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GithubSearchOut> postV1IntegrationsGithubSearchWithHttpInfo(@javax.annotation.Nonnull GithubSearchReq githubSearchReq) throws ApiException {
-        okhttp3.Call localVarCall = postV1IntegrationsGithubSearchValidateBeforeCall(githubSearchReq, null);
+    public ApiResponse<GithubSearchOut> postIntegrationsGithubSearchWithHttpInfo(@javax.annotation.Nonnull GithubSearchReq githubSearchReq) throws ApiException {
+        okhttp3.Call localVarCall = postIntegrationsGithubSearchValidateBeforeCall(githubSearchReq, null);
         Type localVarReturnType = new TypeToken<GithubSearchOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -3441,20 +3441,230 @@ public class IntegrationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1IntegrationsGithubSearchAsync(@javax.annotation.Nonnull GithubSearchReq githubSearchReq, final ApiCallback<GithubSearchOut> _callback) throws ApiException {
+    public okhttp3.Call postIntegrationsGithubSearchAsync(@javax.annotation.Nonnull GithubSearchReq githubSearchReq, final ApiCallback<GithubSearchOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1IntegrationsGithubSearchValidateBeforeCall(githubSearchReq, _callback);
+        okhttp3.Call localVarCall = postIntegrationsGithubSearchValidateBeforeCall(githubSearchReq, _callback);
         Type localVarReturnType = new TypeToken<GithubSearchOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1IntegrationsSlackCommands
+     * Build call for postIntegrationsGithubWebhook
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1IntegrationsSlackCommandsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postIntegrationsGithubWebhookCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/integrations/github/webhook";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postIntegrationsGithubWebhookValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postIntegrationsGithubWebhookCall(_callback);
+
+    }
+
+    /**
+     * GitHub App webhook
+     * The address the GitHub App delivers events to. A push is handed to the repository sync engine, and an issue or issue-comment event is mirrored into the native todo — idempotently, so the same issue re-syncs to one row however many times it is edited, closed or reopened.  It answers a benign 200 for everything it does not act on — the ping, other event types, an unknown installation — deliberately, so GitHub does not enter a retry storm over events that were never going to do anything. Only a bad signature and a genuine sync failure are non-200, and an oversized payload is refused outright.  Two sync rules are worth stating because neither is guessable. EVERY ref syncs, tags as well as branches, because releases are cut by tag and filtering them would stop publishing with nothing reporting a failure. And a delete is NEVER propagated: the native side is canonical, so an inbound delete never removes a native ref.  The payload is verified by HMAC against the webhook secret before it is parsed.  The caller here is the PLATFORM, not a Hanzo tenant, so there is no bearer and no principal. The signature check IS the authentication, and it fails closed. The tenant is never read from the payload either: it is resolved from the verified platform identifier through the connection map, so an event from a workspace nobody connected does nothing. Refusals are written with their own status rather than being flattened to a 500, so a rejected signature reads as 401 and a malformed body as 400.
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void postIntegrationsGithubWebhook() throws ApiException {
+        postIntegrationsGithubWebhookWithHttpInfo();
+    }
+
+    /**
+     * GitHub App webhook
+     * The address the GitHub App delivers events to. A push is handed to the repository sync engine, and an issue or issue-comment event is mirrored into the native todo — idempotently, so the same issue re-syncs to one row however many times it is edited, closed or reopened.  It answers a benign 200 for everything it does not act on — the ping, other event types, an unknown installation — deliberately, so GitHub does not enter a retry storm over events that were never going to do anything. Only a bad signature and a genuine sync failure are non-200, and an oversized payload is refused outright.  Two sync rules are worth stating because neither is guessable. EVERY ref syncs, tags as well as branches, because releases are cut by tag and filtering them would stop publishing with nothing reporting a failure. And a delete is NEVER propagated: the native side is canonical, so an inbound delete never removes a native ref.  The payload is verified by HMAC against the webhook secret before it is parsed.  The caller here is the PLATFORM, not a Hanzo tenant, so there is no bearer and no principal. The signature check IS the authentication, and it fails closed. The tenant is never read from the payload either: it is resolved from the verified platform identifier through the connection map, so an event from a workspace nobody connected does nothing. Refusals are written with their own status rather than being flattened to a 500, so a rejected signature reads as 401 and a malformed body as 400.
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> postIntegrationsGithubWebhookWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postIntegrationsGithubWebhookValidateBeforeCall(null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * GitHub App webhook (asynchronously)
+     * The address the GitHub App delivers events to. A push is handed to the repository sync engine, and an issue or issue-comment event is mirrored into the native todo — idempotently, so the same issue re-syncs to one row however many times it is edited, closed or reopened.  It answers a benign 200 for everything it does not act on — the ping, other event types, an unknown installation — deliberately, so GitHub does not enter a retry storm over events that were never going to do anything. Only a bad signature and a genuine sync failure are non-200, and an oversized payload is refused outright.  Two sync rules are worth stating because neither is guessable. EVERY ref syncs, tags as well as branches, because releases are cut by tag and filtering them would stop publishing with nothing reporting a failure. And a delete is NEVER propagated: the native side is canonical, so an inbound delete never removes a native ref.  The payload is verified by HMAC against the webhook secret before it is parsed.  The caller here is the PLATFORM, not a Hanzo tenant, so there is no bearer and no principal. The signature check IS the authentication, and it fails closed. The tenant is never read from the payload either: it is resolved from the verified platform identifier through the connection map, so an event from a workspace nobody connected does nothing. Refusals are written with their own status rather than being flattened to a 500, so a rejected signature reads as 401 and a malformed body as 400.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call postIntegrationsGithubWebhookAsync(final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postIntegrationsGithubWebhookValidateBeforeCall(_callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postIntegrationsOpenrouterWebhook
+     * @param requestBody  (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postIntegrationsOpenrouterWebhookCall(@javax.annotation.Nullable Map<String, Object> requestBody, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = requestBody;
+
+        // create path and map variables
+        String localVarPath = "/v1/integrations/openrouter/webhook";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postIntegrationsOpenrouterWebhookValidateBeforeCall(@javax.annotation.Nullable Map<String, Object> requestBody, final ApiCallback _callback) throws ApiException {
+        return postIntegrationsOpenrouterWebhookCall(requestBody, _callback);
+
+    }
+
+    /**
+     * Receive OpenRouter Broadcast traces as usage rows
+     * OpenRouter&#39;s spend is invisible to every Hanzo money lens because those lenses read hanzo.cloud_usage and OpenRouter meters keys of its own. Point a Broadcast destination (Settings ▸ Observability ▸ Webhook) at this door and each generation span becomes ONE row in that same ledger with provider &#x60;openrouter&#x60;, so one query answers what we spend everywhere. Enable the Cost and Identity field categories: cost is the money and identity carries &#x60;openrouter.api_key_name&#x60;, which is what says WHICH key spent it — it lands in &#x60;account&#x60; as openrouter/&lt;key name&gt;.  AUTHENTICATION IS A HANZO KEY. Broadcast signs nothing; its only authentication is the destination&#39;s Headers map, so send a key as &#x60;Authorization: Bearer pk-…&#x60; and it is admitted exactly as /v1/event admits a beacon&#39;s: a project key resolves through the project that minted it, an IAM-issued key through IAM. That key names the org every row is filed under; it can write and cannot read. No key, or a key that names no org, is 401 and nothing is stored.  The body is OTLP/JSON — &#x60;{resourceSpans:[{scopeSpans:[{spans:[…]}]}]}&#x60; — exactly as OpenTelemetry defines it; the model, tokens and cost are read from each span&#39;s &#x60;gen_ai.*&#x60; attributes and the key name from &#x60;openrouter.api_key_name&#x60;. The answer is &#x60;{stored, dropped}&#x60;: how many generations became rows, and how many spans named no model. Those are OpenRouter&#39;s trace and span parents — they carry no cost to meter. An empty payload stores nothing and answers 200, which is what makes Test Connection pass. A warehouse that cannot take the rows answers 503 so the delivery shows red and can be replayed: a row is keyed by its span id, so a redelivery collapses rather than double-counting.
+     * @param requestBody  (optional)
+     * @return Map&lt;String, Object&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public Map<String, Object> postIntegrationsOpenrouterWebhook(@javax.annotation.Nullable Map<String, Object> requestBody) throws ApiException {
+        ApiResponse<Map<String, Object>> localVarResp = postIntegrationsOpenrouterWebhookWithHttpInfo(requestBody);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Receive OpenRouter Broadcast traces as usage rows
+     * OpenRouter&#39;s spend is invisible to every Hanzo money lens because those lenses read hanzo.cloud_usage and OpenRouter meters keys of its own. Point a Broadcast destination (Settings ▸ Observability ▸ Webhook) at this door and each generation span becomes ONE row in that same ledger with provider &#x60;openrouter&#x60;, so one query answers what we spend everywhere. Enable the Cost and Identity field categories: cost is the money and identity carries &#x60;openrouter.api_key_name&#x60;, which is what says WHICH key spent it — it lands in &#x60;account&#x60; as openrouter/&lt;key name&gt;.  AUTHENTICATION IS A HANZO KEY. Broadcast signs nothing; its only authentication is the destination&#39;s Headers map, so send a key as &#x60;Authorization: Bearer pk-…&#x60; and it is admitted exactly as /v1/event admits a beacon&#39;s: a project key resolves through the project that minted it, an IAM-issued key through IAM. That key names the org every row is filed under; it can write and cannot read. No key, or a key that names no org, is 401 and nothing is stored.  The body is OTLP/JSON — &#x60;{resourceSpans:[{scopeSpans:[{spans:[…]}]}]}&#x60; — exactly as OpenTelemetry defines it; the model, tokens and cost are read from each span&#39;s &#x60;gen_ai.*&#x60; attributes and the key name from &#x60;openrouter.api_key_name&#x60;. The answer is &#x60;{stored, dropped}&#x60;: how many generations became rows, and how many spans named no model. Those are OpenRouter&#39;s trace and span parents — they carry no cost to meter. An empty payload stores nothing and answers 200, which is what makes Test Connection pass. A warehouse that cannot take the rows answers 503 so the delivery shows red and can be replayed: a row is keyed by its span id, so a redelivery collapses rather than double-counting.
+     * @param requestBody  (optional)
+     * @return ApiResponse&lt;Map&lt;String, Object&gt;&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Map<String, Object>> postIntegrationsOpenrouterWebhookWithHttpInfo(@javax.annotation.Nullable Map<String, Object> requestBody) throws ApiException {
+        okhttp3.Call localVarCall = postIntegrationsOpenrouterWebhookValidateBeforeCall(requestBody, null);
+        Type localVarReturnType = new TypeToken<Map<String, Object>>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Receive OpenRouter Broadcast traces as usage rows (asynchronously)
+     * OpenRouter&#39;s spend is invisible to every Hanzo money lens because those lenses read hanzo.cloud_usage and OpenRouter meters keys of its own. Point a Broadcast destination (Settings ▸ Observability ▸ Webhook) at this door and each generation span becomes ONE row in that same ledger with provider &#x60;openrouter&#x60;, so one query answers what we spend everywhere. Enable the Cost and Identity field categories: cost is the money and identity carries &#x60;openrouter.api_key_name&#x60;, which is what says WHICH key spent it — it lands in &#x60;account&#x60; as openrouter/&lt;key name&gt;.  AUTHENTICATION IS A HANZO KEY. Broadcast signs nothing; its only authentication is the destination&#39;s Headers map, so send a key as &#x60;Authorization: Bearer pk-…&#x60; and it is admitted exactly as /v1/event admits a beacon&#39;s: a project key resolves through the project that minted it, an IAM-issued key through IAM. That key names the org every row is filed under; it can write and cannot read. No key, or a key that names no org, is 401 and nothing is stored.  The body is OTLP/JSON — &#x60;{resourceSpans:[{scopeSpans:[{spans:[…]}]}]}&#x60; — exactly as OpenTelemetry defines it; the model, tokens and cost are read from each span&#39;s &#x60;gen_ai.*&#x60; attributes and the key name from &#x60;openrouter.api_key_name&#x60;. The answer is &#x60;{stored, dropped}&#x60;: how many generations became rows, and how many spans named no model. Those are OpenRouter&#39;s trace and span parents — they carry no cost to meter. An empty payload stores nothing and answers 200, which is what makes Test Connection pass. A warehouse that cannot take the rows answers 503 so the delivery shows red and can be replayed: a row is keyed by its span id, so a redelivery collapses rather than double-counting.
+     * @param requestBody  (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postIntegrationsOpenrouterWebhookAsync(@javax.annotation.Nullable Map<String, Object> requestBody, final ApiCallback<Map<String, Object>> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postIntegrationsOpenrouterWebhookValidateBeforeCall(requestBody, _callback);
+        Type localVarReturnType = new TypeToken<Map<String, Object>>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postIntegrationsSlackCommands
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call postIntegrationsSlackCommandsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3498,8 +3708,8 @@ public class IntegrationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1IntegrationsSlackCommandsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1IntegrationsSlackCommandsCall(_callback);
+    private okhttp3.Call postIntegrationsSlackCommandsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postIntegrationsSlackCommandsCall(_callback);
 
     }
 
@@ -3508,8 +3718,8 @@ public class IntegrationsApi {
      * The address Slack posts a slash command to, form-encoded. It acknowledges inside Slack&#39;s three-second budget and posts the answer afterwards to the command&#39;s own response URL, which is why the immediate reply is empty.  The body is verified against the same app signing secret as the events webhook, and a repeat of the same command invocation is absorbed rather than answered twice.  The caller here is the PLATFORM, not a Hanzo tenant, so there is no bearer and no principal. The signature check IS the authentication, and it fails closed. The tenant is never read from the payload either: it is resolved from the verified platform identifier through the connection map, so an event from a workspace nobody connected does nothing. Refusals are written with their own status rather than being flattened to a 500, so a rejected signature reads as 401 and a malformed body as 400.  The answer is acknowledged immediately and the work happens afterwards, because every one of these platforms times out a slow webhook. Duplicate deliveries are absorbed durably, so a platform retry of an event that already ran never runs it a second time or bills for it twice. When the agent pool is full nothing at all is recorded and the delivery is refused as retriable, so the message is re-delivered later rather than being lost or half-processed.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1IntegrationsSlackCommands() throws ApiException {
-        postV1IntegrationsSlackCommandsWithHttpInfo();
+    public void postIntegrationsSlackCommands() throws ApiException {
+        postIntegrationsSlackCommandsWithHttpInfo();
     }
 
     /**
@@ -3518,8 +3728,8 @@ public class IntegrationsApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1IntegrationsSlackCommandsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1IntegrationsSlackCommandsValidateBeforeCall(null);
+    public ApiResponse<Void> postIntegrationsSlackCommandsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postIntegrationsSlackCommandsValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -3530,19 +3740,19 @@ public class IntegrationsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1IntegrationsSlackCommandsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postIntegrationsSlackCommandsAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1IntegrationsSlackCommandsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postIntegrationsSlackCommandsValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1IntegrationsSlackEvents
+     * Build call for postIntegrationsSlackEvents
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1IntegrationsSlackEventsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postIntegrationsSlackEventsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3586,51 +3796,51 @@ public class IntegrationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1IntegrationsSlackEventsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1IntegrationsSlackEventsCall(_callback);
+    private okhttp3.Call postIntegrationsSlackEventsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postIntegrationsSlackEventsCall(_callback);
 
     }
 
     /**
      * Slack Events API webhook
-     * The address a Slack app posts workspace events to. It answers Slack&#39;s url_verification handshake with the challenge, and routes an @mention or a direct message to an agent turn that replies in the same thread. A prompt beginning with &#x60;code:&#x60; is routed to the coding flow instead, which runs under its own pool.  The raw body and its timestamp are verified against the app&#39;s signing secret before anything is read from them. Hanzo&#39;s own bot messages are dropped, so a reply cannot trigger another reply.  The caller here is the PLATFORM, not a Hanzo tenant, so there is no bearer and no principal. The signature check IS the authentication, and it fails closed. The tenant is never read from the payload either: it is resolved from the verified platform identifier through the connection map, so an event from a workspace nobody connected does nothing. Refusals are written with their own status rather than being flattened to a 500, so a rejected signature reads as 401 and a malformed body as 400.  The answer is acknowledged immediately and the work happens afterwards, because every one of these platforms times out a slow webhook. Duplicate deliveries are absorbed durably, so a platform retry of an event that already ran never runs it a second time or bills for it twice. When the agent pool is full nothing at all is recorded and the delivery is refused as retriable, so the message is re-delivered later rather than being lost or half-processed.
+     * The address a Slack app posts workspace events to. It answers Slack&#39;s url_verification handshake with the challenge, and routes an @mention or a direct message to an agent turn that replies in the same thread. The turn holds the product&#39;s own tools, so a request to change code starts a sandbox run because the model chose to — there is no prefix and no second path.  The raw body and its timestamp are verified against the app&#39;s signing secret before anything is read from them. Hanzo&#39;s own bot messages are dropped, so a reply cannot trigger another reply.  The caller here is the PLATFORM, not a Hanzo tenant, so there is no bearer and no principal. The signature check IS the authentication, and it fails closed. The tenant is never read from the payload either: it is resolved from the verified platform identifier through the connection map, so an event from a workspace nobody connected does nothing. Refusals are written with their own status rather than being flattened to a 500, so a rejected signature reads as 401 and a malformed body as 400.  The answer is acknowledged immediately and the work happens afterwards, because every one of these platforms times out a slow webhook. Duplicate deliveries are absorbed durably, so a platform retry of an event that already ran never runs it a second time or bills for it twice. When the agent pool is full nothing at all is recorded and the delivery is refused as retriable, so the message is re-delivered later rather than being lost or half-processed.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1IntegrationsSlackEvents() throws ApiException {
-        postV1IntegrationsSlackEventsWithHttpInfo();
+    public void postIntegrationsSlackEvents() throws ApiException {
+        postIntegrationsSlackEventsWithHttpInfo();
     }
 
     /**
      * Slack Events API webhook
-     * The address a Slack app posts workspace events to. It answers Slack&#39;s url_verification handshake with the challenge, and routes an @mention or a direct message to an agent turn that replies in the same thread. A prompt beginning with &#x60;code:&#x60; is routed to the coding flow instead, which runs under its own pool.  The raw body and its timestamp are verified against the app&#39;s signing secret before anything is read from them. Hanzo&#39;s own bot messages are dropped, so a reply cannot trigger another reply.  The caller here is the PLATFORM, not a Hanzo tenant, so there is no bearer and no principal. The signature check IS the authentication, and it fails closed. The tenant is never read from the payload either: it is resolved from the verified platform identifier through the connection map, so an event from a workspace nobody connected does nothing. Refusals are written with their own status rather than being flattened to a 500, so a rejected signature reads as 401 and a malformed body as 400.  The answer is acknowledged immediately and the work happens afterwards, because every one of these platforms times out a slow webhook. Duplicate deliveries are absorbed durably, so a platform retry of an event that already ran never runs it a second time or bills for it twice. When the agent pool is full nothing at all is recorded and the delivery is refused as retriable, so the message is re-delivered later rather than being lost or half-processed.
+     * The address a Slack app posts workspace events to. It answers Slack&#39;s url_verification handshake with the challenge, and routes an @mention or a direct message to an agent turn that replies in the same thread. The turn holds the product&#39;s own tools, so a request to change code starts a sandbox run because the model chose to — there is no prefix and no second path.  The raw body and its timestamp are verified against the app&#39;s signing secret before anything is read from them. Hanzo&#39;s own bot messages are dropped, so a reply cannot trigger another reply.  The caller here is the PLATFORM, not a Hanzo tenant, so there is no bearer and no principal. The signature check IS the authentication, and it fails closed. The tenant is never read from the payload either: it is resolved from the verified platform identifier through the connection map, so an event from a workspace nobody connected does nothing. Refusals are written with their own status rather than being flattened to a 500, so a rejected signature reads as 401 and a malformed body as 400.  The answer is acknowledged immediately and the work happens afterwards, because every one of these platforms times out a slow webhook. Duplicate deliveries are absorbed durably, so a platform retry of an event that already ran never runs it a second time or bills for it twice. When the agent pool is full nothing at all is recorded and the delivery is refused as retriable, so the message is re-delivered later rather than being lost or half-processed.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1IntegrationsSlackEventsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1IntegrationsSlackEventsValidateBeforeCall(null);
+    public ApiResponse<Void> postIntegrationsSlackEventsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postIntegrationsSlackEventsValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
     /**
      * Slack Events API webhook (asynchronously)
-     * The address a Slack app posts workspace events to. It answers Slack&#39;s url_verification handshake with the challenge, and routes an @mention or a direct message to an agent turn that replies in the same thread. A prompt beginning with &#x60;code:&#x60; is routed to the coding flow instead, which runs under its own pool.  The raw body and its timestamp are verified against the app&#39;s signing secret before anything is read from them. Hanzo&#39;s own bot messages are dropped, so a reply cannot trigger another reply.  The caller here is the PLATFORM, not a Hanzo tenant, so there is no bearer and no principal. The signature check IS the authentication, and it fails closed. The tenant is never read from the payload either: it is resolved from the verified platform identifier through the connection map, so an event from a workspace nobody connected does nothing. Refusals are written with their own status rather than being flattened to a 500, so a rejected signature reads as 401 and a malformed body as 400.  The answer is acknowledged immediately and the work happens afterwards, because every one of these platforms times out a slow webhook. Duplicate deliveries are absorbed durably, so a platform retry of an event that already ran never runs it a second time or bills for it twice. When the agent pool is full nothing at all is recorded and the delivery is refused as retriable, so the message is re-delivered later rather than being lost or half-processed.
+     * The address a Slack app posts workspace events to. It answers Slack&#39;s url_verification handshake with the challenge, and routes an @mention or a direct message to an agent turn that replies in the same thread. The turn holds the product&#39;s own tools, so a request to change code starts a sandbox run because the model chose to — there is no prefix and no second path.  The raw body and its timestamp are verified against the app&#39;s signing secret before anything is read from them. Hanzo&#39;s own bot messages are dropped, so a reply cannot trigger another reply.  The caller here is the PLATFORM, not a Hanzo tenant, so there is no bearer and no principal. The signature check IS the authentication, and it fails closed. The tenant is never read from the payload either: it is resolved from the verified platform identifier through the connection map, so an event from a workspace nobody connected does nothing. Refusals are written with their own status rather than being flattened to a 500, so a rejected signature reads as 401 and a malformed body as 400.  The answer is acknowledged immediately and the work happens afterwards, because every one of these platforms times out a slow webhook. Duplicate deliveries are absorbed durably, so a platform retry of an event that already ran never runs it a second time or bills for it twice. When the agent pool is full nothing at all is recorded and the delivery is refused as retriable, so the message is re-delivered later rather than being lost or half-processed.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1IntegrationsSlackEventsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postIntegrationsSlackEventsAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1IntegrationsSlackEventsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postIntegrationsSlackEventsValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1IntegrationsTeamsEvents
+     * Build call for postIntegrationsTeamsEvents
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1IntegrationsTeamsEventsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postIntegrationsTeamsEventsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3674,8 +3884,8 @@ public class IntegrationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1IntegrationsTeamsEventsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1IntegrationsTeamsEventsCall(_callback);
+    private okhttp3.Call postIntegrationsTeamsEventsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postIntegrationsTeamsEventsCall(_callback);
 
     }
 
@@ -3684,8 +3894,8 @@ public class IntegrationsApi {
      * The messaging endpoint for the Teams bot. A message activity is routed to an agent turn and answered proactively through the Bot Connection; anything that is not a message with text is acknowledged and ignored.  Authentication is the Bot Framework&#39;s RS256 JWT, verified against its published keys and bound BOTH to this deployment&#39;s app id and to the activity&#39;s own service URL. The service-URL binding is the part that matters: without it a token valid for one activity could point the outbound reply somewhere else.  The caller here is the PLATFORM, not a Hanzo tenant, so there is no bearer and no principal. The signature check IS the authentication, and it fails closed. The tenant is never read from the payload either: it is resolved from the verified platform identifier through the connection map, so an event from a workspace nobody connected does nothing. Refusals are written with their own status rather than being flattened to a 500, so a rejected signature reads as 401 and a malformed body as 400.  The answer is acknowledged immediately and the work happens afterwards, because every one of these platforms times out a slow webhook. Duplicate deliveries are absorbed durably, so a platform retry of an event that already ran never runs it a second time or bills for it twice. When the agent pool is full nothing at all is recorded and the delivery is refused as retriable, so the message is re-delivered later rather than being lost or half-processed.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1IntegrationsTeamsEvents() throws ApiException {
-        postV1IntegrationsTeamsEventsWithHttpInfo();
+    public void postIntegrationsTeamsEvents() throws ApiException {
+        postIntegrationsTeamsEventsWithHttpInfo();
     }
 
     /**
@@ -3694,8 +3904,8 @@ public class IntegrationsApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1IntegrationsTeamsEventsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1IntegrationsTeamsEventsValidateBeforeCall(null);
+    public ApiResponse<Void> postIntegrationsTeamsEventsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postIntegrationsTeamsEventsValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -3706,14 +3916,14 @@ public class IntegrationsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1IntegrationsTeamsEventsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postIntegrationsTeamsEventsAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1IntegrationsTeamsEventsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postIntegrationsTeamsEventsValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1IntegrationsTelegramConnect
+     * Build call for postIntegrationsTelegramConnect
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -3724,7 +3934,7 @@ public class IntegrationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1IntegrationsTelegramConnectCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postIntegrationsTelegramConnectCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3769,8 +3979,8 @@ public class IntegrationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1IntegrationsTelegramConnectValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1IntegrationsTelegramConnectCall(_callback);
+    private okhttp3.Call postIntegrationsTelegramConnectValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postIntegrationsTelegramConnectCall(_callback);
 
     }
 
@@ -3786,8 +3996,8 @@ public class IntegrationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public AuthorizeOut postV1IntegrationsTelegramConnect() throws ApiException {
-        ApiResponse<AuthorizeOut> localVarResp = postV1IntegrationsTelegramConnectWithHttpInfo();
+    public AuthorizeOut postIntegrationsTelegramConnect() throws ApiException {
+        ApiResponse<AuthorizeOut> localVarResp = postIntegrationsTelegramConnectWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -3803,8 +4013,8 @@ public class IntegrationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AuthorizeOut> postV1IntegrationsTelegramConnectWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1IntegrationsTelegramConnectValidateBeforeCall(null);
+    public ApiResponse<AuthorizeOut> postIntegrationsTelegramConnectWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postIntegrationsTelegramConnectValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<AuthorizeOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -3822,20 +4032,20 @@ public class IntegrationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1IntegrationsTelegramConnectAsync(final ApiCallback<AuthorizeOut> _callback) throws ApiException {
+    public okhttp3.Call postIntegrationsTelegramConnectAsync(final ApiCallback<AuthorizeOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1IntegrationsTelegramConnectValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postIntegrationsTelegramConnectValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<AuthorizeOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1IntegrationsTelegramWebhook
+     * Build call for postIntegrationsTelegramWebhook
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1IntegrationsTelegramWebhookCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postIntegrationsTelegramWebhookCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3879,8 +4089,8 @@ public class IntegrationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1IntegrationsTelegramWebhookValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1IntegrationsTelegramWebhookCall(_callback);
+    private okhttp3.Call postIntegrationsTelegramWebhookValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postIntegrationsTelegramWebhookCall(_callback);
 
     }
 
@@ -3889,8 +4099,8 @@ public class IntegrationsApi {
      * The update webhook for the Telegram bot. It does two jobs: &#x60;/start &lt;code&gt;&#x60; or &#x60;/connect &lt;code&gt;&#x60; binds the chat it was sent from to an org, idempotently; anything else is treated as a possible agent trigger.  What counts as a trigger differs by chat type, and it is easy to get wrong: in a private chat every message is a trigger, while in a group the message must mention the bot or use the &#x60;/hanzo&#x60; command. Non-triggers and non-message updates are acknowledged and dropped.  Authentication is the secret token Telegram echoes on every update, compared in constant time. A message in a chat that has never been bound is dropped, which is why the bind command exists.  The caller here is the PLATFORM, not a Hanzo tenant, so there is no bearer and no principal. The signature check IS the authentication, and it fails closed. The tenant is never read from the payload either: it is resolved from the verified platform identifier through the connection map, so an event from a workspace nobody connected does nothing. Refusals are written with their own status rather than being flattened to a 500, so a rejected signature reads as 401 and a malformed body as 400.  The answer is acknowledged immediately and the work happens afterwards, because every one of these platforms times out a slow webhook. Duplicate deliveries are absorbed durably, so a platform retry of an event that already ran never runs it a second time or bills for it twice. When the agent pool is full nothing at all is recorded and the delivery is refused as retriable, so the message is re-delivered later rather than being lost or half-processed.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1IntegrationsTelegramWebhook() throws ApiException {
-        postV1IntegrationsTelegramWebhookWithHttpInfo();
+    public void postIntegrationsTelegramWebhook() throws ApiException {
+        postIntegrationsTelegramWebhookWithHttpInfo();
     }
 
     /**
@@ -3899,8 +4109,8 @@ public class IntegrationsApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1IntegrationsTelegramWebhookWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1IntegrationsTelegramWebhookValidateBeforeCall(null);
+    public ApiResponse<Void> postIntegrationsTelegramWebhookWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postIntegrationsTelegramWebhookValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -3911,14 +4121,14 @@ public class IntegrationsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1IntegrationsTelegramWebhookAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postIntegrationsTelegramWebhookAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1IntegrationsTelegramWebhookValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postIntegrationsTelegramWebhookValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1IntegrationsGithubReposByRepoPages
+     * Build call for putIntegrationsGithubReposByRepoPages
      * @param repo Repo is the repository, from the :repo path segment. (required)
      * @param githubPagesUpdateReq  (required)
      * @param _callback Callback for upload/download progress
@@ -3931,7 +4141,7 @@ public class IntegrationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putV1IntegrationsGithubReposByRepoPagesCall(@javax.annotation.Nonnull String repo, @javax.annotation.Nonnull GithubPagesUpdateReq githubPagesUpdateReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putIntegrationsGithubReposByRepoPagesCall(@javax.annotation.Nonnull String repo, @javax.annotation.Nonnull GithubPagesUpdateReq githubPagesUpdateReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3978,18 +4188,18 @@ public class IntegrationsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1IntegrationsGithubReposByRepoPagesValidateBeforeCall(@javax.annotation.Nonnull String repo, @javax.annotation.Nonnull GithubPagesUpdateReq githubPagesUpdateReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putIntegrationsGithubReposByRepoPagesValidateBeforeCall(@javax.annotation.Nonnull String repo, @javax.annotation.Nonnull GithubPagesUpdateReq githubPagesUpdateReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'repo' is set
         if (repo == null) {
-            throw new ApiException("Missing the required parameter 'repo' when calling putV1IntegrationsGithubReposByRepoPages(Async)");
+            throw new ApiException("Missing the required parameter 'repo' when calling putIntegrationsGithubReposByRepoPages(Async)");
         }
 
         // verify the required parameter 'githubPagesUpdateReq' is set
         if (githubPagesUpdateReq == null) {
-            throw new ApiException("Missing the required parameter 'githubPagesUpdateReq' when calling putV1IntegrationsGithubReposByRepoPages(Async)");
+            throw new ApiException("Missing the required parameter 'githubPagesUpdateReq' when calling putIntegrationsGithubReposByRepoPages(Async)");
         }
 
-        return putV1IntegrationsGithubReposByRepoPagesCall(repo, githubPagesUpdateReq, _callback);
+        return putIntegrationsGithubReposByRepoPagesCall(repo, githubPagesUpdateReq, _callback);
 
     }
 
@@ -4007,8 +4217,8 @@ public class IntegrationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public GithubPagesUpdatedOut putV1IntegrationsGithubReposByRepoPages(@javax.annotation.Nonnull String repo, @javax.annotation.Nonnull GithubPagesUpdateReq githubPagesUpdateReq) throws ApiException {
-        ApiResponse<GithubPagesUpdatedOut> localVarResp = putV1IntegrationsGithubReposByRepoPagesWithHttpInfo(repo, githubPagesUpdateReq);
+    public GithubPagesUpdatedOut putIntegrationsGithubReposByRepoPages(@javax.annotation.Nonnull String repo, @javax.annotation.Nonnull GithubPagesUpdateReq githubPagesUpdateReq) throws ApiException {
+        ApiResponse<GithubPagesUpdatedOut> localVarResp = putIntegrationsGithubReposByRepoPagesWithHttpInfo(repo, githubPagesUpdateReq);
         return localVarResp.getData();
     }
 
@@ -4026,8 +4236,8 @@ public class IntegrationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GithubPagesUpdatedOut> putV1IntegrationsGithubReposByRepoPagesWithHttpInfo(@javax.annotation.Nonnull String repo, @javax.annotation.Nonnull GithubPagesUpdateReq githubPagesUpdateReq) throws ApiException {
-        okhttp3.Call localVarCall = putV1IntegrationsGithubReposByRepoPagesValidateBeforeCall(repo, githubPagesUpdateReq, null);
+    public ApiResponse<GithubPagesUpdatedOut> putIntegrationsGithubReposByRepoPagesWithHttpInfo(@javax.annotation.Nonnull String repo, @javax.annotation.Nonnull GithubPagesUpdateReq githubPagesUpdateReq) throws ApiException {
+        okhttp3.Call localVarCall = putIntegrationsGithubReposByRepoPagesValidateBeforeCall(repo, githubPagesUpdateReq, null);
         Type localVarReturnType = new TypeToken<GithubPagesUpdatedOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -4047,9 +4257,9 @@ public class IntegrationsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putV1IntegrationsGithubReposByRepoPagesAsync(@javax.annotation.Nonnull String repo, @javax.annotation.Nonnull GithubPagesUpdateReq githubPagesUpdateReq, final ApiCallback<GithubPagesUpdatedOut> _callback) throws ApiException {
+    public okhttp3.Call putIntegrationsGithubReposByRepoPagesAsync(@javax.annotation.Nonnull String repo, @javax.annotation.Nonnull GithubPagesUpdateReq githubPagesUpdateReq, final ApiCallback<GithubPagesUpdatedOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1IntegrationsGithubReposByRepoPagesValidateBeforeCall(repo, githubPagesUpdateReq, _callback);
+        okhttp3.Call localVarCall = putIntegrationsGithubReposByRepoPagesValidateBeforeCall(repo, githubPagesUpdateReq, _callback);
         Type localVarReturnType = new TypeToken<GithubPagesUpdatedOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

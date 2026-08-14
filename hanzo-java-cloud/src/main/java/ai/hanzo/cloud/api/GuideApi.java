@@ -83,7 +83,7 @@ public class GuideApi {
     }
 
     /**
-     * Build call for deleteV1GuideCurriculum
+     * Build call for deleteGuideCurriculum
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -94,7 +94,7 @@ public class GuideApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1GuideCurriculumCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteGuideCurriculumCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -139,8 +139,8 @@ public class GuideApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1GuideCurriculumValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return deleteV1GuideCurriculumCall(_callback);
+    private okhttp3.Call deleteGuideCurriculumValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return deleteGuideCurriculumCall(_callback);
 
     }
 
@@ -156,8 +156,8 @@ public class GuideApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public CurriculumView deleteV1GuideCurriculum() throws ApiException {
-        ApiResponse<CurriculumView> localVarResp = deleteV1GuideCurriculumWithHttpInfo();
+    public CurriculumView deleteGuideCurriculum() throws ApiException {
+        ApiResponse<CurriculumView> localVarResp = deleteGuideCurriculumWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -173,8 +173,8 @@ public class GuideApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CurriculumView> deleteV1GuideCurriculumWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = deleteV1GuideCurriculumValidateBeforeCall(null);
+    public ApiResponse<CurriculumView> deleteGuideCurriculumWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = deleteGuideCurriculumValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<CurriculumView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -192,15 +192,15 @@ public class GuideApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1GuideCurriculumAsync(final ApiCallback<CurriculumView> _callback) throws ApiException {
+    public okhttp3.Call deleteGuideCurriculumAsync(final ApiCallback<CurriculumView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1GuideCurriculumValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = deleteGuideCurriculumValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<CurriculumView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1Guide
+     * Build call for getGuide
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -211,7 +211,7 @@ public class GuideApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1GuideCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getGuideCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -256,8 +256,8 @@ public class GuideApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1GuideValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1GuideCall(_callback);
+    private okhttp3.Call getGuideValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getGuideCall(_callback);
 
     }
 
@@ -273,8 +273,8 @@ public class GuideApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public OverviewView getV1Guide() throws ApiException {
-        ApiResponse<OverviewView> localVarResp = getV1GuideWithHttpInfo();
+    public OverviewView getGuide() throws ApiException {
+        ApiResponse<OverviewView> localVarResp = getGuideWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -290,8 +290,8 @@ public class GuideApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<OverviewView> getV1GuideWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1GuideValidateBeforeCall(null);
+    public ApiResponse<OverviewView> getGuideWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getGuideValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<OverviewView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -309,15 +309,15 @@ public class GuideApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1GuideAsync(final ApiCallback<OverviewView> _callback) throws ApiException {
+    public okhttp3.Call getGuideAsync(final ApiCallback<OverviewView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1GuideValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getGuideValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<OverviewView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1GuideActions
+     * Build call for getGuideActions
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -328,7 +328,7 @@ public class GuideApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1GuideActionsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getGuideActionsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -373,8 +373,8 @@ public class GuideApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1GuideActionsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1GuideActionsCall(_callback);
+    private okhttp3.Call getGuideActionsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getGuideActionsCall(_callback);
 
     }
 
@@ -390,8 +390,8 @@ public class GuideApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ActionsView getV1GuideActions() throws ApiException {
-        ApiResponse<ActionsView> localVarResp = getV1GuideActionsWithHttpInfo();
+    public ActionsView getGuideActions() throws ApiException {
+        ApiResponse<ActionsView> localVarResp = getGuideActionsWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -407,8 +407,8 @@ public class GuideApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ActionsView> getV1GuideActionsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1GuideActionsValidateBeforeCall(null);
+    public ApiResponse<ActionsView> getGuideActionsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getGuideActionsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<ActionsView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -426,15 +426,15 @@ public class GuideApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1GuideActionsAsync(final ApiCallback<ActionsView> _callback) throws ApiException {
+    public okhttp3.Call getGuideActionsAsync(final ApiCallback<ActionsView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1GuideActionsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getGuideActionsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<ActionsView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1GuideAnalytics
+     * Build call for getGuideAnalytics
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -445,7 +445,7 @@ public class GuideApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1GuideAnalyticsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getGuideAnalyticsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -490,8 +490,8 @@ public class GuideApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1GuideAnalyticsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1GuideAnalyticsCall(_callback);
+    private okhttp3.Call getGuideAnalyticsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getGuideAnalyticsCall(_callback);
 
     }
 
@@ -507,8 +507,8 @@ public class GuideApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public AnalyticsView getV1GuideAnalytics() throws ApiException {
-        ApiResponse<AnalyticsView> localVarResp = getV1GuideAnalyticsWithHttpInfo();
+    public AnalyticsView getGuideAnalytics() throws ApiException {
+        ApiResponse<AnalyticsView> localVarResp = getGuideAnalyticsWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -524,8 +524,8 @@ public class GuideApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AnalyticsView> getV1GuideAnalyticsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1GuideAnalyticsValidateBeforeCall(null);
+    public ApiResponse<AnalyticsView> getGuideAnalyticsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getGuideAnalyticsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<AnalyticsView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -543,15 +543,15 @@ public class GuideApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1GuideAnalyticsAsync(final ApiCallback<AnalyticsView> _callback) throws ApiException {
+    public okhttp3.Call getGuideAnalyticsAsync(final ApiCallback<AnalyticsView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1GuideAnalyticsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getGuideAnalyticsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<AnalyticsView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1GuideBlueprint
+     * Build call for getGuideBlueprint
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -562,7 +562,7 @@ public class GuideApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1GuideBlueprintCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getGuideBlueprintCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -607,8 +607,8 @@ public class GuideApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1GuideBlueprintValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1GuideBlueprintCall(_callback);
+    private okhttp3.Call getGuideBlueprintValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getGuideBlueprintCall(_callback);
 
     }
 
@@ -624,8 +624,8 @@ public class GuideApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public BlueprintView getV1GuideBlueprint() throws ApiException {
-        ApiResponse<BlueprintView> localVarResp = getV1GuideBlueprintWithHttpInfo();
+    public BlueprintView getGuideBlueprint() throws ApiException {
+        ApiResponse<BlueprintView> localVarResp = getGuideBlueprintWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -641,8 +641,8 @@ public class GuideApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BlueprintView> getV1GuideBlueprintWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1GuideBlueprintValidateBeforeCall(null);
+    public ApiResponse<BlueprintView> getGuideBlueprintWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getGuideBlueprintValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<BlueprintView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -660,15 +660,15 @@ public class GuideApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1GuideBlueprintAsync(final ApiCallback<BlueprintView> _callback) throws ApiException {
+    public okhttp3.Call getGuideBlueprintAsync(final ApiCallback<BlueprintView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1GuideBlueprintValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getGuideBlueprintValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<BlueprintView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1GuideBlueprintVersions
+     * Build call for getGuideBlueprintVersions
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -679,7 +679,7 @@ public class GuideApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1GuideBlueprintVersionsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getGuideBlueprintVersionsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -724,8 +724,8 @@ public class GuideApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1GuideBlueprintVersionsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1GuideBlueprintVersionsCall(_callback);
+    private okhttp3.Call getGuideBlueprintVersionsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getGuideBlueprintVersionsCall(_callback);
 
     }
 
@@ -741,8 +741,8 @@ public class GuideApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public BlueprintVersionsView getV1GuideBlueprintVersions() throws ApiException {
-        ApiResponse<BlueprintVersionsView> localVarResp = getV1GuideBlueprintVersionsWithHttpInfo();
+    public BlueprintVersionsView getGuideBlueprintVersions() throws ApiException {
+        ApiResponse<BlueprintVersionsView> localVarResp = getGuideBlueprintVersionsWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -758,8 +758,8 @@ public class GuideApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BlueprintVersionsView> getV1GuideBlueprintVersionsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1GuideBlueprintVersionsValidateBeforeCall(null);
+    public ApiResponse<BlueprintVersionsView> getGuideBlueprintVersionsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getGuideBlueprintVersionsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<BlueprintVersionsView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -777,15 +777,15 @@ public class GuideApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1GuideBlueprintVersionsAsync(final ApiCallback<BlueprintVersionsView> _callback) throws ApiException {
+    public okhttp3.Call getGuideBlueprintVersionsAsync(final ApiCallback<BlueprintVersionsView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1GuideBlueprintVersionsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getGuideBlueprintVersionsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<BlueprintVersionsView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1GuideCurriculum
+     * Build call for getGuideCurriculum
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -796,7 +796,7 @@ public class GuideApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1GuideCurriculumCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getGuideCurriculumCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -841,8 +841,8 @@ public class GuideApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1GuideCurriculumValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1GuideCurriculumCall(_callback);
+    private okhttp3.Call getGuideCurriculumValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getGuideCurriculumCall(_callback);
 
     }
 
@@ -858,8 +858,8 @@ public class GuideApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public CurriculumView getV1GuideCurriculum() throws ApiException {
-        ApiResponse<CurriculumView> localVarResp = getV1GuideCurriculumWithHttpInfo();
+    public CurriculumView getGuideCurriculum() throws ApiException {
+        ApiResponse<CurriculumView> localVarResp = getGuideCurriculumWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -875,8 +875,8 @@ public class GuideApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CurriculumView> getV1GuideCurriculumWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1GuideCurriculumValidateBeforeCall(null);
+    public ApiResponse<CurriculumView> getGuideCurriculumWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getGuideCurriculumValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<CurriculumView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -894,15 +894,15 @@ public class GuideApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1GuideCurriculumAsync(final ApiCallback<CurriculumView> _callback) throws ApiException {
+    public okhttp3.Call getGuideCurriculumAsync(final ApiCallback<CurriculumView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1GuideCurriculumValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getGuideCurriculumValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<CurriculumView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1GuideProfile
+     * Build call for getGuideProfile
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -913,7 +913,7 @@ public class GuideApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1GuideProfileCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getGuideProfileCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -958,8 +958,8 @@ public class GuideApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1GuideProfileValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1GuideProfileCall(_callback);
+    private okhttp3.Call getGuideProfileValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getGuideProfileCall(_callback);
 
     }
 
@@ -975,8 +975,8 @@ public class GuideApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ProfileResponse getV1GuideProfile() throws ApiException {
-        ApiResponse<ProfileResponse> localVarResp = getV1GuideProfileWithHttpInfo();
+    public ProfileResponse getGuideProfile() throws ApiException {
+        ApiResponse<ProfileResponse> localVarResp = getGuideProfileWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -992,8 +992,8 @@ public class GuideApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ProfileResponse> getV1GuideProfileWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1GuideProfileValidateBeforeCall(null);
+    public ApiResponse<ProfileResponse> getGuideProfileWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getGuideProfileValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<ProfileResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1011,15 +1011,15 @@ public class GuideApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1GuideProfileAsync(final ApiCallback<ProfileResponse> _callback) throws ApiException {
+    public okhttp3.Call getGuideProfileAsync(final ApiCallback<ProfileResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1GuideProfileValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getGuideProfileValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<ProfileResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1GuideStrategies
+     * Build call for getGuideStrategies
      * @param category Category filters to tactics in exactly this category. (optional)
      * @param stage Stage previews the corpus at a chosen growth stage (research|formed|launched|activated|scaling), overriding the org&#39;s observed one. An unknown value is ignored and the observed stage stands. (optional)
      * @param workload Workload filters to tactics with exactly this workload. (optional)
@@ -1033,7 +1033,7 @@ public class GuideApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1GuideStrategiesCall(@javax.annotation.Nullable String category, @javax.annotation.Nullable String stage, @javax.annotation.Nullable String workload, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getGuideStrategiesCall(@javax.annotation.Nullable String category, @javax.annotation.Nullable String stage, @javax.annotation.Nullable String workload, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1090,8 +1090,8 @@ public class GuideApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1GuideStrategiesValidateBeforeCall(@javax.annotation.Nullable String category, @javax.annotation.Nullable String stage, @javax.annotation.Nullable String workload, final ApiCallback _callback) throws ApiException {
-        return getV1GuideStrategiesCall(category, stage, workload, _callback);
+    private okhttp3.Call getGuideStrategiesValidateBeforeCall(@javax.annotation.Nullable String category, @javax.annotation.Nullable String stage, @javax.annotation.Nullable String workload, final ApiCallback _callback) throws ApiException {
+        return getGuideStrategiesCall(category, stage, workload, _callback);
 
     }
 
@@ -1110,8 +1110,8 @@ public class GuideApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public CorpusView getV1GuideStrategies(@javax.annotation.Nullable String category, @javax.annotation.Nullable String stage, @javax.annotation.Nullable String workload) throws ApiException {
-        ApiResponse<CorpusView> localVarResp = getV1GuideStrategiesWithHttpInfo(category, stage, workload);
+    public CorpusView getGuideStrategies(@javax.annotation.Nullable String category, @javax.annotation.Nullable String stage, @javax.annotation.Nullable String workload) throws ApiException {
+        ApiResponse<CorpusView> localVarResp = getGuideStrategiesWithHttpInfo(category, stage, workload);
         return localVarResp.getData();
     }
 
@@ -1130,8 +1130,8 @@ public class GuideApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CorpusView> getV1GuideStrategiesWithHttpInfo(@javax.annotation.Nullable String category, @javax.annotation.Nullable String stage, @javax.annotation.Nullable String workload) throws ApiException {
-        okhttp3.Call localVarCall = getV1GuideStrategiesValidateBeforeCall(category, stage, workload, null);
+    public ApiResponse<CorpusView> getGuideStrategiesWithHttpInfo(@javax.annotation.Nullable String category, @javax.annotation.Nullable String stage, @javax.annotation.Nullable String workload) throws ApiException {
+        okhttp3.Call localVarCall = getGuideStrategiesValidateBeforeCall(category, stage, workload, null);
         Type localVarReturnType = new TypeToken<CorpusView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1152,15 +1152,15 @@ public class GuideApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1GuideStrategiesAsync(@javax.annotation.Nullable String category, @javax.annotation.Nullable String stage, @javax.annotation.Nullable String workload, final ApiCallback<CorpusView> _callback) throws ApiException {
+    public okhttp3.Call getGuideStrategiesAsync(@javax.annotation.Nullable String category, @javax.annotation.Nullable String stage, @javax.annotation.Nullable String workload, final ApiCallback<CorpusView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1GuideStrategiesValidateBeforeCall(category, stage, workload, _callback);
+        okhttp3.Call localVarCall = getGuideStrategiesValidateBeforeCall(category, stage, workload, _callback);
         Type localVarReturnType = new TypeToken<CorpusView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1GuideSuggest
+     * Build call for getGuideSuggest
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1171,7 +1171,7 @@ public class GuideApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1GuideSuggestCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getGuideSuggestCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1216,8 +1216,8 @@ public class GuideApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1GuideSuggestValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1GuideSuggestCall(_callback);
+    private okhttp3.Call getGuideSuggestValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getGuideSuggestCall(_callback);
 
     }
 
@@ -1233,8 +1233,8 @@ public class GuideApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public SuggestResponse getV1GuideSuggest() throws ApiException {
-        ApiResponse<SuggestResponse> localVarResp = getV1GuideSuggestWithHttpInfo();
+    public SuggestResponse getGuideSuggest() throws ApiException {
+        ApiResponse<SuggestResponse> localVarResp = getGuideSuggestWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -1250,8 +1250,8 @@ public class GuideApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SuggestResponse> getV1GuideSuggestWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1GuideSuggestValidateBeforeCall(null);
+    public ApiResponse<SuggestResponse> getGuideSuggestWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getGuideSuggestValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<SuggestResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1269,22 +1269,22 @@ public class GuideApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1GuideSuggestAsync(final ApiCallback<SuggestResponse> _callback) throws ApiException {
+    public okhttp3.Call getGuideSuggestAsync(final ApiCallback<SuggestResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1GuideSuggestValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getGuideSuggestValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<SuggestResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for patchV1GuideBlueprintByCollectionById
+     * Build call for patchGuideBlueprintByCollectionById
      * @param collection  (required)
      * @param id  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call patchV1GuideBlueprintByCollectionByIdCall(@javax.annotation.Nonnull String collection, @javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call patchGuideBlueprintByCollectionByIdCall(@javax.annotation.Nonnull String collection, @javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1330,18 +1330,18 @@ public class GuideApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchV1GuideBlueprintByCollectionByIdValidateBeforeCall(@javax.annotation.Nonnull String collection, @javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call patchGuideBlueprintByCollectionByIdValidateBeforeCall(@javax.annotation.Nonnull String collection, @javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'collection' is set
         if (collection == null) {
-            throw new ApiException("Missing the required parameter 'collection' when calling patchV1GuideBlueprintByCollectionById(Async)");
+            throw new ApiException("Missing the required parameter 'collection' when calling patchGuideBlueprintByCollectionById(Async)");
         }
 
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling patchV1GuideBlueprintByCollectionById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling patchGuideBlueprintByCollectionById(Async)");
         }
 
-        return patchV1GuideBlueprintByCollectionByIdCall(collection, id, _callback);
+        return patchGuideBlueprintByCollectionByIdCall(collection, id, _callback);
 
     }
 
@@ -1352,8 +1352,8 @@ public class GuideApi {
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void patchV1GuideBlueprintByCollectionById(@javax.annotation.Nonnull String collection, @javax.annotation.Nonnull String id) throws ApiException {
-        patchV1GuideBlueprintByCollectionByIdWithHttpInfo(collection, id);
+    public void patchGuideBlueprintByCollectionById(@javax.annotation.Nonnull String collection, @javax.annotation.Nonnull String id) throws ApiException {
+        patchGuideBlueprintByCollectionByIdWithHttpInfo(collection, id);
     }
 
     /**
@@ -1364,8 +1364,8 @@ public class GuideApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> patchV1GuideBlueprintByCollectionByIdWithHttpInfo(@javax.annotation.Nonnull String collection, @javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = patchV1GuideBlueprintByCollectionByIdValidateBeforeCall(collection, id, null);
+    public ApiResponse<Void> patchGuideBlueprintByCollectionByIdWithHttpInfo(@javax.annotation.Nonnull String collection, @javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = patchGuideBlueprintByCollectionByIdValidateBeforeCall(collection, id, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1378,14 +1378,14 @@ public class GuideApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call patchV1GuideBlueprintByCollectionByIdAsync(@javax.annotation.Nonnull String collection, @javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call patchGuideBlueprintByCollectionByIdAsync(@javax.annotation.Nonnull String collection, @javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchV1GuideBlueprintByCollectionByIdValidateBeforeCall(collection, id, _callback);
+        okhttp3.Call localVarCall = patchGuideBlueprintByCollectionByIdValidateBeforeCall(collection, id, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1GuideChat
+     * Build call for postGuideChat
      * @param chatRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1397,7 +1397,7 @@ public class GuideApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1GuideChatCall(@javax.annotation.Nonnull ChatRequest chatRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postGuideChatCall(@javax.annotation.Nonnull ChatRequest chatRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1443,13 +1443,13 @@ public class GuideApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1GuideChatValidateBeforeCall(@javax.annotation.Nonnull ChatRequest chatRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postGuideChatValidateBeforeCall(@javax.annotation.Nonnull ChatRequest chatRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'chatRequest' is set
         if (chatRequest == null) {
-            throw new ApiException("Missing the required parameter 'chatRequest' when calling postV1GuideChat(Async)");
+            throw new ApiException("Missing the required parameter 'chatRequest' when calling postGuideChat(Async)");
         }
 
-        return postV1GuideChatCall(chatRequest, _callback);
+        return postGuideChatCall(chatRequest, _callback);
 
     }
 
@@ -1466,8 +1466,8 @@ public class GuideApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ChatResponse postV1GuideChat(@javax.annotation.Nonnull ChatRequest chatRequest) throws ApiException {
-        ApiResponse<ChatResponse> localVarResp = postV1GuideChatWithHttpInfo(chatRequest);
+    public ChatResponse postGuideChat(@javax.annotation.Nonnull ChatRequest chatRequest) throws ApiException {
+        ApiResponse<ChatResponse> localVarResp = postGuideChatWithHttpInfo(chatRequest);
         return localVarResp.getData();
     }
 
@@ -1484,8 +1484,8 @@ public class GuideApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ChatResponse> postV1GuideChatWithHttpInfo(@javax.annotation.Nonnull ChatRequest chatRequest) throws ApiException {
-        okhttp3.Call localVarCall = postV1GuideChatValidateBeforeCall(chatRequest, null);
+    public ApiResponse<ChatResponse> postGuideChatWithHttpInfo(@javax.annotation.Nonnull ChatRequest chatRequest) throws ApiException {
+        okhttp3.Call localVarCall = postGuideChatValidateBeforeCall(chatRequest, null);
         Type localVarReturnType = new TypeToken<ChatResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1504,21 +1504,21 @@ public class GuideApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1GuideChatAsync(@javax.annotation.Nonnull ChatRequest chatRequest, final ApiCallback<ChatResponse> _callback) throws ApiException {
+    public okhttp3.Call postGuideChatAsync(@javax.annotation.Nonnull ChatRequest chatRequest, final ApiCallback<ChatResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1GuideChatValidateBeforeCall(chatRequest, _callback);
+        okhttp3.Call localVarCall = postGuideChatValidateBeforeCall(chatRequest, _callback);
         Type localVarReturnType = new TypeToken<ChatResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1GuideStepsByIdDo
+     * Build call for postGuideStepsByIdDo
      * @param id  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1GuideStepsByIdDoCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postGuideStepsByIdDoCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1563,13 +1563,13 @@ public class GuideApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1GuideStepsByIdDoValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postGuideStepsByIdDoValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling postV1GuideStepsByIdDo(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling postGuideStepsByIdDo(Async)");
         }
 
-        return postV1GuideStepsByIdDoCall(id, _callback);
+        return postGuideStepsByIdDoCall(id, _callback);
 
     }
 
@@ -1579,8 +1579,8 @@ public class GuideApi {
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1GuideStepsByIdDo(@javax.annotation.Nonnull String id) throws ApiException {
-        postV1GuideStepsByIdDoWithHttpInfo(id);
+    public void postGuideStepsByIdDo(@javax.annotation.Nonnull String id) throws ApiException {
+        postGuideStepsByIdDoWithHttpInfo(id);
     }
 
     /**
@@ -1590,8 +1590,8 @@ public class GuideApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1GuideStepsByIdDoWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = postV1GuideStepsByIdDoValidateBeforeCall(id, null);
+    public ApiResponse<Void> postGuideStepsByIdDoWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = postGuideStepsByIdDoValidateBeforeCall(id, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1603,20 +1603,20 @@ public class GuideApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1GuideStepsByIdDoAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postGuideStepsByIdDoAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1GuideStepsByIdDoValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = postGuideStepsByIdDoValidateBeforeCall(id, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1GuideStepsByIdDone
+     * Build call for postGuideStepsByIdDone
      * @param id  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1GuideStepsByIdDoneCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postGuideStepsByIdDoneCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1661,13 +1661,13 @@ public class GuideApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1GuideStepsByIdDoneValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postGuideStepsByIdDoneValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling postV1GuideStepsByIdDone(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling postGuideStepsByIdDone(Async)");
         }
 
-        return postV1GuideStepsByIdDoneCall(id, _callback);
+        return postGuideStepsByIdDoneCall(id, _callback);
 
     }
 
@@ -1677,8 +1677,8 @@ public class GuideApi {
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1GuideStepsByIdDone(@javax.annotation.Nonnull String id) throws ApiException {
-        postV1GuideStepsByIdDoneWithHttpInfo(id);
+    public void postGuideStepsByIdDone(@javax.annotation.Nonnull String id) throws ApiException {
+        postGuideStepsByIdDoneWithHttpInfo(id);
     }
 
     /**
@@ -1688,8 +1688,8 @@ public class GuideApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1GuideStepsByIdDoneWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = postV1GuideStepsByIdDoneValidateBeforeCall(id, null);
+    public ApiResponse<Void> postGuideStepsByIdDoneWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = postGuideStepsByIdDoneValidateBeforeCall(id, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1701,14 +1701,14 @@ public class GuideApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1GuideStepsByIdDoneAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postGuideStepsByIdDoneAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1GuideStepsByIdDoneValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = postGuideStepsByIdDoneValidateBeforeCall(id, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1GuideStepsByIdReset
+     * Build call for postGuideStepsByIdReset
      * @param id ID is the step&#39;s id, as it appears in the journey (e.g. \&quot;gsuite\&quot;). (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1720,7 +1720,7 @@ public class GuideApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1GuideStepsByIdResetCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postGuideStepsByIdResetCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1766,13 +1766,13 @@ public class GuideApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1GuideStepsByIdResetValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postGuideStepsByIdResetValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling postV1GuideStepsByIdReset(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling postGuideStepsByIdReset(Async)");
         }
 
-        return postV1GuideStepsByIdResetCall(id, _callback);
+        return postGuideStepsByIdResetCall(id, _callback);
 
     }
 
@@ -1789,8 +1789,8 @@ public class GuideApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public OverviewView postV1GuideStepsByIdReset(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<OverviewView> localVarResp = postV1GuideStepsByIdResetWithHttpInfo(id);
+    public OverviewView postGuideStepsByIdReset(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<OverviewView> localVarResp = postGuideStepsByIdResetWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -1807,8 +1807,8 @@ public class GuideApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<OverviewView> postV1GuideStepsByIdResetWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = postV1GuideStepsByIdResetValidateBeforeCall(id, null);
+    public ApiResponse<OverviewView> postGuideStepsByIdResetWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = postGuideStepsByIdResetValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<OverviewView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1827,15 +1827,15 @@ public class GuideApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1GuideStepsByIdResetAsync(@javax.annotation.Nonnull String id, final ApiCallback<OverviewView> _callback) throws ApiException {
+    public okhttp3.Call postGuideStepsByIdResetAsync(@javax.annotation.Nonnull String id, final ApiCallback<OverviewView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1GuideStepsByIdResetValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = postGuideStepsByIdResetValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<OverviewView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1GuideStepsByIdSkip
+     * Build call for postGuideStepsByIdSkip
      * @param id ID is the step&#39;s id, as it appears in the journey (e.g. \&quot;gsuite\&quot;). (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1847,7 +1847,7 @@ public class GuideApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1GuideStepsByIdSkipCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postGuideStepsByIdSkipCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1893,13 +1893,13 @@ public class GuideApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1GuideStepsByIdSkipValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postGuideStepsByIdSkipValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling postV1GuideStepsByIdSkip(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling postGuideStepsByIdSkip(Async)");
         }
 
-        return postV1GuideStepsByIdSkipCall(id, _callback);
+        return postGuideStepsByIdSkipCall(id, _callback);
 
     }
 
@@ -1916,8 +1916,8 @@ public class GuideApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public OverviewView postV1GuideStepsByIdSkip(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<OverviewView> localVarResp = postV1GuideStepsByIdSkipWithHttpInfo(id);
+    public OverviewView postGuideStepsByIdSkip(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<OverviewView> localVarResp = postGuideStepsByIdSkipWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -1934,8 +1934,8 @@ public class GuideApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<OverviewView> postV1GuideStepsByIdSkipWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = postV1GuideStepsByIdSkipValidateBeforeCall(id, null);
+    public ApiResponse<OverviewView> postGuideStepsByIdSkipWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = postGuideStepsByIdSkipValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<OverviewView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1954,21 +1954,21 @@ public class GuideApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1GuideStepsByIdSkipAsync(@javax.annotation.Nonnull String id, final ApiCallback<OverviewView> _callback) throws ApiException {
+    public okhttp3.Call postGuideStepsByIdSkipAsync(@javax.annotation.Nonnull String id, final ApiCallback<OverviewView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1GuideStepsByIdSkipValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = postGuideStepsByIdSkipValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<OverviewView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1GuideStepsByIdStart
+     * Build call for postGuideStepsByIdStart
      * @param id  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1GuideStepsByIdStartCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postGuideStepsByIdStartCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2013,13 +2013,13 @@ public class GuideApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1GuideStepsByIdStartValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postGuideStepsByIdStartValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling postV1GuideStepsByIdStart(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling postGuideStepsByIdStart(Async)");
         }
 
-        return postV1GuideStepsByIdStartCall(id, _callback);
+        return postGuideStepsByIdStartCall(id, _callback);
 
     }
 
@@ -2029,8 +2029,8 @@ public class GuideApi {
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1GuideStepsByIdStart(@javax.annotation.Nonnull String id) throws ApiException {
-        postV1GuideStepsByIdStartWithHttpInfo(id);
+    public void postGuideStepsByIdStart(@javax.annotation.Nonnull String id) throws ApiException {
+        postGuideStepsByIdStartWithHttpInfo(id);
     }
 
     /**
@@ -2040,8 +2040,8 @@ public class GuideApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1GuideStepsByIdStartWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = postV1GuideStepsByIdStartValidateBeforeCall(id, null);
+    public ApiResponse<Void> postGuideStepsByIdStartWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = postGuideStepsByIdStartValidateBeforeCall(id, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -2053,19 +2053,19 @@ public class GuideApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1GuideStepsByIdStartAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postGuideStepsByIdStartAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1GuideStepsByIdStartValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = postGuideStepsByIdStartValidateBeforeCall(id, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1GuideBlueprint
+     * Build call for putGuideBlueprint
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call putV1GuideBlueprintCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putGuideBlueprintCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2109,8 +2109,8 @@ public class GuideApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1GuideBlueprintValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return putV1GuideBlueprintCall(_callback);
+    private okhttp3.Call putGuideBlueprintValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return putGuideBlueprintCall(_callback);
 
     }
 
@@ -2119,8 +2119,8 @@ public class GuideApi {
      * Replaces the deployment&#39;s brand blueprint — the shared journey, sections, strategies and templates every org starts from — as a NEW VERSION, and answers the stored document with its key and version number. The previous versions are kept, so /blueprint/versions is a real recovery trail.  SuperAdmin ONLY. A per-org admin is 403: this is platform content, not a per-customer surface — the per-customer surface is /v1/guide/curriculum. The write is audited.  The body is a blueprint document accepted as YAML **or** JSON, which is the caller-visible reason it takes a raw body. It must parse AND validate — unique ids throughout, an acyclic step graph with no dangling dependencies, every step&#39;s section and every strategy&#39;s principle resolving to a real one — or it is 422 and never becomes active, leaving the version already serving authoritative. An empty body is 400 and one over 16 MiB is 413.  Edits are live: the next resolve reads the newest version. A stored document that is itself corrupt or schema-drifted does not block this write — the target is resolved without parsing what is there — so a bad version can always be published over.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void putV1GuideBlueprint() throws ApiException {
-        putV1GuideBlueprintWithHttpInfo();
+    public void putGuideBlueprint() throws ApiException {
+        putGuideBlueprintWithHttpInfo();
     }
 
     /**
@@ -2129,8 +2129,8 @@ public class GuideApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> putV1GuideBlueprintWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = putV1GuideBlueprintValidateBeforeCall(null);
+    public ApiResponse<Void> putGuideBlueprintWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = putGuideBlueprintValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -2141,19 +2141,19 @@ public class GuideApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call putV1GuideBlueprintAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call putGuideBlueprintAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1GuideBlueprintValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = putGuideBlueprintValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1GuideCurriculum
+     * Build call for putGuideCurriculum
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call putV1GuideCurriculumCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putGuideCurriculumCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2197,8 +2197,8 @@ public class GuideApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1GuideCurriculumValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return putV1GuideCurriculumCall(_callback);
+    private okhttp3.Call putGuideCurriculumValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return putGuideCurriculumCall(_callback);
 
     }
 
@@ -2207,8 +2207,8 @@ public class GuideApi {
      * Sets the caller org&#39;s OWN curriculum — the per-customer override — and answers the journey now in force with &#x60;custom: true&#x60;. The body is a curriculum document, and it is accepted as YAML **or** JSON: that is the caller-visible reason this takes a raw body rather than a declared shape. Whatever the syntax, the CANONICAL parsed form is what is stored, so the document the engine runs never depends on how it was written.  Fail-closed: a body that does not parse, or parses but is not a valid journey (unique step ids, no dangling or cyclic dependencies), is 422 and NEVER becomes active — the org keeps the journey it had. Requires a validated org; 403 without one. An empty body is 400 and one over 256 KiB is 413.  This is tier one only. It overrides nothing but this org&#39;s own journey; the shared brand blueprint is a different surface with a different gate. DELETE the same path to drop the override and fall back to it.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void putV1GuideCurriculum() throws ApiException {
-        putV1GuideCurriculumWithHttpInfo();
+    public void putGuideCurriculum() throws ApiException {
+        putGuideCurriculumWithHttpInfo();
     }
 
     /**
@@ -2217,8 +2217,8 @@ public class GuideApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> putV1GuideCurriculumWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = putV1GuideCurriculumValidateBeforeCall(null);
+    public ApiResponse<Void> putGuideCurriculumWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = putGuideCurriculumValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -2229,9 +2229,9 @@ public class GuideApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call putV1GuideCurriculumAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call putGuideCurriculumAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1GuideCurriculumValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = putGuideCurriculumValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

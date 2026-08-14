@@ -72,12 +72,12 @@ public class QueryMultipleApi {
     }
 
     /**
-     * Build call for postV1QueryMultiple
+     * Build call for postQueryMultiple
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1QueryMultipleCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postQueryMultipleCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -121,8 +121,8 @@ public class QueryMultipleApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1QueryMultipleValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1QueryMultipleCall(_callback);
+    private okhttp3.Call postQueryMultipleValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postQueryMultipleCall(_callback);
 
     }
 
@@ -131,8 +131,8 @@ public class QueryMultipleApi {
      * Handles POST /v1/query_multiple — {file_ids,query,k}.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1QueryMultiple() throws ApiException {
-        postV1QueryMultipleWithHttpInfo();
+    public void postQueryMultiple() throws ApiException {
+        postQueryMultipleWithHttpInfo();
     }
 
     /**
@@ -141,8 +141,8 @@ public class QueryMultipleApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1QueryMultipleWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1QueryMultipleValidateBeforeCall(null);
+    public ApiResponse<Void> postQueryMultipleWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postQueryMultipleValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -153,9 +153,9 @@ public class QueryMultipleApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1QueryMultipleAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postQueryMultipleAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1QueryMultipleValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postQueryMultipleValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

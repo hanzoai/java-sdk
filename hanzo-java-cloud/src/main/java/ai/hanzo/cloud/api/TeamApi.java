@@ -78,7 +78,7 @@ public class TeamApi {
     }
 
     /**
-     * Build call for deleteV1TeamAccountCookie
+     * Build call for deleteTeamAccountCookie
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -89,7 +89,7 @@ public class TeamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1TeamAccountCookieCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteTeamAccountCookieCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -134,8 +134,8 @@ public class TeamApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1TeamAccountCookieValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return deleteV1TeamAccountCookieCall(_callback);
+    private okhttp3.Call deleteTeamAccountCookieValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return deleteTeamAccountCookieCall(_callback);
 
     }
 
@@ -151,8 +151,8 @@ public class TeamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public CookieAck deleteV1TeamAccountCookie() throws ApiException {
-        ApiResponse<CookieAck> localVarResp = deleteV1TeamAccountCookieWithHttpInfo();
+    public CookieAck deleteTeamAccountCookie() throws ApiException {
+        ApiResponse<CookieAck> localVarResp = deleteTeamAccountCookieWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -168,8 +168,8 @@ public class TeamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CookieAck> deleteV1TeamAccountCookieWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = deleteV1TeamAccountCookieValidateBeforeCall(null);
+    public ApiResponse<CookieAck> deleteTeamAccountCookieWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = deleteTeamAccountCookieValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<CookieAck>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -187,15 +187,15 @@ public class TeamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1TeamAccountCookieAsync(final ApiCallback<CookieAck> _callback) throws ApiException {
+    public okhttp3.Call deleteTeamAccountCookieAsync(final ApiCallback<CookieAck> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1TeamAccountCookieValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = deleteTeamAccountCookieValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<CookieAck>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for deleteV1TeamFilesByWorkspaceByFilename
+     * Build call for deleteTeamFilesByWorkspaceByFilename
      * @param workspace Workspace is the workspace uuid the blob belongs to, from the path. (required)
      * @param filename Filename is the last path segment, which the front sets to the blob id when it sends no explicit &#x60;file&#x60;. (required)
      * @param _file File is the blob id, and wins over the path segment when both are present. (optional)
@@ -209,7 +209,7 @@ public class TeamApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1TeamFilesByWorkspaceByFilenameCall(@javax.annotation.Nonnull String workspace, @javax.annotation.Nonnull String filename, @javax.annotation.Nullable String _file, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteTeamFilesByWorkspaceByFilenameCall(@javax.annotation.Nonnull String workspace, @javax.annotation.Nonnull String filename, @javax.annotation.Nullable String _file, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -259,18 +259,18 @@ public class TeamApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1TeamFilesByWorkspaceByFilenameValidateBeforeCall(@javax.annotation.Nonnull String workspace, @javax.annotation.Nonnull String filename, @javax.annotation.Nullable String _file, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteTeamFilesByWorkspaceByFilenameValidateBeforeCall(@javax.annotation.Nonnull String workspace, @javax.annotation.Nonnull String filename, @javax.annotation.Nullable String _file, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
-            throw new ApiException("Missing the required parameter 'workspace' when calling deleteV1TeamFilesByWorkspaceByFilename(Async)");
+            throw new ApiException("Missing the required parameter 'workspace' when calling deleteTeamFilesByWorkspaceByFilename(Async)");
         }
 
         // verify the required parameter 'filename' is set
         if (filename == null) {
-            throw new ApiException("Missing the required parameter 'filename' when calling deleteV1TeamFilesByWorkspaceByFilename(Async)");
+            throw new ApiException("Missing the required parameter 'filename' when calling deleteTeamFilesByWorkspaceByFilename(Async)");
         }
 
-        return deleteV1TeamFilesByWorkspaceByFilenameCall(workspace, filename, _file, _callback);
+        return deleteTeamFilesByWorkspaceByFilenameCall(workspace, filename, _file, _callback);
 
     }
 
@@ -288,8 +288,8 @@ public class TeamApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteV1TeamFilesByWorkspaceByFilename(@javax.annotation.Nonnull String workspace, @javax.annotation.Nonnull String filename, @javax.annotation.Nullable String _file) throws ApiException {
-        deleteV1TeamFilesByWorkspaceByFilenameWithHttpInfo(workspace, filename, _file);
+    public void deleteTeamFilesByWorkspaceByFilename(@javax.annotation.Nonnull String workspace, @javax.annotation.Nonnull String filename, @javax.annotation.Nullable String _file) throws ApiException {
+        deleteTeamFilesByWorkspaceByFilenameWithHttpInfo(workspace, filename, _file);
     }
 
     /**
@@ -307,8 +307,8 @@ public class TeamApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteV1TeamFilesByWorkspaceByFilenameWithHttpInfo(@javax.annotation.Nonnull String workspace, @javax.annotation.Nonnull String filename, @javax.annotation.Nullable String _file) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1TeamFilesByWorkspaceByFilenameValidateBeforeCall(workspace, filename, _file, null);
+    public ApiResponse<Void> deleteTeamFilesByWorkspaceByFilenameWithHttpInfo(@javax.annotation.Nonnull String workspace, @javax.annotation.Nonnull String filename, @javax.annotation.Nullable String _file) throws ApiException {
+        okhttp3.Call localVarCall = deleteTeamFilesByWorkspaceByFilenameValidateBeforeCall(workspace, filename, _file, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -328,20 +328,20 @@ public class TeamApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1TeamFilesByWorkspaceByFilenameAsync(@javax.annotation.Nonnull String workspace, @javax.annotation.Nonnull String filename, @javax.annotation.Nullable String _file, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteTeamFilesByWorkspaceByFilenameAsync(@javax.annotation.Nonnull String workspace, @javax.annotation.Nonnull String filename, @javax.annotation.Nullable String _file, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1TeamFilesByWorkspaceByFilenameValidateBeforeCall(workspace, filename, _file, _callback);
+        okhttp3.Call localVarCall = deleteTeamFilesByWorkspaceByFilenameValidateBeforeCall(workspace, filename, _file, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1TeamAccountAuthByProvider
+     * Build call for getTeamAccountAuthByProvider
      * @param provider  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1TeamAccountAuthByProviderCall(@javax.annotation.Nonnull String provider, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getTeamAccountAuthByProviderCall(@javax.annotation.Nonnull String provider, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -386,13 +386,13 @@ public class TeamApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1TeamAccountAuthByProviderValidateBeforeCall(@javax.annotation.Nonnull String provider, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getTeamAccountAuthByProviderValidateBeforeCall(@javax.annotation.Nonnull String provider, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'provider' is set
         if (provider == null) {
-            throw new ApiException("Missing the required parameter 'provider' when calling getV1TeamAccountAuthByProvider(Async)");
+            throw new ApiException("Missing the required parameter 'provider' when calling getTeamAccountAuthByProvider(Async)");
         }
 
-        return getV1TeamAccountAuthByProviderCall(provider, _callback);
+        return getTeamAccountAuthByProviderCall(provider, _callback);
 
     }
 
@@ -402,8 +402,8 @@ public class TeamApi {
      * @param provider  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1TeamAccountAuthByProvider(@javax.annotation.Nonnull String provider) throws ApiException {
-        getV1TeamAccountAuthByProviderWithHttpInfo(provider);
+    public void getTeamAccountAuthByProvider(@javax.annotation.Nonnull String provider) throws ApiException {
+        getTeamAccountAuthByProviderWithHttpInfo(provider);
     }
 
     /**
@@ -413,8 +413,8 @@ public class TeamApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1TeamAccountAuthByProviderWithHttpInfo(@javax.annotation.Nonnull String provider) throws ApiException {
-        okhttp3.Call localVarCall = getV1TeamAccountAuthByProviderValidateBeforeCall(provider, null);
+    public ApiResponse<Void> getTeamAccountAuthByProviderWithHttpInfo(@javax.annotation.Nonnull String provider) throws ApiException {
+        okhttp3.Call localVarCall = getTeamAccountAuthByProviderValidateBeforeCall(provider, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -426,20 +426,20 @@ public class TeamApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1TeamAccountAuthByProviderAsync(@javax.annotation.Nonnull String provider, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getTeamAccountAuthByProviderAsync(@javax.annotation.Nonnull String provider, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1TeamAccountAuthByProviderValidateBeforeCall(provider, _callback);
+        okhttp3.Call localVarCall = getTeamAccountAuthByProviderValidateBeforeCall(provider, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1TeamAccountAuthByProviderCallback
+     * Build call for getTeamAccountAuthByProviderCallback
      * @param provider  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1TeamAccountAuthByProviderCallbackCall(@javax.annotation.Nonnull String provider, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getTeamAccountAuthByProviderCallbackCall(@javax.annotation.Nonnull String provider, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -484,13 +484,13 @@ public class TeamApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1TeamAccountAuthByProviderCallbackValidateBeforeCall(@javax.annotation.Nonnull String provider, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getTeamAccountAuthByProviderCallbackValidateBeforeCall(@javax.annotation.Nonnull String provider, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'provider' is set
         if (provider == null) {
-            throw new ApiException("Missing the required parameter 'provider' when calling getV1TeamAccountAuthByProviderCallback(Async)");
+            throw new ApiException("Missing the required parameter 'provider' when calling getTeamAccountAuthByProviderCallback(Async)");
         }
 
-        return getV1TeamAccountAuthByProviderCallbackCall(provider, _callback);
+        return getTeamAccountAuthByProviderCallbackCall(provider, _callback);
 
     }
 
@@ -500,8 +500,8 @@ public class TeamApi {
      * @param provider  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1TeamAccountAuthByProviderCallback(@javax.annotation.Nonnull String provider) throws ApiException {
-        getV1TeamAccountAuthByProviderCallbackWithHttpInfo(provider);
+    public void getTeamAccountAuthByProviderCallback(@javax.annotation.Nonnull String provider) throws ApiException {
+        getTeamAccountAuthByProviderCallbackWithHttpInfo(provider);
     }
 
     /**
@@ -511,8 +511,8 @@ public class TeamApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1TeamAccountAuthByProviderCallbackWithHttpInfo(@javax.annotation.Nonnull String provider) throws ApiException {
-        okhttp3.Call localVarCall = getV1TeamAccountAuthByProviderCallbackValidateBeforeCall(provider, null);
+    public ApiResponse<Void> getTeamAccountAuthByProviderCallbackWithHttpInfo(@javax.annotation.Nonnull String provider) throws ApiException {
+        okhttp3.Call localVarCall = getTeamAccountAuthByProviderCallbackValidateBeforeCall(provider, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -524,14 +524,14 @@ public class TeamApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1TeamAccountAuthByProviderCallbackAsync(@javax.annotation.Nonnull String provider, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getTeamAccountAuthByProviderCallbackAsync(@javax.annotation.Nonnull String provider, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1TeamAccountAuthByProviderCallbackValidateBeforeCall(provider, _callback);
+        okhttp3.Call localVarCall = getTeamAccountAuthByProviderCallbackValidateBeforeCall(provider, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1TeamAccountProviders
+     * Build call for getTeamAccountProviders
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -542,7 +542,7 @@ public class TeamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1TeamAccountProvidersCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getTeamAccountProvidersCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -587,8 +587,8 @@ public class TeamApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1TeamAccountProvidersValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1TeamAccountProvidersCall(_callback);
+    private okhttp3.Call getTeamAccountProvidersValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getTeamAccountProvidersCall(_callback);
 
     }
 
@@ -604,8 +604,8 @@ public class TeamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public List<ProviderInfo> getV1TeamAccountProviders() throws ApiException {
-        ApiResponse<List<ProviderInfo>> localVarResp = getV1TeamAccountProvidersWithHttpInfo();
+    public List<ProviderInfo> getTeamAccountProviders() throws ApiException {
+        ApiResponse<List<ProviderInfo>> localVarResp = getTeamAccountProvidersWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -621,8 +621,8 @@ public class TeamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<ProviderInfo>> getV1TeamAccountProvidersWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1TeamAccountProvidersValidateBeforeCall(null);
+    public ApiResponse<List<ProviderInfo>> getTeamAccountProvidersWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getTeamAccountProvidersValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<List<ProviderInfo>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -640,15 +640,15 @@ public class TeamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1TeamAccountProvidersAsync(final ApiCallback<List<ProviderInfo>> _callback) throws ApiException {
+    public okhttp3.Call getTeamAccountProvidersAsync(final ApiCallback<List<ProviderInfo>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1TeamAccountProvidersValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getTeamAccountProvidersValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<List<ProviderInfo>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1TeamBillingPlan
+     * Build call for getTeamBillingPlan
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -659,7 +659,7 @@ public class TeamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1TeamBillingPlanCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getTeamBillingPlanCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -704,8 +704,8 @@ public class TeamApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1TeamBillingPlanValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1TeamBillingPlanCall(_callback);
+    private okhttp3.Call getTeamBillingPlanValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getTeamBillingPlanCall(_callback);
 
     }
 
@@ -721,8 +721,8 @@ public class TeamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public PlanInfo getV1TeamBillingPlan() throws ApiException {
-        ApiResponse<PlanInfo> localVarResp = getV1TeamBillingPlanWithHttpInfo();
+    public PlanInfo getTeamBillingPlan() throws ApiException {
+        ApiResponse<PlanInfo> localVarResp = getTeamBillingPlanWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -738,8 +738,8 @@ public class TeamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PlanInfo> getV1TeamBillingPlanWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1TeamBillingPlanValidateBeforeCall(null);
+    public ApiResponse<PlanInfo> getTeamBillingPlanWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getTeamBillingPlanValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<PlanInfo>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -757,20 +757,20 @@ public class TeamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1TeamBillingPlanAsync(final ApiCallback<PlanInfo> _callback) throws ApiException {
+    public okhttp3.Call getTeamBillingPlanAsync(final ApiCallback<PlanInfo> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1TeamBillingPlanValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getTeamBillingPlanValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<PlanInfo>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1TeamBillingUi
+     * Build call for getTeamBillingUi
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1TeamBillingUiCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getTeamBillingUiCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -814,8 +814,8 @@ public class TeamApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1TeamBillingUiValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1TeamBillingUiCall(_callback);
+    private okhttp3.Call getTeamBillingUiValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getTeamBillingUiCall(_callback);
 
     }
 
@@ -824,8 +824,8 @@ public class TeamApi {
      * Serves the usage-and-wallet page the Team front links to — HTML, not JSON. It is a static React build compiled into this binary, so there is no upstream to be down and no build step at request time.  SESSION-GATED: without a verified team session token — bearer, else the HttpOnly account cookie — the caller gets 401 and not one byte of the page, so an anonymous browser meets a refusal rather than a shell that then fails to load anything.  The page is markup only. It reads money SAME-ORIGIN from cloud&#39;s own balance and usage endpoints, which pin the org from the IAM cookie the team OAuth callback set — nothing under this path proxies a money read, so there is no second auth mechanism here to get wrong. A deployment whose page was never built answers 503 naming the missing bundle, never a blank 200.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1TeamBillingUi() throws ApiException {
-        getV1TeamBillingUiWithHttpInfo();
+    public void getTeamBillingUi() throws ApiException {
+        getTeamBillingUiWithHttpInfo();
     }
 
     /**
@@ -834,8 +834,8 @@ public class TeamApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1TeamBillingUiWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1TeamBillingUiValidateBeforeCall(null);
+    public ApiResponse<Void> getTeamBillingUiWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getTeamBillingUiValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -846,20 +846,20 @@ public class TeamApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1TeamBillingUiAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getTeamBillingUiAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1TeamBillingUiValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getTeamBillingUiValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1TeamBillingUiByWildcard1
+     * Build call for getTeamBillingUiByWildcard1
      * @param wildcard1  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1TeamBillingUiByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getTeamBillingUiByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -904,13 +904,13 @@ public class TeamApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1TeamBillingUiByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getTeamBillingUiByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'wildcard1' is set
         if (wildcard1 == null) {
-            throw new ApiException("Missing the required parameter 'wildcard1' when calling getV1TeamBillingUiByWildcard1(Async)");
+            throw new ApiException("Missing the required parameter 'wildcard1' when calling getTeamBillingUiByWildcard1(Async)");
         }
 
-        return getV1TeamBillingUiByWildcard1Call(wildcard1, _callback);
+        return getTeamBillingUiByWildcard1Call(wildcard1, _callback);
 
     }
 
@@ -920,8 +920,8 @@ public class TeamApi {
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1TeamBillingUiByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        getV1TeamBillingUiByWildcard1WithHttpInfo(wildcard1);
+    public void getTeamBillingUiByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        getTeamBillingUiByWildcard1WithHttpInfo(wildcard1);
     }
 
     /**
@@ -931,8 +931,8 @@ public class TeamApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1TeamBillingUiByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        okhttp3.Call localVarCall = getV1TeamBillingUiByWildcard1ValidateBeforeCall(wildcard1, null);
+    public ApiResponse<Void> getTeamBillingUiByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        okhttp3.Call localVarCall = getTeamBillingUiByWildcard1ValidateBeforeCall(wildcard1, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -944,14 +944,14 @@ public class TeamApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1TeamBillingUiByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getTeamBillingUiByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1TeamBillingUiByWildcard1ValidateBeforeCall(wildcard1, _callback);
+        okhttp3.Call localVarCall = getTeamBillingUiByWildcard1ValidateBeforeCall(wildcard1, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1TeamBots
+     * Build call for getTeamBots
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -962,7 +962,7 @@ public class TeamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1TeamBotsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getTeamBotsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1007,8 +1007,8 @@ public class TeamApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1TeamBotsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1TeamBotsCall(_callback);
+    private okhttp3.Call getTeamBotsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getTeamBotsCall(_callback);
 
     }
 
@@ -1024,8 +1024,8 @@ public class TeamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public BotRoster getV1TeamBots() throws ApiException {
-        ApiResponse<BotRoster> localVarResp = getV1TeamBotsWithHttpInfo();
+    public BotRoster getTeamBots() throws ApiException {
+        ApiResponse<BotRoster> localVarResp = getTeamBotsWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -1041,8 +1041,8 @@ public class TeamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BotRoster> getV1TeamBotsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1TeamBotsValidateBeforeCall(null);
+    public ApiResponse<BotRoster> getTeamBotsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getTeamBotsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<BotRoster>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1060,22 +1060,22 @@ public class TeamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1TeamBotsAsync(final ApiCallback<BotRoster> _callback) throws ApiException {
+    public okhttp3.Call getTeamBotsAsync(final ApiCallback<BotRoster> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1TeamBotsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getTeamBotsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<BotRoster>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1TeamFilesByWorkspaceByFilename
+     * Build call for getTeamFilesByWorkspaceByFilename
      * @param workspace  (required)
      * @param filename  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1TeamFilesByWorkspaceByFilenameCall(@javax.annotation.Nonnull String workspace, @javax.annotation.Nonnull String filename, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getTeamFilesByWorkspaceByFilenameCall(@javax.annotation.Nonnull String workspace, @javax.annotation.Nonnull String filename, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1121,18 +1121,18 @@ public class TeamApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1TeamFilesByWorkspaceByFilenameValidateBeforeCall(@javax.annotation.Nonnull String workspace, @javax.annotation.Nonnull String filename, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getTeamFilesByWorkspaceByFilenameValidateBeforeCall(@javax.annotation.Nonnull String workspace, @javax.annotation.Nonnull String filename, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
-            throw new ApiException("Missing the required parameter 'workspace' when calling getV1TeamFilesByWorkspaceByFilename(Async)");
+            throw new ApiException("Missing the required parameter 'workspace' when calling getTeamFilesByWorkspaceByFilename(Async)");
         }
 
         // verify the required parameter 'filename' is set
         if (filename == null) {
-            throw new ApiException("Missing the required parameter 'filename' when calling getV1TeamFilesByWorkspaceByFilename(Async)");
+            throw new ApiException("Missing the required parameter 'filename' when calling getTeamFilesByWorkspaceByFilename(Async)");
         }
 
-        return getV1TeamFilesByWorkspaceByFilenameCall(workspace, filename, _callback);
+        return getTeamFilesByWorkspaceByFilenameCall(workspace, filename, _callback);
 
     }
 
@@ -1143,8 +1143,8 @@ public class TeamApi {
      * @param filename  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1TeamFilesByWorkspaceByFilename(@javax.annotation.Nonnull String workspace, @javax.annotation.Nonnull String filename) throws ApiException {
-        getV1TeamFilesByWorkspaceByFilenameWithHttpInfo(workspace, filename);
+    public void getTeamFilesByWorkspaceByFilename(@javax.annotation.Nonnull String workspace, @javax.annotation.Nonnull String filename) throws ApiException {
+        getTeamFilesByWorkspaceByFilenameWithHttpInfo(workspace, filename);
     }
 
     /**
@@ -1155,8 +1155,8 @@ public class TeamApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1TeamFilesByWorkspaceByFilenameWithHttpInfo(@javax.annotation.Nonnull String workspace, @javax.annotation.Nonnull String filename) throws ApiException {
-        okhttp3.Call localVarCall = getV1TeamFilesByWorkspaceByFilenameValidateBeforeCall(workspace, filename, null);
+    public ApiResponse<Void> getTeamFilesByWorkspaceByFilenameWithHttpInfo(@javax.annotation.Nonnull String workspace, @javax.annotation.Nonnull String filename) throws ApiException {
+        okhttp3.Call localVarCall = getTeamFilesByWorkspaceByFilenameValidateBeforeCall(workspace, filename, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1169,14 +1169,14 @@ public class TeamApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1TeamFilesByWorkspaceByFilenameAsync(@javax.annotation.Nonnull String workspace, @javax.annotation.Nonnull String filename, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getTeamFilesByWorkspaceByFilenameAsync(@javax.annotation.Nonnull String workspace, @javax.annotation.Nonnull String filename, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1TeamFilesByWorkspaceByFilenameValidateBeforeCall(workspace, filename, _callback);
+        okhttp3.Call localVarCall = getTeamFilesByWorkspaceByFilenameValidateBeforeCall(workspace, filename, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1TeamTransactorApiV1Statistics
+     * Build call for getTeamTransactorApiV1Statistics
      * @param token Token is the workspace token minted by selectWorkspace. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1188,7 +1188,7 @@ public class TeamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1TeamTransactorApiV1StatisticsCall(@javax.annotation.Nullable String token, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getTeamTransactorApiV1StatisticsCall(@javax.annotation.Nullable String token, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1237,8 +1237,8 @@ public class TeamApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1TeamTransactorApiV1StatisticsValidateBeforeCall(@javax.annotation.Nullable String token, final ApiCallback _callback) throws ApiException {
-        return getV1TeamTransactorApiV1StatisticsCall(token, _callback);
+    private okhttp3.Call getTeamTransactorApiV1StatisticsValidateBeforeCall(@javax.annotation.Nullable String token, final ApiCallback _callback) throws ApiException {
+        return getTeamTransactorApiV1StatisticsCall(token, _callback);
 
     }
 
@@ -1255,8 +1255,8 @@ public class TeamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public StatsOut getV1TeamTransactorApiV1Statistics(@javax.annotation.Nullable String token) throws ApiException {
-        ApiResponse<StatsOut> localVarResp = getV1TeamTransactorApiV1StatisticsWithHttpInfo(token);
+    public StatsOut getTeamTransactorApiV1Statistics(@javax.annotation.Nullable String token) throws ApiException {
+        ApiResponse<StatsOut> localVarResp = getTeamTransactorApiV1StatisticsWithHttpInfo(token);
         return localVarResp.getData();
     }
 
@@ -1273,8 +1273,8 @@ public class TeamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<StatsOut> getV1TeamTransactorApiV1StatisticsWithHttpInfo(@javax.annotation.Nullable String token) throws ApiException {
-        okhttp3.Call localVarCall = getV1TeamTransactorApiV1StatisticsValidateBeforeCall(token, null);
+    public ApiResponse<StatsOut> getTeamTransactorApiV1StatisticsWithHttpInfo(@javax.annotation.Nullable String token) throws ApiException {
+        okhttp3.Call localVarCall = getTeamTransactorApiV1StatisticsValidateBeforeCall(token, null);
         Type localVarReturnType = new TypeToken<StatsOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1293,21 +1293,21 @@ public class TeamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1TeamTransactorApiV1StatisticsAsync(@javax.annotation.Nullable String token, final ApiCallback<StatsOut> _callback) throws ApiException {
+    public okhttp3.Call getTeamTransactorApiV1StatisticsAsync(@javax.annotation.Nullable String token, final ApiCallback<StatsOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1TeamTransactorApiV1StatisticsValidateBeforeCall(token, _callback);
+        okhttp3.Call localVarCall = getTeamTransactorApiV1StatisticsValidateBeforeCall(token, _callback);
         Type localVarReturnType = new TypeToken<StatsOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1TeamTransactorByToken
+     * Build call for getTeamTransactorByToken
      * @param token  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1TeamTransactorByTokenCall(@javax.annotation.Nonnull String token, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getTeamTransactorByTokenCall(@javax.annotation.Nonnull String token, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1352,13 +1352,13 @@ public class TeamApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1TeamTransactorByTokenValidateBeforeCall(@javax.annotation.Nonnull String token, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getTeamTransactorByTokenValidateBeforeCall(@javax.annotation.Nonnull String token, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'token' is set
         if (token == null) {
-            throw new ApiException("Missing the required parameter 'token' when calling getV1TeamTransactorByToken(Async)");
+            throw new ApiException("Missing the required parameter 'token' when calling getTeamTransactorByToken(Async)");
         }
 
-        return getV1TeamTransactorByTokenCall(token, _callback);
+        return getTeamTransactorByTokenCall(token, _callback);
 
     }
 
@@ -1368,8 +1368,8 @@ public class TeamApi {
      * @param token  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1TeamTransactorByToken(@javax.annotation.Nonnull String token) throws ApiException {
-        getV1TeamTransactorByTokenWithHttpInfo(token);
+    public void getTeamTransactorByToken(@javax.annotation.Nonnull String token) throws ApiException {
+        getTeamTransactorByTokenWithHttpInfo(token);
     }
 
     /**
@@ -1379,8 +1379,8 @@ public class TeamApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1TeamTransactorByTokenWithHttpInfo(@javax.annotation.Nonnull String token) throws ApiException {
-        okhttp3.Call localVarCall = getV1TeamTransactorByTokenValidateBeforeCall(token, null);
+    public ApiResponse<Void> getTeamTransactorByTokenWithHttpInfo(@javax.annotation.Nonnull String token) throws ApiException {
+        okhttp3.Call localVarCall = getTeamTransactorByTokenValidateBeforeCall(token, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1392,14 +1392,14 @@ public class TeamApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1TeamTransactorByTokenAsync(@javax.annotation.Nonnull String token, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getTeamTransactorByTokenAsync(@javax.annotation.Nonnull String token, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1TeamTransactorByTokenValidateBeforeCall(token, _callback);
+        okhttp3.Call localVarCall = getTeamTransactorByTokenValidateBeforeCall(token, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1TeamTransactorStatistics
+     * Build call for getTeamTransactorStatistics
      * @param token Token is the workspace token minted by selectWorkspace. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1411,7 +1411,7 @@ public class TeamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1TeamTransactorStatisticsCall(@javax.annotation.Nullable String token, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getTeamTransactorStatisticsCall(@javax.annotation.Nullable String token, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1460,8 +1460,8 @@ public class TeamApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1TeamTransactorStatisticsValidateBeforeCall(@javax.annotation.Nullable String token, final ApiCallback _callback) throws ApiException {
-        return getV1TeamTransactorStatisticsCall(token, _callback);
+    private okhttp3.Call getTeamTransactorStatisticsValidateBeforeCall(@javax.annotation.Nullable String token, final ApiCallback _callback) throws ApiException {
+        return getTeamTransactorStatisticsCall(token, _callback);
 
     }
 
@@ -1478,8 +1478,8 @@ public class TeamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public StatsOut getV1TeamTransactorStatistics(@javax.annotation.Nullable String token) throws ApiException {
-        ApiResponse<StatsOut> localVarResp = getV1TeamTransactorStatisticsWithHttpInfo(token);
+    public StatsOut getTeamTransactorStatistics(@javax.annotation.Nullable String token) throws ApiException {
+        ApiResponse<StatsOut> localVarResp = getTeamTransactorStatisticsWithHttpInfo(token);
         return localVarResp.getData();
     }
 
@@ -1496,8 +1496,8 @@ public class TeamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<StatsOut> getV1TeamTransactorStatisticsWithHttpInfo(@javax.annotation.Nullable String token) throws ApiException {
-        okhttp3.Call localVarCall = getV1TeamTransactorStatisticsValidateBeforeCall(token, null);
+    public ApiResponse<StatsOut> getTeamTransactorStatisticsWithHttpInfo(@javax.annotation.Nullable String token) throws ApiException {
+        okhttp3.Call localVarCall = getTeamTransactorStatisticsValidateBeforeCall(token, null);
         Type localVarReturnType = new TypeToken<StatsOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1516,20 +1516,20 @@ public class TeamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1TeamTransactorStatisticsAsync(@javax.annotation.Nullable String token, final ApiCallback<StatsOut> _callback) throws ApiException {
+    public okhttp3.Call getTeamTransactorStatisticsAsync(@javax.annotation.Nullable String token, final ApiCallback<StatsOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1TeamTransactorStatisticsValidateBeforeCall(token, _callback);
+        okhttp3.Call localVarCall = getTeamTransactorStatisticsValidateBeforeCall(token, _callback);
         Type localVarReturnType = new TypeToken<StatsOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1TeamAccount
+     * Build call for postTeamAccount
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1TeamAccountCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postTeamAccountCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1573,8 +1573,8 @@ public class TeamApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1TeamAccountValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1TeamAccountCall(_callback);
+    private okhttp3.Call postTeamAccountValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postTeamAccountCall(_callback);
 
     }
 
@@ -1583,8 +1583,8 @@ public class TeamApi {
      * The account control plane the Team client speaks: one POST carries a &#x60;method&#x60; verb and its &#x60;params&#x60;, and answers {\&quot;result\&quot;: …}. The verbs are the session&#39;s own reads and the workspace switch — getLoginInfoByToken, getUserWorkspaces, selectWorkspace, getWorkspaceInfo, getMemberships, getPerson, getSocialIds, getRegionInfo, isReadOnlyGuest — plus sendInvite, which adds a member to a workspace and is refused for a caller who is not its owner or admin.  A REFUSAL IS HTTP 200 carrying {\&quot;error\&quot;: {severity, code, params}} — the platform Status the client translates — not a 4xx. An unreadable body, an unauthorized session and an unknown verb all arrive that way, so a caller that reads only the status code reads every failure here as a success.  NO CREDENTIAL IS EVER HANDLED HERE. login, signUp, the OTP verbs, password change and reset, join and the guest-token exchange each answer Unauthorized with \&quot;sign in at hanzo.id\&quot; — a stated policy, not an unknown method, so the door being shut is a fact a test can pin. Sessions come from the OAuth pair under /account/auth.  Auth is the team session token: Authorization: Bearer, else the HttpOnly account-token cookie. The tenant is that token&#39;s SIGNED org claim, never a header, and selectWorkspace resolves only among the orgs the token proves membership of. It also demands an explicit workspaceUrl — it never falls back to a first workspace, and a slug that resolves in two of the caller&#39;s orgs answers Ambiguous rather than picking one.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1TeamAccount() throws ApiException {
-        postV1TeamAccountWithHttpInfo();
+    public void postTeamAccount() throws ApiException {
+        postTeamAccountWithHttpInfo();
     }
 
     /**
@@ -1593,8 +1593,8 @@ public class TeamApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1TeamAccountWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1TeamAccountValidateBeforeCall(null);
+    public ApiResponse<Void> postTeamAccountWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postTeamAccountValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1605,14 +1605,14 @@ public class TeamApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1TeamAccountAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postTeamAccountAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1TeamAccountValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postTeamAccountValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1TeamBotsSync
+     * Build call for postTeamBotsSync
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1623,7 +1623,7 @@ public class TeamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1TeamBotsSyncCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postTeamBotsSyncCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1668,8 +1668,8 @@ public class TeamApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1TeamBotsSyncValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1TeamBotsSyncCall(_callback);
+    private okhttp3.Call postTeamBotsSyncValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postTeamBotsSyncCall(_callback);
 
     }
 
@@ -1685,8 +1685,8 @@ public class TeamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public BotSync postV1TeamBotsSync() throws ApiException {
-        ApiResponse<BotSync> localVarResp = postV1TeamBotsSyncWithHttpInfo();
+    public BotSync postTeamBotsSync() throws ApiException {
+        ApiResponse<BotSync> localVarResp = postTeamBotsSyncWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -1702,8 +1702,8 @@ public class TeamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BotSync> postV1TeamBotsSyncWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1TeamBotsSyncValidateBeforeCall(null);
+    public ApiResponse<BotSync> postTeamBotsSyncWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postTeamBotsSyncValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<BotSync>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1721,21 +1721,21 @@ public class TeamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1TeamBotsSyncAsync(final ApiCallback<BotSync> _callback) throws ApiException {
+    public okhttp3.Call postTeamBotsSyncAsync(final ApiCallback<BotSync> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1TeamBotsSyncValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postTeamBotsSyncValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<BotSync>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1TeamFilesByWorkspace
+     * Build call for postTeamFilesByWorkspace
      * @param workspace  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1TeamFilesByWorkspaceCall(@javax.annotation.Nonnull String workspace, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postTeamFilesByWorkspaceCall(@javax.annotation.Nonnull String workspace, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1780,13 +1780,13 @@ public class TeamApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1TeamFilesByWorkspaceValidateBeforeCall(@javax.annotation.Nonnull String workspace, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postTeamFilesByWorkspaceValidateBeforeCall(@javax.annotation.Nonnull String workspace, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'workspace' is set
         if (workspace == null) {
-            throw new ApiException("Missing the required parameter 'workspace' when calling postV1TeamFilesByWorkspace(Async)");
+            throw new ApiException("Missing the required parameter 'workspace' when calling postTeamFilesByWorkspace(Async)");
         }
 
-        return postV1TeamFilesByWorkspaceCall(workspace, _callback);
+        return postTeamFilesByWorkspaceCall(workspace, _callback);
 
     }
 
@@ -1796,8 +1796,8 @@ public class TeamApi {
      * @param workspace  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1TeamFilesByWorkspace(@javax.annotation.Nonnull String workspace) throws ApiException {
-        postV1TeamFilesByWorkspaceWithHttpInfo(workspace);
+    public void postTeamFilesByWorkspace(@javax.annotation.Nonnull String workspace) throws ApiException {
+        postTeamFilesByWorkspaceWithHttpInfo(workspace);
     }
 
     /**
@@ -1807,8 +1807,8 @@ public class TeamApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1TeamFilesByWorkspaceWithHttpInfo(@javax.annotation.Nonnull String workspace) throws ApiException {
-        okhttp3.Call localVarCall = postV1TeamFilesByWorkspaceValidateBeforeCall(workspace, null);
+    public ApiResponse<Void> postTeamFilesByWorkspaceWithHttpInfo(@javax.annotation.Nonnull String workspace) throws ApiException {
+        okhttp3.Call localVarCall = postTeamFilesByWorkspaceValidateBeforeCall(workspace, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1820,19 +1820,19 @@ public class TeamApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1TeamFilesByWorkspaceAsync(@javax.annotation.Nonnull String workspace, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postTeamFilesByWorkspaceAsync(@javax.annotation.Nonnull String workspace, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1TeamFilesByWorkspaceValidateBeforeCall(workspace, _callback);
+        okhttp3.Call localVarCall = postTeamFilesByWorkspaceValidateBeforeCall(workspace, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1TeamAccountCookie
+     * Build call for putTeamAccountCookie
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call putV1TeamAccountCookieCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putTeamAccountCookieCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1876,8 +1876,8 @@ public class TeamApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1TeamAccountCookieValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return putV1TeamAccountCookieCall(_callback);
+    private okhttp3.Call putTeamAccountCookieValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return putTeamAccountCookieCall(_callback);
 
     }
 
@@ -1886,8 +1886,8 @@ public class TeamApi {
      * Writes the team session token into the HttpOnly &#x60;account-token&#x60; cookie — Secure, SameSite&#x3D;Lax, whole-origin scope, thirty days — and answers {\&quot;result\&quot;: true}. This is how the client turns the token it caught off the OAuth bounce into a credential page JS can no longer read, which IS the security property: script that cannot see the cookie cannot exfiltrate it, and every later call on the files, billing and collaborator planes authenticates from it when no bearer is sent.  The token is VERIFIED — signature and expiry, against this service&#39;s own signing secret — BEFORE it is stored. Anything this service did not sign is 401 and nothing is written; persisting a caller-supplied value unchecked would be a session-fixation door, where an attacker pins a cookie the victim&#39;s browser then presents as its own.  The token may arrive as &#x60;token&#x60; in the JSON body or, when the body is absent or unparseable, from the Authorization bearer — an unreadable body is NOT an error here. The sibling DELETE clears this same cookie and signs the browser out of team only: the IAM cookie set alongside it is a different credential with its own lifetime and is left alone.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void putV1TeamAccountCookie() throws ApiException {
-        putV1TeamAccountCookieWithHttpInfo();
+    public void putTeamAccountCookie() throws ApiException {
+        putTeamAccountCookieWithHttpInfo();
     }
 
     /**
@@ -1896,8 +1896,8 @@ public class TeamApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> putV1TeamAccountCookieWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = putV1TeamAccountCookieValidateBeforeCall(null);
+    public ApiResponse<Void> putTeamAccountCookieWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = putTeamAccountCookieValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1908,9 +1908,9 @@ public class TeamApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call putV1TeamAccountCookieAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call putTeamAccountCookieAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1TeamAccountCookieValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = putTeamAccountCookieValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

@@ -37,10 +37,10 @@ public final class Store {
         String name = "sdk-example-" + UUID.randomUUID().toString().substring(0, 8);
 
         try {
-            ProvisionResult created = kv.postV1Kv(new ProvisionRequest().name(name));
+            ProvisionResult created = kv.postKv(new ProvisionRequest().name(name));
             System.out.printf("created  %s (%s)%n", created.getName(), created.getStatus());
 
-            ProvisionedResource read = kv.getV1KvByName(name);
+            ProvisionedResource read = kv.getKvByName(name);
             System.out.printf("read     %s host=%s port=%s status=%s%n",
                     read.getName(), read.getHost(), read.getPort(), read.getStatus());
         } catch (ApiException e) {
@@ -48,7 +48,7 @@ public final class Store {
             System.exit(1);
         } finally {
             try {
-                kv.deleteV1KvByName(name);
+                kv.deleteKvByName(name);
                 System.out.printf("deleted  %s%n", name);
             } catch (ApiException e) {
                 System.err.printf("delete %s failed: HTTP %d %s%n", name, e.getCode(), e.getResponseBody());

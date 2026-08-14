@@ -72,12 +72,12 @@ public class RerankApi {
     }
 
     /**
-     * Build call for postV1Rerank
+     * Build call for postRerank
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1RerankCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postRerankCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -121,8 +121,8 @@ public class RerankApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1RerankValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1RerankCall(_callback);
+    private okhttp3.Call postRerankValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postRerankCall(_callback);
 
     }
 
@@ -131,8 +131,8 @@ public class RerankApi {
      * Implements POST /v1/rerank (Cohere/Jina-compatible).  Body: {\&quot;model\&quot;: \&quot;...\&quot;, \&quot;query\&quot;: \&quot;...\&quot;, \&quot;documents\&quot;: [\&quot;...\&quot;, ...]|[{\&quot;text\&quot;:\&quot;...\&quot;}],   \&quot;top_n\&quot;?: int, \&quot;return_documents\&quot;?: bool}  Response: {\&quot;object\&quot;:\&quot;list\&quot;,\&quot;model\&quot;:...,\&quot;results\&quot;:[{\&quot;index\&quot;,\&quot;relevance_score\&quot;,\&quot;document\&quot;?}],\&quot;usage\&quot;:{...}}  Backend selection is provider-driven (one endpoint, one contract):   - If the model routes to a native rerank provider (Jina/Cohere/Voyage) the     request is proxied to that provider&#39;s /rerank endpoint.   - Otherwise scores are computed as a real bi-encoder ranking: embed the     query and documents through the resolved embedding model and rank by     cosine similarity. No rerank-specific key required.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1Rerank() throws ApiException {
-        postV1RerankWithHttpInfo();
+    public void postRerank() throws ApiException {
+        postRerankWithHttpInfo();
     }
 
     /**
@@ -141,8 +141,8 @@ public class RerankApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1RerankWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1RerankValidateBeforeCall(null);
+    public ApiResponse<Void> postRerankWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postRerankValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -153,9 +153,9 @@ public class RerankApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1RerankAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postRerankAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1RerankValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postRerankValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

@@ -95,7 +95,7 @@ public class CompanyApi {
     }
 
     /**
-     * Build call for getV1Company
+     * Build call for getCompany
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -106,7 +106,7 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CompanyCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCompanyCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -151,8 +151,8 @@ public class CompanyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CompanyValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1CompanyCall(_callback);
+    private okhttp3.Call getCompanyValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getCompanyCall(_callback);
 
     }
 
@@ -168,8 +168,8 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public FormationView getV1Company() throws ApiException {
-        ApiResponse<FormationView> localVarResp = getV1CompanyWithHttpInfo();
+    public FormationView getCompany() throws ApiException {
+        ApiResponse<FormationView> localVarResp = getCompanyWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -185,8 +185,8 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<FormationView> getV1CompanyWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1CompanyValidateBeforeCall(null);
+    public ApiResponse<FormationView> getCompanyWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getCompanyValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<FormationView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -204,15 +204,15 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CompanyAsync(final ApiCallback<FormationView> _callback) throws ApiException {
+    public okhttp3.Call getCompanyAsync(final ApiCallback<FormationView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CompanyValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getCompanyValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<FormationView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CompanyRegister
+     * Build call for getCompanyRegister
      * @param stage Stage keeps only formations at that stage. Empty means any. (optional)
      * @param structure Structure keeps only formations of that entity kind. Empty means any. (optional)
      * @param limit Limit bounds the page; 0 or less means the default of 200. (optional)
@@ -227,7 +227,7 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CompanyRegisterCall(@javax.annotation.Nullable String stage, @javax.annotation.Nullable String structure, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer offset, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCompanyRegisterCall(@javax.annotation.Nullable String stage, @javax.annotation.Nullable String structure, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer offset, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -288,8 +288,8 @@ public class CompanyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CompanyRegisterValidateBeforeCall(@javax.annotation.Nullable String stage, @javax.annotation.Nullable String structure, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer offset, final ApiCallback _callback) throws ApiException {
-        return getV1CompanyRegisterCall(stage, structure, limit, offset, _callback);
+    private okhttp3.Call getCompanyRegisterValidateBeforeCall(@javax.annotation.Nullable String stage, @javax.annotation.Nullable String structure, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer offset, final ApiCallback _callback) throws ApiException {
+        return getCompanyRegisterCall(stage, structure, limit, offset, _callback);
 
     }
 
@@ -309,8 +309,8 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public RegisterPage getV1CompanyRegister(@javax.annotation.Nullable String stage, @javax.annotation.Nullable String structure, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer offset) throws ApiException {
-        ApiResponse<RegisterPage> localVarResp = getV1CompanyRegisterWithHttpInfo(stage, structure, limit, offset);
+    public RegisterPage getCompanyRegister(@javax.annotation.Nullable String stage, @javax.annotation.Nullable String structure, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer offset) throws ApiException {
+        ApiResponse<RegisterPage> localVarResp = getCompanyRegisterWithHttpInfo(stage, structure, limit, offset);
         return localVarResp.getData();
     }
 
@@ -330,8 +330,8 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RegisterPage> getV1CompanyRegisterWithHttpInfo(@javax.annotation.Nullable String stage, @javax.annotation.Nullable String structure, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer offset) throws ApiException {
-        okhttp3.Call localVarCall = getV1CompanyRegisterValidateBeforeCall(stage, structure, limit, offset, null);
+    public ApiResponse<RegisterPage> getCompanyRegisterWithHttpInfo(@javax.annotation.Nullable String stage, @javax.annotation.Nullable String structure, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer offset) throws ApiException {
+        okhttp3.Call localVarCall = getCompanyRegisterValidateBeforeCall(stage, structure, limit, offset, null);
         Type localVarReturnType = new TypeToken<RegisterPage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -353,15 +353,15 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CompanyRegisterAsync(@javax.annotation.Nullable String stage, @javax.annotation.Nullable String structure, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer offset, final ApiCallback<RegisterPage> _callback) throws ApiException {
+    public okhttp3.Call getCompanyRegisterAsync(@javax.annotation.Nullable String stage, @javax.annotation.Nullable String structure, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer offset, final ApiCallback<RegisterPage> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CompanyRegisterValidateBeforeCall(stage, structure, limit, offset, _callback);
+        okhttp3.Call localVarCall = getCompanyRegisterValidateBeforeCall(stage, structure, limit, offset, _callback);
         Type localVarReturnType = new TypeToken<RegisterPage>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CompanyRegisterSummary
+     * Build call for getCompanyRegisterSummary
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -372,7 +372,7 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CompanyRegisterSummaryCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCompanyRegisterSummaryCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -417,8 +417,8 @@ public class CompanyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CompanyRegisterSummaryValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1CompanyRegisterSummaryCall(_callback);
+    private okhttp3.Call getCompanyRegisterSummaryValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getCompanyRegisterSummaryCall(_callback);
 
     }
 
@@ -434,8 +434,8 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public RegisterCounts getV1CompanyRegisterSummary() throws ApiException {
-        ApiResponse<RegisterCounts> localVarResp = getV1CompanyRegisterSummaryWithHttpInfo();
+    public RegisterCounts getCompanyRegisterSummary() throws ApiException {
+        ApiResponse<RegisterCounts> localVarResp = getCompanyRegisterSummaryWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -451,8 +451,8 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RegisterCounts> getV1CompanyRegisterSummaryWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1CompanyRegisterSummaryValidateBeforeCall(null);
+    public ApiResponse<RegisterCounts> getCompanyRegisterSummaryWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getCompanyRegisterSummaryValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<RegisterCounts>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -470,15 +470,15 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CompanyRegisterSummaryAsync(final ApiCallback<RegisterCounts> _callback) throws ApiException {
+    public okhttp3.Call getCompanyRegisterSummaryAsync(final ApiCallback<RegisterCounts> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CompanyRegisterSummaryValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getCompanyRegisterSummaryValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<RegisterCounts>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CompanyReview
+     * Build call for getCompanyReview
      * @param limit Limit bounds how many formations are scanned; 0 or less means the default of 200. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -490,7 +490,7 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CompanyReviewCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCompanyReviewCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -539,8 +539,8 @@ public class CompanyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CompanyReviewValidateBeforeCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
-        return getV1CompanyReviewCall(limit, _callback);
+    private okhttp3.Call getCompanyReviewValidateBeforeCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+        return getCompanyReviewCall(limit, _callback);
 
     }
 
@@ -557,8 +557,8 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ReviewQueue getV1CompanyReview(@javax.annotation.Nullable Integer limit) throws ApiException {
-        ApiResponse<ReviewQueue> localVarResp = getV1CompanyReviewWithHttpInfo(limit);
+    public ReviewQueue getCompanyReview(@javax.annotation.Nullable Integer limit) throws ApiException {
+        ApiResponse<ReviewQueue> localVarResp = getCompanyReviewWithHttpInfo(limit);
         return localVarResp.getData();
     }
 
@@ -575,8 +575,8 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ReviewQueue> getV1CompanyReviewWithHttpInfo(@javax.annotation.Nullable Integer limit) throws ApiException {
-        okhttp3.Call localVarCall = getV1CompanyReviewValidateBeforeCall(limit, null);
+    public ApiResponse<ReviewQueue> getCompanyReviewWithHttpInfo(@javax.annotation.Nullable Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = getCompanyReviewValidateBeforeCall(limit, null);
         Type localVarReturnType = new TypeToken<ReviewQueue>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -595,15 +595,15 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CompanyReviewAsync(@javax.annotation.Nullable Integer limit, final ApiCallback<ReviewQueue> _callback) throws ApiException {
+    public okhttp3.Call getCompanyReviewAsync(@javax.annotation.Nullable Integer limit, final ApiCallback<ReviewQueue> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CompanyReviewValidateBeforeCall(limit, _callback);
+        okhttp3.Call localVarCall = getCompanyReviewValidateBeforeCall(limit, _callback);
         Type localVarReturnType = new TypeToken<ReviewQueue>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1Company
+     * Build call for postCompany
      * @param beginIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -615,7 +615,7 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CompanyCall(@javax.annotation.Nonnull BeginIn beginIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCompanyCall(@javax.annotation.Nonnull BeginIn beginIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -661,13 +661,13 @@ public class CompanyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CompanyValidateBeforeCall(@javax.annotation.Nonnull BeginIn beginIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postCompanyValidateBeforeCall(@javax.annotation.Nonnull BeginIn beginIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'beginIn' is set
         if (beginIn == null) {
-            throw new ApiException("Missing the required parameter 'beginIn' when calling postV1Company(Async)");
+            throw new ApiException("Missing the required parameter 'beginIn' when calling postCompany(Async)");
         }
 
-        return postV1CompanyCall(beginIn, _callback);
+        return postCompanyCall(beginIn, _callback);
 
     }
 
@@ -684,8 +684,8 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public FormationView postV1Company(@javax.annotation.Nonnull BeginIn beginIn) throws ApiException {
-        ApiResponse<FormationView> localVarResp = postV1CompanyWithHttpInfo(beginIn);
+    public FormationView postCompany(@javax.annotation.Nonnull BeginIn beginIn) throws ApiException {
+        ApiResponse<FormationView> localVarResp = postCompanyWithHttpInfo(beginIn);
         return localVarResp.getData();
     }
 
@@ -702,8 +702,8 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<FormationView> postV1CompanyWithHttpInfo(@javax.annotation.Nonnull BeginIn beginIn) throws ApiException {
-        okhttp3.Call localVarCall = postV1CompanyValidateBeforeCall(beginIn, null);
+    public ApiResponse<FormationView> postCompanyWithHttpInfo(@javax.annotation.Nonnull BeginIn beginIn) throws ApiException {
+        okhttp3.Call localVarCall = postCompanyValidateBeforeCall(beginIn, null);
         Type localVarReturnType = new TypeToken<FormationView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -722,15 +722,15 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CompanyAsync(@javax.annotation.Nonnull BeginIn beginIn, final ApiCallback<FormationView> _callback) throws ApiException {
+    public okhttp3.Call postCompanyAsync(@javax.annotation.Nonnull BeginIn beginIn, final ApiCallback<FormationView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CompanyValidateBeforeCall(beginIn, _callback);
+        okhttp3.Call localVarCall = postCompanyValidateBeforeCall(beginIn, _callback);
         Type localVarReturnType = new TypeToken<FormationView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CompanyAdvance
+     * Build call for postCompanyAdvance
      * @param advanceIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -742,7 +742,7 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CompanyAdvanceCall(@javax.annotation.Nonnull AdvanceIn advanceIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCompanyAdvanceCall(@javax.annotation.Nonnull AdvanceIn advanceIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -788,13 +788,13 @@ public class CompanyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CompanyAdvanceValidateBeforeCall(@javax.annotation.Nonnull AdvanceIn advanceIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postCompanyAdvanceValidateBeforeCall(@javax.annotation.Nonnull AdvanceIn advanceIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'advanceIn' is set
         if (advanceIn == null) {
-            throw new ApiException("Missing the required parameter 'advanceIn' when calling postV1CompanyAdvance(Async)");
+            throw new ApiException("Missing the required parameter 'advanceIn' when calling postCompanyAdvance(Async)");
         }
 
-        return postV1CompanyAdvanceCall(advanceIn, _callback);
+        return postCompanyAdvanceCall(advanceIn, _callback);
 
     }
 
@@ -811,8 +811,8 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public FormationView postV1CompanyAdvance(@javax.annotation.Nonnull AdvanceIn advanceIn) throws ApiException {
-        ApiResponse<FormationView> localVarResp = postV1CompanyAdvanceWithHttpInfo(advanceIn);
+    public FormationView postCompanyAdvance(@javax.annotation.Nonnull AdvanceIn advanceIn) throws ApiException {
+        ApiResponse<FormationView> localVarResp = postCompanyAdvanceWithHttpInfo(advanceIn);
         return localVarResp.getData();
     }
 
@@ -829,8 +829,8 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<FormationView> postV1CompanyAdvanceWithHttpInfo(@javax.annotation.Nonnull AdvanceIn advanceIn) throws ApiException {
-        okhttp3.Call localVarCall = postV1CompanyAdvanceValidateBeforeCall(advanceIn, null);
+    public ApiResponse<FormationView> postCompanyAdvanceWithHttpInfo(@javax.annotation.Nonnull AdvanceIn advanceIn) throws ApiException {
+        okhttp3.Call localVarCall = postCompanyAdvanceValidateBeforeCall(advanceIn, null);
         Type localVarReturnType = new TypeToken<FormationView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -849,15 +849,15 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CompanyAdvanceAsync(@javax.annotation.Nonnull AdvanceIn advanceIn, final ApiCallback<FormationView> _callback) throws ApiException {
+    public okhttp3.Call postCompanyAdvanceAsync(@javax.annotation.Nonnull AdvanceIn advanceIn, final ApiCallback<FormationView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CompanyAdvanceValidateBeforeCall(advanceIn, _callback);
+        okhttp3.Call localVarCall = postCompanyAdvanceValidateBeforeCall(advanceIn, _callback);
         Type localVarReturnType = new TypeToken<FormationView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CompanyDocuments
+     * Build call for postCompanyDocuments
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -868,7 +868,7 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CompanyDocumentsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCompanyDocumentsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -913,8 +913,8 @@ public class CompanyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CompanyDocumentsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1CompanyDocumentsCall(_callback);
+    private okhttp3.Call postCompanyDocumentsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postCompanyDocumentsCall(_callback);
 
     }
 
@@ -930,8 +930,8 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public FormationView postV1CompanyDocuments() throws ApiException {
-        ApiResponse<FormationView> localVarResp = postV1CompanyDocumentsWithHttpInfo();
+    public FormationView postCompanyDocuments() throws ApiException {
+        ApiResponse<FormationView> localVarResp = postCompanyDocumentsWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -947,8 +947,8 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<FormationView> postV1CompanyDocumentsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1CompanyDocumentsValidateBeforeCall(null);
+    public ApiResponse<FormationView> postCompanyDocumentsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postCompanyDocumentsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<FormationView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -966,15 +966,15 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CompanyDocumentsAsync(final ApiCallback<FormationView> _callback) throws ApiException {
+    public okhttp3.Call postCompanyDocumentsAsync(final ApiCallback<FormationView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CompanyDocumentsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postCompanyDocumentsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<FormationView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CompanyEsign
+     * Build call for postCompanyEsign
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -985,7 +985,7 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CompanyEsignCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCompanyEsignCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1030,8 +1030,8 @@ public class CompanyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CompanyEsignValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1CompanyEsignCall(_callback);
+    private okhttp3.Call postCompanyEsignValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postCompanyEsignCall(_callback);
 
     }
 
@@ -1047,8 +1047,8 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public EsignOut postV1CompanyEsign() throws ApiException {
-        ApiResponse<EsignOut> localVarResp = postV1CompanyEsignWithHttpInfo();
+    public EsignOut postCompanyEsign() throws ApiException {
+        ApiResponse<EsignOut> localVarResp = postCompanyEsignWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -1064,8 +1064,8 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<EsignOut> postV1CompanyEsignWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1CompanyEsignValidateBeforeCall(null);
+    public ApiResponse<EsignOut> postCompanyEsignWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postCompanyEsignValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<EsignOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1083,15 +1083,15 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CompanyEsignAsync(final ApiCallback<EsignOut> _callback) throws ApiException {
+    public okhttp3.Call postCompanyEsignAsync(final ApiCallback<EsignOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CompanyEsignValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postCompanyEsignValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<EsignOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CompanyEsignComplete
+     * Build call for postCompanyEsignComplete
      * @param esignCompleteIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1103,7 +1103,7 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CompanyEsignCompleteCall(@javax.annotation.Nonnull EsignCompleteIn esignCompleteIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCompanyEsignCompleteCall(@javax.annotation.Nonnull EsignCompleteIn esignCompleteIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1149,13 +1149,13 @@ public class CompanyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CompanyEsignCompleteValidateBeforeCall(@javax.annotation.Nonnull EsignCompleteIn esignCompleteIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postCompanyEsignCompleteValidateBeforeCall(@javax.annotation.Nonnull EsignCompleteIn esignCompleteIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'esignCompleteIn' is set
         if (esignCompleteIn == null) {
-            throw new ApiException("Missing the required parameter 'esignCompleteIn' when calling postV1CompanyEsignComplete(Async)");
+            throw new ApiException("Missing the required parameter 'esignCompleteIn' when calling postCompanyEsignComplete(Async)");
         }
 
-        return postV1CompanyEsignCompleteCall(esignCompleteIn, _callback);
+        return postCompanyEsignCompleteCall(esignCompleteIn, _callback);
 
     }
 
@@ -1172,8 +1172,8 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public FormationView postV1CompanyEsignComplete(@javax.annotation.Nonnull EsignCompleteIn esignCompleteIn) throws ApiException {
-        ApiResponse<FormationView> localVarResp = postV1CompanyEsignCompleteWithHttpInfo(esignCompleteIn);
+    public FormationView postCompanyEsignComplete(@javax.annotation.Nonnull EsignCompleteIn esignCompleteIn) throws ApiException {
+        ApiResponse<FormationView> localVarResp = postCompanyEsignCompleteWithHttpInfo(esignCompleteIn);
         return localVarResp.getData();
     }
 
@@ -1190,8 +1190,8 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<FormationView> postV1CompanyEsignCompleteWithHttpInfo(@javax.annotation.Nonnull EsignCompleteIn esignCompleteIn) throws ApiException {
-        okhttp3.Call localVarCall = postV1CompanyEsignCompleteValidateBeforeCall(esignCompleteIn, null);
+    public ApiResponse<FormationView> postCompanyEsignCompleteWithHttpInfo(@javax.annotation.Nonnull EsignCompleteIn esignCompleteIn) throws ApiException {
+        okhttp3.Call localVarCall = postCompanyEsignCompleteValidateBeforeCall(esignCompleteIn, null);
         Type localVarReturnType = new TypeToken<FormationView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1210,15 +1210,15 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CompanyEsignCompleteAsync(@javax.annotation.Nonnull EsignCompleteIn esignCompleteIn, final ApiCallback<FormationView> _callback) throws ApiException {
+    public okhttp3.Call postCompanyEsignCompleteAsync(@javax.annotation.Nonnull EsignCompleteIn esignCompleteIn, final ApiCallback<FormationView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CompanyEsignCompleteValidateBeforeCall(esignCompleteIn, _callback);
+        okhttp3.Call localVarCall = postCompanyEsignCompleteValidateBeforeCall(esignCompleteIn, _callback);
         Type localVarReturnType = new TypeToken<FormationView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CompanyFounders
+     * Build call for postCompanyFounders
      * @param foundersIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1230,7 +1230,7 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CompanyFoundersCall(@javax.annotation.Nonnull FoundersIn foundersIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCompanyFoundersCall(@javax.annotation.Nonnull FoundersIn foundersIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1276,13 +1276,13 @@ public class CompanyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CompanyFoundersValidateBeforeCall(@javax.annotation.Nonnull FoundersIn foundersIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postCompanyFoundersValidateBeforeCall(@javax.annotation.Nonnull FoundersIn foundersIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'foundersIn' is set
         if (foundersIn == null) {
-            throw new ApiException("Missing the required parameter 'foundersIn' when calling postV1CompanyFounders(Async)");
+            throw new ApiException("Missing the required parameter 'foundersIn' when calling postCompanyFounders(Async)");
         }
 
-        return postV1CompanyFoundersCall(foundersIn, _callback);
+        return postCompanyFoundersCall(foundersIn, _callback);
 
     }
 
@@ -1299,8 +1299,8 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public FormationView postV1CompanyFounders(@javax.annotation.Nonnull FoundersIn foundersIn) throws ApiException {
-        ApiResponse<FormationView> localVarResp = postV1CompanyFoundersWithHttpInfo(foundersIn);
+    public FormationView postCompanyFounders(@javax.annotation.Nonnull FoundersIn foundersIn) throws ApiException {
+        ApiResponse<FormationView> localVarResp = postCompanyFoundersWithHttpInfo(foundersIn);
         return localVarResp.getData();
     }
 
@@ -1317,8 +1317,8 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<FormationView> postV1CompanyFoundersWithHttpInfo(@javax.annotation.Nonnull FoundersIn foundersIn) throws ApiException {
-        okhttp3.Call localVarCall = postV1CompanyFoundersValidateBeforeCall(foundersIn, null);
+    public ApiResponse<FormationView> postCompanyFoundersWithHttpInfo(@javax.annotation.Nonnull FoundersIn foundersIn) throws ApiException {
+        okhttp3.Call localVarCall = postCompanyFoundersValidateBeforeCall(foundersIn, null);
         Type localVarReturnType = new TypeToken<FormationView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1337,15 +1337,15 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CompanyFoundersAsync(@javax.annotation.Nonnull FoundersIn foundersIn, final ApiCallback<FormationView> _callback) throws ApiException {
+    public okhttp3.Call postCompanyFoundersAsync(@javax.annotation.Nonnull FoundersIn foundersIn, final ApiCallback<FormationView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CompanyFoundersValidateBeforeCall(foundersIn, _callback);
+        okhttp3.Call localVarCall = postCompanyFoundersValidateBeforeCall(foundersIn, _callback);
         Type localVarReturnType = new TypeToken<FormationView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CompanyFundraiseDeck
+     * Build call for postCompanyFundraiseDeck
      * @param body  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1357,7 +1357,7 @@ public class CompanyApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CompanyFundraiseDeckCall(@javax.annotation.Nullable File body, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCompanyFundraiseDeckCall(@javax.annotation.Nullable File body, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1403,8 +1403,8 @@ public class CompanyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CompanyFundraiseDeckValidateBeforeCall(@javax.annotation.Nullable File body, final ApiCallback _callback) throws ApiException {
-        return postV1CompanyFundraiseDeckCall(body, _callback);
+    private okhttp3.Call postCompanyFundraiseDeckValidateBeforeCall(@javax.annotation.Nullable File body, final ApiCallback _callback) throws ApiException {
+        return postCompanyFundraiseDeckCall(body, _callback);
 
     }
 
@@ -1421,8 +1421,8 @@ public class CompanyApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public DeckOut postV1CompanyFundraiseDeck(@javax.annotation.Nullable File body) throws ApiException {
-        ApiResponse<DeckOut> localVarResp = postV1CompanyFundraiseDeckWithHttpInfo(body);
+    public DeckOut postCompanyFundraiseDeck(@javax.annotation.Nullable File body) throws ApiException {
+        ApiResponse<DeckOut> localVarResp = postCompanyFundraiseDeckWithHttpInfo(body);
         return localVarResp.getData();
     }
 
@@ -1439,8 +1439,8 @@ public class CompanyApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DeckOut> postV1CompanyFundraiseDeckWithHttpInfo(@javax.annotation.Nullable File body) throws ApiException {
-        okhttp3.Call localVarCall = postV1CompanyFundraiseDeckValidateBeforeCall(body, null);
+    public ApiResponse<DeckOut> postCompanyFundraiseDeckWithHttpInfo(@javax.annotation.Nullable File body) throws ApiException {
+        okhttp3.Call localVarCall = postCompanyFundraiseDeckValidateBeforeCall(body, null);
         Type localVarReturnType = new TypeToken<DeckOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1459,15 +1459,15 @@ public class CompanyApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CompanyFundraiseDeckAsync(@javax.annotation.Nullable File body, final ApiCallback<DeckOut> _callback) throws ApiException {
+    public okhttp3.Call postCompanyFundraiseDeckAsync(@javax.annotation.Nullable File body, final ApiCallback<DeckOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CompanyFundraiseDeckValidateBeforeCall(body, _callback);
+        okhttp3.Call localVarCall = postCompanyFundraiseDeckValidateBeforeCall(body, _callback);
         Type localVarReturnType = new TypeToken<DeckOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CompanyFundraiseRound
+     * Build call for postCompanyFundraiseRound
      * @param roundInput  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1479,7 +1479,7 @@ public class CompanyApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CompanyFundraiseRoundCall(@javax.annotation.Nonnull RoundInput roundInput, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCompanyFundraiseRoundCall(@javax.annotation.Nonnull RoundInput roundInput, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1525,13 +1525,13 @@ public class CompanyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CompanyFundraiseRoundValidateBeforeCall(@javax.annotation.Nonnull RoundInput roundInput, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postCompanyFundraiseRoundValidateBeforeCall(@javax.annotation.Nonnull RoundInput roundInput, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'roundInput' is set
         if (roundInput == null) {
-            throw new ApiException("Missing the required parameter 'roundInput' when calling postV1CompanyFundraiseRound(Async)");
+            throw new ApiException("Missing the required parameter 'roundInput' when calling postCompanyFundraiseRound(Async)");
         }
 
-        return postV1CompanyFundraiseRoundCall(roundInput, _callback);
+        return postCompanyFundraiseRoundCall(roundInput, _callback);
 
     }
 
@@ -1548,8 +1548,8 @@ public class CompanyApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public RoundOut postV1CompanyFundraiseRound(@javax.annotation.Nonnull RoundInput roundInput) throws ApiException {
-        ApiResponse<RoundOut> localVarResp = postV1CompanyFundraiseRoundWithHttpInfo(roundInput);
+    public RoundOut postCompanyFundraiseRound(@javax.annotation.Nonnull RoundInput roundInput) throws ApiException {
+        ApiResponse<RoundOut> localVarResp = postCompanyFundraiseRoundWithHttpInfo(roundInput);
         return localVarResp.getData();
     }
 
@@ -1566,8 +1566,8 @@ public class CompanyApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RoundOut> postV1CompanyFundraiseRoundWithHttpInfo(@javax.annotation.Nonnull RoundInput roundInput) throws ApiException {
-        okhttp3.Call localVarCall = postV1CompanyFundraiseRoundValidateBeforeCall(roundInput, null);
+    public ApiResponse<RoundOut> postCompanyFundraiseRoundWithHttpInfo(@javax.annotation.Nonnull RoundInput roundInput) throws ApiException {
+        okhttp3.Call localVarCall = postCompanyFundraiseRoundValidateBeforeCall(roundInput, null);
         Type localVarReturnType = new TypeToken<RoundOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1586,15 +1586,15 @@ public class CompanyApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CompanyFundraiseRoundAsync(@javax.annotation.Nonnull RoundInput roundInput, final ApiCallback<RoundOut> _callback) throws ApiException {
+    public okhttp3.Call postCompanyFundraiseRoundAsync(@javax.annotation.Nonnull RoundInput roundInput, final ApiCallback<RoundOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CompanyFundraiseRoundValidateBeforeCall(roundInput, _callback);
+        okhttp3.Call localVarCall = postCompanyFundraiseRoundValidateBeforeCall(roundInput, _callback);
         Type localVarReturnType = new TypeToken<RoundOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CompanyFundraiseSafe
+     * Build call for postCompanyFundraiseSafe
      * @param safeIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1606,7 +1606,7 @@ public class CompanyApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CompanyFundraiseSafeCall(@javax.annotation.Nonnull SafeIn safeIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCompanyFundraiseSafeCall(@javax.annotation.Nonnull SafeIn safeIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1652,13 +1652,13 @@ public class CompanyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CompanyFundraiseSafeValidateBeforeCall(@javax.annotation.Nonnull SafeIn safeIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postCompanyFundraiseSafeValidateBeforeCall(@javax.annotation.Nonnull SafeIn safeIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'safeIn' is set
         if (safeIn == null) {
-            throw new ApiException("Missing the required parameter 'safeIn' when calling postV1CompanyFundraiseSafe(Async)");
+            throw new ApiException("Missing the required parameter 'safeIn' when calling postCompanyFundraiseSafe(Async)");
         }
 
-        return postV1CompanyFundraiseSafeCall(safeIn, _callback);
+        return postCompanyFundraiseSafeCall(safeIn, _callback);
 
     }
 
@@ -1675,8 +1675,8 @@ public class CompanyApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public SafeOut postV1CompanyFundraiseSafe(@javax.annotation.Nonnull SafeIn safeIn) throws ApiException {
-        ApiResponse<SafeOut> localVarResp = postV1CompanyFundraiseSafeWithHttpInfo(safeIn);
+    public SafeOut postCompanyFundraiseSafe(@javax.annotation.Nonnull SafeIn safeIn) throws ApiException {
+        ApiResponse<SafeOut> localVarResp = postCompanyFundraiseSafeWithHttpInfo(safeIn);
         return localVarResp.getData();
     }
 
@@ -1693,8 +1693,8 @@ public class CompanyApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SafeOut> postV1CompanyFundraiseSafeWithHttpInfo(@javax.annotation.Nonnull SafeIn safeIn) throws ApiException {
-        okhttp3.Call localVarCall = postV1CompanyFundraiseSafeValidateBeforeCall(safeIn, null);
+    public ApiResponse<SafeOut> postCompanyFundraiseSafeWithHttpInfo(@javax.annotation.Nonnull SafeIn safeIn) throws ApiException {
+        okhttp3.Call localVarCall = postCompanyFundraiseSafeValidateBeforeCall(safeIn, null);
         Type localVarReturnType = new TypeToken<SafeOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1713,15 +1713,15 @@ public class CompanyApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CompanyFundraiseSafeAsync(@javax.annotation.Nonnull SafeIn safeIn, final ApiCallback<SafeOut> _callback) throws ApiException {
+    public okhttp3.Call postCompanyFundraiseSafeAsync(@javax.annotation.Nonnull SafeIn safeIn, final ApiCallback<SafeOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CompanyFundraiseSafeValidateBeforeCall(safeIn, _callback);
+        okhttp3.Call localVarCall = postCompanyFundraiseSafeValidateBeforeCall(safeIn, _callback);
         Type localVarReturnType = new TypeToken<SafeOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CompanyGenesis
+     * Build call for postCompanyGenesis
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1732,7 +1732,7 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CompanyGenesisCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCompanyGenesisCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1777,8 +1777,8 @@ public class CompanyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CompanyGenesisValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1CompanyGenesisCall(_callback);
+    private okhttp3.Call postCompanyGenesisValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postCompanyGenesisCall(_callback);
 
     }
 
@@ -1794,8 +1794,8 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public FormationView postV1CompanyGenesis() throws ApiException {
-        ApiResponse<FormationView> localVarResp = postV1CompanyGenesisWithHttpInfo();
+    public FormationView postCompanyGenesis() throws ApiException {
+        ApiResponse<FormationView> localVarResp = postCompanyGenesisWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -1811,8 +1811,8 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<FormationView> postV1CompanyGenesisWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1CompanyGenesisValidateBeforeCall(null);
+    public ApiResponse<FormationView> postCompanyGenesisWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postCompanyGenesisValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<FormationView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1830,15 +1830,15 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CompanyGenesisAsync(final ApiCallback<FormationView> _callback) throws ApiException {
+    public okhttp3.Call postCompanyGenesisAsync(final ApiCallback<FormationView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CompanyGenesisValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postCompanyGenesisValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<FormationView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CompanyImportCaptable
+     * Build call for postCompanyImportCaptable
      * @param importCapTableIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1850,7 +1850,7 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CompanyImportCaptableCall(@javax.annotation.Nonnull ImportCapTableIn importCapTableIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCompanyImportCaptableCall(@javax.annotation.Nonnull ImportCapTableIn importCapTableIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1896,13 +1896,13 @@ public class CompanyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CompanyImportCaptableValidateBeforeCall(@javax.annotation.Nonnull ImportCapTableIn importCapTableIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postCompanyImportCaptableValidateBeforeCall(@javax.annotation.Nonnull ImportCapTableIn importCapTableIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'importCapTableIn' is set
         if (importCapTableIn == null) {
-            throw new ApiException("Missing the required parameter 'importCapTableIn' when calling postV1CompanyImportCaptable(Async)");
+            throw new ApiException("Missing the required parameter 'importCapTableIn' when calling postCompanyImportCaptable(Async)");
         }
 
-        return postV1CompanyImportCaptableCall(importCapTableIn, _callback);
+        return postCompanyImportCaptableCall(importCapTableIn, _callback);
 
     }
 
@@ -1919,8 +1919,8 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ImportCapTableOut postV1CompanyImportCaptable(@javax.annotation.Nonnull ImportCapTableIn importCapTableIn) throws ApiException {
-        ApiResponse<ImportCapTableOut> localVarResp = postV1CompanyImportCaptableWithHttpInfo(importCapTableIn);
+    public ImportCapTableOut postCompanyImportCaptable(@javax.annotation.Nonnull ImportCapTableIn importCapTableIn) throws ApiException {
+        ApiResponse<ImportCapTableOut> localVarResp = postCompanyImportCaptableWithHttpInfo(importCapTableIn);
         return localVarResp.getData();
     }
 
@@ -1937,8 +1937,8 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ImportCapTableOut> postV1CompanyImportCaptableWithHttpInfo(@javax.annotation.Nonnull ImportCapTableIn importCapTableIn) throws ApiException {
-        okhttp3.Call localVarCall = postV1CompanyImportCaptableValidateBeforeCall(importCapTableIn, null);
+    public ApiResponse<ImportCapTableOut> postCompanyImportCaptableWithHttpInfo(@javax.annotation.Nonnull ImportCapTableIn importCapTableIn) throws ApiException {
+        okhttp3.Call localVarCall = postCompanyImportCaptableValidateBeforeCall(importCapTableIn, null);
         Type localVarReturnType = new TypeToken<ImportCapTableOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1957,15 +1957,15 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CompanyImportCaptableAsync(@javax.annotation.Nonnull ImportCapTableIn importCapTableIn, final ApiCallback<ImportCapTableOut> _callback) throws ApiException {
+    public okhttp3.Call postCompanyImportCaptableAsync(@javax.annotation.Nonnull ImportCapTableIn importCapTableIn, final ApiCallback<ImportCapTableOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CompanyImportCaptableValidateBeforeCall(importCapTableIn, _callback);
+        okhttp3.Call localVarCall = postCompanyImportCaptableValidateBeforeCall(importCapTableIn, _callback);
         Type localVarReturnType = new TypeToken<ImportCapTableOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CompanyImportDocuments
+     * Build call for postCompanyImportDocuments
      * @param importDocumentsIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1977,7 +1977,7 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CompanyImportDocumentsCall(@javax.annotation.Nonnull ImportDocumentsIn importDocumentsIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCompanyImportDocumentsCall(@javax.annotation.Nonnull ImportDocumentsIn importDocumentsIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2023,13 +2023,13 @@ public class CompanyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CompanyImportDocumentsValidateBeforeCall(@javax.annotation.Nonnull ImportDocumentsIn importDocumentsIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postCompanyImportDocumentsValidateBeforeCall(@javax.annotation.Nonnull ImportDocumentsIn importDocumentsIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'importDocumentsIn' is set
         if (importDocumentsIn == null) {
-            throw new ApiException("Missing the required parameter 'importDocumentsIn' when calling postV1CompanyImportDocuments(Async)");
+            throw new ApiException("Missing the required parameter 'importDocumentsIn' when calling postCompanyImportDocuments(Async)");
         }
 
-        return postV1CompanyImportDocumentsCall(importDocumentsIn, _callback);
+        return postCompanyImportDocumentsCall(importDocumentsIn, _callback);
 
     }
 
@@ -2046,8 +2046,8 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ImportDocumentsOut postV1CompanyImportDocuments(@javax.annotation.Nonnull ImportDocumentsIn importDocumentsIn) throws ApiException {
-        ApiResponse<ImportDocumentsOut> localVarResp = postV1CompanyImportDocumentsWithHttpInfo(importDocumentsIn);
+    public ImportDocumentsOut postCompanyImportDocuments(@javax.annotation.Nonnull ImportDocumentsIn importDocumentsIn) throws ApiException {
+        ApiResponse<ImportDocumentsOut> localVarResp = postCompanyImportDocumentsWithHttpInfo(importDocumentsIn);
         return localVarResp.getData();
     }
 
@@ -2064,8 +2064,8 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ImportDocumentsOut> postV1CompanyImportDocumentsWithHttpInfo(@javax.annotation.Nonnull ImportDocumentsIn importDocumentsIn) throws ApiException {
-        okhttp3.Call localVarCall = postV1CompanyImportDocumentsValidateBeforeCall(importDocumentsIn, null);
+    public ApiResponse<ImportDocumentsOut> postCompanyImportDocumentsWithHttpInfo(@javax.annotation.Nonnull ImportDocumentsIn importDocumentsIn) throws ApiException {
+        okhttp3.Call localVarCall = postCompanyImportDocumentsValidateBeforeCall(importDocumentsIn, null);
         Type localVarReturnType = new TypeToken<ImportDocumentsOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2084,15 +2084,15 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CompanyImportDocumentsAsync(@javax.annotation.Nonnull ImportDocumentsIn importDocumentsIn, final ApiCallback<ImportDocumentsOut> _callback) throws ApiException {
+    public okhttp3.Call postCompanyImportDocumentsAsync(@javax.annotation.Nonnull ImportDocumentsIn importDocumentsIn, final ApiCallback<ImportDocumentsOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CompanyImportDocumentsValidateBeforeCall(importDocumentsIn, _callback);
+        okhttp3.Call localVarCall = postCompanyImportDocumentsValidateBeforeCall(importDocumentsIn, _callback);
         Type localVarReturnType = new TypeToken<ImportDocumentsOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CompanyKyc
+     * Build call for postCompanyKyc
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2103,7 +2103,7 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CompanyKycCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCompanyKycCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2148,8 +2148,8 @@ public class CompanyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CompanyKycValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1CompanyKycCall(_callback);
+    private okhttp3.Call postCompanyKycValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postCompanyKycCall(_callback);
 
     }
 
@@ -2165,8 +2165,8 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public KycStartOut postV1CompanyKyc() throws ApiException {
-        ApiResponse<KycStartOut> localVarResp = postV1CompanyKycWithHttpInfo();
+    public KycStartOut postCompanyKyc() throws ApiException {
+        ApiResponse<KycStartOut> localVarResp = postCompanyKycWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -2182,8 +2182,8 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<KycStartOut> postV1CompanyKycWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1CompanyKycValidateBeforeCall(null);
+    public ApiResponse<KycStartOut> postCompanyKycWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postCompanyKycValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<KycStartOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2201,15 +2201,15 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CompanyKycAsync(final ApiCallback<KycStartOut> _callback) throws ApiException {
+    public okhttp3.Call postCompanyKycAsync(final ApiCallback<KycStartOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CompanyKycValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postCompanyKycValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<KycStartOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CompanyKycDecision
+     * Build call for postCompanyKycDecision
      * @param decisionIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2221,7 +2221,7 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CompanyKycDecisionCall(@javax.annotation.Nonnull DecisionIn decisionIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCompanyKycDecisionCall(@javax.annotation.Nonnull DecisionIn decisionIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2267,13 +2267,13 @@ public class CompanyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CompanyKycDecisionValidateBeforeCall(@javax.annotation.Nonnull DecisionIn decisionIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postCompanyKycDecisionValidateBeforeCall(@javax.annotation.Nonnull DecisionIn decisionIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'decisionIn' is set
         if (decisionIn == null) {
-            throw new ApiException("Missing the required parameter 'decisionIn' when calling postV1CompanyKycDecision(Async)");
+            throw new ApiException("Missing the required parameter 'decisionIn' when calling postCompanyKycDecision(Async)");
         }
 
-        return postV1CompanyKycDecisionCall(decisionIn, _callback);
+        return postCompanyKycDecisionCall(decisionIn, _callback);
 
     }
 
@@ -2290,8 +2290,8 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public FormationView postV1CompanyKycDecision(@javax.annotation.Nonnull DecisionIn decisionIn) throws ApiException {
-        ApiResponse<FormationView> localVarResp = postV1CompanyKycDecisionWithHttpInfo(decisionIn);
+    public FormationView postCompanyKycDecision(@javax.annotation.Nonnull DecisionIn decisionIn) throws ApiException {
+        ApiResponse<FormationView> localVarResp = postCompanyKycDecisionWithHttpInfo(decisionIn);
         return localVarResp.getData();
     }
 
@@ -2308,8 +2308,8 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<FormationView> postV1CompanyKycDecisionWithHttpInfo(@javax.annotation.Nonnull DecisionIn decisionIn) throws ApiException {
-        okhttp3.Call localVarCall = postV1CompanyKycDecisionValidateBeforeCall(decisionIn, null);
+    public ApiResponse<FormationView> postCompanyKycDecisionWithHttpInfo(@javax.annotation.Nonnull DecisionIn decisionIn) throws ApiException {
+        okhttp3.Call localVarCall = postCompanyKycDecisionValidateBeforeCall(decisionIn, null);
         Type localVarReturnType = new TypeToken<FormationView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2328,15 +2328,15 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CompanyKycDecisionAsync(@javax.annotation.Nonnull DecisionIn decisionIn, final ApiCallback<FormationView> _callback) throws ApiException {
+    public okhttp3.Call postCompanyKycDecisionAsync(@javax.annotation.Nonnull DecisionIn decisionIn, final ApiCallback<FormationView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CompanyKycDecisionValidateBeforeCall(decisionIn, _callback);
+        okhttp3.Call localVarCall = postCompanyKycDecisionValidateBeforeCall(decisionIn, _callback);
         Type localVarReturnType = new TypeToken<FormationView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CompanyKycRefresh
+     * Build call for postCompanyKycRefresh
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2347,7 +2347,7 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CompanyKycRefreshCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCompanyKycRefreshCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2392,8 +2392,8 @@ public class CompanyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CompanyKycRefreshValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1CompanyKycRefreshCall(_callback);
+    private okhttp3.Call postCompanyKycRefreshValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postCompanyKycRefreshCall(_callback);
 
     }
 
@@ -2409,8 +2409,8 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public KycRefreshOut postV1CompanyKycRefresh() throws ApiException {
-        ApiResponse<KycRefreshOut> localVarResp = postV1CompanyKycRefreshWithHttpInfo();
+    public KycRefreshOut postCompanyKycRefresh() throws ApiException {
+        ApiResponse<KycRefreshOut> localVarResp = postCompanyKycRefreshWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -2426,8 +2426,8 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<KycRefreshOut> postV1CompanyKycRefreshWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1CompanyKycRefreshValidateBeforeCall(null);
+    public ApiResponse<KycRefreshOut> postCompanyKycRefreshWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postCompanyKycRefreshValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<KycRefreshOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2445,15 +2445,15 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CompanyKycRefreshAsync(final ApiCallback<KycRefreshOut> _callback) throws ApiException {
+    public okhttp3.Call postCompanyKycRefreshAsync(final ApiCallback<KycRefreshOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CompanyKycRefreshValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postCompanyKycRefreshValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<KycRefreshOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CompanyPayment
+     * Build call for postCompanyPayment
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2464,7 +2464,7 @@ public class CompanyApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CompanyPaymentCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCompanyPaymentCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2509,8 +2509,8 @@ public class CompanyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CompanyPaymentValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1CompanyPaymentCall(_callback);
+    private okhttp3.Call postCompanyPaymentValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postCompanyPaymentCall(_callback);
 
     }
 
@@ -2526,8 +2526,8 @@ public class CompanyApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public FormationView postV1CompanyPayment() throws ApiException {
-        ApiResponse<FormationView> localVarResp = postV1CompanyPaymentWithHttpInfo();
+    public FormationView postCompanyPayment() throws ApiException {
+        ApiResponse<FormationView> localVarResp = postCompanyPaymentWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -2543,8 +2543,8 @@ public class CompanyApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<FormationView> postV1CompanyPaymentWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1CompanyPaymentValidateBeforeCall(null);
+    public ApiResponse<FormationView> postCompanyPaymentWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postCompanyPaymentValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<FormationView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2562,15 +2562,15 @@ public class CompanyApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CompanyPaymentAsync(final ApiCallback<FormationView> _callback) throws ApiException {
+    public okhttp3.Call postCompanyPaymentAsync(final ApiCallback<FormationView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CompanyPaymentValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postCompanyPaymentValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<FormationView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CompanySkip
+     * Build call for postCompanySkip
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2581,7 +2581,7 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CompanySkipCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCompanySkipCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2626,8 +2626,8 @@ public class CompanyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CompanySkipValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1CompanySkipCall(_callback);
+    private okhttp3.Call postCompanySkipValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postCompanySkipCall(_callback);
 
     }
 
@@ -2643,8 +2643,8 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public FormationView postV1CompanySkip() throws ApiException {
-        ApiResponse<FormationView> localVarResp = postV1CompanySkipWithHttpInfo();
+    public FormationView postCompanySkip() throws ApiException {
+        ApiResponse<FormationView> localVarResp = postCompanySkipWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -2660,8 +2660,8 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<FormationView> postV1CompanySkipWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1CompanySkipValidateBeforeCall(null);
+    public ApiResponse<FormationView> postCompanySkipWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postCompanySkipValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<FormationView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2679,15 +2679,15 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CompanySkipAsync(final ApiCallback<FormationView> _callback) throws ApiException {
+    public okhttp3.Call postCompanySkipAsync(final ApiCallback<FormationView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CompanySkipValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postCompanySkipValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<FormationView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1CompanyStructure
+     * Build call for putCompanyStructure
      * @param structureIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2699,7 +2699,7 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putV1CompanyStructureCall(@javax.annotation.Nonnull StructureIn structureIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putCompanyStructureCall(@javax.annotation.Nonnull StructureIn structureIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2745,13 +2745,13 @@ public class CompanyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1CompanyStructureValidateBeforeCall(@javax.annotation.Nonnull StructureIn structureIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putCompanyStructureValidateBeforeCall(@javax.annotation.Nonnull StructureIn structureIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'structureIn' is set
         if (structureIn == null) {
-            throw new ApiException("Missing the required parameter 'structureIn' when calling putV1CompanyStructure(Async)");
+            throw new ApiException("Missing the required parameter 'structureIn' when calling putCompanyStructure(Async)");
         }
 
-        return putV1CompanyStructureCall(structureIn, _callback);
+        return putCompanyStructureCall(structureIn, _callback);
 
     }
 
@@ -2768,8 +2768,8 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public FormationView putV1CompanyStructure(@javax.annotation.Nonnull StructureIn structureIn) throws ApiException {
-        ApiResponse<FormationView> localVarResp = putV1CompanyStructureWithHttpInfo(structureIn);
+    public FormationView putCompanyStructure(@javax.annotation.Nonnull StructureIn structureIn) throws ApiException {
+        ApiResponse<FormationView> localVarResp = putCompanyStructureWithHttpInfo(structureIn);
         return localVarResp.getData();
     }
 
@@ -2786,8 +2786,8 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<FormationView> putV1CompanyStructureWithHttpInfo(@javax.annotation.Nonnull StructureIn structureIn) throws ApiException {
-        okhttp3.Call localVarCall = putV1CompanyStructureValidateBeforeCall(structureIn, null);
+    public ApiResponse<FormationView> putCompanyStructureWithHttpInfo(@javax.annotation.Nonnull StructureIn structureIn) throws ApiException {
+        okhttp3.Call localVarCall = putCompanyStructureValidateBeforeCall(structureIn, null);
         Type localVarReturnType = new TypeToken<FormationView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2806,9 +2806,9 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putV1CompanyStructureAsync(@javax.annotation.Nonnull StructureIn structureIn, final ApiCallback<FormationView> _callback) throws ApiException {
+    public okhttp3.Call putCompanyStructureAsync(@javax.annotation.Nonnull StructureIn structureIn, final ApiCallback<FormationView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1CompanyStructureValidateBeforeCall(structureIn, _callback);
+        okhttp3.Call localVarCall = putCompanyStructureValidateBeforeCall(structureIn, _callback);
         Type localVarReturnType = new TypeToken<FormationView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

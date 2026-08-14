@@ -76,7 +76,7 @@ public class ValidatorsApi {
     }
 
     /**
-     * Build call for getV1Validators
+     * Build call for getValidators
      * @param limit Limit is how many slots to return, as a decimal string in the &#x60;?limit&#x3D;&#x60; query. Absent, unparseable or non-positive means 200; over 1000 is clamped to 1000. It is a string rather than a number because the parse that has always served this route trims surrounding whitespace, and one parse rule is better than two. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -88,7 +88,7 @@ public class ValidatorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1ValidatorsCall(@javax.annotation.Nullable String limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getValidatorsCall(@javax.annotation.Nullable String limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -137,8 +137,8 @@ public class ValidatorsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1ValidatorsValidateBeforeCall(@javax.annotation.Nullable String limit, final ApiCallback _callback) throws ApiException {
-        return getV1ValidatorsCall(limit, _callback);
+    private okhttp3.Call getValidatorsValidateBeforeCall(@javax.annotation.Nullable String limit, final ApiCallback _callback) throws ApiException {
+        return getValidatorsCall(limit, _callback);
 
     }
 
@@ -155,8 +155,8 @@ public class ValidatorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ValidatorList getV1Validators(@javax.annotation.Nullable String limit) throws ApiException {
-        ApiResponse<ValidatorList> localVarResp = getV1ValidatorsWithHttpInfo(limit);
+    public ValidatorList getValidators(@javax.annotation.Nullable String limit) throws ApiException {
+        ApiResponse<ValidatorList> localVarResp = getValidatorsWithHttpInfo(limit);
         return localVarResp.getData();
     }
 
@@ -173,8 +173,8 @@ public class ValidatorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ValidatorList> getV1ValidatorsWithHttpInfo(@javax.annotation.Nullable String limit) throws ApiException {
-        okhttp3.Call localVarCall = getV1ValidatorsValidateBeforeCall(limit, null);
+    public ApiResponse<ValidatorList> getValidatorsWithHttpInfo(@javax.annotation.Nullable String limit) throws ApiException {
+        okhttp3.Call localVarCall = getValidatorsValidateBeforeCall(limit, null);
         Type localVarReturnType = new TypeToken<ValidatorList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -193,15 +193,15 @@ public class ValidatorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1ValidatorsAsync(@javax.annotation.Nullable String limit, final ApiCallback<ValidatorList> _callback) throws ApiException {
+    public okhttp3.Call getValidatorsAsync(@javax.annotation.Nullable String limit, final ApiCallback<ValidatorList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1ValidatorsValidateBeforeCall(limit, _callback);
+        okhttp3.Call localVarCall = getValidatorsValidateBeforeCall(limit, _callback);
         Type localVarReturnType = new TypeToken<ValidatorList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1ValidatorsByTokenid
+     * Build call for getValidatorsByTokenid
      * @param tokenId TokenID is the slot&#39;s GenesisNFT token id, from the path, as a decimal string. A value that is not a positive integer is 400. It is a string rather than a number because the parse that has always served this route trims surrounding whitespace, and one parse rule is better than two. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -213,7 +213,7 @@ public class ValidatorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1ValidatorsByTokenidCall(@javax.annotation.Nonnull String tokenId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getValidatorsByTokenidCall(@javax.annotation.Nonnull String tokenId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -259,13 +259,13 @@ public class ValidatorsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1ValidatorsByTokenidValidateBeforeCall(@javax.annotation.Nonnull String tokenId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getValidatorsByTokenidValidateBeforeCall(@javax.annotation.Nonnull String tokenId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'tokenId' is set
         if (tokenId == null) {
-            throw new ApiException("Missing the required parameter 'tokenId' when calling getV1ValidatorsByTokenid(Async)");
+            throw new ApiException("Missing the required parameter 'tokenId' when calling getValidatorsByTokenid(Async)");
         }
 
-        return getV1ValidatorsByTokenidCall(tokenId, _callback);
+        return getValidatorsByTokenidCall(tokenId, _callback);
 
     }
 
@@ -282,8 +282,8 @@ public class ValidatorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public SlotView getV1ValidatorsByTokenid(@javax.annotation.Nonnull String tokenId) throws ApiException {
-        ApiResponse<SlotView> localVarResp = getV1ValidatorsByTokenidWithHttpInfo(tokenId);
+    public SlotView getValidatorsByTokenid(@javax.annotation.Nonnull String tokenId) throws ApiException {
+        ApiResponse<SlotView> localVarResp = getValidatorsByTokenidWithHttpInfo(tokenId);
         return localVarResp.getData();
     }
 
@@ -300,8 +300,8 @@ public class ValidatorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SlotView> getV1ValidatorsByTokenidWithHttpInfo(@javax.annotation.Nonnull String tokenId) throws ApiException {
-        okhttp3.Call localVarCall = getV1ValidatorsByTokenidValidateBeforeCall(tokenId, null);
+    public ApiResponse<SlotView> getValidatorsByTokenidWithHttpInfo(@javax.annotation.Nonnull String tokenId) throws ApiException {
+        okhttp3.Call localVarCall = getValidatorsByTokenidValidateBeforeCall(tokenId, null);
         Type localVarReturnType = new TypeToken<SlotView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -320,15 +320,15 @@ public class ValidatorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1ValidatorsByTokenidAsync(@javax.annotation.Nonnull String tokenId, final ApiCallback<SlotView> _callback) throws ApiException {
+    public okhttp3.Call getValidatorsByTokenidAsync(@javax.annotation.Nonnull String tokenId, final ApiCallback<SlotView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1ValidatorsByTokenidValidateBeforeCall(tokenId, _callback);
+        okhttp3.Call localVarCall = getValidatorsByTokenidValidateBeforeCall(tokenId, _callback);
         Type localVarReturnType = new TypeToken<SlotView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1ValidatorsChallenge
+     * Build call for getValidatorsChallenge
      * @param tokenId TokenID is the Validator-tier GenesisNFT token id, as a decimal string in the &#x60;?tokenId&#x3D;&#x60; query. A value that is not a positive integer is 400. It is a string rather than a number because the parse that has always served this route trims surrounding whitespace, and one parse rule is better than two. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -340,7 +340,7 @@ public class ValidatorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1ValidatorsChallengeCall(@javax.annotation.Nullable String tokenId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getValidatorsChallengeCall(@javax.annotation.Nullable String tokenId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -389,8 +389,8 @@ public class ValidatorsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1ValidatorsChallengeValidateBeforeCall(@javax.annotation.Nullable String tokenId, final ApiCallback _callback) throws ApiException {
-        return getV1ValidatorsChallengeCall(tokenId, _callback);
+    private okhttp3.Call getValidatorsChallengeValidateBeforeCall(@javax.annotation.Nullable String tokenId, final ApiCallback _callback) throws ApiException {
+        return getValidatorsChallengeCall(tokenId, _callback);
 
     }
 
@@ -407,8 +407,8 @@ public class ValidatorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ChallengeView getV1ValidatorsChallenge(@javax.annotation.Nullable String tokenId) throws ApiException {
-        ApiResponse<ChallengeView> localVarResp = getV1ValidatorsChallengeWithHttpInfo(tokenId);
+    public ChallengeView getValidatorsChallenge(@javax.annotation.Nullable String tokenId) throws ApiException {
+        ApiResponse<ChallengeView> localVarResp = getValidatorsChallengeWithHttpInfo(tokenId);
         return localVarResp.getData();
     }
 
@@ -425,8 +425,8 @@ public class ValidatorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ChallengeView> getV1ValidatorsChallengeWithHttpInfo(@javax.annotation.Nullable String tokenId) throws ApiException {
-        okhttp3.Call localVarCall = getV1ValidatorsChallengeValidateBeforeCall(tokenId, null);
+    public ApiResponse<ChallengeView> getValidatorsChallengeWithHttpInfo(@javax.annotation.Nullable String tokenId) throws ApiException {
+        okhttp3.Call localVarCall = getValidatorsChallengeValidateBeforeCall(tokenId, null);
         Type localVarReturnType = new TypeToken<ChallengeView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -445,15 +445,15 @@ public class ValidatorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1ValidatorsChallengeAsync(@javax.annotation.Nullable String tokenId, final ApiCallback<ChallengeView> _callback) throws ApiException {
+    public okhttp3.Call getValidatorsChallengeAsync(@javax.annotation.Nullable String tokenId, final ApiCallback<ChallengeView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1ValidatorsChallengeValidateBeforeCall(tokenId, _callback);
+        okhttp3.Call localVarCall = getValidatorsChallengeValidateBeforeCall(tokenId, _callback);
         Type localVarReturnType = new TypeToken<ChallengeView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1Validators
+     * Build call for postValidators
      * @param validatorClaim  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -465,7 +465,7 @@ public class ValidatorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1ValidatorsCall(@javax.annotation.Nonnull ValidatorClaim validatorClaim, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postValidatorsCall(@javax.annotation.Nonnull ValidatorClaim validatorClaim, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -511,13 +511,13 @@ public class ValidatorsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1ValidatorsValidateBeforeCall(@javax.annotation.Nonnull ValidatorClaim validatorClaim, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postValidatorsValidateBeforeCall(@javax.annotation.Nonnull ValidatorClaim validatorClaim, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'validatorClaim' is set
         if (validatorClaim == null) {
-            throw new ApiException("Missing the required parameter 'validatorClaim' when calling postV1Validators(Async)");
+            throw new ApiException("Missing the required parameter 'validatorClaim' when calling postValidators(Async)");
         }
 
-        return postV1ValidatorsCall(validatorClaim, _callback);
+        return postValidatorsCall(validatorClaim, _callback);
 
     }
 
@@ -534,8 +534,8 @@ public class ValidatorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public SlotView postV1Validators(@javax.annotation.Nonnull ValidatorClaim validatorClaim) throws ApiException {
-        ApiResponse<SlotView> localVarResp = postV1ValidatorsWithHttpInfo(validatorClaim);
+    public SlotView postValidators(@javax.annotation.Nonnull ValidatorClaim validatorClaim) throws ApiException {
+        ApiResponse<SlotView> localVarResp = postValidatorsWithHttpInfo(validatorClaim);
         return localVarResp.getData();
     }
 
@@ -552,8 +552,8 @@ public class ValidatorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SlotView> postV1ValidatorsWithHttpInfo(@javax.annotation.Nonnull ValidatorClaim validatorClaim) throws ApiException {
-        okhttp3.Call localVarCall = postV1ValidatorsValidateBeforeCall(validatorClaim, null);
+    public ApiResponse<SlotView> postValidatorsWithHttpInfo(@javax.annotation.Nonnull ValidatorClaim validatorClaim) throws ApiException {
+        okhttp3.Call localVarCall = postValidatorsValidateBeforeCall(validatorClaim, null);
         Type localVarReturnType = new TypeToken<SlotView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -572,9 +572,9 @@ public class ValidatorsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1ValidatorsAsync(@javax.annotation.Nonnull ValidatorClaim validatorClaim, final ApiCallback<SlotView> _callback) throws ApiException {
+    public okhttp3.Call postValidatorsAsync(@javax.annotation.Nonnull ValidatorClaim validatorClaim, final ApiCallback<SlotView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1ValidatorsValidateBeforeCall(validatorClaim, _callback);
+        okhttp3.Call localVarCall = postValidatorsValidateBeforeCall(validatorClaim, _callback);
         Type localVarReturnType = new TypeToken<SlotView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

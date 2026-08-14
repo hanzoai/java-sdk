@@ -28,7 +28,10 @@ import java.io.IOException;
 
 
 import ai.hanzo.cloud.model.ProjectsBuildSite;
+import ai.hanzo.cloud.model.ProjectsComplete;
 import ai.hanzo.cloud.model.ProjectsDeploySite;
+import ai.hanzo.cloud.model.ProjectsDeployStart;
+import ai.hanzo.cloud.model.ProjectsDeployment;
 import ai.hanzo.cloud.model.ProjectsPublish;
 import ai.hanzo.cloud.model.ProjectsRelease;
 import ai.hanzo.cloud.model.ProjectsSite;
@@ -78,7 +81,7 @@ public class SitesApi {
     }
 
     /**
-     * Build call for getV1Sites
+     * Build call for getSites
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -89,7 +92,7 @@ public class SitesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1SitesCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getSitesCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -134,8 +137,8 @@ public class SitesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1SitesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1SitesCall(_callback);
+    private okhttp3.Call getSitesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getSitesCall(_callback);
 
     }
 
@@ -151,8 +154,8 @@ public class SitesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public List<ProjectsSite> getV1Sites() throws ApiException {
-        ApiResponse<List<ProjectsSite>> localVarResp = getV1SitesWithHttpInfo();
+    public List<ProjectsSite> getSites() throws ApiException {
+        ApiResponse<List<ProjectsSite>> localVarResp = getSitesWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -168,8 +171,8 @@ public class SitesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<ProjectsSite>> getV1SitesWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1SitesValidateBeforeCall(null);
+    public ApiResponse<List<ProjectsSite>> getSitesWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getSitesValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<List<ProjectsSite>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -187,15 +190,15 @@ public class SitesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1SitesAsync(final ApiCallback<List<ProjectsSite>> _callback) throws ApiException {
+    public okhttp3.Call getSitesAsync(final ApiCallback<List<ProjectsSite>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1SitesValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getSitesValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<List<ProjectsSite>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1SitesBySlugReleases
+     * Build call for getSitesBySlug
      * @param slug Slug is the project to act on, from the path. It is unique within the caller&#39;s org and nowhere else, so another tenant&#39;s slug is a 404. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -207,7 +210,398 @@ public class SitesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1SitesBySlugReleasesCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getSitesBySlugCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/sites/{slug}"
+            .replace("{" + "slug" + "}", localVarApiClient.escapeString(slug.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getSitesBySlugValidateBeforeCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'slug' is set
+        if (slug == null) {
+            throw new ApiException("Missing the required parameter 'slug' when calling getSitesBySlug(Async)");
+        }
+
+        return getSitesBySlugCall(slug, _callback);
+
+    }
+
+    /**
+     * Returns one site — the same row ListSites carries, for one slug.
+     * Returns one site — the same row ListSites carries, for one slug.  Every sub-resource under a site already answered: deployments, releases, publish. The site itself did not, and a route that is never registered answers 404 for a LIVE site exactly as it does for one that was never created. So the one call a client makes to ask \&quot;is it there yet?\&quot; could only ever say no, and a CI lane watching for its own publish would wait forever on a success it had already achieved.  The org is the caller&#39;s, never a path segment. A slug is unique within an org and two orgs may both own &#x60;tel&#x60;; taking the org from the validated principal instead of the URL means a caller cannot read another org&#39;s site by editing a path, and it is the same scope ListProjects and ListSites already use.  A site that exists but is not live is NOT found here, matching ListSites, which keeps only &#x60;live&#x60; rows so a draft or a failed build is never advertised as a site. One definition of \&quot;is a site\&quot;, used by both.
+     * @param slug Slug is the project to act on, from the path. It is unique within the caller&#39;s org and nowhere else, so another tenant&#39;s slug is a 404. (required)
+     * @return ProjectsSite
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ProjectsSite getSitesBySlug(@javax.annotation.Nonnull String slug) throws ApiException {
+        ApiResponse<ProjectsSite> localVarResp = getSitesBySlugWithHttpInfo(slug);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Returns one site — the same row ListSites carries, for one slug.
+     * Returns one site — the same row ListSites carries, for one slug.  Every sub-resource under a site already answered: deployments, releases, publish. The site itself did not, and a route that is never registered answers 404 for a LIVE site exactly as it does for one that was never created. So the one call a client makes to ask \&quot;is it there yet?\&quot; could only ever say no, and a CI lane watching for its own publish would wait forever on a success it had already achieved.  The org is the caller&#39;s, never a path segment. A slug is unique within an org and two orgs may both own &#x60;tel&#x60;; taking the org from the validated principal instead of the URL means a caller cannot read another org&#39;s site by editing a path, and it is the same scope ListProjects and ListSites already use.  A site that exists but is not live is NOT found here, matching ListSites, which keeps only &#x60;live&#x60; rows so a draft or a failed build is never advertised as a site. One definition of \&quot;is a site\&quot;, used by both.
+     * @param slug Slug is the project to act on, from the path. It is unique within the caller&#39;s org and nowhere else, so another tenant&#39;s slug is a 404. (required)
+     * @return ApiResponse&lt;ProjectsSite&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ProjectsSite> getSitesBySlugWithHttpInfo(@javax.annotation.Nonnull String slug) throws ApiException {
+        okhttp3.Call localVarCall = getSitesBySlugValidateBeforeCall(slug, null);
+        Type localVarReturnType = new TypeToken<ProjectsSite>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Returns one site — the same row ListSites carries, for one slug. (asynchronously)
+     * Returns one site — the same row ListSites carries, for one slug.  Every sub-resource under a site already answered: deployments, releases, publish. The site itself did not, and a route that is never registered answers 404 for a LIVE site exactly as it does for one that was never created. So the one call a client makes to ask \&quot;is it there yet?\&quot; could only ever say no, and a CI lane watching for its own publish would wait forever on a success it had already achieved.  The org is the caller&#39;s, never a path segment. A slug is unique within an org and two orgs may both own &#x60;tel&#x60;; taking the org from the validated principal instead of the URL means a caller cannot read another org&#39;s site by editing a path, and it is the same scope ListProjects and ListSites already use.  A site that exists but is not live is NOT found here, matching ListSites, which keeps only &#x60;live&#x60; rows so a draft or a failed build is never advertised as a site. One definition of \&quot;is a site\&quot;, used by both.
+     * @param slug Slug is the project to act on, from the path. It is unique within the caller&#39;s org and nowhere else, so another tenant&#39;s slug is a 404. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getSitesBySlugAsync(@javax.annotation.Nonnull String slug, final ApiCallback<ProjectsSite> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getSitesBySlugValidateBeforeCall(slug, _callback);
+        Type localVarReturnType = new TypeToken<ProjectsSite>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getSitesBySlugDeployments
+     * @param slug Slug is the project to act on, from the path. It is unique within the caller&#39;s org and nowhere else, so another tenant&#39;s slug is a 404. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getSitesBySlugDeploymentsCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/sites/{slug}/deployments"
+            .replace("{" + "slug" + "}", localVarApiClient.escapeString(slug.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getSitesBySlugDeploymentsValidateBeforeCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'slug' is set
+        if (slug == null) {
+            throw new ApiException("Missing the required parameter 'slug' when calling getSitesBySlugDeployments(Async)");
+        }
+
+        return getSitesBySlugDeploymentsCall(slug, _callback);
+
+    }
+
+    /**
+     * Returns a project&#39;s deploy history, newest version first.
+     * Returns a project&#39;s deploy history, newest version first.  Every deploy of the project is a row — uploads, generated sites, and git/CI builds alike — carrying its version, status, source, commit, live URL, file count and byte count. The short-lived upload grant a queued git deployment was handed is NOT replayed here: it exists only on the 202 that minted it, so a grant cannot outlive its build by being fetched again.  Scope: a validated principal is required (403 without one) and the project is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404.
+     * @param slug Slug is the project to act on, from the path. It is unique within the caller&#39;s org and nowhere else, so another tenant&#39;s slug is a 404. (required)
+     * @return List&lt;ProjectsDeployment&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public List<ProjectsDeployment> getSitesBySlugDeployments(@javax.annotation.Nonnull String slug) throws ApiException {
+        ApiResponse<List<ProjectsDeployment>> localVarResp = getSitesBySlugDeploymentsWithHttpInfo(slug);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Returns a project&#39;s deploy history, newest version first.
+     * Returns a project&#39;s deploy history, newest version first.  Every deploy of the project is a row — uploads, generated sites, and git/CI builds alike — carrying its version, status, source, commit, live URL, file count and byte count. The short-lived upload grant a queued git deployment was handed is NOT replayed here: it exists only on the 202 that minted it, so a grant cannot outlive its build by being fetched again.  Scope: a validated principal is required (403 without one) and the project is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404.
+     * @param slug Slug is the project to act on, from the path. It is unique within the caller&#39;s org and nowhere else, so another tenant&#39;s slug is a 404. (required)
+     * @return ApiResponse&lt;List&lt;ProjectsDeployment&gt;&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<List<ProjectsDeployment>> getSitesBySlugDeploymentsWithHttpInfo(@javax.annotation.Nonnull String slug) throws ApiException {
+        okhttp3.Call localVarCall = getSitesBySlugDeploymentsValidateBeforeCall(slug, null);
+        Type localVarReturnType = new TypeToken<List<ProjectsDeployment>>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Returns a project&#39;s deploy history, newest version first. (asynchronously)
+     * Returns a project&#39;s deploy history, newest version first.  Every deploy of the project is a row — uploads, generated sites, and git/CI builds alike — carrying its version, status, source, commit, live URL, file count and byte count. The short-lived upload grant a queued git deployment was handed is NOT replayed here: it exists only on the 202 that minted it, so a grant cannot outlive its build by being fetched again.  Scope: a validated principal is required (403 without one) and the project is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404.
+     * @param slug Slug is the project to act on, from the path. It is unique within the caller&#39;s org and nowhere else, so another tenant&#39;s slug is a 404. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getSitesBySlugDeploymentsAsync(@javax.annotation.Nonnull String slug, final ApiCallback<List<ProjectsDeployment>> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getSitesBySlugDeploymentsValidateBeforeCall(slug, _callback);
+        Type localVarReturnType = new TypeToken<List<ProjectsDeployment>>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getSitesBySlugDeploymentsById
+     * @param slug Slug is the project the deployment belongs to, from the path. (required)
+     * @param id ID is the deployment id, from the path. A deployment of another project — or of another tenant&#39;s project — is not found. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getSitesBySlugDeploymentsByIdCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/sites/{slug}/deployments/{id}"
+            .replace("{" + "slug" + "}", localVarApiClient.escapeString(slug.toString()))
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getSitesBySlugDeploymentsByIdValidateBeforeCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'slug' is set
+        if (slug == null) {
+            throw new ApiException("Missing the required parameter 'slug' when calling getSitesBySlugDeploymentsById(Async)");
+        }
+
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling getSitesBySlugDeploymentsById(Async)");
+        }
+
+        return getSitesBySlugDeploymentsByIdCall(slug, id, _callback);
+
+    }
+
+    /**
+     * Returns one deployment of a project by id.
+     * Returns one deployment of a project by id.  It is how a console follows a build: the status (&#x60;queued&#x60;, &#x60;uploading&#x60;, &#x60;live&#x60;, &#x60;error&#x60;), the message a failure left, and the URL and prefix it went live at. Like the history, it never replays the upload grant.  Scope: a validated principal is required (403 without one). Both the project and the deployment are resolved within that principal&#39;s org, so a deployment of another project — or of another tenant — is a 404.
+     * @param slug Slug is the project the deployment belongs to, from the path. (required)
+     * @param id ID is the deployment id, from the path. A deployment of another project — or of another tenant&#39;s project — is not found. (required)
+     * @return ProjectsDeployment
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ProjectsDeployment getSitesBySlugDeploymentsById(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<ProjectsDeployment> localVarResp = getSitesBySlugDeploymentsByIdWithHttpInfo(slug, id);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Returns one deployment of a project by id.
+     * Returns one deployment of a project by id.  It is how a console follows a build: the status (&#x60;queued&#x60;, &#x60;uploading&#x60;, &#x60;live&#x60;, &#x60;error&#x60;), the message a failure left, and the URL and prefix it went live at. Like the history, it never replays the upload grant.  Scope: a validated principal is required (403 without one). Both the project and the deployment are resolved within that principal&#39;s org, so a deployment of another project — or of another tenant — is a 404.
+     * @param slug Slug is the project the deployment belongs to, from the path. (required)
+     * @param id ID is the deployment id, from the path. A deployment of another project — or of another tenant&#39;s project — is not found. (required)
+     * @return ApiResponse&lt;ProjectsDeployment&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ProjectsDeployment> getSitesBySlugDeploymentsByIdWithHttpInfo(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getSitesBySlugDeploymentsByIdValidateBeforeCall(slug, id, null);
+        Type localVarReturnType = new TypeToken<ProjectsDeployment>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Returns one deployment of a project by id. (asynchronously)
+     * Returns one deployment of a project by id.  It is how a console follows a build: the status (&#x60;queued&#x60;, &#x60;uploading&#x60;, &#x60;live&#x60;, &#x60;error&#x60;), the message a failure left, and the URL and prefix it went live at. Like the history, it never replays the upload grant.  Scope: a validated principal is required (403 without one). Both the project and the deployment are resolved within that principal&#39;s org, so a deployment of another project — or of another tenant — is a 404.
+     * @param slug Slug is the project the deployment belongs to, from the path. (required)
+     * @param id ID is the deployment id, from the path. A deployment of another project — or of another tenant&#39;s project — is not found. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getSitesBySlugDeploymentsByIdAsync(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String id, final ApiCallback<ProjectsDeployment> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getSitesBySlugDeploymentsByIdValidateBeforeCall(slug, id, _callback);
+        Type localVarReturnType = new TypeToken<ProjectsDeployment>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getSitesBySlugReleases
+     * @param slug Slug is the project to act on, from the path. It is unique within the caller&#39;s org and nowhere else, so another tenant&#39;s slug is a 404. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getSitesBySlugReleasesCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -253,13 +647,13 @@ public class SitesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1SitesBySlugReleasesValidateBeforeCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getSitesBySlugReleasesValidateBeforeCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'slug' is set
         if (slug == null) {
-            throw new ApiException("Missing the required parameter 'slug' when calling getV1SitesBySlugReleases(Async)");
+            throw new ApiException("Missing the required parameter 'slug' when calling getSitesBySlugReleases(Async)");
         }
 
-        return getV1SitesBySlugReleasesCall(slug, _callback);
+        return getSitesBySlugReleasesCall(slug, _callback);
 
     }
 
@@ -276,8 +670,8 @@ public class SitesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public List<ProjectsRelease> getV1SitesBySlugReleases(@javax.annotation.Nonnull String slug) throws ApiException {
-        ApiResponse<List<ProjectsRelease>> localVarResp = getV1SitesBySlugReleasesWithHttpInfo(slug);
+    public List<ProjectsRelease> getSitesBySlugReleases(@javax.annotation.Nonnull String slug) throws ApiException {
+        ApiResponse<List<ProjectsRelease>> localVarResp = getSitesBySlugReleasesWithHttpInfo(slug);
         return localVarResp.getData();
     }
 
@@ -294,8 +688,8 @@ public class SitesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<ProjectsRelease>> getV1SitesBySlugReleasesWithHttpInfo(@javax.annotation.Nonnull String slug) throws ApiException {
-        okhttp3.Call localVarCall = getV1SitesBySlugReleasesValidateBeforeCall(slug, null);
+    public ApiResponse<List<ProjectsRelease>> getSitesBySlugReleasesWithHttpInfo(@javax.annotation.Nonnull String slug) throws ApiException {
+        okhttp3.Call localVarCall = getSitesBySlugReleasesValidateBeforeCall(slug, null);
         Type localVarReturnType = new TypeToken<List<ProjectsRelease>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -314,15 +708,15 @@ public class SitesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1SitesBySlugReleasesAsync(@javax.annotation.Nonnull String slug, final ApiCallback<List<ProjectsRelease>> _callback) throws ApiException {
+    public okhttp3.Call getSitesBySlugReleasesAsync(@javax.annotation.Nonnull String slug, final ApiCallback<List<ProjectsRelease>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1SitesBySlugReleasesValidateBeforeCall(slug, _callback);
+        okhttp3.Call localVarCall = getSitesBySlugReleasesValidateBeforeCall(slug, _callback);
         Type localVarReturnType = new TypeToken<List<ProjectsRelease>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1Sites
+     * Build call for postSites
      * @param projectsBuildSite  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -334,7 +728,7 @@ public class SitesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1SitesCall(@javax.annotation.Nonnull ProjectsBuildSite projectsBuildSite, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postSitesCall(@javax.annotation.Nonnull ProjectsBuildSite projectsBuildSite, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -380,13 +774,13 @@ public class SitesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1SitesValidateBeforeCall(@javax.annotation.Nonnull ProjectsBuildSite projectsBuildSite, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postSitesValidateBeforeCall(@javax.annotation.Nonnull ProjectsBuildSite projectsBuildSite, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'projectsBuildSite' is set
         if (projectsBuildSite == null) {
-            throw new ApiException("Missing the required parameter 'projectsBuildSite' when calling postV1Sites(Async)");
+            throw new ApiException("Missing the required parameter 'projectsBuildSite' when calling postSites(Async)");
         }
 
-        return postV1SitesCall(projectsBuildSite, _callback);
+        return postSitesCall(projectsBuildSite, _callback);
 
     }
 
@@ -403,8 +797,8 @@ public class SitesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ProjectsSiteDeploy postV1Sites(@javax.annotation.Nonnull ProjectsBuildSite projectsBuildSite) throws ApiException {
-        ApiResponse<ProjectsSiteDeploy> localVarResp = postV1SitesWithHttpInfo(projectsBuildSite);
+    public ProjectsSiteDeploy postSites(@javax.annotation.Nonnull ProjectsBuildSite projectsBuildSite) throws ApiException {
+        ApiResponse<ProjectsSiteDeploy> localVarResp = postSitesWithHttpInfo(projectsBuildSite);
         return localVarResp.getData();
     }
 
@@ -421,8 +815,8 @@ public class SitesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ProjectsSiteDeploy> postV1SitesWithHttpInfo(@javax.annotation.Nonnull ProjectsBuildSite projectsBuildSite) throws ApiException {
-        okhttp3.Call localVarCall = postV1SitesValidateBeforeCall(projectsBuildSite, null);
+    public ApiResponse<ProjectsSiteDeploy> postSitesWithHttpInfo(@javax.annotation.Nonnull ProjectsBuildSite projectsBuildSite) throws ApiException {
+        okhttp3.Call localVarCall = postSitesValidateBeforeCall(projectsBuildSite, null);
         Type localVarReturnType = new TypeToken<ProjectsSiteDeploy>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -441,15 +835,299 @@ public class SitesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1SitesAsync(@javax.annotation.Nonnull ProjectsBuildSite projectsBuildSite, final ApiCallback<ProjectsSiteDeploy> _callback) throws ApiException {
+    public okhttp3.Call postSitesAsync(@javax.annotation.Nonnull ProjectsBuildSite projectsBuildSite, final ApiCallback<ProjectsSiteDeploy> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1SitesValidateBeforeCall(projectsBuildSite, _callback);
+        okhttp3.Call localVarCall = postSitesValidateBeforeCall(projectsBuildSite, _callback);
         Type localVarReturnType = new TypeToken<ProjectsSiteDeploy>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1SitesBySlugPublish
+     * Build call for postSitesBySlugDeployments
+     * @param slug Slug is the site to deploy, from the path. (required)
+     * @param projectsDeployStart  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postSitesBySlugDeploymentsCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsDeployStart projectsDeployStart, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = projectsDeployStart;
+
+        // create path and map variables
+        String localVarPath = "/v1/sites/{slug}/deployments"
+            .replace("{" + "slug" + "}", localVarApiClient.escapeString(slug.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postSitesBySlugDeploymentsValidateBeforeCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsDeployStart projectsDeployStart, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'slug' is set
+        if (slug == null) {
+            throw new ApiException("Missing the required parameter 'slug' when calling postSitesBySlugDeployments(Async)");
+        }
+
+        // verify the required parameter 'projectsDeployStart' is set
+        if (projectsDeployStart == null) {
+            throw new ApiException("Missing the required parameter 'projectsDeployStart' when calling postSitesBySlugDeployments(Async)");
+        }
+
+        return postSitesBySlugDeploymentsCall(slug, projectsDeployStart, _callback);
+
+    }
+
+    /**
+     * Opens a deployment and hands back a short-lived, prefix-scoped grant to write its bytes straight to object storage.
+     * Opens a deployment and hands back a short-lived, prefix-scoped grant to write its bytes straight to object storage. Answers 202.  This is the path for a site too large to send as one archive: a real export is hundreds of megabytes against a 16 MiB body limit, so the bytes deliberately do NOT pass through the API. The answer carries &#x60;bucket&#x60;, &#x60;prefix&#x60; and &#x60;upload&#x60; — a presigned POST policy that S3 itself confines to this site&#39;s prefix (starts-with &#x60;&lt;org&gt;/&lt;slug&gt;/&#x60;), expires in 30 minutes and bounds each object. So a build writes its own files and holds no standing bucket credential; there is nothing to rotate and nothing that leaks between tenants. Never guess the prefix — it is server-derived, and a guessed one lands where nothing is served.  The deployment is &#x60;queued&#x60; until POST .../deployments/{id}/complete flips it live (or error). That completion is also where DELETION happens: the grant authorizes writes only, so a build cannot remove a file, and cloud reconciles the prefix against the &#x60;keys&#x60; manifest the completion carries. A build that dies before completing leaves the deployment queued rather than a half-live site.  The grant is on the 202 and NOWHERE else — it is never stored and never replayed on a later read, so it cannot outlive the build it was minted for. A deployment whose grant could not be minted is still created and still completable; it simply carries no &#x60;upload&#x60;, and a caller with no other way to write should treat that as the failure it is.  Billing: the hosting gate runs BEFORE anything is created (402 unfunded, 503 commerce unreachable), and the debit lands on the completion that goes live — never on a queued or failed build.  Scope: a validated principal is required (403 without one) and the site is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404.
+     * @param slug Slug is the site to deploy, from the path. (required)
+     * @param projectsDeployStart  (required)
+     * @return ProjectsDeployment
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+     </table>
+     */
+    public ProjectsDeployment postSitesBySlugDeployments(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsDeployStart projectsDeployStart) throws ApiException {
+        ApiResponse<ProjectsDeployment> localVarResp = postSitesBySlugDeploymentsWithHttpInfo(slug, projectsDeployStart);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Opens a deployment and hands back a short-lived, prefix-scoped grant to write its bytes straight to object storage.
+     * Opens a deployment and hands back a short-lived, prefix-scoped grant to write its bytes straight to object storage. Answers 202.  This is the path for a site too large to send as one archive: a real export is hundreds of megabytes against a 16 MiB body limit, so the bytes deliberately do NOT pass through the API. The answer carries &#x60;bucket&#x60;, &#x60;prefix&#x60; and &#x60;upload&#x60; — a presigned POST policy that S3 itself confines to this site&#39;s prefix (starts-with &#x60;&lt;org&gt;/&lt;slug&gt;/&#x60;), expires in 30 minutes and bounds each object. So a build writes its own files and holds no standing bucket credential; there is nothing to rotate and nothing that leaks between tenants. Never guess the prefix — it is server-derived, and a guessed one lands where nothing is served.  The deployment is &#x60;queued&#x60; until POST .../deployments/{id}/complete flips it live (or error). That completion is also where DELETION happens: the grant authorizes writes only, so a build cannot remove a file, and cloud reconciles the prefix against the &#x60;keys&#x60; manifest the completion carries. A build that dies before completing leaves the deployment queued rather than a half-live site.  The grant is on the 202 and NOWHERE else — it is never stored and never replayed on a later read, so it cannot outlive the build it was minted for. A deployment whose grant could not be minted is still created and still completable; it simply carries no &#x60;upload&#x60;, and a caller with no other way to write should treat that as the failure it is.  Billing: the hosting gate runs BEFORE anything is created (402 unfunded, 503 commerce unreachable), and the debit lands on the completion that goes live — never on a queued or failed build.  Scope: a validated principal is required (403 without one) and the site is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404.
+     * @param slug Slug is the site to deploy, from the path. (required)
+     * @param projectsDeployStart  (required)
+     * @return ApiResponse&lt;ProjectsDeployment&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ProjectsDeployment> postSitesBySlugDeploymentsWithHttpInfo(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsDeployStart projectsDeployStart) throws ApiException {
+        okhttp3.Call localVarCall = postSitesBySlugDeploymentsValidateBeforeCall(slug, projectsDeployStart, null);
+        Type localVarReturnType = new TypeToken<ProjectsDeployment>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Opens a deployment and hands back a short-lived, prefix-scoped grant to write its bytes straight to object storage. (asynchronously)
+     * Opens a deployment and hands back a short-lived, prefix-scoped grant to write its bytes straight to object storage. Answers 202.  This is the path for a site too large to send as one archive: a real export is hundreds of megabytes against a 16 MiB body limit, so the bytes deliberately do NOT pass through the API. The answer carries &#x60;bucket&#x60;, &#x60;prefix&#x60; and &#x60;upload&#x60; — a presigned POST policy that S3 itself confines to this site&#39;s prefix (starts-with &#x60;&lt;org&gt;/&lt;slug&gt;/&#x60;), expires in 30 minutes and bounds each object. So a build writes its own files and holds no standing bucket credential; there is nothing to rotate and nothing that leaks between tenants. Never guess the prefix — it is server-derived, and a guessed one lands where nothing is served.  The deployment is &#x60;queued&#x60; until POST .../deployments/{id}/complete flips it live (or error). That completion is also where DELETION happens: the grant authorizes writes only, so a build cannot remove a file, and cloud reconciles the prefix against the &#x60;keys&#x60; manifest the completion carries. A build that dies before completing leaves the deployment queued rather than a half-live site.  The grant is on the 202 and NOWHERE else — it is never stored and never replayed on a later read, so it cannot outlive the build it was minted for. A deployment whose grant could not be minted is still created and still completable; it simply carries no &#x60;upload&#x60;, and a caller with no other way to write should treat that as the failure it is.  Billing: the hosting gate runs BEFORE anything is created (402 unfunded, 503 commerce unreachable), and the debit lands on the completion that goes live — never on a queued or failed build.  Scope: a validated principal is required (403 without one) and the site is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404.
+     * @param slug Slug is the site to deploy, from the path. (required)
+     * @param projectsDeployStart  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postSitesBySlugDeploymentsAsync(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsDeployStart projectsDeployStart, final ApiCallback<ProjectsDeployment> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postSitesBySlugDeploymentsValidateBeforeCall(slug, projectsDeployStart, _callback);
+        Type localVarReturnType = new TypeToken<ProjectsDeployment>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postSitesBySlugDeploymentsByIdComplete
+     * @param slug Slug is the project the deployment belongs to, from the path. (required)
+     * @param id ID is the queued deployment to complete, from the path. (required)
+     * @param projectsComplete  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postSitesBySlugDeploymentsByIdCompleteCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String id, @javax.annotation.Nonnull ProjectsComplete projectsComplete, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = projectsComplete;
+
+        // create path and map variables
+        String localVarPath = "/v1/sites/{slug}/deployments/{id}/complete"
+            .replace("{" + "slug" + "}", localVarApiClient.escapeString(slug.toString()))
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postSitesBySlugDeploymentsByIdCompleteValidateBeforeCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String id, @javax.annotation.Nonnull ProjectsComplete projectsComplete, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'slug' is set
+        if (slug == null) {
+            throw new ApiException("Missing the required parameter 'slug' when calling postSitesBySlugDeploymentsByIdComplete(Async)");
+        }
+
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling postSitesBySlugDeploymentsByIdComplete(Async)");
+        }
+
+        // verify the required parameter 'projectsComplete' is set
+        if (projectsComplete == null) {
+            throw new ApiException("Missing the required parameter 'projectsComplete' when calling postSitesBySlugDeploymentsByIdComplete(Async)");
+        }
+
+        return postSitesBySlugDeploymentsByIdCompleteCall(slug, id, projectsComplete, _callback);
+
+    }
+
+    /**
+     * CompleteDeployment is the CI completion hook that flips a queued git deployment to live (or error) once CI has synced the built site to S3.
+     * CompleteDeployment is the CI completion hook that flips a queued git deployment to live (or error) once CI has synced the built site to S3.  &#x60;status&#x60; must be &#x60;live&#x60; or &#x60;error&#x60;. On a LIVE completion the public host is claimed FIRST, so the deployment reports the URL it actually OWNS — a CI-supplied &#x60;liveUrl&#x60; is a hint that can refine that URL but can never assert a subdomain another tenant holds. &#x60;keys&#x60; is the manifest CI just uploaded, relative to the deployment prefix: cloud reconciles the prefix against it so a page deleted from the build actually stops serving. Omit &#x60;keys&#x60; and nothing is deleted — the prefix only grows. Reconciliation runs only on a live completion (pruning against a failed build&#39;s manifest would delete the site the last good build is still serving) and is best-effort, so a stale leftover never turns a successful deploy into a 500. A live completion is also the one billable moment on the git path; an error completion bills nothing.  Scope: a validated principal is required (403 without one). CI authenticates with an org-scoped token through the gateway, so the deployment is resolved within that principal&#39;s org and another tenant&#39;s slug or deployment id is a 404.
+     * @param slug Slug is the project the deployment belongs to, from the path. (required)
+     * @param id ID is the queued deployment to complete, from the path. (required)
+     * @param projectsComplete  (required)
+     * @return ProjectsDeployment
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ProjectsDeployment postSitesBySlugDeploymentsByIdComplete(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String id, @javax.annotation.Nonnull ProjectsComplete projectsComplete) throws ApiException {
+        ApiResponse<ProjectsDeployment> localVarResp = postSitesBySlugDeploymentsByIdCompleteWithHttpInfo(slug, id, projectsComplete);
+        return localVarResp.getData();
+    }
+
+    /**
+     * CompleteDeployment is the CI completion hook that flips a queued git deployment to live (or error) once CI has synced the built site to S3.
+     * CompleteDeployment is the CI completion hook that flips a queued git deployment to live (or error) once CI has synced the built site to S3.  &#x60;status&#x60; must be &#x60;live&#x60; or &#x60;error&#x60;. On a LIVE completion the public host is claimed FIRST, so the deployment reports the URL it actually OWNS — a CI-supplied &#x60;liveUrl&#x60; is a hint that can refine that URL but can never assert a subdomain another tenant holds. &#x60;keys&#x60; is the manifest CI just uploaded, relative to the deployment prefix: cloud reconciles the prefix against it so a page deleted from the build actually stops serving. Omit &#x60;keys&#x60; and nothing is deleted — the prefix only grows. Reconciliation runs only on a live completion (pruning against a failed build&#39;s manifest would delete the site the last good build is still serving) and is best-effort, so a stale leftover never turns a successful deploy into a 500. A live completion is also the one billable moment on the git path; an error completion bills nothing.  Scope: a validated principal is required (403 without one). CI authenticates with an org-scoped token through the gateway, so the deployment is resolved within that principal&#39;s org and another tenant&#39;s slug or deployment id is a 404.
+     * @param slug Slug is the project the deployment belongs to, from the path. (required)
+     * @param id ID is the queued deployment to complete, from the path. (required)
+     * @param projectsComplete  (required)
+     * @return ApiResponse&lt;ProjectsDeployment&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ProjectsDeployment> postSitesBySlugDeploymentsByIdCompleteWithHttpInfo(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String id, @javax.annotation.Nonnull ProjectsComplete projectsComplete) throws ApiException {
+        okhttp3.Call localVarCall = postSitesBySlugDeploymentsByIdCompleteValidateBeforeCall(slug, id, projectsComplete, null);
+        Type localVarReturnType = new TypeToken<ProjectsDeployment>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * CompleteDeployment is the CI completion hook that flips a queued git deployment to live (or error) once CI has synced the built site to S3. (asynchronously)
+     * CompleteDeployment is the CI completion hook that flips a queued git deployment to live (or error) once CI has synced the built site to S3.  &#x60;status&#x60; must be &#x60;live&#x60; or &#x60;error&#x60;. On a LIVE completion the public host is claimed FIRST, so the deployment reports the URL it actually OWNS — a CI-supplied &#x60;liveUrl&#x60; is a hint that can refine that URL but can never assert a subdomain another tenant holds. &#x60;keys&#x60; is the manifest CI just uploaded, relative to the deployment prefix: cloud reconciles the prefix against it so a page deleted from the build actually stops serving. Omit &#x60;keys&#x60; and nothing is deleted — the prefix only grows. Reconciliation runs only on a live completion (pruning against a failed build&#39;s manifest would delete the site the last good build is still serving) and is best-effort, so a stale leftover never turns a successful deploy into a 500. A live completion is also the one billable moment on the git path; an error completion bills nothing.  Scope: a validated principal is required (403 without one). CI authenticates with an org-scoped token through the gateway, so the deployment is resolved within that principal&#39;s org and another tenant&#39;s slug or deployment id is a 404.
+     * @param slug Slug is the project the deployment belongs to, from the path. (required)
+     * @param id ID is the queued deployment to complete, from the path. (required)
+     * @param projectsComplete  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postSitesBySlugDeploymentsByIdCompleteAsync(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String id, @javax.annotation.Nonnull ProjectsComplete projectsComplete, final ApiCallback<ProjectsDeployment> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postSitesBySlugDeploymentsByIdCompleteValidateBeforeCall(slug, id, projectsComplete, _callback);
+        Type localVarReturnType = new TypeToken<ProjectsDeployment>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postSitesBySlugPublish
      * @param slug Slug is the site to publish, from the path. (required)
      * @param projectsPublish  (required)
      * @param _callback Callback for upload/download progress
@@ -462,7 +1140,7 @@ public class SitesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1SitesBySlugPublishCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsPublish projectsPublish, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postSitesBySlugPublishCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsPublish projectsPublish, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -509,18 +1187,18 @@ public class SitesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1SitesBySlugPublishValidateBeforeCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsPublish projectsPublish, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postSitesBySlugPublishValidateBeforeCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsPublish projectsPublish, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'slug' is set
         if (slug == null) {
-            throw new ApiException("Missing the required parameter 'slug' when calling postV1SitesBySlugPublish(Async)");
+            throw new ApiException("Missing the required parameter 'slug' when calling postSitesBySlugPublish(Async)");
         }
 
         // verify the required parameter 'projectsPublish' is set
         if (projectsPublish == null) {
-            throw new ApiException("Missing the required parameter 'projectsPublish' when calling postV1SitesBySlugPublish(Async)");
+            throw new ApiException("Missing the required parameter 'projectsPublish' when calling postSitesBySlugPublish(Async)");
         }
 
-        return postV1SitesBySlugPublishCall(slug, projectsPublish, _callback);
+        return postSitesBySlugPublishCall(slug, projectsPublish, _callback);
 
     }
 
@@ -538,8 +1216,8 @@ public class SitesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ProjectsRelease postV1SitesBySlugPublish(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsPublish projectsPublish) throws ApiException {
-        ApiResponse<ProjectsRelease> localVarResp = postV1SitesBySlugPublishWithHttpInfo(slug, projectsPublish);
+    public ProjectsRelease postSitesBySlugPublish(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsPublish projectsPublish) throws ApiException {
+        ApiResponse<ProjectsRelease> localVarResp = postSitesBySlugPublishWithHttpInfo(slug, projectsPublish);
         return localVarResp.getData();
     }
 
@@ -557,8 +1235,8 @@ public class SitesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ProjectsRelease> postV1SitesBySlugPublishWithHttpInfo(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsPublish projectsPublish) throws ApiException {
-        okhttp3.Call localVarCall = postV1SitesBySlugPublishValidateBeforeCall(slug, projectsPublish, null);
+    public ApiResponse<ProjectsRelease> postSitesBySlugPublishWithHttpInfo(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsPublish projectsPublish) throws ApiException {
+        okhttp3.Call localVarCall = postSitesBySlugPublishValidateBeforeCall(slug, projectsPublish, null);
         Type localVarReturnType = new TypeToken<ProjectsRelease>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -578,15 +1256,15 @@ public class SitesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1SitesBySlugPublishAsync(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsPublish projectsPublish, final ApiCallback<ProjectsRelease> _callback) throws ApiException {
+    public okhttp3.Call postSitesBySlugPublishAsync(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsPublish projectsPublish, final ApiCallback<ProjectsRelease> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1SitesBySlugPublishValidateBeforeCall(slug, projectsPublish, _callback);
+        okhttp3.Call localVarCall = postSitesBySlugPublishValidateBeforeCall(slug, projectsPublish, _callback);
         Type localVarReturnType = new TypeToken<ProjectsRelease>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1SitesBySlugReleases
+     * Build call for postSitesBySlugReleases
      * @param slug Slug is the site to publish, from the path. (required)
      * @param projectsPublish  (required)
      * @param _callback Callback for upload/download progress
@@ -599,7 +1277,7 @@ public class SitesApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1SitesBySlugReleasesCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsPublish projectsPublish, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postSitesBySlugReleasesCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsPublish projectsPublish, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -646,18 +1324,18 @@ public class SitesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1SitesBySlugReleasesValidateBeforeCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsPublish projectsPublish, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postSitesBySlugReleasesValidateBeforeCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsPublish projectsPublish, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'slug' is set
         if (slug == null) {
-            throw new ApiException("Missing the required parameter 'slug' when calling postV1SitesBySlugReleases(Async)");
+            throw new ApiException("Missing the required parameter 'slug' when calling postSitesBySlugReleases(Async)");
         }
 
         // verify the required parameter 'projectsPublish' is set
         if (projectsPublish == null) {
-            throw new ApiException("Missing the required parameter 'projectsPublish' when calling postV1SitesBySlugReleases(Async)");
+            throw new ApiException("Missing the required parameter 'projectsPublish' when calling postSitesBySlugReleases(Async)");
         }
 
-        return postV1SitesBySlugReleasesCall(slug, projectsPublish, _callback);
+        return postSitesBySlugReleasesCall(slug, projectsPublish, _callback);
 
     }
 
@@ -675,8 +1353,8 @@ public class SitesApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public ProjectsRelease postV1SitesBySlugReleases(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsPublish projectsPublish) throws ApiException {
-        ApiResponse<ProjectsRelease> localVarResp = postV1SitesBySlugReleasesWithHttpInfo(slug, projectsPublish);
+    public ProjectsRelease postSitesBySlugReleases(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsPublish projectsPublish) throws ApiException {
+        ApiResponse<ProjectsRelease> localVarResp = postSitesBySlugReleasesWithHttpInfo(slug, projectsPublish);
         return localVarResp.getData();
     }
 
@@ -694,8 +1372,8 @@ public class SitesApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ProjectsRelease> postV1SitesBySlugReleasesWithHttpInfo(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsPublish projectsPublish) throws ApiException {
-        okhttp3.Call localVarCall = postV1SitesBySlugReleasesValidateBeforeCall(slug, projectsPublish, null);
+    public ApiResponse<ProjectsRelease> postSitesBySlugReleasesWithHttpInfo(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsPublish projectsPublish) throws ApiException {
+        okhttp3.Call localVarCall = postSitesBySlugReleasesValidateBeforeCall(slug, projectsPublish, null);
         Type localVarReturnType = new TypeToken<ProjectsRelease>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -715,15 +1393,15 @@ public class SitesApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1SitesBySlugReleasesAsync(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsPublish projectsPublish, final ApiCallback<ProjectsRelease> _callback) throws ApiException {
+    public okhttp3.Call postSitesBySlugReleasesAsync(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsPublish projectsPublish, final ApiCallback<ProjectsRelease> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1SitesBySlugReleasesValidateBeforeCall(slug, projectsPublish, _callback);
+        okhttp3.Call localVarCall = postSitesBySlugReleasesValidateBeforeCall(slug, projectsPublish, _callback);
         Type localVarReturnType = new TypeToken<ProjectsRelease>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1SitesBySlugReleasesByReleaseActivate
+     * Build call for postSitesBySlugReleasesByReleaseActivate
      * @param slug Slug is the site the release belongs to, from the path. (required)
      * @param release Release is the content-addressed release id (\&quot;rel_\&quot; + 32 hex chars), from the path. Anything that is not that shape is not found, rather than being interpolated into a storage prefix. (required)
      * @param _callback Callback for upload/download progress
@@ -736,7 +1414,7 @@ public class SitesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1SitesBySlugReleasesByReleaseActivateCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String release, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postSitesBySlugReleasesByReleaseActivateCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String release, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -783,18 +1461,18 @@ public class SitesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1SitesBySlugReleasesByReleaseActivateValidateBeforeCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String release, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postSitesBySlugReleasesByReleaseActivateValidateBeforeCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String release, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'slug' is set
         if (slug == null) {
-            throw new ApiException("Missing the required parameter 'slug' when calling postV1SitesBySlugReleasesByReleaseActivate(Async)");
+            throw new ApiException("Missing the required parameter 'slug' when calling postSitesBySlugReleasesByReleaseActivate(Async)");
         }
 
         // verify the required parameter 'release' is set
         if (release == null) {
-            throw new ApiException("Missing the required parameter 'release' when calling postV1SitesBySlugReleasesByReleaseActivate(Async)");
+            throw new ApiException("Missing the required parameter 'release' when calling postSitesBySlugReleasesByReleaseActivate(Async)");
         }
 
-        return postV1SitesBySlugReleasesByReleaseActivateCall(slug, release, _callback);
+        return postSitesBySlugReleasesByReleaseActivateCall(slug, release, _callback);
 
     }
 
@@ -812,8 +1490,8 @@ public class SitesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ProjectsRelease postV1SitesBySlugReleasesByReleaseActivate(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String release) throws ApiException {
-        ApiResponse<ProjectsRelease> localVarResp = postV1SitesBySlugReleasesByReleaseActivateWithHttpInfo(slug, release);
+    public ProjectsRelease postSitesBySlugReleasesByReleaseActivate(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String release) throws ApiException {
+        ApiResponse<ProjectsRelease> localVarResp = postSitesBySlugReleasesByReleaseActivateWithHttpInfo(slug, release);
         return localVarResp.getData();
     }
 
@@ -831,8 +1509,8 @@ public class SitesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ProjectsRelease> postV1SitesBySlugReleasesByReleaseActivateWithHttpInfo(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String release) throws ApiException {
-        okhttp3.Call localVarCall = postV1SitesBySlugReleasesByReleaseActivateValidateBeforeCall(slug, release, null);
+    public ApiResponse<ProjectsRelease> postSitesBySlugReleasesByReleaseActivateWithHttpInfo(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String release) throws ApiException {
+        okhttp3.Call localVarCall = postSitesBySlugReleasesByReleaseActivateValidateBeforeCall(slug, release, null);
         Type localVarReturnType = new TypeToken<ProjectsRelease>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -852,15 +1530,15 @@ public class SitesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1SitesBySlugReleasesByReleaseActivateAsync(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String release, final ApiCallback<ProjectsRelease> _callback) throws ApiException {
+    public okhttp3.Call postSitesBySlugReleasesByReleaseActivateAsync(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String release, final ApiCallback<ProjectsRelease> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1SitesBySlugReleasesByReleaseActivateValidateBeforeCall(slug, release, _callback);
+        okhttp3.Call localVarCall = postSitesBySlugReleasesByReleaseActivateValidateBeforeCall(slug, release, _callback);
         Type localVarReturnType = new TypeToken<ProjectsRelease>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1SitesDeploy
+     * Build call for postSitesDeploy
      * @param projectsDeploySite  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -872,7 +1550,7 @@ public class SitesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1SitesDeployCall(@javax.annotation.Nonnull ProjectsDeploySite projectsDeploySite, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postSitesDeployCall(@javax.annotation.Nonnull ProjectsDeploySite projectsDeploySite, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -918,13 +1596,13 @@ public class SitesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1SitesDeployValidateBeforeCall(@javax.annotation.Nonnull ProjectsDeploySite projectsDeploySite, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postSitesDeployValidateBeforeCall(@javax.annotation.Nonnull ProjectsDeploySite projectsDeploySite, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'projectsDeploySite' is set
         if (projectsDeploySite == null) {
-            throw new ApiException("Missing the required parameter 'projectsDeploySite' when calling postV1SitesDeploy(Async)");
+            throw new ApiException("Missing the required parameter 'projectsDeploySite' when calling postSitesDeploy(Async)");
         }
 
-        return postV1SitesDeployCall(projectsDeploySite, _callback);
+        return postSitesDeployCall(projectsDeploySite, _callback);
 
     }
 
@@ -941,8 +1619,8 @@ public class SitesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ProjectsSiteDeploy postV1SitesDeploy(@javax.annotation.Nonnull ProjectsDeploySite projectsDeploySite) throws ApiException {
-        ApiResponse<ProjectsSiteDeploy> localVarResp = postV1SitesDeployWithHttpInfo(projectsDeploySite);
+    public ProjectsSiteDeploy postSitesDeploy(@javax.annotation.Nonnull ProjectsDeploySite projectsDeploySite) throws ApiException {
+        ApiResponse<ProjectsSiteDeploy> localVarResp = postSitesDeployWithHttpInfo(projectsDeploySite);
         return localVarResp.getData();
     }
 
@@ -959,8 +1637,8 @@ public class SitesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ProjectsSiteDeploy> postV1SitesDeployWithHttpInfo(@javax.annotation.Nonnull ProjectsDeploySite projectsDeploySite) throws ApiException {
-        okhttp3.Call localVarCall = postV1SitesDeployValidateBeforeCall(projectsDeploySite, null);
+    public ApiResponse<ProjectsSiteDeploy> postSitesDeployWithHttpInfo(@javax.annotation.Nonnull ProjectsDeploySite projectsDeploySite) throws ApiException {
+        okhttp3.Call localVarCall = postSitesDeployValidateBeforeCall(projectsDeploySite, null);
         Type localVarReturnType = new TypeToken<ProjectsSiteDeploy>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -979,9 +1657,9 @@ public class SitesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1SitesDeployAsync(@javax.annotation.Nonnull ProjectsDeploySite projectsDeploySite, final ApiCallback<ProjectsSiteDeploy> _callback) throws ApiException {
+    public okhttp3.Call postSitesDeployAsync(@javax.annotation.Nonnull ProjectsDeploySite projectsDeploySite, final ApiCallback<ProjectsSiteDeploy> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1SitesDeployValidateBeforeCall(projectsDeploySite, _callback);
+        okhttp3.Call localVarCall = postSitesDeployValidateBeforeCall(projectsDeploySite, _callback);
         Type localVarReturnType = new TypeToken<ProjectsSiteDeploy>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

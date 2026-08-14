@@ -76,7 +76,7 @@ public class DocdbApi {
     }
 
     /**
-     * Build call for deleteV1DocdbByName
+     * Build call for deleteDocdbByName
      * @param name Name is the resource&#39;s org-unique slug, from the path. Lower-cased and trimmed before lookup, exactly as it was at create. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -88,7 +88,7 @@ public class DocdbApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1DocdbByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteDocdbByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -133,13 +133,13 @@ public class DocdbApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1DocdbByNameValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteDocdbByNameValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling deleteV1DocdbByName(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling deleteDocdbByName(Async)");
         }
 
-        return deleteV1DocdbByNameCall(name, _callback);
+        return deleteDocdbByNameCall(name, _callback);
 
     }
 
@@ -155,8 +155,8 @@ public class DocdbApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteV1DocdbByName(@javax.annotation.Nonnull String name) throws ApiException {
-        deleteV1DocdbByNameWithHttpInfo(name);
+    public void deleteDocdbByName(@javax.annotation.Nonnull String name) throws ApiException {
+        deleteDocdbByNameWithHttpInfo(name);
     }
 
     /**
@@ -172,8 +172,8 @@ public class DocdbApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteV1DocdbByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1DocdbByNameValidateBeforeCall(name, null);
+    public ApiResponse<Void> deleteDocdbByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = deleteDocdbByNameValidateBeforeCall(name, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -191,14 +191,14 @@ public class DocdbApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1DocdbByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteDocdbByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1DocdbByNameValidateBeforeCall(name, _callback);
+        okhttp3.Call localVarCall = deleteDocdbByNameValidateBeforeCall(name, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1Docdb
+     * Build call for getDocdb
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -209,7 +209,7 @@ public class DocdbApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1DocdbCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getDocdbCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -254,8 +254,8 @@ public class DocdbApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1DocdbValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1DocdbCall(_callback);
+    private okhttp3.Call getDocdbValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getDocdbCall(_callback);
 
     }
 
@@ -271,8 +271,8 @@ public class DocdbApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public List<ProvisionedSummary> getV1Docdb() throws ApiException {
-        ApiResponse<List<ProvisionedSummary>> localVarResp = getV1DocdbWithHttpInfo();
+    public List<ProvisionedSummary> getDocdb() throws ApiException {
+        ApiResponse<List<ProvisionedSummary>> localVarResp = getDocdbWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -288,8 +288,8 @@ public class DocdbApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<ProvisionedSummary>> getV1DocdbWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1DocdbValidateBeforeCall(null);
+    public ApiResponse<List<ProvisionedSummary>> getDocdbWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getDocdbValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<List<ProvisionedSummary>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -307,15 +307,15 @@ public class DocdbApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1DocdbAsync(final ApiCallback<List<ProvisionedSummary>> _callback) throws ApiException {
+    public okhttp3.Call getDocdbAsync(final ApiCallback<List<ProvisionedSummary>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1DocdbValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getDocdbValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<List<ProvisionedSummary>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1DocdbByName
+     * Build call for getDocdbByName
      * @param name Name is the resource&#39;s org-unique slug, from the path. Lower-cased and trimmed before lookup, exactly as it was at create. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -327,7 +327,7 @@ public class DocdbApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1DocdbByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getDocdbByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -373,13 +373,13 @@ public class DocdbApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1DocdbByNameValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getDocdbByNameValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling getV1DocdbByName(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling getDocdbByName(Async)");
         }
 
-        return getV1DocdbByNameCall(name, _callback);
+        return getDocdbByNameCall(name, _callback);
 
     }
 
@@ -396,8 +396,8 @@ public class DocdbApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ProvisionedResource getV1DocdbByName(@javax.annotation.Nonnull String name) throws ApiException {
-        ApiResponse<ProvisionedResource> localVarResp = getV1DocdbByNameWithHttpInfo(name);
+    public ProvisionedResource getDocdbByName(@javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<ProvisionedResource> localVarResp = getDocdbByNameWithHttpInfo(name);
         return localVarResp.getData();
     }
 
@@ -414,8 +414,8 @@ public class DocdbApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ProvisionedResource> getV1DocdbByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
-        okhttp3.Call localVarCall = getV1DocdbByNameValidateBeforeCall(name, null);
+    public ApiResponse<ProvisionedResource> getDocdbByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = getDocdbByNameValidateBeforeCall(name, null);
         Type localVarReturnType = new TypeToken<ProvisionedResource>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -434,15 +434,15 @@ public class DocdbApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1DocdbByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<ProvisionedResource> _callback) throws ApiException {
+    public okhttp3.Call getDocdbByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<ProvisionedResource> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1DocdbByNameValidateBeforeCall(name, _callback);
+        okhttp3.Call localVarCall = getDocdbByNameValidateBeforeCall(name, _callback);
         Type localVarReturnType = new TypeToken<ProvisionedResource>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1Docdb
+     * Build call for postDocdb
      * @param provisionRequest  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -454,7 +454,7 @@ public class DocdbApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1DocdbCall(@javax.annotation.Nullable ProvisionRequest provisionRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postDocdbCall(@javax.annotation.Nullable ProvisionRequest provisionRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -500,8 +500,8 @@ public class DocdbApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1DocdbValidateBeforeCall(@javax.annotation.Nullable ProvisionRequest provisionRequest, final ApiCallback _callback) throws ApiException {
-        return postV1DocdbCall(provisionRequest, _callback);
+    private okhttp3.Call postDocdbValidateBeforeCall(@javax.annotation.Nullable ProvisionRequest provisionRequest, final ApiCallback _callback) throws ApiException {
+        return postDocdbCall(provisionRequest, _callback);
 
     }
 
@@ -518,8 +518,8 @@ public class DocdbApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ProvisionResult postV1Docdb(@javax.annotation.Nullable ProvisionRequest provisionRequest) throws ApiException {
-        ApiResponse<ProvisionResult> localVarResp = postV1DocdbWithHttpInfo(provisionRequest);
+    public ProvisionResult postDocdb(@javax.annotation.Nullable ProvisionRequest provisionRequest) throws ApiException {
+        ApiResponse<ProvisionResult> localVarResp = postDocdbWithHttpInfo(provisionRequest);
         return localVarResp.getData();
     }
 
@@ -536,8 +536,8 @@ public class DocdbApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ProvisionResult> postV1DocdbWithHttpInfo(@javax.annotation.Nullable ProvisionRequest provisionRequest) throws ApiException {
-        okhttp3.Call localVarCall = postV1DocdbValidateBeforeCall(provisionRequest, null);
+    public ApiResponse<ProvisionResult> postDocdbWithHttpInfo(@javax.annotation.Nullable ProvisionRequest provisionRequest) throws ApiException {
+        okhttp3.Call localVarCall = postDocdbValidateBeforeCall(provisionRequest, null);
         Type localVarReturnType = new TypeToken<ProvisionResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -556,9 +556,9 @@ public class DocdbApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1DocdbAsync(@javax.annotation.Nullable ProvisionRequest provisionRequest, final ApiCallback<ProvisionResult> _callback) throws ApiException {
+    public okhttp3.Call postDocdbAsync(@javax.annotation.Nullable ProvisionRequest provisionRequest, final ApiCallback<ProvisionResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1DocdbValidateBeforeCall(provisionRequest, _callback);
+        okhttp3.Call localVarCall = postDocdbValidateBeforeCall(provisionRequest, _callback);
         Type localVarReturnType = new TypeToken<ProvisionResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

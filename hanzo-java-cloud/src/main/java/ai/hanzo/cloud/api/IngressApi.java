@@ -81,7 +81,7 @@ public class IngressApi {
     }
 
     /**
-     * Build call for deleteV1IngressMiddlewaresById
+     * Build call for deleteIngressMiddlewaresById
      * @param id ID is the object to act on, from the path. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -93,7 +93,7 @@ public class IngressApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1IngressMiddlewaresByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteIngressMiddlewaresByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -138,13 +138,13 @@ public class IngressApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1IngressMiddlewaresByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteIngressMiddlewaresByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling deleteV1IngressMiddlewaresById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling deleteIngressMiddlewaresById(Async)");
         }
 
-        return deleteV1IngressMiddlewaresByIdCall(id, _callback);
+        return deleteIngressMiddlewaresByIdCall(id, _callback);
 
     }
 
@@ -160,8 +160,8 @@ public class IngressApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteV1IngressMiddlewaresById(@javax.annotation.Nonnull String id) throws ApiException {
-        deleteV1IngressMiddlewaresByIdWithHttpInfo(id);
+    public void deleteIngressMiddlewaresById(@javax.annotation.Nonnull String id) throws ApiException {
+        deleteIngressMiddlewaresByIdWithHttpInfo(id);
     }
 
     /**
@@ -177,8 +177,8 @@ public class IngressApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteV1IngressMiddlewaresByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1IngressMiddlewaresByIdValidateBeforeCall(id, null);
+    public ApiResponse<Void> deleteIngressMiddlewaresByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = deleteIngressMiddlewaresByIdValidateBeforeCall(id, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -196,14 +196,14 @@ public class IngressApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1IngressMiddlewaresByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteIngressMiddlewaresByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1IngressMiddlewaresByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = deleteIngressMiddlewaresByIdValidateBeforeCall(id, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for deleteV1IngressRoutesById
+     * Build call for deleteIngressRoutesById
      * @param id ID is the object to act on, from the path. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -215,7 +215,7 @@ public class IngressApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1IngressRoutesByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteIngressRoutesByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -260,13 +260,13 @@ public class IngressApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1IngressRoutesByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteIngressRoutesByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling deleteV1IngressRoutesById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling deleteIngressRoutesById(Async)");
         }
 
-        return deleteV1IngressRoutesByIdCall(id, _callback);
+        return deleteIngressRoutesByIdCall(id, _callback);
 
     }
 
@@ -282,8 +282,8 @@ public class IngressApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteV1IngressRoutesById(@javax.annotation.Nonnull String id) throws ApiException {
-        deleteV1IngressRoutesByIdWithHttpInfo(id);
+    public void deleteIngressRoutesById(@javax.annotation.Nonnull String id) throws ApiException {
+        deleteIngressRoutesByIdWithHttpInfo(id);
     }
 
     /**
@@ -299,8 +299,8 @@ public class IngressApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteV1IngressRoutesByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1IngressRoutesByIdValidateBeforeCall(id, null);
+    public ApiResponse<Void> deleteIngressRoutesByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = deleteIngressRoutesByIdValidateBeforeCall(id, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -318,14 +318,14 @@ public class IngressApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1IngressRoutesByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteIngressRoutesByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1IngressRoutesByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = deleteIngressRoutesByIdValidateBeforeCall(id, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for deleteV1IngressServicesById
+     * Build call for deleteIngressServicesById
      * @param id ID is the object to act on, from the path. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -337,7 +337,7 @@ public class IngressApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1IngressServicesByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteIngressServicesByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -382,13 +382,13 @@ public class IngressApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1IngressServicesByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteIngressServicesByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling deleteV1IngressServicesById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling deleteIngressServicesById(Async)");
         }
 
-        return deleteV1IngressServicesByIdCall(id, _callback);
+        return deleteIngressServicesByIdCall(id, _callback);
 
     }
 
@@ -404,8 +404,8 @@ public class IngressApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteV1IngressServicesById(@javax.annotation.Nonnull String id) throws ApiException {
-        deleteV1IngressServicesByIdWithHttpInfo(id);
+    public void deleteIngressServicesById(@javax.annotation.Nonnull String id) throws ApiException {
+        deleteIngressServicesByIdWithHttpInfo(id);
     }
 
     /**
@@ -421,8 +421,8 @@ public class IngressApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteV1IngressServicesByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1IngressServicesByIdValidateBeforeCall(id, null);
+    public ApiResponse<Void> deleteIngressServicesByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = deleteIngressServicesByIdValidateBeforeCall(id, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -440,14 +440,14 @@ public class IngressApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1IngressServicesByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteIngressServicesByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1IngressServicesByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = deleteIngressServicesByIdValidateBeforeCall(id, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1IngressMiddlewares
+     * Build call for getIngressMiddlewares
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -458,7 +458,7 @@ public class IngressApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1IngressMiddlewaresCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getIngressMiddlewaresCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -503,8 +503,8 @@ public class IngressApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1IngressMiddlewaresValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1IngressMiddlewaresCall(_callback);
+    private okhttp3.Call getIngressMiddlewaresValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getIngressMiddlewaresCall(_callback);
 
     }
 
@@ -520,8 +520,8 @@ public class IngressApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public IngressMiddlewares getV1IngressMiddlewares() throws ApiException {
-        ApiResponse<IngressMiddlewares> localVarResp = getV1IngressMiddlewaresWithHttpInfo();
+    public IngressMiddlewares getIngressMiddlewares() throws ApiException {
+        ApiResponse<IngressMiddlewares> localVarResp = getIngressMiddlewaresWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -537,8 +537,8 @@ public class IngressApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IngressMiddlewares> getV1IngressMiddlewaresWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1IngressMiddlewaresValidateBeforeCall(null);
+    public ApiResponse<IngressMiddlewares> getIngressMiddlewaresWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getIngressMiddlewaresValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<IngressMiddlewares>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -556,15 +556,15 @@ public class IngressApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1IngressMiddlewaresAsync(final ApiCallback<IngressMiddlewares> _callback) throws ApiException {
+    public okhttp3.Call getIngressMiddlewaresAsync(final ApiCallback<IngressMiddlewares> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1IngressMiddlewaresValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getIngressMiddlewaresValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<IngressMiddlewares>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1IngressMiddlewaresById
+     * Build call for getIngressMiddlewaresById
      * @param id ID is the object to act on, from the path. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -576,7 +576,7 @@ public class IngressApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1IngressMiddlewaresByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getIngressMiddlewaresByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -622,13 +622,13 @@ public class IngressApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1IngressMiddlewaresByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getIngressMiddlewaresByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getV1IngressMiddlewaresById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getIngressMiddlewaresById(Async)");
         }
 
-        return getV1IngressMiddlewaresByIdCall(id, _callback);
+        return getIngressMiddlewaresByIdCall(id, _callback);
 
     }
 
@@ -645,8 +645,8 @@ public class IngressApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Middleware getV1IngressMiddlewaresById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<Middleware> localVarResp = getV1IngressMiddlewaresByIdWithHttpInfo(id);
+    public Middleware getIngressMiddlewaresById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<Middleware> localVarResp = getIngressMiddlewaresByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -663,8 +663,8 @@ public class IngressApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Middleware> getV1IngressMiddlewaresByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = getV1IngressMiddlewaresByIdValidateBeforeCall(id, null);
+    public ApiResponse<Middleware> getIngressMiddlewaresByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getIngressMiddlewaresByIdValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<Middleware>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -683,15 +683,15 @@ public class IngressApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1IngressMiddlewaresByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Middleware> _callback) throws ApiException {
+    public okhttp3.Call getIngressMiddlewaresByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Middleware> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1IngressMiddlewaresByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = getIngressMiddlewaresByIdValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<Middleware>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1IngressRoutes
+     * Build call for getIngressRoutes
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -702,7 +702,7 @@ public class IngressApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1IngressRoutesCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getIngressRoutesCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -747,8 +747,8 @@ public class IngressApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1IngressRoutesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1IngressRoutesCall(_callback);
+    private okhttp3.Call getIngressRoutesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getIngressRoutesCall(_callback);
 
     }
 
@@ -764,8 +764,8 @@ public class IngressApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public IngressRoutes getV1IngressRoutes() throws ApiException {
-        ApiResponse<IngressRoutes> localVarResp = getV1IngressRoutesWithHttpInfo();
+    public IngressRoutes getIngressRoutes() throws ApiException {
+        ApiResponse<IngressRoutes> localVarResp = getIngressRoutesWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -781,8 +781,8 @@ public class IngressApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IngressRoutes> getV1IngressRoutesWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1IngressRoutesValidateBeforeCall(null);
+    public ApiResponse<IngressRoutes> getIngressRoutesWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getIngressRoutesValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<IngressRoutes>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -800,15 +800,15 @@ public class IngressApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1IngressRoutesAsync(final ApiCallback<IngressRoutes> _callback) throws ApiException {
+    public okhttp3.Call getIngressRoutesAsync(final ApiCallback<IngressRoutes> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1IngressRoutesValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getIngressRoutesValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<IngressRoutes>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1IngressRoutesById
+     * Build call for getIngressRoutesById
      * @param id ID is the object to act on, from the path. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -820,7 +820,7 @@ public class IngressApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1IngressRoutesByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getIngressRoutesByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -866,13 +866,13 @@ public class IngressApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1IngressRoutesByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getIngressRoutesByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getV1IngressRoutesById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getIngressRoutesById(Async)");
         }
 
-        return getV1IngressRoutesByIdCall(id, _callback);
+        return getIngressRoutesByIdCall(id, _callback);
 
     }
 
@@ -889,8 +889,8 @@ public class IngressApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Route getV1IngressRoutesById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<Route> localVarResp = getV1IngressRoutesByIdWithHttpInfo(id);
+    public Route getIngressRoutesById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<Route> localVarResp = getIngressRoutesByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -907,8 +907,8 @@ public class IngressApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Route> getV1IngressRoutesByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = getV1IngressRoutesByIdValidateBeforeCall(id, null);
+    public ApiResponse<Route> getIngressRoutesByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getIngressRoutesByIdValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<Route>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -927,15 +927,15 @@ public class IngressApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1IngressRoutesByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Route> _callback) throws ApiException {
+    public okhttp3.Call getIngressRoutesByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Route> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1IngressRoutesByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = getIngressRoutesByIdValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<Route>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1IngressServices
+     * Build call for getIngressServices
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -946,7 +946,7 @@ public class IngressApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1IngressServicesCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getIngressServicesCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -991,8 +991,8 @@ public class IngressApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1IngressServicesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1IngressServicesCall(_callback);
+    private okhttp3.Call getIngressServicesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getIngressServicesCall(_callback);
 
     }
 
@@ -1008,8 +1008,8 @@ public class IngressApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public IngressServices getV1IngressServices() throws ApiException {
-        ApiResponse<IngressServices> localVarResp = getV1IngressServicesWithHttpInfo();
+    public IngressServices getIngressServices() throws ApiException {
+        ApiResponse<IngressServices> localVarResp = getIngressServicesWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -1025,8 +1025,8 @@ public class IngressApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IngressServices> getV1IngressServicesWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1IngressServicesValidateBeforeCall(null);
+    public ApiResponse<IngressServices> getIngressServicesWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getIngressServicesValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<IngressServices>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1044,15 +1044,15 @@ public class IngressApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1IngressServicesAsync(final ApiCallback<IngressServices> _callback) throws ApiException {
+    public okhttp3.Call getIngressServicesAsync(final ApiCallback<IngressServices> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1IngressServicesValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getIngressServicesValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<IngressServices>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1IngressServicesById
+     * Build call for getIngressServicesById
      * @param id ID is the object to act on, from the path. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1064,7 +1064,7 @@ public class IngressApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1IngressServicesByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getIngressServicesByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1110,13 +1110,13 @@ public class IngressApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1IngressServicesByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getIngressServicesByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getV1IngressServicesById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getIngressServicesById(Async)");
         }
 
-        return getV1IngressServicesByIdCall(id, _callback);
+        return getIngressServicesByIdCall(id, _callback);
 
     }
 
@@ -1133,8 +1133,8 @@ public class IngressApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Upstream getV1IngressServicesById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<Upstream> localVarResp = getV1IngressServicesByIdWithHttpInfo(id);
+    public Upstream getIngressServicesById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<Upstream> localVarResp = getIngressServicesByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -1151,8 +1151,8 @@ public class IngressApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Upstream> getV1IngressServicesByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = getV1IngressServicesByIdValidateBeforeCall(id, null);
+    public ApiResponse<Upstream> getIngressServicesByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getIngressServicesByIdValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<Upstream>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1171,15 +1171,15 @@ public class IngressApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1IngressServicesByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Upstream> _callback) throws ApiException {
+    public okhttp3.Call getIngressServicesByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Upstream> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1IngressServicesByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = getIngressServicesByIdValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<Upstream>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1IngressStatus
+     * Build call for getIngressStatus
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1190,7 +1190,7 @@ public class IngressApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1IngressStatusCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getIngressStatusCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1235,8 +1235,8 @@ public class IngressApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1IngressStatusValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1IngressStatusCall(_callback);
+    private okhttp3.Call getIngressStatusValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getIngressStatusCall(_callback);
 
     }
 
@@ -1252,8 +1252,8 @@ public class IngressApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public IngressStatus getV1IngressStatus() throws ApiException {
-        ApiResponse<IngressStatus> localVarResp = getV1IngressStatusWithHttpInfo();
+    public IngressStatus getIngressStatus() throws ApiException {
+        ApiResponse<IngressStatus> localVarResp = getIngressStatusWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -1269,8 +1269,8 @@ public class IngressApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IngressStatus> getV1IngressStatusWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1IngressStatusValidateBeforeCall(null);
+    public ApiResponse<IngressStatus> getIngressStatusWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getIngressStatusValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<IngressStatus>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1288,15 +1288,15 @@ public class IngressApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1IngressStatusAsync(final ApiCallback<IngressStatus> _callback) throws ApiException {
+    public okhttp3.Call getIngressStatusAsync(final ApiCallback<IngressStatus> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1IngressStatusValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getIngressStatusValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<IngressStatus>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1IngressTls
+     * Build call for getIngressTls
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1307,7 +1307,7 @@ public class IngressApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1IngressTlsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getIngressTlsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1352,8 +1352,8 @@ public class IngressApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1IngressTlsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1IngressTlsCall(_callback);
+    private okhttp3.Call getIngressTlsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getIngressTlsCall(_callback);
 
     }
 
@@ -1369,8 +1369,8 @@ public class IngressApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public IngressTLS getV1IngressTls() throws ApiException {
-        ApiResponse<IngressTLS> localVarResp = getV1IngressTlsWithHttpInfo();
+    public IngressTLS getIngressTls() throws ApiException {
+        ApiResponse<IngressTLS> localVarResp = getIngressTlsWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -1386,8 +1386,8 @@ public class IngressApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IngressTLS> getV1IngressTlsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1IngressTlsValidateBeforeCall(null);
+    public ApiResponse<IngressTLS> getIngressTlsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getIngressTlsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<IngressTLS>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1405,15 +1405,15 @@ public class IngressApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1IngressTlsAsync(final ApiCallback<IngressTLS> _callback) throws ApiException {
+    public okhttp3.Call getIngressTlsAsync(final ApiCallback<IngressTLS> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1IngressTlsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getIngressTlsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<IngressTLS>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1IngressMiddlewares
+     * Build call for postIngressMiddlewares
      * @param middleware  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1425,7 +1425,7 @@ public class IngressApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1IngressMiddlewaresCall(@javax.annotation.Nonnull Middleware middleware, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postIngressMiddlewaresCall(@javax.annotation.Nonnull Middleware middleware, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1471,13 +1471,13 @@ public class IngressApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1IngressMiddlewaresValidateBeforeCall(@javax.annotation.Nonnull Middleware middleware, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postIngressMiddlewaresValidateBeforeCall(@javax.annotation.Nonnull Middleware middleware, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'middleware' is set
         if (middleware == null) {
-            throw new ApiException("Missing the required parameter 'middleware' when calling postV1IngressMiddlewares(Async)");
+            throw new ApiException("Missing the required parameter 'middleware' when calling postIngressMiddlewares(Async)");
         }
 
-        return postV1IngressMiddlewaresCall(middleware, _callback);
+        return postIngressMiddlewaresCall(middleware, _callback);
 
     }
 
@@ -1494,8 +1494,8 @@ public class IngressApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Middleware postV1IngressMiddlewares(@javax.annotation.Nonnull Middleware middleware) throws ApiException {
-        ApiResponse<Middleware> localVarResp = postV1IngressMiddlewaresWithHttpInfo(middleware);
+    public Middleware postIngressMiddlewares(@javax.annotation.Nonnull Middleware middleware) throws ApiException {
+        ApiResponse<Middleware> localVarResp = postIngressMiddlewaresWithHttpInfo(middleware);
         return localVarResp.getData();
     }
 
@@ -1512,8 +1512,8 @@ public class IngressApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Middleware> postV1IngressMiddlewaresWithHttpInfo(@javax.annotation.Nonnull Middleware middleware) throws ApiException {
-        okhttp3.Call localVarCall = postV1IngressMiddlewaresValidateBeforeCall(middleware, null);
+    public ApiResponse<Middleware> postIngressMiddlewaresWithHttpInfo(@javax.annotation.Nonnull Middleware middleware) throws ApiException {
+        okhttp3.Call localVarCall = postIngressMiddlewaresValidateBeforeCall(middleware, null);
         Type localVarReturnType = new TypeToken<Middleware>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1532,15 +1532,15 @@ public class IngressApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1IngressMiddlewaresAsync(@javax.annotation.Nonnull Middleware middleware, final ApiCallback<Middleware> _callback) throws ApiException {
+    public okhttp3.Call postIngressMiddlewaresAsync(@javax.annotation.Nonnull Middleware middleware, final ApiCallback<Middleware> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1IngressMiddlewaresValidateBeforeCall(middleware, _callback);
+        okhttp3.Call localVarCall = postIngressMiddlewaresValidateBeforeCall(middleware, _callback);
         Type localVarReturnType = new TypeToken<Middleware>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1IngressRoutes
+     * Build call for postIngressRoutes
      * @param route  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1552,7 +1552,7 @@ public class IngressApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1IngressRoutesCall(@javax.annotation.Nonnull Route route, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postIngressRoutesCall(@javax.annotation.Nonnull Route route, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1598,13 +1598,13 @@ public class IngressApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1IngressRoutesValidateBeforeCall(@javax.annotation.Nonnull Route route, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postIngressRoutesValidateBeforeCall(@javax.annotation.Nonnull Route route, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'route' is set
         if (route == null) {
-            throw new ApiException("Missing the required parameter 'route' when calling postV1IngressRoutes(Async)");
+            throw new ApiException("Missing the required parameter 'route' when calling postIngressRoutes(Async)");
         }
 
-        return postV1IngressRoutesCall(route, _callback);
+        return postIngressRoutesCall(route, _callback);
 
     }
 
@@ -1621,8 +1621,8 @@ public class IngressApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Route postV1IngressRoutes(@javax.annotation.Nonnull Route route) throws ApiException {
-        ApiResponse<Route> localVarResp = postV1IngressRoutesWithHttpInfo(route);
+    public Route postIngressRoutes(@javax.annotation.Nonnull Route route) throws ApiException {
+        ApiResponse<Route> localVarResp = postIngressRoutesWithHttpInfo(route);
         return localVarResp.getData();
     }
 
@@ -1639,8 +1639,8 @@ public class IngressApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Route> postV1IngressRoutesWithHttpInfo(@javax.annotation.Nonnull Route route) throws ApiException {
-        okhttp3.Call localVarCall = postV1IngressRoutesValidateBeforeCall(route, null);
+    public ApiResponse<Route> postIngressRoutesWithHttpInfo(@javax.annotation.Nonnull Route route) throws ApiException {
+        okhttp3.Call localVarCall = postIngressRoutesValidateBeforeCall(route, null);
         Type localVarReturnType = new TypeToken<Route>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1659,15 +1659,15 @@ public class IngressApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1IngressRoutesAsync(@javax.annotation.Nonnull Route route, final ApiCallback<Route> _callback) throws ApiException {
+    public okhttp3.Call postIngressRoutesAsync(@javax.annotation.Nonnull Route route, final ApiCallback<Route> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1IngressRoutesValidateBeforeCall(route, _callback);
+        okhttp3.Call localVarCall = postIngressRoutesValidateBeforeCall(route, _callback);
         Type localVarReturnType = new TypeToken<Route>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1IngressServices
+     * Build call for postIngressServices
      * @param upstream  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1679,7 +1679,7 @@ public class IngressApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1IngressServicesCall(@javax.annotation.Nonnull Upstream upstream, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postIngressServicesCall(@javax.annotation.Nonnull Upstream upstream, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1725,13 +1725,13 @@ public class IngressApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1IngressServicesValidateBeforeCall(@javax.annotation.Nonnull Upstream upstream, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postIngressServicesValidateBeforeCall(@javax.annotation.Nonnull Upstream upstream, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'upstream' is set
         if (upstream == null) {
-            throw new ApiException("Missing the required parameter 'upstream' when calling postV1IngressServices(Async)");
+            throw new ApiException("Missing the required parameter 'upstream' when calling postIngressServices(Async)");
         }
 
-        return postV1IngressServicesCall(upstream, _callback);
+        return postIngressServicesCall(upstream, _callback);
 
     }
 
@@ -1748,8 +1748,8 @@ public class IngressApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Upstream postV1IngressServices(@javax.annotation.Nonnull Upstream upstream) throws ApiException {
-        ApiResponse<Upstream> localVarResp = postV1IngressServicesWithHttpInfo(upstream);
+    public Upstream postIngressServices(@javax.annotation.Nonnull Upstream upstream) throws ApiException {
+        ApiResponse<Upstream> localVarResp = postIngressServicesWithHttpInfo(upstream);
         return localVarResp.getData();
     }
 
@@ -1766,8 +1766,8 @@ public class IngressApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Upstream> postV1IngressServicesWithHttpInfo(@javax.annotation.Nonnull Upstream upstream) throws ApiException {
-        okhttp3.Call localVarCall = postV1IngressServicesValidateBeforeCall(upstream, null);
+    public ApiResponse<Upstream> postIngressServicesWithHttpInfo(@javax.annotation.Nonnull Upstream upstream) throws ApiException {
+        okhttp3.Call localVarCall = postIngressServicesValidateBeforeCall(upstream, null);
         Type localVarReturnType = new TypeToken<Upstream>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1786,15 +1786,15 @@ public class IngressApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1IngressServicesAsync(@javax.annotation.Nonnull Upstream upstream, final ApiCallback<Upstream> _callback) throws ApiException {
+    public okhttp3.Call postIngressServicesAsync(@javax.annotation.Nonnull Upstream upstream, final ApiCallback<Upstream> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1IngressServicesValidateBeforeCall(upstream, _callback);
+        okhttp3.Call localVarCall = postIngressServicesValidateBeforeCall(upstream, _callback);
         Type localVarReturnType = new TypeToken<Upstream>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1IngressMiddlewaresById
+     * Build call for putIngressMiddlewaresById
      * @param id ID identifies the transform within the org: [A-Za-z0-9-_.], at most 128 chars. A create that omits it gets a generated one. Routes reference it by this id. (required)
      * @param middleware  (required)
      * @param _callback Callback for upload/download progress
@@ -1807,7 +1807,7 @@ public class IngressApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putV1IngressMiddlewaresByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Middleware middleware, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putIngressMiddlewaresByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Middleware middleware, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1854,18 +1854,18 @@ public class IngressApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1IngressMiddlewaresByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Middleware middleware, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putIngressMiddlewaresByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Middleware middleware, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling putV1IngressMiddlewaresById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling putIngressMiddlewaresById(Async)");
         }
 
         // verify the required parameter 'middleware' is set
         if (middleware == null) {
-            throw new ApiException("Missing the required parameter 'middleware' when calling putV1IngressMiddlewaresById(Async)");
+            throw new ApiException("Missing the required parameter 'middleware' when calling putIngressMiddlewaresById(Async)");
         }
 
-        return putV1IngressMiddlewaresByIdCall(id, middleware, _callback);
+        return putIngressMiddlewaresByIdCall(id, middleware, _callback);
 
     }
 
@@ -1883,8 +1883,8 @@ public class IngressApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Middleware putV1IngressMiddlewaresById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Middleware middleware) throws ApiException {
-        ApiResponse<Middleware> localVarResp = putV1IngressMiddlewaresByIdWithHttpInfo(id, middleware);
+    public Middleware putIngressMiddlewaresById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Middleware middleware) throws ApiException {
+        ApiResponse<Middleware> localVarResp = putIngressMiddlewaresByIdWithHttpInfo(id, middleware);
         return localVarResp.getData();
     }
 
@@ -1902,8 +1902,8 @@ public class IngressApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Middleware> putV1IngressMiddlewaresByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Middleware middleware) throws ApiException {
-        okhttp3.Call localVarCall = putV1IngressMiddlewaresByIdValidateBeforeCall(id, middleware, null);
+    public ApiResponse<Middleware> putIngressMiddlewaresByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Middleware middleware) throws ApiException {
+        okhttp3.Call localVarCall = putIngressMiddlewaresByIdValidateBeforeCall(id, middleware, null);
         Type localVarReturnType = new TypeToken<Middleware>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1923,15 +1923,15 @@ public class IngressApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putV1IngressMiddlewaresByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Middleware middleware, final ApiCallback<Middleware> _callback) throws ApiException {
+    public okhttp3.Call putIngressMiddlewaresByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Middleware middleware, final ApiCallback<Middleware> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1IngressMiddlewaresByIdValidateBeforeCall(id, middleware, _callback);
+        okhttp3.Call localVarCall = putIngressMiddlewaresByIdValidateBeforeCall(id, middleware, _callback);
         Type localVarReturnType = new TypeToken<Middleware>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1IngressRoutesById
+     * Build call for putIngressRoutesById
      * @param id ID identifies the route within the org: [A-Za-z0-9-_.], at most 128 chars. A create that omits it gets a generated one. (required)
      * @param route  (required)
      * @param _callback Callback for upload/download progress
@@ -1944,7 +1944,7 @@ public class IngressApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putV1IngressRoutesByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Route route, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putIngressRoutesByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Route route, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1991,18 +1991,18 @@ public class IngressApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1IngressRoutesByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Route route, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putIngressRoutesByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Route route, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling putV1IngressRoutesById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling putIngressRoutesById(Async)");
         }
 
         // verify the required parameter 'route' is set
         if (route == null) {
-            throw new ApiException("Missing the required parameter 'route' when calling putV1IngressRoutesById(Async)");
+            throw new ApiException("Missing the required parameter 'route' when calling putIngressRoutesById(Async)");
         }
 
-        return putV1IngressRoutesByIdCall(id, route, _callback);
+        return putIngressRoutesByIdCall(id, route, _callback);
 
     }
 
@@ -2020,8 +2020,8 @@ public class IngressApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Route putV1IngressRoutesById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Route route) throws ApiException {
-        ApiResponse<Route> localVarResp = putV1IngressRoutesByIdWithHttpInfo(id, route);
+    public Route putIngressRoutesById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Route route) throws ApiException {
+        ApiResponse<Route> localVarResp = putIngressRoutesByIdWithHttpInfo(id, route);
         return localVarResp.getData();
     }
 
@@ -2039,8 +2039,8 @@ public class IngressApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Route> putV1IngressRoutesByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Route route) throws ApiException {
-        okhttp3.Call localVarCall = putV1IngressRoutesByIdValidateBeforeCall(id, route, null);
+    public ApiResponse<Route> putIngressRoutesByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Route route) throws ApiException {
+        okhttp3.Call localVarCall = putIngressRoutesByIdValidateBeforeCall(id, route, null);
         Type localVarReturnType = new TypeToken<Route>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2060,15 +2060,15 @@ public class IngressApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putV1IngressRoutesByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Route route, final ApiCallback<Route> _callback) throws ApiException {
+    public okhttp3.Call putIngressRoutesByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Route route, final ApiCallback<Route> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1IngressRoutesByIdValidateBeforeCall(id, route, _callback);
+        okhttp3.Call localVarCall = putIngressRoutesByIdValidateBeforeCall(id, route, _callback);
         Type localVarReturnType = new TypeToken<Route>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1IngressServicesById
+     * Build call for putIngressServicesById
      * @param id ID identifies the pool within the org: [A-Za-z0-9-_.], at most 128 chars. A create that omits it gets a generated one. Routes reference it by this id. (required)
      * @param upstream  (required)
      * @param _callback Callback for upload/download progress
@@ -2081,7 +2081,7 @@ public class IngressApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putV1IngressServicesByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Upstream upstream, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putIngressServicesByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Upstream upstream, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2128,18 +2128,18 @@ public class IngressApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1IngressServicesByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Upstream upstream, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putIngressServicesByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Upstream upstream, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling putV1IngressServicesById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling putIngressServicesById(Async)");
         }
 
         // verify the required parameter 'upstream' is set
         if (upstream == null) {
-            throw new ApiException("Missing the required parameter 'upstream' when calling putV1IngressServicesById(Async)");
+            throw new ApiException("Missing the required parameter 'upstream' when calling putIngressServicesById(Async)");
         }
 
-        return putV1IngressServicesByIdCall(id, upstream, _callback);
+        return putIngressServicesByIdCall(id, upstream, _callback);
 
     }
 
@@ -2157,8 +2157,8 @@ public class IngressApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Upstream putV1IngressServicesById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Upstream upstream) throws ApiException {
-        ApiResponse<Upstream> localVarResp = putV1IngressServicesByIdWithHttpInfo(id, upstream);
+    public Upstream putIngressServicesById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Upstream upstream) throws ApiException {
+        ApiResponse<Upstream> localVarResp = putIngressServicesByIdWithHttpInfo(id, upstream);
         return localVarResp.getData();
     }
 
@@ -2176,8 +2176,8 @@ public class IngressApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Upstream> putV1IngressServicesByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Upstream upstream) throws ApiException {
-        okhttp3.Call localVarCall = putV1IngressServicesByIdValidateBeforeCall(id, upstream, null);
+    public ApiResponse<Upstream> putIngressServicesByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Upstream upstream) throws ApiException {
+        okhttp3.Call localVarCall = putIngressServicesByIdValidateBeforeCall(id, upstream, null);
         Type localVarReturnType = new TypeToken<Upstream>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2197,15 +2197,15 @@ public class IngressApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putV1IngressServicesByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Upstream upstream, final ApiCallback<Upstream> _callback) throws ApiException {
+    public okhttp3.Call putIngressServicesByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull Upstream upstream, final ApiCallback<Upstream> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1IngressServicesByIdValidateBeforeCall(id, upstream, _callback);
+        okhttp3.Call localVarCall = putIngressServicesByIdValidateBeforeCall(id, upstream, _callback);
         Type localVarReturnType = new TypeToken<Upstream>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1IngressTls
+     * Build call for putIngressTls
      * @param tlSConfig  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2217,7 +2217,7 @@ public class IngressApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putV1IngressTlsCall(@javax.annotation.Nonnull TLSConfig tlSConfig, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putIngressTlsCall(@javax.annotation.Nonnull TLSConfig tlSConfig, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2263,13 +2263,13 @@ public class IngressApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1IngressTlsValidateBeforeCall(@javax.annotation.Nonnull TLSConfig tlSConfig, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putIngressTlsValidateBeforeCall(@javax.annotation.Nonnull TLSConfig tlSConfig, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'tlSConfig' is set
         if (tlSConfig == null) {
-            throw new ApiException("Missing the required parameter 'tlSConfig' when calling putV1IngressTls(Async)");
+            throw new ApiException("Missing the required parameter 'tlSConfig' when calling putIngressTls(Async)");
         }
 
-        return putV1IngressTlsCall(tlSConfig, _callback);
+        return putIngressTlsCall(tlSConfig, _callback);
 
     }
 
@@ -2286,8 +2286,8 @@ public class IngressApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public TLSConfig putV1IngressTls(@javax.annotation.Nonnull TLSConfig tlSConfig) throws ApiException {
-        ApiResponse<TLSConfig> localVarResp = putV1IngressTlsWithHttpInfo(tlSConfig);
+    public TLSConfig putIngressTls(@javax.annotation.Nonnull TLSConfig tlSConfig) throws ApiException {
+        ApiResponse<TLSConfig> localVarResp = putIngressTlsWithHttpInfo(tlSConfig);
         return localVarResp.getData();
     }
 
@@ -2304,8 +2304,8 @@ public class IngressApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<TLSConfig> putV1IngressTlsWithHttpInfo(@javax.annotation.Nonnull TLSConfig tlSConfig) throws ApiException {
-        okhttp3.Call localVarCall = putV1IngressTlsValidateBeforeCall(tlSConfig, null);
+    public ApiResponse<TLSConfig> putIngressTlsWithHttpInfo(@javax.annotation.Nonnull TLSConfig tlSConfig) throws ApiException {
+        okhttp3.Call localVarCall = putIngressTlsValidateBeforeCall(tlSConfig, null);
         Type localVarReturnType = new TypeToken<TLSConfig>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2324,9 +2324,9 @@ public class IngressApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putV1IngressTlsAsync(@javax.annotation.Nonnull TLSConfig tlSConfig, final ApiCallback<TLSConfig> _callback) throws ApiException {
+    public okhttp3.Call putIngressTlsAsync(@javax.annotation.Nonnull TLSConfig tlSConfig, final ApiCallback<TLSConfig> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1IngressTlsValidateBeforeCall(tlSConfig, _callback);
+        okhttp3.Call localVarCall = putIngressTlsValidateBeforeCall(tlSConfig, _callback);
         Type localVarReturnType = new TypeToken<TLSConfig>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

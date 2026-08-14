@@ -72,12 +72,12 @@ public class ImagesApi {
     }
 
     /**
-     * Build call for postV1ImagesGenerations
+     * Build call for postImagesGenerations
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1ImagesGenerationsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postImagesGenerationsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -121,8 +121,8 @@ public class ImagesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1ImagesGenerationsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1ImagesGenerationsCall(_callback);
+    private okhttp3.Call postImagesGenerationsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postImagesGenerationsCall(_callback);
 
     }
 
@@ -131,8 +131,8 @@ public class ImagesApi {
      * Implements POST /v1/images/generations (OpenAI-compatible).  Body: {\&quot;model\&quot;: \&quot;...\&quot;, \&quot;prompt\&quot;: \&quot;...\&quot;, \&quot;n\&quot;?: int, \&quot;size\&quot;?: \&quot;1024x1024\&quot;,   \&quot;response_format\&quot;?: \&quot;url\&quot;|\&quot;b64_json\&quot;}  It authenticates the caller, resolves the model to its upstream provider via the shared routing table (zen3-image* → do-ai fal diffusion), reserves the per-image budget, generates the image(s) through the do-ai async image client, records usage for billing, and returns the OpenAI images response.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1ImagesGenerations() throws ApiException {
-        postV1ImagesGenerationsWithHttpInfo();
+    public void postImagesGenerations() throws ApiException {
+        postImagesGenerationsWithHttpInfo();
     }
 
     /**
@@ -141,8 +141,8 @@ public class ImagesApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1ImagesGenerationsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1ImagesGenerationsValidateBeforeCall(null);
+    public ApiResponse<Void> postImagesGenerationsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postImagesGenerationsValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -153,9 +153,9 @@ public class ImagesApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1ImagesGenerationsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postImagesGenerationsAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1ImagesGenerationsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postImagesGenerationsValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

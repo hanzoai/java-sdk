@@ -76,12 +76,12 @@ public class DefaultApi {
     }
 
     /**
-     * Build call for deleteMeet
+     * Build call for deleteMeetApp
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call deleteMeetCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteMeetAppCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -125,8 +125,8 @@ public class DefaultApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteMeetValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return deleteMeetCall(_callback);
+    private okhttp3.Call deleteMeetAppValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return deleteMeetAppCall(_callback);
 
     }
 
@@ -135,8 +135,8 @@ public class DefaultApi {
      * Published because this address accepts every method, but a static bundle has no writes: the request is refused 405 and nothing is read or changed.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void deleteMeet() throws ApiException {
-        deleteMeetWithHttpInfo();
+    public void deleteMeetApp() throws ApiException {
+        deleteMeetAppWithHttpInfo();
     }
 
     /**
@@ -145,8 +145,8 @@ public class DefaultApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> deleteMeetWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = deleteMeetValidateBeforeCall(null);
+    public ApiResponse<Void> deleteMeetAppWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = deleteMeetAppValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -157,20 +157,20 @@ public class DefaultApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call deleteMeetAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteMeetAppAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteMeetValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = deleteMeetAppValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for deleteMeetByWildcard1
+     * Build call for deleteMeetAppAssets
      * @param wildcard1  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call deleteMeetByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteMeetAppAssetsCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -215,13 +215,13 @@ public class DefaultApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteMeetByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteMeetAppAssetsValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'wildcard1' is set
         if (wildcard1 == null) {
-            throw new ApiException("Missing the required parameter 'wildcard1' when calling deleteMeetByWildcard1(Async)");
+            throw new ApiException("Missing the required parameter 'wildcard1' when calling deleteMeetAppAssets(Async)");
         }
 
-        return deleteMeetByWildcard1Call(wildcard1, _callback);
+        return deleteMeetAppAssetsCall(wildcard1, _callback);
 
     }
 
@@ -231,8 +231,8 @@ public class DefaultApi {
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void deleteMeetByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        deleteMeetByWildcard1WithHttpInfo(wildcard1);
+    public void deleteMeetAppAssets(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        deleteMeetAppAssetsWithHttpInfo(wildcard1);
     }
 
     /**
@@ -242,8 +242,8 @@ public class DefaultApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> deleteMeetByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        okhttp3.Call localVarCall = deleteMeetByWildcard1ValidateBeforeCall(wildcard1, null);
+    public ApiResponse<Void> deleteMeetAppAssetsWithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        okhttp3.Call localVarCall = deleteMeetAppAssetsValidateBeforeCall(wildcard1, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -255,19 +255,19 @@ public class DefaultApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call deleteMeetByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteMeetAppAssetsAsync(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteMeetByWildcard1ValidateBeforeCall(wildcard1, _callback);
+        okhttp3.Call localVarCall = deleteMeetAppAssetsValidateBeforeCall(wildcard1, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for deleteTasks
+     * Build call for deleteTasksApp
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call deleteTasksCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteTasksAppCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -311,8 +311,8 @@ public class DefaultApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteTasksValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return deleteTasksCall(_callback);
+    private okhttp3.Call deleteTasksAppValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return deleteTasksAppCall(_callback);
 
     }
 
@@ -321,8 +321,8 @@ public class DefaultApi {
      * Published because this address accepts every method, but a static bundle has no writes: the request is refused 405 and nothing is read or changed.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void deleteTasks() throws ApiException {
-        deleteTasksWithHttpInfo();
+    public void deleteTasksApp() throws ApiException {
+        deleteTasksAppWithHttpInfo();
     }
 
     /**
@@ -331,8 +331,8 @@ public class DefaultApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> deleteTasksWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = deleteTasksValidateBeforeCall(null);
+    public ApiResponse<Void> deleteTasksAppWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = deleteTasksAppValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -343,20 +343,20 @@ public class DefaultApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call deleteTasksAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteTasksAppAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteTasksValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = deleteTasksAppValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for deleteTasksByWildcard1
+     * Build call for deleteTasksAppAssets
      * @param wildcard1  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call deleteTasksByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteTasksAppAssetsCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -401,13 +401,13 @@ public class DefaultApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteTasksByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteTasksAppAssetsValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'wildcard1' is set
         if (wildcard1 == null) {
-            throw new ApiException("Missing the required parameter 'wildcard1' when calling deleteTasksByWildcard1(Async)");
+            throw new ApiException("Missing the required parameter 'wildcard1' when calling deleteTasksAppAssets(Async)");
         }
 
-        return deleteTasksByWildcard1Call(wildcard1, _callback);
+        return deleteTasksAppAssetsCall(wildcard1, _callback);
 
     }
 
@@ -417,8 +417,8 @@ public class DefaultApi {
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void deleteTasksByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        deleteTasksByWildcard1WithHttpInfo(wildcard1);
+    public void deleteTasksAppAssets(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        deleteTasksAppAssetsWithHttpInfo(wildcard1);
     }
 
     /**
@@ -428,8 +428,8 @@ public class DefaultApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> deleteTasksByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        okhttp3.Call localVarCall = deleteTasksByWildcard1ValidateBeforeCall(wildcard1, null);
+    public ApiResponse<Void> deleteTasksAppAssetsWithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        okhttp3.Call localVarCall = deleteTasksAppAssetsValidateBeforeCall(wildcard1, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -441,195 +441,9 @@ public class DefaultApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call deleteTasksByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteTasksAppAssetsAsync(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteTasksByWildcard1ValidateBeforeCall(wildcard1, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for deleteTracker
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public okhttp3.Call deleteTrackerCall(final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/tracker";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] {  };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteTrackerValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return deleteTrackerCall(_callback);
-
-    }
-
-    /**
-     * Not served by the tracker board
-     * Published because this address accepts every method, but a static bundle has no writes: the request is refused 405 and nothing is read or changed.
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public void deleteTracker() throws ApiException {
-        deleteTrackerWithHttpInfo();
-    }
-
-    /**
-     * Not served by the tracker board
-     * Published because this address accepts every method, but a static bundle has no writes: the request is refused 405 and nothing is read or changed.
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Void> deleteTrackerWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = deleteTrackerValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * Not served by the tracker board (asynchronously)
-     * Published because this address accepts every method, but a static bundle has no writes: the request is refused 405 and nothing is read or changed.
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public okhttp3.Call deleteTrackerAsync(final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = deleteTrackerValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for deleteTrackerByWildcard1
-     * @param wildcard1  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public okhttp3.Call deleteTrackerByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/tracker/{wildcard1}"
-            .replace("{" + "wildcard1" + "}", localVarApiClient.escapeString(wildcard1.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] {  };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteTrackerByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'wildcard1' is set
-        if (wildcard1 == null) {
-            throw new ApiException("Missing the required parameter 'wildcard1' when calling deleteTrackerByWildcard1(Async)");
-        }
-
-        return deleteTrackerByWildcard1Call(wildcard1, _callback);
-
-    }
-
-    /**
-     * Not served by the tracker board
-     * Published because this address accepts every method, but a static bundle has no writes: the request is refused 405 and nothing is read or changed.
-     * @param wildcard1  (required)
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public void deleteTrackerByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        deleteTrackerByWildcard1WithHttpInfo(wildcard1);
-    }
-
-    /**
-     * Not served by the tracker board
-     * Published because this address accepts every method, but a static bundle has no writes: the request is refused 405 and nothing is read or changed.
-     * @param wildcard1  (required)
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Void> deleteTrackerByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        okhttp3.Call localVarCall = deleteTrackerByWildcard1ValidateBeforeCall(wildcard1, null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * Not served by the tracker board (asynchronously)
-     * Published because this address accepts every method, but a static bundle has no writes: the request is refused 405 and nothing is read or changed.
-     * @param wildcard1  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public okhttp3.Call deleteTrackerByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = deleteTrackerByWildcard1ValidateBeforeCall(wildcard1, _callback);
+        okhttp3.Call localVarCall = deleteTasksAppAssetsValidateBeforeCall(wildcard1, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
@@ -1693,6 +1507,123 @@ public class DefaultApi {
         return localVarCall;
     }
     /**
+     * Build call for getEventJs
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getEventJsCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/event.js";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/javascript"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getEventJsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getEventJsCall(_callback);
+
+    }
+
+    /**
+     * The Hanzo event tag — the one-line install for a surface with no bundler
+     * Serves the browser tag that autocaptures pageviews (initial and SPA) and uncaught errors onto the canonical wire at POST /v1/event.  Install is one line, and it is the same line for a Hanzo property and for a customer&#39;s own page:      &lt;script defer src&#x3D;\&quot;https://api.hanzo.ai/v1/event.js\&quot; data-key&#x3D;\&quot;pk-…\&quot;&gt;&lt;/script&gt;  &#x60;data-key&#x60; is the publishable key the project mints; &#x60;data-product&#x60; optionally names the emitting surface. The key may also ride the src as &#x60;?key&#x3D;&#x60; for a host that strips data attributes.  WITHOUT A KEY THE TAG SENDS NOTHING. A keyless beacon is accepted 200 into $public, a reserved tenant the owning org cannot read — so silence is the honest failure, and the tag picks it rather than reporting success into a tenant nobody reads.
+     * @return File
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public File getEventJs() throws ApiException {
+        ApiResponse<File> localVarResp = getEventJsWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * The Hanzo event tag — the one-line install for a surface with no bundler
+     * Serves the browser tag that autocaptures pageviews (initial and SPA) and uncaught errors onto the canonical wire at POST /v1/event.  Install is one line, and it is the same line for a Hanzo property and for a customer&#39;s own page:      &lt;script defer src&#x3D;\&quot;https://api.hanzo.ai/v1/event.js\&quot; data-key&#x3D;\&quot;pk-…\&quot;&gt;&lt;/script&gt;  &#x60;data-key&#x60; is the publishable key the project mints; &#x60;data-product&#x60; optionally names the emitting surface. The key may also ride the src as &#x60;?key&#x3D;&#x60; for a host that strips data attributes.  WITHOUT A KEY THE TAG SENDS NOTHING. A keyless beacon is accepted 200 into $public, a reserved tenant the owning org cannot read — so silence is the honest failure, and the tag picks it rather than reporting success into a tenant nobody reads.
+     * @return ApiResponse&lt;File&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<File> getEventJsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getEventJsValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * The Hanzo event tag — the one-line install for a surface with no bundler (asynchronously)
+     * Serves the browser tag that autocaptures pageviews (initial and SPA) and uncaught errors onto the canonical wire at POST /v1/event.  Install is one line, and it is the same line for a Hanzo property and for a customer&#39;s own page:      &lt;script defer src&#x3D;\&quot;https://api.hanzo.ai/v1/event.js\&quot; data-key&#x3D;\&quot;pk-…\&quot;&gt;&lt;/script&gt;  &#x60;data-key&#x60; is the publishable key the project mints; &#x60;data-product&#x60; optionally names the emitting surface. The key may also ride the src as &#x60;?key&#x3D;&#x60; for a host that strips data attributes.  WITHOUT A KEY THE TAG SENDS NOTHING. A keyless beacon is accepted 200 into $public, a reserved tenant the owning org cannot read — so silence is the honest failure, and the tag picks it rather than reporting success into a tenant nobody reads.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getEventJsAsync(final ApiCallback<File> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getEventJsValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for getExplore
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2409,12 +2340,12 @@ public class DefaultApi {
         return localVarCall;
     }
     /**
-     * Build call for getMeet
+     * Build call for getMeetApp
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getMeetCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getMeetAppCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2458,8 +2389,8 @@ public class DefaultApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getMeetValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getMeetCall(_callback);
+    private okhttp3.Call getMeetAppValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getMeetAppCall(_callback);
 
     }
 
@@ -2468,8 +2399,8 @@ public class DefaultApi {
      * Serves the application shell on GET, which is the entry point a browser loads before it calls anything under /v1/meet/.  This is the call client itself — HTML and hashed assets, not an API. Only GET and HEAD are served; every other method is refused 405. Hashed assets are returned immutable and cached for a year, while the shell is always revalidated, so a new deployment replaces a stale one on the next request.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getMeet() throws ApiException {
-        getMeetWithHttpInfo();
+    public void getMeetApp() throws ApiException {
+        getMeetAppWithHttpInfo();
     }
 
     /**
@@ -2478,8 +2409,8 @@ public class DefaultApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getMeetWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getMeetValidateBeforeCall(null);
+    public ApiResponse<Void> getMeetAppWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getMeetAppValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -2490,20 +2421,20 @@ public class DefaultApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getMeetAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getMeetAppAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getMeetValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getMeetAppValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getMeetByWildcard1
+     * Build call for getMeetAppAssets
      * @param wildcard1  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getMeetByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getMeetAppAssetsCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2548,13 +2479,13 @@ public class DefaultApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getMeetByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getMeetAppAssetsValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'wildcard1' is set
         if (wildcard1 == null) {
-            throw new ApiException("Missing the required parameter 'wildcard1' when calling getMeetByWildcard1(Async)");
+            throw new ApiException("Missing the required parameter 'wildcard1' when calling getMeetAppAssets(Async)");
         }
 
-        return getMeetByWildcard1Call(wildcard1, _callback);
+        return getMeetAppAssetsCall(wildcard1, _callback);
 
     }
 
@@ -2564,8 +2495,8 @@ public class DefaultApi {
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getMeetByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        getMeetByWildcard1WithHttpInfo(wildcard1);
+    public void getMeetAppAssets(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        getMeetAppAssetsWithHttpInfo(wildcard1);
     }
 
     /**
@@ -2575,8 +2506,8 @@ public class DefaultApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getMeetByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        okhttp3.Call localVarCall = getMeetByWildcard1ValidateBeforeCall(wildcard1, null);
+    public ApiResponse<Void> getMeetAppAssetsWithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        okhttp3.Call localVarCall = getMeetAppAssetsValidateBeforeCall(wildcard1, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -2588,19 +2519,107 @@ public class DefaultApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getMeetByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getMeetAppAssetsAsync(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getMeetByWildcard1ValidateBeforeCall(wildcard1, _callback);
+        okhttp3.Call localVarCall = getMeetAppAssetsValidateBeforeCall(wildcard1, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getTasks
+     * Build call for getOpenapiJson
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getTasksCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getOpenapiJsonCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/openapi.json";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getOpenapiJsonValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getOpenapiJsonCall(_callback);
+
+    }
+
+    /**
+     * The API description this SDK was generated from
+     * Serves the OpenAPI document for the routes this process actually answers — generated from the live router at request time, not from a checked-in file that can disagree with it.  On an app it is that app&#39;s own surface; on the fleet&#39;s front door it is the woven document for every mounted app. Unauthenticated by design: a client has to be able to read the contract before it holds a credential, and the document grants nothing.  Rendered once and served as bytes thereafter, so the route table&#39;s immutability is what makes a repeat request a memcpy rather than a re-encode of a megabyte document.
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void getOpenapiJson() throws ApiException {
+        getOpenapiJsonWithHttpInfo();
+    }
+
+    /**
+     * The API description this SDK was generated from
+     * Serves the OpenAPI document for the routes this process actually answers — generated from the live router at request time, not from a checked-in file that can disagree with it.  On an app it is that app&#39;s own surface; on the fleet&#39;s front door it is the woven document for every mounted app. Unauthenticated by design: a client has to be able to read the contract before it holds a credential, and the document grants nothing.  Rendered once and served as bytes thereafter, so the route table&#39;s immutability is what makes a repeat request a memcpy rather than a re-encode of a megabyte document.
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> getOpenapiJsonWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getOpenapiJsonValidateBeforeCall(null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * The API description this SDK was generated from (asynchronously)
+     * Serves the OpenAPI document for the routes this process actually answers — generated from the live router at request time, not from a checked-in file that can disagree with it.  On an app it is that app&#39;s own surface; on the fleet&#39;s front door it is the woven document for every mounted app. Unauthenticated by design: a client has to be able to read the contract before it holds a credential, and the document grants nothing.  Rendered once and served as bytes thereafter, so the route table&#39;s immutability is what makes a repeat request a memcpy rather than a re-encode of a megabyte document.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call getOpenapiJsonAsync(final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getOpenapiJsonValidateBeforeCall(_callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getTasksApp
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call getTasksAppCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2644,8 +2663,8 @@ public class DefaultApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getTasksValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getTasksCall(_callback);
+    private okhttp3.Call getTasksAppValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getTasksAppCall(_callback);
 
     }
 
@@ -2654,8 +2673,8 @@ public class DefaultApi {
      * Serves the application shell on GET, which is the entry point a browser loads before it calls anything under /v1/tasks/.  This is the tasks console itself — HTML and hashed assets, not an API. Only GET and HEAD are served; every other method is refused 405. Hashed assets are returned immutable and cached for a year, while the shell is always revalidated, so a new deployment replaces a stale one on the next request.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getTasks() throws ApiException {
-        getTasksWithHttpInfo();
+    public void getTasksApp() throws ApiException {
+        getTasksAppWithHttpInfo();
     }
 
     /**
@@ -2664,8 +2683,8 @@ public class DefaultApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getTasksWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getTasksValidateBeforeCall(null);
+    public ApiResponse<Void> getTasksAppWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getTasksAppValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -2676,20 +2695,20 @@ public class DefaultApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getTasksAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getTasksAppAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getTasksValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getTasksAppValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getTasksByWildcard1
+     * Build call for getTasksAppAssets
      * @param wildcard1  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getTasksByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getTasksAppAssetsCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2734,13 +2753,13 @@ public class DefaultApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getTasksByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getTasksAppAssetsValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'wildcard1' is set
         if (wildcard1 == null) {
-            throw new ApiException("Missing the required parameter 'wildcard1' when calling getTasksByWildcard1(Async)");
+            throw new ApiException("Missing the required parameter 'wildcard1' when calling getTasksAppAssets(Async)");
         }
 
-        return getTasksByWildcard1Call(wildcard1, _callback);
+        return getTasksAppAssetsCall(wildcard1, _callback);
 
     }
 
@@ -2750,8 +2769,8 @@ public class DefaultApi {
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getTasksByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        getTasksByWildcard1WithHttpInfo(wildcard1);
+    public void getTasksAppAssets(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        getTasksAppAssetsWithHttpInfo(wildcard1);
     }
 
     /**
@@ -2761,8 +2780,8 @@ public class DefaultApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getTasksByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        okhttp3.Call localVarCall = getTasksByWildcard1ValidateBeforeCall(wildcard1, null);
+    public ApiResponse<Void> getTasksAppAssetsWithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        okhttp3.Call localVarCall = getTasksAppAssetsValidateBeforeCall(wildcard1, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -2774,400 +2793,9 @@ public class DefaultApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getTasksByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getTasksAppAssetsAsync(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getTasksByWildcard1ValidateBeforeCall(wildcard1, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getTracker
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public okhttp3.Call getTrackerCall(final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/tracker";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] {  };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getTrackerValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getTrackerCall(_callback);
-
-    }
-
-    /**
-     * The tracker board
-     * Serves the application shell on GET, which is the entry point a browser loads before it calls anything under /v1/tracker/.  This is the tracker board itself — HTML and hashed assets, not an API. Only GET and HEAD are served; every other method is refused 405. Hashed assets are returned immutable and cached for a year, while the shell is always revalidated, so a new deployment replaces a stale one on the next request.
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public void getTracker() throws ApiException {
-        getTrackerWithHttpInfo();
-    }
-
-    /**
-     * The tracker board
-     * Serves the application shell on GET, which is the entry point a browser loads before it calls anything under /v1/tracker/.  This is the tracker board itself — HTML and hashed assets, not an API. Only GET and HEAD are served; every other method is refused 405. Hashed assets are returned immutable and cached for a year, while the shell is always revalidated, so a new deployment replaces a stale one on the next request.
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Void> getTrackerWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getTrackerValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * The tracker board (asynchronously)
-     * Serves the application shell on GET, which is the entry point a browser loads before it calls anything under /v1/tracker/.  This is the tracker board itself — HTML and hashed assets, not an API. Only GET and HEAD are served; every other method is refused 405. Hashed assets are returned immutable and cached for a year, while the shell is always revalidated, so a new deployment replaces a stale one on the next request.
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public okhttp3.Call getTrackerAsync(final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getTrackerValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getTrackerByWildcard1
-     * @param wildcard1  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public okhttp3.Call getTrackerByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/tracker/{wildcard1}"
-            .replace("{" + "wildcard1" + "}", localVarApiClient.escapeString(wildcard1.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] {  };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getTrackerByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'wildcard1' is set
-        if (wildcard1 == null) {
-            throw new ApiException("Missing the required parameter 'wildcard1' when calling getTrackerByWildcard1(Async)");
-        }
-
-        return getTrackerByWildcard1Call(wildcard1, _callback);
-
-    }
-
-    /**
-     * The tracker board&#39;s assets and client-side routes
-     * Serves the static assets on GET, and returns the application shell for any path that is not a file — client-side routing means a deep link is a shell load, not a 404.  The one exception is /tracker/assets/, which holds only content-addressed build output: a name that is not there is a purged chunk, never a route, and answers 404. Everywhere else a path that looks like a missing file answers 200 with the shell, so read the content type rather than the status when a resource seems to be missing.  A bundle that was never built answers 503 under its own name on every path, which is a failed deploy rather than a missing page.  This is the tracker board itself — HTML and hashed assets, not an API. Only GET and HEAD are served; every other method is refused 405. Hashed assets are returned immutable and cached for a year, while the shell is always revalidated, so a new deployment replaces a stale one on the next request.
-     * @param wildcard1  (required)
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public void getTrackerByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        getTrackerByWildcard1WithHttpInfo(wildcard1);
-    }
-
-    /**
-     * The tracker board&#39;s assets and client-side routes
-     * Serves the static assets on GET, and returns the application shell for any path that is not a file — client-side routing means a deep link is a shell load, not a 404.  The one exception is /tracker/assets/, which holds only content-addressed build output: a name that is not there is a purged chunk, never a route, and answers 404. Everywhere else a path that looks like a missing file answers 200 with the shell, so read the content type rather than the status when a resource seems to be missing.  A bundle that was never built answers 503 under its own name on every path, which is a failed deploy rather than a missing page.  This is the tracker board itself — HTML and hashed assets, not an API. Only GET and HEAD are served; every other method is refused 405. Hashed assets are returned immutable and cached for a year, while the shell is always revalidated, so a new deployment replaces a stale one on the next request.
-     * @param wildcard1  (required)
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Void> getTrackerByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        okhttp3.Call localVarCall = getTrackerByWildcard1ValidateBeforeCall(wildcard1, null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * The tracker board&#39;s assets and client-side routes (asynchronously)
-     * Serves the static assets on GET, and returns the application shell for any path that is not a file — client-side routing means a deep link is a shell load, not a 404.  The one exception is /tracker/assets/, which holds only content-addressed build output: a name that is not there is a purged chunk, never a route, and answers 404. Everywhere else a path that looks like a missing file answers 200 with the shell, so read the content type rather than the status when a resource seems to be missing.  A bundle that was never built answers 503 under its own name on every path, which is a failed deploy rather than a missing page.  This is the tracker board itself — HTML and hashed assets, not an API. Only GET and HEAD are served; every other method is refused 405. Hashed assets are returned immutable and cached for a year, while the shell is always revalidated, so a new deployment replaces a stale one on the next request.
-     * @param wildcard1  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public okhttp3.Call getTrackerByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getTrackerByWildcard1ValidateBeforeCall(wildcard1, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getV1EventJs
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getV1EventJsCall(final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/event.js";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/javascript"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] {  };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1EventJsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1EventJsCall(_callback);
-
-    }
-
-    /**
-     * The Hanzo event tag — the one-line install for a surface with no bundler
-     * Serves the browser tag that autocaptures pageviews (initial and SPA) and uncaught errors onto the canonical wire at POST /v1/event.  Install is one line, and it is the same line for a Hanzo property and for a customer&#39;s own page:      &lt;script defer src&#x3D;\&quot;https://api.hanzo.ai/v1/event.js\&quot; data-key&#x3D;\&quot;pk-…\&quot;&gt;&lt;/script&gt;  &#x60;data-key&#x60; is the publishable key the project mints; &#x60;data-product&#x60; optionally names the emitting surface. The key may also ride the src as &#x60;?key&#x3D;&#x60; for a host that strips data attributes.  WITHOUT A KEY THE TAG SENDS NOTHING. A keyless beacon is accepted 200 into $public, a reserved tenant the owning org cannot read — so silence is the honest failure, and the tag picks it rather than reporting success into a tenant nobody reads.
-     * @return File
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public File getV1EventJs() throws ApiException {
-        ApiResponse<File> localVarResp = getV1EventJsWithHttpInfo();
-        return localVarResp.getData();
-    }
-
-    /**
-     * The Hanzo event tag — the one-line install for a surface with no bundler
-     * Serves the browser tag that autocaptures pageviews (initial and SPA) and uncaught errors onto the canonical wire at POST /v1/event.  Install is one line, and it is the same line for a Hanzo property and for a customer&#39;s own page:      &lt;script defer src&#x3D;\&quot;https://api.hanzo.ai/v1/event.js\&quot; data-key&#x3D;\&quot;pk-…\&quot;&gt;&lt;/script&gt;  &#x60;data-key&#x60; is the publishable key the project mints; &#x60;data-product&#x60; optionally names the emitting surface. The key may also ride the src as &#x60;?key&#x3D;&#x60; for a host that strips data attributes.  WITHOUT A KEY THE TAG SENDS NOTHING. A keyless beacon is accepted 200 into $public, a reserved tenant the owning org cannot read — so silence is the honest failure, and the tag picks it rather than reporting success into a tenant nobody reads.
-     * @return ApiResponse&lt;File&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<File> getV1EventJsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1EventJsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<File>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * The Hanzo event tag — the one-line install for a surface with no bundler (asynchronously)
-     * Serves the browser tag that autocaptures pageviews (initial and SPA) and uncaught errors onto the canonical wire at POST /v1/event.  Install is one line, and it is the same line for a Hanzo property and for a customer&#39;s own page:      &lt;script defer src&#x3D;\&quot;https://api.hanzo.ai/v1/event.js\&quot; data-key&#x3D;\&quot;pk-…\&quot;&gt;&lt;/script&gt;  &#x60;data-key&#x60; is the publishable key the project mints; &#x60;data-product&#x60; optionally names the emitting surface. The key may also ride the src as &#x60;?key&#x3D;&#x60; for a host that strips data attributes.  WITHOUT A KEY THE TAG SENDS NOTHING. A keyless beacon is accepted 200 into $public, a reserved tenant the owning org cannot read — so silence is the honest failure, and the tag picks it rather than reporting success into a tenant nobody reads.
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getV1EventJsAsync(final ApiCallback<File> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getV1EventJsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<File>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getV1OpenapiJson
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public okhttp3.Call getV1OpenapiJsonCall(final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/openapi.json";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] {  };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1OpenapiJsonValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1OpenapiJsonCall(_callback);
-
-    }
-
-    /**
-     * The API description this SDK was generated from
-     * Serves the OpenAPI document for the routes this process actually answers — generated from the live router at request time, not from a checked-in file that can disagree with it.  On an app it is that app&#39;s own surface; on the fleet&#39;s front door it is the woven document for every mounted app. Unauthenticated by design: a client has to be able to read the contract before it holds a credential, and the document grants nothing.  Rendered once and served as bytes thereafter, so the route table&#39;s immutability is what makes a repeat request a memcpy rather than a re-encode of a megabyte document.
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public void getV1OpenapiJson() throws ApiException {
-        getV1OpenapiJsonWithHttpInfo();
-    }
-
-    /**
-     * The API description this SDK was generated from
-     * Serves the OpenAPI document for the routes this process actually answers — generated from the live router at request time, not from a checked-in file that can disagree with it.  On an app it is that app&#39;s own surface; on the fleet&#39;s front door it is the woven document for every mounted app. Unauthenticated by design: a client has to be able to read the contract before it holds a credential, and the document grants nothing.  Rendered once and served as bytes thereafter, so the route table&#39;s immutability is what makes a repeat request a memcpy rather than a re-encode of a megabyte document.
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Void> getV1OpenapiJsonWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1OpenapiJsonValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * The API description this SDK was generated from (asynchronously)
-     * Serves the OpenAPI document for the routes this process actually answers — generated from the live router at request time, not from a checked-in file that can disagree with it.  On an app it is that app&#39;s own surface; on the fleet&#39;s front door it is the woven document for every mounted app. Unauthenticated by design: a client has to be able to read the contract before it holds a credential, and the document grants nothing.  Rendered once and served as bytes thereafter, so the route table&#39;s immutability is what makes a repeat request a memcpy rather than a re-encode of a megabyte document.
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public okhttp3.Call getV1OpenapiJsonAsync(final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getV1OpenapiJsonValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getTasksAppAssetsValidateBeforeCall(wildcard1, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
@@ -3710,12 +3338,12 @@ public class DefaultApi {
         return localVarCall;
     }
     /**
-     * Build call for patchMeet
+     * Build call for patchMeetApp
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call patchMeetCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call patchMeetAppCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3759,8 +3387,8 @@ public class DefaultApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchMeetValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return patchMeetCall(_callback);
+    private okhttp3.Call patchMeetAppValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return patchMeetAppCall(_callback);
 
     }
 
@@ -3769,8 +3397,8 @@ public class DefaultApi {
      * Published because this address accepts every method, but a static bundle has no writes: the request is refused 405 and nothing is read or changed.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void patchMeet() throws ApiException {
-        patchMeetWithHttpInfo();
+    public void patchMeetApp() throws ApiException {
+        patchMeetAppWithHttpInfo();
     }
 
     /**
@@ -3779,8 +3407,8 @@ public class DefaultApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> patchMeetWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = patchMeetValidateBeforeCall(null);
+    public ApiResponse<Void> patchMeetAppWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = patchMeetAppValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -3791,20 +3419,20 @@ public class DefaultApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call patchMeetAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call patchMeetAppAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchMeetValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = patchMeetAppValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for patchMeetByWildcard1
+     * Build call for patchMeetAppAssets
      * @param wildcard1  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call patchMeetByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call patchMeetAppAssetsCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3849,13 +3477,13 @@ public class DefaultApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchMeetByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call patchMeetAppAssetsValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'wildcard1' is set
         if (wildcard1 == null) {
-            throw new ApiException("Missing the required parameter 'wildcard1' when calling patchMeetByWildcard1(Async)");
+            throw new ApiException("Missing the required parameter 'wildcard1' when calling patchMeetAppAssets(Async)");
         }
 
-        return patchMeetByWildcard1Call(wildcard1, _callback);
+        return patchMeetAppAssetsCall(wildcard1, _callback);
 
     }
 
@@ -3865,8 +3493,8 @@ public class DefaultApi {
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void patchMeetByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        patchMeetByWildcard1WithHttpInfo(wildcard1);
+    public void patchMeetAppAssets(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        patchMeetAppAssetsWithHttpInfo(wildcard1);
     }
 
     /**
@@ -3876,8 +3504,8 @@ public class DefaultApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> patchMeetByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        okhttp3.Call localVarCall = patchMeetByWildcard1ValidateBeforeCall(wildcard1, null);
+    public ApiResponse<Void> patchMeetAppAssetsWithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        okhttp3.Call localVarCall = patchMeetAppAssetsValidateBeforeCall(wildcard1, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -3889,19 +3517,19 @@ public class DefaultApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call patchMeetByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call patchMeetAppAssetsAsync(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchMeetByWildcard1ValidateBeforeCall(wildcard1, _callback);
+        okhttp3.Call localVarCall = patchMeetAppAssetsValidateBeforeCall(wildcard1, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for patchTasks
+     * Build call for patchTasksApp
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call patchTasksCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call patchTasksAppCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3945,8 +3573,8 @@ public class DefaultApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchTasksValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return patchTasksCall(_callback);
+    private okhttp3.Call patchTasksAppValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return patchTasksAppCall(_callback);
 
     }
 
@@ -3955,8 +3583,8 @@ public class DefaultApi {
      * Published because this address accepts every method, but a static bundle has no writes: the request is refused 405 and nothing is read or changed.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void patchTasks() throws ApiException {
-        patchTasksWithHttpInfo();
+    public void patchTasksApp() throws ApiException {
+        patchTasksAppWithHttpInfo();
     }
 
     /**
@@ -3965,8 +3593,8 @@ public class DefaultApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> patchTasksWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = patchTasksValidateBeforeCall(null);
+    public ApiResponse<Void> patchTasksAppWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = patchTasksAppValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -3977,20 +3605,20 @@ public class DefaultApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call patchTasksAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call patchTasksAppAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchTasksValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = patchTasksAppValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for patchTasksByWildcard1
+     * Build call for patchTasksAppAssets
      * @param wildcard1  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call patchTasksByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call patchTasksAppAssetsCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4035,13 +3663,13 @@ public class DefaultApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchTasksByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call patchTasksAppAssetsValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'wildcard1' is set
         if (wildcard1 == null) {
-            throw new ApiException("Missing the required parameter 'wildcard1' when calling patchTasksByWildcard1(Async)");
+            throw new ApiException("Missing the required parameter 'wildcard1' when calling patchTasksAppAssets(Async)");
         }
 
-        return patchTasksByWildcard1Call(wildcard1, _callback);
+        return patchTasksAppAssetsCall(wildcard1, _callback);
 
     }
 
@@ -4051,8 +3679,8 @@ public class DefaultApi {
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void patchTasksByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        patchTasksByWildcard1WithHttpInfo(wildcard1);
+    public void patchTasksAppAssets(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        patchTasksAppAssetsWithHttpInfo(wildcard1);
     }
 
     /**
@@ -4062,8 +3690,8 @@ public class DefaultApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> patchTasksByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        okhttp3.Call localVarCall = patchTasksByWildcard1ValidateBeforeCall(wildcard1, null);
+    public ApiResponse<Void> patchTasksAppAssetsWithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        okhttp3.Call localVarCall = patchTasksAppAssetsValidateBeforeCall(wildcard1, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -4075,195 +3703,9 @@ public class DefaultApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call patchTasksByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call patchTasksAppAssetsAsync(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchTasksByWildcard1ValidateBeforeCall(wildcard1, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for patchTracker
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public okhttp3.Call patchTrackerCall(final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/tracker";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] {  };
-        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchTrackerValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return patchTrackerCall(_callback);
-
-    }
-
-    /**
-     * Not served by the tracker board
-     * Published because this address accepts every method, but a static bundle has no writes: the request is refused 405 and nothing is read or changed.
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public void patchTracker() throws ApiException {
-        patchTrackerWithHttpInfo();
-    }
-
-    /**
-     * Not served by the tracker board
-     * Published because this address accepts every method, but a static bundle has no writes: the request is refused 405 and nothing is read or changed.
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Void> patchTrackerWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = patchTrackerValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * Not served by the tracker board (asynchronously)
-     * Published because this address accepts every method, but a static bundle has no writes: the request is refused 405 and nothing is read or changed.
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public okhttp3.Call patchTrackerAsync(final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = patchTrackerValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for patchTrackerByWildcard1
-     * @param wildcard1  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public okhttp3.Call patchTrackerByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/tracker/{wildcard1}"
-            .replace("{" + "wildcard1" + "}", localVarApiClient.escapeString(wildcard1.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] {  };
-        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchTrackerByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'wildcard1' is set
-        if (wildcard1 == null) {
-            throw new ApiException("Missing the required parameter 'wildcard1' when calling patchTrackerByWildcard1(Async)");
-        }
-
-        return patchTrackerByWildcard1Call(wildcard1, _callback);
-
-    }
-
-    /**
-     * Not served by the tracker board
-     * Published because this address accepts every method, but a static bundle has no writes: the request is refused 405 and nothing is read or changed.
-     * @param wildcard1  (required)
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public void patchTrackerByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        patchTrackerByWildcard1WithHttpInfo(wildcard1);
-    }
-
-    /**
-     * Not served by the tracker board
-     * Published because this address accepts every method, but a static bundle has no writes: the request is refused 405 and nothing is read or changed.
-     * @param wildcard1  (required)
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Void> patchTrackerByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        okhttp3.Call localVarCall = patchTrackerByWildcard1ValidateBeforeCall(wildcard1, null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * Not served by the tracker board (asynchronously)
-     * Published because this address accepts every method, but a static bundle has no writes: the request is refused 405 and nothing is read or changed.
-     * @param wildcard1  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public okhttp3.Call patchTrackerByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = patchTrackerByWildcard1ValidateBeforeCall(wildcard1, _callback);
+        okhttp3.Call localVarCall = patchTasksAppAssetsValidateBeforeCall(wildcard1, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
@@ -4877,12 +4319,12 @@ public class DefaultApi {
         return localVarCall;
     }
     /**
-     * Build call for postMeet
+     * Build call for postMeetApp
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postMeetCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postMeetAppCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4926,8 +4368,8 @@ public class DefaultApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postMeetValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postMeetCall(_callback);
+    private okhttp3.Call postMeetAppValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postMeetAppCall(_callback);
 
     }
 
@@ -4936,8 +4378,8 @@ public class DefaultApi {
      * Published because this address accepts every method, but a static bundle has no writes: the request is refused 405 and nothing is read or changed.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postMeet() throws ApiException {
-        postMeetWithHttpInfo();
+    public void postMeetApp() throws ApiException {
+        postMeetAppWithHttpInfo();
     }
 
     /**
@@ -4946,8 +4388,8 @@ public class DefaultApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postMeetWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postMeetValidateBeforeCall(null);
+    public ApiResponse<Void> postMeetAppWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postMeetAppValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -4958,20 +4400,20 @@ public class DefaultApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postMeetAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postMeetAppAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postMeetValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postMeetAppValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postMeetByWildcard1
+     * Build call for postMeetAppAssets
      * @param wildcard1  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postMeetByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postMeetAppAssetsCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -5016,13 +4458,13 @@ public class DefaultApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postMeetByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postMeetAppAssetsValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'wildcard1' is set
         if (wildcard1 == null) {
-            throw new ApiException("Missing the required parameter 'wildcard1' when calling postMeetByWildcard1(Async)");
+            throw new ApiException("Missing the required parameter 'wildcard1' when calling postMeetAppAssets(Async)");
         }
 
-        return postMeetByWildcard1Call(wildcard1, _callback);
+        return postMeetAppAssetsCall(wildcard1, _callback);
 
     }
 
@@ -5032,8 +4474,8 @@ public class DefaultApi {
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postMeetByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        postMeetByWildcard1WithHttpInfo(wildcard1);
+    public void postMeetAppAssets(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        postMeetAppAssetsWithHttpInfo(wildcard1);
     }
 
     /**
@@ -5043,8 +4485,8 @@ public class DefaultApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postMeetByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        okhttp3.Call localVarCall = postMeetByWildcard1ValidateBeforeCall(wildcard1, null);
+    public ApiResponse<Void> postMeetAppAssetsWithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        okhttp3.Call localVarCall = postMeetAppAssetsValidateBeforeCall(wildcard1, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -5056,19 +4498,19 @@ public class DefaultApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postMeetByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postMeetAppAssetsAsync(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postMeetByWildcard1ValidateBeforeCall(wildcard1, _callback);
+        okhttp3.Call localVarCall = postMeetAppAssetsValidateBeforeCall(wildcard1, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postTasks
+     * Build call for postTasksApp
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postTasksCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postTasksAppCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -5112,8 +4554,8 @@ public class DefaultApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postTasksValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postTasksCall(_callback);
+    private okhttp3.Call postTasksAppValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postTasksAppCall(_callback);
 
     }
 
@@ -5122,8 +4564,8 @@ public class DefaultApi {
      * Published because this address accepts every method, but a static bundle has no writes: the request is refused 405 and nothing is read or changed.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postTasks() throws ApiException {
-        postTasksWithHttpInfo();
+    public void postTasksApp() throws ApiException {
+        postTasksAppWithHttpInfo();
     }
 
     /**
@@ -5132,8 +4574,8 @@ public class DefaultApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postTasksWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postTasksValidateBeforeCall(null);
+    public ApiResponse<Void> postTasksAppWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postTasksAppValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -5144,20 +4586,20 @@ public class DefaultApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postTasksAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postTasksAppAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postTasksValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postTasksAppValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postTasksByWildcard1
+     * Build call for postTasksAppAssets
      * @param wildcard1  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postTasksByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postTasksAppAssetsCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -5202,13 +4644,13 @@ public class DefaultApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postTasksByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postTasksAppAssetsValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'wildcard1' is set
         if (wildcard1 == null) {
-            throw new ApiException("Missing the required parameter 'wildcard1' when calling postTasksByWildcard1(Async)");
+            throw new ApiException("Missing the required parameter 'wildcard1' when calling postTasksAppAssets(Async)");
         }
 
-        return postTasksByWildcard1Call(wildcard1, _callback);
+        return postTasksAppAssetsCall(wildcard1, _callback);
 
     }
 
@@ -5218,8 +4660,8 @@ public class DefaultApi {
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postTasksByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        postTasksByWildcard1WithHttpInfo(wildcard1);
+    public void postTasksAppAssets(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        postTasksAppAssetsWithHttpInfo(wildcard1);
     }
 
     /**
@@ -5229,8 +4671,8 @@ public class DefaultApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postTasksByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        okhttp3.Call localVarCall = postTasksByWildcard1ValidateBeforeCall(wildcard1, null);
+    public ApiResponse<Void> postTasksAppAssetsWithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        okhttp3.Call localVarCall = postTasksAppAssetsValidateBeforeCall(wildcard1, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -5242,205 +4684,19 @@ public class DefaultApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postTasksByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postTasksAppAssetsAsync(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postTasksByWildcard1ValidateBeforeCall(wildcard1, _callback);
+        okhttp3.Call localVarCall = postTasksAppAssetsValidateBeforeCall(wildcard1, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postTracker
+     * Build call for putMeetApp
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postTrackerCall(final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/tracker";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] {  };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postTrackerValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postTrackerCall(_callback);
-
-    }
-
-    /**
-     * Not served by the tracker board
-     * Published because this address accepts every method, but a static bundle has no writes: the request is refused 405 and nothing is read or changed.
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public void postTracker() throws ApiException {
-        postTrackerWithHttpInfo();
-    }
-
-    /**
-     * Not served by the tracker board
-     * Published because this address accepts every method, but a static bundle has no writes: the request is refused 405 and nothing is read or changed.
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Void> postTrackerWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postTrackerValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * Not served by the tracker board (asynchronously)
-     * Published because this address accepts every method, but a static bundle has no writes: the request is refused 405 and nothing is read or changed.
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public okhttp3.Call postTrackerAsync(final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postTrackerValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postTrackerByWildcard1
-     * @param wildcard1  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public okhttp3.Call postTrackerByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/tracker/{wildcard1}"
-            .replace("{" + "wildcard1" + "}", localVarApiClient.escapeString(wildcard1.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] {  };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postTrackerByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'wildcard1' is set
-        if (wildcard1 == null) {
-            throw new ApiException("Missing the required parameter 'wildcard1' when calling postTrackerByWildcard1(Async)");
-        }
-
-        return postTrackerByWildcard1Call(wildcard1, _callback);
-
-    }
-
-    /**
-     * Not served by the tracker board
-     * Published because this address accepts every method, but a static bundle has no writes: the request is refused 405 and nothing is read or changed.
-     * @param wildcard1  (required)
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public void postTrackerByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        postTrackerByWildcard1WithHttpInfo(wildcard1);
-    }
-
-    /**
-     * Not served by the tracker board
-     * Published because this address accepts every method, but a static bundle has no writes: the request is refused 405 and nothing is read or changed.
-     * @param wildcard1  (required)
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Void> postTrackerByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        okhttp3.Call localVarCall = postTrackerByWildcard1ValidateBeforeCall(wildcard1, null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * Not served by the tracker board (asynchronously)
-     * Published because this address accepts every method, but a static bundle has no writes: the request is refused 405 and nothing is read or changed.
-     * @param wildcard1  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public okhttp3.Call postTrackerByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postTrackerByWildcard1ValidateBeforeCall(wildcard1, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for putMeet
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public okhttp3.Call putMeetCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putMeetAppCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -5484,8 +4740,8 @@ public class DefaultApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putMeetValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return putMeetCall(_callback);
+    private okhttp3.Call putMeetAppValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return putMeetAppCall(_callback);
 
     }
 
@@ -5494,8 +4750,8 @@ public class DefaultApi {
      * Published because this address accepts every method, but a static bundle has no writes: the request is refused 405 and nothing is read or changed.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void putMeet() throws ApiException {
-        putMeetWithHttpInfo();
+    public void putMeetApp() throws ApiException {
+        putMeetAppWithHttpInfo();
     }
 
     /**
@@ -5504,8 +4760,8 @@ public class DefaultApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> putMeetWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = putMeetValidateBeforeCall(null);
+    public ApiResponse<Void> putMeetAppWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = putMeetAppValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -5516,20 +4772,20 @@ public class DefaultApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call putMeetAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call putMeetAppAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putMeetValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = putMeetAppValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putMeetByWildcard1
+     * Build call for putMeetAppAssets
      * @param wildcard1  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call putMeetByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putMeetAppAssetsCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -5574,13 +4830,13 @@ public class DefaultApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putMeetByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putMeetAppAssetsValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'wildcard1' is set
         if (wildcard1 == null) {
-            throw new ApiException("Missing the required parameter 'wildcard1' when calling putMeetByWildcard1(Async)");
+            throw new ApiException("Missing the required parameter 'wildcard1' when calling putMeetAppAssets(Async)");
         }
 
-        return putMeetByWildcard1Call(wildcard1, _callback);
+        return putMeetAppAssetsCall(wildcard1, _callback);
 
     }
 
@@ -5590,8 +4846,8 @@ public class DefaultApi {
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void putMeetByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        putMeetByWildcard1WithHttpInfo(wildcard1);
+    public void putMeetAppAssets(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        putMeetAppAssetsWithHttpInfo(wildcard1);
     }
 
     /**
@@ -5601,8 +4857,8 @@ public class DefaultApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> putMeetByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        okhttp3.Call localVarCall = putMeetByWildcard1ValidateBeforeCall(wildcard1, null);
+    public ApiResponse<Void> putMeetAppAssetsWithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        okhttp3.Call localVarCall = putMeetAppAssetsValidateBeforeCall(wildcard1, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -5614,19 +4870,19 @@ public class DefaultApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call putMeetByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call putMeetAppAssetsAsync(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putMeetByWildcard1ValidateBeforeCall(wildcard1, _callback);
+        okhttp3.Call localVarCall = putMeetAppAssetsValidateBeforeCall(wildcard1, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putTasks
+     * Build call for putTasksApp
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call putTasksCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putTasksAppCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -5670,8 +4926,8 @@ public class DefaultApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putTasksValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return putTasksCall(_callback);
+    private okhttp3.Call putTasksAppValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return putTasksAppCall(_callback);
 
     }
 
@@ -5680,8 +4936,8 @@ public class DefaultApi {
      * Published because this address accepts every method, but a static bundle has no writes: the request is refused 405 and nothing is read or changed.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void putTasks() throws ApiException {
-        putTasksWithHttpInfo();
+    public void putTasksApp() throws ApiException {
+        putTasksAppWithHttpInfo();
     }
 
     /**
@@ -5690,8 +4946,8 @@ public class DefaultApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> putTasksWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = putTasksValidateBeforeCall(null);
+    public ApiResponse<Void> putTasksAppWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = putTasksAppValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -5702,20 +4958,20 @@ public class DefaultApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call putTasksAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call putTasksAppAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putTasksValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = putTasksAppValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putTasksByWildcard1
+     * Build call for putTasksAppAssets
      * @param wildcard1  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call putTasksByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putTasksAppAssetsCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -5760,13 +5016,13 @@ public class DefaultApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putTasksByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putTasksAppAssetsValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'wildcard1' is set
         if (wildcard1 == null) {
-            throw new ApiException("Missing the required parameter 'wildcard1' when calling putTasksByWildcard1(Async)");
+            throw new ApiException("Missing the required parameter 'wildcard1' when calling putTasksAppAssets(Async)");
         }
 
-        return putTasksByWildcard1Call(wildcard1, _callback);
+        return putTasksAppAssetsCall(wildcard1, _callback);
 
     }
 
@@ -5776,8 +5032,8 @@ public class DefaultApi {
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void putTasksByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        putTasksByWildcard1WithHttpInfo(wildcard1);
+    public void putTasksAppAssets(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        putTasksAppAssetsWithHttpInfo(wildcard1);
     }
 
     /**
@@ -5787,8 +5043,8 @@ public class DefaultApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> putTasksByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        okhttp3.Call localVarCall = putTasksByWildcard1ValidateBeforeCall(wildcard1, null);
+    public ApiResponse<Void> putTasksAppAssetsWithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        okhttp3.Call localVarCall = putTasksAppAssetsValidateBeforeCall(wildcard1, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -5800,195 +5056,9 @@ public class DefaultApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call putTasksByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call putTasksAppAssetsAsync(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putTasksByWildcard1ValidateBeforeCall(wildcard1, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for putTracker
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public okhttp3.Call putTrackerCall(final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/tracker";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] {  };
-        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call putTrackerValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return putTrackerCall(_callback);
-
-    }
-
-    /**
-     * Not served by the tracker board
-     * Published because this address accepts every method, but a static bundle has no writes: the request is refused 405 and nothing is read or changed.
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public void putTracker() throws ApiException {
-        putTrackerWithHttpInfo();
-    }
-
-    /**
-     * Not served by the tracker board
-     * Published because this address accepts every method, but a static bundle has no writes: the request is refused 405 and nothing is read or changed.
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Void> putTrackerWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = putTrackerValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * Not served by the tracker board (asynchronously)
-     * Published because this address accepts every method, but a static bundle has no writes: the request is refused 405 and nothing is read or changed.
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public okhttp3.Call putTrackerAsync(final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = putTrackerValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for putTrackerByWildcard1
-     * @param wildcard1  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public okhttp3.Call putTrackerByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/tracker/{wildcard1}"
-            .replace("{" + "wildcard1" + "}", localVarApiClient.escapeString(wildcard1.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] {  };
-        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call putTrackerByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'wildcard1' is set
-        if (wildcard1 == null) {
-            throw new ApiException("Missing the required parameter 'wildcard1' when calling putTrackerByWildcard1(Async)");
-        }
-
-        return putTrackerByWildcard1Call(wildcard1, _callback);
-
-    }
-
-    /**
-     * Not served by the tracker board
-     * Published because this address accepts every method, but a static bundle has no writes: the request is refused 405 and nothing is read or changed.
-     * @param wildcard1  (required)
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public void putTrackerByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        putTrackerByWildcard1WithHttpInfo(wildcard1);
-    }
-
-    /**
-     * Not served by the tracker board
-     * Published because this address accepts every method, but a static bundle has no writes: the request is refused 405 and nothing is read or changed.
-     * @param wildcard1  (required)
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Void> putTrackerByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        okhttp3.Call localVarCall = putTrackerByWildcard1ValidateBeforeCall(wildcard1, null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * Not served by the tracker board (asynchronously)
-     * Published because this address accepts every method, but a static bundle has no writes: the request is refused 405 and nothing is read or changed.
-     * @param wildcard1  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public okhttp3.Call putTrackerByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = putTrackerByWildcard1ValidateBeforeCall(wildcard1, _callback);
+        okhttp3.Call localVarCall = putTasksAppAssetsValidateBeforeCall(wildcard1, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

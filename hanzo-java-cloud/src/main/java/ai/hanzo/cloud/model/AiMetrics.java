@@ -14,6 +14,7 @@
 package ai.hanzo.cloud.model;
 
 import java.util.Objects;
+import ai.hanzo.cloud.model.AimActorStat;
 import ai.hanzo.cloud.model.AimEvals;
 import ai.hanzo.cloud.model.AimLfModelStat;
 import ai.hanzo.cloud.model.AimModelStat;
@@ -104,6 +105,11 @@ public class AiMetrics {
   @SerializedName(SERIALIZED_NAME_START)
   @javax.annotation.Nullable
   private String start;
+
+  public static final String SERIALIZED_NAME_TOP_ACTORS = "topActors";
+  @SerializedName(SERIALIZED_NAME_TOP_ACTORS)
+  @javax.annotation.Nullable
+  private List<AimActorStat> topActors = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_TOP_MODELS = "topModels";
   @SerializedName(SERIALIZED_NAME_TOP_MODELS)
@@ -321,6 +327,33 @@ public class AiMetrics {
   }
 
 
+  public AiMetrics topActors(@javax.annotation.Nullable List<AimActorStat> topActors) {
+    this.topActors = topActors;
+    return this;
+  }
+
+  public AiMetrics addTopActorsItem(AimActorStat topActorsItem) {
+    if (this.topActors == null) {
+      this.topActors = new ArrayList<>();
+    }
+    this.topActors.add(topActorsItem);
+    return this;
+  }
+
+  /**
+   * TopActors is per-PRINCIPAL spend from the same ledger — whose bill it is, which the per-model board cannot answer.
+   * @return topActors
+   */
+  @javax.annotation.Nullable
+  public List<AimActorStat> getTopActors() {
+    return topActors;
+  }
+
+  public void setTopActors(@javax.annotation.Nullable List<AimActorStat> topActors) {
+    this.topActors = topActors;
+  }
+
+
   public AiMetrics topModels(@javax.annotation.Nullable List<AimModelStat> topModels) {
     this.topModels = topModels;
     return this;
@@ -386,13 +419,14 @@ public class AiMetrics {
         Objects.equals(this.scoreNames, aiMetrics.scoreNames) &&
         Objects.equals(this.scoreSeries, aiMetrics.scoreSeries) &&
         Objects.equals(this.start, aiMetrics.start) &&
+        Objects.equals(this.topActors, aiMetrics.topActors) &&
         Objects.equals(this.topModels, aiMetrics.topModels) &&
         Objects.equals(this.usage, aiMetrics.usage);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(end, evalRuns, evals, o11yAi, o11yAiModels, range, scoreNames, scoreSeries, start, topModels, usage);
+    return Objects.hash(end, evalRuns, evals, o11yAi, o11yAiModels, range, scoreNames, scoreSeries, start, topActors, topModels, usage);
   }
 
   @Override
@@ -408,6 +442,7 @@ public class AiMetrics {
     sb.append("    scoreNames: ").append(toIndentedString(scoreNames)).append("\n");
     sb.append("    scoreSeries: ").append(toIndentedString(scoreSeries)).append("\n");
     sb.append("    start: ").append(toIndentedString(start)).append("\n");
+    sb.append("    topActors: ").append(toIndentedString(topActors)).append("\n");
     sb.append("    topModels: ").append(toIndentedString(topModels)).append("\n");
     sb.append("    usage: ").append(toIndentedString(usage)).append("\n");
     sb.append("}");
@@ -431,7 +466,7 @@ public class AiMetrics {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("end", "evalRuns", "evals", "o11yAi", "o11yAiModels", "range", "scoreNames", "scoreSeries", "start", "topModels", "usage"));
+    openapiFields = new HashSet<String>(Arrays.asList("end", "evalRuns", "evals", "o11yAi", "o11yAiModels", "range", "scoreNames", "scoreSeries", "start", "topActors", "topModels", "usage"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -530,6 +565,20 @@ public class AiMetrics {
       }
       if ((jsonObj.get("start") != null && !jsonObj.get("start").isJsonNull()) && !jsonObj.get("start").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `start` to be a primitive type in the JSON string but got `%s`", jsonObj.get("start").toString()));
+      }
+      if (jsonObj.get("topActors") != null && !jsonObj.get("topActors").isJsonNull()) {
+        JsonArray jsonArraytopActors = jsonObj.getAsJsonArray("topActors");
+        if (jsonArraytopActors != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("topActors").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `topActors` to be an array in the JSON string but got `%s`", jsonObj.get("topActors").toString()));
+          }
+
+          // validate the optional field `topActors` (array)
+          for (int i = 0; i < jsonArraytopActors.size(); i++) {
+            AimActorStat.validateJsonElement(jsonArraytopActors.get(i));
+          };
+        }
       }
       if (jsonObj.get("topModels") != null && !jsonObj.get("topModels").isJsonNull()) {
         JsonArray jsonArraytopModels = jsonObj.getAsJsonArray("topModels");

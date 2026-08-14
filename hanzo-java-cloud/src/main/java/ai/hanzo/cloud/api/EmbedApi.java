@@ -73,7 +73,7 @@ public class EmbedApi {
     }
 
     /**
-     * Build call for getV1Embed
+     * Build call for getEmbed
      * @param app App is the embedded app to report on: cms (Content Studio), erp or help. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -85,7 +85,7 @@ public class EmbedApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1EmbedCall(@javax.annotation.Nullable String app, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getEmbedCall(@javax.annotation.Nullable String app, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -134,8 +134,8 @@ public class EmbedApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1EmbedValidateBeforeCall(@javax.annotation.Nullable String app, final ApiCallback _callback) throws ApiException {
-        return getV1EmbedCall(app, _callback);
+    private okhttp3.Call getEmbedValidateBeforeCall(@javax.annotation.Nullable String app, final ApiCallback _callback) throws ApiException {
+        return getEmbedCall(app, _callback);
 
     }
 
@@ -152,8 +152,8 @@ public class EmbedApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public EmbedStatusResp getV1Embed(@javax.annotation.Nullable String app) throws ApiException {
-        ApiResponse<EmbedStatusResp> localVarResp = getV1EmbedWithHttpInfo(app);
+    public EmbedStatusResp getEmbed(@javax.annotation.Nullable String app) throws ApiException {
+        ApiResponse<EmbedStatusResp> localVarResp = getEmbedWithHttpInfo(app);
         return localVarResp.getData();
     }
 
@@ -170,8 +170,8 @@ public class EmbedApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<EmbedStatusResp> getV1EmbedWithHttpInfo(@javax.annotation.Nullable String app) throws ApiException {
-        okhttp3.Call localVarCall = getV1EmbedValidateBeforeCall(app, null);
+    public ApiResponse<EmbedStatusResp> getEmbedWithHttpInfo(@javax.annotation.Nullable String app) throws ApiException {
+        okhttp3.Call localVarCall = getEmbedValidateBeforeCall(app, null);
         Type localVarReturnType = new TypeToken<EmbedStatusResp>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -190,9 +190,9 @@ public class EmbedApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1EmbedAsync(@javax.annotation.Nullable String app, final ApiCallback<EmbedStatusResp> _callback) throws ApiException {
+    public okhttp3.Call getEmbedAsync(@javax.annotation.Nullable String app, final ApiCallback<EmbedStatusResp> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1EmbedValidateBeforeCall(app, _callback);
+        okhttp3.Call localVarCall = getEmbedValidateBeforeCall(app, _callback);
         Type localVarReturnType = new TypeToken<EmbedStatusResp>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

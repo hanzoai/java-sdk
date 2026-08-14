@@ -80,7 +80,7 @@ public class FinanceApi {
     }
 
     /**
-     * Build call for getV1FinanceAccounts
+     * Build call for getFinanceAccounts
      * @param scope Scope is \&quot;house\&quot; to read the reserve/revenue/payout house accounts. SuperAdmin only. (optional)
      * @param org Org names another tenant to read. SuperAdmin only; ignored when scope&#x3D;house. (optional)
      * @param _callback Callback for upload/download progress
@@ -93,7 +93,7 @@ public class FinanceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1FinanceAccountsCall(@javax.annotation.Nullable String scope, @javax.annotation.Nullable String org, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getFinanceAccountsCall(@javax.annotation.Nullable String scope, @javax.annotation.Nullable String org, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -146,8 +146,8 @@ public class FinanceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1FinanceAccountsValidateBeforeCall(@javax.annotation.Nullable String scope, @javax.annotation.Nullable String org, final ApiCallback _callback) throws ApiException {
-        return getV1FinanceAccountsCall(scope, org, _callback);
+    private okhttp3.Call getFinanceAccountsValidateBeforeCall(@javax.annotation.Nullable String scope, @javax.annotation.Nullable String org, final ApiCallback _callback) throws ApiException {
+        return getFinanceAccountsCall(scope, org, _callback);
 
     }
 
@@ -165,8 +165,8 @@ public class FinanceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public AccountsOut getV1FinanceAccounts(@javax.annotation.Nullable String scope, @javax.annotation.Nullable String org) throws ApiException {
-        ApiResponse<AccountsOut> localVarResp = getV1FinanceAccountsWithHttpInfo(scope, org);
+    public AccountsOut getFinanceAccounts(@javax.annotation.Nullable String scope, @javax.annotation.Nullable String org) throws ApiException {
+        ApiResponse<AccountsOut> localVarResp = getFinanceAccountsWithHttpInfo(scope, org);
         return localVarResp.getData();
     }
 
@@ -184,8 +184,8 @@ public class FinanceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AccountsOut> getV1FinanceAccountsWithHttpInfo(@javax.annotation.Nullable String scope, @javax.annotation.Nullable String org) throws ApiException {
-        okhttp3.Call localVarCall = getV1FinanceAccountsValidateBeforeCall(scope, org, null);
+    public ApiResponse<AccountsOut> getFinanceAccountsWithHttpInfo(@javax.annotation.Nullable String scope, @javax.annotation.Nullable String org) throws ApiException {
+        okhttp3.Call localVarCall = getFinanceAccountsValidateBeforeCall(scope, org, null);
         Type localVarReturnType = new TypeToken<AccountsOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -205,15 +205,15 @@ public class FinanceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1FinanceAccountsAsync(@javax.annotation.Nullable String scope, @javax.annotation.Nullable String org, final ApiCallback<AccountsOut> _callback) throws ApiException {
+    public okhttp3.Call getFinanceAccountsAsync(@javax.annotation.Nullable String scope, @javax.annotation.Nullable String org, final ApiCallback<AccountsOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1FinanceAccountsValidateBeforeCall(scope, org, _callback);
+        okhttp3.Call localVarCall = getFinanceAccountsValidateBeforeCall(scope, org, _callback);
         Type localVarReturnType = new TypeToken<AccountsOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1FinanceBalance
+     * Build call for getFinanceBalance
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -224,7 +224,7 @@ public class FinanceApi {
         <tr><td> 200 </td><td> ok </td><td>  * Cache-Control - Set by GET /v1/finance/usage. <br>  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1FinanceBalanceCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getFinanceBalanceCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -269,8 +269,8 @@ public class FinanceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1FinanceBalanceValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1FinanceBalanceCall(_callback);
+    private okhttp3.Call getFinanceBalanceValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getFinanceBalanceCall(_callback);
 
     }
 
@@ -286,8 +286,8 @@ public class FinanceApi {
         <tr><td> 200 </td><td> ok </td><td>  * Cache-Control - Set by GET /v1/finance/usage. <br>  </td></tr>
      </table>
      */
-    public FinanceBalanceView getV1FinanceBalance() throws ApiException {
-        ApiResponse<FinanceBalanceView> localVarResp = getV1FinanceBalanceWithHttpInfo();
+    public FinanceBalanceView getFinanceBalance() throws ApiException {
+        ApiResponse<FinanceBalanceView> localVarResp = getFinanceBalanceWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -303,8 +303,8 @@ public class FinanceApi {
         <tr><td> 200 </td><td> ok </td><td>  * Cache-Control - Set by GET /v1/finance/usage. <br>  </td></tr>
      </table>
      */
-    public ApiResponse<FinanceBalanceView> getV1FinanceBalanceWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1FinanceBalanceValidateBeforeCall(null);
+    public ApiResponse<FinanceBalanceView> getFinanceBalanceWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getFinanceBalanceValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<FinanceBalanceView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -322,15 +322,15 @@ public class FinanceApi {
         <tr><td> 200 </td><td> ok </td><td>  * Cache-Control - Set by GET /v1/finance/usage. <br>  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1FinanceBalanceAsync(final ApiCallback<FinanceBalanceView> _callback) throws ApiException {
+    public okhttp3.Call getFinanceBalanceAsync(final ApiCallback<FinanceBalanceView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1FinanceBalanceValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getFinanceBalanceValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<FinanceBalanceView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1FinanceCredits
+     * Build call for getFinanceCredits
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -341,7 +341,7 @@ public class FinanceApi {
         <tr><td> 200 </td><td> ok </td><td>  * Cache-Control - Set by GET /v1/finance/usage. <br>  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1FinanceCreditsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getFinanceCreditsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -386,8 +386,8 @@ public class FinanceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1FinanceCreditsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1FinanceCreditsCall(_callback);
+    private okhttp3.Call getFinanceCreditsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getFinanceCreditsCall(_callback);
 
     }
 
@@ -403,8 +403,8 @@ public class FinanceApi {
         <tr><td> 200 </td><td> ok </td><td>  * Cache-Control - Set by GET /v1/finance/usage. <br>  </td></tr>
      </table>
      */
-    public List<FinanceCredit> getV1FinanceCredits() throws ApiException {
-        ApiResponse<List<FinanceCredit>> localVarResp = getV1FinanceCreditsWithHttpInfo();
+    public List<FinanceCredit> getFinanceCredits() throws ApiException {
+        ApiResponse<List<FinanceCredit>> localVarResp = getFinanceCreditsWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -420,8 +420,8 @@ public class FinanceApi {
         <tr><td> 200 </td><td> ok </td><td>  * Cache-Control - Set by GET /v1/finance/usage. <br>  </td></tr>
      </table>
      */
-    public ApiResponse<List<FinanceCredit>> getV1FinanceCreditsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1FinanceCreditsValidateBeforeCall(null);
+    public ApiResponse<List<FinanceCredit>> getFinanceCreditsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getFinanceCreditsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<List<FinanceCredit>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -439,15 +439,15 @@ public class FinanceApi {
         <tr><td> 200 </td><td> ok </td><td>  * Cache-Control - Set by GET /v1/finance/usage. <br>  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1FinanceCreditsAsync(final ApiCallback<List<FinanceCredit>> _callback) throws ApiException {
+    public okhttp3.Call getFinanceCreditsAsync(final ApiCallback<List<FinanceCredit>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1FinanceCreditsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getFinanceCreditsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<List<FinanceCredit>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1FinanceInvoices
+     * Build call for getFinanceInvoices
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -458,7 +458,7 @@ public class FinanceApi {
         <tr><td> 200 </td><td> ok </td><td>  * Cache-Control - Set by GET /v1/finance/usage. <br>  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1FinanceInvoicesCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getFinanceInvoicesCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -503,8 +503,8 @@ public class FinanceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1FinanceInvoicesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1FinanceInvoicesCall(_callback);
+    private okhttp3.Call getFinanceInvoicesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getFinanceInvoicesCall(_callback);
 
     }
 
@@ -520,8 +520,8 @@ public class FinanceApi {
         <tr><td> 200 </td><td> ok </td><td>  * Cache-Control - Set by GET /v1/finance/usage. <br>  </td></tr>
      </table>
      */
-    public List<FinanceInvoice> getV1FinanceInvoices() throws ApiException {
-        ApiResponse<List<FinanceInvoice>> localVarResp = getV1FinanceInvoicesWithHttpInfo();
+    public List<FinanceInvoice> getFinanceInvoices() throws ApiException {
+        ApiResponse<List<FinanceInvoice>> localVarResp = getFinanceInvoicesWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -537,8 +537,8 @@ public class FinanceApi {
         <tr><td> 200 </td><td> ok </td><td>  * Cache-Control - Set by GET /v1/finance/usage. <br>  </td></tr>
      </table>
      */
-    public ApiResponse<List<FinanceInvoice>> getV1FinanceInvoicesWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1FinanceInvoicesValidateBeforeCall(null);
+    public ApiResponse<List<FinanceInvoice>> getFinanceInvoicesWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getFinanceInvoicesValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<List<FinanceInvoice>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -556,15 +556,15 @@ public class FinanceApi {
         <tr><td> 200 </td><td> ok </td><td>  * Cache-Control - Set by GET /v1/finance/usage. <br>  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1FinanceInvoicesAsync(final ApiCallback<List<FinanceInvoice>> _callback) throws ApiException {
+    public okhttp3.Call getFinanceInvoicesAsync(final ApiCallback<List<FinanceInvoice>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1FinanceInvoicesValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getFinanceInvoicesValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<List<FinanceInvoice>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1FinanceLedger
+     * Build call for getFinanceLedger
      * @param range Range is the window: 24h, 7d, 30d or 90d. Anything else — including absent — is 30d, so a typo silently widens the window to a month rather than failing. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -576,7 +576,7 @@ public class FinanceApi {
         <tr><td> 200 </td><td> ok </td><td>  * Cache-Control - Set by GET /v1/finance/usage. <br>  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1FinanceLedgerCall(@javax.annotation.Nullable String range, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getFinanceLedgerCall(@javax.annotation.Nullable String range, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -625,8 +625,8 @@ public class FinanceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1FinanceLedgerValidateBeforeCall(@javax.annotation.Nullable String range, final ApiCallback _callback) throws ApiException {
-        return getV1FinanceLedgerCall(range, _callback);
+    private okhttp3.Call getFinanceLedgerValidateBeforeCall(@javax.annotation.Nullable String range, final ApiCallback _callback) throws ApiException {
+        return getFinanceLedgerCall(range, _callback);
 
     }
 
@@ -643,8 +643,8 @@ public class FinanceApi {
         <tr><td> 200 </td><td> ok </td><td>  * Cache-Control - Set by GET /v1/finance/usage. <br>  </td></tr>
      </table>
      */
-    public List<FinanceLedgerEntry> getV1FinanceLedger(@javax.annotation.Nullable String range) throws ApiException {
-        ApiResponse<List<FinanceLedgerEntry>> localVarResp = getV1FinanceLedgerWithHttpInfo(range);
+    public List<FinanceLedgerEntry> getFinanceLedger(@javax.annotation.Nullable String range) throws ApiException {
+        ApiResponse<List<FinanceLedgerEntry>> localVarResp = getFinanceLedgerWithHttpInfo(range);
         return localVarResp.getData();
     }
 
@@ -661,8 +661,8 @@ public class FinanceApi {
         <tr><td> 200 </td><td> ok </td><td>  * Cache-Control - Set by GET /v1/finance/usage. <br>  </td></tr>
      </table>
      */
-    public ApiResponse<List<FinanceLedgerEntry>> getV1FinanceLedgerWithHttpInfo(@javax.annotation.Nullable String range) throws ApiException {
-        okhttp3.Call localVarCall = getV1FinanceLedgerValidateBeforeCall(range, null);
+    public ApiResponse<List<FinanceLedgerEntry>> getFinanceLedgerWithHttpInfo(@javax.annotation.Nullable String range) throws ApiException {
+        okhttp3.Call localVarCall = getFinanceLedgerValidateBeforeCall(range, null);
         Type localVarReturnType = new TypeToken<List<FinanceLedgerEntry>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -681,15 +681,15 @@ public class FinanceApi {
         <tr><td> 200 </td><td> ok </td><td>  * Cache-Control - Set by GET /v1/finance/usage. <br>  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1FinanceLedgerAsync(@javax.annotation.Nullable String range, final ApiCallback<List<FinanceLedgerEntry>> _callback) throws ApiException {
+    public okhttp3.Call getFinanceLedgerAsync(@javax.annotation.Nullable String range, final ApiCallback<List<FinanceLedgerEntry>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1FinanceLedgerValidateBeforeCall(range, _callback);
+        okhttp3.Call localVarCall = getFinanceLedgerValidateBeforeCall(range, _callback);
         Type localVarReturnType = new TypeToken<List<FinanceLedgerEntry>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1FinancePaymentMethods
+     * Build call for getFinancePaymentMethods
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -700,7 +700,7 @@ public class FinanceApi {
         <tr><td> 200 </td><td> ok </td><td>  * Cache-Control - Set by GET /v1/finance/usage. <br>  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1FinancePaymentMethodsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getFinancePaymentMethodsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -745,8 +745,8 @@ public class FinanceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1FinancePaymentMethodsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1FinancePaymentMethodsCall(_callback);
+    private okhttp3.Call getFinancePaymentMethodsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getFinancePaymentMethodsCall(_callback);
 
     }
 
@@ -762,8 +762,8 @@ public class FinanceApi {
         <tr><td> 200 </td><td> ok </td><td>  * Cache-Control - Set by GET /v1/finance/usage. <br>  </td></tr>
      </table>
      */
-    public List<FinancePaymentMethod> getV1FinancePaymentMethods() throws ApiException {
-        ApiResponse<List<FinancePaymentMethod>> localVarResp = getV1FinancePaymentMethodsWithHttpInfo();
+    public List<FinancePaymentMethod> getFinancePaymentMethods() throws ApiException {
+        ApiResponse<List<FinancePaymentMethod>> localVarResp = getFinancePaymentMethodsWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -779,8 +779,8 @@ public class FinanceApi {
         <tr><td> 200 </td><td> ok </td><td>  * Cache-Control - Set by GET /v1/finance/usage. <br>  </td></tr>
      </table>
      */
-    public ApiResponse<List<FinancePaymentMethod>> getV1FinancePaymentMethodsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1FinancePaymentMethodsValidateBeforeCall(null);
+    public ApiResponse<List<FinancePaymentMethod>> getFinancePaymentMethodsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getFinancePaymentMethodsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<List<FinancePaymentMethod>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -798,15 +798,15 @@ public class FinanceApi {
         <tr><td> 200 </td><td> ok </td><td>  * Cache-Control - Set by GET /v1/finance/usage. <br>  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1FinancePaymentMethodsAsync(final ApiCallback<List<FinancePaymentMethod>> _callback) throws ApiException {
+    public okhttp3.Call getFinancePaymentMethodsAsync(final ApiCallback<List<FinancePaymentMethod>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1FinancePaymentMethodsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getFinancePaymentMethodsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<List<FinancePaymentMethod>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1FinanceTreasury
+     * Build call for getFinanceTreasury
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -817,7 +817,7 @@ public class FinanceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1FinanceTreasuryCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getFinanceTreasuryCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -862,8 +862,8 @@ public class FinanceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1FinanceTreasuryValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1FinanceTreasuryCall(_callback);
+    private okhttp3.Call getFinanceTreasuryValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getFinanceTreasuryCall(_callback);
 
     }
 
@@ -879,8 +879,8 @@ public class FinanceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public TreasuryReport getV1FinanceTreasury() throws ApiException {
-        ApiResponse<TreasuryReport> localVarResp = getV1FinanceTreasuryWithHttpInfo();
+    public TreasuryReport getFinanceTreasury() throws ApiException {
+        ApiResponse<TreasuryReport> localVarResp = getFinanceTreasuryWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -896,8 +896,8 @@ public class FinanceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<TreasuryReport> getV1FinanceTreasuryWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1FinanceTreasuryValidateBeforeCall(null);
+    public ApiResponse<TreasuryReport> getFinanceTreasuryWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getFinanceTreasuryValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<TreasuryReport>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -915,15 +915,15 @@ public class FinanceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1FinanceTreasuryAsync(final ApiCallback<TreasuryReport> _callback) throws ApiException {
+    public okhttp3.Call getFinanceTreasuryAsync(final ApiCallback<TreasuryReport> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1FinanceTreasuryValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getFinanceTreasuryValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<TreasuryReport>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1FinanceUsage
+     * Build call for getFinanceUsage
      * @param range Range is the window: 24h, 7d, 30d or 90d. Anything else — including absent — is 30d, so a typo silently widens the window to a month rather than failing. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -935,7 +935,7 @@ public class FinanceApi {
         <tr><td> 200 </td><td> ok </td><td>  * Cache-Control - Set by GET /v1/finance/usage. <br>  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1FinanceUsageCall(@javax.annotation.Nullable String range, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getFinanceUsageCall(@javax.annotation.Nullable String range, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -984,8 +984,8 @@ public class FinanceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1FinanceUsageValidateBeforeCall(@javax.annotation.Nullable String range, final ApiCallback _callback) throws ApiException {
-        return getV1FinanceUsageCall(range, _callback);
+    private okhttp3.Call getFinanceUsageValidateBeforeCall(@javax.annotation.Nullable String range, final ApiCallback _callback) throws ApiException {
+        return getFinanceUsageCall(range, _callback);
 
     }
 
@@ -1002,8 +1002,8 @@ public class FinanceApi {
         <tr><td> 200 </td><td> ok </td><td>  * Cache-Control - Set by GET /v1/finance/usage. <br>  </td></tr>
      </table>
      */
-    public FinanceUsageView getV1FinanceUsage(@javax.annotation.Nullable String range) throws ApiException {
-        ApiResponse<FinanceUsageView> localVarResp = getV1FinanceUsageWithHttpInfo(range);
+    public FinanceUsageView getFinanceUsage(@javax.annotation.Nullable String range) throws ApiException {
+        ApiResponse<FinanceUsageView> localVarResp = getFinanceUsageWithHttpInfo(range);
         return localVarResp.getData();
     }
 
@@ -1020,8 +1020,8 @@ public class FinanceApi {
         <tr><td> 200 </td><td> ok </td><td>  * Cache-Control - Set by GET /v1/finance/usage. <br>  </td></tr>
      </table>
      */
-    public ApiResponse<FinanceUsageView> getV1FinanceUsageWithHttpInfo(@javax.annotation.Nullable String range) throws ApiException {
-        okhttp3.Call localVarCall = getV1FinanceUsageValidateBeforeCall(range, null);
+    public ApiResponse<FinanceUsageView> getFinanceUsageWithHttpInfo(@javax.annotation.Nullable String range) throws ApiException {
+        okhttp3.Call localVarCall = getFinanceUsageValidateBeforeCall(range, null);
         Type localVarReturnType = new TypeToken<FinanceUsageView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1040,9 +1040,9 @@ public class FinanceApi {
         <tr><td> 200 </td><td> ok </td><td>  * Cache-Control - Set by GET /v1/finance/usage. <br>  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1FinanceUsageAsync(@javax.annotation.Nullable String range, final ApiCallback<FinanceUsageView> _callback) throws ApiException {
+    public okhttp3.Call getFinanceUsageAsync(@javax.annotation.Nullable String range, final ApiCallback<FinanceUsageView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1FinanceUsageValidateBeforeCall(range, _callback);
+        okhttp3.Call localVarCall = getFinanceUsageValidateBeforeCall(range, _callback);
         Type localVarReturnType = new TypeToken<FinanceUsageView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

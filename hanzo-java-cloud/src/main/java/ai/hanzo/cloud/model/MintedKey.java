@@ -20,7 +20,9 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -59,6 +61,11 @@ public class MintedKey {
   @SerializedName(SERIALIZED_NAME_KEY)
   @javax.annotation.Nullable
   private String key;
+
+  public static final String SERIALIZED_NAME_LIMIT = "limit";
+  @SerializedName(SERIALIZED_NAME_LIMIT)
+  @javax.annotation.Nullable
+  private List<String> limit = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
@@ -106,6 +113,33 @@ public class MintedKey {
   }
 
 
+  public MintedKey limit(@javax.annotation.Nullable List<String> limit) {
+    this.limit = limit;
+    return this;
+  }
+
+  public MintedKey addLimitItem(String limitItem) {
+    if (this.limit == null) {
+      this.limit = new ArrayList<>();
+    }
+    this.limit.add(limitItem);
+    return this;
+  }
+
+  /**
+   * Limit is what the minted key may reach, echoed back so the caller can see the narrowing took. Absent means unrestricted.
+   * @return limit
+   */
+  @javax.annotation.Nullable
+  public List<String> getLimit() {
+    return limit;
+  }
+
+  public void setLimit(@javax.annotation.Nullable List<String> limit) {
+    this.limit = limit;
+  }
+
+
   public MintedKey type(@javax.annotation.Nullable String type) {
     this.type = type;
     return this;
@@ -137,12 +171,13 @@ public class MintedKey {
     MintedKey mintedKey = (MintedKey) o;
     return Objects.equals(this.accessKey, mintedKey.accessKey) &&
         Objects.equals(this.key, mintedKey.key) &&
+        Objects.equals(this.limit, mintedKey.limit) &&
         Objects.equals(this.type, mintedKey.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(accessKey, key, type);
+    return Objects.hash(accessKey, key, limit, type);
   }
 
   @Override
@@ -151,6 +186,7 @@ public class MintedKey {
     sb.append("class MintedKey {\n");
     sb.append("    accessKey: ").append(toIndentedString(accessKey)).append("\n");
     sb.append("    key: ").append(toIndentedString(key)).append("\n");
+    sb.append("    limit: ").append(toIndentedString(limit)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -173,7 +209,7 @@ public class MintedKey {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("accessKey", "key", "type"));
+    openapiFields = new HashSet<String>(Arrays.asList("accessKey", "key", "limit", "type"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -205,6 +241,10 @@ public class MintedKey {
       }
       if ((jsonObj.get("key") != null && !jsonObj.get("key").isJsonNull()) && !jsonObj.get("key").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `key` to be a primitive type in the JSON string but got `%s`", jsonObj.get("key").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("limit") != null && !jsonObj.get("limit").isJsonNull() && !jsonObj.get("limit").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `limit` to be an array in the JSON string but got `%s`", jsonObj.get("limit").toString()));
       }
       if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));

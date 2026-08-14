@@ -72,12 +72,12 @@ public class CompletionsApi {
     }
 
     /**
-     * Build call for postV1Completions
+     * Build call for postCompletions
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1CompletionsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCompletionsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -121,8 +121,8 @@ public class CompletionsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CompletionsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1CompletionsCall(_callback);
+    private okhttp3.Call postCompletionsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postCompletionsCall(_callback);
 
     }
 
@@ -131,8 +131,8 @@ public class CompletionsApi {
      * Implements the OpenAI-compatible chat completions API
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1Completions() throws ApiException {
-        postV1CompletionsWithHttpInfo();
+    public void postCompletions() throws ApiException {
+        postCompletionsWithHttpInfo();
     }
 
     /**
@@ -141,8 +141,8 @@ public class CompletionsApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1CompletionsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1CompletionsValidateBeforeCall(null);
+    public ApiResponse<Void> postCompletionsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postCompletionsValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -153,9 +153,9 @@ public class CompletionsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1CompletionsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postCompletionsAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CompletionsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postCompletionsValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

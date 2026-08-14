@@ -85,7 +85,7 @@ public class DataroomApi {
     }
 
     /**
-     * Build call for getV1DataroomAnalyticsDataroomByDataroomid
+     * Build call for getDataroomAnalyticsDataroomByDataroomid
      * @param dataroomId DataroomID is the room to report on. It is the path segment, resolved in the caller&#39;s own tenant store. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -97,7 +97,7 @@ public class DataroomApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1DataroomAnalyticsDataroomByDataroomidCall(@javax.annotation.Nonnull String dataroomId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getDataroomAnalyticsDataroomByDataroomidCall(@javax.annotation.Nonnull String dataroomId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -143,13 +143,13 @@ public class DataroomApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1DataroomAnalyticsDataroomByDataroomidValidateBeforeCall(@javax.annotation.Nonnull String dataroomId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getDataroomAnalyticsDataroomByDataroomidValidateBeforeCall(@javax.annotation.Nonnull String dataroomId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'dataroomId' is set
         if (dataroomId == null) {
-            throw new ApiException("Missing the required parameter 'dataroomId' when calling getV1DataroomAnalyticsDataroomByDataroomid(Async)");
+            throw new ApiException("Missing the required parameter 'dataroomId' when calling getDataroomAnalyticsDataroomByDataroomid(Async)");
         }
 
-        return getV1DataroomAnalyticsDataroomByDataroomidCall(dataroomId, _callback);
+        return getDataroomAnalyticsDataroomByDataroomidCall(dataroomId, _callback);
 
     }
 
@@ -166,8 +166,8 @@ public class DataroomApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public DataroomStats getV1DataroomAnalyticsDataroomByDataroomid(@javax.annotation.Nonnull String dataroomId) throws ApiException {
-        ApiResponse<DataroomStats> localVarResp = getV1DataroomAnalyticsDataroomByDataroomidWithHttpInfo(dataroomId);
+    public DataroomStats getDataroomAnalyticsDataroomByDataroomid(@javax.annotation.Nonnull String dataroomId) throws ApiException {
+        ApiResponse<DataroomStats> localVarResp = getDataroomAnalyticsDataroomByDataroomidWithHttpInfo(dataroomId);
         return localVarResp.getData();
     }
 
@@ -184,8 +184,8 @@ public class DataroomApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DataroomStats> getV1DataroomAnalyticsDataroomByDataroomidWithHttpInfo(@javax.annotation.Nonnull String dataroomId) throws ApiException {
-        okhttp3.Call localVarCall = getV1DataroomAnalyticsDataroomByDataroomidValidateBeforeCall(dataroomId, null);
+    public ApiResponse<DataroomStats> getDataroomAnalyticsDataroomByDataroomidWithHttpInfo(@javax.annotation.Nonnull String dataroomId) throws ApiException {
+        okhttp3.Call localVarCall = getDataroomAnalyticsDataroomByDataroomidValidateBeforeCall(dataroomId, null);
         Type localVarReturnType = new TypeToken<DataroomStats>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -204,15 +204,15 @@ public class DataroomApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1DataroomAnalyticsDataroomByDataroomidAsync(@javax.annotation.Nonnull String dataroomId, final ApiCallback<DataroomStats> _callback) throws ApiException {
+    public okhttp3.Call getDataroomAnalyticsDataroomByDataroomidAsync(@javax.annotation.Nonnull String dataroomId, final ApiCallback<DataroomStats> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1DataroomAnalyticsDataroomByDataroomidValidateBeforeCall(dataroomId, _callback);
+        okhttp3.Call localVarCall = getDataroomAnalyticsDataroomByDataroomidValidateBeforeCall(dataroomId, _callback);
         Type localVarReturnType = new TypeToken<DataroomStats>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1DataroomAnalyticsLinkByLinkid
+     * Build call for getDataroomAnalyticsLinkByLinkid
      * @param linkId LinkID is the link to report on. It is the path segment, resolved in the caller&#39;s own tenant store. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -224,7 +224,7 @@ public class DataroomApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1DataroomAnalyticsLinkByLinkidCall(@javax.annotation.Nonnull String linkId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getDataroomAnalyticsLinkByLinkidCall(@javax.annotation.Nonnull String linkId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -270,13 +270,13 @@ public class DataroomApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1DataroomAnalyticsLinkByLinkidValidateBeforeCall(@javax.annotation.Nonnull String linkId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getDataroomAnalyticsLinkByLinkidValidateBeforeCall(@javax.annotation.Nonnull String linkId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'linkId' is set
         if (linkId == null) {
-            throw new ApiException("Missing the required parameter 'linkId' when calling getV1DataroomAnalyticsLinkByLinkid(Async)");
+            throw new ApiException("Missing the required parameter 'linkId' when calling getDataroomAnalyticsLinkByLinkid(Async)");
         }
 
-        return getV1DataroomAnalyticsLinkByLinkidCall(linkId, _callback);
+        return getDataroomAnalyticsLinkByLinkidCall(linkId, _callback);
 
     }
 
@@ -293,8 +293,8 @@ public class DataroomApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public DataroomLinkStats getV1DataroomAnalyticsLinkByLinkid(@javax.annotation.Nonnull String linkId) throws ApiException {
-        ApiResponse<DataroomLinkStats> localVarResp = getV1DataroomAnalyticsLinkByLinkidWithHttpInfo(linkId);
+    public DataroomLinkStats getDataroomAnalyticsLinkByLinkid(@javax.annotation.Nonnull String linkId) throws ApiException {
+        ApiResponse<DataroomLinkStats> localVarResp = getDataroomAnalyticsLinkByLinkidWithHttpInfo(linkId);
         return localVarResp.getData();
     }
 
@@ -311,8 +311,8 @@ public class DataroomApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DataroomLinkStats> getV1DataroomAnalyticsLinkByLinkidWithHttpInfo(@javax.annotation.Nonnull String linkId) throws ApiException {
-        okhttp3.Call localVarCall = getV1DataroomAnalyticsLinkByLinkidValidateBeforeCall(linkId, null);
+    public ApiResponse<DataroomLinkStats> getDataroomAnalyticsLinkByLinkidWithHttpInfo(@javax.annotation.Nonnull String linkId) throws ApiException {
+        okhttp3.Call localVarCall = getDataroomAnalyticsLinkByLinkidValidateBeforeCall(linkId, null);
         Type localVarReturnType = new TypeToken<DataroomLinkStats>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -331,15 +331,15 @@ public class DataroomApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1DataroomAnalyticsLinkByLinkidAsync(@javax.annotation.Nonnull String linkId, final ApiCallback<DataroomLinkStats> _callback) throws ApiException {
+    public okhttp3.Call getDataroomAnalyticsLinkByLinkidAsync(@javax.annotation.Nonnull String linkId, final ApiCallback<DataroomLinkStats> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1DataroomAnalyticsLinkByLinkidValidateBeforeCall(linkId, _callback);
+        okhttp3.Call localVarCall = getDataroomAnalyticsLinkByLinkidValidateBeforeCall(linkId, _callback);
         Type localVarReturnType = new TypeToken<DataroomLinkStats>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1DataroomDatarooms
+     * Build call for getDataroomDatarooms
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -350,7 +350,7 @@ public class DataroomApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1DataroomDataroomsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getDataroomDataroomsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -395,8 +395,8 @@ public class DataroomApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1DataroomDataroomsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1DataroomDataroomsCall(_callback);
+    private okhttp3.Call getDataroomDataroomsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getDataroomDataroomsCall(_callback);
 
     }
 
@@ -412,8 +412,8 @@ public class DataroomApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public DataroomRooms getV1DataroomDatarooms() throws ApiException {
-        ApiResponse<DataroomRooms> localVarResp = getV1DataroomDataroomsWithHttpInfo();
+    public DataroomRooms getDataroomDatarooms() throws ApiException {
+        ApiResponse<DataroomRooms> localVarResp = getDataroomDataroomsWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -429,8 +429,8 @@ public class DataroomApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DataroomRooms> getV1DataroomDataroomsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1DataroomDataroomsValidateBeforeCall(null);
+    public ApiResponse<DataroomRooms> getDataroomDataroomsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getDataroomDataroomsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<DataroomRooms>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -448,15 +448,15 @@ public class DataroomApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1DataroomDataroomsAsync(final ApiCallback<DataroomRooms> _callback) throws ApiException {
+    public okhttp3.Call getDataroomDataroomsAsync(final ApiCallback<DataroomRooms> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1DataroomDataroomsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getDataroomDataroomsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<DataroomRooms>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1DataroomDataroomsById
+     * Build call for getDataroomDataroomsById
      * @param id ID is the room to read. It is the path segment: the URL is the addressing authority, and the org it is resolved in comes from the caller&#39;s principal, so an id from another tenant is simply not found. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -468,7 +468,7 @@ public class DataroomApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1DataroomDataroomsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getDataroomDataroomsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -514,13 +514,13 @@ public class DataroomApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1DataroomDataroomsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getDataroomDataroomsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getV1DataroomDataroomsById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getDataroomDataroomsById(Async)");
         }
 
-        return getV1DataroomDataroomsByIdCall(id, _callback);
+        return getDataroomDataroomsByIdCall(id, _callback);
 
     }
 
@@ -537,8 +537,8 @@ public class DataroomApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public DataroomRoomDetailOne getV1DataroomDataroomsById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<DataroomRoomDetailOne> localVarResp = getV1DataroomDataroomsByIdWithHttpInfo(id);
+    public DataroomRoomDetailOne getDataroomDataroomsById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<DataroomRoomDetailOne> localVarResp = getDataroomDataroomsByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -555,8 +555,8 @@ public class DataroomApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DataroomRoomDetailOne> getV1DataroomDataroomsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = getV1DataroomDataroomsByIdValidateBeforeCall(id, null);
+    public ApiResponse<DataroomRoomDetailOne> getDataroomDataroomsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getDataroomDataroomsByIdValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<DataroomRoomDetailOne>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -575,15 +575,15 @@ public class DataroomApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1DataroomDataroomsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<DataroomRoomDetailOne> _callback) throws ApiException {
+    public okhttp3.Call getDataroomDataroomsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<DataroomRoomDetailOne> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1DataroomDataroomsByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = getDataroomDataroomsByIdValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<DataroomRoomDetailOne>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1DataroomDocuments
+     * Build call for getDataroomDocuments
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -594,7 +594,7 @@ public class DataroomApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1DataroomDocumentsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getDataroomDocumentsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -639,8 +639,8 @@ public class DataroomApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1DataroomDocumentsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1DataroomDocumentsCall(_callback);
+    private okhttp3.Call getDataroomDocumentsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getDataroomDocumentsCall(_callback);
 
     }
 
@@ -656,8 +656,8 @@ public class DataroomApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public DataroomDocuments getV1DataroomDocuments() throws ApiException {
-        ApiResponse<DataroomDocuments> localVarResp = getV1DataroomDocumentsWithHttpInfo();
+    public DataroomDocuments getDataroomDocuments() throws ApiException {
+        ApiResponse<DataroomDocuments> localVarResp = getDataroomDocumentsWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -673,8 +673,8 @@ public class DataroomApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DataroomDocuments> getV1DataroomDocumentsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1DataroomDocumentsValidateBeforeCall(null);
+    public ApiResponse<DataroomDocuments> getDataroomDocumentsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getDataroomDocumentsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<DataroomDocuments>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -692,15 +692,15 @@ public class DataroomApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1DataroomDocumentsAsync(final ApiCallback<DataroomDocuments> _callback) throws ApiException {
+    public okhttp3.Call getDataroomDocumentsAsync(final ApiCallback<DataroomDocuments> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1DataroomDocumentsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getDataroomDocumentsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<DataroomDocuments>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1DataroomDocumentsById
+     * Build call for getDataroomDocumentsById
      * @param id ID is the document to read. It is the path segment: the URL is the addressing authority, and the org it is resolved in comes from the caller&#39;s principal, so an id from another tenant is simply not found. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -712,7 +712,7 @@ public class DataroomApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1DataroomDocumentsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getDataroomDocumentsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -758,13 +758,13 @@ public class DataroomApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1DataroomDocumentsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getDataroomDocumentsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getV1DataroomDocumentsById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getDataroomDocumentsById(Async)");
         }
 
-        return getV1DataroomDocumentsByIdCall(id, _callback);
+        return getDataroomDocumentsByIdCall(id, _callback);
 
     }
 
@@ -781,8 +781,8 @@ public class DataroomApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public DataroomDocumentOne getV1DataroomDocumentsById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<DataroomDocumentOne> localVarResp = getV1DataroomDocumentsByIdWithHttpInfo(id);
+    public DataroomDocumentOne getDataroomDocumentsById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<DataroomDocumentOne> localVarResp = getDataroomDocumentsByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -799,8 +799,8 @@ public class DataroomApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DataroomDocumentOne> getV1DataroomDocumentsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = getV1DataroomDocumentsByIdValidateBeforeCall(id, null);
+    public ApiResponse<DataroomDocumentOne> getDataroomDocumentsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getDataroomDocumentsByIdValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<DataroomDocumentOne>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -819,21 +819,21 @@ public class DataroomApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1DataroomDocumentsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<DataroomDocumentOne> _callback) throws ApiException {
+    public okhttp3.Call getDataroomDocumentsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<DataroomDocumentOne> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1DataroomDocumentsByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = getDataroomDocumentsByIdValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<DataroomDocumentOne>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1DataroomDocumentsByIdFile
+     * Build call for getDataroomDocumentsByIdFile
      * @param id  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1DataroomDocumentsByIdFileCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getDataroomDocumentsByIdFileCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -878,13 +878,13 @@ public class DataroomApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1DataroomDocumentsByIdFileValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getDataroomDocumentsByIdFileValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getV1DataroomDocumentsByIdFile(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getDataroomDocumentsByIdFile(Async)");
         }
 
-        return getV1DataroomDocumentsByIdFileCall(id, _callback);
+        return getDataroomDocumentsByIdFileCall(id, _callback);
 
     }
 
@@ -894,8 +894,8 @@ public class DataroomApi {
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1DataroomDocumentsByIdFile(@javax.annotation.Nonnull String id) throws ApiException {
-        getV1DataroomDocumentsByIdFileWithHttpInfo(id);
+    public void getDataroomDocumentsByIdFile(@javax.annotation.Nonnull String id) throws ApiException {
+        getDataroomDocumentsByIdFileWithHttpInfo(id);
     }
 
     /**
@@ -905,8 +905,8 @@ public class DataroomApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1DataroomDocumentsByIdFileWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = getV1DataroomDocumentsByIdFileValidateBeforeCall(id, null);
+    public ApiResponse<Void> getDataroomDocumentsByIdFileWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getDataroomDocumentsByIdFileValidateBeforeCall(id, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -918,19 +918,19 @@ public class DataroomApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1DataroomDocumentsByIdFileAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getDataroomDocumentsByIdFileAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1DataroomDocumentsByIdFileValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = getDataroomDocumentsByIdFileValidateBeforeCall(id, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1DataroomHealth
+     * Build call for getDataroomHealth
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1DataroomHealthCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getDataroomHealthCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -974,8 +974,8 @@ public class DataroomApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1DataroomHealthValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1DataroomHealthCall(_callback);
+    private okhttp3.Call getDataroomHealthValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getDataroomHealthCall(_callback);
 
     }
 
@@ -984,8 +984,8 @@ public class DataroomApi {
      * Answers {service, status} unconditionally — no principal, no tenant. It is registered BEFORE the bundle, the link index and the object-storage seam are wired, so it keeps answering when any of those fail and the subsystem degrades to health-only. That is the point, and the limit: a 200 here says the process is alive, never that a data room can be read or written.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1DataroomHealth() throws ApiException {
-        getV1DataroomHealthWithHttpInfo();
+    public void getDataroomHealth() throws ApiException {
+        getDataroomHealthWithHttpInfo();
     }
 
     /**
@@ -994,8 +994,8 @@ public class DataroomApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1DataroomHealthWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1DataroomHealthValidateBeforeCall(null);
+    public ApiResponse<Void> getDataroomHealthWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getDataroomHealthValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1006,14 +1006,14 @@ public class DataroomApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1DataroomHealthAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getDataroomHealthAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1DataroomHealthValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getDataroomHealthValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1DataroomLinks
+     * Build call for getDataroomLinks
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1024,7 +1024,7 @@ public class DataroomApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1DataroomLinksCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getDataroomLinksCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1069,8 +1069,8 @@ public class DataroomApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1DataroomLinksValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1DataroomLinksCall(_callback);
+    private okhttp3.Call getDataroomLinksValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getDataroomLinksCall(_callback);
 
     }
 
@@ -1086,8 +1086,8 @@ public class DataroomApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public DataroomLinks getV1DataroomLinks() throws ApiException {
-        ApiResponse<DataroomLinks> localVarResp = getV1DataroomLinksWithHttpInfo();
+    public DataroomLinks getDataroomLinks() throws ApiException {
+        ApiResponse<DataroomLinks> localVarResp = getDataroomLinksWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -1103,8 +1103,8 @@ public class DataroomApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DataroomLinks> getV1DataroomLinksWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1DataroomLinksValidateBeforeCall(null);
+    public ApiResponse<DataroomLinks> getDataroomLinksWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getDataroomLinksValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<DataroomLinks>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1122,21 +1122,21 @@ public class DataroomApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1DataroomLinksAsync(final ApiCallback<DataroomLinks> _callback) throws ApiException {
+    public okhttp3.Call getDataroomLinksAsync(final ApiCallback<DataroomLinks> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1DataroomLinksValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getDataroomLinksValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<DataroomLinks>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1DataroomViewByLinkid
+     * Build call for getDataroomViewByLinkid
      * @param linkId  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1DataroomViewByLinkidCall(@javax.annotation.Nonnull String linkId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getDataroomViewByLinkidCall(@javax.annotation.Nonnull String linkId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1181,13 +1181,13 @@ public class DataroomApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1DataroomViewByLinkidValidateBeforeCall(@javax.annotation.Nonnull String linkId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getDataroomViewByLinkidValidateBeforeCall(@javax.annotation.Nonnull String linkId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'linkId' is set
         if (linkId == null) {
-            throw new ApiException("Missing the required parameter 'linkId' when calling getV1DataroomViewByLinkid(Async)");
+            throw new ApiException("Missing the required parameter 'linkId' when calling getDataroomViewByLinkid(Async)");
         }
 
-        return getV1DataroomViewByLinkidCall(linkId, _callback);
+        return getDataroomViewByLinkidCall(linkId, _callback);
 
     }
 
@@ -1197,8 +1197,8 @@ public class DataroomApi {
      * @param linkId  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1DataroomViewByLinkid(@javax.annotation.Nonnull String linkId) throws ApiException {
-        getV1DataroomViewByLinkidWithHttpInfo(linkId);
+    public void getDataroomViewByLinkid(@javax.annotation.Nonnull String linkId) throws ApiException {
+        getDataroomViewByLinkidWithHttpInfo(linkId);
     }
 
     /**
@@ -1208,8 +1208,8 @@ public class DataroomApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1DataroomViewByLinkidWithHttpInfo(@javax.annotation.Nonnull String linkId) throws ApiException {
-        okhttp3.Call localVarCall = getV1DataroomViewByLinkidValidateBeforeCall(linkId, null);
+    public ApiResponse<Void> getDataroomViewByLinkidWithHttpInfo(@javax.annotation.Nonnull String linkId) throws ApiException {
+        okhttp3.Call localVarCall = getDataroomViewByLinkidValidateBeforeCall(linkId, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1221,21 +1221,21 @@ public class DataroomApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1DataroomViewByLinkidAsync(@javax.annotation.Nonnull String linkId, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getDataroomViewByLinkidAsync(@javax.annotation.Nonnull String linkId, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1DataroomViewByLinkidValidateBeforeCall(linkId, _callback);
+        okhttp3.Call localVarCall = getDataroomViewByLinkidValidateBeforeCall(linkId, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1DataroomViewByLinkidDocumentByDocumentidFile
+     * Build call for getDataroomViewByLinkidDocumentByDocumentidFile
      * @param linkId  (required)
      * @param documentId  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1DataroomViewByLinkidDocumentByDocumentidFileCall(@javax.annotation.Nonnull String linkId, @javax.annotation.Nonnull String documentId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getDataroomViewByLinkidDocumentByDocumentidFileCall(@javax.annotation.Nonnull String linkId, @javax.annotation.Nonnull String documentId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1281,18 +1281,18 @@ public class DataroomApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1DataroomViewByLinkidDocumentByDocumentidFileValidateBeforeCall(@javax.annotation.Nonnull String linkId, @javax.annotation.Nonnull String documentId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getDataroomViewByLinkidDocumentByDocumentidFileValidateBeforeCall(@javax.annotation.Nonnull String linkId, @javax.annotation.Nonnull String documentId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'linkId' is set
         if (linkId == null) {
-            throw new ApiException("Missing the required parameter 'linkId' when calling getV1DataroomViewByLinkidDocumentByDocumentidFile(Async)");
+            throw new ApiException("Missing the required parameter 'linkId' when calling getDataroomViewByLinkidDocumentByDocumentidFile(Async)");
         }
 
         // verify the required parameter 'documentId' is set
         if (documentId == null) {
-            throw new ApiException("Missing the required parameter 'documentId' when calling getV1DataroomViewByLinkidDocumentByDocumentidFile(Async)");
+            throw new ApiException("Missing the required parameter 'documentId' when calling getDataroomViewByLinkidDocumentByDocumentidFile(Async)");
         }
 
-        return getV1DataroomViewByLinkidDocumentByDocumentidFileCall(linkId, documentId, _callback);
+        return getDataroomViewByLinkidDocumentByDocumentidFileCall(linkId, documentId, _callback);
 
     }
 
@@ -1303,8 +1303,8 @@ public class DataroomApi {
      * @param documentId  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1DataroomViewByLinkidDocumentByDocumentidFile(@javax.annotation.Nonnull String linkId, @javax.annotation.Nonnull String documentId) throws ApiException {
-        getV1DataroomViewByLinkidDocumentByDocumentidFileWithHttpInfo(linkId, documentId);
+    public void getDataroomViewByLinkidDocumentByDocumentidFile(@javax.annotation.Nonnull String linkId, @javax.annotation.Nonnull String documentId) throws ApiException {
+        getDataroomViewByLinkidDocumentByDocumentidFileWithHttpInfo(linkId, documentId);
     }
 
     /**
@@ -1315,8 +1315,8 @@ public class DataroomApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1DataroomViewByLinkidDocumentByDocumentidFileWithHttpInfo(@javax.annotation.Nonnull String linkId, @javax.annotation.Nonnull String documentId) throws ApiException {
-        okhttp3.Call localVarCall = getV1DataroomViewByLinkidDocumentByDocumentidFileValidateBeforeCall(linkId, documentId, null);
+    public ApiResponse<Void> getDataroomViewByLinkidDocumentByDocumentidFileWithHttpInfo(@javax.annotation.Nonnull String linkId, @javax.annotation.Nonnull String documentId) throws ApiException {
+        okhttp3.Call localVarCall = getDataroomViewByLinkidDocumentByDocumentidFileValidateBeforeCall(linkId, documentId, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1329,14 +1329,14 @@ public class DataroomApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1DataroomViewByLinkidDocumentByDocumentidFileAsync(@javax.annotation.Nonnull String linkId, @javax.annotation.Nonnull String documentId, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getDataroomViewByLinkidDocumentByDocumentidFileAsync(@javax.annotation.Nonnull String linkId, @javax.annotation.Nonnull String documentId, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1DataroomViewByLinkidDocumentByDocumentidFileValidateBeforeCall(linkId, documentId, _callback);
+        okhttp3.Call localVarCall = getDataroomViewByLinkidDocumentByDocumentidFileValidateBeforeCall(linkId, documentId, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1DataroomDatarooms
+     * Build call for postDataroomDatarooms
      * @param dataroomCreate  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1348,7 +1348,7 @@ public class DataroomApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1DataroomDataroomsCall(@javax.annotation.Nonnull DataroomCreate dataroomCreate, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postDataroomDataroomsCall(@javax.annotation.Nonnull DataroomCreate dataroomCreate, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1394,13 +1394,13 @@ public class DataroomApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1DataroomDataroomsValidateBeforeCall(@javax.annotation.Nonnull DataroomCreate dataroomCreate, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postDataroomDataroomsValidateBeforeCall(@javax.annotation.Nonnull DataroomCreate dataroomCreate, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'dataroomCreate' is set
         if (dataroomCreate == null) {
-            throw new ApiException("Missing the required parameter 'dataroomCreate' when calling postV1DataroomDatarooms(Async)");
+            throw new ApiException("Missing the required parameter 'dataroomCreate' when calling postDataroomDatarooms(Async)");
         }
 
-        return postV1DataroomDataroomsCall(dataroomCreate, _callback);
+        return postDataroomDataroomsCall(dataroomCreate, _callback);
 
     }
 
@@ -1417,8 +1417,8 @@ public class DataroomApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public DataroomRoomOne postV1DataroomDatarooms(@javax.annotation.Nonnull DataroomCreate dataroomCreate) throws ApiException {
-        ApiResponse<DataroomRoomOne> localVarResp = postV1DataroomDataroomsWithHttpInfo(dataroomCreate);
+    public DataroomRoomOne postDataroomDatarooms(@javax.annotation.Nonnull DataroomCreate dataroomCreate) throws ApiException {
+        ApiResponse<DataroomRoomOne> localVarResp = postDataroomDataroomsWithHttpInfo(dataroomCreate);
         return localVarResp.getData();
     }
 
@@ -1435,8 +1435,8 @@ public class DataroomApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DataroomRoomOne> postV1DataroomDataroomsWithHttpInfo(@javax.annotation.Nonnull DataroomCreate dataroomCreate) throws ApiException {
-        okhttp3.Call localVarCall = postV1DataroomDataroomsValidateBeforeCall(dataroomCreate, null);
+    public ApiResponse<DataroomRoomOne> postDataroomDataroomsWithHttpInfo(@javax.annotation.Nonnull DataroomCreate dataroomCreate) throws ApiException {
+        okhttp3.Call localVarCall = postDataroomDataroomsValidateBeforeCall(dataroomCreate, null);
         Type localVarReturnType = new TypeToken<DataroomRoomOne>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1455,15 +1455,15 @@ public class DataroomApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1DataroomDataroomsAsync(@javax.annotation.Nonnull DataroomCreate dataroomCreate, final ApiCallback<DataroomRoomOne> _callback) throws ApiException {
+    public okhttp3.Call postDataroomDataroomsAsync(@javax.annotation.Nonnull DataroomCreate dataroomCreate, final ApiCallback<DataroomRoomOne> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1DataroomDataroomsValidateBeforeCall(dataroomCreate, _callback);
+        okhttp3.Call localVarCall = postDataroomDataroomsValidateBeforeCall(dataroomCreate, _callback);
         Type localVarReturnType = new TypeToken<DataroomRoomOne>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1DataroomDataroomsByIdDocuments
+     * Build call for postDataroomDataroomsByIdDocuments
      * @param id ID is the room to add to. It is the path segment: the URL is the addressing authority, and the org it is resolved in comes from the caller&#39;s principal, so an id from another tenant is simply not found. (required)
      * @param dataroomAddDocument  (required)
      * @param _callback Callback for upload/download progress
@@ -1476,7 +1476,7 @@ public class DataroomApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1DataroomDataroomsByIdDocumentsCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull DataroomAddDocument dataroomAddDocument, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postDataroomDataroomsByIdDocumentsCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull DataroomAddDocument dataroomAddDocument, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1523,18 +1523,18 @@ public class DataroomApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1DataroomDataroomsByIdDocumentsValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull DataroomAddDocument dataroomAddDocument, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postDataroomDataroomsByIdDocumentsValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull DataroomAddDocument dataroomAddDocument, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling postV1DataroomDataroomsByIdDocuments(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling postDataroomDataroomsByIdDocuments(Async)");
         }
 
         // verify the required parameter 'dataroomAddDocument' is set
         if (dataroomAddDocument == null) {
-            throw new ApiException("Missing the required parameter 'dataroomAddDocument' when calling postV1DataroomDataroomsByIdDocuments(Async)");
+            throw new ApiException("Missing the required parameter 'dataroomAddDocument' when calling postDataroomDataroomsByIdDocuments(Async)");
         }
 
-        return postV1DataroomDataroomsByIdDocumentsCall(id, dataroomAddDocument, _callback);
+        return postDataroomDataroomsByIdDocumentsCall(id, dataroomAddDocument, _callback);
 
     }
 
@@ -1552,8 +1552,8 @@ public class DataroomApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public DataroomMembership postV1DataroomDataroomsByIdDocuments(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull DataroomAddDocument dataroomAddDocument) throws ApiException {
-        ApiResponse<DataroomMembership> localVarResp = postV1DataroomDataroomsByIdDocumentsWithHttpInfo(id, dataroomAddDocument);
+    public DataroomMembership postDataroomDataroomsByIdDocuments(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull DataroomAddDocument dataroomAddDocument) throws ApiException {
+        ApiResponse<DataroomMembership> localVarResp = postDataroomDataroomsByIdDocumentsWithHttpInfo(id, dataroomAddDocument);
         return localVarResp.getData();
     }
 
@@ -1571,8 +1571,8 @@ public class DataroomApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DataroomMembership> postV1DataroomDataroomsByIdDocumentsWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull DataroomAddDocument dataroomAddDocument) throws ApiException {
-        okhttp3.Call localVarCall = postV1DataroomDataroomsByIdDocumentsValidateBeforeCall(id, dataroomAddDocument, null);
+    public ApiResponse<DataroomMembership> postDataroomDataroomsByIdDocumentsWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull DataroomAddDocument dataroomAddDocument) throws ApiException {
+        okhttp3.Call localVarCall = postDataroomDataroomsByIdDocumentsValidateBeforeCall(id, dataroomAddDocument, null);
         Type localVarReturnType = new TypeToken<DataroomMembership>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1592,20 +1592,20 @@ public class DataroomApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1DataroomDataroomsByIdDocumentsAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull DataroomAddDocument dataroomAddDocument, final ApiCallback<DataroomMembership> _callback) throws ApiException {
+    public okhttp3.Call postDataroomDataroomsByIdDocumentsAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull DataroomAddDocument dataroomAddDocument, final ApiCallback<DataroomMembership> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1DataroomDataroomsByIdDocumentsValidateBeforeCall(id, dataroomAddDocument, _callback);
+        okhttp3.Call localVarCall = postDataroomDataroomsByIdDocumentsValidateBeforeCall(id, dataroomAddDocument, _callback);
         Type localVarReturnType = new TypeToken<DataroomMembership>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1DataroomDocuments
+     * Build call for postDataroomDocuments
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1DataroomDocumentsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postDataroomDocumentsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1649,8 +1649,8 @@ public class DataroomApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1DataroomDocumentsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1DataroomDocumentsCall(_callback);
+    private okhttp3.Call postDataroomDocumentsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postDataroomDocumentsCall(_callback);
 
     }
 
@@ -1659,8 +1659,8 @@ public class DataroomApi {
      * Takes the file ITSELF as the raw request body — not a JSON envelope, not multipart — stores it on the object-storage seam, and records the metadata row, answering with the new document. &#x60;?name&#x3D;&#x60; names it (default \&quot;document\&quot;), the request&#39;s Content-Type becomes the recorded mime type, and &#x60;?numPages&#x3D;&#x60; is optional.  Requires a validated principal; 403 without one. An empty body is 400 and anything over 64 MiB is 413 — a data room holds decks and PDFs, not a media library.  The storage key is 128 random bits under the tenant&#39;s own key prefix, minted before the bytes are written: if the system&#39;s randomness is unavailable the upload fails 500 rather than fall back to a predictable key that could overwrite another document&#39;s bytes. A storage write that fails is 502 and no metadata row is recorded, so a document never exists without its file.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1DataroomDocuments() throws ApiException {
-        postV1DataroomDocumentsWithHttpInfo();
+    public void postDataroomDocuments() throws ApiException {
+        postDataroomDocumentsWithHttpInfo();
     }
 
     /**
@@ -1669,8 +1669,8 @@ public class DataroomApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1DataroomDocumentsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1DataroomDocumentsValidateBeforeCall(null);
+    public ApiResponse<Void> postDataroomDocumentsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postDataroomDocumentsValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1681,14 +1681,14 @@ public class DataroomApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1DataroomDocumentsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postDataroomDocumentsAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1DataroomDocumentsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postDataroomDocumentsValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1DataroomLinks
+     * Build call for postDataroomLinks
      * @param dataroomLinkCreate  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1700,7 +1700,7 @@ public class DataroomApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1DataroomLinksCall(@javax.annotation.Nonnull DataroomLinkCreate dataroomLinkCreate, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postDataroomLinksCall(@javax.annotation.Nonnull DataroomLinkCreate dataroomLinkCreate, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1746,13 +1746,13 @@ public class DataroomApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1DataroomLinksValidateBeforeCall(@javax.annotation.Nonnull DataroomLinkCreate dataroomLinkCreate, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postDataroomLinksValidateBeforeCall(@javax.annotation.Nonnull DataroomLinkCreate dataroomLinkCreate, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'dataroomLinkCreate' is set
         if (dataroomLinkCreate == null) {
-            throw new ApiException("Missing the required parameter 'dataroomLinkCreate' when calling postV1DataroomLinks(Async)");
+            throw new ApiException("Missing the required parameter 'dataroomLinkCreate' when calling postDataroomLinks(Async)");
         }
 
-        return postV1DataroomLinksCall(dataroomLinkCreate, _callback);
+        return postDataroomLinksCall(dataroomLinkCreate, _callback);
 
     }
 
@@ -1769,8 +1769,8 @@ public class DataroomApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public DataroomLinkOne postV1DataroomLinks(@javax.annotation.Nonnull DataroomLinkCreate dataroomLinkCreate) throws ApiException {
-        ApiResponse<DataroomLinkOne> localVarResp = postV1DataroomLinksWithHttpInfo(dataroomLinkCreate);
+    public DataroomLinkOne postDataroomLinks(@javax.annotation.Nonnull DataroomLinkCreate dataroomLinkCreate) throws ApiException {
+        ApiResponse<DataroomLinkOne> localVarResp = postDataroomLinksWithHttpInfo(dataroomLinkCreate);
         return localVarResp.getData();
     }
 
@@ -1787,8 +1787,8 @@ public class DataroomApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DataroomLinkOne> postV1DataroomLinksWithHttpInfo(@javax.annotation.Nonnull DataroomLinkCreate dataroomLinkCreate) throws ApiException {
-        okhttp3.Call localVarCall = postV1DataroomLinksValidateBeforeCall(dataroomLinkCreate, null);
+    public ApiResponse<DataroomLinkOne> postDataroomLinksWithHttpInfo(@javax.annotation.Nonnull DataroomLinkCreate dataroomLinkCreate) throws ApiException {
+        okhttp3.Call localVarCall = postDataroomLinksValidateBeforeCall(dataroomLinkCreate, null);
         Type localVarReturnType = new TypeToken<DataroomLinkOne>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1807,21 +1807,21 @@ public class DataroomApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1DataroomLinksAsync(@javax.annotation.Nonnull DataroomLinkCreate dataroomLinkCreate, final ApiCallback<DataroomLinkOne> _callback) throws ApiException {
+    public okhttp3.Call postDataroomLinksAsync(@javax.annotation.Nonnull DataroomLinkCreate dataroomLinkCreate, final ApiCallback<DataroomLinkOne> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1DataroomLinksValidateBeforeCall(dataroomLinkCreate, _callback);
+        okhttp3.Call localVarCall = postDataroomLinksValidateBeforeCall(dataroomLinkCreate, _callback);
         Type localVarReturnType = new TypeToken<DataroomLinkOne>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1DataroomViewByLinkidAuthenticate
+     * Build call for postDataroomViewByLinkidAuthenticate
      * @param linkId  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1DataroomViewByLinkidAuthenticateCall(@javax.annotation.Nonnull String linkId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postDataroomViewByLinkidAuthenticateCall(@javax.annotation.Nonnull String linkId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1866,13 +1866,13 @@ public class DataroomApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1DataroomViewByLinkidAuthenticateValidateBeforeCall(@javax.annotation.Nonnull String linkId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postDataroomViewByLinkidAuthenticateValidateBeforeCall(@javax.annotation.Nonnull String linkId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'linkId' is set
         if (linkId == null) {
-            throw new ApiException("Missing the required parameter 'linkId' when calling postV1DataroomViewByLinkidAuthenticate(Async)");
+            throw new ApiException("Missing the required parameter 'linkId' when calling postDataroomViewByLinkidAuthenticate(Async)");
         }
 
-        return postV1DataroomViewByLinkidAuthenticateCall(linkId, _callback);
+        return postDataroomViewByLinkidAuthenticateCall(linkId, _callback);
 
     }
 
@@ -1882,8 +1882,8 @@ public class DataroomApi {
      * @param linkId  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1DataroomViewByLinkidAuthenticate(@javax.annotation.Nonnull String linkId) throws ApiException {
-        postV1DataroomViewByLinkidAuthenticateWithHttpInfo(linkId);
+    public void postDataroomViewByLinkidAuthenticate(@javax.annotation.Nonnull String linkId) throws ApiException {
+        postDataroomViewByLinkidAuthenticateWithHttpInfo(linkId);
     }
 
     /**
@@ -1893,8 +1893,8 @@ public class DataroomApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1DataroomViewByLinkidAuthenticateWithHttpInfo(@javax.annotation.Nonnull String linkId) throws ApiException {
-        okhttp3.Call localVarCall = postV1DataroomViewByLinkidAuthenticateValidateBeforeCall(linkId, null);
+    public ApiResponse<Void> postDataroomViewByLinkidAuthenticateWithHttpInfo(@javax.annotation.Nonnull String linkId) throws ApiException {
+        okhttp3.Call localVarCall = postDataroomViewByLinkidAuthenticateValidateBeforeCall(linkId, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1906,20 +1906,20 @@ public class DataroomApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1DataroomViewByLinkidAuthenticateAsync(@javax.annotation.Nonnull String linkId, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postDataroomViewByLinkidAuthenticateAsync(@javax.annotation.Nonnull String linkId, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1DataroomViewByLinkidAuthenticateValidateBeforeCall(linkId, _callback);
+        okhttp3.Call localVarCall = postDataroomViewByLinkidAuthenticateValidateBeforeCall(linkId, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1DataroomViewByLinkidPageview
+     * Build call for postDataroomViewByLinkidPageview
      * @param linkId  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1DataroomViewByLinkidPageviewCall(@javax.annotation.Nonnull String linkId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postDataroomViewByLinkidPageviewCall(@javax.annotation.Nonnull String linkId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1964,13 +1964,13 @@ public class DataroomApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1DataroomViewByLinkidPageviewValidateBeforeCall(@javax.annotation.Nonnull String linkId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postDataroomViewByLinkidPageviewValidateBeforeCall(@javax.annotation.Nonnull String linkId, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'linkId' is set
         if (linkId == null) {
-            throw new ApiException("Missing the required parameter 'linkId' when calling postV1DataroomViewByLinkidPageview(Async)");
+            throw new ApiException("Missing the required parameter 'linkId' when calling postDataroomViewByLinkidPageview(Async)");
         }
 
-        return postV1DataroomViewByLinkidPageviewCall(linkId, _callback);
+        return postDataroomViewByLinkidPageviewCall(linkId, _callback);
 
     }
 
@@ -1980,8 +1980,8 @@ public class DataroomApi {
      * @param linkId  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1DataroomViewByLinkidPageview(@javax.annotation.Nonnull String linkId) throws ApiException {
-        postV1DataroomViewByLinkidPageviewWithHttpInfo(linkId);
+    public void postDataroomViewByLinkidPageview(@javax.annotation.Nonnull String linkId) throws ApiException {
+        postDataroomViewByLinkidPageviewWithHttpInfo(linkId);
     }
 
     /**
@@ -1991,8 +1991,8 @@ public class DataroomApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1DataroomViewByLinkidPageviewWithHttpInfo(@javax.annotation.Nonnull String linkId) throws ApiException {
-        okhttp3.Call localVarCall = postV1DataroomViewByLinkidPageviewValidateBeforeCall(linkId, null);
+    public ApiResponse<Void> postDataroomViewByLinkidPageviewWithHttpInfo(@javax.annotation.Nonnull String linkId) throws ApiException {
+        okhttp3.Call localVarCall = postDataroomViewByLinkidPageviewValidateBeforeCall(linkId, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -2004,9 +2004,9 @@ public class DataroomApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1DataroomViewByLinkidPageviewAsync(@javax.annotation.Nonnull String linkId, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postDataroomViewByLinkidPageviewAsync(@javax.annotation.Nonnull String linkId, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1DataroomViewByLinkidPageviewValidateBeforeCall(linkId, _callback);
+        okhttp3.Call localVarCall = postDataroomViewByLinkidPageviewValidateBeforeCall(linkId, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

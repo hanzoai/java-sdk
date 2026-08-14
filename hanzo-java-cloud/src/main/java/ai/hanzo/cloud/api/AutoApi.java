@@ -76,7 +76,7 @@ public class AutoApi {
     }
 
     /**
-     * Build call for deleteV1AutoFlowsByFlow
+     * Build call for deleteAutoFlowsByFlow
      * @param flow Flow is the flow&#39;s id, taken from the path. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -88,7 +88,7 @@ public class AutoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1AutoFlowsByFlowCall(@javax.annotation.Nonnull String flow, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteAutoFlowsByFlowCall(@javax.annotation.Nonnull String flow, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -134,13 +134,13 @@ public class AutoApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1AutoFlowsByFlowValidateBeforeCall(@javax.annotation.Nonnull String flow, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteAutoFlowsByFlowValidateBeforeCall(@javax.annotation.Nonnull String flow, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'flow' is set
         if (flow == null) {
-            throw new ApiException("Missing the required parameter 'flow' when calling deleteV1AutoFlowsByFlow(Async)");
+            throw new ApiException("Missing the required parameter 'flow' when calling deleteAutoFlowsByFlow(Async)");
         }
 
-        return deleteV1AutoFlowsByFlowCall(flow, _callback);
+        return deleteAutoFlowsByFlowCall(flow, _callback);
 
     }
 
@@ -157,8 +157,8 @@ public class AutoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Object deleteV1AutoFlowsByFlow(@javax.annotation.Nonnull String flow) throws ApiException {
-        ApiResponse<Object> localVarResp = deleteV1AutoFlowsByFlowWithHttpInfo(flow);
+    public Object deleteAutoFlowsByFlow(@javax.annotation.Nonnull String flow) throws ApiException {
+        ApiResponse<Object> localVarResp = deleteAutoFlowsByFlowWithHttpInfo(flow);
         return localVarResp.getData();
     }
 
@@ -175,8 +175,8 @@ public class AutoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> deleteV1AutoFlowsByFlowWithHttpInfo(@javax.annotation.Nonnull String flow) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1AutoFlowsByFlowValidateBeforeCall(flow, null);
+    public ApiResponse<Object> deleteAutoFlowsByFlowWithHttpInfo(@javax.annotation.Nonnull String flow) throws ApiException {
+        okhttp3.Call localVarCall = deleteAutoFlowsByFlowValidateBeforeCall(flow, null);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -195,15 +195,15 @@ public class AutoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1AutoFlowsByFlowAsync(@javax.annotation.Nonnull String flow, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call deleteAutoFlowsByFlowAsync(@javax.annotation.Nonnull String flow, final ApiCallback<Object> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1AutoFlowsByFlowValidateBeforeCall(flow, _callback);
+        okhttp3.Call localVarCall = deleteAutoFlowsByFlowValidateBeforeCall(flow, _callback);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1AutoFlows
+     * Build call for getAutoFlows
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -214,7 +214,7 @@ public class AutoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AutoFlowsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAutoFlowsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -259,8 +259,8 @@ public class AutoApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1AutoFlowsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1AutoFlowsCall(_callback);
+    private okhttp3.Call getAutoFlowsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getAutoFlowsCall(_callback);
 
     }
 
@@ -276,8 +276,8 @@ public class AutoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Object getV1AutoFlows() throws ApiException {
-        ApiResponse<Object> localVarResp = getV1AutoFlowsWithHttpInfo();
+    public Object getAutoFlows() throws ApiException {
+        ApiResponse<Object> localVarResp = getAutoFlowsWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -293,8 +293,8 @@ public class AutoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> getV1AutoFlowsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1AutoFlowsValidateBeforeCall(null);
+    public ApiResponse<Object> getAutoFlowsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getAutoFlowsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -312,15 +312,15 @@ public class AutoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AutoFlowsAsync(final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call getAutoFlowsAsync(final ApiCallback<Object> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1AutoFlowsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getAutoFlowsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1AutoFlowsByFlow
+     * Build call for getAutoFlowsByFlow
      * @param flow Flow is the flow&#39;s id, taken from the path. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -332,7 +332,7 @@ public class AutoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AutoFlowsByFlowCall(@javax.annotation.Nonnull String flow, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAutoFlowsByFlowCall(@javax.annotation.Nonnull String flow, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -378,13 +378,13 @@ public class AutoApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1AutoFlowsByFlowValidateBeforeCall(@javax.annotation.Nonnull String flow, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getAutoFlowsByFlowValidateBeforeCall(@javax.annotation.Nonnull String flow, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'flow' is set
         if (flow == null) {
-            throw new ApiException("Missing the required parameter 'flow' when calling getV1AutoFlowsByFlow(Async)");
+            throw new ApiException("Missing the required parameter 'flow' when calling getAutoFlowsByFlow(Async)");
         }
 
-        return getV1AutoFlowsByFlowCall(flow, _callback);
+        return getAutoFlowsByFlowCall(flow, _callback);
 
     }
 
@@ -401,8 +401,8 @@ public class AutoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Object getV1AutoFlowsByFlow(@javax.annotation.Nonnull String flow) throws ApiException {
-        ApiResponse<Object> localVarResp = getV1AutoFlowsByFlowWithHttpInfo(flow);
+    public Object getAutoFlowsByFlow(@javax.annotation.Nonnull String flow) throws ApiException {
+        ApiResponse<Object> localVarResp = getAutoFlowsByFlowWithHttpInfo(flow);
         return localVarResp.getData();
     }
 
@@ -419,8 +419,8 @@ public class AutoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> getV1AutoFlowsByFlowWithHttpInfo(@javax.annotation.Nonnull String flow) throws ApiException {
-        okhttp3.Call localVarCall = getV1AutoFlowsByFlowValidateBeforeCall(flow, null);
+    public ApiResponse<Object> getAutoFlowsByFlowWithHttpInfo(@javax.annotation.Nonnull String flow) throws ApiException {
+        okhttp3.Call localVarCall = getAutoFlowsByFlowValidateBeforeCall(flow, null);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -439,15 +439,15 @@ public class AutoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AutoFlowsByFlowAsync(@javax.annotation.Nonnull String flow, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call getAutoFlowsByFlowAsync(@javax.annotation.Nonnull String flow, final ApiCallback<Object> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1AutoFlowsByFlowValidateBeforeCall(flow, _callback);
+        okhttp3.Call localVarCall = getAutoFlowsByFlowValidateBeforeCall(flow, _callback);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1AutoPieces
+     * Build call for getAutoPieces
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -458,7 +458,7 @@ public class AutoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AutoPiecesCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAutoPiecesCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -503,8 +503,8 @@ public class AutoApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1AutoPiecesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1AutoPiecesCall(_callback);
+    private okhttp3.Call getAutoPiecesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getAutoPiecesCall(_callback);
 
     }
 
@@ -520,8 +520,8 @@ public class AutoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Object getV1AutoPieces() throws ApiException {
-        ApiResponse<Object> localVarResp = getV1AutoPiecesWithHttpInfo();
+    public Object getAutoPieces() throws ApiException {
+        ApiResponse<Object> localVarResp = getAutoPiecesWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -537,8 +537,8 @@ public class AutoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> getV1AutoPiecesWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1AutoPiecesValidateBeforeCall(null);
+    public ApiResponse<Object> getAutoPiecesWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getAutoPiecesValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -556,15 +556,15 @@ public class AutoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AutoPiecesAsync(final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call getAutoPiecesAsync(final ApiCallback<Object> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1AutoPiecesValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getAutoPiecesValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1AutoRuns
+     * Build call for getAutoRuns
      * @param flow Flow narrows the list to one flow&#39;s runs when present. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -576,7 +576,7 @@ public class AutoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AutoRunsCall(@javax.annotation.Nullable String flow, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAutoRunsCall(@javax.annotation.Nullable String flow, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -625,8 +625,8 @@ public class AutoApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1AutoRunsValidateBeforeCall(@javax.annotation.Nullable String flow, final ApiCallback _callback) throws ApiException {
-        return getV1AutoRunsCall(flow, _callback);
+    private okhttp3.Call getAutoRunsValidateBeforeCall(@javax.annotation.Nullable String flow, final ApiCallback _callback) throws ApiException {
+        return getAutoRunsCall(flow, _callback);
 
     }
 
@@ -643,8 +643,8 @@ public class AutoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Object getV1AutoRuns(@javax.annotation.Nullable String flow) throws ApiException {
-        ApiResponse<Object> localVarResp = getV1AutoRunsWithHttpInfo(flow);
+    public Object getAutoRuns(@javax.annotation.Nullable String flow) throws ApiException {
+        ApiResponse<Object> localVarResp = getAutoRunsWithHttpInfo(flow);
         return localVarResp.getData();
     }
 
@@ -661,8 +661,8 @@ public class AutoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> getV1AutoRunsWithHttpInfo(@javax.annotation.Nullable String flow) throws ApiException {
-        okhttp3.Call localVarCall = getV1AutoRunsValidateBeforeCall(flow, null);
+    public ApiResponse<Object> getAutoRunsWithHttpInfo(@javax.annotation.Nullable String flow) throws ApiException {
+        okhttp3.Call localVarCall = getAutoRunsValidateBeforeCall(flow, null);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -681,15 +681,15 @@ public class AutoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AutoRunsAsync(@javax.annotation.Nullable String flow, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call getAutoRunsAsync(@javax.annotation.Nullable String flow, final ApiCallback<Object> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1AutoRunsValidateBeforeCall(flow, _callback);
+        okhttp3.Call localVarCall = getAutoRunsValidateBeforeCall(flow, _callback);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1AutoRunsByRun
+     * Build call for getAutoRunsByRun
      * @param run Run is the run&#39;s id, taken from the path. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -701,7 +701,7 @@ public class AutoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AutoRunsByRunCall(@javax.annotation.Nonnull String run, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAutoRunsByRunCall(@javax.annotation.Nonnull String run, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -747,13 +747,13 @@ public class AutoApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1AutoRunsByRunValidateBeforeCall(@javax.annotation.Nonnull String run, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getAutoRunsByRunValidateBeforeCall(@javax.annotation.Nonnull String run, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'run' is set
         if (run == null) {
-            throw new ApiException("Missing the required parameter 'run' when calling getV1AutoRunsByRun(Async)");
+            throw new ApiException("Missing the required parameter 'run' when calling getAutoRunsByRun(Async)");
         }
 
-        return getV1AutoRunsByRunCall(run, _callback);
+        return getAutoRunsByRunCall(run, _callback);
 
     }
 
@@ -770,8 +770,8 @@ public class AutoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Object getV1AutoRunsByRun(@javax.annotation.Nonnull String run) throws ApiException {
-        ApiResponse<Object> localVarResp = getV1AutoRunsByRunWithHttpInfo(run);
+    public Object getAutoRunsByRun(@javax.annotation.Nonnull String run) throws ApiException {
+        ApiResponse<Object> localVarResp = getAutoRunsByRunWithHttpInfo(run);
         return localVarResp.getData();
     }
 
@@ -788,8 +788,8 @@ public class AutoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> getV1AutoRunsByRunWithHttpInfo(@javax.annotation.Nonnull String run) throws ApiException {
-        okhttp3.Call localVarCall = getV1AutoRunsByRunValidateBeforeCall(run, null);
+    public ApiResponse<Object> getAutoRunsByRunWithHttpInfo(@javax.annotation.Nonnull String run) throws ApiException {
+        okhttp3.Call localVarCall = getAutoRunsByRunValidateBeforeCall(run, null);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -808,15 +808,15 @@ public class AutoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AutoRunsByRunAsync(@javax.annotation.Nonnull String run, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call getAutoRunsByRunAsync(@javax.annotation.Nonnull String run, final ApiCallback<Object> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1AutoRunsByRunValidateBeforeCall(run, _callback);
+        okhttp3.Call localVarCall = getAutoRunsByRunValidateBeforeCall(run, _callback);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1AutoStatus
+     * Build call for getAutoStatus
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -827,7 +827,7 @@ public class AutoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AutoStatusCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAutoStatusCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -872,8 +872,8 @@ public class AutoApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1AutoStatusValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1AutoStatusCall(_callback);
+    private okhttp3.Call getAutoStatusValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getAutoStatusCall(_callback);
 
     }
 
@@ -889,8 +889,8 @@ public class AutoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public AutoStatus getV1AutoStatus() throws ApiException {
-        ApiResponse<AutoStatus> localVarResp = getV1AutoStatusWithHttpInfo();
+    public AutoStatus getAutoStatus() throws ApiException {
+        ApiResponse<AutoStatus> localVarResp = getAutoStatusWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -906,8 +906,8 @@ public class AutoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AutoStatus> getV1AutoStatusWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1AutoStatusValidateBeforeCall(null);
+    public ApiResponse<AutoStatus> getAutoStatusWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getAutoStatusValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<AutoStatus>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -925,15 +925,15 @@ public class AutoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1AutoStatusAsync(final ApiCallback<AutoStatus> _callback) throws ApiException {
+    public okhttp3.Call getAutoStatusAsync(final ApiCallback<AutoStatus> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1AutoStatusValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getAutoStatusValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<AutoStatus>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for patchV1AutoFlowsByFlow
+     * Build call for patchAutoFlowsByFlow
      * @param flow Flow is the flow&#39;s id, taken from the path. (required)
      * @param autoUpdate  (required)
      * @param _callback Callback for upload/download progress
@@ -946,7 +946,7 @@ public class AutoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call patchV1AutoFlowsByFlowCall(@javax.annotation.Nonnull String flow, @javax.annotation.Nonnull AutoUpdate autoUpdate, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call patchAutoFlowsByFlowCall(@javax.annotation.Nonnull String flow, @javax.annotation.Nonnull AutoUpdate autoUpdate, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -993,18 +993,18 @@ public class AutoApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchV1AutoFlowsByFlowValidateBeforeCall(@javax.annotation.Nonnull String flow, @javax.annotation.Nonnull AutoUpdate autoUpdate, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call patchAutoFlowsByFlowValidateBeforeCall(@javax.annotation.Nonnull String flow, @javax.annotation.Nonnull AutoUpdate autoUpdate, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'flow' is set
         if (flow == null) {
-            throw new ApiException("Missing the required parameter 'flow' when calling patchV1AutoFlowsByFlow(Async)");
+            throw new ApiException("Missing the required parameter 'flow' when calling patchAutoFlowsByFlow(Async)");
         }
 
         // verify the required parameter 'autoUpdate' is set
         if (autoUpdate == null) {
-            throw new ApiException("Missing the required parameter 'autoUpdate' when calling patchV1AutoFlowsByFlow(Async)");
+            throw new ApiException("Missing the required parameter 'autoUpdate' when calling patchAutoFlowsByFlow(Async)");
         }
 
-        return patchV1AutoFlowsByFlowCall(flow, autoUpdate, _callback);
+        return patchAutoFlowsByFlowCall(flow, autoUpdate, _callback);
 
     }
 
@@ -1022,8 +1022,8 @@ public class AutoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Object patchV1AutoFlowsByFlow(@javax.annotation.Nonnull String flow, @javax.annotation.Nonnull AutoUpdate autoUpdate) throws ApiException {
-        ApiResponse<Object> localVarResp = patchV1AutoFlowsByFlowWithHttpInfo(flow, autoUpdate);
+    public Object patchAutoFlowsByFlow(@javax.annotation.Nonnull String flow, @javax.annotation.Nonnull AutoUpdate autoUpdate) throws ApiException {
+        ApiResponse<Object> localVarResp = patchAutoFlowsByFlowWithHttpInfo(flow, autoUpdate);
         return localVarResp.getData();
     }
 
@@ -1041,8 +1041,8 @@ public class AutoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> patchV1AutoFlowsByFlowWithHttpInfo(@javax.annotation.Nonnull String flow, @javax.annotation.Nonnull AutoUpdate autoUpdate) throws ApiException {
-        okhttp3.Call localVarCall = patchV1AutoFlowsByFlowValidateBeforeCall(flow, autoUpdate, null);
+    public ApiResponse<Object> patchAutoFlowsByFlowWithHttpInfo(@javax.annotation.Nonnull String flow, @javax.annotation.Nonnull AutoUpdate autoUpdate) throws ApiException {
+        okhttp3.Call localVarCall = patchAutoFlowsByFlowValidateBeforeCall(flow, autoUpdate, null);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1062,15 +1062,15 @@ public class AutoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call patchV1AutoFlowsByFlowAsync(@javax.annotation.Nonnull String flow, @javax.annotation.Nonnull AutoUpdate autoUpdate, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call patchAutoFlowsByFlowAsync(@javax.annotation.Nonnull String flow, @javax.annotation.Nonnull AutoUpdate autoUpdate, final ApiCallback<Object> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchV1AutoFlowsByFlowValidateBeforeCall(flow, autoUpdate, _callback);
+        okhttp3.Call localVarCall = patchAutoFlowsByFlowValidateBeforeCall(flow, autoUpdate, _callback);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1AutoFlows
+     * Build call for postAutoFlows
      * @param autoCreate  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1082,7 +1082,7 @@ public class AutoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1AutoFlowsCall(@javax.annotation.Nonnull AutoCreate autoCreate, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAutoFlowsCall(@javax.annotation.Nonnull AutoCreate autoCreate, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1128,13 +1128,13 @@ public class AutoApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1AutoFlowsValidateBeforeCall(@javax.annotation.Nonnull AutoCreate autoCreate, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postAutoFlowsValidateBeforeCall(@javax.annotation.Nonnull AutoCreate autoCreate, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'autoCreate' is set
         if (autoCreate == null) {
-            throw new ApiException("Missing the required parameter 'autoCreate' when calling postV1AutoFlows(Async)");
+            throw new ApiException("Missing the required parameter 'autoCreate' when calling postAutoFlows(Async)");
         }
 
-        return postV1AutoFlowsCall(autoCreate, _callback);
+        return postAutoFlowsCall(autoCreate, _callback);
 
     }
 
@@ -1151,8 +1151,8 @@ public class AutoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Object postV1AutoFlows(@javax.annotation.Nonnull AutoCreate autoCreate) throws ApiException {
-        ApiResponse<Object> localVarResp = postV1AutoFlowsWithHttpInfo(autoCreate);
+    public Object postAutoFlows(@javax.annotation.Nonnull AutoCreate autoCreate) throws ApiException {
+        ApiResponse<Object> localVarResp = postAutoFlowsWithHttpInfo(autoCreate);
         return localVarResp.getData();
     }
 
@@ -1169,8 +1169,8 @@ public class AutoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> postV1AutoFlowsWithHttpInfo(@javax.annotation.Nonnull AutoCreate autoCreate) throws ApiException {
-        okhttp3.Call localVarCall = postV1AutoFlowsValidateBeforeCall(autoCreate, null);
+    public ApiResponse<Object> postAutoFlowsWithHttpInfo(@javax.annotation.Nonnull AutoCreate autoCreate) throws ApiException {
+        okhttp3.Call localVarCall = postAutoFlowsValidateBeforeCall(autoCreate, null);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1189,15 +1189,15 @@ public class AutoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1AutoFlowsAsync(@javax.annotation.Nonnull AutoCreate autoCreate, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call postAutoFlowsAsync(@javax.annotation.Nonnull AutoCreate autoCreate, final ApiCallback<Object> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1AutoFlowsValidateBeforeCall(autoCreate, _callback);
+        okhttp3.Call localVarCall = postAutoFlowsValidateBeforeCall(autoCreate, _callback);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1AutoFlowsByFlowPublish
+     * Build call for postAutoFlowsByFlowPublish
      * @param flow Flow is the flow&#39;s id, taken from the path. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1209,7 +1209,7 @@ public class AutoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1AutoFlowsByFlowPublishCall(@javax.annotation.Nonnull String flow, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAutoFlowsByFlowPublishCall(@javax.annotation.Nonnull String flow, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1255,13 +1255,13 @@ public class AutoApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1AutoFlowsByFlowPublishValidateBeforeCall(@javax.annotation.Nonnull String flow, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postAutoFlowsByFlowPublishValidateBeforeCall(@javax.annotation.Nonnull String flow, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'flow' is set
         if (flow == null) {
-            throw new ApiException("Missing the required parameter 'flow' when calling postV1AutoFlowsByFlowPublish(Async)");
+            throw new ApiException("Missing the required parameter 'flow' when calling postAutoFlowsByFlowPublish(Async)");
         }
 
-        return postV1AutoFlowsByFlowPublishCall(flow, _callback);
+        return postAutoFlowsByFlowPublishCall(flow, _callback);
 
     }
 
@@ -1278,8 +1278,8 @@ public class AutoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Object postV1AutoFlowsByFlowPublish(@javax.annotation.Nonnull String flow) throws ApiException {
-        ApiResponse<Object> localVarResp = postV1AutoFlowsByFlowPublishWithHttpInfo(flow);
+    public Object postAutoFlowsByFlowPublish(@javax.annotation.Nonnull String flow) throws ApiException {
+        ApiResponse<Object> localVarResp = postAutoFlowsByFlowPublishWithHttpInfo(flow);
         return localVarResp.getData();
     }
 
@@ -1296,8 +1296,8 @@ public class AutoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> postV1AutoFlowsByFlowPublishWithHttpInfo(@javax.annotation.Nonnull String flow) throws ApiException {
-        okhttp3.Call localVarCall = postV1AutoFlowsByFlowPublishValidateBeforeCall(flow, null);
+    public ApiResponse<Object> postAutoFlowsByFlowPublishWithHttpInfo(@javax.annotation.Nonnull String flow) throws ApiException {
+        okhttp3.Call localVarCall = postAutoFlowsByFlowPublishValidateBeforeCall(flow, null);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1316,15 +1316,15 @@ public class AutoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1AutoFlowsByFlowPublishAsync(@javax.annotation.Nonnull String flow, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call postAutoFlowsByFlowPublishAsync(@javax.annotation.Nonnull String flow, final ApiCallback<Object> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1AutoFlowsByFlowPublishValidateBeforeCall(flow, _callback);
+        okhttp3.Call localVarCall = postAutoFlowsByFlowPublishValidateBeforeCall(flow, _callback);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1AutoRuns
+     * Build call for postAutoRuns
      * @param autoStart  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1336,7 +1336,7 @@ public class AutoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1AutoRunsCall(@javax.annotation.Nonnull AutoStart autoStart, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAutoRunsCall(@javax.annotation.Nonnull AutoStart autoStart, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1382,13 +1382,13 @@ public class AutoApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1AutoRunsValidateBeforeCall(@javax.annotation.Nonnull AutoStart autoStart, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postAutoRunsValidateBeforeCall(@javax.annotation.Nonnull AutoStart autoStart, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'autoStart' is set
         if (autoStart == null) {
-            throw new ApiException("Missing the required parameter 'autoStart' when calling postV1AutoRuns(Async)");
+            throw new ApiException("Missing the required parameter 'autoStart' when calling postAutoRuns(Async)");
         }
 
-        return postV1AutoRunsCall(autoStart, _callback);
+        return postAutoRunsCall(autoStart, _callback);
 
     }
 
@@ -1405,8 +1405,8 @@ public class AutoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Object postV1AutoRuns(@javax.annotation.Nonnull AutoStart autoStart) throws ApiException {
-        ApiResponse<Object> localVarResp = postV1AutoRunsWithHttpInfo(autoStart);
+    public Object postAutoRuns(@javax.annotation.Nonnull AutoStart autoStart) throws ApiException {
+        ApiResponse<Object> localVarResp = postAutoRunsWithHttpInfo(autoStart);
         return localVarResp.getData();
     }
 
@@ -1423,8 +1423,8 @@ public class AutoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> postV1AutoRunsWithHttpInfo(@javax.annotation.Nonnull AutoStart autoStart) throws ApiException {
-        okhttp3.Call localVarCall = postV1AutoRunsValidateBeforeCall(autoStart, null);
+    public ApiResponse<Object> postAutoRunsWithHttpInfo(@javax.annotation.Nonnull AutoStart autoStart) throws ApiException {
+        okhttp3.Call localVarCall = postAutoRunsValidateBeforeCall(autoStart, null);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1443,9 +1443,9 @@ public class AutoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1AutoRunsAsync(@javax.annotation.Nonnull AutoStart autoStart, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call postAutoRunsAsync(@javax.annotation.Nonnull AutoStart autoStart, final ApiCallback<Object> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1AutoRunsValidateBeforeCall(autoStart, _callback);
+        okhttp3.Call localVarCall = postAutoRunsValidateBeforeCall(autoStart, _callback);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

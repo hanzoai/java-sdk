@@ -112,12 +112,12 @@ public class RiskApi {
     }
 
     /**
-     * Build call for getV1RiskHealth
+     * Build call for getRiskHealth
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1RiskHealthCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getRiskHealthCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -161,8 +161,8 @@ public class RiskApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1RiskHealthValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1RiskHealthCall(_callback);
+    private okhttp3.Call getRiskHealthValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getRiskHealthCall(_callback);
 
     }
 
@@ -171,8 +171,8 @@ public class RiskApi {
      * Reports whether the per-organisation model plane is genuinely usable: that the plane was built, that the per-organisation stores can be written, and whether the event surface the feature plane is rolled up from is reachable. It is a REAL probe, not status theatre.  200 only when the plane can work. Otherwise 503 CARRYING THE REPORT — which part failed and the real error — and that body is why this is not a typed op: a typed op reaches a non-2xx by returning an error, and the envelope that produces would drop exactly the detail the probe exists to deliver.  An unreachable event surface is REPORTED and is not a failure. Scoring reads in-memory aggregates and never the warehouse, so a warm that cannot run degrades how much history a model has seen and does not stop it deciding.  It also reports how many organisations&#39; models are resident, how many have been evicted to hold that bound, and how many of the resident ones are at their own aggregate bound. Eviction is lossless — learned state is written to that organisation&#39;s own store first and its aggregates rebuild from its own record — so a climbing count is a capacity signal, not a loss. A STRAINED model is different: it has started forgetting its own least-recently-active subjects, and each forgotten subject reads as inactive until it is active again. That is a control degrading, and it is reported here because it is otherwise silent.  It answers about the process, not about a tenant: it takes no organisation and names none.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1RiskHealth() throws ApiException {
-        getV1RiskHealthWithHttpInfo();
+    public void getRiskHealth() throws ApiException {
+        getRiskHealthWithHttpInfo();
     }
 
     /**
@@ -181,8 +181,8 @@ public class RiskApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1RiskHealthWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1RiskHealthValidateBeforeCall(null);
+    public ApiResponse<Void> getRiskHealthWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getRiskHealthValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -193,9 +193,9 @@ public class RiskApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1RiskHealthAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getRiskHealthAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1RiskHealthValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getRiskHealthValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

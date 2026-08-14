@@ -75,7 +75,7 @@ public class TranslateApi {
     }
 
     /**
-     * Build call for getV1TranslateMemory
+     * Build call for getTranslateMemory
      * @param target Target narrows to one target language tag (BCP-47, e.g. \&quot;es\&quot; or \&quot;pt-BR\&quot;). (optional)
      * @param state State narrows to one position on the review ladder: machine, suggested, approved or published. (optional)
      * @param limit Limit caps the rows returned. Non-positive or unparseable means the server default (200); the ceiling is 1000. (optional)
@@ -89,7 +89,7 @@ public class TranslateApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1TranslateMemoryCall(@javax.annotation.Nullable String target, @javax.annotation.Nullable String state, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getTranslateMemoryCall(@javax.annotation.Nullable String target, @javax.annotation.Nullable String state, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -146,8 +146,8 @@ public class TranslateApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1TranslateMemoryValidateBeforeCall(@javax.annotation.Nullable String target, @javax.annotation.Nullable String state, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
-        return getV1TranslateMemoryCall(target, state, limit, _callback);
+    private okhttp3.Call getTranslateMemoryValidateBeforeCall(@javax.annotation.Nullable String target, @javax.annotation.Nullable String state, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+        return getTranslateMemoryCall(target, state, limit, _callback);
 
     }
 
@@ -166,8 +166,8 @@ public class TranslateApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public MemoryPage getV1TranslateMemory(@javax.annotation.Nullable String target, @javax.annotation.Nullable String state, @javax.annotation.Nullable Integer limit) throws ApiException {
-        ApiResponse<MemoryPage> localVarResp = getV1TranslateMemoryWithHttpInfo(target, state, limit);
+    public MemoryPage getTranslateMemory(@javax.annotation.Nullable String target, @javax.annotation.Nullable String state, @javax.annotation.Nullable Integer limit) throws ApiException {
+        ApiResponse<MemoryPage> localVarResp = getTranslateMemoryWithHttpInfo(target, state, limit);
         return localVarResp.getData();
     }
 
@@ -186,8 +186,8 @@ public class TranslateApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<MemoryPage> getV1TranslateMemoryWithHttpInfo(@javax.annotation.Nullable String target, @javax.annotation.Nullable String state, @javax.annotation.Nullable Integer limit) throws ApiException {
-        okhttp3.Call localVarCall = getV1TranslateMemoryValidateBeforeCall(target, state, limit, null);
+    public ApiResponse<MemoryPage> getTranslateMemoryWithHttpInfo(@javax.annotation.Nullable String target, @javax.annotation.Nullable String state, @javax.annotation.Nullable Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = getTranslateMemoryValidateBeforeCall(target, state, limit, null);
         Type localVarReturnType = new TypeToken<MemoryPage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -208,20 +208,20 @@ public class TranslateApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1TranslateMemoryAsync(@javax.annotation.Nullable String target, @javax.annotation.Nullable String state, @javax.annotation.Nullable Integer limit, final ApiCallback<MemoryPage> _callback) throws ApiException {
+    public okhttp3.Call getTranslateMemoryAsync(@javax.annotation.Nullable String target, @javax.annotation.Nullable String state, @javax.annotation.Nullable Integer limit, final ApiCallback<MemoryPage> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1TranslateMemoryValidateBeforeCall(target, state, limit, _callback);
+        okhttp3.Call localVarCall = getTranslateMemoryValidateBeforeCall(target, state, limit, _callback);
         Type localVarReturnType = new TypeToken<MemoryPage>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1Translate
+     * Build call for postTranslate
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1TranslateCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postTranslateCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -265,8 +265,8 @@ public class TranslateApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1TranslateValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1TranslateCall(_callback);
+    private okhttp3.Call postTranslateValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postTranslateCall(_callback);
 
     }
 
@@ -275,8 +275,8 @@ public class TranslateApi {
      * Returns one translation per input string, in input order, each carrying where it sits on the review ladder and whether it came from your memory rather than an engine — plus a usage block of REAL counts (strings, cached, translated, and the source characters that actually reached an engine). Send &#x60;text&#x60; for one string or &#x60;batch&#x60; for many, never both. When you name no &#x60;source&#x60;, the detected one is reported back.  THE TRANSLATION MEMORY IS CONSULTED FIRST AND IT IS NORMATIVE, NOT A CACHE. Every string keys on (source text, target, glossary version, tier); a hit is returned VERBATIM and never re-translated, which is what makes a locale rebuild idempotent under a non-deterministic model and the bill proportional to what actually changed. Misses go to the engine and are written back at state &#x60;machine&#x60;. Editing a glossary term changes the key, so a stale rendering can never be served.  IT CANNOT TRAMPLE REVIEWED WORK. A write from this route may create an entry or refresh one still at &#x60;machine&#x60;, and nothing else — a string a human moved to approved or published through the memory review lane survives every rebuild, and comes back here unchanged. The memory is the caller&#39;s OWN org&#39;s, a separate store per org: the source text you send is customer content and lands nowhere else. Read it back or review it at /v1/translate/memory.  &#x60;tier&#x60; picks the engine and defaults to quality — the model plane, which carries context, terminology and tone, and which bills its own tokens, so nothing is charged twice here. &#x60;bulk&#x60; is the high-volume engine and is metered HERE, on the source characters that reached it: a fully-cached rebuild reports zero characters and costs zero. BULK NEVER FALLS BACK TO QUALITY — on a deployment that does not serve it the answer is 503 for that tier, so a caller is never quietly served, or charged, at a tier it did not ask for. A bulk request beyond its balance is refused with the nested {\&quot;error\&quot;:{\&quot;code\&quot;,\&quot;message\&quot;}} body at 402/503.  &#x60;target&#x60; IS CHECKED FOR SHAPE, NOT FOR SUPPORT: anything BCP-47-shaped is accepted (&#x60;es&#x60;, &#x60;pt-BR&#x60;), anything else is 400. There is no unsupported-language error — a well-formed tag no engine can actually render is passed straight through, and whatever comes back is what gets stored and returned. &#x60;format&#x60; (text, html, markdown) tells the engine what markup to preserve; &#x60;glossary&#x60; fixes terms verbatim.  Requires a validated principal — 401 without one, and the org is always that principal&#39;s. At most 512 strings per call and 32768 characters per string; an engine that fails or answers a reply that does not cover every input is 502, and nothing is stored.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1Translate() throws ApiException {
-        postV1TranslateWithHttpInfo();
+    public void postTranslate() throws ApiException {
+        postTranslateWithHttpInfo();
     }
 
     /**
@@ -285,8 +285,8 @@ public class TranslateApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1TranslateWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1TranslateValidateBeforeCall(null);
+    public ApiResponse<Void> postTranslateWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postTranslateValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -297,14 +297,14 @@ public class TranslateApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1TranslateAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postTranslateAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1TranslateValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postTranslateValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1TranslateMemory
+     * Build call for putTranslateMemory
      * @param reviewRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -316,7 +316,7 @@ public class TranslateApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putV1TranslateMemoryCall(@javax.annotation.Nonnull ReviewRequest reviewRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putTranslateMemoryCall(@javax.annotation.Nonnull ReviewRequest reviewRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -362,13 +362,13 @@ public class TranslateApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1TranslateMemoryValidateBeforeCall(@javax.annotation.Nonnull ReviewRequest reviewRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putTranslateMemoryValidateBeforeCall(@javax.annotation.Nonnull ReviewRequest reviewRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'reviewRequest' is set
         if (reviewRequest == null) {
-            throw new ApiException("Missing the required parameter 'reviewRequest' when calling putV1TranslateMemory(Async)");
+            throw new ApiException("Missing the required parameter 'reviewRequest' when calling putTranslateMemory(Async)");
         }
 
-        return putV1TranslateMemoryCall(reviewRequest, _callback);
+        return putTranslateMemoryCall(reviewRequest, _callback);
 
     }
 
@@ -385,8 +385,8 @@ public class TranslateApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public MemoryEntry putV1TranslateMemory(@javax.annotation.Nonnull ReviewRequest reviewRequest) throws ApiException {
-        ApiResponse<MemoryEntry> localVarResp = putV1TranslateMemoryWithHttpInfo(reviewRequest);
+    public MemoryEntry putTranslateMemory(@javax.annotation.Nonnull ReviewRequest reviewRequest) throws ApiException {
+        ApiResponse<MemoryEntry> localVarResp = putTranslateMemoryWithHttpInfo(reviewRequest);
         return localVarResp.getData();
     }
 
@@ -403,8 +403,8 @@ public class TranslateApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<MemoryEntry> putV1TranslateMemoryWithHttpInfo(@javax.annotation.Nonnull ReviewRequest reviewRequest) throws ApiException {
-        okhttp3.Call localVarCall = putV1TranslateMemoryValidateBeforeCall(reviewRequest, null);
+    public ApiResponse<MemoryEntry> putTranslateMemoryWithHttpInfo(@javax.annotation.Nonnull ReviewRequest reviewRequest) throws ApiException {
+        okhttp3.Call localVarCall = putTranslateMemoryValidateBeforeCall(reviewRequest, null);
         Type localVarReturnType = new TypeToken<MemoryEntry>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -423,9 +423,9 @@ public class TranslateApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putV1TranslateMemoryAsync(@javax.annotation.Nonnull ReviewRequest reviewRequest, final ApiCallback<MemoryEntry> _callback) throws ApiException {
+    public okhttp3.Call putTranslateMemoryAsync(@javax.annotation.Nonnull ReviewRequest reviewRequest, final ApiCallback<MemoryEntry> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1TranslateMemoryValidateBeforeCall(reviewRequest, _callback);
+        okhttp3.Call localVarCall = putTranslateMemoryValidateBeforeCall(reviewRequest, _callback);
         Type localVarReturnType = new TypeToken<MemoryEntry>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

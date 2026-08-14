@@ -73,7 +73,7 @@ public class CsrfApi {
     }
 
     /**
-     * Build call for getV1Csrf
+     * Build call for getCsrf
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -84,7 +84,7 @@ public class CsrfApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CsrfCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCsrfCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -129,8 +129,8 @@ public class CsrfApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CsrfValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1CsrfCall(_callback);
+    private okhttp3.Call getCsrfValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getCsrfCall(_callback);
 
     }
 
@@ -146,8 +146,8 @@ public class CsrfApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public CsrfResp getV1Csrf() throws ApiException {
-        ApiResponse<CsrfResp> localVarResp = getV1CsrfWithHttpInfo();
+    public CsrfResp getCsrf() throws ApiException {
+        ApiResponse<CsrfResp> localVarResp = getCsrfWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -163,8 +163,8 @@ public class CsrfApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CsrfResp> getV1CsrfWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1CsrfValidateBeforeCall(null);
+    public ApiResponse<CsrfResp> getCsrfWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getCsrfValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<CsrfResp>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -182,9 +182,9 @@ public class CsrfApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CsrfAsync(final ApiCallback<CsrfResp> _callback) throws ApiException {
+    public okhttp3.Call getCsrfAsync(final ApiCallback<CsrfResp> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CsrfValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getCsrfValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<CsrfResp>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

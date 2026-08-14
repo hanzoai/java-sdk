@@ -80,7 +80,7 @@ public class BenchmarkApi {
     }
 
     /**
-     * Build call for getV1BenchmarkCatalog
+     * Build call for getBenchmarkCatalog
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -91,7 +91,7 @@ public class BenchmarkApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1BenchmarkCatalogCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getBenchmarkCatalogCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -136,8 +136,8 @@ public class BenchmarkApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1BenchmarkCatalogValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1BenchmarkCatalogCall(_callback);
+    private okhttp3.Call getBenchmarkCatalogValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getBenchmarkCatalogCall(_callback);
 
     }
 
@@ -153,8 +153,8 @@ public class BenchmarkApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public BenchmarkCatalog getV1BenchmarkCatalog() throws ApiException {
-        ApiResponse<BenchmarkCatalog> localVarResp = getV1BenchmarkCatalogWithHttpInfo();
+    public BenchmarkCatalog getBenchmarkCatalog() throws ApiException {
+        ApiResponse<BenchmarkCatalog> localVarResp = getBenchmarkCatalogWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -170,8 +170,8 @@ public class BenchmarkApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BenchmarkCatalog> getV1BenchmarkCatalogWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1BenchmarkCatalogValidateBeforeCall(null);
+    public ApiResponse<BenchmarkCatalog> getBenchmarkCatalogWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getBenchmarkCatalogValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<BenchmarkCatalog>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -189,15 +189,15 @@ public class BenchmarkApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1BenchmarkCatalogAsync(final ApiCallback<BenchmarkCatalog> _callback) throws ApiException {
+    public okhttp3.Call getBenchmarkCatalogAsync(final ApiCallback<BenchmarkCatalog> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1BenchmarkCatalogValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getBenchmarkCatalogValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<BenchmarkCatalog>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1BenchmarkCompare
+     * Build call for getBenchmarkCompare
      * @param a A is the first model id. It is required. (required)
      * @param b B is the second model id. It is required. (required)
      * @param benchmark Benchmark is the catalog id to compare on, defaulting to gpqa_diamond. (optional)
@@ -211,7 +211,7 @@ public class BenchmarkApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1BenchmarkCompareCall(@javax.annotation.Nonnull String a, @javax.annotation.Nonnull String b, @javax.annotation.Nullable String benchmark, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getBenchmarkCompareCall(@javax.annotation.Nonnull String a, @javax.annotation.Nonnull String b, @javax.annotation.Nullable String benchmark, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -268,18 +268,18 @@ public class BenchmarkApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1BenchmarkCompareValidateBeforeCall(@javax.annotation.Nonnull String a, @javax.annotation.Nonnull String b, @javax.annotation.Nullable String benchmark, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getBenchmarkCompareValidateBeforeCall(@javax.annotation.Nonnull String a, @javax.annotation.Nonnull String b, @javax.annotation.Nullable String benchmark, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'a' is set
         if (a == null) {
-            throw new ApiException("Missing the required parameter 'a' when calling getV1BenchmarkCompare(Async)");
+            throw new ApiException("Missing the required parameter 'a' when calling getBenchmarkCompare(Async)");
         }
 
         // verify the required parameter 'b' is set
         if (b == null) {
-            throw new ApiException("Missing the required parameter 'b' when calling getV1BenchmarkCompare(Async)");
+            throw new ApiException("Missing the required parameter 'b' when calling getBenchmarkCompare(Async)");
         }
 
-        return getV1BenchmarkCompareCall(a, b, benchmark, _callback);
+        return getBenchmarkCompareCall(a, b, benchmark, _callback);
 
     }
 
@@ -298,8 +298,8 @@ public class BenchmarkApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Pairing getV1BenchmarkCompare(@javax.annotation.Nonnull String a, @javax.annotation.Nonnull String b, @javax.annotation.Nullable String benchmark) throws ApiException {
-        ApiResponse<Pairing> localVarResp = getV1BenchmarkCompareWithHttpInfo(a, b, benchmark);
+    public Pairing getBenchmarkCompare(@javax.annotation.Nonnull String a, @javax.annotation.Nonnull String b, @javax.annotation.Nullable String benchmark) throws ApiException {
+        ApiResponse<Pairing> localVarResp = getBenchmarkCompareWithHttpInfo(a, b, benchmark);
         return localVarResp.getData();
     }
 
@@ -318,8 +318,8 @@ public class BenchmarkApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Pairing> getV1BenchmarkCompareWithHttpInfo(@javax.annotation.Nonnull String a, @javax.annotation.Nonnull String b, @javax.annotation.Nullable String benchmark) throws ApiException {
-        okhttp3.Call localVarCall = getV1BenchmarkCompareValidateBeforeCall(a, b, benchmark, null);
+    public ApiResponse<Pairing> getBenchmarkCompareWithHttpInfo(@javax.annotation.Nonnull String a, @javax.annotation.Nonnull String b, @javax.annotation.Nullable String benchmark) throws ApiException {
+        okhttp3.Call localVarCall = getBenchmarkCompareValidateBeforeCall(a, b, benchmark, null);
         Type localVarReturnType = new TypeToken<Pairing>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -340,15 +340,15 @@ public class BenchmarkApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1BenchmarkCompareAsync(@javax.annotation.Nonnull String a, @javax.annotation.Nonnull String b, @javax.annotation.Nullable String benchmark, final ApiCallback<Pairing> _callback) throws ApiException {
+    public okhttp3.Call getBenchmarkCompareAsync(@javax.annotation.Nonnull String a, @javax.annotation.Nonnull String b, @javax.annotation.Nullable String benchmark, final ApiCallback<Pairing> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1BenchmarkCompareValidateBeforeCall(a, b, benchmark, _callback);
+        okhttp3.Call localVarCall = getBenchmarkCompareValidateBeforeCall(a, b, benchmark, _callback);
         Type localVarReturnType = new TypeToken<Pairing>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1BenchmarkLeaderboard
+     * Build call for getBenchmarkLeaderboard
      * @param benchmark Benchmark is the catalog id to read, defaulting to gpqa_diamond. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -360,7 +360,7 @@ public class BenchmarkApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1BenchmarkLeaderboardCall(@javax.annotation.Nullable String benchmark, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getBenchmarkLeaderboardCall(@javax.annotation.Nullable String benchmark, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -409,8 +409,8 @@ public class BenchmarkApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1BenchmarkLeaderboardValidateBeforeCall(@javax.annotation.Nullable String benchmark, final ApiCallback _callback) throws ApiException {
-        return getV1BenchmarkLeaderboardCall(benchmark, _callback);
+    private okhttp3.Call getBenchmarkLeaderboardValidateBeforeCall(@javax.annotation.Nullable String benchmark, final ApiCallback _callback) throws ApiException {
+        return getBenchmarkLeaderboardCall(benchmark, _callback);
 
     }
 
@@ -427,8 +427,8 @@ public class BenchmarkApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Leaderboard getV1BenchmarkLeaderboard(@javax.annotation.Nullable String benchmark) throws ApiException {
-        ApiResponse<Leaderboard> localVarResp = getV1BenchmarkLeaderboardWithHttpInfo(benchmark);
+    public Leaderboard getBenchmarkLeaderboard(@javax.annotation.Nullable String benchmark) throws ApiException {
+        ApiResponse<Leaderboard> localVarResp = getBenchmarkLeaderboardWithHttpInfo(benchmark);
         return localVarResp.getData();
     }
 
@@ -445,8 +445,8 @@ public class BenchmarkApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Leaderboard> getV1BenchmarkLeaderboardWithHttpInfo(@javax.annotation.Nullable String benchmark) throws ApiException {
-        okhttp3.Call localVarCall = getV1BenchmarkLeaderboardValidateBeforeCall(benchmark, null);
+    public ApiResponse<Leaderboard> getBenchmarkLeaderboardWithHttpInfo(@javax.annotation.Nullable String benchmark) throws ApiException {
+        okhttp3.Call localVarCall = getBenchmarkLeaderboardValidateBeforeCall(benchmark, null);
         Type localVarReturnType = new TypeToken<Leaderboard>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -465,15 +465,15 @@ public class BenchmarkApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1BenchmarkLeaderboardAsync(@javax.annotation.Nullable String benchmark, final ApiCallback<Leaderboard> _callback) throws ApiException {
+    public okhttp3.Call getBenchmarkLeaderboardAsync(@javax.annotation.Nullable String benchmark, final ApiCallback<Leaderboard> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1BenchmarkLeaderboardValidateBeforeCall(benchmark, _callback);
+        okhttp3.Call localVarCall = getBenchmarkLeaderboardValidateBeforeCall(benchmark, _callback);
         Type localVarReturnType = new TypeToken<Leaderboard>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1BenchmarkPresets
+     * Build call for getBenchmarkPresets
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -484,7 +484,7 @@ public class BenchmarkApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1BenchmarkPresetsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getBenchmarkPresetsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -529,8 +529,8 @@ public class BenchmarkApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1BenchmarkPresetsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1BenchmarkPresetsCall(_callback);
+    private okhttp3.Call getBenchmarkPresetsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getBenchmarkPresetsCall(_callback);
 
     }
 
@@ -546,8 +546,8 @@ public class BenchmarkApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public PresetList getV1BenchmarkPresets() throws ApiException {
-        ApiResponse<PresetList> localVarResp = getV1BenchmarkPresetsWithHttpInfo();
+    public PresetList getBenchmarkPresets() throws ApiException {
+        ApiResponse<PresetList> localVarResp = getBenchmarkPresetsWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -563,8 +563,8 @@ public class BenchmarkApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PresetList> getV1BenchmarkPresetsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1BenchmarkPresetsValidateBeforeCall(null);
+    public ApiResponse<PresetList> getBenchmarkPresetsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getBenchmarkPresetsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<PresetList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -582,15 +582,15 @@ public class BenchmarkApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1BenchmarkPresetsAsync(final ApiCallback<PresetList> _callback) throws ApiException {
+    public okhttp3.Call getBenchmarkPresetsAsync(final ApiCallback<PresetList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1BenchmarkPresetsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getBenchmarkPresetsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<PresetList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1BenchmarkPresets
+     * Build call for postBenchmarkPresets
      * @param preset  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -602,7 +602,7 @@ public class BenchmarkApi {
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1BenchmarkPresetsCall(@javax.annotation.Nonnull Preset preset, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postBenchmarkPresetsCall(@javax.annotation.Nonnull Preset preset, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -648,13 +648,13 @@ public class BenchmarkApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1BenchmarkPresetsValidateBeforeCall(@javax.annotation.Nonnull Preset preset, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postBenchmarkPresetsValidateBeforeCall(@javax.annotation.Nonnull Preset preset, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'preset' is set
         if (preset == null) {
-            throw new ApiException("Missing the required parameter 'preset' when calling postV1BenchmarkPresets(Async)");
+            throw new ApiException("Missing the required parameter 'preset' when calling postBenchmarkPresets(Async)");
         }
 
-        return postV1BenchmarkPresetsCall(preset, _callback);
+        return postBenchmarkPresetsCall(preset, _callback);
 
     }
 
@@ -671,8 +671,8 @@ public class BenchmarkApi {
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
      </table>
      */
-    public PresetAccepted postV1BenchmarkPresets(@javax.annotation.Nonnull Preset preset) throws ApiException {
-        ApiResponse<PresetAccepted> localVarResp = postV1BenchmarkPresetsWithHttpInfo(preset);
+    public PresetAccepted postBenchmarkPresets(@javax.annotation.Nonnull Preset preset) throws ApiException {
+        ApiResponse<PresetAccepted> localVarResp = postBenchmarkPresetsWithHttpInfo(preset);
         return localVarResp.getData();
     }
 
@@ -689,8 +689,8 @@ public class BenchmarkApi {
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PresetAccepted> postV1BenchmarkPresetsWithHttpInfo(@javax.annotation.Nonnull Preset preset) throws ApiException {
-        okhttp3.Call localVarCall = postV1BenchmarkPresetsValidateBeforeCall(preset, null);
+    public ApiResponse<PresetAccepted> postBenchmarkPresetsWithHttpInfo(@javax.annotation.Nonnull Preset preset) throws ApiException {
+        okhttp3.Call localVarCall = postBenchmarkPresetsValidateBeforeCall(preset, null);
         Type localVarReturnType = new TypeToken<PresetAccepted>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -709,15 +709,15 @@ public class BenchmarkApi {
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1BenchmarkPresetsAsync(@javax.annotation.Nonnull Preset preset, final ApiCallback<PresetAccepted> _callback) throws ApiException {
+    public okhttp3.Call postBenchmarkPresetsAsync(@javax.annotation.Nonnull Preset preset, final ApiCallback<PresetAccepted> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1BenchmarkPresetsValidateBeforeCall(preset, _callback);
+        okhttp3.Call localVarCall = postBenchmarkPresetsValidateBeforeCall(preset, _callback);
         Type localVarReturnType = new TypeToken<PresetAccepted>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1BenchmarkRuns
+     * Build call for postBenchmarkRuns
      * @param suite  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -729,7 +729,7 @@ public class BenchmarkApi {
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1BenchmarkRunsCall(@javax.annotation.Nonnull Suite suite, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postBenchmarkRunsCall(@javax.annotation.Nonnull Suite suite, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -775,13 +775,13 @@ public class BenchmarkApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1BenchmarkRunsValidateBeforeCall(@javax.annotation.Nonnull Suite suite, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postBenchmarkRunsValidateBeforeCall(@javax.annotation.Nonnull Suite suite, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'suite' is set
         if (suite == null) {
-            throw new ApiException("Missing the required parameter 'suite' when calling postV1BenchmarkRuns(Async)");
+            throw new ApiException("Missing the required parameter 'suite' when calling postBenchmarkRuns(Async)");
         }
 
-        return postV1BenchmarkRunsCall(suite, _callback);
+        return postBenchmarkRunsCall(suite, _callback);
 
     }
 
@@ -798,8 +798,8 @@ public class BenchmarkApi {
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
      </table>
      */
-    public Admission postV1BenchmarkRuns(@javax.annotation.Nonnull Suite suite) throws ApiException {
-        ApiResponse<Admission> localVarResp = postV1BenchmarkRunsWithHttpInfo(suite);
+    public Admission postBenchmarkRuns(@javax.annotation.Nonnull Suite suite) throws ApiException {
+        ApiResponse<Admission> localVarResp = postBenchmarkRunsWithHttpInfo(suite);
         return localVarResp.getData();
     }
 
@@ -816,8 +816,8 @@ public class BenchmarkApi {
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Admission> postV1BenchmarkRunsWithHttpInfo(@javax.annotation.Nonnull Suite suite) throws ApiException {
-        okhttp3.Call localVarCall = postV1BenchmarkRunsValidateBeforeCall(suite, null);
+    public ApiResponse<Admission> postBenchmarkRunsWithHttpInfo(@javax.annotation.Nonnull Suite suite) throws ApiException {
+        okhttp3.Call localVarCall = postBenchmarkRunsValidateBeforeCall(suite, null);
         Type localVarReturnType = new TypeToken<Admission>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -836,9 +836,9 @@ public class BenchmarkApi {
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1BenchmarkRunsAsync(@javax.annotation.Nonnull Suite suite, final ApiCallback<Admission> _callback) throws ApiException {
+    public okhttp3.Call postBenchmarkRunsAsync(@javax.annotation.Nonnull Suite suite, final ApiCallback<Admission> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1BenchmarkRunsValidateBeforeCall(suite, _callback);
+        okhttp3.Call localVarCall = postBenchmarkRunsValidateBeforeCall(suite, _callback);
         Type localVarReturnType = new TypeToken<Admission>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

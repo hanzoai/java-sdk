@@ -29,7 +29,7 @@ import java.io.IOException;
 
 import ai.hanzo.cloud.model.CaptureResult;
 import java.io.File;
-import ai.hanzo.cloud.model.PostV1EventRequest;
+import ai.hanzo.cloud.model.PostEventRequest;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -75,8 +75,8 @@ public class EventApi {
     }
 
     /**
-     * Build call for postV1Event
-     * @param postV1EventRequest  (optional)
+     * Build call for postEvent
+     * @param postEventRequest  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -87,7 +87,7 @@ public class EventApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1EventCall(@javax.annotation.Nullable PostV1EventRequest postV1EventRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postEventCall(@javax.annotation.Nullable PostEventRequest postEventRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -101,7 +101,7 @@ public class EventApi {
             basePath = null;
         }
 
-        Object localVarPostBody = postV1EventRequest;
+        Object localVarPostBody = postEventRequest;
 
         // create path and map variables
         String localVarPath = "/v1/event";
@@ -133,15 +133,15 @@ public class EventApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1EventValidateBeforeCall(@javax.annotation.Nullable PostV1EventRequest postV1EventRequest, final ApiCallback _callback) throws ApiException {
-        return postV1EventCall(postV1EventRequest, _callback);
+    private okhttp3.Call postEventValidateBeforeCall(@javax.annotation.Nullable PostEventRequest postEventRequest, final ApiCallback _callback) throws ApiException {
+        return postEventCall(postEventRequest, _callback);
 
     }
 
     /**
      * Capture product events into your org&#39;s warehouse
      * Stores pageviews, browser errors, identifies and custom commerce events as rows in the caller&#39;s own tenant, and answers a receipt {accepted, dropped} that always totals what was sent — a beacon is never silently discarded.  THE STATUS SAYS WHETHER ANYTHING LANDED, so a green check can never mean an empty warehouse. 200 means at least one event was stored (or that nothing was sent), and a nonzero &#x60;dropped&#x60; beside a nonzero &#x60;accepted&#x60; is a PARTIAL batch, never a failed one — a batch is not refused whole for its worst element. If NOTHING was stored the request is an error, and it names the one thing that fixes it: 401 &#x60;ingest_key_required&#x60; when every event was refused for want of a credential (the same events land with a key), and 400 &#x60;unroutable_events&#x60; when the caller HAD capability and the body still named nothing storable.  ONE door for every wire a Hanzo surface emits, dispatched by the SHAPE of the body and never by a second path: a bare event object, a bare array of them, the {batch:[…]} / {events:[…]} envelope, the team console&#39;s snake_case array, and the PostHog wire (spelled &#x60;distinct_id&#x60;/&#x60;api_key&#x60;, which the canonical wire never uses). BATCH IS A BODY, NOT A PATH — there is no /v1/event/batch, because an array already is one.  WHAT THE CALLER PRESENTS DECIDES WHAT IT MAY WRITE, and the door itself grants nothing. A validated bearer or an org API key writes the full event at full fidelity. A PUBLISHABLE key (pk-, on Authorization: Bearer, x-hanzo-ingest-key, or ?ingest_key&#x3D; for navigator.sendBeacon, which cannot set headers) does the same, and is the credential a browser bundle ships: it is deliberately NOT a secret, it resolves WHICH tenant a beacon belongs to and nothing more. A pk- never authenticates and can READ NOTHING — not this org&#39;s errors, not a lens, not any other route on this API — so a leaked one lets a stranger write into your stream, and never lets one read out of it. Reading these rows back always takes a real bearer. A Hanzo Team workspace token resolves its org at REDUCED capability: the signed account names the person, so a &#x60;distinctId&#x60; in the body cannot pin events on a colleague.  NO CREDENTIAL IS REFUSED: a write the server cannot attribute to a project is 401 &#x60;ingest_key_required&#x60;, and a credential that IS presented but resolves to no project is 403 &#x60;ingest_key_unknown&#x60;. Nothing is filed under a shared tenant — events nobody can read are worse than events nobody sent, because the caller is told it succeeded. A browser bundle therefore always ships a pk-, which is what /v1/event.js takes.  A REDUCED principal — a Hanzo Team workspace token — writes through the PROJECTION into its own org: narrowed to what the SERVER can name (pageviews and errors, plus the closed autocapture vocabulary $click, $input, $change, $submit, $view), where every one of those names is resolved through a server-owned table and stored as that table&#39;s value, so the name on the wire is never the name in the row. Stripped, too, to the fields the projection names, so revenue, personId, groupId and every property but the element annotation cannot reach a row — and an exception is carried only on an error, never on an interaction, so a click cannot ship a stack trace into a row&#39;s attributes. It does NOT name the person: the signed account is the identity, so a &#x60;distinctId&#x60; in the body cannot pin events on a colleague. Everything refused is counted in &#x60;dropped&#x60;.  The projected lane alone is bounded: 413 over 64 KiB, 400 over 50 events, 429 on the per-client-IP and per-peer caps, and a DNT:1 or Sec-GPC:1 request stores nothing and says so in the receipt. Two stored values carry their own bounds on top, because a request cap does not bound one value: an element annotation over 2 KiB (or a trail over 32 steps) and an exception class over 256 bytes are dropped from the row, which still lands. Authenticated bodies are offered to the observability plane first, which claims LLM-observability ingestion batches and declines everything else.
-     * @param postV1EventRequest  (optional)
+     * @param postEventRequest  (optional)
      * @return CaptureResult
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -151,15 +151,15 @@ public class EventApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public CaptureResult postV1Event(@javax.annotation.Nullable PostV1EventRequest postV1EventRequest) throws ApiException {
-        ApiResponse<CaptureResult> localVarResp = postV1EventWithHttpInfo(postV1EventRequest);
+    public CaptureResult postEvent(@javax.annotation.Nullable PostEventRequest postEventRequest) throws ApiException {
+        ApiResponse<CaptureResult> localVarResp = postEventWithHttpInfo(postEventRequest);
         return localVarResp.getData();
     }
 
     /**
      * Capture product events into your org&#39;s warehouse
      * Stores pageviews, browser errors, identifies and custom commerce events as rows in the caller&#39;s own tenant, and answers a receipt {accepted, dropped} that always totals what was sent — a beacon is never silently discarded.  THE STATUS SAYS WHETHER ANYTHING LANDED, so a green check can never mean an empty warehouse. 200 means at least one event was stored (or that nothing was sent), and a nonzero &#x60;dropped&#x60; beside a nonzero &#x60;accepted&#x60; is a PARTIAL batch, never a failed one — a batch is not refused whole for its worst element. If NOTHING was stored the request is an error, and it names the one thing that fixes it: 401 &#x60;ingest_key_required&#x60; when every event was refused for want of a credential (the same events land with a key), and 400 &#x60;unroutable_events&#x60; when the caller HAD capability and the body still named nothing storable.  ONE door for every wire a Hanzo surface emits, dispatched by the SHAPE of the body and never by a second path: a bare event object, a bare array of them, the {batch:[…]} / {events:[…]} envelope, the team console&#39;s snake_case array, and the PostHog wire (spelled &#x60;distinct_id&#x60;/&#x60;api_key&#x60;, which the canonical wire never uses). BATCH IS A BODY, NOT A PATH — there is no /v1/event/batch, because an array already is one.  WHAT THE CALLER PRESENTS DECIDES WHAT IT MAY WRITE, and the door itself grants nothing. A validated bearer or an org API key writes the full event at full fidelity. A PUBLISHABLE key (pk-, on Authorization: Bearer, x-hanzo-ingest-key, or ?ingest_key&#x3D; for navigator.sendBeacon, which cannot set headers) does the same, and is the credential a browser bundle ships: it is deliberately NOT a secret, it resolves WHICH tenant a beacon belongs to and nothing more. A pk- never authenticates and can READ NOTHING — not this org&#39;s errors, not a lens, not any other route on this API — so a leaked one lets a stranger write into your stream, and never lets one read out of it. Reading these rows back always takes a real bearer. A Hanzo Team workspace token resolves its org at REDUCED capability: the signed account names the person, so a &#x60;distinctId&#x60; in the body cannot pin events on a colleague.  NO CREDENTIAL IS REFUSED: a write the server cannot attribute to a project is 401 &#x60;ingest_key_required&#x60;, and a credential that IS presented but resolves to no project is 403 &#x60;ingest_key_unknown&#x60;. Nothing is filed under a shared tenant — events nobody can read are worse than events nobody sent, because the caller is told it succeeded. A browser bundle therefore always ships a pk-, which is what /v1/event.js takes.  A REDUCED principal — a Hanzo Team workspace token — writes through the PROJECTION into its own org: narrowed to what the SERVER can name (pageviews and errors, plus the closed autocapture vocabulary $click, $input, $change, $submit, $view), where every one of those names is resolved through a server-owned table and stored as that table&#39;s value, so the name on the wire is never the name in the row. Stripped, too, to the fields the projection names, so revenue, personId, groupId and every property but the element annotation cannot reach a row — and an exception is carried only on an error, never on an interaction, so a click cannot ship a stack trace into a row&#39;s attributes. It does NOT name the person: the signed account is the identity, so a &#x60;distinctId&#x60; in the body cannot pin events on a colleague. Everything refused is counted in &#x60;dropped&#x60;.  The projected lane alone is bounded: 413 over 64 KiB, 400 over 50 events, 429 on the per-client-IP and per-peer caps, and a DNT:1 or Sec-GPC:1 request stores nothing and says so in the receipt. Two stored values carry their own bounds on top, because a request cap does not bound one value: an element annotation over 2 KiB (or a trail over 32 steps) and an exception class over 256 bytes are dropped from the row, which still lands. Authenticated bodies are offered to the observability plane first, which claims LLM-observability ingestion batches and declines everything else.
-     * @param postV1EventRequest  (optional)
+     * @param postEventRequest  (optional)
      * @return ApiResponse&lt;CaptureResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -169,8 +169,8 @@ public class EventApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CaptureResult> postV1EventWithHttpInfo(@javax.annotation.Nullable PostV1EventRequest postV1EventRequest) throws ApiException {
-        okhttp3.Call localVarCall = postV1EventValidateBeforeCall(postV1EventRequest, null);
+    public ApiResponse<CaptureResult> postEventWithHttpInfo(@javax.annotation.Nullable PostEventRequest postEventRequest) throws ApiException {
+        okhttp3.Call localVarCall = postEventValidateBeforeCall(postEventRequest, null);
         Type localVarReturnType = new TypeToken<CaptureResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -178,7 +178,7 @@ public class EventApi {
     /**
      * Capture product events into your org&#39;s warehouse (asynchronously)
      * Stores pageviews, browser errors, identifies and custom commerce events as rows in the caller&#39;s own tenant, and answers a receipt {accepted, dropped} that always totals what was sent — a beacon is never silently discarded.  THE STATUS SAYS WHETHER ANYTHING LANDED, so a green check can never mean an empty warehouse. 200 means at least one event was stored (or that nothing was sent), and a nonzero &#x60;dropped&#x60; beside a nonzero &#x60;accepted&#x60; is a PARTIAL batch, never a failed one — a batch is not refused whole for its worst element. If NOTHING was stored the request is an error, and it names the one thing that fixes it: 401 &#x60;ingest_key_required&#x60; when every event was refused for want of a credential (the same events land with a key), and 400 &#x60;unroutable_events&#x60; when the caller HAD capability and the body still named nothing storable.  ONE door for every wire a Hanzo surface emits, dispatched by the SHAPE of the body and never by a second path: a bare event object, a bare array of them, the {batch:[…]} / {events:[…]} envelope, the team console&#39;s snake_case array, and the PostHog wire (spelled &#x60;distinct_id&#x60;/&#x60;api_key&#x60;, which the canonical wire never uses). BATCH IS A BODY, NOT A PATH — there is no /v1/event/batch, because an array already is one.  WHAT THE CALLER PRESENTS DECIDES WHAT IT MAY WRITE, and the door itself grants nothing. A validated bearer or an org API key writes the full event at full fidelity. A PUBLISHABLE key (pk-, on Authorization: Bearer, x-hanzo-ingest-key, or ?ingest_key&#x3D; for navigator.sendBeacon, which cannot set headers) does the same, and is the credential a browser bundle ships: it is deliberately NOT a secret, it resolves WHICH tenant a beacon belongs to and nothing more. A pk- never authenticates and can READ NOTHING — not this org&#39;s errors, not a lens, not any other route on this API — so a leaked one lets a stranger write into your stream, and never lets one read out of it. Reading these rows back always takes a real bearer. A Hanzo Team workspace token resolves its org at REDUCED capability: the signed account names the person, so a &#x60;distinctId&#x60; in the body cannot pin events on a colleague.  NO CREDENTIAL IS REFUSED: a write the server cannot attribute to a project is 401 &#x60;ingest_key_required&#x60;, and a credential that IS presented but resolves to no project is 403 &#x60;ingest_key_unknown&#x60;. Nothing is filed under a shared tenant — events nobody can read are worse than events nobody sent, because the caller is told it succeeded. A browser bundle therefore always ships a pk-, which is what /v1/event.js takes.  A REDUCED principal — a Hanzo Team workspace token — writes through the PROJECTION into its own org: narrowed to what the SERVER can name (pageviews and errors, plus the closed autocapture vocabulary $click, $input, $change, $submit, $view), where every one of those names is resolved through a server-owned table and stored as that table&#39;s value, so the name on the wire is never the name in the row. Stripped, too, to the fields the projection names, so revenue, personId, groupId and every property but the element annotation cannot reach a row — and an exception is carried only on an error, never on an interaction, so a click cannot ship a stack trace into a row&#39;s attributes. It does NOT name the person: the signed account is the identity, so a &#x60;distinctId&#x60; in the body cannot pin events on a colleague. Everything refused is counted in &#x60;dropped&#x60;.  The projected lane alone is bounded: 413 over 64 KiB, 400 over 50 events, 429 on the per-client-IP and per-peer caps, and a DNT:1 or Sec-GPC:1 request stores nothing and says so in the receipt. Two stored values carry their own bounds on top, because a request cap does not bound one value: an element annotation over 2 KiB (or a trail over 32 steps) and an exception class over 256 bytes are dropped from the row, which still lands. Authenticated bodies are offered to the observability plane first, which claims LLM-observability ingestion batches and declines everything else.
-     * @param postV1EventRequest  (optional)
+     * @param postEventRequest  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -189,22 +189,22 @@ public class EventApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1EventAsync(@javax.annotation.Nullable PostV1EventRequest postV1EventRequest, final ApiCallback<CaptureResult> _callback) throws ApiException {
+    public okhttp3.Call postEventAsync(@javax.annotation.Nullable PostEventRequest postEventRequest, final ApiCallback<CaptureResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1EventValidateBeforeCall(postV1EventRequest, _callback);
+        okhttp3.Call localVarCall = postEventValidateBeforeCall(postEventRequest, _callback);
         Type localVarReturnType = new TypeToken<CaptureResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1EventByProjectEnvelope
+     * Build call for postEventByProjectEnvelope
      * @param project  (required)
      * @param body  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1EventByProjectEnvelopeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nullable File body, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postEventByProjectEnvelopeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nullable File body, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -250,64 +250,64 @@ public class EventApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1EventByProjectEnvelopeValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nullable File body, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postEventByProjectEnvelopeValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nullable File body, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'project' is set
         if (project == null) {
-            throw new ApiException("Missing the required parameter 'project' when calling postV1EventByProjectEnvelope(Async)");
+            throw new ApiException("Missing the required parameter 'project' when calling postEventByProjectEnvelope(Async)");
         }
 
-        return postV1EventByProjectEnvelopeCall(project, body, _callback);
+        return postEventByProjectEnvelopeCall(project, body, _callback);
 
     }
 
     /**
      * Sentry SDK envelope ingest — errors and traces from an unmodified Sentry client
-     * Accepts the CURRENT Sentry wire — the framed envelope a modern SDK posts, carrying its items in one request — so an application already instrumented with Sentry reports into Hanzo&#39;s error tracking by pointing its DSN here and changing nothing else.  CLOUD ROUTES IT AND READS NONE OF IT. The body is relayed byte-for-byte to the observability plane, which parses the wire, verifies the credential and answers; this door declares no response shape because it does not know one. A deployment with no observability plane mounted answers 503.  THE CREDENTIAL IS A SENTRY DSN KEY, NOT A HANZO PRINCIPAL. This is one of the few writes on the platform that carries no bearer and no org header by design — a Sentry SDK has neither — and it is exempt from the principal gate for that reason. The observability plane verifies the DSN key itself, fail-closed: a request without a valid one is refused there, never admitted here. Presenting a Hanzo bearer instead does nothing.  &#x60;project&#x60; IS THE DSN&#39;S PROJECT ID — the identifier in the DSN the SDK was configured with, and what the tenant is derived from. It is NOT a Hanzo IAM project and NOT a tracker project key. Only these two ingest paths map through: no observability READ API is reachable by any other suffix under this prefix.
+     * Accepts the CURRENT Sentry wire — the framed envelope a modern SDK posts, carrying its items in one request — so an application already instrumented with Sentry reports into Hanzo&#39;s error tracking by pointing its DSN here and changing nothing else.  CLOUD ROUTES IT AND READS NONE OF IT. The body is relayed byte-for-byte to the observability plane, which parses the wire, verifies the credential and answers; this door declares no response shape because it does not know one. A deployment with no observability plane mounted answers 503.  THE CREDENTIAL IS A SENTRY DSN KEY, NOT A HANZO PRINCIPAL. This is one of the few writes on the platform that carries no bearer and no org header by design — a Sentry SDK has neither — and it is exempt from the principal gate for that reason. The observability plane verifies the DSN key itself, fail-closed: a request without a valid one is refused there, never admitted here. Presenting a Hanzo bearer instead does nothing.  &#x60;project&#x60; IS THE DSN&#39;S PROJECT ID — the identifier in the DSN the SDK was configured with, and what the tenant is derived from. It is NOT a Hanzo IAM project and NOT a todo project key. Only these two ingest paths map through: no observability READ API is reachable by any other suffix under this prefix.
      * @param project  (required)
      * @param body  (optional)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1EventByProjectEnvelope(@javax.annotation.Nonnull String project, @javax.annotation.Nullable File body) throws ApiException {
-        postV1EventByProjectEnvelopeWithHttpInfo(project, body);
+    public void postEventByProjectEnvelope(@javax.annotation.Nonnull String project, @javax.annotation.Nullable File body) throws ApiException {
+        postEventByProjectEnvelopeWithHttpInfo(project, body);
     }
 
     /**
      * Sentry SDK envelope ingest — errors and traces from an unmodified Sentry client
-     * Accepts the CURRENT Sentry wire — the framed envelope a modern SDK posts, carrying its items in one request — so an application already instrumented with Sentry reports into Hanzo&#39;s error tracking by pointing its DSN here and changing nothing else.  CLOUD ROUTES IT AND READS NONE OF IT. The body is relayed byte-for-byte to the observability plane, which parses the wire, verifies the credential and answers; this door declares no response shape because it does not know one. A deployment with no observability plane mounted answers 503.  THE CREDENTIAL IS A SENTRY DSN KEY, NOT A HANZO PRINCIPAL. This is one of the few writes on the platform that carries no bearer and no org header by design — a Sentry SDK has neither — and it is exempt from the principal gate for that reason. The observability plane verifies the DSN key itself, fail-closed: a request without a valid one is refused there, never admitted here. Presenting a Hanzo bearer instead does nothing.  &#x60;project&#x60; IS THE DSN&#39;S PROJECT ID — the identifier in the DSN the SDK was configured with, and what the tenant is derived from. It is NOT a Hanzo IAM project and NOT a tracker project key. Only these two ingest paths map through: no observability READ API is reachable by any other suffix under this prefix.
+     * Accepts the CURRENT Sentry wire — the framed envelope a modern SDK posts, carrying its items in one request — so an application already instrumented with Sentry reports into Hanzo&#39;s error tracking by pointing its DSN here and changing nothing else.  CLOUD ROUTES IT AND READS NONE OF IT. The body is relayed byte-for-byte to the observability plane, which parses the wire, verifies the credential and answers; this door declares no response shape because it does not know one. A deployment with no observability plane mounted answers 503.  THE CREDENTIAL IS A SENTRY DSN KEY, NOT A HANZO PRINCIPAL. This is one of the few writes on the platform that carries no bearer and no org header by design — a Sentry SDK has neither — and it is exempt from the principal gate for that reason. The observability plane verifies the DSN key itself, fail-closed: a request without a valid one is refused there, never admitted here. Presenting a Hanzo bearer instead does nothing.  &#x60;project&#x60; IS THE DSN&#39;S PROJECT ID — the identifier in the DSN the SDK was configured with, and what the tenant is derived from. It is NOT a Hanzo IAM project and NOT a todo project key. Only these two ingest paths map through: no observability READ API is reachable by any other suffix under this prefix.
      * @param project  (required)
      * @param body  (optional)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1EventByProjectEnvelopeWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nullable File body) throws ApiException {
-        okhttp3.Call localVarCall = postV1EventByProjectEnvelopeValidateBeforeCall(project, body, null);
+    public ApiResponse<Void> postEventByProjectEnvelopeWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nullable File body) throws ApiException {
+        okhttp3.Call localVarCall = postEventByProjectEnvelopeValidateBeforeCall(project, body, null);
         return localVarApiClient.execute(localVarCall);
     }
 
     /**
      * Sentry SDK envelope ingest — errors and traces from an unmodified Sentry client (asynchronously)
-     * Accepts the CURRENT Sentry wire — the framed envelope a modern SDK posts, carrying its items in one request — so an application already instrumented with Sentry reports into Hanzo&#39;s error tracking by pointing its DSN here and changing nothing else.  CLOUD ROUTES IT AND READS NONE OF IT. The body is relayed byte-for-byte to the observability plane, which parses the wire, verifies the credential and answers; this door declares no response shape because it does not know one. A deployment with no observability plane mounted answers 503.  THE CREDENTIAL IS A SENTRY DSN KEY, NOT A HANZO PRINCIPAL. This is one of the few writes on the platform that carries no bearer and no org header by design — a Sentry SDK has neither — and it is exempt from the principal gate for that reason. The observability plane verifies the DSN key itself, fail-closed: a request without a valid one is refused there, never admitted here. Presenting a Hanzo bearer instead does nothing.  &#x60;project&#x60; IS THE DSN&#39;S PROJECT ID — the identifier in the DSN the SDK was configured with, and what the tenant is derived from. It is NOT a Hanzo IAM project and NOT a tracker project key. Only these two ingest paths map through: no observability READ API is reachable by any other suffix under this prefix.
+     * Accepts the CURRENT Sentry wire — the framed envelope a modern SDK posts, carrying its items in one request — so an application already instrumented with Sentry reports into Hanzo&#39;s error tracking by pointing its DSN here and changing nothing else.  CLOUD ROUTES IT AND READS NONE OF IT. The body is relayed byte-for-byte to the observability plane, which parses the wire, verifies the credential and answers; this door declares no response shape because it does not know one. A deployment with no observability plane mounted answers 503.  THE CREDENTIAL IS A SENTRY DSN KEY, NOT A HANZO PRINCIPAL. This is one of the few writes on the platform that carries no bearer and no org header by design — a Sentry SDK has neither — and it is exempt from the principal gate for that reason. The observability plane verifies the DSN key itself, fail-closed: a request without a valid one is refused there, never admitted here. Presenting a Hanzo bearer instead does nothing.  &#x60;project&#x60; IS THE DSN&#39;S PROJECT ID — the identifier in the DSN the SDK was configured with, and what the tenant is derived from. It is NOT a Hanzo IAM project and NOT a todo project key. Only these two ingest paths map through: no observability READ API is reachable by any other suffix under this prefix.
      * @param project  (required)
      * @param body  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1EventByProjectEnvelopeAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nullable File body, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postEventByProjectEnvelopeAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nullable File body, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1EventByProjectEnvelopeValidateBeforeCall(project, body, _callback);
+        okhttp3.Call localVarCall = postEventByProjectEnvelopeValidateBeforeCall(project, body, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1EventByProjectStore
+     * Build call for postEventByProjectStore
      * @param project  (required)
      * @param body  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1EventByProjectStoreCall(@javax.annotation.Nonnull String project, @javax.annotation.Nullable File body, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postEventByProjectStoreCall(@javax.annotation.Nonnull String project, @javax.annotation.Nullable File body, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -353,52 +353,52 @@ public class EventApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1EventByProjectStoreValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nullable File body, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postEventByProjectStoreValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nullable File body, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'project' is set
         if (project == null) {
-            throw new ApiException("Missing the required parameter 'project' when calling postV1EventByProjectStore(Async)");
+            throw new ApiException("Missing the required parameter 'project' when calling postEventByProjectStore(Async)");
         }
 
-        return postV1EventByProjectStoreCall(project, body, _callback);
+        return postEventByProjectStoreCall(project, body, _callback);
 
     }
 
     /**
      * Sentry SDK store ingest — the legacy single-event wire
-     * Accepts the LEGACY Sentry wire: one event per request, what an SDK predating envelopes sends. Same door, same credential, same destination as the envelope endpoint — kept open so an old client reports without being upgraded first. New instrumentation has no reason to choose it.  CLOUD ROUTES IT AND READS NONE OF IT. The body is relayed byte-for-byte to the observability plane, which parses the wire, verifies the credential and answers; this door declares no response shape because it does not know one. A deployment with no observability plane mounted answers 503.  THE CREDENTIAL IS A SENTRY DSN KEY, NOT A HANZO PRINCIPAL. This is one of the few writes on the platform that carries no bearer and no org header by design — a Sentry SDK has neither — and it is exempt from the principal gate for that reason. The observability plane verifies the DSN key itself, fail-closed: a request without a valid one is refused there, never admitted here. Presenting a Hanzo bearer instead does nothing.  &#x60;project&#x60; IS THE DSN&#39;S PROJECT ID — the identifier in the DSN the SDK was configured with, and what the tenant is derived from. It is NOT a Hanzo IAM project and NOT a tracker project key. Only these two ingest paths map through: no observability READ API is reachable by any other suffix under this prefix.
+     * Accepts the LEGACY Sentry wire: one event per request, what an SDK predating envelopes sends. Same door, same credential, same destination as the envelope endpoint — kept open so an old client reports without being upgraded first. New instrumentation has no reason to choose it.  CLOUD ROUTES IT AND READS NONE OF IT. The body is relayed byte-for-byte to the observability plane, which parses the wire, verifies the credential and answers; this door declares no response shape because it does not know one. A deployment with no observability plane mounted answers 503.  THE CREDENTIAL IS A SENTRY DSN KEY, NOT A HANZO PRINCIPAL. This is one of the few writes on the platform that carries no bearer and no org header by design — a Sentry SDK has neither — and it is exempt from the principal gate for that reason. The observability plane verifies the DSN key itself, fail-closed: a request without a valid one is refused there, never admitted here. Presenting a Hanzo bearer instead does nothing.  &#x60;project&#x60; IS THE DSN&#39;S PROJECT ID — the identifier in the DSN the SDK was configured with, and what the tenant is derived from. It is NOT a Hanzo IAM project and NOT a todo project key. Only these two ingest paths map through: no observability READ API is reachable by any other suffix under this prefix.
      * @param project  (required)
      * @param body  (optional)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1EventByProjectStore(@javax.annotation.Nonnull String project, @javax.annotation.Nullable File body) throws ApiException {
-        postV1EventByProjectStoreWithHttpInfo(project, body);
+    public void postEventByProjectStore(@javax.annotation.Nonnull String project, @javax.annotation.Nullable File body) throws ApiException {
+        postEventByProjectStoreWithHttpInfo(project, body);
     }
 
     /**
      * Sentry SDK store ingest — the legacy single-event wire
-     * Accepts the LEGACY Sentry wire: one event per request, what an SDK predating envelopes sends. Same door, same credential, same destination as the envelope endpoint — kept open so an old client reports without being upgraded first. New instrumentation has no reason to choose it.  CLOUD ROUTES IT AND READS NONE OF IT. The body is relayed byte-for-byte to the observability plane, which parses the wire, verifies the credential and answers; this door declares no response shape because it does not know one. A deployment with no observability plane mounted answers 503.  THE CREDENTIAL IS A SENTRY DSN KEY, NOT A HANZO PRINCIPAL. This is one of the few writes on the platform that carries no bearer and no org header by design — a Sentry SDK has neither — and it is exempt from the principal gate for that reason. The observability plane verifies the DSN key itself, fail-closed: a request without a valid one is refused there, never admitted here. Presenting a Hanzo bearer instead does nothing.  &#x60;project&#x60; IS THE DSN&#39;S PROJECT ID — the identifier in the DSN the SDK was configured with, and what the tenant is derived from. It is NOT a Hanzo IAM project and NOT a tracker project key. Only these two ingest paths map through: no observability READ API is reachable by any other suffix under this prefix.
+     * Accepts the LEGACY Sentry wire: one event per request, what an SDK predating envelopes sends. Same door, same credential, same destination as the envelope endpoint — kept open so an old client reports without being upgraded first. New instrumentation has no reason to choose it.  CLOUD ROUTES IT AND READS NONE OF IT. The body is relayed byte-for-byte to the observability plane, which parses the wire, verifies the credential and answers; this door declares no response shape because it does not know one. A deployment with no observability plane mounted answers 503.  THE CREDENTIAL IS A SENTRY DSN KEY, NOT A HANZO PRINCIPAL. This is one of the few writes on the platform that carries no bearer and no org header by design — a Sentry SDK has neither — and it is exempt from the principal gate for that reason. The observability plane verifies the DSN key itself, fail-closed: a request without a valid one is refused there, never admitted here. Presenting a Hanzo bearer instead does nothing.  &#x60;project&#x60; IS THE DSN&#39;S PROJECT ID — the identifier in the DSN the SDK was configured with, and what the tenant is derived from. It is NOT a Hanzo IAM project and NOT a todo project key. Only these two ingest paths map through: no observability READ API is reachable by any other suffix under this prefix.
      * @param project  (required)
      * @param body  (optional)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1EventByProjectStoreWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nullable File body) throws ApiException {
-        okhttp3.Call localVarCall = postV1EventByProjectStoreValidateBeforeCall(project, body, null);
+    public ApiResponse<Void> postEventByProjectStoreWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nullable File body) throws ApiException {
+        okhttp3.Call localVarCall = postEventByProjectStoreValidateBeforeCall(project, body, null);
         return localVarApiClient.execute(localVarCall);
     }
 
     /**
      * Sentry SDK store ingest — the legacy single-event wire (asynchronously)
-     * Accepts the LEGACY Sentry wire: one event per request, what an SDK predating envelopes sends. Same door, same credential, same destination as the envelope endpoint — kept open so an old client reports without being upgraded first. New instrumentation has no reason to choose it.  CLOUD ROUTES IT AND READS NONE OF IT. The body is relayed byte-for-byte to the observability plane, which parses the wire, verifies the credential and answers; this door declares no response shape because it does not know one. A deployment with no observability plane mounted answers 503.  THE CREDENTIAL IS A SENTRY DSN KEY, NOT A HANZO PRINCIPAL. This is one of the few writes on the platform that carries no bearer and no org header by design — a Sentry SDK has neither — and it is exempt from the principal gate for that reason. The observability plane verifies the DSN key itself, fail-closed: a request without a valid one is refused there, never admitted here. Presenting a Hanzo bearer instead does nothing.  &#x60;project&#x60; IS THE DSN&#39;S PROJECT ID — the identifier in the DSN the SDK was configured with, and what the tenant is derived from. It is NOT a Hanzo IAM project and NOT a tracker project key. Only these two ingest paths map through: no observability READ API is reachable by any other suffix under this prefix.
+     * Accepts the LEGACY Sentry wire: one event per request, what an SDK predating envelopes sends. Same door, same credential, same destination as the envelope endpoint — kept open so an old client reports without being upgraded first. New instrumentation has no reason to choose it.  CLOUD ROUTES IT AND READS NONE OF IT. The body is relayed byte-for-byte to the observability plane, which parses the wire, verifies the credential and answers; this door declares no response shape because it does not know one. A deployment with no observability plane mounted answers 503.  THE CREDENTIAL IS A SENTRY DSN KEY, NOT A HANZO PRINCIPAL. This is one of the few writes on the platform that carries no bearer and no org header by design — a Sentry SDK has neither — and it is exempt from the principal gate for that reason. The observability plane verifies the DSN key itself, fail-closed: a request without a valid one is refused there, never admitted here. Presenting a Hanzo bearer instead does nothing.  &#x60;project&#x60; IS THE DSN&#39;S PROJECT ID — the identifier in the DSN the SDK was configured with, and what the tenant is derived from. It is NOT a Hanzo IAM project and NOT a todo project key. Only these two ingest paths map through: no observability READ API is reachable by any other suffix under this prefix.
      * @param project  (required)
      * @param body  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1EventByProjectStoreAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nullable File body, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postEventByProjectStoreAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nullable File body, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1EventByProjectStoreValidateBeforeCall(project, body, _callback);
+        okhttp3.Call localVarCall = postEventByProjectStoreValidateBeforeCall(project, body, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

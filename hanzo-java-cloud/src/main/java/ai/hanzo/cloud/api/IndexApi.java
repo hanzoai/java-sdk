@@ -72,13 +72,13 @@ public class IndexApi {
     }
 
     /**
-     * Build call for deleteV1IndexIndexesByUid
+     * Build call for deleteIndexIndexesByUid
      * @param uid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call deleteV1IndexIndexesByUidCall(@javax.annotation.Nonnull String uid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteIndexIndexesByUidCall(@javax.annotation.Nonnull String uid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -123,13 +123,13 @@ public class IndexApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1IndexIndexesByUidValidateBeforeCall(@javax.annotation.Nonnull String uid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteIndexIndexesByUidValidateBeforeCall(@javax.annotation.Nonnull String uid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'uid' is set
         if (uid == null) {
-            throw new ApiException("Missing the required parameter 'uid' when calling deleteV1IndexIndexesByUid(Async)");
+            throw new ApiException("Missing the required parameter 'uid' when calling deleteIndexIndexesByUid(Async)");
         }
 
-        return deleteV1IndexIndexesByUidCall(uid, _callback);
+        return deleteIndexIndexesByUidCall(uid, _callback);
 
     }
 
@@ -139,8 +139,8 @@ public class IndexApi {
      * @param uid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void deleteV1IndexIndexesByUid(@javax.annotation.Nonnull String uid) throws ApiException {
-        deleteV1IndexIndexesByUidWithHttpInfo(uid);
+    public void deleteIndexIndexesByUid(@javax.annotation.Nonnull String uid) throws ApiException {
+        deleteIndexIndexesByUidWithHttpInfo(uid);
     }
 
     /**
@@ -150,8 +150,8 @@ public class IndexApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> deleteV1IndexIndexesByUidWithHttpInfo(@javax.annotation.Nonnull String uid) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1IndexIndexesByUidValidateBeforeCall(uid, null);
+    public ApiResponse<Void> deleteIndexIndexesByUidWithHttpInfo(@javax.annotation.Nonnull String uid) throws ApiException {
+        okhttp3.Call localVarCall = deleteIndexIndexesByUidValidateBeforeCall(uid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -163,21 +163,21 @@ public class IndexApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call deleteV1IndexIndexesByUidAsync(@javax.annotation.Nonnull String uid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteIndexIndexesByUidAsync(@javax.annotation.Nonnull String uid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1IndexIndexesByUidValidateBeforeCall(uid, _callback);
+        okhttp3.Call localVarCall = deleteIndexIndexesByUidValidateBeforeCall(uid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for deleteV1IndexIndexesByUidDocumentsById
+     * Build call for deleteIndexIndexesByUidDocumentsById
      * @param uid  (required)
      * @param id  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call deleteV1IndexIndexesByUidDocumentsByIdCall(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteIndexIndexesByUidDocumentsByIdCall(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -223,18 +223,18 @@ public class IndexApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1IndexIndexesByUidDocumentsByIdValidateBeforeCall(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteIndexIndexesByUidDocumentsByIdValidateBeforeCall(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'uid' is set
         if (uid == null) {
-            throw new ApiException("Missing the required parameter 'uid' when calling deleteV1IndexIndexesByUidDocumentsById(Async)");
+            throw new ApiException("Missing the required parameter 'uid' when calling deleteIndexIndexesByUidDocumentsById(Async)");
         }
 
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling deleteV1IndexIndexesByUidDocumentsById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling deleteIndexIndexesByUidDocumentsById(Async)");
         }
 
-        return deleteV1IndexIndexesByUidDocumentsByIdCall(uid, id, _callback);
+        return deleteIndexIndexesByUidDocumentsByIdCall(uid, id, _callback);
 
     }
 
@@ -245,8 +245,8 @@ public class IndexApi {
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void deleteV1IndexIndexesByUidDocumentsById(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull String id) throws ApiException {
-        deleteV1IndexIndexesByUidDocumentsByIdWithHttpInfo(uid, id);
+    public void deleteIndexIndexesByUidDocumentsById(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull String id) throws ApiException {
+        deleteIndexIndexesByUidDocumentsByIdWithHttpInfo(uid, id);
     }
 
     /**
@@ -257,8 +257,8 @@ public class IndexApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> deleteV1IndexIndexesByUidDocumentsByIdWithHttpInfo(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1IndexIndexesByUidDocumentsByIdValidateBeforeCall(uid, id, null);
+    public ApiResponse<Void> deleteIndexIndexesByUidDocumentsByIdWithHttpInfo(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = deleteIndexIndexesByUidDocumentsByIdValidateBeforeCall(uid, id, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -271,19 +271,19 @@ public class IndexApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call deleteV1IndexIndexesByUidDocumentsByIdAsync(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteIndexIndexesByUidDocumentsByIdAsync(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1IndexIndexesByUidDocumentsByIdValidateBeforeCall(uid, id, _callback);
+        okhttp3.Call localVarCall = deleteIndexIndexesByUidDocumentsByIdValidateBeforeCall(uid, id, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1IndexHealth
+     * Build call for getIndexHealth
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1IndexHealthCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getIndexHealthCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -327,8 +327,8 @@ public class IndexApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1IndexHealthValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1IndexHealthCall(_callback);
+    private okhttp3.Call getIndexHealthValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getIndexHealthCall(_callback);
 
     }
 
@@ -337,8 +337,8 @@ public class IndexApi {
      * Answers Meilisearch&#39;s &#x60;{\&quot;status\&quot;:\&quot;available\&quot;}&#x60; when the index store is readable. It FAILS CLOSED — an unreadable store answers 503 and &#x60;unavailable&#x60; — so a replica whose volume has gone bad stops taking traffic instead of answering every search with nothing found. It touches no tenant data and needs no credential.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1IndexHealth() throws ApiException {
-        getV1IndexHealthWithHttpInfo();
+    public void getIndexHealth() throws ApiException {
+        getIndexHealthWithHttpInfo();
     }
 
     /**
@@ -347,8 +347,8 @@ public class IndexApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1IndexHealthWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1IndexHealthValidateBeforeCall(null);
+    public ApiResponse<Void> getIndexHealthWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getIndexHealthValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -359,19 +359,19 @@ public class IndexApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1IndexHealthAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getIndexHealthAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1IndexHealthValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getIndexHealthValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1IndexIndexes
+     * Build call for getIndexIndexes
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1IndexIndexesCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getIndexIndexesCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -415,8 +415,8 @@ public class IndexApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1IndexIndexesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1IndexIndexesCall(_callback);
+    private okhttp3.Call getIndexIndexesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getIndexIndexesCall(_callback);
 
     }
 
@@ -425,8 +425,8 @@ public class IndexApi {
      * Answers every index in the caller&#39;s org with its primary key and timestamps. It is the only way to enumerate what an org holds — without it an index whose uid a caller has forgotten is unreachable. The tenant is the org minted from the VALIDATED bearer&#39;s owner claim, never a client-supplied header, and every query filters on it, so two orgs may both hold an index named \&quot;messages\&quot; and neither can see the other&#39;s documents. Without a validated principal the answer is 403 carrying Meilisearch&#39;s &#x60;invalid_api_key&#x60; body. Errors use Meilisearch&#39;s {message, code, type, link} shape rather than cloud&#39;s, because that &#x60;code&#x60; is a wire contract a Meilisearch client branches on.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1IndexIndexes() throws ApiException {
-        getV1IndexIndexesWithHttpInfo();
+    public void getIndexIndexes() throws ApiException {
+        getIndexIndexesWithHttpInfo();
     }
 
     /**
@@ -435,8 +435,8 @@ public class IndexApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1IndexIndexesWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1IndexIndexesValidateBeforeCall(null);
+    public ApiResponse<Void> getIndexIndexesWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getIndexIndexesValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -447,20 +447,20 @@ public class IndexApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1IndexIndexesAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getIndexIndexesAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1IndexIndexesValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getIndexIndexesValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1IndexIndexesByUid
+     * Build call for getIndexIndexesByUid
      * @param uid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1IndexIndexesByUidCall(@javax.annotation.Nonnull String uid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getIndexIndexesByUidCall(@javax.annotation.Nonnull String uid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -505,13 +505,13 @@ public class IndexApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1IndexIndexesByUidValidateBeforeCall(@javax.annotation.Nonnull String uid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getIndexIndexesByUidValidateBeforeCall(@javax.annotation.Nonnull String uid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'uid' is set
         if (uid == null) {
-            throw new ApiException("Missing the required parameter 'uid' when calling getV1IndexIndexesByUid(Async)");
+            throw new ApiException("Missing the required parameter 'uid' when calling getIndexIndexesByUid(Async)");
         }
 
-        return getV1IndexIndexesByUidCall(uid, _callback);
+        return getIndexIndexesByUidCall(uid, _callback);
 
     }
 
@@ -521,8 +521,8 @@ public class IndexApi {
      * @param uid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1IndexIndexesByUid(@javax.annotation.Nonnull String uid) throws ApiException {
-        getV1IndexIndexesByUidWithHttpInfo(uid);
+    public void getIndexIndexesByUid(@javax.annotation.Nonnull String uid) throws ApiException {
+        getIndexIndexesByUidWithHttpInfo(uid);
     }
 
     /**
@@ -532,8 +532,8 @@ public class IndexApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1IndexIndexesByUidWithHttpInfo(@javax.annotation.Nonnull String uid) throws ApiException {
-        okhttp3.Call localVarCall = getV1IndexIndexesByUidValidateBeforeCall(uid, null);
+    public ApiResponse<Void> getIndexIndexesByUidWithHttpInfo(@javax.annotation.Nonnull String uid) throws ApiException {
+        okhttp3.Call localVarCall = getIndexIndexesByUidValidateBeforeCall(uid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -545,20 +545,20 @@ public class IndexApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1IndexIndexesByUidAsync(@javax.annotation.Nonnull String uid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getIndexIndexesByUidAsync(@javax.annotation.Nonnull String uid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1IndexIndexesByUidValidateBeforeCall(uid, _callback);
+        okhttp3.Call localVarCall = getIndexIndexesByUidValidateBeforeCall(uid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1IndexIndexesByUidDocuments
+     * Build call for getIndexIndexesByUidDocuments
      * @param uid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1IndexIndexesByUidDocumentsCall(@javax.annotation.Nonnull String uid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getIndexIndexesByUidDocumentsCall(@javax.annotation.Nonnull String uid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -603,13 +603,13 @@ public class IndexApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1IndexIndexesByUidDocumentsValidateBeforeCall(@javax.annotation.Nonnull String uid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getIndexIndexesByUidDocumentsValidateBeforeCall(@javax.annotation.Nonnull String uid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'uid' is set
         if (uid == null) {
-            throw new ApiException("Missing the required parameter 'uid' when calling getV1IndexIndexesByUidDocuments(Async)");
+            throw new ApiException("Missing the required parameter 'uid' when calling getIndexIndexesByUidDocuments(Async)");
         }
 
-        return getV1IndexIndexesByUidDocumentsCall(uid, _callback);
+        return getIndexIndexesByUidDocumentsCall(uid, _callback);
 
     }
 
@@ -619,8 +619,8 @@ public class IndexApi {
      * @param uid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1IndexIndexesByUidDocuments(@javax.annotation.Nonnull String uid) throws ApiException {
-        getV1IndexIndexesByUidDocumentsWithHttpInfo(uid);
+    public void getIndexIndexesByUidDocuments(@javax.annotation.Nonnull String uid) throws ApiException {
+        getIndexIndexesByUidDocumentsWithHttpInfo(uid);
     }
 
     /**
@@ -630,8 +630,8 @@ public class IndexApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1IndexIndexesByUidDocumentsWithHttpInfo(@javax.annotation.Nonnull String uid) throws ApiException {
-        okhttp3.Call localVarCall = getV1IndexIndexesByUidDocumentsValidateBeforeCall(uid, null);
+    public ApiResponse<Void> getIndexIndexesByUidDocumentsWithHttpInfo(@javax.annotation.Nonnull String uid) throws ApiException {
+        okhttp3.Call localVarCall = getIndexIndexesByUidDocumentsValidateBeforeCall(uid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -643,21 +643,21 @@ public class IndexApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1IndexIndexesByUidDocumentsAsync(@javax.annotation.Nonnull String uid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getIndexIndexesByUidDocumentsAsync(@javax.annotation.Nonnull String uid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1IndexIndexesByUidDocumentsValidateBeforeCall(uid, _callback);
+        okhttp3.Call localVarCall = getIndexIndexesByUidDocumentsValidateBeforeCall(uid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1IndexIndexesByUidDocumentsById
+     * Build call for getIndexIndexesByUidDocumentsById
      * @param uid  (required)
      * @param id  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1IndexIndexesByUidDocumentsByIdCall(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getIndexIndexesByUidDocumentsByIdCall(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -703,18 +703,18 @@ public class IndexApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1IndexIndexesByUidDocumentsByIdValidateBeforeCall(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getIndexIndexesByUidDocumentsByIdValidateBeforeCall(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'uid' is set
         if (uid == null) {
-            throw new ApiException("Missing the required parameter 'uid' when calling getV1IndexIndexesByUidDocumentsById(Async)");
+            throw new ApiException("Missing the required parameter 'uid' when calling getIndexIndexesByUidDocumentsById(Async)");
         }
 
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getV1IndexIndexesByUidDocumentsById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getIndexIndexesByUidDocumentsById(Async)");
         }
 
-        return getV1IndexIndexesByUidDocumentsByIdCall(uid, id, _callback);
+        return getIndexIndexesByUidDocumentsByIdCall(uid, id, _callback);
 
     }
 
@@ -725,8 +725,8 @@ public class IndexApi {
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1IndexIndexesByUidDocumentsById(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull String id) throws ApiException {
-        getV1IndexIndexesByUidDocumentsByIdWithHttpInfo(uid, id);
+    public void getIndexIndexesByUidDocumentsById(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull String id) throws ApiException {
+        getIndexIndexesByUidDocumentsByIdWithHttpInfo(uid, id);
     }
 
     /**
@@ -737,8 +737,8 @@ public class IndexApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1IndexIndexesByUidDocumentsByIdWithHttpInfo(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = getV1IndexIndexesByUidDocumentsByIdValidateBeforeCall(uid, id, null);
+    public ApiResponse<Void> getIndexIndexesByUidDocumentsByIdWithHttpInfo(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getIndexIndexesByUidDocumentsByIdValidateBeforeCall(uid, id, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -751,20 +751,20 @@ public class IndexApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1IndexIndexesByUidDocumentsByIdAsync(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getIndexIndexesByUidDocumentsByIdAsync(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1IndexIndexesByUidDocumentsByIdValidateBeforeCall(uid, id, _callback);
+        okhttp3.Call localVarCall = getIndexIndexesByUidDocumentsByIdValidateBeforeCall(uid, id, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1IndexIndexesByUidSettings
+     * Build call for getIndexIndexesByUidSettings
      * @param uid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1IndexIndexesByUidSettingsCall(@javax.annotation.Nonnull String uid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getIndexIndexesByUidSettingsCall(@javax.annotation.Nonnull String uid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -809,13 +809,13 @@ public class IndexApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1IndexIndexesByUidSettingsValidateBeforeCall(@javax.annotation.Nonnull String uid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getIndexIndexesByUidSettingsValidateBeforeCall(@javax.annotation.Nonnull String uid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'uid' is set
         if (uid == null) {
-            throw new ApiException("Missing the required parameter 'uid' when calling getV1IndexIndexesByUidSettings(Async)");
+            throw new ApiException("Missing the required parameter 'uid' when calling getIndexIndexesByUidSettings(Async)");
         }
 
-        return getV1IndexIndexesByUidSettingsCall(uid, _callback);
+        return getIndexIndexesByUidSettingsCall(uid, _callback);
 
     }
 
@@ -825,8 +825,8 @@ public class IndexApi {
      * @param uid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1IndexIndexesByUidSettings(@javax.annotation.Nonnull String uid) throws ApiException {
-        getV1IndexIndexesByUidSettingsWithHttpInfo(uid);
+    public void getIndexIndexesByUidSettings(@javax.annotation.Nonnull String uid) throws ApiException {
+        getIndexIndexesByUidSettingsWithHttpInfo(uid);
     }
 
     /**
@@ -836,8 +836,8 @@ public class IndexApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1IndexIndexesByUidSettingsWithHttpInfo(@javax.annotation.Nonnull String uid) throws ApiException {
-        okhttp3.Call localVarCall = getV1IndexIndexesByUidSettingsValidateBeforeCall(uid, null);
+    public ApiResponse<Void> getIndexIndexesByUidSettingsWithHttpInfo(@javax.annotation.Nonnull String uid) throws ApiException {
+        okhttp3.Call localVarCall = getIndexIndexesByUidSettingsValidateBeforeCall(uid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -849,19 +849,19 @@ public class IndexApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1IndexIndexesByUidSettingsAsync(@javax.annotation.Nonnull String uid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getIndexIndexesByUidSettingsAsync(@javax.annotation.Nonnull String uid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1IndexIndexesByUidSettingsValidateBeforeCall(uid, _callback);
+        okhttp3.Call localVarCall = getIndexIndexesByUidSettingsValidateBeforeCall(uid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1IndexStats
+     * Build call for getIndexStats
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1IndexStatsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getIndexStatsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -905,8 +905,8 @@ public class IndexApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1IndexStatsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1IndexStatsCall(_callback);
+    private okhttp3.Call getIndexStatsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getIndexStatsCall(_callback);
 
     }
 
@@ -915,8 +915,8 @@ public class IndexApi {
      * Answers a document count per index for the caller&#39;s org, plus their sum. &#x60;isIndexing&#x60; is always false, which is the honest answer here rather than a stub: writes are applied before their response, so there is never a backlog in progress to report. The tenant is the org minted from the VALIDATED bearer&#39;s owner claim, never a client-supplied header, and every query filters on it, so two orgs may both hold an index named \&quot;messages\&quot; and neither can see the other&#39;s documents. Without a validated principal the answer is 403 carrying Meilisearch&#39;s &#x60;invalid_api_key&#x60; body. Errors use Meilisearch&#39;s {message, code, type, link} shape rather than cloud&#39;s, because that &#x60;code&#x60; is a wire contract a Meilisearch client branches on.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1IndexStats() throws ApiException {
-        getV1IndexStatsWithHttpInfo();
+    public void getIndexStats() throws ApiException {
+        getIndexStatsWithHttpInfo();
     }
 
     /**
@@ -925,8 +925,8 @@ public class IndexApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1IndexStatsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1IndexStatsValidateBeforeCall(null);
+    public ApiResponse<Void> getIndexStatsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getIndexStatsValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -937,20 +937,20 @@ public class IndexApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1IndexStatsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getIndexStatsAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1IndexStatsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getIndexStatsValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1IndexTasksByUid
+     * Build call for getIndexTasksByUid
      * @param uid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1IndexTasksByUidCall(@javax.annotation.Nonnull String uid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getIndexTasksByUidCall(@javax.annotation.Nonnull String uid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -995,13 +995,13 @@ public class IndexApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1IndexTasksByUidValidateBeforeCall(@javax.annotation.Nonnull String uid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getIndexTasksByUidValidateBeforeCall(@javax.annotation.Nonnull String uid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'uid' is set
         if (uid == null) {
-            throw new ApiException("Missing the required parameter 'uid' when calling getV1IndexTasksByUid(Async)");
+            throw new ApiException("Missing the required parameter 'uid' when calling getIndexTasksByUid(Async)");
         }
 
-        return getV1IndexTasksByUidCall(uid, _callback);
+        return getIndexTasksByUidCall(uid, _callback);
 
     }
 
@@ -1011,8 +1011,8 @@ public class IndexApi {
      * @param uid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1IndexTasksByUid(@javax.annotation.Nonnull String uid) throws ApiException {
-        getV1IndexTasksByUidWithHttpInfo(uid);
+    public void getIndexTasksByUid(@javax.annotation.Nonnull String uid) throws ApiException {
+        getIndexTasksByUidWithHttpInfo(uid);
     }
 
     /**
@@ -1022,8 +1022,8 @@ public class IndexApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1IndexTasksByUidWithHttpInfo(@javax.annotation.Nonnull String uid) throws ApiException {
-        okhttp3.Call localVarCall = getV1IndexTasksByUidValidateBeforeCall(uid, null);
+    public ApiResponse<Void> getIndexTasksByUidWithHttpInfo(@javax.annotation.Nonnull String uid) throws ApiException {
+        okhttp3.Call localVarCall = getIndexTasksByUidValidateBeforeCall(uid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1035,19 +1035,19 @@ public class IndexApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1IndexTasksByUidAsync(@javax.annotation.Nonnull String uid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getIndexTasksByUidAsync(@javax.annotation.Nonnull String uid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1IndexTasksByUidValidateBeforeCall(uid, _callback);
+        okhttp3.Call localVarCall = getIndexTasksByUidValidateBeforeCall(uid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1IndexVersion
+     * Build call for getIndexVersion
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1IndexVersionCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getIndexVersionCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1091,8 +1091,8 @@ public class IndexApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1IndexVersionValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1IndexVersionCall(_callback);
+    private okhttp3.Call getIndexVersionValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getIndexVersionCall(_callback);
 
     }
 
@@ -1101,8 +1101,8 @@ public class IndexApi {
      * Answers the version shape a Meilisearch client expects. It names THIS implementation rather than a Meilisearch release — the commit field reads &#x60;hanzo-cloud&#x60; — so a client that logs it records which server actually answered instead of implying a Meilisearch build. Needs no credential.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1IndexVersion() throws ApiException {
-        getV1IndexVersionWithHttpInfo();
+    public void getIndexVersion() throws ApiException {
+        getIndexVersionWithHttpInfo();
     }
 
     /**
@@ -1111,8 +1111,8 @@ public class IndexApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1IndexVersionWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1IndexVersionValidateBeforeCall(null);
+    public ApiResponse<Void> getIndexVersionWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getIndexVersionValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1123,20 +1123,20 @@ public class IndexApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1IndexVersionAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getIndexVersionAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1IndexVersionValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getIndexVersionValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for patchV1IndexIndexesByUidSettings
+     * Build call for patchIndexIndexesByUidSettings
      * @param uid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call patchV1IndexIndexesByUidSettingsCall(@javax.annotation.Nonnull String uid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call patchIndexIndexesByUidSettingsCall(@javax.annotation.Nonnull String uid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1181,13 +1181,13 @@ public class IndexApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchV1IndexIndexesByUidSettingsValidateBeforeCall(@javax.annotation.Nonnull String uid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call patchIndexIndexesByUidSettingsValidateBeforeCall(@javax.annotation.Nonnull String uid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'uid' is set
         if (uid == null) {
-            throw new ApiException("Missing the required parameter 'uid' when calling patchV1IndexIndexesByUidSettings(Async)");
+            throw new ApiException("Missing the required parameter 'uid' when calling patchIndexIndexesByUidSettings(Async)");
         }
 
-        return patchV1IndexIndexesByUidSettingsCall(uid, _callback);
+        return patchIndexIndexesByUidSettingsCall(uid, _callback);
 
     }
 
@@ -1197,8 +1197,8 @@ public class IndexApi {
      * @param uid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void patchV1IndexIndexesByUidSettings(@javax.annotation.Nonnull String uid) throws ApiException {
-        patchV1IndexIndexesByUidSettingsWithHttpInfo(uid);
+    public void patchIndexIndexesByUidSettings(@javax.annotation.Nonnull String uid) throws ApiException {
+        patchIndexIndexesByUidSettingsWithHttpInfo(uid);
     }
 
     /**
@@ -1208,8 +1208,8 @@ public class IndexApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> patchV1IndexIndexesByUidSettingsWithHttpInfo(@javax.annotation.Nonnull String uid) throws ApiException {
-        okhttp3.Call localVarCall = patchV1IndexIndexesByUidSettingsValidateBeforeCall(uid, null);
+    public ApiResponse<Void> patchIndexIndexesByUidSettingsWithHttpInfo(@javax.annotation.Nonnull String uid) throws ApiException {
+        okhttp3.Call localVarCall = patchIndexIndexesByUidSettingsValidateBeforeCall(uid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1221,19 +1221,19 @@ public class IndexApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call patchV1IndexIndexesByUidSettingsAsync(@javax.annotation.Nonnull String uid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call patchIndexIndexesByUidSettingsAsync(@javax.annotation.Nonnull String uid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchV1IndexIndexesByUidSettingsValidateBeforeCall(uid, _callback);
+        okhttp3.Call localVarCall = patchIndexIndexesByUidSettingsValidateBeforeCall(uid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1IndexIndexes
+     * Build call for postIndexIndexes
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1IndexIndexesCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postIndexIndexesCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1277,8 +1277,8 @@ public class IndexApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1IndexIndexesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1IndexIndexesCall(_callback);
+    private okhttp3.Call postIndexIndexesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postIndexIndexesCall(_callback);
 
     }
 
@@ -1287,8 +1287,8 @@ public class IndexApi {
      * Creates an index named by &#x60;uid&#x60; in the caller&#39;s org. &#x60;primaryKey&#x60; names the document field that identifies a document and defaults to &#x60;id&#x60;. Creating an index that already exists is not an error — it settles on the existing one, primary key included — so a client that creates before every write is safe to run repeatedly. A missing or over-long uid is 400 &#x60;invalid_index_uid&#x60;. A new index starts with &#x60;user&#x60; filterable, which is what lets a multi-user app narrow searches to one end user without configuring anything. The tenant is the org minted from the VALIDATED bearer&#39;s owner claim, never a client-supplied header, and every query filters on it, so two orgs may both hold an index named \&quot;messages\&quot; and neither can see the other&#39;s documents. Without a validated principal the answer is 403 carrying Meilisearch&#39;s &#x60;invalid_api_key&#x60; body. Errors use Meilisearch&#39;s {message, code, type, link} shape rather than cloud&#39;s, because that &#x60;code&#x60; is a wire contract a Meilisearch client branches on.  The 202 and its &#x60;enqueued&#x60; task are DIALECT COMPATIBILITY, not a promise of later work: the write is already applied when this answers, and the task it names is already complete. A client that polls waitForTask resolves immediately rather than waiting, and a client that does not poll has still had its write committed.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1IndexIndexes() throws ApiException {
-        postV1IndexIndexesWithHttpInfo();
+    public void postIndexIndexes() throws ApiException {
+        postIndexIndexesWithHttpInfo();
     }
 
     /**
@@ -1297,8 +1297,8 @@ public class IndexApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1IndexIndexesWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1IndexIndexesValidateBeforeCall(null);
+    public ApiResponse<Void> postIndexIndexesWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postIndexIndexesValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1309,20 +1309,20 @@ public class IndexApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1IndexIndexesAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postIndexIndexesAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1IndexIndexesValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postIndexIndexesValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1IndexIndexesByUidDocuments
+     * Build call for postIndexIndexesByUidDocuments
      * @param uid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1IndexIndexesByUidDocumentsCall(@javax.annotation.Nonnull String uid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postIndexIndexesByUidDocumentsCall(@javax.annotation.Nonnull String uid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1367,13 +1367,13 @@ public class IndexApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1IndexIndexesByUidDocumentsValidateBeforeCall(@javax.annotation.Nonnull String uid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postIndexIndexesByUidDocumentsValidateBeforeCall(@javax.annotation.Nonnull String uid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'uid' is set
         if (uid == null) {
-            throw new ApiException("Missing the required parameter 'uid' when calling postV1IndexIndexesByUidDocuments(Async)");
+            throw new ApiException("Missing the required parameter 'uid' when calling postIndexIndexesByUidDocuments(Async)");
         }
 
-        return postV1IndexIndexesByUidDocumentsCall(uid, _callback);
+        return postIndexIndexesByUidDocumentsCall(uid, _callback);
 
     }
 
@@ -1383,8 +1383,8 @@ public class IndexApi {
      * @param uid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1IndexIndexesByUidDocuments(@javax.annotation.Nonnull String uid) throws ApiException {
-        postV1IndexIndexesByUidDocumentsWithHttpInfo(uid);
+    public void postIndexIndexesByUidDocuments(@javax.annotation.Nonnull String uid) throws ApiException {
+        postIndexIndexesByUidDocumentsWithHttpInfo(uid);
     }
 
     /**
@@ -1394,8 +1394,8 @@ public class IndexApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1IndexIndexesByUidDocumentsWithHttpInfo(@javax.annotation.Nonnull String uid) throws ApiException {
-        okhttp3.Call localVarCall = postV1IndexIndexesByUidDocumentsValidateBeforeCall(uid, null);
+    public ApiResponse<Void> postIndexIndexesByUidDocumentsWithHttpInfo(@javax.annotation.Nonnull String uid) throws ApiException {
+        okhttp3.Call localVarCall = postIndexIndexesByUidDocumentsValidateBeforeCall(uid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1407,20 +1407,20 @@ public class IndexApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1IndexIndexesByUidDocumentsAsync(@javax.annotation.Nonnull String uid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postIndexIndexesByUidDocumentsAsync(@javax.annotation.Nonnull String uid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1IndexIndexesByUidDocumentsValidateBeforeCall(uid, _callback);
+        okhttp3.Call localVarCall = postIndexIndexesByUidDocumentsValidateBeforeCall(uid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1IndexIndexesByUidDocumentsDeleteBatch
+     * Build call for postIndexIndexesByUidDocumentsDeleteBatch
      * @param uid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1IndexIndexesByUidDocumentsDeleteBatchCall(@javax.annotation.Nonnull String uid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postIndexIndexesByUidDocumentsDeleteBatchCall(@javax.annotation.Nonnull String uid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1465,13 +1465,13 @@ public class IndexApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1IndexIndexesByUidDocumentsDeleteBatchValidateBeforeCall(@javax.annotation.Nonnull String uid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postIndexIndexesByUidDocumentsDeleteBatchValidateBeforeCall(@javax.annotation.Nonnull String uid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'uid' is set
         if (uid == null) {
-            throw new ApiException("Missing the required parameter 'uid' when calling postV1IndexIndexesByUidDocumentsDeleteBatch(Async)");
+            throw new ApiException("Missing the required parameter 'uid' when calling postIndexIndexesByUidDocumentsDeleteBatch(Async)");
         }
 
-        return postV1IndexIndexesByUidDocumentsDeleteBatchCall(uid, _callback);
+        return postIndexIndexesByUidDocumentsDeleteBatchCall(uid, _callback);
 
     }
 
@@ -1481,8 +1481,8 @@ public class IndexApi {
      * @param uid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1IndexIndexesByUidDocumentsDeleteBatch(@javax.annotation.Nonnull String uid) throws ApiException {
-        postV1IndexIndexesByUidDocumentsDeleteBatchWithHttpInfo(uid);
+    public void postIndexIndexesByUidDocumentsDeleteBatch(@javax.annotation.Nonnull String uid) throws ApiException {
+        postIndexIndexesByUidDocumentsDeleteBatchWithHttpInfo(uid);
     }
 
     /**
@@ -1492,8 +1492,8 @@ public class IndexApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1IndexIndexesByUidDocumentsDeleteBatchWithHttpInfo(@javax.annotation.Nonnull String uid) throws ApiException {
-        okhttp3.Call localVarCall = postV1IndexIndexesByUidDocumentsDeleteBatchValidateBeforeCall(uid, null);
+    public ApiResponse<Void> postIndexIndexesByUidDocumentsDeleteBatchWithHttpInfo(@javax.annotation.Nonnull String uid) throws ApiException {
+        okhttp3.Call localVarCall = postIndexIndexesByUidDocumentsDeleteBatchValidateBeforeCall(uid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1505,20 +1505,20 @@ public class IndexApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1IndexIndexesByUidDocumentsDeleteBatchAsync(@javax.annotation.Nonnull String uid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postIndexIndexesByUidDocumentsDeleteBatchAsync(@javax.annotation.Nonnull String uid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1IndexIndexesByUidDocumentsDeleteBatchValidateBeforeCall(uid, _callback);
+        okhttp3.Call localVarCall = postIndexIndexesByUidDocumentsDeleteBatchValidateBeforeCall(uid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1IndexIndexesByUidSearch
+     * Build call for postIndexIndexesByUidSearch
      * @param uid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1IndexIndexesByUidSearchCall(@javax.annotation.Nonnull String uid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postIndexIndexesByUidSearchCall(@javax.annotation.Nonnull String uid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1563,13 +1563,13 @@ public class IndexApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1IndexIndexesByUidSearchValidateBeforeCall(@javax.annotation.Nonnull String uid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postIndexIndexesByUidSearchValidateBeforeCall(@javax.annotation.Nonnull String uid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'uid' is set
         if (uid == null) {
-            throw new ApiException("Missing the required parameter 'uid' when calling postV1IndexIndexesByUidSearch(Async)");
+            throw new ApiException("Missing the required parameter 'uid' when calling postIndexIndexesByUidSearch(Async)");
         }
 
-        return postV1IndexIndexesByUidSearchCall(uid, _callback);
+        return postIndexIndexesByUidSearchCall(uid, _callback);
 
     }
 
@@ -1579,8 +1579,8 @@ public class IndexApi {
      * @param uid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1IndexIndexesByUidSearch(@javax.annotation.Nonnull String uid) throws ApiException {
-        postV1IndexIndexesByUidSearchWithHttpInfo(uid);
+    public void postIndexIndexesByUidSearch(@javax.annotation.Nonnull String uid) throws ApiException {
+        postIndexIndexesByUidSearchWithHttpInfo(uid);
     }
 
     /**
@@ -1590,8 +1590,8 @@ public class IndexApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1IndexIndexesByUidSearchWithHttpInfo(@javax.annotation.Nonnull String uid) throws ApiException {
-        okhttp3.Call localVarCall = postV1IndexIndexesByUidSearchValidateBeforeCall(uid, null);
+    public ApiResponse<Void> postIndexIndexesByUidSearchWithHttpInfo(@javax.annotation.Nonnull String uid) throws ApiException {
+        okhttp3.Call localVarCall = postIndexIndexesByUidSearchValidateBeforeCall(uid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1603,20 +1603,20 @@ public class IndexApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1IndexIndexesByUidSearchAsync(@javax.annotation.Nonnull String uid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postIndexIndexesByUidSearchAsync(@javax.annotation.Nonnull String uid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1IndexIndexesByUidSearchValidateBeforeCall(uid, _callback);
+        okhttp3.Call localVarCall = postIndexIndexesByUidSearchValidateBeforeCall(uid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1IndexIndexesByUidDocuments
+     * Build call for putIndexIndexesByUidDocuments
      * @param uid  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call putV1IndexIndexesByUidDocumentsCall(@javax.annotation.Nonnull String uid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putIndexIndexesByUidDocumentsCall(@javax.annotation.Nonnull String uid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1661,13 +1661,13 @@ public class IndexApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1IndexIndexesByUidDocumentsValidateBeforeCall(@javax.annotation.Nonnull String uid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putIndexIndexesByUidDocumentsValidateBeforeCall(@javax.annotation.Nonnull String uid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'uid' is set
         if (uid == null) {
-            throw new ApiException("Missing the required parameter 'uid' when calling putV1IndexIndexesByUidDocuments(Async)");
+            throw new ApiException("Missing the required parameter 'uid' when calling putIndexIndexesByUidDocuments(Async)");
         }
 
-        return putV1IndexIndexesByUidDocumentsCall(uid, _callback);
+        return putIndexIndexesByUidDocumentsCall(uid, _callback);
 
     }
 
@@ -1677,8 +1677,8 @@ public class IndexApi {
      * @param uid  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void putV1IndexIndexesByUidDocuments(@javax.annotation.Nonnull String uid) throws ApiException {
-        putV1IndexIndexesByUidDocumentsWithHttpInfo(uid);
+    public void putIndexIndexesByUidDocuments(@javax.annotation.Nonnull String uid) throws ApiException {
+        putIndexIndexesByUidDocumentsWithHttpInfo(uid);
     }
 
     /**
@@ -1688,8 +1688,8 @@ public class IndexApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> putV1IndexIndexesByUidDocumentsWithHttpInfo(@javax.annotation.Nonnull String uid) throws ApiException {
-        okhttp3.Call localVarCall = putV1IndexIndexesByUidDocumentsValidateBeforeCall(uid, null);
+    public ApiResponse<Void> putIndexIndexesByUidDocumentsWithHttpInfo(@javax.annotation.Nonnull String uid) throws ApiException {
+        okhttp3.Call localVarCall = putIndexIndexesByUidDocumentsValidateBeforeCall(uid, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1701,9 +1701,9 @@ public class IndexApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call putV1IndexIndexesByUidDocumentsAsync(@javax.annotation.Nonnull String uid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call putIndexIndexesByUidDocumentsAsync(@javax.annotation.Nonnull String uid, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1IndexIndexesByUidDocumentsValidateBeforeCall(uid, _callback);
+        okhttp3.Call localVarCall = putIndexIndexesByUidDocumentsValidateBeforeCall(uid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

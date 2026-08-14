@@ -63,7 +63,7 @@ public class Whoami {
         client.setBasePath("https://api.hanzo.ai");
         client.addDefaultHeader("Authorization", "Bearer " + System.getenv("HANZO_API_KEY"));
 
-        for (ApiKey key : new KeysApi(client).getV1Keys().getKeys()) {
+        for (ApiKey key : new KeysApi(client).getKeys().getKeys()) {
             System.out.println(key.getType() + " " + key.getPrefix());
         }
     }

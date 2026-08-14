@@ -73,7 +73,7 @@ public class BuildsApi {
     }
 
     /**
-     * Build call for getV1Builds
+     * Build call for getBuilds
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -84,7 +84,7 @@ public class BuildsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1BuildsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getBuildsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -129,8 +129,8 @@ public class BuildsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1BuildsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1BuildsCall(_callback);
+    private okhttp3.Call getBuildsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getBuildsCall(_callback);
 
     }
 
@@ -146,8 +146,8 @@ public class BuildsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public BuildBoard getV1Builds() throws ApiException {
-        ApiResponse<BuildBoard> localVarResp = getV1BuildsWithHttpInfo();
+    public BuildBoard getBuilds() throws ApiException {
+        ApiResponse<BuildBoard> localVarResp = getBuildsWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -163,8 +163,8 @@ public class BuildsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BuildBoard> getV1BuildsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1BuildsValidateBeforeCall(null);
+    public ApiResponse<BuildBoard> getBuildsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getBuildsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<BuildBoard>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -182,9 +182,9 @@ public class BuildsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1BuildsAsync(final ApiCallback<BuildBoard> _callback) throws ApiException {
+    public okhttp3.Call getBuildsAsync(final ApiCallback<BuildBoard> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1BuildsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getBuildsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<BuildBoard>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

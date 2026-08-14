@@ -80,7 +80,7 @@ public class DomainApi {
     }
 
     /**
-     * Build call for getV1DomainAvailability
+     * Build call for getDomainAvailability
      * @param domain Domain is one name, or several comma-separated, to check in one call. Names are lowercased. It is required. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -92,7 +92,7 @@ public class DomainApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1DomainAvailabilityCall(@javax.annotation.Nonnull String domain, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getDomainAvailabilityCall(@javax.annotation.Nonnull String domain, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -141,13 +141,13 @@ public class DomainApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1DomainAvailabilityValidateBeforeCall(@javax.annotation.Nonnull String domain, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getDomainAvailabilityValidateBeforeCall(@javax.annotation.Nonnull String domain, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'domain' is set
         if (domain == null) {
-            throw new ApiException("Missing the required parameter 'domain' when calling getV1DomainAvailability(Async)");
+            throw new ApiException("Missing the required parameter 'domain' when calling getDomainAvailability(Async)");
         }
 
-        return getV1DomainAvailabilityCall(domain, _callback);
+        return getDomainAvailabilityCall(domain, _callback);
 
     }
 
@@ -164,8 +164,8 @@ public class DomainApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public QuoteList getV1DomainAvailability(@javax.annotation.Nonnull String domain) throws ApiException {
-        ApiResponse<QuoteList> localVarResp = getV1DomainAvailabilityWithHttpInfo(domain);
+    public QuoteList getDomainAvailability(@javax.annotation.Nonnull String domain) throws ApiException {
+        ApiResponse<QuoteList> localVarResp = getDomainAvailabilityWithHttpInfo(domain);
         return localVarResp.getData();
     }
 
@@ -182,8 +182,8 @@ public class DomainApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<QuoteList> getV1DomainAvailabilityWithHttpInfo(@javax.annotation.Nonnull String domain) throws ApiException {
-        okhttp3.Call localVarCall = getV1DomainAvailabilityValidateBeforeCall(domain, null);
+    public ApiResponse<QuoteList> getDomainAvailabilityWithHttpInfo(@javax.annotation.Nonnull String domain) throws ApiException {
+        okhttp3.Call localVarCall = getDomainAvailabilityValidateBeforeCall(domain, null);
         Type localVarReturnType = new TypeToken<QuoteList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -202,15 +202,15 @@ public class DomainApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1DomainAvailabilityAsync(@javax.annotation.Nonnull String domain, final ApiCallback<QuoteList> _callback) throws ApiException {
+    public okhttp3.Call getDomainAvailabilityAsync(@javax.annotation.Nonnull String domain, final ApiCallback<QuoteList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1DomainAvailabilityValidateBeforeCall(domain, _callback);
+        okhttp3.Call localVarCall = getDomainAvailabilityValidateBeforeCall(domain, _callback);
         Type localVarReturnType = new TypeToken<QuoteList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1DomainDomains
+     * Build call for getDomainDomains
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -221,7 +221,7 @@ public class DomainApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1DomainDomainsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getDomainDomainsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -266,8 +266,8 @@ public class DomainApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1DomainDomainsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1DomainDomainsCall(_callback);
+    private okhttp3.Call getDomainDomainsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getDomainDomainsCall(_callback);
 
     }
 
@@ -283,8 +283,8 @@ public class DomainApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Holdings getV1DomainDomains() throws ApiException {
-        ApiResponse<Holdings> localVarResp = getV1DomainDomainsWithHttpInfo();
+    public Holdings getDomainDomains() throws ApiException {
+        ApiResponse<Holdings> localVarResp = getDomainDomainsWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -300,8 +300,8 @@ public class DomainApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Holdings> getV1DomainDomainsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1DomainDomainsValidateBeforeCall(null);
+    public ApiResponse<Holdings> getDomainDomainsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getDomainDomainsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<Holdings>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -319,15 +319,15 @@ public class DomainApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1DomainDomainsAsync(final ApiCallback<Holdings> _callback) throws ApiException {
+    public okhttp3.Call getDomainDomainsAsync(final ApiCallback<Holdings> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1DomainDomainsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getDomainDomainsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<Holdings>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1DomainHealth
+     * Build call for getDomainHealth
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -339,7 +339,7 @@ public class DomainApi {
         <tr><td> 503 </td><td> service unavailable </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1DomainHealthCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getDomainHealthCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -384,8 +384,8 @@ public class DomainApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1DomainHealthValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1DomainHealthCall(_callback);
+    private okhttp3.Call getDomainHealthValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getDomainHealthCall(_callback);
 
     }
 
@@ -402,8 +402,8 @@ public class DomainApi {
         <tr><td> 503 </td><td> service unavailable </td><td>  -  </td></tr>
      </table>
      */
-    public Reachability getV1DomainHealth() throws ApiException {
-        ApiResponse<Reachability> localVarResp = getV1DomainHealthWithHttpInfo();
+    public Reachability getDomainHealth() throws ApiException {
+        ApiResponse<Reachability> localVarResp = getDomainHealthWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -420,8 +420,8 @@ public class DomainApi {
         <tr><td> 503 </td><td> service unavailable </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Reachability> getV1DomainHealthWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1DomainHealthValidateBeforeCall(null);
+    public ApiResponse<Reachability> getDomainHealthWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getDomainHealthValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<Reachability>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -440,15 +440,15 @@ public class DomainApi {
         <tr><td> 503 </td><td> service unavailable </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1DomainHealthAsync(final ApiCallback<Reachability> _callback) throws ApiException {
+    public okhttp3.Call getDomainHealthAsync(final ApiCallback<Reachability> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1DomainHealthValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getDomainHealthValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<Reachability>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1DomainSearch
+     * Build call for getDomainSearch
      * @param q Q is the keyword to build names from. It is required. (required)
      * @param tld TLD narrows the search to a comma-separated set of top-level domains. (optional)
      * @param _callback Callback for upload/download progress
@@ -461,7 +461,7 @@ public class DomainApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1DomainSearchCall(@javax.annotation.Nonnull String q, @javax.annotation.Nullable String tld, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getDomainSearchCall(@javax.annotation.Nonnull String q, @javax.annotation.Nullable String tld, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -514,13 +514,13 @@ public class DomainApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1DomainSearchValidateBeforeCall(@javax.annotation.Nonnull String q, @javax.annotation.Nullable String tld, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getDomainSearchValidateBeforeCall(@javax.annotation.Nonnull String q, @javax.annotation.Nullable String tld, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'q' is set
         if (q == null) {
-            throw new ApiException("Missing the required parameter 'q' when calling getV1DomainSearch(Async)");
+            throw new ApiException("Missing the required parameter 'q' when calling getDomainSearch(Async)");
         }
 
-        return getV1DomainSearchCall(q, tld, _callback);
+        return getDomainSearchCall(q, tld, _callback);
 
     }
 
@@ -538,8 +538,8 @@ public class DomainApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public QuoteList getV1DomainSearch(@javax.annotation.Nonnull String q, @javax.annotation.Nullable String tld) throws ApiException {
-        ApiResponse<QuoteList> localVarResp = getV1DomainSearchWithHttpInfo(q, tld);
+    public QuoteList getDomainSearch(@javax.annotation.Nonnull String q, @javax.annotation.Nullable String tld) throws ApiException {
+        ApiResponse<QuoteList> localVarResp = getDomainSearchWithHttpInfo(q, tld);
         return localVarResp.getData();
     }
 
@@ -557,8 +557,8 @@ public class DomainApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<QuoteList> getV1DomainSearchWithHttpInfo(@javax.annotation.Nonnull String q, @javax.annotation.Nullable String tld) throws ApiException {
-        okhttp3.Call localVarCall = getV1DomainSearchValidateBeforeCall(q, tld, null);
+    public ApiResponse<QuoteList> getDomainSearchWithHttpInfo(@javax.annotation.Nonnull String q, @javax.annotation.Nullable String tld) throws ApiException {
+        okhttp3.Call localVarCall = getDomainSearchValidateBeforeCall(q, tld, null);
         Type localVarReturnType = new TypeToken<QuoteList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -578,15 +578,15 @@ public class DomainApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1DomainSearchAsync(@javax.annotation.Nonnull String q, @javax.annotation.Nullable String tld, final ApiCallback<QuoteList> _callback) throws ApiException {
+    public okhttp3.Call getDomainSearchAsync(@javax.annotation.Nonnull String q, @javax.annotation.Nullable String tld, final ApiCallback<QuoteList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1DomainSearchValidateBeforeCall(q, tld, _callback);
+        okhttp3.Call localVarCall = getDomainSearchValidateBeforeCall(q, tld, _callback);
         Type localVarReturnType = new TypeToken<QuoteList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1DomainRegister
+     * Build call for postDomainRegister
      * @param order  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -598,7 +598,7 @@ public class DomainApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1DomainRegisterCall(@javax.annotation.Nonnull Order order, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postDomainRegisterCall(@javax.annotation.Nonnull Order order, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -644,13 +644,13 @@ public class DomainApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1DomainRegisterValidateBeforeCall(@javax.annotation.Nonnull Order order, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postDomainRegisterValidateBeforeCall(@javax.annotation.Nonnull Order order, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'order' is set
         if (order == null) {
-            throw new ApiException("Missing the required parameter 'order' when calling postV1DomainRegister(Async)");
+            throw new ApiException("Missing the required parameter 'order' when calling postDomainRegister(Async)");
         }
 
-        return postV1DomainRegisterCall(order, _callback);
+        return postDomainRegisterCall(order, _callback);
 
     }
 
@@ -667,8 +667,8 @@ public class DomainApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public RegisterResult postV1DomainRegister(@javax.annotation.Nonnull Order order) throws ApiException {
-        ApiResponse<RegisterResult> localVarResp = postV1DomainRegisterWithHttpInfo(order);
+    public RegisterResult postDomainRegister(@javax.annotation.Nonnull Order order) throws ApiException {
+        ApiResponse<RegisterResult> localVarResp = postDomainRegisterWithHttpInfo(order);
         return localVarResp.getData();
     }
 
@@ -685,8 +685,8 @@ public class DomainApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RegisterResult> postV1DomainRegisterWithHttpInfo(@javax.annotation.Nonnull Order order) throws ApiException {
-        okhttp3.Call localVarCall = postV1DomainRegisterValidateBeforeCall(order, null);
+    public ApiResponse<RegisterResult> postDomainRegisterWithHttpInfo(@javax.annotation.Nonnull Order order) throws ApiException {
+        okhttp3.Call localVarCall = postDomainRegisterValidateBeforeCall(order, null);
         Type localVarReturnType = new TypeToken<RegisterResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -705,15 +705,15 @@ public class DomainApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1DomainRegisterAsync(@javax.annotation.Nonnull Order order, final ApiCallback<RegisterResult> _callback) throws ApiException {
+    public okhttp3.Call postDomainRegisterAsync(@javax.annotation.Nonnull Order order, final ApiCallback<RegisterResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1DomainRegisterValidateBeforeCall(order, _callback);
+        okhttp3.Call localVarCall = postDomainRegisterValidateBeforeCall(order, _callback);
         Type localVarReturnType = new TypeToken<RegisterResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1DomainRenew
+     * Build call for postDomainRenew
      * @param renewReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -725,7 +725,7 @@ public class DomainApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1DomainRenewCall(@javax.annotation.Nonnull RenewReq renewReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postDomainRenewCall(@javax.annotation.Nonnull RenewReq renewReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -771,13 +771,13 @@ public class DomainApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1DomainRenewValidateBeforeCall(@javax.annotation.Nonnull RenewReq renewReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postDomainRenewValidateBeforeCall(@javax.annotation.Nonnull RenewReq renewReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'renewReq' is set
         if (renewReq == null) {
-            throw new ApiException("Missing the required parameter 'renewReq' when calling postV1DomainRenew(Async)");
+            throw new ApiException("Missing the required parameter 'renewReq' when calling postDomainRenew(Async)");
         }
 
-        return postV1DomainRenewCall(renewReq, _callback);
+        return postDomainRenewCall(renewReq, _callback);
 
     }
 
@@ -794,8 +794,8 @@ public class DomainApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public RenewResult postV1DomainRenew(@javax.annotation.Nonnull RenewReq renewReq) throws ApiException {
-        ApiResponse<RenewResult> localVarResp = postV1DomainRenewWithHttpInfo(renewReq);
+    public RenewResult postDomainRenew(@javax.annotation.Nonnull RenewReq renewReq) throws ApiException {
+        ApiResponse<RenewResult> localVarResp = postDomainRenewWithHttpInfo(renewReq);
         return localVarResp.getData();
     }
 
@@ -812,8 +812,8 @@ public class DomainApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RenewResult> postV1DomainRenewWithHttpInfo(@javax.annotation.Nonnull RenewReq renewReq) throws ApiException {
-        okhttp3.Call localVarCall = postV1DomainRenewValidateBeforeCall(renewReq, null);
+    public ApiResponse<RenewResult> postDomainRenewWithHttpInfo(@javax.annotation.Nonnull RenewReq renewReq) throws ApiException {
+        okhttp3.Call localVarCall = postDomainRenewValidateBeforeCall(renewReq, null);
         Type localVarReturnType = new TypeToken<RenewResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -832,15 +832,15 @@ public class DomainApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1DomainRenewAsync(@javax.annotation.Nonnull RenewReq renewReq, final ApiCallback<RenewResult> _callback) throws ApiException {
+    public okhttp3.Call postDomainRenewAsync(@javax.annotation.Nonnull RenewReq renewReq, final ApiCallback<RenewResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1DomainRenewValidateBeforeCall(renewReq, _callback);
+        okhttp3.Call localVarCall = postDomainRenewValidateBeforeCall(renewReq, _callback);
         Type localVarReturnType = new TypeToken<RenewResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1DomainTransfer
+     * Build call for postDomainTransfer
      * @param transferReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -852,7 +852,7 @@ public class DomainApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1DomainTransferCall(@javax.annotation.Nonnull TransferReq transferReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postDomainTransferCall(@javax.annotation.Nonnull TransferReq transferReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -898,13 +898,13 @@ public class DomainApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1DomainTransferValidateBeforeCall(@javax.annotation.Nonnull TransferReq transferReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postDomainTransferValidateBeforeCall(@javax.annotation.Nonnull TransferReq transferReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'transferReq' is set
         if (transferReq == null) {
-            throw new ApiException("Missing the required parameter 'transferReq' when calling postV1DomainTransfer(Async)");
+            throw new ApiException("Missing the required parameter 'transferReq' when calling postDomainTransfer(Async)");
         }
 
-        return postV1DomainTransferCall(transferReq, _callback);
+        return postDomainTransferCall(transferReq, _callback);
 
     }
 
@@ -921,8 +921,8 @@ public class DomainApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public RegisterResult postV1DomainTransfer(@javax.annotation.Nonnull TransferReq transferReq) throws ApiException {
-        ApiResponse<RegisterResult> localVarResp = postV1DomainTransferWithHttpInfo(transferReq);
+    public RegisterResult postDomainTransfer(@javax.annotation.Nonnull TransferReq transferReq) throws ApiException {
+        ApiResponse<RegisterResult> localVarResp = postDomainTransferWithHttpInfo(transferReq);
         return localVarResp.getData();
     }
 
@@ -939,8 +939,8 @@ public class DomainApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RegisterResult> postV1DomainTransferWithHttpInfo(@javax.annotation.Nonnull TransferReq transferReq) throws ApiException {
-        okhttp3.Call localVarCall = postV1DomainTransferValidateBeforeCall(transferReq, null);
+    public ApiResponse<RegisterResult> postDomainTransferWithHttpInfo(@javax.annotation.Nonnull TransferReq transferReq) throws ApiException {
+        okhttp3.Call localVarCall = postDomainTransferValidateBeforeCall(transferReq, null);
         Type localVarReturnType = new TypeToken<RegisterResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -959,9 +959,9 @@ public class DomainApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1DomainTransferAsync(@javax.annotation.Nonnull TransferReq transferReq, final ApiCallback<RegisterResult> _callback) throws ApiException {
+    public okhttp3.Call postDomainTransferAsync(@javax.annotation.Nonnull TransferReq transferReq, final ApiCallback<RegisterResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1DomainTransferValidateBeforeCall(transferReq, _callback);
+        okhttp3.Call localVarCall = postDomainTransferValidateBeforeCall(transferReq, _callback);
         Type localVarReturnType = new TypeToken<RegisterResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

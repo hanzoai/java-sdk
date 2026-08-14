@@ -75,7 +75,7 @@ public class NetworksApi {
     }
 
     /**
-     * Build call for getV1Networks
+     * Build call for getNetworks
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -86,7 +86,7 @@ public class NetworksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1NetworksCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getNetworksCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -131,8 +131,8 @@ public class NetworksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1NetworksValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1NetworksCall(_callback);
+    private okhttp3.Call getNetworksValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getNetworksCall(_callback);
 
     }
 
@@ -148,8 +148,8 @@ public class NetworksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public NetworkList getV1Networks() throws ApiException {
-        ApiResponse<NetworkList> localVarResp = getV1NetworksWithHttpInfo();
+    public NetworkList getNetworks() throws ApiException {
+        ApiResponse<NetworkList> localVarResp = getNetworksWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -165,8 +165,8 @@ public class NetworksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<NetworkList> getV1NetworksWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1NetworksValidateBeforeCall(null);
+    public ApiResponse<NetworkList> getNetworksWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getNetworksValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<NetworkList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -184,15 +184,15 @@ public class NetworksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1NetworksAsync(final ApiCallback<NetworkList> _callback) throws ApiException {
+    public okhttp3.Call getNetworksAsync(final ApiCallback<NetworkList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1NetworksValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getNetworksValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<NetworkList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1NetworksById
+     * Build call for getNetworksById
      * @param id ID is the network id from the path. The URL is the addressing authority, so it binds from there whatever else the request carries. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -204,7 +204,7 @@ public class NetworksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1NetworksByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getNetworksByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -250,13 +250,13 @@ public class NetworksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1NetworksByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getNetworksByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getV1NetworksById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getNetworksById(Async)");
         }
 
-        return getV1NetworksByIdCall(id, _callback);
+        return getNetworksByIdCall(id, _callback);
 
     }
 
@@ -273,8 +273,8 @@ public class NetworksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public NetworkView getV1NetworksById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<NetworkView> localVarResp = getV1NetworksByIdWithHttpInfo(id);
+    public NetworkView getNetworksById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<NetworkView> localVarResp = getNetworksByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -291,8 +291,8 @@ public class NetworksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<NetworkView> getV1NetworksByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = getV1NetworksByIdValidateBeforeCall(id, null);
+    public ApiResponse<NetworkView> getNetworksByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getNetworksByIdValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<NetworkView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -311,15 +311,15 @@ public class NetworksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1NetworksByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<NetworkView> _callback) throws ApiException {
+    public okhttp3.Call getNetworksByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<NetworkView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1NetworksByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = getNetworksByIdValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<NetworkView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1NetworksRouters
+     * Build call for getNetworksRouters
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -330,7 +330,7 @@ public class NetworksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1NetworksRoutersCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getNetworksRoutersCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -375,8 +375,8 @@ public class NetworksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1NetworksRoutersValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1NetworksRoutersCall(_callback);
+    private okhttp3.Call getNetworksRoutersValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getNetworksRoutersCall(_callback);
 
     }
 
@@ -392,8 +392,8 @@ public class NetworksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public RouterList getV1NetworksRouters() throws ApiException {
-        ApiResponse<RouterList> localVarResp = getV1NetworksRoutersWithHttpInfo();
+    public RouterList getNetworksRouters() throws ApiException {
+        ApiResponse<RouterList> localVarResp = getNetworksRoutersWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -409,8 +409,8 @@ public class NetworksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RouterList> getV1NetworksRoutersWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1NetworksRoutersValidateBeforeCall(null);
+    public ApiResponse<RouterList> getNetworksRoutersWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getNetworksRoutersValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<RouterList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -428,9 +428,9 @@ public class NetworksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1NetworksRoutersAsync(final ApiCallback<RouterList> _callback) throws ApiException {
+    public okhttp3.Call getNetworksRoutersAsync(final ApiCallback<RouterList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1NetworksRoutersValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getNetworksRoutersValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<RouterList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

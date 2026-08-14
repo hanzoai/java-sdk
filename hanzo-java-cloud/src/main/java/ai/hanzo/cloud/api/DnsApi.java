@@ -72,13 +72,13 @@ public class DnsApi {
     }
 
     /**
-     * Build call for deleteV1DnsByWildcard1
+     * Build call for deleteDnsByWildcard1
      * @param wildcard1  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call deleteV1DnsByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteDnsByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -123,13 +123,13 @@ public class DnsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1DnsByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteDnsByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'wildcard1' is set
         if (wildcard1 == null) {
-            throw new ApiException("Missing the required parameter 'wildcard1' when calling deleteV1DnsByWildcard1(Async)");
+            throw new ApiException("Missing the required parameter 'wildcard1' when calling deleteDnsByWildcard1(Async)");
         }
 
-        return deleteV1DnsByWildcard1Call(wildcard1, _callback);
+        return deleteDnsByWildcard1Call(wildcard1, _callback);
 
     }
 
@@ -139,8 +139,8 @@ public class DnsApi {
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void deleteV1DnsByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        deleteV1DnsByWildcard1WithHttpInfo(wildcard1);
+    public void deleteDnsByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        deleteDnsByWildcard1WithHttpInfo(wildcard1);
     }
 
     /**
@@ -150,8 +150,8 @@ public class DnsApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> deleteV1DnsByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1DnsByWildcard1ValidateBeforeCall(wildcard1, null);
+    public ApiResponse<Void> deleteDnsByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        okhttp3.Call localVarCall = deleteDnsByWildcard1ValidateBeforeCall(wildcard1, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -163,20 +163,20 @@ public class DnsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call deleteV1DnsByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteDnsByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1DnsByWildcard1ValidateBeforeCall(wildcard1, _callback);
+        okhttp3.Call localVarCall = deleteDnsByWildcard1ValidateBeforeCall(wildcard1, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1DnsByWildcard1
+     * Build call for getDnsByWildcard1
      * @param wildcard1  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1DnsByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getDnsByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -221,13 +221,13 @@ public class DnsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1DnsByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getDnsByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'wildcard1' is set
         if (wildcard1 == null) {
-            throw new ApiException("Missing the required parameter 'wildcard1' when calling getV1DnsByWildcard1(Async)");
+            throw new ApiException("Missing the required parameter 'wildcard1' when calling getDnsByWildcard1(Async)");
         }
 
-        return getV1DnsByWildcard1Call(wildcard1, _callback);
+        return getDnsByWildcard1Call(wildcard1, _callback);
 
     }
 
@@ -237,8 +237,8 @@ public class DnsApi {
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1DnsByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        getV1DnsByWildcard1WithHttpInfo(wildcard1);
+    public void getDnsByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        getDnsByWildcard1WithHttpInfo(wildcard1);
     }
 
     /**
@@ -248,8 +248,8 @@ public class DnsApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1DnsByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        okhttp3.Call localVarCall = getV1DnsByWildcard1ValidateBeforeCall(wildcard1, null);
+    public ApiResponse<Void> getDnsByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        okhttp3.Call localVarCall = getDnsByWildcard1ValidateBeforeCall(wildcard1, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -261,20 +261,20 @@ public class DnsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1DnsByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getDnsByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1DnsByWildcard1ValidateBeforeCall(wildcard1, _callback);
+        okhttp3.Call localVarCall = getDnsByWildcard1ValidateBeforeCall(wildcard1, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for patchV1DnsByWildcard1
+     * Build call for patchDnsByWildcard1
      * @param wildcard1  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call patchV1DnsByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call patchDnsByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -319,13 +319,13 @@ public class DnsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchV1DnsByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call patchDnsByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'wildcard1' is set
         if (wildcard1 == null) {
-            throw new ApiException("Missing the required parameter 'wildcard1' when calling patchV1DnsByWildcard1(Async)");
+            throw new ApiException("Missing the required parameter 'wildcard1' when calling patchDnsByWildcard1(Async)");
         }
 
-        return patchV1DnsByWildcard1Call(wildcard1, _callback);
+        return patchDnsByWildcard1Call(wildcard1, _callback);
 
     }
 
@@ -335,8 +335,8 @@ public class DnsApi {
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void patchV1DnsByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        patchV1DnsByWildcard1WithHttpInfo(wildcard1);
+    public void patchDnsByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        patchDnsByWildcard1WithHttpInfo(wildcard1);
     }
 
     /**
@@ -346,8 +346,8 @@ public class DnsApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> patchV1DnsByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        okhttp3.Call localVarCall = patchV1DnsByWildcard1ValidateBeforeCall(wildcard1, null);
+    public ApiResponse<Void> patchDnsByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        okhttp3.Call localVarCall = patchDnsByWildcard1ValidateBeforeCall(wildcard1, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -359,20 +359,20 @@ public class DnsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call patchV1DnsByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call patchDnsByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchV1DnsByWildcard1ValidateBeforeCall(wildcard1, _callback);
+        okhttp3.Call localVarCall = patchDnsByWildcard1ValidateBeforeCall(wildcard1, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1DnsByWildcard1
+     * Build call for postDnsByWildcard1
      * @param wildcard1  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1DnsByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postDnsByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -417,13 +417,13 @@ public class DnsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1DnsByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postDnsByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'wildcard1' is set
         if (wildcard1 == null) {
-            throw new ApiException("Missing the required parameter 'wildcard1' when calling postV1DnsByWildcard1(Async)");
+            throw new ApiException("Missing the required parameter 'wildcard1' when calling postDnsByWildcard1(Async)");
         }
 
-        return postV1DnsByWildcard1Call(wildcard1, _callback);
+        return postDnsByWildcard1Call(wildcard1, _callback);
 
     }
 
@@ -433,8 +433,8 @@ public class DnsApi {
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1DnsByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        postV1DnsByWildcard1WithHttpInfo(wildcard1);
+    public void postDnsByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        postDnsByWildcard1WithHttpInfo(wildcard1);
     }
 
     /**
@@ -444,8 +444,8 @@ public class DnsApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1DnsByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        okhttp3.Call localVarCall = postV1DnsByWildcard1ValidateBeforeCall(wildcard1, null);
+    public ApiResponse<Void> postDnsByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        okhttp3.Call localVarCall = postDnsByWildcard1ValidateBeforeCall(wildcard1, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -457,20 +457,20 @@ public class DnsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1DnsByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postDnsByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1DnsByWildcard1ValidateBeforeCall(wildcard1, _callback);
+        okhttp3.Call localVarCall = postDnsByWildcard1ValidateBeforeCall(wildcard1, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1DnsByWildcard1
+     * Build call for putDnsByWildcard1
      * @param wildcard1  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call putV1DnsByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putDnsByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -515,13 +515,13 @@ public class DnsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1DnsByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putDnsByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'wildcard1' is set
         if (wildcard1 == null) {
-            throw new ApiException("Missing the required parameter 'wildcard1' when calling putV1DnsByWildcard1(Async)");
+            throw new ApiException("Missing the required parameter 'wildcard1' when calling putDnsByWildcard1(Async)");
         }
 
-        return putV1DnsByWildcard1Call(wildcard1, _callback);
+        return putDnsByWildcard1Call(wildcard1, _callback);
 
     }
 
@@ -531,8 +531,8 @@ public class DnsApi {
      * @param wildcard1  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void putV1DnsByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        putV1DnsByWildcard1WithHttpInfo(wildcard1);
+    public void putDnsByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        putDnsByWildcard1WithHttpInfo(wildcard1);
     }
 
     /**
@@ -542,8 +542,8 @@ public class DnsApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> putV1DnsByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        okhttp3.Call localVarCall = putV1DnsByWildcard1ValidateBeforeCall(wildcard1, null);
+    public ApiResponse<Void> putDnsByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
+        okhttp3.Call localVarCall = putDnsByWildcard1ValidateBeforeCall(wildcard1, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -555,9 +555,9 @@ public class DnsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call putV1DnsByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call putDnsByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1DnsByWildcard1ValidateBeforeCall(wildcard1, _callback);
+        okhttp3.Call localVarCall = putDnsByWildcard1ValidateBeforeCall(wildcard1, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

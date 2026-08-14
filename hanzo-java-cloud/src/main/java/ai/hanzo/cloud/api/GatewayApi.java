@@ -191,7 +191,7 @@ public class GatewayApi {
         return localVarCall;
     }
     /**
-     * Build call for getV1GatewayConfig
+     * Build call for getGatewayConfig
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -202,7 +202,7 @@ public class GatewayApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1GatewayConfigCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getGatewayConfigCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -247,8 +247,8 @@ public class GatewayApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1GatewayConfigValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1GatewayConfigCall(_callback);
+    private okhttp3.Call getGatewayConfigValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getGatewayConfigCall(_callback);
 
     }
 
@@ -264,8 +264,8 @@ public class GatewayApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Policy getV1GatewayConfig() throws ApiException {
-        ApiResponse<Policy> localVarResp = getV1GatewayConfigWithHttpInfo();
+    public Policy getGatewayConfig() throws ApiException {
+        ApiResponse<Policy> localVarResp = getGatewayConfigWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -281,8 +281,8 @@ public class GatewayApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Policy> getV1GatewayConfigWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1GatewayConfigValidateBeforeCall(null);
+    public ApiResponse<Policy> getGatewayConfigWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getGatewayConfigValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<Policy>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -300,15 +300,15 @@ public class GatewayApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1GatewayConfigAsync(final ApiCallback<Policy> _callback) throws ApiException {
+    public okhttp3.Call getGatewayConfigAsync(final ApiCallback<Policy> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1GatewayConfigValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getGatewayConfigValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<Policy>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putV1GatewayConfig
+     * Build call for putGatewayConfig
      * @param policy  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -320,7 +320,7 @@ public class GatewayApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putV1GatewayConfigCall(@javax.annotation.Nonnull Policy policy, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putGatewayConfigCall(@javax.annotation.Nonnull Policy policy, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -366,13 +366,13 @@ public class GatewayApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putV1GatewayConfigValidateBeforeCall(@javax.annotation.Nonnull Policy policy, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putGatewayConfigValidateBeforeCall(@javax.annotation.Nonnull Policy policy, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'policy' is set
         if (policy == null) {
-            throw new ApiException("Missing the required parameter 'policy' when calling putV1GatewayConfig(Async)");
+            throw new ApiException("Missing the required parameter 'policy' when calling putGatewayConfig(Async)");
         }
 
-        return putV1GatewayConfigCall(policy, _callback);
+        return putGatewayConfigCall(policy, _callback);
 
     }
 
@@ -389,8 +389,8 @@ public class GatewayApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Policy putV1GatewayConfig(@javax.annotation.Nonnull Policy policy) throws ApiException {
-        ApiResponse<Policy> localVarResp = putV1GatewayConfigWithHttpInfo(policy);
+    public Policy putGatewayConfig(@javax.annotation.Nonnull Policy policy) throws ApiException {
+        ApiResponse<Policy> localVarResp = putGatewayConfigWithHttpInfo(policy);
         return localVarResp.getData();
     }
 
@@ -407,8 +407,8 @@ public class GatewayApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Policy> putV1GatewayConfigWithHttpInfo(@javax.annotation.Nonnull Policy policy) throws ApiException {
-        okhttp3.Call localVarCall = putV1GatewayConfigValidateBeforeCall(policy, null);
+    public ApiResponse<Policy> putGatewayConfigWithHttpInfo(@javax.annotation.Nonnull Policy policy) throws ApiException {
+        okhttp3.Call localVarCall = putGatewayConfigValidateBeforeCall(policy, null);
         Type localVarReturnType = new TypeToken<Policy>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -427,9 +427,9 @@ public class GatewayApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putV1GatewayConfigAsync(@javax.annotation.Nonnull Policy policy, final ApiCallback<Policy> _callback) throws ApiException {
+    public okhttp3.Call putGatewayConfigAsync(@javax.annotation.Nonnull Policy policy, final ApiCallback<Policy> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putV1GatewayConfigValidateBeforeCall(policy, _callback);
+        okhttp3.Call localVarCall = putGatewayConfigValidateBeforeCall(policy, _callback);
         Type localVarReturnType = new TypeToken<Policy>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

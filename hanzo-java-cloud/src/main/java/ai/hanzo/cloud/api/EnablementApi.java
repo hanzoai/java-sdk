@@ -75,7 +75,7 @@ public class EnablementApi {
     }
 
     /**
-     * Build call for getV1Enablement
+     * Build call for getEnablement
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -86,7 +86,7 @@ public class EnablementApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1EnablementCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getEnablementCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -131,8 +131,8 @@ public class EnablementApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1EnablementValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1EnablementCall(_callback);
+    private okhttp3.Call getEnablementValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getEnablementCall(_callback);
 
     }
 
@@ -148,8 +148,8 @@ public class EnablementApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public EnablementBoard getV1Enablement() throws ApiException {
-        ApiResponse<EnablementBoard> localVarResp = getV1EnablementWithHttpInfo();
+    public EnablementBoard getEnablement() throws ApiException {
+        ApiResponse<EnablementBoard> localVarResp = getEnablementWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -165,8 +165,8 @@ public class EnablementApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<EnablementBoard> getV1EnablementWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1EnablementValidateBeforeCall(null);
+    public ApiResponse<EnablementBoard> getEnablementWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getEnablementValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<EnablementBoard>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -184,15 +184,15 @@ public class EnablementApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1EnablementAsync(final ApiCallback<EnablementBoard> _callback) throws ApiException {
+    public okhttp3.Call getEnablementAsync(final ApiCallback<EnablementBoard> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1EnablementValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getEnablementValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<EnablementBoard>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1EnablementOptin
+     * Build call for postEnablementOptin
      * @param enablementOptRef  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -204,7 +204,7 @@ public class EnablementApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1EnablementOptinCall(@javax.annotation.Nonnull EnablementOptRef enablementOptRef, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postEnablementOptinCall(@javax.annotation.Nonnull EnablementOptRef enablementOptRef, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -250,13 +250,13 @@ public class EnablementApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1EnablementOptinValidateBeforeCall(@javax.annotation.Nonnull EnablementOptRef enablementOptRef, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postEnablementOptinValidateBeforeCall(@javax.annotation.Nonnull EnablementOptRef enablementOptRef, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'enablementOptRef' is set
         if (enablementOptRef == null) {
-            throw new ApiException("Missing the required parameter 'enablementOptRef' when calling postV1EnablementOptin(Async)");
+            throw new ApiException("Missing the required parameter 'enablementOptRef' when calling postEnablementOptin(Async)");
         }
 
-        return postV1EnablementOptinCall(enablementOptRef, _callback);
+        return postEnablementOptinCall(enablementOptRef, _callback);
 
     }
 
@@ -273,8 +273,8 @@ public class EnablementApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public UserEnablementItem postV1EnablementOptin(@javax.annotation.Nonnull EnablementOptRef enablementOptRef) throws ApiException {
-        ApiResponse<UserEnablementItem> localVarResp = postV1EnablementOptinWithHttpInfo(enablementOptRef);
+    public UserEnablementItem postEnablementOptin(@javax.annotation.Nonnull EnablementOptRef enablementOptRef) throws ApiException {
+        ApiResponse<UserEnablementItem> localVarResp = postEnablementOptinWithHttpInfo(enablementOptRef);
         return localVarResp.getData();
     }
 
@@ -291,8 +291,8 @@ public class EnablementApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<UserEnablementItem> postV1EnablementOptinWithHttpInfo(@javax.annotation.Nonnull EnablementOptRef enablementOptRef) throws ApiException {
-        okhttp3.Call localVarCall = postV1EnablementOptinValidateBeforeCall(enablementOptRef, null);
+    public ApiResponse<UserEnablementItem> postEnablementOptinWithHttpInfo(@javax.annotation.Nonnull EnablementOptRef enablementOptRef) throws ApiException {
+        okhttp3.Call localVarCall = postEnablementOptinValidateBeforeCall(enablementOptRef, null);
         Type localVarReturnType = new TypeToken<UserEnablementItem>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -311,15 +311,15 @@ public class EnablementApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1EnablementOptinAsync(@javax.annotation.Nonnull EnablementOptRef enablementOptRef, final ApiCallback<UserEnablementItem> _callback) throws ApiException {
+    public okhttp3.Call postEnablementOptinAsync(@javax.annotation.Nonnull EnablementOptRef enablementOptRef, final ApiCallback<UserEnablementItem> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1EnablementOptinValidateBeforeCall(enablementOptRef, _callback);
+        okhttp3.Call localVarCall = postEnablementOptinValidateBeforeCall(enablementOptRef, _callback);
         Type localVarReturnType = new TypeToken<UserEnablementItem>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1EnablementOptout
+     * Build call for postEnablementOptout
      * @param enablementOptRef  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -331,7 +331,7 @@ public class EnablementApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1EnablementOptoutCall(@javax.annotation.Nonnull EnablementOptRef enablementOptRef, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postEnablementOptoutCall(@javax.annotation.Nonnull EnablementOptRef enablementOptRef, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -377,13 +377,13 @@ public class EnablementApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1EnablementOptoutValidateBeforeCall(@javax.annotation.Nonnull EnablementOptRef enablementOptRef, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postEnablementOptoutValidateBeforeCall(@javax.annotation.Nonnull EnablementOptRef enablementOptRef, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'enablementOptRef' is set
         if (enablementOptRef == null) {
-            throw new ApiException("Missing the required parameter 'enablementOptRef' when calling postV1EnablementOptout(Async)");
+            throw new ApiException("Missing the required parameter 'enablementOptRef' when calling postEnablementOptout(Async)");
         }
 
-        return postV1EnablementOptoutCall(enablementOptRef, _callback);
+        return postEnablementOptoutCall(enablementOptRef, _callback);
 
     }
 
@@ -400,8 +400,8 @@ public class EnablementApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public UserEnablementItem postV1EnablementOptout(@javax.annotation.Nonnull EnablementOptRef enablementOptRef) throws ApiException {
-        ApiResponse<UserEnablementItem> localVarResp = postV1EnablementOptoutWithHttpInfo(enablementOptRef);
+    public UserEnablementItem postEnablementOptout(@javax.annotation.Nonnull EnablementOptRef enablementOptRef) throws ApiException {
+        ApiResponse<UserEnablementItem> localVarResp = postEnablementOptoutWithHttpInfo(enablementOptRef);
         return localVarResp.getData();
     }
 
@@ -418,8 +418,8 @@ public class EnablementApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<UserEnablementItem> postV1EnablementOptoutWithHttpInfo(@javax.annotation.Nonnull EnablementOptRef enablementOptRef) throws ApiException {
-        okhttp3.Call localVarCall = postV1EnablementOptoutValidateBeforeCall(enablementOptRef, null);
+    public ApiResponse<UserEnablementItem> postEnablementOptoutWithHttpInfo(@javax.annotation.Nonnull EnablementOptRef enablementOptRef) throws ApiException {
+        okhttp3.Call localVarCall = postEnablementOptoutValidateBeforeCall(enablementOptRef, null);
         Type localVarReturnType = new TypeToken<UserEnablementItem>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -438,9 +438,9 @@ public class EnablementApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1EnablementOptoutAsync(@javax.annotation.Nonnull EnablementOptRef enablementOptRef, final ApiCallback<UserEnablementItem> _callback) throws ApiException {
+    public okhttp3.Call postEnablementOptoutAsync(@javax.annotation.Nonnull EnablementOptRef enablementOptRef, final ApiCallback<UserEnablementItem> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1EnablementOptoutValidateBeforeCall(enablementOptRef, _callback);
+        okhttp3.Call localVarCall = postEnablementOptoutValidateBeforeCall(enablementOptRef, _callback);
         Type localVarReturnType = new TypeToken<UserEnablementItem>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

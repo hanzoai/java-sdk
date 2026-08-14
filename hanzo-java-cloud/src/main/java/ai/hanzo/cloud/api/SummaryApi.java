@@ -73,7 +73,7 @@ public class SummaryApi {
     }
 
     /**
-     * Build call for getV1Summary
+     * Build call for getSummary
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -84,7 +84,7 @@ public class SummaryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1SummaryCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getSummaryCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -129,8 +129,8 @@ public class SummaryApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1SummaryValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1SummaryCall(_callback);
+    private okhttp3.Call getSummaryValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getSummaryCall(_callback);
 
     }
 
@@ -146,8 +146,8 @@ public class SummaryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yStatusSummary getV1Summary() throws ApiException {
-        ApiResponse<O11yStatusSummary> localVarResp = getV1SummaryWithHttpInfo();
+    public O11yStatusSummary getSummary() throws ApiException {
+        ApiResponse<O11yStatusSummary> localVarResp = getSummaryWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -163,8 +163,8 @@ public class SummaryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yStatusSummary> getV1SummaryWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1SummaryValidateBeforeCall(null);
+    public ApiResponse<O11yStatusSummary> getSummaryWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getSummaryValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<O11yStatusSummary>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -182,9 +182,9 @@ public class SummaryApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1SummaryAsync(final ApiCallback<O11yStatusSummary> _callback) throws ApiException {
+    public okhttp3.Call getSummaryAsync(final ApiCallback<O11yStatusSummary> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1SummaryValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getSummaryValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<O11yStatusSummary>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

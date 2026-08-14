@@ -323,12 +323,12 @@ public class ComputeApi {
         return localVarCall;
     }
     /**
-     * Build call for getV1ComputeRegions
+     * Build call for getComputeRegions
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1ComputeRegionsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getComputeRegionsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -372,8 +372,8 @@ public class ComputeApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1ComputeRegionsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1ComputeRegionsCall(_callback);
+    private okhttp3.Call getComputeRegionsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getComputeRegionsCall(_callback);
 
     }
 
@@ -382,8 +382,8 @@ public class ComputeApi {
      * Lists the launch regions the compute catalog offers, passed through verbatim from the provider so the shape stays the provider&#39;s single source of truth. The catalog is GLOBAL, not per-tenant: no owner is forwarded and every org sees the same list. It is still gated — a validated principal is required, 403 without one — because the catalog is what backs the launch drawer, not public marketing copy.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1ComputeRegions() throws ApiException {
-        getV1ComputeRegionsWithHttpInfo();
+    public void getComputeRegions() throws ApiException {
+        getComputeRegionsWithHttpInfo();
     }
 
     /**
@@ -392,8 +392,8 @@ public class ComputeApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1ComputeRegionsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1ComputeRegionsValidateBeforeCall(null);
+    public ApiResponse<Void> getComputeRegionsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getComputeRegionsValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -404,19 +404,19 @@ public class ComputeApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1ComputeRegionsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getComputeRegionsAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1ComputeRegionsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getComputeRegionsValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1ComputeSizes
+     * Build call for getComputeSizes
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getV1ComputeSizesCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getComputeSizesCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -460,8 +460,8 @@ public class ComputeApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1ComputeSizesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1ComputeSizesCall(_callback);
+    private okhttp3.Call getComputeSizesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getComputeSizesCall(_callback);
 
     }
 
@@ -470,8 +470,8 @@ public class ComputeApi {
      * Lists the instance sizes the compute catalog offers, passed through verbatim from the provider so the shape stays the provider&#39;s single source of truth. These are the values &#x60;size&#x60; accepts on a launch. The catalog is GLOBAL, not per-tenant: no owner is forwarded and every org sees the same list. It is still gated — a validated principal is required, 403 without one.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getV1ComputeSizes() throws ApiException {
-        getV1ComputeSizesWithHttpInfo();
+    public void getComputeSizes() throws ApiException {
+        getComputeSizesWithHttpInfo();
     }
 
     /**
@@ -480,8 +480,8 @@ public class ComputeApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getV1ComputeSizesWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1ComputeSizesValidateBeforeCall(null);
+    public ApiResponse<Void> getComputeSizesWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getComputeSizesValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -492,9 +492,9 @@ public class ComputeApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getV1ComputeSizesAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getComputeSizesAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1ComputeSizesValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getComputeSizesValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
@@ -616,14 +616,14 @@ public class ComputeApi {
         return localVarCall;
     }
     /**
-     * Build call for postV1ComputeBotsByIdByAction
+     * Build call for postComputeBotsByIdByAction
      * @param id  (required)
      * @param action  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1ComputeBotsByIdByActionCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String action, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postComputeBotsByIdByActionCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String action, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -669,18 +669,18 @@ public class ComputeApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1ComputeBotsByIdByActionValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String action, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postComputeBotsByIdByActionValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String action, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling postV1ComputeBotsByIdByAction(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling postComputeBotsByIdByAction(Async)");
         }
 
         // verify the required parameter 'action' is set
         if (action == null) {
-            throw new ApiException("Missing the required parameter 'action' when calling postV1ComputeBotsByIdByAction(Async)");
+            throw new ApiException("Missing the required parameter 'action' when calling postComputeBotsByIdByAction(Async)");
         }
 
-        return postV1ComputeBotsByIdByActionCall(id, action, _callback);
+        return postComputeBotsByIdByActionCall(id, action, _callback);
 
     }
 
@@ -691,8 +691,8 @@ public class ComputeApi {
      * @param action  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1ComputeBotsByIdByAction(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String action) throws ApiException {
-        postV1ComputeBotsByIdByActionWithHttpInfo(id, action);
+    public void postComputeBotsByIdByAction(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String action) throws ApiException {
+        postComputeBotsByIdByActionWithHttpInfo(id, action);
     }
 
     /**
@@ -703,8 +703,8 @@ public class ComputeApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1ComputeBotsByIdByActionWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String action) throws ApiException {
-        okhttp3.Call localVarCall = postV1ComputeBotsByIdByActionValidateBeforeCall(id, action, null);
+    public ApiResponse<Void> postComputeBotsByIdByActionWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String action) throws ApiException {
+        okhttp3.Call localVarCall = postComputeBotsByIdByActionValidateBeforeCall(id, action, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -717,19 +717,19 @@ public class ComputeApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1ComputeBotsByIdByActionAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String action, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postComputeBotsByIdByActionAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String action, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1ComputeBotsByIdByActionValidateBeforeCall(id, action, _callback);
+        okhttp3.Call localVarCall = postComputeBotsByIdByActionValidateBeforeCall(id, action, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1ComputeBotsLaunch
+     * Build call for postComputeBotsLaunch
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postV1ComputeBotsLaunchCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postComputeBotsLaunchCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -773,8 +773,8 @@ public class ComputeApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1ComputeBotsLaunchValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postV1ComputeBotsLaunchCall(_callback);
+    private okhttp3.Call postComputeBotsLaunchValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postComputeBotsLaunchCall(_callback);
 
     }
 
@@ -783,8 +783,8 @@ public class ComputeApi {
      * Creates BOTH halves of a bot in one call and answers 201 with the bot: the cloud agent it runs, then a bot-kind machine bootstrapped with the bot runtime, then the binding between them, so a launched bot is immediately messageable. Send &#x60;dryRun: true&#x60; for a price quote instead — 200 with the upstream quote verbatim, no agent created, no machine launched, nothing spent.  The agent is created FIRST and on purpose: it is create-if-absent (an agent that already exists is reused, so a relaunch is fine and several bots may share one explicit &#x60;agent&#x60;), and doing it before the machine means a bad request — a model that is not in the catalog, say — fails with the real reason BEFORE any metered machine is provisioned. &#x60;agent&#x60; defaults to the bot&#39;s name and an empty &#x60;model&#x60; takes the deployment default.  Org-scoped and fails closed: a validated principal is required (403 without one), the owning org is that principal&#39;s and never a body field, &#x60;size&#x60; is required (400), and &#x60;name&#x60; is required for a real launch though not for a quote.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postV1ComputeBotsLaunch() throws ApiException {
-        postV1ComputeBotsLaunchWithHttpInfo();
+    public void postComputeBotsLaunch() throws ApiException {
+        postComputeBotsLaunchWithHttpInfo();
     }
 
     /**
@@ -793,8 +793,8 @@ public class ComputeApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postV1ComputeBotsLaunchWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postV1ComputeBotsLaunchValidateBeforeCall(null);
+    public ApiResponse<Void> postComputeBotsLaunchWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postComputeBotsLaunchValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -805,9 +805,9 @@ public class ComputeApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postV1ComputeBotsLaunchAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postComputeBotsLaunchAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1ComputeBotsLaunchValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postComputeBotsLaunchValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

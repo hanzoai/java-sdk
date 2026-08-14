@@ -73,7 +73,7 @@ public class ReleasesApi {
     }
 
     /**
-     * Build call for getV1Releases
+     * Build call for getReleases
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -84,7 +84,7 @@ public class ReleasesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1ReleasesCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getReleasesCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -129,8 +129,8 @@ public class ReleasesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1ReleasesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1ReleasesCall(_callback);
+    private okhttp3.Call getReleasesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getReleasesCall(_callback);
 
     }
 
@@ -146,8 +146,8 @@ public class ReleasesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ReleaseBoard getV1Releases() throws ApiException {
-        ApiResponse<ReleaseBoard> localVarResp = getV1ReleasesWithHttpInfo();
+    public ReleaseBoard getReleases() throws ApiException {
+        ApiResponse<ReleaseBoard> localVarResp = getReleasesWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -163,8 +163,8 @@ public class ReleasesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ReleaseBoard> getV1ReleasesWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1ReleasesValidateBeforeCall(null);
+    public ApiResponse<ReleaseBoard> getReleasesWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getReleasesValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<ReleaseBoard>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -182,9 +182,9 @@ public class ReleasesApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1ReleasesAsync(final ApiCallback<ReleaseBoard> _callback) throws ApiException {
+    public okhttp3.Call getReleasesAsync(final ApiCallback<ReleaseBoard> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1ReleasesValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getReleasesValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<ReleaseBoard>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

@@ -77,7 +77,7 @@ public class CloudApi {
     }
 
     /**
-     * Build call for deleteV1CloudByProviderAccountsByLabel
+     * Build call for deleteCloudByProviderAccountsByLabel
      * @param provider Provider is the cloud the account belongs to: digitalocean, aws, gcp or azure. An unknown provider is not found. (required)
      * @param label Label is the org-chosen name of the account within that provider. Empty means \&quot;default\&quot;; anything outside 1–64 of [A-Za-z0-9._-] is refused. (required)
      * @param _callback Callback for upload/download progress
@@ -90,7 +90,7 @@ public class CloudApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1CloudByProviderAccountsByLabelCall(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull String label, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteCloudByProviderAccountsByLabelCall(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull String label, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -137,18 +137,18 @@ public class CloudApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1CloudByProviderAccountsByLabelValidateBeforeCall(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull String label, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteCloudByProviderAccountsByLabelValidateBeforeCall(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull String label, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'provider' is set
         if (provider == null) {
-            throw new ApiException("Missing the required parameter 'provider' when calling deleteV1CloudByProviderAccountsByLabel(Async)");
+            throw new ApiException("Missing the required parameter 'provider' when calling deleteCloudByProviderAccountsByLabel(Async)");
         }
 
         // verify the required parameter 'label' is set
         if (label == null) {
-            throw new ApiException("Missing the required parameter 'label' when calling deleteV1CloudByProviderAccountsByLabel(Async)");
+            throw new ApiException("Missing the required parameter 'label' when calling deleteCloudByProviderAccountsByLabel(Async)");
         }
 
-        return deleteV1CloudByProviderAccountsByLabelCall(provider, label, _callback);
+        return deleteCloudByProviderAccountsByLabelCall(provider, label, _callback);
 
     }
 
@@ -166,8 +166,8 @@ public class CloudApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public UnlinkedView deleteV1CloudByProviderAccountsByLabel(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull String label) throws ApiException {
-        ApiResponse<UnlinkedView> localVarResp = deleteV1CloudByProviderAccountsByLabelWithHttpInfo(provider, label);
+    public UnlinkedView deleteCloudByProviderAccountsByLabel(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull String label) throws ApiException {
+        ApiResponse<UnlinkedView> localVarResp = deleteCloudByProviderAccountsByLabelWithHttpInfo(provider, label);
         return localVarResp.getData();
     }
 
@@ -185,8 +185,8 @@ public class CloudApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<UnlinkedView> deleteV1CloudByProviderAccountsByLabelWithHttpInfo(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull String label) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1CloudByProviderAccountsByLabelValidateBeforeCall(provider, label, null);
+    public ApiResponse<UnlinkedView> deleteCloudByProviderAccountsByLabelWithHttpInfo(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull String label) throws ApiException {
+        okhttp3.Call localVarCall = deleteCloudByProviderAccountsByLabelValidateBeforeCall(provider, label, null);
         Type localVarReturnType = new TypeToken<UnlinkedView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -206,15 +206,15 @@ public class CloudApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1CloudByProviderAccountsByLabelAsync(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull String label, final ApiCallback<UnlinkedView> _callback) throws ApiException {
+    public okhttp3.Call deleteCloudByProviderAccountsByLabelAsync(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull String label, final ApiCallback<UnlinkedView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1CloudByProviderAccountsByLabelValidateBeforeCall(provider, label, _callback);
+        okhttp3.Call localVarCall = deleteCloudByProviderAccountsByLabelValidateBeforeCall(provider, label, _callback);
         Type localVarReturnType = new TypeToken<UnlinkedView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1Cloud
+     * Build call for getCloud
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -225,7 +225,7 @@ public class CloudApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CloudCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCloudCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -270,8 +270,8 @@ public class CloudApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CloudValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1CloudCall(_callback);
+    private okhttp3.Call getCloudValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getCloudCall(_callback);
 
     }
 
@@ -287,8 +287,8 @@ public class CloudApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ProvidersView getV1Cloud() throws ApiException {
-        ApiResponse<ProvidersView> localVarResp = getV1CloudWithHttpInfo();
+    public ProvidersView getCloud() throws ApiException {
+        ApiResponse<ProvidersView> localVarResp = getCloudWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -304,8 +304,8 @@ public class CloudApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ProvidersView> getV1CloudWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1CloudValidateBeforeCall(null);
+    public ApiResponse<ProvidersView> getCloudWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getCloudValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<ProvidersView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -323,15 +323,15 @@ public class CloudApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CloudAsync(final ApiCallback<ProvidersView> _callback) throws ApiException {
+    public okhttp3.Call getCloudAsync(final ApiCallback<ProvidersView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CloudValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getCloudValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<ProvidersView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1CloudAccounts
+     * Build call for getCloudAccounts
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -342,7 +342,7 @@ public class CloudApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CloudAccountsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCloudAccountsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -387,8 +387,8 @@ public class CloudApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1CloudAccountsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1CloudAccountsCall(_callback);
+    private okhttp3.Call getCloudAccountsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getCloudAccountsCall(_callback);
 
     }
 
@@ -404,8 +404,8 @@ public class CloudApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public CloudAccountsView getV1CloudAccounts() throws ApiException {
-        ApiResponse<CloudAccountsView> localVarResp = getV1CloudAccountsWithHttpInfo();
+    public CloudAccountsView getCloudAccounts() throws ApiException {
+        ApiResponse<CloudAccountsView> localVarResp = getCloudAccountsWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -421,8 +421,8 @@ public class CloudApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CloudAccountsView> getV1CloudAccountsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1CloudAccountsValidateBeforeCall(null);
+    public ApiResponse<CloudAccountsView> getCloudAccountsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getCloudAccountsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<CloudAccountsView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -440,15 +440,15 @@ public class CloudApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1CloudAccountsAsync(final ApiCallback<CloudAccountsView> _callback) throws ApiException {
+    public okhttp3.Call getCloudAccountsAsync(final ApiCallback<CloudAccountsView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1CloudAccountsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getCloudAccountsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<CloudAccountsView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CloudByProviderAccounts
+     * Build call for postCloudByProviderAccounts
      * @param provider Provider is the cloud being linked, from the path: digitalocean, aws, gcp or azure. (required)
      * @param venueLinkRequest  (required)
      * @param _callback Callback for upload/download progress
@@ -461,7 +461,7 @@ public class CloudApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CloudByProviderAccountsCall(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull VenueLinkRequest venueLinkRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCloudByProviderAccountsCall(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull VenueLinkRequest venueLinkRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -508,18 +508,18 @@ public class CloudApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CloudByProviderAccountsValidateBeforeCall(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull VenueLinkRequest venueLinkRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postCloudByProviderAccountsValidateBeforeCall(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull VenueLinkRequest venueLinkRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'provider' is set
         if (provider == null) {
-            throw new ApiException("Missing the required parameter 'provider' when calling postV1CloudByProviderAccounts(Async)");
+            throw new ApiException("Missing the required parameter 'provider' when calling postCloudByProviderAccounts(Async)");
         }
 
         // verify the required parameter 'venueLinkRequest' is set
         if (venueLinkRequest == null) {
-            throw new ApiException("Missing the required parameter 'venueLinkRequest' when calling postV1CloudByProviderAccounts(Async)");
+            throw new ApiException("Missing the required parameter 'venueLinkRequest' when calling postCloudByProviderAccounts(Async)");
         }
 
-        return postV1CloudByProviderAccountsCall(provider, venueLinkRequest, _callback);
+        return postCloudByProviderAccountsCall(provider, venueLinkRequest, _callback);
 
     }
 
@@ -537,8 +537,8 @@ public class CloudApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public AccountFoldView postV1CloudByProviderAccounts(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull VenueLinkRequest venueLinkRequest) throws ApiException {
-        ApiResponse<AccountFoldView> localVarResp = postV1CloudByProviderAccountsWithHttpInfo(provider, venueLinkRequest);
+    public AccountFoldView postCloudByProviderAccounts(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull VenueLinkRequest venueLinkRequest) throws ApiException {
+        ApiResponse<AccountFoldView> localVarResp = postCloudByProviderAccountsWithHttpInfo(provider, venueLinkRequest);
         return localVarResp.getData();
     }
 
@@ -556,8 +556,8 @@ public class CloudApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AccountFoldView> postV1CloudByProviderAccountsWithHttpInfo(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull VenueLinkRequest venueLinkRequest) throws ApiException {
-        okhttp3.Call localVarCall = postV1CloudByProviderAccountsValidateBeforeCall(provider, venueLinkRequest, null);
+    public ApiResponse<AccountFoldView> postCloudByProviderAccountsWithHttpInfo(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull VenueLinkRequest venueLinkRequest) throws ApiException {
+        okhttp3.Call localVarCall = postCloudByProviderAccountsValidateBeforeCall(provider, venueLinkRequest, null);
         Type localVarReturnType = new TypeToken<AccountFoldView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -577,15 +577,15 @@ public class CloudApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CloudByProviderAccountsAsync(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull VenueLinkRequest venueLinkRequest, final ApiCallback<AccountFoldView> _callback) throws ApiException {
+    public okhttp3.Call postCloudByProviderAccountsAsync(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull VenueLinkRequest venueLinkRequest, final ApiCallback<AccountFoldView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CloudByProviderAccountsValidateBeforeCall(provider, venueLinkRequest, _callback);
+        okhttp3.Call localVarCall = postCloudByProviderAccountsValidateBeforeCall(provider, venueLinkRequest, _callback);
         Type localVarReturnType = new TypeToken<AccountFoldView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1CloudByProviderAccountsByLabelSync
+     * Build call for postCloudByProviderAccountsByLabelSync
      * @param provider Provider is the cloud the account belongs to: digitalocean, aws, gcp or azure. An unknown provider is not found. (required)
      * @param label Label is the org-chosen name of the account within that provider. Empty means \&quot;default\&quot;; anything outside 1–64 of [A-Za-z0-9._-] is refused. (required)
      * @param _callback Callback for upload/download progress
@@ -598,7 +598,7 @@ public class CloudApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CloudByProviderAccountsByLabelSyncCall(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull String label, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCloudByProviderAccountsByLabelSyncCall(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull String label, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -645,18 +645,18 @@ public class CloudApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1CloudByProviderAccountsByLabelSyncValidateBeforeCall(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull String label, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postCloudByProviderAccountsByLabelSyncValidateBeforeCall(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull String label, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'provider' is set
         if (provider == null) {
-            throw new ApiException("Missing the required parameter 'provider' when calling postV1CloudByProviderAccountsByLabelSync(Async)");
+            throw new ApiException("Missing the required parameter 'provider' when calling postCloudByProviderAccountsByLabelSync(Async)");
         }
 
         // verify the required parameter 'label' is set
         if (label == null) {
-            throw new ApiException("Missing the required parameter 'label' when calling postV1CloudByProviderAccountsByLabelSync(Async)");
+            throw new ApiException("Missing the required parameter 'label' when calling postCloudByProviderAccountsByLabelSync(Async)");
         }
 
-        return postV1CloudByProviderAccountsByLabelSyncCall(provider, label, _callback);
+        return postCloudByProviderAccountsByLabelSyncCall(provider, label, _callback);
 
     }
 
@@ -674,8 +674,8 @@ public class CloudApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public AccountFoldView postV1CloudByProviderAccountsByLabelSync(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull String label) throws ApiException {
-        ApiResponse<AccountFoldView> localVarResp = postV1CloudByProviderAccountsByLabelSyncWithHttpInfo(provider, label);
+    public AccountFoldView postCloudByProviderAccountsByLabelSync(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull String label) throws ApiException {
+        ApiResponse<AccountFoldView> localVarResp = postCloudByProviderAccountsByLabelSyncWithHttpInfo(provider, label);
         return localVarResp.getData();
     }
 
@@ -693,8 +693,8 @@ public class CloudApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AccountFoldView> postV1CloudByProviderAccountsByLabelSyncWithHttpInfo(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull String label) throws ApiException {
-        okhttp3.Call localVarCall = postV1CloudByProviderAccountsByLabelSyncValidateBeforeCall(provider, label, null);
+    public ApiResponse<AccountFoldView> postCloudByProviderAccountsByLabelSyncWithHttpInfo(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull String label) throws ApiException {
+        okhttp3.Call localVarCall = postCloudByProviderAccountsByLabelSyncValidateBeforeCall(provider, label, null);
         Type localVarReturnType = new TypeToken<AccountFoldView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -714,9 +714,9 @@ public class CloudApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1CloudByProviderAccountsByLabelSyncAsync(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull String label, final ApiCallback<AccountFoldView> _callback) throws ApiException {
+    public okhttp3.Call postCloudByProviderAccountsByLabelSyncAsync(@javax.annotation.Nonnull String provider, @javax.annotation.Nonnull String label, final ApiCallback<AccountFoldView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1CloudByProviderAccountsByLabelSyncValidateBeforeCall(provider, label, _callback);
+        okhttp3.Call localVarCall = postCloudByProviderAccountsByLabelSyncValidateBeforeCall(provider, label, _callback);
         Type localVarReturnType = new TypeToken<AccountFoldView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

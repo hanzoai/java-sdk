@@ -76,7 +76,7 @@ public class SqlApi {
     }
 
     /**
-     * Build call for deleteV1SqlByName
+     * Build call for deleteSqlByName
      * @param name Name is the resource&#39;s org-unique slug, from the path. Lower-cased and trimmed before lookup, exactly as it was at create. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -88,7 +88,7 @@ public class SqlApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1SqlByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteSqlByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -133,13 +133,13 @@ public class SqlApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteV1SqlByNameValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteSqlByNameValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling deleteV1SqlByName(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling deleteSqlByName(Async)");
         }
 
-        return deleteV1SqlByNameCall(name, _callback);
+        return deleteSqlByNameCall(name, _callback);
 
     }
 
@@ -155,8 +155,8 @@ public class SqlApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteV1SqlByName(@javax.annotation.Nonnull String name) throws ApiException {
-        deleteV1SqlByNameWithHttpInfo(name);
+    public void deleteSqlByName(@javax.annotation.Nonnull String name) throws ApiException {
+        deleteSqlByNameWithHttpInfo(name);
     }
 
     /**
@@ -172,8 +172,8 @@ public class SqlApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteV1SqlByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
-        okhttp3.Call localVarCall = deleteV1SqlByNameValidateBeforeCall(name, null);
+    public ApiResponse<Void> deleteSqlByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = deleteSqlByNameValidateBeforeCall(name, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -191,14 +191,14 @@ public class SqlApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteV1SqlByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteSqlByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteV1SqlByNameValidateBeforeCall(name, _callback);
+        okhttp3.Call localVarCall = deleteSqlByNameValidateBeforeCall(name, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1Sql
+     * Build call for getSql
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -209,7 +209,7 @@ public class SqlApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1SqlCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getSqlCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -254,8 +254,8 @@ public class SqlApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1SqlValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getV1SqlCall(_callback);
+    private okhttp3.Call getSqlValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getSqlCall(_callback);
 
     }
 
@@ -271,8 +271,8 @@ public class SqlApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public List<ProvisionedSummary> getV1Sql() throws ApiException {
-        ApiResponse<List<ProvisionedSummary>> localVarResp = getV1SqlWithHttpInfo();
+    public List<ProvisionedSummary> getSql() throws ApiException {
+        ApiResponse<List<ProvisionedSummary>> localVarResp = getSqlWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -288,8 +288,8 @@ public class SqlApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<ProvisionedSummary>> getV1SqlWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getV1SqlValidateBeforeCall(null);
+    public ApiResponse<List<ProvisionedSummary>> getSqlWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getSqlValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<List<ProvisionedSummary>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -307,15 +307,15 @@ public class SqlApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1SqlAsync(final ApiCallback<List<ProvisionedSummary>> _callback) throws ApiException {
+    public okhttp3.Call getSqlAsync(final ApiCallback<List<ProvisionedSummary>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1SqlValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getSqlValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<List<ProvisionedSummary>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getV1SqlByName
+     * Build call for getSqlByName
      * @param name Name is the resource&#39;s org-unique slug, from the path. Lower-cased and trimmed before lookup, exactly as it was at create. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -327,7 +327,7 @@ public class SqlApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1SqlByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getSqlByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -373,13 +373,13 @@ public class SqlApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getV1SqlByNameValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getSqlByNameValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling getV1SqlByName(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling getSqlByName(Async)");
         }
 
-        return getV1SqlByNameCall(name, _callback);
+        return getSqlByNameCall(name, _callback);
 
     }
 
@@ -396,8 +396,8 @@ public class SqlApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ProvisionedResource getV1SqlByName(@javax.annotation.Nonnull String name) throws ApiException {
-        ApiResponse<ProvisionedResource> localVarResp = getV1SqlByNameWithHttpInfo(name);
+    public ProvisionedResource getSqlByName(@javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<ProvisionedResource> localVarResp = getSqlByNameWithHttpInfo(name);
         return localVarResp.getData();
     }
 
@@ -414,8 +414,8 @@ public class SqlApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ProvisionedResource> getV1SqlByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
-        okhttp3.Call localVarCall = getV1SqlByNameValidateBeforeCall(name, null);
+    public ApiResponse<ProvisionedResource> getSqlByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = getSqlByNameValidateBeforeCall(name, null);
         Type localVarReturnType = new TypeToken<ProvisionedResource>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -434,15 +434,15 @@ public class SqlApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getV1SqlByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<ProvisionedResource> _callback) throws ApiException {
+    public okhttp3.Call getSqlByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<ProvisionedResource> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getV1SqlByNameValidateBeforeCall(name, _callback);
+        okhttp3.Call localVarCall = getSqlByNameValidateBeforeCall(name, _callback);
         Type localVarReturnType = new TypeToken<ProvisionedResource>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postV1Sql
+     * Build call for postSql
      * @param provisionRequest  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -454,7 +454,7 @@ public class SqlApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1SqlCall(@javax.annotation.Nullable ProvisionRequest provisionRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postSqlCall(@javax.annotation.Nullable ProvisionRequest provisionRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -500,8 +500,8 @@ public class SqlApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1SqlValidateBeforeCall(@javax.annotation.Nullable ProvisionRequest provisionRequest, final ApiCallback _callback) throws ApiException {
-        return postV1SqlCall(provisionRequest, _callback);
+    private okhttp3.Call postSqlValidateBeforeCall(@javax.annotation.Nullable ProvisionRequest provisionRequest, final ApiCallback _callback) throws ApiException {
+        return postSqlCall(provisionRequest, _callback);
 
     }
 
@@ -518,8 +518,8 @@ public class SqlApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ProvisionResult postV1Sql(@javax.annotation.Nullable ProvisionRequest provisionRequest) throws ApiException {
-        ApiResponse<ProvisionResult> localVarResp = postV1SqlWithHttpInfo(provisionRequest);
+    public ProvisionResult postSql(@javax.annotation.Nullable ProvisionRequest provisionRequest) throws ApiException {
+        ApiResponse<ProvisionResult> localVarResp = postSqlWithHttpInfo(provisionRequest);
         return localVarResp.getData();
     }
 
@@ -536,8 +536,8 @@ public class SqlApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ProvisionResult> postV1SqlWithHttpInfo(@javax.annotation.Nullable ProvisionRequest provisionRequest) throws ApiException {
-        okhttp3.Call localVarCall = postV1SqlValidateBeforeCall(provisionRequest, null);
+    public ApiResponse<ProvisionResult> postSqlWithHttpInfo(@javax.annotation.Nullable ProvisionRequest provisionRequest) throws ApiException {
+        okhttp3.Call localVarCall = postSqlValidateBeforeCall(provisionRequest, null);
         Type localVarReturnType = new TypeToken<ProvisionResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -556,9 +556,9 @@ public class SqlApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1SqlAsync(@javax.annotation.Nullable ProvisionRequest provisionRequest, final ApiCallback<ProvisionResult> _callback) throws ApiException {
+    public okhttp3.Call postSqlAsync(@javax.annotation.Nullable ProvisionRequest provisionRequest, final ApiCallback<ProvisionResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1SqlValidateBeforeCall(provisionRequest, _callback);
+        okhttp3.Call localVarCall = postSqlValidateBeforeCall(provisionRequest, _callback);
         Type localVarReturnType = new TypeToken<ProvisionResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

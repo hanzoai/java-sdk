@@ -74,7 +74,7 @@ public class RpcApi {
     }
 
     /**
-     * Build call for postV1RpcByChain
+     * Build call for postRpcByChain
      * @param chain Chain is the registry id, from the URL. (required)
      * @param rpcIn  (required)
      * @param _callback Callback for upload/download progress
@@ -87,7 +87,7 @@ public class RpcApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1RpcByChainCall(@javax.annotation.Nonnull String chain, @javax.annotation.Nonnull RpcIn rpcIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postRpcByChainCall(@javax.annotation.Nonnull String chain, @javax.annotation.Nonnull RpcIn rpcIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -134,18 +134,18 @@ public class RpcApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postV1RpcByChainValidateBeforeCall(@javax.annotation.Nonnull String chain, @javax.annotation.Nonnull RpcIn rpcIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postRpcByChainValidateBeforeCall(@javax.annotation.Nonnull String chain, @javax.annotation.Nonnull RpcIn rpcIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'chain' is set
         if (chain == null) {
-            throw new ApiException("Missing the required parameter 'chain' when calling postV1RpcByChain(Async)");
+            throw new ApiException("Missing the required parameter 'chain' when calling postRpcByChain(Async)");
         }
 
         // verify the required parameter 'rpcIn' is set
         if (rpcIn == null) {
-            throw new ApiException("Missing the required parameter 'rpcIn' when calling postV1RpcByChain(Async)");
+            throw new ApiException("Missing the required parameter 'rpcIn' when calling postRpcByChain(Async)");
         }
 
-        return postV1RpcByChainCall(chain, rpcIn, _callback);
+        return postRpcByChainCall(chain, rpcIn, _callback);
 
     }
 
@@ -163,8 +163,8 @@ public class RpcApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public RpcOut postV1RpcByChain(@javax.annotation.Nonnull String chain, @javax.annotation.Nonnull RpcIn rpcIn) throws ApiException {
-        ApiResponse<RpcOut> localVarResp = postV1RpcByChainWithHttpInfo(chain, rpcIn);
+    public RpcOut postRpcByChain(@javax.annotation.Nonnull String chain, @javax.annotation.Nonnull RpcIn rpcIn) throws ApiException {
+        ApiResponse<RpcOut> localVarResp = postRpcByChainWithHttpInfo(chain, rpcIn);
         return localVarResp.getData();
     }
 
@@ -182,8 +182,8 @@ public class RpcApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RpcOut> postV1RpcByChainWithHttpInfo(@javax.annotation.Nonnull String chain, @javax.annotation.Nonnull RpcIn rpcIn) throws ApiException {
-        okhttp3.Call localVarCall = postV1RpcByChainValidateBeforeCall(chain, rpcIn, null);
+    public ApiResponse<RpcOut> postRpcByChainWithHttpInfo(@javax.annotation.Nonnull String chain, @javax.annotation.Nonnull RpcIn rpcIn) throws ApiException {
+        okhttp3.Call localVarCall = postRpcByChainValidateBeforeCall(chain, rpcIn, null);
         Type localVarReturnType = new TypeToken<RpcOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -203,9 +203,9 @@ public class RpcApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postV1RpcByChainAsync(@javax.annotation.Nonnull String chain, @javax.annotation.Nonnull RpcIn rpcIn, final ApiCallback<RpcOut> _callback) throws ApiException {
+    public okhttp3.Call postRpcByChainAsync(@javax.annotation.Nonnull String chain, @javax.annotation.Nonnull RpcIn rpcIn, final ApiCallback<RpcOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postV1RpcByChainValidateBeforeCall(chain, rpcIn, _callback);
+        okhttp3.Call localVarCall = postRpcByChainValidateBeforeCall(chain, rpcIn, _callback);
         Type localVarReturnType = new TypeToken<RpcOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
