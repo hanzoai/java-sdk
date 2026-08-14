@@ -7,8 +7,8 @@ import ai.hanzo.cloud.api.BillingApi;
 /**
  * money — the balance, then the usage that moved it.
  *
- * <p>Operations: {@code get_v1_billing_balance} — GET /v1/billing/balance, and
- * {@code get_v1_billing_usage} — GET /v1/billing/usage.
+ * <p>Operations: {@code get_billing_balance} — GET /v1/billing/balance, and
+ * {@code get_billing_usage} — GET /v1/billing/usage.
  *
  * <p>Neither takes an org: both derive the tenant server-side from the token's
  * {@code owner} claim, so a key can only ever read its own money.

@@ -16,9 +16,9 @@ import java.util.UUID;
 /**
  * agent — create one, run it, watch the run land.
  *
- * <p>Operations: {@code post_v1_agents} — POST /v1/agents,
- * {@code post_v1_agents_by_ref_run} — POST /v1/agents/{ref}/run,
- * {@code get_v1_agents_by_ref_runs} — GET /v1/agents/{ref}/runs.
+ * <p>Operations: {@code post_agents} — POST /v1/agents,
+ * {@code post_agents_by_ref_run} — POST /v1/agents/{ref}/run,
+ * {@code get_agents_by_ref_runs} — GET /v1/agents/{ref}/runs.
  *
  * <p>{@code ref} accepts the public id or the org-unique name, so the run and
  * the read both use the name just created. Names are org-unique, so this makes

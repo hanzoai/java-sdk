@@ -12,12 +12,15 @@ import java.util.UUID;
 /**
  * store — provision a KV store, read it back, drop it.
  *
- * <p>Operations: {@code post_v1_kv} — POST /v1/kv,
- * {@code get_v1_kv_by_name} — GET /v1/kv/{name},
- * {@code delete_v1_kv_by_name} — DELETE /v1/kv/{name}.
+ * <p>Operations: {@code post_kv} — POST /v1/kv,
+ * {@code get_kv_by_name} — GET /v1/kv/{name},
+ * {@code delete_kv_by_name} — DELETE /v1/kv/{name}.
  *
- * <p>This is the provisioning plane, and it is the one that answers: the value
- * plane (/v1/kv/keys/{key}) is authored in the document but does not route.
+ * <p>This is the provisioning plane — make a store, read it, drop it — and it
+ * is all there is: the document declares {@code /v1/kv} and {@code /v1/kv/{name}}
+ * and nothing else, because that is what apps/provisioning registers. The value
+ * plane (/v1/kv/keys/{key}) was authored in a hand-written spec that is gone,
+ * and the addresses went with it.
  *
  * <p>KV is org-scoped — without {@code X-Org-Id} every call here is
  * 403 {@code "X-Org-Id required"}. The delete is in a {@code finally} so a

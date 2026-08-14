@@ -7,7 +7,7 @@ import ai.hanzo.cloud.api.ChatApi;
 /**
  * chat — one completion.
  *
- * <p>Operation: {@code post_v1_chat_completions} — POST /v1/chat/completions,
+ * <p>Operation: {@code post_chat_completions} — POST /v1/chat/completions,
  * the gateway's own inference route.
  *
  * <p>Non-streaming on purpose: streaming is SSE, a different transport that a

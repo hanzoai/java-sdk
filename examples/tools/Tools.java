@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * tools — list the tools this key can reach.
  *
- * <p>Operation: {@code get_v1_tools} — GET /v1/tools.
+ * <p>Operation: {@code get_tools} — GET /v1/tools.
  *
  * <p>The catalogue is per-key: it composes the typed product operations with
  * whatever external servers the caller's org has enabled, so two keys in two
