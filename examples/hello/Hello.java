@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * hello — prove the key works, and print what it can reach.
  *
- * <p>Operation: {@code get_v1_keys} — GET /v1/keys.
+ * <p>Operation: {@code get_keys} — GET /v1/keys.
  *
  * <p>This is the call that says no. With no key, or a bogus one, the route
  * answers 403 {@code {"status":403,"code":"forbidden","error":"sign in to
