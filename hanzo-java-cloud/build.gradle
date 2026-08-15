@@ -97,15 +97,22 @@ publishing {
 }
 
 signing {
-    // Central rejects an unsigned artifact. The key is an ASCII-armoured
-    // private key held in KMS (kms.hanzo.ai) and injected as an environment
-    // variable by CI — it is never on disk and never in this repo. Unset
-    // locally, so a developer build does not ask for a key it has no reason to
-    // hold.
+    // The signature follows the DESTINATION, not whether a key happens to be in
+    // the environment. Central rejects an unsigned artifact; `~/.m2` has no use
+    // for a signature — so a Central publish with no key fails right here, and
+    // a local install still runs without one.
+    //
+    // Keying it off the key instead is a silent-success trap: with the key
+    // unset, `sign` was never called, the publish graph held no signing task at
+    // all, and the upload went out unsigned with BUILD SUCCESSFUL. Central then
+    // refuses the deployment out of band, hours later, nowhere near the cause.
+    //
+    // The key is an ASCII-armoured private key in KMS (kms.hanzo.ai), read by
+    // .hanzo/workflows/release.yml. Never on disk, never in this repo.
+    required = { gradle.taskGraph.hasTask(':hanzo-java-cloud:publishMavenPublicationToCentralRepository') }
     def key = System.getenv('MAVEN_GPG_PRIVATE_KEY')
-    def password = System.getenv('MAVEN_GPG_PASSPHRASE')
     if (key) {
-        useInMemoryPgpKeys(key, password)
-        sign publishing.publications.maven
+        useInMemoryPgpKeys(key, System.getenv('MAVEN_GPG_PASSPHRASE'))
     }
+    sign publishing.publications.maven
 }

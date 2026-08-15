@@ -63,16 +63,69 @@ only exists in 1.x — 2.0 renames it to `jakarta.annotation` and 2,470 files st
 compiling. `jsr305` supplies `@Nullable`/`@Nonnull` and does not supply
 `Generated`. Dropping either is a 2,600-error build.
 
-## Nothing is published
+## Nothing is published, and what it waits on
 
-`repo1.maven.org/maven2/ai/hanzo/` is a 404 and Central's index has no
-`ai.hanzo` group. Until an upload succeeds, the README's install path is
+`repo1.maven.org/maven2/ai/hanzo/` is a 404, Central's index has no `ai.hanzo`
+group, and a full-text search of Central for `hanzo` returns **0** of its 21.3M
+components. Until an upload succeeds the README's install path is
 `publishToMavenLocal` — do not print coordinates that resolve nowhere.
 
 Nor is any number claimed: `git ls-remote --tags origin` returns **0**. The
 `v0.1.0-alpha.{3,4,5}` tags exist only in a local checkout and were never
 pushed, so they claim nothing. A version is claimed by a tag on the remote —
 read that, not the manifest, before choosing the next one.
+
+**The lane is ready and the artifact is consumable; the credential does not
+exist.** Tagging today gets a run that stops at the first step and names what is
+missing. Two things are wanted, and neither is this repo's to create:
+
+1. **A Central Portal user token**, as `MAVEN_CENTRAL_USERNAME` and
+   `MAVEN_CENTRAL_PASSWORD` in KMS (org `hanzo`, env `prod`), plus an
+   ASCII-armoured PGP key as `MAVEN_GPG_PRIVATE_KEY`/`MAVEN_GPG_PASSPHRASE`.
+   All four read 404 there. KMS holds `NPM_TOKEN` and `PYPI_TOKEN` and no Maven
+   equivalent, in any of its environments; the forge's `hanzoai`, `hanzo-inc`
+   and `hanzo-apps` org secrets hold none either, and this repo has no secrets
+   of its own on either host. Nothing in the estate names them except this repo.
+2. **The `ai.hanzo` namespace, verified.** Sonatype checks a TXT record on the
+   exact reversed domain — `hanzo.ai` for `ai.hanzo` — and `hanzo.ai` publishes
+   only a Google site-verification and an SPF record. Verification is per
+   account, so it cannot be confirmed from outside without the token from (1).
+
+Both are one-time acts by whoever holds the hanzo.ai DNS zone and can open the
+Central account. After that, a tag publishes with no further change here.
+
+### Two traps this lane used to contain
+
+**An unsigned upload used to report success.** `signing` was keyed on whether
+`MAVEN_GPG_PRIVATE_KEY` was set, so with no key `sign` was never called, the
+publish graph held no signing task at all, and the jars would have gone out
+unsigned with `BUILD SUCCESSFUL` — Central refusing them hours later, out of
+band. The signature now follows the destination
+(`required = { gradle.taskGraph.hasTask(':hanzo-java-cloud:publishMavenPublicationToCentralRepository') }`),
+so a keyless Central publish dies at `signMavenPublication` before a byte moves,
+and `publishToMavenLocal` still needs no key.
+
+**Uploading is not releasing.** Gradle's `maven-publish` is a series of PUTs
+with nothing marking where one deployment ends, so Sonatype's OSSRH-compat
+service separates them by source IP and waits to be told. Without a following
+`POST /manual/upload/defaultRepository/ai.hanzo?publishing_type=automatic` the
+artifacts sit in an open staging repository and never reach the Portal, let
+alone Central — Sonatype's own words: *"you must follow this section or your
+deployments will not be visible in the Central Publisher Portal."* That call is
+the last step of `release.yml`, in the same job so it comes from the same IP.
+
+### What is already proven
+
+Everything except the two acts above. `ai.hanzo:hanzo-java-cloud:8.0.1` built,
+installed to `~/.m2`, and resolved from a **separate project with an empty
+`GRADLE_USER_HOME`** — the full transitive tree (okhttp, gson, okio, kotlin-stdlib)
+came down from Central against the generated POM. The README quickstart, compiled
+against that resolved jar, printed `GET /v1/keys answered; 0 key(s) owned` with
+an IAM access token and `403 {"code":"forbidden"}` without one. The POM carries
+every coordinate Central validates: name, description, url, licence, developer,
+scm — and `github.com/hanzoai/java-sdk` is public, so its urls resolve for a
+reader. Signing was exercised with a throwaway key: five `.asc` files, and
+`gpg --verify` returns `Good signature`.
 
 ## Building
 
