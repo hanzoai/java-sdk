@@ -94,7 +94,7 @@ missing. Two things are wanted, and neither is this repo's to create:
 Both are one-time acts by whoever holds the hanzo.ai DNS zone and can open the
 Central account. After that, a tag publishes with no further change here.
 
-### Two traps this lane used to contain
+### Three traps this lane used to contain
 
 **An unsigned upload used to report success.** `signing` was keyed on whether
 `MAVEN_GPG_PRIVATE_KEY` was set, so with no key `sign` was never called, the
@@ -113,6 +113,17 @@ artifacts sit in an open staging repository and never reach the Portal, let
 alone Central — Sonatype's own words: *"you must follow this section or your
 deployments will not be visible in the Central Publisher Portal."* That call is
 the last step of `release.yml`, in the same job so it comes from the same IP.
+
+**A step that measures failure cannot run under `-e`.** The forge invokes every
+`run:` as `bash --noprofile --norc -e -o pipefail`, and `set -uo pipefail`
+inside the script does not turn `-e` back off. The KMS step exists to find out
+whether four secrets are there, so its curls are *expected* to 404 — under `-e`
+the first one took the step at curl's exit 22 and none of its messages were ever
+reached. Run 69709 reported a missing credential as `exitcode '22'`; run 69723,
+after `set +e`, reports `exitcode '1'` and names `MAVEN_CENTRAL_USERNAME`. A
+local rehearsal with plain `bash script.sh` cannot catch this — rehearse with
+`bash -e -o pipefail script.sh`. `hanzoai/ci`'s `build.yml` carries the same
+warning on its own KMS step.
 
 ### What is already proven
 
