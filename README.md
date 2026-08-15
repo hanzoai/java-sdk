@@ -23,14 +23,14 @@ cd java-sdk
 ./gradlew :hanzo-java-cloud:publishToMavenLocal
 ```
 
-That writes `ai.hanzo:hanzo-java-cloud:8.0.0` — jar, sources and javadoc — to
-`~/.m2/repository/ai/hanzo/hanzo-java-cloud/8.0.0/`. Depend on it from your own
+That writes `ai.hanzo:hanzo-java-cloud:8.0.1` — jar, sources and javadoc — to
+`~/.m2/repository/ai/hanzo/hanzo-java-cloud/8.0.1/`. Depend on it from your own
 build:
 
 ```groovy
 repositories { mavenLocal(); mavenCentral() }
 
-dependencies { implementation 'ai.hanzo:hanzo-java-cloud:8.0.0' }
+dependencies { implementation 'ai.hanzo:hanzo-java-cloud:8.0.1' }
 ```
 
 Maven reads `~/.m2` first, so there it is the coordinates and nothing else:
@@ -39,7 +39,7 @@ Maven reads `~/.m2` first, so there it is the coordinates and nothing else:
 <dependency>
   <groupId>ai.hanzo</groupId>
   <artifactId>hanzo-java-cloud</artifactId>
-  <version>8.0.0</version>
+  <version>8.0.1</version>
 </dependency>
 ```
 
@@ -47,25 +47,42 @@ Java 11 or newer — the classes are major version 55.
 
 ## Authenticate
 
-A bearer token: an IAM-issued JWT, or an `hk-` Cloud API key.
+The document declares one security scheme — `bearer`, HTTP bearer — and applies
+it to every operation except the four that say `security: []`. So the credential
+lives in the generated client: `ApiClient` registers an `HttpBearerAuth`, 2,498
+of the 2,502 call sites name it, and `setBearerToken` is the one place a token
+goes in.
 
-[`ai.hanzo.Hanzo`](hanzo-java-cloud/src/main/java/ai/hanzo/Hanzo.java) reads the
-environment once and hands back the `ApiClient` every generated class takes.
+```java
+ApiClient hanzo = new ApiClient();
+hanzo.setBearerToken(token);          // Authorization: Bearer …, on the 2,498
+new ModelsApi(hanzo).getModels();     // one of the 4 that need no token
+```
+
+[`ai.hanzo.Hanzo`](hanzo-java-cloud/src/main/java/ai/hanzo/Hanzo.java) is the
+same three lines fed from the environment, and is the only place in the module
+that reads it.
 
 | variable | meaning |
 | --- | --- |
-| `HANZO_API_KEY` | bearer credential, sent as `Authorization: Bearer …` |
+| `HANZO_API_KEY` | bearer credential, handed to `setBearerToken` |
 | `HANZO_BASE_URL` | gateway to talk to; default `https://api.hanzo.ai` |
 | `HANZO_ORG_ID` | org scope, sent as `X-Org-Id`; the KV and agents routes refuse without it. Everything else takes the tenant from the token's `owner` claim |
 
 For a program that serves more than one tenant, pass them instead of reading a
-single set of variables: `Hanzo.client("hk-…", null, "acme")`.
+single set of variables: `Hanzo.client(token, null, "acme")`.
 
-`Hanzo` is the one hand-written file in the module, and it is what makes a call
-authenticated at all. The document declares no `securitySchemes`, so the
-generator registered no credential: nothing under `ai.hanzo.cloud` reads the
-environment, `ApiClient.setAccessToken` throws `"No OAuth2 authentication
-configured!"`, and a client built any other way goes out bare and is refused.
+The token is a Cloud API key, or an access token from Hanzo IAM — which is what
+a service holding client credentials mints for itself:
+
+```bash
+export HANZO_API_KEY=$(curl -s https://api.hanzo.ai/v1/iam/oauth/token \
+  -d grant_type=client_credentials -d client_id="$CLIENT_ID" -d client_secret="$CLIENT_SECRET" \
+  | jq -r .access_token)
+```
+
+`X-Org-Id` stays a default header rather than a second credential: it selects a
+tenant, no scheme declares it, and no generated signature accepts it.
 
 ## Quickstart
 
@@ -90,12 +107,15 @@ public class Whoami {
 ```
 
 ```bash
-HANZO_API_KEY=hk-… ./gradlew :examples:hello   # the same call, in this repo
+HANZO_API_KEY=… ./gradlew :examples:hello   # the same call, in this repo
 ```
 
 `GET /v1/keys` is the call that says no — with no key, or a bad one, it answers
 `403 {"status":403,"code":"forbidden","error":"sign in to manage API keys"}` —
-so reaching the loop at all proves the credential works.
+so reaching the loop at all proves the credential works. Against api.hanzo.ai
+with an IAM access token it prints `the key is good, and it owns no keys of its
+own`; with `HANZO_API_KEY` unset, `keys refused: HTTP 403`. That pair is the
+proof, and one half of it alone is not.
 
 Getters carry the document's own answer about a field: `@javax.annotation.Nullable`
 unless it is required, which most are not — hence the `requireNonNullElse`. A
@@ -118,10 +138,24 @@ another's. The build compiles them against the client, so they cannot rot.
 | [`agent`](examples/agent) | `POST /v1/agents`, `.../run`, poll `.../runs` until terminal |
 | [`tools`](examples/tools) | `GET /v1/tools` — the tools this key can reach |
 
+One command each, against the live gateway:
+
 ```bash
-export HANZO_API_KEY=hk-…
+export HANZO_API_KEY=…
 export HANZO_ORG_ID=my-org      # store and agent only
-./gradlew :examples:hello
+./gradlew :examples:hello       # or tools, money, chat, store, agent
+```
+
+Observed against api.hanzo.ai with an IAM access token:
+
+```
+$ ./gradlew --console=plain -q :examples:hello
+the key is good, and it owns no keys of its own
+$ ./gradlew --console=plain -q :examples:tools
+no tools reachable with this key
+$ ./gradlew --console=plain -q :examples:money
+balance  HTTP 200
+usage    HTTP 200
 ```
 
 `agent` asks for `zen5`; `HANZO_MODEL` overrides it, and

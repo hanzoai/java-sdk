@@ -3,23 +3,24 @@ package ai.hanzo;
 import ai.hanzo.cloud.ApiClient;
 
 /**
- * Endpoint and credentials, resolved once.
+ * Endpoint, credential and tenant, resolved once.
  *
  * <p>Everything under {@code ai.hanzo.cloud} is generated from the API document
  * hanzoai/cloud emits, by {@code scripts/generate.sh}. This file is not: it is
- * the hand-written entry point that turns the generated transport into an
- * authenticated one, and it is the only place in the module that reads the
+ * the hand-written entry point, and the only place in the module that reads the
  * environment. It sits beside the generated package rather than inside it
  * because {@code sdks.yaml} hands the generator {@code ai/hanzo/cloud} outright
  * — a file in there is deleted by the next regeneration.
  *
- * <p>It is what makes a call authenticated AT ALL. The document declares no
- * {@code securitySchemes}, so the generator registers no credential:
- * {@link ApiClient#setAccessToken} throws {@code "No OAuth2 authentication
- * configured!"}, every generated call passes an empty {@code authNames}, and a
- * client built any other way goes out bare and is refused. Setting the header
- * is also the only way to send {@code X-Org-Id}, which the KV and agents routes
- * require and which no generated signature accepts.
+ * <p>The credential itself is the GENERATED client's, not this file's. The
+ * document declares a {@code bearer} security scheme and applies it to every
+ * operation except the five that say {@code security: []}, so {@link ApiClient}
+ * registers an {@code HttpBearerAuth} and each generated call names it; all this
+ * does is hand it the token. The header goes out from
+ * {@code HttpBearerAuth.applyToParams}, on the calls the document says need it
+ * and not on the public ones. {@code X-Org-Id} is a default header because it is
+ * a tenant selector rather than a credential: no scheme declares it and no
+ * generated signature accepts it.
  *
  * <pre>
  *   ApiClient hanzo = Hanzo.client();
@@ -51,10 +52,11 @@ public final class Hanzo {
      *
      * <p>A missing key sends no {@code Authorization} header rather than
      * raising: the API refusing is the truth, and inventing a client-side error
-     * hides which routes need a credential and which do not.
+     * hides which routes need a credential and which do not. The public routes
+     * still work without one.
      *
-     * @param apiKey  bearer credential — an IAM JWT or an {@code hk-} Cloud API
-     *                key; null or empty sends none
+     * @param apiKey  bearer credential — an IAM access token or a Cloud API key;
+     *                null or empty sends none
      * @param baseUrl gateway to talk to; null or empty means
      *                {@link #DEFAULT_BASE_URL}
      * @param orgId   org scope, sent as {@code X-Org-Id}; null or empty sends
@@ -66,7 +68,7 @@ public final class Hanzo {
         ApiClient client = new ApiClient();
         client.setBasePath(baseUrl == null || baseUrl.isEmpty() ? DEFAULT_BASE_URL : baseUrl);
         if (apiKey != null && !apiKey.isEmpty()) {
-            client.addDefaultHeader("Authorization", "Bearer " + apiKey);
+            client.setBearerToken(apiKey);
         }
         if (orgId != null && !orgId.isEmpty()) {
             client.addDefaultHeader("X-Org-Id", orgId);

@@ -11,10 +11,11 @@ apply plugin: 'signing'
 
 group = 'ai.hanzo'
 // The artifact's own number, not the document's: the document versions itself
-// `v1` and says nothing about a client. The ruby and rust rows in sdks.yaml
-// carry the same 8.0.0, so the JVM, ruby and rust projections of one document
-// answer to one number.
-version = '8.0.0'
+// `v1` and says nothing about a client. It moves when this client changes —
+// 8.0.1 is the projection of the document that declares its bearer scheme.
+// What a version NAMES is a tag; `git ls-remote --tags` is the authority on
+// which numbers are taken, and this repo has none, so nothing is claimed twice.
+version = '8.0.1'
 
 dependencies {
     // What the generated sources actually import — see the java row in
