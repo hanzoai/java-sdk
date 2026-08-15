@@ -125,7 +125,7 @@ public class BlueprintApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -242,7 +242,7 @@ public class BlueprintApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -352,7 +352,7 @@ public class BlueprintApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 

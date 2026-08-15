@@ -177,7 +177,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -303,7 +303,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -448,7 +448,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -593,7 +593,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -725,7 +725,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -826,7 +826,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -971,7 +971,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -1116,7 +1116,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -1261,7 +1261,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -1406,7 +1406,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -1547,7 +1547,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -1676,7 +1676,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -1821,7 +1821,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -1966,7 +1966,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -2111,7 +2111,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -2256,7 +2256,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -2401,7 +2401,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -2546,7 +2546,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -2691,7 +2691,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -2836,7 +2836,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -2981,7 +2981,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -3126,7 +3126,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -3271,7 +3271,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -3412,7 +3412,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -3541,7 +3541,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -3686,7 +3686,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -3831,7 +3831,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -3972,7 +3972,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -4097,7 +4097,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -4222,7 +4222,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -4347,7 +4347,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -4476,7 +4476,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -4617,7 +4617,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -4742,7 +4742,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -4871,7 +4871,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -5012,7 +5012,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -5141,7 +5141,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -5282,7 +5282,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -5398,7 +5398,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -5486,7 +5486,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -5574,7 +5574,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -5662,7 +5662,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -5759,7 +5759,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -5884,7 +5884,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -6009,7 +6009,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -6138,7 +6138,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -6279,7 +6279,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -6404,7 +6404,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -6533,7 +6533,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -6674,7 +6674,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -6799,7 +6799,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -6928,7 +6928,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -7069,7 +7069,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -7194,7 +7194,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -7319,7 +7319,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -7448,7 +7448,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -7589,7 +7589,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -7714,7 +7714,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -7839,7 +7839,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -7968,7 +7968,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -8113,7 +8113,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -8254,7 +8254,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -8379,7 +8379,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -8508,7 +8508,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -8653,7 +8653,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -8794,7 +8794,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -8919,7 +8919,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -9048,7 +9048,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -9189,7 +9189,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -9314,7 +9314,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -9443,7 +9443,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -9584,7 +9584,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -9709,7 +9709,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -9834,7 +9834,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -9963,7 +9963,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -10104,7 +10104,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -10233,7 +10233,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -10374,7 +10374,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -10503,7 +10503,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -10644,7 +10644,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -10769,7 +10769,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -10894,7 +10894,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -11023,7 +11023,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -11164,7 +11164,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -11293,7 +11293,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -11434,7 +11434,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -11559,7 +11559,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -11688,7 +11688,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -11829,7 +11829,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -11954,7 +11954,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -12079,7 +12079,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -12204,7 +12204,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -12329,7 +12329,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -12458,7 +12458,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -12599,7 +12599,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -12724,7 +12724,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -12853,7 +12853,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -12994,7 +12994,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -13119,7 +13119,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -13244,7 +13244,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -13369,7 +13369,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -13494,7 +13494,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -13619,7 +13619,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -13744,7 +13744,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -13873,7 +13873,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -14014,7 +14014,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -14139,7 +14139,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -14264,7 +14264,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -14393,7 +14393,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -14534,7 +14534,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -14659,7 +14659,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -14788,7 +14788,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -14929,7 +14929,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -15060,7 +15060,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -15215,7 +15215,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -15370,7 +15370,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -15525,7 +15525,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -15680,7 +15680,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -15835,7 +15835,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -15990,7 +15990,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -16145,7 +16145,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -16300,7 +16300,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -16451,7 +16451,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -16590,7 +16590,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -16745,7 +16745,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -16900,7 +16900,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -17055,7 +17055,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -17210,7 +17210,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -17365,7 +17365,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -17520,7 +17520,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -17675,7 +17675,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -17830,7 +17830,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -17985,7 +17985,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -18136,7 +18136,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -18275,7 +18275,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -18430,7 +18430,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -18585,7 +18585,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -18740,7 +18740,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -18891,7 +18891,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -19026,7 +19026,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -19165,7 +19165,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -19316,7 +19316,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -19451,7 +19451,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -19575,7 +19575,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -19663,7 +19663,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -19762,7 +19762,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -19901,7 +19901,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -20056,7 +20056,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -20207,7 +20207,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -20342,7 +20342,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -20481,7 +20481,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -20632,7 +20632,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -20767,7 +20767,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -20902,7 +20902,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -21037,7 +21037,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -21172,7 +21172,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -21311,7 +21311,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -21462,7 +21462,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -21597,7 +21597,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -21732,7 +21732,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -21867,7 +21867,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -22002,7 +22002,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -22137,7 +22137,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -22272,7 +22272,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -22411,7 +22411,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -22566,7 +22566,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -22717,7 +22717,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -22852,7 +22852,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -22987,7 +22987,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -23122,7 +23122,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -23257,7 +23257,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -23392,7 +23392,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -23527,7 +23527,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -23666,7 +23666,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -23817,7 +23817,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -23956,7 +23956,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -24111,7 +24111,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -24262,7 +24262,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -24397,7 +24397,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -24532,7 +24532,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -24667,7 +24667,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -24802,7 +24802,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -24937,7 +24937,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -25076,7 +25076,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -25231,7 +25231,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -25386,7 +25386,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -25541,7 +25541,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -25696,7 +25696,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -25851,7 +25851,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -26006,7 +26006,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -26161,7 +26161,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -26316,7 +26316,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -26467,7 +26467,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -26606,7 +26606,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -26761,7 +26761,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -26916,7 +26916,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -27071,7 +27071,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -27226,7 +27226,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -27381,7 +27381,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -27536,7 +27536,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -27691,7 +27691,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -27846,7 +27846,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -28001,7 +28001,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -28152,7 +28152,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -28291,7 +28291,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -28446,7 +28446,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -28601,7 +28601,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -28756,7 +28756,7 @@ public class AiApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
