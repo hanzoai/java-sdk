@@ -1,7 +1,16 @@
 name: Release
-# Publishing is a tag. The version is the artifact's own, in
+# Publishing is a push. The version is the artifact's own, in
 # hanzo-java-cloud/build.gradle — the document versions itself `v1` and says
-# nothing about a client — so a release is: regenerate, set it, tag.
+# nothing about a client — so a release is: regenerate, set it, push.
+#
+# It was a tag, and that is a step nobody ever took: this repo has no tags at
+# all, and Central serves nothing under ai.hanzo, so the jar the tree has
+# described since 8.0.0 has never existed anywhere a person could depend on it.
+# The build below was correct the whole time and had simply never run.
+#
+# Central is write-once per coordinate, which is what makes the commit a safe
+# trigger: the gate asks whether that exact pom is already served and stops the
+# job if it is. A push that does not change the version does nothing.
 #
 # Maven Central is the one thing hanzo.yml cannot express. `binaries:` ships the
 # jar with the tag; the Central upload needs a registry credential and a PGP
@@ -10,8 +19,15 @@ name: Release
 # things the forge holds are KMS_CLIENT_ID and KMS_CLIENT_SECRET.
 on:
   push:
-    tags: ['v*']
+    branches: [main]
   workflow_dispatch:
+
+# Serialized, newest wins. Two builds in flight both ask Central before either
+# uploads, so both read the same version as absent and the slower one uploads a
+# stale jar under a coordinate that can never be replaced.
+concurrency:
+  group: release
+  cancel-in-progress: true
 
 jobs:
   publish:
@@ -21,7 +37,26 @@ jobs:
       - uses: actions/setup-java@v4
         with: {distribution: temurin, java-version: '21'}
 
+      - name: Is this version already on Central
+        id: gate
+        # Before the credential read, so an ordinary push costs nothing and asks
+        # KMS for nothing. Central rejects a duplicate coordinate anyway; without
+        # this the rejection arrives as a red build on every commit that did not
+        # touch the version, which is indistinguishable from a broken release.
+        run: |
+          set -uo pipefail
+          V=$(sed -n "s/^version = '\(.*\)'/\1/p" hanzo-java-cloud/build.gradle)
+          [ -n "$V" ] || { echo "::error::no version in hanzo-java-cloud/build.gradle"; exit 1; }
+          if curl -sfI "https://repo1.maven.org/maven2/ai/hanzo/hanzo-java-cloud/${V}/hanzo-java-cloud-${V}.pom" >/dev/null 2>&1; then
+            echo "Central already serves ai.hanzo:hanzo-java-cloud:${V} — nothing to publish."
+            echo "publish=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "Central does not serve ai.hanzo:hanzo-java-cloud:${V} — publishing."
+            echo "publish=true" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Read the Central credential from KMS
+        if: steps.gate.outputs.publish == 'true'
         env:
           KMS_CLIENT_ID: ${{ secrets.KMS_CLIENT_ID }}
           KMS_CLIENT_SECRET: ${{ secrets.KMS_CLIENT_SECRET }}
@@ -44,20 +79,24 @@ jobs:
           # the missing value. Say which name is missing, at the door.
           for n in MAVEN_CENTRAL_USERNAME MAVEN_CENTRAL_PASSWORD MAVEN_GPG_PRIVATE_KEY MAVEN_GPG_PASSPHRASE; do
             v=$(curl -sf "$KMS_ENDPOINT/v1/kms/secrets/$n?env=prod" -H "Authorization: Bearer $T" | jq -r '.value // empty')
-            [ -n "$v" ] || { echo "::error::$n is not in KMS (org hanzo, env prod). Maven Central wants a Central Portal user token and an ASCII-armoured PGP key; both belong there before a tag can publish."; exit 1; }
+            [ -n "$v" ] || { echo "::error::$n is not in KMS (org hanzo, env prod). Maven Central wants a Central Portal user token and an ASCII-armoured PGP key; both belong there before a push can publish."; exit 1; }
             # A multi-line value masks line by line or not at all.
             printf '%s\n' "$v" | while IFS= read -r l; do [ -n "$l" ] && echo "::add-mask::$l"; done
             printf '%s<<KMS\n%s\nKMS\n' "$n" "$v" >> "$GITHUB_ENV"
           done
 
-      - run: ./gradlew --no-daemon :hanzo-java-cloud:compileJava :examples:compileJava
+      - name: Compile
+        if: steps.gate.outputs.publish == 'true'
+        run: ./gradlew --no-daemon :hanzo-java-cloud:compileJava :examples:compileJava
 
       - name: Upload to the staging repository
+        if: steps.gate.outputs.publish == 'true'
         # Signed here, or not at all: build.gradle makes the signature a
         # condition of this task, so an unsigned upload cannot leave.
         run: ./gradlew --no-daemon :hanzo-java-cloud:publishMavenPublicationToCentralRepository
 
       - name: Release the staged deployment
+        if: steps.gate.outputs.publish == 'true'
         # Gradle's maven-publish is a series of PUTs; nothing in it tells the
         # staging service where one deployment ends. Sonatype separates them by
         # source IP and waits for this call — without it the artifacts sit in an
