@@ -115,11 +115,6 @@ public class RunnerBuildReq {
   @javax.annotation.Nullable
   private String ref;
 
-  public static final String SERIALIZED_NAME_RELEASE = "release";
-  @SerializedName(SERIALIZED_NAME_RELEASE)
-  @javax.annotation.Nullable
-  private Boolean release;
-
   public static final String SERIALIZED_NAME_REPO = "repo";
   @SerializedName(SERIALIZED_NAME_REPO)
   @javax.annotation.Nullable
@@ -382,25 +377,6 @@ public class RunnerBuildReq {
   }
 
 
-  public RunnerBuildReq release(@javax.annotation.Nullable Boolean release) {
-    this.release = release;
-    return this;
-  }
-
-  /**
-   * Release requests native release semantics for cloud&#39;s self-publish: compute the next version, build+push ghcr.io/hanzoai/cloud, smoke it, then tag (the receipt) and notify universe. It owns its output image (release.go), and it takes SuperAdmin.
-   * @return release
-   */
-  @javax.annotation.Nullable
-  public Boolean getRelease() {
-    return release;
-  }
-
-  public void setRelease(@javax.annotation.Nullable Boolean release) {
-    this.release = release;
-  }
-
-
   public RunnerBuildReq repo(@javax.annotation.Nullable String repo) {
     this.repo = repo;
     return this;
@@ -480,7 +456,6 @@ public class RunnerBuildReq {
         Objects.equals(this.organizationId, runnerBuildReq.organizationId) &&
         Objects.equals(this.os, runnerBuildReq.os) &&
         Objects.equals(this.ref, runnerBuildReq.ref) &&
-        Objects.equals(this.release, runnerBuildReq.release) &&
         Objects.equals(this.repo, runnerBuildReq.repo) &&
         Objects.equals(this.sha, runnerBuildReq.sha) &&
         Objects.equals(this.tag, runnerBuildReq.tag);
@@ -488,7 +463,7 @@ public class RunnerBuildReq {
 
   @Override
   public int hashCode() {
-    return Objects.hash(arch, args, binaries, branch, bucket, context, dockerTarget, dockerfile, image, organizationId, os, ref, release, repo, sha, tag);
+    return Objects.hash(arch, args, binaries, branch, bucket, context, dockerTarget, dockerfile, image, organizationId, os, ref, repo, sha, tag);
   }
 
   @Override
@@ -507,7 +482,6 @@ public class RunnerBuildReq {
     sb.append("    organizationId: ").append(toIndentedString(organizationId)).append("\n");
     sb.append("    os: ").append(toIndentedString(os)).append("\n");
     sb.append("    ref: ").append(toIndentedString(ref)).append("\n");
-    sb.append("    release: ").append(toIndentedString(release)).append("\n");
     sb.append("    repo: ").append(toIndentedString(repo)).append("\n");
     sb.append("    sha: ").append(toIndentedString(sha)).append("\n");
     sb.append("    tag: ").append(toIndentedString(tag)).append("\n");
@@ -532,7 +506,7 @@ public class RunnerBuildReq {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("arch", "args", "binaries", "branch", "bucket", "context", "dockerTarget", "dockerfile", "image", "organizationId", "os", "ref", "release", "repo", "sha", "tag"));
+    openapiFields = new HashSet<String>(Arrays.asList("arch", "args", "binaries", "branch", "bucket", "context", "dockerTarget", "dockerfile", "image", "organizationId", "os", "ref", "repo", "sha", "tag"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);

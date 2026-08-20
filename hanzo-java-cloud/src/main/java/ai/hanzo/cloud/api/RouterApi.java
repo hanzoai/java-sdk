@@ -27,7 +27,6 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.Envelope;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -165,14 +164,6 @@ public class RouterApi {
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Envelope. &#x60;status&#x60; is \&quot;ok\&quot; or \&quot;error\&quot; — check it; a handled failure is still HTTP 200. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> No credential, or one this service does not accept. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> A valid credential that may not do this. </td><td>  -  </td></tr>
-     </table>
      */
     public okhttp3.Call deleteRouterDataCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -200,7 +191,6 @@ public class RouterApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -227,40 +217,21 @@ public class RouterApi {
     /**
      * Data
      * 
-     * @return Envelope
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Envelope. &#x60;status&#x60; is \&quot;ok\&quot; or \&quot;error\&quot; — check it; a handled failure is still HTTP 200. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> No credential, or one this service does not accept. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> A valid credential that may not do this. </td><td>  -  </td></tr>
-     </table>
      */
-    public Envelope deleteRouterData() throws ApiException {
-        ApiResponse<Envelope> localVarResp = deleteRouterDataWithHttpInfo();
-        return localVarResp.getData();
+    public void deleteRouterData() throws ApiException {
+        deleteRouterDataWithHttpInfo();
     }
 
     /**
      * Data
      * 
-     * @return ApiResponse&lt;Envelope&gt;
+     * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Envelope. &#x60;status&#x60; is \&quot;ok\&quot; or \&quot;error\&quot; — check it; a handled failure is still HTTP 200. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> No credential, or one this service does not accept. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> A valid credential that may not do this. </td><td>  -  </td></tr>
-     </table>
      */
-    public ApiResponse<Envelope> deleteRouterDataWithHttpInfo() throws ApiException {
+    public ApiResponse<Void> deleteRouterDataWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = deleteRouterDataValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<Envelope>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
+        return localVarApiClient.execute(localVarCall);
     }
 
     /**
@@ -269,20 +240,11 @@ public class RouterApi {
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Envelope. &#x60;status&#x60; is \&quot;ok\&quot; or \&quot;error\&quot; — check it; a handled failure is still HTTP 200. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> No credential, or one this service does not accept. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> A valid credential that may not do this. </td><td>  -  </td></tr>
-     </table>
      */
-    public okhttp3.Call deleteRouterDataAsync(final ApiCallback<Envelope> _callback) throws ApiException {
+    public okhttp3.Call deleteRouterDataAsync(final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteRouterDataValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<Envelope>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
@@ -730,14 +692,6 @@ public class RouterApi {
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Envelope. &#x60;status&#x60; is \&quot;ok\&quot; or \&quot;error\&quot; — check it; a handled failure is still HTTP 200. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> No credential, or one this service does not accept. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> A valid credential that may not do this. </td><td>  -  </td></tr>
-     </table>
      */
     public okhttp3.Call getRouterDataCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -765,7 +719,6 @@ public class RouterApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -792,40 +745,21 @@ public class RouterApi {
     /**
      * Data
      * 
-     * @return Envelope
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Envelope. &#x60;status&#x60; is \&quot;ok\&quot; or \&quot;error\&quot; — check it; a handled failure is still HTTP 200. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> No credential, or one this service does not accept. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> A valid credential that may not do this. </td><td>  -  </td></tr>
-     </table>
      */
-    public Envelope getRouterData() throws ApiException {
-        ApiResponse<Envelope> localVarResp = getRouterDataWithHttpInfo();
-        return localVarResp.getData();
+    public void getRouterData() throws ApiException {
+        getRouterDataWithHttpInfo();
     }
 
     /**
      * Data
      * 
-     * @return ApiResponse&lt;Envelope&gt;
+     * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Envelope. &#x60;status&#x60; is \&quot;ok\&quot; or \&quot;error\&quot; — check it; a handled failure is still HTTP 200. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> No credential, or one this service does not accept. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> A valid credential that may not do this. </td><td>  -  </td></tr>
-     </table>
      */
-    public ApiResponse<Envelope> getRouterDataWithHttpInfo() throws ApiException {
+    public ApiResponse<Void> getRouterDataWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getRouterDataValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<Envelope>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
+        return localVarApiClient.execute(localVarCall);
     }
 
     /**
@@ -834,20 +768,11 @@ public class RouterApi {
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Envelope. &#x60;status&#x60; is \&quot;ok\&quot; or \&quot;error\&quot; — check it; a handled failure is still HTTP 200. </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> No credential, or one this service does not accept. </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> A valid credential that may not do this. </td><td>  -  </td></tr>
-     </table>
      */
-    public okhttp3.Call getRouterDataAsync(final ApiCallback<Envelope> _callback) throws ApiException {
+    public okhttp3.Call getRouterDataAsync(final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getRouterDataValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<Envelope>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**

@@ -89,7 +89,7 @@ public class RunnerBuildResp {
   }
 
   /**
-   * BuildJobID is the queued build&#39;s id, and what a release is followed by.
+   * BuildJobID is the queued build&#39;s id, and what its progress is read by.
    * @return buildJobId
    */
   @javax.annotation.Nullable
@@ -165,7 +165,7 @@ public class RunnerBuildResp {
   }
 
   /**
-   * Status is &#x60;queued&#x60; for an ordinary build, &#x60;releasing&#x60; for a self-publish.
+   * Status is &#x60;queued&#x60; — the build was accepted and has not finished.
    * @return status
    */
   @javax.annotation.Nullable

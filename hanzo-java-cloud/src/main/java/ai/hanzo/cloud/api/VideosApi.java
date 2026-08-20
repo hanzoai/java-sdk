@@ -73,11 +73,12 @@ public class VideosApi {
 
     /**
      * Build call for getVideosById
+     * @param id  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getVideosByIdCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getVideosByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -94,7 +95,8 @@ public class VideosApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/videos/{id}";
+        String localVarPath = "/v1/videos/{id}"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -121,51 +123,60 @@ public class VideosApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getVideosByIdValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getVideosByIdCall(_callback);
+    private okhttp3.Call getVideosByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling getVideosById(Async)");
+        }
+
+        return getVideosByIdCall(id, _callback);
 
     }
 
     /**
      * Implements GET /v1/videos/{id} — poll a job&#39;s status.
      * Implements GET /v1/videos/{id} — poll a job&#39;s status.  It authenticates the caller, verifies they OWN the job (the caller&#39;s billing subject must equal the job&#39;s), performs ONE upstream status poll, and — the first time the job is observed completed — settles the reservation with the actual cost and records the billable usage event (exactly once). Returns the OpenAI-shaped video object.
+     * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getVideosById() throws ApiException {
-        getVideosByIdWithHttpInfo();
+    public void getVideosById(@javax.annotation.Nonnull String id) throws ApiException {
+        getVideosByIdWithHttpInfo(id);
     }
 
     /**
      * Implements GET /v1/videos/{id} — poll a job&#39;s status.
      * Implements GET /v1/videos/{id} — poll a job&#39;s status.  It authenticates the caller, verifies they OWN the job (the caller&#39;s billing subject must equal the job&#39;s), performs ONE upstream status poll, and — the first time the job is observed completed — settles the reservation with the actual cost and records the billable usage event (exactly once). Returns the OpenAI-shaped video object.
+     * @param id  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getVideosByIdWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getVideosByIdValidateBeforeCall(null);
+    public ApiResponse<Void> getVideosByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getVideosByIdValidateBeforeCall(id, null);
         return localVarApiClient.execute(localVarCall);
     }
 
     /**
      * Implements GET /v1/videos/{id} — poll a job&#39;s status. (asynchronously)
      * Implements GET /v1/videos/{id} — poll a job&#39;s status.  It authenticates the caller, verifies they OWN the job (the caller&#39;s billing subject must equal the job&#39;s), performs ONE upstream status poll, and — the first time the job is observed completed — settles the reservation with the actual cost and records the billable usage event (exactly once). Returns the OpenAI-shaped video object.
+     * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getVideosByIdAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getVideosByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getVideosByIdValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getVideosByIdValidateBeforeCall(id, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
      * Build call for getVideosByIdContent
+     * @param id  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getVideosByIdContentCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getVideosByIdContentCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -182,7 +193,8 @@ public class VideosApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/videos/{id}/content";
+        String localVarPath = "/v1/videos/{id}/content"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -209,41 +221,49 @@ public class VideosApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getVideosByIdContentValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getVideosByIdContentCall(_callback);
+    private okhttp3.Call getVideosByIdContentValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling getVideosByIdContent(Async)");
+        }
+
+        return getVideosByIdContentCall(id, _callback);
 
     }
 
     /**
      * Implements GET /v1/videos/{id}/content — download the finished MP4.
      * Implements GET /v1/videos/{id}/content — download the finished MP4.  It authenticates + ownership-checks the caller, then proxies the upstream /content endpoint (bounded by the download concurrency ceiling) and streams the raw video bytes back inline. A successful download also bills the job once (for the client that downloads without first polling to completion) — idempotent with the poll path via job.markCompleted.
+     * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getVideosByIdContent() throws ApiException {
-        getVideosByIdContentWithHttpInfo();
+    public void getVideosByIdContent(@javax.annotation.Nonnull String id) throws ApiException {
+        getVideosByIdContentWithHttpInfo(id);
     }
 
     /**
      * Implements GET /v1/videos/{id}/content — download the finished MP4.
      * Implements GET /v1/videos/{id}/content — download the finished MP4.  It authenticates + ownership-checks the caller, then proxies the upstream /content endpoint (bounded by the download concurrency ceiling) and streams the raw video bytes back inline. A successful download also bills the job once (for the client that downloads without first polling to completion) — idempotent with the poll path via job.markCompleted.
+     * @param id  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getVideosByIdContentWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getVideosByIdContentValidateBeforeCall(null);
+    public ApiResponse<Void> getVideosByIdContentWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getVideosByIdContentValidateBeforeCall(id, null);
         return localVarApiClient.execute(localVarCall);
     }
 
     /**
      * Implements GET /v1/videos/{id}/content — download the finished MP4. (asynchronously)
      * Implements GET /v1/videos/{id}/content — download the finished MP4.  It authenticates + ownership-checks the caller, then proxies the upstream /content endpoint (bounded by the download concurrency ceiling) and streams the raw video bytes back inline. A successful download also bills the job once (for the client that downloads without first polling to completion) — idempotent with the poll path via job.markCompleted.
+     * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getVideosByIdContentAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getVideosByIdContentAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getVideosByIdContentValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getVideosByIdContentValidateBeforeCall(id, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

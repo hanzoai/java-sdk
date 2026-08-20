@@ -661,8 +661,8 @@ public class AdminApi {
     }
 
     /**
-     * Reads cloud&#39;s tamper-evident audit trail, newest first, with the chain&#39;s live integrity attached so a listing can be badged as verified.
-     * Reads cloud&#39;s tamper-evident audit trail, newest first, with the chain&#39;s live integrity attached so a listing can be badged as verified.  When cloud has no local store configured it falls back to forwarding IAM&#39;s own get-records trail verbatim — a DIFFERENT trail, federated so the endpoint never regresses to an empty list. Those rows carry no integrity of ours, so the field is null there.
+     * Reads one chain of cloud&#39;s tamper-evident audit trail, newest first, with that chain&#39;s live integrity attached so a listing can be badged as verified.
+     * Reads one chain of cloud&#39;s tamper-evident audit trail, newest first, with that chain&#39;s live integrity attached so a listing can be badged as verified.  When cloud has no local store configured it falls back to forwarding IAM&#39;s own get-records trail verbatim — a DIFFERENT trail, federated so the endpoint never regresses to an empty list. Those rows carry no integrity of ours, so the field is null there.
      * @param org Org restricts the trail to one tenant. (optional)
      * @param sub Sub restricts it to one actor (the validated subject that made the request). (optional)
      * @param action Action restricts it to one action name, e.g. \&quot;admin.waitlist.grant\&quot;. (optional)
@@ -688,8 +688,8 @@ public class AdminApi {
     }
 
     /**
-     * Reads cloud&#39;s tamper-evident audit trail, newest first, with the chain&#39;s live integrity attached so a listing can be badged as verified.
-     * Reads cloud&#39;s tamper-evident audit trail, newest first, with the chain&#39;s live integrity attached so a listing can be badged as verified.  When cloud has no local store configured it falls back to forwarding IAM&#39;s own get-records trail verbatim — a DIFFERENT trail, federated so the endpoint never regresses to an empty list. Those rows carry no integrity of ours, so the field is null there.
+     * Reads one chain of cloud&#39;s tamper-evident audit trail, newest first, with that chain&#39;s live integrity attached so a listing can be badged as verified.
+     * Reads one chain of cloud&#39;s tamper-evident audit trail, newest first, with that chain&#39;s live integrity attached so a listing can be badged as verified.  When cloud has no local store configured it falls back to forwarding IAM&#39;s own get-records trail verbatim — a DIFFERENT trail, federated so the endpoint never regresses to an empty list. Those rows carry no integrity of ours, so the field is null there.
      * @param org Org restricts the trail to one tenant. (optional)
      * @param sub Sub restricts it to one actor (the validated subject that made the request). (optional)
      * @param action Action restricts it to one action name, e.g. \&quot;admin.waitlist.grant\&quot;. (optional)
@@ -716,8 +716,8 @@ public class AdminApi {
     }
 
     /**
-     * Reads cloud&#39;s tamper-evident audit trail, newest first, with the chain&#39;s live integrity attached so a listing can be badged as verified. (asynchronously)
-     * Reads cloud&#39;s tamper-evident audit trail, newest first, with the chain&#39;s live integrity attached so a listing can be badged as verified.  When cloud has no local store configured it falls back to forwarding IAM&#39;s own get-records trail verbatim — a DIFFERENT trail, federated so the endpoint never regresses to an empty list. Those rows carry no integrity of ours, so the field is null there.
+     * Reads one chain of cloud&#39;s tamper-evident audit trail, newest first, with that chain&#39;s live integrity attached so a listing can be badged as verified. (asynchronously)
+     * Reads one chain of cloud&#39;s tamper-evident audit trail, newest first, with that chain&#39;s live integrity attached so a listing can be badged as verified.  When cloud has no local store configured it falls back to forwarding IAM&#39;s own get-records trail verbatim — a DIFFERENT trail, federated so the endpoint never regresses to an empty list. Those rows carry no integrity of ours, so the field is null there.
      * @param org Org restricts the trail to one tenant. (optional)
      * @param sub Sub restricts it to one actor (the validated subject that made the request). (optional)
      * @param action Action restricts it to one action name, e.g. \&quot;admin.waitlist.grant\&quot;. (optional)
@@ -808,8 +808,8 @@ public class AdminApi {
     }
 
     /**
-     * Walks the WHOLE hash chain and reports whether it is intact: how many records were checked, the head hash to pin externally against tail-truncation, and — when the chain is broken — the seq of the first bad record and why.
-     * Walks the WHOLE hash chain and reports whether it is intact: how many records were checked, the head hash to pin externally against tail-truncation, and — when the chain is broken — the seq of the first bad record and why.  brokenAt is -1 exactly when ok is true. An unconfigured store is an honest failure here rather than a fabricated pass.
+     * Walks EVERY hash chain this deployment keeps and reports each one: which chains were checked, how many records each holds, the head hash to pin externally against tail-truncation, and — when a chain is broken — the seq of the first bad record and why.
+     * Walks EVERY hash chain this deployment keeps and reports each one: which chains were checked, how many records each holds, the head hash to pin externally against tail-truncation, and — when a chain is broken — the seq of the first bad record and why.  The trail is a FAMILY of chains, one per process, so the answer is a set and not a boolean: &#x60;intact&#x60;, &#x60;broken&#x60; and &#x60;unread&#x60; count the three verdicts and sum to the number of chains. A chain that could not be READ is reported &#x60;unread&#x60; and is never a pass — an unreadable chain and a verified one must not render the same, which is the whole reason this is not one flag.  An unconfigured store is an honest failure here rather than a fabricated pass.
      * @return VerifyOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -825,8 +825,8 @@ public class AdminApi {
     }
 
     /**
-     * Walks the WHOLE hash chain and reports whether it is intact: how many records were checked, the head hash to pin externally against tail-truncation, and — when the chain is broken — the seq of the first bad record and why.
-     * Walks the WHOLE hash chain and reports whether it is intact: how many records were checked, the head hash to pin externally against tail-truncation, and — when the chain is broken — the seq of the first bad record and why.  brokenAt is -1 exactly when ok is true. An unconfigured store is an honest failure here rather than a fabricated pass.
+     * Walks EVERY hash chain this deployment keeps and reports each one: which chains were checked, how many records each holds, the head hash to pin externally against tail-truncation, and — when a chain is broken — the seq of the first bad record and why.
+     * Walks EVERY hash chain this deployment keeps and reports each one: which chains were checked, how many records each holds, the head hash to pin externally against tail-truncation, and — when a chain is broken — the seq of the first bad record and why.  The trail is a FAMILY of chains, one per process, so the answer is a set and not a boolean: &#x60;intact&#x60;, &#x60;broken&#x60; and &#x60;unread&#x60; count the three verdicts and sum to the number of chains. A chain that could not be READ is reported &#x60;unread&#x60; and is never a pass — an unreadable chain and a verified one must not render the same, which is the whole reason this is not one flag.  An unconfigured store is an honest failure here rather than a fabricated pass.
      * @return ApiResponse&lt;VerifyOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -843,8 +843,8 @@ public class AdminApi {
     }
 
     /**
-     * Walks the WHOLE hash chain and reports whether it is intact: how many records were checked, the head hash to pin externally against tail-truncation, and — when the chain is broken — the seq of the first bad record and why. (asynchronously)
-     * Walks the WHOLE hash chain and reports whether it is intact: how many records were checked, the head hash to pin externally against tail-truncation, and — when the chain is broken — the seq of the first bad record and why.  brokenAt is -1 exactly when ok is true. An unconfigured store is an honest failure here rather than a fabricated pass.
+     * Walks EVERY hash chain this deployment keeps and reports each one: which chains were checked, how many records each holds, the head hash to pin externally against tail-truncation, and — when a chain is broken — the seq of the first bad record and why. (asynchronously)
+     * Walks EVERY hash chain this deployment keeps and reports each one: which chains were checked, how many records each holds, the head hash to pin externally against tail-truncation, and — when a chain is broken — the seq of the first bad record and why.  The trail is a FAMILY of chains, one per process, so the answer is a set and not a boolean: &#x60;intact&#x60;, &#x60;broken&#x60; and &#x60;unread&#x60; count the three verdicts and sum to the number of chains. A chain that could not be READ is reported &#x60;unread&#x60; and is never a pass — an unreadable chain and a verified one must not render the same, which is the whole reason this is not one flag.  An unconfigured store is an honest failure here rather than a fabricated pass.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

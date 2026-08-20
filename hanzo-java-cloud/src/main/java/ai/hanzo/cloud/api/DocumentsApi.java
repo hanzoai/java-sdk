@@ -161,11 +161,12 @@ public class DocumentsApi {
     }
     /**
      * Build call for getDocumentsByFileIdContext
+     * @param fileId  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getDocumentsByFileIdContextCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getDocumentsByFileIdContextCall(@javax.annotation.Nonnull String fileId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -182,7 +183,8 @@ public class DocumentsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/documents/{file_id}/context";
+        String localVarPath = "/v1/documents/{file_id}/context"
+            .replace("{" + "file_id" + "}", localVarApiClient.escapeString(fileId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -209,41 +211,49 @@ public class DocumentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getDocumentsByFileIdContextValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getDocumentsByFileIdContextCall(_callback);
+    private okhttp3.Call getDocumentsByFileIdContextValidateBeforeCall(@javax.annotation.Nonnull String fileId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'fileId' is set
+        if (fileId == null) {
+            throw new ApiException("Missing the required parameter 'fileId' when calling getDocumentsByFileIdContext(Async)");
+        }
+
+        return getDocumentsByFileIdContextCall(fileId, _callback);
 
     }
 
     /**
      * Handles GET /v1/documents/:file_id/context — every chunk of a file, as LangChain Documents (used when RAG_USE_FULL_CONTEXT is on).
      * Handles GET /v1/documents/:file_id/context — every chunk of a file, as LangChain Documents (used when RAG_USE_FULL_CONTEXT is on).
+     * @param fileId  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getDocumentsByFileIdContext() throws ApiException {
-        getDocumentsByFileIdContextWithHttpInfo();
+    public void getDocumentsByFileIdContext(@javax.annotation.Nonnull String fileId) throws ApiException {
+        getDocumentsByFileIdContextWithHttpInfo(fileId);
     }
 
     /**
      * Handles GET /v1/documents/:file_id/context — every chunk of a file, as LangChain Documents (used when RAG_USE_FULL_CONTEXT is on).
      * Handles GET /v1/documents/:file_id/context — every chunk of a file, as LangChain Documents (used when RAG_USE_FULL_CONTEXT is on).
+     * @param fileId  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getDocumentsByFileIdContextWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getDocumentsByFileIdContextValidateBeforeCall(null);
+    public ApiResponse<Void> getDocumentsByFileIdContextWithHttpInfo(@javax.annotation.Nonnull String fileId) throws ApiException {
+        okhttp3.Call localVarCall = getDocumentsByFileIdContextValidateBeforeCall(fileId, null);
         return localVarApiClient.execute(localVarCall);
     }
 
     /**
      * Handles GET /v1/documents/:file_id/context — every chunk of a file, as LangChain Documents (used when RAG_USE_FULL_CONTEXT is on). (asynchronously)
      * Handles GET /v1/documents/:file_id/context — every chunk of a file, as LangChain Documents (used when RAG_USE_FULL_CONTEXT is on).
+     * @param fileId  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getDocumentsByFileIdContextAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getDocumentsByFileIdContextAsync(@javax.annotation.Nonnull String fileId, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getDocumentsByFileIdContextValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getDocumentsByFileIdContextValidateBeforeCall(fileId, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

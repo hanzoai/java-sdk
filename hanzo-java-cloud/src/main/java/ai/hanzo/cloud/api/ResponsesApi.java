@@ -128,7 +128,7 @@ public class ResponsesApi {
 
     /**
      * Implements POST /v1/responses.
-     * Implements POST /v1/responses. The converted request is passed to ChatCompletions and an installed ResponseWriter converts its OpenAI chat JSON or SSE back into Responses JSON/SSE on the fly.
+     * Implements POST /v1/responses. The converted request is completed by the chat path, which is handed a sink saying where the answer goes: a stream is translated as it is produced, a whole body is translated entire.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public void postResponses() throws ApiException {
@@ -137,7 +137,7 @@ public class ResponsesApi {
 
     /**
      * Implements POST /v1/responses.
-     * Implements POST /v1/responses. The converted request is passed to ChatCompletions and an installed ResponseWriter converts its OpenAI chat JSON or SSE back into Responses JSON/SSE on the fly.
+     * Implements POST /v1/responses. The converted request is completed by the chat path, which is handed a sink saying where the answer goes: a stream is translated as it is produced, a whole body is translated entire.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -148,7 +148,7 @@ public class ResponsesApi {
 
     /**
      * Implements POST /v1/responses. (asynchronously)
-     * Implements POST /v1/responses. The converted request is passed to ChatCompletions and an installed ResponseWriter converts its OpenAI chat JSON or SSE back into Responses JSON/SSE on the fly.
+     * Implements POST /v1/responses. The converted request is completed by the chat path, which is handed a sink saying where the answer goes: a stream is translated as it is produced, a whole body is translated entire.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
