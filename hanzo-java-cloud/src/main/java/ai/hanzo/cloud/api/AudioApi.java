@@ -304,7 +304,7 @@ public class AudioApi {
 
     /**
      * The OpenAI-compatible TTS endpoint (POST /v1/audio/speech).
-     * The OpenAI-compatible TTS endpoint (POST /v1/audio/speech). It authenticates the caller, resolves &#x60;model&#x60; to its TTS provider (the SAME model-route resolution the chat/images/video endpoints use — so a BYO node registered as a TTS provider works transparently), synthesizes the audio, and streams the bytes back. One code path, OpenAI-shaped, no store/message coupling (unlike the legacy /v1/generate-text-to-speech-audio which is bound to a chat store).
+     * The OpenAI-compatible TTS endpoint (POST /v1/audio/speech). It authenticates the caller, resolves &#x60;model&#x60; to its TTS provider (the SAME model-route resolution the chat/images/video endpoints use — so a BYO node registered as a TTS provider works transparently), synthesizes the audio, and streams the bytes back. This is the ONE way to synthesize speech: OpenAI-shaped, with no store or message coupling, so a caller needs no chat to speak.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public void postAudioSpeech() throws ApiException {
@@ -313,7 +313,7 @@ public class AudioApi {
 
     /**
      * The OpenAI-compatible TTS endpoint (POST /v1/audio/speech).
-     * The OpenAI-compatible TTS endpoint (POST /v1/audio/speech). It authenticates the caller, resolves &#x60;model&#x60; to its TTS provider (the SAME model-route resolution the chat/images/video endpoints use — so a BYO node registered as a TTS provider works transparently), synthesizes the audio, and streams the bytes back. One code path, OpenAI-shaped, no store/message coupling (unlike the legacy /v1/generate-text-to-speech-audio which is bound to a chat store).
+     * The OpenAI-compatible TTS endpoint (POST /v1/audio/speech). It authenticates the caller, resolves &#x60;model&#x60; to its TTS provider (the SAME model-route resolution the chat/images/video endpoints use — so a BYO node registered as a TTS provider works transparently), synthesizes the audio, and streams the bytes back. This is the ONE way to synthesize speech: OpenAI-shaped, with no store or message coupling, so a caller needs no chat to speak.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -324,7 +324,7 @@ public class AudioApi {
 
     /**
      * The OpenAI-compatible TTS endpoint (POST /v1/audio/speech). (asynchronously)
-     * The OpenAI-compatible TTS endpoint (POST /v1/audio/speech). It authenticates the caller, resolves &#x60;model&#x60; to its TTS provider (the SAME model-route resolution the chat/images/video endpoints use — so a BYO node registered as a TTS provider works transparently), synthesizes the audio, and streams the bytes back. One code path, OpenAI-shaped, no store/message coupling (unlike the legacy /v1/generate-text-to-speech-audio which is bound to a chat store).
+     * The OpenAI-compatible TTS endpoint (POST /v1/audio/speech). It authenticates the caller, resolves &#x60;model&#x60; to its TTS provider (the SAME model-route resolution the chat/images/video endpoints use — so a BYO node registered as a TTS provider works transparently), synthesizes the audio, and streams the bytes back. This is the ONE way to synthesize speech: OpenAI-shaped, with no store or message coupling, so a caller needs no chat to speak.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -392,7 +392,7 @@ public class AudioApi {
 
     /**
      * The OpenAI-compatible STT endpoint (POST /v1/audio/transcriptions, multipart: file + model [+ language + response_format]).
-     * The OpenAI-compatible STT endpoint (POST /v1/audio/transcriptions, multipart: file + model [+ language + response_format]). It mirrors AudioSpeech exactly: authenticate the caller, resolve &#x60;model&#x60; to its STT provider through the SAME model-route resolution (so the in-cluster speech service — or any BYO node registered as an STT provider — works transparently), transcribe, and return the OpenAI body. One code path, OpenAI-shaped, no store coupling (unlike the legacy /v1/process-speech-to-text, which is bound to a chat store).
+     * The OpenAI-compatible STT endpoint (POST /v1/audio/transcriptions, multipart: file + model [+ language + response_format]). It mirrors AudioSpeech exactly: authenticate the caller, resolve &#x60;model&#x60; to its STT provider through the SAME model-route resolution (so the in-cluster speech service — or any BYO node registered as an STT provider — works transparently), transcribe, and return the OpenAI body. This is the ONE way to transcribe: OpenAI-shaped, with no store coupling, so a caller needs no chat to be heard.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public void postAudioTranscriptions() throws ApiException {
@@ -401,7 +401,7 @@ public class AudioApi {
 
     /**
      * The OpenAI-compatible STT endpoint (POST /v1/audio/transcriptions, multipart: file + model [+ language + response_format]).
-     * The OpenAI-compatible STT endpoint (POST /v1/audio/transcriptions, multipart: file + model [+ language + response_format]). It mirrors AudioSpeech exactly: authenticate the caller, resolve &#x60;model&#x60; to its STT provider through the SAME model-route resolution (so the in-cluster speech service — or any BYO node registered as an STT provider — works transparently), transcribe, and return the OpenAI body. One code path, OpenAI-shaped, no store coupling (unlike the legacy /v1/process-speech-to-text, which is bound to a chat store).
+     * The OpenAI-compatible STT endpoint (POST /v1/audio/transcriptions, multipart: file + model [+ language + response_format]). It mirrors AudioSpeech exactly: authenticate the caller, resolve &#x60;model&#x60; to its STT provider through the SAME model-route resolution (so the in-cluster speech service — or any BYO node registered as an STT provider — works transparently), transcribe, and return the OpenAI body. This is the ONE way to transcribe: OpenAI-shaped, with no store coupling, so a caller needs no chat to be heard.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -412,7 +412,7 @@ public class AudioApi {
 
     /**
      * The OpenAI-compatible STT endpoint (POST /v1/audio/transcriptions, multipart: file + model [+ language + response_format]). (asynchronously)
-     * The OpenAI-compatible STT endpoint (POST /v1/audio/transcriptions, multipart: file + model [+ language + response_format]). It mirrors AudioSpeech exactly: authenticate the caller, resolve &#x60;model&#x60; to its STT provider through the SAME model-route resolution (so the in-cluster speech service — or any BYO node registered as an STT provider — works transparently), transcribe, and return the OpenAI body. One code path, OpenAI-shaped, no store coupling (unlike the legacy /v1/process-speech-to-text, which is bound to a chat store).
+     * The OpenAI-compatible STT endpoint (POST /v1/audio/transcriptions, multipart: file + model [+ language + response_format]). It mirrors AudioSpeech exactly: authenticate the caller, resolve &#x60;model&#x60; to its STT provider through the SAME model-route resolution (so the in-cluster speech service — or any BYO node registered as an STT provider — works transparently), transcribe, and return the OpenAI body. This is the ONE way to transcribe: OpenAI-shaped, with no store coupling, so a caller needs no chat to be heard.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

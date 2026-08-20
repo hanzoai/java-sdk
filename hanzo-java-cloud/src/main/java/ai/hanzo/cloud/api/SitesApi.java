@@ -27,15 +27,23 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import java.io.File;
+import ai.hanzo.cloud.model.ProjectsBoundDomains;
 import ai.hanzo.cloud.model.ProjectsBuildSite;
 import ai.hanzo.cloud.model.ProjectsComplete;
 import ai.hanzo.cloud.model.ProjectsDeploySite;
 import ai.hanzo.cloud.model.ProjectsDeployStart;
 import ai.hanzo.cloud.model.ProjectsDeployment;
+import ai.hanzo.cloud.model.ProjectsDomain;
+import ai.hanzo.cloud.model.ProjectsDomains;
+import ai.hanzo.cloud.model.ProjectsDomainsBind;
+import ai.hanzo.cloud.model.ProjectsFork;
+import ai.hanzo.cloud.model.ProjectsProject;
 import ai.hanzo.cloud.model.ProjectsPublish;
 import ai.hanzo.cloud.model.ProjectsRelease;
 import ai.hanzo.cloud.model.ProjectsSite;
 import ai.hanzo.cloud.model.ProjectsSiteDeploy;
+import ai.hanzo.cloud.model.ProjectsUpdate;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -80,6 +88,260 @@ public class SitesApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
+    /**
+     * Build call for deleteSitesBySlug
+     * @param slug Slug is the project to act on, from the path. It is unique within the caller&#39;s org and nowhere else, so another tenant&#39;s slug is a 404. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteSitesBySlugCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/sites/{slug}"
+            .replace("{" + "slug" + "}", localVarApiClient.escapeString(slug.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteSitesBySlugValidateBeforeCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'slug' is set
+        if (slug == null) {
+            throw new ApiException("Missing the required parameter 'slug' when calling deleteSitesBySlug(Async)");
+        }
+
+        return deleteSitesBySlugCall(slug, _callback);
+
+    }
+
+    /**
+     * Deletes a project and takes its site off the internet.
+     * Deletes a project and takes its site off the internet.  The metadata delete is authoritative and everything after it is best-effort, in this order: the public &#x60;&lt;slug&gt;&#x60; subdomain binding is released so the slug is free to reclaim, the release rows are dropped so a reclaimed slug never inherits the previous owner&#39;s rollback menu, the git source is retired on every copy it has so a reclaimed slug never adopts a repository left behind (visibility.go), the S3 origin is purged under BOTH &#x60;&lt;org&gt;/&lt;slug&gt;/&#x60; and the site&#39;s sibling release space, and the edge cache-tag is flushed. A failure in any of those is logged and the delete still answers 204 — resurrecting a project because a purge missed would be worse than a leaked prefix.  Scope: a validated principal is required (403 without one) and the project is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404 and nothing of theirs is touched.
+     * @param slug Slug is the project to act on, from the path. It is unique within the caller&#39;s org and nowhere else, so another tenant&#39;s slug is a 404. (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+     </table>
+     */
+    public void deleteSitesBySlug(@javax.annotation.Nonnull String slug) throws ApiException {
+        deleteSitesBySlugWithHttpInfo(slug);
+    }
+
+    /**
+     * Deletes a project and takes its site off the internet.
+     * Deletes a project and takes its site off the internet.  The metadata delete is authoritative and everything after it is best-effort, in this order: the public &#x60;&lt;slug&gt;&#x60; subdomain binding is released so the slug is free to reclaim, the release rows are dropped so a reclaimed slug never inherits the previous owner&#39;s rollback menu, the git source is retired on every copy it has so a reclaimed slug never adopts a repository left behind (visibility.go), the S3 origin is purged under BOTH &#x60;&lt;org&gt;/&lt;slug&gt;/&#x60; and the site&#39;s sibling release space, and the edge cache-tag is flushed. A failure in any of those is logged and the delete still answers 204 — resurrecting a project because a purge missed would be worse than a leaked prefix.  Scope: a validated principal is required (403 without one) and the project is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404 and nothing of theirs is touched.
+     * @param slug Slug is the project to act on, from the path. It is unique within the caller&#39;s org and nowhere else, so another tenant&#39;s slug is a 404. (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> deleteSitesBySlugWithHttpInfo(@javax.annotation.Nonnull String slug) throws ApiException {
+        okhttp3.Call localVarCall = deleteSitesBySlugValidateBeforeCall(slug, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Deletes a project and takes its site off the internet. (asynchronously)
+     * Deletes a project and takes its site off the internet.  The metadata delete is authoritative and everything after it is best-effort, in this order: the public &#x60;&lt;slug&gt;&#x60; subdomain binding is released so the slug is free to reclaim, the release rows are dropped so a reclaimed slug never inherits the previous owner&#39;s rollback menu, the git source is retired on every copy it has so a reclaimed slug never adopts a repository left behind (visibility.go), the S3 origin is purged under BOTH &#x60;&lt;org&gt;/&lt;slug&gt;/&#x60; and the site&#39;s sibling release space, and the edge cache-tag is flushed. A failure in any of those is logged and the delete still answers 204 — resurrecting a project because a purge missed would be worse than a leaked prefix.  Scope: a validated principal is required (403 without one) and the project is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404 and nothing of theirs is touched.
+     * @param slug Slug is the project to act on, from the path. It is unique within the caller&#39;s org and nowhere else, so another tenant&#39;s slug is a 404. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteSitesBySlugAsync(@javax.annotation.Nonnull String slug, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteSitesBySlugValidateBeforeCall(slug, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for deleteSitesBySlugDomainsByHost
+     * @param slug Slug is the project the host is attached to, from the path. (required)
+     * @param host Host is the custom hostname, from the path. It is cleaned to its canonical form (lowercased, trailing dot dropped) before anything is looked up. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteSitesBySlugDomainsByHostCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String host, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/sites/{slug}/domains/{host}"
+            .replace("{" + "slug" + "}", localVarApiClient.escapeString(slug.toString()))
+            .replace("{" + "host" + "}", localVarApiClient.escapeString(host.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteSitesBySlugDomainsByHostValidateBeforeCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String host, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'slug' is set
+        if (slug == null) {
+            throw new ApiException("Missing the required parameter 'slug' when calling deleteSitesBySlugDomainsByHost(Async)");
+        }
+
+        // verify the required parameter 'host' is set
+        if (host == null) {
+            throw new ApiException("Missing the required parameter 'host' when calling deleteSitesBySlugDomainsByHost(Async)");
+        }
+
+        return deleteSitesBySlugDomainsByHostCall(slug, host, _callback);
+
+    }
+
+    /**
+     * Gives a custom hostname back, so the name is free to reuse.
+     * Gives a custom hostname back, so the name is free to reuse.  A claim is FIRST-COME and global, so an add-only surface was not ownership but a leak: a customer who mistyped a domain, or claimed one they later moved elsewhere, could neither reuse it nor let anyone else. This is the third writer that closes it. The release is scoped to (host, org, slug), so it can only ever drop THIS tenant&#39;s own claim, and it is IDEMPOTENT: releasing a host we do not hold is a clean 204, never a 404 that would let a caller probe which hosts other tenants hold. The edge cache-tag is flushed, since the host stops routing here.  Scope: a validated principal is required (403 without one) and the site is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404.
+     * @param slug Slug is the project the host is attached to, from the path. (required)
+     * @param host Host is the custom hostname, from the path. It is cleaned to its canonical form (lowercased, trailing dot dropped) before anything is looked up. (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+     </table>
+     */
+    public void deleteSitesBySlugDomainsByHost(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String host) throws ApiException {
+        deleteSitesBySlugDomainsByHostWithHttpInfo(slug, host);
+    }
+
+    /**
+     * Gives a custom hostname back, so the name is free to reuse.
+     * Gives a custom hostname back, so the name is free to reuse.  A claim is FIRST-COME and global, so an add-only surface was not ownership but a leak: a customer who mistyped a domain, or claimed one they later moved elsewhere, could neither reuse it nor let anyone else. This is the third writer that closes it. The release is scoped to (host, org, slug), so it can only ever drop THIS tenant&#39;s own claim, and it is IDEMPOTENT: releasing a host we do not hold is a clean 204, never a 404 that would let a caller probe which hosts other tenants hold. The edge cache-tag is flushed, since the host stops routing here.  Scope: a validated principal is required (403 without one) and the site is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404.
+     * @param slug Slug is the project the host is attached to, from the path. (required)
+     * @param host Host is the custom hostname, from the path. It is cleaned to its canonical form (lowercased, trailing dot dropped) before anything is looked up. (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> deleteSitesBySlugDomainsByHostWithHttpInfo(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String host) throws ApiException {
+        okhttp3.Call localVarCall = deleteSitesBySlugDomainsByHostValidateBeforeCall(slug, host, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Gives a custom hostname back, so the name is free to reuse. (asynchronously)
+     * Gives a custom hostname back, so the name is free to reuse.  A claim is FIRST-COME and global, so an add-only surface was not ownership but a leak: a customer who mistyped a domain, or claimed one they later moved elsewhere, could neither reuse it nor let anyone else. This is the third writer that closes it. The release is scoped to (host, org, slug), so it can only ever drop THIS tenant&#39;s own claim, and it is IDEMPOTENT: releasing a host we do not hold is a clean 204, never a 404 that would let a caller probe which hosts other tenants hold. The edge cache-tag is flushed, since the host stops routing here.  Scope: a validated principal is required (403 without one) and the site is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404.
+     * @param slug Slug is the project the host is attached to, from the path. (required)
+     * @param host Host is the custom hostname, from the path. It is cleaned to its canonical form (lowercased, trailing dot dropped) before anything is looked up. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteSitesBySlugDomainsByHostAsync(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String host, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteSitesBySlugDomainsByHostValidateBeforeCall(slug, host, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
     /**
      * Build call for getSites
      * @param _callback Callback for upload/download progress
@@ -589,6 +851,133 @@ public class SitesApi {
         return localVarCall;
     }
     /**
+     * Build call for getSitesBySlugDomains
+     * @param slug Slug is the project to act on, from the path. It is unique within the caller&#39;s org and nowhere else, so another tenant&#39;s slug is a 404. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getSitesBySlugDomainsCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/sites/{slug}/domains"
+            .replace("{" + "slug" + "}", localVarApiClient.escapeString(slug.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getSitesBySlugDomainsValidateBeforeCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'slug' is set
+        if (slug == null) {
+            throw new ApiException("Missing the required parameter 'slug' when calling getSitesBySlugDomains(Async)");
+        }
+
+        return getSitesBySlugDomainsCall(slug, _callback);
+
+    }
+
+    /**
+     * Returns every custom hostname this site holds: the live ones, plus any pending claim with the DNS records it still owes.
+     * Returns every custom hostname this site holds: the live ones, plus any pending claim with the DNS records it still owes.  &#x60;domains&#x60; is the routing answer — the hosts that are verified right now — while &#x60;claims&#x60; is the full panel, one row per host, each saying whether it is live or pending and, if pending, exactly what to publish.  Scope: a validated principal is required (403 without one) and the site is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404.
+     * @param slug Slug is the project to act on, from the path. It is unique within the caller&#39;s org and nowhere else, so another tenant&#39;s slug is a 404. (required)
+     * @return ProjectsDomains
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ProjectsDomains getSitesBySlugDomains(@javax.annotation.Nonnull String slug) throws ApiException {
+        ApiResponse<ProjectsDomains> localVarResp = getSitesBySlugDomainsWithHttpInfo(slug);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Returns every custom hostname this site holds: the live ones, plus any pending claim with the DNS records it still owes.
+     * Returns every custom hostname this site holds: the live ones, plus any pending claim with the DNS records it still owes.  &#x60;domains&#x60; is the routing answer — the hosts that are verified right now — while &#x60;claims&#x60; is the full panel, one row per host, each saying whether it is live or pending and, if pending, exactly what to publish.  Scope: a validated principal is required (403 without one) and the site is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404.
+     * @param slug Slug is the project to act on, from the path. It is unique within the caller&#39;s org and nowhere else, so another tenant&#39;s slug is a 404. (required)
+     * @return ApiResponse&lt;ProjectsDomains&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ProjectsDomains> getSitesBySlugDomainsWithHttpInfo(@javax.annotation.Nonnull String slug) throws ApiException {
+        okhttp3.Call localVarCall = getSitesBySlugDomainsValidateBeforeCall(slug, null);
+        Type localVarReturnType = new TypeToken<ProjectsDomains>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Returns every custom hostname this site holds: the live ones, plus any pending claim with the DNS records it still owes. (asynchronously)
+     * Returns every custom hostname this site holds: the live ones, plus any pending claim with the DNS records it still owes.  &#x60;domains&#x60; is the routing answer — the hosts that are verified right now — while &#x60;claims&#x60; is the full panel, one row per host, each saying whether it is live or pending and, if pending, exactly what to publish.  Scope: a validated principal is required (403 without one) and the site is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404.
+     * @param slug Slug is the project to act on, from the path. It is unique within the caller&#39;s org and nowhere else, so another tenant&#39;s slug is a 404. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getSitesBySlugDomainsAsync(@javax.annotation.Nonnull String slug, final ApiCallback<ProjectsDomains> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getSitesBySlugDomainsValidateBeforeCall(slug, _callback);
+        Type localVarReturnType = new TypeToken<ProjectsDomains>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for getSitesBySlugReleases
      * @param slug Slug is the project to act on, from the path. It is unique within the caller&#39;s org and nowhere else, so another tenant&#39;s slug is a 404. (required)
      * @param _callback Callback for upload/download progress
@@ -716,6 +1105,143 @@ public class SitesApi {
         return localVarCall;
     }
     /**
+     * Build call for patchSitesBySlug
+     * @param slug Slug is the project to update, from the path. The URL is the addressing authority — a &#x60;slug&#x60; in the body cannot move the write to another project. (required)
+     * @param projectsUpdate  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call patchSitesBySlugCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsUpdate projectsUpdate, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = projectsUpdate;
+
+        // create path and map variables
+        String localVarPath = "/v1/sites/{slug}"
+            .replace("{" + "slug" + "}", localVarApiClient.escapeString(slug.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call patchSitesBySlugValidateBeforeCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsUpdate projectsUpdate, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'slug' is set
+        if (slug == null) {
+            throw new ApiException("Missing the required parameter 'slug' when calling patchSitesBySlug(Async)");
+        }
+
+        // verify the required parameter 'projectsUpdate' is set
+        if (projectsUpdate == null) {
+            throw new ApiException("Missing the required parameter 'projectsUpdate' when calling patchSitesBySlug(Async)");
+        }
+
+        return patchSitesBySlugCall(slug, projectsUpdate, _callback);
+
+    }
+
+    /**
+     * Changes a project&#39;s settings, and only the settings you send.
+     * Changes a project&#39;s settings, and only the settings you send.  Every field is optional and absent means \&quot;leave it\&quot;: &#x60;name&#x60; may not be blanked, &#x60;framework&#x60; must stay a known build hint, and &#x60;cacheControl&#x60; is capped at 256 characters with no newlines (it becomes a response header). &#x60;visibility&#x60; flips public/private under the same rule as create — public is free, private needs a funded org. &#x60;upstream&#x60; and &#x60;license&#x60; are free-text credit for third-party work, and sending \&quot;\&quot; clears one. Changing anything reconciles the project&#39;s canonical git repo, so a visibility change reaches the source and not just the listing.  &#x60;hidden&#x60;/&#x60;hiddenReason&#x60; are platform MODERATION and are ignored unless the caller is a platform admin; they remove a project from the public catalogue without touching the publisher&#39;s own visibility choice, so un-hiding restores exactly what they asked for.  Scope: a validated principal is required (403 without one) and the project is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404.
+     * @param slug Slug is the project to update, from the path. The URL is the addressing authority — a &#x60;slug&#x60; in the body cannot move the write to another project. (required)
+     * @param projectsUpdate  (required)
+     * @return ProjectsProject
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ProjectsProject patchSitesBySlug(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsUpdate projectsUpdate) throws ApiException {
+        ApiResponse<ProjectsProject> localVarResp = patchSitesBySlugWithHttpInfo(slug, projectsUpdate);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Changes a project&#39;s settings, and only the settings you send.
+     * Changes a project&#39;s settings, and only the settings you send.  Every field is optional and absent means \&quot;leave it\&quot;: &#x60;name&#x60; may not be blanked, &#x60;framework&#x60; must stay a known build hint, and &#x60;cacheControl&#x60; is capped at 256 characters with no newlines (it becomes a response header). &#x60;visibility&#x60; flips public/private under the same rule as create — public is free, private needs a funded org. &#x60;upstream&#x60; and &#x60;license&#x60; are free-text credit for third-party work, and sending \&quot;\&quot; clears one. Changing anything reconciles the project&#39;s canonical git repo, so a visibility change reaches the source and not just the listing.  &#x60;hidden&#x60;/&#x60;hiddenReason&#x60; are platform MODERATION and are ignored unless the caller is a platform admin; they remove a project from the public catalogue without touching the publisher&#39;s own visibility choice, so un-hiding restores exactly what they asked for.  Scope: a validated principal is required (403 without one) and the project is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404.
+     * @param slug Slug is the project to update, from the path. The URL is the addressing authority — a &#x60;slug&#x60; in the body cannot move the write to another project. (required)
+     * @param projectsUpdate  (required)
+     * @return ApiResponse&lt;ProjectsProject&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ProjectsProject> patchSitesBySlugWithHttpInfo(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsUpdate projectsUpdate) throws ApiException {
+        okhttp3.Call localVarCall = patchSitesBySlugValidateBeforeCall(slug, projectsUpdate, null);
+        Type localVarReturnType = new TypeToken<ProjectsProject>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Changes a project&#39;s settings, and only the settings you send. (asynchronously)
+     * Changes a project&#39;s settings, and only the settings you send.  Every field is optional and absent means \&quot;leave it\&quot;: &#x60;name&#x60; may not be blanked, &#x60;framework&#x60; must stay a known build hint, and &#x60;cacheControl&#x60; is capped at 256 characters with no newlines (it becomes a response header). &#x60;visibility&#x60; flips public/private under the same rule as create — public is free, private needs a funded org. &#x60;upstream&#x60; and &#x60;license&#x60; are free-text credit for third-party work, and sending \&quot;\&quot; clears one. Changing anything reconciles the project&#39;s canonical git repo, so a visibility change reaches the source and not just the listing.  &#x60;hidden&#x60;/&#x60;hiddenReason&#x60; are platform MODERATION and are ignored unless the caller is a platform admin; they remove a project from the public catalogue without touching the publisher&#39;s own visibility choice, so un-hiding restores exactly what they asked for.  Scope: a validated principal is required (403 without one) and the project is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404.
+     * @param slug Slug is the project to update, from the path. The URL is the addressing authority — a &#x60;slug&#x60; in the body cannot move the write to another project. (required)
+     * @param projectsUpdate  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call patchSitesBySlugAsync(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsUpdate projectsUpdate, final ApiCallback<ProjectsProject> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = patchSitesBySlugValidateBeforeCall(slug, projectsUpdate, _callback);
+        Type localVarReturnType = new TypeToken<ProjectsProject>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for postSites
      * @param projectsBuildSite  (required)
      * @param _callback Callback for upload/download progress
@@ -839,6 +1365,138 @@ public class SitesApi {
 
         okhttp3.Call localVarCall = postSitesValidateBeforeCall(projectsBuildSite, _callback);
         Type localVarReturnType = new TypeToken<ProjectsSiteDeploy>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postSitesBySlugDeploy
+     * @param slug  (required)
+     * @param body  (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postSitesBySlugDeployCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nullable File body, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = body;
+
+        // create path and map variables
+        String localVarPath = "/v1/sites/{slug}/deploy"
+            .replace("{" + "slug" + "}", localVarApiClient.escapeString(slug.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/octet-stream"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postSitesBySlugDeployValidateBeforeCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nullable File body, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'slug' is set
+        if (slug == null) {
+            throw new ApiException("Missing the required parameter 'slug' when calling postSitesBySlugDeploy(Async)");
+        }
+
+        return postSitesBySlugDeployCall(slug, body, _callback);
+
+    }
+
+    /**
+     * Upload a built site as one archive and serve it
+     * Takes a built site live at &#x60;https://&lt;slug&gt;.hanzo.app&#x60; in one call. The body is the site itself — a &#x60;zip&#x60; or &#x60;tar.gz&#x60; holding &#x60;index.html&#x60; at its root (or a single wrapper directory that does), sent raw or as a multipart file part. It is unpacked to the site&#39;s own storage prefix and served immediately, answering the finished deployment.  It is bounded by the edge body limit (16 MiB by default), and that bound is the whole reason the other path exists: an oversized POST is refused by the server BEFORE any handler runs and surfaces as an opaque &#x60;400 Error when parsing request&#x60; that reads like a malformed payload rather than a size cap. A site too large for one archive opens a deployment with &#x60;POST /v1/sites/{slug}/deployments&#x60; instead and writes its files straight to storage against the scoped grant that answers with — no body limit, and no bytes through this API at all.  Billing is fail-closed and fails FIRST: the hosting gate runs before anything is parsed or uploaded, so an unfunded org is 402 and an unreachable commerce is 503 with nothing written. The debit lands only on success — a failed upload is never billed and never flips the live site — and a redeploy answers the SAME URL, because slug and apex are stable.  Scope: a validated principal is required (403 without one) and the site is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404. Object storage must be configured (503); an archive that does not walk is a 400 and one over the size cap is a 413.
+     * @param slug  (required)
+     * @param body  (optional)
+     * @return ProjectsDeployment
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ProjectsDeployment postSitesBySlugDeploy(@javax.annotation.Nonnull String slug, @javax.annotation.Nullable File body) throws ApiException {
+        ApiResponse<ProjectsDeployment> localVarResp = postSitesBySlugDeployWithHttpInfo(slug, body);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Upload a built site as one archive and serve it
+     * Takes a built site live at &#x60;https://&lt;slug&gt;.hanzo.app&#x60; in one call. The body is the site itself — a &#x60;zip&#x60; or &#x60;tar.gz&#x60; holding &#x60;index.html&#x60; at its root (or a single wrapper directory that does), sent raw or as a multipart file part. It is unpacked to the site&#39;s own storage prefix and served immediately, answering the finished deployment.  It is bounded by the edge body limit (16 MiB by default), and that bound is the whole reason the other path exists: an oversized POST is refused by the server BEFORE any handler runs and surfaces as an opaque &#x60;400 Error when parsing request&#x60; that reads like a malformed payload rather than a size cap. A site too large for one archive opens a deployment with &#x60;POST /v1/sites/{slug}/deployments&#x60; instead and writes its files straight to storage against the scoped grant that answers with — no body limit, and no bytes through this API at all.  Billing is fail-closed and fails FIRST: the hosting gate runs before anything is parsed or uploaded, so an unfunded org is 402 and an unreachable commerce is 503 with nothing written. The debit lands only on success — a failed upload is never billed and never flips the live site — and a redeploy answers the SAME URL, because slug and apex are stable.  Scope: a validated principal is required (403 without one) and the site is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404. Object storage must be configured (503); an archive that does not walk is a 400 and one over the size cap is a 413.
+     * @param slug  (required)
+     * @param body  (optional)
+     * @return ApiResponse&lt;ProjectsDeployment&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ProjectsDeployment> postSitesBySlugDeployWithHttpInfo(@javax.annotation.Nonnull String slug, @javax.annotation.Nullable File body) throws ApiException {
+        okhttp3.Call localVarCall = postSitesBySlugDeployValidateBeforeCall(slug, body, null);
+        Type localVarReturnType = new TypeToken<ProjectsDeployment>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Upload a built site as one archive and serve it (asynchronously)
+     * Takes a built site live at &#x60;https://&lt;slug&gt;.hanzo.app&#x60; in one call. The body is the site itself — a &#x60;zip&#x60; or &#x60;tar.gz&#x60; holding &#x60;index.html&#x60; at its root (or a single wrapper directory that does), sent raw or as a multipart file part. It is unpacked to the site&#39;s own storage prefix and served immediately, answering the finished deployment.  It is bounded by the edge body limit (16 MiB by default), and that bound is the whole reason the other path exists: an oversized POST is refused by the server BEFORE any handler runs and surfaces as an opaque &#x60;400 Error when parsing request&#x60; that reads like a malformed payload rather than a size cap. A site too large for one archive opens a deployment with &#x60;POST /v1/sites/{slug}/deployments&#x60; instead and writes its files straight to storage against the scoped grant that answers with — no body limit, and no bytes through this API at all.  Billing is fail-closed and fails FIRST: the hosting gate runs before anything is parsed or uploaded, so an unfunded org is 402 and an unreachable commerce is 503 with nothing written. The debit lands only on success — a failed upload is never billed and never flips the live site — and a redeploy answers the SAME URL, because slug and apex are stable.  Scope: a validated principal is required (403 without one) and the site is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404. Object storage must be configured (503); an archive that does not walk is a 400 and one over the size cap is a 413.
+     * @param slug  (required)
+     * @param body  (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postSitesBySlugDeployAsync(@javax.annotation.Nonnull String slug, @javax.annotation.Nullable File body, final ApiCallback<ProjectsDeployment> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postSitesBySlugDeployValidateBeforeCall(slug, body, _callback);
+        Type localVarReturnType = new TypeToken<ProjectsDeployment>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1127,6 +1785,280 @@ public class SitesApi {
         return localVarCall;
     }
     /**
+     * Build call for postSitesBySlugDomains
+     * @param slug Slug is the site the hosts attach to, from the path. (required)
+     * @param projectsDomainsBind  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postSitesBySlugDomainsCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsDomainsBind projectsDomainsBind, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = projectsDomainsBind;
+
+        // create path and map variables
+        String localVarPath = "/v1/sites/{slug}/domains"
+            .replace("{" + "slug" + "}", localVarApiClient.escapeString(slug.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postSitesBySlugDomainsValidateBeforeCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsDomainsBind projectsDomainsBind, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'slug' is set
+        if (slug == null) {
+            throw new ApiException("Missing the required parameter 'slug' when calling postSitesBySlugDomains(Async)");
+        }
+
+        // verify the required parameter 'projectsDomainsBind' is set
+        if (projectsDomainsBind == null) {
+            throw new ApiException("Missing the required parameter 'projectsDomainsBind' when calling postSitesBySlugDomains(Async)");
+        }
+
+        return postSitesBySlugDomainsCall(slug, projectsDomainsBind, _callback);
+
+    }
+
+    /**
+     * Attaches one or more CUSTOM public hostnames to this org&#39;s site.
+     * Attaches one or more CUSTOM public hostnames to this org&#39;s site.  Binding a host you do not own would let you shadow it at the edge, so which outcome you get depends on whether ownership is already established: a SuperAdmin vouches (the operator manages the customer&#39;s DNS, so its bind IS the proof) and binds VERIFIED immediately; every other caller, INCLUDING an admin of the deployment&#39;s own brand org, has the host CLAIMED as pending and gets the DNS challenge back in &#x60;bound[].records&#x60;. A pending claim HOLDS the name so nobody else can take it, but it does not route until POST .../domains/{host}/verify proves control.  A hostname we operate is refused to a non-vouched caller (those are assigned by the platform, never claimed), a host another site already holds is a 409, and a name the platform holds is a 400 for EVERY caller — a vouch skips the ownership proof, never the host table&#39;s own invariant. Claims and binds are idempotent for the same (org, slug), and re-claiming returns the SAME token rather than invalidating a record the customer has already published. The edge cache-tag is flushed afterwards so a newly-verified host serves the current build immediately.  Scope: a validated principal is required (403 without one) and the site is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404.
+     * @param slug Slug is the site the hosts attach to, from the path. (required)
+     * @param projectsDomainsBind  (required)
+     * @return ProjectsBoundDomains
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ProjectsBoundDomains postSitesBySlugDomains(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsDomainsBind projectsDomainsBind) throws ApiException {
+        ApiResponse<ProjectsBoundDomains> localVarResp = postSitesBySlugDomainsWithHttpInfo(slug, projectsDomainsBind);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Attaches one or more CUSTOM public hostnames to this org&#39;s site.
+     * Attaches one or more CUSTOM public hostnames to this org&#39;s site.  Binding a host you do not own would let you shadow it at the edge, so which outcome you get depends on whether ownership is already established: a SuperAdmin vouches (the operator manages the customer&#39;s DNS, so its bind IS the proof) and binds VERIFIED immediately; every other caller, INCLUDING an admin of the deployment&#39;s own brand org, has the host CLAIMED as pending and gets the DNS challenge back in &#x60;bound[].records&#x60;. A pending claim HOLDS the name so nobody else can take it, but it does not route until POST .../domains/{host}/verify proves control.  A hostname we operate is refused to a non-vouched caller (those are assigned by the platform, never claimed), a host another site already holds is a 409, and a name the platform holds is a 400 for EVERY caller — a vouch skips the ownership proof, never the host table&#39;s own invariant. Claims and binds are idempotent for the same (org, slug), and re-claiming returns the SAME token rather than invalidating a record the customer has already published. The edge cache-tag is flushed afterwards so a newly-verified host serves the current build immediately.  Scope: a validated principal is required (403 without one) and the site is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404.
+     * @param slug Slug is the site the hosts attach to, from the path. (required)
+     * @param projectsDomainsBind  (required)
+     * @return ApiResponse&lt;ProjectsBoundDomains&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ProjectsBoundDomains> postSitesBySlugDomainsWithHttpInfo(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsDomainsBind projectsDomainsBind) throws ApiException {
+        okhttp3.Call localVarCall = postSitesBySlugDomainsValidateBeforeCall(slug, projectsDomainsBind, null);
+        Type localVarReturnType = new TypeToken<ProjectsBoundDomains>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Attaches one or more CUSTOM public hostnames to this org&#39;s site. (asynchronously)
+     * Attaches one or more CUSTOM public hostnames to this org&#39;s site.  Binding a host you do not own would let you shadow it at the edge, so which outcome you get depends on whether ownership is already established: a SuperAdmin vouches (the operator manages the customer&#39;s DNS, so its bind IS the proof) and binds VERIFIED immediately; every other caller, INCLUDING an admin of the deployment&#39;s own brand org, has the host CLAIMED as pending and gets the DNS challenge back in &#x60;bound[].records&#x60;. A pending claim HOLDS the name so nobody else can take it, but it does not route until POST .../domains/{host}/verify proves control.  A hostname we operate is refused to a non-vouched caller (those are assigned by the platform, never claimed), a host another site already holds is a 409, and a name the platform holds is a 400 for EVERY caller — a vouch skips the ownership proof, never the host table&#39;s own invariant. Claims and binds are idempotent for the same (org, slug), and re-claiming returns the SAME token rather than invalidating a record the customer has already published. The edge cache-tag is flushed afterwards so a newly-verified host serves the current build immediately.  Scope: a validated principal is required (403 without one) and the site is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404.
+     * @param slug Slug is the site the hosts attach to, from the path. (required)
+     * @param projectsDomainsBind  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postSitesBySlugDomainsAsync(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull ProjectsDomainsBind projectsDomainsBind, final ApiCallback<ProjectsBoundDomains> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postSitesBySlugDomainsValidateBeforeCall(slug, projectsDomainsBind, _callback);
+        Type localVarReturnType = new TypeToken<ProjectsBoundDomains>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postSitesBySlugDomainsByHostVerify
+     * @param slug Slug is the project the host is attached to, from the path. (required)
+     * @param host Host is the custom hostname, from the path. It is cleaned to its canonical form (lowercased, trailing dot dropped) before anything is looked up. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postSitesBySlugDomainsByHostVerifyCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String host, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/sites/{slug}/domains/{host}/verify"
+            .replace("{" + "slug" + "}", localVarApiClient.escapeString(slug.toString()))
+            .replace("{" + "host" + "}", localVarApiClient.escapeString(host.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postSitesBySlugDomainsByHostVerifyValidateBeforeCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String host, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'slug' is set
+        if (slug == null) {
+            throw new ApiException("Missing the required parameter 'slug' when calling postSitesBySlugDomainsByHostVerify(Async)");
+        }
+
+        // verify the required parameter 'host' is set
+        if (host == null) {
+            throw new ApiException("Missing the required parameter 'host' when calling postSitesBySlugDomainsByHostVerify(Async)");
+        }
+
+        return postSitesBySlugDomainsByHostVerifyCall(slug, host, _callback);
+
+    }
+
+    /**
+     * Checks the DNS challenge for a pending custom hostname and, when it passes, promotes the host so it begins routing at the edge.
+     * Checks the DNS challenge for a pending custom hostname and, when it passes, promotes the host so it begins routing at the edge.  It answers 200 either way, with the host&#39;s honest current state: verified once the TXT record is found, still pending — with the records to publish and the resolver&#39;s own explanation in &#x60;detail&#x60; — when it is not. A not-yet is not an error: the check ran, DNS simply has not propagated, and the customer retries. An already-verified host is returned unchanged without re-resolving. On a successful promotion the edge cache-tag is flushed, since the host routes as of that moment.  Scope: a validated principal is required (403 without one). Both the site and the claim are resolved within that principal&#39;s org, so a host claimed by another tenant is \&quot;not claimed by this site\&quot;.
+     * @param slug Slug is the project the host is attached to, from the path. (required)
+     * @param host Host is the custom hostname, from the path. It is cleaned to its canonical form (lowercased, trailing dot dropped) before anything is looked up. (required)
+     * @return ProjectsDomain
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ProjectsDomain postSitesBySlugDomainsByHostVerify(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String host) throws ApiException {
+        ApiResponse<ProjectsDomain> localVarResp = postSitesBySlugDomainsByHostVerifyWithHttpInfo(slug, host);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Checks the DNS challenge for a pending custom hostname and, when it passes, promotes the host so it begins routing at the edge.
+     * Checks the DNS challenge for a pending custom hostname and, when it passes, promotes the host so it begins routing at the edge.  It answers 200 either way, with the host&#39;s honest current state: verified once the TXT record is found, still pending — with the records to publish and the resolver&#39;s own explanation in &#x60;detail&#x60; — when it is not. A not-yet is not an error: the check ran, DNS simply has not propagated, and the customer retries. An already-verified host is returned unchanged without re-resolving. On a successful promotion the edge cache-tag is flushed, since the host routes as of that moment.  Scope: a validated principal is required (403 without one). Both the site and the claim are resolved within that principal&#39;s org, so a host claimed by another tenant is \&quot;not claimed by this site\&quot;.
+     * @param slug Slug is the project the host is attached to, from the path. (required)
+     * @param host Host is the custom hostname, from the path. It is cleaned to its canonical form (lowercased, trailing dot dropped) before anything is looked up. (required)
+     * @return ApiResponse&lt;ProjectsDomain&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ProjectsDomain> postSitesBySlugDomainsByHostVerifyWithHttpInfo(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String host) throws ApiException {
+        okhttp3.Call localVarCall = postSitesBySlugDomainsByHostVerifyValidateBeforeCall(slug, host, null);
+        Type localVarReturnType = new TypeToken<ProjectsDomain>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Checks the DNS challenge for a pending custom hostname and, when it passes, promotes the host so it begins routing at the edge. (asynchronously)
+     * Checks the DNS challenge for a pending custom hostname and, when it passes, promotes the host so it begins routing at the edge.  It answers 200 either way, with the host&#39;s honest current state: verified once the TXT record is found, still pending — with the records to publish and the resolver&#39;s own explanation in &#x60;detail&#x60; — when it is not. A not-yet is not an error: the check ran, DNS simply has not propagated, and the customer retries. An already-verified host is returned unchanged without re-resolving. On a successful promotion the edge cache-tag is flushed, since the host routes as of that moment.  Scope: a validated principal is required (403 without one). Both the site and the claim are resolved within that principal&#39;s org, so a host claimed by another tenant is \&quot;not claimed by this site\&quot;.
+     * @param slug Slug is the project the host is attached to, from the path. (required)
+     * @param host Host is the custom hostname, from the path. It is cleaned to its canonical form (lowercased, trailing dot dropped) before anything is looked up. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postSitesBySlugDomainsByHostVerifyAsync(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String host, final ApiCallback<ProjectsDomain> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postSitesBySlugDomainsByHostVerifyValidateBeforeCall(slug, host, _callback);
+        Type localVarReturnType = new TypeToken<ProjectsDomain>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for postSitesBySlugPublish
      * @param slug Slug is the site to publish, from the path. (required)
      * @param projectsPublish  (required)
@@ -1260,6 +2192,133 @@ public class SitesApi {
 
         okhttp3.Call localVarCall = postSitesBySlugPublishValidateBeforeCall(slug, projectsPublish, _callback);
         Type localVarReturnType = new TypeToken<ProjectsRelease>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postSitesBySlugPurge
+     * @param slug Slug is the project to act on, from the path. It is unique within the caller&#39;s org and nowhere else, so another tenant&#39;s slug is a 404. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postSitesBySlugPurgeCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/sites/{slug}/purge"
+            .replace("{" + "slug" + "}", localVarApiClient.escapeString(slug.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postSitesBySlugPurgeValidateBeforeCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'slug' is set
+        if (slug == null) {
+            throw new ApiException("Missing the required parameter 'slug' when calling postSitesBySlugPurge(Async)");
+        }
+
+        return postSitesBySlugPurgeCall(slug, _callback);
+
+    }
+
+    /**
+     * Flushes the site&#39;s edge cache without redeploying anything.
+     * Flushes the site&#39;s edge cache without redeploying anything.  It invalidates the edge cache-tag &#x60;site-&lt;org&gt;-&lt;slug&gt;&#x60; and stamps &#x60;lastPurgeAt&#x60; (unix seconds), and it NEVER writes or deletes the S3 origin — the live build keeps serving; only stale copies held at the edge drop, so the next request re-fetches the current artifact from origin. Idempotent, and an edge that is unconfigured or failing is not fatal: &#x60;lastPurgeAt&#x60; is still stamped and the answer is still the updated project.  Scope: a validated principal is required (403 without one) and the project is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404.
+     * @param slug Slug is the project to act on, from the path. It is unique within the caller&#39;s org and nowhere else, so another tenant&#39;s slug is a 404. (required)
+     * @return ProjectsProject
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ProjectsProject postSitesBySlugPurge(@javax.annotation.Nonnull String slug) throws ApiException {
+        ApiResponse<ProjectsProject> localVarResp = postSitesBySlugPurgeWithHttpInfo(slug);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Flushes the site&#39;s edge cache without redeploying anything.
+     * Flushes the site&#39;s edge cache without redeploying anything.  It invalidates the edge cache-tag &#x60;site-&lt;org&gt;-&lt;slug&gt;&#x60; and stamps &#x60;lastPurgeAt&#x60; (unix seconds), and it NEVER writes or deletes the S3 origin — the live build keeps serving; only stale copies held at the edge drop, so the next request re-fetches the current artifact from origin. Idempotent, and an edge that is unconfigured or failing is not fatal: &#x60;lastPurgeAt&#x60; is still stamped and the answer is still the updated project.  Scope: a validated principal is required (403 without one) and the project is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404.
+     * @param slug Slug is the project to act on, from the path. It is unique within the caller&#39;s org and nowhere else, so another tenant&#39;s slug is a 404. (required)
+     * @return ApiResponse&lt;ProjectsProject&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ProjectsProject> postSitesBySlugPurgeWithHttpInfo(@javax.annotation.Nonnull String slug) throws ApiException {
+        okhttp3.Call localVarCall = postSitesBySlugPurgeValidateBeforeCall(slug, null);
+        Type localVarReturnType = new TypeToken<ProjectsProject>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Flushes the site&#39;s edge cache without redeploying anything. (asynchronously)
+     * Flushes the site&#39;s edge cache without redeploying anything.  It invalidates the edge cache-tag &#x60;site-&lt;org&gt;-&lt;slug&gt;&#x60; and stamps &#x60;lastPurgeAt&#x60; (unix seconds), and it NEVER writes or deletes the S3 origin — the live build keeps serving; only stale copies held at the edge drop, so the next request re-fetches the current artifact from origin. Idempotent, and an edge that is unconfigured or failing is not fatal: &#x60;lastPurgeAt&#x60; is still stamped and the answer is still the updated project.  Scope: a validated principal is required (403 without one) and the project is resolved within that principal&#39;s org, so another tenant&#39;s slug is a 404.
+     * @param slug Slug is the project to act on, from the path. It is unique within the caller&#39;s org and nowhere else, so another tenant&#39;s slug is a 404. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postSitesBySlugPurgeAsync(@javax.annotation.Nonnull String slug, final ApiCallback<ProjectsProject> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postSitesBySlugPurgeValidateBeforeCall(slug, _callback);
+        Type localVarReturnType = new TypeToken<ProjectsProject>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1661,6 +2720,133 @@ public class SitesApi {
 
         okhttp3.Call localVarCall = postSitesDeployValidateBeforeCall(projectsDeploySite, _callback);
         Type localVarReturnType = new TypeToken<ProjectsSiteDeploy>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postSitesFork
+     * @param projectsFork  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postSitesForkCall(@javax.annotation.Nonnull ProjectsFork projectsFork, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = projectsFork;
+
+        // create path and map variables
+        String localVarPath = "/v1/sites/fork";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postSitesForkValidateBeforeCall(@javax.annotation.Nonnull ProjectsFork projectsFork, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'projectsFork' is set
+        if (projectsFork == null) {
+            throw new ApiException("Missing the required parameter 'projectsFork' when calling postSitesFork(Async)");
+        }
+
+        return postSitesForkCall(projectsFork, _callback);
+
+    }
+
+    /**
+     * Creates a project seeded from a PUBLISHED EXAMPLE — either a starter-kit template from the ONE embedded gallery catalog, or any live project on the platform (an example a seeded creator published, or another org&#39;s app serving at &lt;slug&gt;.hanzo.app).
+     * Creates a project seeded from a PUBLISHED EXAMPLE — either a starter-kit template from the ONE embedded gallery catalog, or any live project on the platform (an example a seeded creator published, or another org&#39;s app serving at &lt;slug&gt;.hanzo.app). Answers 201 with the new project.  &#x60;slug&#x60; names the PARENT to fork and is required. Templates resolve first, and the caller org&#39;s own private templates ahead of the public gallery, so a curated template slug keeps meaning the same thing even if someone later publishes a live project under it; &#x60;variant&#x60; picks that template&#39;s format/page/theme. If no template matches, the slug resolves to the UNIQUE live project that owns it across all orgs — the same resolution the site edge uses to serve &lt;slug&gt;.hanzo.app, so what you can browse is what you can fork.  &#x60;name&#x60; and &#x60;target&#x60; override the derived project name and slug; everything else is inherited from the parent. A live parent contributes its REPO, so the child builds from the same source — the parent&#39;s deployed bytes are never copied, because releases are per-tenant by design and the fork publishes its own. The parent it actually resolved is stamped on the child as &#x60;forkedFrom&#x60;, so attribution is a fact recorded at fork time rather than a claim reconstructed later.  It funnels through the SAME create path POST /v1/projects uses, so slug validation, org scoping, ID minting and the 409 on a slug the caller&#39;s own org already uses are identical.  Scope: a validated principal is required (403 without one) and the child is created in THAT principal&#39;s org.
+     * @param projectsFork  (required)
+     * @return ProjectsProject
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
+     */
+    public ProjectsProject postSitesFork(@javax.annotation.Nonnull ProjectsFork projectsFork) throws ApiException {
+        ApiResponse<ProjectsProject> localVarResp = postSitesForkWithHttpInfo(projectsFork);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Creates a project seeded from a PUBLISHED EXAMPLE — either a starter-kit template from the ONE embedded gallery catalog, or any live project on the platform (an example a seeded creator published, or another org&#39;s app serving at &lt;slug&gt;.hanzo.app).
+     * Creates a project seeded from a PUBLISHED EXAMPLE — either a starter-kit template from the ONE embedded gallery catalog, or any live project on the platform (an example a seeded creator published, or another org&#39;s app serving at &lt;slug&gt;.hanzo.app). Answers 201 with the new project.  &#x60;slug&#x60; names the PARENT to fork and is required. Templates resolve first, and the caller org&#39;s own private templates ahead of the public gallery, so a curated template slug keeps meaning the same thing even if someone later publishes a live project under it; &#x60;variant&#x60; picks that template&#39;s format/page/theme. If no template matches, the slug resolves to the UNIQUE live project that owns it across all orgs — the same resolution the site edge uses to serve &lt;slug&gt;.hanzo.app, so what you can browse is what you can fork.  &#x60;name&#x60; and &#x60;target&#x60; override the derived project name and slug; everything else is inherited from the parent. A live parent contributes its REPO, so the child builds from the same source — the parent&#39;s deployed bytes are never copied, because releases are per-tenant by design and the fork publishes its own. The parent it actually resolved is stamped on the child as &#x60;forkedFrom&#x60;, so attribution is a fact recorded at fork time rather than a claim reconstructed later.  It funnels through the SAME create path POST /v1/projects uses, so slug validation, org scoping, ID minting and the 409 on a slug the caller&#39;s own org already uses are identical.  Scope: a validated principal is required (403 without one) and the child is created in THAT principal&#39;s org.
+     * @param projectsFork  (required)
+     * @return ApiResponse&lt;ProjectsProject&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ProjectsProject> postSitesForkWithHttpInfo(@javax.annotation.Nonnull ProjectsFork projectsFork) throws ApiException {
+        okhttp3.Call localVarCall = postSitesForkValidateBeforeCall(projectsFork, null);
+        Type localVarReturnType = new TypeToken<ProjectsProject>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Creates a project seeded from a PUBLISHED EXAMPLE — either a starter-kit template from the ONE embedded gallery catalog, or any live project on the platform (an example a seeded creator published, or another org&#39;s app serving at &lt;slug&gt;.hanzo.app). (asynchronously)
+     * Creates a project seeded from a PUBLISHED EXAMPLE — either a starter-kit template from the ONE embedded gallery catalog, or any live project on the platform (an example a seeded creator published, or another org&#39;s app serving at &lt;slug&gt;.hanzo.app). Answers 201 with the new project.  &#x60;slug&#x60; names the PARENT to fork and is required. Templates resolve first, and the caller org&#39;s own private templates ahead of the public gallery, so a curated template slug keeps meaning the same thing even if someone later publishes a live project under it; &#x60;variant&#x60; picks that template&#39;s format/page/theme. If no template matches, the slug resolves to the UNIQUE live project that owns it across all orgs — the same resolution the site edge uses to serve &lt;slug&gt;.hanzo.app, so what you can browse is what you can fork.  &#x60;name&#x60; and &#x60;target&#x60; override the derived project name and slug; everything else is inherited from the parent. A live parent contributes its REPO, so the child builds from the same source — the parent&#39;s deployed bytes are never copied, because releases are per-tenant by design and the fork publishes its own. The parent it actually resolved is stamped on the child as &#x60;forkedFrom&#x60;, so attribution is a fact recorded at fork time rather than a claim reconstructed later.  It funnels through the SAME create path POST /v1/projects uses, so slug validation, org scoping, ID minting and the 409 on a slug the caller&#39;s own org already uses are identical.  Scope: a validated principal is required (403 without one) and the child is created in THAT principal&#39;s org.
+     * @param projectsFork  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postSitesForkAsync(@javax.annotation.Nonnull ProjectsFork projectsFork, final ApiCallback<ProjectsProject> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postSitesForkValidateBeforeCall(projectsFork, _callback);
+        Type localVarReturnType = new TypeToken<ProjectsProject>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

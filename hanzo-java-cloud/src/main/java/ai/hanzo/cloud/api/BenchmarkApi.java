@@ -29,11 +29,15 @@ import java.io.IOException;
 
 import ai.hanzo.cloud.model.Admission;
 import ai.hanzo.cloud.model.BenchmarkCatalog;
+import ai.hanzo.cloud.model.ClaimsOut;
+import ai.hanzo.cloud.model.HistoryOut;
 import ai.hanzo.cloud.model.Leaderboard;
 import ai.hanzo.cloud.model.Pairing;
 import ai.hanzo.cloud.model.Preset;
 import ai.hanzo.cloud.model.PresetAccepted;
 import ai.hanzo.cloud.model.PresetList;
+import ai.hanzo.cloud.model.PutClaimsIn;
+import ai.hanzo.cloud.model.PutClaimsOut;
 import ai.hanzo.cloud.model.Suite;
 
 import java.lang.reflect.Type;
@@ -197,6 +201,163 @@ public class BenchmarkApi {
         return localVarCall;
     }
     /**
+     * Build call for getBenchmarkClaims
+     * @param benchmark Benchmark filters to one benchmark id. Empty returns every benchmark. (optional)
+     * @param model Model filters to one model. Empty returns every model. (optional)
+     * @param provider Provider filters to one lab or leaderboard — the way to read what a single source claims across every model it covers. (optional)
+     * @param source Source filters to one citation, which is the finest grain there is: a source is what makes two claims about one model independent rather than a restatement of each other. (optional)
+     * @param protocol Protocol filters by HOW a claim was scored, so provider cards can be read apart from third parties running their own harness. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getBenchmarkClaimsCall(@javax.annotation.Nullable String benchmark, @javax.annotation.Nullable String model, @javax.annotation.Nullable String provider, @javax.annotation.Nullable String source, @javax.annotation.Nullable String protocol, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/benchmark/claims";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (benchmark != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("Benchmark", benchmark));
+        }
+
+        if (model != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("Model", model));
+        }
+
+        if (provider != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("Provider", provider));
+        }
+
+        if (source != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("Source", source));
+        }
+
+        if (protocol != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("Protocol", protocol));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getBenchmarkClaimsValidateBeforeCall(@javax.annotation.Nullable String benchmark, @javax.annotation.Nullable String model, @javax.annotation.Nullable String provider, @javax.annotation.Nullable String source, @javax.annotation.Nullable String protocol, final ApiCallback _callback) throws ApiException {
+        return getBenchmarkClaimsCall(benchmark, model, provider, source, protocol, _callback);
+
+    }
+
+    /**
+     * Lists the effective published claims: what the leaderboard will use for each (benchmark, model) after the seed, the import and any stored correction are layered.
+     * Lists the effective published claims: what the leaderboard will use for each (benchmark, model) after the seed, the import and any stored correction are layered. It answers the operator&#39;s question — what does this arena currently believe someone else reported, and did we ship that or fix it.  Effective values only. The history of a key lives in the append-only file and is not what this op is for; a list that returned every superseded row would make the common question the hard one.
+     * @param benchmark Benchmark filters to one benchmark id. Empty returns every benchmark. (optional)
+     * @param model Model filters to one model. Empty returns every model. (optional)
+     * @param provider Provider filters to one lab or leaderboard — the way to read what a single source claims across every model it covers. (optional)
+     * @param source Source filters to one citation, which is the finest grain there is: a source is what makes two claims about one model independent rather than a restatement of each other. (optional)
+     * @param protocol Protocol filters by HOW a claim was scored, so provider cards can be read apart from third parties running their own harness. (optional)
+     * @return ClaimsOut
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ClaimsOut getBenchmarkClaims(@javax.annotation.Nullable String benchmark, @javax.annotation.Nullable String model, @javax.annotation.Nullable String provider, @javax.annotation.Nullable String source, @javax.annotation.Nullable String protocol) throws ApiException {
+        ApiResponse<ClaimsOut> localVarResp = getBenchmarkClaimsWithHttpInfo(benchmark, model, provider, source, protocol);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Lists the effective published claims: what the leaderboard will use for each (benchmark, model) after the seed, the import and any stored correction are layered.
+     * Lists the effective published claims: what the leaderboard will use for each (benchmark, model) after the seed, the import and any stored correction are layered. It answers the operator&#39;s question — what does this arena currently believe someone else reported, and did we ship that or fix it.  Effective values only. The history of a key lives in the append-only file and is not what this op is for; a list that returned every superseded row would make the common question the hard one.
+     * @param benchmark Benchmark filters to one benchmark id. Empty returns every benchmark. (optional)
+     * @param model Model filters to one model. Empty returns every model. (optional)
+     * @param provider Provider filters to one lab or leaderboard — the way to read what a single source claims across every model it covers. (optional)
+     * @param source Source filters to one citation, which is the finest grain there is: a source is what makes two claims about one model independent rather than a restatement of each other. (optional)
+     * @param protocol Protocol filters by HOW a claim was scored, so provider cards can be read apart from third parties running their own harness. (optional)
+     * @return ApiResponse&lt;ClaimsOut&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ClaimsOut> getBenchmarkClaimsWithHttpInfo(@javax.annotation.Nullable String benchmark, @javax.annotation.Nullable String model, @javax.annotation.Nullable String provider, @javax.annotation.Nullable String source, @javax.annotation.Nullable String protocol) throws ApiException {
+        okhttp3.Call localVarCall = getBenchmarkClaimsValidateBeforeCall(benchmark, model, provider, source, protocol, null);
+        Type localVarReturnType = new TypeToken<ClaimsOut>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Lists the effective published claims: what the leaderboard will use for each (benchmark, model) after the seed, the import and any stored correction are layered. (asynchronously)
+     * Lists the effective published claims: what the leaderboard will use for each (benchmark, model) after the seed, the import and any stored correction are layered. It answers the operator&#39;s question — what does this arena currently believe someone else reported, and did we ship that or fix it.  Effective values only. The history of a key lives in the append-only file and is not what this op is for; a list that returned every superseded row would make the common question the hard one.
+     * @param benchmark Benchmark filters to one benchmark id. Empty returns every benchmark. (optional)
+     * @param model Model filters to one model. Empty returns every model. (optional)
+     * @param provider Provider filters to one lab or leaderboard — the way to read what a single source claims across every model it covers. (optional)
+     * @param source Source filters to one citation, which is the finest grain there is: a source is what makes two claims about one model independent rather than a restatement of each other. (optional)
+     * @param protocol Protocol filters by HOW a claim was scored, so provider cards can be read apart from third parties running their own harness. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getBenchmarkClaimsAsync(@javax.annotation.Nullable String benchmark, @javax.annotation.Nullable String model, @javax.annotation.Nullable String provider, @javax.annotation.Nullable String source, @javax.annotation.Nullable String protocol, final ApiCallback<ClaimsOut> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getBenchmarkClaimsValidateBeforeCall(benchmark, model, provider, source, protocol, _callback);
+        Type localVarReturnType = new TypeToken<ClaimsOut>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for getBenchmarkCompare
      * @param a A is the first model id. It is required. (required)
      * @param b B is the second model id. It is required. (required)
@@ -344,6 +505,139 @@ public class BenchmarkApi {
 
         okhttp3.Call localVarCall = getBenchmarkCompareValidateBeforeCall(a, b, benchmark, _callback);
         Type localVarReturnType = new TypeToken<Pairing>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getBenchmarkHistory
+     * @param benchmark Benchmark is the catalog id to read, defaulting to gpqa_diamond. (optional)
+     * @param model Model filters to one model. Empty returns every model measured. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getBenchmarkHistoryCall(@javax.annotation.Nullable String benchmark, @javax.annotation.Nullable String model, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/benchmark/history";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (benchmark != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("Benchmark", benchmark));
+        }
+
+        if (model != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("Model", model));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getBenchmarkHistoryValidateBeforeCall(@javax.annotation.Nullable String benchmark, @javax.annotation.Nullable String model, final ApiCallback _callback) throws ApiException {
+        return getBenchmarkHistoryCall(benchmark, model, _callback);
+
+    }
+
+    /**
+     * Returns each model&#39;s measured score per run over time, oldest first, with the change between runs.
+     * Returns each model&#39;s measured score per run over time, oldest first, with the change between runs.  This is the counterweight to a leaderboard: the board shows the latest run because that is what \&quot;how good is it\&quot; means, and a single latest number cannot distinguish a model that has always been strong from one that just improved, or from one that regressed after a provider changed something. Both matter for routing, and only one of them is visible on a board.  Runs with no id — attempts recorded before runs existed — group under the empty run, which is honestly what they are: one undated measurement.
+     * @param benchmark Benchmark is the catalog id to read, defaulting to gpqa_diamond. (optional)
+     * @param model Model filters to one model. Empty returns every model measured. (optional)
+     * @return HistoryOut
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public HistoryOut getBenchmarkHistory(@javax.annotation.Nullable String benchmark, @javax.annotation.Nullable String model) throws ApiException {
+        ApiResponse<HistoryOut> localVarResp = getBenchmarkHistoryWithHttpInfo(benchmark, model);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Returns each model&#39;s measured score per run over time, oldest first, with the change between runs.
+     * Returns each model&#39;s measured score per run over time, oldest first, with the change between runs.  This is the counterweight to a leaderboard: the board shows the latest run because that is what \&quot;how good is it\&quot; means, and a single latest number cannot distinguish a model that has always been strong from one that just improved, or from one that regressed after a provider changed something. Both matter for routing, and only one of them is visible on a board.  Runs with no id — attempts recorded before runs existed — group under the empty run, which is honestly what they are: one undated measurement.
+     * @param benchmark Benchmark is the catalog id to read, defaulting to gpqa_diamond. (optional)
+     * @param model Model filters to one model. Empty returns every model measured. (optional)
+     * @return ApiResponse&lt;HistoryOut&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<HistoryOut> getBenchmarkHistoryWithHttpInfo(@javax.annotation.Nullable String benchmark, @javax.annotation.Nullable String model) throws ApiException {
+        okhttp3.Call localVarCall = getBenchmarkHistoryValidateBeforeCall(benchmark, model, null);
+        Type localVarReturnType = new TypeToken<HistoryOut>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Returns each model&#39;s measured score per run over time, oldest first, with the change between runs. (asynchronously)
+     * Returns each model&#39;s measured score per run over time, oldest first, with the change between runs.  This is the counterweight to a leaderboard: the board shows the latest run because that is what \&quot;how good is it\&quot; means, and a single latest number cannot distinguish a model that has always been strong from one that just improved, or from one that regressed after a provider changed something. Both matter for routing, and only one of them is visible on a board.  Runs with no id — attempts recorded before runs existed — group under the empty run, which is honestly what they are: one undated measurement.
+     * @param benchmark Benchmark is the catalog id to read, defaulting to gpqa_diamond. (optional)
+     * @param model Model filters to one model. Empty returns every model measured. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getBenchmarkHistoryAsync(@javax.annotation.Nullable String benchmark, @javax.annotation.Nullable String model, final ApiCallback<HistoryOut> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getBenchmarkHistoryValidateBeforeCall(benchmark, model, _callback);
+        Type localVarReturnType = new TypeToken<HistoryOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -586,6 +880,133 @@ public class BenchmarkApi {
 
         okhttp3.Call localVarCall = getBenchmarkPresetsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<PresetList>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postBenchmarkClaims
+     * @param putClaimsIn  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postBenchmarkClaimsCall(@javax.annotation.Nonnull PutClaimsIn putClaimsIn, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = putClaimsIn;
+
+        // create path and map variables
+        String localVarPath = "/v1/benchmark/claims";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postBenchmarkClaimsValidateBeforeCall(@javax.annotation.Nonnull PutClaimsIn putClaimsIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'putClaimsIn' is set
+        if (putClaimsIn == null) {
+            throw new ApiException("Missing the required parameter 'putClaimsIn' when calling postBenchmarkClaims(Async)");
+        }
+
+        return postBenchmarkClaimsCall(putClaimsIn, _callback);
+
+    }
+
+    /**
+     * Records published claims: one to correct a number, many to import a leaderboard.
+     * Records published claims: one to correct a number, many to import a leaderboard. Every row must carry a Source, because a claim without its citation is a number nobody can check — and an unattributed number in the published plane is indistinguishable from a measurement, which is the one confusion this whole surface is built to prevent.  Writes are append-only, so this never destroys the value it replaces. A vendor restating a score leaves both rows on disk, which is how the restating itself becomes visible.
+     * @param putClaimsIn  (required)
+     * @return PutClaimsOut
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public PutClaimsOut postBenchmarkClaims(@javax.annotation.Nonnull PutClaimsIn putClaimsIn) throws ApiException {
+        ApiResponse<PutClaimsOut> localVarResp = postBenchmarkClaimsWithHttpInfo(putClaimsIn);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Records published claims: one to correct a number, many to import a leaderboard.
+     * Records published claims: one to correct a number, many to import a leaderboard. Every row must carry a Source, because a claim without its citation is a number nobody can check — and an unattributed number in the published plane is indistinguishable from a measurement, which is the one confusion this whole surface is built to prevent.  Writes are append-only, so this never destroys the value it replaces. A vendor restating a score leaves both rows on disk, which is how the restating itself becomes visible.
+     * @param putClaimsIn  (required)
+     * @return ApiResponse&lt;PutClaimsOut&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<PutClaimsOut> postBenchmarkClaimsWithHttpInfo(@javax.annotation.Nonnull PutClaimsIn putClaimsIn) throws ApiException {
+        okhttp3.Call localVarCall = postBenchmarkClaimsValidateBeforeCall(putClaimsIn, null);
+        Type localVarReturnType = new TypeToken<PutClaimsOut>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Records published claims: one to correct a number, many to import a leaderboard. (asynchronously)
+     * Records published claims: one to correct a number, many to import a leaderboard. Every row must carry a Source, because a claim without its citation is a number nobody can check — and an unattributed number in the published plane is indistinguishable from a measurement, which is the one confusion this whole surface is built to prevent.  Writes are append-only, so this never destroys the value it replaces. A vendor restating a score leaves both rows on disk, which is how the restating itself becomes visible.
+     * @param putClaimsIn  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postBenchmarkClaimsAsync(@javax.annotation.Nonnull PutClaimsIn putClaimsIn, final ApiCallback<PutClaimsOut> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postBenchmarkClaimsValidateBeforeCall(putClaimsIn, _callback);
+        Type localVarReturnType = new TypeToken<PutClaimsOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

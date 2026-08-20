@@ -63,6 +63,11 @@ public class IamWebauthnCredential {
   @javax.annotation.Nullable
   private String attachment;
 
+  public static final String SERIALIZED_NAME_ATTESTATION_FORMAT = "attestationFormat";
+  @SerializedName(SERIALIZED_NAME_ATTESTATION_FORMAT)
+  @javax.annotation.Nullable
+  private String attestationFormat;
+
   public static final String SERIALIZED_NAME_ATTESTATION_TYPE = "attestationType";
   @SerializedName(SERIALIZED_NAME_ATTESTATION_TYPE)
   @javax.annotation.Nullable
@@ -191,6 +196,25 @@ public class IamWebauthnCredential {
 
   public void setAttachment(@javax.annotation.Nullable String attachment) {
     this.attachment = attachment;
+  }
+
+
+  public IamWebauthnCredential attestationFormat(@javax.annotation.Nullable String attestationFormat) {
+    this.attestationFormat = attestationFormat;
+    return this;
+  }
+
+  /**
+   * AttestationFormat is the statement format the authenticator attested in (\&quot;packed\&quot;, \&quot;apple\&quot;, \&quot;none\&quot;, …), which is a DIFFERENT value from the attestation type above. The library reads it back when resolving the FIDO AppID extension, so a row that dropped it would round-trip a credential the verifier no longer recognises as the one it stored.
+   * @return attestationFormat
+   */
+  @javax.annotation.Nullable
+  public String getAttestationFormat() {
+    return attestationFormat;
+  }
+
+  public void setAttestationFormat(@javax.annotation.Nullable String attestationFormat) {
+    this.attestationFormat = attestationFormat;
   }
 
 
@@ -556,6 +580,7 @@ public class IamWebauthnCredential {
     IamWebauthnCredential iamWebauthnCredential = (IamWebauthnCredential) o;
     return Objects.equals(this.aaguid, iamWebauthnCredential.aaguid) &&
         Objects.equals(this.attachment, iamWebauthnCredential.attachment) &&
+        Objects.equals(this.attestationFormat, iamWebauthnCredential.attestationFormat) &&
         Objects.equals(this.attestationType, iamWebauthnCredential.attestationType) &&
         Objects.equals(this.backupEligible, iamWebauthnCredential.backupEligible) &&
         Objects.equals(this.backupState, iamWebauthnCredential.backupState) &&
@@ -578,7 +603,7 @@ public class IamWebauthnCredential {
 
   @Override
   public int hashCode() {
-    return Objects.hash(aaguid, attachment, attestationType, backupEligible, backupState, cloneWarning, createdAt, createdTime, credentialId, deleted, id, name, owner, publicKey, signCount, transport, updatedAt, user, userPresent, userVerified);
+    return Objects.hash(aaguid, attachment, attestationFormat, attestationType, backupEligible, backupState, cloneWarning, createdAt, createdTime, credentialId, deleted, id, name, owner, publicKey, signCount, transport, updatedAt, user, userPresent, userVerified);
   }
 
   @Override
@@ -587,6 +612,7 @@ public class IamWebauthnCredential {
     sb.append("class IamWebauthnCredential {\n");
     sb.append("    aaguid: ").append(toIndentedString(aaguid)).append("\n");
     sb.append("    attachment: ").append(toIndentedString(attachment)).append("\n");
+    sb.append("    attestationFormat: ").append(toIndentedString(attestationFormat)).append("\n");
     sb.append("    attestationType: ").append(toIndentedString(attestationType)).append("\n");
     sb.append("    backupEligible: ").append(toIndentedString(backupEligible)).append("\n");
     sb.append("    backupState: ").append(toIndentedString(backupState)).append("\n");
@@ -626,7 +652,7 @@ public class IamWebauthnCredential {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("aaguid", "attachment", "attestationType", "backupEligible", "backupState", "cloneWarning", "createdAt", "createdTime", "credentialId", "deleted", "id", "name", "owner", "publicKey", "signCount", "transport", "updatedAt", "user", "userPresent", "userVerified"));
+    openapiFields = new HashSet<String>(Arrays.asList("aaguid", "attachment", "attestationFormat", "attestationType", "backupEligible", "backupState", "cloneWarning", "createdAt", "createdTime", "credentialId", "deleted", "id", "name", "owner", "publicKey", "signCount", "transport", "updatedAt", "user", "userPresent", "userVerified"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -658,6 +684,9 @@ public class IamWebauthnCredential {
       }
       if ((jsonObj.get("attachment") != null && !jsonObj.get("attachment").isJsonNull()) && !jsonObj.get("attachment").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `attachment` to be a primitive type in the JSON string but got `%s`", jsonObj.get("attachment").toString()));
+      }
+      if ((jsonObj.get("attestationFormat") != null && !jsonObj.get("attestationFormat").isJsonNull()) && !jsonObj.get("attestationFormat").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `attestationFormat` to be a primitive type in the JSON string but got `%s`", jsonObj.get("attestationFormat").toString()));
       }
       if ((jsonObj.get("attestationType") != null && !jsonObj.get("attestationType").isJsonNull()) && !jsonObj.get("attestationType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `attestationType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("attestationType").toString()));

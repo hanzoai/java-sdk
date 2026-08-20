@@ -73,11 +73,12 @@ public class WecomBotApi {
 
     /**
      * Build call for getWecomBotCallbackByBotid
+     * @param botId  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getWecomBotCallbackByBotidCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getWecomBotCallbackByBotidCall(@javax.annotation.Nonnull String botId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -94,7 +95,8 @@ public class WecomBotApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/wecom-bot/callback/{botId}";
+        String localVarPath = "/v1/wecom-bot/callback/{botId}"
+            .replace("{" + "botId" + "}", localVarApiClient.escapeString(botId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -121,51 +123,60 @@ public class WecomBotApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getWecomBotCallbackByBotidValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getWecomBotCallbackByBotidCall(_callback);
+    private okhttp3.Call getWecomBotCallbackByBotidValidateBeforeCall(@javax.annotation.Nonnull String botId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'botId' is set
+        if (botId == null) {
+            throw new ApiException("Missing the required parameter 'botId' when calling getWecomBotCallbackByBotid(Async)");
+        }
+
+        return getWecomBotCallbackByBotidCall(botId, _callback);
 
     }
 
     /**
      * Verify WeChat work bot callback URL
      * Verify WeChat work bot callback URL
+     * @param botId  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getWecomBotCallbackByBotid() throws ApiException {
-        getWecomBotCallbackByBotidWithHttpInfo();
+    public void getWecomBotCallbackByBotid(@javax.annotation.Nonnull String botId) throws ApiException {
+        getWecomBotCallbackByBotidWithHttpInfo(botId);
     }
 
     /**
      * Verify WeChat work bot callback URL
      * Verify WeChat work bot callback URL
+     * @param botId  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getWecomBotCallbackByBotidWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getWecomBotCallbackByBotidValidateBeforeCall(null);
+    public ApiResponse<Void> getWecomBotCallbackByBotidWithHttpInfo(@javax.annotation.Nonnull String botId) throws ApiException {
+        okhttp3.Call localVarCall = getWecomBotCallbackByBotidValidateBeforeCall(botId, null);
         return localVarApiClient.execute(localVarCall);
     }
 
     /**
      * Verify WeChat work bot callback URL (asynchronously)
      * Verify WeChat work bot callback URL
+     * @param botId  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getWecomBotCallbackByBotidAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getWecomBotCallbackByBotidAsync(@javax.annotation.Nonnull String botId, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getWecomBotCallbackByBotidValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getWecomBotCallbackByBotidValidateBeforeCall(botId, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
      * Build call for postWecomBotCallbackByBotid
+     * @param botId  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postWecomBotCallbackByBotidCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postWecomBotCallbackByBotidCall(@javax.annotation.Nonnull String botId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -182,7 +193,8 @@ public class WecomBotApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/wecom-bot/callback/{botId}";
+        String localVarPath = "/v1/wecom-bot/callback/{botId}"
+            .replace("{" + "botId" + "}", localVarApiClient.escapeString(botId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -209,41 +221,49 @@ public class WecomBotApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postWecomBotCallbackByBotidValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postWecomBotCallbackByBotidCall(_callback);
+    private okhttp3.Call postWecomBotCallbackByBotidValidateBeforeCall(@javax.annotation.Nonnull String botId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'botId' is set
+        if (botId == null) {
+            throw new ApiException("Missing the required parameter 'botId' when calling postWecomBotCallbackByBotid(Async)");
+        }
+
+        return postWecomBotCallbackByBotidCall(botId, _callback);
 
     }
 
     /**
      * Process WeChat work bot messages
      * Process WeChat work bot messages
+     * @param botId  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postWecomBotCallbackByBotid() throws ApiException {
-        postWecomBotCallbackByBotidWithHttpInfo();
+    public void postWecomBotCallbackByBotid(@javax.annotation.Nonnull String botId) throws ApiException {
+        postWecomBotCallbackByBotidWithHttpInfo(botId);
     }
 
     /**
      * Process WeChat work bot messages
      * Process WeChat work bot messages
+     * @param botId  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postWecomBotCallbackByBotidWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postWecomBotCallbackByBotidValidateBeforeCall(null);
+    public ApiResponse<Void> postWecomBotCallbackByBotidWithHttpInfo(@javax.annotation.Nonnull String botId) throws ApiException {
+        okhttp3.Call localVarCall = postWecomBotCallbackByBotidValidateBeforeCall(botId, null);
         return localVarApiClient.execute(localVarCall);
     }
 
     /**
      * Process WeChat work bot messages (asynchronously)
      * Process WeChat work bot messages
+     * @param botId  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postWecomBotCallbackByBotidAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postWecomBotCallbackByBotidAsync(@javax.annotation.Nonnull String botId, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postWecomBotCallbackByBotidValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postWecomBotCallbackByBotidValidateBeforeCall(botId, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

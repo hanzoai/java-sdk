@@ -27,10 +27,8 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.ReleaseState;
 import ai.hanzo.cloud.model.RunnerBuildReq;
 import ai.hanzo.cloud.model.RunnerBuildResp;
-import ai.hanzo.cloud.model.SelfReleaseList;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -75,250 +73,6 @@ public class RunnerApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    /**
-     * Build call for getRunnerReleases
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getRunnerReleasesCall(final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/runner/releases";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getRunnerReleasesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getRunnerReleasesCall(_callback);
-
-    }
-
-    /**
-     * Lists the self-publish releases this process has run.
-     * Lists the self-publish releases this process has run.  It lists the platform&#39;s own release runs with their current state, so a release that answered 202 with an id can be followed to its end. SuperAdmin only — this is the platform&#39;s own publishing record, not a tenant surface.  The record lives in THIS process&#39;s memory, so it covers the releases this instance started and does not survive a restart.
-     * @return SelfReleaseList
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public SelfReleaseList getRunnerReleases() throws ApiException {
-        ApiResponse<SelfReleaseList> localVarResp = getRunnerReleasesWithHttpInfo();
-        return localVarResp.getData();
-    }
-
-    /**
-     * Lists the self-publish releases this process has run.
-     * Lists the self-publish releases this process has run.  It lists the platform&#39;s own release runs with their current state, so a release that answered 202 with an id can be followed to its end. SuperAdmin only — this is the platform&#39;s own publishing record, not a tenant surface.  The record lives in THIS process&#39;s memory, so it covers the releases this instance started and does not survive a restart.
-     * @return ApiResponse&lt;SelfReleaseList&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<SelfReleaseList> getRunnerReleasesWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getRunnerReleasesValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<SelfReleaseList>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Lists the self-publish releases this process has run. (asynchronously)
-     * Lists the self-publish releases this process has run.  It lists the platform&#39;s own release runs with their current state, so a release that answered 202 with an id can be followed to its end. SuperAdmin only — this is the platform&#39;s own publishing record, not a tenant surface.  The record lives in THIS process&#39;s memory, so it covers the releases this instance started and does not survive a restart.
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getRunnerReleasesAsync(final ApiCallback<SelfReleaseList> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getRunnerReleasesValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<SelfReleaseList>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getRunnerReleasesById
-     * @param id ID is the build id the release trigger answered with, from the path. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getRunnerReleasesByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/runner/releases/{id}"
-            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getRunnerReleasesByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'id' is set
-        if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getRunnerReleasesById(Async)");
-        }
-
-        return getRunnerReleasesByIdCall(id, _callback);
-
-    }
-
-    /**
-     * Returns one self-publish release by the id its 202 returned.
-     * Returns one self-publish release by the id its 202 returned.  It returns the state of one release run — which is the whole reason the trigger answers with an id, because without this a release that died in the detached pipeline would look exactly like one still in flight. SuperAdmin only.  A 404 means the id is unknown OR has aged out of this process&#39;s in-memory record. That is the honest answer either way: the process genuinely cannot tell the two apart.
-     * @param id ID is the build id the release trigger answered with, from the path. (required)
-     * @return ReleaseState
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public ReleaseState getRunnerReleasesById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<ReleaseState> localVarResp = getRunnerReleasesByIdWithHttpInfo(id);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Returns one self-publish release by the id its 202 returned.
-     * Returns one self-publish release by the id its 202 returned.  It returns the state of one release run — which is the whole reason the trigger answers with an id, because without this a release that died in the detached pipeline would look exactly like one still in flight. SuperAdmin only.  A 404 means the id is unknown OR has aged out of this process&#39;s in-memory record. That is the honest answer either way: the process genuinely cannot tell the two apart.
-     * @param id ID is the build id the release trigger answered with, from the path. (required)
-     * @return ApiResponse&lt;ReleaseState&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ReleaseState> getRunnerReleasesByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = getRunnerReleasesByIdValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<ReleaseState>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Returns one self-publish release by the id its 202 returned. (asynchronously)
-     * Returns one self-publish release by the id its 202 returned.  It returns the state of one release run — which is the whole reason the trigger answers with an id, because without this a release that died in the detached pipeline would look exactly like one still in flight. SuperAdmin only.  A 404 means the id is unknown OR has aged out of this process&#39;s in-memory record. That is the honest answer either way: the process genuinely cannot tell the two apart.
-     * @param id ID is the build id the release trigger answered with, from the path. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getRunnerReleasesByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<ReleaseState> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getRunnerReleasesByIdValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<ReleaseState>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
     /**
      * Build call for postRunner
      * @param runnerBuildReq  (required)
@@ -390,7 +144,7 @@ public class RunnerApi {
 
     /**
      * Triggers a native build — an image, or the binaries a repo declares.
-     * Triggers a native build — an image, or the binaries a repo declares.  The fabric&#39;s own build trigger, and what &#x60;hanzo build&#x60;, git-push-to-deploy and cloud&#39;s own self-release all call. It answers 202 with the build job id: a queued build, not a pushed artifact.  Two lanes, and a build is exactly one of them. The IMAGE lane takes &#x60;repo&#x60; and the output &#x60;image&#x60; and launches a BuildKit Job that pushes it. The ARTIFACT lane takes &#x60;binaries&#x60; — the same recipe the repo&#39;s hanzo.yml declares — and publishes to object storage instead; it must carry no &#x60;image&#x60;, because a build produces binaries or an image, never both. &#x60;release: true&#x60; is the third mode: cloud self-publishing its own image, version computed, built, smoke-tested, tagged and announced.  PRIVILEGED, with exactly two credentials and never a third: the shared build-callback token compared in constant time — the machine path, which a user never holds — or a validated IAM principal who is an ADMIN of their org, which is the &#x60;hanzo build&#x60; user path and means one IAM login authorizes a build with no separate build token. A plain member is refused.  Both paths are bounded the same way: the output must push to a registry the fabric owns, and on the IAM path the image&#39;s registry namespace must MATCH the caller&#39;s own validated org — so an org admin can only publish into their own brand and can never overwrite another&#39;s through the shared push credential. The same confinement applies to the artifact lane&#39;s repo owner.  &#x60;release: true&#x60; is the exception, and takes SUPERADMIN. It publishes the platform&#39;s own image — the binary the whole fleet runs — so what it lands reaches every org at the next reconcile, and no role inside the caller&#39;s own org can authorize that. An org admin is refused however the registry namespace lines up, and the build token, which carries no identity at all, may enqueue an ordinary build but never a release.  The output image is parsed and validated as a single well-formed OCI ref before any authorization decision reads it, so a crafted ref cannot smuggle a build-exporter attribute past the check.
+     * Triggers a native build — an image, or the binaries a repo declares.  The fabric&#39;s own build trigger, and what &#x60;hanzo build&#x60; and git-push-to-deploy call. It answers 202 with the build job id: a queued build, not a pushed artifact.  Two lanes, and a build is exactly one of them. The IMAGE lane takes &#x60;repo&#x60; and the output &#x60;image&#x60; and launches a BuildKit Job that pushes it. The ARTIFACT lane takes &#x60;binaries&#x60; — the same recipe the repo&#39;s hanzo.yml declares — and publishes to object storage instead; it must carry no &#x60;image&#x60;, because a build produces binaries or an image, never both.  PRIVILEGED, with exactly two credentials and never a third: the shared build-callback token compared in constant time — the machine path, which a user never holds — or a validated IAM principal who is an ADMIN of their org, which is the &#x60;hanzo build&#x60; user path and means one IAM login authorizes a build with no separate build token. A plain member is refused.  Both paths are bounded the same way: the output must push to a registry the fabric owns, and on the IAM path the image&#39;s registry namespace must MATCH the caller&#39;s own validated org — so an org admin can only publish into their own brand and can never overwrite another&#39;s through the shared push credential. The same confinement applies to the artifact lane&#39;s repo owner.  The output image is parsed and validated as a single well-formed OCI ref before any authorization decision reads it, so a crafted ref cannot smuggle a build-exporter attribute past the check.
      * @param runnerBuildReq  (required)
      * @return RunnerBuildResp
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -408,7 +162,7 @@ public class RunnerApi {
 
     /**
      * Triggers a native build — an image, or the binaries a repo declares.
-     * Triggers a native build — an image, or the binaries a repo declares.  The fabric&#39;s own build trigger, and what &#x60;hanzo build&#x60;, git-push-to-deploy and cloud&#39;s own self-release all call. It answers 202 with the build job id: a queued build, not a pushed artifact.  Two lanes, and a build is exactly one of them. The IMAGE lane takes &#x60;repo&#x60; and the output &#x60;image&#x60; and launches a BuildKit Job that pushes it. The ARTIFACT lane takes &#x60;binaries&#x60; — the same recipe the repo&#39;s hanzo.yml declares — and publishes to object storage instead; it must carry no &#x60;image&#x60;, because a build produces binaries or an image, never both. &#x60;release: true&#x60; is the third mode: cloud self-publishing its own image, version computed, built, smoke-tested, tagged and announced.  PRIVILEGED, with exactly two credentials and never a third: the shared build-callback token compared in constant time — the machine path, which a user never holds — or a validated IAM principal who is an ADMIN of their org, which is the &#x60;hanzo build&#x60; user path and means one IAM login authorizes a build with no separate build token. A plain member is refused.  Both paths are bounded the same way: the output must push to a registry the fabric owns, and on the IAM path the image&#39;s registry namespace must MATCH the caller&#39;s own validated org — so an org admin can only publish into their own brand and can never overwrite another&#39;s through the shared push credential. The same confinement applies to the artifact lane&#39;s repo owner.  &#x60;release: true&#x60; is the exception, and takes SUPERADMIN. It publishes the platform&#39;s own image — the binary the whole fleet runs — so what it lands reaches every org at the next reconcile, and no role inside the caller&#39;s own org can authorize that. An org admin is refused however the registry namespace lines up, and the build token, which carries no identity at all, may enqueue an ordinary build but never a release.  The output image is parsed and validated as a single well-formed OCI ref before any authorization decision reads it, so a crafted ref cannot smuggle a build-exporter attribute past the check.
+     * Triggers a native build — an image, or the binaries a repo declares.  The fabric&#39;s own build trigger, and what &#x60;hanzo build&#x60; and git-push-to-deploy call. It answers 202 with the build job id: a queued build, not a pushed artifact.  Two lanes, and a build is exactly one of them. The IMAGE lane takes &#x60;repo&#x60; and the output &#x60;image&#x60; and launches a BuildKit Job that pushes it. The ARTIFACT lane takes &#x60;binaries&#x60; — the same recipe the repo&#39;s hanzo.yml declares — and publishes to object storage instead; it must carry no &#x60;image&#x60;, because a build produces binaries or an image, never both.  PRIVILEGED, with exactly two credentials and never a third: the shared build-callback token compared in constant time — the machine path, which a user never holds — or a validated IAM principal who is an ADMIN of their org, which is the &#x60;hanzo build&#x60; user path and means one IAM login authorizes a build with no separate build token. A plain member is refused.  Both paths are bounded the same way: the output must push to a registry the fabric owns, and on the IAM path the image&#39;s registry namespace must MATCH the caller&#39;s own validated org — so an org admin can only publish into their own brand and can never overwrite another&#39;s through the shared push credential. The same confinement applies to the artifact lane&#39;s repo owner.  The output image is parsed and validated as a single well-formed OCI ref before any authorization decision reads it, so a crafted ref cannot smuggle a build-exporter attribute past the check.
      * @param runnerBuildReq  (required)
      * @return ApiResponse&lt;RunnerBuildResp&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -427,7 +181,7 @@ public class RunnerApi {
 
     /**
      * Triggers a native build — an image, or the binaries a repo declares. (asynchronously)
-     * Triggers a native build — an image, or the binaries a repo declares.  The fabric&#39;s own build trigger, and what &#x60;hanzo build&#x60;, git-push-to-deploy and cloud&#39;s own self-release all call. It answers 202 with the build job id: a queued build, not a pushed artifact.  Two lanes, and a build is exactly one of them. The IMAGE lane takes &#x60;repo&#x60; and the output &#x60;image&#x60; and launches a BuildKit Job that pushes it. The ARTIFACT lane takes &#x60;binaries&#x60; — the same recipe the repo&#39;s hanzo.yml declares — and publishes to object storage instead; it must carry no &#x60;image&#x60;, because a build produces binaries or an image, never both. &#x60;release: true&#x60; is the third mode: cloud self-publishing its own image, version computed, built, smoke-tested, tagged and announced.  PRIVILEGED, with exactly two credentials and never a third: the shared build-callback token compared in constant time — the machine path, which a user never holds — or a validated IAM principal who is an ADMIN of their org, which is the &#x60;hanzo build&#x60; user path and means one IAM login authorizes a build with no separate build token. A plain member is refused.  Both paths are bounded the same way: the output must push to a registry the fabric owns, and on the IAM path the image&#39;s registry namespace must MATCH the caller&#39;s own validated org — so an org admin can only publish into their own brand and can never overwrite another&#39;s through the shared push credential. The same confinement applies to the artifact lane&#39;s repo owner.  &#x60;release: true&#x60; is the exception, and takes SUPERADMIN. It publishes the platform&#39;s own image — the binary the whole fleet runs — so what it lands reaches every org at the next reconcile, and no role inside the caller&#39;s own org can authorize that. An org admin is refused however the registry namespace lines up, and the build token, which carries no identity at all, may enqueue an ordinary build but never a release.  The output image is parsed and validated as a single well-formed OCI ref before any authorization decision reads it, so a crafted ref cannot smuggle a build-exporter attribute past the check.
+     * Triggers a native build — an image, or the binaries a repo declares.  The fabric&#39;s own build trigger, and what &#x60;hanzo build&#x60; and git-push-to-deploy call. It answers 202 with the build job id: a queued build, not a pushed artifact.  Two lanes, and a build is exactly one of them. The IMAGE lane takes &#x60;repo&#x60; and the output &#x60;image&#x60; and launches a BuildKit Job that pushes it. The ARTIFACT lane takes &#x60;binaries&#x60; — the same recipe the repo&#39;s hanzo.yml declares — and publishes to object storage instead; it must carry no &#x60;image&#x60;, because a build produces binaries or an image, never both.  PRIVILEGED, with exactly two credentials and never a third: the shared build-callback token compared in constant time — the machine path, which a user never holds — or a validated IAM principal who is an ADMIN of their org, which is the &#x60;hanzo build&#x60; user path and means one IAM login authorizes a build with no separate build token. A plain member is refused.  Both paths are bounded the same way: the output must push to a registry the fabric owns, and on the IAM path the image&#39;s registry namespace must MATCH the caller&#39;s own validated org — so an org admin can only publish into their own brand and can never overwrite another&#39;s through the shared push credential. The same confinement applies to the artifact lane&#39;s repo owner.  The output image is parsed and validated as a single well-formed OCI ref before any authorization decision reads it, so a crafted ref cannot smuggle a build-exporter attribute past the check.
      * @param runnerBuildReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call

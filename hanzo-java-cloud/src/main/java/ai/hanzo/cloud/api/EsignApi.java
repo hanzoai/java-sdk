@@ -612,7 +612,7 @@ public class EsignApi {
 
     /**
      * Open a document you were asked to sign, using your signing link
-     * Answers the document, the recipient it identifies, the fields THAT recipient must fill, and the PDF to display. The first open also marks the recipient as having opened it and records that on the audit trail, so this read has a side effect by design.  This is the signer&#39;s door and it takes NO account: the signing token is the entire credential, and it names the recipient, so a signer sees only their own fields and never the other recipients&#39; tokens. The &#x60;:org&#x60; segment selects which tenant&#39;s store is opened, and the token is then looked up inside it — so a token presented under the wrong org simply does not resolve. An unknown or wrong-org token is a 401, never a hint that some other document exists.
+     * Answers the document, the recipient it identifies, the fields THAT recipient must fill, and the PDF to display. The first open also marks the recipient as having opened it and records that on the audit trail, so this read has a side effect by design.  This is the signer&#39;s door and it takes NO account: the signing token is the entire credential, and it names the recipient, so a signer sees only their own fields and never the other recipients&#39; tokens. The token resolves to its owning tenant FIRST, before any per-tenant store is opened, and the &#x60;:org&#x60; segment is only checked against that answer. An unknown or wrong-org token is one and the same 404, never a hint that some other document exists.
      * @param org  (required)
      * @param token  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -623,7 +623,7 @@ public class EsignApi {
 
     /**
      * Open a document you were asked to sign, using your signing link
-     * Answers the document, the recipient it identifies, the fields THAT recipient must fill, and the PDF to display. The first open also marks the recipient as having opened it and records that on the audit trail, so this read has a side effect by design.  This is the signer&#39;s door and it takes NO account: the signing token is the entire credential, and it names the recipient, so a signer sees only their own fields and never the other recipients&#39; tokens. The &#x60;:org&#x60; segment selects which tenant&#39;s store is opened, and the token is then looked up inside it — so a token presented under the wrong org simply does not resolve. An unknown or wrong-org token is a 401, never a hint that some other document exists.
+     * Answers the document, the recipient it identifies, the fields THAT recipient must fill, and the PDF to display. The first open also marks the recipient as having opened it and records that on the audit trail, so this read has a side effect by design.  This is the signer&#39;s door and it takes NO account: the signing token is the entire credential, and it names the recipient, so a signer sees only their own fields and never the other recipients&#39; tokens. The token resolves to its owning tenant FIRST, before any per-tenant store is opened, and the &#x60;:org&#x60; segment is only checked against that answer. An unknown or wrong-org token is one and the same 404, never a hint that some other document exists.
      * @param org  (required)
      * @param token  (required)
      * @return ApiResponse&lt;Void&gt;
@@ -636,7 +636,7 @@ public class EsignApi {
 
     /**
      * Open a document you were asked to sign, using your signing link (asynchronously)
-     * Answers the document, the recipient it identifies, the fields THAT recipient must fill, and the PDF to display. The first open also marks the recipient as having opened it and records that on the audit trail, so this read has a side effect by design.  This is the signer&#39;s door and it takes NO account: the signing token is the entire credential, and it names the recipient, so a signer sees only their own fields and never the other recipients&#39; tokens. The &#x60;:org&#x60; segment selects which tenant&#39;s store is opened, and the token is then looked up inside it — so a token presented under the wrong org simply does not resolve. An unknown or wrong-org token is a 401, never a hint that some other document exists.
+     * Answers the document, the recipient it identifies, the fields THAT recipient must fill, and the PDF to display. The first open also marks the recipient as having opened it and records that on the audit trail, so this read has a side effect by design.  This is the signer&#39;s door and it takes NO account: the signing token is the entire credential, and it names the recipient, so a signer sees only their own fields and never the other recipients&#39; tokens. The token resolves to its owning tenant FIRST, before any per-tenant store is opened, and the &#x60;:org&#x60; segment is only checked against that answer. An unknown or wrong-org token is one and the same 404, never a hint that some other document exists.
      * @param org  (required)
      * @param token  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -1102,7 +1102,7 @@ public class EsignApi {
 
     /**
      * Finish signing — and seal the document if you were the last
-     * Marks this recipient as done and answers whether the DOCUMENT sealed with it. When every signing recipient has completed, sealing happens right here in the same call: the collected values are rendered onto the PDF, a real x509 PKCS#7 signature is applied, the sealed bytes are stored beside the untouched original, and the document moves to &#x60;COMPLETED&#x60;. Until then the answer is the recipient&#39;s own completion with the document still pending.  It refuses to complete a half-filled signature: a recipient with any unfilled field is a 400 naming how many remain. A document not out for signature is a 409, as is a recipient who has already completed, and under SEQUENTIAL order a signer out of turn is a 403. The token is the whole credential — no account, and a token that does not resolve under &#x60;:org&#x60; is a 401. Sealing and completion are one transaction, so a failure anywhere leaves the document exactly as it was.
+     * Marks this recipient as done and answers whether the DOCUMENT sealed with it. When every signing recipient has completed, sealing happens right here in the same call: the collected values are rendered onto the PDF, a real x509 PKCS#7 signature is applied, the sealed bytes are stored beside the untouched original, and the document moves to &#x60;COMPLETED&#x60;. Until then the answer is the recipient&#39;s own completion with the document still pending.  It refuses to complete a half-filled signature: a recipient with any unfilled field is a 400 naming how many remain. A document not out for signature is a 409, as is a recipient who has already completed, and under SEQUENTIAL order a signer out of turn is a 403. The token is the whole credential — no account, and a token that does not resolve under &#x60;:org&#x60; is a 404. Sealing and completion are one transaction, so a failure anywhere leaves the document exactly as it was.
      * @param org  (required)
      * @param token  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1113,7 +1113,7 @@ public class EsignApi {
 
     /**
      * Finish signing — and seal the document if you were the last
-     * Marks this recipient as done and answers whether the DOCUMENT sealed with it. When every signing recipient has completed, sealing happens right here in the same call: the collected values are rendered onto the PDF, a real x509 PKCS#7 signature is applied, the sealed bytes are stored beside the untouched original, and the document moves to &#x60;COMPLETED&#x60;. Until then the answer is the recipient&#39;s own completion with the document still pending.  It refuses to complete a half-filled signature: a recipient with any unfilled field is a 400 naming how many remain. A document not out for signature is a 409, as is a recipient who has already completed, and under SEQUENTIAL order a signer out of turn is a 403. The token is the whole credential — no account, and a token that does not resolve under &#x60;:org&#x60; is a 401. Sealing and completion are one transaction, so a failure anywhere leaves the document exactly as it was.
+     * Marks this recipient as done and answers whether the DOCUMENT sealed with it. When every signing recipient has completed, sealing happens right here in the same call: the collected values are rendered onto the PDF, a real x509 PKCS#7 signature is applied, the sealed bytes are stored beside the untouched original, and the document moves to &#x60;COMPLETED&#x60;. Until then the answer is the recipient&#39;s own completion with the document still pending.  It refuses to complete a half-filled signature: a recipient with any unfilled field is a 400 naming how many remain. A document not out for signature is a 409, as is a recipient who has already completed, and under SEQUENTIAL order a signer out of turn is a 403. The token is the whole credential — no account, and a token that does not resolve under &#x60;:org&#x60; is a 404. Sealing and completion are one transaction, so a failure anywhere leaves the document exactly as it was.
      * @param org  (required)
      * @param token  (required)
      * @return ApiResponse&lt;Void&gt;
@@ -1126,7 +1126,7 @@ public class EsignApi {
 
     /**
      * Finish signing — and seal the document if you were the last (asynchronously)
-     * Marks this recipient as done and answers whether the DOCUMENT sealed with it. When every signing recipient has completed, sealing happens right here in the same call: the collected values are rendered onto the PDF, a real x509 PKCS#7 signature is applied, the sealed bytes are stored beside the untouched original, and the document moves to &#x60;COMPLETED&#x60;. Until then the answer is the recipient&#39;s own completion with the document still pending.  It refuses to complete a half-filled signature: a recipient with any unfilled field is a 400 naming how many remain. A document not out for signature is a 409, as is a recipient who has already completed, and under SEQUENTIAL order a signer out of turn is a 403. The token is the whole credential — no account, and a token that does not resolve under &#x60;:org&#x60; is a 401. Sealing and completion are one transaction, so a failure anywhere leaves the document exactly as it was.
+     * Marks this recipient as done and answers whether the DOCUMENT sealed with it. When every signing recipient has completed, sealing happens right here in the same call: the collected values are rendered onto the PDF, a real x509 PKCS#7 signature is applied, the sealed bytes are stored beside the untouched original, and the document moves to &#x60;COMPLETED&#x60;. Until then the answer is the recipient&#39;s own completion with the document still pending.  It refuses to complete a half-filled signature: a recipient with any unfilled field is a 400 naming how many remain. A document not out for signature is a 409, as is a recipient who has already completed, and under SEQUENTIAL order a signer out of turn is a 403. The token is the whole credential — no account, and a token that does not resolve under &#x60;:org&#x60; is a 404. Sealing and completion are one transaction, so a failure anywhere leaves the document exactly as it was.
      * @param org  (required)
      * @param token  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -1328,7 +1328,7 @@ public class EsignApi {
 
     /**
      * Decline to sign, with an optional reason
-     * Records this recipient&#39;s refusal and moves the WHOLE DOCUMENT to &#x60;REJECTED&#x60; — one declining signer ends it for everyone, and there is no route back: the document cannot then be signed or completed. An optional &#x60;reason&#x60; is stored and written onto the audit trail with the rejection, which is what the sender sees.  A document not out for signature is a 409, and so is a recipient who has already signed or already rejected — a refusal cannot be taken back or repeated. The token is the whole credential; one that does not resolve under &#x60;:org&#x60; is a 401.
+     * Records this recipient&#39;s refusal and moves the WHOLE DOCUMENT to &#x60;REJECTED&#x60; — one declining signer ends it for everyone, and there is no route back: the document cannot then be signed or completed. An optional &#x60;reason&#x60; is stored and written onto the audit trail with the rejection, which is what the sender sees.  A document not out for signature is a 409, and so is a recipient who has already signed or already rejected — a refusal cannot be taken back or repeated. The token is the whole credential; one that does not resolve under &#x60;:org&#x60; is a 404.
      * @param org  (required)
      * @param token  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1339,7 +1339,7 @@ public class EsignApi {
 
     /**
      * Decline to sign, with an optional reason
-     * Records this recipient&#39;s refusal and moves the WHOLE DOCUMENT to &#x60;REJECTED&#x60; — one declining signer ends it for everyone, and there is no route back: the document cannot then be signed or completed. An optional &#x60;reason&#x60; is stored and written onto the audit trail with the rejection, which is what the sender sees.  A document not out for signature is a 409, and so is a recipient who has already signed or already rejected — a refusal cannot be taken back or repeated. The token is the whole credential; one that does not resolve under &#x60;:org&#x60; is a 401.
+     * Records this recipient&#39;s refusal and moves the WHOLE DOCUMENT to &#x60;REJECTED&#x60; — one declining signer ends it for everyone, and there is no route back: the document cannot then be signed or completed. An optional &#x60;reason&#x60; is stored and written onto the audit trail with the rejection, which is what the sender sees.  A document not out for signature is a 409, and so is a recipient who has already signed or already rejected — a refusal cannot be taken back or repeated. The token is the whole credential; one that does not resolve under &#x60;:org&#x60; is a 404.
      * @param org  (required)
      * @param token  (required)
      * @return ApiResponse&lt;Void&gt;
@@ -1352,7 +1352,7 @@ public class EsignApi {
 
     /**
      * Decline to sign, with an optional reason (asynchronously)
-     * Records this recipient&#39;s refusal and moves the WHOLE DOCUMENT to &#x60;REJECTED&#x60; — one declining signer ends it for everyone, and there is no route back: the document cannot then be signed or completed. An optional &#x60;reason&#x60; is stored and written onto the audit trail with the rejection, which is what the sender sees.  A document not out for signature is a 409, and so is a recipient who has already signed or already rejected — a refusal cannot be taken back or repeated. The token is the whole credential; one that does not resolve under &#x60;:org&#x60; is a 401.
+     * Records this recipient&#39;s refusal and moves the WHOLE DOCUMENT to &#x60;REJECTED&#x60; — one declining signer ends it for everyone, and there is no route back: the document cannot then be signed or completed. An optional &#x60;reason&#x60; is stored and written onto the audit trail with the rejection, which is what the sender sees.  A document not out for signature is a 409, and so is a recipient who has already signed or already rejected — a refusal cannot be taken back or repeated. The token is the whole credential; one that does not resolve under &#x60;:org&#x60; is a 404.
      * @param org  (required)
      * @param token  (required)
      * @param _callback The callback to be executed when the API call finishes

@@ -60,20 +60,25 @@ public class Integrity {
   @javax.annotation.Nullable
   private Integer count;
 
-  public static final String SERIALIZED_NAME_HEAD_HASH = "headHash";
-  @SerializedName(SERIALIZED_NAME_HEAD_HASH)
+  public static final String SERIALIZED_NAME_HEAD = "head";
+  @SerializedName(SERIALIZED_NAME_HEAD)
   @javax.annotation.Nullable
-  private String headHash;
+  private String head;
 
-  public static final String SERIALIZED_NAME_OK = "ok";
-  @SerializedName(SERIALIZED_NAME_OK)
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
   @javax.annotation.Nullable
-  private Boolean ok;
+  private String name;
 
   public static final String SERIALIZED_NAME_REASON = "reason";
   @SerializedName(SERIALIZED_NAME_REASON)
   @javax.annotation.Nullable
   private String reason;
+
+  public static final String SERIALIZED_NAME_VERDICT = "verdict";
+  @SerializedName(SERIALIZED_NAME_VERDICT)
+  @javax.annotation.Nullable
+  private String verdict;
 
   public Integrity() {
   }
@@ -84,7 +89,7 @@ public class Integrity {
   }
 
   /**
-   * BrokenAt is the seq of the FIRST record that failed verification, or -1 when OK. Reason describes the break (recomputed-hash mismatch, prev-hash discontinuity, or a seq gap).
+   * BrokenAt is the seq of the FIRST record that failed verification, and -1 whenever the walk found no break (including an unread chain, where no seq was reached). Reason describes the break (recomputed-hash mismatch, prev-hash discontinuity, or a seq gap) or why the chain could not be read.
    * @return brokenAt
    */
   @javax.annotation.Nullable
@@ -103,7 +108,7 @@ public class Integrity {
   }
 
   /**
-   * Count is the number of records walked.
+   * Count is the number of records walked. Zero on an unread chain, where it means \&quot;nothing was read\&quot;, not \&quot;the chain is empty\&quot;.
    * @return count
    */
   @javax.annotation.Nullable
@@ -116,41 +121,41 @@ public class Integrity {
   }
 
 
-  public Integrity headHash(@javax.annotation.Nullable String headHash) {
-    this.headHash = headHash;
+  public Integrity head(@javax.annotation.Nullable String head) {
+    this.head = head;
     return this;
   }
 
   /**
-   * HeadHash is the hash of the last record (or the genesis anchor for an empty chain). Pin this externally over time to detect tail-truncation.
-   * @return headHash
+   * Head is the hash of the last record (or the genesis anchor for an empty chain). Pin this externally over time to detect tail-truncation.
+   * @return head
    */
   @javax.annotation.Nullable
-  public String getHeadHash() {
-    return headHash;
+  public String getHead() {
+    return head;
   }
 
-  public void setHeadHash(@javax.annotation.Nullable String headHash) {
-    this.headHash = headHash;
+  public void setHead(@javax.annotation.Nullable String head) {
+    this.head = head;
   }
 
 
-  public Integrity ok(@javax.annotation.Nullable Boolean ok) {
-    this.ok = ok;
+  public Integrity name(@javax.annotation.Nullable String name) {
+    this.name = name;
     return this;
   }
 
   /**
-   * OK is true iff every record&#39;s stored hash equals the recomputed hash AND the chain links are continuous (each PrevHash &#x3D;&#x3D; the prior record&#39;s Hash, seqs gapless from 0).
-   * @return ok
+   * Name is the chain this verdict is about, e.g. \&quot;audit\&quot; or \&quot;audit-iam\&quot;. It is carried because a verdict with no chain on it reads as the whole trail&#39;s, which is what a reader of a 128-chain deployment did.
+   * @return name
    */
   @javax.annotation.Nullable
-  public Boolean getOk() {
-    return ok;
+  public String getName() {
+    return name;
   }
 
-  public void setOk(@javax.annotation.Nullable Boolean ok) {
-    this.ok = ok;
+  public void setName(@javax.annotation.Nullable String name) {
+    this.name = name;
   }
 
 
@@ -173,6 +178,25 @@ public class Integrity {
   }
 
 
+  public Integrity verdict(@javax.annotation.Nullable String verdict) {
+    this.verdict = verdict;
+    return this;
+  }
+
+  /**
+   * Verdict is intact, broken or unread.
+   * @return verdict
+   */
+  @javax.annotation.Nullable
+  public String getVerdict() {
+    return verdict;
+  }
+
+  public void setVerdict(@javax.annotation.Nullable String verdict) {
+    this.verdict = verdict;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -185,14 +209,15 @@ public class Integrity {
     Integrity integrity = (Integrity) o;
     return Objects.equals(this.brokenAt, integrity.brokenAt) &&
         Objects.equals(this.count, integrity.count) &&
-        Objects.equals(this.headHash, integrity.headHash) &&
-        Objects.equals(this.ok, integrity.ok) &&
-        Objects.equals(this.reason, integrity.reason);
+        Objects.equals(this.head, integrity.head) &&
+        Objects.equals(this.name, integrity.name) &&
+        Objects.equals(this.reason, integrity.reason) &&
+        Objects.equals(this.verdict, integrity.verdict);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(brokenAt, count, headHash, ok, reason);
+    return Objects.hash(brokenAt, count, head, name, reason, verdict);
   }
 
   @Override
@@ -201,9 +226,10 @@ public class Integrity {
     sb.append("class Integrity {\n");
     sb.append("    brokenAt: ").append(toIndentedString(brokenAt)).append("\n");
     sb.append("    count: ").append(toIndentedString(count)).append("\n");
-    sb.append("    headHash: ").append(toIndentedString(headHash)).append("\n");
-    sb.append("    ok: ").append(toIndentedString(ok)).append("\n");
+    sb.append("    head: ").append(toIndentedString(head)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    reason: ").append(toIndentedString(reason)).append("\n");
+    sb.append("    verdict: ").append(toIndentedString(verdict)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -225,7 +251,7 @@ public class Integrity {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("brokenAt", "count", "headHash", "ok", "reason"));
+    openapiFields = new HashSet<String>(Arrays.asList("brokenAt", "count", "head", "name", "reason", "verdict"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -252,11 +278,17 @@ public class Integrity {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("headHash") != null && !jsonObj.get("headHash").isJsonNull()) && !jsonObj.get("headHash").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `headHash` to be a primitive type in the JSON string but got `%s`", jsonObj.get("headHash").toString()));
+      if ((jsonObj.get("head") != null && !jsonObj.get("head").isJsonNull()) && !jsonObj.get("head").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `head` to be a primitive type in the JSON string but got `%s`", jsonObj.get("head").toString()));
+      }
+      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
       if ((jsonObj.get("reason") != null && !jsonObj.get("reason").isJsonNull()) && !jsonObj.get("reason").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `reason` to be a primitive type in the JSON string but got `%s`", jsonObj.get("reason").toString()));
+      }
+      if ((jsonObj.get("verdict") != null && !jsonObj.get("verdict").isJsonNull()) && !jsonObj.get("verdict").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `verdict` to be a primitive type in the JSON string but got `%s`", jsonObj.get("verdict").toString()));
       }
   }
 

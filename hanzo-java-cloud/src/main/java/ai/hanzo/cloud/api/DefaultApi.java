@@ -3162,6 +3162,94 @@ public class DefaultApi {
         return localVarCall;
     }
     /**
+     * Build call for getWellKnownOpenapiJson
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call getWellKnownOpenapiJsonCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/.well-known/openapi.json";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getWellKnownOpenapiJsonValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getWellKnownOpenapiJsonCall(_callback);
+
+    }
+
+    /**
+     * The API description, at the conventional address
+     * The same document /v1/openapi.json serves, at the address RFC 8615 reserves for discovery — one handler over one render, so the two cannot describe different APIs.  It exists because a client that has never seen this API probes here first. Prefer /v1/openapi.json when you already know the API: it is canonical, and it is what the document&#39;s own self-description names.
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void getWellKnownOpenapiJson() throws ApiException {
+        getWellKnownOpenapiJsonWithHttpInfo();
+    }
+
+    /**
+     * The API description, at the conventional address
+     * The same document /v1/openapi.json serves, at the address RFC 8615 reserves for discovery — one handler over one render, so the two cannot describe different APIs.  It exists because a client that has never seen this API probes here first. Prefer /v1/openapi.json when you already know the API: it is canonical, and it is what the document&#39;s own self-description names.
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> getWellKnownOpenapiJsonWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getWellKnownOpenapiJsonValidateBeforeCall(null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * The API description, at the conventional address (asynchronously)
+     * The same document /v1/openapi.json serves, at the address RFC 8615 reserves for discovery — one handler over one render, so the two cannot describe different APIs.  It exists because a client that has never seen this API probes here first. Prefer /v1/openapi.json when you already know the API: it is canonical, and it is what the document&#39;s own self-description names.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call getWellKnownOpenapiJsonAsync(final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getWellKnownOpenapiJsonValidateBeforeCall(_callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for getWellKnownOpenidConfiguration
      * @param _callback Callback for upload/download progress
      * @return Call to execute

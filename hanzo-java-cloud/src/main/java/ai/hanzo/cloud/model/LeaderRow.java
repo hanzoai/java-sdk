@@ -21,6 +21,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.time.OffsetDateTime;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -51,15 +52,40 @@ import ai.hanzo.cloud.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class LeaderRow {
+  public static final String SERIALIZED_NAME_CI_HIGH = "ciHigh";
+  @SerializedName(SERIALIZED_NAME_CI_HIGH)
+  @javax.annotation.Nullable
+  private BigDecimal ciHigh;
+
+  public static final String SERIALIZED_NAME_CI_LOW = "ciLow";
+  @SerializedName(SERIALIZED_NAME_CI_LOW)
+  @javax.annotation.Nullable
+  private BigDecimal ciLow;
+
+  public static final String SERIALIZED_NAME_CLAIMS = "claims";
+  @SerializedName(SERIALIZED_NAME_CLAIMS)
+  @javax.annotation.Nullable
+  private Integer claims;
+
   public static final String SERIALIZED_NAME_GAP = "gap";
   @SerializedName(SERIALIZED_NAME_GAP)
   @javax.annotation.Nullable
   private BigDecimal gap;
 
+  public static final String SERIALIZED_NAME_MEAN = "mean";
+  @SerializedName(SERIALIZED_NAME_MEAN)
+  @javax.annotation.Nullable
+  private BigDecimal mean;
+
   public static final String SERIALIZED_NAME_MEASURED = "measured";
   @SerializedName(SERIALIZED_NAME_MEASURED)
   @javax.annotation.Nullable
   private BigDecimal measured;
+
+  public static final String SERIALIZED_NAME_MEASURED_AT = "measuredAt";
+  @SerializedName(SERIALIZED_NAME_MEASURED_AT)
+  @javax.annotation.Nullable
+  private OffsetDateTime measuredAt;
 
   public static final String SERIALIZED_NAME_MODEL = "model";
   @SerializedName(SERIALIZED_NAME_MODEL)
@@ -81,8 +107,75 @@ public class LeaderRow {
   @javax.annotation.Nullable
   private BigDecimal published;
 
+  public static final String SERIALIZED_NAME_RUN = "run";
+  @SerializedName(SERIALIZED_NAME_RUN)
+  @javax.annotation.Nullable
+  private String run;
+
+  public static final String SERIALIZED_NAME_SPREAD = "spread";
+  @SerializedName(SERIALIZED_NAME_SPREAD)
+  @javax.annotation.Nullable
+  private BigDecimal spread;
+
   public LeaderRow() {
   }
+
+  public LeaderRow ciHigh(@javax.annotation.Nullable BigDecimal ciHigh) {
+    this.ciHigh = ciHigh;
+    return this;
+  }
+
+  /**
+   * CIHigh is the upper bound of that interval. Wilson rather than the normal approximation because the normal one produces bounds past 100 exactly where benchmark scores live — at 194/198 that is the top of the board, not a corner case.
+   * @return ciHigh
+   */
+  @javax.annotation.Nullable
+  public BigDecimal getCiHigh() {
+    return ciHigh;
+  }
+
+  public void setCiHigh(@javax.annotation.Nullable BigDecimal ciHigh) {
+    this.ciHigh = ciHigh;
+  }
+
+
+  public LeaderRow ciLow(@javax.annotation.Nullable BigDecimal ciLow) {
+    this.ciLow = ciLow;
+    return this;
+  }
+
+  /**
+   * CILow and CIHigh are the 95% Wilson interval on Measured, in percent. They are what makes the score comparable: at n&#x3D;198 a 98% carries roughly ±2 points, so most differences at the top of a board are not distinguishable and a bare number implies a precision it does not have. Absent when there is no measurement.
+   * @return ciLow
+   */
+  @javax.annotation.Nullable
+  public BigDecimal getCiLow() {
+    return ciLow;
+  }
+
+  public void setCiLow(@javax.annotation.Nullable BigDecimal ciLow) {
+    this.ciLow = ciLow;
+  }
+
+
+  public LeaderRow claims(@javax.annotation.Nullable Integer claims) {
+    this.claims = claims;
+    return this;
+  }
+
+  /**
+   * Claims is how many independent claims exist for this model on this benchmark. More than one means several sources reported it.
+   * @return claims
+   */
+  @javax.annotation.Nullable
+  public Integer getClaims() {
+    return claims;
+  }
+
+  public void setClaims(@javax.annotation.Nullable Integer claims) {
+    this.claims = claims;
+  }
+
 
   public LeaderRow gap(@javax.annotation.Nullable BigDecimal gap) {
     this.gap = gap;
@@ -103,6 +196,25 @@ public class LeaderRow {
   }
 
 
+  public LeaderRow mean(@javax.annotation.Nullable BigDecimal mean) {
+    this.mean = mean;
+    return this;
+  }
+
+  /**
+   * Mean is the unweighted average of every claim, which answers a different question from Published: what the field says on average, rather than what the vendor says about itself. With one claim the two are equal.
+   * @return mean
+   */
+  @javax.annotation.Nullable
+  public BigDecimal getMean() {
+    return mean;
+  }
+
+  public void setMean(@javax.annotation.Nullable BigDecimal mean) {
+    this.mean = mean;
+  }
+
+
   public LeaderRow measured(@javax.annotation.Nullable BigDecimal measured) {
     this.measured = measured;
     return this;
@@ -119,6 +231,25 @@ public class LeaderRow {
 
   public void setMeasured(@javax.annotation.Nullable BigDecimal measured) {
     this.measured = measured;
+  }
+
+
+  public LeaderRow measuredAt(@javax.annotation.Nullable OffsetDateTime measuredAt) {
+    this.measuredAt = measuredAt;
+    return this;
+  }
+
+  /**
+   * MeasuredAt is when the run behind Measured was recorded.
+   * @return measuredAt
+   */
+  @javax.annotation.Nullable
+  public OffsetDateTime getMeasuredAt() {
+    return measuredAt;
+  }
+
+  public void setMeasuredAt(@javax.annotation.Nullable OffsetDateTime measuredAt) {
+    this.measuredAt = measuredAt;
   }
 
 
@@ -198,6 +329,44 @@ public class LeaderRow {
   }
 
 
+  public LeaderRow run(@javax.annotation.Nullable String run) {
+    this.run = run;
+    return this;
+  }
+
+  /**
+   * Run names the measurement Measured came from, and MeasuredAt is when it ran. A score with no date is not a fact about a model, it is a fact about a model on a day — and models change, so the date is what makes the number checkable rather than merely quoted.
+   * @return run
+   */
+  @javax.annotation.Nullable
+  public String getRun() {
+    return run;
+  }
+
+  public void setRun(@javax.annotation.Nullable String run) {
+    this.run = run;
+  }
+
+
+  public LeaderRow spread(@javax.annotation.Nullable BigDecimal spread) {
+    this.spread = spread;
+    return this;
+  }
+
+  /**
+   * Spread is the distance between the highest and lowest of them, nil when there is only one. It is the disagreement AMONG sources, which a single Published number cannot show — signal in the same way the published-minus-measured gap is.
+   * @return spread
+   */
+  @javax.annotation.Nullable
+  public BigDecimal getSpread() {
+    return spread;
+  }
+
+  public void setSpread(@javax.annotation.Nullable BigDecimal spread) {
+    this.spread = spread;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -208,29 +377,43 @@ public class LeaderRow {
       return false;
     }
     LeaderRow leaderRow = (LeaderRow) o;
-    return Objects.equals(this.gap, leaderRow.gap) &&
+    return Objects.equals(this.ciHigh, leaderRow.ciHigh) &&
+        Objects.equals(this.ciLow, leaderRow.ciLow) &&
+        Objects.equals(this.claims, leaderRow.claims) &&
+        Objects.equals(this.gap, leaderRow.gap) &&
+        Objects.equals(this.mean, leaderRow.mean) &&
         Objects.equals(this.measured, leaderRow.measured) &&
+        Objects.equals(this.measuredAt, leaderRow.measuredAt) &&
         Objects.equals(this.model, leaderRow.model) &&
         Objects.equals(this.n, leaderRow.n) &&
         Objects.equals(this.protocol, leaderRow.protocol) &&
-        Objects.equals(this.published, leaderRow.published);
+        Objects.equals(this.published, leaderRow.published) &&
+        Objects.equals(this.run, leaderRow.run) &&
+        Objects.equals(this.spread, leaderRow.spread);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(gap, measured, model, n, protocol, published);
+    return Objects.hash(ciHigh, ciLow, claims, gap, mean, measured, measuredAt, model, n, protocol, published, run, spread);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class LeaderRow {\n");
+    sb.append("    ciHigh: ").append(toIndentedString(ciHigh)).append("\n");
+    sb.append("    ciLow: ").append(toIndentedString(ciLow)).append("\n");
+    sb.append("    claims: ").append(toIndentedString(claims)).append("\n");
     sb.append("    gap: ").append(toIndentedString(gap)).append("\n");
+    sb.append("    mean: ").append(toIndentedString(mean)).append("\n");
     sb.append("    measured: ").append(toIndentedString(measured)).append("\n");
+    sb.append("    measuredAt: ").append(toIndentedString(measuredAt)).append("\n");
     sb.append("    model: ").append(toIndentedString(model)).append("\n");
     sb.append("    n: ").append(toIndentedString(n)).append("\n");
     sb.append("    protocol: ").append(toIndentedString(protocol)).append("\n");
     sb.append("    published: ").append(toIndentedString(published)).append("\n");
+    sb.append("    run: ").append(toIndentedString(run)).append("\n");
+    sb.append("    spread: ").append(toIndentedString(spread)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -252,7 +435,7 @@ public class LeaderRow {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("gap", "measured", "model", "n", "protocol", "published"));
+    openapiFields = new HashSet<String>(Arrays.asList("ciHigh", "ciLow", "claims", "gap", "mean", "measured", "measuredAt", "model", "n", "protocol", "published", "run", "spread"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -284,6 +467,9 @@ public class LeaderRow {
       }
       if ((jsonObj.get("protocol") != null && !jsonObj.get("protocol").isJsonNull()) && !jsonObj.get("protocol").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `protocol` to be a primitive type in the JSON string but got `%s`", jsonObj.get("protocol").toString()));
+      }
+      if ((jsonObj.get("run") != null && !jsonObj.get("run").isJsonNull()) && !jsonObj.get("run").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `run` to be a primitive type in the JSON string but got `%s`", jsonObj.get("run").toString()));
       }
   }
 

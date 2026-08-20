@@ -67,6 +67,11 @@ public class IamCreateOrganizationInput {
   @javax.annotation.Nullable
   private String accountMenu;
 
+  public static final String SERIALIZED_NAME_AVATAR = "avatar";
+  @SerializedName(SERIALIZED_NAME_AVATAR)
+  @javax.annotation.Nullable
+  private String avatar;
+
   public static final String SERIALIZED_NAME_BALANCE_CREDIT = "balanceCredit";
   @SerializedName(SERIALIZED_NAME_BALANCE_CREDIT)
   @javax.annotation.Nullable
@@ -126,6 +131,11 @@ public class IamCreateOrganizationInput {
   @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
   @javax.annotation.Nullable
   private String displayName;
+
+  public static final String SERIALIZED_NAME_EMOJI = "emoji";
+  @SerializedName(SERIALIZED_NAME_EMOJI)
+  @javax.annotation.Nullable
+  private String emoji;
 
   public static final String SERIALIZED_NAME_ENABLE_SOFT_DELETION = "enableSoftDeletion";
   @SerializedName(SERIALIZED_NAME_ENABLE_SOFT_DELETION)
@@ -401,6 +411,25 @@ public class IamCreateOrganizationInput {
   }
 
 
+  public IamCreateOrganizationInput avatar(@javax.annotation.Nullable String avatar) {
+    this.avatar = avatar;
+    return this;
+  }
+
+  /**
+   * Get avatar
+   * @return avatar
+   */
+  @javax.annotation.Nullable
+  public String getAvatar() {
+    return avatar;
+  }
+
+  public void setAvatar(@javax.annotation.Nullable String avatar) {
+    this.avatar = avatar;
+  }
+
+
   public IamCreateOrganizationInput balanceCredit(@javax.annotation.Nullable BigDecimal balanceCredit) {
     this.balanceCredit = balanceCredit;
     return this;
@@ -634,6 +663,25 @@ public class IamCreateOrganizationInput {
 
   public void setDisplayName(@javax.annotation.Nullable String displayName) {
     this.displayName = displayName;
+  }
+
+
+  public IamCreateOrganizationInput emoji(@javax.annotation.Nullable String emoji) {
+    this.emoji = emoji;
+    return this;
+  }
+
+  /**
+   * Get emoji
+   * @return emoji
+   */
+  @javax.annotation.Nullable
+  public String getEmoji() {
+    return emoji;
+  }
+
+  public void setEmoji(@javax.annotation.Nullable String emoji) {
+    this.emoji = emoji;
   }
 
 
@@ -1576,6 +1624,7 @@ public class IamCreateOrganizationInput {
     IamCreateOrganizationInput iamCreateOrganizationInput = (IamCreateOrganizationInput) o;
     return Objects.equals(this.accountItems, iamCreateOrganizationInput.accountItems) &&
         Objects.equals(this.accountMenu, iamCreateOrganizationInput.accountMenu) &&
+        Objects.equals(this.avatar, iamCreateOrganizationInput.avatar) &&
         Objects.equals(this.balanceCredit, iamCreateOrganizationInput.balanceCredit) &&
         Objects.equals(this.balanceCurrency, iamCreateOrganizationInput.balanceCurrency) &&
         Objects.equals(this.countryCodes, iamCreateOrganizationInput.countryCodes) &&
@@ -1588,6 +1637,7 @@ public class IamCreateOrganizationInput {
         Objects.equals(this.deleted, iamCreateOrganizationInput.deleted) &&
         Objects.equals(this.disableSignin, iamCreateOrganizationInput.disableSignin) &&
         Objects.equals(this.displayName, iamCreateOrganizationInput.displayName) &&
+        Objects.equals(this.emoji, iamCreateOrganizationInput.emoji) &&
         Objects.equals(this.enableSoftDeletion, iamCreateOrganizationInput.enableSoftDeletion) &&
         Objects.equals(this.enableTour, iamCreateOrganizationInput.enableTour) &&
         Objects.equals(this.failedSigninFrozenTime, iamCreateOrganizationInput.failedSigninFrozenTime) &&
@@ -1637,7 +1687,7 @@ public class IamCreateOrganizationInput {
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountItems, accountMenu, balanceCredit, balanceCurrency, countryCodes, createdAt, createdTime, dcrPolicy, defaultApplication, defaultAvatar, defaultPassword, deleted, disableSignin, displayName, enableSoftDeletion, enableTour, failedSigninFrozenTime, failedSigninLimit, favicon, founder, hasPrivilegeConsent, id, initScore, ipRestriction, ipWhitelist, isPersonal, isProfilePublic, kerberosKdcHost, kerberosKeytab, kerberosRealm, kerberosServiceName, languages, ldapAttributes, logo, logoDark, masterPassword, masterVerificationCode, mfaItems, mfaRememberInHours, name, navItems, orgBalance, owner, passwordExpireDays, passwordObfuscatorKey, passwordObfuscatorType, passwordOptions, passwordSalt, passwordType, tags, themeData, updatedAt, useEmailAsUsername, usePermanentAvatar, userBalance, userNavItems, userTypes, websiteUrl, widgetItems);
+    return Objects.hash(accountItems, accountMenu, avatar, balanceCredit, balanceCurrency, countryCodes, createdAt, createdTime, dcrPolicy, defaultApplication, defaultAvatar, defaultPassword, deleted, disableSignin, displayName, emoji, enableSoftDeletion, enableTour, failedSigninFrozenTime, failedSigninLimit, favicon, founder, hasPrivilegeConsent, id, initScore, ipRestriction, ipWhitelist, isPersonal, isProfilePublic, kerberosKdcHost, kerberosKeytab, kerberosRealm, kerberosServiceName, languages, ldapAttributes, logo, logoDark, masterPassword, masterVerificationCode, mfaItems, mfaRememberInHours, name, navItems, orgBalance, owner, passwordExpireDays, passwordObfuscatorKey, passwordObfuscatorType, passwordOptions, passwordSalt, passwordType, tags, themeData, updatedAt, useEmailAsUsername, usePermanentAvatar, userBalance, userNavItems, userTypes, websiteUrl, widgetItems);
   }
 
   @Override
@@ -1646,6 +1696,7 @@ public class IamCreateOrganizationInput {
     sb.append("class IamCreateOrganizationInput {\n");
     sb.append("    accountItems: ").append(toIndentedString(accountItems)).append("\n");
     sb.append("    accountMenu: ").append(toIndentedString(accountMenu)).append("\n");
+    sb.append("    avatar: ").append(toIndentedString(avatar)).append("\n");
     sb.append("    balanceCredit: ").append(toIndentedString(balanceCredit)).append("\n");
     sb.append("    balanceCurrency: ").append(toIndentedString(balanceCurrency)).append("\n");
     sb.append("    countryCodes: ").append(toIndentedString(countryCodes)).append("\n");
@@ -1658,6 +1709,7 @@ public class IamCreateOrganizationInput {
     sb.append("    deleted: ").append(toIndentedString(deleted)).append("\n");
     sb.append("    disableSignin: ").append(toIndentedString(disableSignin)).append("\n");
     sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
+    sb.append("    emoji: ").append(toIndentedString(emoji)).append("\n");
     sb.append("    enableSoftDeletion: ").append(toIndentedString(enableSoftDeletion)).append("\n");
     sb.append("    enableTour: ").append(toIndentedString(enableTour)).append("\n");
     sb.append("    failedSigninFrozenTime: ").append(toIndentedString(failedSigninFrozenTime)).append("\n");
@@ -1724,7 +1776,7 @@ public class IamCreateOrganizationInput {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("accountItems", "accountMenu", "balanceCredit", "balanceCurrency", "countryCodes", "createdAt", "createdTime", "dcrPolicy", "defaultApplication", "defaultAvatar", "defaultPassword", "deleted", "disableSignin", "displayName", "enableSoftDeletion", "enableTour", "failedSigninFrozenTime", "failedSigninLimit", "favicon", "founder", "hasPrivilegeConsent", "id", "initScore", "ipRestriction", "ipWhitelist", "isPersonal", "isProfilePublic", "kerberosKdcHost", "kerberosKeytab", "kerberosRealm", "kerberosServiceName", "languages", "ldapAttributes", "logo", "logoDark", "masterPassword", "masterVerificationCode", "mfaItems", "mfaRememberInHours", "name", "navItems", "orgBalance", "owner", "passwordExpireDays", "passwordObfuscatorKey", "passwordObfuscatorType", "passwordOptions", "passwordSalt", "passwordType", "tags", "themeData", "updatedAt", "useEmailAsUsername", "usePermanentAvatar", "userBalance", "userNavItems", "userTypes", "websiteUrl", "widgetItems"));
+    openapiFields = new HashSet<String>(Arrays.asList("accountItems", "accountMenu", "avatar", "balanceCredit", "balanceCurrency", "countryCodes", "createdAt", "createdTime", "dcrPolicy", "defaultApplication", "defaultAvatar", "defaultPassword", "deleted", "disableSignin", "displayName", "emoji", "enableSoftDeletion", "enableTour", "failedSigninFrozenTime", "failedSigninLimit", "favicon", "founder", "hasPrivilegeConsent", "id", "initScore", "ipRestriction", "ipWhitelist", "isPersonal", "isProfilePublic", "kerberosKdcHost", "kerberosKeytab", "kerberosRealm", "kerberosServiceName", "languages", "ldapAttributes", "logo", "logoDark", "masterPassword", "masterVerificationCode", "mfaItems", "mfaRememberInHours", "name", "navItems", "orgBalance", "owner", "passwordExpireDays", "passwordObfuscatorKey", "passwordObfuscatorType", "passwordOptions", "passwordSalt", "passwordType", "tags", "themeData", "updatedAt", "useEmailAsUsername", "usePermanentAvatar", "userBalance", "userNavItems", "userTypes", "websiteUrl", "widgetItems"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -1768,6 +1820,9 @@ public class IamCreateOrganizationInput {
       if ((jsonObj.get("accountMenu") != null && !jsonObj.get("accountMenu").isJsonNull()) && !jsonObj.get("accountMenu").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `accountMenu` to be a primitive type in the JSON string but got `%s`", jsonObj.get("accountMenu").toString()));
       }
+      if ((jsonObj.get("avatar") != null && !jsonObj.get("avatar").isJsonNull()) && !jsonObj.get("avatar").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `avatar` to be a primitive type in the JSON string but got `%s`", jsonObj.get("avatar").toString()));
+      }
       if ((jsonObj.get("balanceCurrency") != null && !jsonObj.get("balanceCurrency").isJsonNull()) && !jsonObj.get("balanceCurrency").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `balanceCurrency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("balanceCurrency").toString()));
       }
@@ -1792,6 +1847,9 @@ public class IamCreateOrganizationInput {
       }
       if ((jsonObj.get("displayName") != null && !jsonObj.get("displayName").isJsonNull()) && !jsonObj.get("displayName").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `displayName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("displayName").toString()));
+      }
+      if ((jsonObj.get("emoji") != null && !jsonObj.get("emoji").isJsonNull()) && !jsonObj.get("emoji").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `emoji` to be a primitive type in the JSON string but got `%s`", jsonObj.get("emoji").toString()));
       }
       if ((jsonObj.get("favicon") != null && !jsonObj.get("favicon").isJsonNull()) && !jsonObj.get("favicon").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `favicon` to be a primitive type in the JSON string but got `%s`", jsonObj.get("favicon").toString()));
