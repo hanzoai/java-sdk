@@ -16,7 +16,7 @@ name: Release
 # jar with the tag; the Central upload needs a registry credential and a PGP
 # signature, which the shared CI does not model. Both are read from KMS below,
 # the same surface every other credential in this fleet comes from — the only
-# things the forge holds are KMS_CLIENT_ID and KMS_CLIENT_SECRET.
+# things Hanzo Git holds are KMS_CLIENT_ID and KMS_CLIENT_SECRET.
 on:
   push:
     branches: [main]
