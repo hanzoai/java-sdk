@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.1.0-alpha.6 (2026-08-04)
+## 0.1.0-alpha.6 (2026-08-18)
 
 Full Changelog: [v0.1.0-alpha.5...v0.1.0-alpha.6](https://github.com/hanzoai/java-sdk/compare/v0.1.0-alpha.5...v0.1.0-alpha.6)
 
@@ -9,8 +9,14 @@ Full Changelog: [v0.1.0-alpha.5...v0.1.0-alpha.6](https://github.com/hanzoai/jav
 * the Hanzo Cloud Java SDK, generated from hanzoai/openapi ([f298d45](https://github.com/hanzoai/java-sdk/commit/f298d45796eb863e9c5813743c954f4f84f096c8))
 
 
+### Bug Fixes
+
+* **docs:** link the javadoc badge so the version stays current after release ([cf1c34a](https://github.com/hanzoai/java-sdk/commit/cf1c34aafbb1dd1b64d6337f2ced4b499c885468))
+
+
 ### Chores
 
+* **internal:** codegen related update ([2be9c59](https://github.com/hanzoai/java-sdk/commit/2be9c59e7f89d173aa036d8594f8ff0a65cdc40d))
 * **internal:** codegen related update ([bf83aff](https://github.com/hanzoai/java-sdk/commit/bf83aff7a79896297ba39ee3ed421207a16cf5b0))
 * sync repo ([799ec51](https://github.com/hanzoai/java-sdk/commit/799ec5129f317fedc544e743b28a5022d8fc2aaa))
 
