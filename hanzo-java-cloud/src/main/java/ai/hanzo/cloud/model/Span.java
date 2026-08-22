@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -110,7 +110,7 @@ public class Span {
   }
 
   /**
-   * Get endLine
+   * EndLine is the last line of the span, inclusive. It equals Line for a one-line span rather than being zero or absent.
    * @return endLine
    */
   @javax.annotation.Nullable
@@ -129,7 +129,7 @@ public class Span {
   }
 
   /**
-   * Get _file
+   * File is the path inside the repo, relative to its root and never absolute.
    * @return _file
    */
   @javax.annotation.Nullable
@@ -148,7 +148,7 @@ public class Span {
   }
 
   /**
-   * Get kind
+   * Kind is what the indexer decided this chunk IS — \&quot;func\&quot;, \&quot;method\&quot;, \&quot;type\&quot;, \&quot;struct\&quot;, \&quot;interface\&quot;, \&quot;var\&quot;, \&quot;const\&quot;, or \&quot;block\&quot; for a run of code that declares nothing. Absent when the chunker could not classify it.
    * @return kind
    */
   @javax.annotation.Nullable
@@ -167,7 +167,7 @@ public class Span {
   }
 
   /**
-   * Get line
+   * Line is where the span starts, 1-based, as an editor counts.
    * @return line
    */
   @javax.annotation.Nullable
@@ -186,7 +186,7 @@ public class Span {
   }
 
   /**
-   * Get repo
+   * Repo is the indexed repository the span was found in, as it was indexed (\&quot;owner/name\&quot;). A search may be scoped to one repo or run across all of them, so this is how a caller tells the results apart.
    * @return repo
    */
   @javax.annotation.Nullable
@@ -224,7 +224,7 @@ public class Span {
   }
 
   /**
-   * Get score
+   * Score ranks this span against the OTHERS IN THE SAME RESPONSE and means nothing across responses or between tiers: the hybrid tier&#39;s number is a reciprocal-rank fusion sum (Σ 1/(60+rank), so tenths at best), the symbol tier&#39;s is a descending position count, and the text and semantic tiers pass through bm25 and cosine. Compare within a list; never threshold on it.
    * @return score
    */
   @javax.annotation.Nullable
@@ -243,7 +243,7 @@ public class Span {
   }
 
   /**
-   * Get snippet
+   * Snippet is the code itself: a bounded excerpt on /search, the whole chunk on /context — which is why the same type serves both and why a /context span is the one an agent pastes into its window.
    * @return snippet
    */
   @javax.annotation.Nullable
@@ -262,7 +262,7 @@ public class Span {
   }
 
   /**
-   * Get symbol
+   * Symbol is the declared name, when the span declares one. Absent on a block.
    * @return symbol
    */
   @javax.annotation.Nullable
@@ -281,7 +281,7 @@ public class Span {
   }
 
   /**
-   * Get tier
+   * Tier is which retrieval produced the span: \&quot;hybrid\&quot; (the default — all three fused), \&quot;text\&quot; (trigram/FTS), \&quot;regex\&quot;, \&quot;semantic\&quot; (vector), or \&quot;symbol\&quot;. It is what explains a Score, so the two travel together.
    * @return tier
    */
   @javax.annotation.Nullable

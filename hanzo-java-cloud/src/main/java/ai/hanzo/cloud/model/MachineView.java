@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -129,7 +129,7 @@ public class MachineView {
   }
 
   /**
-   * Get createdTime
+   * CreatedTime is when the machine came into being: the provider&#39;s own creation timestamp for a Visor machine, passed through in whatever form it states it, and for a BYO machine the RFC 3339 moment it first dialed in.
    * @return createdTime
    */
   @javax.annotation.Nullable
@@ -148,7 +148,7 @@ public class MachineView {
   }
 
   /**
-   * Get gpu
+   * GPU names the accelerators this machine holds (\&quot;H100\&quot;, or \&quot;2× NVIDIA GB10\&quot; for a BYO machine reporting a matched pair). Empty means the machine is not a GPU machine — the size slug does not parse as one, or nvidia-smi found nothing.
    * @return gpu
    */
   @javax.annotation.Nullable
@@ -167,7 +167,7 @@ public class MachineView {
   }
 
   /**
-   * Get id
+   * ID addresses this machine on the /v1/visor/machines/:id routes: the org-scoped NAME Visor keys a machine by, falling back to the provider id for a machine that has no name. A BYO machine&#39;s is the id it dialed in under.
    * @return id
    */
   @javax.annotation.Nullable
@@ -186,7 +186,7 @@ public class MachineView {
   }
 
   /**
-   * Get image
+   * Image is the OS image the machine booted from, as the provider names it.
    * @return image
    */
   @javax.annotation.Nullable
@@ -205,7 +205,7 @@ public class MachineView {
   }
 
   /**
-   * Get mem
+   * Mem is system RAM rendered for a human (\&quot;8 GB\&quot;), not a number to compute with. Empty when the provider&#39;s figure is ambiguous, or when the only figure available is a GPU slug&#39;s gb — that is VRAM, and reporting it as system RAM would be a fabrication. A BYO machine&#39;s RAM is on /v1/visor/fleet/workers.
    * @return mem
    */
   @javax.annotation.Nullable
@@ -224,7 +224,7 @@ public class MachineView {
   }
 
   /**
-   * Get name
+   * Name is the label to show a human — Visor&#39;s displayName, or the machine name when it carries none. A BYO machine&#39;s is its hostname. It is not an address: ID is what the routes take.
    * @return name
    */
   @javax.annotation.Nullable
@@ -243,7 +243,7 @@ public class MachineView {
   }
 
   /**
-   * Get os
+   * Os is the operating system on the machine — Visor&#39;s record for a provisioned one, the host&#39;s own report (linux, darwin, windows) for a BYO one.
    * @return os
    */
   @javax.annotation.Nullable
@@ -262,7 +262,7 @@ public class MachineView {
   }
 
   /**
-   * Get privateIp
+   * PrivateIp is the address on the provider&#39;s own network, reachable from the org&#39;s other machines in the same region. Empty on the same terms as PublicIp.
    * @return privateIp
    */
   @javax.annotation.Nullable
@@ -281,7 +281,7 @@ public class MachineView {
   }
 
   /**
-   * Get provider
+   * Provider is the cloud that runs the machine (\&quot;digitalocean\&quot;), or \&quot;byo\&quot; for one the operator dialed in with &#x60;hanzo link&#x60;.
    * @return provider
    */
   @javax.annotation.Nullable
@@ -300,7 +300,7 @@ public class MachineView {
   }
 
   /**
-   * Get publicIp
+   * PublicIp is the internet-facing address the provider assigned. Empty while a machine is still provisioning, and empty for a BYO machine — it dials out from behind NAT, so no address is ever learned for it.
    * @return publicIp
    */
   @javax.annotation.Nullable
@@ -319,7 +319,7 @@ public class MachineView {
   }
 
   /**
-   * Get region
+   * Region is the provider region slug (\&quot;sfo3\&quot;), or the zone when the provider reports only that. \&quot;on-prem\&quot; for a BYO machine, which has no cloud region.
    * @return region
    */
   @javax.annotation.Nullable
@@ -338,7 +338,7 @@ public class MachineView {
   }
 
   /**
-   * Get status
+   * Status is the lifecycle state in the PROVIDER&#39;s own words (\&quot;active\&quot;, \&quot;running\&quot;, \&quot;off\&quot;), passed through rather than mapped onto a vocabulary of ours. A BYO machine&#39;s is \&quot;online\&quot; or \&quot;offline\&quot;, decided by whether its last heartbeat is within 90s.
    * @return status
    */
   @javax.annotation.Nullable
@@ -357,7 +357,7 @@ public class MachineView {
   }
 
   /**
-   * Get type
+   * Type is the provider SIZE SLUG the machine runs at (\&quot;s-2vcpu-4gb\&quot;, \&quot;gpu-h100x8-640gb\&quot;) — the value a launch asks for, and what Vcpu/Mem/GPU are read out of when the provider states them no other way. \&quot;byo-gpu\&quot; for a dialed-in machine, which was never bought from a size catalog.
    * @return type
    */
   @javax.annotation.Nullable
@@ -376,7 +376,7 @@ public class MachineView {
   }
 
   /**
-   * Get vcpu
+   * Vcpu is logical cores — the provider&#39;s own cpuSize when that is a clean integer, else the count read out of the size slug (4 from \&quot;s-4vcpu-8gb\&quot;). ABSENT, never 0, when neither says. A BYO machine leaves it absent here; its real core count is on GET /v1/visor/fleet/workers.
    * @return vcpu
    */
   @javax.annotation.Nullable

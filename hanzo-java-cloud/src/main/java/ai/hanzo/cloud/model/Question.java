@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -89,7 +89,7 @@ public class Question {
   }
 
   /**
-   * Get account
+   * Account is the chart number the questioned entry posted to, where one applies.
    * @return account
    */
   @javax.annotation.Nullable
@@ -108,7 +108,7 @@ public class Question {
   }
 
   /**
-   * formatted figure ($…)
+   * Amount is the figure that makes the question concrete, already FORMATTED for display with its currency symbol — a string, not cents, and not for arithmetic.
    * @return amount
    */
   @javax.annotation.Nullable
@@ -127,7 +127,7 @@ public class Question {
   }
 
   /**
-   * the source transaction id it concerns
+   * ID is the source transaction the question is about, so answering it leads straight back to the entry that raised it.
    * @return id
    */
   @javax.annotation.Nullable
@@ -146,7 +146,7 @@ public class Question {
   }
 
   /**
-   * outlier|reversal|roundoff|uncosted|overdrawn
+   * Kind is what looked wrong: outlier (a charge far above the usual), reversal (a posting undone), roundoff (a balancing plug big enough to be worth explaining), uncosted (revenue booked with no cost matched to it), or overdrawn (a wallet spent past its balance).
    * @return kind
    */
   @javax.annotation.Nullable
@@ -165,7 +165,7 @@ public class Question {
   }
 
   /**
-   * Get postedAt
+   * PostedAt anchors the question in time — when the entry it concerns posted.
    * @return postedAt
    */
   @javax.annotation.Nullable
@@ -184,7 +184,7 @@ public class Question {
   }
 
   /**
-   * the specific question to ask the founder
+   * Text is the question itself, written for a founder to answer directly.
    * @return text
    */
   @javax.annotation.Nullable

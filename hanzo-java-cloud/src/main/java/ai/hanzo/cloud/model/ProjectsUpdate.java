@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -14,7 +14,7 @@
 package ai.hanzo.cloud.model;
 
 import java.util.Objects;
-import ai.hanzo.cloud.model.ProjectsCreateRepo;
+import ai.hanzo.cloud.model.ProjectsUpdateRepo;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -91,7 +91,7 @@ public class ProjectsUpdate {
   public static final String SERIALIZED_NAME_REPO = "repo";
   @SerializedName(SERIALIZED_NAME_REPO)
   @javax.annotation.Nullable
-  private ProjectsCreateRepo repo;
+  private ProjectsUpdateRepo repo;
 
   public static final String SERIALIZED_NAME_SLUG = "slug";
   @SerializedName(SERIALIZED_NAME_SLUG)
@@ -122,7 +122,7 @@ public class ProjectsUpdate {
   }
 
   /**
-   * Get cacheControl
+   * CacheControl replaces the Cache-Control policy the edge serves this site&#39;s HTML under. Absent leaves it.
    * @return cacheControl
    */
   @javax.annotation.Nullable
@@ -141,7 +141,7 @@ public class ProjectsUpdate {
   }
 
   /**
-   * Get description
+   * Description replaces the one-line summary. Absent leaves it.
    * @return description
    */
   @javax.annotation.Nullable
@@ -160,7 +160,7 @@ public class ProjectsUpdate {
   }
 
   /**
-   * Get framework
+   * Framework replaces the build hint. It affects the NEXT build only — nothing already deployed is rebuilt.
    * @return framework
    */
   @javax.annotation.Nullable
@@ -198,7 +198,7 @@ public class ProjectsUpdate {
   }
 
   /**
-   * Get hiddenReason
+   * HiddenReason records WHY moderation hid it, so the action can be explained and reviewed later. Admin-gated like hidden itself.
    * @return hiddenReason
    */
   @javax.annotation.Nullable
@@ -217,7 +217,7 @@ public class ProjectsUpdate {
   }
 
   /**
-   * Get license
+   * License is the terms that upstream work carries, with the same clear-versus- leave rule.
    * @return license
    */
   @javax.annotation.Nullable
@@ -236,7 +236,7 @@ public class ProjectsUpdate {
   }
 
   /**
-   * Get name
+   * Name replaces the display name. Absent leaves it; the slug never moves with it.
    * @return name
    */
   @javax.annotation.Nullable
@@ -249,7 +249,7 @@ public class ProjectsUpdate {
   }
 
 
-  public ProjectsUpdate repo(@javax.annotation.Nullable ProjectsCreateRepo repo) {
+  public ProjectsUpdate repo(@javax.annotation.Nullable ProjectsUpdateRepo repo) {
     this.repo = repo;
     return this;
   }
@@ -259,11 +259,11 @@ public class ProjectsUpdate {
    * @return repo
    */
   @javax.annotation.Nullable
-  public ProjectsCreateRepo getRepo() {
+  public ProjectsUpdateRepo getRepo() {
     return repo;
   }
 
-  public void setRepo(@javax.annotation.Nullable ProjectsCreateRepo repo) {
+  public void setRepo(@javax.annotation.Nullable ProjectsUpdateRepo repo) {
     this.repo = repo;
   }
 
@@ -301,7 +301,7 @@ public class ProjectsUpdate {
   }
 
   /**
-   * Tags sets the site&#39;s browser tag config: platform slug → non-secret pixel id (e.g. {\&quot;ga4\&quot;:\&quot;G-…\&quot;,\&quot;meta\&quot;:\&quot;…\&quot;}). track.js injects these first-party and the server CAPI reads them, per site. Absent LEAVES them; a present object REPLACES the set (send {} to clear). The ids are public — they ship in the page — so this is not the SECRET path (a CAPI token is sealed via POST /v1/destinations).
+   * Tags sets the site&#39;s browser tag config: platform slug → non-secret pixel id (e.g. {\&quot;ga4\&quot;:\&quot;G-…\&quot;,\&quot;meta\&quot;:\&quot;…\&quot;}). track.js injects these first-party and the server CAPI reads them, per site. Absent LEAVES them; a present object REPLACES the set (send {} to clear). The ids are public — they ship in the page — so this is not the SECRET path (a CAPI token is sealed via POST /v1/destination).
    * @return tags
    */
   @javax.annotation.Nullable
@@ -320,7 +320,7 @@ public class ProjectsUpdate {
   }
 
   /**
-   * Upstream/License credit the third-party work this app was published from — settable after the fact, because the demos that need crediting most are the ones already live. Pointers so \&quot;\&quot; clears a credit and absent leaves it.
+   * Upstream credits the third-party work this project was published from, and is settable after the fact because the live demos are the ones that most need crediting. An explicit empty string CLEARS the credit; absent leaves it.
    * @return upstream
    */
   @javax.annotation.Nullable
@@ -465,7 +465,7 @@ public class ProjectsUpdate {
       }
       // validate the optional field `repo`
       if (jsonObj.get("repo") != null && !jsonObj.get("repo").isJsonNull()) {
-        ProjectsCreateRepo.validateJsonElement(jsonObj.get("repo"));
+        ProjectsUpdateRepo.validateJsonElement(jsonObj.get("repo"));
       }
       if ((jsonObj.get("slug") != null && !jsonObj.get("slug").isJsonNull()) && !jsonObj.get("slug").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `slug` to be a primitive type in the JSON string but got `%s`", jsonObj.get("slug").toString()));

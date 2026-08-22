@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -20,9 +20,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -52,35 +50,45 @@ import ai.hanzo.cloud.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class IamInput {
+  public static final String SERIALIZED_NAME_ACTION = "action";
+  @SerializedName(SERIALIZED_NAME_ACTION)
+  @javax.annotation.Nullable
+  private String action;
+
+  public static final String SERIALIZED_NAME_CLIENT_IP = "clientIp";
+  @SerializedName(SERIALIZED_NAME_CLIENT_IP)
+  @javax.annotation.Nullable
+  private String clientIp;
+
   public static final String SERIALIZED_NAME_CREATED_TIME = "createdTime";
   @SerializedName(SERIALIZED_NAME_CREATED_TIME)
   @javax.annotation.Nullable
   private String createdTime;
 
-  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
-  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  public static final String SERIALIZED_NAME_IS_TRIGGERED = "isTriggered";
+  @SerializedName(SERIALIZED_NAME_IS_TRIGGERED)
   @javax.annotation.Nullable
-  private String description;
+  private Boolean isTriggered;
 
-  public static final String SERIALIZED_NAME_DISPLAY_NAME = "displayName";
-  @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
+  public static final String SERIALIZED_NAME_LANGUAGE = "language";
+  @SerializedName(SERIALIZED_NAME_LANGUAGE)
   @javax.annotation.Nullable
-  private String displayName;
+  private String language;
 
-  public static final String SERIALIZED_NAME_IS_DEFAULT = "isDefault";
-  @SerializedName(SERIALIZED_NAME_IS_DEFAULT)
+  public static final String SERIALIZED_NAME_METHOD = "method";
+  @SerializedName(SERIALIZED_NAME_METHOD)
   @javax.annotation.Nullable
-  private Boolean isDefault;
-
-  public static final String SERIALIZED_NAME_METADATA = "metadata";
-  @SerializedName(SERIALIZED_NAME_METADATA)
-  @javax.annotation.Nullable
-  private String metadata;
+  private String method;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   @javax.annotation.Nullable
   private String name;
+
+  public static final String SERIALIZED_NAME_OBJECT = "object";
+  @SerializedName(SERIALIZED_NAME_OBJECT)
+  @javax.annotation.Nullable
+  private String _object;
 
   public static final String SERIALIZED_NAME_ORGANIZATION = "organization";
   @SerializedName(SERIALIZED_NAME_ORGANIZATION)
@@ -92,18 +100,66 @@ public class IamInput {
   @javax.annotation.Nullable
   private String owner;
 
-  public static final String SERIALIZED_NAME_TAGS = "tags";
-  @SerializedName(SERIALIZED_NAME_TAGS)
+  public static final String SERIALIZED_NAME_REQUEST_URI = "requestUri";
+  @SerializedName(SERIALIZED_NAME_REQUEST_URI)
   @javax.annotation.Nullable
-  private List<String> tags = new ArrayList<>();
+  private String requestUri;
 
-  public static final String SERIALIZED_NAME_WORKSPACE = "workspace";
-  @SerializedName(SERIALIZED_NAME_WORKSPACE)
+  public static final String SERIALIZED_NAME_RESPONSE = "response";
+  @SerializedName(SERIALIZED_NAME_RESPONSE)
   @javax.annotation.Nullable
-  private String workspace;
+  private String response;
+
+  public static final String SERIALIZED_NAME_STATUS_CODE = "statusCode";
+  @SerializedName(SERIALIZED_NAME_STATUS_CODE)
+  @javax.annotation.Nullable
+  private Integer statusCode;
+
+  public static final String SERIALIZED_NAME_USER = "user";
+  @SerializedName(SERIALIZED_NAME_USER)
+  @javax.annotation.Nullable
+  private String user;
 
   public IamInput() {
   }
+
+  public IamInput action(@javax.annotation.Nullable String action) {
+    this.action = action;
+    return this;
+  }
+
+  /**
+   * Get action
+   * @return action
+   */
+  @javax.annotation.Nullable
+  public String getAction() {
+    return action;
+  }
+
+  public void setAction(@javax.annotation.Nullable String action) {
+    this.action = action;
+  }
+
+
+  public IamInput clientIp(@javax.annotation.Nullable String clientIp) {
+    this.clientIp = clientIp;
+    return this;
+  }
+
+  /**
+   * Get clientIp
+   * @return clientIp
+   */
+  @javax.annotation.Nullable
+  public String getClientIp() {
+    return clientIp;
+  }
+
+  public void setClientIp(@javax.annotation.Nullable String clientIp) {
+    this.clientIp = clientIp;
+  }
+
 
   public IamInput createdTime(@javax.annotation.Nullable String createdTime) {
     this.createdTime = createdTime;
@@ -124,79 +180,60 @@ public class IamInput {
   }
 
 
-  public IamInput description(@javax.annotation.Nullable String description) {
-    this.description = description;
+  public IamInput isTriggered(@javax.annotation.Nullable Boolean isTriggered) {
+    this.isTriggered = isTriggered;
     return this;
   }
 
   /**
-   * Get description
-   * @return description
+   * Get isTriggered
+   * @return isTriggered
    */
   @javax.annotation.Nullable
-  public String getDescription() {
-    return description;
+  public Boolean getIsTriggered() {
+    return isTriggered;
   }
 
-  public void setDescription(@javax.annotation.Nullable String description) {
-    this.description = description;
+  public void setIsTriggered(@javax.annotation.Nullable Boolean isTriggered) {
+    this.isTriggered = isTriggered;
   }
 
 
-  public IamInput displayName(@javax.annotation.Nullable String displayName) {
-    this.displayName = displayName;
+  public IamInput language(@javax.annotation.Nullable String language) {
+    this.language = language;
     return this;
   }
 
   /**
-   * Get displayName
-   * @return displayName
+   * Get language
+   * @return language
    */
   @javax.annotation.Nullable
-  public String getDisplayName() {
-    return displayName;
+  public String getLanguage() {
+    return language;
   }
 
-  public void setDisplayName(@javax.annotation.Nullable String displayName) {
-    this.displayName = displayName;
+  public void setLanguage(@javax.annotation.Nullable String language) {
+    this.language = language;
   }
 
 
-  public IamInput isDefault(@javax.annotation.Nullable Boolean isDefault) {
-    this.isDefault = isDefault;
+  public IamInput method(@javax.annotation.Nullable String method) {
+    this.method = method;
     return this;
   }
 
   /**
-   * Get isDefault
-   * @return isDefault
+   * Get method
+   * @return method
    */
   @javax.annotation.Nullable
-  public Boolean getIsDefault() {
-    return isDefault;
+  public String getMethod() {
+    return method;
   }
 
-  public void setIsDefault(@javax.annotation.Nullable Boolean isDefault) {
-    this.isDefault = isDefault;
-  }
-
-
-  public IamInput metadata(@javax.annotation.Nullable String metadata) {
-    this.metadata = metadata;
-    return this;
-  }
-
-  /**
-   * Get metadata
-   * @return metadata
-   */
-  @javax.annotation.Nullable
-  public String getMetadata() {
-    return metadata;
-  }
-
-  public void setMetadata(@javax.annotation.Nullable String metadata) {
-    this.metadata = metadata;
+  public void setMethod(@javax.annotation.Nullable String method) {
+    this.method = method;
   }
 
 
@@ -216,6 +253,25 @@ public class IamInput {
 
   public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
+  }
+
+
+  public IamInput _object(@javax.annotation.Nullable String _object) {
+    this._object = _object;
+    return this;
+  }
+
+  /**
+   * Get _object
+   * @return _object
+   */
+  @javax.annotation.Nullable
+  public String getObject() {
+    return _object;
+  }
+
+  public void setObject(@javax.annotation.Nullable String _object) {
+    this._object = _object;
   }
 
 
@@ -257,49 +313,79 @@ public class IamInput {
   }
 
 
-  public IamInput tags(@javax.annotation.Nullable List<String> tags) {
-    this.tags = tags;
-    return this;
-  }
-
-  public IamInput addTagsItem(String tagsItem) {
-    if (this.tags == null) {
-      this.tags = new ArrayList<>();
-    }
-    this.tags.add(tagsItem);
+  public IamInput requestUri(@javax.annotation.Nullable String requestUri) {
+    this.requestUri = requestUri;
     return this;
   }
 
   /**
-   * Get tags
-   * @return tags
+   * Get requestUri
+   * @return requestUri
    */
   @javax.annotation.Nullable
-  public List<String> getTags() {
-    return tags;
+  public String getRequestUri() {
+    return requestUri;
   }
 
-  public void setTags(@javax.annotation.Nullable List<String> tags) {
-    this.tags = tags;
+  public void setRequestUri(@javax.annotation.Nullable String requestUri) {
+    this.requestUri = requestUri;
   }
 
 
-  public IamInput workspace(@javax.annotation.Nullable String workspace) {
-    this.workspace = workspace;
+  public IamInput response(@javax.annotation.Nullable String response) {
+    this.response = response;
     return this;
   }
 
   /**
-   * Get workspace
-   * @return workspace
+   * Get response
+   * @return response
    */
   @javax.annotation.Nullable
-  public String getWorkspace() {
-    return workspace;
+  public String getResponse() {
+    return response;
   }
 
-  public void setWorkspace(@javax.annotation.Nullable String workspace) {
-    this.workspace = workspace;
+  public void setResponse(@javax.annotation.Nullable String response) {
+    this.response = response;
+  }
+
+
+  public IamInput statusCode(@javax.annotation.Nullable Integer statusCode) {
+    this.statusCode = statusCode;
+    return this;
+  }
+
+  /**
+   * Get statusCode
+   * @return statusCode
+   */
+  @javax.annotation.Nullable
+  public Integer getStatusCode() {
+    return statusCode;
+  }
+
+  public void setStatusCode(@javax.annotation.Nullable Integer statusCode) {
+    this.statusCode = statusCode;
+  }
+
+
+  public IamInput user(@javax.annotation.Nullable String user) {
+    this.user = user;
+    return this;
+  }
+
+  /**
+   * Get user
+   * @return user
+   */
+  @javax.annotation.Nullable
+  public String getUser() {
+    return user;
+  }
+
+  public void setUser(@javax.annotation.Nullable String user) {
+    this.user = user;
   }
 
 
@@ -313,37 +399,45 @@ public class IamInput {
       return false;
     }
     IamInput iamInput = (IamInput) o;
-    return Objects.equals(this.createdTime, iamInput.createdTime) &&
-        Objects.equals(this.description, iamInput.description) &&
-        Objects.equals(this.displayName, iamInput.displayName) &&
-        Objects.equals(this.isDefault, iamInput.isDefault) &&
-        Objects.equals(this.metadata, iamInput.metadata) &&
+    return Objects.equals(this.action, iamInput.action) &&
+        Objects.equals(this.clientIp, iamInput.clientIp) &&
+        Objects.equals(this.createdTime, iamInput.createdTime) &&
+        Objects.equals(this.isTriggered, iamInput.isTriggered) &&
+        Objects.equals(this.language, iamInput.language) &&
+        Objects.equals(this.method, iamInput.method) &&
         Objects.equals(this.name, iamInput.name) &&
+        Objects.equals(this._object, iamInput._object) &&
         Objects.equals(this.organization, iamInput.organization) &&
         Objects.equals(this.owner, iamInput.owner) &&
-        Objects.equals(this.tags, iamInput.tags) &&
-        Objects.equals(this.workspace, iamInput.workspace);
+        Objects.equals(this.requestUri, iamInput.requestUri) &&
+        Objects.equals(this.response, iamInput.response) &&
+        Objects.equals(this.statusCode, iamInput.statusCode) &&
+        Objects.equals(this.user, iamInput.user);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdTime, description, displayName, isDefault, metadata, name, organization, owner, tags, workspace);
+    return Objects.hash(action, clientIp, createdTime, isTriggered, language, method, name, _object, organization, owner, requestUri, response, statusCode, user);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class IamInput {\n");
+    sb.append("    action: ").append(toIndentedString(action)).append("\n");
+    sb.append("    clientIp: ").append(toIndentedString(clientIp)).append("\n");
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
-    sb.append("    isDefault: ").append(toIndentedString(isDefault)).append("\n");
-    sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
+    sb.append("    isTriggered: ").append(toIndentedString(isTriggered)).append("\n");
+    sb.append("    language: ").append(toIndentedString(language)).append("\n");
+    sb.append("    method: ").append(toIndentedString(method)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    _object: ").append(toIndentedString(_object)).append("\n");
     sb.append("    organization: ").append(toIndentedString(organization)).append("\n");
     sb.append("    owner: ").append(toIndentedString(owner)).append("\n");
-    sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
-    sb.append("    workspace: ").append(toIndentedString(workspace)).append("\n");
+    sb.append("    requestUri: ").append(toIndentedString(requestUri)).append("\n");
+    sb.append("    response: ").append(toIndentedString(response)).append("\n");
+    sb.append("    statusCode: ").append(toIndentedString(statusCode)).append("\n");
+    sb.append("    user: ").append(toIndentedString(user)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -365,7 +459,7 @@ public class IamInput {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("createdTime", "description", "displayName", "isDefault", "metadata", "name", "organization", "owner", "tags", "workspace"));
+    openapiFields = new HashSet<String>(Arrays.asList("action", "clientIp", "createdTime", "isTriggered", "language", "method", "name", "object", "organization", "owner", "requestUri", "response", "statusCode", "user"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -392,20 +486,26 @@ public class IamInput {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if ((jsonObj.get("action") != null && !jsonObj.get("action").isJsonNull()) && !jsonObj.get("action").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `action` to be a primitive type in the JSON string but got `%s`", jsonObj.get("action").toString()));
+      }
+      if ((jsonObj.get("clientIp") != null && !jsonObj.get("clientIp").isJsonNull()) && !jsonObj.get("clientIp").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `clientIp` to be a primitive type in the JSON string but got `%s`", jsonObj.get("clientIp").toString()));
+      }
       if ((jsonObj.get("createdTime") != null && !jsonObj.get("createdTime").isJsonNull()) && !jsonObj.get("createdTime").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `createdTime` to be a primitive type in the JSON string but got `%s`", jsonObj.get("createdTime").toString()));
       }
-      if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
+      if ((jsonObj.get("language") != null && !jsonObj.get("language").isJsonNull()) && !jsonObj.get("language").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `language` to be a primitive type in the JSON string but got `%s`", jsonObj.get("language").toString()));
       }
-      if ((jsonObj.get("displayName") != null && !jsonObj.get("displayName").isJsonNull()) && !jsonObj.get("displayName").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `displayName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("displayName").toString()));
-      }
-      if ((jsonObj.get("metadata") != null && !jsonObj.get("metadata").isJsonNull()) && !jsonObj.get("metadata").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `metadata` to be a primitive type in the JSON string but got `%s`", jsonObj.get("metadata").toString()));
+      if ((jsonObj.get("method") != null && !jsonObj.get("method").isJsonNull()) && !jsonObj.get("method").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `method` to be a primitive type in the JSON string but got `%s`", jsonObj.get("method").toString()));
       }
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+      if ((jsonObj.get("object") != null && !jsonObj.get("object").isJsonNull()) && !jsonObj.get("object").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `object` to be a primitive type in the JSON string but got `%s`", jsonObj.get("object").toString()));
       }
       if ((jsonObj.get("organization") != null && !jsonObj.get("organization").isJsonNull()) && !jsonObj.get("organization").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `organization` to be a primitive type in the JSON string but got `%s`", jsonObj.get("organization").toString()));
@@ -413,12 +513,14 @@ public class IamInput {
       if ((jsonObj.get("owner") != null && !jsonObj.get("owner").isJsonNull()) && !jsonObj.get("owner").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `owner` to be a primitive type in the JSON string but got `%s`", jsonObj.get("owner").toString()));
       }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonNull() && !jsonObj.get("tags").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `tags` to be an array in the JSON string but got `%s`", jsonObj.get("tags").toString()));
+      if ((jsonObj.get("requestUri") != null && !jsonObj.get("requestUri").isJsonNull()) && !jsonObj.get("requestUri").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `requestUri` to be a primitive type in the JSON string but got `%s`", jsonObj.get("requestUri").toString()));
       }
-      if ((jsonObj.get("workspace") != null && !jsonObj.get("workspace").isJsonNull()) && !jsonObj.get("workspace").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `workspace` to be a primitive type in the JSON string but got `%s`", jsonObj.get("workspace").toString()));
+      if ((jsonObj.get("response") != null && !jsonObj.get("response").isJsonNull()) && !jsonObj.get("response").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `response` to be a primitive type in the JSON string but got `%s`", jsonObj.get("response").toString()));
+      }
+      if ((jsonObj.get("user") != null && !jsonObj.get("user").isJsonNull()) && !jsonObj.get("user").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `user` to be a primitive type in the JSON string but got `%s`", jsonObj.get("user").toString()));
       }
   }
 

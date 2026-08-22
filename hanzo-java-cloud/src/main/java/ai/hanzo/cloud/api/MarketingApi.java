@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -1060,8 +1060,8 @@ public class MarketingApi {
     }
 
     /**
-     * Returns the org&#39;s calendar, soonest scheduled first, optionally narrowed to one status.
-     * Returns the org&#39;s calendar, soonest scheduled first, optionally narrowed to one status.
+     * Returns the org&#39;s calendar, latest scheduled first, optionally narrowed to one status.
+     * Returns the org&#39;s calendar, latest scheduled first, optionally narrowed to one status.
      * @param status Status keeps only posts in that state (draft, scheduled, published, failed, canceled). Empty means every post. (optional)
      * @param limit Limit caps the rows returned; 0 means 200 and nothing above 1000 is honoured. (optional)
      * @return PostList
@@ -1079,8 +1079,8 @@ public class MarketingApi {
     }
 
     /**
-     * Returns the org&#39;s calendar, soonest scheduled first, optionally narrowed to one status.
-     * Returns the org&#39;s calendar, soonest scheduled first, optionally narrowed to one status.
+     * Returns the org&#39;s calendar, latest scheduled first, optionally narrowed to one status.
+     * Returns the org&#39;s calendar, latest scheduled first, optionally narrowed to one status.
      * @param status Status keeps only posts in that state (draft, scheduled, published, failed, canceled). Empty means every post. (optional)
      * @param limit Limit caps the rows returned; 0 means 200 and nothing above 1000 is honoured. (optional)
      * @return ApiResponse&lt;PostList&gt;
@@ -1099,8 +1099,8 @@ public class MarketingApi {
     }
 
     /**
-     * Returns the org&#39;s calendar, soonest scheduled first, optionally narrowed to one status. (asynchronously)
-     * Returns the org&#39;s calendar, soonest scheduled first, optionally narrowed to one status.
+     * Returns the org&#39;s calendar, latest scheduled first, optionally narrowed to one status. (asynchronously)
+     * Returns the org&#39;s calendar, latest scheduled first, optionally narrowed to one status.
      * @param status Status keeps only posts in that state (draft, scheduled, published, failed, canceled). Empty means every post. (optional)
      * @param limit Limit caps the rows returned; 0 means 200 and nothing above 1000 is honoured. (optional)
      * @param _callback The callback to be executed when the API call finishes

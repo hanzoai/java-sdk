@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -31,6 +31,8 @@ import ai.hanzo.cloud.model.AdvanceIn;
 import ai.hanzo.cloud.model.BeginIn;
 import ai.hanzo.cloud.model.DecisionIn;
 import ai.hanzo.cloud.model.DeckOut;
+import ai.hanzo.cloud.model.EIN;
+import ai.hanzo.cloud.model.EinIn;
 import ai.hanzo.cloud.model.EsignCompleteIn;
 import ai.hanzo.cloud.model.EsignOut;
 import java.io.File;
@@ -50,6 +52,8 @@ import ai.hanzo.cloud.model.RoundOut;
 import ai.hanzo.cloud.model.SafeIn;
 import ai.hanzo.cloud.model.SafeOut;
 import ai.hanzo.cloud.model.StructureIn;
+import ai.hanzo.cloud.model.Tariff;
+import ai.hanzo.cloud.model.TariffIn;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -970,6 +974,133 @@ public class CompanyApi {
 
         okhttp3.Call localVarCall = postCompanyDocumentsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<FormationView>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postCompanyEin
+     * @param einIn  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postCompanyEinCall(@javax.annotation.Nonnull EinIn einIn, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = einIn;
+
+        // create path and map variables
+        String localVarPath = "/v1/company/ein";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postCompanyEinValidateBeforeCall(@javax.annotation.Nonnull EinIn einIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'einIn' is set
+        if (einIn == null) {
+            throw new ApiException("Missing the required parameter 'einIn' when calling postCompanyEin(Async)");
+        }
+
+        return postCompanyEinCall(einIn, _callback);
+
+    }
+
+    /**
+     * Opens the EIN application and answers what it owes.
+     * Opens the EIN application and answers what it owes.  The answer states whether it can be filed ONLINE, because that is the fact deciding whether the customer waits a sitting or several weeks — and it names each form with what that form is for, so nobody has to already know what an SS-4 is to understand why they are signing one.
+     * @param einIn  (required)
+     * @return EIN
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public EIN postCompanyEin(@javax.annotation.Nonnull EinIn einIn) throws ApiException {
+        ApiResponse<EIN> localVarResp = postCompanyEinWithHttpInfo(einIn);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Opens the EIN application and answers what it owes.
+     * Opens the EIN application and answers what it owes.  The answer states whether it can be filed ONLINE, because that is the fact deciding whether the customer waits a sitting or several weeks — and it names each form with what that form is for, so nobody has to already know what an SS-4 is to understand why they are signing one.
+     * @param einIn  (required)
+     * @return ApiResponse&lt;EIN&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<EIN> postCompanyEinWithHttpInfo(@javax.annotation.Nonnull EinIn einIn) throws ApiException {
+        okhttp3.Call localVarCall = postCompanyEinValidateBeforeCall(einIn, null);
+        Type localVarReturnType = new TypeToken<EIN>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Opens the EIN application and answers what it owes. (asynchronously)
+     * Opens the EIN application and answers what it owes.  The answer states whether it can be filed ONLINE, because that is the fact deciding whether the customer waits a sitting or several weeks — and it names each form with what that form is for, so nobody has to already know what an SS-4 is to understand why they are signing one.
+     * @param einIn  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postCompanyEinAsync(@javax.annotation.Nonnull EinIn einIn, final ApiCallback<EIN> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postCompanyEinValidateBeforeCall(einIn, _callback);
+        Type localVarReturnType = new TypeToken<EIN>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2461,7 +2592,7 @@ public class CompanyApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call postCompanyPaymentCall(final ApiCallback _callback) throws ApiException {
@@ -2515,15 +2646,15 @@ public class CompanyApi {
     }
 
     /**
-     * Charge the one-time formation fee and mark the formation paid
-     * Bills the caller&#39;s own org the one-time Hanzo Company formation fee — $999 unless the deployment sets another — and answers with the formation record carrying its paid flag and the charge reference. Takes no body: the org is the validated tenant and the amount is the platform&#39;s, never the caller&#39;s to assert.  IDEMPOTENT on the formation rather than on the request: an already-paid formation answers 200 with the same record and is not charged again, so a retry or a double-clicked button costs nothing. Available only at the &#x60;payment&#x60; stage (409 anywhere else) and only for an org that has begun a formation (404 otherwise).  A refused charge answers the fleet-wide billing contract, not a formation error — 402 when the org cannot pay, 503 when metering is unavailable — which is exactly why this route is not a typed op.
+     * Charges the caller&#39;s own org the one-time Hanzo Company formation fee.
+     * Charges the caller&#39;s own org the one-time Hanzo Company formation fee.  It is $999 unless the deployment sets another, and the answer is the formation record carrying its paid flag and the charge reference. It takes no body: the org is the validated tenant and the amount is the platform&#39;s, never the caller&#39;s to assert.  IDEMPOTENT on the formation rather than on the request: an already-paid formation answers 200 with the same record and is not charged again, so a retry or a double-clicked button costs nothing. Available only at the &#x60;payment&#x60; stage (409 anywhere else) and only for an org that has begun a formation (404 otherwise).  A denial answers the fleet-wide billing contract — 402 insufficient_balance, 402 spend_cap_exceeded, 503 balance_unavailable — carried by cloud.Denied, which is the money wire&#39;s own {\&quot;error\&quot;:{\&quot;code\&quot;,\&quot;message\&quot;}} body rather than a second vocabulary invented for this surface.  The gate is the LAST thing it does, after the stage check and the paid short-circuit, so a caller the machine is about to refuse is never charged. That ordering is why the gate cannot lift into middleware, where it would run first. Both facts are pinned: TestPaymentDenialWire, TestPaymentChargesLast.
      * @return FormationView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
     public FormationView postCompanyPayment() throws ApiException {
@@ -2532,15 +2663,15 @@ public class CompanyApi {
     }
 
     /**
-     * Charge the one-time formation fee and mark the formation paid
-     * Bills the caller&#39;s own org the one-time Hanzo Company formation fee — $999 unless the deployment sets another — and answers with the formation record carrying its paid flag and the charge reference. Takes no body: the org is the validated tenant and the amount is the platform&#39;s, never the caller&#39;s to assert.  IDEMPOTENT on the formation rather than on the request: an already-paid formation answers 200 with the same record and is not charged again, so a retry or a double-clicked button costs nothing. Available only at the &#x60;payment&#x60; stage (409 anywhere else) and only for an org that has begun a formation (404 otherwise).  A refused charge answers the fleet-wide billing contract, not a formation error — 402 when the org cannot pay, 503 when metering is unavailable — which is exactly why this route is not a typed op.
+     * Charges the caller&#39;s own org the one-time Hanzo Company formation fee.
+     * Charges the caller&#39;s own org the one-time Hanzo Company formation fee.  It is $999 unless the deployment sets another, and the answer is the formation record carrying its paid flag and the charge reference. It takes no body: the org is the validated tenant and the amount is the platform&#39;s, never the caller&#39;s to assert.  IDEMPOTENT on the formation rather than on the request: an already-paid formation answers 200 with the same record and is not charged again, so a retry or a double-clicked button costs nothing. Available only at the &#x60;payment&#x60; stage (409 anywhere else) and only for an org that has begun a formation (404 otherwise).  A denial answers the fleet-wide billing contract — 402 insufficient_balance, 402 spend_cap_exceeded, 503 balance_unavailable — carried by cloud.Denied, which is the money wire&#39;s own {\&quot;error\&quot;:{\&quot;code\&quot;,\&quot;message\&quot;}} body rather than a second vocabulary invented for this surface.  The gate is the LAST thing it does, after the stage check and the paid short-circuit, so a caller the machine is about to refuse is never charged. That ordering is why the gate cannot lift into middleware, where it would run first. Both facts are pinned: TestPaymentDenialWire, TestPaymentChargesLast.
      * @return ApiResponse&lt;FormationView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<FormationView> postCompanyPaymentWithHttpInfo() throws ApiException {
@@ -2550,8 +2681,8 @@ public class CompanyApi {
     }
 
     /**
-     * Charge the one-time formation fee and mark the formation paid (asynchronously)
-     * Bills the caller&#39;s own org the one-time Hanzo Company formation fee — $999 unless the deployment sets another — and answers with the formation record carrying its paid flag and the charge reference. Takes no body: the org is the validated tenant and the amount is the platform&#39;s, never the caller&#39;s to assert.  IDEMPOTENT on the formation rather than on the request: an already-paid formation answers 200 with the same record and is not charged again, so a retry or a double-clicked button costs nothing. Available only at the &#x60;payment&#x60; stage (409 anywhere else) and only for an org that has begun a formation (404 otherwise).  A refused charge answers the fleet-wide billing contract, not a formation error — 402 when the org cannot pay, 503 when metering is unavailable — which is exactly why this route is not a typed op.
+     * Charges the caller&#39;s own org the one-time Hanzo Company formation fee. (asynchronously)
+     * Charges the caller&#39;s own org the one-time Hanzo Company formation fee.  It is $999 unless the deployment sets another, and the answer is the formation record carrying its paid flag and the charge reference. It takes no body: the org is the validated tenant and the amount is the platform&#39;s, never the caller&#39;s to assert.  IDEMPOTENT on the formation rather than on the request: an already-paid formation answers 200 with the same record and is not charged again, so a retry or a double-clicked button costs nothing. Available only at the &#x60;payment&#x60; stage (409 anywhere else) and only for an org that has begun a formation (404 otherwise).  A denial answers the fleet-wide billing contract — 402 insufficient_balance, 402 spend_cap_exceeded, 503 balance_unavailable — carried by cloud.Denied, which is the money wire&#39;s own {\&quot;error\&quot;:{\&quot;code\&quot;,\&quot;message\&quot;}} body rather than a second vocabulary invented for this surface.  The gate is the LAST thing it does, after the stage check and the paid short-circuit, so a caller the machine is about to refuse is never charged. That ordering is why the gate cannot lift into middleware, where it would run first. Both facts are pinned: TestPaymentDenialWire, TestPaymentChargesLast.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2559,7 +2690,7 @@ public class CompanyApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call postCompanyPaymentAsync(final ApiCallback<FormationView> _callback) throws ApiException {
@@ -2683,6 +2814,133 @@ public class CompanyApi {
 
         okhttp3.Call localVarCall = postCompanySkipValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<FormationView>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postCompanyTariff
+     * @param tariffIn  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postCompanyTariffCall(@javax.annotation.Nonnull TariffIn tariffIn, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = tariffIn;
+
+        // create path and map variables
+        String localVarPath = "/v1/company/tariff";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postCompanyTariffValidateBeforeCall(@javax.annotation.Nonnull TariffIn tariffIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'tariffIn' is set
+        if (tariffIn == null) {
+            throw new ApiException("Missing the required parameter 'tariffIn' when calling postCompanyTariff(Async)");
+        }
+
+        return postCompanyTariffCall(tariffIn, _callback);
+
+    }
+
+    /**
+     * Itemises what a formation costs before anyone commits to it.
+     * Itemises what a formation costs before anyone commits to it.  It answers what is due now and what recurs, as separate figures, and marks the state&#39;s filing fee as money we collect and remit rather than keep. A caller can therefore show a payer the whole bill — which is the point of quoting at all, and was impossible while the fee was one number in an error string.  A jurisdiction whose filing fee this deployment has not been told REFUSES, naming the setting that fixes it. Quoting our half as though it were the total is the one answer that would be worse than no answer.
+     * @param tariffIn  (required)
+     * @return Tariff
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public Tariff postCompanyTariff(@javax.annotation.Nonnull TariffIn tariffIn) throws ApiException {
+        ApiResponse<Tariff> localVarResp = postCompanyTariffWithHttpInfo(tariffIn);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Itemises what a formation costs before anyone commits to it.
+     * Itemises what a formation costs before anyone commits to it.  It answers what is due now and what recurs, as separate figures, and marks the state&#39;s filing fee as money we collect and remit rather than keep. A caller can therefore show a payer the whole bill — which is the point of quoting at all, and was impossible while the fee was one number in an error string.  A jurisdiction whose filing fee this deployment has not been told REFUSES, naming the setting that fixes it. Quoting our half as though it were the total is the one answer that would be worse than no answer.
+     * @param tariffIn  (required)
+     * @return ApiResponse&lt;Tariff&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Tariff> postCompanyTariffWithHttpInfo(@javax.annotation.Nonnull TariffIn tariffIn) throws ApiException {
+        okhttp3.Call localVarCall = postCompanyTariffValidateBeforeCall(tariffIn, null);
+        Type localVarReturnType = new TypeToken<Tariff>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Itemises what a formation costs before anyone commits to it. (asynchronously)
+     * Itemises what a formation costs before anyone commits to it.  It answers what is due now and what recurs, as separate figures, and marks the state&#39;s filing fee as money we collect and remit rather than keep. A caller can therefore show a payer the whole bill — which is the point of quoting at all, and was impossible while the fee was one number in an error string.  A jurisdiction whose filing fee this deployment has not been told REFUSES, naming the setting that fixes it. Quoting our half as though it were the total is the one answer that would be worse than no answer.
+     * @param tariffIn  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postCompanyTariffAsync(@javax.annotation.Nonnull TariffIn tariffIn, final ApiCallback<Tariff> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postCompanyTariffValidateBeforeCall(tariffIn, _callback);
+        Type localVarReturnType = new TypeToken<Tariff>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

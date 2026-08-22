@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -84,7 +84,7 @@ public class CallInput {
   }
 
   /**
-   * Get agent
+   * Agent hands the answered call to a Hanzo assistant by name instead of connecting it to a person. Empty places an ordinary call.
    * @return agent
    */
   @javax.annotation.Nullable
@@ -103,7 +103,7 @@ public class CallInput {
   }
 
   /**
-   * Get from
+   * From is the number to call FROM, in E.164. It must be one this org holds.
    * @return from
    */
   @javax.annotation.Nullable
@@ -141,7 +141,7 @@ public class CallInput {
   }
 
   /**
-   * Get to
+   * To is the number to call, in E.164.
    * @return to
    */
   @javax.annotation.Nullable
@@ -160,7 +160,7 @@ public class CallInput {
   }
 
   /**
-   * Get webhook
+   * Webhook is a URL the carrier posts this call&#39;s events to as it progresses. Empty means the call&#39;s outcome is only visible by reading it back.
    * @return webhook
    */
   @javax.annotation.Nullable

@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -124,7 +124,7 @@ public class GpuJob {
   }
 
   /**
-   * Get attempt
+   * Attempt is which try this is, counting from 1. Above 1 means the job was retried after a failed or abandoned run.
    * @return attempt
    */
   @javax.annotation.Nullable
@@ -143,7 +143,7 @@ public class GpuJob {
   }
 
   /**
-   * Get closeTime
+   * CloseTime is when the job reached a terminal state, RFC 3339. Empty means it is still live — queued, running or stalled.
    * @return closeTime
    */
   @javax.annotation.Nullable
@@ -162,7 +162,7 @@ public class GpuJob {
   }
 
   /**
-   * Get failureCause
+   * FailureCause is the engine&#39;s reason the job failed. Empty unless it did.
    * @return failureCause
    */
   @javax.annotation.Nullable
@@ -181,7 +181,7 @@ public class GpuJob {
   }
 
   /**
-   * Get gpu
+   * GPU is the node this job is aimed AT — the lane \&quot;gpu:&lt;node&gt;\&quot; it was submitted on. Empty means the shared any-GPU lane: it was not aimed anywhere and the first free worker takes it.
    * @return gpu
    */
   @javax.annotation.Nullable
@@ -200,7 +200,7 @@ public class GpuJob {
   }
 
   /**
-   * Get id
+   * ID is the job&#39;s id, and the id the cancel route takes. The dispatcher sets it equal to the render&#39;s prompt id, so it is the same value the studio knows the job by.
    * @return id
    */
   @javax.annotation.Nullable
@@ -219,7 +219,7 @@ public class GpuJob {
   }
 
   /**
-   * Get label
+   * Label is the cheap human name for the render — the output filename prefix lifted out of the submitted graph. Empty when the graph carried none. The graph itself is never in this list; the tasks describe endpoint serves it.
    * @return label
    */
   @javax.annotation.Nullable
@@ -238,7 +238,7 @@ public class GpuJob {
   }
 
   /**
-   * Get lastHeartbeat
+   * LastHeartbeat is the claiming worker&#39;s most recent beat on this job, RFC 3339 — the evidence a long render is still alive rather than wedged.
    * @return lastHeartbeat
    */
   @javax.annotation.Nullable
@@ -257,7 +257,7 @@ public class GpuJob {
   }
 
   /**
-   * Get leaseExpiry
+   * LeaseExpiry is when the worker&#39;s claim lapses, RFC 3339. Past it with the job still STARTED, the claimant is presumed dead and Status reads \&quot;stalled\&quot;.
    * @return leaseExpiry
    */
   @javax.annotation.Nullable
@@ -276,7 +276,7 @@ public class GpuJob {
   }
 
   /**
-   * Get runId
+   * RunID identifies this execution of the job. It equals ID for a job the dispatcher submitted, which is why a cancel that omits it still works.
    * @return runId
    */
   @javax.annotation.Nullable
@@ -295,7 +295,7 @@ public class GpuJob {
   }
 
   /**
-   * Get startTime
+   * StartTime is when a worker began executing the job, RFC 3339. Empty while it is still queued.
    * @return startTime
    */
   @javax.annotation.Nullable
@@ -314,7 +314,7 @@ public class GpuJob {
   }
 
   /**
-   * queued|running|completed|failed|canceled
+   * Status is the job&#39;s lifecycle state: queued, running, completed, failed or canceled — plus \&quot;stalled\&quot;, which is this surface&#39;s own reading of a job that is STARTED whose worker died: its lease has elapsed and no reaper has taken it back yet. Without it such a job reads \&quot;running\&quot; forever. An engine state this surface does not recognize passes through lower-cased rather than being coerced into one of these.
    * @return status
    */
   @javax.annotation.Nullable
@@ -333,7 +333,7 @@ public class GpuJob {
   }
 
   /**
-   * Get type
+   * Type is the work being done (\&quot;studio.render\&quot;) — what the claiming worker has to be able to execute.
    * @return type
    */
   @javax.annotation.Nullable
@@ -352,7 +352,7 @@ public class GpuJob {
   }
 
   /**
-   * Get worker
+   * Worker is the node that actually CLAIMED the job, which is not always the one it was aimed at: a shared-lane job has no GPU but does have a Worker once picked up. Empty while the job is still waiting.
    * @return worker
    */
   @javax.annotation.Nullable

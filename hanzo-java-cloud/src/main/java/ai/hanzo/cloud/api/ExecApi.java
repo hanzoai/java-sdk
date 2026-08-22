@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -74,6 +74,104 @@ public class ExecApi {
     }
 
     /**
+     * Build call for getExecFilesBySid
+     * @param sid  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call getExecFilesBySidCall(@javax.annotation.Nonnull String sid, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/exec/files/{sid}"
+            .replace("{" + "sid" + "}", localVarApiClient.escapeString(sid.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getExecFilesBySidValidateBeforeCall(@javax.annotation.Nonnull String sid, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'sid' is set
+        if (sid == null) {
+            throw new ApiException("Missing the required parameter 'sid' when calling getExecFilesBySid(Async)");
+        }
+
+        return getExecFilesBySidCall(sid, _callback);
+
+    }
+
+    /**
+     * List the files in an execution session
+     * Lists what a session&#39;s sandbox holds — the uploads a run can read and the artifacts it produced — each then fetched from /v1/exec/download.  It answers a BARE JSON ARRAY of {name, lastModified}, where &#x60;name&#x60; is the same {session_id}/{fileId} identifier download takes, because that is what the client matches on. An object wrapper would be a wire change, which is why this is not a typed operation.
+     * @param sid  (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void getExecFilesBySid(@javax.annotation.Nonnull String sid) throws ApiException {
+        getExecFilesBySidWithHttpInfo(sid);
+    }
+
+    /**
+     * List the files in an execution session
+     * Lists what a session&#39;s sandbox holds — the uploads a run can read and the artifacts it produced — each then fetched from /v1/exec/download.  It answers a BARE JSON ARRAY of {name, lastModified}, where &#x60;name&#x60; is the same {session_id}/{fileId} identifier download takes, because that is what the client matches on. An object wrapper would be a wire change, which is why this is not a typed operation.
+     * @param sid  (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> getExecFilesBySidWithHttpInfo(@javax.annotation.Nonnull String sid) throws ApiException {
+        okhttp3.Call localVarCall = getExecFilesBySidValidateBeforeCall(sid, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * List the files in an execution session (asynchronously)
+     * Lists what a session&#39;s sandbox holds — the uploads a run can read and the artifacts it produced — each then fetched from /v1/exec/download.  It answers a BARE JSON ARRAY of {name, lastModified}, where &#x60;name&#x60; is the same {session_id}/{fileId} identifier download takes, because that is what the client matches on. An object wrapper would be a wire change, which is why this is not a typed operation.
+     * @param sid  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call getExecFilesBySidAsync(@javax.annotation.Nonnull String sid, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getExecFilesBySidValidateBeforeCall(sid, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for postExec
      * @param codeRun  (required)
      * @param _callback Callback for upload/download progress
@@ -144,7 +242,7 @@ public class ExecApi {
 
     /**
      * Run a code snippet in a sandboxed interpreter
-     * Executes a program in a throwaway sandbox and answers with what it printed and what it left behind.  &#x60;lang&#x60; names one of the thirteen the sandbox image carries — py, js, ts, bash, r, php, go, rs, c, cpp, java, d, f90 — and &#x60;code&#x60; is the whole program, not a fragment: a compiled language is compiled and then run, an interpreted one is interpreted, and &#x60;args&#x60; becomes the program&#39;s own argv either way. Nothing is installed for you; the image is the environment.  A PROGRAM THAT FAILS IS A SUCCESSFUL CALL. A non-zero exit answers 200 with the diagnostics on &#x60;stderr&#x60;, because \&quot;the code threw\&quot; and \&quot;the interpreter is down\&quot; are different facts a caller renders differently. Only the second is an error status.  Runs are stateful through &#x60;session_id&#x60;. Omit it and the run gets a fresh sandbox whose id comes back on the answer; pass that id again and the next run sees the same filesystem, so a program can write a file one call and read it the next. &#x60;files&#x60; names bytes already uploaded to a session (POST /v1/upload), copied in before the program starts. &#x60;files&#x60; on the ANSWER is what the program created or changed, by comparison against a marker taken at start — so it is the run&#39;s real output, not a listing of the directory — and each is fetched from GET /v1/download/{session}/{name}.  The tenant is the caller&#39;s, never the body&#39;s, at every door. A typed op is also an MCP tool and an op-plane op; MCP&#39;s tools/call invokes it directly, with no route and therefore no middleware, so nothing there could have checked a credential. tenantOf refuses a context carrying neither a validated principal nor exec&#39;s own admission marker, so those doors fail closed without a second gate to keep in step.
+     * Executes a program in a throwaway sandbox and answers with what it printed and what it left behind.  &#x60;lang&#x60; names one of the thirteen the sandbox image carries — py, js, ts, bash, r, php, go, rs, c, cpp, java, d, f90 — and &#x60;code&#x60; is the whole program, not a fragment: a compiled language is compiled and then run, an interpreted one is interpreted, and &#x60;args&#x60; becomes the program&#39;s own argv either way. Nothing is installed for you; the image is the environment.  A PROGRAM THAT FAILS IS A SUCCESSFUL CALL. A non-zero exit answers 200 with the diagnostics on &#x60;stderr&#x60;, because \&quot;the code threw\&quot; and \&quot;the interpreter is down\&quot; are different facts a caller renders differently. Only the second is an error status.  Runs are stateful through &#x60;session_id&#x60;. Omit it and the run gets a fresh sandbox whose id comes back on the answer; pass that id again and the next run sees the same filesystem, so a program can write a file one call and read it the next. &#x60;files&#x60; names bytes already uploaded to a session (POST /v1/exec/upload), copied in before the program starts. &#x60;files&#x60; on the ANSWER is what the program created or changed, by comparison against a marker taken at start — so it is the run&#39;s real output, not a listing of the directory — and each is fetched from GET /v1/exec/download/{session}/{name}.  The tenant is the caller&#39;s, never the body&#39;s, at every door. A typed op is also an MCP tool and an op-plane op; MCP&#39;s tools/call invokes it directly, with no route and therefore no middleware, so nothing there could have checked a credential. tenantOf refuses a context carrying neither a validated principal nor exec&#39;s own admission marker, so those doors fail closed without a second gate to keep in step.
      * @param codeRun  (required)
      * @return CodeResult
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -162,7 +260,7 @@ public class ExecApi {
 
     /**
      * Run a code snippet in a sandboxed interpreter
-     * Executes a program in a throwaway sandbox and answers with what it printed and what it left behind.  &#x60;lang&#x60; names one of the thirteen the sandbox image carries — py, js, ts, bash, r, php, go, rs, c, cpp, java, d, f90 — and &#x60;code&#x60; is the whole program, not a fragment: a compiled language is compiled and then run, an interpreted one is interpreted, and &#x60;args&#x60; becomes the program&#39;s own argv either way. Nothing is installed for you; the image is the environment.  A PROGRAM THAT FAILS IS A SUCCESSFUL CALL. A non-zero exit answers 200 with the diagnostics on &#x60;stderr&#x60;, because \&quot;the code threw\&quot; and \&quot;the interpreter is down\&quot; are different facts a caller renders differently. Only the second is an error status.  Runs are stateful through &#x60;session_id&#x60;. Omit it and the run gets a fresh sandbox whose id comes back on the answer; pass that id again and the next run sees the same filesystem, so a program can write a file one call and read it the next. &#x60;files&#x60; names bytes already uploaded to a session (POST /v1/upload), copied in before the program starts. &#x60;files&#x60; on the ANSWER is what the program created or changed, by comparison against a marker taken at start — so it is the run&#39;s real output, not a listing of the directory — and each is fetched from GET /v1/download/{session}/{name}.  The tenant is the caller&#39;s, never the body&#39;s, at every door. A typed op is also an MCP tool and an op-plane op; MCP&#39;s tools/call invokes it directly, with no route and therefore no middleware, so nothing there could have checked a credential. tenantOf refuses a context carrying neither a validated principal nor exec&#39;s own admission marker, so those doors fail closed without a second gate to keep in step.
+     * Executes a program in a throwaway sandbox and answers with what it printed and what it left behind.  &#x60;lang&#x60; names one of the thirteen the sandbox image carries — py, js, ts, bash, r, php, go, rs, c, cpp, java, d, f90 — and &#x60;code&#x60; is the whole program, not a fragment: a compiled language is compiled and then run, an interpreted one is interpreted, and &#x60;args&#x60; becomes the program&#39;s own argv either way. Nothing is installed for you; the image is the environment.  A PROGRAM THAT FAILS IS A SUCCESSFUL CALL. A non-zero exit answers 200 with the diagnostics on &#x60;stderr&#x60;, because \&quot;the code threw\&quot; and \&quot;the interpreter is down\&quot; are different facts a caller renders differently. Only the second is an error status.  Runs are stateful through &#x60;session_id&#x60;. Omit it and the run gets a fresh sandbox whose id comes back on the answer; pass that id again and the next run sees the same filesystem, so a program can write a file one call and read it the next. &#x60;files&#x60; names bytes already uploaded to a session (POST /v1/exec/upload), copied in before the program starts. &#x60;files&#x60; on the ANSWER is what the program created or changed, by comparison against a marker taken at start — so it is the run&#39;s real output, not a listing of the directory — and each is fetched from GET /v1/exec/download/{session}/{name}.  The tenant is the caller&#39;s, never the body&#39;s, at every door. A typed op is also an MCP tool and an op-plane op; MCP&#39;s tools/call invokes it directly, with no route and therefore no middleware, so nothing there could have checked a credential. tenantOf refuses a context carrying neither a validated principal nor exec&#39;s own admission marker, so those doors fail closed without a second gate to keep in step.
      * @param codeRun  (required)
      * @return ApiResponse&lt;CodeResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -181,7 +279,7 @@ public class ExecApi {
 
     /**
      * Run a code snippet in a sandboxed interpreter (asynchronously)
-     * Executes a program in a throwaway sandbox and answers with what it printed and what it left behind.  &#x60;lang&#x60; names one of the thirteen the sandbox image carries — py, js, ts, bash, r, php, go, rs, c, cpp, java, d, f90 — and &#x60;code&#x60; is the whole program, not a fragment: a compiled language is compiled and then run, an interpreted one is interpreted, and &#x60;args&#x60; becomes the program&#39;s own argv either way. Nothing is installed for you; the image is the environment.  A PROGRAM THAT FAILS IS A SUCCESSFUL CALL. A non-zero exit answers 200 with the diagnostics on &#x60;stderr&#x60;, because \&quot;the code threw\&quot; and \&quot;the interpreter is down\&quot; are different facts a caller renders differently. Only the second is an error status.  Runs are stateful through &#x60;session_id&#x60;. Omit it and the run gets a fresh sandbox whose id comes back on the answer; pass that id again and the next run sees the same filesystem, so a program can write a file one call and read it the next. &#x60;files&#x60; names bytes already uploaded to a session (POST /v1/upload), copied in before the program starts. &#x60;files&#x60; on the ANSWER is what the program created or changed, by comparison against a marker taken at start — so it is the run&#39;s real output, not a listing of the directory — and each is fetched from GET /v1/download/{session}/{name}.  The tenant is the caller&#39;s, never the body&#39;s, at every door. A typed op is also an MCP tool and an op-plane op; MCP&#39;s tools/call invokes it directly, with no route and therefore no middleware, so nothing there could have checked a credential. tenantOf refuses a context carrying neither a validated principal nor exec&#39;s own admission marker, so those doors fail closed without a second gate to keep in step.
+     * Executes a program in a throwaway sandbox and answers with what it printed and what it left behind.  &#x60;lang&#x60; names one of the thirteen the sandbox image carries — py, js, ts, bash, r, php, go, rs, c, cpp, java, d, f90 — and &#x60;code&#x60; is the whole program, not a fragment: a compiled language is compiled and then run, an interpreted one is interpreted, and &#x60;args&#x60; becomes the program&#39;s own argv either way. Nothing is installed for you; the image is the environment.  A PROGRAM THAT FAILS IS A SUCCESSFUL CALL. A non-zero exit answers 200 with the diagnostics on &#x60;stderr&#x60;, because \&quot;the code threw\&quot; and \&quot;the interpreter is down\&quot; are different facts a caller renders differently. Only the second is an error status.  Runs are stateful through &#x60;session_id&#x60;. Omit it and the run gets a fresh sandbox whose id comes back on the answer; pass that id again and the next run sees the same filesystem, so a program can write a file one call and read it the next. &#x60;files&#x60; names bytes already uploaded to a session (POST /v1/exec/upload), copied in before the program starts. &#x60;files&#x60; on the ANSWER is what the program created or changed, by comparison against a marker taken at start — so it is the run&#39;s real output, not a listing of the directory — and each is fetched from GET /v1/exec/download/{session}/{name}.  The tenant is the caller&#39;s, never the body&#39;s, at every door. A typed op is also an MCP tool and an op-plane op; MCP&#39;s tools/call invokes it directly, with no route and therefore no middleware, so nothing there could have checked a credential. tenantOf refuses a context carrying neither a validated principal nor exec&#39;s own admission marker, so those doors fail closed without a second gate to keep in step.
      * @param codeRun  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -285,6 +383,94 @@ public class ExecApi {
     public okhttp3.Call postExecProgrammaticAsync(final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postExecProgrammaticValidateBeforeCall(_callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postExecUpload
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call postExecUploadCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/exec/upload";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postExecUploadValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postExecUploadCall(_callback);
+
+    }
+
+    /**
+     * Upload a file into an execution session
+     * Takes a multipart upload and writes the file into the session&#39;s sandbox, so a later run can read it. Answers the session id and the identifier the file is addressed by; &#x60;session_id&#x60; in the form joins an existing session instead of opening one.  The body is multipart/form-data, which is why this is not a typed operation: every non-empty typed body is decoded as JSON.
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void postExecUpload() throws ApiException {
+        postExecUploadWithHttpInfo();
+    }
+
+    /**
+     * Upload a file into an execution session
+     * Takes a multipart upload and writes the file into the session&#39;s sandbox, so a later run can read it. Answers the session id and the identifier the file is addressed by; &#x60;session_id&#x60; in the form joins an existing session instead of opening one.  The body is multipart/form-data, which is why this is not a typed operation: every non-empty typed body is decoded as JSON.
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> postExecUploadWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postExecUploadValidateBeforeCall(null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Upload a file into an execution session (asynchronously)
+     * Takes a multipart upload and writes the file into the session&#39;s sandbox, so a later run can read it. Answers the session id and the identifier the file is addressed by; &#x60;session_id&#x60; in the form joins an existing session instead of opening one.  The body is multipart/form-data, which is why this is not a typed operation: every non-empty typed body is decoded as JSON.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call postExecUploadAsync(final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postExecUploadValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

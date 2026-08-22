@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -74,7 +74,7 @@ public class DriftFlag {
   }
 
   /**
-   * Get kind
+   * Kind is which finding this is, one of stale, un-rolled, floating-declared, floating-running, no-release or zero-assets. It is what code matches on, and the kinds are independent — one row can carry several at once.
    * @return kind
    */
   @javax.annotation.Nullable
@@ -93,7 +93,7 @@ public class DriftFlag {
   }
 
   /**
-   * Get message
+   * Message is the finding in words, naming the tags that produced it (\&quot;running v1.2.3 has not rolled to declared v1.2.4\&quot;). For display: match on Kind.
    * @return message
    */
   @javax.annotation.Nullable
@@ -112,7 +112,7 @@ public class DriftFlag {
   }
 
   /**
-   * Get severity
+   * Severity is this ONE finding&#39;s weight — yellow for stale and un-rolled, red for the other four. It is a constant of the kind (severityOf), never a judgement about the row, so the same kind always weighs the same.
    * @return severity
    */
   @javax.annotation.Nullable

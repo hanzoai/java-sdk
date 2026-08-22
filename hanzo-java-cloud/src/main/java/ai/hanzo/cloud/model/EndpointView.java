@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -74,7 +74,7 @@ public class EndpointView {
   }
 
   /**
-   * Get connector
+   * Connector names a connected account from the org&#39;s connector registry, when the endpoint reaches its provider through one. Absent means the locator stands on its own; the pair below is always sufficient either way.
    * @return connector
    */
   @javax.annotation.Nullable
@@ -93,7 +93,7 @@ public class EndpointView {
   }
 
   /**
-   * Get locator
+   * Locator addresses the thing INSIDE that provider, in the provider&#39;s own terms — an https clone URL for a hosted forge, a bare repository name for hanzo-git. It never carries a credential.
    * @return locator
    */
   @javax.annotation.Nullable
@@ -112,7 +112,7 @@ public class EndpointView {
   }
 
   /**
-   * Get provider
+   * Provider is the concrete integration: \&quot;github\&quot;, \&quot;gitlab\&quot; or \&quot;hanzo-git\&quot;.
    * @return provider
    */
   @javax.annotation.Nullable

@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -74,7 +74,7 @@ public class ProjectsRepo {
   }
 
   /**
-   * Get branch
+   * Branch is the ref a push has to touch for this project to rebuild. Pushes to any other branch are ignored.
    * @return branch
    */
   @javax.annotation.Nullable
@@ -93,7 +93,7 @@ public class ProjectsRepo {
   }
 
   /**
-   * Get provider
+   * Provider is the forge the URL was recognised as — it decides which webhook and which credential reach the repository, and is DERIVED from the URL rather than chosen by the caller.
    * @return provider
    */
   @javax.annotation.Nullable
@@ -112,7 +112,7 @@ public class ProjectsRepo {
   }
 
   /**
-   * Get url
+   * URL is the clone address of the repository this project builds from.
    * @return url
    */
   @javax.annotation.Nullable

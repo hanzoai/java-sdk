@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -86,7 +86,7 @@ public class ArgoRevisionMetadata {
   }
 
   /**
-   * Get author
+   * Author is the commit author. Always absent: an App CR pins an IMAGE, so this process has no commit to read one from and will not invent one.
    * @return author
    */
   @javax.annotation.Nullable
@@ -105,7 +105,7 @@ public class ArgoRevisionMetadata {
   }
 
   /**
-   * Get date
+   * Date is when the App CR was created, RFC 3339 UTC — the only real timestamp there is here. It is NOT the date of the revision asked for.
    * @return date
    */
   @javax.annotation.Nullable
@@ -124,7 +124,7 @@ public class ArgoRevisionMetadata {
   }
 
   /**
-   * Get message
+   * Message is the revision asked for, echoed back — not a commit message. The empty revision and \&quot;HEAD\&quot; resolve to the image tag the CR declares (spec.image.tag), and anything longer than 256 characters is truncated to it.
    * @return message
    */
   @javax.annotation.Nullable
@@ -143,7 +143,7 @@ public class ArgoRevisionMetadata {
   }
 
   /**
-   * Get signatureInfo
+   * SignatureInfo is the GPG verification result for the revision. Always absent: nothing here verifies a signature, and an empty field says so rather than implying an unsigned commit.
    * @return signatureInfo
    */
   @javax.annotation.Nullable
@@ -170,7 +170,7 @@ public class ArgoRevisionMetadata {
   }
 
   /**
-   * Get tags
+   * Tags are the git tags pointing at the revision. Always absent, for the same reason as Author.
    * @return tags
    */
   @javax.annotation.Nullable

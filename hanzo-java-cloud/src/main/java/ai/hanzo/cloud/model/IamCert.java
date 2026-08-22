@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -130,11 +130,6 @@ public class IamCert {
   @SerializedName(SERIALIZED_NAME_OWNER)
   @javax.annotation.Nullable
   private String owner;
-
-  public static final String SERIALIZED_NAME_PRIVATE_KEY = "privateKey";
-  @SerializedName(SERIALIZED_NAME_PRIVATE_KEY)
-  @javax.annotation.Nullable
-  private String privateKey;
 
   public static final String SERIALIZED_NAME_PROVIDER = "provider";
   @SerializedName(SERIALIZED_NAME_PROVIDER)
@@ -463,25 +458,6 @@ public class IamCert {
   }
 
 
-  public IamCert privateKey(@javax.annotation.Nullable String privateKey) {
-    this.privateKey = privateKey;
-    return this;
-  }
-
-  /**
-   * Get privateKey
-   * @return privateKey
-   */
-  @javax.annotation.Nullable
-  public String getPrivateKey() {
-    return privateKey;
-  }
-
-  public void setPrivateKey(@javax.annotation.Nullable String privateKey) {
-    this.privateKey = privateKey;
-  }
-
-
   public IamCert provider(@javax.annotation.Nullable String provider) {
     this.provider = provider;
     return this;
@@ -584,7 +560,6 @@ public class IamCert {
         Objects.equals(this.id, iamCert.id) &&
         Objects.equals(this.name, iamCert.name) &&
         Objects.equals(this.owner, iamCert.owner) &&
-        Objects.equals(this.privateKey, iamCert.privateKey) &&
         Objects.equals(this.provider, iamCert.provider) &&
         Objects.equals(this.scope, iamCert.scope) &&
         Objects.equals(this.type, iamCert.type) &&
@@ -593,7 +568,7 @@ public class IamCert {
 
   @Override
   public int hashCode() {
-    return Objects.hash(accessKey, accessSecret, account, bitSize, certificate, createdAt, createdTime, cryptoAlgorithm, deleted, displayName, domainExpireTime, expireInYears, expireTime, id, name, owner, privateKey, provider, scope, type, updatedAt);
+    return Objects.hash(accessKey, accessSecret, account, bitSize, certificate, createdAt, createdTime, cryptoAlgorithm, deleted, displayName, domainExpireTime, expireInYears, expireTime, id, name, owner, provider, scope, type, updatedAt);
   }
 
   @Override
@@ -616,7 +591,6 @@ public class IamCert {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    owner: ").append(toIndentedString(owner)).append("\n");
-    sb.append("    privateKey: ").append(toIndentedString(privateKey)).append("\n");
     sb.append("    provider: ").append(toIndentedString(provider)).append("\n");
     sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
@@ -642,7 +616,7 @@ public class IamCert {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("accessKey", "accessSecret", "account", "bitSize", "certificate", "createdAt", "createdTime", "cryptoAlgorithm", "deleted", "displayName", "domainExpireTime", "expireInYears", "expireTime", "id", "name", "owner", "privateKey", "provider", "scope", "type", "updatedAt"));
+    openapiFields = new HashSet<String>(Arrays.asList("accessKey", "accessSecret", "account", "bitSize", "certificate", "createdAt", "createdTime", "cryptoAlgorithm", "deleted", "displayName", "domainExpireTime", "expireInYears", "expireTime", "id", "name", "owner", "provider", "scope", "type", "updatedAt"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -704,9 +678,6 @@ public class IamCert {
       }
       if ((jsonObj.get("owner") != null && !jsonObj.get("owner").isJsonNull()) && !jsonObj.get("owner").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `owner` to be a primitive type in the JSON string but got `%s`", jsonObj.get("owner").toString()));
-      }
-      if ((jsonObj.get("privateKey") != null && !jsonObj.get("privateKey").isJsonNull()) && !jsonObj.get("privateKey").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `privateKey` to be a primitive type in the JSON string but got `%s`", jsonObj.get("privateKey").toString()));
       }
       if ((jsonObj.get("provider") != null && !jsonObj.get("provider").isJsonNull()) && !jsonObj.get("provider").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `provider` to be a primitive type in the JSON string but got `%s`", jsonObj.get("provider").toString()));

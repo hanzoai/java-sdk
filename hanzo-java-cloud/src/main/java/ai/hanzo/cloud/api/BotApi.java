@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -27,7 +27,8 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import ai.hanzo.cloud.model.NodesView;
+import ai.hanzo.cloud.model.BotRuns;
+import ai.hanzo.cloud.model.BotStopped;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -73,291 +74,7 @@ public class BotApi {
     }
 
     /**
-     * Build call for deleteBotByWildcard1
-     * @param wildcard1  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public okhttp3.Call deleteBotByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/bot/{wildcard1}"
-            .replace("{" + "wildcard1" + "}", localVarApiClient.escapeString(wildcard1.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteBotByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'wildcard1' is set
-        if (wildcard1 == null) {
-            throw new ApiException("Missing the required parameter 'wildcard1' when calling deleteBotByWildcard1(Async)");
-        }
-
-        return deleteBotByWildcard1Call(wildcard1, _callback);
-
-    }
-
-    /**
-     * Relay one of the bot runtime&#39;s own operational paths
-     * Forwards a request to the bot runtime — the service that executes channels and skills — and hands back its answer unchanged. &#x60;/v1/bot&#x60; is stripped before forwarding, because the runtime serves bare paths: /v1/bot/health reaches it as /health.  This is the runtime&#39;s OPS face, not a control plane. A liveness probe is not a tenant-scoped resource, so it stays a relay rather than being reimplemented in Go; everything a tenant can ACT on is native and typed at /v1/bots.  A validated principal is required and the request is refused with 403 before anything is forwarded — the runtime trusts the identity headers it receives as gateway-minted, so an unauthenticated call must never be allowed to hand it a victim tenant. The caller&#39;s Authorization, org, user, email, project and environment headers ride along; nothing is minted here. The runtime&#39;s own status code and Content-Type come back verbatim (frequently not JSON), the body is bounded at 16 MiB, and a runtime that cannot be reached is 502.  One registration owns this address for every method, so which methods actually answer is the runtime&#39;s decision, not this edge&#39;s.
-     * @param wildcard1  (required)
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public void deleteBotByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        deleteBotByWildcard1WithHttpInfo(wildcard1);
-    }
-
-    /**
-     * Relay one of the bot runtime&#39;s own operational paths
-     * Forwards a request to the bot runtime — the service that executes channels and skills — and hands back its answer unchanged. &#x60;/v1/bot&#x60; is stripped before forwarding, because the runtime serves bare paths: /v1/bot/health reaches it as /health.  This is the runtime&#39;s OPS face, not a control plane. A liveness probe is not a tenant-scoped resource, so it stays a relay rather than being reimplemented in Go; everything a tenant can ACT on is native and typed at /v1/bots.  A validated principal is required and the request is refused with 403 before anything is forwarded — the runtime trusts the identity headers it receives as gateway-minted, so an unauthenticated call must never be allowed to hand it a victim tenant. The caller&#39;s Authorization, org, user, email, project and environment headers ride along; nothing is minted here. The runtime&#39;s own status code and Content-Type come back verbatim (frequently not JSON), the body is bounded at 16 MiB, and a runtime that cannot be reached is 502.  One registration owns this address for every method, so which methods actually answer is the runtime&#39;s decision, not this edge&#39;s.
-     * @param wildcard1  (required)
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Void> deleteBotByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        okhttp3.Call localVarCall = deleteBotByWildcard1ValidateBeforeCall(wildcard1, null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * Relay one of the bot runtime&#39;s own operational paths (asynchronously)
-     * Forwards a request to the bot runtime — the service that executes channels and skills — and hands back its answer unchanged. &#x60;/v1/bot&#x60; is stripped before forwarding, because the runtime serves bare paths: /v1/bot/health reaches it as /health.  This is the runtime&#39;s OPS face, not a control plane. A liveness probe is not a tenant-scoped resource, so it stays a relay rather than being reimplemented in Go; everything a tenant can ACT on is native and typed at /v1/bots.  A validated principal is required and the request is refused with 403 before anything is forwarded — the runtime trusts the identity headers it receives as gateway-minted, so an unauthenticated call must never be allowed to hand it a victim tenant. The caller&#39;s Authorization, org, user, email, project and environment headers ride along; nothing is minted here. The runtime&#39;s own status code and Content-Type come back verbatim (frequently not JSON), the body is bounded at 16 MiB, and a runtime that cannot be reached is 502.  One registration owns this address for every method, so which methods actually answer is the runtime&#39;s decision, not this edge&#39;s.
-     * @param wildcard1  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public okhttp3.Call deleteBotByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = deleteBotByWildcard1ValidateBeforeCall(wildcard1, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getBotByWildcard1
-     * @param wildcard1  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public okhttp3.Call getBotByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/bot/{wildcard1}"
-            .replace("{" + "wildcard1" + "}", localVarApiClient.escapeString(wildcard1.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getBotByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'wildcard1' is set
-        if (wildcard1 == null) {
-            throw new ApiException("Missing the required parameter 'wildcard1' when calling getBotByWildcard1(Async)");
-        }
-
-        return getBotByWildcard1Call(wildcard1, _callback);
-
-    }
-
-    /**
-     * Relay one of the bot runtime&#39;s own operational paths
-     * Forwards a request to the bot runtime — the service that executes channels and skills — and hands back its answer unchanged. &#x60;/v1/bot&#x60; is stripped before forwarding, because the runtime serves bare paths: /v1/bot/health reaches it as /health.  This is the runtime&#39;s OPS face, not a control plane. A liveness probe is not a tenant-scoped resource, so it stays a relay rather than being reimplemented in Go; everything a tenant can ACT on is native and typed at /v1/bots.  A validated principal is required and the request is refused with 403 before anything is forwarded — the runtime trusts the identity headers it receives as gateway-minted, so an unauthenticated call must never be allowed to hand it a victim tenant. The caller&#39;s Authorization, org, user, email, project and environment headers ride along; nothing is minted here. The runtime&#39;s own status code and Content-Type come back verbatim (frequently not JSON), the body is bounded at 16 MiB, and a runtime that cannot be reached is 502.  One registration owns this address for every method, so which methods actually answer is the runtime&#39;s decision, not this edge&#39;s.
-     * @param wildcard1  (required)
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public void getBotByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        getBotByWildcard1WithHttpInfo(wildcard1);
-    }
-
-    /**
-     * Relay one of the bot runtime&#39;s own operational paths
-     * Forwards a request to the bot runtime — the service that executes channels and skills — and hands back its answer unchanged. &#x60;/v1/bot&#x60; is stripped before forwarding, because the runtime serves bare paths: /v1/bot/health reaches it as /health.  This is the runtime&#39;s OPS face, not a control plane. A liveness probe is not a tenant-scoped resource, so it stays a relay rather than being reimplemented in Go; everything a tenant can ACT on is native and typed at /v1/bots.  A validated principal is required and the request is refused with 403 before anything is forwarded — the runtime trusts the identity headers it receives as gateway-minted, so an unauthenticated call must never be allowed to hand it a victim tenant. The caller&#39;s Authorization, org, user, email, project and environment headers ride along; nothing is minted here. The runtime&#39;s own status code and Content-Type come back verbatim (frequently not JSON), the body is bounded at 16 MiB, and a runtime that cannot be reached is 502.  One registration owns this address for every method, so which methods actually answer is the runtime&#39;s decision, not this edge&#39;s.
-     * @param wildcard1  (required)
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Void> getBotByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        okhttp3.Call localVarCall = getBotByWildcard1ValidateBeforeCall(wildcard1, null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * Relay one of the bot runtime&#39;s own operational paths (asynchronously)
-     * Forwards a request to the bot runtime — the service that executes channels and skills — and hands back its answer unchanged. &#x60;/v1/bot&#x60; is stripped before forwarding, because the runtime serves bare paths: /v1/bot/health reaches it as /health.  This is the runtime&#39;s OPS face, not a control plane. A liveness probe is not a tenant-scoped resource, so it stays a relay rather than being reimplemented in Go; everything a tenant can ACT on is native and typed at /v1/bots.  A validated principal is required and the request is refused with 403 before anything is forwarded — the runtime trusts the identity headers it receives as gateway-minted, so an unauthenticated call must never be allowed to hand it a victim tenant. The caller&#39;s Authorization, org, user, email, project and environment headers ride along; nothing is minted here. The runtime&#39;s own status code and Content-Type come back verbatim (frequently not JSON), the body is bounded at 16 MiB, and a runtime that cannot be reached is 502.  One registration owns this address for every method, so which methods actually answer is the runtime&#39;s decision, not this edge&#39;s.
-     * @param wildcard1  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public okhttp3.Call getBotByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getBotByWildcard1ValidateBeforeCall(wildcard1, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getBotConnect
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public okhttp3.Call getBotConnectCall(final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/bot/connect";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getBotConnectValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getBotConnectCall(_callback);
-
-    }
-
-    /**
-     * The socket a bot node dials and holds open to become invokable.
-     * Upgrades to a WebSocket and keeps it for the life of the node. cloud writes a challenge frame immediately; the node answers with a connect frame naming the protocol range it speaks, the role &#x60;node&#x60;, its own node id, and the display name, platform, agent version, capabilities and commands it reports for itself. On acceptance the session is registered, the node appears in this org&#39;s node list, and invocations begin arriving as frames on the same connection.  The upgrade needs a validated principal and answers 403 without one. The org is the gateway&#39;s verdict — injected after IAM validation and after any client copy is stripped — and is never read from the request itself, because a caller that could name an org could attach a machine into someone else&#39;s tenant.  A request carrying an Origin header is refused outright. A node is a daemon and a browser has no business here; since no same-origin policy applies to WebSockets, a page could otherwise ride a signed-in viewer&#39;s session into registering a node. Removing the whole category is the gate, not an allowlist of brand domains. The handshake deadline is one fixed instant rather than a per-read timer, so a peer cannot hold a pre-handshake socket open indefinitely by sending frames this endpoint ignores.  Two things to get right. Everything the node declares about itself — capabilities, commands, platform — is a SELF-REPORT: it is useful to show and never load-bearing, because what the node may actually be asked to run is decided at this socket against the deployment&#39;s allowlist. And a node can only ever answer calls placed on its own connection: correlation ids are minted under the connection id and checked against it, so naming another node&#39;s in-flight call resolves nothing.
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public void getBotConnect() throws ApiException {
-        getBotConnectWithHttpInfo();
-    }
-
-    /**
-     * The socket a bot node dials and holds open to become invokable.
-     * Upgrades to a WebSocket and keeps it for the life of the node. cloud writes a challenge frame immediately; the node answers with a connect frame naming the protocol range it speaks, the role &#x60;node&#x60;, its own node id, and the display name, platform, agent version, capabilities and commands it reports for itself. On acceptance the session is registered, the node appears in this org&#39;s node list, and invocations begin arriving as frames on the same connection.  The upgrade needs a validated principal and answers 403 without one. The org is the gateway&#39;s verdict — injected after IAM validation and after any client copy is stripped — and is never read from the request itself, because a caller that could name an org could attach a machine into someone else&#39;s tenant.  A request carrying an Origin header is refused outright. A node is a daemon and a browser has no business here; since no same-origin policy applies to WebSockets, a page could otherwise ride a signed-in viewer&#39;s session into registering a node. Removing the whole category is the gate, not an allowlist of brand domains. The handshake deadline is one fixed instant rather than a per-read timer, so a peer cannot hold a pre-handshake socket open indefinitely by sending frames this endpoint ignores.  Two things to get right. Everything the node declares about itself — capabilities, commands, platform — is a SELF-REPORT: it is useful to show and never load-bearing, because what the node may actually be asked to run is decided at this socket against the deployment&#39;s allowlist. And a node can only ever answer calls placed on its own connection: correlation ids are minted under the connection id and checked against it, so naming another node&#39;s in-flight call resolves nothing.
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Void> getBotConnectWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getBotConnectValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * The socket a bot node dials and holds open to become invokable. (asynchronously)
-     * Upgrades to a WebSocket and keeps it for the life of the node. cloud writes a challenge frame immediately; the node answers with a connect frame naming the protocol range it speaks, the role &#x60;node&#x60;, its own node id, and the display name, platform, agent version, capabilities and commands it reports for itself. On acceptance the session is registered, the node appears in this org&#39;s node list, and invocations begin arriving as frames on the same connection.  The upgrade needs a validated principal and answers 403 without one. The org is the gateway&#39;s verdict — injected after IAM validation and after any client copy is stripped — and is never read from the request itself, because a caller that could name an org could attach a machine into someone else&#39;s tenant.  A request carrying an Origin header is refused outright. A node is a daemon and a browser has no business here; since no same-origin policy applies to WebSockets, a page could otherwise ride a signed-in viewer&#39;s session into registering a node. Removing the whole category is the gate, not an allowlist of brand domains. The handshake deadline is one fixed instant rather than a per-read timer, so a peer cannot hold a pre-handshake socket open indefinitely by sending frames this endpoint ignores.  Two things to get right. Everything the node declares about itself — capabilities, commands, platform — is a SELF-REPORT: it is useful to show and never load-bearing, because what the node may actually be asked to run is decided at this socket against the deployment&#39;s allowlist. And a node can only ever answer calls placed on its own connection: correlation ids are minted under the connection id and checked against it, so naming another node&#39;s in-flight call resolves nothing.
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public okhttp3.Call getBotConnectAsync(final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getBotConnectValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getBotNodes
+     * Build call for getBotRuns
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -368,7 +85,7 @@ public class BotApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBotNodesCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getBotRunsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -385,7 +102,7 @@ public class BotApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/bot/nodes";
+        String localVarPath = "/v1/bot/runs";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -413,15 +130,15 @@ public class BotApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getBotNodesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getBotNodesCall(_callback);
+    private okhttp3.Call getBotRunsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getBotRunsCall(_callback);
 
     }
 
     /**
-     * Returns the caller org&#39;s currently connected bot nodes: what each one calls itself, the platform it runs on, its agent version, when its socket was established, and the capabilities and commands it reported.
-     * Returns the caller org&#39;s currently connected bot nodes: what each one calls itself, the platform it runs on, its agent version, when its socket was established, and the capabilities and commands it reported.  Only this org&#39;s nodes are listed — the org is half of every key in the table it reads — and only nodes attached to THIS replica, because the list is of live sockets rather than of registrations. The capability and command lists are the node&#39;s own self-report: useful to show, never load-bearing, because what a node may actually be asked to do is decided at the socket against the deployment&#39;s allowlist.
-     * @return NodesView
+     * List returns the caller org&#39;s live bot runs, read from the bot runtime and projected into the console contract with each run&#39;s live session URL derived here.
+     * List returns the caller org&#39;s live bot runs, read from the bot runtime and projected into the console contract with each run&#39;s live session URL derived here.  The org is ALWAYS the validated principal&#39;s org, NEVER a request field, and it is what scopes the runtime&#39;s answer — so one tenant can never enumerate another&#39;s runs. A runtime that cannot answer is an error, not an empty list: [] would tell the caller \&quot;your org has no runs\&quot;, which is a different claim from \&quot;we could not ask\&quot;, and the difference is the whole reason this endpoint exists.
+     * @return BotRuns
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -430,15 +147,15 @@ public class BotApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public NodesView getBotNodes() throws ApiException {
-        ApiResponse<NodesView> localVarResp = getBotNodesWithHttpInfo();
+    public BotRuns getBotRuns() throws ApiException {
+        ApiResponse<BotRuns> localVarResp = getBotRunsWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
-     * Returns the caller org&#39;s currently connected bot nodes: what each one calls itself, the platform it runs on, its agent version, when its socket was established, and the capabilities and commands it reported.
-     * Returns the caller org&#39;s currently connected bot nodes: what each one calls itself, the platform it runs on, its agent version, when its socket was established, and the capabilities and commands it reported.  Only this org&#39;s nodes are listed — the org is half of every key in the table it reads — and only nodes attached to THIS replica, because the list is of live sockets rather than of registrations. The capability and command lists are the node&#39;s own self-report: useful to show, never load-bearing, because what a node may actually be asked to do is decided at the socket against the deployment&#39;s allowlist.
-     * @return ApiResponse&lt;NodesView&gt;
+     * List returns the caller org&#39;s live bot runs, read from the bot runtime and projected into the console contract with each run&#39;s live session URL derived here.
+     * List returns the caller org&#39;s live bot runs, read from the bot runtime and projected into the console contract with each run&#39;s live session URL derived here.  The org is ALWAYS the validated principal&#39;s org, NEVER a request field, and it is what scopes the runtime&#39;s answer — so one tenant can never enumerate another&#39;s runs. A runtime that cannot answer is an error, not an empty list: [] would tell the caller \&quot;your org has no runs\&quot;, which is a different claim from \&quot;we could not ask\&quot;, and the difference is the whole reason this endpoint exists.
+     * @return ApiResponse&lt;BotRuns&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -447,15 +164,15 @@ public class BotApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<NodesView> getBotNodesWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getBotNodesValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<NodesView>(){}.getType();
+    public ApiResponse<BotRuns> getBotRunsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getBotRunsValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<BotRuns>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Returns the caller org&#39;s currently connected bot nodes: what each one calls itself, the platform it runs on, its agent version, when its socket was established, and the capabilities and commands it reported. (asynchronously)
-     * Returns the caller org&#39;s currently connected bot nodes: what each one calls itself, the platform it runs on, its agent version, when its socket was established, and the capabilities and commands it reported.  Only this org&#39;s nodes are listed — the org is half of every key in the table it reads — and only nodes attached to THIS replica, because the list is of live sockets rather than of registrations. The capability and command lists are the node&#39;s own self-report: useful to show, never load-bearing, because what a node may actually be asked to do is decided at the socket against the deployment&#39;s allowlist.
+     * List returns the caller org&#39;s live bot runs, read from the bot runtime and projected into the console contract with each run&#39;s live session URL derived here. (asynchronously)
+     * List returns the caller org&#39;s live bot runs, read from the bot runtime and projected into the console contract with each run&#39;s live session URL derived here.  The org is ALWAYS the validated principal&#39;s org, NEVER a request field, and it is what scopes the runtime&#39;s answer — so one tenant can never enumerate another&#39;s runs. A runtime that cannot answer is an error, not an empty list: [] would tell the caller \&quot;your org has no runs\&quot;, which is a different claim from \&quot;we could not ask\&quot;, and the difference is the whole reason this endpoint exists.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -466,21 +183,20 @@ public class BotApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBotNodesAsync(final ApiCallback<NodesView> _callback) throws ApiException {
+    public okhttp3.Call getBotRunsAsync(final ApiCallback<BotRuns> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getBotNodesValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<NodesView>(){}.getType();
+        okhttp3.Call localVarCall = getBotRunsValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<BotRuns>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for patchBotByWildcard1
-     * @param wildcard1  (required)
+     * Build call for postBotRuns
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call patchBotByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postBotRunsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -497,106 +213,7 @@ public class BotApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/bot/{wildcard1}"
-            .replace("{" + "wildcard1" + "}", localVarApiClient.escapeString(wildcard1.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchBotByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'wildcard1' is set
-        if (wildcard1 == null) {
-            throw new ApiException("Missing the required parameter 'wildcard1' when calling patchBotByWildcard1(Async)");
-        }
-
-        return patchBotByWildcard1Call(wildcard1, _callback);
-
-    }
-
-    /**
-     * Relay one of the bot runtime&#39;s own operational paths
-     * Forwards a request to the bot runtime — the service that executes channels and skills — and hands back its answer unchanged. &#x60;/v1/bot&#x60; is stripped before forwarding, because the runtime serves bare paths: /v1/bot/health reaches it as /health.  This is the runtime&#39;s OPS face, not a control plane. A liveness probe is not a tenant-scoped resource, so it stays a relay rather than being reimplemented in Go; everything a tenant can ACT on is native and typed at /v1/bots.  A validated principal is required and the request is refused with 403 before anything is forwarded — the runtime trusts the identity headers it receives as gateway-minted, so an unauthenticated call must never be allowed to hand it a victim tenant. The caller&#39;s Authorization, org, user, email, project and environment headers ride along; nothing is minted here. The runtime&#39;s own status code and Content-Type come back verbatim (frequently not JSON), the body is bounded at 16 MiB, and a runtime that cannot be reached is 502.  One registration owns this address for every method, so which methods actually answer is the runtime&#39;s decision, not this edge&#39;s.
-     * @param wildcard1  (required)
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public void patchBotByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        patchBotByWildcard1WithHttpInfo(wildcard1);
-    }
-
-    /**
-     * Relay one of the bot runtime&#39;s own operational paths
-     * Forwards a request to the bot runtime — the service that executes channels and skills — and hands back its answer unchanged. &#x60;/v1/bot&#x60; is stripped before forwarding, because the runtime serves bare paths: /v1/bot/health reaches it as /health.  This is the runtime&#39;s OPS face, not a control plane. A liveness probe is not a tenant-scoped resource, so it stays a relay rather than being reimplemented in Go; everything a tenant can ACT on is native and typed at /v1/bots.  A validated principal is required and the request is refused with 403 before anything is forwarded — the runtime trusts the identity headers it receives as gateway-minted, so an unauthenticated call must never be allowed to hand it a victim tenant. The caller&#39;s Authorization, org, user, email, project and environment headers ride along; nothing is minted here. The runtime&#39;s own status code and Content-Type come back verbatim (frequently not JSON), the body is bounded at 16 MiB, and a runtime that cannot be reached is 502.  One registration owns this address for every method, so which methods actually answer is the runtime&#39;s decision, not this edge&#39;s.
-     * @param wildcard1  (required)
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Void> patchBotByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        okhttp3.Call localVarCall = patchBotByWildcard1ValidateBeforeCall(wildcard1, null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * Relay one of the bot runtime&#39;s own operational paths (asynchronously)
-     * Forwards a request to the bot runtime — the service that executes channels and skills — and hands back its answer unchanged. &#x60;/v1/bot&#x60; is stripped before forwarding, because the runtime serves bare paths: /v1/bot/health reaches it as /health.  This is the runtime&#39;s OPS face, not a control plane. A liveness probe is not a tenant-scoped resource, so it stays a relay rather than being reimplemented in Go; everything a tenant can ACT on is native and typed at /v1/bots.  A validated principal is required and the request is refused with 403 before anything is forwarded — the runtime trusts the identity headers it receives as gateway-minted, so an unauthenticated call must never be allowed to hand it a victim tenant. The caller&#39;s Authorization, org, user, email, project and environment headers ride along; nothing is minted here. The runtime&#39;s own status code and Content-Type come back verbatim (frequently not JSON), the body is bounded at 16 MiB, and a runtime that cannot be reached is 502.  One registration owns this address for every method, so which methods actually answer is the runtime&#39;s decision, not this edge&#39;s.
-     * @param wildcard1  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public okhttp3.Call patchBotByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = patchBotByWildcard1ValidateBeforeCall(wildcard1, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postBotByWildcard1
-     * @param wildcard1  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public okhttp3.Call postBotByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/bot/{wildcard1}"
-            .replace("{" + "wildcard1" + "}", localVarApiClient.escapeString(wildcard1.toString()));
+        String localVarPath = "/v1/bot/runs";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -623,60 +240,58 @@ public class BotApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postBotByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'wildcard1' is set
-        if (wildcard1 == null) {
-            throw new ApiException("Missing the required parameter 'wildcard1' when calling postBotByWildcard1(Async)");
-        }
-
-        return postBotByWildcard1Call(wildcard1, _callback);
+    private okhttp3.Call postBotRunsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postBotRunsCall(_callback);
 
     }
 
     /**
-     * Relay one of the bot runtime&#39;s own operational paths
-     * Forwards a request to the bot runtime — the service that executes channels and skills — and hands back its answer unchanged. &#x60;/v1/bot&#x60; is stripped before forwarding, because the runtime serves bare paths: /v1/bot/health reaches it as /health.  This is the runtime&#39;s OPS face, not a control plane. A liveness probe is not a tenant-scoped resource, so it stays a relay rather than being reimplemented in Go; everything a tenant can ACT on is native and typed at /v1/bots.  A validated principal is required and the request is refused with 403 before anything is forwarded — the runtime trusts the identity headers it receives as gateway-minted, so an unauthenticated call must never be allowed to hand it a victim tenant. The caller&#39;s Authorization, org, user, email, project and environment headers ride along; nothing is minted here. The runtime&#39;s own status code and Content-Type come back verbatim (frequently not JSON), the body is bounded at 16 MiB, and a runtime that cannot be reached is 502.  One registration owns this address for every method, so which methods actually answer is the runtime&#39;s decision, not this edge&#39;s.
-     * @param wildcard1  (required)
+     * Reserved address for launching a bot run — not implemented, always 501
+     * Answers 501 to every call. The bot runtime exposes no launch operation, so nothing here can start a sandbox, and this address is published rather than dropped because it is the collection every run is created in: GET lists them, POST would launch one.  The refusal is total and takes no input. The handler never reads the body, so any bytes at all — malformed JSON included — get the same 501; no run id is minted, no session URL is handed back, and no per-run fee is charged. That is the point: the earlier version minted an id the runtime had never heard of, pointed it at a VNC node that did not exist, and took real money for it.  Listing and stopping runs are live and org-scoped. Only the launch is missing, and it returns in the same change that can prove a bot boots.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postBotByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        postBotByWildcard1WithHttpInfo(wildcard1);
+    public void postBotRuns() throws ApiException {
+        postBotRunsWithHttpInfo();
     }
 
     /**
-     * Relay one of the bot runtime&#39;s own operational paths
-     * Forwards a request to the bot runtime — the service that executes channels and skills — and hands back its answer unchanged. &#x60;/v1/bot&#x60; is stripped before forwarding, because the runtime serves bare paths: /v1/bot/health reaches it as /health.  This is the runtime&#39;s OPS face, not a control plane. A liveness probe is not a tenant-scoped resource, so it stays a relay rather than being reimplemented in Go; everything a tenant can ACT on is native and typed at /v1/bots.  A validated principal is required and the request is refused with 403 before anything is forwarded — the runtime trusts the identity headers it receives as gateway-minted, so an unauthenticated call must never be allowed to hand it a victim tenant. The caller&#39;s Authorization, org, user, email, project and environment headers ride along; nothing is minted here. The runtime&#39;s own status code and Content-Type come back verbatim (frequently not JSON), the body is bounded at 16 MiB, and a runtime that cannot be reached is 502.  One registration owns this address for every method, so which methods actually answer is the runtime&#39;s decision, not this edge&#39;s.
-     * @param wildcard1  (required)
+     * Reserved address for launching a bot run — not implemented, always 501
+     * Answers 501 to every call. The bot runtime exposes no launch operation, so nothing here can start a sandbox, and this address is published rather than dropped because it is the collection every run is created in: GET lists them, POST would launch one.  The refusal is total and takes no input. The handler never reads the body, so any bytes at all — malformed JSON included — get the same 501; no run id is minted, no session URL is handed back, and no per-run fee is charged. That is the point: the earlier version minted an id the runtime had never heard of, pointed it at a VNC node that did not exist, and took real money for it.  Listing and stopping runs are live and org-scoped. Only the launch is missing, and it returns in the same change that can prove a bot boots.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postBotByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        okhttp3.Call localVarCall = postBotByWildcard1ValidateBeforeCall(wildcard1, null);
+    public ApiResponse<Void> postBotRunsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postBotRunsValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
     /**
-     * Relay one of the bot runtime&#39;s own operational paths (asynchronously)
-     * Forwards a request to the bot runtime — the service that executes channels and skills — and hands back its answer unchanged. &#x60;/v1/bot&#x60; is stripped before forwarding, because the runtime serves bare paths: /v1/bot/health reaches it as /health.  This is the runtime&#39;s OPS face, not a control plane. A liveness probe is not a tenant-scoped resource, so it stays a relay rather than being reimplemented in Go; everything a tenant can ACT on is native and typed at /v1/bots.  A validated principal is required and the request is refused with 403 before anything is forwarded — the runtime trusts the identity headers it receives as gateway-minted, so an unauthenticated call must never be allowed to hand it a victim tenant. The caller&#39;s Authorization, org, user, email, project and environment headers ride along; nothing is minted here. The runtime&#39;s own status code and Content-Type come back verbatim (frequently not JSON), the body is bounded at 16 MiB, and a runtime that cannot be reached is 502.  One registration owns this address for every method, so which methods actually answer is the runtime&#39;s decision, not this edge&#39;s.
-     * @param wildcard1  (required)
+     * Reserved address for launching a bot run — not implemented, always 501 (asynchronously)
+     * Answers 501 to every call. The bot runtime exposes no launch operation, so nothing here can start a sandbox, and this address is published rather than dropped because it is the collection every run is created in: GET lists them, POST would launch one.  The refusal is total and takes no input. The handler never reads the body, so any bytes at all — malformed JSON included — get the same 501; no run id is minted, no session URL is handed back, and no per-run fee is charged. That is the point: the earlier version minted an id the runtime had never heard of, pointed it at a VNC node that did not exist, and took real money for it.  Listing and stopping runs are live and org-scoped. Only the launch is missing, and it returns in the same change that can prove a bot boots.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postBotByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postBotRunsAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postBotByWildcard1ValidateBeforeCall(wildcard1, _callback);
+        okhttp3.Call localVarCall = postBotRunsValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postBotNodesByIdInvoke
-     * @param id  (required)
+     * Build call for postBotRunsByRunidStop
+     * @param runId  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call postBotNodesByIdInvokeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postBotRunsByRunidStopCall(@javax.annotation.Nonnull String runId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -693,8 +308,8 @@ public class BotApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/bot/nodes/{id}/invoke"
-            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+        String localVarPath = "/v1/bot/runs/{runId}/stop"
+            .replace("{" + "runId" + "}", localVarApiClient.escapeString(runId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -703,6 +318,7 @@ public class BotApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -721,236 +337,72 @@ public class BotApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postBotNodesByIdInvokeValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'id' is set
-        if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling postBotNodesByIdInvoke(Async)");
+    private okhttp3.Call postBotRunsByRunidStopValidateBeforeCall(@javax.annotation.Nonnull String runId, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'runId' is set
+        if (runId == null) {
+            throw new ApiException("Missing the required parameter 'runId' when calling postBotRunsByRunidStop(Async)");
         }
 
-        return postBotNodesByIdInvokeCall(id, _callback);
+        return postBotRunsByRunidStopCall(runId, _callback);
 
     }
 
     /**
-     * Ask one of your connected machines to run a command, and get its answer back.
-     * Sends {command, params, timeoutMs, idempotencyKey} to the named node and answers with what the node returned: {ok, payload, code, message}, where payload is the node&#39;s own JSON passed through — cloud routes the call, it does not interpret the result. A reply that is not valid JSON becomes an empty payload rather than corrupting the response, which ok and code already qualify.  Neither the node nor the org is a body field: the node is the path and the org is the caller&#39;s validated identity, and a field for either would be a field somebody could set to a stranger&#39;s. A validated principal is required (403 without one), and a node id that belongs to another org answers exactly like one that does not exist — not found — so this cannot be used to probe another tenant&#39;s fleet.  Authorization happened ONCE, at the socket, on the replica holding that node — the only place that knows what the node declared it can do. A node attached to a different replica is reached through the peer forward and is authorized by the same code with the same session in hand, so a local node and a forwarded one cannot get different answers. The timeout defaults to 30s and is clamped to 5 minutes, so one request can never pin a node&#39;s socket open indefinitely.  system.run is rewritten before dispatch: its approval control fields are re-derived from the approval record and whatever the caller claimed is discarded, because a caller that could pre-approve itself is the whole thing approvals exist to prevent. No approval registry is wired today, so an invocation CLAIMING an approval is refused while an ordinary one is unaffected.  The one thing to get right: a refusal is a 403 carrying a DOMAIN body — {error, code, reason} — not the flat error envelope the rest of cloud returns, and the same body comes back whether the pre-flight sanitize refused it or the node&#39;s own gate did. Switch on &#x60;code&#x60;. The remaining failures are ordinary statuses: the node not answering in time is 504, and a node that disconnected or could not be reached is 502.
-     * @param id  (required)
+     * Stop terminates one of the caller org&#39;s own bot runs and reports its terminal state.
+     * Stop terminates one of the caller org&#39;s own bot runs and reports its terminal state.  The own-key guard is the org: it is the caller&#39;s validated org, never theirs to choose, and the runtime resolves the run id UNDER it. A run belonging to another tenant is not among this org&#39;s runs, so it answers absent — the same 404 a nonexistent id gets, which is what keeps this from being an oracle.  Absence is honoured ONLY when the runtime answers it. A runtime that does not serve stop reports nothing about the run, and reporting \&quot;stopped\&quot; on that basis would be a stop that cannot fail — so it is a 502.
+     * @param runId  (required)
+     * @return BotStopped
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public void postBotNodesByIdInvoke(@javax.annotation.Nonnull String id) throws ApiException {
-        postBotNodesByIdInvokeWithHttpInfo(id);
+    public BotStopped postBotRunsByRunidStop(@javax.annotation.Nonnull String runId) throws ApiException {
+        ApiResponse<BotStopped> localVarResp = postBotRunsByRunidStopWithHttpInfo(runId);
+        return localVarResp.getData();
     }
 
     /**
-     * Ask one of your connected machines to run a command, and get its answer back.
-     * Sends {command, params, timeoutMs, idempotencyKey} to the named node and answers with what the node returned: {ok, payload, code, message}, where payload is the node&#39;s own JSON passed through — cloud routes the call, it does not interpret the result. A reply that is not valid JSON becomes an empty payload rather than corrupting the response, which ok and code already qualify.  Neither the node nor the org is a body field: the node is the path and the org is the caller&#39;s validated identity, and a field for either would be a field somebody could set to a stranger&#39;s. A validated principal is required (403 without one), and a node id that belongs to another org answers exactly like one that does not exist — not found — so this cannot be used to probe another tenant&#39;s fleet.  Authorization happened ONCE, at the socket, on the replica holding that node — the only place that knows what the node declared it can do. A node attached to a different replica is reached through the peer forward and is authorized by the same code with the same session in hand, so a local node and a forwarded one cannot get different answers. The timeout defaults to 30s and is clamped to 5 minutes, so one request can never pin a node&#39;s socket open indefinitely.  system.run is rewritten before dispatch: its approval control fields are re-derived from the approval record and whatever the caller claimed is discarded, because a caller that could pre-approve itself is the whole thing approvals exist to prevent. No approval registry is wired today, so an invocation CLAIMING an approval is refused while an ordinary one is unaffected.  The one thing to get right: a refusal is a 403 carrying a DOMAIN body — {error, code, reason} — not the flat error envelope the rest of cloud returns, and the same body comes back whether the pre-flight sanitize refused it or the node&#39;s own gate did. Switch on &#x60;code&#x60;. The remaining failures are ordinary statuses: the node not answering in time is 504, and a node that disconnected or could not be reached is 502.
-     * @param id  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * Stop terminates one of the caller org&#39;s own bot runs and reports its terminal state.
+     * Stop terminates one of the caller org&#39;s own bot runs and reports its terminal state.  The own-key guard is the org: it is the caller&#39;s validated org, never theirs to choose, and the runtime resolves the run id UNDER it. A run belonging to another tenant is not among this org&#39;s runs, so it answers absent — the same 404 a nonexistent id gets, which is what keeps this from being an oracle.  Absence is honoured ONLY when the runtime answers it. A runtime that does not serve stop reports nothing about the run, and reporting \&quot;stopped\&quot; on that basis would be a stop that cannot fail — so it is a 502.
+     * @param runId  (required)
+     * @return ApiResponse&lt;BotStopped&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public ApiResponse<Void> postBotNodesByIdInvokeWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = postBotNodesByIdInvokeValidateBeforeCall(id, null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<BotStopped> postBotRunsByRunidStopWithHttpInfo(@javax.annotation.Nonnull String runId) throws ApiException {
+        okhttp3.Call localVarCall = postBotRunsByRunidStopValidateBeforeCall(runId, null);
+        Type localVarReturnType = new TypeToken<BotStopped>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Ask one of your connected machines to run a command, and get its answer back. (asynchronously)
-     * Sends {command, params, timeoutMs, idempotencyKey} to the named node and answers with what the node returned: {ok, payload, code, message}, where payload is the node&#39;s own JSON passed through — cloud routes the call, it does not interpret the result. A reply that is not valid JSON becomes an empty payload rather than corrupting the response, which ok and code already qualify.  Neither the node nor the org is a body field: the node is the path and the org is the caller&#39;s validated identity, and a field for either would be a field somebody could set to a stranger&#39;s. A validated principal is required (403 without one), and a node id that belongs to another org answers exactly like one that does not exist — not found — so this cannot be used to probe another tenant&#39;s fleet.  Authorization happened ONCE, at the socket, on the replica holding that node — the only place that knows what the node declared it can do. A node attached to a different replica is reached through the peer forward and is authorized by the same code with the same session in hand, so a local node and a forwarded one cannot get different answers. The timeout defaults to 30s and is clamped to 5 minutes, so one request can never pin a node&#39;s socket open indefinitely.  system.run is rewritten before dispatch: its approval control fields are re-derived from the approval record and whatever the caller claimed is discarded, because a caller that could pre-approve itself is the whole thing approvals exist to prevent. No approval registry is wired today, so an invocation CLAIMING an approval is refused while an ordinary one is unaffected.  The one thing to get right: a refusal is a 403 carrying a DOMAIN body — {error, code, reason} — not the flat error envelope the rest of cloud returns, and the same body comes back whether the pre-flight sanitize refused it or the node&#39;s own gate did. Switch on &#x60;code&#x60;. The remaining failures are ordinary statuses: the node not answering in time is 504, and a node that disconnected or could not be reached is 502.
-     * @param id  (required)
+     * Stop terminates one of the caller org&#39;s own bot runs and reports its terminal state. (asynchronously)
+     * Stop terminates one of the caller org&#39;s own bot runs and reports its terminal state.  The own-key guard is the org: it is the caller&#39;s validated org, never theirs to choose, and the runtime resolves the run id UNDER it. A run belonging to another tenant is not among this org&#39;s runs, so it answers absent — the same 404 a nonexistent id gets, which is what keeps this from being an oracle.  Absence is honoured ONLY when the runtime answers it. A runtime that does not serve stop reports nothing about the run, and reporting \&quot;stopped\&quot; on that basis would be a stop that cannot fail — so it is a 502.
+     * @param runId  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call postBotNodesByIdInvokeAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postBotRunsByRunidStopAsync(@javax.annotation.Nonnull String runId, final ApiCallback<BotStopped> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postBotNodesByIdInvokeValidateBeforeCall(id, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postBotPeerInvoke
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public okhttp3.Call postBotPeerInvokeCall(final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/bot/peer/invoke";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postBotPeerInvokeValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postBotPeerInvokeCall(_callback);
-
-    }
-
-    /**
-     * Replica-to-replica forward of one invocation to the pod holding the node&#39;s socket.
-     * A machine hop, not a caller-facing route. A node&#39;s socket lands on one replica while invocations land on any, so the replica that took the request forwards it here to the one that actually holds the node, and returns that answer as its own.  It authenticates with the shared peer token, compared in constant time, and carries no user identity at all. That is why the org arrives IN THE BODY here: the forwarding replica already derived it from a gateway-validated header, so the value is a fact being relayed rather than a claim being made. On any caller-facing route the same field would be a cross-tenant invoke primitive.  It fails closed on its own configuration: with no peer token set, or a half-wired cluster that has presence but no way to forward, it serves 503 and forwards nothing — an unauthenticated endpoint that takes an org from a body is precisely the hole. A missing or wrong token is 403, and the forwarded body is bounded on read.  Two things to get right. Its refusals are text/plain rather than the JSON every zip error uses, so a client decoding them as JSON will fail on the error path only. And an invocation that RAN but was denied still answers 200 here, carrying a stable error token in the JSON body — no such node, timeout, node gone, denied, failed — which the calling replica maps back onto the status codes a caller sees. Authorization already ran on this replica at the socket and is deliberately not repeated.
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public void postBotPeerInvoke() throws ApiException {
-        postBotPeerInvokeWithHttpInfo();
-    }
-
-    /**
-     * Replica-to-replica forward of one invocation to the pod holding the node&#39;s socket.
-     * A machine hop, not a caller-facing route. A node&#39;s socket lands on one replica while invocations land on any, so the replica that took the request forwards it here to the one that actually holds the node, and returns that answer as its own.  It authenticates with the shared peer token, compared in constant time, and carries no user identity at all. That is why the org arrives IN THE BODY here: the forwarding replica already derived it from a gateway-validated header, so the value is a fact being relayed rather than a claim being made. On any caller-facing route the same field would be a cross-tenant invoke primitive.  It fails closed on its own configuration: with no peer token set, or a half-wired cluster that has presence but no way to forward, it serves 503 and forwards nothing — an unauthenticated endpoint that takes an org from a body is precisely the hole. A missing or wrong token is 403, and the forwarded body is bounded on read.  Two things to get right. Its refusals are text/plain rather than the JSON every zip error uses, so a client decoding them as JSON will fail on the error path only. And an invocation that RAN but was denied still answers 200 here, carrying a stable error token in the JSON body — no such node, timeout, node gone, denied, failed — which the calling replica maps back onto the status codes a caller sees. Authorization already ran on this replica at the socket and is deliberately not repeated.
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Void> postBotPeerInvokeWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postBotPeerInvokeValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * Replica-to-replica forward of one invocation to the pod holding the node&#39;s socket. (asynchronously)
-     * A machine hop, not a caller-facing route. A node&#39;s socket lands on one replica while invocations land on any, so the replica that took the request forwards it here to the one that actually holds the node, and returns that answer as its own.  It authenticates with the shared peer token, compared in constant time, and carries no user identity at all. That is why the org arrives IN THE BODY here: the forwarding replica already derived it from a gateway-validated header, so the value is a fact being relayed rather than a claim being made. On any caller-facing route the same field would be a cross-tenant invoke primitive.  It fails closed on its own configuration: with no peer token set, or a half-wired cluster that has presence but no way to forward, it serves 503 and forwards nothing — an unauthenticated endpoint that takes an org from a body is precisely the hole. A missing or wrong token is 403, and the forwarded body is bounded on read.  Two things to get right. Its refusals are text/plain rather than the JSON every zip error uses, so a client decoding them as JSON will fail on the error path only. And an invocation that RAN but was denied still answers 200 here, carrying a stable error token in the JSON body — no such node, timeout, node gone, denied, failed — which the calling replica maps back onto the status codes a caller sees. Authorization already ran on this replica at the socket and is deliberately not repeated.
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public okhttp3.Call postBotPeerInvokeAsync(final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postBotPeerInvokeValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for putBotByWildcard1
-     * @param wildcard1  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public okhttp3.Call putBotByWildcard1Call(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/bot/{wildcard1}"
-            .replace("{" + "wildcard1" + "}", localVarApiClient.escapeString(wildcard1.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call putBotByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'wildcard1' is set
-        if (wildcard1 == null) {
-            throw new ApiException("Missing the required parameter 'wildcard1' when calling putBotByWildcard1(Async)");
-        }
-
-        return putBotByWildcard1Call(wildcard1, _callback);
-
-    }
-
-    /**
-     * Relay one of the bot runtime&#39;s own operational paths
-     * Forwards a request to the bot runtime — the service that executes channels and skills — and hands back its answer unchanged. &#x60;/v1/bot&#x60; is stripped before forwarding, because the runtime serves bare paths: /v1/bot/health reaches it as /health.  This is the runtime&#39;s OPS face, not a control plane. A liveness probe is not a tenant-scoped resource, so it stays a relay rather than being reimplemented in Go; everything a tenant can ACT on is native and typed at /v1/bots.  A validated principal is required and the request is refused with 403 before anything is forwarded — the runtime trusts the identity headers it receives as gateway-minted, so an unauthenticated call must never be allowed to hand it a victim tenant. The caller&#39;s Authorization, org, user, email, project and environment headers ride along; nothing is minted here. The runtime&#39;s own status code and Content-Type come back verbatim (frequently not JSON), the body is bounded at 16 MiB, and a runtime that cannot be reached is 502.  One registration owns this address for every method, so which methods actually answer is the runtime&#39;s decision, not this edge&#39;s.
-     * @param wildcard1  (required)
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public void putBotByWildcard1(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        putBotByWildcard1WithHttpInfo(wildcard1);
-    }
-
-    /**
-     * Relay one of the bot runtime&#39;s own operational paths
-     * Forwards a request to the bot runtime — the service that executes channels and skills — and hands back its answer unchanged. &#x60;/v1/bot&#x60; is stripped before forwarding, because the runtime serves bare paths: /v1/bot/health reaches it as /health.  This is the runtime&#39;s OPS face, not a control plane. A liveness probe is not a tenant-scoped resource, so it stays a relay rather than being reimplemented in Go; everything a tenant can ACT on is native and typed at /v1/bots.  A validated principal is required and the request is refused with 403 before anything is forwarded — the runtime trusts the identity headers it receives as gateway-minted, so an unauthenticated call must never be allowed to hand it a victim tenant. The caller&#39;s Authorization, org, user, email, project and environment headers ride along; nothing is minted here. The runtime&#39;s own status code and Content-Type come back verbatim (frequently not JSON), the body is bounded at 16 MiB, and a runtime that cannot be reached is 502.  One registration owns this address for every method, so which methods actually answer is the runtime&#39;s decision, not this edge&#39;s.
-     * @param wildcard1  (required)
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Void> putBotByWildcard1WithHttpInfo(@javax.annotation.Nonnull String wildcard1) throws ApiException {
-        okhttp3.Call localVarCall = putBotByWildcard1ValidateBeforeCall(wildcard1, null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * Relay one of the bot runtime&#39;s own operational paths (asynchronously)
-     * Forwards a request to the bot runtime — the service that executes channels and skills — and hands back its answer unchanged. &#x60;/v1/bot&#x60; is stripped before forwarding, because the runtime serves bare paths: /v1/bot/health reaches it as /health.  This is the runtime&#39;s OPS face, not a control plane. A liveness probe is not a tenant-scoped resource, so it stays a relay rather than being reimplemented in Go; everything a tenant can ACT on is native and typed at /v1/bots.  A validated principal is required and the request is refused with 403 before anything is forwarded — the runtime trusts the identity headers it receives as gateway-minted, so an unauthenticated call must never be allowed to hand it a victim tenant. The caller&#39;s Authorization, org, user, email, project and environment headers ride along; nothing is minted here. The runtime&#39;s own status code and Content-Type come back verbatim (frequently not JSON), the body is bounded at 16 MiB, and a runtime that cannot be reached is 502.  One registration owns this address for every method, so which methods actually answer is the runtime&#39;s decision, not this edge&#39;s.
-     * @param wildcard1  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public okhttp3.Call putBotByWildcard1Async(@javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = putBotByWildcard1ValidateBeforeCall(wildcard1, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = postBotRunsByRunidStopValidateBeforeCall(runId, _callback);
+        Type localVarReturnType = new TypeToken<BotStopped>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 }

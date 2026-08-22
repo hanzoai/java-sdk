@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -85,7 +85,7 @@ public class FleetMetrics {
   }
 
   /**
-   * Get at
+   * At is when this reading was MEASURED, RFC 3339 in UTC — not when the board was built. A console decides staleness by comparing it to now; the board deliberately does not decide that for it.
    * @return at
    */
   @javax.annotation.Nullable
@@ -104,7 +104,7 @@ public class FleetMetrics {
   }
 
   /**
-   * Get gpuUtil
+   * GPUUtil is aggregate accelerator utilization as a FRACTION of 1 — 0.42 is 42% busy, never 42. Across all of the unit&#39;s cards, not one of them.
    * @return gpuUtil
    */
   @javax.annotation.Nullable
@@ -123,7 +123,7 @@ public class FleetMetrics {
   }
 
   /**
-   * Get load1
+   * Load1 is the host&#39;s 1-minute load average — runnable processes, not a percentage, so it is read against the unit&#39;s core count and can exceed 1.
    * @return load1
    */
   @javax.annotation.Nullable
@@ -142,7 +142,7 @@ public class FleetMetrics {
   }
 
   /**
-   * Get memFree
+   * MemFree is host memory still available, in BYTES. It is what the source reported, not fleetSpec.Memory minus MemUsed.
    * @return memFree
    */
   @javax.annotation.Nullable
@@ -161,7 +161,7 @@ public class FleetMetrics {
   }
 
   /**
-   * Get memUsed
+   * MemUsed is host memory in use, in BYTES.
    * @return memUsed
    */
   @javax.annotation.Nullable

@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -86,7 +86,7 @@ public class StrategyView {
   }
 
   /**
-   * Get action
+   * Action is the tactic itself: the thing to go and do.
    * @return action
    */
   @javax.annotation.Nullable
@@ -105,7 +105,7 @@ public class StrategyView {
   }
 
   /**
-   * Get category
+   * Category is the growth discipline the tactic belongs to — the axis &#x60;?category&#x3D;&#x60; narrows on.
    * @return category
    */
   @javax.annotation.Nullable
@@ -124,7 +124,7 @@ public class StrategyView {
   }
 
   /**
-   * Get id
+   * ID is the tactic&#39;s stable slug in the corpus.
    * @return id
    */
   @javax.annotation.Nullable
@@ -151,7 +151,7 @@ public class StrategyView {
   }
 
   /**
-   * Get tags
+   * Tags are the PRECONDITIONS this tactic already satisfied to appear in the answer — &#x60;stage:&lt;name&gt;&#x60; and &#x60;has:&lt;capability&gt;&#x60; predicates over the org&#39;s observed profile. They are carried back so a caller can show why a tactic surfaced, not so it can filter again.
    * @return tags
    */
   @javax.annotation.Nullable
@@ -170,7 +170,7 @@ public class StrategyView {
   }
 
   /**
-   * Get workload
+   * Workload is how much effort running the tactic costs, so a corpus can be cut to what the org has the hands for.
    * @return workload
    */
   @javax.annotation.Nullable

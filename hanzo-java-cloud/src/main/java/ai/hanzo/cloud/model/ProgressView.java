@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -79,7 +79,7 @@ public class ProgressView {
   }
 
   /**
-   * Get done
+   * Done counts steps that are FINISHED — done and skipped alike, since a step the org deliberately passed over is not still owed. It therefore rises when somebody skips, which is the intended reading of a checklist.
    * @return done
    */
   @javax.annotation.Nullable
@@ -98,7 +98,7 @@ public class ProgressView {
   }
 
   /**
-   * Get next
+   * Next is the id of the step to do next: the first available, unfinished step in authoring order. Empty when the journey is complete, and also empty when every remaining step is blocked by a dependency.
    * @return next
    */
   @javax.annotation.Nullable
@@ -117,7 +117,7 @@ public class ProgressView {
   }
 
   /**
-   * Get percent
+   * Percent is done/total as a whole number 0-100, rounded, so a caller renders a bar without recomputing it. Total zero reads as 0.
    * @return percent
    */
   @javax.annotation.Nullable
@@ -136,7 +136,7 @@ public class ProgressView {
   }
 
   /**
-   * Get total
+   * Total is how many steps this org&#39;s journey holds — the ENABLED steps of the playbook, so it shrinks when an operator disables one and does not match the authored step count.
    * @return total
    */
   @javax.annotation.Nullable

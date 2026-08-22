@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -33,7 +33,6 @@ import ai.hanzo.cloud.model.DefsOut;
 import ai.hanzo.cloud.model.DeletedOut;
 import ai.hanzo.cloud.model.EvaluateIn;
 import ai.hanzo.cloud.model.HealthOut;
-import ai.hanzo.cloud.model.WaitlistModeView;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -688,131 +687,6 @@ public class FlagsApi {
 
         okhttp3.Call localVarCall = getFlagsHealthValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<HealthOut>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getFlagsWaitlist
-     * @param host Host is the host to resolve, e.g. \&quot;chat.hanzo.ai\&quot;. Defaults to the request&#39;s own Host header when omitted, which is what lets a guard running on the governed host ask about itself with no argument. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getFlagsWaitlistCall(@javax.annotation.Nullable String host, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/flags/waitlist";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (host != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("host", host));
-        }
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getFlagsWaitlistValidateBeforeCall(@javax.annotation.Nullable String host, final ApiCallback _callback) throws ApiException {
-        return getFlagsWaitlistCall(host, _callback);
-
-    }
-
-    /**
-     * Reports whether ONE host is currently gated by the launch waitlist.
-     * Reports whether ONE host is currently gated by the launch waitlist. It resolves the host to the service that governs it and reads that service&#39;s waitlist switch, so a guard sitting in front of a hosted surface can decide in one call whether to show the waitlist or the product. It answers for the ONE host asked about and never enumerates the registry, which is why it needs no credential. It FAILS OPEN: an unregistered host, an unmounted registry and a store fault all answer known&#x3D;false with mode&#x3D;false, so a request is never gated pre-boot or on a registry fault.
-     * @param host Host is the host to resolve, e.g. \&quot;chat.hanzo.ai\&quot;. Defaults to the request&#39;s own Host header when omitted, which is what lets a guard running on the governed host ask about itself with no argument. (optional)
-     * @return WaitlistModeView
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public WaitlistModeView getFlagsWaitlist(@javax.annotation.Nullable String host) throws ApiException {
-        ApiResponse<WaitlistModeView> localVarResp = getFlagsWaitlistWithHttpInfo(host);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Reports whether ONE host is currently gated by the launch waitlist.
-     * Reports whether ONE host is currently gated by the launch waitlist. It resolves the host to the service that governs it and reads that service&#39;s waitlist switch, so a guard sitting in front of a hosted surface can decide in one call whether to show the waitlist or the product. It answers for the ONE host asked about and never enumerates the registry, which is why it needs no credential. It FAILS OPEN: an unregistered host, an unmounted registry and a store fault all answer known&#x3D;false with mode&#x3D;false, so a request is never gated pre-boot or on a registry fault.
-     * @param host Host is the host to resolve, e.g. \&quot;chat.hanzo.ai\&quot;. Defaults to the request&#39;s own Host header when omitted, which is what lets a guard running on the governed host ask about itself with no argument. (optional)
-     * @return ApiResponse&lt;WaitlistModeView&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<WaitlistModeView> getFlagsWaitlistWithHttpInfo(@javax.annotation.Nullable String host) throws ApiException {
-        okhttp3.Call localVarCall = getFlagsWaitlistValidateBeforeCall(host, null);
-        Type localVarReturnType = new TypeToken<WaitlistModeView>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Reports whether ONE host is currently gated by the launch waitlist. (asynchronously)
-     * Reports whether ONE host is currently gated by the launch waitlist. It resolves the host to the service that governs it and reads that service&#39;s waitlist switch, so a guard sitting in front of a hosted surface can decide in one call whether to show the waitlist or the product. It answers for the ONE host asked about and never enumerates the registry, which is why it needs no credential. It FAILS OPEN: an unregistered host, an unmounted registry and a store fault all answer known&#x3D;false with mode&#x3D;false, so a request is never gated pre-boot or on a registry fault.
-     * @param host Host is the host to resolve, e.g. \&quot;chat.hanzo.ai\&quot;. Defaults to the request&#39;s own Host header when omitted, which is what lets a guard running on the governed host ask about itself with no argument. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getFlagsWaitlistAsync(@javax.annotation.Nullable String host, final ApiCallback<WaitlistModeView> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getFlagsWaitlistValidateBeforeCall(host, _callback);
-        Type localVarReturnType = new TypeToken<WaitlistModeView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

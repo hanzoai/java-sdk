@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -118,7 +118,7 @@ public class RiskSplitCounts {
   }
 
   /**
-   * Productive and Unproductive are the two judged classes, so the imbalance is visible before anyone trains on it.
+   * Productive is how many judged rows carry the one disposition.
    * @return productive
    */
   @javax.annotation.Nullable
@@ -137,7 +137,7 @@ public class RiskSplitCounts {
   }
 
   /**
-   * Get rows
+   * Rows is how many rows the version holds across every split. It is the size of the version, not of the source window — the horizon, the cuts and the row cap all bind before this number.
    * @return rows
    */
   @javax.annotation.Nullable
@@ -175,7 +175,7 @@ public class RiskSplitCounts {
   }
 
   /**
-   * Get test
+   * Test is how many fall after the second cut — the LATEST slice, and the only one a score is honest about, since the split is temporal.
    * @return test
    */
   @javax.annotation.Nullable
@@ -194,7 +194,7 @@ public class RiskSplitCounts {
   }
 
   /**
-   * Get train
+   * Train is how many rows fall before the first cut — the EARLIEST slice of the window, which is what a model is fitted on.
    * @return train
    */
   @javax.annotation.Nullable
@@ -213,7 +213,7 @@ public class RiskSplitCounts {
   }
 
   /**
-   * Get unproductive
+   * Unproductive is how many carry the other. With Productive it accounts for Judged, so the class imbalance is visible before anyone trains on it; both stay 0 while Judged is 0.
    * @return unproductive
    */
   @javax.annotation.Nullable
@@ -232,7 +232,7 @@ public class RiskSplitCounts {
   }
 
   /**
-   * Get val
+   * Val is how many fall between the two cuts, held out for tuning.
    * @return val
    */
   @javax.annotation.Nullable

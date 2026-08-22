@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -94,7 +94,7 @@ public class BuildTurn {
   }
 
   /**
-   * Get actor
+   * Actor is who took the turn. A deploy turn&#39;s actor is the literal \&quot;deploy\&quot;, because nobody took it.
    * @return actor
    */
   @javax.annotation.Nullable
@@ -113,7 +113,7 @@ public class BuildTurn {
   }
 
   /**
-   * Get at
+   * At is when the turn was recorded, RFC 3339 in UTC to the second.
    * @return at
    */
   @javax.annotation.Nullable
@@ -132,7 +132,7 @@ public class BuildTurn {
   }
 
   /**
-   * Get body
+   * Body is the readable text of the turn, taken from the stored event&#39;s &#x60;text&#x60;. Empty when the event carried a payload of some other shape — this route reads transcripts and does not invent prose for turns that are not one.
    * @return body
    */
   @javax.annotation.Nullable
@@ -151,7 +151,7 @@ public class BuildTurn {
   }
 
   /**
-   * Get commit
+   * Commit is the full sha this turn produced, empty when the turn changed nothing. It is ECHOED from the transcript, and the authority is the commit itself: it carries the &#x60;Hanzo-Session:&#x60;/&#x60;Hanzo-Turn:&#x60; trailer, or a note under refs/notes/hanzo-provenance saying the same, so the claim is checkable at source with the command in &#x60;verify&#x60;.
    * @return commit
    */
   @javax.annotation.Nullable
@@ -170,7 +170,7 @@ public class BuildTurn {
   }
 
   /**
-   * Get kind
+   * Kind is what the turn was, from the log&#39;s closed six: message, tool-call, spawn, log, status, control. A deploy arrives as a &#x60;status&#x60; turn.
    * @return kind
    */
   @javax.annotation.Nullable
@@ -189,7 +189,7 @@ public class BuildTurn {
   }
 
   /**
-   * Get subject
+   * Subject is that commit&#39;s subject line, from the same transcript, so a reader sees what the commit says without fetching the repository.
    * @return subject
    */
   @javax.annotation.Nullable
@@ -208,7 +208,7 @@ public class BuildTurn {
   }
 
   /**
-   * Get turn
+   * Seq is this turn&#39;s POSITION in the session&#39;s log — monotonic from 1, per session — and it is what a commit&#39;s &#x60;Hanzo-Turn:&#x60; trailer names. It is not a count of anything: the count is &#x60;turns&#x60; on the summary beside it.
    * @return turn
    */
   @javax.annotation.Nullable

@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -93,7 +93,7 @@ public class O11yStatusComponent {
   }
 
   /**
-   * Get id
+   * ID is the component&#39;s stable handle, which on this platform IS the service name — there is no separate component registry to allocate ids from.
    * @return id
    */
   @javax.annotation.Nullable
@@ -112,7 +112,7 @@ public class O11yStatusComponent {
   }
 
   /**
-   * Get name
+   * Name is the service as the fleet prober knows it (the &#x60;service&#x60; label on hanzo_service_up), so a reader can match a component to what is being probed.
    * @return name
    */
   @javax.annotation.Nullable

@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -89,7 +89,7 @@ public class ProjectView {
   }
 
   /**
-   * Get applications
+   * Applications is how many platform apps this org has under the project, counted per request. It is the one fact IAM cannot answer about a project.
    * @return applications
    */
   @javax.annotation.Nullable
@@ -108,7 +108,7 @@ public class ProjectView {
   }
 
   /**
-   * Get createdAt
+   * CreatedAt is IAM&#39;s creation time as unix seconds. 0 when IAM&#39;s timestamp is absent or unparseable — never a fabricated time.
    * @return createdAt
    */
   @javax.annotation.Nullable
@@ -127,7 +127,7 @@ public class ProjectView {
   }
 
   /**
-   * Get description
+   * Description is IAM&#39;s free text about the project. Nothing derives from it.
    * @return description
    */
   @javax.annotation.Nullable
@@ -146,7 +146,7 @@ public class ProjectView {
   }
 
   /**
-   * Get name
+   * Name is IAM&#39;s display name, falling back to the slug when the project has none, so this is never empty.
    * @return name
    */
   @javax.annotation.Nullable
@@ -165,7 +165,7 @@ public class ProjectView {
   }
 
   /**
-   * Get org
+   * Org is the project&#39;s IAM owner, and the tenant every app under it deploys into. It comes from the validated identity, never from the request.
    * @return org
    */
   @javax.annotation.Nullable
@@ -184,7 +184,7 @@ public class ProjectView {
   }
 
   /**
-   * Get slug
+   * Slug is the project&#39;s IAM name — half of the (org,name) identity, the &#x60;:project&#x60; path segment, and the scope key an app is filed under. It is the project&#39;s address; Name is not.
    * @return slug
    */
   @javax.annotation.Nullable

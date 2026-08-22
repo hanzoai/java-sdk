@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -153,6 +153,11 @@ public class ProjectsProject {
   @javax.annotation.Nullable
   private String space;
 
+  public static final String SERIALIZED_NAME_STARRED = "starred";
+  @SerializedName(SERIALIZED_NAME_STARRED)
+  @javax.annotation.Nullable
+  private Boolean starred;
+
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
   @javax.annotation.Nullable
@@ -187,7 +192,7 @@ public class ProjectsProject {
   }
 
   /**
-   * Analytics is the wired-by-default web-analytics flag (default true). It is the value the app&#39;s static-builder reads as deployment.analytics to inject the beacon. Space is the project&#39;s Base data space (\&quot;&lt;org&gt;/&lt;slug&gt;\&quot;) a deployed site posts form/forum/data submissions to under /v1/base.
+   * Analytics is whether the web-analytics beacon is injected into this site&#39;s pages. It is ON by default — a project has to opt out — and it is what the static builder reads to decide whether to inject at all.
    * @return analytics
    */
   @javax.annotation.Nullable
@@ -206,7 +211,7 @@ public class ProjectsProject {
   }
 
   /**
-   * Get bucket
+   * Bucket is the object-store bucket the site&#39;s files are served out of.
    * @return bucket
    */
   @javax.annotation.Nullable
@@ -225,7 +230,7 @@ public class ProjectsProject {
   }
 
   /**
-   * Cache is the site&#39;s edge-cache state: the HTML/document Cache-Control policy in effect (TTL) and the last edge-purge time, so a console can show freshness.
+   * CacheControl is the Cache-Control policy the edge serves this site&#39;s HTML under — how long a reader may hold a stale page before asking again. Assets are content-addressed and are not governed by it.
    * @return cacheControl
    */
   @javax.annotation.Nullable
@@ -244,7 +249,7 @@ public class ProjectsProject {
   }
 
   /**
-   * Get createdAt
+   * CreatedAt is when the project was created, as Unix seconds.
    * @return createdAt
    */
   @javax.annotation.Nullable
@@ -263,7 +268,7 @@ public class ProjectsProject {
   }
 
   /**
-   * Get currentDeploymentId
+   * CurrentDeploymentID names the deployment currently serving, so a caller can ask what is live without scanning the history.
    * @return currentDeploymentId
    */
   @javax.annotation.Nullable
@@ -282,7 +287,7 @@ public class ProjectsProject {
   }
 
   /**
-   * Get description
+   * Description is the one-line summary, which is copied onto forks of this project and shown on a gallery card.
    * @return description
    */
   @javax.annotation.Nullable
@@ -320,7 +325,7 @@ public class ProjectsProject {
   }
 
   /**
-   * Get framework
+   * Framework is a BUILD HINT from a closed set, defaulting to static. It tells CI how to build a linked repo and never gates a deploy, so a wrong value costs a build rather than access.
    * @return framework
    */
   @javax.annotation.Nullable
@@ -339,7 +344,7 @@ public class ProjectsProject {
   }
 
   /**
-   * Get hidden
+   * Hidden is PLATFORM MODERATION, and it is a different axis from visibility: it pulls a public project out of the catalogue without editing the publisher&#39;s own choice, so un-hiding restores exactly what they asked for. A project is listed only when it is public AND not hidden. Always present, never omitted, for the same reason as visibility.
    * @return hidden
    */
   @javax.annotation.Nullable
@@ -358,7 +363,7 @@ public class ProjectsProject {
   }
 
   /**
-   * Get hiddenReason
+   * HiddenReason is why moderation hid it. Absent when it is not hidden.
    * @return hiddenReason
    */
   @javax.annotation.Nullable
@@ -377,7 +382,7 @@ public class ProjectsProject {
   }
 
   /**
-   * Get id
+   * ID is the project&#39;s internal identifier. It is stable across a rename, but it is not what the API addresses this project by — &#x60;slug&#x60; is.
    * @return id
    */
   @javax.annotation.Nullable
@@ -415,7 +420,7 @@ public class ProjectsProject {
   }
 
   /**
-   * Get lastPurgeAt
+   * LastPurgeAt is when the edge cache was last cleared, as Unix seconds, so a console can say how fresh what readers see actually is. Absent means never.
    * @return lastPurgeAt
    */
   @javax.annotation.Nullable
@@ -434,7 +439,7 @@ public class ProjectsProject {
   }
 
   /**
-   * Get license
+   * License is the terms that upstream work carries. Absent has the same reading: undeclared, not unencumbered.
    * @return license
    */
   @javax.annotation.Nullable
@@ -453,7 +458,7 @@ public class ProjectsProject {
   }
 
   /**
-   * Get liveUrl
+   * LiveURL is where the site answers today. Absent until something has been deployed.
    * @return liveUrl
    */
   @javax.annotation.Nullable
@@ -472,7 +477,7 @@ public class ProjectsProject {
   }
 
   /**
-   * Get name
+   * Name is the project&#39;s display name, free text a person chose.
    * @return name
    */
   @javax.annotation.Nullable
@@ -491,7 +496,7 @@ public class ProjectsProject {
   }
 
   /**
-   * Get org
+   * Org is the organisation that owns the project, and therefore who pays for it and who may change it. It is also the AUTHORSHIP line a gallery credits; there is no separate author field.
    * @return org
    */
   @javax.annotation.Nullable
@@ -510,7 +515,7 @@ public class ProjectsProject {
   }
 
   /**
-   * Get repo
+   * Repo is the git source this project builds from, empty when it is deployed by uploading an artifact instead.
    * @return repo
    */
   @javax.annotation.Nullable
@@ -529,7 +534,7 @@ public class ProjectsProject {
   }
 
   /**
-   * Get slug
+   * Slug is the identifier that MATTERS: the handle every later call addresses, the S3 key segment the site&#39;s objects live under, and the label of the public host &#x60;&lt;slug&gt;.hanzo.app&#x60;. Because it is a hostname it is constrained and reserved labels such as &#x60;api&#x60; are refused.
    * @return slug
    */
   @javax.annotation.Nullable
@@ -548,7 +553,7 @@ public class ProjectsProject {
   }
 
   /**
-   * Get space
+   * Space is the project&#39;s Base data space, which is where a deployed site&#39;s form, forum and data submissions land. Absent means the site stores nothing.
    * @return space
    */
   @javax.annotation.Nullable
@@ -561,13 +566,32 @@ public class ProjectsProject {
   }
 
 
+  public ProjectsProject starred(@javax.annotation.Nullable Boolean starred) {
+    this.starred = starred;
+    return this;
+  }
+
+  /**
+   * Starred is THIS CALLER&#39;s star, not a property of the project — two people in the same org see different values for the same row, which is the whole point of it. Always present so a client can tell \&quot;not starred\&quot; from \&quot;this API is too old to say\&quot;, the same reason visibility and hidden are.
+   * @return starred
+   */
+  @javax.annotation.Nullable
+  public Boolean getStarred() {
+    return starred;
+  }
+
+  public void setStarred(@javax.annotation.Nullable Boolean starred) {
+    this.starred = starred;
+  }
+
+
   public ProjectsProject status(@javax.annotation.Nullable String status) {
     this.status = status;
     return this;
   }
 
   /**
-   * Get status
+   * Status is where the project stands — whether a build has ever succeeded and whether anything is serving right now.
    * @return status
    */
   @javax.annotation.Nullable
@@ -613,7 +637,7 @@ public class ProjectsProject {
   }
 
   /**
-   * Get updatedAt
+   * UpdatedAt is when the project&#39;s own record last changed, as Unix seconds. A deploy is not an edit of the project, so this does not move on every publish.
    * @return updatedAt
    */
   @javax.annotation.Nullable
@@ -632,7 +656,7 @@ public class ProjectsProject {
   }
 
   /**
-   * Upstream/License credit the third-party work this project was published from, and the terms it carries. Omitted when nothing is declared: an absent credit means \&quot;nobody has said\&quot;, not \&quot;there is nothing to say\&quot;.
+   * Upstream credits the third-party work this project was published from — a free-text line, because the honest answer is a name and a title that no enum could hold. Absent means NOBODY HAS SAID, not that there is nothing to say.
    * @return upstream
    */
   @javax.annotation.Nullable
@@ -694,6 +718,7 @@ public class ProjectsProject {
         Objects.equals(this.repo, projectsProject.repo) &&
         Objects.equals(this.slug, projectsProject.slug) &&
         Objects.equals(this.space, projectsProject.space) &&
+        Objects.equals(this.starred, projectsProject.starred) &&
         Objects.equals(this.status, projectsProject.status) &&
         Objects.equals(this.tags, projectsProject.tags) &&
         Objects.equals(this.updatedAt, projectsProject.updatedAt) &&
@@ -703,7 +728,7 @@ public class ProjectsProject {
 
   @Override
   public int hashCode() {
-    return Objects.hash(analytics, bucket, cacheControl, createdAt, currentDeploymentId, description, forkedFrom, framework, hidden, hiddenReason, id, key, lastPurgeAt, license, liveUrl, name, org, repo, slug, space, status, tags, updatedAt, upstream, visibility);
+    return Objects.hash(analytics, bucket, cacheControl, createdAt, currentDeploymentId, description, forkedFrom, framework, hidden, hiddenReason, id, key, lastPurgeAt, license, liveUrl, name, org, repo, slug, space, starred, status, tags, updatedAt, upstream, visibility);
   }
 
   @Override
@@ -730,6 +755,7 @@ public class ProjectsProject {
     sb.append("    repo: ").append(toIndentedString(repo)).append("\n");
     sb.append("    slug: ").append(toIndentedString(slug)).append("\n");
     sb.append("    space: ").append(toIndentedString(space)).append("\n");
+    sb.append("    starred: ").append(toIndentedString(starred)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
@@ -756,7 +782,7 @@ public class ProjectsProject {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("analytics", "bucket", "cacheControl", "createdAt", "currentDeploymentId", "description", "forkedFrom", "framework", "hidden", "hiddenReason", "id", "key", "lastPurgeAt", "license", "liveUrl", "name", "org", "repo", "slug", "space", "status", "tags", "updatedAt", "upstream", "visibility"));
+    openapiFields = new HashSet<String>(Arrays.asList("analytics", "bucket", "cacheControl", "createdAt", "currentDeploymentId", "description", "forkedFrom", "framework", "hidden", "hiddenReason", "id", "key", "lastPurgeAt", "license", "liveUrl", "name", "org", "repo", "slug", "space", "starred", "status", "tags", "updatedAt", "upstream", "visibility"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);

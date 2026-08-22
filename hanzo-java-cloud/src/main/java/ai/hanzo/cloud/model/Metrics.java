@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -133,7 +133,7 @@ public class Metrics {
   }
 
   /**
-   * Get load1
+   * Load1 is the machine&#39;s own one-minute load average — a count of runnable and uninterruptible tasks, NOT a percentage and NOT already divided by core count, so it is read against Spec.CPUs: 8.0 is idle on 16 cores and swamped on 4. Coerced finite and non-negative on write, so 0 means either genuinely idle or nothing reported.
    * @return load1
    */
   @javax.annotation.Nullable
@@ -152,7 +152,7 @@ public class Metrics {
   }
 
   /**
-   * Get load5
+   * Load5 is the same figure averaged over five minutes.
    * @return load5
    */
   @javax.annotation.Nullable
@@ -171,7 +171,7 @@ public class Metrics {
   }
 
   /**
-   * Get load15
+   * Load15 is the same figure over fifteen. The three together are what separate a machine that is busy right now from one that has been busy all along — which is the question a dispatcher is really asking.
    * @return load15
    */
   @javax.annotation.Nullable

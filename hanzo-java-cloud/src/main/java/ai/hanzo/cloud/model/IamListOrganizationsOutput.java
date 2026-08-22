@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -53,10 +53,10 @@ import ai.hanzo.cloud.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class IamListOrganizationsOutput {
-  public static final String SERIALIZED_NAME_COUNT = "count";
-  @SerializedName(SERIALIZED_NAME_COUNT)
+  public static final String SERIALIZED_NAME_CURSOR = "cursor";
+  @SerializedName(SERIALIZED_NAME_CURSOR)
   @javax.annotation.Nullable
-  private Integer count;
+  private String cursor;
 
   public static final String SERIALIZED_NAME_ORGANIZATIONS = "organizations";
   @SerializedName(SERIALIZED_NAME_ORGANIZATIONS)
@@ -66,22 +66,22 @@ public class IamListOrganizationsOutput {
   public IamListOrganizationsOutput() {
   }
 
-  public IamListOrganizationsOutput count(@javax.annotation.Nullable Integer count) {
-    this.count = count;
+  public IamListOrganizationsOutput cursor(@javax.annotation.Nullable String cursor) {
+    this.cursor = cursor;
     return this;
   }
 
   /**
-   * Get count
-   * @return count
+   * Get cursor
+   * @return cursor
    */
   @javax.annotation.Nullable
-  public Integer getCount() {
-    return count;
+  public String getCursor() {
+    return cursor;
   }
 
-  public void setCount(@javax.annotation.Nullable Integer count) {
-    this.count = count;
+  public void setCursor(@javax.annotation.Nullable String cursor) {
+    this.cursor = cursor;
   }
 
 
@@ -122,20 +122,20 @@ public class IamListOrganizationsOutput {
       return false;
     }
     IamListOrganizationsOutput iamListOrganizationsOutput = (IamListOrganizationsOutput) o;
-    return Objects.equals(this.count, iamListOrganizationsOutput.count) &&
+    return Objects.equals(this.cursor, iamListOrganizationsOutput.cursor) &&
         Objects.equals(this.organizations, iamListOrganizationsOutput.organizations);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(count, organizations);
+    return Objects.hash(cursor, organizations);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class IamListOrganizationsOutput {\n");
-    sb.append("    count: ").append(toIndentedString(count)).append("\n");
+    sb.append("    cursor: ").append(toIndentedString(cursor)).append("\n");
     sb.append("    organizations: ").append(toIndentedString(organizations)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -158,7 +158,7 @@ public class IamListOrganizationsOutput {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("count", "organizations"));
+    openapiFields = new HashSet<String>(Arrays.asList("cursor", "organizations"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -185,6 +185,9 @@ public class IamListOrganizationsOutput {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if ((jsonObj.get("cursor") != null && !jsonObj.get("cursor").isJsonNull()) && !jsonObj.get("cursor").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `cursor` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cursor").toString()));
+      }
       if (jsonObj.get("organizations") != null && !jsonObj.get("organizations").isJsonNull()) {
         JsonArray jsonArrayorganizations = jsonObj.getAsJsonArray("organizations");
         if (jsonArrayorganizations != null) {

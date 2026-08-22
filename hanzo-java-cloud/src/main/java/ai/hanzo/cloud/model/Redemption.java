@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -122,7 +122,7 @@ public class Redemption {
   }
 
   /**
-   * Plan and Seats are what was redeemed against. Both are DERIVED server-side — Plan from the org&#39;s live paid subscription, Seats from claimSeats — and neither is ever read from the request.
+   * Plan is the tier redeemed against: pro, max or team. It is DERIVED from the org&#39;s live ACTIVE/TRIALING subscription, never read from the request, so it is what the org actually holds rather than what it claimed.
    * @return plan
    */
   @javax.annotation.Nullable
@@ -160,7 +160,7 @@ public class Redemption {
   }
 
   /**
-   * Get seats
+   * Seats is the seat count the claim was priced at, and it is ALWAYS 1. No server-side authority on this surface answers \&quot;how many seats\&quot;, and the caller&#39;s own number is exactly the input that once inflated these claims, so a redemption records the single-seat floor and an admin resolves the real count against subscription data at grant time.
    * @return seats
    */
   @javax.annotation.Nullable

@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -83,7 +83,7 @@ public class StateGraph {
   }
 
   /**
-   * Get initial
+   * Initial is the state a fresh document starts in — \&quot;draft\&quot;. A stored document with no status at all is read as this too.
    * @return initial
    */
   @javax.annotation.Nullable
@@ -102,7 +102,7 @@ public class StateGraph {
   }
 
   /**
-   * Get live
+   * Live is the ONE state that is publicly readable — \&quot;published\&quot;. The site pulls only documents in it, so reaching Live IS site-publish; every other state is invisible to a reader.
    * @return live
    */
   @javax.annotation.Nullable
@@ -129,7 +129,7 @@ public class StateGraph {
   }
 
   /**
-   * Get states
+   * States is every lifecycle state in canonical order: draft, in_review, approved, queued, published, archived. The console lays its board columns out in exactly this order, so the order is part of the answer.
    * @return states
    */
   @javax.annotation.Nullable
@@ -156,7 +156,7 @@ public class StateGraph {
   }
 
   /**
-   * Get transitions
+   * Transitions maps each state to the states it may move to. A target absent from a state&#39;s list is REFUSED, at the endpoint and again at the storage boundary — this is the whole rule, not a hint for the UI. A state never lists itself; a move that changes nothing is always legal.
    * @return transitions
    */
   @javax.annotation.Nullable

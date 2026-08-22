@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -81,7 +81,7 @@ public class PagesProjectCreate {
   }
 
   /**
-   * Get buildConfig
+   * BuildConfig says how to build the site. Omitted means no build step.
    * @return buildConfig
    */
   @javax.annotation.Nullable
@@ -100,7 +100,7 @@ public class PagesProjectCreate {
   }
 
   /**
-   * Get deploymentConfigs
+   * DeploymentConfigs carries the preview and production runtime configs — the bindings and variables the built site&#39;s functions run with.
    * @return deploymentConfigs
    */
   @javax.annotation.Nullable
@@ -119,7 +119,7 @@ public class PagesProjectCreate {
   }
 
   /**
-   * Get name
+   * Name is the project name, and it is also the address: the site answers at &lt;name&gt;.pages.dev. Cloudflare will not rename a project afterwards.
    * @return name
    */
   @javax.annotation.Nullable
@@ -138,7 +138,7 @@ public class PagesProjectCreate {
   }
 
   /**
-   * Get productionBranch
+   * ProductionBranch is which git branch builds to production; every other branch builds a preview. Omitted leaves Cloudflare&#39;s own default.
    * @return productionBranch
    */
   @javax.annotation.Nullable

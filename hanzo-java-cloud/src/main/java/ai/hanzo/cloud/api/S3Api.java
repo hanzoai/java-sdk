@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -27,6 +27,13 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import ai.hanzo.cloud.model.BucketIn;
+import ai.hanzo.cloud.model.BucketItem;
+import ai.hanzo.cloud.model.BucketList;
+import ai.hanzo.cloud.model.ObjectList;
+import ai.hanzo.cloud.model.PresignResponse;
+import ai.hanzo.cloud.model.S3Health;
+import ai.hanzo.cloud.model.UploadIn;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -73,10 +80,16 @@ public class S3Api {
 
     /**
      * Build call for deleteS3BucketsByBucket
-     * @param bucket  (required)
+     * @param bucket Bucket is the bucket&#39;s friendly name, from the path. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+     </table>
      */
     public okhttp3.Call deleteS3BucketsByBucketCall(@javax.annotation.Nonnull String bucket, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -134,21 +147,33 @@ public class S3Api {
     }
 
     /**
-     * Delete an empty bucket
-     * Removes one of the caller&#39;s buckets, and only when it is already EMPTY — a bucket with objects in it answers 409 instead.  That refusal is deliberate rather than a limitation: this API does not cascade a delete of a tenant&#39;s objects behind a single bucket call, so emptying the bucket stays an explicit act. A bucket that does not exist is 404, and a successful delete answers 204 with no body.  A validated principal is required, and every bucket and key is resolved inside the caller&#39;s own org: physical bucket names are derived from the org, so a tenant cannot name another&#39;s storage. The operation is billed per call — the balance is checked BEFORE anything is touched, so an unfunded org is refused with nothing done, and the debit happens only after the work succeeds. Object storage that is not configured answers 503 under this subsystem&#39;s own name rather than falling through to another.
-     * @param bucket  (required)
+     * Removes an EMPTY bucket and answers 204.
+     * Removes an EMPTY bucket and answers 204.  A non-empty bucket is 409 rather than a cascade: deleting a tenant&#39;s objects behind a single bucket call is not a thing this surface will do silently. A bucket the caller&#39;s org does not own is the same 404 an unknown name gives.
+     * @param bucket Bucket is the bucket&#39;s friendly name, from the path. (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+     </table>
      */
     public void deleteS3BucketsByBucket(@javax.annotation.Nonnull String bucket) throws ApiException {
         deleteS3BucketsByBucketWithHttpInfo(bucket);
     }
 
     /**
-     * Delete an empty bucket
-     * Removes one of the caller&#39;s buckets, and only when it is already EMPTY — a bucket with objects in it answers 409 instead.  That refusal is deliberate rather than a limitation: this API does not cascade a delete of a tenant&#39;s objects behind a single bucket call, so emptying the bucket stays an explicit act. A bucket that does not exist is 404, and a successful delete answers 204 with no body.  A validated principal is required, and every bucket and key is resolved inside the caller&#39;s own org: physical bucket names are derived from the org, so a tenant cannot name another&#39;s storage. The operation is billed per call — the balance is checked BEFORE anything is touched, so an unfunded org is refused with nothing done, and the debit happens only after the work succeeds. Object storage that is not configured answers 503 under this subsystem&#39;s own name rather than falling through to another.
-     * @param bucket  (required)
+     * Removes an EMPTY bucket and answers 204.
+     * Removes an EMPTY bucket and answers 204.  A non-empty bucket is 409 rather than a cascade: deleting a tenant&#39;s objects behind a single bucket call is not a thing this surface will do silently. A bucket the caller&#39;s org does not own is the same 404 an unknown name gives.
+     * @param bucket Bucket is the bucket&#39;s friendly name, from the path. (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+     </table>
      */
     public ApiResponse<Void> deleteS3BucketsByBucketWithHttpInfo(@javax.annotation.Nonnull String bucket) throws ApiException {
         okhttp3.Call localVarCall = deleteS3BucketsByBucketValidateBeforeCall(bucket, null);
@@ -156,12 +181,18 @@ public class S3Api {
     }
 
     /**
-     * Delete an empty bucket (asynchronously)
-     * Removes one of the caller&#39;s buckets, and only when it is already EMPTY — a bucket with objects in it answers 409 instead.  That refusal is deliberate rather than a limitation: this API does not cascade a delete of a tenant&#39;s objects behind a single bucket call, so emptying the bucket stays an explicit act. A bucket that does not exist is 404, and a successful delete answers 204 with no body.  A validated principal is required, and every bucket and key is resolved inside the caller&#39;s own org: physical bucket names are derived from the org, so a tenant cannot name another&#39;s storage. The operation is billed per call — the balance is checked BEFORE anything is touched, so an unfunded org is refused with nothing done, and the debit happens only after the work succeeds. Object storage that is not configured answers 503 under this subsystem&#39;s own name rather than falling through to another.
-     * @param bucket  (required)
+     * Removes an EMPTY bucket and answers 204. (asynchronously)
+     * Removes an EMPTY bucket and answers 204.  A non-empty bucket is 409 rather than a cascade: deleting a tenant&#39;s objects behind a single bucket call is not a thing this surface will do silently. A bucket the caller&#39;s org does not own is the same 404 an unknown name gives.
+     * @param bucket Bucket is the bucket&#39;s friendly name, from the path. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+     </table>
      */
     public okhttp3.Call deleteS3BucketsByBucketAsync(@javax.annotation.Nonnull String bucket, final ApiCallback<Void> _callback) throws ApiException {
 
@@ -170,118 +201,16 @@ public class S3Api {
         return localVarCall;
     }
     /**
-     * Build call for deleteS3BucketsByBucketObjectsByWildcard1
-     * @param bucket  (required)
-     * @param wildcard1  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public okhttp3.Call deleteS3BucketsByBucketObjectsByWildcard1Call(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/s3/buckets/{bucket}/objects/{wildcard1}"
-            .replace("{" + "bucket" + "}", localVarApiClient.escapeString(bucket.toString()))
-            .replace("{" + "wildcard1" + "}", localVarApiClient.escapeString(wildcard1.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteS3BucketsByBucketObjectsByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'bucket' is set
-        if (bucket == null) {
-            throw new ApiException("Missing the required parameter 'bucket' when calling deleteS3BucketsByBucketObjectsByWildcard1(Async)");
-        }
-
-        // verify the required parameter 'wildcard1' is set
-        if (wildcard1 == null) {
-            throw new ApiException("Missing the required parameter 'wildcard1' when calling deleteS3BucketsByBucketObjectsByWildcard1(Async)");
-        }
-
-        return deleteS3BucketsByBucketObjectsByWildcard1Call(bucket, wildcard1, _callback);
-
-    }
-
-    /**
-     * Delete one object
-     * Removes the single object at the trailing path from one of the caller&#39;s buckets and answers 204 with no body. The key is path-cleaned first, so the delete cannot reach outside the bucket it names.  It removes one object and never a prefix: a trailing path that looks like a folder deletes the placeholder at that key, not the objects beneath it.  A validated principal is required, and every bucket and key is resolved inside the caller&#39;s own org: physical bucket names are derived from the org, so a tenant cannot name another&#39;s storage. The operation is billed per call — the balance is checked BEFORE anything is touched, so an unfunded org is refused with nothing done, and the debit happens only after the work succeeds. Object storage that is not configured answers 503 under this subsystem&#39;s own name rather than falling through to another.
-     * @param bucket  (required)
-     * @param wildcard1  (required)
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public void deleteS3BucketsByBucketObjectsByWildcard1(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String wildcard1) throws ApiException {
-        deleteS3BucketsByBucketObjectsByWildcard1WithHttpInfo(bucket, wildcard1);
-    }
-
-    /**
-     * Delete one object
-     * Removes the single object at the trailing path from one of the caller&#39;s buckets and answers 204 with no body. The key is path-cleaned first, so the delete cannot reach outside the bucket it names.  It removes one object and never a prefix: a trailing path that looks like a folder deletes the placeholder at that key, not the objects beneath it.  A validated principal is required, and every bucket and key is resolved inside the caller&#39;s own org: physical bucket names are derived from the org, so a tenant cannot name another&#39;s storage. The operation is billed per call — the balance is checked BEFORE anything is touched, so an unfunded org is refused with nothing done, and the debit happens only after the work succeeds. Object storage that is not configured answers 503 under this subsystem&#39;s own name rather than falling through to another.
-     * @param bucket  (required)
-     * @param wildcard1  (required)
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Void> deleteS3BucketsByBucketObjectsByWildcard1WithHttpInfo(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String wildcard1) throws ApiException {
-        okhttp3.Call localVarCall = deleteS3BucketsByBucketObjectsByWildcard1ValidateBeforeCall(bucket, wildcard1, null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * Delete one object (asynchronously)
-     * Removes the single object at the trailing path from one of the caller&#39;s buckets and answers 204 with no body. The key is path-cleaned first, so the delete cannot reach outside the bucket it names.  It removes one object and never a prefix: a trailing path that looks like a folder deletes the placeholder at that key, not the objects beneath it.  A validated principal is required, and every bucket and key is resolved inside the caller&#39;s own org: physical bucket names are derived from the org, so a tenant cannot name another&#39;s storage. The operation is billed per call — the balance is checked BEFORE anything is touched, so an unfunded org is refused with nothing done, and the debit happens only after the work succeeds. Object storage that is not configured answers 503 under this subsystem&#39;s own name rather than falling through to another.
-     * @param bucket  (required)
-     * @param wildcard1  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public okhttp3.Call deleteS3BucketsByBucketObjectsByWildcard1Async(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = deleteS3BucketsByBucketObjectsByWildcard1ValidateBeforeCall(bucket, wildcard1, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
      * Build call for getS3Buckets
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
     public okhttp3.Call getS3BucketsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -309,6 +238,7 @@ public class S3Api {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -333,46 +263,76 @@ public class S3Api {
     }
 
     /**
-     * List your org&#39;s buckets
-     * Returns the caller&#39;s own buckets under the friendly names they were created with, each with its creation time.  Another tenant&#39;s bucket is not refused, it is INVISIBLE — a bucket outside the caller&#39;s namespace is skipped during the listing rather than reported, so the operation cannot be used to discover that a name is taken elsewhere.  A validated principal is required, and every bucket and key is resolved inside the caller&#39;s own org: physical bucket names are derived from the org, so a tenant cannot name another&#39;s storage. The operation is billed per call — the balance is checked BEFORE anything is touched, so an unfunded org is refused with nothing done, and the debit happens only after the work succeeds. Object storage that is not configured answers 503 under this subsystem&#39;s own name rather than falling through to another.
+     * Lists the caller org&#39;s own buckets.
+     * Lists the caller org&#39;s own buckets.  Only the caller&#39;s: every bucket is physically named under a per-org prefix and the listing strips that prefix, so a tenant sees friendly names and another tenant&#39;s buckets are not in the answer at all.
+     * @return BucketList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public void getS3Buckets() throws ApiException {
-        getS3BucketsWithHttpInfo();
+    public BucketList getS3Buckets() throws ApiException {
+        ApiResponse<BucketList> localVarResp = getS3BucketsWithHttpInfo();
+        return localVarResp.getData();
     }
 
     /**
-     * List your org&#39;s buckets
-     * Returns the caller&#39;s own buckets under the friendly names they were created with, each with its creation time.  Another tenant&#39;s bucket is not refused, it is INVISIBLE — a bucket outside the caller&#39;s namespace is skipped during the listing rather than reported, so the operation cannot be used to discover that a name is taken elsewhere.  A validated principal is required, and every bucket and key is resolved inside the caller&#39;s own org: physical bucket names are derived from the org, so a tenant cannot name another&#39;s storage. The operation is billed per call — the balance is checked BEFORE anything is touched, so an unfunded org is refused with nothing done, and the debit happens only after the work succeeds. Object storage that is not configured answers 503 under this subsystem&#39;s own name rather than falling through to another.
-     * @return ApiResponse&lt;Void&gt;
+     * Lists the caller org&#39;s own buckets.
+     * Lists the caller org&#39;s own buckets.  Only the caller&#39;s: every bucket is physically named under a per-org prefix and the listing strips that prefix, so a tenant sees friendly names and another tenant&#39;s buckets are not in the answer at all.
+     * @return ApiResponse&lt;BucketList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public ApiResponse<Void> getS3BucketsWithHttpInfo() throws ApiException {
+    public ApiResponse<BucketList> getS3BucketsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getS3BucketsValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<BucketList>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * List your org&#39;s buckets (asynchronously)
-     * Returns the caller&#39;s own buckets under the friendly names they were created with, each with its creation time.  Another tenant&#39;s bucket is not refused, it is INVISIBLE — a bucket outside the caller&#39;s namespace is skipped during the listing rather than reported, so the operation cannot be used to discover that a name is taken elsewhere.  A validated principal is required, and every bucket and key is resolved inside the caller&#39;s own org: physical bucket names are derived from the org, so a tenant cannot name another&#39;s storage. The operation is billed per call — the balance is checked BEFORE anything is touched, so an unfunded org is refused with nothing done, and the debit happens only after the work succeeds. Object storage that is not configured answers 503 under this subsystem&#39;s own name rather than falling through to another.
+     * Lists the caller org&#39;s own buckets. (asynchronously)
+     * Lists the caller org&#39;s own buckets.  Only the caller&#39;s: every bucket is physically named under a per-org prefix and the listing strips that prefix, so a tenant sees friendly names and another tenant&#39;s buckets are not in the answer at all.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call getS3BucketsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getS3BucketsAsync(final ApiCallback<BucketList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getS3BucketsValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<BucketList>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for getS3BucketsByBucketObjects
-     * @param bucket  (required)
+     * @param bucket Bucket is the bucket to list, from the path. (required)
+     * @param prefix  (optional)
+     * @param recursive  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call getS3BucketsByBucketObjectsCall(@javax.annotation.Nonnull String bucket, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getS3BucketsByBucketObjectsCall(@javax.annotation.Nonnull String bucket, @javax.annotation.Nullable String prefix, @javax.annotation.Nullable String recursive, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -398,7 +358,16 @@ public class S3Api {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (prefix != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("prefix", prefix));
+        }
+
+        if (recursive != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("recursive", recursive));
+        }
+
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -417,158 +386,78 @@ public class S3Api {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getS3BucketsByBucketObjectsValidateBeforeCall(@javax.annotation.Nonnull String bucket, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getS3BucketsByBucketObjectsValidateBeforeCall(@javax.annotation.Nonnull String bucket, @javax.annotation.Nullable String prefix, @javax.annotation.Nullable String recursive, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'bucket' is set
         if (bucket == null) {
             throw new ApiException("Missing the required parameter 'bucket' when calling getS3BucketsByBucketObjects(Async)");
         }
 
-        return getS3BucketsByBucketObjectsCall(bucket, _callback);
+        return getS3BucketsByBucketObjectsCall(bucket, prefix, recursive, _callback);
 
     }
 
     /**
-     * Browse one level of a bucket
-     * Lists one folder level of a bucket: each entry&#39;s key, whether it is a folder, its size, last-modified time and ETag. &#x60;prefix&#x60; scopes the read to a sub-folder.  Keys come back RELATIVE to the requested prefix, not absolute, which is what lets a client render a breadcrumb without re-deriving it. The default is the folder view — sub-prefixes are returned as directory entries — and &#x60;recursive&#x3D;true&#x60; flattens it to every key beneath the prefix instead.  The listing is bounded at 1000 entries so a large bucket cannot exhaust memory; treat a full page as \&quot;there may be more\&quot; rather than as the whole bucket.  A validated principal is required, and every bucket and key is resolved inside the caller&#39;s own org: physical bucket names are derived from the org, so a tenant cannot name another&#39;s storage. The operation is billed per call — the balance is checked BEFORE anything is touched, so an unfunded org is refused with nothing done, and the debit happens only after the work succeeds. Object storage that is not configured answers 503 under this subsystem&#39;s own name rather than falling through to another.
-     * @param bucket  (required)
+     * Lists one folder level of a bucket.
+     * Lists one folder level of a bucket.  Folder-style by default: sub-prefixes come back as directory entries, which is the file-manager view. &#x60;?recursive&#x3D;true&#x60; lists every key flat under the prefix instead. Keys are RELATIVE to &#x60;?prefix&#x3D;&#x60;, and the listing is bounded so a huge bucket cannot exhaust memory — Total is what came back, not what the bucket holds.
+     * @param bucket Bucket is the bucket to list, from the path. (required)
+     * @param prefix  (optional)
+     * @param recursive  (optional)
+     * @return ObjectList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public void getS3BucketsByBucketObjects(@javax.annotation.Nonnull String bucket) throws ApiException {
-        getS3BucketsByBucketObjectsWithHttpInfo(bucket);
+    public ObjectList getS3BucketsByBucketObjects(@javax.annotation.Nonnull String bucket, @javax.annotation.Nullable String prefix, @javax.annotation.Nullable String recursive) throws ApiException {
+        ApiResponse<ObjectList> localVarResp = getS3BucketsByBucketObjectsWithHttpInfo(bucket, prefix, recursive);
+        return localVarResp.getData();
     }
 
     /**
-     * Browse one level of a bucket
-     * Lists one folder level of a bucket: each entry&#39;s key, whether it is a folder, its size, last-modified time and ETag. &#x60;prefix&#x60; scopes the read to a sub-folder.  Keys come back RELATIVE to the requested prefix, not absolute, which is what lets a client render a breadcrumb without re-deriving it. The default is the folder view — sub-prefixes are returned as directory entries — and &#x60;recursive&#x3D;true&#x60; flattens it to every key beneath the prefix instead.  The listing is bounded at 1000 entries so a large bucket cannot exhaust memory; treat a full page as \&quot;there may be more\&quot; rather than as the whole bucket.  A validated principal is required, and every bucket and key is resolved inside the caller&#39;s own org: physical bucket names are derived from the org, so a tenant cannot name another&#39;s storage. The operation is billed per call — the balance is checked BEFORE anything is touched, so an unfunded org is refused with nothing done, and the debit happens only after the work succeeds. Object storage that is not configured answers 503 under this subsystem&#39;s own name rather than falling through to another.
-     * @param bucket  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * Lists one folder level of a bucket.
+     * Lists one folder level of a bucket.  Folder-style by default: sub-prefixes come back as directory entries, which is the file-manager view. &#x60;?recursive&#x3D;true&#x60; lists every key flat under the prefix instead. Keys are RELATIVE to &#x60;?prefix&#x3D;&#x60;, and the listing is bounded so a huge bucket cannot exhaust memory — Total is what came back, not what the bucket holds.
+     * @param bucket Bucket is the bucket to list, from the path. (required)
+     * @param prefix  (optional)
+     * @param recursive  (optional)
+     * @return ApiResponse&lt;ObjectList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public ApiResponse<Void> getS3BucketsByBucketObjectsWithHttpInfo(@javax.annotation.Nonnull String bucket) throws ApiException {
-        okhttp3.Call localVarCall = getS3BucketsByBucketObjectsValidateBeforeCall(bucket, null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<ObjectList> getS3BucketsByBucketObjectsWithHttpInfo(@javax.annotation.Nonnull String bucket, @javax.annotation.Nullable String prefix, @javax.annotation.Nullable String recursive) throws ApiException {
+        okhttp3.Call localVarCall = getS3BucketsByBucketObjectsValidateBeforeCall(bucket, prefix, recursive, null);
+        Type localVarReturnType = new TypeToken<ObjectList>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Browse one level of a bucket (asynchronously)
-     * Lists one folder level of a bucket: each entry&#39;s key, whether it is a folder, its size, last-modified time and ETag. &#x60;prefix&#x60; scopes the read to a sub-folder.  Keys come back RELATIVE to the requested prefix, not absolute, which is what lets a client render a breadcrumb without re-deriving it. The default is the folder view — sub-prefixes are returned as directory entries — and &#x60;recursive&#x3D;true&#x60; flattens it to every key beneath the prefix instead.  The listing is bounded at 1000 entries so a large bucket cannot exhaust memory; treat a full page as \&quot;there may be more\&quot; rather than as the whole bucket.  A validated principal is required, and every bucket and key is resolved inside the caller&#39;s own org: physical bucket names are derived from the org, so a tenant cannot name another&#39;s storage. The operation is billed per call — the balance is checked BEFORE anything is touched, so an unfunded org is refused with nothing done, and the debit happens only after the work succeeds. Object storage that is not configured answers 503 under this subsystem&#39;s own name rather than falling through to another.
-     * @param bucket  (required)
+     * Lists one folder level of a bucket. (asynchronously)
+     * Lists one folder level of a bucket.  Folder-style by default: sub-prefixes come back as directory entries, which is the file-manager view. &#x60;?recursive&#x3D;true&#x60; lists every key flat under the prefix instead. Keys are RELATIVE to &#x60;?prefix&#x3D;&#x60;, and the listing is bounded so a huge bucket cannot exhaust memory — Total is what came back, not what the bucket holds.
+     * @param bucket Bucket is the bucket to list, from the path. (required)
+     * @param prefix  (optional)
+     * @param recursive  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call getS3BucketsByBucketObjectsAsync(@javax.annotation.Nonnull String bucket, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getS3BucketsByBucketObjectsAsync(@javax.annotation.Nonnull String bucket, @javax.annotation.Nullable String prefix, @javax.annotation.Nullable String recursive, final ApiCallback<ObjectList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getS3BucketsByBucketObjectsValidateBeforeCall(bucket, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getS3BucketsByBucketObjectsByWildcard1
-     * @param bucket  (required)
-     * @param wildcard1  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public okhttp3.Call getS3BucketsByBucketObjectsByWildcard1Call(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/s3/buckets/{bucket}/objects/{wildcard1}"
-            .replace("{" + "bucket" + "}", localVarApiClient.escapeString(bucket.toString()))
-            .replace("{" + "wildcard1" + "}", localVarApiClient.escapeString(wildcard1.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getS3BucketsByBucketObjectsByWildcard1ValidateBeforeCall(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String wildcard1, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'bucket' is set
-        if (bucket == null) {
-            throw new ApiException("Missing the required parameter 'bucket' when calling getS3BucketsByBucketObjectsByWildcard1(Async)");
-        }
-
-        // verify the required parameter 'wildcard1' is set
-        if (wildcard1 == null) {
-            throw new ApiException("Missing the required parameter 'wildcard1' when calling getS3BucketsByBucketObjectsByWildcard1(Async)");
-        }
-
-        return getS3BucketsByBucketObjectsByWildcard1Call(bucket, wildcard1, _callback);
-
-    }
-
-    /**
-     * Get a URL to download one object directly
-     * Returns a short-lived presigned GET URL for the object at the trailing path, with the method, the key and its remaining lifetime. As with upload, the client fetches from that URL directly and the storage credential stays on the server.  The URL carries a content disposition of attachment with the object&#39;s file name, so a browser following it downloads the object rather than rendering it in place. Signed against the public host, scoped to the one bucket and key, and good for five minutes; a deployment with no public storage endpoint answers 503.  A validated principal is required, and every bucket and key is resolved inside the caller&#39;s own org: physical bucket names are derived from the org, so a tenant cannot name another&#39;s storage. The operation is billed per call — the balance is checked BEFORE anything is touched, so an unfunded org is refused with nothing done, and the debit happens only after the work succeeds. Object storage that is not configured answers 503 under this subsystem&#39;s own name rather than falling through to another.
-     * @param bucket  (required)
-     * @param wildcard1  (required)
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public void getS3BucketsByBucketObjectsByWildcard1(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String wildcard1) throws ApiException {
-        getS3BucketsByBucketObjectsByWildcard1WithHttpInfo(bucket, wildcard1);
-    }
-
-    /**
-     * Get a URL to download one object directly
-     * Returns a short-lived presigned GET URL for the object at the trailing path, with the method, the key and its remaining lifetime. As with upload, the client fetches from that URL directly and the storage credential stays on the server.  The URL carries a content disposition of attachment with the object&#39;s file name, so a browser following it downloads the object rather than rendering it in place. Signed against the public host, scoped to the one bucket and key, and good for five minutes; a deployment with no public storage endpoint answers 503.  A validated principal is required, and every bucket and key is resolved inside the caller&#39;s own org: physical bucket names are derived from the org, so a tenant cannot name another&#39;s storage. The operation is billed per call — the balance is checked BEFORE anything is touched, so an unfunded org is refused with nothing done, and the debit happens only after the work succeeds. Object storage that is not configured answers 503 under this subsystem&#39;s own name rather than falling through to another.
-     * @param bucket  (required)
-     * @param wildcard1  (required)
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Void> getS3BucketsByBucketObjectsByWildcard1WithHttpInfo(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String wildcard1) throws ApiException {
-        okhttp3.Call localVarCall = getS3BucketsByBucketObjectsByWildcard1ValidateBeforeCall(bucket, wildcard1, null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * Get a URL to download one object directly (asynchronously)
-     * Returns a short-lived presigned GET URL for the object at the trailing path, with the method, the key and its remaining lifetime. As with upload, the client fetches from that URL directly and the storage credential stays on the server.  The URL carries a content disposition of attachment with the object&#39;s file name, so a browser following it downloads the object rather than rendering it in place. Signed against the public host, scoped to the one bucket and key, and good for five minutes; a deployment with no public storage endpoint answers 503.  A validated principal is required, and every bucket and key is resolved inside the caller&#39;s own org: physical bucket names are derived from the org, so a tenant cannot name another&#39;s storage. The operation is billed per call — the balance is checked BEFORE anything is touched, so an unfunded org is refused with nothing done, and the debit happens only after the work succeeds. Object storage that is not configured answers 503 under this subsystem&#39;s own name rather than falling through to another.
-     * @param bucket  (required)
-     * @param wildcard1  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public okhttp3.Call getS3BucketsByBucketObjectsByWildcard1Async(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull String wildcard1, final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getS3BucketsByBucketObjectsByWildcard1ValidateBeforeCall(bucket, wildcard1, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = getS3BucketsByBucketObjectsValidateBeforeCall(bucket, prefix, recursive, _callback);
+        Type localVarReturnType = new TypeToken<ObjectList>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -576,6 +465,13 @@ public class S3Api {
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> service unavailable </td><td>  -  </td></tr>
+     </table>
      */
     public okhttp3.Call getS3HealthCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -603,6 +499,7 @@ public class S3Api {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -627,45 +524,77 @@ public class S3Api {
     }
 
     /**
-     * Whether object storage is usable here
-     * A real readiness probe rather than a liveness stub: 200 only when the storage credentials are present, and it additionally reports whether presigning is available — the capability the two URL-issuing operations need and refuse without.  An unconfigured deployment answers 503 with &#x60;ready:false&#x60; and the reason, which is the same state in which every data-plane operation here refuses. Not token-gated, so the platform can probe it without a credential, and it carries no credential, bucket or tenant detail.
+     * Health reports whether this deployment can serve object storage.
+     * Health reports whether this deployment can serve object storage.  It is a REAL probe rather than a constant: 200 when admin credentials are present, so the store is reachable in principle, and 503 with the reason when they are not. It is deliberately NOT gated — liveness has to be probe-able without a token — so it is the one operation here that names no bucket and bills nothing.
+     * @return S3Health
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> service unavailable </td><td>  -  </td></tr>
+     </table>
      */
-    public void getS3Health() throws ApiException {
-        getS3HealthWithHttpInfo();
+    public S3Health getS3Health() throws ApiException {
+        ApiResponse<S3Health> localVarResp = getS3HealthWithHttpInfo();
+        return localVarResp.getData();
     }
 
     /**
-     * Whether object storage is usable here
-     * A real readiness probe rather than a liveness stub: 200 only when the storage credentials are present, and it additionally reports whether presigning is available — the capability the two URL-issuing operations need and refuse without.  An unconfigured deployment answers 503 with &#x60;ready:false&#x60; and the reason, which is the same state in which every data-plane operation here refuses. Not token-gated, so the platform can probe it without a credential, and it carries no credential, bucket or tenant detail.
-     * @return ApiResponse&lt;Void&gt;
+     * Health reports whether this deployment can serve object storage.
+     * Health reports whether this deployment can serve object storage.  It is a REAL probe rather than a constant: 200 when admin credentials are present, so the store is reachable in principle, and 503 with the reason when they are not. It is deliberately NOT gated — liveness has to be probe-able without a token — so it is the one operation here that names no bucket and bills nothing.
+     * @return ApiResponse&lt;S3Health&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> service unavailable </td><td>  -  </td></tr>
+     </table>
      */
-    public ApiResponse<Void> getS3HealthWithHttpInfo() throws ApiException {
+    public ApiResponse<S3Health> getS3HealthWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getS3HealthValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<S3Health>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Whether object storage is usable here (asynchronously)
-     * A real readiness probe rather than a liveness stub: 200 only when the storage credentials are present, and it additionally reports whether presigning is available — the capability the two URL-issuing operations need and refuse without.  An unconfigured deployment answers 503 with &#x60;ready:false&#x60; and the reason, which is the same state in which every data-plane operation here refuses. Not token-gated, so the platform can probe it without a credential, and it carries no credential, bucket or tenant detail.
+     * Health reports whether this deployment can serve object storage. (asynchronously)
+     * Health reports whether this deployment can serve object storage.  It is a REAL probe rather than a constant: 200 when admin credentials are present, so the store is reachable in principle, and 503 with the reason when they are not. It is deliberately NOT gated — liveness has to be probe-able without a token — so it is the one operation here that names no bucket and bills nothing.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> service unavailable </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call getS3HealthAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getS3HealthAsync(final ApiCallback<S3Health> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getS3HealthValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<S3Health>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postS3Buckets
+     * @param bucketIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call postS3BucketsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postS3BucketsCall(@javax.annotation.Nonnull BucketIn bucketIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -679,7 +608,7 @@ public class S3Api {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = bucketIn;
 
         // create path and map variables
         String localVarPath = "/v1/s3/buckets";
@@ -691,6 +620,7 @@ public class S3Api {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -698,6 +628,7 @@ public class S3Api {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -709,52 +640,89 @@ public class S3Api {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postS3BucketsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postS3BucketsCall(_callback);
+    private okhttp3.Call postS3BucketsValidateBeforeCall(@javax.annotation.Nonnull BucketIn bucketIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'bucketIn' is set
+        if (bucketIn == null) {
+            throw new ApiException("Missing the required parameter 'bucketIn' when calling postS3Buckets(Async)");
+        }
+
+        return postS3BucketsCall(bucketIn, _callback);
 
     }
 
     /**
-     * Create a bucket in your org
-     * Creates a new bucket in the caller&#39;s own namespace and answers 201 with its friendly name and creation time.  The name is validated exactly as sent and never quietly normalised: it must match &#x60;^[a-z0-9]([a-z0-9-]{0,38}[a-z0-9])?$&#x60;, so a mixed-case name is a clean 400 rather than a bucket created as &#x60;photos&#x60; that the caller keeps asking for as &#x60;Photos&#x60;. A name already in use in the caller&#39;s own namespace is 409.  A validated principal is required, and every bucket and key is resolved inside the caller&#39;s own org: physical bucket names are derived from the org, so a tenant cannot name another&#39;s storage. The operation is billed per call — the balance is checked BEFORE anything is touched, so an unfunded org is refused with nothing done, and the debit happens only after the work succeeds. Object storage that is not configured answers 503 under this subsystem&#39;s own name rather than falling through to another.
+     * Makes a new bucket for the caller&#39;s org and answers 201 with it.
+     * Makes a new bucket for the caller&#39;s org and answers 201 with it.  The physical name is derived from the caller&#39;s validated org, so a tenant can only ever create inside its own namespace and no request field can redirect that. A name already taken in the org is 409.
+     * @param bucketIn  (required)
+     * @return BucketItem
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
      */
-    public void postS3Buckets() throws ApiException {
-        postS3BucketsWithHttpInfo();
+    public BucketItem postS3Buckets(@javax.annotation.Nonnull BucketIn bucketIn) throws ApiException {
+        ApiResponse<BucketItem> localVarResp = postS3BucketsWithHttpInfo(bucketIn);
+        return localVarResp.getData();
     }
 
     /**
-     * Create a bucket in your org
-     * Creates a new bucket in the caller&#39;s own namespace and answers 201 with its friendly name and creation time.  The name is validated exactly as sent and never quietly normalised: it must match &#x60;^[a-z0-9]([a-z0-9-]{0,38}[a-z0-9])?$&#x60;, so a mixed-case name is a clean 400 rather than a bucket created as &#x60;photos&#x60; that the caller keeps asking for as &#x60;Photos&#x60;. A name already in use in the caller&#39;s own namespace is 409.  A validated principal is required, and every bucket and key is resolved inside the caller&#39;s own org: physical bucket names are derived from the org, so a tenant cannot name another&#39;s storage. The operation is billed per call — the balance is checked BEFORE anything is touched, so an unfunded org is refused with nothing done, and the debit happens only after the work succeeds. Object storage that is not configured answers 503 under this subsystem&#39;s own name rather than falling through to another.
-     * @return ApiResponse&lt;Void&gt;
+     * Makes a new bucket for the caller&#39;s org and answers 201 with it.
+     * Makes a new bucket for the caller&#39;s org and answers 201 with it.  The physical name is derived from the caller&#39;s validated org, so a tenant can only ever create inside its own namespace and no request field can redirect that. A name already taken in the org is 409.
+     * @param bucketIn  (required)
+     * @return ApiResponse&lt;BucketItem&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
      */
-    public ApiResponse<Void> postS3BucketsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postS3BucketsValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<BucketItem> postS3BucketsWithHttpInfo(@javax.annotation.Nonnull BucketIn bucketIn) throws ApiException {
+        okhttp3.Call localVarCall = postS3BucketsValidateBeforeCall(bucketIn, null);
+        Type localVarReturnType = new TypeToken<BucketItem>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Create a bucket in your org (asynchronously)
-     * Creates a new bucket in the caller&#39;s own namespace and answers 201 with its friendly name and creation time.  The name is validated exactly as sent and never quietly normalised: it must match &#x60;^[a-z0-9]([a-z0-9-]{0,38}[a-z0-9])?$&#x60;, so a mixed-case name is a clean 400 rather than a bucket created as &#x60;photos&#x60; that the caller keeps asking for as &#x60;Photos&#x60;. A name already in use in the caller&#39;s own namespace is 409.  A validated principal is required, and every bucket and key is resolved inside the caller&#39;s own org: physical bucket names are derived from the org, so a tenant cannot name another&#39;s storage. The operation is billed per call — the balance is checked BEFORE anything is touched, so an unfunded org is refused with nothing done, and the debit happens only after the work succeeds. Object storage that is not configured answers 503 under this subsystem&#39;s own name rather than falling through to another.
+     * Makes a new bucket for the caller&#39;s org and answers 201 with it. (asynchronously)
+     * Makes a new bucket for the caller&#39;s org and answers 201 with it.  The physical name is derived from the caller&#39;s validated org, so a tenant can only ever create inside its own namespace and no request field can redirect that. A name already taken in the org is 409.
+     * @param bucketIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call postS3BucketsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postS3BucketsAsync(@javax.annotation.Nonnull BucketIn bucketIn, final ApiCallback<BucketItem> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postS3BucketsValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = postS3BucketsValidateBeforeCall(bucketIn, _callback);
+        Type localVarReturnType = new TypeToken<BucketItem>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postS3BucketsByBucketObjects
-     * @param bucket  (required)
+     * @param bucket Bucket is the bucket to upload into, from the path. (required)
+     * @param uploadIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call postS3BucketsByBucketObjectsCall(@javax.annotation.Nonnull String bucket, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postS3BucketsByBucketObjectsCall(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull UploadIn uploadIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -768,7 +736,7 @@ public class S3Api {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = uploadIn;
 
         // create path and map variables
         String localVarPath = "/v1/s3/buckets/{bucket}/objects"
@@ -781,6 +749,7 @@ public class S3Api {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -788,6 +757,7 @@ public class S3Api {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -799,50 +769,80 @@ public class S3Api {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postS3BucketsByBucketObjectsValidateBeforeCall(@javax.annotation.Nonnull String bucket, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postS3BucketsByBucketObjectsValidateBeforeCall(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull UploadIn uploadIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'bucket' is set
         if (bucket == null) {
             throw new ApiException("Missing the required parameter 'bucket' when calling postS3BucketsByBucketObjects(Async)");
         }
 
-        return postS3BucketsByBucketObjectsCall(bucket, _callback);
+        // verify the required parameter 'uploadIn' is set
+        if (uploadIn == null) {
+            throw new ApiException("Missing the required parameter 'uploadIn' when calling postS3BucketsByBucketObjects(Async)");
+        }
+
+        return postS3BucketsByBucketObjectsCall(bucket, uploadIn, _callback);
 
     }
 
     /**
-     * Get a URL to upload one object directly
-     * Returns a short-lived presigned PUT URL, with the method, the cleaned key and the seconds until it expires. The client uploads to that URL DIRECTLY — the bytes never pass through this API, and the storage credential never leaves the server.  The URL is signed against the public storage host and scoped to exactly one bucket and key, and it expires five minutes after it is issued. The key is path-cleaned before signing, so a traversal cannot escape the bucket. A deployment with no public storage endpoint answers 503, because there is no host to sign a browser-followable URL against.  A validated principal is required, and every bucket and key is resolved inside the caller&#39;s own org: physical bucket names are derived from the org, so a tenant cannot name another&#39;s storage. The operation is billed per call — the balance is checked BEFORE anything is touched, so an unfunded org is refused with nothing done, and the debit happens only after the work succeeds. Object storage that is not configured answers 503 under this subsystem&#39;s own name rather than falling through to another.
-     * @param bucket  (required)
+     * Mints a presigned PUT URL the caller uploads to DIRECTLY.
+     * Mints a presigned PUT URL the caller uploads to DIRECTLY.  The bytes never pass through this binary and the admin credential never leaves the server: the URL is signed against the PUBLIC host, scoped to exactly this bucket and key, and expires. A deployment with no public endpoint configured cannot mint one and answers 503 rather than a URL that will not work.
+     * @param bucket Bucket is the bucket to upload into, from the path. (required)
+     * @param uploadIn  (required)
+     * @return PresignResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public void postS3BucketsByBucketObjects(@javax.annotation.Nonnull String bucket) throws ApiException {
-        postS3BucketsByBucketObjectsWithHttpInfo(bucket);
+    public PresignResponse postS3BucketsByBucketObjects(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull UploadIn uploadIn) throws ApiException {
+        ApiResponse<PresignResponse> localVarResp = postS3BucketsByBucketObjectsWithHttpInfo(bucket, uploadIn);
+        return localVarResp.getData();
     }
 
     /**
-     * Get a URL to upload one object directly
-     * Returns a short-lived presigned PUT URL, with the method, the cleaned key and the seconds until it expires. The client uploads to that URL DIRECTLY — the bytes never pass through this API, and the storage credential never leaves the server.  The URL is signed against the public storage host and scoped to exactly one bucket and key, and it expires five minutes after it is issued. The key is path-cleaned before signing, so a traversal cannot escape the bucket. A deployment with no public storage endpoint answers 503, because there is no host to sign a browser-followable URL against.  A validated principal is required, and every bucket and key is resolved inside the caller&#39;s own org: physical bucket names are derived from the org, so a tenant cannot name another&#39;s storage. The operation is billed per call — the balance is checked BEFORE anything is touched, so an unfunded org is refused with nothing done, and the debit happens only after the work succeeds. Object storage that is not configured answers 503 under this subsystem&#39;s own name rather than falling through to another.
-     * @param bucket  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * Mints a presigned PUT URL the caller uploads to DIRECTLY.
+     * Mints a presigned PUT URL the caller uploads to DIRECTLY.  The bytes never pass through this binary and the admin credential never leaves the server: the URL is signed against the PUBLIC host, scoped to exactly this bucket and key, and expires. A deployment with no public endpoint configured cannot mint one and answers 503 rather than a URL that will not work.
+     * @param bucket Bucket is the bucket to upload into, from the path. (required)
+     * @param uploadIn  (required)
+     * @return ApiResponse&lt;PresignResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public ApiResponse<Void> postS3BucketsByBucketObjectsWithHttpInfo(@javax.annotation.Nonnull String bucket) throws ApiException {
-        okhttp3.Call localVarCall = postS3BucketsByBucketObjectsValidateBeforeCall(bucket, null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<PresignResponse> postS3BucketsByBucketObjectsWithHttpInfo(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull UploadIn uploadIn) throws ApiException {
+        okhttp3.Call localVarCall = postS3BucketsByBucketObjectsValidateBeforeCall(bucket, uploadIn, null);
+        Type localVarReturnType = new TypeToken<PresignResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Get a URL to upload one object directly (asynchronously)
-     * Returns a short-lived presigned PUT URL, with the method, the cleaned key and the seconds until it expires. The client uploads to that URL DIRECTLY — the bytes never pass through this API, and the storage credential never leaves the server.  The URL is signed against the public storage host and scoped to exactly one bucket and key, and it expires five minutes after it is issued. The key is path-cleaned before signing, so a traversal cannot escape the bucket. A deployment with no public storage endpoint answers 503, because there is no host to sign a browser-followable URL against.  A validated principal is required, and every bucket and key is resolved inside the caller&#39;s own org: physical bucket names are derived from the org, so a tenant cannot name another&#39;s storage. The operation is billed per call — the balance is checked BEFORE anything is touched, so an unfunded org is refused with nothing done, and the debit happens only after the work succeeds. Object storage that is not configured answers 503 under this subsystem&#39;s own name rather than falling through to another.
-     * @param bucket  (required)
+     * Mints a presigned PUT URL the caller uploads to DIRECTLY. (asynchronously)
+     * Mints a presigned PUT URL the caller uploads to DIRECTLY.  The bytes never pass through this binary and the admin credential never leaves the server: the URL is signed against the PUBLIC host, scoped to exactly this bucket and key, and expires. A deployment with no public endpoint configured cannot mint one and answers 503 rather than a URL that will not work.
+     * @param bucket Bucket is the bucket to upload into, from the path. (required)
+     * @param uploadIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call postS3BucketsByBucketObjectsAsync(@javax.annotation.Nonnull String bucket, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postS3BucketsByBucketObjectsAsync(@javax.annotation.Nonnull String bucket, @javax.annotation.Nonnull UploadIn uploadIn, final ApiCallback<PresignResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postS3BucketsByBucketObjectsValidateBeforeCall(bucket, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = postS3BucketsByBucketObjectsValidateBeforeCall(bucket, uploadIn, _callback);
+        Type localVarReturnType = new TypeToken<PresignResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 }

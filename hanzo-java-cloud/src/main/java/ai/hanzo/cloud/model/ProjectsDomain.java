@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -97,7 +97,7 @@ public class ProjectsDomain {
   }
 
   /**
-   * Get createdAt
+   * CreatedAt is when the host was claimed, as Unix seconds — not when it went live.
    * @return createdAt
    */
   @javax.annotation.Nullable
@@ -116,7 +116,7 @@ public class ProjectsDomain {
   }
 
   /**
-   * Get detail
+   * Detail is what is holding the claim up, in words a person can act on.
    * @return detail
    */
   @javax.annotation.Nullable
@@ -135,7 +135,7 @@ public class ProjectsDomain {
   }
 
   /**
-   * Get host
+   * Host is the custom hostname claimed for this site.
    * @return host
    */
   @javax.annotation.Nullable
@@ -162,7 +162,7 @@ public class ProjectsDomain {
   }
 
   /**
-   * Get records
+   * Records are EXACTLY the DNS records to publish to prove ownership and route the host. Present only while pending, because a live host has already proved it; absent is therefore \&quot;nothing left to do\&quot;, not \&quot;we cannot say what to do\&quot;.
    * @return records
    */
   @javax.annotation.Nullable
@@ -181,7 +181,7 @@ public class ProjectsDomain {
   }
 
   /**
-   * Get status
+   * Status is &#x60;live&#x60; when the edge answers for this host now, &#x60;pending&#x60; while the claim is waiting on DNS proof of ownership. A pending host is claimed but serves nothing.
    * @return status
    */
   @javax.annotation.Nullable
@@ -200,7 +200,7 @@ public class ProjectsDomain {
   }
 
   /**
-   * Get url
+   * URL is where the host will serve once it is live — present on a pending claim too, so a console can show the destination before it works.
    * @return url
    */
   @javax.annotation.Nullable
@@ -219,7 +219,7 @@ public class ProjectsDomain {
   }
 
   /**
-   * Get verified
+   * Verified is the same fact as a boolean, for a caller that only needs the yes or no. It cannot disagree with status.
    * @return verified
    */
   @javax.annotation.Nullable

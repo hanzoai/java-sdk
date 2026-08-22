@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -135,7 +135,7 @@ public class ProjectsDeployment {
   }
 
   /**
-   * Get bucket
+   * Bucket is the object-store bucket its files were written to.
    * @return bucket
    */
   @javax.annotation.Nullable
@@ -154,7 +154,7 @@ public class ProjectsDeployment {
   }
 
   /**
-   * Get bytes
+   * Bytes is their total size in bytes.
    * @return bytes
    */
   @javax.annotation.Nullable
@@ -173,7 +173,7 @@ public class ProjectsDeployment {
   }
 
   /**
-   * Get commit
+   * Commit is the revision that was built, for a deployment that came from a repository. Absent for an uploaded artifact, which has no revision.
    * @return commit
    */
   @javax.annotation.Nullable
@@ -192,7 +192,7 @@ public class ProjectsDeployment {
   }
 
   /**
-   * Get createdAt
+   * CreatedAt is when the deployment was queued, as Unix seconds.
    * @return createdAt
    */
   @javax.annotation.Nullable
@@ -211,7 +211,7 @@ public class ProjectsDeployment {
   }
 
   /**
-   * Get files
+   * Files is how many objects the deployment published.
    * @return files
    */
   @javax.annotation.Nullable
@@ -230,7 +230,7 @@ public class ProjectsDeployment {
   }
 
   /**
-   * Get id
+   * ID identifies this one deployment attempt, and is what CI quotes back to complete it.
    * @return id
    */
   @javax.annotation.Nullable
@@ -249,7 +249,7 @@ public class ProjectsDeployment {
   }
 
   /**
-   * Get liveUrl
+   * LiveURL is where this deployment serves, once it is live.
    * @return liveUrl
    */
   @javax.annotation.Nullable
@@ -268,7 +268,7 @@ public class ProjectsDeployment {
   }
 
   /**
-   * Get message
+   * Message is what happened, in words — the build&#39;s own note, or on a failure why it failed.
    * @return message
    */
   @javax.annotation.Nullable
@@ -287,7 +287,7 @@ public class ProjectsDeployment {
   }
 
   /**
-   * Get prefix
+   * Prefix is the key prefix within that bucket holding EXACTLY this deployment&#39;s objects — the unit an upload grant is scoped to, so a grant for one deployment cannot write over another.
    * @return prefix
    */
   @javax.annotation.Nullable
@@ -306,7 +306,7 @@ public class ProjectsDeployment {
   }
 
   /**
-   * Get projectId
+   * ProjectID is the project this deployment belongs to.
    * @return projectId
    */
   @javax.annotation.Nullable
@@ -325,7 +325,7 @@ public class ProjectsDeployment {
   }
 
   /**
-   * Get source
+   * Source is what caused the deployment — a git push, an uploaded artifact, a generated site.
    * @return source
    */
   @javax.annotation.Nullable
@@ -344,7 +344,7 @@ public class ProjectsDeployment {
   }
 
   /**
-   * Get status
+   * Status is where the attempt got to — queued, live, or failed. A deployment that is live is not necessarily the one SERVING: the project&#39;s own currentDeploymentId says which is.
    * @return status
    */
   @javax.annotation.Nullable
@@ -363,7 +363,7 @@ public class ProjectsDeployment {
   }
 
   /**
-   * Get updatedAt
+   * UpdatedAt is when it last changed state, as Unix seconds — so the gap between the two is how long the build took.
    * @return updatedAt
    */
   @javax.annotation.Nullable
@@ -401,7 +401,7 @@ public class ProjectsDeployment {
   }
 
   /**
-   * Get version
+   * Version counts deployments of this project from 1, so the history reads as an ordered sequence rather than by timestamp. It is per project, not global.
    * @return version
    */
   @javax.annotation.Nullable

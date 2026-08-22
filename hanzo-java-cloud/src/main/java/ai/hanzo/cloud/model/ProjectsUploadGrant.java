@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -86,7 +86,7 @@ public class ProjectsUploadGrant {
   }
 
   /**
-   * Get expiresAt
+   * ExpiresAt is when the grant stops being accepted, as Unix seconds. It is short-lived by design and is handed out ONCE, on the response that queues the deployment — a later read of that deployment does not carry it, so a grant cannot be fetched again after the build it was minted for.
    * @return expiresAt
    */
   @javax.annotation.Nullable
@@ -113,7 +113,7 @@ public class ProjectsUploadGrant {
   }
 
   /**
-   * Get fields
+   * Fields are form values every POST must carry VERBATIM, alongside &#x60;key&#x60; and &#x60;file&#x60;. The signature covers them, so altering any one of them — including widening the key to reach outside the prefix — invalidates the grant rather than extending it.
    * @return fields
    */
   @javax.annotation.Nullable
@@ -132,7 +132,7 @@ public class ProjectsUploadGrant {
   }
 
   /**
-   * Get maxBytes
+   * MaxBytes bounds ONE object, not the upload as a whole.
    * @return maxBytes
    */
   @javax.annotation.Nullable
@@ -151,7 +151,7 @@ public class ProjectsUploadGrant {
   }
 
   /**
-   * Get prefix
+   * Prefix is the only place this grant can write: the deployment&#39;s own key prefix. It authorizes WRITES ONLY, which is why completing a deployment reconciles the prefix against a manifest instead of letting CI delete.
    * @return prefix
    */
   @javax.annotation.Nullable
@@ -170,7 +170,7 @@ public class ProjectsUploadGrant {
   }
 
   /**
-   * Get url
+   * URL is the address to POST each object to. It is signed for the PUBLIC endpoint, because the signature covers the host and CI posts from outside the cluster.
    * @return url
    */
   @javax.annotation.Nullable

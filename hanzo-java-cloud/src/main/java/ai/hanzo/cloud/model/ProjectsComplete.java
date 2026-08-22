@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -106,7 +106,7 @@ public class ProjectsComplete {
   }
 
   /**
-   * Get bytes
+   * Bytes is their total size in bytes.
    * @return bytes
    */
   @javax.annotation.Nullable
@@ -125,7 +125,7 @@ public class ProjectsComplete {
   }
 
   /**
-   * Get commit
+   * Commit is the revision that was built, recorded on the deployment.
    * @return commit
    */
   @javax.annotation.Nullable
@@ -144,7 +144,7 @@ public class ProjectsComplete {
   }
 
   /**
-   * Get files
+   * Files is how many objects CI published.
    * @return files
    */
   @javax.annotation.Nullable
@@ -209,7 +209,7 @@ public class ProjectsComplete {
   }
 
   /**
-   * Get liveUrl
+   * LiveURL is a HINT at the address the site should serve at. The public host is claimed by cloud first, so this can refine the URL a deployment reports but can never assert a subdomain another tenant holds.
    * @return liveUrl
    */
   @javax.annotation.Nullable
@@ -228,7 +228,7 @@ public class ProjectsComplete {
   }
 
   /**
-   * Get message
+   * Message is what happened, in words — on an error completion, why it failed.
    * @return message
    */
   @javax.annotation.Nullable
@@ -266,7 +266,7 @@ public class ProjectsComplete {
   }
 
   /**
-   * live | error
+   * Status is how the build ended: &#x60;live&#x60; if it succeeded, &#x60;error&#x60; if it did not. Nothing else is accepted.
    * @return status
    */
   @javax.annotation.Nullable

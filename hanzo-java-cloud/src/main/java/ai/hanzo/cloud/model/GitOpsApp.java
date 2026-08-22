@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -138,7 +138,7 @@ public class GitOpsApp {
   }
 
   /**
-   * Get automated
+   * Automated is whether CD applies new commits without being asked. It reads the PRESENCE of spec.syncPolicy.automated, which is a block rather than a boolean; false means drift is reported and nothing moves.
    * @return automated
    */
   @javax.annotation.Nullable
@@ -157,7 +157,7 @@ public class GitOpsApp {
   }
 
   /**
-   * Healthy|Degraded|Progressing|…
+   * Health is CD&#39;s verdict on the objects it manages, verbatim: Healthy, Progressing, Degraded, Suspended, Missing or Unknown.
    * @return health
    */
   @javax.annotation.Nullable
@@ -184,7 +184,7 @@ public class GitOpsApp {
   }
 
   /**
-   * Get history
+   * History is the recent deploy log, NEWEST FIRST and capped at ten. CD appends oldest-first and bounds the list itself; the reversal happens here so a caller never has to know the storage order to show what shipped last. Empty (never null) for an Application that has deployed nothing.
    * @return history
    */
   @javax.annotation.Nullable
@@ -203,7 +203,7 @@ public class GitOpsApp {
   }
 
   /**
-   * Get name
+   * Name is what CD calls this tracked source, not the workload it deploys — the Application CR&#39;s own metadata.name. The fleet ApplicationSet mints these as &lt;namespace&gt;-&lt;app&gt;.
    * @return name
    */
   @javax.annotation.Nullable
@@ -222,7 +222,7 @@ public class GitOpsApp {
   }
 
   /**
-   * Get namespace
+   * Namespace is where the Application OBJECT lives: CD&#39;s own controller namespace, which is the same one for every row here. It is NOT the destination the workloads land in — this endpoint lists cluster-wide and never reads spec.destination.
    * @return namespace
    */
   @javax.annotation.Nullable
@@ -241,7 +241,7 @@ public class GitOpsApp {
   }
 
   /**
-   * Get operation
+   * Operation is the last sync attempt and how it ended. Absent when CD has run none, which is the honest gap between \&quot;never tried\&quot; and \&quot;tried and failed\&quot;.
    * @return operation
    */
   @javax.annotation.Nullable
@@ -260,7 +260,7 @@ public class GitOpsApp {
   }
 
   /**
-   * Get path
+   * Path is the directory inside that repository CD renders, relative to its root.
    * @return path
    */
   @javax.annotation.Nullable
@@ -279,7 +279,7 @@ public class GitOpsApp {
   }
 
   /**
-   * Get project
+   * Project is the AppProject fence the sync is admitted under: which repos this Application may pull from and which destinations it may write to. Empty when the CR declares none.
    * @return project
    */
   @javax.annotation.Nullable
@@ -298,7 +298,7 @@ public class GitOpsApp {
   }
 
   /**
-   * Get reconciledAt
+   * ReconciledAt is when CD last COMPARED this Application against git, RFC 3339. It moves on every comparison, including ones that applied nothing.
    * @return reconciledAt
    */
   @javax.annotation.Nullable
@@ -317,7 +317,7 @@ public class GitOpsApp {
   }
 
   /**
-   * Get repoURL
+   * RepoURL is the git repository CD polls for this Application&#39;s desired state.
    * @return repoURL
    */
   @javax.annotation.Nullable
@@ -336,7 +336,7 @@ public class GitOpsApp {
   }
 
   /**
-   * Get resources
+   * Resources is how MANY objects CD manages for this Application (len(status.resources)) — a count, not the objects. Zero for an Application CD has not reconciled.
    * @return resources
    */
   @javax.annotation.Nullable
@@ -355,7 +355,7 @@ public class GitOpsApp {
   }
 
   /**
-   * the commit last applied
+   * Revision is the commit CD last APPLIED (status.sync.revision). Empty means it has applied none — never read that as the head of TargetRevision.
    * @return revision
    */
   @javax.annotation.Nullable
@@ -374,7 +374,7 @@ public class GitOpsApp {
   }
 
   /**
-   * Get selfHeal
+   * SelfHeal is whether CD also reverts changes made directly in the cluster (syncPolicy.automated.selfHeal). Meaningless unless Automated.
    * @return selfHeal
    */
   @javax.annotation.Nullable
@@ -393,7 +393,7 @@ public class GitOpsApp {
   }
 
   /**
-   * Synced|OutOfSync|Unknown
+   * Sync is CD&#39;s verdict on git versus cluster, verbatim: Synced, OutOfSync or Unknown. It is about the applied REVISION, so an Application can be Synced to a commit that is several behind the branch it tracks.
    * @return sync
    */
   @javax.annotation.Nullable
@@ -412,7 +412,7 @@ public class GitOpsApp {
   }
 
   /**
-   * Get targetRevision
+   * TargetRevision is the git ref CD TRACKS — usually a branch such as \&quot;main\&quot;. It is what CD aims at; Revision is what it has reached.
    * @return targetRevision
    */
   @javax.annotation.Nullable

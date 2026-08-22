@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -89,7 +89,7 @@ public class Suggestion {
   }
 
   /**
-   * Get automatable
+   * Automatable is true when the step names a tool, so the Business AI can do it rather than only describe it.
    * @return automatable
    */
   @javax.annotation.Nullable
@@ -108,7 +108,7 @@ public class Suggestion {
   }
 
   /**
-   * Get detail
+   * Detail is the step&#39;s own prose — what it asks for.
    * @return detail
    */
   @javax.annotation.Nullable
@@ -127,7 +127,7 @@ public class Suggestion {
   }
 
   /**
-   * Get rationale
+   * Rationale is why this step is being suggested NOW, written for the person reading it. It explains the ranking, not the step.
    * @return rationale
    */
   @javax.annotation.Nullable
@@ -146,7 +146,7 @@ public class Suggestion {
   }
 
   /**
-   * Get stepId
+   * StepID is the checklist step being recommended — the id every step route takes, so a caller can act on the suggestion directly.
    * @return stepId
    */
   @javax.annotation.Nullable
@@ -165,7 +165,7 @@ public class Suggestion {
   }
 
   /**
-   * Get title
+   * Title is the step&#39;s own one-line quest.
    * @return title
    */
   @javax.annotation.Nullable

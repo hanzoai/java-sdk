@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -79,7 +79,7 @@ public class Page {
   }
 
   /**
-   * Get body
+   * Body is the reusable prompt or snippet itself. It may carry {placeholder} tokens for the client-specific bits — {client_name}, {domain}, {product} — which are substituted where the template is used, not here.
    * @return body
    */
   @javax.annotation.Nullable
@@ -98,7 +98,7 @@ public class Page {
   }
 
   /**
-   * Get enabled
+   * Enabled is the admin lever. Absent reads as ON; an explicit false withdraws the template from org-facing reads.
    * @return enabled
    */
   @javax.annotation.Nullable
@@ -117,7 +117,7 @@ public class Page {
   }
 
   /**
-   * Get id
+   * ID is the slug a step references to pull this template in.
    * @return id
    */
   @javax.annotation.Nullable
@@ -136,7 +136,7 @@ public class Page {
   }
 
   /**
-   * Get title
+   * Title names the template in the authoring plane and in a picker.
    * @return title
    */
   @javax.annotation.Nullable

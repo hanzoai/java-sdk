@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -105,7 +105,7 @@ public class PnL {
   }
 
   /**
-   * Get expense
+   * Expense is the cost lines that moved in the period, one per account.
    * @return expense
    */
   @javax.annotation.Nullable
@@ -124,7 +124,7 @@ public class PnL {
   }
 
   /**
-   * Get from
+   * From opens the period and is EXCLUSIVE — movement strictly after it, matching the trial balance&#39;s opening boundary so the two reports agree on what belongs to a period. Absent means from the beginning of the ledger.
    * @return from
    */
   @javax.annotation.Nullable
@@ -151,7 +151,7 @@ public class PnL {
   }
 
   /**
-   * Get income
+   * Income is the revenue lines that moved in the period, one per account. Accounts that did not move are omitted rather than listed at zero.
    * @return income
    */
   @javax.annotation.Nullable
@@ -170,7 +170,7 @@ public class PnL {
   }
 
   /**
-   * TotalIncome − TotalExpense
+   * NetIncome is totalIncome minus totalExpense, in cents. Negative is a loss.
    * @return netIncome
    */
   @javax.annotation.Nullable
@@ -189,7 +189,7 @@ public class PnL {
   }
 
   /**
-   * Get to
+   * To closes the period and is inclusive. Absent means up to now.
    * @return to
    */
   @javax.annotation.Nullable
@@ -208,7 +208,7 @@ public class PnL {
   }
 
   /**
-   * Get totalExpense
+   * TotalExpense is cost MATCHED to that revenue, in cents, including accrued infrastructure that has not been billed yet.
    * @return totalExpense
    */
   @javax.annotation.Nullable
@@ -227,7 +227,7 @@ public class PnL {
   }
 
   /**
-   * Get totalIncome
+   * TotalIncome is revenue RECOGNIZED in the period, in cents — accrual, not cash, so a prepaid top-up is not in it until the credit is consumed.
    * @return totalIncome
    */
   @javax.annotation.Nullable

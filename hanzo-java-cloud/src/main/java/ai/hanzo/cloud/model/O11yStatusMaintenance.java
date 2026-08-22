@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -115,7 +115,7 @@ public class O11yStatusMaintenance {
   }
 
   /**
-   * Get affectedComponents
+   * AffectedComponents is what the window touches.
    * @return affectedComponents
    */
   @javax.annotation.Nullable
@@ -134,7 +134,7 @@ public class O11yStatusMaintenance {
   }
 
   /**
-   * Get endsAt
+   * EndsAt is when it is expected to finish, RFC3339 UTC.
    * @return endsAt
    */
   @javax.annotation.Nullable
@@ -153,7 +153,7 @@ public class O11yStatusMaintenance {
   }
 
   /**
-   * Get id
+   * ID is the window&#39;s handle.
    * @return id
    */
   @javax.annotation.Nullable
@@ -172,7 +172,7 @@ public class O11yStatusMaintenance {
   }
 
   /**
-   * Get lastUpdateAt
+   * LastUpdateAt is when the window was last revised, RFC3339 UTC.
    * @return lastUpdateAt
    */
   @javax.annotation.Nullable
@@ -191,7 +191,7 @@ public class O11yStatusMaintenance {
   }
 
   /**
-   * Get lastUpdateMessage
+   * LastUpdateMessage is the text of that revision.
    * @return lastUpdateMessage
    */
   @javax.annotation.Nullable
@@ -210,7 +210,7 @@ public class O11yStatusMaintenance {
   }
 
   /**
-   * Get name
+   * Name is its one-line headline.
    * @return name
    */
   @javax.annotation.Nullable
@@ -229,7 +229,7 @@ public class O11yStatusMaintenance {
   }
 
   /**
-   * Get startsAt
+   * StartsAt is when work begins, RFC3339 UTC.
    * @return startsAt
    */
   @javax.annotation.Nullable
@@ -248,7 +248,7 @@ public class O11yStatusMaintenance {
   }
 
   /**
-   * Get status
+   * Status is where the window is in its life, in the client&#39;s own vocabulary.
    * @return status
    */
   @javax.annotation.Nullable
@@ -267,7 +267,7 @@ public class O11yStatusMaintenance {
   }
 
   /**
-   * Get url
+   * URL points at the human status page, as every link in this document does.
    * @return url
    */
   @javax.annotation.Nullable

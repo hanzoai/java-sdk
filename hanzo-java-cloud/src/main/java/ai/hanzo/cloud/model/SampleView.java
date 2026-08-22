@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -140,7 +140,7 @@ public class SampleView {
   }
 
   /**
-   * Get at
+   * At is when the reading was MEASURED, RFC 3339 in UTC — the x-axis a chart plots against. The series is returned oldest first, so it only increases.
    * @return at
    */
   @javax.annotation.Nullable
@@ -159,7 +159,7 @@ public class SampleView {
   }
 
   /**
-   * Get costCents
+   * CostCents is what this unit resold for over the hour the reading falls in, in whole US cents. 0 means UNPRICED, not free: the operator&#39;s own machines — a linked run-target, a dialed-in BYO worker — are metered for utilization and never resold, so only a priced source ever fills it.
    * @return costCents
    */
   @javax.annotation.Nullable
@@ -178,7 +178,7 @@ public class SampleView {
   }
 
   /**
-   * Get cpus
+   * CPUs is logical cores. The static capability rides every row on purpose: a chart can size load against cores without joining a registry whose row may since have been rewritten or the unit deregistered.
    * @return cpus
    */
   @javax.annotation.Nullable
@@ -197,7 +197,7 @@ public class SampleView {
   }
 
   /**
-   * Get gpuModel
+   * GPUModel names the representative accelerator (\&quot;GB10\&quot;); GPUs carries how many.
    * @return gpuModel
    */
   @javax.annotation.Nullable
@@ -216,7 +216,7 @@ public class SampleView {
   }
 
   /**
-   * Get gpuUtil
+   * GPUUtil is aggregate accelerator utilization as a FRACTION of 1 — 0.42 is 42% busy. Anything a reporter sends outside 0..1 is clamped into it on write.
    * @return gpuUtil
    */
   @javax.annotation.Nullable
@@ -235,7 +235,7 @@ public class SampleView {
   }
 
   /**
-   * Get gpus
+   * GPUs is how many accelerators the reading covers.
    * @return gpus
    */
   @javax.annotation.Nullable
@@ -254,7 +254,7 @@ public class SampleView {
   }
 
   /**
-   * Get host
+   * Host is the hostname the unit reported at the time of the reading.
    * @return host
    */
   @javax.annotation.Nullable
@@ -273,7 +273,7 @@ public class SampleView {
   }
 
   /**
-   * Get kind
+   * Kind is what the measured unit is: laptop, cloud, gpu, cluster, machine or worker.
    * @return kind
    */
   @javax.annotation.Nullable
@@ -292,7 +292,7 @@ public class SampleView {
   }
 
   /**
-   * Get load1
+   * Load1 is the 1-minute load average — runnable processes, not a percentage.
    * @return load1
    */
   @javax.annotation.Nullable
@@ -311,7 +311,7 @@ public class SampleView {
   }
 
   /**
-   * Get load5
+   * Load5 is the 5-minute load average, the same units as Load1.
    * @return load5
    */
   @javax.annotation.Nullable
@@ -330,7 +330,7 @@ public class SampleView {
   }
 
   /**
-   * Get load15
+   * Load15 is the 15-minute load average, the same units as Load1.
    * @return load15
    */
   @javax.annotation.Nullable
@@ -349,7 +349,7 @@ public class SampleView {
   }
 
   /**
-   * Get memFree
+   * MemFree is host memory available, in BYTES, as reported rather than derived.
    * @return memFree
    */
   @javax.annotation.Nullable
@@ -368,7 +368,7 @@ public class SampleView {
   }
 
   /**
-   * Get memUsed
+   * MemUsed is host memory in use, in BYTES.
    * @return memUsed
    */
   @javax.annotation.Nullable
@@ -387,7 +387,7 @@ public class SampleView {
   }
 
   /**
-   * Get memory
+   * Memory is total system RAM in BYTES at the time of the reading.
    * @return memory
    */
   @javax.annotation.Nullable
@@ -406,7 +406,7 @@ public class SampleView {
   }
 
   /**
-   * Get source
+   * Source is the plane that reported the reading: \&quot;agent\&quot;, \&quot;byo\&quot; or \&quot;visor\&quot; — the same vocabulary the board&#39;s rows carry, and what ?source&#x3D; narrows on.
    * @return source
    */
   @javax.annotation.Nullable
@@ -425,7 +425,7 @@ public class SampleView {
   }
 
   /**
-   * Get unit
+   * Unit is the source&#39;s own id for the measured unit. With Source it is the key the chart groups by, and the key the board joins a unit&#39;s latest reading on.
    * @return unit
    */
   @javax.annotation.Nullable

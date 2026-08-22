@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -55,10 +55,10 @@ public class LeaseIn {
   @javax.annotation.Nullable
   private String propertyClass;
 
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
+  public static final String SERIALIZED_NAME_IMAGE = "image";
+  @SerializedName(SERIALIZED_NAME_IMAGE)
   @javax.annotation.Nullable
-  private String id;
+  private String image;
 
   public static final String SERIALIZED_NAME_PROJECT = "project";
   @SerializedName(SERIALIZED_NAME_PROJECT)
@@ -84,7 +84,7 @@ public class LeaseIn {
   }
 
   /**
-   * Class is what KIND of computer to lease, and the set is closed:   exec     a throwaway one that keeps nothing. Seconds to minutes.  dev      a coding one, with the project&#39;s own disk attached. Hours.  desktop  a dev one that also has a screen.  android  a desktop with a phone running on that screen.  Empty leases an &#x60;exec&#x60;, which is the right answer for running a program and the wrong one for working on a repository, because it keeps nothing.  An &#x60;android&#x60; needs a node that can virtualise a CPU, so it is the one class a deployment may not be able to place. Where the fleet has none, the lease succeeds and the pod stays Pending naming the device it is waiting for — which is the honest answer, because the alternative is an emulator running on an interpreted CPU and never finishing its boot.
+   * Class is what the sandbox is FOR: \&quot;exec\&quot; for a code-interpreter call, \&quot;dev\&quot; for a workspace bound to a project, \&quot;desktop\&quot; for one with a screen. It decides the image, the working directory and the isolation.
    * @return propertyClass
    */
   @javax.annotation.Nullable
@@ -97,22 +97,22 @@ public class LeaseIn {
   }
 
 
-  public LeaseIn id(@javax.annotation.Nullable String id) {
-    this.id = id;
+  public LeaseIn image(@javax.annotation.Nullable String image) {
+    this.image = image;
     return this;
   }
 
   /**
-   * ID names a sandbox to RESUME, and is the id an earlier lease answered with. Empty asks for a new one. A caller that holds an id and omits it does not get a second view of the same computer, it gets a second computer.
-   * @return id
+   * Image overrides the image the class would pick. Honoured only for a caller the policy admits, and the sandbox that comes back names the image it GOT.
+   * @return image
    */
   @javax.annotation.Nullable
-  public String getId() {
-    return id;
+  public String getImage() {
+    return image;
   }
 
-  public void setId(@javax.annotation.Nullable String id) {
-    this.id = id;
+  public void setImage(@javax.annotation.Nullable String image) {
+    this.image = image;
   }
 
 
@@ -122,7 +122,7 @@ public class LeaseIn {
   }
 
   /**
-   * Project names the disk to attach, and is REQUIRED for every class but &#x60;exec&#x60;.  One live sandbox per project: the disk attaches to one computer at a time, so a second lease over a project that already has one is refused by name rather than handed a silently empty disk.
+   * Project binds the sandbox to one of the org&#39;s projects. Required for a dev or desktop class, which are single-attach per project; an exec sandbox carries none.
    * @return project
    */
   @javax.annotation.Nullable
@@ -141,7 +141,7 @@ public class LeaseIn {
   }
 
   /**
-   * Runtime is the isolation boundary asked for: &#x60;gvisor&#x60; shares a filesystem and holds a project volume, &#x60;kata-fc&#x60; is a microVM that boots slower and reads files faster but has no shared filesystem at all. Empty asks for the fleet&#39;s default, which is the right answer unless you are measuring.  It is a REQUEST. The owner decides, and refuses a combination it cannot honour — a volume under a runtime with no shared filesystem would write into a tmpfs and lose the bytes at exit. Read Leased.Runtime for what the sandbox actually got.
+   * Runtime asks for an isolation: runc, gvisor, kata-clh or kata-fc. It is a REQUEST, not a guarantee — the sandbox that comes back carries the runtime it was actually given, which is the field to read.
    * @return runtime
    */
   @javax.annotation.Nullable
@@ -160,7 +160,7 @@ public class LeaseIn {
   }
 
   /**
-   * TTLSec bounds the lease in seconds. Unset takes the class default. Nothing runs forever, because a sandbox is somebody else&#39;s code on our nodes.
+   * TTLSec is how long the lease runs before the reaper may take it, in seconds. Zero takes the class&#39;s own default.
    * @return ttlSec
    */
   @javax.annotation.Nullable
@@ -184,7 +184,7 @@ public class LeaseIn {
     }
     LeaseIn leaseIn = (LeaseIn) o;
     return Objects.equals(this.propertyClass, leaseIn.propertyClass) &&
-        Objects.equals(this.id, leaseIn.id) &&
+        Objects.equals(this.image, leaseIn.image) &&
         Objects.equals(this.project, leaseIn.project) &&
         Objects.equals(this.runtime, leaseIn.runtime) &&
         Objects.equals(this.ttlSec, leaseIn.ttlSec);
@@ -192,7 +192,7 @@ public class LeaseIn {
 
   @Override
   public int hashCode() {
-    return Objects.hash(propertyClass, id, project, runtime, ttlSec);
+    return Objects.hash(propertyClass, image, project, runtime, ttlSec);
   }
 
   @Override
@@ -200,7 +200,7 @@ public class LeaseIn {
     StringBuilder sb = new StringBuilder();
     sb.append("class LeaseIn {\n");
     sb.append("    propertyClass: ").append(toIndentedString(propertyClass)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    image: ").append(toIndentedString(image)).append("\n");
     sb.append("    project: ").append(toIndentedString(project)).append("\n");
     sb.append("    runtime: ").append(toIndentedString(runtime)).append("\n");
     sb.append("    ttlSec: ").append(toIndentedString(ttlSec)).append("\n");
@@ -225,7 +225,7 @@ public class LeaseIn {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("class", "id", "project", "runtime", "ttlSec"));
+    openapiFields = new HashSet<String>(Arrays.asList("class", "image", "project", "runtime", "ttlSec"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -255,8 +255,8 @@ public class LeaseIn {
       if ((jsonObj.get("class") != null && !jsonObj.get("class").isJsonNull()) && !jsonObj.get("class").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `class` to be a primitive type in the JSON string but got `%s`", jsonObj.get("class").toString()));
       }
-      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+      if ((jsonObj.get("image") != null && !jsonObj.get("image").isJsonNull()) && !jsonObj.get("image").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `image` to be a primitive type in the JSON string but got `%s`", jsonObj.get("image").toString()));
       }
       if ((jsonObj.get("project") != null && !jsonObj.get("project").isJsonNull()) && !jsonObj.get("project").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `project` to be a primitive type in the JSON string but got `%s`", jsonObj.get("project").toString()));

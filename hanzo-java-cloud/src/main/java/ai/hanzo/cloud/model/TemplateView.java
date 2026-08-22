@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -97,7 +97,7 @@ public class TemplateView {
   }
 
   /**
-   * Get category
+   * Category is the corporate need the template serves: formation, equity, ops or sales. Formation and equity are the securities-class categories, which is what forces counselReview.
    * @return category
    */
   @javax.annotation.Nullable
@@ -116,7 +116,7 @@ public class TemplateView {
   }
 
   /**
-   * Get counselReview
+   * CounselReview marks a template whose rendered documents open with the counsel notice. True for every formation and equity template whatever an override sends: the engine prepends the notice and no caller can suppress it.
    * @return counselReview
    */
   @javax.annotation.Nullable
@@ -143,7 +143,7 @@ public class TemplateView {
   }
 
   /**
-   * Get fields
+   * Fields declares the merge fields the body consumes — every key a generation must supply, each with its human label. All are REQUIRED: a missing one is refused rather than rendered as a blank into a contract.
    * @return fields
    */
   @javax.annotation.Nullable
@@ -162,7 +162,7 @@ public class TemplateView {
   }
 
   /**
-   * Get id
+   * ID is the template&#39;s stable id and the path segment that fetches its body — \&quot;nda\&quot;, \&quot;msa\&quot;, \&quot;safe\&quot;. An override keeps the built-in&#39;s id.
    * @return id
    */
   @javax.annotation.Nullable
@@ -181,7 +181,7 @@ public class TemplateView {
   }
 
   /**
-   * Get origin
+   * Origin is \&quot;builtin\&quot; for a template the platform ships or \&quot;org\&quot; for one this org saved. It separates the catalog every tenant sees from this tenant&#39;s own.
    * @return origin
    */
   @javax.annotation.Nullable
@@ -200,7 +200,7 @@ public class TemplateView {
   }
 
   /**
-   * Get title
+   * Title is the display name, e.g. \&quot;Mutual Non-Disclosure Agreement\&quot;. A generated document inherits it.
    * @return title
    */
   @javax.annotation.Nullable
@@ -219,7 +219,7 @@ public class TemplateView {
   }
 
   /**
-   * Get version
+   * Version is which version of this template the caller&#39;s org resolves to. A built-in is version 1; the org&#39;s first override is 2 and each save increments, so an override version never collides with the built-in&#39;s.
    * @return version
    */
   @javax.annotation.Nullable

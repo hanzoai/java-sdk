@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -92,7 +92,7 @@ public class PublishResult {
   }
 
   /**
-   * Get channels
+   * Channels is the channel list read off the content document — integration ids or provider names, as the item declares them. Empty when the item names none, which targets every connected, enabled channel. It is what was ASKED for; Results is what happened.
    * @return channels
    */
   @javax.annotation.Nullable
@@ -119,7 +119,7 @@ public class PublishResult {
   }
 
   /**
-   * Get externalIds
+   * ExternalIDs maps channel id → the post id that channel returned, merged with everything earlier publishes recorded. Successes only, and it is the idempotency ledger: a channel named here is skipped by every later publish of this item, so the map only ever grows.
    * @return externalIds
    */
   @javax.annotation.Nullable
@@ -146,7 +146,7 @@ public class PublishResult {
   }
 
   /**
-   * Get results
+   * Results is the outcome per channel — which went out, which did not and why — covering the whole fan-out including failures, so partial success is never flattened into one verdict. A channel the org has not connected appears here as failed with \&quot;channel not connected\&quot;.
    * @return results
    */
   @javax.annotation.Nullable
@@ -165,7 +165,7 @@ public class PublishResult {
   }
 
   /**
-   * Get status
+   * Status is the ONE headline, drawn from: \&quot;distributed\&quot; (something is on record and went out now), \&quot;scheduled\&quot; (same, handed to the channel&#39;s own scheduler for later), \&quot;failed\&quot; (nothing is on record — this fan-out missed entirely and no earlier one landed), \&quot;in_progress\&quot; (another publisher holds the item, so this call posted NOTHING and the caller retries), and \&quot;not_configured\&quot; (no distribution edge is wired; a transition records it instead of failing). A partial fan-out is \&quot;distributed\&quot;/\&quot;scheduled\&quot;, never \&quot;failed\&quot; — the per-channel truth is in Results.
    * @return status
    */
   @javax.annotation.Nullable

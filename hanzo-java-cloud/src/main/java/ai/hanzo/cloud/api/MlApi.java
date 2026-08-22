@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -27,6 +27,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import ai.hanzo.cloud.model.MlCreate;
 import ai.hanzo.cloud.model.MlResource;
 import ai.hanzo.cloud.model.MlResourceList;
 
@@ -627,11 +628,18 @@ public class MlApi {
     }
     /**
      * Build call for postMlModels
+     * @param mlCreate  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call postMlModelsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postMlModelsCall(@javax.annotation.Nonnull MlCreate mlCreate, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -645,7 +653,7 @@ public class MlApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = mlCreate;
 
         // create path and map variables
         String localVarPath = "/v1/ml/models";
@@ -657,6 +665,7 @@ public class MlApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -664,6 +673,7 @@ public class MlApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -675,42 +685,72 @@ public class MlApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postMlModelsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postMlModelsCall(_callback);
+    private okhttp3.Call postMlModelsValidateBeforeCall(@javax.annotation.Nonnull MlCreate mlCreate, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'mlCreate' is set
+        if (mlCreate == null) {
+            throw new ApiException("Missing the required parameter 'mlCreate' when calling postMlModels(Async)");
+        }
+
+        return postMlModelsCall(mlCreate, _callback);
 
     }
 
     /**
-     * Deploy an inference model
-     * Deploys a model into the caller&#39;s own tenant namespace and answers the created resource, 201. The spec is the kserve InferenceService spec, relayed as given, so anything kserve serves is deployable here without this layer knowing what it is.  THE BALANCE GATE RUNS FIRST, before a namespace or a resource exists, so an unfunded org cannot start GPU compute and then be billed for it. It fails CLOSED: a commerce that cannot be reached refuses rather than admits. The refusal carries the fleet&#39;s nested error body — the 402 shape a funded-balance client already parses — which is precisely why this route is not a typed op. On success the submission fee is debited from the caller org&#39;s own ledger, asynchronously and best-effort; ongoing GPU-hour cost is metered elsewhere.  The tenant namespace is derived from the VALIDATED org and project — never from a field — and the mapping is injective in both, so two tenants can never land in one namespace. An unvalidated caller is refused before any of that. The name must be a DNS-1123 label; a name already taken in the tenant&#39;s namespace is a 409.
+     * Deploys one inference model for the caller&#39;s org, and answers 201 with the model as Kubernetes admitted it.
+     * Deploys one inference model for the caller&#39;s org, and answers 201 with the model as Kubernetes admitted it.  The &#x60;spec&#x60; is a kserve InferenceService spec, passed through unchanged — this plane owns the tenancy, the billing and the namespace, and kserve owns what a model IS. An unfunded org is refused BEFORE anything is created, so nobody runs free GPU compute and nobody is charged for a resource that was never made.
+     * @param mlCreate  (required)
+     * @return MlResource
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
      */
-    public void postMlModels() throws ApiException {
-        postMlModelsWithHttpInfo();
+    public MlResource postMlModels(@javax.annotation.Nonnull MlCreate mlCreate) throws ApiException {
+        ApiResponse<MlResource> localVarResp = postMlModelsWithHttpInfo(mlCreate);
+        return localVarResp.getData();
     }
 
     /**
-     * Deploy an inference model
-     * Deploys a model into the caller&#39;s own tenant namespace and answers the created resource, 201. The spec is the kserve InferenceService spec, relayed as given, so anything kserve serves is deployable here without this layer knowing what it is.  THE BALANCE GATE RUNS FIRST, before a namespace or a resource exists, so an unfunded org cannot start GPU compute and then be billed for it. It fails CLOSED: a commerce that cannot be reached refuses rather than admits. The refusal carries the fleet&#39;s nested error body — the 402 shape a funded-balance client already parses — which is precisely why this route is not a typed op. On success the submission fee is debited from the caller org&#39;s own ledger, asynchronously and best-effort; ongoing GPU-hour cost is metered elsewhere.  The tenant namespace is derived from the VALIDATED org and project — never from a field — and the mapping is injective in both, so two tenants can never land in one namespace. An unvalidated caller is refused before any of that. The name must be a DNS-1123 label; a name already taken in the tenant&#39;s namespace is a 409.
-     * @return ApiResponse&lt;Void&gt;
+     * Deploys one inference model for the caller&#39;s org, and answers 201 with the model as Kubernetes admitted it.
+     * Deploys one inference model for the caller&#39;s org, and answers 201 with the model as Kubernetes admitted it.  The &#x60;spec&#x60; is a kserve InferenceService spec, passed through unchanged — this plane owns the tenancy, the billing and the namespace, and kserve owns what a model IS. An unfunded org is refused BEFORE anything is created, so nobody runs free GPU compute and nobody is charged for a resource that was never made.
+     * @param mlCreate  (required)
+     * @return ApiResponse&lt;MlResource&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
      */
-    public ApiResponse<Void> postMlModelsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postMlModelsValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<MlResource> postMlModelsWithHttpInfo(@javax.annotation.Nonnull MlCreate mlCreate) throws ApiException {
+        okhttp3.Call localVarCall = postMlModelsValidateBeforeCall(mlCreate, null);
+        Type localVarReturnType = new TypeToken<MlResource>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Deploy an inference model (asynchronously)
-     * Deploys a model into the caller&#39;s own tenant namespace and answers the created resource, 201. The spec is the kserve InferenceService spec, relayed as given, so anything kserve serves is deployable here without this layer knowing what it is.  THE BALANCE GATE RUNS FIRST, before a namespace or a resource exists, so an unfunded org cannot start GPU compute and then be billed for it. It fails CLOSED: a commerce that cannot be reached refuses rather than admits. The refusal carries the fleet&#39;s nested error body — the 402 shape a funded-balance client already parses — which is precisely why this route is not a typed op. On success the submission fee is debited from the caller org&#39;s own ledger, asynchronously and best-effort; ongoing GPU-hour cost is metered elsewhere.  The tenant namespace is derived from the VALIDATED org and project — never from a field — and the mapping is injective in both, so two tenants can never land in one namespace. An unvalidated caller is refused before any of that. The name must be a DNS-1123 label; a name already taken in the tenant&#39;s namespace is a 409.
+     * Deploys one inference model for the caller&#39;s org, and answers 201 with the model as Kubernetes admitted it. (asynchronously)
+     * Deploys one inference model for the caller&#39;s org, and answers 201 with the model as Kubernetes admitted it.  The &#x60;spec&#x60; is a kserve InferenceService spec, passed through unchanged — this plane owns the tenancy, the billing and the namespace, and kserve owns what a model IS. An unfunded org is refused BEFORE anything is created, so nobody runs free GPU compute and nobody is charged for a resource that was never made.
+     * @param mlCreate  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call postMlModelsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postMlModelsAsync(@javax.annotation.Nonnull MlCreate mlCreate, final ApiCallback<MlResource> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postMlModelsValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = postMlModelsValidateBeforeCall(mlCreate, _callback);
+        Type localVarReturnType = new TypeToken<MlResource>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**

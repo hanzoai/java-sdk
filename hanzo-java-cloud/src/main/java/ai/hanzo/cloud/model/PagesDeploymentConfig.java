@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -97,7 +97,7 @@ public class PagesDeploymentConfig {
   }
 
   /**
-   * Get compatibilityDate
+   * CompatibilityDate pins which Workers runtime behaviour the functions run under, as a date (\&quot;2024-01-01\&quot;). It is a pin, not a version: the runtime keeps that date&#39;s semantics for code deployed against it.
    * @return compatibilityDate
    */
   @javax.annotation.Nullable
@@ -124,7 +124,7 @@ public class PagesDeploymentConfig {
   }
 
   /**
-   * Get compatibilityFlags
+   * CompatibilityFlags turn individual runtime behaviours on or off ahead of, or behind, the date above (\&quot;nodejs_compat\&quot;).
    * @return compatibilityFlags
    */
   @javax.annotation.Nullable
@@ -151,7 +151,7 @@ public class PagesDeploymentConfig {
   }
 
   /**
-   * Get d1Databases
+   * D1Databases binds D1 databases in, keyed by binding name.
    * @return d1Databases
    */
   @javax.annotation.Nullable
@@ -178,7 +178,7 @@ public class PagesDeploymentConfig {
   }
 
   /**
-   * Get envVars
+   * EnvVars are the environment variables the functions see, KEYED BY VARIABLE NAME. The key is the name; the value carries the value and whether it is a secret.
    * @return envVars
    */
   @javax.annotation.Nullable
@@ -205,7 +205,7 @@ public class PagesDeploymentConfig {
   }
 
   /**
-   * Get kvNamespaces
+   * KVNamespaces binds KV namespaces into the functions, KEYED BY THE BINDING NAME the code reads (&#x60;env.SESSIONS&#x60;). Same shape for the two below.
    * @return kvNamespaces
    */
   @javax.annotation.Nullable
@@ -232,7 +232,7 @@ public class PagesDeploymentConfig {
   }
 
   /**
-   * Get r2Buckets
+   * R2Buckets binds R2 buckets in, keyed by binding name.
    * @return r2Buckets
    */
   @javax.annotation.Nullable

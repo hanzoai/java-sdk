@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -93,7 +93,7 @@ public class ArgoDestination {
   }
 
   /**
-   * Get namespace
+   * Namespace is where in that cluster the workload lands. \&quot;*\&quot; on a project&#39;s destination fence means any namespace.
    * @return namespace
    */
   @javax.annotation.Nullable
@@ -112,7 +112,7 @@ public class ArgoDestination {
   }
 
   /**
-   * Get server
+   * Server is the cluster API URL the application reconciles into. Everything this plane projects lands in the cluster it runs in, so it is https://kubernetes.default.svc — except on a project&#39;s destination fence, where \&quot;*\&quot; means any cluster.
    * @return server
    */
   @javax.annotation.Nullable

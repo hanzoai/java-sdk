@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -87,7 +87,7 @@ public class ArgoApp {
   }
 
   /**
-   * Get apiVersion
+   * APIVersion is the constant \&quot;argoproj.io/v1alpha1\&quot; — the shape, not the source. These are projections of operator App CRs and Hanzo CD Applications; no argoproj.io object is stored anywhere behind this plane.
    * @return apiVersion
    */
   @javax.annotation.Nullable
@@ -106,7 +106,7 @@ public class ArgoApp {
   }
 
   /**
-   * Get kind
+   * Kind is the constant \&quot;Application\&quot;.
    * @return kind
    */
   @javax.annotation.Nullable
@@ -125,7 +125,7 @@ public class ArgoApp {
   }
 
   /**
-   * Get metadata
+   * Metadata is the projected object&#39;s identity.
    * @return metadata
    */
   @javax.annotation.Nullable
@@ -144,7 +144,7 @@ public class ArgoApp {
   }
 
   /**
-   * Get spec
+   * Spec is the desired state: where it comes from, where it lands, what project it belongs to.
    * @return spec
    */
   @javax.annotation.Nullable
@@ -163,7 +163,7 @@ public class ArgoApp {
   }
 
   /**
-   * Get status
+   * Status is what was observed: the sync verdict, the health, and the owned objects when this is a detail read.
    * @return status
    */
   @javax.annotation.Nullable

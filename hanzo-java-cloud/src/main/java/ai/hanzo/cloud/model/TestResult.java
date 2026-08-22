@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -79,7 +79,7 @@ public class TestResult {
   }
 
   /**
-   * Get delivered
+   * Delivered is whether the subscriber accepted the test POST. It is the whole answer: the send is synchronous and is not retried.
    * @return delivered
    */
   @javax.annotation.Nullable
@@ -98,7 +98,7 @@ public class TestResult {
   }
 
   /**
-   * Get durationMs
+   * DurationMs is how long the single attempt took, in MILLISECONDS.
    * @return durationMs
    */
   @javax.annotation.Nullable
@@ -117,7 +117,7 @@ public class TestResult {
   }
 
   /**
-   * Get error
+   * Error says what stopped it. Empty when delivered.
    * @return error
    */
   @javax.annotation.Nullable
@@ -136,7 +136,7 @@ public class TestResult {
   }
 
   /**
-   * Get httpStatus
+   * HTTPStatus is what the subscriber answered, or 0 if it never answered.
    * @return httpStatus
    */
   @javax.annotation.Nullable

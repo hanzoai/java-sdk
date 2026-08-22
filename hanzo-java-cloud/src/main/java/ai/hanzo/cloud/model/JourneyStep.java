@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -126,7 +126,7 @@ public class JourneyStep {
   }
 
   /**
-   * Get args
+   * Args are the tool&#39;s default arguments, merged under whatever the caller passes at run time, so a step ships with the arguments that make it work.
    * @return args
    */
   @javax.annotation.Nullable
@@ -172,7 +172,7 @@ public class JourneyStep {
   }
 
   /**
-   * the prose/juncture — what the Guide asks/explains here
+   * Detail is the juncture — what the Guide explains, or asks for, at this step.
    * @return detail
    */
   @javax.annotation.Nullable
@@ -191,7 +191,7 @@ public class JourneyStep {
   }
 
   /**
-   * Get draft
+   * Draft, when set, is the prompt the embedded AI answers first; its output is folded into one of Args before the tool runs, so the model writes the content and the tool only delivers it.
    * @return draft
    */
   @javax.annotation.Nullable
@@ -210,7 +210,7 @@ public class JourneyStep {
   }
 
   /**
-   * Get draftInto
+   * DraftInto names the argument the drafted text lands in. Empty means \&quot;brief\&quot;.
    * @return draftInto
    */
   @javax.annotation.Nullable
@@ -248,7 +248,7 @@ public class JourneyStep {
   }
 
   /**
-   * Get id
+   * ID is the stable slug the whole plane addresses this step by — the value in &#x60;deps&#x60;, in &#x60;next&#x60;, in the progress rows, and in the URL of every step route. Renaming it orphans an org&#39;s recorded progress for this step.
    * @return id
    */
   @javax.annotation.Nullable
@@ -267,7 +267,7 @@ public class JourneyStep {
   }
 
   /**
-   * the phase (section id) this step groups under
+   * Section is the id of the phase this step groups under. A disabled section takes its steps out of the journey with it.
    * @return section
    */
   @javax.annotation.Nullable
@@ -305,7 +305,7 @@ public class JourneyStep {
   }
 
   /**
-   * Get title
+   * Title is the one-line quest as a person reads it in the checklist.
    * @return title
    */
   @javax.annotation.Nullable
@@ -324,7 +324,7 @@ public class JourneyStep {
   }
 
   /**
-   * Tool, when set, is the MCP tool the Business AI runs for \&quot;do it for me\&quot;. Args are its default arguments; Draft is an optional AI prompt whose output fills the DraftInto arg (default \&quot;brief\&quot;).
+   * Tool, when set, names the MCP tool the Business AI runs for \&quot;do it for me\&quot;. A step with no tool can only be completed by a person; it is the field the &#x60;automatable&#x60; flag on every projection of this step is derived from.
    * @return tool
    */
   @javax.annotation.Nullable

@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -99,7 +99,7 @@ public class ActionRecord {
   }
 
   /**
-   * Get args
+   * Args is the JSON the tool was called with, recorded as TEXT exactly as sent — including whatever the AI drafted into it — so a run can be read back and reproduced. It is a string, not an object.
    * @return args
    */
   @javax.annotation.Nullable
@@ -118,7 +118,7 @@ public class ActionRecord {
   }
 
   /**
-   * Get createdAt
+   * CreatedAt is when the run was recorded, as Unix seconds. The ledger is read newest-first on this column.
    * @return createdAt
    */
   @javax.annotation.Nullable
@@ -137,7 +137,7 @@ public class ActionRecord {
   }
 
   /**
-   * Get err
+   * Err is why the run failed, when it did. Empty on a successful run.
    * @return err
    */
   @javax.annotation.Nullable
@@ -156,7 +156,7 @@ public class ActionRecord {
   }
 
   /**
-   * Get id
+   * ID identifies this one execution. The ledger is append-only, so an id is never reused and never updated.
    * @return id
    */
   @javax.annotation.Nullable
@@ -175,7 +175,7 @@ public class ActionRecord {
   }
 
   /**
-   * Get ok
+   * OK is whether the tool ran to completion. It is the ledger&#39;s own verdict, not the tool&#39;s opinion of the outcome — a tool that succeeded at reporting bad news is ok.
    * @return ok
    */
   @javax.annotation.Nullable
@@ -194,7 +194,7 @@ public class ActionRecord {
   }
 
   /**
-   * Get result
+   * Result is the tool&#39;s own answer, likewise recorded as JSON text. Present on a failed run too, where the tool answered but the answer was a refusal.
    * @return result
    */
   @javax.annotation.Nullable
@@ -213,7 +213,7 @@ public class ActionRecord {
   }
 
   /**
-   * Get stepId
+   * StepID is the checklist step the Business AI was acting on.
    * @return stepId
    */
   @javax.annotation.Nullable
@@ -232,7 +232,7 @@ public class ActionRecord {
   }
 
   /**
-   * Get tool
+   * Tool is the MCP tool that was dispatched, by name.
    * @return tool
    */
   @javax.annotation.Nullable

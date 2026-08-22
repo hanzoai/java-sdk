@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -60,6 +60,16 @@ public class IamKey {
   @SerializedName(SERIALIZED_NAME_ACCESS_SECRET)
   @javax.annotation.Nullable
   private String accessSecret;
+
+  public static final String SERIALIZED_NAME_ACCESS_SECRET_DIGEST = "accessSecretDigest";
+  @SerializedName(SERIALIZED_NAME_ACCESS_SECRET_DIGEST)
+  @javax.annotation.Nullable
+  private String accessSecretDigest;
+
+  public static final String SERIALIZED_NAME_ACT = "act";
+  @SerializedName(SERIALIZED_NAME_ACT)
+  @javax.annotation.Nullable
+  private Boolean act;
 
   public static final String SERIALIZED_NAME_APPLICATION = "application";
   @SerializedName(SERIALIZED_NAME_APPLICATION)
@@ -150,7 +160,7 @@ public class IamKey {
   }
 
   /**
-   * AccessKey (pk-*) is the publishable identifier and lookup index; AccessSecret (sk-*) is the confidential secret.
+   * AccessKey (pk-*) is the publishable identifier and lookup index; AccessSecret (sk-*) is the confidential secret. AccessSecret IS NOT PERSISTED for a key minted at or after the digest change: it carries the secret out to its holder once, in the mint response, and the row keeps only AccessSecretDigest. It stays on the struct because that one-time reveal is the whole point of minting, and it stays in the schema because rows written before the change still hold a plaintext secret that the resolver drains on first use.
    * @return accessKey
    */
   @javax.annotation.Nullable
@@ -179,6 +189,44 @@ public class IamKey {
 
   public void setAccessSecret(@javax.annotation.Nullable String accessSecret) {
     this.accessSecret = accessSecret;
+  }
+
+
+  public IamKey accessSecretDigest(@javax.annotation.Nullable String accessSecretDigest) {
+    this.accessSecretDigest = accessSecretDigest;
+    return this;
+  }
+
+  /**
+   * AccessSecretDigest is how a presented secret finds its key: the resolver digests what the caller sent and looks THAT up. It is what lets the row hold no plaintext and still be found in one indexed read — a salted hash cannot be looked up by value, which is the reason the plaintext was here.
+   * @return accessSecretDigest
+   */
+  @javax.annotation.Nullable
+  public String getAccessSecretDigest() {
+    return accessSecretDigest;
+  }
+
+  public void setAccessSecretDigest(@javax.annotation.Nullable String accessSecretDigest) {
+    this.accessSecretDigest = accessSecretDigest;
+  }
+
+
+  public IamKey act(@javax.annotation.Nullable Boolean act) {
+    this.act = act;
+    return this;
+  }
+
+  /**
+   * Act is the durable, opt-in grant that lets this key act FOR a user in its own org — the credential behind as(): presenting it authorizes minting a short-lived, user-bound token for a member of the key&#39;s tenant. Default false, so a server key mints nothing on anyone&#39;s behalf until the grant is set deliberately — the capability is never inherited by every key. It is confined at mint time to the key&#39;s OWN Owner, and a reserved-org or SuperAdmin target is refused, so the grant reaches only ordinary members of the one tenant that holds the key.
+   * @return act
+   */
+  @javax.annotation.Nullable
+  public Boolean getAct() {
+    return act;
+  }
+
+  public void setAct(@javax.annotation.Nullable Boolean act) {
+    this.act = act;
   }
 
 
@@ -498,6 +546,8 @@ public class IamKey {
     IamKey iamKey = (IamKey) o;
     return Objects.equals(this.accessKey, iamKey.accessKey) &&
         Objects.equals(this.accessSecret, iamKey.accessSecret) &&
+        Objects.equals(this.accessSecretDigest, iamKey.accessSecretDigest) &&
+        Objects.equals(this.act, iamKey.act) &&
         Objects.equals(this.application, iamKey.application) &&
         Objects.equals(this.createdAt, iamKey.createdAt) &&
         Objects.equals(this.createdTime, iamKey.createdTime) &&
@@ -518,7 +568,7 @@ public class IamKey {
 
   @Override
   public int hashCode() {
-    return Objects.hash(accessKey, accessSecret, application, createdAt, createdTime, deleted, displayName, expireTime, id, name, organization, owner, scope, state, type, updatedAt, updatedTime, user);
+    return Objects.hash(accessKey, accessSecret, accessSecretDigest, act, application, createdAt, createdTime, deleted, displayName, expireTime, id, name, organization, owner, scope, state, type, updatedAt, updatedTime, user);
   }
 
   @Override
@@ -527,6 +577,8 @@ public class IamKey {
     sb.append("class IamKey {\n");
     sb.append("    accessKey: ").append(toIndentedString(accessKey)).append("\n");
     sb.append("    accessSecret: ").append(toIndentedString(accessSecret)).append("\n");
+    sb.append("    accessSecretDigest: ").append(toIndentedString(accessSecretDigest)).append("\n");
+    sb.append("    act: ").append(toIndentedString(act)).append("\n");
     sb.append("    application: ").append(toIndentedString(application)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
@@ -564,7 +616,7 @@ public class IamKey {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("accessKey", "accessSecret", "application", "createdAt", "createdTime", "deleted", "displayName", "expireTime", "id", "name", "organization", "owner", "scope", "state", "type", "updatedAt", "updatedTime", "user"));
+    openapiFields = new HashSet<String>(Arrays.asList("accessKey", "accessSecret", "accessSecretDigest", "act", "application", "createdAt", "createdTime", "deleted", "displayName", "expireTime", "id", "name", "organization", "owner", "scope", "state", "type", "updatedAt", "updatedTime", "user"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -596,6 +648,9 @@ public class IamKey {
       }
       if ((jsonObj.get("accessSecret") != null && !jsonObj.get("accessSecret").isJsonNull()) && !jsonObj.get("accessSecret").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `accessSecret` to be a primitive type in the JSON string but got `%s`", jsonObj.get("accessSecret").toString()));
+      }
+      if ((jsonObj.get("accessSecretDigest") != null && !jsonObj.get("accessSecretDigest").isJsonNull()) && !jsonObj.get("accessSecretDigest").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `accessSecretDigest` to be a primitive type in the JSON string but got `%s`", jsonObj.get("accessSecretDigest").toString()));
       }
       if ((jsonObj.get("application") != null && !jsonObj.get("application").isJsonNull()) && !jsonObj.get("application").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `application` to be a primitive type in the JSON string but got `%s`", jsonObj.get("application").toString()));

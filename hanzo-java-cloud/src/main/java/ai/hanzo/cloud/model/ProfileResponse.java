@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -77,7 +77,7 @@ public class ProfileResponse {
   }
 
   /**
-   * Get keyMetrics
+   * KeyMetrics are the org&#39;s OWN numbers behind those signals — never another org&#39;s, and never a platform aggregate.
    * @return keyMetrics
    */
   @javax.annotation.Nullable
@@ -104,7 +104,7 @@ public class ProfileResponse {
   }
 
   /**
-   * Get signals
+   * Signals is what was observed of the org right now, one boolean per probe. A probe that could not be run reports FALSE, not absent — the shape is stable so a caller never has to tell a missing key from a negative answer, and the cost is that \&quot;not observed\&quot; and \&quot;not there\&quot; look alike here. Keys are the probe names, including the &#x60;module:&lt;name&gt;&#x60; and &#x60;connected:&lt;provider&gt;&#x60; families.
    * @return signals
    */
   @javax.annotation.Nullable
@@ -123,7 +123,7 @@ public class ProfileResponse {
   }
 
   /**
-   * Get stage
+   * Stage is how far the business itself has got — formed, launched, activated or scaling — decided purely from the signals below, and by what the org has ACHIEVED rather than what it has configured. It reads the STRONGEST evidence present, so money of record makes an org scaling even if an earlier rung&#39;s signal was never observed. It is unrelated to checklist progress.
    * @return stage
    */
   @javax.annotation.Nullable

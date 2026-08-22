@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -89,7 +89,7 @@ public class Call {
   }
 
   /**
-   * Get agent
+   * Agent names the Hanzo assistant handling the call. Set means the call was answered by that assistant rather than connected to a person.
    * @return agent
    */
   @javax.annotation.Nullable
@@ -108,7 +108,7 @@ public class Call {
   }
 
   /**
-   * Get from
+   * From is the calling number in E.164. It must be one this org holds: a carrier refuses an origination from a number nobody proved they own.
    * @return from
    */
   @javax.annotation.Nullable
@@ -127,7 +127,7 @@ public class Call {
   }
 
   /**
-   * Get id
+   * ID is the carrier&#39;s handle for the call — what a hangup or a lookup names.
    * @return id
    */
   @javax.annotation.Nullable
@@ -146,7 +146,7 @@ public class Call {
   }
 
   /**
-   * Get org
+   * Org is the tenant the call was placed for or received by.
    * @return org
    */
   @javax.annotation.Nullable
@@ -165,7 +165,7 @@ public class Call {
   }
 
   /**
-   * queued | ringing | answered | completed | failed
+   * Status is where the call is: \&quot;queued\&quot;, \&quot;ringing\&quot;, \&quot;answered\&quot;, \&quot;completed\&quot; or \&quot;failed\&quot;. Only the last two are terminal.
    * @return status
    */
   @javax.annotation.Nullable
@@ -184,7 +184,7 @@ public class Call {
   }
 
   /**
-   * Get to
+   * To is the called number in E.164.
    * @return to
    */
   @javax.annotation.Nullable

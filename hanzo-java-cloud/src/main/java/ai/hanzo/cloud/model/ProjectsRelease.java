@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -99,7 +99,7 @@ public class ProjectsRelease {
   }
 
   /**
-   * Get active
+   * Active is whether this is the release the site is SERVING right now. Exactly one release of a site is active; the others are kept so they can be activated again, until retention reclaims them.
    * @return active
    */
   @javax.annotation.Nullable
@@ -118,7 +118,7 @@ public class ProjectsRelease {
   }
 
   /**
-   * Get bytes
+   * Bytes is their total size in bytes.
    * @return bytes
    */
   @javax.annotation.Nullable
@@ -137,7 +137,7 @@ public class ProjectsRelease {
   }
 
   /**
-   * Get createdAt
+   * CreatedAt is when the release was cut, as Unix seconds — not when it was last activated.
    * @return createdAt
    */
   @javax.annotation.Nullable
@@ -156,7 +156,7 @@ public class ProjectsRelease {
   }
 
   /**
-   * Get objects
+   * Objects is how many files the release holds.
    * @return objects
    */
   @javax.annotation.Nullable
@@ -175,7 +175,7 @@ public class ProjectsRelease {
   }
 
   /**
-   * Get releaseId
+   * ReleaseID is derived from a DIGEST of the release&#39;s own manifest, so identical content is the same release and a release can never be confused with another one. Activating an older id IS the rollback.
    * @return releaseId
    */
   @javax.annotation.Nullable
@@ -194,7 +194,7 @@ public class ProjectsRelease {
   }
 
   /**
-   * Get slug
+   * Slug is the site this release belongs to.
    * @return slug
    */
   @javax.annotation.Nullable
@@ -213,7 +213,7 @@ public class ProjectsRelease {
   }
 
   /**
-   * Get source
+   * Source is what the release was cut from — the build output or upload it was promoted out of.
    * @return source
    */
   @javax.annotation.Nullable
@@ -232,7 +232,7 @@ public class ProjectsRelease {
   }
 
   /**
-   * Get url
+   * URL is where the site serves. Present only on the ACTIVE release, since an inactive one is not answering anywhere.
    * @return url
    */
   @javax.annotation.Nullable

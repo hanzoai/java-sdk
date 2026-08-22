@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -99,11 +99,6 @@ public class RunnerBuildReq {
   @SerializedName(SERIALIZED_NAME_IMAGE)
   @javax.annotation.Nullable
   private String image;
-
-  public static final String SERIALIZED_NAME_ORGANIZATION_ID = "organizationId";
-  @SerializedName(SERIALIZED_NAME_ORGANIZATION_ID)
-  @javax.annotation.Nullable
-  private String organizationId;
 
   public static final String SERIALIZED_NAME_OS = "os";
   @SerializedName(SERIALIZED_NAME_OS)
@@ -320,25 +315,6 @@ public class RunnerBuildReq {
   }
 
 
-  public RunnerBuildReq organizationId(@javax.annotation.Nullable String organizationId) {
-    this.organizationId = organizationId;
-    return this;
-  }
-
-  /**
-   * OrgID attributes the build to an org. On the IAM path it defaults to the caller&#39;s own validated org, and a foreign one is refused unless the caller is a platform SuperAdmin.
-   * @return organizationId
-   */
-  @javax.annotation.Nullable
-  public String getOrganizationId() {
-    return organizationId;
-  }
-
-  public void setOrganizationId(@javax.annotation.Nullable String organizationId) {
-    this.organizationId = organizationId;
-  }
-
-
   public RunnerBuildReq os(@javax.annotation.Nullable String os) {
     this.os = os;
     return this;
@@ -453,7 +429,6 @@ public class RunnerBuildReq {
         Objects.equals(this.dockerTarget, runnerBuildReq.dockerTarget) &&
         Objects.equals(this.dockerfile, runnerBuildReq.dockerfile) &&
         Objects.equals(this.image, runnerBuildReq.image) &&
-        Objects.equals(this.organizationId, runnerBuildReq.organizationId) &&
         Objects.equals(this.os, runnerBuildReq.os) &&
         Objects.equals(this.ref, runnerBuildReq.ref) &&
         Objects.equals(this.repo, runnerBuildReq.repo) &&
@@ -463,7 +438,7 @@ public class RunnerBuildReq {
 
   @Override
   public int hashCode() {
-    return Objects.hash(arch, args, binaries, branch, bucket, context, dockerTarget, dockerfile, image, organizationId, os, ref, repo, sha, tag);
+    return Objects.hash(arch, args, binaries, branch, bucket, context, dockerTarget, dockerfile, image, os, ref, repo, sha, tag);
   }
 
   @Override
@@ -479,7 +454,6 @@ public class RunnerBuildReq {
     sb.append("    dockerTarget: ").append(toIndentedString(dockerTarget)).append("\n");
     sb.append("    dockerfile: ").append(toIndentedString(dockerfile)).append("\n");
     sb.append("    image: ").append(toIndentedString(image)).append("\n");
-    sb.append("    organizationId: ").append(toIndentedString(organizationId)).append("\n");
     sb.append("    os: ").append(toIndentedString(os)).append("\n");
     sb.append("    ref: ").append(toIndentedString(ref)).append("\n");
     sb.append("    repo: ").append(toIndentedString(repo)).append("\n");
@@ -506,7 +480,7 @@ public class RunnerBuildReq {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("arch", "args", "binaries", "branch", "bucket", "context", "dockerTarget", "dockerfile", "image", "organizationId", "os", "ref", "repo", "sha", "tag"));
+    openapiFields = new HashSet<String>(Arrays.asList("arch", "args", "binaries", "branch", "bucket", "context", "dockerTarget", "dockerfile", "image", "os", "ref", "repo", "sha", "tag"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -567,9 +541,6 @@ public class RunnerBuildReq {
       }
       if ((jsonObj.get("image") != null && !jsonObj.get("image").isJsonNull()) && !jsonObj.get("image").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `image` to be a primitive type in the JSON string but got `%s`", jsonObj.get("image").toString()));
-      }
-      if ((jsonObj.get("organizationId") != null && !jsonObj.get("organizationId").isJsonNull()) && !jsonObj.get("organizationId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `organizationId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("organizationId").toString()));
       }
       if ((jsonObj.get("os") != null && !jsonObj.get("os").isJsonNull()) && !jsonObj.get("os").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `os` to be a primitive type in the JSON string but got `%s`", jsonObj.get("os").toString()));

@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -84,7 +84,7 @@ public class BankQuestion {
   }
 
   /**
-   * Get connector
+   * Connector names the feed the unplaceable line arrived on. With externalId it identifies both the question and the bank line it is about, so re-syncing the same deposit never asks twice.
    * @return connector
    */
   @javax.annotation.Nullable
@@ -103,7 +103,7 @@ public class BankQuestion {
   }
 
   /**
-   * Get createdAt
+   * CreatedAt is when the question was raised.
    * @return createdAt
    */
   @javax.annotation.Nullable
@@ -122,7 +122,7 @@ public class BankQuestion {
   }
 
   /**
-   * Get externalId
+   * ExternalID is the bank&#39;s own id for the line in question.
    * @return externalId
    */
   @javax.annotation.Nullable
@@ -141,7 +141,7 @@ public class BankQuestion {
   }
 
   /**
-   * Get prompt
+   * Prompt is the question put to the founder in plain language — what this money was, since the books cannot place it on their own.
    * @return prompt
    */
   @javax.annotation.Nullable
@@ -160,7 +160,7 @@ public class BankQuestion {
   }
 
   /**
-   * Get status
+   * Status is whether the question is still open or has been answered.
    * @return status
    */
   @javax.annotation.Nullable

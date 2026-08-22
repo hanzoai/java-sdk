@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -31,19 +31,15 @@ import ai.hanzo.cloud.model.IamAccountBody;
 import ai.hanzo.cloud.model.IamAnswer;
 import ai.hanzo.cloud.model.IamApplication;
 import ai.hanzo.cloud.model.IamApplicationListResult;
-import ai.hanzo.cloud.model.IamApplicationRef;
 import ai.hanzo.cloud.model.IamAssumeBody;
 import ai.hanzo.cloud.model.IamAuditLog;
-import ai.hanzo.cloud.model.IamAuditlogsInput;
 import ai.hanzo.cloud.model.IamCert;
 import ai.hanzo.cloud.model.IamCertsDeleteOutput;
 import ai.hanzo.cloud.model.IamCertsListOutput;
-import ai.hanzo.cloud.model.IamCertsRef;
 import ai.hanzo.cloud.model.IamConfig;
 import ai.hanzo.cloud.model.IamCreateInput;
 import ai.hanzo.cloud.model.IamCreateOrganizationInput;
 import ai.hanzo.cloud.model.IamCreateSessionIn;
-import ai.hanzo.cloud.model.IamDeleteOrganizationInput;
 import ai.hanzo.cloud.model.IamDeleteOrganizationOutput;
 import ai.hanzo.cloud.model.IamDeleteOutput;
 import ai.hanzo.cloud.model.IamDeleteResponse;
@@ -54,14 +50,11 @@ import ai.hanzo.cloud.model.IamInvitation;
 import ai.hanzo.cloud.model.IamInvitationsDeleteOutput;
 import ai.hanzo.cloud.model.IamInvitationsInput;
 import ai.hanzo.cloud.model.IamInvitationsListOutput;
-import ai.hanzo.cloud.model.IamInvitationsRef;
 import ai.hanzo.cloud.model.IamKey;
-import ai.hanzo.cloud.model.IamKeysRef;
 import ai.hanzo.cloud.model.IamListOrganizationsOutput;
 import ai.hanzo.cloud.model.IamListOutput;
 import ai.hanzo.cloud.model.IamListProvidersOut;
 import ai.hanzo.cloud.model.IamListResponse;
-import ai.hanzo.cloud.model.IamListSessionsIn;
 import ai.hanzo.cloud.model.IamListSessionsOut;
 import ai.hanzo.cloud.model.IamListTokensOut;
 import ai.hanzo.cloud.model.IamListWebauthnCredentialsOut;
@@ -71,49 +64,37 @@ import ai.hanzo.cloud.model.IamPasswordBody;
 import ai.hanzo.cloud.model.IamPermission;
 import ai.hanzo.cloud.model.IamPermissionDeleteResponse;
 import ai.hanzo.cloud.model.IamPermissionListResponse;
-import ai.hanzo.cloud.model.IamPermissionRef;
 import ai.hanzo.cloud.model.IamPerson;
 import ai.hanzo.cloud.model.IamProject;
 import ai.hanzo.cloud.model.IamProjectsDeleteOutput;
+import ai.hanzo.cloud.model.IamProjectsInput;
 import ai.hanzo.cloud.model.IamProjectsListOutput;
-import ai.hanzo.cloud.model.IamProjectsRef;
 import ai.hanzo.cloud.model.IamProvider;
-import ai.hanzo.cloud.model.IamProviderKey;
 import ai.hanzo.cloud.model.IamProviderResult;
-import ai.hanzo.cloud.model.IamRef;
 import ai.hanzo.cloud.model.IamRegistration;
 import ai.hanzo.cloud.model.IamReply;
-import ai.hanzo.cloud.model.IamResponse;
 import ai.hanzo.cloud.model.IamRole;
 import ai.hanzo.cloud.model.IamRolesDeleteOutput;
 import ai.hanzo.cloud.model.IamRolesInput;
 import ai.hanzo.cloud.model.IamRolesListOutput;
-import ai.hanzo.cloud.model.IamRolesRef;
-import ai.hanzo.cloud.model.IamSearchOrganizationsOutput;
 import ai.hanzo.cloud.model.IamSession;
-import ai.hanzo.cloud.model.IamSessionRef;
 import ai.hanzo.cloud.model.IamSetAvatarInput;
 import ai.hanzo.cloud.model.IamToken;
-import ai.hanzo.cloud.model.IamTokenKey;
 import ai.hanzo.cloud.model.IamTokenMutation;
 import ai.hanzo.cloud.model.IamTokenResult;
 import ai.hanzo.cloud.model.IamUpdateInput;
 import ai.hanzo.cloud.model.IamUpdateOrganizationInput;
 import ai.hanzo.cloud.model.IamUpdateSessionIn;
 import ai.hanzo.cloud.model.IamUser;
-import ai.hanzo.cloud.model.IamUserBody;
 import ai.hanzo.cloud.model.IamUsersDeleteOutput;
 import ai.hanzo.cloud.model.IamUsersListOutput;
-import ai.hanzo.cloud.model.IamUsersRef;
 import ai.hanzo.cloud.model.IamWebauthnCredential;
-import ai.hanzo.cloud.model.IamWebauthnCredentialKey;
 import ai.hanzo.cloud.model.IamWebauthnCredentialMutationResult;
 import ai.hanzo.cloud.model.IamWebauthnCredentialResult;
 import ai.hanzo.cloud.model.IamWorkspace;
 import ai.hanzo.cloud.model.IamWorkspacesDeleteOutput;
 import ai.hanzo.cloud.model.IamWorkspacesInput;
 import ai.hanzo.cloud.model.IamWorkspacesListOutput;
-import ai.hanzo.cloud.model.IamWorkspacesRef;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -696,7 +677,7 @@ public class IamApi {
         Object localVarPostBody = iamCreateSessionIn;
 
         // create path and map variables
-        String localVarPath = "/v1/iam/sessions/create";
+        String localVarPath = "/v1/iam/sessions";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -794,7 +775,7 @@ public class IamApi {
         return localVarCall;
     }
     /**
-     * Build call for deleteIamApplication
+     * Build call for deleteIamApplicationsByOwnerByName
      * @param owner  (required)
      * @param name  (required)
      * @param _callback Callback for upload/download progress
@@ -807,7 +788,7 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteIamApplicationCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteIamApplicationsByOwnerByNameCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -824,21 +805,15 @@ public class IamApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/iam/application";
+        String localVarPath = "/v1/iam/applications/{owner}/{name}"
+            .replace("{" + "owner" + "}", localVarApiClient.escapeString(owner.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (owner != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("owner", owner));
-        }
-
-        if (name != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("name", name));
-        }
 
         final String[] localVarAccepts = {
             "application/json"
@@ -860,18 +835,18 @@ public class IamApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteIamApplicationValidateBeforeCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteIamApplicationsByOwnerByNameValidateBeforeCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'owner' is set
         if (owner == null) {
-            throw new ApiException("Missing the required parameter 'owner' when calling deleteIamApplication(Async)");
+            throw new ApiException("Missing the required parameter 'owner' when calling deleteIamApplicationsByOwnerByName(Async)");
         }
 
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling deleteIamApplication(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling deleteIamApplicationsByOwnerByName(Async)");
         }
 
-        return deleteIamApplicationCall(owner, name, _callback);
+        return deleteIamApplicationsByOwnerByNameCall(owner, name, _callback);
 
     }
 
@@ -889,8 +864,8 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public IamDeleteResult deleteIamApplication(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
-        ApiResponse<IamDeleteResult> localVarResp = deleteIamApplicationWithHttpInfo(owner, name);
+    public IamDeleteResult deleteIamApplicationsByOwnerByName(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<IamDeleteResult> localVarResp = deleteIamApplicationsByOwnerByNameWithHttpInfo(owner, name);
         return localVarResp.getData();
     }
 
@@ -908,8 +883,8 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IamDeleteResult> deleteIamApplicationWithHttpInfo(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
-        okhttp3.Call localVarCall = deleteIamApplicationValidateBeforeCall(owner, name, null);
+    public ApiResponse<IamDeleteResult> deleteIamApplicationsByOwnerByNameWithHttpInfo(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = deleteIamApplicationsByOwnerByNameValidateBeforeCall(owner, name, null);
         Type localVarReturnType = new TypeToken<IamDeleteResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -929,10 +904,1057 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteIamApplicationAsync(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback<IamDeleteResult> _callback) throws ApiException {
+    public okhttp3.Call deleteIamApplicationsByOwnerByNameAsync(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback<IamDeleteResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteIamApplicationValidateBeforeCall(owner, name, _callback);
+        okhttp3.Call localVarCall = deleteIamApplicationsByOwnerByNameValidateBeforeCall(owner, name, _callback);
         Type localVarReturnType = new TypeToken<IamDeleteResult>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for deleteIamAuditLogsByOwnerByName
+     * @param owner  (required)
+     * @param name  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteIamAuditLogsByOwnerByNameCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/iam/audit-logs/{owner}/{name}"
+            .replace("{" + "owner" + "}", localVarApiClient.escapeString(owner.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteIamAuditLogsByOwnerByNameValidateBeforeCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'owner' is set
+        if (owner == null) {
+            throw new ApiException("Missing the required parameter 'owner' when calling deleteIamAuditLogsByOwnerByName(Async)");
+        }
+
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling deleteIamAuditLogsByOwnerByName(Async)");
+        }
+
+        return deleteIamAuditLogsByOwnerByNameCall(owner, name, _callback);
+
+    }
+
+    /**
+     * Removes an audit entry.
+     * Removes an audit entry. Retention policy is normally what should expire a trail; deleting by hand leaves a gap a reviewer will notice.
+     * @param owner  (required)
+     * @param name  (required)
+     * @return IamDeleteOutput
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public IamDeleteOutput deleteIamAuditLogsByOwnerByName(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<IamDeleteOutput> localVarResp = deleteIamAuditLogsByOwnerByNameWithHttpInfo(owner, name);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Removes an audit entry.
+     * Removes an audit entry. Retention policy is normally what should expire a trail; deleting by hand leaves a gap a reviewer will notice.
+     * @param owner  (required)
+     * @param name  (required)
+     * @return ApiResponse&lt;IamDeleteOutput&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<IamDeleteOutput> deleteIamAuditLogsByOwnerByNameWithHttpInfo(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = deleteIamAuditLogsByOwnerByNameValidateBeforeCall(owner, name, null);
+        Type localVarReturnType = new TypeToken<IamDeleteOutput>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Removes an audit entry. (asynchronously)
+     * Removes an audit entry. Retention policy is normally what should expire a trail; deleting by hand leaves a gap a reviewer will notice.
+     * @param owner  (required)
+     * @param name  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteIamAuditLogsByOwnerByNameAsync(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback<IamDeleteOutput> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteIamAuditLogsByOwnerByNameValidateBeforeCall(owner, name, _callback);
+        Type localVarReturnType = new TypeToken<IamDeleteOutput>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for deleteIamCertsByOwnerByName
+     * @param owner  (required)
+     * @param name  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteIamCertsByOwnerByNameCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/iam/certs/{owner}/{name}"
+            .replace("{" + "owner" + "}", localVarApiClient.escapeString(owner.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteIamCertsByOwnerByNameValidateBeforeCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'owner' is set
+        if (owner == null) {
+            throw new ApiException("Missing the required parameter 'owner' when calling deleteIamCertsByOwnerByName(Async)");
+        }
+
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling deleteIamCertsByOwnerByName(Async)");
+        }
+
+        return deleteIamCertsByOwnerByNameCall(owner, name, _callback);
+
+    }
+
+    /**
+     * Removes a signing certificate.
+     * Removes a signing certificate. Tokens signed with it can no longer be verified, so retire it only once nothing is still presenting them.
+     * @param owner  (required)
+     * @param name  (required)
+     * @return IamCertsDeleteOutput
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public IamCertsDeleteOutput deleteIamCertsByOwnerByName(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<IamCertsDeleteOutput> localVarResp = deleteIamCertsByOwnerByNameWithHttpInfo(owner, name);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Removes a signing certificate.
+     * Removes a signing certificate. Tokens signed with it can no longer be verified, so retire it only once nothing is still presenting them.
+     * @param owner  (required)
+     * @param name  (required)
+     * @return ApiResponse&lt;IamCertsDeleteOutput&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<IamCertsDeleteOutput> deleteIamCertsByOwnerByNameWithHttpInfo(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = deleteIamCertsByOwnerByNameValidateBeforeCall(owner, name, null);
+        Type localVarReturnType = new TypeToken<IamCertsDeleteOutput>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Removes a signing certificate. (asynchronously)
+     * Removes a signing certificate. Tokens signed with it can no longer be verified, so retire it only once nothing is still presenting them.
+     * @param owner  (required)
+     * @param name  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteIamCertsByOwnerByNameAsync(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback<IamCertsDeleteOutput> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteIamCertsByOwnerByNameValidateBeforeCall(owner, name, _callback);
+        Type localVarReturnType = new TypeToken<IamCertsDeleteOutput>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for deleteIamInvitationsByOwnerByName
+     * @param owner  (required)
+     * @param name  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteIamInvitationsByOwnerByNameCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/iam/invitations/{owner}/{name}"
+            .replace("{" + "owner" + "}", localVarApiClient.escapeString(owner.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteIamInvitationsByOwnerByNameValidateBeforeCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'owner' is set
+        if (owner == null) {
+            throw new ApiException("Missing the required parameter 'owner' when calling deleteIamInvitationsByOwnerByName(Async)");
+        }
+
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling deleteIamInvitationsByOwnerByName(Async)");
+        }
+
+        return deleteIamInvitationsByOwnerByNameCall(owner, name, _callback);
+
+    }
+
+    /**
+     * Withdraws an invitation.
+     * Withdraws an invitation. It stops being redeemable at once; anyone who already joined through it keeps their account.
+     * @param owner  (required)
+     * @param name  (required)
+     * @return IamInvitationsDeleteOutput
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public IamInvitationsDeleteOutput deleteIamInvitationsByOwnerByName(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<IamInvitationsDeleteOutput> localVarResp = deleteIamInvitationsByOwnerByNameWithHttpInfo(owner, name);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Withdraws an invitation.
+     * Withdraws an invitation. It stops being redeemable at once; anyone who already joined through it keeps their account.
+     * @param owner  (required)
+     * @param name  (required)
+     * @return ApiResponse&lt;IamInvitationsDeleteOutput&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<IamInvitationsDeleteOutput> deleteIamInvitationsByOwnerByNameWithHttpInfo(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = deleteIamInvitationsByOwnerByNameValidateBeforeCall(owner, name, null);
+        Type localVarReturnType = new TypeToken<IamInvitationsDeleteOutput>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Withdraws an invitation. (asynchronously)
+     * Withdraws an invitation. It stops being redeemable at once; anyone who already joined through it keeps their account.
+     * @param owner  (required)
+     * @param name  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteIamInvitationsByOwnerByNameAsync(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback<IamInvitationsDeleteOutput> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteIamInvitationsByOwnerByNameValidateBeforeCall(owner, name, _callback);
+        Type localVarReturnType = new TypeToken<IamInvitationsDeleteOutput>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for deleteIamKeysByOwnerByName
+     * @param owner  (required)
+     * @param name  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteIamKeysByOwnerByNameCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/iam/keys/{owner}/{name}"
+            .replace("{" + "owner" + "}", localVarApiClient.escapeString(owner.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteIamKeysByOwnerByNameValidateBeforeCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'owner' is set
+        if (owner == null) {
+            throw new ApiException("Missing the required parameter 'owner' when calling deleteIamKeysByOwnerByName(Async)");
+        }
+
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling deleteIamKeysByOwnerByName(Async)");
+        }
+
+        return deleteIamKeysByOwnerByNameCall(owner, name, _callback);
+
+    }
+
+    /**
+     * Revokes an API key.
+     * Revokes an API key. Anything still presenting it stops being authorized at once, so roll the replacement out before you revoke.
+     * @param owner  (required)
+     * @param name  (required)
+     * @return IamDeleteResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public IamDeleteResponse deleteIamKeysByOwnerByName(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<IamDeleteResponse> localVarResp = deleteIamKeysByOwnerByNameWithHttpInfo(owner, name);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Revokes an API key.
+     * Revokes an API key. Anything still presenting it stops being authorized at once, so roll the replacement out before you revoke.
+     * @param owner  (required)
+     * @param name  (required)
+     * @return ApiResponse&lt;IamDeleteResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<IamDeleteResponse> deleteIamKeysByOwnerByNameWithHttpInfo(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = deleteIamKeysByOwnerByNameValidateBeforeCall(owner, name, null);
+        Type localVarReturnType = new TypeToken<IamDeleteResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Revokes an API key. (asynchronously)
+     * Revokes an API key. Anything still presenting it stops being authorized at once, so roll the replacement out before you revoke.
+     * @param owner  (required)
+     * @param name  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteIamKeysByOwnerByNameAsync(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback<IamDeleteResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteIamKeysByOwnerByNameValidateBeforeCall(owner, name, _callback);
+        Type localVarReturnType = new TypeToken<IamDeleteResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for deleteIamMfa
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call deleteIamMfaCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/iam/mfa";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteIamMfaValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return deleteIamMfaCall(_callback);
+
+    }
+
+    /**
+     * Turns a factor off, so sign-in stops asking for it.
+     * Turns a factor off, so sign-in stops asking for it. Naming no factor turns off ALL of them — the reset path. People may do this for themselves; doing it for somebody else takes an administrator, which is what makes it the way back in when a phone is lost.  The recovery codes go with the last factor: they are the way past a challenge, so keeping them alive for an account with nothing to challenge would leave a standing credential behind.
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void deleteIamMfa() throws ApiException {
+        deleteIamMfaWithHttpInfo();
+    }
+
+    /**
+     * Turns a factor off, so sign-in stops asking for it.
+     * Turns a factor off, so sign-in stops asking for it. Naming no factor turns off ALL of them — the reset path. People may do this for themselves; doing it for somebody else takes an administrator, which is what makes it the way back in when a phone is lost.  The recovery codes go with the last factor: they are the way past a challenge, so keeping them alive for an account with nothing to challenge would leave a standing credential behind.
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> deleteIamMfaWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = deleteIamMfaValidateBeforeCall(null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Turns a factor off, so sign-in stops asking for it. (asynchronously)
+     * Turns a factor off, so sign-in stops asking for it. Naming no factor turns off ALL of them — the reset path. People may do this for themselves; doing it for somebody else takes an administrator, which is what makes it the way back in when a phone is lost.  The recovery codes go with the last factor: they are the way past a challenge, so keeping them alive for an account with nothing to challenge would leave a standing credential behind.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call deleteIamMfaAsync(final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteIamMfaValidateBeforeCall(_callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for deleteIamPermissionsByOwnerByName
+     * @param owner  (required)
+     * @param name  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteIamPermissionsByOwnerByNameCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/iam/permissions/{owner}/{name}"
+            .replace("{" + "owner" + "}", localVarApiClient.escapeString(owner.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteIamPermissionsByOwnerByNameValidateBeforeCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'owner' is set
+        if (owner == null) {
+            throw new ApiException("Missing the required parameter 'owner' when calling deleteIamPermissionsByOwnerByName(Async)");
+        }
+
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling deleteIamPermissionsByOwnerByName(Async)");
+        }
+
+        return deleteIamPermissionsByOwnerByNameCall(owner, name, _callback);
+
+    }
+
+    /**
+     * Revokes a permission.
+     * Revokes a permission. Everyone who held access only through it loses that access immediately; grants they hold by another route are untouched.
+     * @param owner  (required)
+     * @param name  (required)
+     * @return IamPermissionDeleteResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public IamPermissionDeleteResponse deleteIamPermissionsByOwnerByName(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<IamPermissionDeleteResponse> localVarResp = deleteIamPermissionsByOwnerByNameWithHttpInfo(owner, name);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Revokes a permission.
+     * Revokes a permission. Everyone who held access only through it loses that access immediately; grants they hold by another route are untouched.
+     * @param owner  (required)
+     * @param name  (required)
+     * @return ApiResponse&lt;IamPermissionDeleteResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<IamPermissionDeleteResponse> deleteIamPermissionsByOwnerByNameWithHttpInfo(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = deleteIamPermissionsByOwnerByNameValidateBeforeCall(owner, name, null);
+        Type localVarReturnType = new TypeToken<IamPermissionDeleteResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Revokes a permission. (asynchronously)
+     * Revokes a permission. Everyone who held access only through it loses that access immediately; grants they hold by another route are untouched.
+     * @param owner  (required)
+     * @param name  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteIamPermissionsByOwnerByNameAsync(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback<IamPermissionDeleteResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteIamPermissionsByOwnerByNameValidateBeforeCall(owner, name, _callback);
+        Type localVarReturnType = new TypeToken<IamPermissionDeleteResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for deleteIamProjectsByOwnerByName
+     * @param owner  (required)
+     * @param name  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteIamProjectsByOwnerByNameCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/iam/projects/{owner}/{name}"
+            .replace("{" + "owner" + "}", localVarApiClient.escapeString(owner.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteIamProjectsByOwnerByNameValidateBeforeCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'owner' is set
+        if (owner == null) {
+            throw new ApiException("Missing the required parameter 'owner' when calling deleteIamProjectsByOwnerByName(Async)");
+        }
+
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling deleteIamProjectsByOwnerByName(Async)");
+        }
+
+        return deleteIamProjectsByOwnerByNameCall(owner, name, _callback);
+
+    }
+
+    /**
+     * Removes a project.
+     * Removes a project. The people and roles in your organization are unchanged; what goes is the scope itself, so move anything addressed by it first.
+     * @param owner  (required)
+     * @param name  (required)
+     * @return IamProjectsDeleteOutput
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public IamProjectsDeleteOutput deleteIamProjectsByOwnerByName(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<IamProjectsDeleteOutput> localVarResp = deleteIamProjectsByOwnerByNameWithHttpInfo(owner, name);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Removes a project.
+     * Removes a project. The people and roles in your organization are unchanged; what goes is the scope itself, so move anything addressed by it first.
+     * @param owner  (required)
+     * @param name  (required)
+     * @return ApiResponse&lt;IamProjectsDeleteOutput&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<IamProjectsDeleteOutput> deleteIamProjectsByOwnerByNameWithHttpInfo(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = deleteIamProjectsByOwnerByNameValidateBeforeCall(owner, name, null);
+        Type localVarReturnType = new TypeToken<IamProjectsDeleteOutput>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Removes a project. (asynchronously)
+     * Removes a project. The people and roles in your organization are unchanged; what goes is the scope itself, so move anything addressed by it first.
+     * @param owner  (required)
+     * @param name  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteIamProjectsByOwnerByNameAsync(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback<IamProjectsDeleteOutput> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteIamProjectsByOwnerByNameValidateBeforeCall(owner, name, _callback);
+        Type localVarReturnType = new TypeToken<IamProjectsDeleteOutput>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for deleteIamRolesByOwnerByName
+     * @param owner  (required)
+     * @param name  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteIamRolesByOwnerByNameCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/iam/roles/{owner}/{name}"
+            .replace("{" + "owner" + "}", localVarApiClient.escapeString(owner.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteIamRolesByOwnerByNameValidateBeforeCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'owner' is set
+        if (owner == null) {
+            throw new ApiException("Missing the required parameter 'owner' when calling deleteIamRolesByOwnerByName(Async)");
+        }
+
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling deleteIamRolesByOwnerByName(Async)");
+        }
+
+        return deleteIamRolesByOwnerByNameCall(owner, name, _callback);
+
+    }
+
+    /**
+     * Removes a role.
+     * Removes a role. Everyone in it loses the access it carried; their accounts, and any other role they hold, are untouched.
+     * @param owner  (required)
+     * @param name  (required)
+     * @return IamRolesDeleteOutput
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public IamRolesDeleteOutput deleteIamRolesByOwnerByName(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<IamRolesDeleteOutput> localVarResp = deleteIamRolesByOwnerByNameWithHttpInfo(owner, name);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Removes a role.
+     * Removes a role. Everyone in it loses the access it carried; their accounts, and any other role they hold, are untouched.
+     * @param owner  (required)
+     * @param name  (required)
+     * @return ApiResponse&lt;IamRolesDeleteOutput&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<IamRolesDeleteOutput> deleteIamRolesByOwnerByNameWithHttpInfo(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = deleteIamRolesByOwnerByNameValidateBeforeCall(owner, name, null);
+        Type localVarReturnType = new TypeToken<IamRolesDeleteOutput>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Removes a role. (asynchronously)
+     * Removes a role. Everyone in it loses the access it carried; their accounts, and any other role they hold, are untouched.
+     * @param owner  (required)
+     * @param name  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteIamRolesByOwnerByNameAsync(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback<IamRolesDeleteOutput> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteIamRolesByOwnerByNameValidateBeforeCall(owner, name, _callback);
+        Type localVarReturnType = new TypeToken<IamRolesDeleteOutput>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1143,8 +2165,9 @@ public class IamApi {
         return localVarCall;
     }
     /**
-     * Build call for deleteOrganization
-     * @param iamDeleteOrganizationInput  (required)
+     * Build call for deleteIamUsersByOwnerByName
+     * @param owner  (required)
+     * @param name  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1155,7 +2178,7 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteOrganizationCall(@javax.annotation.Nonnull IamDeleteOrganizationInput iamDeleteOrganizationInput, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteIamUsersByOwnerByNameCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1169,10 +2192,12 @@ public class IamApi {
             basePath = null;
         }
 
-        Object localVarPostBody = iamDeleteOrganizationInput;
+        Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/iam/organizations/delete";
+        String localVarPath = "/v1/iam/users/{owner}/{name}"
+            .replace("{" + "owner" + "}", localVarApiClient.escapeString(owner.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1189,7 +2214,6 @@ public class IamApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1197,24 +2221,412 @@ public class IamApi {
         }
 
         String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteOrganizationValidateBeforeCall(@javax.annotation.Nonnull IamDeleteOrganizationInput iamDeleteOrganizationInput, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'iamDeleteOrganizationInput' is set
-        if (iamDeleteOrganizationInput == null) {
-            throw new ApiException("Missing the required parameter 'iamDeleteOrganizationInput' when calling deleteOrganization(Async)");
+    private okhttp3.Call deleteIamUsersByOwnerByNameValidateBeforeCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'owner' is set
+        if (owner == null) {
+            throw new ApiException("Missing the required parameter 'owner' when calling deleteIamUsersByOwnerByName(Async)");
         }
 
-        return deleteOrganizationCall(iamDeleteOrganizationInput, _callback);
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling deleteIamUsersByOwnerByName(Async)");
+        }
+
+        return deleteIamUsersByOwnerByNameCall(owner, name, _callback);
+
+    }
+
+    /**
+     * Removes a person from your organization.
+     * Removes a person from your organization. Their sessions stop working immediately and the account is gone rather than suspended — to keep the record and only stop sign-in, update the user instead.
+     * @param owner  (required)
+     * @param name  (required)
+     * @return IamUsersDeleteOutput
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public IamUsersDeleteOutput deleteIamUsersByOwnerByName(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<IamUsersDeleteOutput> localVarResp = deleteIamUsersByOwnerByNameWithHttpInfo(owner, name);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Removes a person from your organization.
+     * Removes a person from your organization. Their sessions stop working immediately and the account is gone rather than suspended — to keep the record and only stop sign-in, update the user instead.
+     * @param owner  (required)
+     * @param name  (required)
+     * @return ApiResponse&lt;IamUsersDeleteOutput&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<IamUsersDeleteOutput> deleteIamUsersByOwnerByNameWithHttpInfo(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = deleteIamUsersByOwnerByNameValidateBeforeCall(owner, name, null);
+        Type localVarReturnType = new TypeToken<IamUsersDeleteOutput>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Removes a person from your organization. (asynchronously)
+     * Removes a person from your organization. Their sessions stop working immediately and the account is gone rather than suspended — to keep the record and only stop sign-in, update the user instead.
+     * @param owner  (required)
+     * @param name  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteIamUsersByOwnerByNameAsync(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback<IamUsersDeleteOutput> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteIamUsersByOwnerByNameValidateBeforeCall(owner, name, _callback);
+        Type localVarReturnType = new TypeToken<IamUsersDeleteOutput>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for deleteIamUsersByOwnerByNameKeys
+     * @param owner  (required)
+     * @param name  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call deleteIamUsersByOwnerByNameKeysCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/iam/users/{owner}/{name}/keys"
+            .replace("{" + "owner" + "}", localVarApiClient.escapeString(owner.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteIamUsersByOwnerByNameKeysValidateBeforeCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'owner' is set
+        if (owner == null) {
+            throw new ApiException("Missing the required parameter 'owner' when calling deleteIamUsersByOwnerByNameKeys(Async)");
+        }
+
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling deleteIamUsersByOwnerByNameKeys(Async)");
+        }
+
+        return deleteIamUsersByOwnerByNameKeysCall(owner, name, _callback);
+
+    }
+
+    /**
+     * Clears the target user&#39;s key of the requested TYPE (immediate revoke).
+     * Clears the target user&#39;s key of the requested TYPE (immediate revoke). Scoped by the same &#x60;?type&#x60; field mint takes, so revoking the browser key leaves the server key working. A secret key&#39;s stored value is the sk- in its schema.Key row.
+     * @param owner  (required)
+     * @param name  (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void deleteIamUsersByOwnerByNameKeys(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
+        deleteIamUsersByOwnerByNameKeysWithHttpInfo(owner, name);
+    }
+
+    /**
+     * Clears the target user&#39;s key of the requested TYPE (immediate revoke).
+     * Clears the target user&#39;s key of the requested TYPE (immediate revoke). Scoped by the same &#x60;?type&#x60; field mint takes, so revoking the browser key leaves the server key working. A secret key&#39;s stored value is the sk- in its schema.Key row.
+     * @param owner  (required)
+     * @param name  (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> deleteIamUsersByOwnerByNameKeysWithHttpInfo(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = deleteIamUsersByOwnerByNameKeysValidateBeforeCall(owner, name, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Clears the target user&#39;s key of the requested TYPE (immediate revoke). (asynchronously)
+     * Clears the target user&#39;s key of the requested TYPE (immediate revoke). Scoped by the same &#x60;?type&#x60; field mint takes, so revoking the browser key leaves the server key working. A secret key&#39;s stored value is the sk- in its schema.Key row.
+     * @param owner  (required)
+     * @param name  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call deleteIamUsersByOwnerByNameKeysAsync(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteIamUsersByOwnerByNameKeysValidateBeforeCall(owner, name, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for deleteIamWorkspacesByOwnerByName
+     * @param owner  (required)
+     * @param name  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteIamWorkspacesByOwnerByNameCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/iam/workspaces/{owner}/{name}"
+            .replace("{" + "owner" + "}", localVarApiClient.escapeString(owner.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteIamWorkspacesByOwnerByNameValidateBeforeCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'owner' is set
+        if (owner == null) {
+            throw new ApiException("Missing the required parameter 'owner' when calling deleteIamWorkspacesByOwnerByName(Async)");
+        }
+
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling deleteIamWorkspacesByOwnerByName(Async)");
+        }
+
+        return deleteIamWorkspacesByOwnerByNameCall(owner, name, _callback);
+
+    }
+
+    /**
+     * Removes a workspace.
+     * Removes a workspace. The people and roles in your organization are unchanged; what goes is the scope itself.
+     * @param owner  (required)
+     * @param name  (required)
+     * @return IamWorkspacesDeleteOutput
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public IamWorkspacesDeleteOutput deleteIamWorkspacesByOwnerByName(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<IamWorkspacesDeleteOutput> localVarResp = deleteIamWorkspacesByOwnerByNameWithHttpInfo(owner, name);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Removes a workspace.
+     * Removes a workspace. The people and roles in your organization are unchanged; what goes is the scope itself.
+     * @param owner  (required)
+     * @param name  (required)
+     * @return ApiResponse&lt;IamWorkspacesDeleteOutput&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<IamWorkspacesDeleteOutput> deleteIamWorkspacesByOwnerByNameWithHttpInfo(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = deleteIamWorkspacesByOwnerByNameValidateBeforeCall(owner, name, null);
+        Type localVarReturnType = new TypeToken<IamWorkspacesDeleteOutput>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Removes a workspace. (asynchronously)
+     * Removes a workspace. The people and roles in your organization are unchanged; what goes is the scope itself.
+     * @param owner  (required)
+     * @param name  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteIamWorkspacesByOwnerByNameAsync(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback<IamWorkspacesDeleteOutput> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteIamWorkspacesByOwnerByNameValidateBeforeCall(owner, name, _callback);
+        Type localVarReturnType = new TypeToken<IamWorkspacesDeleteOutput>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for deleteOrganization
+     * @param owner  (required)
+     * @param name  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteOrganizationCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/iam/organizations/{owner}/{name}"
+            .replace("{" + "owner" + "}", localVarApiClient.escapeString(owner.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteOrganizationValidateBeforeCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'owner' is set
+        if (owner == null) {
+            throw new ApiException("Missing the required parameter 'owner' when calling deleteOrganization(Async)");
+        }
+
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling deleteOrganization(Async)");
+        }
+
+        return deleteOrganizationCall(owner, name, _callback);
 
     }
 
     /**
      * Removes an organization and everything named inside it.
      * Removes an organization and everything named inside it. There is no undo, and every session issued under it stops working.  The built-in admin organization cannot be deleted — losing it would leave the account with no way back in.
-     * @param iamDeleteOrganizationInput  (required)
+     * @param owner  (required)
+     * @param name  (required)
      * @return IamDeleteOrganizationOutput
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1224,15 +2636,16 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public IamDeleteOrganizationOutput deleteOrganization(@javax.annotation.Nonnull IamDeleteOrganizationInput iamDeleteOrganizationInput) throws ApiException {
-        ApiResponse<IamDeleteOrganizationOutput> localVarResp = deleteOrganizationWithHttpInfo(iamDeleteOrganizationInput);
+    public IamDeleteOrganizationOutput deleteOrganization(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<IamDeleteOrganizationOutput> localVarResp = deleteOrganizationWithHttpInfo(owner, name);
         return localVarResp.getData();
     }
 
     /**
      * Removes an organization and everything named inside it.
      * Removes an organization and everything named inside it. There is no undo, and every session issued under it stops working.  The built-in admin organization cannot be deleted — losing it would leave the account with no way back in.
-     * @param iamDeleteOrganizationInput  (required)
+     * @param owner  (required)
+     * @param name  (required)
      * @return ApiResponse&lt;IamDeleteOrganizationOutput&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1242,8 +2655,8 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IamDeleteOrganizationOutput> deleteOrganizationWithHttpInfo(@javax.annotation.Nonnull IamDeleteOrganizationInput iamDeleteOrganizationInput) throws ApiException {
-        okhttp3.Call localVarCall = deleteOrganizationValidateBeforeCall(iamDeleteOrganizationInput, null);
+    public ApiResponse<IamDeleteOrganizationOutput> deleteOrganizationWithHttpInfo(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = deleteOrganizationValidateBeforeCall(owner, name, null);
         Type localVarReturnType = new TypeToken<IamDeleteOrganizationOutput>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1251,7 +2664,8 @@ public class IamApi {
     /**
      * Removes an organization and everything named inside it. (asynchronously)
      * Removes an organization and everything named inside it. There is no undo, and every session issued under it stops working.  The built-in admin organization cannot be deleted — losing it would leave the account with no way back in.
-     * @param iamDeleteOrganizationInput  (required)
+     * @param owner  (required)
+     * @param name  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1262,16 +2676,17 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteOrganizationAsync(@javax.annotation.Nonnull IamDeleteOrganizationInput iamDeleteOrganizationInput, final ApiCallback<IamDeleteOrganizationOutput> _callback) throws ApiException {
+    public okhttp3.Call deleteOrganizationAsync(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback<IamDeleteOrganizationOutput> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteOrganizationValidateBeforeCall(iamDeleteOrganizationInput, _callback);
+        okhttp3.Call localVarCall = deleteOrganizationValidateBeforeCall(owner, name, _callback);
         Type localVarReturnType = new TypeToken<IamDeleteOrganizationOutput>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for deleteProvider
-     * @param iamProviderKey  (required)
+     * @param owner  (required)
+     * @param name  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1282,7 +2697,7 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteProviderCall(@javax.annotation.Nonnull IamProviderKey iamProviderKey, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteProviderCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1296,10 +2711,12 @@ public class IamApi {
             basePath = null;
         }
 
-        Object localVarPostBody = iamProviderKey;
+        Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/iam/providers/delete";
+        String localVarPath = "/v1/iam/providers/{owner}/{name}"
+            .replace("{" + "owner" + "}", localVarApiClient.escapeString(owner.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1316,7 +2733,6 @@ public class IamApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1324,24 +2740,30 @@ public class IamApi {
         }
 
         String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteProviderValidateBeforeCall(@javax.annotation.Nonnull IamProviderKey iamProviderKey, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'iamProviderKey' is set
-        if (iamProviderKey == null) {
-            throw new ApiException("Missing the required parameter 'iamProviderKey' when calling deleteProvider(Async)");
+    private okhttp3.Call deleteProviderValidateBeforeCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'owner' is set
+        if (owner == null) {
+            throw new ApiException("Missing the required parameter 'owner' when calling deleteProvider(Async)");
         }
 
-        return deleteProviderCall(iamProviderKey, _callback);
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling deleteProvider(Async)");
+        }
+
+        return deleteProviderCall(owner, name, _callback);
 
     }
 
     /**
      * Removes a provider.
      * Removes a provider. Sign-in through it stops for every application that used it, so give those applications another method first.  A provider that is already gone answers \&quot;nothing changed\&quot; rather than an error, so the call is safe to repeat.
-     * @param iamProviderKey  (required)
+     * @param owner  (required)
+     * @param name  (required)
      * @return IamMutationResult
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1351,15 +2773,16 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public IamMutationResult deleteProvider(@javax.annotation.Nonnull IamProviderKey iamProviderKey) throws ApiException {
-        ApiResponse<IamMutationResult> localVarResp = deleteProviderWithHttpInfo(iamProviderKey);
+    public IamMutationResult deleteProvider(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<IamMutationResult> localVarResp = deleteProviderWithHttpInfo(owner, name);
         return localVarResp.getData();
     }
 
     /**
      * Removes a provider.
      * Removes a provider. Sign-in through it stops for every application that used it, so give those applications another method first.  A provider that is already gone answers \&quot;nothing changed\&quot; rather than an error, so the call is safe to repeat.
-     * @param iamProviderKey  (required)
+     * @param owner  (required)
+     * @param name  (required)
      * @return ApiResponse&lt;IamMutationResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1369,8 +2792,8 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IamMutationResult> deleteProviderWithHttpInfo(@javax.annotation.Nonnull IamProviderKey iamProviderKey) throws ApiException {
-        okhttp3.Call localVarCall = deleteProviderValidateBeforeCall(iamProviderKey, null);
+    public ApiResponse<IamMutationResult> deleteProviderWithHttpInfo(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = deleteProviderValidateBeforeCall(owner, name, null);
         Type localVarReturnType = new TypeToken<IamMutationResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1378,7 +2801,8 @@ public class IamApi {
     /**
      * Removes a provider. (asynchronously)
      * Removes a provider. Sign-in through it stops for every application that used it, so give those applications another method first.  A provider that is already gone answers \&quot;nothing changed\&quot; rather than an error, so the call is safe to repeat.
-     * @param iamProviderKey  (required)
+     * @param owner  (required)
+     * @param name  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1389,16 +2813,18 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteProviderAsync(@javax.annotation.Nonnull IamProviderKey iamProviderKey, final ApiCallback<IamMutationResult> _callback) throws ApiException {
+    public okhttp3.Call deleteProviderAsync(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback<IamMutationResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteProviderValidateBeforeCall(iamProviderKey, _callback);
+        okhttp3.Call localVarCall = deleteProviderValidateBeforeCall(owner, name, _callback);
         Type localVarReturnType = new TypeToken<IamMutationResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for deleteSession
-     * @param iamSessionRef  (required)
+     * @param owner  (required)
+     * @param name  (required)
+     * @param application  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1409,7 +2835,7 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteSessionCall(@javax.annotation.Nonnull IamSessionRef iamSessionRef, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteSessionCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull String application, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1423,10 +2849,13 @@ public class IamApi {
             basePath = null;
         }
 
-        Object localVarPostBody = iamSessionRef;
+        Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/iam/sessions/delete";
+        String localVarPath = "/v1/iam/sessions/{owner}/{name}/{application}"
+            .replace("{" + "owner" + "}", localVarApiClient.escapeString(owner.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()))
+            .replace("{" + "application" + "}", localVarApiClient.escapeString(application.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1443,7 +2872,6 @@ public class IamApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1451,24 +2879,36 @@ public class IamApi {
         }
 
         String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteSessionValidateBeforeCall(@javax.annotation.Nonnull IamSessionRef iamSessionRef, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'iamSessionRef' is set
-        if (iamSessionRef == null) {
-            throw new ApiException("Missing the required parameter 'iamSessionRef' when calling deleteSession(Async)");
+    private okhttp3.Call deleteSessionValidateBeforeCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull String application, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'owner' is set
+        if (owner == null) {
+            throw new ApiException("Missing the required parameter 'owner' when calling deleteSession(Async)");
         }
 
-        return deleteSessionCall(iamSessionRef, _callback);
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling deleteSession(Async)");
+        }
+
+        // verify the required parameter 'application' is set
+        if (application == null) {
+            throw new ApiException("Missing the required parameter 'application' when calling deleteSession(Async)");
+        }
+
+        return deleteSessionCall(owner, name, application, _callback);
 
     }
 
     /**
      * Signs a person out of one application — the session ends and every browser carrying it stops being authenticated.
      * Signs a person out of one application — the session ends and every browser carrying it stops being authenticated.  A session that is already gone reports that nothing was deleted rather than an error, so the call is safe to repeat.
-     * @param iamSessionRef  (required)
+     * @param owner  (required)
+     * @param name  (required)
+     * @param application  (required)
      * @return IamDeleteSessionOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1478,15 +2918,17 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public IamDeleteSessionOut deleteSession(@javax.annotation.Nonnull IamSessionRef iamSessionRef) throws ApiException {
-        ApiResponse<IamDeleteSessionOut> localVarResp = deleteSessionWithHttpInfo(iamSessionRef);
+    public IamDeleteSessionOut deleteSession(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull String application) throws ApiException {
+        ApiResponse<IamDeleteSessionOut> localVarResp = deleteSessionWithHttpInfo(owner, name, application);
         return localVarResp.getData();
     }
 
     /**
      * Signs a person out of one application — the session ends and every browser carrying it stops being authenticated.
      * Signs a person out of one application — the session ends and every browser carrying it stops being authenticated.  A session that is already gone reports that nothing was deleted rather than an error, so the call is safe to repeat.
-     * @param iamSessionRef  (required)
+     * @param owner  (required)
+     * @param name  (required)
+     * @param application  (required)
      * @return ApiResponse&lt;IamDeleteSessionOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1496,8 +2938,8 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IamDeleteSessionOut> deleteSessionWithHttpInfo(@javax.annotation.Nonnull IamSessionRef iamSessionRef) throws ApiException {
-        okhttp3.Call localVarCall = deleteSessionValidateBeforeCall(iamSessionRef, null);
+    public ApiResponse<IamDeleteSessionOut> deleteSessionWithHttpInfo(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull String application) throws ApiException {
+        okhttp3.Call localVarCall = deleteSessionValidateBeforeCall(owner, name, application, null);
         Type localVarReturnType = new TypeToken<IamDeleteSessionOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1505,7 +2947,9 @@ public class IamApi {
     /**
      * Signs a person out of one application — the session ends and every browser carrying it stops being authenticated. (asynchronously)
      * Signs a person out of one application — the session ends and every browser carrying it stops being authenticated.  A session that is already gone reports that nothing was deleted rather than an error, so the call is safe to repeat.
-     * @param iamSessionRef  (required)
+     * @param owner  (required)
+     * @param name  (required)
+     * @param application  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1516,16 +2960,17 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteSessionAsync(@javax.annotation.Nonnull IamSessionRef iamSessionRef, final ApiCallback<IamDeleteSessionOut> _callback) throws ApiException {
+    public okhttp3.Call deleteSessionAsync(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull String application, final ApiCallback<IamDeleteSessionOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteSessionValidateBeforeCall(iamSessionRef, _callback);
+        okhttp3.Call localVarCall = deleteSessionValidateBeforeCall(owner, name, application, _callback);
         Type localVarReturnType = new TypeToken<IamDeleteSessionOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for deleteToken
-     * @param iamTokenKey  (required)
+     * @param owner  (required)
+     * @param name  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1536,7 +2981,7 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteTokenCall(@javax.annotation.Nonnull IamTokenKey iamTokenKey, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteTokenCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1550,10 +2995,12 @@ public class IamApi {
             basePath = null;
         }
 
-        Object localVarPostBody = iamTokenKey;
+        Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/iam/tokens/delete";
+        String localVarPath = "/v1/iam/tokens/{owner}/{name}"
+            .replace("{" + "owner" + "}", localVarApiClient.escapeString(owner.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1570,7 +3017,6 @@ public class IamApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1578,24 +3024,30 @@ public class IamApi {
         }
 
         String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteTokenValidateBeforeCall(@javax.annotation.Nonnull IamTokenKey iamTokenKey, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'iamTokenKey' is set
-        if (iamTokenKey == null) {
-            throw new ApiException("Missing the required parameter 'iamTokenKey' when calling deleteToken(Async)");
+    private okhttp3.Call deleteTokenValidateBeforeCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'owner' is set
+        if (owner == null) {
+            throw new ApiException("Missing the required parameter 'owner' when calling deleteToken(Async)");
         }
 
-        return deleteTokenCall(iamTokenKey, _callback);
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling deleteToken(Async)");
+        }
+
+        return deleteTokenCall(owner, name, _callback);
 
     }
 
     /**
      * Revokes an access token.
      * Revokes an access token. Whatever was using it stops being authorized at once.  A token that is already gone answers \&quot;nothing changed\&quot; rather than an error, so the call is safe to repeat.
-     * @param iamTokenKey  (required)
+     * @param owner  (required)
+     * @param name  (required)
      * @return IamTokenMutation
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1605,15 +3057,16 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public IamTokenMutation deleteToken(@javax.annotation.Nonnull IamTokenKey iamTokenKey) throws ApiException {
-        ApiResponse<IamTokenMutation> localVarResp = deleteTokenWithHttpInfo(iamTokenKey);
+    public IamTokenMutation deleteToken(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<IamTokenMutation> localVarResp = deleteTokenWithHttpInfo(owner, name);
         return localVarResp.getData();
     }
 
     /**
      * Revokes an access token.
      * Revokes an access token. Whatever was using it stops being authorized at once.  A token that is already gone answers \&quot;nothing changed\&quot; rather than an error, so the call is safe to repeat.
-     * @param iamTokenKey  (required)
+     * @param owner  (required)
+     * @param name  (required)
      * @return ApiResponse&lt;IamTokenMutation&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1623,8 +3076,8 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IamTokenMutation> deleteTokenWithHttpInfo(@javax.annotation.Nonnull IamTokenKey iamTokenKey) throws ApiException {
-        okhttp3.Call localVarCall = deleteTokenValidateBeforeCall(iamTokenKey, null);
+    public ApiResponse<IamTokenMutation> deleteTokenWithHttpInfo(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = deleteTokenValidateBeforeCall(owner, name, null);
         Type localVarReturnType = new TypeToken<IamTokenMutation>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1632,7 +3085,8 @@ public class IamApi {
     /**
      * Revokes an access token. (asynchronously)
      * Revokes an access token. Whatever was using it stops being authorized at once.  A token that is already gone answers \&quot;nothing changed\&quot; rather than an error, so the call is safe to repeat.
-     * @param iamTokenKey  (required)
+     * @param owner  (required)
+     * @param name  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1643,16 +3097,17 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteTokenAsync(@javax.annotation.Nonnull IamTokenKey iamTokenKey, final ApiCallback<IamTokenMutation> _callback) throws ApiException {
+    public okhttp3.Call deleteTokenAsync(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback<IamTokenMutation> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteTokenValidateBeforeCall(iamTokenKey, _callback);
+        okhttp3.Call localVarCall = deleteTokenValidateBeforeCall(owner, name, _callback);
         Type localVarReturnType = new TypeToken<IamTokenMutation>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for deleteWebauthnCredential
-     * @param iamWebauthnCredentialKey  (required)
+     * @param owner  (required)
+     * @param name  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1663,7 +3118,7 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteWebauthnCredentialCall(@javax.annotation.Nonnull IamWebauthnCredentialKey iamWebauthnCredentialKey, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteWebauthnCredentialCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1677,10 +3132,12 @@ public class IamApi {
             basePath = null;
         }
 
-        Object localVarPostBody = iamWebauthnCredentialKey;
+        Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/iam/webauthn-credentials/delete";
+        String localVarPath = "/v1/iam/webauthn-credentials/{owner}/{name}"
+            .replace("{" + "owner" + "}", localVarApiClient.escapeString(owner.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1697,7 +3154,6 @@ public class IamApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1705,24 +3161,30 @@ public class IamApi {
         }
 
         String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteWebauthnCredentialValidateBeforeCall(@javax.annotation.Nonnull IamWebauthnCredentialKey iamWebauthnCredentialKey, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'iamWebauthnCredentialKey' is set
-        if (iamWebauthnCredentialKey == null) {
-            throw new ApiException("Missing the required parameter 'iamWebauthnCredentialKey' when calling deleteWebauthnCredential(Async)");
+    private okhttp3.Call deleteWebauthnCredentialValidateBeforeCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'owner' is set
+        if (owner == null) {
+            throw new ApiException("Missing the required parameter 'owner' when calling deleteWebauthnCredential(Async)");
         }
 
-        return deleteWebauthnCredentialCall(iamWebauthnCredentialKey, _callback);
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling deleteWebauthnCredential(Async)");
+        }
+
+        return deleteWebauthnCredentialCall(owner, name, _callback);
 
     }
 
     /**
      * Removes a passkey or security key — what you call when a device is lost.
      * Removes a passkey or security key — what you call when a device is lost. Make sure the person has another way to sign in first.  A credential that is already gone answers \&quot;nothing changed\&quot; rather than an error, so the call is safe to repeat.
-     * @param iamWebauthnCredentialKey  (required)
+     * @param owner  (required)
+     * @param name  (required)
      * @return IamWebauthnCredentialMutationResult
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1732,15 +3194,16 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public IamWebauthnCredentialMutationResult deleteWebauthnCredential(@javax.annotation.Nonnull IamWebauthnCredentialKey iamWebauthnCredentialKey) throws ApiException {
-        ApiResponse<IamWebauthnCredentialMutationResult> localVarResp = deleteWebauthnCredentialWithHttpInfo(iamWebauthnCredentialKey);
+    public IamWebauthnCredentialMutationResult deleteWebauthnCredential(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<IamWebauthnCredentialMutationResult> localVarResp = deleteWebauthnCredentialWithHttpInfo(owner, name);
         return localVarResp.getData();
     }
 
     /**
      * Removes a passkey or security key — what you call when a device is lost.
      * Removes a passkey or security key — what you call when a device is lost. Make sure the person has another way to sign in first.  A credential that is already gone answers \&quot;nothing changed\&quot; rather than an error, so the call is safe to repeat.
-     * @param iamWebauthnCredentialKey  (required)
+     * @param owner  (required)
+     * @param name  (required)
      * @return ApiResponse&lt;IamWebauthnCredentialMutationResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1750,8 +3213,8 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IamWebauthnCredentialMutationResult> deleteWebauthnCredentialWithHttpInfo(@javax.annotation.Nonnull IamWebauthnCredentialKey iamWebauthnCredentialKey) throws ApiException {
-        okhttp3.Call localVarCall = deleteWebauthnCredentialValidateBeforeCall(iamWebauthnCredentialKey, null);
+    public ApiResponse<IamWebauthnCredentialMutationResult> deleteWebauthnCredentialWithHttpInfo(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = deleteWebauthnCredentialValidateBeforeCall(owner, name, null);
         Type localVarReturnType = new TypeToken<IamWebauthnCredentialMutationResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1759,7 +3222,8 @@ public class IamApi {
     /**
      * Removes a passkey or security key — what you call when a device is lost. (asynchronously)
      * Removes a passkey or security key — what you call when a device is lost. Make sure the person has another way to sign in first.  A credential that is already gone answers \&quot;nothing changed\&quot; rather than an error, so the call is safe to repeat.
-     * @param iamWebauthnCredentialKey  (required)
+     * @param owner  (required)
+     * @param name  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1770,9 +3234,9 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteWebauthnCredentialAsync(@javax.annotation.Nonnull IamWebauthnCredentialKey iamWebauthnCredentialKey, final ApiCallback<IamWebauthnCredentialMutationResult> _callback) throws ApiException {
+    public okhttp3.Call deleteWebauthnCredentialAsync(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback<IamWebauthnCredentialMutationResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteWebauthnCredentialValidateBeforeCall(iamWebauthnCredentialKey, _callback);
+        okhttp3.Call localVarCall = deleteWebauthnCredentialValidateBeforeCall(owner, name, _callback);
         Type localVarReturnType = new TypeToken<IamWebauthnCredentialMutationResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1863,149 +3327,6 @@ public class IamApi {
 
         okhttp3.Call localVarCall = getIamAccountValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getIamApplication
-     * @param owner  (required)
-     * @param name  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getIamApplicationCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/iam/application";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (owner != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("owner", owner));
-        }
-
-        if (name != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("name", name));
-        }
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getIamApplicationValidateBeforeCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'owner' is set
-        if (owner == null) {
-            throw new ApiException("Missing the required parameter 'owner' when calling getIamApplication(Async)");
-        }
-
-        // verify the required parameter 'name' is set
-        if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling getIamApplication(Async)");
-        }
-
-        return getIamApplicationCall(owner, name, _callback);
-
-    }
-
-    /**
-     * Returns one application: its sign-in methods, its allowed redirect URIs and the client credentials your integration authenticates with.
-     * Returns one application: its sign-in methods, its allowed redirect URIs and the client credentials your integration authenticates with.
-     * @param owner  (required)
-     * @param name  (required)
-     * @return IamApplication
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public IamApplication getIamApplication(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
-        ApiResponse<IamApplication> localVarResp = getIamApplicationWithHttpInfo(owner, name);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Returns one application: its sign-in methods, its allowed redirect URIs and the client credentials your integration authenticates with.
-     * Returns one application: its sign-in methods, its allowed redirect URIs and the client credentials your integration authenticates with.
-     * @param owner  (required)
-     * @param name  (required)
-     * @return ApiResponse&lt;IamApplication&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<IamApplication> getIamApplicationWithHttpInfo(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
-        okhttp3.Call localVarCall = getIamApplicationValidateBeforeCall(owner, name, null);
-        Type localVarReturnType = new TypeToken<IamApplication>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Returns one application: its sign-in methods, its allowed redirect URIs and the client credentials your integration authenticates with. (asynchronously)
-     * Returns one application: its sign-in methods, its allowed redirect URIs and the client credentials your integration authenticates with.
-     * @param owner  (required)
-     * @param name  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getIamApplicationAsync(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback<IamApplication> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getIamApplicationValidateBeforeCall(owner, name, _callback);
-        Type localVarReturnType = new TypeToken<IamApplication>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -2139,7 +3460,7 @@ public class IamApi {
         return localVarCall;
     }
     /**
-     * Build call for getIamApplicationsGet
+     * Build call for getIamApplicationsByOwnerByName
      * @param owner  (required)
      * @param name  (required)
      * @param _callback Callback for upload/download progress
@@ -2152,7 +3473,7 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getIamApplicationsGetCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getIamApplicationsByOwnerByNameCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2169,21 +3490,15 @@ public class IamApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/iam/applications/get";
+        String localVarPath = "/v1/iam/applications/{owner}/{name}"
+            .replace("{" + "owner" + "}", localVarApiClient.escapeString(owner.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (owner != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("owner", owner));
-        }
-
-        if (name != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("name", name));
-        }
 
         final String[] localVarAccepts = {
             "application/json"
@@ -2205,18 +3520,18 @@ public class IamApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getIamApplicationsGetValidateBeforeCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getIamApplicationsByOwnerByNameValidateBeforeCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'owner' is set
         if (owner == null) {
-            throw new ApiException("Missing the required parameter 'owner' when calling getIamApplicationsGet(Async)");
+            throw new ApiException("Missing the required parameter 'owner' when calling getIamApplicationsByOwnerByName(Async)");
         }
 
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling getIamApplicationsGet(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling getIamApplicationsByOwnerByName(Async)");
         }
 
-        return getIamApplicationsGetCall(owner, name, _callback);
+        return getIamApplicationsByOwnerByNameCall(owner, name, _callback);
 
     }
 
@@ -2234,8 +3549,8 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public IamApplication getIamApplicationsGet(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
-        ApiResponse<IamApplication> localVarResp = getIamApplicationsGetWithHttpInfo(owner, name);
+    public IamApplication getIamApplicationsByOwnerByName(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<IamApplication> localVarResp = getIamApplicationsByOwnerByNameWithHttpInfo(owner, name);
         return localVarResp.getData();
     }
 
@@ -2253,8 +3568,8 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IamApplication> getIamApplicationsGetWithHttpInfo(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
-        okhttp3.Call localVarCall = getIamApplicationsGetValidateBeforeCall(owner, name, null);
+    public ApiResponse<IamApplication> getIamApplicationsByOwnerByNameWithHttpInfo(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = getIamApplicationsByOwnerByNameValidateBeforeCall(owner, name, null);
         Type localVarReturnType = new TypeToken<IamApplication>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2274,9 +3589,9 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getIamApplicationsGetAsync(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback<IamApplication> _callback) throws ApiException {
+    public okhttp3.Call getIamApplicationsByOwnerByNameAsync(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback<IamApplication> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getIamApplicationsGetValidateBeforeCall(owner, name, _callback);
+        okhttp3.Call localVarCall = getIamApplicationsByOwnerByNameValidateBeforeCall(owner, name, _callback);
         Type localVarReturnType = new TypeToken<IamApplication>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2403,6 +3718,143 @@ public class IamApi {
 
         okhttp3.Call localVarCall = getIamAuditLogsValidateBeforeCall(owner, _callback);
         Type localVarReturnType = new TypeToken<IamListOutput>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getIamAuditLogsByOwnerByName
+     * @param owner  (required)
+     * @param name  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getIamAuditLogsByOwnerByNameCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/iam/audit-logs/{owner}/{name}"
+            .replace("{" + "owner" + "}", localVarApiClient.escapeString(owner.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getIamAuditLogsByOwnerByNameValidateBeforeCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'owner' is set
+        if (owner == null) {
+            throw new ApiException("Missing the required parameter 'owner' when calling getIamAuditLogsByOwnerByName(Async)");
+        }
+
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling getIamAuditLogsByOwnerByName(Async)");
+        }
+
+        return getIamAuditLogsByOwnerByNameCall(owner, name, _callback);
+
+    }
+
+    /**
+     * Returns one audit entry in full: the action, the person or key behind it, and the request it came in on.
+     * Returns one audit entry in full: the action, the person or key behind it, and the request it came in on.
+     * @param owner  (required)
+     * @param name  (required)
+     * @return IamAuditLog
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public IamAuditLog getIamAuditLogsByOwnerByName(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<IamAuditLog> localVarResp = getIamAuditLogsByOwnerByNameWithHttpInfo(owner, name);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Returns one audit entry in full: the action, the person or key behind it, and the request it came in on.
+     * Returns one audit entry in full: the action, the person or key behind it, and the request it came in on.
+     * @param owner  (required)
+     * @param name  (required)
+     * @return ApiResponse&lt;IamAuditLog&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<IamAuditLog> getIamAuditLogsByOwnerByNameWithHttpInfo(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = getIamAuditLogsByOwnerByNameValidateBeforeCall(owner, name, null);
+        Type localVarReturnType = new TypeToken<IamAuditLog>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Returns one audit entry in full: the action, the person or key behind it, and the request it came in on. (asynchronously)
+     * Returns one audit entry in full: the action, the person or key behind it, and the request it came in on.
+     * @param owner  (required)
+     * @param name  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getIamAuditLogsByOwnerByNameAsync(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback<IamAuditLog> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getIamAuditLogsByOwnerByNameValidateBeforeCall(owner, name, _callback);
+        Type localVarReturnType = new TypeToken<IamAuditLog>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2798,6 +4250,143 @@ public class IamApi {
         return localVarCall;
     }
     /**
+     * Build call for getIamCertsByOwnerByName
+     * @param owner  (required)
+     * @param name  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getIamCertsByOwnerByNameCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/iam/certs/{owner}/{name}"
+            .replace("{" + "owner" + "}", localVarApiClient.escapeString(owner.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getIamCertsByOwnerByNameValidateBeforeCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'owner' is set
+        if (owner == null) {
+            throw new ApiException("Missing the required parameter 'owner' when calling getIamCertsByOwnerByName(Async)");
+        }
+
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling getIamCertsByOwnerByName(Async)");
+        }
+
+        return getIamCertsByOwnerByNameCall(owner, name, _callback);
+
+    }
+
+    /**
+     * Returns one signing certificate — its algorithm, its validity window and its public half.
+     * Returns one signing certificate — its algorithm, its validity window and its public half. The private key is masked.
+     * @param owner  (required)
+     * @param name  (required)
+     * @return IamCert
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public IamCert getIamCertsByOwnerByName(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<IamCert> localVarResp = getIamCertsByOwnerByNameWithHttpInfo(owner, name);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Returns one signing certificate — its algorithm, its validity window and its public half.
+     * Returns one signing certificate — its algorithm, its validity window and its public half. The private key is masked.
+     * @param owner  (required)
+     * @param name  (required)
+     * @return ApiResponse&lt;IamCert&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<IamCert> getIamCertsByOwnerByNameWithHttpInfo(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = getIamCertsByOwnerByNameValidateBeforeCall(owner, name, null);
+        Type localVarReturnType = new TypeToken<IamCert>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Returns one signing certificate — its algorithm, its validity window and its public half. (asynchronously)
+     * Returns one signing certificate — its algorithm, its validity window and its public half. The private key is masked.
+     * @param owner  (required)
+     * @param name  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getIamCertsByOwnerByNameAsync(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback<IamCert> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getIamCertsByOwnerByNameValidateBeforeCall(owner, name, _callback);
+        Type localVarReturnType = new TypeToken<IamCert>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for getIamConsent
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -3111,1815 +4700,6 @@ public class IamApi {
         return localVarCall;
     }
     /**
-     * Build call for getIamGetApplication
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public okhttp3.Call getIamGetApplicationCall(final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/iam/get-application";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getIamGetApplicationValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getIamGetApplicationCall(_callback);
-
-    }
-
-    /**
-     * Reads one record — the older spelling of the single reads on the REST surface, over the same data and the same permissions.
-     * Reads one record — the older spelling of the single reads on the REST surface, over the same data and the same permissions.  Secrets are stripped. Naming a record in another organization does not reach it, however the request spells it.
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public void getIamGetApplication() throws ApiException {
-        getIamGetApplicationWithHttpInfo();
-    }
-
-    /**
-     * Reads one record — the older spelling of the single reads on the REST surface, over the same data and the same permissions.
-     * Reads one record — the older spelling of the single reads on the REST surface, over the same data and the same permissions.  Secrets are stripped. Naming a record in another organization does not reach it, however the request spells it.
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Void> getIamGetApplicationWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getIamGetApplicationValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * Reads one record — the older spelling of the single reads on the REST surface, over the same data and the same permissions. (asynchronously)
-     * Reads one record — the older spelling of the single reads on the REST surface, over the same data and the same permissions.  Secrets are stripped. Naming a record in another organization does not reach it, however the request spells it.
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public okhttp3.Call getIamGetApplicationAsync(final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getIamGetApplicationValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getIamGetApplications
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public okhttp3.Call getIamGetApplicationsCall(final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/iam/get-applications";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getIamGetApplicationsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getIamGetApplicationsCall(_callback);
-
-    }
-
-    /**
-     * Lists one kind of record in your organization — the older spelling of the collection reads on the REST surface, over the same data and the same permissions.
-     * Lists one kind of record in your organization — the older spelling of the collection reads on the REST surface, over the same data and the same permissions.  Secrets are stripped from every row. Send both a page number and a page size to page, and the total comes back alongside; send neither and you get the whole set. You see your own organization and no other, whatever the request asks for.  Scoping note (intentional, fail-closed): iam&#39;s ownership model is mixed — users/roles/permissions are owned by their tenant org, while organizations/ applications/providers/certs are platform-owned (Owner \&quot;admin\&quot;). A SuperAdmin (Scope → the requested owner, empty &#x3D; all) therefore lists every entity, which is the console-admin path. A non-super is pinned by Scope to its own org, so it lists its tenant-owned entities correctly and is refused the platform-owned lists at the Guard (owner \&quot;\&quot; or \&quot;admin\&quot; both deny) — a safe 403, never another tenant&#39;s rows. Non-super, membership-scoped views of the platform-owned entities (e.g. an org console&#39;s own app list keyed on Application.Organization) are a separate, additive surface, not a silent behavior of this generic lister.
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public void getIamGetApplications() throws ApiException {
-        getIamGetApplicationsWithHttpInfo();
-    }
-
-    /**
-     * Lists one kind of record in your organization — the older spelling of the collection reads on the REST surface, over the same data and the same permissions.
-     * Lists one kind of record in your organization — the older spelling of the collection reads on the REST surface, over the same data and the same permissions.  Secrets are stripped from every row. Send both a page number and a page size to page, and the total comes back alongside; send neither and you get the whole set. You see your own organization and no other, whatever the request asks for.  Scoping note (intentional, fail-closed): iam&#39;s ownership model is mixed — users/roles/permissions are owned by their tenant org, while organizations/ applications/providers/certs are platform-owned (Owner \&quot;admin\&quot;). A SuperAdmin (Scope → the requested owner, empty &#x3D; all) therefore lists every entity, which is the console-admin path. A non-super is pinned by Scope to its own org, so it lists its tenant-owned entities correctly and is refused the platform-owned lists at the Guard (owner \&quot;\&quot; or \&quot;admin\&quot; both deny) — a safe 403, never another tenant&#39;s rows. Non-super, membership-scoped views of the platform-owned entities (e.g. an org console&#39;s own app list keyed on Application.Organization) are a separate, additive surface, not a silent behavior of this generic lister.
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Void> getIamGetApplicationsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getIamGetApplicationsValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * Lists one kind of record in your organization — the older spelling of the collection reads on the REST surface, over the same data and the same permissions. (asynchronously)
-     * Lists one kind of record in your organization — the older spelling of the collection reads on the REST surface, over the same data and the same permissions.  Secrets are stripped from every row. Send both a page number and a page size to page, and the total comes back alongside; send neither and you get the whole set. You see your own organization and no other, whatever the request asks for.  Scoping note (intentional, fail-closed): iam&#39;s ownership model is mixed — users/roles/permissions are owned by their tenant org, while organizations/ applications/providers/certs are platform-owned (Owner \&quot;admin\&quot;). A SuperAdmin (Scope → the requested owner, empty &#x3D; all) therefore lists every entity, which is the console-admin path. A non-super is pinned by Scope to its own org, so it lists its tenant-owned entities correctly and is refused the platform-owned lists at the Guard (owner \&quot;\&quot; or \&quot;admin\&quot; both deny) — a safe 403, never another tenant&#39;s rows. Non-super, membership-scoped views of the platform-owned entities (e.g. an org console&#39;s own app list keyed on Application.Organization) are a separate, additive surface, not a silent behavior of this generic lister.
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public okhttp3.Call getIamGetApplicationsAsync(final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getIamGetApplicationsValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getIamGetCert
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public okhttp3.Call getIamGetCertCall(final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/iam/get-cert";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getIamGetCertValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getIamGetCertCall(_callback);
-
-    }
-
-    /**
-     * Reads one record — the older spelling of the single reads on the REST surface, over the same data and the same permissions.
-     * Reads one record — the older spelling of the single reads on the REST surface, over the same data and the same permissions.  Secrets are stripped. Naming a record in another organization does not reach it, however the request spells it.
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public void getIamGetCert() throws ApiException {
-        getIamGetCertWithHttpInfo();
-    }
-
-    /**
-     * Reads one record — the older spelling of the single reads on the REST surface, over the same data and the same permissions.
-     * Reads one record — the older spelling of the single reads on the REST surface, over the same data and the same permissions.  Secrets are stripped. Naming a record in another organization does not reach it, however the request spells it.
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Void> getIamGetCertWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getIamGetCertValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * Reads one record — the older spelling of the single reads on the REST surface, over the same data and the same permissions. (asynchronously)
-     * Reads one record — the older spelling of the single reads on the REST surface, over the same data and the same permissions.  Secrets are stripped. Naming a record in another organization does not reach it, however the request spells it.
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public okhttp3.Call getIamGetCertAsync(final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getIamGetCertValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getIamGetCerts
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public okhttp3.Call getIamGetCertsCall(final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/iam/get-certs";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getIamGetCertsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getIamGetCertsCall(_callback);
-
-    }
-
-    /**
-     * Lists one kind of record in your organization — the older spelling of the collection reads on the REST surface, over the same data and the same permissions.
-     * Lists one kind of record in your organization — the older spelling of the collection reads on the REST surface, over the same data and the same permissions.  Secrets are stripped from every row. Send both a page number and a page size to page, and the total comes back alongside; send neither and you get the whole set. You see your own organization and no other, whatever the request asks for.  Scoping note (intentional, fail-closed): iam&#39;s ownership model is mixed — users/roles/permissions are owned by their tenant org, while organizations/ applications/providers/certs are platform-owned (Owner \&quot;admin\&quot;). A SuperAdmin (Scope → the requested owner, empty &#x3D; all) therefore lists every entity, which is the console-admin path. A non-super is pinned by Scope to its own org, so it lists its tenant-owned entities correctly and is refused the platform-owned lists at the Guard (owner \&quot;\&quot; or \&quot;admin\&quot; both deny) — a safe 403, never another tenant&#39;s rows. Non-super, membership-scoped views of the platform-owned entities (e.g. an org console&#39;s own app list keyed on Application.Organization) are a separate, additive surface, not a silent behavior of this generic lister.
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public void getIamGetCerts() throws ApiException {
-        getIamGetCertsWithHttpInfo();
-    }
-
-    /**
-     * Lists one kind of record in your organization — the older spelling of the collection reads on the REST surface, over the same data and the same permissions.
-     * Lists one kind of record in your organization — the older spelling of the collection reads on the REST surface, over the same data and the same permissions.  Secrets are stripped from every row. Send both a page number and a page size to page, and the total comes back alongside; send neither and you get the whole set. You see your own organization and no other, whatever the request asks for.  Scoping note (intentional, fail-closed): iam&#39;s ownership model is mixed — users/roles/permissions are owned by their tenant org, while organizations/ applications/providers/certs are platform-owned (Owner \&quot;admin\&quot;). A SuperAdmin (Scope → the requested owner, empty &#x3D; all) therefore lists every entity, which is the console-admin path. A non-super is pinned by Scope to its own org, so it lists its tenant-owned entities correctly and is refused the platform-owned lists at the Guard (owner \&quot;\&quot; or \&quot;admin\&quot; both deny) — a safe 403, never another tenant&#39;s rows. Non-super, membership-scoped views of the platform-owned entities (e.g. an org console&#39;s own app list keyed on Application.Organization) are a separate, additive surface, not a silent behavior of this generic lister.
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Void> getIamGetCertsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getIamGetCertsValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * Lists one kind of record in your organization — the older spelling of the collection reads on the REST surface, over the same data and the same permissions. (asynchronously)
-     * Lists one kind of record in your organization — the older spelling of the collection reads on the REST surface, over the same data and the same permissions.  Secrets are stripped from every row. Send both a page number and a page size to page, and the total comes back alongside; send neither and you get the whole set. You see your own organization and no other, whatever the request asks for.  Scoping note (intentional, fail-closed): iam&#39;s ownership model is mixed — users/roles/permissions are owned by their tenant org, while organizations/ applications/providers/certs are platform-owned (Owner \&quot;admin\&quot;). A SuperAdmin (Scope → the requested owner, empty &#x3D; all) therefore lists every entity, which is the console-admin path. A non-super is pinned by Scope to its own org, so it lists its tenant-owned entities correctly and is refused the platform-owned lists at the Guard (owner \&quot;\&quot; or \&quot;admin\&quot; both deny) — a safe 403, never another tenant&#39;s rows. Non-super, membership-scoped views of the platform-owned entities (e.g. an org console&#39;s own app list keyed on Application.Organization) are a separate, additive surface, not a silent behavior of this generic lister.
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public okhttp3.Call getIamGetCertsAsync(final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getIamGetCertsValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getIamGetGlobalUsers
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public okhttp3.Call getIamGetGlobalUsersCall(final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/iam/get-global-users";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getIamGetGlobalUsersValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getIamGetGlobalUsersCall(_callback);
-
-    }
-
-    /**
-     * Lists one kind of record in your organization — the older spelling of the collection reads on the REST surface, over the same data and the same permissions.
-     * Lists one kind of record in your organization — the older spelling of the collection reads on the REST surface, over the same data and the same permissions.  Secrets are stripped from every row. Send both a page number and a page size to page, and the total comes back alongside; send neither and you get the whole set. You see your own organization and no other, whatever the request asks for.  Scoping note (intentional, fail-closed): iam&#39;s ownership model is mixed — users/roles/permissions are owned by their tenant org, while organizations/ applications/providers/certs are platform-owned (Owner \&quot;admin\&quot;). A SuperAdmin (Scope → the requested owner, empty &#x3D; all) therefore lists every entity, which is the console-admin path. A non-super is pinned by Scope to its own org, so it lists its tenant-owned entities correctly and is refused the platform-owned lists at the Guard (owner \&quot;\&quot; or \&quot;admin\&quot; both deny) — a safe 403, never another tenant&#39;s rows. Non-super, membership-scoped views of the platform-owned entities (e.g. an org console&#39;s own app list keyed on Application.Organization) are a separate, additive surface, not a silent behavior of this generic lister.
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public void getIamGetGlobalUsers() throws ApiException {
-        getIamGetGlobalUsersWithHttpInfo();
-    }
-
-    /**
-     * Lists one kind of record in your organization — the older spelling of the collection reads on the REST surface, over the same data and the same permissions.
-     * Lists one kind of record in your organization — the older spelling of the collection reads on the REST surface, over the same data and the same permissions.  Secrets are stripped from every row. Send both a page number and a page size to page, and the total comes back alongside; send neither and you get the whole set. You see your own organization and no other, whatever the request asks for.  Scoping note (intentional, fail-closed): iam&#39;s ownership model is mixed — users/roles/permissions are owned by their tenant org, while organizations/ applications/providers/certs are platform-owned (Owner \&quot;admin\&quot;). A SuperAdmin (Scope → the requested owner, empty &#x3D; all) therefore lists every entity, which is the console-admin path. A non-super is pinned by Scope to its own org, so it lists its tenant-owned entities correctly and is refused the platform-owned lists at the Guard (owner \&quot;\&quot; or \&quot;admin\&quot; both deny) — a safe 403, never another tenant&#39;s rows. Non-super, membership-scoped views of the platform-owned entities (e.g. an org console&#39;s own app list keyed on Application.Organization) are a separate, additive surface, not a silent behavior of this generic lister.
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Void> getIamGetGlobalUsersWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getIamGetGlobalUsersValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * Lists one kind of record in your organization — the older spelling of the collection reads on the REST surface, over the same data and the same permissions. (asynchronously)
-     * Lists one kind of record in your organization — the older spelling of the collection reads on the REST surface, over the same data and the same permissions.  Secrets are stripped from every row. Send both a page number and a page size to page, and the total comes back alongside; send neither and you get the whole set. You see your own organization and no other, whatever the request asks for.  Scoping note (intentional, fail-closed): iam&#39;s ownership model is mixed — users/roles/permissions are owned by their tenant org, while organizations/ applications/providers/certs are platform-owned (Owner \&quot;admin\&quot;). A SuperAdmin (Scope → the requested owner, empty &#x3D; all) therefore lists every entity, which is the console-admin path. A non-super is pinned by Scope to its own org, so it lists its tenant-owned entities correctly and is refused the platform-owned lists at the Guard (owner \&quot;\&quot; or \&quot;admin\&quot; both deny) — a safe 403, never another tenant&#39;s rows. Non-super, membership-scoped views of the platform-owned entities (e.g. an org console&#39;s own app list keyed on Application.Organization) are a separate, additive surface, not a silent behavior of this generic lister.
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public okhttp3.Call getIamGetGlobalUsersAsync(final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getIamGetGlobalUsersValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getIamGetInvitations
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public okhttp3.Call getIamGetInvitationsCall(final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/iam/get-invitations";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getIamGetInvitationsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getIamGetInvitationsCall(_callback);
-
-    }
-
-    /**
-     * Lists one kind of record in your organization — the older spelling of the collection reads on the REST surface, over the same data and the same permissions.
-     * Lists one kind of record in your organization — the older spelling of the collection reads on the REST surface, over the same data and the same permissions.  Secrets are stripped from every row. Send both a page number and a page size to page, and the total comes back alongside; send neither and you get the whole set. You see your own organization and no other, whatever the request asks for.  Scoping note (intentional, fail-closed): iam&#39;s ownership model is mixed — users/roles/permissions are owned by their tenant org, while organizations/ applications/providers/certs are platform-owned (Owner \&quot;admin\&quot;). A SuperAdmin (Scope → the requested owner, empty &#x3D; all) therefore lists every entity, which is the console-admin path. A non-super is pinned by Scope to its own org, so it lists its tenant-owned entities correctly and is refused the platform-owned lists at the Guard (owner \&quot;\&quot; or \&quot;admin\&quot; both deny) — a safe 403, never another tenant&#39;s rows. Non-super, membership-scoped views of the platform-owned entities (e.g. an org console&#39;s own app list keyed on Application.Organization) are a separate, additive surface, not a silent behavior of this generic lister.
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public void getIamGetInvitations() throws ApiException {
-        getIamGetInvitationsWithHttpInfo();
-    }
-
-    /**
-     * Lists one kind of record in your organization — the older spelling of the collection reads on the REST surface, over the same data and the same permissions.
-     * Lists one kind of record in your organization — the older spelling of the collection reads on the REST surface, over the same data and the same permissions.  Secrets are stripped from every row. Send both a page number and a page size to page, and the total comes back alongside; send neither and you get the whole set. You see your own organization and no other, whatever the request asks for.  Scoping note (intentional, fail-closed): iam&#39;s ownership model is mixed — users/roles/permissions are owned by their tenant org, while organizations/ applications/providers/certs are platform-owned (Owner \&quot;admin\&quot;). A SuperAdmin (Scope → the requested owner, empty &#x3D; all) therefore lists every entity, which is the console-admin path. A non-super is pinned by Scope to its own org, so it lists its tenant-owned entities correctly and is refused the platform-owned lists at the Guard (owner \&quot;\&quot; or \&quot;admin\&quot; both deny) — a safe 403, never another tenant&#39;s rows. Non-super, membership-scoped views of the platform-owned entities (e.g. an org console&#39;s own app list keyed on Application.Organization) are a separate, additive surface, not a silent behavior of this generic lister.
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Void> getIamGetInvitationsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getIamGetInvitationsValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * Lists one kind of record in your organization — the older spelling of the collection reads on the REST surface, over the same data and the same permissions. (asynchronously)
-     * Lists one kind of record in your organization — the older spelling of the collection reads on the REST surface, over the same data and the same permissions.  Secrets are stripped from every row. Send both a page number and a page size to page, and the total comes back alongside; send neither and you get the whole set. You see your own organization and no other, whatever the request asks for.  Scoping note (intentional, fail-closed): iam&#39;s ownership model is mixed — users/roles/permissions are owned by their tenant org, while organizations/ applications/providers/certs are platform-owned (Owner \&quot;admin\&quot;). A SuperAdmin (Scope → the requested owner, empty &#x3D; all) therefore lists every entity, which is the console-admin path. A non-super is pinned by Scope to its own org, so it lists its tenant-owned entities correctly and is refused the platform-owned lists at the Guard (owner \&quot;\&quot; or \&quot;admin\&quot; both deny) — a safe 403, never another tenant&#39;s rows. Non-super, membership-scoped views of the platform-owned entities (e.g. an org console&#39;s own app list keyed on Application.Organization) are a separate, additive surface, not a silent behavior of this generic lister.
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public okhttp3.Call getIamGetInvitationsAsync(final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getIamGetInvitationsValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getIamGetMemberships
-     * @param user User is \&quot;&lt;homeOrg&gt;/&lt;username&gt;\&quot; — which organizations that identity may act in. (optional)
-     * @param org Org is an organization — who may act in it. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> bad request </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getIamGetMembershipsCall(@javax.annotation.Nullable String user, @javax.annotation.Nullable String org, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/iam/get-memberships";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (user != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("user", user));
-        }
-
-        if (org != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("org", org));
-        }
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getIamGetMembershipsValidateBeforeCall(@javax.annotation.Nullable String user, @javax.annotation.Nullable String org, final ApiCallback _callback) throws ApiException {
-        return getIamGetMembershipsCall(user, org, _callback);
-
-    }
-
-    /**
-     * Answers either question about who belongs where: which organizations one person can act in, or who can act in one organization.
-     * Answers either question about who belongs where: which organizations one person can act in, or who can act in one organization.  Both are org-scoped: a non-SuperAdmin may ask about ITS OWN org&#39;s roster, or about a user whose home org is its own, and nothing else. The bound comes from the verified credential via authz.Scope, so a request parameter can never widen it — a membership row names who may act and spend in an org, so a cross-tenant read is a customer roster leak.
-     * @param user User is \&quot;&lt;homeOrg&gt;/&lt;username&gt;\&quot; — which organizations that identity may act in. (optional)
-     * @param org Org is an organization — who may act in it. (optional)
-     * @return IamAnswer
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> bad request </td><td>  -  </td></tr>
-     </table>
-     */
-    public IamAnswer getIamGetMemberships(@javax.annotation.Nullable String user, @javax.annotation.Nullable String org) throws ApiException {
-        ApiResponse<IamAnswer> localVarResp = getIamGetMembershipsWithHttpInfo(user, org);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Answers either question about who belongs where: which organizations one person can act in, or who can act in one organization.
-     * Answers either question about who belongs where: which organizations one person can act in, or who can act in one organization.  Both are org-scoped: a non-SuperAdmin may ask about ITS OWN org&#39;s roster, or about a user whose home org is its own, and nothing else. The bound comes from the verified credential via authz.Scope, so a request parameter can never widen it — a membership row names who may act and spend in an org, so a cross-tenant read is a customer roster leak.
-     * @param user User is \&quot;&lt;homeOrg&gt;/&lt;username&gt;\&quot; — which organizations that identity may act in. (optional)
-     * @param org Org is an organization — who may act in it. (optional)
-     * @return ApiResponse&lt;IamAnswer&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> bad request </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<IamAnswer> getIamGetMembershipsWithHttpInfo(@javax.annotation.Nullable String user, @javax.annotation.Nullable String org) throws ApiException {
-        okhttp3.Call localVarCall = getIamGetMembershipsValidateBeforeCall(user, org, null);
-        Type localVarReturnType = new TypeToken<IamAnswer>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Answers either question about who belongs where: which organizations one person can act in, or who can act in one organization. (asynchronously)
-     * Answers either question about who belongs where: which organizations one person can act in, or who can act in one organization.  Both are org-scoped: a non-SuperAdmin may ask about ITS OWN org&#39;s roster, or about a user whose home org is its own, and nothing else. The bound comes from the verified credential via authz.Scope, so a request parameter can never widen it — a membership row names who may act and spend in an org, so a cross-tenant read is a customer roster leak.
-     * @param user User is \&quot;&lt;homeOrg&gt;/&lt;username&gt;\&quot; — which organizations that identity may act in. (optional)
-     * @param org Org is an organization — who may act in it. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> bad request </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getIamGetMembershipsAsync(@javax.annotation.Nullable String user, @javax.annotation.Nullable String org, final ApiCallback<IamAnswer> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getIamGetMembershipsValidateBeforeCall(user, org, _callback);
-        Type localVarReturnType = new TypeToken<IamAnswer>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getIamGetOrganization
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public okhttp3.Call getIamGetOrganizationCall(final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/iam/get-organization";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getIamGetOrganizationValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getIamGetOrganizationCall(_callback);
-
-    }
-
-    /**
-     * Reads one record — the older spelling of the single reads on the REST surface, over the same data and the same permissions.
-     * Reads one record — the older spelling of the single reads on the REST surface, over the same data and the same permissions.  Secrets are stripped. Naming a record in another organization does not reach it, however the request spells it.
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public void getIamGetOrganization() throws ApiException {
-        getIamGetOrganizationWithHttpInfo();
-    }
-
-    /**
-     * Reads one record — the older spelling of the single reads on the REST surface, over the same data and the same permissions.
-     * Reads one record — the older spelling of the single reads on the REST surface, over the same data and the same permissions.  Secrets are stripped. Naming a record in another organization does not reach it, however the request spells it.
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Void> getIamGetOrganizationWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getIamGetOrganizationValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * Reads one record — the older spelling of the single reads on the REST surface, over the same data and the same permissions. (asynchronously)
-     * Reads one record — the older spelling of the single reads on the REST surface, over the same data and the same permissions.  Secrets are stripped. Naming a record in another organization does not reach it, however the request spells it.
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public okhttp3.Call getIamGetOrganizationAsync(final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getIamGetOrganizationValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getIamGetOrganizationProjects
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public okhttp3.Call getIamGetOrganizationProjectsCall(final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/iam/get-organization-projects";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getIamGetOrganizationProjectsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getIamGetOrganizationProjectsCall(_callback);
-
-    }
-
-    /**
-     * Returns one organization&#39;s projects — what a scope switcher lists so somebody can move between them.
-     * Returns one organization&#39;s projects — what a scope switcher lists so somebody can move between them.  You see your own organization and no other, whatever the request asks for.
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public void getIamGetOrganizationProjects() throws ApiException {
-        getIamGetOrganizationProjectsWithHttpInfo();
-    }
-
-    /**
-     * Returns one organization&#39;s projects — what a scope switcher lists so somebody can move between them.
-     * Returns one organization&#39;s projects — what a scope switcher lists so somebody can move between them.  You see your own organization and no other, whatever the request asks for.
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Void> getIamGetOrganizationProjectsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getIamGetOrganizationProjectsValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * Returns one organization&#39;s projects — what a scope switcher lists so somebody can move between them. (asynchronously)
-     * Returns one organization&#39;s projects — what a scope switcher lists so somebody can move between them.  You see your own organization and no other, whatever the request asks for.
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public okhttp3.Call getIamGetOrganizationProjectsAsync(final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getIamGetOrganizationProjectsValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getIamGetOrganizationWorkspaces
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public okhttp3.Call getIamGetOrganizationWorkspacesCall(final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/iam/get-organization-workspaces";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getIamGetOrganizationWorkspacesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getIamGetOrganizationWorkspacesCall(_callback);
-
-    }
-
-    /**
-     * Returns one organization&#39;s workspaces — what a scope switcher lists so somebody can move between them.
-     * Returns one organization&#39;s workspaces — what a scope switcher lists so somebody can move between them.  You see your own organization and no other, whatever the request asks for.
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public void getIamGetOrganizationWorkspaces() throws ApiException {
-        getIamGetOrganizationWorkspacesWithHttpInfo();
-    }
-
-    /**
-     * Returns one organization&#39;s workspaces — what a scope switcher lists so somebody can move between them.
-     * Returns one organization&#39;s workspaces — what a scope switcher lists so somebody can move between them.  You see your own organization and no other, whatever the request asks for.
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Void> getIamGetOrganizationWorkspacesWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getIamGetOrganizationWorkspacesValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * Returns one organization&#39;s workspaces — what a scope switcher lists so somebody can move between them. (asynchronously)
-     * Returns one organization&#39;s workspaces — what a scope switcher lists so somebody can move between them.  You see your own organization and no other, whatever the request asks for.
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public okhttp3.Call getIamGetOrganizationWorkspacesAsync(final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getIamGetOrganizationWorkspacesValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getIamGetOrganizations
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public okhttp3.Call getIamGetOrganizationsCall(final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/iam/get-organizations";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getIamGetOrganizationsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getIamGetOrganizationsCall(_callback);
-
-    }
-
-    /**
-     * Lists one kind of record in your organization — the older spelling of the collection reads on the REST surface, over the same data and the same permissions.
-     * Lists one kind of record in your organization — the older spelling of the collection reads on the REST surface, over the same data and the same permissions.  Secrets are stripped from every row. Send both a page number and a page size to page, and the total comes back alongside; send neither and you get the whole set. You see your own organization and no other, whatever the request asks for.  Scoping note (intentional, fail-closed): iam&#39;s ownership model is mixed — users/roles/permissions are owned by their tenant org, while organizations/ applications/providers/certs are platform-owned (Owner \&quot;admin\&quot;). A SuperAdmin (Scope → the requested owner, empty &#x3D; all) therefore lists every entity, which is the console-admin path. A non-super is pinned by Scope to its own org, so it lists its tenant-owned entities correctly and is refused the platform-owned lists at the Guard (owner \&quot;\&quot; or \&quot;admin\&quot; both deny) — a safe 403, never another tenant&#39;s rows. Non-super, membership-scoped views of the platform-owned entities (e.g. an org console&#39;s own app list keyed on Application.Organization) are a separate, additive surface, not a silent behavior of this generic lister.
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public void getIamGetOrganizations() throws ApiException {
-        getIamGetOrganizationsWithHttpInfo();
-    }
-
-    /**
-     * Lists one kind of record in your organization — the older spelling of the collection reads on the REST surface, over the same data and the same permissions.
-     * Lists one kind of record in your organization — the older spelling of the collection reads on the REST surface, over the same data and the same permissions.  Secrets are stripped from every row. Send both a page number and a page size to page, and the total comes back alongside; send neither and you get the whole set. You see your own organization and no other, whatever the request asks for.  Scoping note (intentional, fail-closed): iam&#39;s ownership model is mixed — users/roles/permissions are owned by their tenant org, while organizations/ applications/providers/certs are platform-owned (Owner \&quot;admin\&quot;). A SuperAdmin (Scope → the requested owner, empty &#x3D; all) therefore lists every entity, which is the console-admin path. A non-super is pinned by Scope to its own org, so it lists its tenant-owned entities correctly and is refused the platform-owned lists at the Guard (owner \&quot;\&quot; or \&quot;admin\&quot; both deny) — a safe 403, never another tenant&#39;s rows. Non-super, membership-scoped views of the platform-owned entities (e.g. an org console&#39;s own app list keyed on Application.Organization) are a separate, additive surface, not a silent behavior of this generic lister.
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Void> getIamGetOrganizationsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getIamGetOrganizationsValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * Lists one kind of record in your organization — the older spelling of the collection reads on the REST surface, over the same data and the same permissions. (asynchronously)
-     * Lists one kind of record in your organization — the older spelling of the collection reads on the REST surface, over the same data and the same permissions.  Secrets are stripped from every row. Send both a page number and a page size to page, and the total comes back alongside; send neither and you get the whole set. You see your own organization and no other, whatever the request asks for.  Scoping note (intentional, fail-closed): iam&#39;s ownership model is mixed — users/roles/permissions are owned by their tenant org, while organizations/ applications/providers/certs are platform-owned (Owner \&quot;admin\&quot;). A SuperAdmin (Scope → the requested owner, empty &#x3D; all) therefore lists every entity, which is the console-admin path. A non-super is pinned by Scope to its own org, so it lists its tenant-owned entities correctly and is refused the platform-owned lists at the Guard (owner \&quot;\&quot; or \&quot;admin\&quot; both deny) — a safe 403, never another tenant&#39;s rows. Non-super, membership-scoped views of the platform-owned entities (e.g. an org console&#39;s own app list keyed on Application.Organization) are a separate, additive surface, not a silent behavior of this generic lister.
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public okhttp3.Call getIamGetOrganizationsAsync(final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getIamGetOrganizationsValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getIamGetPermission
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public okhttp3.Call getIamGetPermissionCall(final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/iam/get-permission";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getIamGetPermissionValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getIamGetPermissionCall(_callback);
-
-    }
-
-    /**
-     * Reads one record — the older spelling of the single reads on the REST surface, over the same data and the same permissions.
-     * Reads one record — the older spelling of the single reads on the REST surface, over the same data and the same permissions.  Secrets are stripped. Naming a record in another organization does not reach it, however the request spells it.
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public void getIamGetPermission() throws ApiException {
-        getIamGetPermissionWithHttpInfo();
-    }
-
-    /**
-     * Reads one record — the older spelling of the single reads on the REST surface, over the same data and the same permissions.
-     * Reads one record — the older spelling of the single reads on the REST surface, over the same data and the same permissions.  Secrets are stripped. Naming a record in another organization does not reach it, however the request spells it.
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Void> getIamGetPermissionWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getIamGetPermissionValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * Reads one record — the older spelling of the single reads on the REST surface, over the same data and the same permissions. (asynchronously)
-     * Reads one record — the older spelling of the single reads on the REST surface, over the same data and the same permissions.  Secrets are stripped. Naming a record in another organization does not reach it, however the request spells it.
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public okhttp3.Call getIamGetPermissionAsync(final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getIamGetPermissionValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getIamGetPermissions
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public okhttp3.Call getIamGetPermissionsCall(final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/iam/get-permissions";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getIamGetPermissionsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getIamGetPermissionsCall(_callback);
-
-    }
-
-    /**
-     * Lists one kind of record in your organization — the older spelling of the collection reads on the REST surface, over the same data and the same permissions.
-     * Lists one kind of record in your organization — the older spelling of the collection reads on the REST surface, over the same data and the same permissions.  Secrets are stripped from every row. Send both a page number and a page size to page, and the total comes back alongside; send neither and you get the whole set. You see your own organization and no other, whatever the request asks for.  Scoping note (intentional, fail-closed): iam&#39;s ownership model is mixed — users/roles/permissions are owned by their tenant org, while organizations/ applications/providers/certs are platform-owned (Owner \&quot;admin\&quot;). A SuperAdmin (Scope → the requested owner, empty &#x3D; all) therefore lists every entity, which is the console-admin path. A non-super is pinned by Scope to its own org, so it lists its tenant-owned entities correctly and is refused the platform-owned lists at the Guard (owner \&quot;\&quot; or \&quot;admin\&quot; both deny) — a safe 403, never another tenant&#39;s rows. Non-super, membership-scoped views of the platform-owned entities (e.g. an org console&#39;s own app list keyed on Application.Organization) are a separate, additive surface, not a silent behavior of this generic lister.
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public void getIamGetPermissions() throws ApiException {
-        getIamGetPermissionsWithHttpInfo();
-    }
-
-    /**
-     * Lists one kind of record in your organization — the older spelling of the collection reads on the REST surface, over the same data and the same permissions.
-     * Lists one kind of record in your organization — the older spelling of the collection reads on the REST surface, over the same data and the same permissions.  Secrets are stripped from every row. Send both a page number and a page size to page, and the total comes back alongside; send neither and you get the whole set. You see your own organization and no other, whatever the request asks for.  Scoping note (intentional, fail-closed): iam&#39;s ownership model is mixed — users/roles/permissions are owned by their tenant org, while organizations/ applications/providers/certs are platform-owned (Owner \&quot;admin\&quot;). A SuperAdmin (Scope → the requested owner, empty &#x3D; all) therefore lists every entity, which is the console-admin path. A non-super is pinned by Scope to its own org, so it lists its tenant-owned entities correctly and is refused the platform-owned lists at the Guard (owner \&quot;\&quot; or \&quot;admin\&quot; both deny) — a safe 403, never another tenant&#39;s rows. Non-super, membership-scoped views of the platform-owned entities (e.g. an org console&#39;s own app list keyed on Application.Organization) are a separate, additive surface, not a silent behavior of this generic lister.
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Void> getIamGetPermissionsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getIamGetPermissionsValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * Lists one kind of record in your organization — the older spelling of the collection reads on the REST surface, over the same data and the same permissions. (asynchronously)
-     * Lists one kind of record in your organization — the older spelling of the collection reads on the REST surface, over the same data and the same permissions.  Secrets are stripped from every row. Send both a page number and a page size to page, and the total comes back alongside; send neither and you get the whole set. You see your own organization and no other, whatever the request asks for.  Scoping note (intentional, fail-closed): iam&#39;s ownership model is mixed — users/roles/permissions are owned by their tenant org, while organizations/ applications/providers/certs are platform-owned (Owner \&quot;admin\&quot;). A SuperAdmin (Scope → the requested owner, empty &#x3D; all) therefore lists every entity, which is the console-admin path. A non-super is pinned by Scope to its own org, so it lists its tenant-owned entities correctly and is refused the platform-owned lists at the Guard (owner \&quot;\&quot; or \&quot;admin\&quot; both deny) — a safe 403, never another tenant&#39;s rows. Non-super, membership-scoped views of the platform-owned entities (e.g. an org console&#39;s own app list keyed on Application.Organization) are a separate, additive surface, not a silent behavior of this generic lister.
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public okhttp3.Call getIamGetPermissionsAsync(final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getIamGetPermissionsValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getIamGetProvider
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public okhttp3.Call getIamGetProviderCall(final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/iam/get-provider";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getIamGetProviderValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getIamGetProviderCall(_callback);
-
-    }
-
-    /**
-     * Reads one record — the older spelling of the single reads on the REST surface, over the same data and the same permissions.
-     * Reads one record — the older spelling of the single reads on the REST surface, over the same data and the same permissions.  Secrets are stripped. Naming a record in another organization does not reach it, however the request spells it.
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public void getIamGetProvider() throws ApiException {
-        getIamGetProviderWithHttpInfo();
-    }
-
-    /**
-     * Reads one record — the older spelling of the single reads on the REST surface, over the same data and the same permissions.
-     * Reads one record — the older spelling of the single reads on the REST surface, over the same data and the same permissions.  Secrets are stripped. Naming a record in another organization does not reach it, however the request spells it.
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Void> getIamGetProviderWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getIamGetProviderValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * Reads one record — the older spelling of the single reads on the REST surface, over the same data and the same permissions. (asynchronously)
-     * Reads one record — the older spelling of the single reads on the REST surface, over the same data and the same permissions.  Secrets are stripped. Naming a record in another organization does not reach it, however the request spells it.
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public okhttp3.Call getIamGetProviderAsync(final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getIamGetProviderValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getIamGetProviders
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public okhttp3.Call getIamGetProvidersCall(final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/iam/get-providers";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getIamGetProvidersValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getIamGetProvidersCall(_callback);
-
-    }
-
-    /**
-     * Lists one kind of record in your organization — the older spelling of the collection reads on the REST surface, over the same data and the same permissions.
-     * Lists one kind of record in your organization — the older spelling of the collection reads on the REST surface, over the same data and the same permissions.  Secrets are stripped from every row. Send both a page number and a page size to page, and the total comes back alongside; send neither and you get the whole set. You see your own organization and no other, whatever the request asks for.  Scoping note (intentional, fail-closed): iam&#39;s ownership model is mixed — users/roles/permissions are owned by their tenant org, while organizations/ applications/providers/certs are platform-owned (Owner \&quot;admin\&quot;). A SuperAdmin (Scope → the requested owner, empty &#x3D; all) therefore lists every entity, which is the console-admin path. A non-super is pinned by Scope to its own org, so it lists its tenant-owned entities correctly and is refused the platform-owned lists at the Guard (owner \&quot;\&quot; or \&quot;admin\&quot; both deny) — a safe 403, never another tenant&#39;s rows. Non-super, membership-scoped views of the platform-owned entities (e.g. an org console&#39;s own app list keyed on Application.Organization) are a separate, additive surface, not a silent behavior of this generic lister.
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public void getIamGetProviders() throws ApiException {
-        getIamGetProvidersWithHttpInfo();
-    }
-
-    /**
-     * Lists one kind of record in your organization — the older spelling of the collection reads on the REST surface, over the same data and the same permissions.
-     * Lists one kind of record in your organization — the older spelling of the collection reads on the REST surface, over the same data and the same permissions.  Secrets are stripped from every row. Send both a page number and a page size to page, and the total comes back alongside; send neither and you get the whole set. You see your own organization and no other, whatever the request asks for.  Scoping note (intentional, fail-closed): iam&#39;s ownership model is mixed — users/roles/permissions are owned by their tenant org, while organizations/ applications/providers/certs are platform-owned (Owner \&quot;admin\&quot;). A SuperAdmin (Scope → the requested owner, empty &#x3D; all) therefore lists every entity, which is the console-admin path. A non-super is pinned by Scope to its own org, so it lists its tenant-owned entities correctly and is refused the platform-owned lists at the Guard (owner \&quot;\&quot; or \&quot;admin\&quot; both deny) — a safe 403, never another tenant&#39;s rows. Non-super, membership-scoped views of the platform-owned entities (e.g. an org console&#39;s own app list keyed on Application.Organization) are a separate, additive surface, not a silent behavior of this generic lister.
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Void> getIamGetProvidersWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getIamGetProvidersValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * Lists one kind of record in your organization — the older spelling of the collection reads on the REST surface, over the same data and the same permissions. (asynchronously)
-     * Lists one kind of record in your organization — the older spelling of the collection reads on the REST surface, over the same data and the same permissions.  Secrets are stripped from every row. Send both a page number and a page size to page, and the total comes back alongside; send neither and you get the whole set. You see your own organization and no other, whatever the request asks for.  Scoping note (intentional, fail-closed): iam&#39;s ownership model is mixed — users/roles/permissions are owned by their tenant org, while organizations/ applications/providers/certs are platform-owned (Owner \&quot;admin\&quot;). A SuperAdmin (Scope → the requested owner, empty &#x3D; all) therefore lists every entity, which is the console-admin path. A non-super is pinned by Scope to its own org, so it lists its tenant-owned entities correctly and is refused the platform-owned lists at the Guard (owner \&quot;\&quot; or \&quot;admin\&quot; both deny) — a safe 403, never another tenant&#39;s rows. Non-super, membership-scoped views of the platform-owned entities (e.g. an org console&#39;s own app list keyed on Application.Organization) are a separate, additive surface, not a silent behavior of this generic lister.
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public okhttp3.Call getIamGetProvidersAsync(final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getIamGetProvidersValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getIamGetRecords
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public okhttp3.Call getIamGetRecordsCall(final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/iam/get-records";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getIamGetRecordsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getIamGetRecordsCall(_callback);
-
-    }
-
-    /**
-     * Lists one kind of record in your organization — the older spelling of the collection reads on the REST surface, over the same data and the same permissions.
-     * Lists one kind of record in your organization — the older spelling of the collection reads on the REST surface, over the same data and the same permissions.  Secrets are stripped from every row. Send both a page number and a page size to page, and the total comes back alongside; send neither and you get the whole set. You see your own organization and no other, whatever the request asks for.  Scoping note (intentional, fail-closed): iam&#39;s ownership model is mixed — users/roles/permissions are owned by their tenant org, while organizations/ applications/providers/certs are platform-owned (Owner \&quot;admin\&quot;). A SuperAdmin (Scope → the requested owner, empty &#x3D; all) therefore lists every entity, which is the console-admin path. A non-super is pinned by Scope to its own org, so it lists its tenant-owned entities correctly and is refused the platform-owned lists at the Guard (owner \&quot;\&quot; or \&quot;admin\&quot; both deny) — a safe 403, never another tenant&#39;s rows. Non-super, membership-scoped views of the platform-owned entities (e.g. an org console&#39;s own app list keyed on Application.Organization) are a separate, additive surface, not a silent behavior of this generic lister.
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public void getIamGetRecords() throws ApiException {
-        getIamGetRecordsWithHttpInfo();
-    }
-
-    /**
-     * Lists one kind of record in your organization — the older spelling of the collection reads on the REST surface, over the same data and the same permissions.
-     * Lists one kind of record in your organization — the older spelling of the collection reads on the REST surface, over the same data and the same permissions.  Secrets are stripped from every row. Send both a page number and a page size to page, and the total comes back alongside; send neither and you get the whole set. You see your own organization and no other, whatever the request asks for.  Scoping note (intentional, fail-closed): iam&#39;s ownership model is mixed — users/roles/permissions are owned by their tenant org, while organizations/ applications/providers/certs are platform-owned (Owner \&quot;admin\&quot;). A SuperAdmin (Scope → the requested owner, empty &#x3D; all) therefore lists every entity, which is the console-admin path. A non-super is pinned by Scope to its own org, so it lists its tenant-owned entities correctly and is refused the platform-owned lists at the Guard (owner \&quot;\&quot; or \&quot;admin\&quot; both deny) — a safe 403, never another tenant&#39;s rows. Non-super, membership-scoped views of the platform-owned entities (e.g. an org console&#39;s own app list keyed on Application.Organization) are a separate, additive surface, not a silent behavior of this generic lister.
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Void> getIamGetRecordsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getIamGetRecordsValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * Lists one kind of record in your organization — the older spelling of the collection reads on the REST surface, over the same data and the same permissions. (asynchronously)
-     * Lists one kind of record in your organization — the older spelling of the collection reads on the REST surface, over the same data and the same permissions.  Secrets are stripped from every row. Send both a page number and a page size to page, and the total comes back alongside; send neither and you get the whole set. You see your own organization and no other, whatever the request asks for.  Scoping note (intentional, fail-closed): iam&#39;s ownership model is mixed — users/roles/permissions are owned by their tenant org, while organizations/ applications/providers/certs are platform-owned (Owner \&quot;admin\&quot;). A SuperAdmin (Scope → the requested owner, empty &#x3D; all) therefore lists every entity, which is the console-admin path. A non-super is pinned by Scope to its own org, so it lists its tenant-owned entities correctly and is refused the platform-owned lists at the Guard (owner \&quot;\&quot; or \&quot;admin\&quot; both deny) — a safe 403, never another tenant&#39;s rows. Non-super, membership-scoped views of the platform-owned entities (e.g. an org console&#39;s own app list keyed on Application.Organization) are a separate, additive surface, not a silent behavior of this generic lister.
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public okhttp3.Call getIamGetRecordsAsync(final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getIamGetRecordsValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getIamGetRole
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public okhttp3.Call getIamGetRoleCall(final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/iam/get-role";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getIamGetRoleValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getIamGetRoleCall(_callback);
-
-    }
-
-    /**
-     * Reads one record — the older spelling of the single reads on the REST surface, over the same data and the same permissions.
-     * Reads one record — the older spelling of the single reads on the REST surface, over the same data and the same permissions.  Secrets are stripped. Naming a record in another organization does not reach it, however the request spells it.
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public void getIamGetRole() throws ApiException {
-        getIamGetRoleWithHttpInfo();
-    }
-
-    /**
-     * Reads one record — the older spelling of the single reads on the REST surface, over the same data and the same permissions.
-     * Reads one record — the older spelling of the single reads on the REST surface, over the same data and the same permissions.  Secrets are stripped. Naming a record in another organization does not reach it, however the request spells it.
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Void> getIamGetRoleWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getIamGetRoleValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * Reads one record — the older spelling of the single reads on the REST surface, over the same data and the same permissions. (asynchronously)
-     * Reads one record — the older spelling of the single reads on the REST surface, over the same data and the same permissions.  Secrets are stripped. Naming a record in another organization does not reach it, however the request spells it.
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public okhttp3.Call getIamGetRoleAsync(final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getIamGetRoleValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getIamGetRoles
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public okhttp3.Call getIamGetRolesCall(final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/iam/get-roles";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getIamGetRolesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getIamGetRolesCall(_callback);
-
-    }
-
-    /**
-     * Lists one kind of record in your organization — the older spelling of the collection reads on the REST surface, over the same data and the same permissions.
-     * Lists one kind of record in your organization — the older spelling of the collection reads on the REST surface, over the same data and the same permissions.  Secrets are stripped from every row. Send both a page number and a page size to page, and the total comes back alongside; send neither and you get the whole set. You see your own organization and no other, whatever the request asks for.  Scoping note (intentional, fail-closed): iam&#39;s ownership model is mixed — users/roles/permissions are owned by their tenant org, while organizations/ applications/providers/certs are platform-owned (Owner \&quot;admin\&quot;). A SuperAdmin (Scope → the requested owner, empty &#x3D; all) therefore lists every entity, which is the console-admin path. A non-super is pinned by Scope to its own org, so it lists its tenant-owned entities correctly and is refused the platform-owned lists at the Guard (owner \&quot;\&quot; or \&quot;admin\&quot; both deny) — a safe 403, never another tenant&#39;s rows. Non-super, membership-scoped views of the platform-owned entities (e.g. an org console&#39;s own app list keyed on Application.Organization) are a separate, additive surface, not a silent behavior of this generic lister.
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public void getIamGetRoles() throws ApiException {
-        getIamGetRolesWithHttpInfo();
-    }
-
-    /**
-     * Lists one kind of record in your organization — the older spelling of the collection reads on the REST surface, over the same data and the same permissions.
-     * Lists one kind of record in your organization — the older spelling of the collection reads on the REST surface, over the same data and the same permissions.  Secrets are stripped from every row. Send both a page number and a page size to page, and the total comes back alongside; send neither and you get the whole set. You see your own organization and no other, whatever the request asks for.  Scoping note (intentional, fail-closed): iam&#39;s ownership model is mixed — users/roles/permissions are owned by their tenant org, while organizations/ applications/providers/certs are platform-owned (Owner \&quot;admin\&quot;). A SuperAdmin (Scope → the requested owner, empty &#x3D; all) therefore lists every entity, which is the console-admin path. A non-super is pinned by Scope to its own org, so it lists its tenant-owned entities correctly and is refused the platform-owned lists at the Guard (owner \&quot;\&quot; or \&quot;admin\&quot; both deny) — a safe 403, never another tenant&#39;s rows. Non-super, membership-scoped views of the platform-owned entities (e.g. an org console&#39;s own app list keyed on Application.Organization) are a separate, additive surface, not a silent behavior of this generic lister.
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Void> getIamGetRolesWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getIamGetRolesValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * Lists one kind of record in your organization — the older spelling of the collection reads on the REST surface, over the same data and the same permissions. (asynchronously)
-     * Lists one kind of record in your organization — the older spelling of the collection reads on the REST surface, over the same data and the same permissions.  Secrets are stripped from every row. Send both a page number and a page size to page, and the total comes back alongside; send neither and you get the whole set. You see your own organization and no other, whatever the request asks for.  Scoping note (intentional, fail-closed): iam&#39;s ownership model is mixed — users/roles/permissions are owned by their tenant org, while organizations/ applications/providers/certs are platform-owned (Owner \&quot;admin\&quot;). A SuperAdmin (Scope → the requested owner, empty &#x3D; all) therefore lists every entity, which is the console-admin path. A non-super is pinned by Scope to its own org, so it lists its tenant-owned entities correctly and is refused the platform-owned lists at the Guard (owner \&quot;\&quot; or \&quot;admin\&quot; both deny) — a safe 403, never another tenant&#39;s rows. Non-super, membership-scoped views of the platform-owned entities (e.g. an org console&#39;s own app list keyed on Application.Organization) are a separate, additive surface, not a silent behavior of this generic lister.
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public okhttp3.Call getIamGetRolesAsync(final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getIamGetRolesValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getIamGetUser
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public okhttp3.Call getIamGetUserCall(final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/iam/get-user";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getIamGetUserValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getIamGetUserCall(_callback);
-
-    }
-
-    /**
-     * Reads one person, two ways.
-     * Reads one person, two ways.  Name them and it is an ordinary read, with secrets stripped. Or hand it a SECRET API key and it answers with the person that key belongs to — how a service of yours turns a credential on an incoming request into an identity.  A publishable key resolves to nobody here, deliberately: it is safe to ship in a browser precisely because it names an organization and never a person.  get-user is handler-authorized (authz.handlerAuthorizedExact) because the key variant carries no owner/name for the Guard to authorize; so the owner/name variant reinstates the SAME read authorization the Guard applies, through the ONE policy function (authz.Can) — identical behavior, a cross-tenant or non-self read still refused 403 — then reuses the generic getHandler verbatim for resolution and redaction. No authz and no CRUD is reimplemented.
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public void getIamGetUser() throws ApiException {
-        getIamGetUserWithHttpInfo();
-    }
-
-    /**
-     * Reads one person, two ways.
-     * Reads one person, two ways.  Name them and it is an ordinary read, with secrets stripped. Or hand it a SECRET API key and it answers with the person that key belongs to — how a service of yours turns a credential on an incoming request into an identity.  A publishable key resolves to nobody here, deliberately: it is safe to ship in a browser precisely because it names an organization and never a person.  get-user is handler-authorized (authz.handlerAuthorizedExact) because the key variant carries no owner/name for the Guard to authorize; so the owner/name variant reinstates the SAME read authorization the Guard applies, through the ONE policy function (authz.Can) — identical behavior, a cross-tenant or non-self read still refused 403 — then reuses the generic getHandler verbatim for resolution and redaction. No authz and no CRUD is reimplemented.
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Void> getIamGetUserWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getIamGetUserValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * Reads one person, two ways. (asynchronously)
-     * Reads one person, two ways.  Name them and it is an ordinary read, with secrets stripped. Or hand it a SECRET API key and it answers with the person that key belongs to — how a service of yours turns a credential on an incoming request into an identity.  A publishable key resolves to nobody here, deliberately: it is safe to ship in a browser precisely because it names an organization and never a person.  get-user is handler-authorized (authz.handlerAuthorizedExact) because the key variant carries no owner/name for the Guard to authorize; so the owner/name variant reinstates the SAME read authorization the Guard applies, through the ONE policy function (authz.Can) — identical behavior, a cross-tenant or non-self read still refused 403 — then reuses the generic getHandler verbatim for resolution and redaction. No authz and no CRUD is reimplemented.
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public okhttp3.Call getIamGetUserAsync(final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getIamGetUserValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getIamGetUsers
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public okhttp3.Call getIamGetUsersCall(final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/iam/get-users";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getIamGetUsersValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getIamGetUsersCall(_callback);
-
-    }
-
-    /**
-     * Lists one kind of record in your organization — the older spelling of the collection reads on the REST surface, over the same data and the same permissions.
-     * Lists one kind of record in your organization — the older spelling of the collection reads on the REST surface, over the same data and the same permissions.  Secrets are stripped from every row. Send both a page number and a page size to page, and the total comes back alongside; send neither and you get the whole set. You see your own organization and no other, whatever the request asks for.  Scoping note (intentional, fail-closed): iam&#39;s ownership model is mixed — users/roles/permissions are owned by their tenant org, while organizations/ applications/providers/certs are platform-owned (Owner \&quot;admin\&quot;). A SuperAdmin (Scope → the requested owner, empty &#x3D; all) therefore lists every entity, which is the console-admin path. A non-super is pinned by Scope to its own org, so it lists its tenant-owned entities correctly and is refused the platform-owned lists at the Guard (owner \&quot;\&quot; or \&quot;admin\&quot; both deny) — a safe 403, never another tenant&#39;s rows. Non-super, membership-scoped views of the platform-owned entities (e.g. an org console&#39;s own app list keyed on Application.Organization) are a separate, additive surface, not a silent behavior of this generic lister.
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public void getIamGetUsers() throws ApiException {
-        getIamGetUsersWithHttpInfo();
-    }
-
-    /**
-     * Lists one kind of record in your organization — the older spelling of the collection reads on the REST surface, over the same data and the same permissions.
-     * Lists one kind of record in your organization — the older spelling of the collection reads on the REST surface, over the same data and the same permissions.  Secrets are stripped from every row. Send both a page number and a page size to page, and the total comes back alongside; send neither and you get the whole set. You see your own organization and no other, whatever the request asks for.  Scoping note (intentional, fail-closed): iam&#39;s ownership model is mixed — users/roles/permissions are owned by their tenant org, while organizations/ applications/providers/certs are platform-owned (Owner \&quot;admin\&quot;). A SuperAdmin (Scope → the requested owner, empty &#x3D; all) therefore lists every entity, which is the console-admin path. A non-super is pinned by Scope to its own org, so it lists its tenant-owned entities correctly and is refused the platform-owned lists at the Guard (owner \&quot;\&quot; or \&quot;admin\&quot; both deny) — a safe 403, never another tenant&#39;s rows. Non-super, membership-scoped views of the platform-owned entities (e.g. an org console&#39;s own app list keyed on Application.Organization) are a separate, additive surface, not a silent behavior of this generic lister.
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Void> getIamGetUsersWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getIamGetUsersValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * Lists one kind of record in your organization — the older spelling of the collection reads on the REST surface, over the same data and the same permissions. (asynchronously)
-     * Lists one kind of record in your organization — the older spelling of the collection reads on the REST surface, over the same data and the same permissions.  Secrets are stripped from every row. Send both a page number and a page size to page, and the total comes back alongside; send neither and you get the whole set. You see your own organization and no other, whatever the request asks for.  Scoping note (intentional, fail-closed): iam&#39;s ownership model is mixed — users/roles/permissions are owned by their tenant org, while organizations/ applications/providers/certs are platform-owned (Owner \&quot;admin\&quot;). A SuperAdmin (Scope → the requested owner, empty &#x3D; all) therefore lists every entity, which is the console-admin path. A non-super is pinned by Scope to its own org, so it lists its tenant-owned entities correctly and is refused the platform-owned lists at the Guard (owner \&quot;\&quot; or \&quot;admin\&quot; both deny) — a safe 403, never another tenant&#39;s rows. Non-super, membership-scoped views of the platform-owned entities (e.g. an org console&#39;s own app list keyed on Application.Organization) are a separate, additive surface, not a silent behavior of this generic lister.
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public okhttp3.Call getIamGetUsersAsync(final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getIamGetUsersValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
      * Build call for getIamInvitations
      * @param owner  (optional)
      * @param _callback Callback for upload/download progress
@@ -5041,6 +4821,143 @@ public class IamApi {
 
         okhttp3.Call localVarCall = getIamInvitationsValidateBeforeCall(owner, _callback);
         Type localVarReturnType = new TypeToken<IamInvitationsListOutput>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getIamInvitationsByOwnerByName
+     * @param owner  (required)
+     * @param name  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getIamInvitationsByOwnerByNameCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/iam/invitations/{owner}/{name}"
+            .replace("{" + "owner" + "}", localVarApiClient.escapeString(owner.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getIamInvitationsByOwnerByNameValidateBeforeCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'owner' is set
+        if (owner == null) {
+            throw new ApiException("Missing the required parameter 'owner' when calling getIamInvitationsByOwnerByName(Async)");
+        }
+
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling getIamInvitationsByOwnerByName(Async)");
+        }
+
+        return getIamInvitationsByOwnerByNameCall(owner, name, _callback);
+
+    }
+
+    /**
+     * Returns one invitation: who it is for, what it grants on acceptance, and when it expires.
+     * Returns one invitation: who it is for, what it grants on acceptance, and when it expires.
+     * @param owner  (required)
+     * @param name  (required)
+     * @return IamInvitation
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public IamInvitation getIamInvitationsByOwnerByName(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<IamInvitation> localVarResp = getIamInvitationsByOwnerByNameWithHttpInfo(owner, name);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Returns one invitation: who it is for, what it grants on acceptance, and when it expires.
+     * Returns one invitation: who it is for, what it grants on acceptance, and when it expires.
+     * @param owner  (required)
+     * @param name  (required)
+     * @return ApiResponse&lt;IamInvitation&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<IamInvitation> getIamInvitationsByOwnerByNameWithHttpInfo(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = getIamInvitationsByOwnerByNameValidateBeforeCall(owner, name, null);
+        Type localVarReturnType = new TypeToken<IamInvitation>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Returns one invitation: who it is for, what it grants on acceptance, and when it expires. (asynchronously)
+     * Returns one invitation: who it is for, what it grants on acceptance, and when it expires.
+     * @param owner  (required)
+     * @param name  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getIamInvitationsByOwnerByNameAsync(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback<IamInvitation> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getIamInvitationsByOwnerByNameValidateBeforeCall(owner, name, _callback);
+        Type localVarReturnType = new TypeToken<IamInvitation>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -5170,9 +5087,9 @@ public class IamApi {
         return localVarCall;
     }
     /**
-     * Build call for getIamKeysGet
-     * @param owner  (optional)
-     * @param name  (optional)
+     * Build call for getIamKeysByOwnerByName
+     * @param owner  (required)
+     * @param name  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -5183,7 +5100,7 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getIamKeysGetCall(@javax.annotation.Nullable String owner, @javax.annotation.Nullable String name, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getIamKeysByOwnerByNameCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -5200,21 +5117,15 @@ public class IamApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/iam/keys/get";
+        String localVarPath = "/v1/iam/keys/{owner}/{name}"
+            .replace("{" + "owner" + "}", localVarApiClient.escapeString(owner.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (owner != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("owner", owner));
-        }
-
-        if (name != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("name", name));
-        }
 
         final String[] localVarAccepts = {
             "application/json"
@@ -5236,16 +5147,26 @@ public class IamApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getIamKeysGetValidateBeforeCall(@javax.annotation.Nullable String owner, @javax.annotation.Nullable String name, final ApiCallback _callback) throws ApiException {
-        return getIamKeysGetCall(owner, name, _callback);
+    private okhttp3.Call getIamKeysByOwnerByNameValidateBeforeCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'owner' is set
+        if (owner == null) {
+            throw new ApiException("Missing the required parameter 'owner' when calling getIamKeysByOwnerByName(Async)");
+        }
+
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling getIamKeysByOwnerByName(Async)");
+        }
+
+        return getIamKeysByOwnerByNameCall(owner, name, _callback);
 
     }
 
     /**
      * Returns one API key: what it is called, what it may reach, and when it was issued.
      * Returns one API key: what it is called, what it may reach, and when it was issued.
-     * @param owner  (optional)
-     * @param name  (optional)
+     * @param owner  (required)
+     * @param name  (required)
      * @return IamKey
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -5255,16 +5176,16 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public IamKey getIamKeysGet(@javax.annotation.Nullable String owner, @javax.annotation.Nullable String name) throws ApiException {
-        ApiResponse<IamKey> localVarResp = getIamKeysGetWithHttpInfo(owner, name);
+    public IamKey getIamKeysByOwnerByName(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<IamKey> localVarResp = getIamKeysByOwnerByNameWithHttpInfo(owner, name);
         return localVarResp.getData();
     }
 
     /**
      * Returns one API key: what it is called, what it may reach, and when it was issued.
      * Returns one API key: what it is called, what it may reach, and when it was issued.
-     * @param owner  (optional)
-     * @param name  (optional)
+     * @param owner  (required)
+     * @param name  (required)
      * @return ApiResponse&lt;IamKey&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -5274,8 +5195,8 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IamKey> getIamKeysGetWithHttpInfo(@javax.annotation.Nullable String owner, @javax.annotation.Nullable String name) throws ApiException {
-        okhttp3.Call localVarCall = getIamKeysGetValidateBeforeCall(owner, name, null);
+    public ApiResponse<IamKey> getIamKeysByOwnerByNameWithHttpInfo(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = getIamKeysByOwnerByNameValidateBeforeCall(owner, name, null);
         Type localVarReturnType = new TypeToken<IamKey>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -5283,8 +5204,8 @@ public class IamApi {
     /**
      * Returns one API key: what it is called, what it may reach, and when it was issued. (asynchronously)
      * Returns one API key: what it is called, what it may reach, and when it was issued.
-     * @param owner  (optional)
-     * @param name  (optional)
+     * @param owner  (required)
+     * @param name  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -5295,11 +5216,187 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getIamKeysGetAsync(@javax.annotation.Nullable String owner, @javax.annotation.Nullable String name, final ApiCallback<IamKey> _callback) throws ApiException {
+    public okhttp3.Call getIamKeysByOwnerByNameAsync(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback<IamKey> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getIamKeysGetValidateBeforeCall(owner, name, _callback);
+        okhttp3.Call localVarCall = getIamKeysByOwnerByNameValidateBeforeCall(owner, name, _callback);
         Type localVarReturnType = new TypeToken<IamKey>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getIamKeysOrg
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call getIamKeysOrgCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/iam/keys/org";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getIamKeysOrgValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getIamKeysOrgCall(_callback);
+
+    }
+
+    /**
+     * Resolve a PUBLISHABLE key to the organization that owns it
+     * Answers which organization a publishable key belongs to — what a service calls to attribute a request that arrived carrying a key shipped in a browser. This is the noun spelling of &#x60;/v1/iam/resolve-key&#x60;, the same handler at the address that replaces it; both answer while callers migrate.  It names an ORGANIZATION and never a person. No path through it loads or returns a user, so a key placed in client code cannot become a way to learn who anyone is — which is the whole reason this is a separate door from the one below.  A key that is expired, secret rather than publishable, or simply unknown all answer with the same sentence and a &#x60;code&#x60; saying which it was. Only a confidential service that has already proved it may resolve keys reads that code — there is no anonymous caller here to probe which keys exist — and telling those apart is what lets a holder be told to re-mint an expired key instead of hunting a configuration error.
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void getIamKeysOrg() throws ApiException {
+        getIamKeysOrgWithHttpInfo();
+    }
+
+    /**
+     * Resolve a PUBLISHABLE key to the organization that owns it
+     * Answers which organization a publishable key belongs to — what a service calls to attribute a request that arrived carrying a key shipped in a browser. This is the noun spelling of &#x60;/v1/iam/resolve-key&#x60;, the same handler at the address that replaces it; both answer while callers migrate.  It names an ORGANIZATION and never a person. No path through it loads or returns a user, so a key placed in client code cannot become a way to learn who anyone is — which is the whole reason this is a separate door from the one below.  A key that is expired, secret rather than publishable, or simply unknown all answer with the same sentence and a &#x60;code&#x60; saying which it was. Only a confidential service that has already proved it may resolve keys reads that code — there is no anonymous caller here to probe which keys exist — and telling those apart is what lets a holder be told to re-mint an expired key instead of hunting a configuration error.
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> getIamKeysOrgWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getIamKeysOrgValidateBeforeCall(null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Resolve a PUBLISHABLE key to the organization that owns it (asynchronously)
+     * Answers which organization a publishable key belongs to — what a service calls to attribute a request that arrived carrying a key shipped in a browser. This is the noun spelling of &#x60;/v1/iam/resolve-key&#x60;, the same handler at the address that replaces it; both answer while callers migrate.  It names an ORGANIZATION and never a person. No path through it loads or returns a user, so a key placed in client code cannot become a way to learn who anyone is — which is the whole reason this is a separate door from the one below.  A key that is expired, secret rather than publishable, or simply unknown all answer with the same sentence and a &#x60;code&#x60; saying which it was. Only a confidential service that has already proved it may resolve keys reads that code — there is no anonymous caller here to probe which keys exist — and telling those apart is what lets a holder be told to re-mint an expired key instead of hunting a configuration error.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call getIamKeysOrgAsync(final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getIamKeysOrgValidateBeforeCall(_callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getIamKeysPrincipal
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call getIamKeysPrincipalCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/iam/keys/principal";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getIamKeysPrincipalValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getIamKeysPrincipalCall(_callback);
+
+    }
+
+    /**
+     * Resolve a SECRET key to the principal it authenticates
+     * Answers who a secret key belongs to — the owner and name a gateway needs to attribute and bill a request that arrived carrying an &#x60;sk-&#x60;. This is the noun spelling of &#x60;/v1/iam/get-user?accessKey&#x3D;&#x60;, the same handler at the address that replaces it; both answer while callers migrate.  It resolves a KEY and nothing else. The verb it replaces also reads a user by &#x60;?id&#x3D;&#x60;, and carrying that here would make this a second address for the user read — the exact thing being retired. Ask for a person by name at the user read; ask here only what a credential resolves to.  Requires a confidential caller: the resolver authenticates as an app, so a request without that credential resolves nothing rather than falling back to an anonymous lookup. An unresolvable key answers with a &#x60;code&#x60; distinguishing expired from wrong-door from unknown, so the holder can be told which one cure applies.
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void getIamKeysPrincipal() throws ApiException {
+        getIamKeysPrincipalWithHttpInfo();
+    }
+
+    /**
+     * Resolve a SECRET key to the principal it authenticates
+     * Answers who a secret key belongs to — the owner and name a gateway needs to attribute and bill a request that arrived carrying an &#x60;sk-&#x60;. This is the noun spelling of &#x60;/v1/iam/get-user?accessKey&#x3D;&#x60;, the same handler at the address that replaces it; both answer while callers migrate.  It resolves a KEY and nothing else. The verb it replaces also reads a user by &#x60;?id&#x3D;&#x60;, and carrying that here would make this a second address for the user read — the exact thing being retired. Ask for a person by name at the user read; ask here only what a credential resolves to.  Requires a confidential caller: the resolver authenticates as an app, so a request without that credential resolves nothing rather than falling back to an anonymous lookup. An unresolvable key answers with a &#x60;code&#x60; distinguishing expired from wrong-door from unknown, so the holder can be told which one cure applies.
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> getIamKeysPrincipalWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getIamKeysPrincipalValidateBeforeCall(null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Resolve a SECRET key to the principal it authenticates (asynchronously)
+     * Answers who a secret key belongs to — the owner and name a gateway needs to attribute and bill a request that arrived carrying an &#x60;sk-&#x60;. This is the noun spelling of &#x60;/v1/iam/get-user?accessKey&#x3D;&#x60;, the same handler at the address that replaces it; both answer while callers migrate.  It resolves a KEY and nothing else. The verb it replaces also reads a user by &#x60;?id&#x3D;&#x60;, and carrying that here would make this a second address for the user read — the exact thing being retired. Ask for a person by name at the user read; ask here only what a credential resolves to.  Requires a confidential caller: the resolver authenticates as an app, so a request without that credential resolves nothing rather than falling back to an anonymous lookup. An unresolvable key answers with a &#x60;code&#x60; distinguishing expired from wrong-door from unknown, so the holder can be told which one cure applies.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call getIamKeysPrincipalAsync(final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getIamKeysPrincipalValidateBeforeCall(_callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
@@ -5760,7 +5857,7 @@ public class IamApi {
 
     /**
      * Ends a sign-in and sends the browser somewhere sensible.
-     * Ends a sign-in and sends the browser somewhere sensible. Accepts GET or POST, so it works as a plain link.  It ACTUALLY signs you out, which is worth stating because the endpoint spent a release not doing it: the whole body computed a redirect and answered {\&quot;status\&quot;:\&quot;ok\&quot;} unconditionally — no session ended, no token revoked. A logout that reports success while leaving the session live is worse than no logout at all, because the person on the shared machine believes it worked. Three things happen here now, in this order:   1. The browser session dies — sid revoked server-side AND the cookie expired     (sessions.Clear). Server-side revocation is the load-bearing half: a copy     of the cookie taken before logout must not still resolve.  2. The relying party&#39;s tokens are revoked when an id_token_hint names it, so     the refresh token cannot mint a fresh access token after the human left.     Revocation state is authoritative — a JWT&#39;s &#x60;exp&#x60; still reads valid for     days, so expiry is necessary but never sufficient.  3. Only then is a redirect considered, and only to a REGISTERED uri.  The open-redirect guard is unchanged: a redirect happens only when a VERIFIED id_token_hint identifies the application and that application has registered the target. Anything else refuses to redirect — nobody can turn your logout link into a redirect to a site of their choosing.
+     * Ends a sign-in and sends the browser somewhere sensible. Accepts GET or POST, so it works as a plain link.  It ACTUALLY signs you out — worth stating, because a logout that computes a redirect and answers {\&quot;status\&quot;:\&quot;ok\&quot;} while ending no session and revoking no token is worse than none: the person on the shared machine believes it worked. Three things happen here, in this order:   1. The browser session dies — sid revoked server-side AND the cookie expired     (sessions.Clear). Server-side revocation is the load-bearing half: a copy     of the cookie taken before logout must not still resolve.  2. The relying party&#39;s tokens are revoked when an id_token_hint names it, so     the refresh token cannot mint a fresh access token after the human left.     Revocation state is authoritative — a JWT&#39;s &#x60;exp&#x60; still reads valid for     days, so expiry is necessary but never sufficient.  3. Only then is a redirect considered, and only to a REGISTERED uri.  The open-redirect guard is unchanged: a redirect happens only when a VERIFIED id_token_hint identifies the application and that application has registered the target. Anything else refuses to redirect — nobody can turn your logout link into a redirect to a site of their choosing.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public void getIamOauthLogout() throws ApiException {
@@ -5769,7 +5866,7 @@ public class IamApi {
 
     /**
      * Ends a sign-in and sends the browser somewhere sensible.
-     * Ends a sign-in and sends the browser somewhere sensible. Accepts GET or POST, so it works as a plain link.  It ACTUALLY signs you out, which is worth stating because the endpoint spent a release not doing it: the whole body computed a redirect and answered {\&quot;status\&quot;:\&quot;ok\&quot;} unconditionally — no session ended, no token revoked. A logout that reports success while leaving the session live is worse than no logout at all, because the person on the shared machine believes it worked. Three things happen here now, in this order:   1. The browser session dies — sid revoked server-side AND the cookie expired     (sessions.Clear). Server-side revocation is the load-bearing half: a copy     of the cookie taken before logout must not still resolve.  2. The relying party&#39;s tokens are revoked when an id_token_hint names it, so     the refresh token cannot mint a fresh access token after the human left.     Revocation state is authoritative — a JWT&#39;s &#x60;exp&#x60; still reads valid for     days, so expiry is necessary but never sufficient.  3. Only then is a redirect considered, and only to a REGISTERED uri.  The open-redirect guard is unchanged: a redirect happens only when a VERIFIED id_token_hint identifies the application and that application has registered the target. Anything else refuses to redirect — nobody can turn your logout link into a redirect to a site of their choosing.
+     * Ends a sign-in and sends the browser somewhere sensible. Accepts GET or POST, so it works as a plain link.  It ACTUALLY signs you out — worth stating, because a logout that computes a redirect and answers {\&quot;status\&quot;:\&quot;ok\&quot;} while ending no session and revoking no token is worse than none: the person on the shared machine believes it worked. Three things happen here, in this order:   1. The browser session dies — sid revoked server-side AND the cookie expired     (sessions.Clear). Server-side revocation is the load-bearing half: a copy     of the cookie taken before logout must not still resolve.  2. The relying party&#39;s tokens are revoked when an id_token_hint names it, so     the refresh token cannot mint a fresh access token after the human left.     Revocation state is authoritative — a JWT&#39;s &#x60;exp&#x60; still reads valid for     days, so expiry is necessary but never sufficient.  3. Only then is a redirect considered, and only to a REGISTERED uri.  The open-redirect guard is unchanged: a redirect happens only when a VERIFIED id_token_hint identifies the application and that application has registered the target. Anything else refuses to redirect — nobody can turn your logout link into a redirect to a site of their choosing.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -5780,7 +5877,7 @@ public class IamApi {
 
     /**
      * Ends a sign-in and sends the browser somewhere sensible. (asynchronously)
-     * Ends a sign-in and sends the browser somewhere sensible. Accepts GET or POST, so it works as a plain link.  It ACTUALLY signs you out, which is worth stating because the endpoint spent a release not doing it: the whole body computed a redirect and answered {\&quot;status\&quot;:\&quot;ok\&quot;} unconditionally — no session ended, no token revoked. A logout that reports success while leaving the session live is worse than no logout at all, because the person on the shared machine believes it worked. Three things happen here now, in this order:   1. The browser session dies — sid revoked server-side AND the cookie expired     (sessions.Clear). Server-side revocation is the load-bearing half: a copy     of the cookie taken before logout must not still resolve.  2. The relying party&#39;s tokens are revoked when an id_token_hint names it, so     the refresh token cannot mint a fresh access token after the human left.     Revocation state is authoritative — a JWT&#39;s &#x60;exp&#x60; still reads valid for     days, so expiry is necessary but never sufficient.  3. Only then is a redirect considered, and only to a REGISTERED uri.  The open-redirect guard is unchanged: a redirect happens only when a VERIFIED id_token_hint identifies the application and that application has registered the target. Anything else refuses to redirect — nobody can turn your logout link into a redirect to a site of their choosing.
+     * Ends a sign-in and sends the browser somewhere sensible. Accepts GET or POST, so it works as a plain link.  It ACTUALLY signs you out — worth stating, because a logout that computes a redirect and answers {\&quot;status\&quot;:\&quot;ok\&quot;} while ending no session and revoking no token is worse than none: the person on the shared machine believes it worked. Three things happen here, in this order:   1. The browser session dies — sid revoked server-side AND the cookie expired     (sessions.Clear). Server-side revocation is the load-bearing half: a copy     of the cookie taken before logout must not still resolve.  2. The relying party&#39;s tokens are revoked when an id_token_hint names it, so     the refresh token cannot mint a fresh access token after the human left.     Revocation state is authoritative — a JWT&#39;s &#x60;exp&#x60; still reads valid for     days, so expiry is necessary but never sufficient.  3. Only then is a redirect considered, and only to a REGISTERED uri.  The open-redirect guard is unchanged: a redirect happens only when a VERIFIED id_token_hint identifies the application and that application has registered the target. Anything else refuses to redirect — nobody can turn your logout link into a redirect to a site of their choosing.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -6005,9 +6102,9 @@ public class IamApi {
         return localVarCall;
     }
     /**
-     * Build call for getIamPermissionsGet
-     * @param owner  (optional)
-     * @param name  (optional)
+     * Build call for getIamPermissionsByOwnerByName
+     * @param owner  (required)
+     * @param name  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -6018,7 +6115,7 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getIamPermissionsGetCall(@javax.annotation.Nullable String owner, @javax.annotation.Nullable String name, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getIamPermissionsByOwnerByNameCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -6035,21 +6132,15 @@ public class IamApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/iam/permissions/get";
+        String localVarPath = "/v1/iam/permissions/{owner}/{name}"
+            .replace("{" + "owner" + "}", localVarApiClient.escapeString(owner.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (owner != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("owner", owner));
-        }
-
-        if (name != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("name", name));
-        }
 
         final String[] localVarAccepts = {
             "application/json"
@@ -6071,16 +6162,26 @@ public class IamApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getIamPermissionsGetValidateBeforeCall(@javax.annotation.Nullable String owner, @javax.annotation.Nullable String name, final ApiCallback _callback) throws ApiException {
-        return getIamPermissionsGetCall(owner, name, _callback);
+    private okhttp3.Call getIamPermissionsByOwnerByNameValidateBeforeCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'owner' is set
+        if (owner == null) {
+            throw new ApiException("Missing the required parameter 'owner' when calling getIamPermissionsByOwnerByName(Async)");
+        }
+
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling getIamPermissionsByOwnerByName(Async)");
+        }
+
+        return getIamPermissionsByOwnerByNameCall(owner, name, _callback);
 
     }
 
     /**
      * Returns one permission: who it grants to, what it allows, and the resources it covers.
      * Returns one permission: who it grants to, what it allows, and the resources it covers.
-     * @param owner  (optional)
-     * @param name  (optional)
+     * @param owner  (required)
+     * @param name  (required)
      * @return IamPermission
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -6090,16 +6191,16 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public IamPermission getIamPermissionsGet(@javax.annotation.Nullable String owner, @javax.annotation.Nullable String name) throws ApiException {
-        ApiResponse<IamPermission> localVarResp = getIamPermissionsGetWithHttpInfo(owner, name);
+    public IamPermission getIamPermissionsByOwnerByName(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<IamPermission> localVarResp = getIamPermissionsByOwnerByNameWithHttpInfo(owner, name);
         return localVarResp.getData();
     }
 
     /**
      * Returns one permission: who it grants to, what it allows, and the resources it covers.
      * Returns one permission: who it grants to, what it allows, and the resources it covers.
-     * @param owner  (optional)
-     * @param name  (optional)
+     * @param owner  (required)
+     * @param name  (required)
      * @return ApiResponse&lt;IamPermission&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -6109,8 +6210,8 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IamPermission> getIamPermissionsGetWithHttpInfo(@javax.annotation.Nullable String owner, @javax.annotation.Nullable String name) throws ApiException {
-        okhttp3.Call localVarCall = getIamPermissionsGetValidateBeforeCall(owner, name, null);
+    public ApiResponse<IamPermission> getIamPermissionsByOwnerByNameWithHttpInfo(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = getIamPermissionsByOwnerByNameValidateBeforeCall(owner, name, null);
         Type localVarReturnType = new TypeToken<IamPermission>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -6118,8 +6219,8 @@ public class IamApi {
     /**
      * Returns one permission: who it grants to, what it allows, and the resources it covers. (asynchronously)
      * Returns one permission: who it grants to, what it allows, and the resources it covers.
-     * @param owner  (optional)
-     * @param name  (optional)
+     * @param owner  (required)
+     * @param name  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -6130,9 +6231,9 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getIamPermissionsGetAsync(@javax.annotation.Nullable String owner, @javax.annotation.Nullable String name, final ApiCallback<IamPermission> _callback) throws ApiException {
+    public okhttp3.Call getIamPermissionsByOwnerByNameAsync(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback<IamPermission> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getIamPermissionsGetValidateBeforeCall(owner, name, _callback);
+        okhttp3.Call localVarCall = getIamPermissionsByOwnerByNameValidateBeforeCall(owner, name, _callback);
         Type localVarReturnType = new TypeToken<IamPermission>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -6259,6 +6360,143 @@ public class IamApi {
 
         okhttp3.Call localVarCall = getIamProjectsValidateBeforeCall(owner, _callback);
         Type localVarReturnType = new TypeToken<IamProjectsListOutput>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getIamProjectsByOwnerByName
+     * @param owner  (required)
+     * @param name  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getIamProjectsByOwnerByNameCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/iam/projects/{owner}/{name}"
+            .replace("{" + "owner" + "}", localVarApiClient.escapeString(owner.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getIamProjectsByOwnerByNameValidateBeforeCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'owner' is set
+        if (owner == null) {
+            throw new ApiException("Missing the required parameter 'owner' when calling getIamProjectsByOwnerByName(Async)");
+        }
+
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling getIamProjectsByOwnerByName(Async)");
+        }
+
+        return getIamProjectsByOwnerByNameCall(owner, name, _callback);
+
+    }
+
+    /**
+     * Returns one project: what it is called and how it is set up.
+     * Returns one project: what it is called and how it is set up.
+     * @param owner  (required)
+     * @param name  (required)
+     * @return IamProject
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public IamProject getIamProjectsByOwnerByName(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<IamProject> localVarResp = getIamProjectsByOwnerByNameWithHttpInfo(owner, name);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Returns one project: what it is called and how it is set up.
+     * Returns one project: what it is called and how it is set up.
+     * @param owner  (required)
+     * @param name  (required)
+     * @return ApiResponse&lt;IamProject&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<IamProject> getIamProjectsByOwnerByNameWithHttpInfo(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = getIamProjectsByOwnerByNameValidateBeforeCall(owner, name, null);
+        Type localVarReturnType = new TypeToken<IamProject>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Returns one project: what it is called and how it is set up. (asynchronously)
+     * Returns one project: what it is called and how it is set up.
+     * @param owner  (required)
+     * @param name  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getIamProjectsByOwnerByNameAsync(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback<IamProject> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getIamProjectsByOwnerByNameValidateBeforeCall(owner, name, _callback);
+        Type localVarReturnType = new TypeToken<IamProject>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -6439,94 +6677,6 @@ public class IamApi {
         return localVarCall;
     }
     /**
-     * Build call for getIamResolveKey
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public okhttp3.Call getIamResolveKeyCall(final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/iam/resolve-key";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getIamResolveKeyValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getIamResolveKeyCall(_callback);
-
-    }
-
-    /**
-     * Answers which organization a PUBLISHABLE key belongs to — what a service of yours calls to attribute a request that arrived carrying a key shipped in a browser.
-     * Answers which organization a PUBLISHABLE key belongs to — what a service of yours calls to attribute a request that arrived carrying a key shipped in a browser.  It names an organization and never a person: no path through it can load or return a user, so a key you put in client code cannot become a way to learn who anyone is. A key that is expired, secret rather than publishable, or simply unknown all answer with the same sentence, and with a &#x60;code&#x60; saying which of those it was. Only a confidential service that already proved it may resolve keys at all ever reads that code — there is no anonymous caller here to probe for which keys exist — and telling it apart is what lets the holder be told to re-mint an expired key instead of hunting a configuration error.
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public void getIamResolveKey() throws ApiException {
-        getIamResolveKeyWithHttpInfo();
-    }
-
-    /**
-     * Answers which organization a PUBLISHABLE key belongs to — what a service of yours calls to attribute a request that arrived carrying a key shipped in a browser.
-     * Answers which organization a PUBLISHABLE key belongs to — what a service of yours calls to attribute a request that arrived carrying a key shipped in a browser.  It names an organization and never a person: no path through it can load or return a user, so a key you put in client code cannot become a way to learn who anyone is. A key that is expired, secret rather than publishable, or simply unknown all answer with the same sentence, and with a &#x60;code&#x60; saying which of those it was. Only a confidential service that already proved it may resolve keys at all ever reads that code — there is no anonymous caller here to probe for which keys exist — and telling it apart is what lets the holder be told to re-mint an expired key instead of hunting a configuration error.
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Void> getIamResolveKeyWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getIamResolveKeyValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * Answers which organization a PUBLISHABLE key belongs to — what a service of yours calls to attribute a request that arrived carrying a key shipped in a browser. (asynchronously)
-     * Answers which organization a PUBLISHABLE key belongs to — what a service of yours calls to attribute a request that arrived carrying a key shipped in a browser.  It names an organization and never a person: no path through it can load or return a user, so a key you put in client code cannot become a way to learn who anyone is. A key that is expired, secret rather than publishable, or simply unknown all answer with the same sentence, and with a &#x60;code&#x60; saying which of those it was. Only a confidential service that already proved it may resolve keys at all ever reads that code — there is no anonymous caller here to probe for which keys exist — and telling it apart is what lets the holder be told to re-mint an expired key instead of hunting a configuration error.
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public okhttp3.Call getIamResolveKeyAsync(final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getIamResolveKeyValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
      * Build call for getIamRoles
      * @param owner  (optional)
      * @param _callback Callback for upload/download progress
@@ -6648,6 +6798,143 @@ public class IamApi {
 
         okhttp3.Call localVarCall = getIamRolesValidateBeforeCall(owner, _callback);
         Type localVarReturnType = new TypeToken<IamRolesListOutput>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getIamRolesByOwnerByName
+     * @param owner  (required)
+     * @param name  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getIamRolesByOwnerByNameCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/iam/roles/{owner}/{name}"
+            .replace("{" + "owner" + "}", localVarApiClient.escapeString(owner.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getIamRolesByOwnerByNameValidateBeforeCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'owner' is set
+        if (owner == null) {
+            throw new ApiException("Missing the required parameter 'owner' when calling getIamRolesByOwnerByName(Async)");
+        }
+
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling getIamRolesByOwnerByName(Async)");
+        }
+
+        return getIamRolesByOwnerByNameCall(owner, name, _callback);
+
+    }
+
+    /**
+     * Returns one role: who is in it, and the roles it includes.
+     * Returns one role: who is in it, and the roles it includes.
+     * @param owner  (required)
+     * @param name  (required)
+     * @return IamRole
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public IamRole getIamRolesByOwnerByName(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<IamRole> localVarResp = getIamRolesByOwnerByNameWithHttpInfo(owner, name);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Returns one role: who is in it, and the roles it includes.
+     * Returns one role: who is in it, and the roles it includes.
+     * @param owner  (required)
+     * @param name  (required)
+     * @return ApiResponse&lt;IamRole&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<IamRole> getIamRolesByOwnerByNameWithHttpInfo(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = getIamRolesByOwnerByNameValidateBeforeCall(owner, name, null);
+        Type localVarReturnType = new TypeToken<IamRole>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Returns one role: who is in it, and the roles it includes. (asynchronously)
+     * Returns one role: who is in it, and the roles it includes.
+     * @param owner  (required)
+     * @param name  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getIamRolesByOwnerByNameAsync(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback<IamRole> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getIamRolesByOwnerByNameValidateBeforeCall(owner, name, _callback);
+        Type localVarReturnType = new TypeToken<IamRole>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -7608,6 +7895,7 @@ public class IamApi {
     /**
      * Build call for getIamUsers
      * @param owner  (required)
+     * @param email Email narrows the page to the accounts carrying one address. Looking a person up by their address is a QUERY over the collection, not an item read: an address is not the natural key, two rows in one org can carry one, and a caller that gets a page SEES both — where a single-item read would have to choose, and choosing is how somebody joins a team under a colleague&#39;s identity. (optional)
      * @param limit  (optional)
      * @param offset  (optional)
      * @param _callback Callback for upload/download progress
@@ -7620,7 +7908,7 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getIamUsersCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer offset, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getIamUsersCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nullable String email, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer offset, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -7647,6 +7935,10 @@ public class IamApi {
 
         if (owner != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("owner", owner));
+        }
+
+        if (email != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("email", email));
         }
 
         if (limit != null) {
@@ -7677,13 +7969,13 @@ public class IamApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getIamUsersValidateBeforeCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer offset, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getIamUsersValidateBeforeCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nullable String email, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer offset, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'owner' is set
         if (owner == null) {
             throw new ApiException("Missing the required parameter 'owner' when calling getIamUsers(Async)");
         }
 
-        return getIamUsersCall(owner, limit, offset, _callback);
+        return getIamUsersCall(owner, email, limit, offset, _callback);
 
     }
 
@@ -7691,6 +7983,7 @@ public class IamApi {
      * Returns a page of the people in your organization, with the total so you can page through the rest.
      * Returns a page of the people in your organization, with the total so you can page through the rest. Passwords, API secrets and MFA material are stripped from every entry.
      * @param owner  (required)
+     * @param email Email narrows the page to the accounts carrying one address. Looking a person up by their address is a QUERY over the collection, not an item read: an address is not the natural key, two rows in one org can carry one, and a caller that gets a page SEES both — where a single-item read would have to choose, and choosing is how somebody joins a team under a colleague&#39;s identity. (optional)
      * @param limit  (optional)
      * @param offset  (optional)
      * @return IamUsersListOutput
@@ -7702,8 +7995,8 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public IamUsersListOutput getIamUsers(@javax.annotation.Nonnull String owner, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer offset) throws ApiException {
-        ApiResponse<IamUsersListOutput> localVarResp = getIamUsersWithHttpInfo(owner, limit, offset);
+    public IamUsersListOutput getIamUsers(@javax.annotation.Nonnull String owner, @javax.annotation.Nullable String email, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer offset) throws ApiException {
+        ApiResponse<IamUsersListOutput> localVarResp = getIamUsersWithHttpInfo(owner, email, limit, offset);
         return localVarResp.getData();
     }
 
@@ -7711,6 +8004,7 @@ public class IamApi {
      * Returns a page of the people in your organization, with the total so you can page through the rest.
      * Returns a page of the people in your organization, with the total so you can page through the rest. Passwords, API secrets and MFA material are stripped from every entry.
      * @param owner  (required)
+     * @param email Email narrows the page to the accounts carrying one address. Looking a person up by their address is a QUERY over the collection, not an item read: an address is not the natural key, two rows in one org can carry one, and a caller that gets a page SEES both — where a single-item read would have to choose, and choosing is how somebody joins a team under a colleague&#39;s identity. (optional)
      * @param limit  (optional)
      * @param offset  (optional)
      * @return ApiResponse&lt;IamUsersListOutput&gt;
@@ -7722,8 +8016,8 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IamUsersListOutput> getIamUsersWithHttpInfo(@javax.annotation.Nonnull String owner, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer offset) throws ApiException {
-        okhttp3.Call localVarCall = getIamUsersValidateBeforeCall(owner, limit, offset, null);
+    public ApiResponse<IamUsersListOutput> getIamUsersWithHttpInfo(@javax.annotation.Nonnull String owner, @javax.annotation.Nullable String email, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer offset) throws ApiException {
+        okhttp3.Call localVarCall = getIamUsersValidateBeforeCall(owner, email, limit, offset, null);
         Type localVarReturnType = new TypeToken<IamUsersListOutput>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -7732,6 +8026,7 @@ public class IamApi {
      * Returns a page of the people in your organization, with the total so you can page through the rest. (asynchronously)
      * Returns a page of the people in your organization, with the total so you can page through the rest. Passwords, API secrets and MFA material are stripped from every entry.
      * @param owner  (required)
+     * @param email Email narrows the page to the accounts carrying one address. Looking a person up by their address is a QUERY over the collection, not an item read: an address is not the natural key, two rows in one org can carry one, and a caller that gets a page SEES both — where a single-item read would have to choose, and choosing is how somebody joins a team under a colleague&#39;s identity. (optional)
      * @param limit  (optional)
      * @param offset  (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -7744,17 +8039,17 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getIamUsersAsync(@javax.annotation.Nonnull String owner, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer offset, final ApiCallback<IamUsersListOutput> _callback) throws ApiException {
+    public okhttp3.Call getIamUsersAsync(@javax.annotation.Nonnull String owner, @javax.annotation.Nullable String email, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer offset, final ApiCallback<IamUsersListOutput> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getIamUsersValidateBeforeCall(owner, limit, offset, _callback);
+        okhttp3.Call localVarCall = getIamUsersValidateBeforeCall(owner, email, limit, offset, _callback);
         Type localVarReturnType = new TypeToken<IamUsersListOutput>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getIamUsersGet
+     * Build call for getIamUsersByOwnerByName
      * @param owner  (required)
-     * @param name  (optional)
+     * @param name  (required)
      * @param email  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -7766,7 +8061,7 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getIamUsersGetCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nullable String name, @javax.annotation.Nullable String email, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getIamUsersByOwnerByNameCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nullable String email, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -7783,21 +8078,15 @@ public class IamApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/iam/users/get";
+        String localVarPath = "/v1/iam/users/{owner}/{name}"
+            .replace("{" + "owner" + "}", localVarApiClient.escapeString(owner.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (owner != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("owner", owner));
-        }
-
-        if (name != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("name", name));
-        }
 
         if (email != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("email", email));
@@ -7823,13 +8112,18 @@ public class IamApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getIamUsersGetValidateBeforeCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nullable String name, @javax.annotation.Nullable String email, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getIamUsersByOwnerByNameValidateBeforeCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nullable String email, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'owner' is set
         if (owner == null) {
-            throw new ApiException("Missing the required parameter 'owner' when calling getIamUsersGet(Async)");
+            throw new ApiException("Missing the required parameter 'owner' when calling getIamUsersByOwnerByName(Async)");
         }
 
-        return getIamUsersGetCall(owner, name, email, _callback);
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling getIamUsersByOwnerByName(Async)");
+        }
+
+        return getIamUsersByOwnerByNameCall(owner, name, email, _callback);
 
     }
 
@@ -7837,7 +8131,7 @@ public class IamApi {
      * Returns one person in your organization, addressed by their username or by their email address.
      * Returns one person in your organization, addressed by their username or by their email address. Passwords, API secrets and MFA material are stripped from the response.  An address that names two accounts names none: the read refuses rather than picking one, and says so instead of reporting \&quot;no such user\&quot;. Handing back an arbitrary one of two rows is how somebody gets added to a team under a colleague&#39;s identity.
      * @param owner  (required)
-     * @param name  (optional)
+     * @param name  (required)
      * @param email  (optional)
      * @return IamUser
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -7848,8 +8142,8 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public IamUser getIamUsersGet(@javax.annotation.Nonnull String owner, @javax.annotation.Nullable String name, @javax.annotation.Nullable String email) throws ApiException {
-        ApiResponse<IamUser> localVarResp = getIamUsersGetWithHttpInfo(owner, name, email);
+    public IamUser getIamUsersByOwnerByName(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nullable String email) throws ApiException {
+        ApiResponse<IamUser> localVarResp = getIamUsersByOwnerByNameWithHttpInfo(owner, name, email);
         return localVarResp.getData();
     }
 
@@ -7857,7 +8151,7 @@ public class IamApi {
      * Returns one person in your organization, addressed by their username or by their email address.
      * Returns one person in your organization, addressed by their username or by their email address. Passwords, API secrets and MFA material are stripped from the response.  An address that names two accounts names none: the read refuses rather than picking one, and says so instead of reporting \&quot;no such user\&quot;. Handing back an arbitrary one of two rows is how somebody gets added to a team under a colleague&#39;s identity.
      * @param owner  (required)
-     * @param name  (optional)
+     * @param name  (required)
      * @param email  (optional)
      * @return ApiResponse&lt;IamUser&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -7868,8 +8162,8 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IamUser> getIamUsersGetWithHttpInfo(@javax.annotation.Nonnull String owner, @javax.annotation.Nullable String name, @javax.annotation.Nullable String email) throws ApiException {
-        okhttp3.Call localVarCall = getIamUsersGetValidateBeforeCall(owner, name, email, null);
+    public ApiResponse<IamUser> getIamUsersByOwnerByNameWithHttpInfo(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nullable String email) throws ApiException {
+        okhttp3.Call localVarCall = getIamUsersByOwnerByNameValidateBeforeCall(owner, name, email, null);
         Type localVarReturnType = new TypeToken<IamUser>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -7878,7 +8172,7 @@ public class IamApi {
      * Returns one person in your organization, addressed by their username or by their email address. (asynchronously)
      * Returns one person in your organization, addressed by their username or by their email address. Passwords, API secrets and MFA material are stripped from the response.  An address that names two accounts names none: the read refuses rather than picking one, and says so instead of reporting \&quot;no such user\&quot;. Handing back an arbitrary one of two rows is how somebody gets added to a team under a colleague&#39;s identity.
      * @param owner  (required)
-     * @param name  (optional)
+     * @param name  (required)
      * @param email  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -7890,9 +8184,9 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getIamUsersGetAsync(@javax.annotation.Nonnull String owner, @javax.annotation.Nullable String name, @javax.annotation.Nullable String email, final ApiCallback<IamUser> _callback) throws ApiException {
+    public okhttp3.Call getIamUsersByOwnerByNameAsync(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nullable String email, final ApiCallback<IamUser> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getIamUsersGetValidateBeforeCall(owner, name, email, _callback);
+        okhttp3.Call localVarCall = getIamUsersByOwnerByNameValidateBeforeCall(owner, name, email, _callback);
         Type localVarReturnType = new TypeToken<IamUser>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -8639,9 +8933,9 @@ public class IamApi {
         return localVarCall;
     }
     /**
-     * Build call for getOrganization
-     * @param owner  (optional)
-     * @param name  (optional)
+     * Build call for getIamWorkspacesByOwnerByName
+     * @param owner  (required)
+     * @param name  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -8652,7 +8946,7 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getOrganizationCall(@javax.annotation.Nullable String owner, @javax.annotation.Nullable String name, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getIamWorkspacesByOwnerByNameCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -8669,21 +8963,15 @@ public class IamApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/iam/organizations/get";
+        String localVarPath = "/v1/iam/workspaces/{owner}/{name}"
+            .replace("{" + "owner" + "}", localVarApiClient.escapeString(owner.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (owner != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("owner", owner));
-        }
-
-        if (name != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("name", name));
-        }
 
         final String[] localVarAccepts = {
             "application/json"
@@ -8705,7 +8993,154 @@ public class IamApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getOrganizationValidateBeforeCall(@javax.annotation.Nullable String owner, @javax.annotation.Nullable String name, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getIamWorkspacesByOwnerByNameValidateBeforeCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'owner' is set
+        if (owner == null) {
+            throw new ApiException("Missing the required parameter 'owner' when calling getIamWorkspacesByOwnerByName(Async)");
+        }
+
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling getIamWorkspacesByOwnerByName(Async)");
+        }
+
+        return getIamWorkspacesByOwnerByNameCall(owner, name, _callback);
+
+    }
+
+    /**
+     * Returns one workspace: what it is called and how it is set up.
+     * Returns one workspace: what it is called and how it is set up.
+     * @param owner  (required)
+     * @param name  (required)
+     * @return IamWorkspace
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public IamWorkspace getIamWorkspacesByOwnerByName(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<IamWorkspace> localVarResp = getIamWorkspacesByOwnerByNameWithHttpInfo(owner, name);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Returns one workspace: what it is called and how it is set up.
+     * Returns one workspace: what it is called and how it is set up.
+     * @param owner  (required)
+     * @param name  (required)
+     * @return ApiResponse&lt;IamWorkspace&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<IamWorkspace> getIamWorkspacesByOwnerByNameWithHttpInfo(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = getIamWorkspacesByOwnerByNameValidateBeforeCall(owner, name, null);
+        Type localVarReturnType = new TypeToken<IamWorkspace>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Returns one workspace: what it is called and how it is set up. (asynchronously)
+     * Returns one workspace: what it is called and how it is set up.
+     * @param owner  (required)
+     * @param name  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getIamWorkspacesByOwnerByNameAsync(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback<IamWorkspace> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getIamWorkspacesByOwnerByNameValidateBeforeCall(owner, name, _callback);
+        Type localVarReturnType = new TypeToken<IamWorkspace>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getOrganization
+     * @param owner  (required)
+     * @param name  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getOrganizationCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/iam/organizations/{owner}/{name}"
+            .replace("{" + "owner" + "}", localVarApiClient.escapeString(owner.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getOrganizationValidateBeforeCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'owner' is set
+        if (owner == null) {
+            throw new ApiException("Missing the required parameter 'owner' when calling getOrganization(Async)");
+        }
+
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling getOrganization(Async)");
+        }
+
         return getOrganizationCall(owner, name, _callback);
 
     }
@@ -8713,8 +9148,8 @@ public class IamApi {
     /**
      * Returns one organization: its display, its defaults and the sign-in rules everyone in it inherits.
      * Returns one organization: its display, its defaults and the sign-in rules everyone in it inherits.
-     * @param owner  (optional)
-     * @param name  (optional)
+     * @param owner  (required)
+     * @param name  (required)
      * @return IamOrganization
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -8724,7 +9159,7 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public IamOrganization getOrganization(@javax.annotation.Nullable String owner, @javax.annotation.Nullable String name) throws ApiException {
+    public IamOrganization getOrganization(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
         ApiResponse<IamOrganization> localVarResp = getOrganizationWithHttpInfo(owner, name);
         return localVarResp.getData();
     }
@@ -8732,8 +9167,8 @@ public class IamApi {
     /**
      * Returns one organization: its display, its defaults and the sign-in rules everyone in it inherits.
      * Returns one organization: its display, its defaults and the sign-in rules everyone in it inherits.
-     * @param owner  (optional)
-     * @param name  (optional)
+     * @param owner  (required)
+     * @param name  (required)
      * @return ApiResponse&lt;IamOrganization&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -8743,7 +9178,7 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IamOrganization> getOrganizationWithHttpInfo(@javax.annotation.Nullable String owner, @javax.annotation.Nullable String name) throws ApiException {
+    public ApiResponse<IamOrganization> getOrganizationWithHttpInfo(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
         okhttp3.Call localVarCall = getOrganizationValidateBeforeCall(owner, name, null);
         Type localVarReturnType = new TypeToken<IamOrganization>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -8752,8 +9187,8 @@ public class IamApi {
     /**
      * Returns one organization: its display, its defaults and the sign-in rules everyone in it inherits. (asynchronously)
      * Returns one organization: its display, its defaults and the sign-in rules everyone in it inherits.
-     * @param owner  (optional)
-     * @param name  (optional)
+     * @param owner  (required)
+     * @param name  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -8764,7 +9199,7 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getOrganizationAsync(@javax.annotation.Nullable String owner, @javax.annotation.Nullable String name, final ApiCallback<IamOrganization> _callback) throws ApiException {
+    public okhttp3.Call getOrganizationAsync(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback<IamOrganization> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getOrganizationValidateBeforeCall(owner, name, _callback);
         Type localVarReturnType = new TypeToken<IamOrganization>(){}.getType();
@@ -8773,7 +9208,8 @@ public class IamApi {
     }
     /**
      * Build call for getProvider
-     * @param iamProviderKey  (required)
+     * @param owner  (required)
+     * @param name  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -8784,7 +9220,7 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getProviderCall(@javax.annotation.Nonnull IamProviderKey iamProviderKey, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getProviderCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -8798,10 +9234,12 @@ public class IamApi {
             basePath = null;
         }
 
-        Object localVarPostBody = iamProviderKey;
+        Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/iam/providers/get";
+        String localVarPath = "/v1/iam/providers/{owner}/{name}"
+            .replace("{" + "owner" + "}", localVarApiClient.escapeString(owner.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -8818,7 +9256,6 @@ public class IamApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -8826,24 +9263,30 @@ public class IamApi {
         }
 
         String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getProviderValidateBeforeCall(@javax.annotation.Nonnull IamProviderKey iamProviderKey, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'iamProviderKey' is set
-        if (iamProviderKey == null) {
-            throw new ApiException("Missing the required parameter 'iamProviderKey' when calling getProvider(Async)");
+    private okhttp3.Call getProviderValidateBeforeCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'owner' is set
+        if (owner == null) {
+            throw new ApiException("Missing the required parameter 'owner' when calling getProvider(Async)");
         }
 
-        return getProviderCall(iamProviderKey, _callback);
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling getProvider(Async)");
+        }
+
+        return getProviderCall(owner, name, _callback);
 
     }
 
     /**
      * Returns one provider: what it connects to and how it is configured.
      * Returns one provider: what it connects to and how it is configured. Its credentials come back masked.
-     * @param iamProviderKey  (required)
+     * @param owner  (required)
+     * @param name  (required)
      * @return IamProviderResult
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -8853,15 +9296,16 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public IamProviderResult getProvider(@javax.annotation.Nonnull IamProviderKey iamProviderKey) throws ApiException {
-        ApiResponse<IamProviderResult> localVarResp = getProviderWithHttpInfo(iamProviderKey);
+    public IamProviderResult getProvider(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<IamProviderResult> localVarResp = getProviderWithHttpInfo(owner, name);
         return localVarResp.getData();
     }
 
     /**
      * Returns one provider: what it connects to and how it is configured.
      * Returns one provider: what it connects to and how it is configured. Its credentials come back masked.
-     * @param iamProviderKey  (required)
+     * @param owner  (required)
+     * @param name  (required)
      * @return ApiResponse&lt;IamProviderResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -8871,8 +9315,8 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IamProviderResult> getProviderWithHttpInfo(@javax.annotation.Nonnull IamProviderKey iamProviderKey) throws ApiException {
-        okhttp3.Call localVarCall = getProviderValidateBeforeCall(iamProviderKey, null);
+    public ApiResponse<IamProviderResult> getProviderWithHttpInfo(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = getProviderValidateBeforeCall(owner, name, null);
         Type localVarReturnType = new TypeToken<IamProviderResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -8880,7 +9324,8 @@ public class IamApi {
     /**
      * Returns one provider: what it connects to and how it is configured. (asynchronously)
      * Returns one provider: what it connects to and how it is configured. Its credentials come back masked.
-     * @param iamProviderKey  (required)
+     * @param owner  (required)
+     * @param name  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -8891,16 +9336,18 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getProviderAsync(@javax.annotation.Nonnull IamProviderKey iamProviderKey, final ApiCallback<IamProviderResult> _callback) throws ApiException {
+    public okhttp3.Call getProviderAsync(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback<IamProviderResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getProviderValidateBeforeCall(iamProviderKey, _callback);
+        okhttp3.Call localVarCall = getProviderValidateBeforeCall(owner, name, _callback);
         Type localVarReturnType = new TypeToken<IamProviderResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for getSession
-     * @param iamSessionRef  (required)
+     * @param owner  (required)
+     * @param name  (required)
+     * @param application  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -8911,7 +9358,7 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getSessionCall(@javax.annotation.Nonnull IamSessionRef iamSessionRef, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getSessionCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull String application, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -8925,10 +9372,13 @@ public class IamApi {
             basePath = null;
         }
 
-        Object localVarPostBody = iamSessionRef;
+        Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/iam/sessions/get";
+        String localVarPath = "/v1/iam/sessions/{owner}/{name}/{application}"
+            .replace("{" + "owner" + "}", localVarApiClient.escapeString(owner.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()))
+            .replace("{" + "application" + "}", localVarApiClient.escapeString(application.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -8945,7 +9395,6 @@ public class IamApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -8953,24 +9402,36 @@ public class IamApi {
         }
 
         String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getSessionValidateBeforeCall(@javax.annotation.Nonnull IamSessionRef iamSessionRef, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'iamSessionRef' is set
-        if (iamSessionRef == null) {
-            throw new ApiException("Missing the required parameter 'iamSessionRef' when calling getSession(Async)");
+    private okhttp3.Call getSessionValidateBeforeCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull String application, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'owner' is set
+        if (owner == null) {
+            throw new ApiException("Missing the required parameter 'owner' when calling getSession(Async)");
         }
 
-        return getSessionCall(iamSessionRef, _callback);
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling getSession(Async)");
+        }
+
+        // verify the required parameter 'application' is set
+        if (application == null) {
+            throw new ApiException("Missing the required parameter 'application' when calling getSession(Async)");
+        }
+
+        return getSessionCall(owner, name, application, _callback);
 
     }
 
     /**
      * Returns one person&#39;s session in one application — when it began and which browsers or devices are still carrying it.
      * Returns one person&#39;s session in one application — when it began and which browsers or devices are still carrying it.
-     * @param iamSessionRef  (required)
+     * @param owner  (required)
+     * @param name  (required)
+     * @param application  (required)
      * @return IamSession
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -8980,15 +9441,17 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public IamSession getSession(@javax.annotation.Nonnull IamSessionRef iamSessionRef) throws ApiException {
-        ApiResponse<IamSession> localVarResp = getSessionWithHttpInfo(iamSessionRef);
+    public IamSession getSession(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull String application) throws ApiException {
+        ApiResponse<IamSession> localVarResp = getSessionWithHttpInfo(owner, name, application);
         return localVarResp.getData();
     }
 
     /**
      * Returns one person&#39;s session in one application — when it began and which browsers or devices are still carrying it.
      * Returns one person&#39;s session in one application — when it began and which browsers or devices are still carrying it.
-     * @param iamSessionRef  (required)
+     * @param owner  (required)
+     * @param name  (required)
+     * @param application  (required)
      * @return ApiResponse&lt;IamSession&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -8998,8 +9461,8 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IamSession> getSessionWithHttpInfo(@javax.annotation.Nonnull IamSessionRef iamSessionRef) throws ApiException {
-        okhttp3.Call localVarCall = getSessionValidateBeforeCall(iamSessionRef, null);
+    public ApiResponse<IamSession> getSessionWithHttpInfo(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull String application) throws ApiException {
+        okhttp3.Call localVarCall = getSessionValidateBeforeCall(owner, name, application, null);
         Type localVarReturnType = new TypeToken<IamSession>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -9007,7 +9470,9 @@ public class IamApi {
     /**
      * Returns one person&#39;s session in one application — when it began and which browsers or devices are still carrying it. (asynchronously)
      * Returns one person&#39;s session in one application — when it began and which browsers or devices are still carrying it.
-     * @param iamSessionRef  (required)
+     * @param owner  (required)
+     * @param name  (required)
+     * @param application  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -9018,16 +9483,17 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getSessionAsync(@javax.annotation.Nonnull IamSessionRef iamSessionRef, final ApiCallback<IamSession> _callback) throws ApiException {
+    public okhttp3.Call getSessionAsync(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull String application, final ApiCallback<IamSession> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getSessionValidateBeforeCall(iamSessionRef, _callback);
+        okhttp3.Call localVarCall = getSessionValidateBeforeCall(owner, name, application, _callback);
         Type localVarReturnType = new TypeToken<IamSession>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for getToken
-     * @param iamTokenKey  (required)
+     * @param owner  (required)
+     * @param name  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -9038,7 +9504,7 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getTokenCall(@javax.annotation.Nonnull IamTokenKey iamTokenKey, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getTokenCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -9052,10 +9518,12 @@ public class IamApi {
             basePath = null;
         }
 
-        Object localVarPostBody = iamTokenKey;
+        Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/iam/tokens/get";
+        String localVarPath = "/v1/iam/tokens/{owner}/{name}"
+            .replace("{" + "owner" + "}", localVarApiClient.escapeString(owner.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -9072,7 +9540,6 @@ public class IamApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -9080,24 +9547,30 @@ public class IamApi {
         }
 
         String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getTokenValidateBeforeCall(@javax.annotation.Nonnull IamTokenKey iamTokenKey, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'iamTokenKey' is set
-        if (iamTokenKey == null) {
-            throw new ApiException("Missing the required parameter 'iamTokenKey' when calling getToken(Async)");
+    private okhttp3.Call getTokenValidateBeforeCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'owner' is set
+        if (owner == null) {
+            throw new ApiException("Missing the required parameter 'owner' when calling getToken(Async)");
         }
 
-        return getTokenCall(iamTokenKey, _callback);
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling getToken(Async)");
+        }
+
+        return getTokenCall(owner, name, _callback);
 
     }
 
     /**
      * Returns one access token: who and what it was issued to, and when it expires.
      * Returns one access token: who and what it was issued to, and when it expires.
-     * @param iamTokenKey  (required)
+     * @param owner  (required)
+     * @param name  (required)
      * @return IamTokenResult
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -9107,15 +9580,16 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public IamTokenResult getToken(@javax.annotation.Nonnull IamTokenKey iamTokenKey) throws ApiException {
-        ApiResponse<IamTokenResult> localVarResp = getTokenWithHttpInfo(iamTokenKey);
+    public IamTokenResult getToken(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<IamTokenResult> localVarResp = getTokenWithHttpInfo(owner, name);
         return localVarResp.getData();
     }
 
     /**
      * Returns one access token: who and what it was issued to, and when it expires.
      * Returns one access token: who and what it was issued to, and when it expires.
-     * @param iamTokenKey  (required)
+     * @param owner  (required)
+     * @param name  (required)
      * @return ApiResponse&lt;IamTokenResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -9125,8 +9599,8 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IamTokenResult> getTokenWithHttpInfo(@javax.annotation.Nonnull IamTokenKey iamTokenKey) throws ApiException {
-        okhttp3.Call localVarCall = getTokenValidateBeforeCall(iamTokenKey, null);
+    public ApiResponse<IamTokenResult> getTokenWithHttpInfo(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = getTokenValidateBeforeCall(owner, name, null);
         Type localVarReturnType = new TypeToken<IamTokenResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -9134,7 +9608,8 @@ public class IamApi {
     /**
      * Returns one access token: who and what it was issued to, and when it expires. (asynchronously)
      * Returns one access token: who and what it was issued to, and when it expires.
-     * @param iamTokenKey  (required)
+     * @param owner  (required)
+     * @param name  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -9145,16 +9620,17 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getTokenAsync(@javax.annotation.Nonnull IamTokenKey iamTokenKey, final ApiCallback<IamTokenResult> _callback) throws ApiException {
+    public okhttp3.Call getTokenAsync(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback<IamTokenResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getTokenValidateBeforeCall(iamTokenKey, _callback);
+        okhttp3.Call localVarCall = getTokenValidateBeforeCall(owner, name, _callback);
         Type localVarReturnType = new TypeToken<IamTokenResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for getWebauthnCredential
-     * @param iamWebauthnCredentialKey  (required)
+     * @param owner  (required)
+     * @param name  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -9165,7 +9641,7 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getWebauthnCredentialCall(@javax.annotation.Nonnull IamWebauthnCredentialKey iamWebauthnCredentialKey, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getWebauthnCredentialCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -9179,10 +9655,12 @@ public class IamApi {
             basePath = null;
         }
 
-        Object localVarPostBody = iamWebauthnCredentialKey;
+        Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/iam/webauthn-credentials/get";
+        String localVarPath = "/v1/iam/webauthn-credentials/{owner}/{name}"
+            .replace("{" + "owner" + "}", localVarApiClient.escapeString(owner.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -9199,7 +9677,6 @@ public class IamApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -9207,24 +9684,30 @@ public class IamApi {
         }
 
         String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getWebauthnCredentialValidateBeforeCall(@javax.annotation.Nonnull IamWebauthnCredentialKey iamWebauthnCredentialKey, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'iamWebauthnCredentialKey' is set
-        if (iamWebauthnCredentialKey == null) {
-            throw new ApiException("Missing the required parameter 'iamWebauthnCredentialKey' when calling getWebauthnCredential(Async)");
+    private okhttp3.Call getWebauthnCredentialValidateBeforeCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'owner' is set
+        if (owner == null) {
+            throw new ApiException("Missing the required parameter 'owner' when calling getWebauthnCredential(Async)");
         }
 
-        return getWebauthnCredentialCall(iamWebauthnCredentialKey, _callback);
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling getWebauthnCredential(Async)");
+        }
+
+        return getWebauthnCredentialCall(owner, name, _callback);
 
     }
 
     /**
      * Returns one passkey or security key: whose it is, what device it lives on, and when it was registered.
      * Returns one passkey or security key: whose it is, what device it lives on, and when it was registered.
-     * @param iamWebauthnCredentialKey  (required)
+     * @param owner  (required)
+     * @param name  (required)
      * @return IamWebauthnCredentialResult
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -9234,15 +9717,16 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public IamWebauthnCredentialResult getWebauthnCredential(@javax.annotation.Nonnull IamWebauthnCredentialKey iamWebauthnCredentialKey) throws ApiException {
-        ApiResponse<IamWebauthnCredentialResult> localVarResp = getWebauthnCredentialWithHttpInfo(iamWebauthnCredentialKey);
+    public IamWebauthnCredentialResult getWebauthnCredential(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<IamWebauthnCredentialResult> localVarResp = getWebauthnCredentialWithHttpInfo(owner, name);
         return localVarResp.getData();
     }
 
     /**
      * Returns one passkey or security key: whose it is, what device it lives on, and when it was registered.
      * Returns one passkey or security key: whose it is, what device it lives on, and when it was registered.
-     * @param iamWebauthnCredentialKey  (required)
+     * @param owner  (required)
+     * @param name  (required)
      * @return ApiResponse&lt;IamWebauthnCredentialResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -9252,8 +9736,8 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IamWebauthnCredentialResult> getWebauthnCredentialWithHttpInfo(@javax.annotation.Nonnull IamWebauthnCredentialKey iamWebauthnCredentialKey) throws ApiException {
-        okhttp3.Call localVarCall = getWebauthnCredentialValidateBeforeCall(iamWebauthnCredentialKey, null);
+    public ApiResponse<IamWebauthnCredentialResult> getWebauthnCredentialWithHttpInfo(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = getWebauthnCredentialValidateBeforeCall(owner, name, null);
         Type localVarReturnType = new TypeToken<IamWebauthnCredentialResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -9261,7 +9745,8 @@ public class IamApi {
     /**
      * Returns one passkey or security key: whose it is, what device it lives on, and when it was registered. (asynchronously)
      * Returns one passkey or security key: whose it is, what device it lives on, and when it was registered.
-     * @param iamWebauthnCredentialKey  (required)
+     * @param owner  (required)
+     * @param name  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -9272,18 +9757,19 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getWebauthnCredentialAsync(@javax.annotation.Nonnull IamWebauthnCredentialKey iamWebauthnCredentialKey, final ApiCallback<IamWebauthnCredentialResult> _callback) throws ApiException {
+    public okhttp3.Call getWebauthnCredentialAsync(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback<IamWebauthnCredentialResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getWebauthnCredentialValidateBeforeCall(iamWebauthnCredentialKey, _callback);
+        okhttp3.Call localVarCall = getWebauthnCredentialValidateBeforeCall(owner, name, _callback);
         Type localVarReturnType = new TypeToken<IamWebauthnCredentialResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for listOrganizations
-     * @param owner  (optional)
+     * @param xForwardedFor  (optional)
+     * @param q  (optional)
      * @param limit  (optional)
-     * @param offset  (optional)
+     * @param cursor  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -9294,7 +9780,7 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listOrganizationsCall(@javax.annotation.Nullable String owner, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer offset, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call listOrganizationsCall(@javax.annotation.Nullable String xForwardedFor, @javax.annotation.Nullable String q, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String cursor, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -9319,16 +9805,16 @@ public class IamApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        if (owner != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("owner", owner));
+        if (q != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("q", q));
         }
 
         if (limit != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
         }
 
-        if (offset != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("offset", offset));
+        if (cursor != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("cursor", cursor));
         }
 
         final String[] localVarAccepts = {
@@ -9346,22 +9832,28 @@ public class IamApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
+        if (xForwardedFor != null) {
+            localVarHeaderParams.put("X-Forwarded-For", localVarApiClient.parameterToString(xForwardedFor));
+        }
+
+
         String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listOrganizationsValidateBeforeCall(@javax.annotation.Nullable String owner, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer offset, final ApiCallback _callback) throws ApiException {
-        return listOrganizationsCall(owner, limit, offset, _callback);
+    private okhttp3.Call listOrganizationsValidateBeforeCall(@javax.annotation.Nullable String xForwardedFor, @javax.annotation.Nullable String q, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String cursor, final ApiCallback _callback) throws ApiException {
+        return listOrganizationsCall(xForwardedFor, q, limit, cursor, _callback);
 
     }
 
     /**
-     * Returns the organizations you can see, newest first.
-     * Returns the organizations you can see, newest first. Narrow it to one parent account, and set a limit and offset to page through the rest.
-     * @param owner  (optional)
+     * Returns the organizations you can act in, the ones you belong to first and the rest after, newest first, narrowed by an optional query against the name or the display name.
+     * Returns the organizations you can act in, the ones you belong to first and the rest after, newest first, narrowed by an optional query against the name or the display name.  Platform operators see every organization; everyone else sees their own. Pass the cursor from the previous page to continue; an empty cursor in the answer means there is nothing more.  THE SCOPE IS THE HANDLER&#39;S OWN, so it holds at every door. The Guard refuses a bearerless request before this runs, but the agent door carries a typed op to its handler with no middleware in front of it — a handler that read no principal would answer such a caller with the whole registry. Reading the principal here is what makes the answer the same one over both.
+     * @param xForwardedFor  (optional)
+     * @param q  (optional)
      * @param limit  (optional)
-     * @param offset  (optional)
+     * @param cursor  (optional)
      * @return IamListOrganizationsOutput
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -9371,17 +9863,18 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public IamListOrganizationsOutput listOrganizations(@javax.annotation.Nullable String owner, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer offset) throws ApiException {
-        ApiResponse<IamListOrganizationsOutput> localVarResp = listOrganizationsWithHttpInfo(owner, limit, offset);
+    public IamListOrganizationsOutput listOrganizations(@javax.annotation.Nullable String xForwardedFor, @javax.annotation.Nullable String q, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String cursor) throws ApiException {
+        ApiResponse<IamListOrganizationsOutput> localVarResp = listOrganizationsWithHttpInfo(xForwardedFor, q, limit, cursor);
         return localVarResp.getData();
     }
 
     /**
-     * Returns the organizations you can see, newest first.
-     * Returns the organizations you can see, newest first. Narrow it to one parent account, and set a limit and offset to page through the rest.
-     * @param owner  (optional)
+     * Returns the organizations you can act in, the ones you belong to first and the rest after, newest first, narrowed by an optional query against the name or the display name.
+     * Returns the organizations you can act in, the ones you belong to first and the rest after, newest first, narrowed by an optional query against the name or the display name.  Platform operators see every organization; everyone else sees their own. Pass the cursor from the previous page to continue; an empty cursor in the answer means there is nothing more.  THE SCOPE IS THE HANDLER&#39;S OWN, so it holds at every door. The Guard refuses a bearerless request before this runs, but the agent door carries a typed op to its handler with no middleware in front of it — a handler that read no principal would answer such a caller with the whole registry. Reading the principal here is what makes the answer the same one over both.
+     * @param xForwardedFor  (optional)
+     * @param q  (optional)
      * @param limit  (optional)
-     * @param offset  (optional)
+     * @param cursor  (optional)
      * @return ApiResponse&lt;IamListOrganizationsOutput&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -9391,18 +9884,19 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IamListOrganizationsOutput> listOrganizationsWithHttpInfo(@javax.annotation.Nullable String owner, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer offset) throws ApiException {
-        okhttp3.Call localVarCall = listOrganizationsValidateBeforeCall(owner, limit, offset, null);
+    public ApiResponse<IamListOrganizationsOutput> listOrganizationsWithHttpInfo(@javax.annotation.Nullable String xForwardedFor, @javax.annotation.Nullable String q, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String cursor) throws ApiException {
+        okhttp3.Call localVarCall = listOrganizationsValidateBeforeCall(xForwardedFor, q, limit, cursor, null);
         Type localVarReturnType = new TypeToken<IamListOrganizationsOutput>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Returns the organizations you can see, newest first. (asynchronously)
-     * Returns the organizations you can see, newest first. Narrow it to one parent account, and set a limit and offset to page through the rest.
-     * @param owner  (optional)
+     * Returns the organizations you can act in, the ones you belong to first and the rest after, newest first, narrowed by an optional query against the name or the display name. (asynchronously)
+     * Returns the organizations you can act in, the ones you belong to first and the rest after, newest first, narrowed by an optional query against the name or the display name.  Platform operators see every organization; everyone else sees their own. Pass the cursor from the previous page to continue; an empty cursor in the answer means there is nothing more.  THE SCOPE IS THE HANDLER&#39;S OWN, so it holds at every door. The Guard refuses a bearerless request before this runs, but the agent door carries a typed op to its handler with no middleware in front of it — a handler that read no principal would answer such a caller with the whole registry. Reading the principal here is what makes the answer the same one over both.
+     * @param xForwardedFor  (optional)
+     * @param q  (optional)
      * @param limit  (optional)
-     * @param offset  (optional)
+     * @param cursor  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -9413,9 +9907,9 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listOrganizationsAsync(@javax.annotation.Nullable String owner, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer offset, final ApiCallback<IamListOrganizationsOutput> _callback) throws ApiException {
+    public okhttp3.Call listOrganizationsAsync(@javax.annotation.Nullable String xForwardedFor, @javax.annotation.Nullable String q, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String cursor, final ApiCallback<IamListOrganizationsOutput> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listOrganizationsValidateBeforeCall(owner, limit, offset, _callback);
+        okhttp3.Call localVarCall = listOrganizationsValidateBeforeCall(xForwardedFor, q, limit, cursor, _callback);
         Type localVarReturnType = new TypeToken<IamListOrganizationsOutput>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -9547,7 +10041,9 @@ public class IamApi {
     }
     /**
      * Build call for listSessions
-     * @param iamListSessionsIn  (required)
+     * @param owner  (required)
+     * @param name  (optional)
+     * @param application  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -9558,7 +10054,7 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listSessionsCall(@javax.annotation.Nonnull IamListSessionsIn iamListSessionsIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call listSessionsCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nullable String name, @javax.annotation.Nullable String application, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -9572,16 +10068,28 @@ public class IamApi {
             basePath = null;
         }
 
-        Object localVarPostBody = iamListSessionsIn;
+        Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/iam/sessions/list";
+        String localVarPath = "/v1/iam/sessions";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (owner != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("owner", owner));
+        }
+
+        if (name != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("name", name));
+        }
+
+        if (application != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("application", application));
+        }
 
         final String[] localVarAccepts = {
             "application/json"
@@ -9592,7 +10100,6 @@ public class IamApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -9600,24 +10107,26 @@ public class IamApi {
         }
 
         String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listSessionsValidateBeforeCall(@javax.annotation.Nonnull IamListSessionsIn iamListSessionsIn, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'iamListSessionsIn' is set
-        if (iamListSessionsIn == null) {
-            throw new ApiException("Missing the required parameter 'iamListSessionsIn' when calling listSessions(Async)");
+    private okhttp3.Call listSessionsValidateBeforeCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nullable String name, @javax.annotation.Nullable String application, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'owner' is set
+        if (owner == null) {
+            throw new ApiException("Missing the required parameter 'owner' when calling listSessions(Async)");
         }
 
-        return listSessionsCall(iamListSessionsIn, _callback);
+        return listSessionsCall(owner, name, application, _callback);
 
     }
 
     /**
      * Returns who is currently signed in to your organization, newest first, and can be narrowed to one person or one application.
      * Returns who is currently signed in to your organization, newest first, and can be narrowed to one person or one application. It is what you read before signing someone out.
-     * @param iamListSessionsIn  (required)
+     * @param owner  (required)
+     * @param name  (optional)
+     * @param application  (optional)
      * @return IamListSessionsOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -9627,15 +10136,17 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public IamListSessionsOut listSessions(@javax.annotation.Nonnull IamListSessionsIn iamListSessionsIn) throws ApiException {
-        ApiResponse<IamListSessionsOut> localVarResp = listSessionsWithHttpInfo(iamListSessionsIn);
+    public IamListSessionsOut listSessions(@javax.annotation.Nonnull String owner, @javax.annotation.Nullable String name, @javax.annotation.Nullable String application) throws ApiException {
+        ApiResponse<IamListSessionsOut> localVarResp = listSessionsWithHttpInfo(owner, name, application);
         return localVarResp.getData();
     }
 
     /**
      * Returns who is currently signed in to your organization, newest first, and can be narrowed to one person or one application.
      * Returns who is currently signed in to your organization, newest first, and can be narrowed to one person or one application. It is what you read before signing someone out.
-     * @param iamListSessionsIn  (required)
+     * @param owner  (required)
+     * @param name  (optional)
+     * @param application  (optional)
      * @return ApiResponse&lt;IamListSessionsOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -9645,8 +10156,8 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IamListSessionsOut> listSessionsWithHttpInfo(@javax.annotation.Nonnull IamListSessionsIn iamListSessionsIn) throws ApiException {
-        okhttp3.Call localVarCall = listSessionsValidateBeforeCall(iamListSessionsIn, null);
+    public ApiResponse<IamListSessionsOut> listSessionsWithHttpInfo(@javax.annotation.Nonnull String owner, @javax.annotation.Nullable String name, @javax.annotation.Nullable String application) throws ApiException {
+        okhttp3.Call localVarCall = listSessionsValidateBeforeCall(owner, name, application, null);
         Type localVarReturnType = new TypeToken<IamListSessionsOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -9654,7 +10165,9 @@ public class IamApi {
     /**
      * Returns who is currently signed in to your organization, newest first, and can be narrowed to one person or one application. (asynchronously)
      * Returns who is currently signed in to your organization, newest first, and can be narrowed to one person or one application. It is what you read before signing someone out.
-     * @param iamListSessionsIn  (required)
+     * @param owner  (required)
+     * @param name  (optional)
+     * @param application  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -9665,9 +10178,9 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listSessionsAsync(@javax.annotation.Nonnull IamListSessionsIn iamListSessionsIn, final ApiCallback<IamListSessionsOut> _callback) throws ApiException {
+    public okhttp3.Call listSessionsAsync(@javax.annotation.Nonnull String owner, @javax.annotation.Nullable String name, @javax.annotation.Nullable String application, final ApiCallback<IamListSessionsOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listSessionsValidateBeforeCall(iamListSessionsIn, _callback);
+        okhttp3.Call localVarCall = listSessionsValidateBeforeCall(owner, name, application, _callback);
         Type localVarReturnType = new TypeToken<IamListSessionsOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -9874,7 +10387,7 @@ public class IamApi {
 
     /**
      * Returns the passkeys and security keys registered to one person, newest first — which device each lives on and when it was registered.
-     * Returns the passkeys and security keys registered to one person, newest first — which device each lives on and when it was registered.  Yours by default. Name somebody else and you get them only if you already administer their account, which is the same authority that governs reading their user record — so this list can never show more people than the surface beside it already does.  There is no organization-wide list. It used to scope to the ORG, which handed an org admin every member&#39;s credential rows in one answer, and a SuperAdmin every tenant&#39;s; a plain member meanwhile could not read even their own, because an unnamed target fails the Guard&#39;s tenant rule. One scope fixes both halves: the answer is a person&#39;s, and the caller is the person unless they say otherwise and may.
+     * Returns the passkeys and security keys registered to one person, newest first — which device each lives on and when it was registered.  Yours by default. Name somebody else and you get them only if you already administer their account, which is the same authority that governs reading their user record — so this list can never show more people than the surface beside it already does.  There is no organization-wide list, by design. Scoping to the ORG would hand an org admin every member&#39;s credential rows in one answer and a SuperAdmin every tenant&#39;s, while a plain member could not read even their own (an unnamed target fails the Guard&#39;s tenant rule). One scope answers both halves cleanly: the answer is a person&#39;s, and the caller is that person unless they say otherwise and may.
      * @param user  (optional)
      * @return IamListWebauthnCredentialsOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -9892,7 +10405,7 @@ public class IamApi {
 
     /**
      * Returns the passkeys and security keys registered to one person, newest first — which device each lives on and when it was registered.
-     * Returns the passkeys and security keys registered to one person, newest first — which device each lives on and when it was registered.  Yours by default. Name somebody else and you get them only if you already administer their account, which is the same authority that governs reading their user record — so this list can never show more people than the surface beside it already does.  There is no organization-wide list. It used to scope to the ORG, which handed an org admin every member&#39;s credential rows in one answer, and a SuperAdmin every tenant&#39;s; a plain member meanwhile could not read even their own, because an unnamed target fails the Guard&#39;s tenant rule. One scope fixes both halves: the answer is a person&#39;s, and the caller is the person unless they say otherwise and may.
+     * Returns the passkeys and security keys registered to one person, newest first — which device each lives on and when it was registered.  Yours by default. Name somebody else and you get them only if you already administer their account, which is the same authority that governs reading their user record — so this list can never show more people than the surface beside it already does.  There is no organization-wide list, by design. Scoping to the ORG would hand an org admin every member&#39;s credential rows in one answer and a SuperAdmin every tenant&#39;s, while a plain member could not read even their own (an unnamed target fails the Guard&#39;s tenant rule). One scope answers both halves cleanly: the answer is a person&#39;s, and the caller is that person unless they say otherwise and may.
      * @param user  (optional)
      * @return ApiResponse&lt;IamListWebauthnCredentialsOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -9911,7 +10424,7 @@ public class IamApi {
 
     /**
      * Returns the passkeys and security keys registered to one person, newest first — which device each lives on and when it was registered. (asynchronously)
-     * Returns the passkeys and security keys registered to one person, newest first — which device each lives on and when it was registered.  Yours by default. Name somebody else and you get them only if you already administer their account, which is the same authority that governs reading their user record — so this list can never show more people than the surface beside it already does.  There is no organization-wide list. It used to scope to the ORG, which handed an org admin every member&#39;s credential rows in one answer, and a SuperAdmin every tenant&#39;s; a plain member meanwhile could not read even their own, because an unnamed target fails the Guard&#39;s tenant rule. One scope fixes both halves: the answer is a person&#39;s, and the caller is the person unless they say otherwise and may.
+     * Returns the passkeys and security keys registered to one person, newest first — which device each lives on and when it was registered.  Yours by default. Name somebody else and you get them only if you already administer their account, which is the same authority that governs reading their user record — so this list can never show more people than the surface beside it already does.  There is no organization-wide list, by design. Scoping to the ORG would hand an org admin every member&#39;s credential rows in one answer and a SuperAdmin every tenant&#39;s, while a plain member could not read even their own (an unnamed target fails the Guard&#39;s tenant rule). One scope answers both halves cleanly: the answer is a person&#39;s, and the caller is that person unless they say otherwise and may.
      * @param user  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -10039,983 +10552,6 @@ public class IamApi {
         return localVarCall;
     }
     /**
-     * Build call for postIamAddApplication
-     * @param iamApplication  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamAddApplicationCall(@javax.annotation.Nonnull IamApplication iamApplication, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = iamApplication;
-
-        // create path and map variables
-        String localVarPath = "/v1/iam/add-application";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postIamAddApplicationValidateBeforeCall(@javax.annotation.Nonnull IamApplication iamApplication, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'iamApplication' is set
-        if (iamApplication == null) {
-            throw new ApiException("Missing the required parameter 'iamApplication' when calling postIamAddApplication(Async)");
-        }
-
-        return postIamAddApplicationCall(iamApplication, _callback);
-
-    }
-
-    /**
-     * Registers an application in your organization — one product or site your people sign in to, with its own client credentials, sign-in methods and allowed redirect URIs.
-     * Registers an application in your organization — one product or site your people sign in to, with its own client credentials, sign-in methods and allowed redirect URIs.  The older spelling of POST /v1/iam/application. A name already used in the organization is refused rather than overwritten.
-     * @param iamApplication  (required)
-     * @return IamResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public IamResponse postIamAddApplication(@javax.annotation.Nonnull IamApplication iamApplication) throws ApiException {
-        ApiResponse<IamResponse> localVarResp = postIamAddApplicationWithHttpInfo(iamApplication);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Registers an application in your organization — one product or site your people sign in to, with its own client credentials, sign-in methods and allowed redirect URIs.
-     * Registers an application in your organization — one product or site your people sign in to, with its own client credentials, sign-in methods and allowed redirect URIs.  The older spelling of POST /v1/iam/application. A name already used in the organization is refused rather than overwritten.
-     * @param iamApplication  (required)
-     * @return ApiResponse&lt;IamResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<IamResponse> postIamAddApplicationWithHttpInfo(@javax.annotation.Nonnull IamApplication iamApplication) throws ApiException {
-        okhttp3.Call localVarCall = postIamAddApplicationValidateBeforeCall(iamApplication, null);
-        Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Registers an application in your organization — one product or site your people sign in to, with its own client credentials, sign-in methods and allowed redirect URIs. (asynchronously)
-     * Registers an application in your organization — one product or site your people sign in to, with its own client credentials, sign-in methods and allowed redirect URIs.  The older spelling of POST /v1/iam/application. A name already used in the organization is refused rather than overwritten.
-     * @param iamApplication  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamAddApplicationAsync(@javax.annotation.Nonnull IamApplication iamApplication, final ApiCallback<IamResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postIamAddApplicationValidateBeforeCall(iamApplication, _callback);
-        Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postIamAddMembership
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public okhttp3.Call postIamAddMembershipCall(final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/iam/add-membership";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postIamAddMembershipValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postIamAddMembershipCall(_callback);
-
-    }
-
-    /**
-     * Lets a person or an application act in an organization.
-     * Lets a person or an application act in an organization. It is the grant behind \&quot;add someone to the team\&quot;, and it is safe to repeat — granting a membership that already exists changes nothing. Granting membership IS the org&#39;s authority to give, so it takes the same gate a write to that org&#39;s own registry row takes: a SuperAdmin, an admin of the org itself, or an org-admin-capable confidential client. One rule, one place (internal/authz).
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public void postIamAddMembership() throws ApiException {
-        postIamAddMembershipWithHttpInfo();
-    }
-
-    /**
-     * Lets a person or an application act in an organization.
-     * Lets a person or an application act in an organization. It is the grant behind \&quot;add someone to the team\&quot;, and it is safe to repeat — granting a membership that already exists changes nothing. Granting membership IS the org&#39;s authority to give, so it takes the same gate a write to that org&#39;s own registry row takes: a SuperAdmin, an admin of the org itself, or an org-admin-capable confidential client. One rule, one place (internal/authz).
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Void> postIamAddMembershipWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postIamAddMembershipValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * Lets a person or an application act in an organization. (asynchronously)
-     * Lets a person or an application act in an organization. It is the grant behind \&quot;add someone to the team\&quot;, and it is safe to repeat — granting a membership that already exists changes nothing. Granting membership IS the org&#39;s authority to give, so it takes the same gate a write to that org&#39;s own registry row takes: a SuperAdmin, an admin of the org itself, or an org-admin-capable confidential client. One rule, one place (internal/authz).
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public okhttp3.Call postIamAddMembershipAsync(final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postIamAddMembershipValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postIamAddOrganization
-     * @param iamCreateOrganizationInput  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamAddOrganizationCall(@javax.annotation.Nonnull IamCreateOrganizationInput iamCreateOrganizationInput, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = iamCreateOrganizationInput;
-
-        // create path and map variables
-        String localVarPath = "/v1/iam/add-organization";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postIamAddOrganizationValidateBeforeCall(@javax.annotation.Nonnull IamCreateOrganizationInput iamCreateOrganizationInput, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'iamCreateOrganizationInput' is set
-        if (iamCreateOrganizationInput == null) {
-            throw new ApiException("Missing the required parameter 'iamCreateOrganizationInput' when calling postIamAddOrganization(Async)");
-        }
-
-        return postIamAddOrganizationCall(iamCreateOrganizationInput, _callback);
-
-    }
-
-    /**
-     * Creates an organization — the account everything else in your directory hangs from.
-     * Creates an organization — the account everything else in your directory hangs from. Users, applications, roles, projects and workspaces are all named inside one organization, so this is the first write in a new tenant.  The older spelling of POST /v1/iam/organizations. Both reach the same create, so a name already taken is refused here too.
-     * @param iamCreateOrganizationInput  (required)
-     * @return IamResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public IamResponse postIamAddOrganization(@javax.annotation.Nonnull IamCreateOrganizationInput iamCreateOrganizationInput) throws ApiException {
-        ApiResponse<IamResponse> localVarResp = postIamAddOrganizationWithHttpInfo(iamCreateOrganizationInput);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Creates an organization — the account everything else in your directory hangs from.
-     * Creates an organization — the account everything else in your directory hangs from. Users, applications, roles, projects and workspaces are all named inside one organization, so this is the first write in a new tenant.  The older spelling of POST /v1/iam/organizations. Both reach the same create, so a name already taken is refused here too.
-     * @param iamCreateOrganizationInput  (required)
-     * @return ApiResponse&lt;IamResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<IamResponse> postIamAddOrganizationWithHttpInfo(@javax.annotation.Nonnull IamCreateOrganizationInput iamCreateOrganizationInput) throws ApiException {
-        okhttp3.Call localVarCall = postIamAddOrganizationValidateBeforeCall(iamCreateOrganizationInput, null);
-        Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Creates an organization — the account everything else in your directory hangs from. (asynchronously)
-     * Creates an organization — the account everything else in your directory hangs from. Users, applications, roles, projects and workspaces are all named inside one organization, so this is the first write in a new tenant.  The older spelling of POST /v1/iam/organizations. Both reach the same create, so a name already taken is refused here too.
-     * @param iamCreateOrganizationInput  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamAddOrganizationAsync(@javax.annotation.Nonnull IamCreateOrganizationInput iamCreateOrganizationInput, final ApiCallback<IamResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postIamAddOrganizationValidateBeforeCall(iamCreateOrganizationInput, _callback);
-        Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postIamAddProject
-     * @param iamInput  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamAddProjectCall(@javax.annotation.Nonnull IamInput iamInput, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = iamInput;
-
-        // create path and map variables
-        String localVarPath = "/v1/iam/add-project";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postIamAddProjectValidateBeforeCall(@javax.annotation.Nonnull IamInput iamInput, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'iamInput' is set
-        if (iamInput == null) {
-            throw new ApiException("Missing the required parameter 'iamInput' when calling postIamAddProject(Async)");
-        }
-
-        return postIamAddProjectCall(iamInput, _callback);
-
-    }
-
-    /**
-     * Creates a project inside your organization — the scope people pick between when their work is separated by product or client rather than by team.
-     * Creates a project inside your organization — the scope people pick between when their work is separated by product or client rather than by team.  The older spelling of POST /v1/iam/projects. Creating one takes an administrator of the owning organization.
-     * @param iamInput  (required)
-     * @return IamResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public IamResponse postIamAddProject(@javax.annotation.Nonnull IamInput iamInput) throws ApiException {
-        ApiResponse<IamResponse> localVarResp = postIamAddProjectWithHttpInfo(iamInput);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Creates a project inside your organization — the scope people pick between when their work is separated by product or client rather than by team.
-     * Creates a project inside your organization — the scope people pick between when their work is separated by product or client rather than by team.  The older spelling of POST /v1/iam/projects. Creating one takes an administrator of the owning organization.
-     * @param iamInput  (required)
-     * @return ApiResponse&lt;IamResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<IamResponse> postIamAddProjectWithHttpInfo(@javax.annotation.Nonnull IamInput iamInput) throws ApiException {
-        okhttp3.Call localVarCall = postIamAddProjectValidateBeforeCall(iamInput, null);
-        Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Creates a project inside your organization — the scope people pick between when their work is separated by product or client rather than by team. (asynchronously)
-     * Creates a project inside your organization — the scope people pick between when their work is separated by product or client rather than by team.  The older spelling of POST /v1/iam/projects. Creating one takes an administrator of the owning organization.
-     * @param iamInput  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamAddProjectAsync(@javax.annotation.Nonnull IamInput iamInput, final ApiCallback<IamResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postIamAddProjectValidateBeforeCall(iamInput, _callback);
-        Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postIamAddProvider
-     * @param iamProvider  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamAddProviderCall(@javax.annotation.Nonnull IamProvider iamProvider, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = iamProvider;
-
-        // create path and map variables
-        String localVarPath = "/v1/iam/add-provider";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postIamAddProviderValidateBeforeCall(@javax.annotation.Nonnull IamProvider iamProvider, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'iamProvider' is set
-        if (iamProvider == null) {
-            throw new ApiException("Missing the required parameter 'iamProvider' when calling postIamAddProvider(Async)");
-        }
-
-        return postIamAddProviderCall(iamProvider, _callback);
-
-    }
-
-    /**
-     * Adds an identity provider your people can sign in with, or a service your applications send through — a social or enterprise login, an email or SMS sender, a storage or payment connector.
-     * Adds an identity provider your people can sign in with, or a service your applications send through — a social or enterprise login, an email or SMS sender, a storage or payment connector.  A provider is configured once here and then switched on per application, so several applications can share one set of credentials.  The older spelling of POST /v1/iam/providers.
-     * @param iamProvider  (required)
-     * @return IamResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public IamResponse postIamAddProvider(@javax.annotation.Nonnull IamProvider iamProvider) throws ApiException {
-        ApiResponse<IamResponse> localVarResp = postIamAddProviderWithHttpInfo(iamProvider);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Adds an identity provider your people can sign in with, or a service your applications send through — a social or enterprise login, an email or SMS sender, a storage or payment connector.
-     * Adds an identity provider your people can sign in with, or a service your applications send through — a social or enterprise login, an email or SMS sender, a storage or payment connector.  A provider is configured once here and then switched on per application, so several applications can share one set of credentials.  The older spelling of POST /v1/iam/providers.
-     * @param iamProvider  (required)
-     * @return ApiResponse&lt;IamResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<IamResponse> postIamAddProviderWithHttpInfo(@javax.annotation.Nonnull IamProvider iamProvider) throws ApiException {
-        okhttp3.Call localVarCall = postIamAddProviderValidateBeforeCall(iamProvider, null);
-        Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Adds an identity provider your people can sign in with, or a service your applications send through — a social or enterprise login, an email or SMS sender, a storage or payment connector. (asynchronously)
-     * Adds an identity provider your people can sign in with, or a service your applications send through — a social or enterprise login, an email or SMS sender, a storage or payment connector.  A provider is configured once here and then switched on per application, so several applications can share one set of credentials.  The older spelling of POST /v1/iam/providers.
-     * @param iamProvider  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamAddProviderAsync(@javax.annotation.Nonnull IamProvider iamProvider, final ApiCallback<IamResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postIamAddProviderValidateBeforeCall(iamProvider, _callback);
-        Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postIamAddRole
-     * @param iamRolesInput  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamAddRoleCall(@javax.annotation.Nonnull IamRolesInput iamRolesInput, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = iamRolesInput;
-
-        // create path and map variables
-        String localVarPath = "/v1/iam/add-role";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postIamAddRoleValidateBeforeCall(@javax.annotation.Nonnull IamRolesInput iamRolesInput, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'iamRolesInput' is set
-        if (iamRolesInput == null) {
-            throw new ApiException("Missing the required parameter 'iamRolesInput' when calling postIamAddRole(Async)");
-        }
-
-        return postIamAddRoleCall(iamRolesInput, _callback);
-
-    }
-
-    /**
-     * Creates a role — a named group of people that permissions are granted to.
-     * Creates a role — a named group of people that permissions are granted to. Granting to a role rather than to each person is what keeps access correct as your team changes: add someone to the role and they inherit everything it can do.  The older spelling of POST /v1/iam/roles.
-     * @param iamRolesInput  (required)
-     * @return IamResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public IamResponse postIamAddRole(@javax.annotation.Nonnull IamRolesInput iamRolesInput) throws ApiException {
-        ApiResponse<IamResponse> localVarResp = postIamAddRoleWithHttpInfo(iamRolesInput);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Creates a role — a named group of people that permissions are granted to.
-     * Creates a role — a named group of people that permissions are granted to. Granting to a role rather than to each person is what keeps access correct as your team changes: add someone to the role and they inherit everything it can do.  The older spelling of POST /v1/iam/roles.
-     * @param iamRolesInput  (required)
-     * @return ApiResponse&lt;IamResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<IamResponse> postIamAddRoleWithHttpInfo(@javax.annotation.Nonnull IamRolesInput iamRolesInput) throws ApiException {
-        okhttp3.Call localVarCall = postIamAddRoleValidateBeforeCall(iamRolesInput, null);
-        Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Creates a role — a named group of people that permissions are granted to. (asynchronously)
-     * Creates a role — a named group of people that permissions are granted to. Granting to a role rather than to each person is what keeps access correct as your team changes: add someone to the role and they inherit everything it can do.  The older spelling of POST /v1/iam/roles.
-     * @param iamRolesInput  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamAddRoleAsync(@javax.annotation.Nonnull IamRolesInput iamRolesInput, final ApiCallback<IamResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postIamAddRoleValidateBeforeCall(iamRolesInput, _callback);
-        Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postIamAddUser
-     * @param iamUserBody  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamAddUserCall(@javax.annotation.Nonnull IamUserBody iamUserBody, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = iamUserBody;
-
-        // create path and map variables
-        String localVarPath = "/v1/iam/add-user";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postIamAddUserValidateBeforeCall(@javax.annotation.Nonnull IamUserBody iamUserBody, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'iamUserBody' is set
-        if (iamUserBody == null) {
-            throw new ApiException("Missing the required parameter 'iamUserBody' when calling postIamAddUser(Async)");
-        }
-
-        return postIamAddUserCall(iamUserBody, _callback);
-
-    }
-
-    /**
-     * Adds a person to your organization and, if you send a password, sets the one they will sign in with.
-     * Adds a person to your organization and, if you send a password, sets the one they will sign in with. The password is hashed before it is stored and is never returned to you or to anyone else.  Usernames are checked against one rule wherever an account is created — this verb, password signup, a social sign-in, or SCIM — so a name accepted here is a name accepted everywhere.  The older spelling of POST /v1/iam/users, and it posts the user&#39;s fields at the top level rather than wrapped in {user, password}.
-     * @param iamUserBody  (required)
-     * @return IamResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public IamResponse postIamAddUser(@javax.annotation.Nonnull IamUserBody iamUserBody) throws ApiException {
-        ApiResponse<IamResponse> localVarResp = postIamAddUserWithHttpInfo(iamUserBody);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Adds a person to your organization and, if you send a password, sets the one they will sign in with.
-     * Adds a person to your organization and, if you send a password, sets the one they will sign in with. The password is hashed before it is stored and is never returned to you or to anyone else.  Usernames are checked against one rule wherever an account is created — this verb, password signup, a social sign-in, or SCIM — so a name accepted here is a name accepted everywhere.  The older spelling of POST /v1/iam/users, and it posts the user&#39;s fields at the top level rather than wrapped in {user, password}.
-     * @param iamUserBody  (required)
-     * @return ApiResponse&lt;IamResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<IamResponse> postIamAddUserWithHttpInfo(@javax.annotation.Nonnull IamUserBody iamUserBody) throws ApiException {
-        okhttp3.Call localVarCall = postIamAddUserValidateBeforeCall(iamUserBody, null);
-        Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Adds a person to your organization and, if you send a password, sets the one they will sign in with. (asynchronously)
-     * Adds a person to your organization and, if you send a password, sets the one they will sign in with. The password is hashed before it is stored and is never returned to you or to anyone else.  Usernames are checked against one rule wherever an account is created — this verb, password signup, a social sign-in, or SCIM — so a name accepted here is a name accepted everywhere.  The older spelling of POST /v1/iam/users, and it posts the user&#39;s fields at the top level rather than wrapped in {user, password}.
-     * @param iamUserBody  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamAddUserAsync(@javax.annotation.Nonnull IamUserBody iamUserBody, final ApiCallback<IamResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postIamAddUserValidateBeforeCall(iamUserBody, _callback);
-        Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postIamAddWorkspace
-     * @param iamWorkspacesInput  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamAddWorkspaceCall(@javax.annotation.Nonnull IamWorkspacesInput iamWorkspacesInput, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = iamWorkspacesInput;
-
-        // create path and map variables
-        String localVarPath = "/v1/iam/add-workspace";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postIamAddWorkspaceValidateBeforeCall(@javax.annotation.Nonnull IamWorkspacesInput iamWorkspacesInput, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'iamWorkspacesInput' is set
-        if (iamWorkspacesInput == null) {
-            throw new ApiException("Missing the required parameter 'iamWorkspacesInput' when calling postIamAddWorkspace(Async)");
-        }
-
-        return postIamAddWorkspaceCall(iamWorkspacesInput, _callback);
-
-    }
-
-    /**
-     * Creates a workspace inside your organization — the scope a team works in, alongside projects rather than instead of them.
-     * Creates a workspace inside your organization — the scope a team works in, alongside projects rather than instead of them.  The older spelling of POST /v1/iam/workspaces. Creating one takes an administrator of the owning organization.
-     * @param iamWorkspacesInput  (required)
-     * @return IamResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public IamResponse postIamAddWorkspace(@javax.annotation.Nonnull IamWorkspacesInput iamWorkspacesInput) throws ApiException {
-        ApiResponse<IamResponse> localVarResp = postIamAddWorkspaceWithHttpInfo(iamWorkspacesInput);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Creates a workspace inside your organization — the scope a team works in, alongside projects rather than instead of them.
-     * Creates a workspace inside your organization — the scope a team works in, alongside projects rather than instead of them.  The older spelling of POST /v1/iam/workspaces. Creating one takes an administrator of the owning organization.
-     * @param iamWorkspacesInput  (required)
-     * @return ApiResponse&lt;IamResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<IamResponse> postIamAddWorkspaceWithHttpInfo(@javax.annotation.Nonnull IamWorkspacesInput iamWorkspacesInput) throws ApiException {
-        okhttp3.Call localVarCall = postIamAddWorkspaceValidateBeforeCall(iamWorkspacesInput, null);
-        Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Creates a workspace inside your organization — the scope a team works in, alongside projects rather than instead of them. (asynchronously)
-     * Creates a workspace inside your organization — the scope a team works in, alongside projects rather than instead of them.  The older spelling of POST /v1/iam/workspaces. Creating one takes an administrator of the owning organization.
-     * @param iamWorkspacesInput  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamAddWorkspaceAsync(@javax.annotation.Nonnull IamWorkspacesInput iamWorkspacesInput, final ApiCallback<IamResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postIamAddWorkspaceValidateBeforeCall(iamWorkspacesInput, _callback);
-        Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
      * Build call for postIamAdminProvision
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -11101,133 +10637,6 @@ public class IamApi {
 
         okhttp3.Call localVarCall = postIamAdminProvisionValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postIamApplication
-     * @param iamApplication  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamApplicationCall(@javax.annotation.Nonnull IamApplication iamApplication, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = iamApplication;
-
-        // create path and map variables
-        String localVarPath = "/v1/iam/application";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postIamApplicationValidateBeforeCall(@javax.annotation.Nonnull IamApplication iamApplication, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'iamApplication' is set
-        if (iamApplication == null) {
-            throw new ApiException("Missing the required parameter 'iamApplication' when calling postIamApplication(Async)");
-        }
-
-        return postIamApplicationCall(iamApplication, _callback);
-
-    }
-
-    /**
-     * Registers an application in your organization — one product or site your people sign in to, with its own client credentials, sign-in methods and allowed redirect URIs.
-     * Registers an application in your organization — one product or site your people sign in to, with its own client credentials, sign-in methods and allowed redirect URIs. A name already used in the organization is refused rather than overwritten.  Exported so the legacy add-application alias reuses this exact path — one create, two spellings.
-     * @param iamApplication  (required)
-     * @return IamApplication
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public IamApplication postIamApplication(@javax.annotation.Nonnull IamApplication iamApplication) throws ApiException {
-        ApiResponse<IamApplication> localVarResp = postIamApplicationWithHttpInfo(iamApplication);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Registers an application in your organization — one product or site your people sign in to, with its own client credentials, sign-in methods and allowed redirect URIs.
-     * Registers an application in your organization — one product or site your people sign in to, with its own client credentials, sign-in methods and allowed redirect URIs. A name already used in the organization is refused rather than overwritten.  Exported so the legacy add-application alias reuses this exact path — one create, two spellings.
-     * @param iamApplication  (required)
-     * @return ApiResponse&lt;IamApplication&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<IamApplication> postIamApplicationWithHttpInfo(@javax.annotation.Nonnull IamApplication iamApplication) throws ApiException {
-        okhttp3.Call localVarCall = postIamApplicationValidateBeforeCall(iamApplication, null);
-        Type localVarReturnType = new TypeToken<IamApplication>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Registers an application in your organization — one product or site your people sign in to, with its own client credentials, sign-in methods and allowed redirect URIs. (asynchronously)
-     * Registers an application in your organization — one product or site your people sign in to, with its own client credentials, sign-in methods and allowed redirect URIs. A name already used in the organization is refused rather than overwritten.  Exported so the legacy add-application alias reuses this exact path — one create, two spellings.
-     * @param iamApplication  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamApplicationAsync(@javax.annotation.Nonnull IamApplication iamApplication, final ApiCallback<IamApplication> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postIamApplicationValidateBeforeCall(iamApplication, _callback);
-        Type localVarReturnType = new TypeToken<IamApplication>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -11353,260 +10762,6 @@ public class IamApi {
     public okhttp3.Call postIamApplicationsAsync(@javax.annotation.Nonnull IamApplication iamApplication, final ApiCallback<IamApplication> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postIamApplicationsValidateBeforeCall(iamApplication, _callback);
-        Type localVarReturnType = new TypeToken<IamApplication>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postIamApplicationsDelete
-     * @param iamApplicationRef  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamApplicationsDeleteCall(@javax.annotation.Nonnull IamApplicationRef iamApplicationRef, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = iamApplicationRef;
-
-        // create path and map variables
-        String localVarPath = "/v1/iam/applications/delete";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postIamApplicationsDeleteValidateBeforeCall(@javax.annotation.Nonnull IamApplicationRef iamApplicationRef, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'iamApplicationRef' is set
-        if (iamApplicationRef == null) {
-            throw new ApiException("Missing the required parameter 'iamApplicationRef' when calling postIamApplicationsDelete(Async)");
-        }
-
-        return postIamApplicationsDeleteCall(iamApplicationRef, _callback);
-
-    }
-
-    /**
-     * Removes an application.
-     * Removes an application. Anyone mid-sign-in through it is turned away and its client credentials stop working, so retire the integration before deleting it.
-     * @param iamApplicationRef  (required)
-     * @return IamDeleteResult
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public IamDeleteResult postIamApplicationsDelete(@javax.annotation.Nonnull IamApplicationRef iamApplicationRef) throws ApiException {
-        ApiResponse<IamDeleteResult> localVarResp = postIamApplicationsDeleteWithHttpInfo(iamApplicationRef);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Removes an application.
-     * Removes an application. Anyone mid-sign-in through it is turned away and its client credentials stop working, so retire the integration before deleting it.
-     * @param iamApplicationRef  (required)
-     * @return ApiResponse&lt;IamDeleteResult&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<IamDeleteResult> postIamApplicationsDeleteWithHttpInfo(@javax.annotation.Nonnull IamApplicationRef iamApplicationRef) throws ApiException {
-        okhttp3.Call localVarCall = postIamApplicationsDeleteValidateBeforeCall(iamApplicationRef, null);
-        Type localVarReturnType = new TypeToken<IamDeleteResult>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Removes an application. (asynchronously)
-     * Removes an application. Anyone mid-sign-in through it is turned away and its client credentials stop working, so retire the integration before deleting it.
-     * @param iamApplicationRef  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamApplicationsDeleteAsync(@javax.annotation.Nonnull IamApplicationRef iamApplicationRef, final ApiCallback<IamDeleteResult> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postIamApplicationsDeleteValidateBeforeCall(iamApplicationRef, _callback);
-        Type localVarReturnType = new TypeToken<IamDeleteResult>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postIamApplicationsUpdate
-     * @param iamApplication  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamApplicationsUpdateCall(@javax.annotation.Nonnull IamApplication iamApplication, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = iamApplication;
-
-        // create path and map variables
-        String localVarPath = "/v1/iam/applications/update";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postIamApplicationsUpdateValidateBeforeCall(@javax.annotation.Nonnull IamApplication iamApplication, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'iamApplication' is set
-        if (iamApplication == null) {
-            throw new ApiException("Missing the required parameter 'iamApplication' when calling postIamApplicationsUpdate(Async)");
-        }
-
-        return postIamApplicationsUpdateCall(iamApplication, _callback);
-
-    }
-
-    /**
-     * Changes an application&#39;s display, its sign-in methods and the redirect URIs it may return to — the call that makes login work from a new host.
-     * Changes an application&#39;s display, its sign-in methods and the redirect URIs it may return to — the call that makes login work from a new host. Which organization it belongs to and what it is named are fixed when it is created and are not editable here.  Exported so the legacy update-application alias reuses this exact path — one update, two spellings.
-     * @param iamApplication  (required)
-     * @return IamApplication
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public IamApplication postIamApplicationsUpdate(@javax.annotation.Nonnull IamApplication iamApplication) throws ApiException {
-        ApiResponse<IamApplication> localVarResp = postIamApplicationsUpdateWithHttpInfo(iamApplication);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Changes an application&#39;s display, its sign-in methods and the redirect URIs it may return to — the call that makes login work from a new host.
-     * Changes an application&#39;s display, its sign-in methods and the redirect URIs it may return to — the call that makes login work from a new host. Which organization it belongs to and what it is named are fixed when it is created and are not editable here.  Exported so the legacy update-application alias reuses this exact path — one update, two spellings.
-     * @param iamApplication  (required)
-     * @return ApiResponse&lt;IamApplication&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<IamApplication> postIamApplicationsUpdateWithHttpInfo(@javax.annotation.Nonnull IamApplication iamApplication) throws ApiException {
-        okhttp3.Call localVarCall = postIamApplicationsUpdateValidateBeforeCall(iamApplication, null);
-        Type localVarReturnType = new TypeToken<IamApplication>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Changes an application&#39;s display, its sign-in methods and the redirect URIs it may return to — the call that makes login work from a new host. (asynchronously)
-     * Changes an application&#39;s display, its sign-in methods and the redirect URIs it may return to — the call that makes login work from a new host. Which organization it belongs to and what it is named are fixed when it is created and are not editable here.  Exported so the legacy update-application alias reuses this exact path — one update, two spellings.
-     * @param iamApplication  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamApplicationsUpdateAsync(@javax.annotation.Nonnull IamApplication iamApplication, final ApiCallback<IamApplication> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postIamApplicationsUpdateValidateBeforeCall(iamApplication, _callback);
         Type localVarReturnType = new TypeToken<IamApplication>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -11774,7 +10929,7 @@ public class IamApi {
     }
     /**
      * Build call for postIamAuditLogs
-     * @param iamAuditlogsInput  (required)
+     * @param iamInput  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -11785,7 +10940,7 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postIamAuditLogsCall(@javax.annotation.Nonnull IamAuditlogsInput iamAuditlogsInput, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postIamAuditLogsCall(@javax.annotation.Nonnull IamInput iamInput, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -11799,7 +10954,7 @@ public class IamApi {
             basePath = null;
         }
 
-        Object localVarPostBody = iamAuditlogsInput;
+        Object localVarPostBody = iamInput;
 
         // create path and map variables
         String localVarPath = "/v1/iam/audit-logs";
@@ -11831,20 +10986,20 @@ public class IamApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postIamAuditLogsValidateBeforeCall(@javax.annotation.Nonnull IamAuditlogsInput iamAuditlogsInput, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'iamAuditlogsInput' is set
-        if (iamAuditlogsInput == null) {
-            throw new ApiException("Missing the required parameter 'iamAuditlogsInput' when calling postIamAuditLogs(Async)");
+    private okhttp3.Call postIamAuditLogsValidateBeforeCall(@javax.annotation.Nonnull IamInput iamInput, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'iamInput' is set
+        if (iamInput == null) {
+            throw new ApiException("Missing the required parameter 'iamInput' when calling postIamAuditLogs(Async)");
         }
 
-        return postIamAuditLogsCall(iamAuditlogsInput, _callback);
+        return postIamAuditLogsCall(iamInput, _callback);
 
     }
 
     /**
      * Records an audit entry, so activity from your own systems lands in the same trail as everything the Hanzo Cloud records for you.
      * Records an audit entry, so activity from your own systems lands in the same trail as everything the Hanzo Cloud records for you.
-     * @param iamAuditlogsInput  (required)
+     * @param iamInput  (required)
      * @return IamAuditLog
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -11854,15 +11009,15 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public IamAuditLog postIamAuditLogs(@javax.annotation.Nonnull IamAuditlogsInput iamAuditlogsInput) throws ApiException {
-        ApiResponse<IamAuditLog> localVarResp = postIamAuditLogsWithHttpInfo(iamAuditlogsInput);
+    public IamAuditLog postIamAuditLogs(@javax.annotation.Nonnull IamInput iamInput) throws ApiException {
+        ApiResponse<IamAuditLog> localVarResp = postIamAuditLogsWithHttpInfo(iamInput);
         return localVarResp.getData();
     }
 
     /**
      * Records an audit entry, so activity from your own systems lands in the same trail as everything the Hanzo Cloud records for you.
      * Records an audit entry, so activity from your own systems lands in the same trail as everything the Hanzo Cloud records for you.
-     * @param iamAuditlogsInput  (required)
+     * @param iamInput  (required)
      * @return ApiResponse&lt;IamAuditLog&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -11872,8 +11027,8 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IamAuditLog> postIamAuditLogsWithHttpInfo(@javax.annotation.Nonnull IamAuditlogsInput iamAuditlogsInput) throws ApiException {
-        okhttp3.Call localVarCall = postIamAuditLogsValidateBeforeCall(iamAuditlogsInput, null);
+    public ApiResponse<IamAuditLog> postIamAuditLogsWithHttpInfo(@javax.annotation.Nonnull IamInput iamInput) throws ApiException {
+        okhttp3.Call localVarCall = postIamAuditLogsValidateBeforeCall(iamInput, null);
         Type localVarReturnType = new TypeToken<IamAuditLog>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -11881,7 +11036,7 @@ public class IamApi {
     /**
      * Records an audit entry, so activity from your own systems lands in the same trail as everything the Hanzo Cloud records for you. (asynchronously)
      * Records an audit entry, so activity from your own systems lands in the same trail as everything the Hanzo Cloud records for you.
-     * @param iamAuditlogsInput  (required)
+     * @param iamInput  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -11892,390 +11047,9 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postIamAuditLogsAsync(@javax.annotation.Nonnull IamAuditlogsInput iamAuditlogsInput, final ApiCallback<IamAuditLog> _callback) throws ApiException {
+    public okhttp3.Call postIamAuditLogsAsync(@javax.annotation.Nonnull IamInput iamInput, final ApiCallback<IamAuditLog> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postIamAuditLogsValidateBeforeCall(iamAuditlogsInput, _callback);
-        Type localVarReturnType = new TypeToken<IamAuditLog>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postIamAuditLogsDelete
-     * @param iamRef  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamAuditLogsDeleteCall(@javax.annotation.Nonnull IamRef iamRef, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = iamRef;
-
-        // create path and map variables
-        String localVarPath = "/v1/iam/audit-logs/delete";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postIamAuditLogsDeleteValidateBeforeCall(@javax.annotation.Nonnull IamRef iamRef, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'iamRef' is set
-        if (iamRef == null) {
-            throw new ApiException("Missing the required parameter 'iamRef' when calling postIamAuditLogsDelete(Async)");
-        }
-
-        return postIamAuditLogsDeleteCall(iamRef, _callback);
-
-    }
-
-    /**
-     * Removes an audit entry.
-     * Removes an audit entry. Retention policy is normally what should expire a trail; deleting by hand leaves a gap a reviewer will notice.
-     * @param iamRef  (required)
-     * @return IamDeleteOutput
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public IamDeleteOutput postIamAuditLogsDelete(@javax.annotation.Nonnull IamRef iamRef) throws ApiException {
-        ApiResponse<IamDeleteOutput> localVarResp = postIamAuditLogsDeleteWithHttpInfo(iamRef);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Removes an audit entry.
-     * Removes an audit entry. Retention policy is normally what should expire a trail; deleting by hand leaves a gap a reviewer will notice.
-     * @param iamRef  (required)
-     * @return ApiResponse&lt;IamDeleteOutput&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<IamDeleteOutput> postIamAuditLogsDeleteWithHttpInfo(@javax.annotation.Nonnull IamRef iamRef) throws ApiException {
-        okhttp3.Call localVarCall = postIamAuditLogsDeleteValidateBeforeCall(iamRef, null);
-        Type localVarReturnType = new TypeToken<IamDeleteOutput>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Removes an audit entry. (asynchronously)
-     * Removes an audit entry. Retention policy is normally what should expire a trail; deleting by hand leaves a gap a reviewer will notice.
-     * @param iamRef  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamAuditLogsDeleteAsync(@javax.annotation.Nonnull IamRef iamRef, final ApiCallback<IamDeleteOutput> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postIamAuditLogsDeleteValidateBeforeCall(iamRef, _callback);
-        Type localVarReturnType = new TypeToken<IamDeleteOutput>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postIamAuditLogsGet
-     * @param iamRef  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamAuditLogsGetCall(@javax.annotation.Nonnull IamRef iamRef, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = iamRef;
-
-        // create path and map variables
-        String localVarPath = "/v1/iam/audit-logs/get";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postIamAuditLogsGetValidateBeforeCall(@javax.annotation.Nonnull IamRef iamRef, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'iamRef' is set
-        if (iamRef == null) {
-            throw new ApiException("Missing the required parameter 'iamRef' when calling postIamAuditLogsGet(Async)");
-        }
-
-        return postIamAuditLogsGetCall(iamRef, _callback);
-
-    }
-
-    /**
-     * Returns one audit entry in full: the action, the person or key behind it, and the request it came in on.
-     * Returns one audit entry in full: the action, the person or key behind it, and the request it came in on.
-     * @param iamRef  (required)
-     * @return IamAuditLog
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public IamAuditLog postIamAuditLogsGet(@javax.annotation.Nonnull IamRef iamRef) throws ApiException {
-        ApiResponse<IamAuditLog> localVarResp = postIamAuditLogsGetWithHttpInfo(iamRef);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Returns one audit entry in full: the action, the person or key behind it, and the request it came in on.
-     * Returns one audit entry in full: the action, the person or key behind it, and the request it came in on.
-     * @param iamRef  (required)
-     * @return ApiResponse&lt;IamAuditLog&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<IamAuditLog> postIamAuditLogsGetWithHttpInfo(@javax.annotation.Nonnull IamRef iamRef) throws ApiException {
-        okhttp3.Call localVarCall = postIamAuditLogsGetValidateBeforeCall(iamRef, null);
-        Type localVarReturnType = new TypeToken<IamAuditLog>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Returns one audit entry in full: the action, the person or key behind it, and the request it came in on. (asynchronously)
-     * Returns one audit entry in full: the action, the person or key behind it, and the request it came in on.
-     * @param iamRef  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamAuditLogsGetAsync(@javax.annotation.Nonnull IamRef iamRef, final ApiCallback<IamAuditLog> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postIamAuditLogsGetValidateBeforeCall(iamRef, _callback);
-        Type localVarReturnType = new TypeToken<IamAuditLog>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postIamAuditLogsUpdate
-     * @param iamAuditlogsInput  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamAuditLogsUpdateCall(@javax.annotation.Nonnull IamAuditlogsInput iamAuditlogsInput, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = iamAuditlogsInput;
-
-        // create path and map variables
-        String localVarPath = "/v1/iam/audit-logs/update";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postIamAuditLogsUpdateValidateBeforeCall(@javax.annotation.Nonnull IamAuditlogsInput iamAuditlogsInput, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'iamAuditlogsInput' is set
-        if (iamAuditlogsInput == null) {
-            throw new ApiException("Missing the required parameter 'iamAuditlogsInput' when calling postIamAuditLogsUpdate(Async)");
-        }
-
-        return postIamAuditLogsUpdateCall(iamAuditlogsInput, _callback);
-
-    }
-
-    /**
-     * Corrects an audit entry.
-     * Corrects an audit entry. The trail is append-only in normal operation and nothing in the Hanzo Cloud rewrites it — this exists for an administrator to correct an entry their own systems recorded wrongly.
-     * @param iamAuditlogsInput  (required)
-     * @return IamAuditLog
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public IamAuditLog postIamAuditLogsUpdate(@javax.annotation.Nonnull IamAuditlogsInput iamAuditlogsInput) throws ApiException {
-        ApiResponse<IamAuditLog> localVarResp = postIamAuditLogsUpdateWithHttpInfo(iamAuditlogsInput);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Corrects an audit entry.
-     * Corrects an audit entry. The trail is append-only in normal operation and nothing in the Hanzo Cloud rewrites it — this exists for an administrator to correct an entry their own systems recorded wrongly.
-     * @param iamAuditlogsInput  (required)
-     * @return ApiResponse&lt;IamAuditLog&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<IamAuditLog> postIamAuditLogsUpdateWithHttpInfo(@javax.annotation.Nonnull IamAuditlogsInput iamAuditlogsInput) throws ApiException {
-        okhttp3.Call localVarCall = postIamAuditLogsUpdateValidateBeforeCall(iamAuditlogsInput, null);
-        Type localVarReturnType = new TypeToken<IamAuditLog>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Corrects an audit entry. (asynchronously)
-     * Corrects an audit entry. The trail is append-only in normal operation and nothing in the Hanzo Cloud rewrites it — this exists for an administrator to correct an entry their own systems recorded wrongly.
-     * @param iamAuditlogsInput  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamAuditLogsUpdateAsync(@javax.annotation.Nonnull IamAuditlogsInput iamAuditlogsInput, final ApiCallback<IamAuditLog> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postIamAuditLogsUpdateValidateBeforeCall(iamAuditlogsInput, _callback);
+        okhttp3.Call localVarCall = postIamAuditLogsValidateBeforeCall(iamInput, _callback);
         Type localVarReturnType = new TypeToken<IamAuditLog>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -12350,8 +11124,8 @@ public class IamApi {
     }
 
     /**
-     * Adds a signing certificate your applications can verify tokens against — the call you make to bring your own key, or to stage the next one before a rotation.
-     * Adds a signing certificate your applications can verify tokens against — the call you make to bring your own key, or to stage the next one before a rotation. A name already used in your organization is refused.
+     * Adds a signing certificate your applications can verify tokens against — the call you make to stage the next one before a rotation.
+     * Adds a signing certificate your applications can verify tokens against — the call you make to stage the next one before a rotation. A name already used in your organization is refused.  It registers the certificate&#39;s IDENTITY: its name (which is the JWKS &#x60;kid&#x60;), its algorithm, its expiry. Key material does not travel this way and cannot: the private key is not part of the Cert&#39;s JSON, so it is neither served here nor accepted here. It is supplied to the process by the deployment, under the name registered here (internal/keyring). Staging a rotation is therefore two halves — this call names the key, and the deployment provides it.
      * @param iamCert  (required)
      * @return IamCert
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -12368,8 +11142,8 @@ public class IamApi {
     }
 
     /**
-     * Adds a signing certificate your applications can verify tokens against — the call you make to bring your own key, or to stage the next one before a rotation.
-     * Adds a signing certificate your applications can verify tokens against — the call you make to bring your own key, or to stage the next one before a rotation. A name already used in your organization is refused.
+     * Adds a signing certificate your applications can verify tokens against — the call you make to stage the next one before a rotation.
+     * Adds a signing certificate your applications can verify tokens against — the call you make to stage the next one before a rotation. A name already used in your organization is refused.  It registers the certificate&#39;s IDENTITY: its name (which is the JWKS &#x60;kid&#x60;), its algorithm, its expiry. Key material does not travel this way and cannot: the private key is not part of the Cert&#39;s JSON, so it is neither served here nor accepted here. It is supplied to the process by the deployment, under the name registered here (internal/keyring). Staging a rotation is therefore two halves — this call names the key, and the deployment provides it.
      * @param iamCert  (required)
      * @return ApiResponse&lt;IamCert&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -12387,8 +11161,8 @@ public class IamApi {
     }
 
     /**
-     * Adds a signing certificate your applications can verify tokens against — the call you make to bring your own key, or to stage the next one before a rotation. (asynchronously)
-     * Adds a signing certificate your applications can verify tokens against — the call you make to bring your own key, or to stage the next one before a rotation. A name already used in your organization is refused.
+     * Adds a signing certificate your applications can verify tokens against — the call you make to stage the next one before a rotation. (asynchronously)
+     * Adds a signing certificate your applications can verify tokens against — the call you make to stage the next one before a rotation. A name already used in your organization is refused.  It registers the certificate&#39;s IDENTITY: its name (which is the JWKS &#x60;kid&#x60;), its algorithm, its expiry. Key material does not travel this way and cannot: the private key is not part of the Cert&#39;s JSON, so it is neither served here nor accepted here. It is supplied to the process by the deployment, under the name registered here (internal/keyring). Staging a rotation is therefore two halves — this call names the key, and the deployment provides it.
      * @param iamCert  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -12404,514 +11178,6 @@ public class IamApi {
 
         okhttp3.Call localVarCall = postIamCertsValidateBeforeCall(iamCert, _callback);
         Type localVarReturnType = new TypeToken<IamCert>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postIamCertsDelete
-     * @param iamCertsRef  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamCertsDeleteCall(@javax.annotation.Nonnull IamCertsRef iamCertsRef, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = iamCertsRef;
-
-        // create path and map variables
-        String localVarPath = "/v1/iam/certs/delete";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postIamCertsDeleteValidateBeforeCall(@javax.annotation.Nonnull IamCertsRef iamCertsRef, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'iamCertsRef' is set
-        if (iamCertsRef == null) {
-            throw new ApiException("Missing the required parameter 'iamCertsRef' when calling postIamCertsDelete(Async)");
-        }
-
-        return postIamCertsDeleteCall(iamCertsRef, _callback);
-
-    }
-
-    /**
-     * Removes a signing certificate.
-     * Removes a signing certificate. Tokens signed with it can no longer be verified, so retire it only once nothing is still presenting them.
-     * @param iamCertsRef  (required)
-     * @return IamCertsDeleteOutput
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public IamCertsDeleteOutput postIamCertsDelete(@javax.annotation.Nonnull IamCertsRef iamCertsRef) throws ApiException {
-        ApiResponse<IamCertsDeleteOutput> localVarResp = postIamCertsDeleteWithHttpInfo(iamCertsRef);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Removes a signing certificate.
-     * Removes a signing certificate. Tokens signed with it can no longer be verified, so retire it only once nothing is still presenting them.
-     * @param iamCertsRef  (required)
-     * @return ApiResponse&lt;IamCertsDeleteOutput&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<IamCertsDeleteOutput> postIamCertsDeleteWithHttpInfo(@javax.annotation.Nonnull IamCertsRef iamCertsRef) throws ApiException {
-        okhttp3.Call localVarCall = postIamCertsDeleteValidateBeforeCall(iamCertsRef, null);
-        Type localVarReturnType = new TypeToken<IamCertsDeleteOutput>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Removes a signing certificate. (asynchronously)
-     * Removes a signing certificate. Tokens signed with it can no longer be verified, so retire it only once nothing is still presenting them.
-     * @param iamCertsRef  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamCertsDeleteAsync(@javax.annotation.Nonnull IamCertsRef iamCertsRef, final ApiCallback<IamCertsDeleteOutput> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postIamCertsDeleteValidateBeforeCall(iamCertsRef, _callback);
-        Type localVarReturnType = new TypeToken<IamCertsDeleteOutput>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postIamCertsGet
-     * @param iamCertsRef  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamCertsGetCall(@javax.annotation.Nonnull IamCertsRef iamCertsRef, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = iamCertsRef;
-
-        // create path and map variables
-        String localVarPath = "/v1/iam/certs/get";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postIamCertsGetValidateBeforeCall(@javax.annotation.Nonnull IamCertsRef iamCertsRef, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'iamCertsRef' is set
-        if (iamCertsRef == null) {
-            throw new ApiException("Missing the required parameter 'iamCertsRef' when calling postIamCertsGet(Async)");
-        }
-
-        return postIamCertsGetCall(iamCertsRef, _callback);
-
-    }
-
-    /**
-     * Returns one signing certificate — its algorithm, its validity window and its public half.
-     * Returns one signing certificate — its algorithm, its validity window and its public half. The private key is masked.
-     * @param iamCertsRef  (required)
-     * @return IamCert
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public IamCert postIamCertsGet(@javax.annotation.Nonnull IamCertsRef iamCertsRef) throws ApiException {
-        ApiResponse<IamCert> localVarResp = postIamCertsGetWithHttpInfo(iamCertsRef);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Returns one signing certificate — its algorithm, its validity window and its public half.
-     * Returns one signing certificate — its algorithm, its validity window and its public half. The private key is masked.
-     * @param iamCertsRef  (required)
-     * @return ApiResponse&lt;IamCert&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<IamCert> postIamCertsGetWithHttpInfo(@javax.annotation.Nonnull IamCertsRef iamCertsRef) throws ApiException {
-        okhttp3.Call localVarCall = postIamCertsGetValidateBeforeCall(iamCertsRef, null);
-        Type localVarReturnType = new TypeToken<IamCert>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Returns one signing certificate — its algorithm, its validity window and its public half. (asynchronously)
-     * Returns one signing certificate — its algorithm, its validity window and its public half. The private key is masked.
-     * @param iamCertsRef  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamCertsGetAsync(@javax.annotation.Nonnull IamCertsRef iamCertsRef, final ApiCallback<IamCert> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postIamCertsGetValidateBeforeCall(iamCertsRef, _callback);
-        Type localVarReturnType = new TypeToken<IamCert>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postIamCertsUpdate
-     * @param iamCert  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamCertsUpdateCall(@javax.annotation.Nonnull IamCert iamCert, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = iamCert;
-
-        // create path and map variables
-        String localVarPath = "/v1/iam/certs/update";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postIamCertsUpdateValidateBeforeCall(@javax.annotation.Nonnull IamCert iamCert, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'iamCert' is set
-        if (iamCert == null) {
-            throw new ApiException("Missing the required parameter 'iamCert' when calling postIamCertsUpdate(Async)");
-        }
-
-        return postIamCertsUpdateCall(iamCert, _callback);
-
-    }
-
-    /**
-     * Changes a signing certificate&#39;s settings.
-     * Changes a signing certificate&#39;s settings. What it is called does not change, and neither does when it was added.
-     * @param iamCert  (required)
-     * @return IamCert
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public IamCert postIamCertsUpdate(@javax.annotation.Nonnull IamCert iamCert) throws ApiException {
-        ApiResponse<IamCert> localVarResp = postIamCertsUpdateWithHttpInfo(iamCert);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Changes a signing certificate&#39;s settings.
-     * Changes a signing certificate&#39;s settings. What it is called does not change, and neither does when it was added.
-     * @param iamCert  (required)
-     * @return ApiResponse&lt;IamCert&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<IamCert> postIamCertsUpdateWithHttpInfo(@javax.annotation.Nonnull IamCert iamCert) throws ApiException {
-        okhttp3.Call localVarCall = postIamCertsUpdateValidateBeforeCall(iamCert, null);
-        Type localVarReturnType = new TypeToken<IamCert>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Changes a signing certificate&#39;s settings. (asynchronously)
-     * Changes a signing certificate&#39;s settings. What it is called does not change, and neither does when it was added.
-     * @param iamCert  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamCertsUpdateAsync(@javax.annotation.Nonnull IamCert iamCert, final ApiCallback<IamCert> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postIamCertsUpdateValidateBeforeCall(iamCert, _callback);
-        Type localVarReturnType = new TypeToken<IamCert>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postIamDeleteApplication
-     * @param iamApplication  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamDeleteApplicationCall(@javax.annotation.Nonnull IamApplication iamApplication, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = iamApplication;
-
-        // create path and map variables
-        String localVarPath = "/v1/iam/delete-application";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postIamDeleteApplicationValidateBeforeCall(@javax.annotation.Nonnull IamApplication iamApplication, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'iamApplication' is set
-        if (iamApplication == null) {
-            throw new ApiException("Missing the required parameter 'iamApplication' when calling postIamDeleteApplication(Async)");
-        }
-
-        return postIamDeleteApplicationCall(iamApplication, _callback);
-
-    }
-
-    /**
-     * Deletes an application.
-     * Deletes an application. Anyone mid-sign-in through it is turned away and its client credentials stop working, so retire the integration first.  The older spelling of DELETE /v1/iam/application.
-     * @param iamApplication  (required)
-     * @return IamResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public IamResponse postIamDeleteApplication(@javax.annotation.Nonnull IamApplication iamApplication) throws ApiException {
-        ApiResponse<IamResponse> localVarResp = postIamDeleteApplicationWithHttpInfo(iamApplication);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Deletes an application.
-     * Deletes an application. Anyone mid-sign-in through it is turned away and its client credentials stop working, so retire the integration first.  The older spelling of DELETE /v1/iam/application.
-     * @param iamApplication  (required)
-     * @return ApiResponse&lt;IamResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<IamResponse> postIamDeleteApplicationWithHttpInfo(@javax.annotation.Nonnull IamApplication iamApplication) throws ApiException {
-        okhttp3.Call localVarCall = postIamDeleteApplicationValidateBeforeCall(iamApplication, null);
-        Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Deletes an application. (asynchronously)
-     * Deletes an application. Anyone mid-sign-in through it is turned away and its client credentials stop working, so retire the integration first.  The older spelling of DELETE /v1/iam/application.
-     * @param iamApplication  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamDeleteApplicationAsync(@javax.annotation.Nonnull IamApplication iamApplication, final ApiCallback<IamResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postIamDeleteApplicationValidateBeforeCall(iamApplication, _callback);
-        Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -13092,768 +11358,6 @@ public class IamApi {
         return localVarCall;
     }
     /**
-     * Build call for postIamDeleteOrganization
-     * @param iamDeleteOrganizationInput  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamDeleteOrganizationCall(@javax.annotation.Nonnull IamDeleteOrganizationInput iamDeleteOrganizationInput, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = iamDeleteOrganizationInput;
-
-        // create path and map variables
-        String localVarPath = "/v1/iam/delete-organization";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postIamDeleteOrganizationValidateBeforeCall(@javax.annotation.Nonnull IamDeleteOrganizationInput iamDeleteOrganizationInput, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'iamDeleteOrganizationInput' is set
-        if (iamDeleteOrganizationInput == null) {
-            throw new ApiException("Missing the required parameter 'iamDeleteOrganizationInput' when calling postIamDeleteOrganization(Async)");
-        }
-
-        return postIamDeleteOrganizationCall(iamDeleteOrganizationInput, _callback);
-
-    }
-
-    /**
-     * Deletes an organization and everything named inside it — its users, applications, roles, projects and workspaces.
-     * Deletes an organization and everything named inside it — its users, applications, roles, projects and workspaces. There is no undo, and every session issued under it stops working.  The older spelling of POST /v1/iam/organizations/delete.
-     * @param iamDeleteOrganizationInput  (required)
-     * @return IamResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public IamResponse postIamDeleteOrganization(@javax.annotation.Nonnull IamDeleteOrganizationInput iamDeleteOrganizationInput) throws ApiException {
-        ApiResponse<IamResponse> localVarResp = postIamDeleteOrganizationWithHttpInfo(iamDeleteOrganizationInput);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Deletes an organization and everything named inside it — its users, applications, roles, projects and workspaces.
-     * Deletes an organization and everything named inside it — its users, applications, roles, projects and workspaces. There is no undo, and every session issued under it stops working.  The older spelling of POST /v1/iam/organizations/delete.
-     * @param iamDeleteOrganizationInput  (required)
-     * @return ApiResponse&lt;IamResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<IamResponse> postIamDeleteOrganizationWithHttpInfo(@javax.annotation.Nonnull IamDeleteOrganizationInput iamDeleteOrganizationInput) throws ApiException {
-        okhttp3.Call localVarCall = postIamDeleteOrganizationValidateBeforeCall(iamDeleteOrganizationInput, null);
-        Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Deletes an organization and everything named inside it — its users, applications, roles, projects and workspaces. (asynchronously)
-     * Deletes an organization and everything named inside it — its users, applications, roles, projects and workspaces. There is no undo, and every session issued under it stops working.  The older spelling of POST /v1/iam/organizations/delete.
-     * @param iamDeleteOrganizationInput  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamDeleteOrganizationAsync(@javax.annotation.Nonnull IamDeleteOrganizationInput iamDeleteOrganizationInput, final ApiCallback<IamResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postIamDeleteOrganizationValidateBeforeCall(iamDeleteOrganizationInput, _callback);
-        Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postIamDeleteProject
-     * @param iamProjectsRef  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamDeleteProjectCall(@javax.annotation.Nonnull IamProjectsRef iamProjectsRef, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = iamProjectsRef;
-
-        // create path and map variables
-        String localVarPath = "/v1/iam/delete-project";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postIamDeleteProjectValidateBeforeCall(@javax.annotation.Nonnull IamProjectsRef iamProjectsRef, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'iamProjectsRef' is set
-        if (iamProjectsRef == null) {
-            throw new ApiException("Missing the required parameter 'iamProjectsRef' when calling postIamDeleteProject(Async)");
-        }
-
-        return postIamDeleteProjectCall(iamProjectsRef, _callback);
-
-    }
-
-    /**
-     * Deletes a project.
-     * Deletes a project. The people and roles in your organization are unchanged; what goes is the scope itself, so anything addressed by it must move first.  The older spelling of POST /v1/iam/projects/delete.
-     * @param iamProjectsRef  (required)
-     * @return IamResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public IamResponse postIamDeleteProject(@javax.annotation.Nonnull IamProjectsRef iamProjectsRef) throws ApiException {
-        ApiResponse<IamResponse> localVarResp = postIamDeleteProjectWithHttpInfo(iamProjectsRef);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Deletes a project.
-     * Deletes a project. The people and roles in your organization are unchanged; what goes is the scope itself, so anything addressed by it must move first.  The older spelling of POST /v1/iam/projects/delete.
-     * @param iamProjectsRef  (required)
-     * @return ApiResponse&lt;IamResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<IamResponse> postIamDeleteProjectWithHttpInfo(@javax.annotation.Nonnull IamProjectsRef iamProjectsRef) throws ApiException {
-        okhttp3.Call localVarCall = postIamDeleteProjectValidateBeforeCall(iamProjectsRef, null);
-        Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Deletes a project. (asynchronously)
-     * Deletes a project. The people and roles in your organization are unchanged; what goes is the scope itself, so anything addressed by it must move first.  The older spelling of POST /v1/iam/projects/delete.
-     * @param iamProjectsRef  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamDeleteProjectAsync(@javax.annotation.Nonnull IamProjectsRef iamProjectsRef, final ApiCallback<IamResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postIamDeleteProjectValidateBeforeCall(iamProjectsRef, _callback);
-        Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postIamDeleteProvider
-     * @param iamProvider  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamDeleteProviderCall(@javax.annotation.Nonnull IamProvider iamProvider, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = iamProvider;
-
-        // create path and map variables
-        String localVarPath = "/v1/iam/delete-provider";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postIamDeleteProviderValidateBeforeCall(@javax.annotation.Nonnull IamProvider iamProvider, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'iamProvider' is set
-        if (iamProvider == null) {
-            throw new ApiException("Missing the required parameter 'iamProvider' when calling postIamDeleteProvider(Async)");
-        }
-
-        return postIamDeleteProviderCall(iamProvider, _callback);
-
-    }
-
-    /**
-     * Removes a provider.
-     * Removes a provider. Sign-in through it stops for every application that used it, so detach those applications first if they have no other method.  The older spelling of POST /v1/iam/providers/delete.
-     * @param iamProvider  (required)
-     * @return IamResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public IamResponse postIamDeleteProvider(@javax.annotation.Nonnull IamProvider iamProvider) throws ApiException {
-        ApiResponse<IamResponse> localVarResp = postIamDeleteProviderWithHttpInfo(iamProvider);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Removes a provider.
-     * Removes a provider. Sign-in through it stops for every application that used it, so detach those applications first if they have no other method.  The older spelling of POST /v1/iam/providers/delete.
-     * @param iamProvider  (required)
-     * @return ApiResponse&lt;IamResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<IamResponse> postIamDeleteProviderWithHttpInfo(@javax.annotation.Nonnull IamProvider iamProvider) throws ApiException {
-        okhttp3.Call localVarCall = postIamDeleteProviderValidateBeforeCall(iamProvider, null);
-        Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Removes a provider. (asynchronously)
-     * Removes a provider. Sign-in through it stops for every application that used it, so detach those applications first if they have no other method.  The older spelling of POST /v1/iam/providers/delete.
-     * @param iamProvider  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamDeleteProviderAsync(@javax.annotation.Nonnull IamProvider iamProvider, final ApiCallback<IamResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postIamDeleteProviderValidateBeforeCall(iamProvider, _callback);
-        Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postIamDeleteRole
-     * @param iamRolesRef  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamDeleteRoleCall(@javax.annotation.Nonnull IamRolesRef iamRolesRef, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = iamRolesRef;
-
-        // create path and map variables
-        String localVarPath = "/v1/iam/delete-role";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postIamDeleteRoleValidateBeforeCall(@javax.annotation.Nonnull IamRolesRef iamRolesRef, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'iamRolesRef' is set
-        if (iamRolesRef == null) {
-            throw new ApiException("Missing the required parameter 'iamRolesRef' when calling postIamDeleteRole(Async)");
-        }
-
-        return postIamDeleteRoleCall(iamRolesRef, _callback);
-
-    }
-
-    /**
-     * Deletes a role.
-     * Deletes a role. Everyone in it loses the access it carried; their accounts and any other roles they hold are untouched.  The older spelling of POST /v1/iam/roles/delete.
-     * @param iamRolesRef  (required)
-     * @return IamResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public IamResponse postIamDeleteRole(@javax.annotation.Nonnull IamRolesRef iamRolesRef) throws ApiException {
-        ApiResponse<IamResponse> localVarResp = postIamDeleteRoleWithHttpInfo(iamRolesRef);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Deletes a role.
-     * Deletes a role. Everyone in it loses the access it carried; their accounts and any other roles they hold are untouched.  The older spelling of POST /v1/iam/roles/delete.
-     * @param iamRolesRef  (required)
-     * @return ApiResponse&lt;IamResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<IamResponse> postIamDeleteRoleWithHttpInfo(@javax.annotation.Nonnull IamRolesRef iamRolesRef) throws ApiException {
-        okhttp3.Call localVarCall = postIamDeleteRoleValidateBeforeCall(iamRolesRef, null);
-        Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Deletes a role. (asynchronously)
-     * Deletes a role. Everyone in it loses the access it carried; their accounts and any other roles they hold are untouched.  The older spelling of POST /v1/iam/roles/delete.
-     * @param iamRolesRef  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamDeleteRoleAsync(@javax.annotation.Nonnull IamRolesRef iamRolesRef, final ApiCallback<IamResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postIamDeleteRoleValidateBeforeCall(iamRolesRef, _callback);
-        Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postIamDeleteUser
-     * @param iamUserBody  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamDeleteUserCall(@javax.annotation.Nonnull IamUserBody iamUserBody, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = iamUserBody;
-
-        // create path and map variables
-        String localVarPath = "/v1/iam/delete-user";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postIamDeleteUserValidateBeforeCall(@javax.annotation.Nonnull IamUserBody iamUserBody, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'iamUserBody' is set
-        if (iamUserBody == null) {
-            throw new ApiException("Missing the required parameter 'iamUserBody' when calling postIamDeleteUser(Async)");
-        }
-
-        return postIamDeleteUserCall(iamUserBody, _callback);
-
-    }
-
-    /**
-     * Removes a person from your organization.
-     * Removes a person from your organization. Their sessions stop working and the account is gone, not suspended — to keep the record and only stop sign-in, update the user instead.  The older spelling of POST /v1/iam/users/delete.
-     * @param iamUserBody  (required)
-     * @return IamResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public IamResponse postIamDeleteUser(@javax.annotation.Nonnull IamUserBody iamUserBody) throws ApiException {
-        ApiResponse<IamResponse> localVarResp = postIamDeleteUserWithHttpInfo(iamUserBody);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Removes a person from your organization.
-     * Removes a person from your organization. Their sessions stop working and the account is gone, not suspended — to keep the record and only stop sign-in, update the user instead.  The older spelling of POST /v1/iam/users/delete.
-     * @param iamUserBody  (required)
-     * @return ApiResponse&lt;IamResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<IamResponse> postIamDeleteUserWithHttpInfo(@javax.annotation.Nonnull IamUserBody iamUserBody) throws ApiException {
-        okhttp3.Call localVarCall = postIamDeleteUserValidateBeforeCall(iamUserBody, null);
-        Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Removes a person from your organization. (asynchronously)
-     * Removes a person from your organization. Their sessions stop working and the account is gone, not suspended — to keep the record and only stop sign-in, update the user instead.  The older spelling of POST /v1/iam/users/delete.
-     * @param iamUserBody  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamDeleteUserAsync(@javax.annotation.Nonnull IamUserBody iamUserBody, final ApiCallback<IamResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postIamDeleteUserValidateBeforeCall(iamUserBody, _callback);
-        Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postIamDeleteWorkspace
-     * @param iamWorkspacesRef  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamDeleteWorkspaceCall(@javax.annotation.Nonnull IamWorkspacesRef iamWorkspacesRef, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = iamWorkspacesRef;
-
-        // create path and map variables
-        String localVarPath = "/v1/iam/delete-workspace";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postIamDeleteWorkspaceValidateBeforeCall(@javax.annotation.Nonnull IamWorkspacesRef iamWorkspacesRef, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'iamWorkspacesRef' is set
-        if (iamWorkspacesRef == null) {
-            throw new ApiException("Missing the required parameter 'iamWorkspacesRef' when calling postIamDeleteWorkspace(Async)");
-        }
-
-        return postIamDeleteWorkspaceCall(iamWorkspacesRef, _callback);
-
-    }
-
-    /**
-     * Deletes a workspace.
-     * Deletes a workspace. The people and roles in your organization are unchanged; what goes is the scope itself.  The older spelling of POST /v1/iam/workspaces/delete.
-     * @param iamWorkspacesRef  (required)
-     * @return IamResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public IamResponse postIamDeleteWorkspace(@javax.annotation.Nonnull IamWorkspacesRef iamWorkspacesRef) throws ApiException {
-        ApiResponse<IamResponse> localVarResp = postIamDeleteWorkspaceWithHttpInfo(iamWorkspacesRef);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Deletes a workspace.
-     * Deletes a workspace. The people and roles in your organization are unchanged; what goes is the scope itself.  The older spelling of POST /v1/iam/workspaces/delete.
-     * @param iamWorkspacesRef  (required)
-     * @return ApiResponse&lt;IamResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<IamResponse> postIamDeleteWorkspaceWithHttpInfo(@javax.annotation.Nonnull IamWorkspacesRef iamWorkspacesRef) throws ApiException {
-        okhttp3.Call localVarCall = postIamDeleteWorkspaceValidateBeforeCall(iamWorkspacesRef, null);
-        Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Deletes a workspace. (asynchronously)
-     * Deletes a workspace. The people and roles in your organization are unchanged; what goes is the scope itself.  The older spelling of POST /v1/iam/workspaces/delete.
-     * @param iamWorkspacesRef  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamDeleteWorkspaceAsync(@javax.annotation.Nonnull IamWorkspacesRef iamWorkspacesRef, final ApiCallback<IamResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postIamDeleteWorkspaceValidateBeforeCall(iamWorkspacesRef, _callback);
-        Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
      * Build call for postIamInvitations
      * @param iamInvitationsInput  (required)
      * @param _callback Callback for upload/download progress
@@ -13976,387 +11480,6 @@ public class IamApi {
     public okhttp3.Call postIamInvitationsAsync(@javax.annotation.Nonnull IamInvitationsInput iamInvitationsInput, final ApiCallback<IamInvitation> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postIamInvitationsValidateBeforeCall(iamInvitationsInput, _callback);
-        Type localVarReturnType = new TypeToken<IamInvitation>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postIamInvitationsDelete
-     * @param iamInvitationsRef  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamInvitationsDeleteCall(@javax.annotation.Nonnull IamInvitationsRef iamInvitationsRef, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = iamInvitationsRef;
-
-        // create path and map variables
-        String localVarPath = "/v1/iam/invitations/delete";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postIamInvitationsDeleteValidateBeforeCall(@javax.annotation.Nonnull IamInvitationsRef iamInvitationsRef, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'iamInvitationsRef' is set
-        if (iamInvitationsRef == null) {
-            throw new ApiException("Missing the required parameter 'iamInvitationsRef' when calling postIamInvitationsDelete(Async)");
-        }
-
-        return postIamInvitationsDeleteCall(iamInvitationsRef, _callback);
-
-    }
-
-    /**
-     * Withdraws an invitation.
-     * Withdraws an invitation. It stops being redeemable at once; anyone who already joined through it keeps their account.
-     * @param iamInvitationsRef  (required)
-     * @return IamInvitationsDeleteOutput
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public IamInvitationsDeleteOutput postIamInvitationsDelete(@javax.annotation.Nonnull IamInvitationsRef iamInvitationsRef) throws ApiException {
-        ApiResponse<IamInvitationsDeleteOutput> localVarResp = postIamInvitationsDeleteWithHttpInfo(iamInvitationsRef);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Withdraws an invitation.
-     * Withdraws an invitation. It stops being redeemable at once; anyone who already joined through it keeps their account.
-     * @param iamInvitationsRef  (required)
-     * @return ApiResponse&lt;IamInvitationsDeleteOutput&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<IamInvitationsDeleteOutput> postIamInvitationsDeleteWithHttpInfo(@javax.annotation.Nonnull IamInvitationsRef iamInvitationsRef) throws ApiException {
-        okhttp3.Call localVarCall = postIamInvitationsDeleteValidateBeforeCall(iamInvitationsRef, null);
-        Type localVarReturnType = new TypeToken<IamInvitationsDeleteOutput>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Withdraws an invitation. (asynchronously)
-     * Withdraws an invitation. It stops being redeemable at once; anyone who already joined through it keeps their account.
-     * @param iamInvitationsRef  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamInvitationsDeleteAsync(@javax.annotation.Nonnull IamInvitationsRef iamInvitationsRef, final ApiCallback<IamInvitationsDeleteOutput> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postIamInvitationsDeleteValidateBeforeCall(iamInvitationsRef, _callback);
-        Type localVarReturnType = new TypeToken<IamInvitationsDeleteOutput>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postIamInvitationsGet
-     * @param iamInvitationsRef  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamInvitationsGetCall(@javax.annotation.Nonnull IamInvitationsRef iamInvitationsRef, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = iamInvitationsRef;
-
-        // create path and map variables
-        String localVarPath = "/v1/iam/invitations/get";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postIamInvitationsGetValidateBeforeCall(@javax.annotation.Nonnull IamInvitationsRef iamInvitationsRef, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'iamInvitationsRef' is set
-        if (iamInvitationsRef == null) {
-            throw new ApiException("Missing the required parameter 'iamInvitationsRef' when calling postIamInvitationsGet(Async)");
-        }
-
-        return postIamInvitationsGetCall(iamInvitationsRef, _callback);
-
-    }
-
-    /**
-     * Returns one invitation: who it is for, what it grants on acceptance, and when it expires.
-     * Returns one invitation: who it is for, what it grants on acceptance, and when it expires.
-     * @param iamInvitationsRef  (required)
-     * @return IamInvitation
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public IamInvitation postIamInvitationsGet(@javax.annotation.Nonnull IamInvitationsRef iamInvitationsRef) throws ApiException {
-        ApiResponse<IamInvitation> localVarResp = postIamInvitationsGetWithHttpInfo(iamInvitationsRef);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Returns one invitation: who it is for, what it grants on acceptance, and when it expires.
-     * Returns one invitation: who it is for, what it grants on acceptance, and when it expires.
-     * @param iamInvitationsRef  (required)
-     * @return ApiResponse&lt;IamInvitation&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<IamInvitation> postIamInvitationsGetWithHttpInfo(@javax.annotation.Nonnull IamInvitationsRef iamInvitationsRef) throws ApiException {
-        okhttp3.Call localVarCall = postIamInvitationsGetValidateBeforeCall(iamInvitationsRef, null);
-        Type localVarReturnType = new TypeToken<IamInvitation>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Returns one invitation: who it is for, what it grants on acceptance, and when it expires. (asynchronously)
-     * Returns one invitation: who it is for, what it grants on acceptance, and when it expires.
-     * @param iamInvitationsRef  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamInvitationsGetAsync(@javax.annotation.Nonnull IamInvitationsRef iamInvitationsRef, final ApiCallback<IamInvitation> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postIamInvitationsGetValidateBeforeCall(iamInvitationsRef, _callback);
-        Type localVarReturnType = new TypeToken<IamInvitation>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postIamInvitationsUpdate
-     * @param iamInvitationsInput  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamInvitationsUpdateCall(@javax.annotation.Nonnull IamInvitationsInput iamInvitationsInput, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = iamInvitationsInput;
-
-        // create path and map variables
-        String localVarPath = "/v1/iam/invitations/update";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postIamInvitationsUpdateValidateBeforeCall(@javax.annotation.Nonnull IamInvitationsInput iamInvitationsInput, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'iamInvitationsInput' is set
-        if (iamInvitationsInput == null) {
-            throw new ApiException("Missing the required parameter 'iamInvitationsInput' when calling postIamInvitationsUpdate(Async)");
-        }
-
-        return postIamInvitationsUpdateCall(iamInvitationsInput, _callback);
-
-    }
-
-    /**
-     * Changes an invitation&#39;s terms — the role it grants, how many may redeem it, or when it expires.
-     * Changes an invitation&#39;s terms — the role it grants, how many may redeem it, or when it expires. What it is called does not change.
-     * @param iamInvitationsInput  (required)
-     * @return IamInvitation
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public IamInvitation postIamInvitationsUpdate(@javax.annotation.Nonnull IamInvitationsInput iamInvitationsInput) throws ApiException {
-        ApiResponse<IamInvitation> localVarResp = postIamInvitationsUpdateWithHttpInfo(iamInvitationsInput);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Changes an invitation&#39;s terms — the role it grants, how many may redeem it, or when it expires.
-     * Changes an invitation&#39;s terms — the role it grants, how many may redeem it, or when it expires. What it is called does not change.
-     * @param iamInvitationsInput  (required)
-     * @return ApiResponse&lt;IamInvitation&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<IamInvitation> postIamInvitationsUpdateWithHttpInfo(@javax.annotation.Nonnull IamInvitationsInput iamInvitationsInput) throws ApiException {
-        okhttp3.Call localVarCall = postIamInvitationsUpdateValidateBeforeCall(iamInvitationsInput, null);
-        Type localVarReturnType = new TypeToken<IamInvitation>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Changes an invitation&#39;s terms — the role it grants, how many may redeem it, or when it expires. (asynchronously)
-     * Changes an invitation&#39;s terms — the role it grants, how many may redeem it, or when it expires. What it is called does not change.
-     * @param iamInvitationsInput  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamInvitationsUpdateAsync(@javax.annotation.Nonnull IamInvitationsInput iamInvitationsInput, final ApiCallback<IamInvitation> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postIamInvitationsUpdateValidateBeforeCall(iamInvitationsInput, _callback);
         Type localVarReturnType = new TypeToken<IamInvitation>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -14572,436 +11695,6 @@ public class IamApi {
     public okhttp3.Call postIamKeysAsync(@javax.annotation.Nonnull IamKey iamKey, final ApiCallback<IamKey> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postIamKeysValidateBeforeCall(iamKey, _callback);
-        Type localVarReturnType = new TypeToken<IamKey>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postIamKeysDelete
-     * @param iamKeysRef  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamKeysDeleteCall(@javax.annotation.Nonnull IamKeysRef iamKeysRef, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = iamKeysRef;
-
-        // create path and map variables
-        String localVarPath = "/v1/iam/keys/delete";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postIamKeysDeleteValidateBeforeCall(@javax.annotation.Nonnull IamKeysRef iamKeysRef, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'iamKeysRef' is set
-        if (iamKeysRef == null) {
-            throw new ApiException("Missing the required parameter 'iamKeysRef' when calling postIamKeysDelete(Async)");
-        }
-
-        return postIamKeysDeleteCall(iamKeysRef, _callback);
-
-    }
-
-    /**
-     * Revokes an API key.
-     * Revokes an API key. Anything still presenting it stops being authorized at once, so roll the replacement out before you revoke.
-     * @param iamKeysRef  (required)
-     * @return IamDeleteResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public IamDeleteResponse postIamKeysDelete(@javax.annotation.Nonnull IamKeysRef iamKeysRef) throws ApiException {
-        ApiResponse<IamDeleteResponse> localVarResp = postIamKeysDeleteWithHttpInfo(iamKeysRef);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Revokes an API key.
-     * Revokes an API key. Anything still presenting it stops being authorized at once, so roll the replacement out before you revoke.
-     * @param iamKeysRef  (required)
-     * @return ApiResponse&lt;IamDeleteResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<IamDeleteResponse> postIamKeysDeleteWithHttpInfo(@javax.annotation.Nonnull IamKeysRef iamKeysRef) throws ApiException {
-        okhttp3.Call localVarCall = postIamKeysDeleteValidateBeforeCall(iamKeysRef, null);
-        Type localVarReturnType = new TypeToken<IamDeleteResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Revokes an API key. (asynchronously)
-     * Revokes an API key. Anything still presenting it stops being authorized at once, so roll the replacement out before you revoke.
-     * @param iamKeysRef  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamKeysDeleteAsync(@javax.annotation.Nonnull IamKeysRef iamKeysRef, final ApiCallback<IamDeleteResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postIamKeysDeleteValidateBeforeCall(iamKeysRef, _callback);
-        Type localVarReturnType = new TypeToken<IamDeleteResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postIamKeysMint
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public okhttp3.Call postIamKeysMintCall(final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/iam/keys/mint";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postIamKeysMintValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postIamKeysMintCall(_callback);
-
-    }
-
-    /**
-     * (re)generates the target user&#39;s key of the requested TYPE and returns it once, over the shared authorizeMinter + mintTarget seam.
-     * (re)generates the target user&#39;s key of the requested TYPE and returns it once, over the shared authorizeMinter + mintTarget seam. &#x60;?type&#x3D;secret&#x60; (the default) yields the confidential sk-; &#x60;?type&#x3D;publishable&#x60; yields the pk- that is safe to ship in client JS and resolves to an org, never a principal.  It writes the schema.Key row that the resolvers actually read. schema.User.AccessKey is not a credential and nothing resolves it, so a key stamped there would authenticate nobody.
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public void postIamKeysMint() throws ApiException {
-        postIamKeysMintWithHttpInfo();
-    }
-
-    /**
-     * (re)generates the target user&#39;s key of the requested TYPE and returns it once, over the shared authorizeMinter + mintTarget seam.
-     * (re)generates the target user&#39;s key of the requested TYPE and returns it once, over the shared authorizeMinter + mintTarget seam. &#x60;?type&#x3D;secret&#x60; (the default) yields the confidential sk-; &#x60;?type&#x3D;publishable&#x60; yields the pk- that is safe to ship in client JS and resolves to an org, never a principal.  It writes the schema.Key row that the resolvers actually read. schema.User.AccessKey is not a credential and nothing resolves it, so a key stamped there would authenticate nobody.
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Void> postIamKeysMintWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postIamKeysMintValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * (re)generates the target user&#39;s key of the requested TYPE and returns it once, over the shared authorizeMinter + mintTarget seam. (asynchronously)
-     * (re)generates the target user&#39;s key of the requested TYPE and returns it once, over the shared authorizeMinter + mintTarget seam. &#x60;?type&#x3D;secret&#x60; (the default) yields the confidential sk-; &#x60;?type&#x3D;publishable&#x60; yields the pk- that is safe to ship in client JS and resolves to an org, never a principal.  It writes the schema.Key row that the resolvers actually read. schema.User.AccessKey is not a credential and nothing resolves it, so a key stamped there would authenticate nobody.
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public okhttp3.Call postIamKeysMintAsync(final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postIamKeysMintValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postIamKeysRevoke
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public okhttp3.Call postIamKeysRevokeCall(final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/iam/keys/revoke";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postIamKeysRevokeValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postIamKeysRevokeCall(_callback);
-
-    }
-
-    /**
-     * Clears the target user&#39;s key of the requested TYPE (immediate revoke).
-     * Clears the target user&#39;s key of the requested TYPE (immediate revoke). Scoped by the same &#x60;?type&#x60; field mint takes, so revoking the browser key leaves the server key working. A secret key&#39;s stored value is the sk- in its schema.Key row.
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public void postIamKeysRevoke() throws ApiException {
-        postIamKeysRevokeWithHttpInfo();
-    }
-
-    /**
-     * Clears the target user&#39;s key of the requested TYPE (immediate revoke).
-     * Clears the target user&#39;s key of the requested TYPE (immediate revoke). Scoped by the same &#x60;?type&#x60; field mint takes, so revoking the browser key leaves the server key working. A secret key&#39;s stored value is the sk- in its schema.Key row.
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Void> postIamKeysRevokeWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postIamKeysRevokeValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * Clears the target user&#39;s key of the requested TYPE (immediate revoke). (asynchronously)
-     * Clears the target user&#39;s key of the requested TYPE (immediate revoke). Scoped by the same &#x60;?type&#x60; field mint takes, so revoking the browser key leaves the server key working. A secret key&#39;s stored value is the sk- in its schema.Key row.
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public okhttp3.Call postIamKeysRevokeAsync(final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postIamKeysRevokeValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postIamKeysUpdate
-     * @param iamKey  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamKeysUpdateCall(@javax.annotation.Nonnull IamKey iamKey, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = iamKey;
-
-        // create path and map variables
-        String localVarPath = "/v1/iam/keys/update";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postIamKeysUpdateValidateBeforeCall(@javax.annotation.Nonnull IamKey iamKey, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'iamKey' is set
-        if (iamKey == null) {
-            throw new ApiException("Missing the required parameter 'iamKey' when calling postIamKeysUpdate(Async)");
-        }
-
-        return postIamKeysUpdateCall(iamKey, _callback);
-
-    }
-
-    /**
-     * Changes what a key is called or what it may reach.
-     * Changes what a key is called or what it may reach. The credential itself is not reissued — the key in your deployment keeps working.
-     * @param iamKey  (required)
-     * @return IamKey
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public IamKey postIamKeysUpdate(@javax.annotation.Nonnull IamKey iamKey) throws ApiException {
-        ApiResponse<IamKey> localVarResp = postIamKeysUpdateWithHttpInfo(iamKey);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Changes what a key is called or what it may reach.
-     * Changes what a key is called or what it may reach. The credential itself is not reissued — the key in your deployment keeps working.
-     * @param iamKey  (required)
-     * @return ApiResponse&lt;IamKey&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<IamKey> postIamKeysUpdateWithHttpInfo(@javax.annotation.Nonnull IamKey iamKey) throws ApiException {
-        okhttp3.Call localVarCall = postIamKeysUpdateValidateBeforeCall(iamKey, null);
-        Type localVarReturnType = new TypeToken<IamKey>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Changes what a key is called or what it may reach. (asynchronously)
-     * Changes what a key is called or what it may reach. The credential itself is not reissued — the key in your deployment keeps working.
-     * @param iamKey  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamKeysUpdateAsync(@javax.annotation.Nonnull IamKey iamKey, final ApiCallback<IamKey> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postIamKeysUpdateValidateBeforeCall(iamKey, _callback);
         Type localVarReturnType = new TypeToken<IamKey>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -15271,94 +11964,6 @@ public class IamApi {
         return localVarCall;
     }
     /**
-     * Build call for postIamMfaDisable
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public okhttp3.Call postIamMfaDisableCall(final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/iam/mfa/disable";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postIamMfaDisableValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postIamMfaDisableCall(_callback);
-
-    }
-
-    /**
-     * Turns a factor off, so sign-in stops asking for it.
-     * Turns a factor off, so sign-in stops asking for it. Naming no factor turns off ALL of them — the reset path. People may do this for themselves; doing it for somebody else takes an administrator, which is what makes it the way back in when a phone is lost.  The recovery codes go with the last factor: they are the way past a challenge, so keeping them alive for an account with nothing to challenge would leave a standing credential behind.
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public void postIamMfaDisable() throws ApiException {
-        postIamMfaDisableWithHttpInfo();
-    }
-
-    /**
-     * Turns a factor off, so sign-in stops asking for it.
-     * Turns a factor off, so sign-in stops asking for it. Naming no factor turns off ALL of them — the reset path. People may do this for themselves; doing it for somebody else takes an administrator, which is what makes it the way back in when a phone is lost.  The recovery codes go with the last factor: they are the way past a challenge, so keeping them alive for an account with nothing to challenge would leave a standing credential behind.
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Void> postIamMfaDisableWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postIamMfaDisableValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * Turns a factor off, so sign-in stops asking for it. (asynchronously)
-     * Turns a factor off, so sign-in stops asking for it. Naming no factor turns off ALL of them — the reset path. People may do this for themselves; doing it for somebody else takes an administrator, which is what makes it the way back in when a phone is lost.  The recovery codes go with the last factor: they are the way past a challenge, so keeping them alive for an account with nothing to challenge would leave a standing credential behind.
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public okhttp3.Call postIamMfaDisableAsync(final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postIamMfaDisableValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
      * Build call for postIamMfaPreferred
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -15503,7 +12108,7 @@ public class IamApi {
 
     /**
      * Finishes the enrolment: from here the account&#39;s sign-ins ask for this factor.
-     * Finishes the enrolment: from here the account&#39;s sign-ins ask for this factor. It requires the proof initiate handed out — a passcode from the authenticator, or the code that was sent — and verifies it BEFORE writing anything.  It used to write on the strength of a &#x60;secret&#x60; field alone. A client that skipped the verify step, scanned the QR into the wrong app, or was simply buggy switched on a factor no code would ever satisfy, and the account was then locked out with no self-service way back: the gate holds the sign-in before minting, so the person cannot obtain the bearer that disable requires.  The recovery codes are minted here and returned ONCE, on the first factor the account adds. Answering with them is the way back in when no factor can be produced, so they are the same value the row&#39;s digests were made from — by construction, not by a client echoing them back.
+     * Finishes the enrolment: from here the account&#39;s sign-ins ask for this factor. It requires the proof initiate handed out — a passcode from the authenticator, or the code that was sent — and verifies it BEFORE writing anything.  Verifying BEFORE writing is what keeps a client that never completed the proof — a skipped verify step, a QR scanned into the wrong app, a bug — from switching on a factor no code can satisfy. That would lock the account out with no self-service way back: the gate holds the sign-in before minting, so the person could not obtain the bearer that disable requires.  The recovery codes are minted here and returned ONCE, on the first factor the account adds. Answering with them is the way back in when no factor can be produced, so they are the same value the row&#39;s digests were made from — by construction, not by a client echoing them back.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public void postIamMfaSetupEnable() throws ApiException {
@@ -15512,7 +12117,7 @@ public class IamApi {
 
     /**
      * Finishes the enrolment: from here the account&#39;s sign-ins ask for this factor.
-     * Finishes the enrolment: from here the account&#39;s sign-ins ask for this factor. It requires the proof initiate handed out — a passcode from the authenticator, or the code that was sent — and verifies it BEFORE writing anything.  It used to write on the strength of a &#x60;secret&#x60; field alone. A client that skipped the verify step, scanned the QR into the wrong app, or was simply buggy switched on a factor no code would ever satisfy, and the account was then locked out with no self-service way back: the gate holds the sign-in before minting, so the person cannot obtain the bearer that disable requires.  The recovery codes are minted here and returned ONCE, on the first factor the account adds. Answering with them is the way back in when no factor can be produced, so they are the same value the row&#39;s digests were made from — by construction, not by a client echoing them back.
+     * Finishes the enrolment: from here the account&#39;s sign-ins ask for this factor. It requires the proof initiate handed out — a passcode from the authenticator, or the code that was sent — and verifies it BEFORE writing anything.  Verifying BEFORE writing is what keeps a client that never completed the proof — a skipped verify step, a QR scanned into the wrong app, a bug — from switching on a factor no code can satisfy. That would lock the account out with no self-service way back: the gate holds the sign-in before minting, so the person could not obtain the bearer that disable requires.  The recovery codes are minted here and returned ONCE, on the first factor the account adds. Answering with them is the way back in when no factor can be produced, so they are the same value the row&#39;s digests were made from — by construction, not by a client echoing them back.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -15523,7 +12128,7 @@ public class IamApi {
 
     /**
      * Finishes the enrolment: from here the account&#39;s sign-ins ask for this factor. (asynchronously)
-     * Finishes the enrolment: from here the account&#39;s sign-ins ask for this factor. It requires the proof initiate handed out — a passcode from the authenticator, or the code that was sent — and verifies it BEFORE writing anything.  It used to write on the strength of a &#x60;secret&#x60; field alone. A client that skipped the verify step, scanned the QR into the wrong app, or was simply buggy switched on a factor no code would ever satisfy, and the account was then locked out with no self-service way back: the gate holds the sign-in before minting, so the person cannot obtain the bearer that disable requires.  The recovery codes are minted here and returned ONCE, on the first factor the account adds. Answering with them is the way back in when no factor can be produced, so they are the same value the row&#39;s digests were made from — by construction, not by a client echoing them back.
+     * Finishes the enrolment: from here the account&#39;s sign-ins ask for this factor. It requires the proof initiate handed out — a passcode from the authenticator, or the code that was sent — and verifies it BEFORE writing anything.  Verifying BEFORE writing is what keeps a client that never completed the proof — a skipped verify step, a QR scanned into the wrong app, a bug — from switching on a factor no code can satisfy. That would lock the account out with no self-service way back: the gate holds the sign-in before minting, so the person could not obtain the bearer that disable requires.  The recovery codes are minted here and returned ONCE, on the first factor the account adds. Answering with them is the way back in when no factor can be produced, so they are the same value the row&#39;s digests were made from — by construction, not by a client echoing them back.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -15943,7 +12548,7 @@ public class IamApi {
 
     /**
      * Answers \&quot;what am I approving?\&quot; for a pending device code.
-     * Answers \&quot;what am I approving?\&quot; for a pending device code.  The approval page exists to tell a human WHICH application they are authorizing; a page that names the wrong one defeats the control it implements. It used to render the portal&#39;s own app name — a constant, &#x60;hanzo-console&#x60; for every code — so a device code minted by &#x60;hanzo-cli&#x60; was approved under a screen naming a different application entirely. The client is a property of the CODE, so it is read from the code&#39;s row here and nowhere else.  Requires a signed-in session, and answers with the same ONE opaque refusal approveDevice uses. That is deliberate: the user_code is only 40 bits and is the one secret in this flow, so an unauthenticated lookup — or one that distinguished unknown from expired from already-approved — would be an oracle for hunting live codes. Gated and opaque, it reveals strictly less than the approval the same caller could already attempt.
+     * Answers \&quot;what am I approving?\&quot; for a pending device code.  The approval page exists to tell a human WHICH application they are authorizing; a page that names any other one defeats the control it implements. The client is a property of the CODE, not of the page or of whatever app the browser happens to be signed in to, so it is read from the code&#39;s row here and nowhere else.  Requires a signed-in session, and answers with the same ONE opaque refusal approveDevice uses. That is deliberate: the user_code is only 40 bits and is the one secret in this flow, so an unauthenticated lookup — or one that distinguished unknown from expired from already-approved — would be an oracle for hunting live codes. Gated and opaque, it reveals strictly less than the approval the same caller could already attempt.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public void postIamOauthDeviceInfo() throws ApiException {
@@ -15952,7 +12557,7 @@ public class IamApi {
 
     /**
      * Answers \&quot;what am I approving?\&quot; for a pending device code.
-     * Answers \&quot;what am I approving?\&quot; for a pending device code.  The approval page exists to tell a human WHICH application they are authorizing; a page that names the wrong one defeats the control it implements. It used to render the portal&#39;s own app name — a constant, &#x60;hanzo-console&#x60; for every code — so a device code minted by &#x60;hanzo-cli&#x60; was approved under a screen naming a different application entirely. The client is a property of the CODE, so it is read from the code&#39;s row here and nowhere else.  Requires a signed-in session, and answers with the same ONE opaque refusal approveDevice uses. That is deliberate: the user_code is only 40 bits and is the one secret in this flow, so an unauthenticated lookup — or one that distinguished unknown from expired from already-approved — would be an oracle for hunting live codes. Gated and opaque, it reveals strictly less than the approval the same caller could already attempt.
+     * Answers \&quot;what am I approving?\&quot; for a pending device code.  The approval page exists to tell a human WHICH application they are authorizing; a page that names any other one defeats the control it implements. The client is a property of the CODE, not of the page or of whatever app the browser happens to be signed in to, so it is read from the code&#39;s row here and nowhere else.  Requires a signed-in session, and answers with the same ONE opaque refusal approveDevice uses. That is deliberate: the user_code is only 40 bits and is the one secret in this flow, so an unauthenticated lookup — or one that distinguished unknown from expired from already-approved — would be an oracle for hunting live codes. Gated and opaque, it reveals strictly less than the approval the same caller could already attempt.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -15963,7 +12568,7 @@ public class IamApi {
 
     /**
      * Answers \&quot;what am I approving?\&quot; for a pending device code. (asynchronously)
-     * Answers \&quot;what am I approving?\&quot; for a pending device code.  The approval page exists to tell a human WHICH application they are authorizing; a page that names the wrong one defeats the control it implements. It used to render the portal&#39;s own app name — a constant, &#x60;hanzo-console&#x60; for every code — so a device code minted by &#x60;hanzo-cli&#x60; was approved under a screen naming a different application entirely. The client is a property of the CODE, so it is read from the code&#39;s row here and nowhere else.  Requires a signed-in session, and answers with the same ONE opaque refusal approveDevice uses. That is deliberate: the user_code is only 40 bits and is the one secret in this flow, so an unauthenticated lookup — or one that distinguished unknown from expired from already-approved — would be an oracle for hunting live codes. Gated and opaque, it reveals strictly less than the approval the same caller could already attempt.
+     * Answers \&quot;what am I approving?\&quot; for a pending device code.  The approval page exists to tell a human WHICH application they are authorizing; a page that names any other one defeats the control it implements. The client is a property of the CODE, not of the page or of whatever app the browser happens to be signed in to, so it is read from the code&#39;s row here and nowhere else.  Requires a signed-in session, and answers with the same ONE opaque refusal approveDevice uses. That is deliberate: the user_code is only 40 bits and is the one secret in this flow, so an unauthenticated lookup — or one that distinguished unknown from expired from already-approved — would be an oracle for hunting live codes. Gated and opaque, it reveals strictly less than the approval the same caller could already attempt.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -16207,7 +12812,7 @@ public class IamApi {
 
     /**
      * Ends a sign-in and sends the browser somewhere sensible.
-     * Ends a sign-in and sends the browser somewhere sensible. Accepts GET or POST, so it works as a plain link.  It ACTUALLY signs you out, which is worth stating because the endpoint spent a release not doing it: the whole body computed a redirect and answered {\&quot;status\&quot;:\&quot;ok\&quot;} unconditionally — no session ended, no token revoked. A logout that reports success while leaving the session live is worse than no logout at all, because the person on the shared machine believes it worked. Three things happen here now, in this order:   1. The browser session dies — sid revoked server-side AND the cookie expired     (sessions.Clear). Server-side revocation is the load-bearing half: a copy     of the cookie taken before logout must not still resolve.  2. The relying party&#39;s tokens are revoked when an id_token_hint names it, so     the refresh token cannot mint a fresh access token after the human left.     Revocation state is authoritative — a JWT&#39;s &#x60;exp&#x60; still reads valid for     days, so expiry is necessary but never sufficient.  3. Only then is a redirect considered, and only to a REGISTERED uri.  The open-redirect guard is unchanged: a redirect happens only when a VERIFIED id_token_hint identifies the application and that application has registered the target. Anything else refuses to redirect — nobody can turn your logout link into a redirect to a site of their choosing.
+     * Ends a sign-in and sends the browser somewhere sensible. Accepts GET or POST, so it works as a plain link.  It ACTUALLY signs you out — worth stating, because a logout that computes a redirect and answers {\&quot;status\&quot;:\&quot;ok\&quot;} while ending no session and revoking no token is worse than none: the person on the shared machine believes it worked. Three things happen here, in this order:   1. The browser session dies — sid revoked server-side AND the cookie expired     (sessions.Clear). Server-side revocation is the load-bearing half: a copy     of the cookie taken before logout must not still resolve.  2. The relying party&#39;s tokens are revoked when an id_token_hint names it, so     the refresh token cannot mint a fresh access token after the human left.     Revocation state is authoritative — a JWT&#39;s &#x60;exp&#x60; still reads valid for     days, so expiry is necessary but never sufficient.  3. Only then is a redirect considered, and only to a REGISTERED uri.  The open-redirect guard is unchanged: a redirect happens only when a VERIFIED id_token_hint identifies the application and that application has registered the target. Anything else refuses to redirect — nobody can turn your logout link into a redirect to a site of their choosing.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public void postIamOauthLogout() throws ApiException {
@@ -16216,7 +12821,7 @@ public class IamApi {
 
     /**
      * Ends a sign-in and sends the browser somewhere sensible.
-     * Ends a sign-in and sends the browser somewhere sensible. Accepts GET or POST, so it works as a plain link.  It ACTUALLY signs you out, which is worth stating because the endpoint spent a release not doing it: the whole body computed a redirect and answered {\&quot;status\&quot;:\&quot;ok\&quot;} unconditionally — no session ended, no token revoked. A logout that reports success while leaving the session live is worse than no logout at all, because the person on the shared machine believes it worked. Three things happen here now, in this order:   1. The browser session dies — sid revoked server-side AND the cookie expired     (sessions.Clear). Server-side revocation is the load-bearing half: a copy     of the cookie taken before logout must not still resolve.  2. The relying party&#39;s tokens are revoked when an id_token_hint names it, so     the refresh token cannot mint a fresh access token after the human left.     Revocation state is authoritative — a JWT&#39;s &#x60;exp&#x60; still reads valid for     days, so expiry is necessary but never sufficient.  3. Only then is a redirect considered, and only to a REGISTERED uri.  The open-redirect guard is unchanged: a redirect happens only when a VERIFIED id_token_hint identifies the application and that application has registered the target. Anything else refuses to redirect — nobody can turn your logout link into a redirect to a site of their choosing.
+     * Ends a sign-in and sends the browser somewhere sensible. Accepts GET or POST, so it works as a plain link.  It ACTUALLY signs you out — worth stating, because a logout that computes a redirect and answers {\&quot;status\&quot;:\&quot;ok\&quot;} while ending no session and revoking no token is worse than none: the person on the shared machine believes it worked. Three things happen here, in this order:   1. The browser session dies — sid revoked server-side AND the cookie expired     (sessions.Clear). Server-side revocation is the load-bearing half: a copy     of the cookie taken before logout must not still resolve.  2. The relying party&#39;s tokens are revoked when an id_token_hint names it, so     the refresh token cannot mint a fresh access token after the human left.     Revocation state is authoritative — a JWT&#39;s &#x60;exp&#x60; still reads valid for     days, so expiry is necessary but never sufficient.  3. Only then is a redirect considered, and only to a REGISTERED uri.  The open-redirect guard is unchanged: a redirect happens only when a VERIFIED id_token_hint identifies the application and that application has registered the target. Anything else refuses to redirect — nobody can turn your logout link into a redirect to a site of their choosing.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -16227,7 +12832,7 @@ public class IamApi {
 
     /**
      * Ends a sign-in and sends the browser somewhere sensible. (asynchronously)
-     * Ends a sign-in and sends the browser somewhere sensible. Accepts GET or POST, so it works as a plain link.  It ACTUALLY signs you out, which is worth stating because the endpoint spent a release not doing it: the whole body computed a redirect and answered {\&quot;status\&quot;:\&quot;ok\&quot;} unconditionally — no session ended, no token revoked. A logout that reports success while leaving the session live is worse than no logout at all, because the person on the shared machine believes it worked. Three things happen here now, in this order:   1. The browser session dies — sid revoked server-side AND the cookie expired     (sessions.Clear). Server-side revocation is the load-bearing half: a copy     of the cookie taken before logout must not still resolve.  2. The relying party&#39;s tokens are revoked when an id_token_hint names it, so     the refresh token cannot mint a fresh access token after the human left.     Revocation state is authoritative — a JWT&#39;s &#x60;exp&#x60; still reads valid for     days, so expiry is necessary but never sufficient.  3. Only then is a redirect considered, and only to a REGISTERED uri.  The open-redirect guard is unchanged: a redirect happens only when a VERIFIED id_token_hint identifies the application and that application has registered the target. Anything else refuses to redirect — nobody can turn your logout link into a redirect to a site of their choosing.
+     * Ends a sign-in and sends the browser somewhere sensible. Accepts GET or POST, so it works as a plain link.  It ACTUALLY signs you out — worth stating, because a logout that computes a redirect and answers {\&quot;status\&quot;:\&quot;ok\&quot;} while ending no session and revoking no token is worse than none: the person on the shared machine believes it worked. Three things happen here, in this order:   1. The browser session dies — sid revoked server-side AND the cookie expired     (sessions.Clear). Server-side revocation is the load-bearing half: a copy     of the cookie taken before logout must not still resolve.  2. The relying party&#39;s tokens are revoked when an id_token_hint names it, so     the refresh token cannot mint a fresh access token after the human left.     Revocation state is authoritative — a JWT&#39;s &#x60;exp&#x60; still reads valid for     days, so expiry is necessary but never sufficient.  3. Only then is a redirect considered, and only to a REGISTERED uri.  The open-redirect guard is unchanged: a redirect happens only when a VERIFIED id_token_hint identifies the application and that application has registered the target. Anything else refuses to redirect — nobody can turn your logout link into a redirect to a site of their choosing.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -16295,7 +12900,7 @@ public class IamApi {
 
     /**
      * Retires a token before it expires — what you call when someone signs out or a credential may have leaked.
-     * Retires a token before it expires — what you call when someone signs out or a credential may have leaked.  Revoking an access token kills that token. Revoking a REFRESH token kills the whole chain it belongs to, so no further access tokens can be minted from it and every token already minted from it dies with it.  A token that is not yours, or that never existed, answers success and does nothing — so the endpoint cannot be used to discover which tokens are real.  PUBLIC clients revoke too, and must: sign-out is the only control a long-lived refresh token has. hanzo-cli is a public PKCE client holding a 30-day rotating refresh token, so a confidential-only revocation endpoint made &#x60;hanzo auth logout&#x60; a LOCAL DELETE — the credential it dropped stayed spendable at hanzo.id for the rest of the month, with nothing able to kill it. Measured 2026-08-01: revoke answered 401 invalid_client and the refresh token went on minting access tokens.  Widening authentication does not widen authority. The caller must still POSSESS the token — and possession already permits USE, of which revocation is the strict opposite — and the row must belong to the client that presents it, so a public client_id buys the ability to destroy exactly what its holder could otherwise spend. RFC 6749 §3.2.1 is the same reading: a client with no credentials identifies itself with client_id.
+     * Retires a token before it expires — what you call when someone signs out or a credential may have leaked.  Revoking an access token kills that token. Revoking a REFRESH token kills the whole chain it belongs to, so no further access tokens can be minted from it and every token already minted from it dies with it.  A token that is not yours, or that never existed, answers success and does nothing — so the endpoint cannot be used to discover which tokens are real.  PUBLIC clients revoke too, and must: sign-out is the only control a long-lived refresh token has. A native app or CLI is a public PKCE client and holds no secret, so requiring one here would leave signing out as a local delete — forgetting a credential that stays spendable for the rest of its lifetime.  Widening authentication does not widen authority. The caller must still POSSESS the token — and possession already permits USE, of which revocation is the strict opposite — and the row must belong to the client that presents it, so a public client_id buys the ability to destroy exactly what its holder could otherwise spend. RFC 6749 §3.2.1 is the same reading: a client with no credentials identifies itself with client_id.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public void postIamOauthRevoke() throws ApiException {
@@ -16304,7 +12909,7 @@ public class IamApi {
 
     /**
      * Retires a token before it expires — what you call when someone signs out or a credential may have leaked.
-     * Retires a token before it expires — what you call when someone signs out or a credential may have leaked.  Revoking an access token kills that token. Revoking a REFRESH token kills the whole chain it belongs to, so no further access tokens can be minted from it and every token already minted from it dies with it.  A token that is not yours, or that never existed, answers success and does nothing — so the endpoint cannot be used to discover which tokens are real.  PUBLIC clients revoke too, and must: sign-out is the only control a long-lived refresh token has. hanzo-cli is a public PKCE client holding a 30-day rotating refresh token, so a confidential-only revocation endpoint made &#x60;hanzo auth logout&#x60; a LOCAL DELETE — the credential it dropped stayed spendable at hanzo.id for the rest of the month, with nothing able to kill it. Measured 2026-08-01: revoke answered 401 invalid_client and the refresh token went on minting access tokens.  Widening authentication does not widen authority. The caller must still POSSESS the token — and possession already permits USE, of which revocation is the strict opposite — and the row must belong to the client that presents it, so a public client_id buys the ability to destroy exactly what its holder could otherwise spend. RFC 6749 §3.2.1 is the same reading: a client with no credentials identifies itself with client_id.
+     * Retires a token before it expires — what you call when someone signs out or a credential may have leaked.  Revoking an access token kills that token. Revoking a REFRESH token kills the whole chain it belongs to, so no further access tokens can be minted from it and every token already minted from it dies with it.  A token that is not yours, or that never existed, answers success and does nothing — so the endpoint cannot be used to discover which tokens are real.  PUBLIC clients revoke too, and must: sign-out is the only control a long-lived refresh token has. A native app or CLI is a public PKCE client and holds no secret, so requiring one here would leave signing out as a local delete — forgetting a credential that stays spendable for the rest of its lifetime.  Widening authentication does not widen authority. The caller must still POSSESS the token — and possession already permits USE, of which revocation is the strict opposite — and the row must belong to the client that presents it, so a public client_id buys the ability to destroy exactly what its holder could otherwise spend. RFC 6749 §3.2.1 is the same reading: a client with no credentials identifies itself with client_id.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -16315,7 +12920,7 @@ public class IamApi {
 
     /**
      * Retires a token before it expires — what you call when someone signs out or a credential may have leaked. (asynchronously)
-     * Retires a token before it expires — what you call when someone signs out or a credential may have leaked.  Revoking an access token kills that token. Revoking a REFRESH token kills the whole chain it belongs to, so no further access tokens can be minted from it and every token already minted from it dies with it.  A token that is not yours, or that never existed, answers success and does nothing — so the endpoint cannot be used to discover which tokens are real.  PUBLIC clients revoke too, and must: sign-out is the only control a long-lived refresh token has. hanzo-cli is a public PKCE client holding a 30-day rotating refresh token, so a confidential-only revocation endpoint made &#x60;hanzo auth logout&#x60; a LOCAL DELETE — the credential it dropped stayed spendable at hanzo.id for the rest of the month, with nothing able to kill it. Measured 2026-08-01: revoke answered 401 invalid_client and the refresh token went on minting access tokens.  Widening authentication does not widen authority. The caller must still POSSESS the token — and possession already permits USE, of which revocation is the strict opposite — and the row must belong to the client that presents it, so a public client_id buys the ability to destroy exactly what its holder could otherwise spend. RFC 6749 §3.2.1 is the same reading: a client with no credentials identifies itself with client_id.
+     * Retires a token before it expires — what you call when someone signs out or a credential may have leaked.  Revoking an access token kills that token. Revoking a REFRESH token kills the whole chain it belongs to, so no further access tokens can be minted from it and every token already minted from it dies with it.  A token that is not yours, or that never existed, answers success and does nothing — so the endpoint cannot be used to discover which tokens are real.  PUBLIC clients revoke too, and must: sign-out is the only control a long-lived refresh token has. A native app or CLI is a public PKCE client and holds no secret, so requiring one here would leave signing out as a local delete — forgetting a credential that stays spendable for the rest of its lifetime.  Widening authentication does not widen authority. The caller must still POSSESS the token — and possession already permits USE, of which revocation is the strict opposite — and the row must belong to the client that presents it, so a public client_id buys the ability to destroy exactly what its holder could otherwise spend. RFC 6749 §3.2.1 is the same reading: a client with no credentials identifies itself with client_id.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -16718,260 +13323,6 @@ public class IamApi {
         return localVarCall;
     }
     /**
-     * Build call for postIamPermissionsDelete
-     * @param iamPermissionRef  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamPermissionsDeleteCall(@javax.annotation.Nonnull IamPermissionRef iamPermissionRef, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = iamPermissionRef;
-
-        // create path and map variables
-        String localVarPath = "/v1/iam/permissions/delete";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postIamPermissionsDeleteValidateBeforeCall(@javax.annotation.Nonnull IamPermissionRef iamPermissionRef, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'iamPermissionRef' is set
-        if (iamPermissionRef == null) {
-            throw new ApiException("Missing the required parameter 'iamPermissionRef' when calling postIamPermissionsDelete(Async)");
-        }
-
-        return postIamPermissionsDeleteCall(iamPermissionRef, _callback);
-
-    }
-
-    /**
-     * Revokes a permission.
-     * Revokes a permission. Everyone who held access only through it loses that access immediately; grants they hold by another route are untouched.
-     * @param iamPermissionRef  (required)
-     * @return IamPermissionDeleteResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public IamPermissionDeleteResponse postIamPermissionsDelete(@javax.annotation.Nonnull IamPermissionRef iamPermissionRef) throws ApiException {
-        ApiResponse<IamPermissionDeleteResponse> localVarResp = postIamPermissionsDeleteWithHttpInfo(iamPermissionRef);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Revokes a permission.
-     * Revokes a permission. Everyone who held access only through it loses that access immediately; grants they hold by another route are untouched.
-     * @param iamPermissionRef  (required)
-     * @return ApiResponse&lt;IamPermissionDeleteResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<IamPermissionDeleteResponse> postIamPermissionsDeleteWithHttpInfo(@javax.annotation.Nonnull IamPermissionRef iamPermissionRef) throws ApiException {
-        okhttp3.Call localVarCall = postIamPermissionsDeleteValidateBeforeCall(iamPermissionRef, null);
-        Type localVarReturnType = new TypeToken<IamPermissionDeleteResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Revokes a permission. (asynchronously)
-     * Revokes a permission. Everyone who held access only through it loses that access immediately; grants they hold by another route are untouched.
-     * @param iamPermissionRef  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamPermissionsDeleteAsync(@javax.annotation.Nonnull IamPermissionRef iamPermissionRef, final ApiCallback<IamPermissionDeleteResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postIamPermissionsDeleteValidateBeforeCall(iamPermissionRef, _callback);
-        Type localVarReturnType = new TypeToken<IamPermissionDeleteResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postIamPermissionsUpdate
-     * @param iamPermission  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamPermissionsUpdateCall(@javax.annotation.Nonnull IamPermission iamPermission, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = iamPermission;
-
-        // create path and map variables
-        String localVarPath = "/v1/iam/permissions/update";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postIamPermissionsUpdateValidateBeforeCall(@javax.annotation.Nonnull IamPermission iamPermission, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'iamPermission' is set
-        if (iamPermission == null) {
-            throw new ApiException("Missing the required parameter 'iamPermission' when calling postIamPermissionsUpdate(Async)");
-        }
-
-        return postIamPermissionsUpdateCall(iamPermission, _callback);
-
-    }
-
-    /**
-     * Changes who a permission grants to, what it allows, or the resources it covers.
-     * Changes who a permission grants to, what it allows, or the resources it covers. Access changes as soon as the write lands. What the permission is called does not change, and neither does when it was created.
-     * @param iamPermission  (required)
-     * @return IamPermission
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public IamPermission postIamPermissionsUpdate(@javax.annotation.Nonnull IamPermission iamPermission) throws ApiException {
-        ApiResponse<IamPermission> localVarResp = postIamPermissionsUpdateWithHttpInfo(iamPermission);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Changes who a permission grants to, what it allows, or the resources it covers.
-     * Changes who a permission grants to, what it allows, or the resources it covers. Access changes as soon as the write lands. What the permission is called does not change, and neither does when it was created.
-     * @param iamPermission  (required)
-     * @return ApiResponse&lt;IamPermission&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<IamPermission> postIamPermissionsUpdateWithHttpInfo(@javax.annotation.Nonnull IamPermission iamPermission) throws ApiException {
-        okhttp3.Call localVarCall = postIamPermissionsUpdateValidateBeforeCall(iamPermission, null);
-        Type localVarReturnType = new TypeToken<IamPermission>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Changes who a permission grants to, what it allows, or the resources it covers. (asynchronously)
-     * Changes who a permission grants to, what it allows, or the resources it covers. Access changes as soon as the write lands. What the permission is called does not change, and neither does when it was created.
-     * @param iamPermission  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamPermissionsUpdateAsync(@javax.annotation.Nonnull IamPermission iamPermission, final ApiCallback<IamPermission> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postIamPermissionsUpdateValidateBeforeCall(iamPermission, _callback);
-        Type localVarReturnType = new TypeToken<IamPermission>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
      * Build call for postIamPreferences
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -17061,7 +13412,7 @@ public class IamApi {
     }
     /**
      * Build call for postIamProjects
-     * @param iamInput  (required)
+     * @param iamProjectsInput  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -17072,7 +13423,7 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postIamProjectsCall(@javax.annotation.Nonnull IamInput iamInput, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postIamProjectsCall(@javax.annotation.Nonnull IamProjectsInput iamProjectsInput, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -17086,7 +13437,7 @@ public class IamApi {
             basePath = null;
         }
 
-        Object localVarPostBody = iamInput;
+        Object localVarPostBody = iamProjectsInput;
 
         // create path and map variables
         String localVarPath = "/v1/iam/projects";
@@ -17118,20 +13469,20 @@ public class IamApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postIamProjectsValidateBeforeCall(@javax.annotation.Nonnull IamInput iamInput, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'iamInput' is set
-        if (iamInput == null) {
-            throw new ApiException("Missing the required parameter 'iamInput' when calling postIamProjects(Async)");
+    private okhttp3.Call postIamProjectsValidateBeforeCall(@javax.annotation.Nonnull IamProjectsInput iamProjectsInput, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'iamProjectsInput' is set
+        if (iamProjectsInput == null) {
+            throw new ApiException("Missing the required parameter 'iamProjectsInput' when calling postIamProjects(Async)");
         }
 
-        return postIamProjectsCall(iamInput, _callback);
+        return postIamProjectsCall(iamProjectsInput, _callback);
 
     }
 
     /**
      * Makes a project inside your organization — the scope people pick between when their work is separated by product or client rather than by team.
      * Makes a project inside your organization — the scope people pick between when their work is separated by product or client rather than by team. A name already used in the organization is refused.
-     * @param iamInput  (required)
+     * @param iamProjectsInput  (required)
      * @return IamProject
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -17141,15 +13492,15 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public IamProject postIamProjects(@javax.annotation.Nonnull IamInput iamInput) throws ApiException {
-        ApiResponse<IamProject> localVarResp = postIamProjectsWithHttpInfo(iamInput);
+    public IamProject postIamProjects(@javax.annotation.Nonnull IamProjectsInput iamProjectsInput) throws ApiException {
+        ApiResponse<IamProject> localVarResp = postIamProjectsWithHttpInfo(iamProjectsInput);
         return localVarResp.getData();
     }
 
     /**
      * Makes a project inside your organization — the scope people pick between when their work is separated by product or client rather than by team.
      * Makes a project inside your organization — the scope people pick between when their work is separated by product or client rather than by team. A name already used in the organization is refused.
-     * @param iamInput  (required)
+     * @param iamProjectsInput  (required)
      * @return ApiResponse&lt;IamProject&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -17159,8 +13510,8 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IamProject> postIamProjectsWithHttpInfo(@javax.annotation.Nonnull IamInput iamInput) throws ApiException {
-        okhttp3.Call localVarCall = postIamProjectsValidateBeforeCall(iamInput, null);
+    public ApiResponse<IamProject> postIamProjectsWithHttpInfo(@javax.annotation.Nonnull IamProjectsInput iamProjectsInput) throws ApiException {
+        okhttp3.Call localVarCall = postIamProjectsValidateBeforeCall(iamProjectsInput, null);
         Type localVarReturnType = new TypeToken<IamProject>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -17168,7 +13519,7 @@ public class IamApi {
     /**
      * Makes a project inside your organization — the scope people pick between when their work is separated by product or client rather than by team. (asynchronously)
      * Makes a project inside your organization — the scope people pick between when their work is separated by product or client rather than by team. A name already used in the organization is refused.
-     * @param iamInput  (required)
+     * @param iamProjectsInput  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -17179,390 +13530,9 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postIamProjectsAsync(@javax.annotation.Nonnull IamInput iamInput, final ApiCallback<IamProject> _callback) throws ApiException {
+    public okhttp3.Call postIamProjectsAsync(@javax.annotation.Nonnull IamProjectsInput iamProjectsInput, final ApiCallback<IamProject> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postIamProjectsValidateBeforeCall(iamInput, _callback);
-        Type localVarReturnType = new TypeToken<IamProject>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postIamProjectsDelete
-     * @param iamProjectsRef  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamProjectsDeleteCall(@javax.annotation.Nonnull IamProjectsRef iamProjectsRef, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = iamProjectsRef;
-
-        // create path and map variables
-        String localVarPath = "/v1/iam/projects/delete";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postIamProjectsDeleteValidateBeforeCall(@javax.annotation.Nonnull IamProjectsRef iamProjectsRef, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'iamProjectsRef' is set
-        if (iamProjectsRef == null) {
-            throw new ApiException("Missing the required parameter 'iamProjectsRef' when calling postIamProjectsDelete(Async)");
-        }
-
-        return postIamProjectsDeleteCall(iamProjectsRef, _callback);
-
-    }
-
-    /**
-     * Removes a project.
-     * Removes a project. The people and roles in your organization are unchanged; what goes is the scope itself, so move anything addressed by it first.
-     * @param iamProjectsRef  (required)
-     * @return IamProjectsDeleteOutput
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public IamProjectsDeleteOutput postIamProjectsDelete(@javax.annotation.Nonnull IamProjectsRef iamProjectsRef) throws ApiException {
-        ApiResponse<IamProjectsDeleteOutput> localVarResp = postIamProjectsDeleteWithHttpInfo(iamProjectsRef);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Removes a project.
-     * Removes a project. The people and roles in your organization are unchanged; what goes is the scope itself, so move anything addressed by it first.
-     * @param iamProjectsRef  (required)
-     * @return ApiResponse&lt;IamProjectsDeleteOutput&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<IamProjectsDeleteOutput> postIamProjectsDeleteWithHttpInfo(@javax.annotation.Nonnull IamProjectsRef iamProjectsRef) throws ApiException {
-        okhttp3.Call localVarCall = postIamProjectsDeleteValidateBeforeCall(iamProjectsRef, null);
-        Type localVarReturnType = new TypeToken<IamProjectsDeleteOutput>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Removes a project. (asynchronously)
-     * Removes a project. The people and roles in your organization are unchanged; what goes is the scope itself, so move anything addressed by it first.
-     * @param iamProjectsRef  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamProjectsDeleteAsync(@javax.annotation.Nonnull IamProjectsRef iamProjectsRef, final ApiCallback<IamProjectsDeleteOutput> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postIamProjectsDeleteValidateBeforeCall(iamProjectsRef, _callback);
-        Type localVarReturnType = new TypeToken<IamProjectsDeleteOutput>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postIamProjectsGet
-     * @param iamProjectsRef  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamProjectsGetCall(@javax.annotation.Nonnull IamProjectsRef iamProjectsRef, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = iamProjectsRef;
-
-        // create path and map variables
-        String localVarPath = "/v1/iam/projects/get";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postIamProjectsGetValidateBeforeCall(@javax.annotation.Nonnull IamProjectsRef iamProjectsRef, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'iamProjectsRef' is set
-        if (iamProjectsRef == null) {
-            throw new ApiException("Missing the required parameter 'iamProjectsRef' when calling postIamProjectsGet(Async)");
-        }
-
-        return postIamProjectsGetCall(iamProjectsRef, _callback);
-
-    }
-
-    /**
-     * Returns one project: what it is called and how it is set up.
-     * Returns one project: what it is called and how it is set up.
-     * @param iamProjectsRef  (required)
-     * @return IamProject
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public IamProject postIamProjectsGet(@javax.annotation.Nonnull IamProjectsRef iamProjectsRef) throws ApiException {
-        ApiResponse<IamProject> localVarResp = postIamProjectsGetWithHttpInfo(iamProjectsRef);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Returns one project: what it is called and how it is set up.
-     * Returns one project: what it is called and how it is set up.
-     * @param iamProjectsRef  (required)
-     * @return ApiResponse&lt;IamProject&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<IamProject> postIamProjectsGetWithHttpInfo(@javax.annotation.Nonnull IamProjectsRef iamProjectsRef) throws ApiException {
-        okhttp3.Call localVarCall = postIamProjectsGetValidateBeforeCall(iamProjectsRef, null);
-        Type localVarReturnType = new TypeToken<IamProject>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Returns one project: what it is called and how it is set up. (asynchronously)
-     * Returns one project: what it is called and how it is set up.
-     * @param iamProjectsRef  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamProjectsGetAsync(@javax.annotation.Nonnull IamProjectsRef iamProjectsRef, final ApiCallback<IamProject> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postIamProjectsGetValidateBeforeCall(iamProjectsRef, _callback);
-        Type localVarReturnType = new TypeToken<IamProject>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postIamProjectsUpdate
-     * @param iamInput  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamProjectsUpdateCall(@javax.annotation.Nonnull IamInput iamInput, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = iamInput;
-
-        // create path and map variables
-        String localVarPath = "/v1/iam/projects/update";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postIamProjectsUpdateValidateBeforeCall(@javax.annotation.Nonnull IamInput iamInput, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'iamInput' is set
-        if (iamInput == null) {
-            throw new ApiException("Missing the required parameter 'iamInput' when calling postIamProjectsUpdate(Async)");
-        }
-
-        return postIamProjectsUpdateCall(iamInput, _callback);
-
-    }
-
-    /**
-     * Changes a project&#39;s settings.
-     * Changes a project&#39;s settings. What it is called does not change, and neither does when it was created.
-     * @param iamInput  (required)
-     * @return IamProject
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public IamProject postIamProjectsUpdate(@javax.annotation.Nonnull IamInput iamInput) throws ApiException {
-        ApiResponse<IamProject> localVarResp = postIamProjectsUpdateWithHttpInfo(iamInput);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Changes a project&#39;s settings.
-     * Changes a project&#39;s settings. What it is called does not change, and neither does when it was created.
-     * @param iamInput  (required)
-     * @return ApiResponse&lt;IamProject&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<IamProject> postIamProjectsUpdateWithHttpInfo(@javax.annotation.Nonnull IamInput iamInput) throws ApiException {
-        okhttp3.Call localVarCall = postIamProjectsUpdateValidateBeforeCall(iamInput, null);
-        Type localVarReturnType = new TypeToken<IamProject>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Changes a project&#39;s settings. (asynchronously)
-     * Changes a project&#39;s settings. What it is called does not change, and neither does when it was created.
-     * @param iamInput  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamProjectsUpdateAsync(@javax.annotation.Nonnull IamInput iamInput, final ApiCallback<IamProject> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postIamProjectsUpdateValidateBeforeCall(iamInput, _callback);
+        okhttp3.Call localVarCall = postIamProjectsValidateBeforeCall(iamProjectsInput, _callback);
         Type localVarReturnType = new TypeToken<IamProject>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -18019,387 +13989,6 @@ public class IamApi {
     public okhttp3.Call postIamRolesAsync(@javax.annotation.Nonnull IamRolesInput iamRolesInput, final ApiCallback<IamRole> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postIamRolesValidateBeforeCall(iamRolesInput, _callback);
-        Type localVarReturnType = new TypeToken<IamRole>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postIamRolesDelete
-     * @param iamRolesRef  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamRolesDeleteCall(@javax.annotation.Nonnull IamRolesRef iamRolesRef, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = iamRolesRef;
-
-        // create path and map variables
-        String localVarPath = "/v1/iam/roles/delete";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postIamRolesDeleteValidateBeforeCall(@javax.annotation.Nonnull IamRolesRef iamRolesRef, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'iamRolesRef' is set
-        if (iamRolesRef == null) {
-            throw new ApiException("Missing the required parameter 'iamRolesRef' when calling postIamRolesDelete(Async)");
-        }
-
-        return postIamRolesDeleteCall(iamRolesRef, _callback);
-
-    }
-
-    /**
-     * Removes a role.
-     * Removes a role. Everyone in it loses the access it carried; their accounts, and any other role they hold, are untouched.
-     * @param iamRolesRef  (required)
-     * @return IamRolesDeleteOutput
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public IamRolesDeleteOutput postIamRolesDelete(@javax.annotation.Nonnull IamRolesRef iamRolesRef) throws ApiException {
-        ApiResponse<IamRolesDeleteOutput> localVarResp = postIamRolesDeleteWithHttpInfo(iamRolesRef);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Removes a role.
-     * Removes a role. Everyone in it loses the access it carried; their accounts, and any other role they hold, are untouched.
-     * @param iamRolesRef  (required)
-     * @return ApiResponse&lt;IamRolesDeleteOutput&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<IamRolesDeleteOutput> postIamRolesDeleteWithHttpInfo(@javax.annotation.Nonnull IamRolesRef iamRolesRef) throws ApiException {
-        okhttp3.Call localVarCall = postIamRolesDeleteValidateBeforeCall(iamRolesRef, null);
-        Type localVarReturnType = new TypeToken<IamRolesDeleteOutput>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Removes a role. (asynchronously)
-     * Removes a role. Everyone in it loses the access it carried; their accounts, and any other role they hold, are untouched.
-     * @param iamRolesRef  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamRolesDeleteAsync(@javax.annotation.Nonnull IamRolesRef iamRolesRef, final ApiCallback<IamRolesDeleteOutput> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postIamRolesDeleteValidateBeforeCall(iamRolesRef, _callback);
-        Type localVarReturnType = new TypeToken<IamRolesDeleteOutput>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postIamRolesGet
-     * @param iamRolesRef  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamRolesGetCall(@javax.annotation.Nonnull IamRolesRef iamRolesRef, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = iamRolesRef;
-
-        // create path and map variables
-        String localVarPath = "/v1/iam/roles/get";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postIamRolesGetValidateBeforeCall(@javax.annotation.Nonnull IamRolesRef iamRolesRef, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'iamRolesRef' is set
-        if (iamRolesRef == null) {
-            throw new ApiException("Missing the required parameter 'iamRolesRef' when calling postIamRolesGet(Async)");
-        }
-
-        return postIamRolesGetCall(iamRolesRef, _callback);
-
-    }
-
-    /**
-     * Returns one role: who is in it, and the roles it includes.
-     * Returns one role: who is in it, and the roles it includes.
-     * @param iamRolesRef  (required)
-     * @return IamRole
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public IamRole postIamRolesGet(@javax.annotation.Nonnull IamRolesRef iamRolesRef) throws ApiException {
-        ApiResponse<IamRole> localVarResp = postIamRolesGetWithHttpInfo(iamRolesRef);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Returns one role: who is in it, and the roles it includes.
-     * Returns one role: who is in it, and the roles it includes.
-     * @param iamRolesRef  (required)
-     * @return ApiResponse&lt;IamRole&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<IamRole> postIamRolesGetWithHttpInfo(@javax.annotation.Nonnull IamRolesRef iamRolesRef) throws ApiException {
-        okhttp3.Call localVarCall = postIamRolesGetValidateBeforeCall(iamRolesRef, null);
-        Type localVarReturnType = new TypeToken<IamRole>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Returns one role: who is in it, and the roles it includes. (asynchronously)
-     * Returns one role: who is in it, and the roles it includes.
-     * @param iamRolesRef  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamRolesGetAsync(@javax.annotation.Nonnull IamRolesRef iamRolesRef, final ApiCallback<IamRole> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postIamRolesGetValidateBeforeCall(iamRolesRef, _callback);
-        Type localVarReturnType = new TypeToken<IamRole>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postIamRolesUpdate
-     * @param iamRolesInput  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamRolesUpdateCall(@javax.annotation.Nonnull IamRolesInput iamRolesInput, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = iamRolesInput;
-
-        // create path and map variables
-        String localVarPath = "/v1/iam/roles/update";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postIamRolesUpdateValidateBeforeCall(@javax.annotation.Nonnull IamRolesInput iamRolesInput, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'iamRolesInput' is set
-        if (iamRolesInput == null) {
-            throw new ApiException("Missing the required parameter 'iamRolesInput' when calling postIamRolesUpdate(Async)");
-        }
-
-        return postIamRolesUpdateCall(iamRolesInput, _callback);
-
-    }
-
-    /**
-     * Changes who is in a role, or which roles it includes.
-     * Changes who is in a role, or which roles it includes. Access changes for everyone in it as soon as the write lands. What the role is called does not change, and neither does when it was created.
-     * @param iamRolesInput  (required)
-     * @return IamRole
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public IamRole postIamRolesUpdate(@javax.annotation.Nonnull IamRolesInput iamRolesInput) throws ApiException {
-        ApiResponse<IamRole> localVarResp = postIamRolesUpdateWithHttpInfo(iamRolesInput);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Changes who is in a role, or which roles it includes.
-     * Changes who is in a role, or which roles it includes. Access changes for everyone in it as soon as the write lands. What the role is called does not change, and neither does when it was created.
-     * @param iamRolesInput  (required)
-     * @return ApiResponse&lt;IamRole&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<IamRole> postIamRolesUpdateWithHttpInfo(@javax.annotation.Nonnull IamRolesInput iamRolesInput) throws ApiException {
-        okhttp3.Call localVarCall = postIamRolesUpdateValidateBeforeCall(iamRolesInput, null);
-        Type localVarReturnType = new TypeToken<IamRole>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Changes who is in a role, or which roles it includes. (asynchronously)
-     * Changes who is in a role, or which roles it includes. Access changes for everyone in it as soon as the write lands. What the role is called does not change, and neither does when it was created.
-     * @param iamRolesInput  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamRolesUpdateAsync(@javax.annotation.Nonnull IamRolesInput iamRolesInput, final ApiCallback<IamRole> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postIamRolesUpdateValidateBeforeCall(iamRolesInput, _callback);
         Type localVarReturnType = new TypeToken<IamRole>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -19207,260 +14796,6 @@ public class IamApi {
         return localVarCall;
     }
     /**
-     * Build call for postIamUpdateApplication
-     * @param iamApplication  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamUpdateApplicationCall(@javax.annotation.Nonnull IamApplication iamApplication, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = iamApplication;
-
-        // create path and map variables
-        String localVarPath = "/v1/iam/update-application";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postIamUpdateApplicationValidateBeforeCall(@javax.annotation.Nonnull IamApplication iamApplication, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'iamApplication' is set
-        if (iamApplication == null) {
-            throw new ApiException("Missing the required parameter 'iamApplication' when calling postIamUpdateApplication(Async)");
-        }
-
-        return postIamUpdateApplicationCall(iamApplication, _callback);
-
-    }
-
-    /**
-     * Updates one of your applications — its display, its sign-in methods and the redirect URIs it is allowed to return to.
-     * Updates one of your applications — its display, its sign-in methods and the redirect URIs it is allowed to return to. Which organization and name the application has are fixed when it is created and are not editable here.  A redirect URI you add becomes an allowed sign-in origin, so this is the call that makes login work from a new host.  The older spelling of PUT /v1/iam/application.
-     * @param iamApplication  (required)
-     * @return IamResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public IamResponse postIamUpdateApplication(@javax.annotation.Nonnull IamApplication iamApplication) throws ApiException {
-        ApiResponse<IamResponse> localVarResp = postIamUpdateApplicationWithHttpInfo(iamApplication);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Updates one of your applications — its display, its sign-in methods and the redirect URIs it is allowed to return to.
-     * Updates one of your applications — its display, its sign-in methods and the redirect URIs it is allowed to return to. Which organization and name the application has are fixed when it is created and are not editable here.  A redirect URI you add becomes an allowed sign-in origin, so this is the call that makes login work from a new host.  The older spelling of PUT /v1/iam/application.
-     * @param iamApplication  (required)
-     * @return ApiResponse&lt;IamResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<IamResponse> postIamUpdateApplicationWithHttpInfo(@javax.annotation.Nonnull IamApplication iamApplication) throws ApiException {
-        okhttp3.Call localVarCall = postIamUpdateApplicationValidateBeforeCall(iamApplication, null);
-        Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Updates one of your applications — its display, its sign-in methods and the redirect URIs it is allowed to return to. (asynchronously)
-     * Updates one of your applications — its display, its sign-in methods and the redirect URIs it is allowed to return to. Which organization and name the application has are fixed when it is created and are not editable here.  A redirect URI you add becomes an allowed sign-in origin, so this is the call that makes login work from a new host.  The older spelling of PUT /v1/iam/application.
-     * @param iamApplication  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamUpdateApplicationAsync(@javax.annotation.Nonnull IamApplication iamApplication, final ApiCallback<IamResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postIamUpdateApplicationValidateBeforeCall(iamApplication, _callback);
-        Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postIamUpdateOrganization
-     * @param iamUpdateOrganizationInput  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamUpdateOrganizationCall(@javax.annotation.Nonnull IamUpdateOrganizationInput iamUpdateOrganizationInput, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = iamUpdateOrganizationInput;
-
-        // create path and map variables
-        String localVarPath = "/v1/iam/update-organization";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postIamUpdateOrganizationValidateBeforeCall(@javax.annotation.Nonnull IamUpdateOrganizationInput iamUpdateOrganizationInput, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'iamUpdateOrganizationInput' is set
-        if (iamUpdateOrganizationInput == null) {
-            throw new ApiException("Missing the required parameter 'iamUpdateOrganizationInput' when calling postIamUpdateOrganization(Async)");
-        }
-
-        return postIamUpdateOrganizationCall(iamUpdateOrganizationInput, _callback);
-
-    }
-
-    /**
-     * Updates your organization — its display, its default settings and the sign-in rules everyone in it inherits.
-     * Updates your organization — its display, its default settings and the sign-in rules everyone in it inherits.  The older spelling of POST /v1/iam/organizations/update.
-     * @param iamUpdateOrganizationInput  (required)
-     * @return IamResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public IamResponse postIamUpdateOrganization(@javax.annotation.Nonnull IamUpdateOrganizationInput iamUpdateOrganizationInput) throws ApiException {
-        ApiResponse<IamResponse> localVarResp = postIamUpdateOrganizationWithHttpInfo(iamUpdateOrganizationInput);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Updates your organization — its display, its default settings and the sign-in rules everyone in it inherits.
-     * Updates your organization — its display, its default settings and the sign-in rules everyone in it inherits.  The older spelling of POST /v1/iam/organizations/update.
-     * @param iamUpdateOrganizationInput  (required)
-     * @return ApiResponse&lt;IamResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<IamResponse> postIamUpdateOrganizationWithHttpInfo(@javax.annotation.Nonnull IamUpdateOrganizationInput iamUpdateOrganizationInput) throws ApiException {
-        okhttp3.Call localVarCall = postIamUpdateOrganizationValidateBeforeCall(iamUpdateOrganizationInput, null);
-        Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Updates your organization — its display, its default settings and the sign-in rules everyone in it inherits. (asynchronously)
-     * Updates your organization — its display, its default settings and the sign-in rules everyone in it inherits.  The older spelling of POST /v1/iam/organizations/update.
-     * @param iamUpdateOrganizationInput  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamUpdateOrganizationAsync(@javax.annotation.Nonnull IamUpdateOrganizationInput iamUpdateOrganizationInput, final ApiCallback<IamResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postIamUpdateOrganizationValidateBeforeCall(iamUpdateOrganizationInput, _callback);
-        Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
      * Build call for postIamUpdatePreferences
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -19546,387 +14881,6 @@ public class IamApi {
 
         okhttp3.Call localVarCall = postIamUpdatePreferencesValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postIamUpdateProvider
-     * @param iamProvider  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamUpdateProviderCall(@javax.annotation.Nonnull IamProvider iamProvider, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = iamProvider;
-
-        // create path and map variables
-        String localVarPath = "/v1/iam/update-provider";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postIamUpdateProviderValidateBeforeCall(@javax.annotation.Nonnull IamProvider iamProvider, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'iamProvider' is set
-        if (iamProvider == null) {
-            throw new ApiException("Missing the required parameter 'iamProvider' when calling postIamUpdateProvider(Async)");
-        }
-
-        return postIamUpdateProviderCall(iamProvider, _callback);
-
-    }
-
-    /**
-     * Updates a provider&#39;s settings or rotates the credentials it holds.
-     * Updates a provider&#39;s settings or rotates the credentials it holds. The change takes effect on the next sign-in through it — sessions already issued are unaffected.  The older spelling of POST /v1/iam/providers/update.
-     * @param iamProvider  (required)
-     * @return IamResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public IamResponse postIamUpdateProvider(@javax.annotation.Nonnull IamProvider iamProvider) throws ApiException {
-        ApiResponse<IamResponse> localVarResp = postIamUpdateProviderWithHttpInfo(iamProvider);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Updates a provider&#39;s settings or rotates the credentials it holds.
-     * Updates a provider&#39;s settings or rotates the credentials it holds. The change takes effect on the next sign-in through it — sessions already issued are unaffected.  The older spelling of POST /v1/iam/providers/update.
-     * @param iamProvider  (required)
-     * @return ApiResponse&lt;IamResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<IamResponse> postIamUpdateProviderWithHttpInfo(@javax.annotation.Nonnull IamProvider iamProvider) throws ApiException {
-        okhttp3.Call localVarCall = postIamUpdateProviderValidateBeforeCall(iamProvider, null);
-        Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Updates a provider&#39;s settings or rotates the credentials it holds. (asynchronously)
-     * Updates a provider&#39;s settings or rotates the credentials it holds. The change takes effect on the next sign-in through it — sessions already issued are unaffected.  The older spelling of POST /v1/iam/providers/update.
-     * @param iamProvider  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamUpdateProviderAsync(@javax.annotation.Nonnull IamProvider iamProvider, final ApiCallback<IamResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postIamUpdateProviderValidateBeforeCall(iamProvider, _callback);
-        Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postIamUpdateRole
-     * @param iamRolesInput  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamUpdateRoleCall(@javax.annotation.Nonnull IamRolesInput iamRolesInput, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = iamRolesInput;
-
-        // create path and map variables
-        String localVarPath = "/v1/iam/update-role";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postIamUpdateRoleValidateBeforeCall(@javax.annotation.Nonnull IamRolesInput iamRolesInput, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'iamRolesInput' is set
-        if (iamRolesInput == null) {
-            throw new ApiException("Missing the required parameter 'iamRolesInput' when calling postIamUpdateRole(Async)");
-        }
-
-        return postIamUpdateRoleCall(iamRolesInput, _callback);
-
-    }
-
-    /**
-     * Updates a role&#39;s members or the roles it includes.
-     * Updates a role&#39;s members or the roles it includes. Access changes for everyone in it as soon as the write lands.  The older spelling of POST /v1/iam/roles/update.
-     * @param iamRolesInput  (required)
-     * @return IamResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public IamResponse postIamUpdateRole(@javax.annotation.Nonnull IamRolesInput iamRolesInput) throws ApiException {
-        ApiResponse<IamResponse> localVarResp = postIamUpdateRoleWithHttpInfo(iamRolesInput);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Updates a role&#39;s members or the roles it includes.
-     * Updates a role&#39;s members or the roles it includes. Access changes for everyone in it as soon as the write lands.  The older spelling of POST /v1/iam/roles/update.
-     * @param iamRolesInput  (required)
-     * @return ApiResponse&lt;IamResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<IamResponse> postIamUpdateRoleWithHttpInfo(@javax.annotation.Nonnull IamRolesInput iamRolesInput) throws ApiException {
-        okhttp3.Call localVarCall = postIamUpdateRoleValidateBeforeCall(iamRolesInput, null);
-        Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Updates a role&#39;s members or the roles it includes. (asynchronously)
-     * Updates a role&#39;s members or the roles it includes. Access changes for everyone in it as soon as the write lands.  The older spelling of POST /v1/iam/roles/update.
-     * @param iamRolesInput  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamUpdateRoleAsync(@javax.annotation.Nonnull IamRolesInput iamRolesInput, final ApiCallback<IamResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postIamUpdateRoleValidateBeforeCall(iamRolesInput, _callback);
-        Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postIamUpdateUser
-     * @param iamUserBody  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamUpdateUserCall(@javax.annotation.Nonnull IamUserBody iamUserBody, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = iamUserBody;
-
-        // create path and map variables
-        String localVarPath = "/v1/iam/update-user";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postIamUpdateUserValidateBeforeCall(@javax.annotation.Nonnull IamUserBody iamUserBody, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'iamUserBody' is set
-        if (iamUserBody == null) {
-            throw new ApiException("Missing the required parameter 'iamUserBody' when calling postIamUpdateUser(Async)");
-        }
-
-        return postIamUpdateUserCall(iamUserBody, _callback);
-
-    }
-
-    /**
-     * Updates one of your users&#39; profile, roles or credentials.
-     * Updates one of your users&#39; profile, roles or credentials. Send a password to reset it; leave it out and the current one stands.  The older spelling of POST /v1/iam/users/update, with the user&#39;s fields at the top level rather than wrapped in {user, password}.
-     * @param iamUserBody  (required)
-     * @return IamResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public IamResponse postIamUpdateUser(@javax.annotation.Nonnull IamUserBody iamUserBody) throws ApiException {
-        ApiResponse<IamResponse> localVarResp = postIamUpdateUserWithHttpInfo(iamUserBody);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Updates one of your users&#39; profile, roles or credentials.
-     * Updates one of your users&#39; profile, roles or credentials. Send a password to reset it; leave it out and the current one stands.  The older spelling of POST /v1/iam/users/update, with the user&#39;s fields at the top level rather than wrapped in {user, password}.
-     * @param iamUserBody  (required)
-     * @return ApiResponse&lt;IamResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<IamResponse> postIamUpdateUserWithHttpInfo(@javax.annotation.Nonnull IamUserBody iamUserBody) throws ApiException {
-        okhttp3.Call localVarCall = postIamUpdateUserValidateBeforeCall(iamUserBody, null);
-        Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Updates one of your users&#39; profile, roles or credentials. (asynchronously)
-     * Updates one of your users&#39; profile, roles or credentials. Send a password to reset it; leave it out and the current one stands.  The older spelling of POST /v1/iam/users/update, with the user&#39;s fields at the top level rather than wrapped in {user, password}.
-     * @param iamUserBody  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamUpdateUserAsync(@javax.annotation.Nonnull IamUserBody iamUserBody, final ApiCallback<IamResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postIamUpdateUserValidateBeforeCall(iamUserBody, _callback);
-        Type localVarReturnType = new TypeToken<IamResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -20057,19 +15011,14 @@ public class IamApi {
         return localVarCall;
     }
     /**
-     * Build call for postIamUsersDelete
-     * @param iamUsersRef  (required)
+     * Build call for postIamUsersByOwnerByNameKeys
+     * @param owner  (required)
+     * @param name  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
      */
-    public okhttp3.Call postIamUsersDeleteCall(@javax.annotation.Nonnull IamUsersRef iamUsersRef, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postIamUsersByOwnerByNameKeysCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -20083,10 +15032,12 @@ public class IamApi {
             basePath = null;
         }
 
-        Object localVarPostBody = iamUsersRef;
+        Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/iam/users/delete";
+        String localVarPath = "/v1/iam/users/{owner}/{name}/keys"
+            .replace("{" + "owner" + "}", localVarApiClient.escapeString(owner.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -20095,7 +15046,6 @@ public class IamApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -20103,7 +15053,6 @@ public class IamApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -20115,199 +15064,58 @@ public class IamApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postIamUsersDeleteValidateBeforeCall(@javax.annotation.Nonnull IamUsersRef iamUsersRef, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'iamUsersRef' is set
-        if (iamUsersRef == null) {
-            throw new ApiException("Missing the required parameter 'iamUsersRef' when calling postIamUsersDelete(Async)");
+    private okhttp3.Call postIamUsersByOwnerByNameKeysValidateBeforeCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'owner' is set
+        if (owner == null) {
+            throw new ApiException("Missing the required parameter 'owner' when calling postIamUsersByOwnerByNameKeys(Async)");
         }
 
-        return postIamUsersDeleteCall(iamUsersRef, _callback);
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling postIamUsersByOwnerByNameKeys(Async)");
+        }
+
+        return postIamUsersByOwnerByNameKeysCall(owner, name, _callback);
 
     }
 
     /**
-     * Removes a person from your organization.
-     * Removes a person from your organization. Their sessions stop working immediately and the account is gone rather than suspended — to keep the record and only stop sign-in, update the user instead.
-     * @param iamUsersRef  (required)
-     * @return IamUsersDeleteOutput
+     * (re)generates the target user&#39;s key of the requested TYPE and returns it once, over the shared authorizeMinter + mintTarget seam.
+     * (re)generates the target user&#39;s key of the requested TYPE and returns it once, over the shared authorizeMinter + mintTarget seam. &#x60;?type&#x3D;secret&#x60; (the default) yields the confidential sk-; &#x60;?type&#x3D;publishable&#x60; yields the pk- that is safe to ship in client JS and resolves to an org, never a principal.  It writes the schema.Key row that the resolvers actually read. schema.User.AccessKey is not a credential and nothing resolves it, so a key stamped there would authenticate nobody.
+     * @param owner  (required)
+     * @param name  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
      */
-    public IamUsersDeleteOutput postIamUsersDelete(@javax.annotation.Nonnull IamUsersRef iamUsersRef) throws ApiException {
-        ApiResponse<IamUsersDeleteOutput> localVarResp = postIamUsersDeleteWithHttpInfo(iamUsersRef);
-        return localVarResp.getData();
+    public void postIamUsersByOwnerByNameKeys(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
+        postIamUsersByOwnerByNameKeysWithHttpInfo(owner, name);
     }
 
     /**
-     * Removes a person from your organization.
-     * Removes a person from your organization. Their sessions stop working immediately and the account is gone rather than suspended — to keep the record and only stop sign-in, update the user instead.
-     * @param iamUsersRef  (required)
-     * @return ApiResponse&lt;IamUsersDeleteOutput&gt;
+     * (re)generates the target user&#39;s key of the requested TYPE and returns it once, over the shared authorizeMinter + mintTarget seam.
+     * (re)generates the target user&#39;s key of the requested TYPE and returns it once, over the shared authorizeMinter + mintTarget seam. &#x60;?type&#x3D;secret&#x60; (the default) yields the confidential sk-; &#x60;?type&#x3D;publishable&#x60; yields the pk- that is safe to ship in client JS and resolves to an org, never a principal.  It writes the schema.Key row that the resolvers actually read. schema.User.AccessKey is not a credential and nothing resolves it, so a key stamped there would authenticate nobody.
+     * @param owner  (required)
+     * @param name  (required)
+     * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
      */
-    public ApiResponse<IamUsersDeleteOutput> postIamUsersDeleteWithHttpInfo(@javax.annotation.Nonnull IamUsersRef iamUsersRef) throws ApiException {
-        okhttp3.Call localVarCall = postIamUsersDeleteValidateBeforeCall(iamUsersRef, null);
-        Type localVarReturnType = new TypeToken<IamUsersDeleteOutput>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    public ApiResponse<Void> postIamUsersByOwnerByNameKeysWithHttpInfo(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = postIamUsersByOwnerByNameKeysValidateBeforeCall(owner, name, null);
+        return localVarApiClient.execute(localVarCall);
     }
 
     /**
-     * Removes a person from your organization. (asynchronously)
-     * Removes a person from your organization. Their sessions stop working immediately and the account is gone rather than suspended — to keep the record and only stop sign-in, update the user instead.
-     * @param iamUsersRef  (required)
+     * (re)generates the target user&#39;s key of the requested TYPE and returns it once, over the shared authorizeMinter + mintTarget seam. (asynchronously)
+     * (re)generates the target user&#39;s key of the requested TYPE and returns it once, over the shared authorizeMinter + mintTarget seam. &#x60;?type&#x3D;secret&#x60; (the default) yields the confidential sk-; &#x60;?type&#x3D;publishable&#x60; yields the pk- that is safe to ship in client JS and resolves to an org, never a principal.  It writes the schema.Key row that the resolvers actually read. schema.User.AccessKey is not a credential and nothing resolves it, so a key stamped there would authenticate nobody.
+     * @param owner  (required)
+     * @param name  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
      */
-    public okhttp3.Call postIamUsersDeleteAsync(@javax.annotation.Nonnull IamUsersRef iamUsersRef, final ApiCallback<IamUsersDeleteOutput> _callback) throws ApiException {
+    public okhttp3.Call postIamUsersByOwnerByNameKeysAsync(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postIamUsersDeleteValidateBeforeCall(iamUsersRef, _callback);
-        Type localVarReturnType = new TypeToken<IamUsersDeleteOutput>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postIamUsersUpdate
-     * @param iamUpdateInput  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamUsersUpdateCall(@javax.annotation.Nonnull IamUpdateInput iamUpdateInput, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = iamUpdateInput;
-
-        // create path and map variables
-        String localVarPath = "/v1/iam/users/update";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postIamUsersUpdateValidateBeforeCall(@javax.annotation.Nonnull IamUpdateInput iamUpdateInput, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'iamUpdateInput' is set
-        if (iamUpdateInput == null) {
-            throw new ApiException("Missing the required parameter 'iamUpdateInput' when calling postIamUsersUpdate(Async)");
-        }
-
-        return postIamUsersUpdateCall(iamUpdateInput, _callback);
-
-    }
-
-    /**
-     * Changes a person&#39;s profile, their roles, or the credentials they sign in with.
-     * Changes a person&#39;s profile, their roles, or the credentials they sign in with. Send a password to reset it; leave it out and their current one keeps working.  Who they are does not change: their organization, username and the identifier their existing sessions are keyed on all survive the write, so an update never signs anyone out.
-     * @param iamUpdateInput  (required)
-     * @return IamUser
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public IamUser postIamUsersUpdate(@javax.annotation.Nonnull IamUpdateInput iamUpdateInput) throws ApiException {
-        ApiResponse<IamUser> localVarResp = postIamUsersUpdateWithHttpInfo(iamUpdateInput);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Changes a person&#39;s profile, their roles, or the credentials they sign in with.
-     * Changes a person&#39;s profile, their roles, or the credentials they sign in with. Send a password to reset it; leave it out and their current one keeps working.  Who they are does not change: their organization, username and the identifier their existing sessions are keyed on all survive the write, so an update never signs anyone out.
-     * @param iamUpdateInput  (required)
-     * @return ApiResponse&lt;IamUser&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<IamUser> postIamUsersUpdateWithHttpInfo(@javax.annotation.Nonnull IamUpdateInput iamUpdateInput) throws ApiException {
-        okhttp3.Call localVarCall = postIamUsersUpdateValidateBeforeCall(iamUpdateInput, null);
-        Type localVarReturnType = new TypeToken<IamUser>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Changes a person&#39;s profile, their roles, or the credentials they sign in with. (asynchronously)
-     * Changes a person&#39;s profile, their roles, or the credentials they sign in with. Send a password to reset it; leave it out and their current one keeps working.  Who they are does not change: their organization, username and the identifier their existing sessions are keyed on all survive the write, so an update never signs anyone out.
-     * @param iamUpdateInput  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamUsersUpdateAsync(@javax.annotation.Nonnull IamUpdateInput iamUpdateInput, final ApiCallback<IamUser> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postIamUsersUpdateValidateBeforeCall(iamUpdateInput, _callback);
-        Type localVarReturnType = new TypeToken<IamUser>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        okhttp3.Call localVarCall = postIamUsersByOwnerByNameKeysValidateBeforeCall(owner, name, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
@@ -20790,387 +15598,6 @@ public class IamApi {
         return localVarCall;
     }
     /**
-     * Build call for postIamWorkspacesDelete
-     * @param iamWorkspacesRef  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamWorkspacesDeleteCall(@javax.annotation.Nonnull IamWorkspacesRef iamWorkspacesRef, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = iamWorkspacesRef;
-
-        // create path and map variables
-        String localVarPath = "/v1/iam/workspaces/delete";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postIamWorkspacesDeleteValidateBeforeCall(@javax.annotation.Nonnull IamWorkspacesRef iamWorkspacesRef, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'iamWorkspacesRef' is set
-        if (iamWorkspacesRef == null) {
-            throw new ApiException("Missing the required parameter 'iamWorkspacesRef' when calling postIamWorkspacesDelete(Async)");
-        }
-
-        return postIamWorkspacesDeleteCall(iamWorkspacesRef, _callback);
-
-    }
-
-    /**
-     * Removes a workspace.
-     * Removes a workspace. The people and roles in your organization are unchanged; what goes is the scope itself.
-     * @param iamWorkspacesRef  (required)
-     * @return IamWorkspacesDeleteOutput
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public IamWorkspacesDeleteOutput postIamWorkspacesDelete(@javax.annotation.Nonnull IamWorkspacesRef iamWorkspacesRef) throws ApiException {
-        ApiResponse<IamWorkspacesDeleteOutput> localVarResp = postIamWorkspacesDeleteWithHttpInfo(iamWorkspacesRef);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Removes a workspace.
-     * Removes a workspace. The people and roles in your organization are unchanged; what goes is the scope itself.
-     * @param iamWorkspacesRef  (required)
-     * @return ApiResponse&lt;IamWorkspacesDeleteOutput&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<IamWorkspacesDeleteOutput> postIamWorkspacesDeleteWithHttpInfo(@javax.annotation.Nonnull IamWorkspacesRef iamWorkspacesRef) throws ApiException {
-        okhttp3.Call localVarCall = postIamWorkspacesDeleteValidateBeforeCall(iamWorkspacesRef, null);
-        Type localVarReturnType = new TypeToken<IamWorkspacesDeleteOutput>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Removes a workspace. (asynchronously)
-     * Removes a workspace. The people and roles in your organization are unchanged; what goes is the scope itself.
-     * @param iamWorkspacesRef  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamWorkspacesDeleteAsync(@javax.annotation.Nonnull IamWorkspacesRef iamWorkspacesRef, final ApiCallback<IamWorkspacesDeleteOutput> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postIamWorkspacesDeleteValidateBeforeCall(iamWorkspacesRef, _callback);
-        Type localVarReturnType = new TypeToken<IamWorkspacesDeleteOutput>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postIamWorkspacesGet
-     * @param iamWorkspacesRef  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamWorkspacesGetCall(@javax.annotation.Nonnull IamWorkspacesRef iamWorkspacesRef, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = iamWorkspacesRef;
-
-        // create path and map variables
-        String localVarPath = "/v1/iam/workspaces/get";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postIamWorkspacesGetValidateBeforeCall(@javax.annotation.Nonnull IamWorkspacesRef iamWorkspacesRef, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'iamWorkspacesRef' is set
-        if (iamWorkspacesRef == null) {
-            throw new ApiException("Missing the required parameter 'iamWorkspacesRef' when calling postIamWorkspacesGet(Async)");
-        }
-
-        return postIamWorkspacesGetCall(iamWorkspacesRef, _callback);
-
-    }
-
-    /**
-     * Returns one workspace: what it is called and how it is set up.
-     * Returns one workspace: what it is called and how it is set up.
-     * @param iamWorkspacesRef  (required)
-     * @return IamWorkspace
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public IamWorkspace postIamWorkspacesGet(@javax.annotation.Nonnull IamWorkspacesRef iamWorkspacesRef) throws ApiException {
-        ApiResponse<IamWorkspace> localVarResp = postIamWorkspacesGetWithHttpInfo(iamWorkspacesRef);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Returns one workspace: what it is called and how it is set up.
-     * Returns one workspace: what it is called and how it is set up.
-     * @param iamWorkspacesRef  (required)
-     * @return ApiResponse&lt;IamWorkspace&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<IamWorkspace> postIamWorkspacesGetWithHttpInfo(@javax.annotation.Nonnull IamWorkspacesRef iamWorkspacesRef) throws ApiException {
-        okhttp3.Call localVarCall = postIamWorkspacesGetValidateBeforeCall(iamWorkspacesRef, null);
-        Type localVarReturnType = new TypeToken<IamWorkspace>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Returns one workspace: what it is called and how it is set up. (asynchronously)
-     * Returns one workspace: what it is called and how it is set up.
-     * @param iamWorkspacesRef  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamWorkspacesGetAsync(@javax.annotation.Nonnull IamWorkspacesRef iamWorkspacesRef, final ApiCallback<IamWorkspace> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postIamWorkspacesGetValidateBeforeCall(iamWorkspacesRef, _callback);
-        Type localVarReturnType = new TypeToken<IamWorkspace>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postIamWorkspacesUpdate
-     * @param iamWorkspacesInput  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamWorkspacesUpdateCall(@javax.annotation.Nonnull IamWorkspacesInput iamWorkspacesInput, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = iamWorkspacesInput;
-
-        // create path and map variables
-        String localVarPath = "/v1/iam/workspaces/update";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postIamWorkspacesUpdateValidateBeforeCall(@javax.annotation.Nonnull IamWorkspacesInput iamWorkspacesInput, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'iamWorkspacesInput' is set
-        if (iamWorkspacesInput == null) {
-            throw new ApiException("Missing the required parameter 'iamWorkspacesInput' when calling postIamWorkspacesUpdate(Async)");
-        }
-
-        return postIamWorkspacesUpdateCall(iamWorkspacesInput, _callback);
-
-    }
-
-    /**
-     * Changes a workspace&#39;s settings.
-     * Changes a workspace&#39;s settings. What it is called does not change, and neither does when it was created.
-     * @param iamWorkspacesInput  (required)
-     * @return IamWorkspace
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public IamWorkspace postIamWorkspacesUpdate(@javax.annotation.Nonnull IamWorkspacesInput iamWorkspacesInput) throws ApiException {
-        ApiResponse<IamWorkspace> localVarResp = postIamWorkspacesUpdateWithHttpInfo(iamWorkspacesInput);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Changes a workspace&#39;s settings.
-     * Changes a workspace&#39;s settings. What it is called does not change, and neither does when it was created.
-     * @param iamWorkspacesInput  (required)
-     * @return ApiResponse&lt;IamWorkspace&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<IamWorkspace> postIamWorkspacesUpdateWithHttpInfo(@javax.annotation.Nonnull IamWorkspacesInput iamWorkspacesInput) throws ApiException {
-        okhttp3.Call localVarCall = postIamWorkspacesUpdateValidateBeforeCall(iamWorkspacesInput, null);
-        Type localVarReturnType = new TypeToken<IamWorkspace>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Changes a workspace&#39;s settings. (asynchronously)
-     * Changes a workspace&#39;s settings. What it is called does not change, and neither does when it was created.
-     * @param iamWorkspacesInput  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postIamWorkspacesUpdateAsync(@javax.annotation.Nonnull IamWorkspacesInput iamWorkspacesInput, final ApiCallback<IamWorkspace> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postIamWorkspacesUpdateValidateBeforeCall(iamWorkspacesInput, _callback);
-        Type localVarReturnType = new TypeToken<IamWorkspace>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
      * Build call for putIamAccount
      * @param iamAccountBody  (required)
      * @param cookie  (optional)
@@ -21320,7 +15747,9 @@ public class IamApi {
         return localVarCall;
     }
     /**
-     * Build call for putIamApplication
+     * Build call for putIamApplicationsByOwnerByName
+     * @param owner  (required)
+     * @param name  (required)
      * @param iamApplication  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -21332,7 +15761,7 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putIamApplicationCall(@javax.annotation.Nonnull IamApplication iamApplication, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putIamApplicationsByOwnerByNameCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull IamApplication iamApplication, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -21349,7 +15778,9 @@ public class IamApi {
         Object localVarPostBody = iamApplication;
 
         // create path and map variables
-        String localVarPath = "/v1/iam/application";
+        String localVarPath = "/v1/iam/applications/{owner}/{name}"
+            .replace("{" + "owner" + "}", localVarApiClient.escapeString(owner.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -21378,19 +15809,31 @@ public class IamApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putIamApplicationValidateBeforeCall(@javax.annotation.Nonnull IamApplication iamApplication, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'iamApplication' is set
-        if (iamApplication == null) {
-            throw new ApiException("Missing the required parameter 'iamApplication' when calling putIamApplication(Async)");
+    private okhttp3.Call putIamApplicationsByOwnerByNameValidateBeforeCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull IamApplication iamApplication, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'owner' is set
+        if (owner == null) {
+            throw new ApiException("Missing the required parameter 'owner' when calling putIamApplicationsByOwnerByName(Async)");
         }
 
-        return putIamApplicationCall(iamApplication, _callback);
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling putIamApplicationsByOwnerByName(Async)");
+        }
+
+        // verify the required parameter 'iamApplication' is set
+        if (iamApplication == null) {
+            throw new ApiException("Missing the required parameter 'iamApplication' when calling putIamApplicationsByOwnerByName(Async)");
+        }
+
+        return putIamApplicationsByOwnerByNameCall(owner, name, iamApplication, _callback);
 
     }
 
     /**
      * Changes an application&#39;s display, its sign-in methods and the redirect URIs it may return to — the call that makes login work from a new host.
      * Changes an application&#39;s display, its sign-in methods and the redirect URIs it may return to — the call that makes login work from a new host. Which organization it belongs to and what it is named are fixed when it is created and are not editable here.  Exported so the legacy update-application alias reuses this exact path — one update, two spellings.
+     * @param owner  (required)
+     * @param name  (required)
      * @param iamApplication  (required)
      * @return IamApplication
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -21401,14 +15844,16 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public IamApplication putIamApplication(@javax.annotation.Nonnull IamApplication iamApplication) throws ApiException {
-        ApiResponse<IamApplication> localVarResp = putIamApplicationWithHttpInfo(iamApplication);
+    public IamApplication putIamApplicationsByOwnerByName(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull IamApplication iamApplication) throws ApiException {
+        ApiResponse<IamApplication> localVarResp = putIamApplicationsByOwnerByNameWithHttpInfo(owner, name, iamApplication);
         return localVarResp.getData();
     }
 
     /**
      * Changes an application&#39;s display, its sign-in methods and the redirect URIs it may return to — the call that makes login work from a new host.
      * Changes an application&#39;s display, its sign-in methods and the redirect URIs it may return to — the call that makes login work from a new host. Which organization it belongs to and what it is named are fixed when it is created and are not editable here.  Exported so the legacy update-application alias reuses this exact path — one update, two spellings.
+     * @param owner  (required)
+     * @param name  (required)
      * @param iamApplication  (required)
      * @return ApiResponse&lt;IamApplication&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -21419,8 +15864,8 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IamApplication> putIamApplicationWithHttpInfo(@javax.annotation.Nonnull IamApplication iamApplication) throws ApiException {
-        okhttp3.Call localVarCall = putIamApplicationValidateBeforeCall(iamApplication, null);
+    public ApiResponse<IamApplication> putIamApplicationsByOwnerByNameWithHttpInfo(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull IamApplication iamApplication) throws ApiException {
+        okhttp3.Call localVarCall = putIamApplicationsByOwnerByNameValidateBeforeCall(owner, name, iamApplication, null);
         Type localVarReturnType = new TypeToken<IamApplication>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -21428,6 +15873,8 @@ public class IamApi {
     /**
      * Changes an application&#39;s display, its sign-in methods and the redirect URIs it may return to — the call that makes login work from a new host. (asynchronously)
      * Changes an application&#39;s display, its sign-in methods and the redirect URIs it may return to — the call that makes login work from a new host. Which organization it belongs to and what it is named are fixed when it is created and are not editable here.  Exported so the legacy update-application alias reuses this exact path — one update, two spellings.
+     * @param owner  (required)
+     * @param name  (required)
      * @param iamApplication  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -21439,10 +15886,304 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putIamApplicationAsync(@javax.annotation.Nonnull IamApplication iamApplication, final ApiCallback<IamApplication> _callback) throws ApiException {
+    public okhttp3.Call putIamApplicationsByOwnerByNameAsync(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull IamApplication iamApplication, final ApiCallback<IamApplication> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putIamApplicationValidateBeforeCall(iamApplication, _callback);
+        okhttp3.Call localVarCall = putIamApplicationsByOwnerByNameValidateBeforeCall(owner, name, iamApplication, _callback);
         Type localVarReturnType = new TypeToken<IamApplication>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for putIamAuditLogsByOwnerByName
+     * @param owner  (required)
+     * @param name  (required)
+     * @param iamInput  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call putIamAuditLogsByOwnerByNameCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull IamInput iamInput, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = iamInput;
+
+        // create path and map variables
+        String localVarPath = "/v1/iam/audit-logs/{owner}/{name}"
+            .replace("{" + "owner" + "}", localVarApiClient.escapeString(owner.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call putIamAuditLogsByOwnerByNameValidateBeforeCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull IamInput iamInput, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'owner' is set
+        if (owner == null) {
+            throw new ApiException("Missing the required parameter 'owner' when calling putIamAuditLogsByOwnerByName(Async)");
+        }
+
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling putIamAuditLogsByOwnerByName(Async)");
+        }
+
+        // verify the required parameter 'iamInput' is set
+        if (iamInput == null) {
+            throw new ApiException("Missing the required parameter 'iamInput' when calling putIamAuditLogsByOwnerByName(Async)");
+        }
+
+        return putIamAuditLogsByOwnerByNameCall(owner, name, iamInput, _callback);
+
+    }
+
+    /**
+     * Corrects an audit entry.
+     * Corrects an audit entry. The trail is append-only in normal operation and nothing in the Hanzo Cloud rewrites it — this exists for an administrator to correct an entry their own systems recorded wrongly.
+     * @param owner  (required)
+     * @param name  (required)
+     * @param iamInput  (required)
+     * @return IamAuditLog
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public IamAuditLog putIamAuditLogsByOwnerByName(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull IamInput iamInput) throws ApiException {
+        ApiResponse<IamAuditLog> localVarResp = putIamAuditLogsByOwnerByNameWithHttpInfo(owner, name, iamInput);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Corrects an audit entry.
+     * Corrects an audit entry. The trail is append-only in normal operation and nothing in the Hanzo Cloud rewrites it — this exists for an administrator to correct an entry their own systems recorded wrongly.
+     * @param owner  (required)
+     * @param name  (required)
+     * @param iamInput  (required)
+     * @return ApiResponse&lt;IamAuditLog&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<IamAuditLog> putIamAuditLogsByOwnerByNameWithHttpInfo(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull IamInput iamInput) throws ApiException {
+        okhttp3.Call localVarCall = putIamAuditLogsByOwnerByNameValidateBeforeCall(owner, name, iamInput, null);
+        Type localVarReturnType = new TypeToken<IamAuditLog>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Corrects an audit entry. (asynchronously)
+     * Corrects an audit entry. The trail is append-only in normal operation and nothing in the Hanzo Cloud rewrites it — this exists for an administrator to correct an entry their own systems recorded wrongly.
+     * @param owner  (required)
+     * @param name  (required)
+     * @param iamInput  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call putIamAuditLogsByOwnerByNameAsync(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull IamInput iamInput, final ApiCallback<IamAuditLog> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = putIamAuditLogsByOwnerByNameValidateBeforeCall(owner, name, iamInput, _callback);
+        Type localVarReturnType = new TypeToken<IamAuditLog>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for putIamCertsByOwnerByName
+     * @param owner  (required)
+     * @param name  (required)
+     * @param iamCert  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call putIamCertsByOwnerByNameCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull IamCert iamCert, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = iamCert;
+
+        // create path and map variables
+        String localVarPath = "/v1/iam/certs/{owner}/{name}"
+            .replace("{" + "owner" + "}", localVarApiClient.escapeString(owner.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call putIamCertsByOwnerByNameValidateBeforeCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull IamCert iamCert, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'owner' is set
+        if (owner == null) {
+            throw new ApiException("Missing the required parameter 'owner' when calling putIamCertsByOwnerByName(Async)");
+        }
+
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling putIamCertsByOwnerByName(Async)");
+        }
+
+        // verify the required parameter 'iamCert' is set
+        if (iamCert == null) {
+            throw new ApiException("Missing the required parameter 'iamCert' when calling putIamCertsByOwnerByName(Async)");
+        }
+
+        return putIamCertsByOwnerByNameCall(owner, name, iamCert, _callback);
+
+    }
+
+    /**
+     * Changes a signing certificate&#39;s settings.
+     * Changes a signing certificate&#39;s settings. What it is called does not change, and neither does when it was added.  A PUT here is a METADATA edit — display name, expiry, provider. It overlays only the fields the request actually SET onto the loaded row: a field the JSON omits (or leaves at its zero value) keeps what the row holds, rather than blanking it. That is load-bearing, not a nicety. A read serves the public Certificate (Mask hides only PrivateKey and AccessSecret), so a client that reads a cert, changes one field, and writes it back sends the masked halves empty and every other field it did not touch at its zero value — and the old full-struct overlay wrote all of those blanks back. Blanking CryptoAlgorithm alone drops the cert from the JWKS (oidc.Publishes turns false), so every token under its &#x60;kid&#x60; stops verifying; blanking Provider/Account/ExpireTime breaks ACME renewal and expiry — all from a request that only meant to rename it. Absent-or-zero means \&quot;unchanged\&quot;, so the deployment (key) and a rotation (cert) remain the only way key or published material changes; the metadata API cannot clear it.  The overlay is generic — it copies every set field, so a field nobody has added yet is carried without a line here — and leaves three things the request may not move: the bound Model (id, createdAt, key, snapshot), the natural key (owner/name address the row, they do not mutate it), and the creation stamp.
+     * @param owner  (required)
+     * @param name  (required)
+     * @param iamCert  (required)
+     * @return IamCert
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public IamCert putIamCertsByOwnerByName(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull IamCert iamCert) throws ApiException {
+        ApiResponse<IamCert> localVarResp = putIamCertsByOwnerByNameWithHttpInfo(owner, name, iamCert);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Changes a signing certificate&#39;s settings.
+     * Changes a signing certificate&#39;s settings. What it is called does not change, and neither does when it was added.  A PUT here is a METADATA edit — display name, expiry, provider. It overlays only the fields the request actually SET onto the loaded row: a field the JSON omits (or leaves at its zero value) keeps what the row holds, rather than blanking it. That is load-bearing, not a nicety. A read serves the public Certificate (Mask hides only PrivateKey and AccessSecret), so a client that reads a cert, changes one field, and writes it back sends the masked halves empty and every other field it did not touch at its zero value — and the old full-struct overlay wrote all of those blanks back. Blanking CryptoAlgorithm alone drops the cert from the JWKS (oidc.Publishes turns false), so every token under its &#x60;kid&#x60; stops verifying; blanking Provider/Account/ExpireTime breaks ACME renewal and expiry — all from a request that only meant to rename it. Absent-or-zero means \&quot;unchanged\&quot;, so the deployment (key) and a rotation (cert) remain the only way key or published material changes; the metadata API cannot clear it.  The overlay is generic — it copies every set field, so a field nobody has added yet is carried without a line here — and leaves three things the request may not move: the bound Model (id, createdAt, key, snapshot), the natural key (owner/name address the row, they do not mutate it), and the creation stamp.
+     * @param owner  (required)
+     * @param name  (required)
+     * @param iamCert  (required)
+     * @return ApiResponse&lt;IamCert&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<IamCert> putIamCertsByOwnerByNameWithHttpInfo(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull IamCert iamCert) throws ApiException {
+        okhttp3.Call localVarCall = putIamCertsByOwnerByNameValidateBeforeCall(owner, name, iamCert, null);
+        Type localVarReturnType = new TypeToken<IamCert>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Changes a signing certificate&#39;s settings. (asynchronously)
+     * Changes a signing certificate&#39;s settings. What it is called does not change, and neither does when it was added.  A PUT here is a METADATA edit — display name, expiry, provider. It overlays only the fields the request actually SET onto the loaded row: a field the JSON omits (or leaves at its zero value) keeps what the row holds, rather than blanking it. That is load-bearing, not a nicety. A read serves the public Certificate (Mask hides only PrivateKey and AccessSecret), so a client that reads a cert, changes one field, and writes it back sends the masked halves empty and every other field it did not touch at its zero value — and the old full-struct overlay wrote all of those blanks back. Blanking CryptoAlgorithm alone drops the cert from the JWKS (oidc.Publishes turns false), so every token under its &#x60;kid&#x60; stops verifying; blanking Provider/Account/ExpireTime breaks ACME renewal and expiry — all from a request that only meant to rename it. Absent-or-zero means \&quot;unchanged\&quot;, so the deployment (key) and a rotation (cert) remain the only way key or published material changes; the metadata API cannot clear it.  The overlay is generic — it copies every set field, so a field nobody has added yet is carried without a line here — and leaves three things the request may not move: the bound Model (id, createdAt, key, snapshot), the natural key (owner/name address the row, they do not mutate it), and the creation stamp.
+     * @param owner  (required)
+     * @param name  (required)
+     * @param iamCert  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call putIamCertsByOwnerByNameAsync(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull IamCert iamCert, final ApiCallback<IamCert> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = putIamCertsByOwnerByNameValidateBeforeCall(owner, name, iamCert, _callback);
+        Type localVarReturnType = new TypeToken<IamCert>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -21532,6 +16273,300 @@ public class IamApi {
 
         okhttp3.Call localVarCall = putIamConsentValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for putIamInvitationsByOwnerByName
+     * @param owner  (required)
+     * @param name  (required)
+     * @param iamInvitationsInput  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call putIamInvitationsByOwnerByNameCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull IamInvitationsInput iamInvitationsInput, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = iamInvitationsInput;
+
+        // create path and map variables
+        String localVarPath = "/v1/iam/invitations/{owner}/{name}"
+            .replace("{" + "owner" + "}", localVarApiClient.escapeString(owner.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call putIamInvitationsByOwnerByNameValidateBeforeCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull IamInvitationsInput iamInvitationsInput, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'owner' is set
+        if (owner == null) {
+            throw new ApiException("Missing the required parameter 'owner' when calling putIamInvitationsByOwnerByName(Async)");
+        }
+
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling putIamInvitationsByOwnerByName(Async)");
+        }
+
+        // verify the required parameter 'iamInvitationsInput' is set
+        if (iamInvitationsInput == null) {
+            throw new ApiException("Missing the required parameter 'iamInvitationsInput' when calling putIamInvitationsByOwnerByName(Async)");
+        }
+
+        return putIamInvitationsByOwnerByNameCall(owner, name, iamInvitationsInput, _callback);
+
+    }
+
+    /**
+     * Changes an invitation&#39;s terms — the role it grants, how many may redeem it, or when it expires.
+     * Changes an invitation&#39;s terms — the role it grants, how many may redeem it, or when it expires. What it is called does not change.
+     * @param owner  (required)
+     * @param name  (required)
+     * @param iamInvitationsInput  (required)
+     * @return IamInvitation
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public IamInvitation putIamInvitationsByOwnerByName(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull IamInvitationsInput iamInvitationsInput) throws ApiException {
+        ApiResponse<IamInvitation> localVarResp = putIamInvitationsByOwnerByNameWithHttpInfo(owner, name, iamInvitationsInput);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Changes an invitation&#39;s terms — the role it grants, how many may redeem it, or when it expires.
+     * Changes an invitation&#39;s terms — the role it grants, how many may redeem it, or when it expires. What it is called does not change.
+     * @param owner  (required)
+     * @param name  (required)
+     * @param iamInvitationsInput  (required)
+     * @return ApiResponse&lt;IamInvitation&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<IamInvitation> putIamInvitationsByOwnerByNameWithHttpInfo(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull IamInvitationsInput iamInvitationsInput) throws ApiException {
+        okhttp3.Call localVarCall = putIamInvitationsByOwnerByNameValidateBeforeCall(owner, name, iamInvitationsInput, null);
+        Type localVarReturnType = new TypeToken<IamInvitation>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Changes an invitation&#39;s terms — the role it grants, how many may redeem it, or when it expires. (asynchronously)
+     * Changes an invitation&#39;s terms — the role it grants, how many may redeem it, or when it expires. What it is called does not change.
+     * @param owner  (required)
+     * @param name  (required)
+     * @param iamInvitationsInput  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call putIamInvitationsByOwnerByNameAsync(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull IamInvitationsInput iamInvitationsInput, final ApiCallback<IamInvitation> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = putIamInvitationsByOwnerByNameValidateBeforeCall(owner, name, iamInvitationsInput, _callback);
+        Type localVarReturnType = new TypeToken<IamInvitation>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for putIamKeysByOwnerByName
+     * @param owner Owner is the tenant that holds the key; Name is unique within Owner. (required)
+     * @param name  (required)
+     * @param iamKey  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call putIamKeysByOwnerByNameCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull IamKey iamKey, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = iamKey;
+
+        // create path and map variables
+        String localVarPath = "/v1/iam/keys/{owner}/{name}"
+            .replace("{" + "owner" + "}", localVarApiClient.escapeString(owner.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call putIamKeysByOwnerByNameValidateBeforeCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull IamKey iamKey, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'owner' is set
+        if (owner == null) {
+            throw new ApiException("Missing the required parameter 'owner' when calling putIamKeysByOwnerByName(Async)");
+        }
+
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling putIamKeysByOwnerByName(Async)");
+        }
+
+        // verify the required parameter 'iamKey' is set
+        if (iamKey == null) {
+            throw new ApiException("Missing the required parameter 'iamKey' when calling putIamKeysByOwnerByName(Async)");
+        }
+
+        return putIamKeysByOwnerByNameCall(owner, name, iamKey, _callback);
+
+    }
+
+    /**
+     * Changes what a key is called or what it may reach.
+     * Changes what a key is called or what it may reach. The credential itself is not reissued — the key in your deployment keeps working.
+     * @param owner Owner is the tenant that holds the key; Name is unique within Owner. (required)
+     * @param name  (required)
+     * @param iamKey  (required)
+     * @return IamKey
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public IamKey putIamKeysByOwnerByName(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull IamKey iamKey) throws ApiException {
+        ApiResponse<IamKey> localVarResp = putIamKeysByOwnerByNameWithHttpInfo(owner, name, iamKey);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Changes what a key is called or what it may reach.
+     * Changes what a key is called or what it may reach. The credential itself is not reissued — the key in your deployment keeps working.
+     * @param owner Owner is the tenant that holds the key; Name is unique within Owner. (required)
+     * @param name  (required)
+     * @param iamKey  (required)
+     * @return ApiResponse&lt;IamKey&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<IamKey> putIamKeysByOwnerByNameWithHttpInfo(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull IamKey iamKey) throws ApiException {
+        okhttp3.Call localVarCall = putIamKeysByOwnerByNameValidateBeforeCall(owner, name, iamKey, null);
+        Type localVarReturnType = new TypeToken<IamKey>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Changes what a key is called or what it may reach. (asynchronously)
+     * Changes what a key is called or what it may reach. The credential itself is not reissued — the key in your deployment keeps working.
+     * @param owner Owner is the tenant that holds the key; Name is unique within Owner. (required)
+     * @param name  (required)
+     * @param iamKey  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call putIamKeysByOwnerByNameAsync(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull IamKey iamKey, final ApiCallback<IamKey> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = putIamKeysByOwnerByNameValidateBeforeCall(owner, name, iamKey, _callback);
+        Type localVarReturnType = new TypeToken<IamKey>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -21684,6 +16719,447 @@ public class IamApi {
         return localVarCall;
     }
     /**
+     * Build call for putIamPermissionsByOwnerByName
+     * @param owner Identity — the (owner, name) natural key. (required)
+     * @param name  (required)
+     * @param iamPermission  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call putIamPermissionsByOwnerByNameCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull IamPermission iamPermission, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = iamPermission;
+
+        // create path and map variables
+        String localVarPath = "/v1/iam/permissions/{owner}/{name}"
+            .replace("{" + "owner" + "}", localVarApiClient.escapeString(owner.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call putIamPermissionsByOwnerByNameValidateBeforeCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull IamPermission iamPermission, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'owner' is set
+        if (owner == null) {
+            throw new ApiException("Missing the required parameter 'owner' when calling putIamPermissionsByOwnerByName(Async)");
+        }
+
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling putIamPermissionsByOwnerByName(Async)");
+        }
+
+        // verify the required parameter 'iamPermission' is set
+        if (iamPermission == null) {
+            throw new ApiException("Missing the required parameter 'iamPermission' when calling putIamPermissionsByOwnerByName(Async)");
+        }
+
+        return putIamPermissionsByOwnerByNameCall(owner, name, iamPermission, _callback);
+
+    }
+
+    /**
+     * Changes who a permission grants to, what it allows, or the resources it covers.
+     * Changes who a permission grants to, what it allows, or the resources it covers. Access changes as soon as the write lands. What the permission is called does not change, and neither does when it was created.
+     * @param owner Identity — the (owner, name) natural key. (required)
+     * @param name  (required)
+     * @param iamPermission  (required)
+     * @return IamPermission
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public IamPermission putIamPermissionsByOwnerByName(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull IamPermission iamPermission) throws ApiException {
+        ApiResponse<IamPermission> localVarResp = putIamPermissionsByOwnerByNameWithHttpInfo(owner, name, iamPermission);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Changes who a permission grants to, what it allows, or the resources it covers.
+     * Changes who a permission grants to, what it allows, or the resources it covers. Access changes as soon as the write lands. What the permission is called does not change, and neither does when it was created.
+     * @param owner Identity — the (owner, name) natural key. (required)
+     * @param name  (required)
+     * @param iamPermission  (required)
+     * @return ApiResponse&lt;IamPermission&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<IamPermission> putIamPermissionsByOwnerByNameWithHttpInfo(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull IamPermission iamPermission) throws ApiException {
+        okhttp3.Call localVarCall = putIamPermissionsByOwnerByNameValidateBeforeCall(owner, name, iamPermission, null);
+        Type localVarReturnType = new TypeToken<IamPermission>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Changes who a permission grants to, what it allows, or the resources it covers. (asynchronously)
+     * Changes who a permission grants to, what it allows, or the resources it covers. Access changes as soon as the write lands. What the permission is called does not change, and neither does when it was created.
+     * @param owner Identity — the (owner, name) natural key. (required)
+     * @param name  (required)
+     * @param iamPermission  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call putIamPermissionsByOwnerByNameAsync(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull IamPermission iamPermission, final ApiCallback<IamPermission> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = putIamPermissionsByOwnerByNameValidateBeforeCall(owner, name, iamPermission, _callback);
+        Type localVarReturnType = new TypeToken<IamPermission>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for putIamProjectsByOwnerByName
+     * @param owner  (required)
+     * @param name  (required)
+     * @param iamProjectsInput  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call putIamProjectsByOwnerByNameCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull IamProjectsInput iamProjectsInput, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = iamProjectsInput;
+
+        // create path and map variables
+        String localVarPath = "/v1/iam/projects/{owner}/{name}"
+            .replace("{" + "owner" + "}", localVarApiClient.escapeString(owner.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call putIamProjectsByOwnerByNameValidateBeforeCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull IamProjectsInput iamProjectsInput, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'owner' is set
+        if (owner == null) {
+            throw new ApiException("Missing the required parameter 'owner' when calling putIamProjectsByOwnerByName(Async)");
+        }
+
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling putIamProjectsByOwnerByName(Async)");
+        }
+
+        // verify the required parameter 'iamProjectsInput' is set
+        if (iamProjectsInput == null) {
+            throw new ApiException("Missing the required parameter 'iamProjectsInput' when calling putIamProjectsByOwnerByName(Async)");
+        }
+
+        return putIamProjectsByOwnerByNameCall(owner, name, iamProjectsInput, _callback);
+
+    }
+
+    /**
+     * Changes a project&#39;s settings.
+     * Changes a project&#39;s settings. What it is called does not change, and neither does when it was created.
+     * @param owner  (required)
+     * @param name  (required)
+     * @param iamProjectsInput  (required)
+     * @return IamProject
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public IamProject putIamProjectsByOwnerByName(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull IamProjectsInput iamProjectsInput) throws ApiException {
+        ApiResponse<IamProject> localVarResp = putIamProjectsByOwnerByNameWithHttpInfo(owner, name, iamProjectsInput);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Changes a project&#39;s settings.
+     * Changes a project&#39;s settings. What it is called does not change, and neither does when it was created.
+     * @param owner  (required)
+     * @param name  (required)
+     * @param iamProjectsInput  (required)
+     * @return ApiResponse&lt;IamProject&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<IamProject> putIamProjectsByOwnerByNameWithHttpInfo(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull IamProjectsInput iamProjectsInput) throws ApiException {
+        okhttp3.Call localVarCall = putIamProjectsByOwnerByNameValidateBeforeCall(owner, name, iamProjectsInput, null);
+        Type localVarReturnType = new TypeToken<IamProject>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Changes a project&#39;s settings. (asynchronously)
+     * Changes a project&#39;s settings. What it is called does not change, and neither does when it was created.
+     * @param owner  (required)
+     * @param name  (required)
+     * @param iamProjectsInput  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call putIamProjectsByOwnerByNameAsync(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull IamProjectsInput iamProjectsInput, final ApiCallback<IamProject> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = putIamProjectsByOwnerByNameValidateBeforeCall(owner, name, iamProjectsInput, _callback);
+        Type localVarReturnType = new TypeToken<IamProject>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for putIamRolesByOwnerByName
+     * @param owner  (required)
+     * @param name  (required)
+     * @param iamRolesInput  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call putIamRolesByOwnerByNameCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull IamRolesInput iamRolesInput, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = iamRolesInput;
+
+        // create path and map variables
+        String localVarPath = "/v1/iam/roles/{owner}/{name}"
+            .replace("{" + "owner" + "}", localVarApiClient.escapeString(owner.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call putIamRolesByOwnerByNameValidateBeforeCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull IamRolesInput iamRolesInput, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'owner' is set
+        if (owner == null) {
+            throw new ApiException("Missing the required parameter 'owner' when calling putIamRolesByOwnerByName(Async)");
+        }
+
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling putIamRolesByOwnerByName(Async)");
+        }
+
+        // verify the required parameter 'iamRolesInput' is set
+        if (iamRolesInput == null) {
+            throw new ApiException("Missing the required parameter 'iamRolesInput' when calling putIamRolesByOwnerByName(Async)");
+        }
+
+        return putIamRolesByOwnerByNameCall(owner, name, iamRolesInput, _callback);
+
+    }
+
+    /**
+     * Changes who is in a role, or which roles it includes.
+     * Changes who is in a role, or which roles it includes. Access changes for everyone in it as soon as the write lands. What the role is called does not change, and neither does when it was created.
+     * @param owner  (required)
+     * @param name  (required)
+     * @param iamRolesInput  (required)
+     * @return IamRole
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public IamRole putIamRolesByOwnerByName(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull IamRolesInput iamRolesInput) throws ApiException {
+        ApiResponse<IamRole> localVarResp = putIamRolesByOwnerByNameWithHttpInfo(owner, name, iamRolesInput);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Changes who is in a role, or which roles it includes.
+     * Changes who is in a role, or which roles it includes. Access changes for everyone in it as soon as the write lands. What the role is called does not change, and neither does when it was created.
+     * @param owner  (required)
+     * @param name  (required)
+     * @param iamRolesInput  (required)
+     * @return ApiResponse&lt;IamRole&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<IamRole> putIamRolesByOwnerByNameWithHttpInfo(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull IamRolesInput iamRolesInput) throws ApiException {
+        okhttp3.Call localVarCall = putIamRolesByOwnerByNameValidateBeforeCall(owner, name, iamRolesInput, null);
+        Type localVarReturnType = new TypeToken<IamRole>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Changes who is in a role, or which roles it includes. (asynchronously)
+     * Changes who is in a role, or which roles it includes. Access changes for everyone in it as soon as the write lands. What the role is called does not change, and neither does when it was created.
+     * @param owner  (required)
+     * @param name  (required)
+     * @param iamRolesInput  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call putIamRolesByOwnerByNameAsync(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull IamRolesInput iamRolesInput, final ApiCallback<IamRole> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = putIamRolesByOwnerByNameValidateBeforeCall(owner, name, iamRolesInput, _callback);
+        Type localVarReturnType = new TypeToken<IamRole>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for putIamScimV2UsersByOwnerByName
      * @param owner  (required)
      * @param name  (required)
@@ -21792,11 +17268,10 @@ public class IamApi {
         return localVarCall;
     }
     /**
-     * Build call for searchOrganizations
-     * @param xForwardedFor  (optional)
-     * @param q  (optional)
-     * @param limit  (optional)
-     * @param cursor  (optional)
+     * Build call for putIamUsersByOwnerByName
+     * @param owner  (required)
+     * @param name  (required)
+     * @param iamUpdateInput  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -21807,7 +17282,7 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchOrganizationsCall(@javax.annotation.Nullable String xForwardedFor, @javax.annotation.Nullable String q, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String cursor, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putIamUsersByOwnerByNameCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull IamUpdateInput iamUpdateInput, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -21821,28 +17296,18 @@ public class IamApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = iamUpdateInput;
 
         // create path and map variables
-        String localVarPath = "/v1/iam/organizations/search";
+        String localVarPath = "/v1/iam/users/{owner}/{name}"
+            .replace("{" + "owner" + "}", localVarApiClient.escapeString(owner.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (q != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("q", q));
-        }
-
-        if (limit != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
-        }
-
-        if (cursor != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("cursor", cursor));
-        }
 
         final String[] localVarAccepts = {
             "application/json"
@@ -21853,35 +17318,45 @@ public class IamApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        if (xForwardedFor != null) {
-            localVarHeaderParams.put("X-Forwarded-For", localVarApiClient.parameterToString(xForwardedFor));
-        }
-
-
         String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call searchOrganizationsValidateBeforeCall(@javax.annotation.Nullable String xForwardedFor, @javax.annotation.Nullable String q, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String cursor, final ApiCallback _callback) throws ApiException {
-        return searchOrganizationsCall(xForwardedFor, q, limit, cursor, _callback);
+    private okhttp3.Call putIamUsersByOwnerByNameValidateBeforeCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull IamUpdateInput iamUpdateInput, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'owner' is set
+        if (owner == null) {
+            throw new ApiException("Missing the required parameter 'owner' when calling putIamUsersByOwnerByName(Async)");
+        }
+
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling putIamUsersByOwnerByName(Async)");
+        }
+
+        // verify the required parameter 'iamUpdateInput' is set
+        if (iamUpdateInput == null) {
+            throw new ApiException("Missing the required parameter 'iamUpdateInput' when calling putIamUsersByOwnerByName(Async)");
+        }
+
+        return putIamUsersByOwnerByNameCall(owner, name, iamUpdateInput, _callback);
 
     }
 
     /**
-     * Returns the organizations you can act in, the ones you belong to first and the rest after, newest first, narrowed by an optional query against the name or the display name.
-     * Returns the organizations you can act in, the ones you belong to first and the rest after, newest first, narrowed by an optional query against the name or the display name.  Platform operators see every organization; everyone else sees their own. Pass the cursor from the previous page to continue; an empty cursor in the answer means there is nothing more.
-     * @param xForwardedFor  (optional)
-     * @param q  (optional)
-     * @param limit  (optional)
-     * @param cursor  (optional)
-     * @return IamSearchOrganizationsOutput
+     * Changes a person&#39;s profile, their roles, or the credentials they sign in with.
+     * Changes a person&#39;s profile, their roles, or the credentials they sign in with. Send a password to reset it; leave it out and their current one keeps working.  Who they are does not change: their organization, username and the identifier their existing sessions are keyed on all survive the write, so an update never signs anyone out.
+     * @param owner  (required)
+     * @param name  (required)
+     * @param iamUpdateInput  (required)
+     * @return IamUser
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -21890,19 +17365,18 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public IamSearchOrganizationsOutput searchOrganizations(@javax.annotation.Nullable String xForwardedFor, @javax.annotation.Nullable String q, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String cursor) throws ApiException {
-        ApiResponse<IamSearchOrganizationsOutput> localVarResp = searchOrganizationsWithHttpInfo(xForwardedFor, q, limit, cursor);
+    public IamUser putIamUsersByOwnerByName(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull IamUpdateInput iamUpdateInput) throws ApiException {
+        ApiResponse<IamUser> localVarResp = putIamUsersByOwnerByNameWithHttpInfo(owner, name, iamUpdateInput);
         return localVarResp.getData();
     }
 
     /**
-     * Returns the organizations you can act in, the ones you belong to first and the rest after, newest first, narrowed by an optional query against the name or the display name.
-     * Returns the organizations you can act in, the ones you belong to first and the rest after, newest first, narrowed by an optional query against the name or the display name.  Platform operators see every organization; everyone else sees their own. Pass the cursor from the previous page to continue; an empty cursor in the answer means there is nothing more.
-     * @param xForwardedFor  (optional)
-     * @param q  (optional)
-     * @param limit  (optional)
-     * @param cursor  (optional)
-     * @return ApiResponse&lt;IamSearchOrganizationsOutput&gt;
+     * Changes a person&#39;s profile, their roles, or the credentials they sign in with.
+     * Changes a person&#39;s profile, their roles, or the credentials they sign in with. Send a password to reset it; leave it out and their current one keeps working.  Who they are does not change: their organization, username and the identifier their existing sessions are keyed on all survive the write, so an update never signs anyone out.
+     * @param owner  (required)
+     * @param name  (required)
+     * @param iamUpdateInput  (required)
+     * @return ApiResponse&lt;IamUser&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -21911,19 +17385,18 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IamSearchOrganizationsOutput> searchOrganizationsWithHttpInfo(@javax.annotation.Nullable String xForwardedFor, @javax.annotation.Nullable String q, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String cursor) throws ApiException {
-        okhttp3.Call localVarCall = searchOrganizationsValidateBeforeCall(xForwardedFor, q, limit, cursor, null);
-        Type localVarReturnType = new TypeToken<IamSearchOrganizationsOutput>(){}.getType();
+    public ApiResponse<IamUser> putIamUsersByOwnerByNameWithHttpInfo(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull IamUpdateInput iamUpdateInput) throws ApiException {
+        okhttp3.Call localVarCall = putIamUsersByOwnerByNameValidateBeforeCall(owner, name, iamUpdateInput, null);
+        Type localVarReturnType = new TypeToken<IamUser>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Returns the organizations you can act in, the ones you belong to first and the rest after, newest first, narrowed by an optional query against the name or the display name. (asynchronously)
-     * Returns the organizations you can act in, the ones you belong to first and the rest after, newest first, narrowed by an optional query against the name or the display name.  Platform operators see every organization; everyone else sees their own. Pass the cursor from the previous page to continue; an empty cursor in the answer means there is nothing more.
-     * @param xForwardedFor  (optional)
-     * @param q  (optional)
-     * @param limit  (optional)
-     * @param cursor  (optional)
+     * Changes a person&#39;s profile, their roles, or the credentials they sign in with. (asynchronously)
+     * Changes a person&#39;s profile, their roles, or the credentials they sign in with. Send a password to reset it; leave it out and their current one keeps working.  Who they are does not change: their organization, username and the identifier their existing sessions are keyed on all survive the write, so an update never signs anyone out.
+     * @param owner  (required)
+     * @param name  (required)
+     * @param iamUpdateInput  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -21934,10 +17407,157 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchOrganizationsAsync(@javax.annotation.Nullable String xForwardedFor, @javax.annotation.Nullable String q, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String cursor, final ApiCallback<IamSearchOrganizationsOutput> _callback) throws ApiException {
+    public okhttp3.Call putIamUsersByOwnerByNameAsync(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull IamUpdateInput iamUpdateInput, final ApiCallback<IamUser> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = searchOrganizationsValidateBeforeCall(xForwardedFor, q, limit, cursor, _callback);
-        Type localVarReturnType = new TypeToken<IamSearchOrganizationsOutput>(){}.getType();
+        okhttp3.Call localVarCall = putIamUsersByOwnerByNameValidateBeforeCall(owner, name, iamUpdateInput, _callback);
+        Type localVarReturnType = new TypeToken<IamUser>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for putIamWorkspacesByOwnerByName
+     * @param owner  (required)
+     * @param name  (required)
+     * @param iamWorkspacesInput  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call putIamWorkspacesByOwnerByNameCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull IamWorkspacesInput iamWorkspacesInput, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = iamWorkspacesInput;
+
+        // create path and map variables
+        String localVarPath = "/v1/iam/workspaces/{owner}/{name}"
+            .replace("{" + "owner" + "}", localVarApiClient.escapeString(owner.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call putIamWorkspacesByOwnerByNameValidateBeforeCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull IamWorkspacesInput iamWorkspacesInput, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'owner' is set
+        if (owner == null) {
+            throw new ApiException("Missing the required parameter 'owner' when calling putIamWorkspacesByOwnerByName(Async)");
+        }
+
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling putIamWorkspacesByOwnerByName(Async)");
+        }
+
+        // verify the required parameter 'iamWorkspacesInput' is set
+        if (iamWorkspacesInput == null) {
+            throw new ApiException("Missing the required parameter 'iamWorkspacesInput' when calling putIamWorkspacesByOwnerByName(Async)");
+        }
+
+        return putIamWorkspacesByOwnerByNameCall(owner, name, iamWorkspacesInput, _callback);
+
+    }
+
+    /**
+     * Changes a workspace&#39;s settings.
+     * Changes a workspace&#39;s settings. What it is called does not change, and neither does when it was created.
+     * @param owner  (required)
+     * @param name  (required)
+     * @param iamWorkspacesInput  (required)
+     * @return IamWorkspace
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public IamWorkspace putIamWorkspacesByOwnerByName(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull IamWorkspacesInput iamWorkspacesInput) throws ApiException {
+        ApiResponse<IamWorkspace> localVarResp = putIamWorkspacesByOwnerByNameWithHttpInfo(owner, name, iamWorkspacesInput);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Changes a workspace&#39;s settings.
+     * Changes a workspace&#39;s settings. What it is called does not change, and neither does when it was created.
+     * @param owner  (required)
+     * @param name  (required)
+     * @param iamWorkspacesInput  (required)
+     * @return ApiResponse&lt;IamWorkspace&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<IamWorkspace> putIamWorkspacesByOwnerByNameWithHttpInfo(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull IamWorkspacesInput iamWorkspacesInput) throws ApiException {
+        okhttp3.Call localVarCall = putIamWorkspacesByOwnerByNameValidateBeforeCall(owner, name, iamWorkspacesInput, null);
+        Type localVarReturnType = new TypeToken<IamWorkspace>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Changes a workspace&#39;s settings. (asynchronously)
+     * Changes a workspace&#39;s settings. What it is called does not change, and neither does when it was created.
+     * @param owner  (required)
+     * @param name  (required)
+     * @param iamWorkspacesInput  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call putIamWorkspacesByOwnerByNameAsync(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull IamWorkspacesInput iamWorkspacesInput, final ApiCallback<IamWorkspace> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = putIamWorkspacesByOwnerByNameValidateBeforeCall(owner, name, iamWorkspacesInput, _callback);
+        Type localVarReturnType = new TypeToken<IamWorkspace>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -22070,6 +17690,8 @@ public class IamApi {
     }
     /**
      * Build call for updateOrganization
+     * @param owner  (required)
+     * @param name  (required)
      * @param iamUpdateOrganizationInput  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -22081,7 +17703,7 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateOrganizationCall(@javax.annotation.Nonnull IamUpdateOrganizationInput iamUpdateOrganizationInput, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call updateOrganizationCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull IamUpdateOrganizationInput iamUpdateOrganizationInput, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -22098,7 +17720,9 @@ public class IamApi {
         Object localVarPostBody = iamUpdateOrganizationInput;
 
         // create path and map variables
-        String localVarPath = "/v1/iam/organizations/update";
+        String localVarPath = "/v1/iam/organizations/{owner}/{name}"
+            .replace("{" + "owner" + "}", localVarApiClient.escapeString(owner.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -22123,23 +17747,35 @@ public class IamApi {
         }
 
         String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateOrganizationValidateBeforeCall(@javax.annotation.Nonnull IamUpdateOrganizationInput iamUpdateOrganizationInput, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateOrganizationValidateBeforeCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull IamUpdateOrganizationInput iamUpdateOrganizationInput, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'owner' is set
+        if (owner == null) {
+            throw new ApiException("Missing the required parameter 'owner' when calling updateOrganization(Async)");
+        }
+
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling updateOrganization(Async)");
+        }
+
         // verify the required parameter 'iamUpdateOrganizationInput' is set
         if (iamUpdateOrganizationInput == null) {
             throw new ApiException("Missing the required parameter 'iamUpdateOrganizationInput' when calling updateOrganization(Async)");
         }
 
-        return updateOrganizationCall(iamUpdateOrganizationInput, _callback);
+        return updateOrganizationCall(owner, name, iamUpdateOrganizationInput, _callback);
 
     }
 
     /**
      * Changes an organization&#39;s display, its defaults and the sign-in rules everyone in it inherits.
      * Changes an organization&#39;s display, its defaults and the sign-in rules everyone in it inherits. Which organization it is does not change, and neither does when it was created.
+     * @param owner  (required)
+     * @param name  (required)
      * @param iamUpdateOrganizationInput  (required)
      * @return IamOrganization
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -22150,14 +17786,16 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public IamOrganization updateOrganization(@javax.annotation.Nonnull IamUpdateOrganizationInput iamUpdateOrganizationInput) throws ApiException {
-        ApiResponse<IamOrganization> localVarResp = updateOrganizationWithHttpInfo(iamUpdateOrganizationInput);
+    public IamOrganization updateOrganization(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull IamUpdateOrganizationInput iamUpdateOrganizationInput) throws ApiException {
+        ApiResponse<IamOrganization> localVarResp = updateOrganizationWithHttpInfo(owner, name, iamUpdateOrganizationInput);
         return localVarResp.getData();
     }
 
     /**
      * Changes an organization&#39;s display, its defaults and the sign-in rules everyone in it inherits.
      * Changes an organization&#39;s display, its defaults and the sign-in rules everyone in it inherits. Which organization it is does not change, and neither does when it was created.
+     * @param owner  (required)
+     * @param name  (required)
      * @param iamUpdateOrganizationInput  (required)
      * @return ApiResponse&lt;IamOrganization&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -22168,8 +17806,8 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IamOrganization> updateOrganizationWithHttpInfo(@javax.annotation.Nonnull IamUpdateOrganizationInput iamUpdateOrganizationInput) throws ApiException {
-        okhttp3.Call localVarCall = updateOrganizationValidateBeforeCall(iamUpdateOrganizationInput, null);
+    public ApiResponse<IamOrganization> updateOrganizationWithHttpInfo(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull IamUpdateOrganizationInput iamUpdateOrganizationInput) throws ApiException {
+        okhttp3.Call localVarCall = updateOrganizationValidateBeforeCall(owner, name, iamUpdateOrganizationInput, null);
         Type localVarReturnType = new TypeToken<IamOrganization>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -22177,6 +17815,8 @@ public class IamApi {
     /**
      * Changes an organization&#39;s display, its defaults and the sign-in rules everyone in it inherits. (asynchronously)
      * Changes an organization&#39;s display, its defaults and the sign-in rules everyone in it inherits. Which organization it is does not change, and neither does when it was created.
+     * @param owner  (required)
+     * @param name  (required)
      * @param iamUpdateOrganizationInput  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -22188,15 +17828,17 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateOrganizationAsync(@javax.annotation.Nonnull IamUpdateOrganizationInput iamUpdateOrganizationInput, final ApiCallback<IamOrganization> _callback) throws ApiException {
+    public okhttp3.Call updateOrganizationAsync(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull IamUpdateOrganizationInput iamUpdateOrganizationInput, final ApiCallback<IamOrganization> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = updateOrganizationValidateBeforeCall(iamUpdateOrganizationInput, _callback);
+        okhttp3.Call localVarCall = updateOrganizationValidateBeforeCall(owner, name, iamUpdateOrganizationInput, _callback);
         Type localVarReturnType = new TypeToken<IamOrganization>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for updateProvider
+     * @param owner  (required)
+     * @param name  (required)
      * @param iamProvider  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -22208,7 +17850,7 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateProviderCall(@javax.annotation.Nonnull IamProvider iamProvider, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call updateProviderCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull IamProvider iamProvider, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -22225,7 +17867,9 @@ public class IamApi {
         Object localVarPostBody = iamProvider;
 
         // create path and map variables
-        String localVarPath = "/v1/iam/providers/update";
+        String localVarPath = "/v1/iam/providers/{owner}/{name}"
+            .replace("{" + "owner" + "}", localVarApiClient.escapeString(owner.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -22250,23 +17894,35 @@ public class IamApi {
         }
 
         String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateProviderValidateBeforeCall(@javax.annotation.Nonnull IamProvider iamProvider, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateProviderValidateBeforeCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull IamProvider iamProvider, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'owner' is set
+        if (owner == null) {
+            throw new ApiException("Missing the required parameter 'owner' when calling updateProvider(Async)");
+        }
+
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling updateProvider(Async)");
+        }
+
         // verify the required parameter 'iamProvider' is set
         if (iamProvider == null) {
             throw new ApiException("Missing the required parameter 'iamProvider' when calling updateProvider(Async)");
         }
 
-        return updateProviderCall(iamProvider, _callback);
+        return updateProviderCall(owner, name, iamProvider, _callback);
 
     }
 
     /**
      * Changes a provider&#39;s settings or rotates the credentials it holds.
      * Changes a provider&#39;s settings or rotates the credentials it holds. The change takes effect on the next sign-in through it — sessions already issued are unaffected.  A provider that is not there answers \&quot;nothing changed\&quot; rather than an error, so the call is safe to repeat.
+     * @param owner  (required)
+     * @param name  (required)
      * @param iamProvider  (required)
      * @return IamMutationResult
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -22277,14 +17933,16 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public IamMutationResult updateProvider(@javax.annotation.Nonnull IamProvider iamProvider) throws ApiException {
-        ApiResponse<IamMutationResult> localVarResp = updateProviderWithHttpInfo(iamProvider);
+    public IamMutationResult updateProvider(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull IamProvider iamProvider) throws ApiException {
+        ApiResponse<IamMutationResult> localVarResp = updateProviderWithHttpInfo(owner, name, iamProvider);
         return localVarResp.getData();
     }
 
     /**
      * Changes a provider&#39;s settings or rotates the credentials it holds.
      * Changes a provider&#39;s settings or rotates the credentials it holds. The change takes effect on the next sign-in through it — sessions already issued are unaffected.  A provider that is not there answers \&quot;nothing changed\&quot; rather than an error, so the call is safe to repeat.
+     * @param owner  (required)
+     * @param name  (required)
      * @param iamProvider  (required)
      * @return ApiResponse&lt;IamMutationResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -22295,8 +17953,8 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IamMutationResult> updateProviderWithHttpInfo(@javax.annotation.Nonnull IamProvider iamProvider) throws ApiException {
-        okhttp3.Call localVarCall = updateProviderValidateBeforeCall(iamProvider, null);
+    public ApiResponse<IamMutationResult> updateProviderWithHttpInfo(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull IamProvider iamProvider) throws ApiException {
+        okhttp3.Call localVarCall = updateProviderValidateBeforeCall(owner, name, iamProvider, null);
         Type localVarReturnType = new TypeToken<IamMutationResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -22304,6 +17962,8 @@ public class IamApi {
     /**
      * Changes a provider&#39;s settings or rotates the credentials it holds. (asynchronously)
      * Changes a provider&#39;s settings or rotates the credentials it holds. The change takes effect on the next sign-in through it — sessions already issued are unaffected.  A provider that is not there answers \&quot;nothing changed\&quot; rather than an error, so the call is safe to repeat.
+     * @param owner  (required)
+     * @param name  (required)
      * @param iamProvider  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -22315,15 +17975,18 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateProviderAsync(@javax.annotation.Nonnull IamProvider iamProvider, final ApiCallback<IamMutationResult> _callback) throws ApiException {
+    public okhttp3.Call updateProviderAsync(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull IamProvider iamProvider, final ApiCallback<IamMutationResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = updateProviderValidateBeforeCall(iamProvider, _callback);
+        okhttp3.Call localVarCall = updateProviderValidateBeforeCall(owner, name, iamProvider, _callback);
         Type localVarReturnType = new TypeToken<IamMutationResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for updateSession
+     * @param owner  (required)
+     * @param name  (required)
+     * @param application  (required)
      * @param iamUpdateSessionIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -22335,7 +17998,7 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateSessionCall(@javax.annotation.Nonnull IamUpdateSessionIn iamUpdateSessionIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call updateSessionCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull String application, @javax.annotation.Nonnull IamUpdateSessionIn iamUpdateSessionIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -22352,7 +18015,10 @@ public class IamApi {
         Object localVarPostBody = iamUpdateSessionIn;
 
         // create path and map variables
-        String localVarPath = "/v1/iam/sessions/update";
+        String localVarPath = "/v1/iam/sessions/{owner}/{name}/{application}"
+            .replace("{" + "owner" + "}", localVarApiClient.escapeString(owner.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()))
+            .replace("{" + "application" + "}", localVarApiClient.escapeString(application.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -22377,23 +18043,41 @@ public class IamApi {
         }
 
         String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateSessionValidateBeforeCall(@javax.annotation.Nonnull IamUpdateSessionIn iamUpdateSessionIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateSessionValidateBeforeCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull String application, @javax.annotation.Nonnull IamUpdateSessionIn iamUpdateSessionIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'owner' is set
+        if (owner == null) {
+            throw new ApiException("Missing the required parameter 'owner' when calling updateSession(Async)");
+        }
+
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling updateSession(Async)");
+        }
+
+        // verify the required parameter 'application' is set
+        if (application == null) {
+            throw new ApiException("Missing the required parameter 'application' when calling updateSession(Async)");
+        }
+
         // verify the required parameter 'iamUpdateSessionIn' is set
         if (iamUpdateSessionIn == null) {
             throw new ApiException("Missing the required parameter 'iamUpdateSessionIn' when calling updateSession(Async)");
         }
 
-        return updateSessionCall(iamUpdateSessionIn, _callback);
+        return updateSessionCall(owner, name, application, iamUpdateSessionIn, _callback);
 
     }
 
     /**
      * Replaces the set of browsers a session covers — signing out the ones you leave off while the session itself stays live.
      * Replaces the set of browsers a session covers — signing out the ones you leave off while the session itself stays live. A session that does not exist is reported as missing rather than created.
+     * @param owner  (required)
+     * @param name  (required)
+     * @param application  (required)
      * @param iamUpdateSessionIn  (required)
      * @return IamSession
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -22404,14 +18088,17 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public IamSession updateSession(@javax.annotation.Nonnull IamUpdateSessionIn iamUpdateSessionIn) throws ApiException {
-        ApiResponse<IamSession> localVarResp = updateSessionWithHttpInfo(iamUpdateSessionIn);
+    public IamSession updateSession(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull String application, @javax.annotation.Nonnull IamUpdateSessionIn iamUpdateSessionIn) throws ApiException {
+        ApiResponse<IamSession> localVarResp = updateSessionWithHttpInfo(owner, name, application, iamUpdateSessionIn);
         return localVarResp.getData();
     }
 
     /**
      * Replaces the set of browsers a session covers — signing out the ones you leave off while the session itself stays live.
      * Replaces the set of browsers a session covers — signing out the ones you leave off while the session itself stays live. A session that does not exist is reported as missing rather than created.
+     * @param owner  (required)
+     * @param name  (required)
+     * @param application  (required)
      * @param iamUpdateSessionIn  (required)
      * @return ApiResponse&lt;IamSession&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -22422,8 +18109,8 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IamSession> updateSessionWithHttpInfo(@javax.annotation.Nonnull IamUpdateSessionIn iamUpdateSessionIn) throws ApiException {
-        okhttp3.Call localVarCall = updateSessionValidateBeforeCall(iamUpdateSessionIn, null);
+    public ApiResponse<IamSession> updateSessionWithHttpInfo(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull String application, @javax.annotation.Nonnull IamUpdateSessionIn iamUpdateSessionIn) throws ApiException {
+        okhttp3.Call localVarCall = updateSessionValidateBeforeCall(owner, name, application, iamUpdateSessionIn, null);
         Type localVarReturnType = new TypeToken<IamSession>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -22431,6 +18118,9 @@ public class IamApi {
     /**
      * Replaces the set of browsers a session covers — signing out the ones you leave off while the session itself stays live. (asynchronously)
      * Replaces the set of browsers a session covers — signing out the ones you leave off while the session itself stays live. A session that does not exist is reported as missing rather than created.
+     * @param owner  (required)
+     * @param name  (required)
+     * @param application  (required)
      * @param iamUpdateSessionIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -22442,15 +18132,17 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateSessionAsync(@javax.annotation.Nonnull IamUpdateSessionIn iamUpdateSessionIn, final ApiCallback<IamSession> _callback) throws ApiException {
+    public okhttp3.Call updateSessionAsync(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull String application, @javax.annotation.Nonnull IamUpdateSessionIn iamUpdateSessionIn, final ApiCallback<IamSession> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = updateSessionValidateBeforeCall(iamUpdateSessionIn, _callback);
+        okhttp3.Call localVarCall = updateSessionValidateBeforeCall(owner, name, application, iamUpdateSessionIn, _callback);
         Type localVarReturnType = new TypeToken<IamSession>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for updateToken
+     * @param owner  (required)
+     * @param name  (required)
      * @param iamToken  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -22462,7 +18154,7 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateTokenCall(@javax.annotation.Nonnull IamToken iamToken, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call updateTokenCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull IamToken iamToken, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -22479,7 +18171,9 @@ public class IamApi {
         Object localVarPostBody = iamToken;
 
         // create path and map variables
-        String localVarPath = "/v1/iam/tokens/update";
+        String localVarPath = "/v1/iam/tokens/{owner}/{name}"
+            .replace("{" + "owner" + "}", localVarApiClient.escapeString(owner.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -22504,23 +18198,35 @@ public class IamApi {
         }
 
         String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateTokenValidateBeforeCall(@javax.annotation.Nonnull IamToken iamToken, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateTokenValidateBeforeCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull IamToken iamToken, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'owner' is set
+        if (owner == null) {
+            throw new ApiException("Missing the required parameter 'owner' when calling updateToken(Async)");
+        }
+
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling updateToken(Async)");
+        }
+
         // verify the required parameter 'iamToken' is set
         if (iamToken == null) {
             throw new ApiException("Missing the required parameter 'iamToken' when calling updateToken(Async)");
         }
 
-        return updateTokenCall(iamToken, _callback);
+        return updateTokenCall(owner, name, iamToken, _callback);
 
     }
 
     /**
      * Changes an access token&#39;s scope or expiry.
      * Changes an access token&#39;s scope or expiry.  A token that is not there answers \&quot;nothing changed\&quot; rather than an error, so the call is safe to repeat.
+     * @param owner  (required)
+     * @param name  (required)
      * @param iamToken  (required)
      * @return IamTokenMutation
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -22531,14 +18237,16 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public IamTokenMutation updateToken(@javax.annotation.Nonnull IamToken iamToken) throws ApiException {
-        ApiResponse<IamTokenMutation> localVarResp = updateTokenWithHttpInfo(iamToken);
+    public IamTokenMutation updateToken(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull IamToken iamToken) throws ApiException {
+        ApiResponse<IamTokenMutation> localVarResp = updateTokenWithHttpInfo(owner, name, iamToken);
         return localVarResp.getData();
     }
 
     /**
      * Changes an access token&#39;s scope or expiry.
      * Changes an access token&#39;s scope or expiry.  A token that is not there answers \&quot;nothing changed\&quot; rather than an error, so the call is safe to repeat.
+     * @param owner  (required)
+     * @param name  (required)
      * @param iamToken  (required)
      * @return ApiResponse&lt;IamTokenMutation&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -22549,8 +18257,8 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IamTokenMutation> updateTokenWithHttpInfo(@javax.annotation.Nonnull IamToken iamToken) throws ApiException {
-        okhttp3.Call localVarCall = updateTokenValidateBeforeCall(iamToken, null);
+    public ApiResponse<IamTokenMutation> updateTokenWithHttpInfo(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull IamToken iamToken) throws ApiException {
+        okhttp3.Call localVarCall = updateTokenValidateBeforeCall(owner, name, iamToken, null);
         Type localVarReturnType = new TypeToken<IamTokenMutation>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -22558,6 +18266,8 @@ public class IamApi {
     /**
      * Changes an access token&#39;s scope or expiry. (asynchronously)
      * Changes an access token&#39;s scope or expiry.  A token that is not there answers \&quot;nothing changed\&quot; rather than an error, so the call is safe to repeat.
+     * @param owner  (required)
+     * @param name  (required)
      * @param iamToken  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -22569,15 +18279,17 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateTokenAsync(@javax.annotation.Nonnull IamToken iamToken, final ApiCallback<IamTokenMutation> _callback) throws ApiException {
+    public okhttp3.Call updateTokenAsync(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull IamToken iamToken, final ApiCallback<IamTokenMutation> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = updateTokenValidateBeforeCall(iamToken, _callback);
+        okhttp3.Call localVarCall = updateTokenValidateBeforeCall(owner, name, iamToken, _callback);
         Type localVarReturnType = new TypeToken<IamTokenMutation>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for updateWebauthnCredential
+     * @param owner  (required)
+     * @param name  (required)
      * @param iamWebauthnCredential  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -22589,7 +18301,7 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateWebauthnCredentialCall(@javax.annotation.Nonnull IamWebauthnCredential iamWebauthnCredential, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call updateWebauthnCredentialCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull IamWebauthnCredential iamWebauthnCredential, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -22606,7 +18318,9 @@ public class IamApi {
         Object localVarPostBody = iamWebauthnCredential;
 
         // create path and map variables
-        String localVarPath = "/v1/iam/webauthn-credentials/update";
+        String localVarPath = "/v1/iam/webauthn-credentials/{owner}/{name}"
+            .replace("{" + "owner" + "}", localVarApiClient.escapeString(owner.toString()))
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -22631,23 +18345,35 @@ public class IamApi {
         }
 
         String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateWebauthnCredentialValidateBeforeCall(@javax.annotation.Nonnull IamWebauthnCredential iamWebauthnCredential, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateWebauthnCredentialValidateBeforeCall(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull IamWebauthnCredential iamWebauthnCredential, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'owner' is set
+        if (owner == null) {
+            throw new ApiException("Missing the required parameter 'owner' when calling updateWebauthnCredential(Async)");
+        }
+
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling updateWebauthnCredential(Async)");
+        }
+
         // verify the required parameter 'iamWebauthnCredential' is set
         if (iamWebauthnCredential == null) {
             throw new ApiException("Missing the required parameter 'iamWebauthnCredential' when calling updateWebauthnCredential(Async)");
         }
 
-        return updateWebauthnCredentialCall(iamWebauthnCredential, _callback);
+        return updateWebauthnCredentialCall(owner, name, iamWebauthnCredential, _callback);
 
     }
 
     /**
      * Renames a registered passkey or security key, so a person can tell their devices apart.
      * Renames a registered passkey or security key, so a person can tell their devices apart.  A credential that is not there answers \&quot;nothing changed\&quot; rather than an error, so the call is safe to repeat.
+     * @param owner  (required)
+     * @param name  (required)
      * @param iamWebauthnCredential  (required)
      * @return IamWebauthnCredentialMutationResult
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -22658,14 +18384,16 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public IamWebauthnCredentialMutationResult updateWebauthnCredential(@javax.annotation.Nonnull IamWebauthnCredential iamWebauthnCredential) throws ApiException {
-        ApiResponse<IamWebauthnCredentialMutationResult> localVarResp = updateWebauthnCredentialWithHttpInfo(iamWebauthnCredential);
+    public IamWebauthnCredentialMutationResult updateWebauthnCredential(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull IamWebauthnCredential iamWebauthnCredential) throws ApiException {
+        ApiResponse<IamWebauthnCredentialMutationResult> localVarResp = updateWebauthnCredentialWithHttpInfo(owner, name, iamWebauthnCredential);
         return localVarResp.getData();
     }
 
     /**
      * Renames a registered passkey or security key, so a person can tell their devices apart.
      * Renames a registered passkey or security key, so a person can tell their devices apart.  A credential that is not there answers \&quot;nothing changed\&quot; rather than an error, so the call is safe to repeat.
+     * @param owner  (required)
+     * @param name  (required)
      * @param iamWebauthnCredential  (required)
      * @return ApiResponse&lt;IamWebauthnCredentialMutationResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -22676,8 +18404,8 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IamWebauthnCredentialMutationResult> updateWebauthnCredentialWithHttpInfo(@javax.annotation.Nonnull IamWebauthnCredential iamWebauthnCredential) throws ApiException {
-        okhttp3.Call localVarCall = updateWebauthnCredentialValidateBeforeCall(iamWebauthnCredential, null);
+    public ApiResponse<IamWebauthnCredentialMutationResult> updateWebauthnCredentialWithHttpInfo(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull IamWebauthnCredential iamWebauthnCredential) throws ApiException {
+        okhttp3.Call localVarCall = updateWebauthnCredentialValidateBeforeCall(owner, name, iamWebauthnCredential, null);
         Type localVarReturnType = new TypeToken<IamWebauthnCredentialMutationResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -22685,6 +18413,8 @@ public class IamApi {
     /**
      * Renames a registered passkey or security key, so a person can tell their devices apart. (asynchronously)
      * Renames a registered passkey or security key, so a person can tell their devices apart.  A credential that is not there answers \&quot;nothing changed\&quot; rather than an error, so the call is safe to repeat.
+     * @param owner  (required)
+     * @param name  (required)
      * @param iamWebauthnCredential  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -22696,9 +18426,9 @@ public class IamApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateWebauthnCredentialAsync(@javax.annotation.Nonnull IamWebauthnCredential iamWebauthnCredential, final ApiCallback<IamWebauthnCredentialMutationResult> _callback) throws ApiException {
+    public okhttp3.Call updateWebauthnCredentialAsync(@javax.annotation.Nonnull String owner, @javax.annotation.Nonnull String name, @javax.annotation.Nonnull IamWebauthnCredential iamWebauthnCredential, final ApiCallback<IamWebauthnCredentialMutationResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = updateWebauthnCredentialValidateBeforeCall(iamWebauthnCredential, _callback);
+        okhttp3.Call localVarCall = updateWebauthnCredentialValidateBeforeCall(owner, name, iamWebauthnCredential, _callback);
         Type localVarReturnType = new TypeToken<IamWebauthnCredentialMutationResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -22931,7 +18661,7 @@ public class IamApi {
 
     /**
      * Creates a person or updates them in place, so a deployment can declare the accounts it needs and re-run that declaration safely.
-     * Creates a person or updates them in place, so a deployment can declare the accounts it needs and re-run that declaration safely.  Passwords are hashed before they are stored. Leave the password out and their current one is kept, so a redeploy never locks somebody out.
+     * Creates a person or updates them in place, so a deployment can declare the accounts it needs and re-run that declaration safely.  It DESCRIBES an account it meets and GRANTS only to one it creates: org-admin is never raised on a row that already exists, and a machine identity is answered by name rather than adopted. Both are properties of the update itself, so a steady-state reconcile — which changes neither — is unaffected.  Passwords are hashed before they are stored. Leave the password out and their current one is kept, so a redeploy never locks somebody out; send the same one again and it is kept too, so a steady-state re-run is not a rotation.
      * @param iamPerson  (required)
      * @param authorization  (optional)
      * @return IamReply
@@ -22953,7 +18683,7 @@ public class IamApi {
 
     /**
      * Creates a person or updates them in place, so a deployment can declare the accounts it needs and re-run that declaration safely.
-     * Creates a person or updates them in place, so a deployment can declare the accounts it needs and re-run that declaration safely.  Passwords are hashed before they are stored. Leave the password out and their current one is kept, so a redeploy never locks somebody out.
+     * Creates a person or updates them in place, so a deployment can declare the accounts it needs and re-run that declaration safely.  It DESCRIBES an account it meets and GRANTS only to one it creates: org-admin is never raised on a row that already exists, and a machine identity is answered by name rather than adopted. Both are properties of the update itself, so a steady-state reconcile — which changes neither — is unaffected.  Passwords are hashed before they are stored. Leave the password out and their current one is kept, so a redeploy never locks somebody out; send the same one again and it is kept too, so a steady-state re-run is not a rotation.
      * @param iamPerson  (required)
      * @param authorization  (optional)
      * @return ApiResponse&lt;IamReply&gt;
@@ -22976,7 +18706,7 @@ public class IamApi {
 
     /**
      * Creates a person or updates them in place, so a deployment can declare the accounts it needs and re-run that declaration safely. (asynchronously)
-     * Creates a person or updates them in place, so a deployment can declare the accounts it needs and re-run that declaration safely.  Passwords are hashed before they are stored. Leave the password out and their current one is kept, so a redeploy never locks somebody out.
+     * Creates a person or updates them in place, so a deployment can declare the accounts it needs and re-run that declaration safely.  It DESCRIBES an account it meets and GRANTS only to one it creates: org-admin is never raised on a row that already exists, and a machine identity is answered by name rather than adopted. Both are properties of the update itself, so a steady-state reconcile — which changes neither — is unaffected.  Passwords are hashed before they are stored. Leave the password out and their current one is kept, so a redeploy never locks somebody out; send the same one again and it is kept too, so a steady-state re-run is not a rotation.
      * @param iamPerson  (required)
      * @param authorization  (optional)
      * @param _callback The callback to be executed when the API call finishes

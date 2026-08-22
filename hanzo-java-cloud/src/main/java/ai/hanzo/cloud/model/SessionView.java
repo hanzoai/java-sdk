@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -190,7 +190,7 @@ public class SessionView {
   }
 
   /**
-   * Get account
+   * Account is which subscription or API account under that provider served it. Together with Provider it is what a login revoke matches on to stop the sessions a withdrawn account was paying for.
    * @return account
    */
   @javax.annotation.Nullable
@@ -209,7 +209,7 @@ public class SessionView {
   }
 
   /**
-   * Get actor
+   * Actor is WHO this session belongs to, as \&quot;org/sub\&quot; — the same identity a run is billed under. A register that names none takes the calling principal. It is what scopes a login revoke, so a session with the wrong actor is a session the right person cannot stop.
    * @return actor
    */
   @javax.annotation.Nullable
@@ -228,7 +228,7 @@ public class SessionView {
   }
 
   /**
-   * Get agent
+   * Agent is the label the surface running this session calls itself by (\&quot;hanzo-dev\&quot;), up to 128 characters. Required at register. It is free text, not a reference: it need not name a defined agent, and nothing resolves it.
    * @return agent
    */
   @javax.annotation.Nullable
@@ -247,7 +247,7 @@ public class SessionView {
   }
 
   /**
-   * Get children
+   * Children is the DIRECT fan-out — how many sessions name this one as parent — and not the size of the subtree. Read the tree for that.
    * @return children
    */
   @javax.annotation.Nullable
@@ -266,7 +266,7 @@ public class SessionView {
   }
 
   /**
-   * Get createdAt
+   * CreatedAt is when the row was written, same format. Every path that opens a session stamps it and StartedAt from one clock reading, so the two are equal on every session this surface has ever produced.
    * @return createdAt
    */
   @javax.annotation.Nullable
@@ -285,7 +285,7 @@ public class SessionView {
   }
 
   /**
-   * Get cwd
+   * Cwd is the directory the session is working in NOW, not the one it started in: a linked shell moves around, and a card showing where &#x60;hanzo link&#x60; was run answers \&quot;which work is this\&quot; with something that was true once.
    * @return cwd
    */
   @javax.annotation.Nullable
@@ -304,7 +304,7 @@ public class SessionView {
   }
 
   /**
-   * Get endedAt
+   * EndedAt is when it reached done or error, same format. Empty while it is still running or paused, which is how absence reads here: not over yet.
    * @return endedAt
    */
   @javax.annotation.Nullable
@@ -323,7 +323,7 @@ public class SessionView {
   }
 
   /**
-   * Get events
+   * Events is how many turns the session&#39;s log holds, counted at read time. It is the whole log, however few of them RecentEvents carries.
    * @return events
    */
   @javax.annotation.Nullable
@@ -361,7 +361,7 @@ public class SessionView {
   }
 
   /**
-   * Get id
+   * ID is the session&#39;s handle, minted here as \&quot;sess_\&quot; + 32 hex characters. Every later read, patch, event append and control command is addressed with it, and a caller cannot choose it.
    * @return id
    */
   @javax.annotation.Nullable
@@ -418,7 +418,7 @@ public class SessionView {
   }
 
   /**
-   * Get parentSessionId
+   * ParentSessionID is the session that spawned this one, making this a subagent of it. Empty means this session is a root — a flow of its own. A parent always belongs to the same org, so a tree never crosses a tenant.
    * @return parentSessionId
    */
   @javax.annotation.Nullable
@@ -456,7 +456,7 @@ public class SessionView {
   }
 
   /**
-   * Get provider
+   * Provider is the linked AI account&#39;s provider (claude | codex | hanzo | …) that served this run. Empty when the surface did not say.
    * @return provider
    */
   @javax.annotation.Nullable
@@ -475,7 +475,7 @@ public class SessionView {
   }
 
   /**
-   * Get published
+   * Published is the author&#39;s decision to let anyone read this session&#39;s story at the public build route. It only ever widens READ access to a session that already exists and grants nothing else; false, an unpublished session is invisible there no matter who asks. It cannot be true without a Project, because that route is keyed on (org, project).
    * @return published
    */
   @javax.annotation.Nullable
@@ -494,7 +494,7 @@ public class SessionView {
   }
 
   /**
-   * Get repo
+   * Repo is the code the session is working on, as the surface reported it. It is truth the SURFACE states, so it is a label rather than something resolved here.
    * @return repo
    */
   @javax.annotation.Nullable
@@ -513,7 +513,7 @@ public class SessionView {
   }
 
   /**
-   * Get rootSessionId
+   * RootSessionID is the top of this session&#39;s tree, inherited from the parent and shared by every node in one flow. A root session&#39;s own id, when it has no parent. It is the key one indexed read pulls a whole flow by, and what ?root&#x3D; narrows a list or a stream to.
    * @return rootSessionId
    */
   @javax.annotation.Nullable
@@ -532,7 +532,7 @@ public class SessionView {
   }
 
   /**
-   * Get startedAt
+   * StartedAt is when the session opened, RFC 3339 in UTC to the second.
    * @return startedAt
    */
   @javax.annotation.Nullable
@@ -551,7 +551,7 @@ public class SessionView {
   }
 
   /**
-   * Get status
+   * Status is one of exactly four: running, paused, done, error. running and paused are LIVE; done and error are TERMINAL and monotonic — once a session reaches one it can never go back, because reopening a finished run would fabricate liveness. A control command never moves it: the surface running the agent reports the new status, and until it does the command is only recorded.
    * @return status
    */
   @javax.annotation.Nullable
@@ -570,7 +570,7 @@ public class SessionView {
   }
 
   /**
-   * Get target
+   * Target is the registered run-target this session is dispatched to — a machine the org claimed, resolved same-org when it was set, so it can never point at another tenant&#39;s computer. Empty means the session names no machine.
    * @return target
    */
   @javax.annotation.Nullable
@@ -589,7 +589,7 @@ public class SessionView {
   }
 
   /**
-   * Get taskRunId
+   * TaskRunID is that workflow&#39;s particular run. A workflow is the definition and a run is one execution of it, which is why both are carried.
    * @return taskRunId
    */
   @javax.annotation.Nullable
@@ -608,7 +608,7 @@ public class SessionView {
   }
 
   /**
-   * Get taskWorkflowId
+   * TaskWorkflowID is the hanzoai/tasks durable workflow that actually EXECUTES this session — this registry is the view, control and stream layer over it. Set, a control command is FORWARDED to that engine; empty, the running surface polls for commands instead, which is every session today.
    * @return taskWorkflowId
    */
   @javax.annotation.Nullable
@@ -646,7 +646,7 @@ public class SessionView {
   }
 
   /**
-   * Get title
+   * Title is the human line a card shows (\&quot;ship the landing page\&quot;), up to 512 characters. Free text, and the one field a surface may rewrite as the work turns out to be something else.
    * @return title
    */
   @javax.annotation.Nullable
@@ -665,7 +665,7 @@ public class SessionView {
   }
 
   /**
-   * Get updatedAt
+   * UpdatedAt is the session&#39;s last-activity clock, same format. It moves on a write to the row — a status, a title, a re-dispatch — AND on every appended turn, because the append bumps it in the same transaction. The list is ordered on CreatedAt, so this is the field that says whether a session is still saying anything.
    * @return updatedAt
    */
   @javax.annotation.Nullable

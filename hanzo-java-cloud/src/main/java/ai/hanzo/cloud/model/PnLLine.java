@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -79,7 +79,7 @@ public class PnLLine {
   }
 
   /**
-   * Get account
+   * Account is the chart-of-accounts number this line reports on.
    * @return account
    */
   @javax.annotation.Nullable
@@ -98,7 +98,7 @@ public class PnLLine {
   }
 
   /**
-   * cents, display sign (income &amp; expense both positive when normal)
+   * Amount is the account&#39;s movement over the period in whole cents, in its NATURAL sign: positive when the account behaved normally, for income and expense alike. Income is credit-normal so its stored net is flipped once here for display; the ledger underneath is never sign-flipped. A negative amount therefore means the account ran backwards — a refunded sale, a reversed cost.
    * @return amount
    */
   @javax.annotation.Nullable
@@ -117,7 +117,7 @@ public class PnLLine {
   }
 
   /**
-   * Get name
+   * Name is that account&#39;s human name from the fixed chart.
    * @return name
    */
   @javax.annotation.Nullable
@@ -136,7 +136,7 @@ public class PnLLine {
   }
 
   /**
-   * Get type
+   * Type is the account&#39;s fundamental class, which on this statement is always income or expense — it tells a reader which half of the statement the line came from without re-deriving it from the array it arrived in.
    * @return type
    */
   @javax.annotation.Nullable

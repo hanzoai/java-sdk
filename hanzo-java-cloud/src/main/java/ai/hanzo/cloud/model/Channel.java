@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -79,7 +79,7 @@ public class Channel {
   }
 
   /**
-   * Get disabled
+   * Disabled is true for a channel the org switched off at the social edge. It is still listed — this is what the org has CONNECTED, not what it can post to — but a publish never targets it, neither by name nor as part of the \&quot;every channel\&quot; default.
    * @return disabled
    */
   @javax.annotation.Nullable
@@ -98,7 +98,7 @@ public class Channel {
   }
 
   /**
-   * the social integration id to target in a post
+   * ID is the social integration id a post targets. It is the exact value to put in a content item&#39;s &#x60;channels&#x60; list to reach this one connected account.
    * @return id
    */
   @javax.annotation.Nullable
@@ -117,7 +117,7 @@ public class Channel {
   }
 
   /**
-   * Get name
+   * Name is the account label as the org connected it — the handle a human recognises. It is never an address: a publish resolves channels by ID or by Provider and never by this.
    * @return name
    */
   @javax.annotation.Nullable
@@ -136,7 +136,7 @@ public class Channel {
   }
 
   /**
-   * \&quot;x\&quot; | \&quot;instagram\&quot; | \&quot;tiktok\&quot; | ...
+   * Provider is the network behind the integration: \&quot;x\&quot;, \&quot;instagram\&quot;, \&quot;tiktok\&quot; and the rest of what the org connected. Naming a provider in a publish targets EVERY connected account of it, so it is the coarse handle where ID is the precise one.
    * @return provider
    */
   @javax.annotation.Nullable

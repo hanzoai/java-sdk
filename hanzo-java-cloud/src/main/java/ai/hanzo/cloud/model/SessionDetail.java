@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -269,7 +269,7 @@ public class SessionDetail {
   }
 
   /**
-   * Get childSessions
+   * Children is the session&#39;s DIRECT children, one level down, each with its own counts. The promoted &#x60;children&#x60; integer beside it is how many there are; this is who they are. For the whole subtree, read the tree.
    * @return childSessions
    */
   @javax.annotation.Nullable
@@ -543,7 +543,7 @@ public class SessionDetail {
   }
 
   /**
-   * Get recentEvents
+   * RecentEvents is the 50 most recent turns, OLDEST of those first — a transcript to read down, not a feed. The promoted &#x60;events&#x60; integer says how many the log holds in total; page the rest from a seq.
    * @return recentEvents
    */
   @javax.annotation.Nullable

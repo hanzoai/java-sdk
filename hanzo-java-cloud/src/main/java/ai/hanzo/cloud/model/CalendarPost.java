@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -147,7 +147,7 @@ public class CalendarPost {
   }
 
   /**
-   * CreatedAt and UpdatedAt are unix seconds, both server-assigned.
+   * CreatedAt is unix seconds when the post was added, server-assigned and never rewritten.
    * @return createdAt
    */
   @javax.annotation.Nullable
@@ -280,7 +280,7 @@ public class CalendarPost {
   }
 
   /**
-   * Get updatedAt
+   * UpdatedAt is unix seconds of the last write, server-assigned. The durable sweep writes too — claiming a due post, publishing it and recording a failure each bump it — so this moves without anyone editing the post.
    * @return updatedAt
    */
   @javax.annotation.Nullable

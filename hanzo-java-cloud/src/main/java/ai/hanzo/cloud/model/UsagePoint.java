@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -50,11 +50,6 @@ import ai.hanzo.cloud.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class UsagePoint {
-  public static final String SERIALIZED_NAME_DATE = "date";
-  @SerializedName(SERIALIZED_NAME_DATE)
-  @javax.annotation.Nullable
-  private String date;
-
   public static final String SERIALIZED_NAME_REQUESTS = "requests";
   @SerializedName(SERIALIZED_NAME_REQUESTS)
   @javax.annotation.Nullable
@@ -65,6 +60,11 @@ public class UsagePoint {
   @javax.annotation.Nullable
   private Integer spendCents;
 
+  public static final String SERIALIZED_NAME_T = "t";
+  @SerializedName(SERIALIZED_NAME_T)
+  @javax.annotation.Nullable
+  private String t;
+
   public static final String SERIALIZED_NAME_TOKENS = "tokens";
   @SerializedName(SERIALIZED_NAME_TOKENS)
   @javax.annotation.Nullable
@@ -73,32 +73,13 @@ public class UsagePoint {
   public UsagePoint() {
   }
 
-  public UsagePoint date(@javax.annotation.Nullable String date) {
-    this.date = date;
-    return this;
-  }
-
-  /**
-   * Get date
-   * @return date
-   */
-  @javax.annotation.Nullable
-  public String getDate() {
-    return date;
-  }
-
-  public void setDate(@javax.annotation.Nullable String date) {
-    this.date = date;
-  }
-
-
   public UsagePoint requests(@javax.annotation.Nullable Integer requests) {
     this.requests = requests;
     return this;
   }
 
   /**
-   * Get requests
+   * Requests is how many LLM calls fell in this bucket.
    * @return requests
    */
   @javax.annotation.Nullable
@@ -117,7 +98,7 @@ public class UsagePoint {
   }
 
   /**
-   * Get spendCents
+   * SpendCents is what they cost, in cents.
    * @return spendCents
    */
   @javax.annotation.Nullable
@@ -130,13 +111,32 @@ public class UsagePoint {
   }
 
 
+  public UsagePoint t(@javax.annotation.Nullable String t) {
+    this.t = t;
+    return this;
+  }
+
+  /**
+   * T is the bucket&#39;s start, RFC3339 UTC, aligned to the interval.
+   * @return t
+   */
+  @javax.annotation.Nullable
+  public String getT() {
+    return t;
+  }
+
+  public void setT(@javax.annotation.Nullable String t) {
+    this.t = t;
+  }
+
+
   public UsagePoint tokens(@javax.annotation.Nullable Integer tokens) {
     this.tokens = tokens;
     return this;
   }
 
   /**
-   * Get tokens
+   * Tokens is prompt plus completion tokens over those calls.
    * @return tokens
    */
   @javax.annotation.Nullable
@@ -159,24 +159,24 @@ public class UsagePoint {
       return false;
     }
     UsagePoint usagePoint = (UsagePoint) o;
-    return Objects.equals(this.date, usagePoint.date) &&
-        Objects.equals(this.requests, usagePoint.requests) &&
+    return Objects.equals(this.requests, usagePoint.requests) &&
         Objects.equals(this.spendCents, usagePoint.spendCents) &&
+        Objects.equals(this.t, usagePoint.t) &&
         Objects.equals(this.tokens, usagePoint.tokens);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(date, requests, spendCents, tokens);
+    return Objects.hash(requests, spendCents, t, tokens);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class UsagePoint {\n");
-    sb.append("    date: ").append(toIndentedString(date)).append("\n");
     sb.append("    requests: ").append(toIndentedString(requests)).append("\n");
     sb.append("    spendCents: ").append(toIndentedString(spendCents)).append("\n");
+    sb.append("    t: ").append(toIndentedString(t)).append("\n");
     sb.append("    tokens: ").append(toIndentedString(tokens)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -199,7 +199,7 @@ public class UsagePoint {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("date", "requests", "spendCents", "tokens"));
+    openapiFields = new HashSet<String>(Arrays.asList("requests", "spendCents", "t", "tokens"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -226,8 +226,8 @@ public class UsagePoint {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("date") != null && !jsonObj.get("date").isJsonNull()) && !jsonObj.get("date").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `date` to be a primitive type in the JSON string but got `%s`", jsonObj.get("date").toString()));
+      if ((jsonObj.get("t") != null && !jsonObj.get("t").isJsonNull()) && !jsonObj.get("t").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `t` to be a primitive type in the JSON string but got `%s`", jsonObj.get("t").toString()));
       }
   }
 

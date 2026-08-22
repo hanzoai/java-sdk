@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -75,7 +75,7 @@ public class BuildOut {
   }
 
   /**
-   * Get bytes
+   * Bytes is the size of the bundled CommonJS the runtime will execute.
    * @return bytes
    */
   @javax.annotation.Nullable
@@ -94,7 +94,7 @@ public class BuildOut {
   }
 
   /**
-   * Get generated
+   * Generated is whether a model wrote the source from a spec, rather than the caller posting the source itself.
    * @return generated
    */
   @javax.annotation.Nullable
@@ -113,7 +113,7 @@ public class BuildOut {
   }
 
   /**
-   * Get plugin
+   * Plugin is the plugin as stored, with its derived id and build time.
    * @return plugin
    */
   @javax.annotation.Nullable

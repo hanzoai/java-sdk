@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -134,7 +134,7 @@ public class AudiencePreview {
   }
 
   /**
-   * Deliverable is how many de-duplicated addresses a send would reach, and Unmatched how many cohort identifiers named no customer. Unmatched is reported rather than hidden: it is the honest explanation for a cohort of 500 that mails 3.
+   * Deliverable is how many de-duplicated mailboxes a send would reach. Two customers sharing an address count once, so it is &lt;&#x3D; Count.
    * @return deliverable
    */
   @javax.annotation.Nullable
@@ -153,7 +153,7 @@ public class AudiencePreview {
   }
 
   /**
-   * Get reason
+   * Reason is the error text of the read that failed: the org&#39;s roster could not be loaded (\&quot;identity store unavailable…\&quot;), or the cohort query had no warehouse to run against (\&quot;analytics warehouse not configured\&quot;). Absent when the evaluation succeeded, so its presence and Available&#x3D;false are one fact seen twice.
    * @return reason
    */
   @javax.annotation.Nullable
@@ -218,7 +218,7 @@ public class AudiencePreview {
   }
 
   /**
-   * Get unmatched
+   * Unmatched is how many cohort identifiers named nobody on the org&#39;s roster and so have no address to mail. It is reported rather than hidden: it is the honest explanation for a cohort of 500 that mails 3. Always 0 for an event-less (whole-org) audience, which starts from the roster and has nothing to match.
    * @return unmatched
    */
   @javax.annotation.Nullable
