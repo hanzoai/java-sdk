@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -14,7 +14,7 @@
 package ai.hanzo.cloud.model;
 
 import java.util.Objects;
-import ai.hanzo.cloud.model.O11yAvailabilityResponseRange;
+import ai.hanzo.cloud.model.O11yMetricsResponseRange;
 import ai.hanzo.cloud.model.O11yMetricsResponseSeries;
 import ai.hanzo.cloud.model.O11yMetricsResponseSummary;
 import ai.hanzo.cloud.model.O11yMetricsResponseUsage;
@@ -62,7 +62,7 @@ public class O11yMetricsResponse {
   public static final String SERIALIZED_NAME_RANGE = "range";
   @SerializedName(SERIALIZED_NAME_RANGE)
   @javax.annotation.Nullable
-  private O11yAvailabilityResponseRange range;
+  private O11yMetricsResponseRange range;
 
   public static final String SERIALIZED_NAME_SERIES = "series";
   @SerializedName(SERIALIZED_NAME_SERIES)
@@ -88,7 +88,7 @@ public class O11yMetricsResponse {
   }
 
   /**
-   * Get product
+   * Product is the service these numbers are about, echoed back.
    * @return product
    */
   @javax.annotation.Nullable
@@ -101,7 +101,7 @@ public class O11yMetricsResponse {
   }
 
 
-  public O11yMetricsResponse range(@javax.annotation.Nullable O11yAvailabilityResponseRange range) {
+  public O11yMetricsResponse range(@javax.annotation.Nullable O11yMetricsResponseRange range) {
     this.range = range;
     return this;
   }
@@ -111,11 +111,11 @@ public class O11yMetricsResponse {
    * @return range
    */
   @javax.annotation.Nullable
-  public O11yAvailabilityResponseRange getRange() {
+  public O11yMetricsResponseRange getRange() {
     return range;
   }
 
-  public void setRange(@javax.annotation.Nullable O11yAvailabilityResponseRange range) {
+  public void setRange(@javax.annotation.Nullable O11yMetricsResponseRange range) {
     this.range = range;
   }
 
@@ -261,7 +261,7 @@ public class O11yMetricsResponse {
       }
       // validate the optional field `range`
       if (jsonObj.get("range") != null && !jsonObj.get("range").isJsonNull()) {
-        O11yAvailabilityResponseRange.validateJsonElement(jsonObj.get("range"));
+        O11yMetricsResponseRange.validateJsonElement(jsonObj.get("range"));
       }
       // validate the optional field `series`
       if (jsonObj.get("series") != null && !jsonObj.get("series").isJsonNull()) {

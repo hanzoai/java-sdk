@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -85,7 +85,7 @@ public class ProjectsDeploySite {
   }
 
   /**
-   * Get files
+   * Files is the whole site, inline — every file it consists of. It REPLACES what is there rather than merging, so an omitted file is a deleted one.
    * @return files
    */
   @javax.annotation.Nullable
@@ -104,7 +104,7 @@ public class ProjectsDeploySite {
   }
 
   /**
-   * Get name
+   * Name is the site&#39;s display name.
    * @return name
    */
   @javax.annotation.Nullable
@@ -123,7 +123,7 @@ public class ProjectsDeploySite {
   }
 
   /**
-   * Get slug
+   * Slug is the handle and public host label to publish under.
    * @return slug
    */
   @javax.annotation.Nullable

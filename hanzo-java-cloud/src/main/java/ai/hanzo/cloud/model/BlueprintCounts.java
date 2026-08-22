@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -84,7 +84,7 @@ public class BlueprintCounts {
   }
 
   /**
-   * Get principles
+   * Principles is how many spine archetypes the playbook carries (64 in the shipped corpus).
    * @return principles
    */
   @javax.annotation.Nullable
@@ -103,7 +103,7 @@ public class BlueprintCounts {
   }
 
   /**
-   * Get sections
+   * Sections is how many phases the journey has.
    * @return sections
    */
   @javax.annotation.Nullable
@@ -122,7 +122,7 @@ public class BlueprintCounts {
   }
 
   /**
-   * Get steps
+   * Steps is how many checklist items the playbook holds, DISABLED ONES INCLUDED — this counts the authored document, not the journey an org runs, so it is normally larger than the &#x60;total&#x60; on a progress view.
    * @return steps
    */
   @javax.annotation.Nullable
@@ -141,7 +141,7 @@ public class BlueprintCounts {
   }
 
   /**
-   * Get strategies
+   * Strategies is how many tactics the corpus holds, again counting disabled ones.
    * @return strategies
    */
   @javax.annotation.Nullable
@@ -160,7 +160,7 @@ public class BlueprintCounts {
   }
 
   /**
-   * Get templates
+   * Templates is how many reusable prompts the playbook carries.
    * @return templates
    */
   @javax.annotation.Nullable

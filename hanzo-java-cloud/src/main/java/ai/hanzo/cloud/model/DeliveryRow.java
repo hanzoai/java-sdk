@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -104,7 +104,7 @@ public class DeliveryRow {
   }
 
   /**
-   * Get attempt
+   * Attempt is which try this row is, starting at 1. The ladder waits 1s, then 5s, then 25s before the next one.
    * @return attempt
    */
   @javax.annotation.Nullable
@@ -123,7 +123,7 @@ public class DeliveryRow {
   }
 
   /**
-   * Get created
+   * Created is when the attempt was made, RFC3339 in UTC.
    * @return created
    */
   @javax.annotation.Nullable
@@ -142,7 +142,7 @@ public class DeliveryRow {
   }
 
   /**
-   * Get delivery
+   * DeliveryID groups the attempts for ONE event to ONE endpoint. Rows sharing it are the same delivery being retried, not separate events.
    * @return delivery
    */
   @javax.annotation.Nullable
@@ -161,7 +161,7 @@ public class DeliveryRow {
   }
 
   /**
-   * Get durationMs
+   * DurationMs is how long this attempt took end to end, in MILLISECONDS.
    * @return durationMs
    */
   @javax.annotation.Nullable
@@ -180,7 +180,7 @@ public class DeliveryRow {
   }
 
   /**
-   * Get endpoint
+   * EndpointID is which subscriber this attempt was for.
    * @return endpoint
    */
   @javax.annotation.Nullable
@@ -199,7 +199,7 @@ public class DeliveryRow {
   }
 
   /**
-   * Get error
+   * Error says what went wrong on a non-ok attempt. Empty on success.
    * @return error
    */
   @javax.annotation.Nullable
@@ -218,7 +218,7 @@ public class DeliveryRow {
   }
 
   /**
-   * Get httpStatus
+   * HTTPStatus is what the subscriber answered. ZERO means it never answered — a refused connection, a DNS failure or a timeout — which is why a zero here is not a 200.
    * @return httpStatus
    */
   @javax.annotation.Nullable
@@ -237,7 +237,7 @@ public class DeliveryRow {
   }
 
   /**
-   * Get status
+   * Status is \&quot;ok\&quot; when the subscriber accepted it, \&quot;retrying\&quot; while a further attempt will follow, and \&quot;failed\&quot; when none will. Exactly one row of a delivery is terminal.
    * @return status
    */
   @javax.annotation.Nullable
@@ -256,7 +256,7 @@ public class DeliveryRow {
   }
 
   /**
-   * Get subject
+   * Subject is the event that was delivered (\&quot;commerce.order.created\&quot;). A manual test send carries \&quot;webhook.test\&quot;.
    * @return subject
    */
   @javax.annotation.Nullable

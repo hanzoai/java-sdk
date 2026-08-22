@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -99,7 +99,7 @@ public class GithubSearchHit {
   }
 
   /**
-   * Get cloneUrl
+   * CloneURL is the repository&#39;s https git remote.
    * @return cloneUrl
    */
   @javax.annotation.Nullable
@@ -118,7 +118,7 @@ public class GithubSearchHit {
   }
 
   /**
-   * Get defaultBranch
+   * DefaultBranch is the branch a clone checks out.
    * @return defaultBranch
    */
   @javax.annotation.Nullable
@@ -137,7 +137,7 @@ public class GithubSearchHit {
   }
 
   /**
-   * Get description
+   * Description is the blurb the repository&#39;s owner wrote. Empty when it has none.
    * @return description
    */
   @javax.annotation.Nullable
@@ -156,7 +156,7 @@ public class GithubSearchHit {
   }
 
   /**
-   * Get fullName
+   * FullName is the repository&#39;s \&quot;owner/repo\&quot; on GitHub. Finding it here does NOT make it forkable: githubFork takes a repo the org&#39;s installation was granted, and a hit from the public index usually is not one.
    * @return fullName
    */
   @javax.annotation.Nullable
@@ -175,7 +175,7 @@ public class GithubSearchHit {
   }
 
   /**
-   * Get htmlUrl
+   * HTMLURL is the repository&#39;s page on github.com.
    * @return htmlUrl
    */
   @javax.annotation.Nullable
@@ -194,7 +194,7 @@ public class GithubSearchHit {
   }
 
   /**
-   * Get language
+   * Language is the primary language GitHub detected from the file mix (\&quot;Go\&quot;, \&quot;TypeScript\&quot;). Empty when GitHub attributes none.
    * @return language
    */
   @javax.annotation.Nullable
@@ -213,7 +213,7 @@ public class GithubSearchHit {
   }
 
   /**
-   * Get _private
+   * Private is GitHub&#39;s visibility flag, passed through. This op reads the public index — the org&#39;s token only charges the rate limit to the installation — so it is false for everything a search can reach.
    * @return _private
    */
   @javax.annotation.Nullable
@@ -232,7 +232,7 @@ public class GithubSearchHit {
   }
 
   /**
-   * Get stars
+   * Stars is GitHub&#39;s stargazers_count as the SEARCH INDEX held it when the query ran — a snapshot, not a live count off the repository.
    * @return stars
    */
   @javax.annotation.Nullable

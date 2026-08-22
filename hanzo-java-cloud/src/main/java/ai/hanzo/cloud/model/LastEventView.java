@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -84,7 +84,7 @@ public class LastEventView {
   }
 
   /**
-   * Get actor
+   * Actor is who produced the turn, defaulted to the calling principal when the writer named nobody.
    * @return actor
    */
   @javax.annotation.Nullable
@@ -103,7 +103,7 @@ public class LastEventView {
   }
 
   /**
-   * Get at
+   * At is when the turn was recorded, RFC 3339 in UTC to the second.
    * @return at
    */
   @javax.annotation.Nullable
@@ -122,7 +122,7 @@ public class LastEventView {
   }
 
   /**
-   * Get kind
+   * Kind is what the turn was, from the log&#39;s closed six: message, tool-call, spawn, log, status, control.
    * @return kind
    */
   @javax.annotation.Nullable
@@ -141,7 +141,7 @@ public class LastEventView {
   }
 
   /**
-   * Get preview
+   * Preview is the first 240 bytes of the event&#39;s payload, cut without regard for the JSON inside it — it is a string to SHOW, never a value to parse. Read the detail or the stream for the whole payload.
    * @return preview
    */
   @javax.annotation.Nullable
@@ -160,7 +160,7 @@ public class LastEventView {
   }
 
   /**
-   * Get seq
+   * Seq is that event&#39;s position in the session&#39;s log — monotonic from 1, per session. A reader holding it can ask the detail or stream reads for everything after it, so this doubles as the list&#39;s resume cursor.
    * @return seq
    */
   @javax.annotation.Nullable

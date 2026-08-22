@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -92,7 +92,7 @@ public class TrialBalance {
   }
 
   /**
-   * Get balanced
+   * Balanced is the proof this report exists to give: whether total debits equal total credits. It is computed from the rows above, never assumed, and false means the ledger itself is broken rather than that the report is wrong.
    * @return balanced
    */
   @javax.annotation.Nullable
@@ -111,7 +111,7 @@ public class TrialBalance {
   }
 
   /**
-   * Get from
+   * From is the posting time the window opens at, as it was asked for. Absent means the report runs from the beginning of the ledger.
    * @return from
    */
   @javax.annotation.Nullable
@@ -138,7 +138,7 @@ public class TrialBalance {
   }
 
   /**
-   * Get rows
+   * Rows are the accounts that MOVED in one of the windows. An account that never moved is omitted rather than listed at zero, so this is shorter than the chart.
    * @return rows
    */
   @javax.annotation.Nullable
@@ -157,7 +157,7 @@ public class TrialBalance {
   }
 
   /**
-   * Get to
+   * To is the posting time the window closes at, inclusive. Absent means \&quot;up to now\&quot; — every posting the ledger holds.
    * @return to
    */
   @javax.annotation.Nullable
@@ -176,7 +176,7 @@ public class TrialBalance {
   }
 
   /**
-   * Get totalCredit
+   * TotalCredit is the sum of every row&#39;s closing credit column, in cents.
    * @return totalCredit
    */
   @javax.annotation.Nullable
@@ -195,7 +195,7 @@ public class TrialBalance {
   }
 
   /**
-   * Get totalDebit
+   * TotalDebit is the sum of every row&#39;s CLOSING debit column, in cents.
    * @return totalDebit
    */
   @javax.annotation.Nullable

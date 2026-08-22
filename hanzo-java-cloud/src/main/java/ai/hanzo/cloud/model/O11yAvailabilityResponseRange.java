@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -46,7 +46,7 @@ import java.util.Set;
 import ai.hanzo.cloud.JSON;
 
 /**
- * O11yAvailabilityResponseRange
+ * Range is the window and bucket width actually used, after clamping — not what was asked for, which is why a caller reads it back rather than assuming.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class O11yAvailabilityResponseRange {

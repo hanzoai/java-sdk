@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -90,7 +90,7 @@ public class ArgoStatus {
   }
 
   /**
-   * Get health
+   * Health is the application&#39;s reconciled health.
    * @return health
    */
   @javax.annotation.Nullable
@@ -109,7 +109,7 @@ public class ArgoStatus {
   }
 
   /**
-   * Get reconciledAt
+   * ReconciledAt is when the desired state was last compared against the cluster, RFC 3339. Empty for an App CR — the projection derives its verdict at read time and nothing records a comparison — and CD&#39;s own status.reconciledAt for a CD row.
    * @return reconciledAt
    */
   @javax.annotation.Nullable
@@ -136,7 +136,7 @@ public class ArgoStatus {
   }
 
   /**
-   * Get resources
+   * Resources are the objects the application owns. EMPTY on the list — filling it would walk the cluster once per row — and populated only by the read of ONE application, which is what makes that the detail view.
    * @return resources
    */
   @javax.annotation.Nullable
@@ -155,7 +155,7 @@ public class ArgoStatus {
   }
 
   /**
-   * Get summary
+   * Summary is the small aggregate the list column renders: the images.
    * @return summary
    */
   @javax.annotation.Nullable
@@ -174,7 +174,7 @@ public class ArgoStatus {
   }
 
   /**
-   * Get sync
+   * Sync is the declared-versus-running verdict and what it was reached against.
    * @return sync
    */
   @javax.annotation.Nullable

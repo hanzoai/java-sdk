@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -89,7 +89,7 @@ public class SMS {
   }
 
   /**
-   * Get from
+   * From is the sending number in E.164, and must be one this org holds.
    * @return from
    */
   @javax.annotation.Nullable
@@ -108,7 +108,7 @@ public class SMS {
   }
 
   /**
-   * Get id
+   * ID is the carrier&#39;s handle for the message.
    * @return id
    */
   @javax.annotation.Nullable
@@ -127,7 +127,7 @@ public class SMS {
   }
 
   /**
-   * Get org
+   * Org is the tenant the message was sent for or received by.
    * @return org
    */
   @javax.annotation.Nullable
@@ -146,7 +146,7 @@ public class SMS {
   }
 
   /**
-   * queued | sent | delivered | failed
+   * Status is where the message is: \&quot;queued\&quot;, \&quot;sent\&quot;, \&quot;delivered\&quot; or \&quot;failed\&quot;. \&quot;sent\&quot; means the carrier took it; \&quot;delivered\&quot; means the handset got it, and not every carrier or destination reports that.
    * @return status
    */
   @javax.annotation.Nullable
@@ -165,7 +165,7 @@ public class SMS {
   }
 
   /**
-   * Get text
+   * Text is the message body. Empty is legal when the message carried only media.
    * @return text
    */
   @javax.annotation.Nullable
@@ -184,7 +184,7 @@ public class SMS {
   }
 
   /**
-   * Get to
+   * To is the receiving number in E.164.
    * @return to
    */
   @javax.annotation.Nullable

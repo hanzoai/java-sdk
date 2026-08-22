@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -102,6 +102,8 @@ import ai.hanzo.cloud.model.O11yO11yDeploymentListOut;
 import ai.hanzo.cloud.model.O11yO11yDeprecatedUserOut;
 import ai.hanzo.cloud.model.O11yO11yDeprecatedUserUpdate;
 import ai.hanzo.cloud.model.O11yO11yDeprecatedUsersOut;
+import ai.hanzo.cloud.model.O11yO11yDiscoverIn;
+import ai.hanzo.cloud.model.O11yO11yDiscoverOut;
 import ai.hanzo.cloud.model.O11yO11yDisk;
 import ai.hanzo.cloud.model.O11yO11yDomainsIn;
 import ai.hanzo.cloud.model.O11yO11yDomainsOut;
@@ -185,6 +187,7 @@ import ai.hanzo.cloud.model.O11yO11yLogPromoteOut;
 import ai.hanzo.cloud.model.O11yO11yLogPromotePath;
 import ai.hanzo.cloud.model.O11yO11yLogPromotedOut;
 import ai.hanzo.cloud.model.O11yO11yLogRecordsOut;
+import ai.hanzo.cloud.model.O11yO11yLogsOut;
 import ai.hanzo.cloud.model.O11yO11yMessage;
 import ai.hanzo.cloud.model.O11yO11yMetricAckOut;
 import ai.hanzo.cloud.model.O11yO11yMetricAlertsOut;
@@ -275,6 +278,12 @@ import ai.hanzo.cloud.model.O11yO11ySavedViewDeleteOut;
 import ai.hanzo.cloud.model.O11yO11ySavedViewListOut;
 import ai.hanzo.cloud.model.O11yO11ySavedViewOut;
 import ai.hanzo.cloud.model.O11yO11ySavedViewUpdateIn;
+import ai.hanzo.cloud.model.O11yO11ySentryEventOut;
+import ai.hanzo.cloud.model.O11yO11ySentryIssueEventsOut;
+import ai.hanzo.cloud.model.O11yO11ySentryPostableProject;
+import ai.hanzo.cloud.model.O11yO11ySentryProjectOut;
+import ai.hanzo.cloud.model.O11yO11ySentryProjectsOut;
+import ai.hanzo.cloud.model.O11yO11ySentryUpdateIssueIn;
 import ai.hanzo.cloud.model.O11yO11yServiceAccountCreateIn;
 import ai.hanzo.cloud.model.O11yO11yServiceAccountCreateOut;
 import ai.hanzo.cloud.model.O11yO11yServiceAccountOut;
@@ -299,6 +308,7 @@ import ai.hanzo.cloud.model.O11yO11ySpanMappersOut;
 import ai.hanzo.cloud.model.O11yO11ySpanPercentileIn;
 import ai.hanzo.cloud.model.O11yO11ySpanPercentileOut;
 import ai.hanzo.cloud.model.O11yO11yStatefulSetListOut;
+import ai.hanzo.cloud.model.O11yO11yStatsOut;
 import ai.hanzo.cloud.model.O11yO11ySubstituteVarsOut;
 import ai.hanzo.cloud.model.O11yO11yTestNotificationOut;
 import ai.hanzo.cloud.model.O11yO11yTestRuleOut;
@@ -308,9 +318,11 @@ import ai.hanzo.cloud.model.O11yO11yTraceAggregationsIn;
 import ai.hanzo.cloud.model.O11yO11yTraceAggregationsOut;
 import ai.hanzo.cloud.model.O11yO11yTraceFlamegraphIn;
 import ai.hanzo.cloud.model.O11yO11yTraceFlamegraphOut;
+import ai.hanzo.cloud.model.O11yO11yTraceOut;
 import ai.hanzo.cloud.model.O11yO11yTraceSpanWindow;
 import ai.hanzo.cloud.model.O11yO11yTraceWaterfallIn;
 import ai.hanzo.cloud.model.O11yO11yTraceWaterfallOut;
+import ai.hanzo.cloud.model.O11yO11yTracesOut;
 import ai.hanzo.cloud.model.O11yO11yTransaction;
 import ai.hanzo.cloud.model.O11yO11yUpdatableAuthDomain;
 import ai.hanzo.cloud.model.O11yO11yUpdatablePreference;
@@ -350,6 +362,7 @@ import ai.hanzo.cloud.model.O11yQueryRangeRequest;
 import ai.hanzo.cloud.model.O11ySavedView;
 import ai.hanzo.cloud.model.O11yStatefulSetListRequest;
 import ai.hanzo.cloud.model.O11yStatusResult;
+import ai.hanzo.cloud.model.O11yStatusSummary;
 import ai.hanzo.cloud.model.O11yTracesOut;
 import ai.hanzo.cloud.model.O11yUninstallIntegrationRequest;
 import ai.hanzo.cloud.model.O11yUpdateItemIn;
@@ -5878,6 +5891,128 @@ public class O11yApi {
         okhttp3.Call localVarCall = deleteO11yReviewsByIdValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<O11yAnnQueueDeleted>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for deleteO11ySentinelProjectsById
+     * @param id ID is the project id. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteO11ySentinelProjectsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/o11y/sentinel/projects/{id}"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteO11ySentinelProjectsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling deleteO11ySentinelProjectsById(Async)");
+        }
+
+        return deleteO11ySentinelProjectsByIdCall(id, _callback);
+
+    }
+
+    /**
+     * Deletes one Sentry project of the caller&#39;s org.
+     * Deletes one Sentry project of the caller&#39;s org. Its DSN stops resolving immediately, so ingest for that id fails closed exactly as an unknown project does; retained events are not touched. Answers 204.  Callers need the editor role; the runtime&#39;s own gate enforces it.
+     * @param id ID is the project id. (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+     </table>
+     */
+    public void deleteO11ySentinelProjectsById(@javax.annotation.Nonnull String id) throws ApiException {
+        deleteO11ySentinelProjectsByIdWithHttpInfo(id);
+    }
+
+    /**
+     * Deletes one Sentry project of the caller&#39;s org.
+     * Deletes one Sentry project of the caller&#39;s org. Its DSN stops resolving immediately, so ingest for that id fails closed exactly as an unknown project does; retained events are not touched. Answers 204.  Callers need the editor role; the runtime&#39;s own gate enforces it.
+     * @param id ID is the project id. (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> deleteO11ySentinelProjectsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = deleteO11ySentinelProjectsByIdValidateBeforeCall(id, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Deletes one Sentry project of the caller&#39;s org. (asynchronously)
+     * Deletes one Sentry project of the caller&#39;s org. Its DSN stops resolving immediately, so ingest for that id fails closed exactly as an unknown project does; retained events are not touched. Answers 204.  Callers need the editor role; the runtime&#39;s own gate enforces it.
+     * @param id ID is the project id. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteO11ySentinelProjectsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteO11ySentinelProjectsByIdValidateBeforeCall(id, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
@@ -20536,7 +20671,7 @@ public class O11yApi {
 
     /**
      * Watch one running query&#39;s progress
-     * Reports how far a submitted query has got — rows scanned, bytes read, elapsed — and HOLDS the connection until the next update rather than answering immediately.  The long poll is the whole point, and the reason this cannot be a typed operation: an answer that arrived only when the query finished would report progress on nothing. The websocket form of the same read is /ws/query_progress.  A validated, org-scoped principal is required; a query id belonging to another tenant is simply not found.
+     * Reports how far a submitted query has got — rows scanned, bytes read, elapsed — and HOLDS the connection until the next update rather than answering immediately.  ONE ADDRESS, TWO PROTOCOLS. Send an Upgrade and this is a websocket carrying the same progress; send an ordinary GET and it is a long poll. The Upgrade is a property of the request, not of the address, so the read that used to answer at /ws/query_progress answers here.  The long poll is the whole point, and the reason this cannot be a typed operation: an answer that arrived only when the query finished would report progress on nothing, and an upgraded connection has no JSON response to declare.  A validated, org-scoped principal is required; a query id belonging to another tenant is simply not found.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public void getO11yQueryProgress() throws ApiException {
@@ -20545,7 +20680,7 @@ public class O11yApi {
 
     /**
      * Watch one running query&#39;s progress
-     * Reports how far a submitted query has got — rows scanned, bytes read, elapsed — and HOLDS the connection until the next update rather than answering immediately.  The long poll is the whole point, and the reason this cannot be a typed operation: an answer that arrived only when the query finished would report progress on nothing. The websocket form of the same read is /ws/query_progress.  A validated, org-scoped principal is required; a query id belonging to another tenant is simply not found.
+     * Reports how far a submitted query has got — rows scanned, bytes read, elapsed — and HOLDS the connection until the next update rather than answering immediately.  ONE ADDRESS, TWO PROTOCOLS. Send an Upgrade and this is a websocket carrying the same progress; send an ordinary GET and it is a long poll. The Upgrade is a property of the request, not of the address, so the read that used to answer at /ws/query_progress answers here.  The long poll is the whole point, and the reason this cannot be a typed operation: an answer that arrived only when the query finished would report progress on nothing, and an upgraded connection has no JSON response to declare.  A validated, org-scoped principal is required; a query id belonging to another tenant is simply not found.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -20556,7 +20691,7 @@ public class O11yApi {
 
     /**
      * Watch one running query&#39;s progress (asynchronously)
-     * Reports how far a submitted query has got — rows scanned, bytes read, elapsed — and HOLDS the connection until the next update rather than answering immediately.  The long poll is the whole point, and the reason this cannot be a typed operation: an answer that arrived only when the query finished would report progress on nothing. The websocket form of the same read is /ws/query_progress.  A validated, org-scoped principal is required; a query id belonging to another tenant is simply not found.
+     * Reports how far a submitted query has got — rows scanned, bytes read, elapsed — and HOLDS the connection until the next update rather than answering immediately.  ONE ADDRESS, TWO PROTOCOLS. Send an Upgrade and this is a websocket carrying the same progress; send an ordinary GET and it is a long poll. The Upgrade is a property of the request, not of the address, so the read that used to answer at /ws/query_progress answers here.  The long poll is the whole point, and the reason this cannot be a typed operation: an answer that arrived only when the query finished would report progress on nothing, and an upgraded connection has no JSON response to declare.  A validated, org-scoped principal is required; a query id belonging to another tenant is simply not found.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -21248,6 +21383,1448 @@ public class O11yApi {
 
         okhttp3.Call localVarCall = getO11yReviewsByIdItemsValidateBeforeCall(id, status, page, limit, _callback);
         Type localVarReturnType = new TypeToken<O11yAnnItemList>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getO11ySentinelEventsById
+     * @param id ID is the event id. (required)
+     * @param project Project is the project the event belongs to, by its id. Required. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getO11ySentinelEventsByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String project, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/o11y/sentinel/events/{id}"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (project != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("project", project));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getO11ySentinelEventsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String project, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling getO11ySentinelEventsById(Async)");
+        }
+
+        // verify the required parameter 'project' is set
+        if (project == null) {
+            throw new ApiException("Missing the required parameter 'project' when calling getO11ySentinelEventsById(Async)");
+        }
+
+        return getO11ySentinelEventsByIdCall(id, project, _callback);
+
+    }
+
+    /**
+     * Returns one captured error event of a project, by its id.
+     * Returns one captured error event of a project, by its id.  Callers need the viewer role; the runtime&#39;s own gate enforces it.
+     * @param id ID is the event id. (required)
+     * @param project Project is the project the event belongs to, by its id. Required. (required)
+     * @return O11yO11ySentryEventOut
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public O11yO11ySentryEventOut getO11ySentinelEventsById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String project) throws ApiException {
+        ApiResponse<O11yO11ySentryEventOut> localVarResp = getO11ySentinelEventsByIdWithHttpInfo(id, project);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Returns one captured error event of a project, by its id.
+     * Returns one captured error event of a project, by its id.  Callers need the viewer role; the runtime&#39;s own gate enforces it.
+     * @param id ID is the event id. (required)
+     * @param project Project is the project the event belongs to, by its id. Required. (required)
+     * @return ApiResponse&lt;O11yO11ySentryEventOut&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<O11yO11ySentryEventOut> getO11ySentinelEventsByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String project) throws ApiException {
+        okhttp3.Call localVarCall = getO11ySentinelEventsByIdValidateBeforeCall(id, project, null);
+        Type localVarReturnType = new TypeToken<O11yO11ySentryEventOut>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Returns one captured error event of a project, by its id. (asynchronously)
+     * Returns one captured error event of a project, by its id.  Callers need the viewer role; the runtime&#39;s own gate enforces it.
+     * @param id ID is the event id. (required)
+     * @param project Project is the project the event belongs to, by its id. Required. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getO11ySentinelEventsByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String project, final ApiCallback<O11yO11ySentryEventOut> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getO11ySentinelEventsByIdValidateBeforeCall(id, project, _callback);
+        Type localVarReturnType = new TypeToken<O11yO11ySentryEventOut>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getO11ySentinelIssues
+     * @param status Status narrows to one lifecycle state: unresolved, resolved or ignored. (optional)
+     * @param level Level narrows to one severity, e.g. error, warning, info. (optional)
+     * @param environment Environment narrows to one deployment environment. (optional)
+     * @param serviceName ServiceName narrows to one reporting service. (optional)
+     * @param query Query narrows to issues whose text contains it. (optional)
+     * @param sort Sort orders the page, e.g. lastSeen, firstSeen, count. (optional)
+     * @param offset Offset is how many issues to skip. Zero starts at the first. (optional)
+     * @param limit Limit caps how many issues come back. Zero means the default. (optional)
+     * @param project Project narrows the org&#39;s issues to one project, by its id. (optional)
+     * @param period Period is the window to read, relative to now — 1h, 24h, 7d, 14d, 30d. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getO11ySentinelIssuesCall(@javax.annotation.Nullable String status, @javax.annotation.Nullable String level, @javax.annotation.Nullable String environment, @javax.annotation.Nullable String serviceName, @javax.annotation.Nullable String query, @javax.annotation.Nullable String sort, @javax.annotation.Nullable Integer offset, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String project, @javax.annotation.Nullable String period, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/o11y/sentinel/issues";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (status != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("status", status));
+        }
+
+        if (level != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("level", level));
+        }
+
+        if (environment != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("environment", environment));
+        }
+
+        if (serviceName != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("serviceName", serviceName));
+        }
+
+        if (query != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("query", query));
+        }
+
+        if (sort != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("sort", sort));
+        }
+
+        if (offset != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("offset", offset));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        if (project != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("project", project));
+        }
+
+        if (period != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("period", period));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getO11ySentinelIssuesValidateBeforeCall(@javax.annotation.Nullable String status, @javax.annotation.Nullable String level, @javax.annotation.Nullable String environment, @javax.annotation.Nullable String serviceName, @javax.annotation.Nullable String query, @javax.annotation.Nullable String sort, @javax.annotation.Nullable Integer offset, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String project, @javax.annotation.Nullable String period, final ApiCallback _callback) throws ApiException {
+        return getO11ySentinelIssuesCall(status, level, environment, serviceName, query, sort, offset, limit, project, period, _callback);
+
+    }
+
+    /**
+     * Lists the caller&#39;s org&#39;s grouped error issues, optionally narrowed to one project and one time window, and filtered by status, level, environment, service, a free-text query and a sort.
+     * Lists the caller&#39;s org&#39;s grouped error issues, optionally narrowed to one project and one time window, and filtered by status, level, environment, service, a free-text query and a sort.  Callers need the viewer role; the runtime&#39;s own gate enforces it.
+     * @param status Status narrows to one lifecycle state: unresolved, resolved or ignored. (optional)
+     * @param level Level narrows to one severity, e.g. error, warning, info. (optional)
+     * @param environment Environment narrows to one deployment environment. (optional)
+     * @param serviceName ServiceName narrows to one reporting service. (optional)
+     * @param query Query narrows to issues whose text contains it. (optional)
+     * @param sort Sort orders the page, e.g. lastSeen, firstSeen, count. (optional)
+     * @param offset Offset is how many issues to skip. Zero starts at the first. (optional)
+     * @param limit Limit caps how many issues come back. Zero means the default. (optional)
+     * @param project Project narrows the org&#39;s issues to one project, by its id. (optional)
+     * @param period Period is the window to read, relative to now — 1h, 24h, 7d, 14d, 30d. (optional)
+     * @return O11yO11yErrorIssuesOut
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public O11yO11yErrorIssuesOut getO11ySentinelIssues(@javax.annotation.Nullable String status, @javax.annotation.Nullable String level, @javax.annotation.Nullable String environment, @javax.annotation.Nullable String serviceName, @javax.annotation.Nullable String query, @javax.annotation.Nullable String sort, @javax.annotation.Nullable Integer offset, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String project, @javax.annotation.Nullable String period) throws ApiException {
+        ApiResponse<O11yO11yErrorIssuesOut> localVarResp = getO11ySentinelIssuesWithHttpInfo(status, level, environment, serviceName, query, sort, offset, limit, project, period);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Lists the caller&#39;s org&#39;s grouped error issues, optionally narrowed to one project and one time window, and filtered by status, level, environment, service, a free-text query and a sort.
+     * Lists the caller&#39;s org&#39;s grouped error issues, optionally narrowed to one project and one time window, and filtered by status, level, environment, service, a free-text query and a sort.  Callers need the viewer role; the runtime&#39;s own gate enforces it.
+     * @param status Status narrows to one lifecycle state: unresolved, resolved or ignored. (optional)
+     * @param level Level narrows to one severity, e.g. error, warning, info. (optional)
+     * @param environment Environment narrows to one deployment environment. (optional)
+     * @param serviceName ServiceName narrows to one reporting service. (optional)
+     * @param query Query narrows to issues whose text contains it. (optional)
+     * @param sort Sort orders the page, e.g. lastSeen, firstSeen, count. (optional)
+     * @param offset Offset is how many issues to skip. Zero starts at the first. (optional)
+     * @param limit Limit caps how many issues come back. Zero means the default. (optional)
+     * @param project Project narrows the org&#39;s issues to one project, by its id. (optional)
+     * @param period Period is the window to read, relative to now — 1h, 24h, 7d, 14d, 30d. (optional)
+     * @return ApiResponse&lt;O11yO11yErrorIssuesOut&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<O11yO11yErrorIssuesOut> getO11ySentinelIssuesWithHttpInfo(@javax.annotation.Nullable String status, @javax.annotation.Nullable String level, @javax.annotation.Nullable String environment, @javax.annotation.Nullable String serviceName, @javax.annotation.Nullable String query, @javax.annotation.Nullable String sort, @javax.annotation.Nullable Integer offset, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String project, @javax.annotation.Nullable String period) throws ApiException {
+        okhttp3.Call localVarCall = getO11ySentinelIssuesValidateBeforeCall(status, level, environment, serviceName, query, sort, offset, limit, project, period, null);
+        Type localVarReturnType = new TypeToken<O11yO11yErrorIssuesOut>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Lists the caller&#39;s org&#39;s grouped error issues, optionally narrowed to one project and one time window, and filtered by status, level, environment, service, a free-text query and a sort. (asynchronously)
+     * Lists the caller&#39;s org&#39;s grouped error issues, optionally narrowed to one project and one time window, and filtered by status, level, environment, service, a free-text query and a sort.  Callers need the viewer role; the runtime&#39;s own gate enforces it.
+     * @param status Status narrows to one lifecycle state: unresolved, resolved or ignored. (optional)
+     * @param level Level narrows to one severity, e.g. error, warning, info. (optional)
+     * @param environment Environment narrows to one deployment environment. (optional)
+     * @param serviceName ServiceName narrows to one reporting service. (optional)
+     * @param query Query narrows to issues whose text contains it. (optional)
+     * @param sort Sort orders the page, e.g. lastSeen, firstSeen, count. (optional)
+     * @param offset Offset is how many issues to skip. Zero starts at the first. (optional)
+     * @param limit Limit caps how many issues come back. Zero means the default. (optional)
+     * @param project Project narrows the org&#39;s issues to one project, by its id. (optional)
+     * @param period Period is the window to read, relative to now — 1h, 24h, 7d, 14d, 30d. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getO11ySentinelIssuesAsync(@javax.annotation.Nullable String status, @javax.annotation.Nullable String level, @javax.annotation.Nullable String environment, @javax.annotation.Nullable String serviceName, @javax.annotation.Nullable String query, @javax.annotation.Nullable String sort, @javax.annotation.Nullable Integer offset, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String project, @javax.annotation.Nullable String period, final ApiCallback<O11yO11yErrorIssuesOut> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getO11ySentinelIssuesValidateBeforeCall(status, level, environment, serviceName, query, sort, offset, limit, project, period, _callback);
+        Type localVarReturnType = new TypeToken<O11yO11yErrorIssuesOut>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getO11ySentinelIssuesById
+     * @param id ID is the issue id. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getO11ySentinelIssuesByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/o11y/sentinel/issues/{id}"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getO11ySentinelIssuesByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling getO11ySentinelIssuesById(Async)");
+        }
+
+        return getO11ySentinelIssuesByIdCall(id, _callback);
+
+    }
+
+    /**
+     * Returns one grouped issue of the caller&#39;s org with its latest occurrence sample.
+     * Returns one grouped issue of the caller&#39;s org with its latest occurrence sample.  Callers need the viewer role; the runtime&#39;s own gate enforces it.
+     * @param id ID is the issue id. (required)
+     * @return O11yO11yErrorGettableIssueOut
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public O11yO11yErrorGettableIssueOut getO11ySentinelIssuesById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<O11yO11yErrorGettableIssueOut> localVarResp = getO11ySentinelIssuesByIdWithHttpInfo(id);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Returns one grouped issue of the caller&#39;s org with its latest occurrence sample.
+     * Returns one grouped issue of the caller&#39;s org with its latest occurrence sample.  Callers need the viewer role; the runtime&#39;s own gate enforces it.
+     * @param id ID is the issue id. (required)
+     * @return ApiResponse&lt;O11yO11yErrorGettableIssueOut&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<O11yO11yErrorGettableIssueOut> getO11ySentinelIssuesByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getO11ySentinelIssuesByIdValidateBeforeCall(id, null);
+        Type localVarReturnType = new TypeToken<O11yO11yErrorGettableIssueOut>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Returns one grouped issue of the caller&#39;s org with its latest occurrence sample. (asynchronously)
+     * Returns one grouped issue of the caller&#39;s org with its latest occurrence sample.  Callers need the viewer role; the runtime&#39;s own gate enforces it.
+     * @param id ID is the issue id. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getO11ySentinelIssuesByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<O11yO11yErrorGettableIssueOut> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getO11ySentinelIssuesByIdValidateBeforeCall(id, _callback);
+        Type localVarReturnType = new TypeToken<O11yO11yErrorGettableIssueOut>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getO11ySentinelIssuesByIdEvents
+     * @param id ID is the issue id. (required)
+     * @param project Project is the project whose occurrences to read, by its id. Required. (required)
+     * @param limit Limit caps how many occurrences come back. Zero means the default. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getO11ySentinelIssuesByIdEventsCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String project, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/o11y/sentinel/issues/{id}/events"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (project != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("project", project));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getO11ySentinelIssuesByIdEventsValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String project, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling getO11ySentinelIssuesByIdEvents(Async)");
+        }
+
+        // verify the required parameter 'project' is set
+        if (project == null) {
+            throw new ApiException("Missing the required parameter 'project' when calling getO11ySentinelIssuesByIdEvents(Async)");
+        }
+
+        return getO11ySentinelIssuesByIdEventsCall(id, project, limit, _callback);
+
+    }
+
+    /**
+     * Lists one issue&#39;s captured occurrences, scoped to a project — a project is an isolation unit, so the caller declares which project&#39;s occurrences to read.
+     * Lists one issue&#39;s captured occurrences, scoped to a project — a project is an isolation unit, so the caller declares which project&#39;s occurrences to read.  Callers need the viewer role; the runtime&#39;s own gate enforces it.
+     * @param id ID is the issue id. (required)
+     * @param project Project is the project whose occurrences to read, by its id. Required. (required)
+     * @param limit Limit caps how many occurrences come back. Zero means the default. (optional)
+     * @return O11yO11ySentryIssueEventsOut
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public O11yO11ySentryIssueEventsOut getO11ySentinelIssuesByIdEvents(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String project, @javax.annotation.Nullable Integer limit) throws ApiException {
+        ApiResponse<O11yO11ySentryIssueEventsOut> localVarResp = getO11ySentinelIssuesByIdEventsWithHttpInfo(id, project, limit);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Lists one issue&#39;s captured occurrences, scoped to a project — a project is an isolation unit, so the caller declares which project&#39;s occurrences to read.
+     * Lists one issue&#39;s captured occurrences, scoped to a project — a project is an isolation unit, so the caller declares which project&#39;s occurrences to read.  Callers need the viewer role; the runtime&#39;s own gate enforces it.
+     * @param id ID is the issue id. (required)
+     * @param project Project is the project whose occurrences to read, by its id. Required. (required)
+     * @param limit Limit caps how many occurrences come back. Zero means the default. (optional)
+     * @return ApiResponse&lt;O11yO11ySentryIssueEventsOut&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<O11yO11ySentryIssueEventsOut> getO11ySentinelIssuesByIdEventsWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String project, @javax.annotation.Nullable Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = getO11ySentinelIssuesByIdEventsValidateBeforeCall(id, project, limit, null);
+        Type localVarReturnType = new TypeToken<O11yO11ySentryIssueEventsOut>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Lists one issue&#39;s captured occurrences, scoped to a project — a project is an isolation unit, so the caller declares which project&#39;s occurrences to read. (asynchronously)
+     * Lists one issue&#39;s captured occurrences, scoped to a project — a project is an isolation unit, so the caller declares which project&#39;s occurrences to read.  Callers need the viewer role; the runtime&#39;s own gate enforces it.
+     * @param id ID is the issue id. (required)
+     * @param project Project is the project whose occurrences to read, by its id. Required. (required)
+     * @param limit Limit caps how many occurrences come back. Zero means the default. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getO11ySentinelIssuesByIdEventsAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String project, @javax.annotation.Nullable Integer limit, final ApiCallback<O11yO11ySentryIssueEventsOut> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getO11ySentinelIssuesByIdEventsValidateBeforeCall(id, project, limit, _callback);
+        Type localVarReturnType = new TypeToken<O11yO11ySentryIssueEventsOut>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getO11ySentinelLogs
+     * @param project Project is the project to read, as its id. Required. (required)
+     * @param query Query narrows the page to events whose text contains it. (optional)
+     * @param period Period is the window to read, relative to now — 1h, 24h, 7d, 14d, 30d. (optional)
+     * @param limit Limit caps how many events come back. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getO11ySentinelLogsCall(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String query, @javax.annotation.Nullable String period, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/o11y/sentinel/logs";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (project != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("project", project));
+        }
+
+        if (query != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("query", query));
+        }
+
+        if (period != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("period", period));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getO11ySentinelLogsValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String query, @javax.annotation.Nullable String period, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'project' is set
+        if (project == null) {
+            throw new ApiException("Missing the required parameter 'project' when calling getO11ySentinelLogs(Async)");
+        }
+
+        return getO11ySentinelLogsCall(project, query, period, limit, _callback);
+
+    }
+
+    /**
+     * Lists a project&#39;s captured error events, newest first, optionally narrowed to those whose message or exception text contains a search string.
+     * Lists a project&#39;s captured error events, newest first, optionally narrowed to those whose message or exception text contains a search string.
+     * @param project Project is the project to read, as its id. Required. (required)
+     * @param query Query narrows the page to events whose text contains it. (optional)
+     * @param period Period is the window to read, relative to now — 1h, 24h, 7d, 14d, 30d. (optional)
+     * @param limit Limit caps how many events come back. (optional)
+     * @return O11yO11yLogsOut
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public O11yO11yLogsOut getO11ySentinelLogs(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String query, @javax.annotation.Nullable String period, @javax.annotation.Nullable Integer limit) throws ApiException {
+        ApiResponse<O11yO11yLogsOut> localVarResp = getO11ySentinelLogsWithHttpInfo(project, query, period, limit);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Lists a project&#39;s captured error events, newest first, optionally narrowed to those whose message or exception text contains a search string.
+     * Lists a project&#39;s captured error events, newest first, optionally narrowed to those whose message or exception text contains a search string.
+     * @param project Project is the project to read, as its id. Required. (required)
+     * @param query Query narrows the page to events whose text contains it. (optional)
+     * @param period Period is the window to read, relative to now — 1h, 24h, 7d, 14d, 30d. (optional)
+     * @param limit Limit caps how many events come back. (optional)
+     * @return ApiResponse&lt;O11yO11yLogsOut&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<O11yO11yLogsOut> getO11ySentinelLogsWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String query, @javax.annotation.Nullable String period, @javax.annotation.Nullable Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = getO11ySentinelLogsValidateBeforeCall(project, query, period, limit, null);
+        Type localVarReturnType = new TypeToken<O11yO11yLogsOut>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Lists a project&#39;s captured error events, newest first, optionally narrowed to those whose message or exception text contains a search string. (asynchronously)
+     * Lists a project&#39;s captured error events, newest first, optionally narrowed to those whose message or exception text contains a search string.
+     * @param project Project is the project to read, as its id. Required. (required)
+     * @param query Query narrows the page to events whose text contains it. (optional)
+     * @param period Period is the window to read, relative to now — 1h, 24h, 7d, 14d, 30d. (optional)
+     * @param limit Limit caps how many events come back. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getO11ySentinelLogsAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String query, @javax.annotation.Nullable String period, @javax.annotation.Nullable Integer limit, final ApiCallback<O11yO11yLogsOut> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getO11ySentinelLogsValidateBeforeCall(project, query, period, limit, _callback);
+        Type localVarReturnType = new TypeToken<O11yO11yLogsOut>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getO11ySentinelProjects
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getO11ySentinelProjectsCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/o11y/sentinel/projects";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getO11ySentinelProjectsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getO11ySentinelProjectsCall(_callback);
+
+    }
+
+    /**
+     * Lists the caller&#39;s org&#39;s Sentry projects, each with its freshly-derived DSN.
+     * Lists the caller&#39;s org&#39;s Sentry projects, each with its freshly-derived DSN.  Callers need the viewer role; the runtime&#39;s own gate enforces it.
+     * @return O11yO11ySentryProjectsOut
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public O11yO11ySentryProjectsOut getO11ySentinelProjects() throws ApiException {
+        ApiResponse<O11yO11ySentryProjectsOut> localVarResp = getO11ySentinelProjectsWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * Lists the caller&#39;s org&#39;s Sentry projects, each with its freshly-derived DSN.
+     * Lists the caller&#39;s org&#39;s Sentry projects, each with its freshly-derived DSN.  Callers need the viewer role; the runtime&#39;s own gate enforces it.
+     * @return ApiResponse&lt;O11yO11ySentryProjectsOut&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<O11yO11ySentryProjectsOut> getO11ySentinelProjectsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getO11ySentinelProjectsValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<O11yO11ySentryProjectsOut>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Lists the caller&#39;s org&#39;s Sentry projects, each with its freshly-derived DSN. (asynchronously)
+     * Lists the caller&#39;s org&#39;s Sentry projects, each with its freshly-derived DSN.  Callers need the viewer role; the runtime&#39;s own gate enforces it.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getO11ySentinelProjectsAsync(final ApiCallback<O11yO11ySentryProjectsOut> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getO11ySentinelProjectsValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<O11yO11ySentryProjectsOut>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getO11ySentinelProjectsById
+     * @param id ID is the project id. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getO11ySentinelProjectsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/o11y/sentinel/projects/{id}"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getO11ySentinelProjectsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling getO11ySentinelProjectsById(Async)");
+        }
+
+        return getO11ySentinelProjectsByIdCall(id, _callback);
+
+    }
+
+    /**
+     * Returns one Sentry project of the caller&#39;s org, DSN included.
+     * Returns one Sentry project of the caller&#39;s org, DSN included.  Callers need the viewer role; the runtime&#39;s own gate enforces it.
+     * @param id ID is the project id. (required)
+     * @return O11yO11ySentryProjectOut
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public O11yO11ySentryProjectOut getO11ySentinelProjectsById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<O11yO11ySentryProjectOut> localVarResp = getO11ySentinelProjectsByIdWithHttpInfo(id);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Returns one Sentry project of the caller&#39;s org, DSN included.
+     * Returns one Sentry project of the caller&#39;s org, DSN included.  Callers need the viewer role; the runtime&#39;s own gate enforces it.
+     * @param id ID is the project id. (required)
+     * @return ApiResponse&lt;O11yO11ySentryProjectOut&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<O11yO11ySentryProjectOut> getO11ySentinelProjectsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getO11ySentinelProjectsByIdValidateBeforeCall(id, null);
+        Type localVarReturnType = new TypeToken<O11yO11ySentryProjectOut>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Returns one Sentry project of the caller&#39;s org, DSN included. (asynchronously)
+     * Returns one Sentry project of the caller&#39;s org, DSN included.  Callers need the viewer role; the runtime&#39;s own gate enforces it.
+     * @param id ID is the project id. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getO11ySentinelProjectsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<O11yO11ySentryProjectOut> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getO11ySentinelProjectsByIdValidateBeforeCall(id, _callback);
+        Type localVarReturnType = new TypeToken<O11yO11ySentryProjectOut>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getO11ySentinelStats
+     * @param project Project is the project to read, as its id. Required. (required)
+     * @param field Field is the dimension to count over. Empty counts all events. (optional)
+     * @param period Period is the window to read, relative to now — 1h, 24h, 7d, 14d, 30d. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getO11ySentinelStatsCall(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String field, @javax.annotation.Nullable String period, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/o11y/sentinel/stats";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (project != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("project", project));
+        }
+
+        if (field != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("field", field));
+        }
+
+        if (period != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("period", period));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getO11ySentinelStatsValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String field, @javax.annotation.Nullable String period, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'project' is set
+        if (project == null) {
+            throw new ApiException("Missing the required parameter 'project' when calling getO11ySentinelStats(Async)");
+        }
+
+        return getO11ySentinelStatsCall(project, field, period, _callback);
+
+    }
+
+    /**
+     * Returns a project&#39;s event-rate timeseries: one bucket per interval over the requested period, counting the events in it.
+     * Returns a project&#39;s event-rate timeseries: one bucket per interval over the requested period, counting the events in it.
+     * @param project Project is the project to read, as its id. Required. (required)
+     * @param field Field is the dimension to count over. Empty counts all events. (optional)
+     * @param period Period is the window to read, relative to now — 1h, 24h, 7d, 14d, 30d. (optional)
+     * @return O11yO11yStatsOut
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public O11yO11yStatsOut getO11ySentinelStats(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String field, @javax.annotation.Nullable String period) throws ApiException {
+        ApiResponse<O11yO11yStatsOut> localVarResp = getO11ySentinelStatsWithHttpInfo(project, field, period);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Returns a project&#39;s event-rate timeseries: one bucket per interval over the requested period, counting the events in it.
+     * Returns a project&#39;s event-rate timeseries: one bucket per interval over the requested period, counting the events in it.
+     * @param project Project is the project to read, as its id. Required. (required)
+     * @param field Field is the dimension to count over. Empty counts all events. (optional)
+     * @param period Period is the window to read, relative to now — 1h, 24h, 7d, 14d, 30d. (optional)
+     * @return ApiResponse&lt;O11yO11yStatsOut&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<O11yO11yStatsOut> getO11ySentinelStatsWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String field, @javax.annotation.Nullable String period) throws ApiException {
+        okhttp3.Call localVarCall = getO11ySentinelStatsValidateBeforeCall(project, field, period, null);
+        Type localVarReturnType = new TypeToken<O11yO11yStatsOut>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Returns a project&#39;s event-rate timeseries: one bucket per interval over the requested period, counting the events in it. (asynchronously)
+     * Returns a project&#39;s event-rate timeseries: one bucket per interval over the requested period, counting the events in it.
+     * @param project Project is the project to read, as its id. Required. (required)
+     * @param field Field is the dimension to count over. Empty counts all events. (optional)
+     * @param period Period is the window to read, relative to now — 1h, 24h, 7d, 14d, 30d. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getO11ySentinelStatsAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String field, @javax.annotation.Nullable String period, final ApiCallback<O11yO11yStatsOut> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getO11ySentinelStatsValidateBeforeCall(project, field, period, _callback);
+        Type localVarReturnType = new TypeToken<O11yO11yStatsOut>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getO11ySentinelTraces
+     * @param project Project is the project to read, as its id. Required. (required)
+     * @param period Period is the window to read, relative to now — 1h, 24h, 7d, 14d, 30d. (optional)
+     * @param limit Limit caps how many traces come back. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getO11ySentinelTracesCall(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String period, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/o11y/sentinel/traces";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (project != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("project", project));
+        }
+
+        if (period != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("period", period));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getO11ySentinelTracesValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String period, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'project' is set
+        if (project == null) {
+            throw new ApiException("Missing the required parameter 'project' when calling getO11ySentinelTraces(Async)");
+        }
+
+        return getO11ySentinelTracesCall(project, period, limit, _callback);
+
+    }
+
+    /**
+     * Lists the traces a project&#39;s captured errors reference, each with how many errors landed on it, when they started and stopped, and the latest message seen — the entry point for \&quot;which requests are failing\&quot;.
+     * Lists the traces a project&#39;s captured errors reference, each with how many errors landed on it, when they started and stopped, and the latest message seen — the entry point for \&quot;which requests are failing\&quot;.
+     * @param project Project is the project to read, as its id. Required. (required)
+     * @param period Period is the window to read, relative to now — 1h, 24h, 7d, 14d, 30d. (optional)
+     * @param limit Limit caps how many traces come back. (optional)
+     * @return O11yO11yTracesOut
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public O11yO11yTracesOut getO11ySentinelTraces(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String period, @javax.annotation.Nullable Integer limit) throws ApiException {
+        ApiResponse<O11yO11yTracesOut> localVarResp = getO11ySentinelTracesWithHttpInfo(project, period, limit);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Lists the traces a project&#39;s captured errors reference, each with how many errors landed on it, when they started and stopped, and the latest message seen — the entry point for \&quot;which requests are failing\&quot;.
+     * Lists the traces a project&#39;s captured errors reference, each with how many errors landed on it, when they started and stopped, and the latest message seen — the entry point for \&quot;which requests are failing\&quot;.
+     * @param project Project is the project to read, as its id. Required. (required)
+     * @param period Period is the window to read, relative to now — 1h, 24h, 7d, 14d, 30d. (optional)
+     * @param limit Limit caps how many traces come back. (optional)
+     * @return ApiResponse&lt;O11yO11yTracesOut&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<O11yO11yTracesOut> getO11ySentinelTracesWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String period, @javax.annotation.Nullable Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = getO11ySentinelTracesValidateBeforeCall(project, period, limit, null);
+        Type localVarReturnType = new TypeToken<O11yO11yTracesOut>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Lists the traces a project&#39;s captured errors reference, each with how many errors landed on it, when they started and stopped, and the latest message seen — the entry point for \&quot;which requests are failing\&quot;. (asynchronously)
+     * Lists the traces a project&#39;s captured errors reference, each with how many errors landed on it, when they started and stopped, and the latest message seen — the entry point for \&quot;which requests are failing\&quot;.
+     * @param project Project is the project to read, as its id. Required. (required)
+     * @param period Period is the window to read, relative to now — 1h, 24h, 7d, 14d, 30d. (optional)
+     * @param limit Limit caps how many traces come back. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getO11ySentinelTracesAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String period, @javax.annotation.Nullable Integer limit, final ApiCallback<O11yO11yTracesOut> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getO11ySentinelTracesValidateBeforeCall(project, period, limit, _callback);
+        Type localVarReturnType = new TypeToken<O11yO11yTracesOut>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getO11ySentinelTracesById
+     * @param id ID is the trace id. (required)
+     * @param project Project is the project the trace&#39;s errors belong to. Required. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getO11ySentinelTracesByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String project, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/o11y/sentinel/traces/{id}"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (project != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("project", project));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getO11ySentinelTracesByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String project, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling getO11ySentinelTracesById(Async)");
+        }
+
+        // verify the required parameter 'project' is set
+        if (project == null) {
+            throw new ApiException("Missing the required parameter 'project' when calling getO11ySentinelTracesById(Async)");
+        }
+
+        return getO11ySentinelTracesByIdCall(id, project, _callback);
+
+    }
+
+    /**
+     * Returns one trace&#39;s captured errors for a project — every error event that carried the trace id, in the order the events plane holds them.
+     * Returns one trace&#39;s captured errors for a project — every error event that carried the trace id, in the order the events plane holds them.
+     * @param id ID is the trace id. (required)
+     * @param project Project is the project the trace&#39;s errors belong to. Required. (required)
+     * @return O11yO11yTraceOut
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public O11yO11yTraceOut getO11ySentinelTracesById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String project) throws ApiException {
+        ApiResponse<O11yO11yTraceOut> localVarResp = getO11ySentinelTracesByIdWithHttpInfo(id, project);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Returns one trace&#39;s captured errors for a project — every error event that carried the trace id, in the order the events plane holds them.
+     * Returns one trace&#39;s captured errors for a project — every error event that carried the trace id, in the order the events plane holds them.
+     * @param id ID is the trace id. (required)
+     * @param project Project is the project the trace&#39;s errors belong to. Required. (required)
+     * @return ApiResponse&lt;O11yO11yTraceOut&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<O11yO11yTraceOut> getO11ySentinelTracesByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String project) throws ApiException {
+        okhttp3.Call localVarCall = getO11ySentinelTracesByIdValidateBeforeCall(id, project, null);
+        Type localVarReturnType = new TypeToken<O11yO11yTraceOut>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Returns one trace&#39;s captured errors for a project — every error event that carried the trace id, in the order the events plane holds them. (asynchronously)
+     * Returns one trace&#39;s captured errors for a project — every error event that carried the trace id, in the order the events plane holds them.
+     * @param id ID is the trace id. (required)
+     * @param project Project is the project the trace&#39;s errors belong to. Required. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getO11ySentinelTracesByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String project, final ApiCallback<O11yO11yTraceOut> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getO11ySentinelTracesByIdValidateBeforeCall(id, project, _callback);
+        Type localVarReturnType = new TypeToken<O11yO11yTraceOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -22283,6 +23860,123 @@ public class O11yApi {
 
         okhttp3.Call localVarCall = getO11yStatusValidateBeforeCall(product, _callback);
         Type localVarReturnType = new TypeToken<O11yStatusResult>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getO11ySummary
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getO11ySummaryCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/o11y/summary";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getO11ySummaryValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getO11ySummaryCall(_callback);
+
+    }
+
+    /**
+     * Reports whether the platform is up.
+     * Reports whether the platform is up. It returns the public status document: the incidents currently open against Hanzo&#39;s own services, derived from the fleet health probes, plus the address of the human status page. No authentication is required and no tenant data is involved — the answer is the same for every caller.  A service that fails its health probe becomes one incident naming that service. When the availability source itself cannot be read the endpoint answers 503 rather than an empty incident list, because \&quot;we cannot tell\&quot; and \&quot;everything is fine\&quot; are different answers and only one of them is true.
+     * @return O11yStatusSummary
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public O11yStatusSummary getO11ySummary() throws ApiException {
+        ApiResponse<O11yStatusSummary> localVarResp = getO11ySummaryWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * Reports whether the platform is up.
+     * Reports whether the platform is up. It returns the public status document: the incidents currently open against Hanzo&#39;s own services, derived from the fleet health probes, plus the address of the human status page. No authentication is required and no tenant data is involved — the answer is the same for every caller.  A service that fails its health probe becomes one incident naming that service. When the availability source itself cannot be read the endpoint answers 503 rather than an empty incident list, because \&quot;we cannot tell\&quot; and \&quot;everything is fine\&quot; are different answers and only one of them is true.
+     * @return ApiResponse&lt;O11yStatusSummary&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<O11yStatusSummary> getO11ySummaryWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getO11ySummaryValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<O11yStatusSummary>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Reports whether the platform is up. (asynchronously)
+     * Reports whether the platform is up. It returns the public status document: the incidents currently open against Hanzo&#39;s own services, derived from the fleet health probes, plus the address of the human status page. No authentication is required and no tenant data is involved — the answer is the same for every caller.  A service that fails its health probe becomes one incident naming that service. When the availability source itself cannot be read the endpoint answers 503 rather than an empty incident list, because \&quot;we cannot tell\&quot; and \&quot;everything is fine\&quot; are different answers and only one of them is true.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getO11ySummaryAsync(final ApiCallback<O11yStatusSummary> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getO11ySummaryValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<O11yStatusSummary>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -33389,7 +35083,7 @@ public class O11yApi {
 
     /**
      * Receive a Sentry envelope on the SDK&#39;s own DSN path
-     * Accepts an application/x-sentry-envelope frame from a Sentry SDK — the batched wire format carrying events, sessions and attachments — and ingests it against the project named in the path.  THE /api/ SEGMENT IS NOT OURS TO NAME. An SDK appends its own fixed /api/&lt;project&gt;/envelope/ suffix to whatever DSN it is given, so this address is the SDK&#39;s, received verbatim. We receive this shape; we do not publish it. The clean spelling of the same wire is /v1/sentinel/{project}/envelope/.  AUTHENTICATED BY THE DSN PUBLIC KEY, never a Hanzo session, and therefore exempt from the principal gate: the ingest verifier checks the key in constant time, fails closed, and derives the org from it. A keyless submission is a 401 from that verifier — not a 403 from the gate, and not a 404 — which is how you tell the hops apart. The exemption is matched by method plus prefix plus suffix, never a bare prefix, so no read is reachable through it.
+     * Accepts an application/x-sentry-envelope frame from a Sentry SDK — the batched wire format carrying events, sessions and attachments — and ingests it against the project named in the path.  THE /api/ SEGMENT IS NOT OURS TO NAME. An SDK appends its own fixed /api/&lt;project&gt;/envelope/ suffix to whatever DSN it is given, so this address is the SDK&#39;s, received verbatim. We receive this shape; we do not publish it. The clean spelling of the same wire is /v1/event/{project}/envelope/.  AUTHENTICATED BY THE DSN PUBLIC KEY, never a Hanzo session, and therefore exempt from the principal gate: the ingest verifier checks the key in constant time, fails closed, and derives the org from it. A keyless submission is a 401 from that verifier — not a 403 from the gate, and not a 404 — which is how you tell the hops apart. The exemption is matched by method plus prefix plus suffix, never a bare prefix, so no read is reachable through it.
      * @param projectId  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -33399,7 +35093,7 @@ public class O11yApi {
 
     /**
      * Receive a Sentry envelope on the SDK&#39;s own DSN path
-     * Accepts an application/x-sentry-envelope frame from a Sentry SDK — the batched wire format carrying events, sessions and attachments — and ingests it against the project named in the path.  THE /api/ SEGMENT IS NOT OURS TO NAME. An SDK appends its own fixed /api/&lt;project&gt;/envelope/ suffix to whatever DSN it is given, so this address is the SDK&#39;s, received verbatim. We receive this shape; we do not publish it. The clean spelling of the same wire is /v1/sentinel/{project}/envelope/.  AUTHENTICATED BY THE DSN PUBLIC KEY, never a Hanzo session, and therefore exempt from the principal gate: the ingest verifier checks the key in constant time, fails closed, and derives the org from it. A keyless submission is a 401 from that verifier — not a 403 from the gate, and not a 404 — which is how you tell the hops apart. The exemption is matched by method plus prefix plus suffix, never a bare prefix, so no read is reachable through it.
+     * Accepts an application/x-sentry-envelope frame from a Sentry SDK — the batched wire format carrying events, sessions and attachments — and ingests it against the project named in the path.  THE /api/ SEGMENT IS NOT OURS TO NAME. An SDK appends its own fixed /api/&lt;project&gt;/envelope/ suffix to whatever DSN it is given, so this address is the SDK&#39;s, received verbatim. We receive this shape; we do not publish it. The clean spelling of the same wire is /v1/event/{project}/envelope/.  AUTHENTICATED BY THE DSN PUBLIC KEY, never a Hanzo session, and therefore exempt from the principal gate: the ingest verifier checks the key in constant time, fails closed, and derives the org from it. A keyless submission is a 401 from that verifier — not a 403 from the gate, and not a 404 — which is how you tell the hops apart. The exemption is matched by method plus prefix plus suffix, never a bare prefix, so no read is reachable through it.
      * @param projectId  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -33411,7 +35105,7 @@ public class O11yApi {
 
     /**
      * Receive a Sentry envelope on the SDK&#39;s own DSN path (asynchronously)
-     * Accepts an application/x-sentry-envelope frame from a Sentry SDK — the batched wire format carrying events, sessions and attachments — and ingests it against the project named in the path.  THE /api/ SEGMENT IS NOT OURS TO NAME. An SDK appends its own fixed /api/&lt;project&gt;/envelope/ suffix to whatever DSN it is given, so this address is the SDK&#39;s, received verbatim. We receive this shape; we do not publish it. The clean spelling of the same wire is /v1/sentinel/{project}/envelope/.  AUTHENTICATED BY THE DSN PUBLIC KEY, never a Hanzo session, and therefore exempt from the principal gate: the ingest verifier checks the key in constant time, fails closed, and derives the org from it. A keyless submission is a 401 from that verifier — not a 403 from the gate, and not a 404 — which is how you tell the hops apart. The exemption is matched by method plus prefix plus suffix, never a bare prefix, so no read is reachable through it.
+     * Accepts an application/x-sentry-envelope frame from a Sentry SDK — the batched wire format carrying events, sessions and attachments — and ingests it against the project named in the path.  THE /api/ SEGMENT IS NOT OURS TO NAME. An SDK appends its own fixed /api/&lt;project&gt;/envelope/ suffix to whatever DSN it is given, so this address is the SDK&#39;s, received verbatim. We receive this shape; we do not publish it. The clean spelling of the same wire is /v1/event/{project}/envelope/.  AUTHENTICATED BY THE DSN PUBLIC KEY, never a Hanzo session, and therefore exempt from the principal gate: the ingest verifier checks the key in constant time, fails closed, and derives the org from it. A keyless submission is a 401 from that verifier — not a 403 from the gate, and not a 404 — which is how you tell the hops apart. The exemption is matched by method plus prefix plus suffix, never a bare prefix, so no read is reachable through it.
      * @param projectId  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -40322,6 +42016,387 @@ public class O11yApi {
         return localVarCall;
     }
     /**
+     * Build call for postO11ySentinelDiscover
+     * @param o11yO11yDiscoverIn  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postO11ySentinelDiscoverCall(@javax.annotation.Nonnull O11yO11yDiscoverIn o11yO11yDiscoverIn, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = o11yO11yDiscoverIn;
+
+        // create path and map variables
+        String localVarPath = "/v1/o11y/sentinel/discover";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postO11ySentinelDiscoverValidateBeforeCall(@javax.annotation.Nonnull O11yO11yDiscoverIn o11yO11yDiscoverIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'o11yO11yDiscoverIn' is set
+        if (o11yO11yDiscoverIn == null) {
+            throw new ApiException("Missing the required parameter 'o11yO11yDiscoverIn' when calling postO11ySentinelDiscover(Async)");
+        }
+
+        return postO11ySentinelDiscoverCall(o11yO11yDiscoverIn, _callback);
+
+    }
+
+    /**
+     * Aggregates a project&#39;s captured errors into a table — the caller names the filters, the groupings and the aggregations, and gets back the columns and rows they asked for.
+     * Aggregates a project&#39;s captured errors into a table — the caller names the filters, the groupings and the aggregations, and gets back the columns and rows they asked for.  The project is mandatory and is checked against the caller&#39;s own org before it scopes anything, so a project id belonging to someone else reads as absent rather than as data.
+     * @param o11yO11yDiscoverIn  (required)
+     * @return O11yO11yDiscoverOut
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public O11yO11yDiscoverOut postO11ySentinelDiscover(@javax.annotation.Nonnull O11yO11yDiscoverIn o11yO11yDiscoverIn) throws ApiException {
+        ApiResponse<O11yO11yDiscoverOut> localVarResp = postO11ySentinelDiscoverWithHttpInfo(o11yO11yDiscoverIn);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Aggregates a project&#39;s captured errors into a table — the caller names the filters, the groupings and the aggregations, and gets back the columns and rows they asked for.
+     * Aggregates a project&#39;s captured errors into a table — the caller names the filters, the groupings and the aggregations, and gets back the columns and rows they asked for.  The project is mandatory and is checked against the caller&#39;s own org before it scopes anything, so a project id belonging to someone else reads as absent rather than as data.
+     * @param o11yO11yDiscoverIn  (required)
+     * @return ApiResponse&lt;O11yO11yDiscoverOut&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<O11yO11yDiscoverOut> postO11ySentinelDiscoverWithHttpInfo(@javax.annotation.Nonnull O11yO11yDiscoverIn o11yO11yDiscoverIn) throws ApiException {
+        okhttp3.Call localVarCall = postO11ySentinelDiscoverValidateBeforeCall(o11yO11yDiscoverIn, null);
+        Type localVarReturnType = new TypeToken<O11yO11yDiscoverOut>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Aggregates a project&#39;s captured errors into a table — the caller names the filters, the groupings and the aggregations, and gets back the columns and rows they asked for. (asynchronously)
+     * Aggregates a project&#39;s captured errors into a table — the caller names the filters, the groupings and the aggregations, and gets back the columns and rows they asked for.  The project is mandatory and is checked against the caller&#39;s own org before it scopes anything, so a project id belonging to someone else reads as absent rather than as data.
+     * @param o11yO11yDiscoverIn  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postO11ySentinelDiscoverAsync(@javax.annotation.Nonnull O11yO11yDiscoverIn o11yO11yDiscoverIn, final ApiCallback<O11yO11yDiscoverOut> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postO11ySentinelDiscoverValidateBeforeCall(o11yO11yDiscoverIn, _callback);
+        Type localVarReturnType = new TypeToken<O11yO11yDiscoverOut>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postO11ySentinelProjects
+     * @param o11yO11ySentryPostableProject  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postO11ySentinelProjectsCall(@javax.annotation.Nonnull O11yO11ySentryPostableProject o11yO11ySentryPostableProject, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = o11yO11ySentryPostableProject;
+
+        // create path and map variables
+        String localVarPath = "/v1/o11y/sentinel/projects";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postO11ySentinelProjectsValidateBeforeCall(@javax.annotation.Nonnull O11yO11ySentryPostableProject o11yO11ySentryPostableProject, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'o11yO11ySentryPostableProject' is set
+        if (o11yO11ySentryPostableProject == null) {
+            throw new ApiException("Missing the required parameter 'o11yO11ySentryPostableProject' when calling postO11ySentinelProjects(Async)");
+        }
+
+        return postO11ySentinelProjectsCall(o11yO11ySentryPostableProject, _callback);
+
+    }
+
+    /**
+     * Creates a Sentry project under the caller&#39;s org and returns it, DSN included.
+     * Creates a Sentry project under the caller&#39;s org and returns it, DSN included. Only the name, and optionally a slug and platform, are the caller&#39;s to set; the org, id and key are server-assigned.  Callers need the editor role; the runtime&#39;s own gate enforces it.
+     * @param o11yO11ySentryPostableProject  (required)
+     * @return O11yO11ySentryProjectOut
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public O11yO11ySentryProjectOut postO11ySentinelProjects(@javax.annotation.Nonnull O11yO11ySentryPostableProject o11yO11ySentryPostableProject) throws ApiException {
+        ApiResponse<O11yO11ySentryProjectOut> localVarResp = postO11ySentinelProjectsWithHttpInfo(o11yO11ySentryPostableProject);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Creates a Sentry project under the caller&#39;s org and returns it, DSN included.
+     * Creates a Sentry project under the caller&#39;s org and returns it, DSN included. Only the name, and optionally a slug and platform, are the caller&#39;s to set; the org, id and key are server-assigned.  Callers need the editor role; the runtime&#39;s own gate enforces it.
+     * @param o11yO11ySentryPostableProject  (required)
+     * @return ApiResponse&lt;O11yO11ySentryProjectOut&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<O11yO11ySentryProjectOut> postO11ySentinelProjectsWithHttpInfo(@javax.annotation.Nonnull O11yO11ySentryPostableProject o11yO11ySentryPostableProject) throws ApiException {
+        okhttp3.Call localVarCall = postO11ySentinelProjectsValidateBeforeCall(o11yO11ySentryPostableProject, null);
+        Type localVarReturnType = new TypeToken<O11yO11ySentryProjectOut>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Creates a Sentry project under the caller&#39;s org and returns it, DSN included. (asynchronously)
+     * Creates a Sentry project under the caller&#39;s org and returns it, DSN included. Only the name, and optionally a slug and platform, are the caller&#39;s to set; the org, id and key are server-assigned.  Callers need the editor role; the runtime&#39;s own gate enforces it.
+     * @param o11yO11ySentryPostableProject  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postO11ySentinelProjectsAsync(@javax.annotation.Nonnull O11yO11ySentryPostableProject o11yO11ySentryPostableProject, final ApiCallback<O11yO11ySentryProjectOut> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postO11ySentinelProjectsValidateBeforeCall(o11yO11ySentryPostableProject, _callback);
+        Type localVarReturnType = new TypeToken<O11yO11ySentryProjectOut>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postO11ySentinelProjectsByIdKeysRotate
+     * @param id ID is the project id. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postO11ySentinelProjectsByIdKeysRotateCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/o11y/sentinel/projects/{id}/keys/rotate"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postO11ySentinelProjectsByIdKeysRotateValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling postO11ySentinelProjectsByIdKeysRotate(Async)");
+        }
+
+        return postO11ySentinelProjectsByIdKeysRotateCall(id, _callback);
+
+    }
+
+    /**
+     * Rotates a project&#39;s DSN key — bumping its rotation watermark so keys below it stop verifying — and returns the project with its new DSN.
+     * Rotates a project&#39;s DSN key — bumping its rotation watermark so keys below it stop verifying — and returns the project with its new DSN.  Callers need the editor role; the runtime&#39;s own gate enforces it.
+     * @param id ID is the project id. (required)
+     * @return O11yO11ySentryProjectOut
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public O11yO11ySentryProjectOut postO11ySentinelProjectsByIdKeysRotate(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<O11yO11ySentryProjectOut> localVarResp = postO11ySentinelProjectsByIdKeysRotateWithHttpInfo(id);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Rotates a project&#39;s DSN key — bumping its rotation watermark so keys below it stop verifying — and returns the project with its new DSN.
+     * Rotates a project&#39;s DSN key — bumping its rotation watermark so keys below it stop verifying — and returns the project with its new DSN.  Callers need the editor role; the runtime&#39;s own gate enforces it.
+     * @param id ID is the project id. (required)
+     * @return ApiResponse&lt;O11yO11ySentryProjectOut&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<O11yO11ySentryProjectOut> postO11ySentinelProjectsByIdKeysRotateWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = postO11ySentinelProjectsByIdKeysRotateValidateBeforeCall(id, null);
+        Type localVarReturnType = new TypeToken<O11yO11ySentryProjectOut>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Rotates a project&#39;s DSN key — bumping its rotation watermark so keys below it stop verifying — and returns the project with its new DSN. (asynchronously)
+     * Rotates a project&#39;s DSN key — bumping its rotation watermark so keys below it stop verifying — and returns the project with its new DSN.  Callers need the editor role; the runtime&#39;s own gate enforces it.
+     * @param id ID is the project id. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postO11ySentinelProjectsByIdKeysRotateAsync(@javax.annotation.Nonnull String id, final ApiCallback<O11yO11ySentryProjectOut> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postO11ySentinelProjectsByIdKeysRotateValidateBeforeCall(id, _callback);
+        Type localVarReturnType = new TypeToken<O11yO11ySentryProjectOut>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for postO11yServiceEntryPointOperations
      * @param o11yO11yOperationsIn  (required)
      * @param _callback Callback for upload/download progress
@@ -42228,6 +44303,143 @@ public class O11yApi {
 
         okhttp3.Call localVarCall = putO11yExplorerViewsByViewidValidateBeforeCall(viewId, o11yO11ySavedViewUpdateIn, _callback);
         Type localVarReturnType = new TypeToken<O11yO11ySavedViewOut>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for putO11ySentinelIssuesById
+     * @param id ID is the issue id. (required)
+     * @param o11yO11ySentryUpdateIssueIn  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call putO11ySentinelIssuesByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull O11yO11ySentryUpdateIssueIn o11yO11ySentryUpdateIssueIn, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = o11yO11ySentryUpdateIssueIn;
+
+        // create path and map variables
+        String localVarPath = "/v1/o11y/sentinel/issues/{id}"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call putO11ySentinelIssuesByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull O11yO11ySentryUpdateIssueIn o11yO11ySentryUpdateIssueIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling putO11ySentinelIssuesById(Async)");
+        }
+
+        // verify the required parameter 'o11yO11ySentryUpdateIssueIn' is set
+        if (o11yO11ySentryUpdateIssueIn == null) {
+            throw new ApiException("Missing the required parameter 'o11yO11ySentryUpdateIssueIn' when calling putO11ySentinelIssuesById(Async)");
+        }
+
+        return putO11ySentinelIssuesByIdCall(id, o11yO11ySentryUpdateIssueIn, _callback);
+
+    }
+
+    /**
+     * Changes an issue&#39;s lifecycle — resolve, ignore, reopen or assign — and returns the updated issue.
+     * Changes an issue&#39;s lifecycle — resolve, ignore, reopen or assign — and returns the updated issue. Fields left unset are left unchanged.  Callers need the editor role; the runtime&#39;s own gate enforces it.
+     * @param id ID is the issue id. (required)
+     * @param o11yO11ySentryUpdateIssueIn  (required)
+     * @return O11yO11yErrorIssueOut
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public O11yO11yErrorIssueOut putO11ySentinelIssuesById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull O11yO11ySentryUpdateIssueIn o11yO11ySentryUpdateIssueIn) throws ApiException {
+        ApiResponse<O11yO11yErrorIssueOut> localVarResp = putO11ySentinelIssuesByIdWithHttpInfo(id, o11yO11ySentryUpdateIssueIn);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Changes an issue&#39;s lifecycle — resolve, ignore, reopen or assign — and returns the updated issue.
+     * Changes an issue&#39;s lifecycle — resolve, ignore, reopen or assign — and returns the updated issue. Fields left unset are left unchanged.  Callers need the editor role; the runtime&#39;s own gate enforces it.
+     * @param id ID is the issue id. (required)
+     * @param o11yO11ySentryUpdateIssueIn  (required)
+     * @return ApiResponse&lt;O11yO11yErrorIssueOut&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<O11yO11yErrorIssueOut> putO11ySentinelIssuesByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull O11yO11ySentryUpdateIssueIn o11yO11ySentryUpdateIssueIn) throws ApiException {
+        okhttp3.Call localVarCall = putO11ySentinelIssuesByIdValidateBeforeCall(id, o11yO11ySentryUpdateIssueIn, null);
+        Type localVarReturnType = new TypeToken<O11yO11yErrorIssueOut>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Changes an issue&#39;s lifecycle — resolve, ignore, reopen or assign — and returns the updated issue. (asynchronously)
+     * Changes an issue&#39;s lifecycle — resolve, ignore, reopen or assign — and returns the updated issue. Fields left unset are left unchanged.  Callers need the editor role; the runtime&#39;s own gate enforces it.
+     * @param id ID is the issue id. (required)
+     * @param o11yO11ySentryUpdateIssueIn  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call putO11ySentinelIssuesByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull O11yO11ySentryUpdateIssueIn o11yO11ySentryUpdateIssueIn, final ApiCallback<O11yO11yErrorIssueOut> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = putO11ySentinelIssuesByIdValidateBeforeCall(id, o11yO11ySentryUpdateIssueIn, _callback);
+        Type localVarReturnType = new TypeToken<O11yO11yErrorIssueOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

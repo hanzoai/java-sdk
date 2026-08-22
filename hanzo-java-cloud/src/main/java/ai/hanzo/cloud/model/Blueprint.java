@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -111,7 +111,7 @@ public class Blueprint {
   }
 
   /**
-   * Get brand
+   * Brand is the white-label key this playbook serves. Empty is the shared default every unbranded deployment falls back to.
    * @return brand
    */
   @javax.annotation.Nullable
@@ -130,7 +130,7 @@ public class Blueprint {
   }
 
   /**
-   * Get enabled
+   * Enabled is the whole-playbook lever. Absent reads as ON; an explicit false makes resolution skip this playbook entirely and fall through to the next tier, rather than serving an empty journey.
    * @return enabled
    */
   @javax.annotation.Nullable
@@ -157,7 +157,7 @@ public class Blueprint {
   }
 
   /**
-   * the 64-principle spine (Zen of Hanzo archetypes)
+   * Principles are the fixed 64-archetype spine a tactic files under. It is authored data an operator organises the corpus by; nothing in the checklist engine reads it.
    * @return principles
    */
   @javax.annotation.Nullable
@@ -184,7 +184,7 @@ public class Blueprint {
   }
 
   /**
-   * Get sections
+   * Sections are the journey&#39;s ordered phases.
    * @return sections
    */
   @javax.annotation.Nullable
@@ -211,7 +211,7 @@ public class Blueprint {
   }
 
   /**
-   * Get steps
+   * Steps are every checklist item, disabled ones included — this is the authored document, not the projection an org runs.
    * @return steps
    */
   @javax.annotation.Nullable
@@ -238,7 +238,7 @@ public class Blueprint {
   }
 
   /**
-   * Get strategies
+   * Strategies are the tactics corpus the recommendation reads narrow.
    * @return strategies
    */
   @javax.annotation.Nullable
@@ -265,7 +265,7 @@ public class Blueprint {
   }
 
   /**
-   * Get templates
+   * Templates are the reusable prompts and snippets steps reference by id.
    * @return templates
    */
   @javax.annotation.Nullable
@@ -284,7 +284,7 @@ public class Blueprint {
   }
 
   /**
-   * Get title
+   * Title is the playbook&#39;s name as a person reads it.
    * @return title
    */
   @javax.annotation.Nullable
@@ -303,7 +303,7 @@ public class Blueprint {
   }
 
   /**
-   * Get version
+   * Version is the playbook&#39;s own name for this edition of its content, chosen by whoever authored it. It travels onto every journey projected from it. The store&#39;s numeric revision is a separate value and lives beside it.
    * @return version
    */
   @javax.annotation.Nullable

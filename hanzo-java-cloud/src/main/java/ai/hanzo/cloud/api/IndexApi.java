@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -27,6 +27,20 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import ai.hanzo.cloud.model.IndexDocuments;
+import ai.hanzo.cloud.model.IndexEnqueued;
+import ai.hanzo.cloud.model.IndexFilter;
+import ai.hanzo.cloud.model.IndexHealth;
+import ai.hanzo.cloud.model.IndexHits;
+import ai.hanzo.cloud.model.IndexList;
+import ai.hanzo.cloud.model.IndexNew;
+import ai.hanzo.cloud.model.IndexQuery;
+import ai.hanzo.cloud.model.IndexSettings;
+import ai.hanzo.cloud.model.IndexStats;
+import ai.hanzo.cloud.model.IndexTask;
+import ai.hanzo.cloud.model.IndexVersion;
+import ai.hanzo.cloud.model.IndexView;
+import ai.hanzo.cloud.model.PostIndexIndexesByUidDocumentsDeleteBatchRequest;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -77,6 +91,12 @@ public class IndexApi {
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+     </table>
      */
     public okhttp3.Call deleteIndexIndexesByUidCall(@javax.annotation.Nonnull String uid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -105,6 +125,7 @@ public class IndexApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -134,39 +155,61 @@ public class IndexApi {
     }
 
     /**
-     * Delete an index and everything in it
-     * Drops one index in the caller&#39;s org together with all of its documents. This is the only way to retire an index; without it a mistaken uid would be permanent. It is idempotent — dropping an index that is not there still succeeds. The tenant is the org minted from the VALIDATED bearer&#39;s owner claim, never a client-supplied header, and every query filters on it, so two orgs may both hold an index named \&quot;messages\&quot; and neither can see the other&#39;s documents. Without a validated principal the answer is 403 carrying Meilisearch&#39;s &#x60;invalid_api_key&#x60; body. Errors use Meilisearch&#39;s {message, code, type, link} shape rather than cloud&#39;s, because that &#x60;code&#x60; is a wire contract a Meilisearch client branches on.  The 202 and its &#x60;enqueued&#x60; task are DIALECT COMPATIBILITY, not a promise of later work: the write is already applied when this answers, and the task it names is already complete. A client that polls waitForTask resolves immediately rather than waiting, and a client that does not poll has still had its write committed.
+     * Deletes an index and everything in it.
+     * Deletes an index and everything in it.  Drops the index and every document in it from the caller&#39;s own org, and answers the dialect&#39;s EnqueuedTask. This is the only way to retire an index; without it a mistaken uid is permanent. Deleting an index that is not there succeeds, so a cleanup pass is safe to re-run.  The 202 and its &#x60;enqueued&#x60; task are DIALECT COMPATIBILITY, not a promise of later work: the documents are already gone when this answers.
      * @param uid  (required)
+     * @return IndexEnqueued
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+     </table>
      */
-    public void deleteIndexIndexesByUid(@javax.annotation.Nonnull String uid) throws ApiException {
-        deleteIndexIndexesByUidWithHttpInfo(uid);
+    public IndexEnqueued deleteIndexIndexesByUid(@javax.annotation.Nonnull String uid) throws ApiException {
+        ApiResponse<IndexEnqueued> localVarResp = deleteIndexIndexesByUidWithHttpInfo(uid);
+        return localVarResp.getData();
     }
 
     /**
-     * Delete an index and everything in it
-     * Drops one index in the caller&#39;s org together with all of its documents. This is the only way to retire an index; without it a mistaken uid would be permanent. It is idempotent — dropping an index that is not there still succeeds. The tenant is the org minted from the VALIDATED bearer&#39;s owner claim, never a client-supplied header, and every query filters on it, so two orgs may both hold an index named \&quot;messages\&quot; and neither can see the other&#39;s documents. Without a validated principal the answer is 403 carrying Meilisearch&#39;s &#x60;invalid_api_key&#x60; body. Errors use Meilisearch&#39;s {message, code, type, link} shape rather than cloud&#39;s, because that &#x60;code&#x60; is a wire contract a Meilisearch client branches on.  The 202 and its &#x60;enqueued&#x60; task are DIALECT COMPATIBILITY, not a promise of later work: the write is already applied when this answers, and the task it names is already complete. A client that polls waitForTask resolves immediately rather than waiting, and a client that does not poll has still had its write committed.
+     * Deletes an index and everything in it.
+     * Deletes an index and everything in it.  Drops the index and every document in it from the caller&#39;s own org, and answers the dialect&#39;s EnqueuedTask. This is the only way to retire an index; without it a mistaken uid is permanent. Deleting an index that is not there succeeds, so a cleanup pass is safe to re-run.  The 202 and its &#x60;enqueued&#x60; task are DIALECT COMPATIBILITY, not a promise of later work: the documents are already gone when this answers.
      * @param uid  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;IndexEnqueued&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+     </table>
      */
-    public ApiResponse<Void> deleteIndexIndexesByUidWithHttpInfo(@javax.annotation.Nonnull String uid) throws ApiException {
+    public ApiResponse<IndexEnqueued> deleteIndexIndexesByUidWithHttpInfo(@javax.annotation.Nonnull String uid) throws ApiException {
         okhttp3.Call localVarCall = deleteIndexIndexesByUidValidateBeforeCall(uid, null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<IndexEnqueued>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Delete an index and everything in it (asynchronously)
-     * Drops one index in the caller&#39;s org together with all of its documents. This is the only way to retire an index; without it a mistaken uid would be permanent. It is idempotent — dropping an index that is not there still succeeds. The tenant is the org minted from the VALIDATED bearer&#39;s owner claim, never a client-supplied header, and every query filters on it, so two orgs may both hold an index named \&quot;messages\&quot; and neither can see the other&#39;s documents. Without a validated principal the answer is 403 carrying Meilisearch&#39;s &#x60;invalid_api_key&#x60; body. Errors use Meilisearch&#39;s {message, code, type, link} shape rather than cloud&#39;s, because that &#x60;code&#x60; is a wire contract a Meilisearch client branches on.  The 202 and its &#x60;enqueued&#x60; task are DIALECT COMPATIBILITY, not a promise of later work: the write is already applied when this answers, and the task it names is already complete. A client that polls waitForTask resolves immediately rather than waiting, and a client that does not poll has still had its write committed.
+     * Deletes an index and everything in it. (asynchronously)
+     * Deletes an index and everything in it.  Drops the index and every document in it from the caller&#39;s own org, and answers the dialect&#39;s EnqueuedTask. This is the only way to retire an index; without it a mistaken uid is permanent. Deleting an index that is not there succeeds, so a cleanup pass is safe to re-run.  The 202 and its &#x60;enqueued&#x60; task are DIALECT COMPATIBILITY, not a promise of later work: the documents are already gone when this answers.
      * @param uid  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call deleteIndexIndexesByUidAsync(@javax.annotation.Nonnull String uid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteIndexIndexesByUidAsync(@javax.annotation.Nonnull String uid, final ApiCallback<IndexEnqueued> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteIndexIndexesByUidValidateBeforeCall(uid, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<IndexEnqueued>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -176,6 +219,12 @@ public class IndexApi {
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+     </table>
      */
     public okhttp3.Call deleteIndexIndexesByUidDocumentsByIdCall(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -205,6 +254,7 @@ public class IndexApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -239,42 +289,64 @@ public class IndexApi {
     }
 
     /**
-     * Delete one document by its primary key
-     * Removes one document from an index. It is IDEMPOTENT: deleting a key that is not there succeeds rather than 404, so a retry after a lost response is safe. The tenant is the org minted from the VALIDATED bearer&#39;s owner claim, never a client-supplied header, and every query filters on it, so two orgs may both hold an index named \&quot;messages\&quot; and neither can see the other&#39;s documents. Without a validated principal the answer is 403 carrying Meilisearch&#39;s &#x60;invalid_api_key&#x60; body. Errors use Meilisearch&#39;s {message, code, type, link} shape rather than cloud&#39;s, because that &#x60;code&#x60; is a wire contract a Meilisearch client branches on.  The 202 and its &#x60;enqueued&#x60; task are DIALECT COMPATIBILITY, not a promise of later work: the write is already applied when this answers, and the task it names is already complete. A client that polls waitForTask resolves immediately rather than waiting, and a client that does not poll has still had its write committed.
+     * Deletes one document by its primary key.
+     * Deletes one document by its primary key.  Removes the document from the caller&#39;s own org and answers the dialect&#39;s EnqueuedTask. Deleting a key that is not there succeeds, so a client reconciling its own corpus can delete without checking first.  The 202 and its &#x60;enqueued&#x60; task are DIALECT COMPATIBILITY, not a promise of later work: the document is already gone when this answers.
      * @param uid  (required)
      * @param id  (required)
+     * @return IndexEnqueued
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+     </table>
      */
-    public void deleteIndexIndexesByUidDocumentsById(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull String id) throws ApiException {
-        deleteIndexIndexesByUidDocumentsByIdWithHttpInfo(uid, id);
+    public IndexEnqueued deleteIndexIndexesByUidDocumentsById(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<IndexEnqueued> localVarResp = deleteIndexIndexesByUidDocumentsByIdWithHttpInfo(uid, id);
+        return localVarResp.getData();
     }
 
     /**
-     * Delete one document by its primary key
-     * Removes one document from an index. It is IDEMPOTENT: deleting a key that is not there succeeds rather than 404, so a retry after a lost response is safe. The tenant is the org minted from the VALIDATED bearer&#39;s owner claim, never a client-supplied header, and every query filters on it, so two orgs may both hold an index named \&quot;messages\&quot; and neither can see the other&#39;s documents. Without a validated principal the answer is 403 carrying Meilisearch&#39;s &#x60;invalid_api_key&#x60; body. Errors use Meilisearch&#39;s {message, code, type, link} shape rather than cloud&#39;s, because that &#x60;code&#x60; is a wire contract a Meilisearch client branches on.  The 202 and its &#x60;enqueued&#x60; task are DIALECT COMPATIBILITY, not a promise of later work: the write is already applied when this answers, and the task it names is already complete. A client that polls waitForTask resolves immediately rather than waiting, and a client that does not poll has still had its write committed.
+     * Deletes one document by its primary key.
+     * Deletes one document by its primary key.  Removes the document from the caller&#39;s own org and answers the dialect&#39;s EnqueuedTask. Deleting a key that is not there succeeds, so a client reconciling its own corpus can delete without checking first.  The 202 and its &#x60;enqueued&#x60; task are DIALECT COMPATIBILITY, not a promise of later work: the document is already gone when this answers.
      * @param uid  (required)
      * @param id  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;IndexEnqueued&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+     </table>
      */
-    public ApiResponse<Void> deleteIndexIndexesByUidDocumentsByIdWithHttpInfo(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<IndexEnqueued> deleteIndexIndexesByUidDocumentsByIdWithHttpInfo(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = deleteIndexIndexesByUidDocumentsByIdValidateBeforeCall(uid, id, null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<IndexEnqueued>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Delete one document by its primary key (asynchronously)
-     * Removes one document from an index. It is IDEMPOTENT: deleting a key that is not there succeeds rather than 404, so a retry after a lost response is safe. The tenant is the org minted from the VALIDATED bearer&#39;s owner claim, never a client-supplied header, and every query filters on it, so two orgs may both hold an index named \&quot;messages\&quot; and neither can see the other&#39;s documents. Without a validated principal the answer is 403 carrying Meilisearch&#39;s &#x60;invalid_api_key&#x60; body. Errors use Meilisearch&#39;s {message, code, type, link} shape rather than cloud&#39;s, because that &#x60;code&#x60; is a wire contract a Meilisearch client branches on.  The 202 and its &#x60;enqueued&#x60; task are DIALECT COMPATIBILITY, not a promise of later work: the write is already applied when this answers, and the task it names is already complete. A client that polls waitForTask resolves immediately rather than waiting, and a client that does not poll has still had its write committed.
+     * Deletes one document by its primary key. (asynchronously)
+     * Deletes one document by its primary key.  Removes the document from the caller&#39;s own org and answers the dialect&#39;s EnqueuedTask. Deleting a key that is not there succeeds, so a client reconciling its own corpus can delete without checking first.  The 202 and its &#x60;enqueued&#x60; task are DIALECT COMPATIBILITY, not a promise of later work: the document is already gone when this answers.
      * @param uid  (required)
      * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call deleteIndexIndexesByUidDocumentsByIdAsync(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteIndexIndexesByUidDocumentsByIdAsync(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull String id, final ApiCallback<IndexEnqueued> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteIndexIndexesByUidDocumentsByIdValidateBeforeCall(uid, id, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<IndexEnqueued>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -282,6 +354,13 @@ public class IndexApi {
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> service unavailable </td><td>  -  </td></tr>
+     </table>
      */
     public okhttp3.Call getIndexHealthCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -309,6 +388,7 @@ public class IndexApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -333,36 +413,61 @@ public class IndexApi {
     }
 
     /**
-     * Report whether the search plane can serve
-     * Answers Meilisearch&#39;s &#x60;{\&quot;status\&quot;:\&quot;available\&quot;}&#x60; when the index store is readable. It FAILS CLOSED — an unreadable store answers 503 and &#x60;unavailable&#x60; — so a replica whose volume has gone bad stops taking traffic instead of answering every search with nothing found. It touches no tenant data and needs no credential.
+     * Reports whether the search plane can serve.
+     * Reports whether the search plane can serve.  Answers the dialect&#39;s &#x60;{\&quot;status\&quot;:\&quot;available\&quot;}&#x60; when the index store is readable. It FAILS CLOSED — an unreadable store answers 503 with &#x60;{\&quot;status\&quot;:\&quot;unavailable\&quot;}&#x60; rather than an empty result set, because a Meilisearch client probes this before it will use a server at all and a cheerful 200 over a broken volume turns \&quot;search is down\&quot; into \&quot;nothing matched\&quot;. It requires no principal and reads no tenant data.
+     * @return IndexHealth
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> service unavailable </td><td>  -  </td></tr>
+     </table>
      */
-    public void getIndexHealth() throws ApiException {
-        getIndexHealthWithHttpInfo();
+    public IndexHealth getIndexHealth() throws ApiException {
+        ApiResponse<IndexHealth> localVarResp = getIndexHealthWithHttpInfo();
+        return localVarResp.getData();
     }
 
     /**
-     * Report whether the search plane can serve
-     * Answers Meilisearch&#39;s &#x60;{\&quot;status\&quot;:\&quot;available\&quot;}&#x60; when the index store is readable. It FAILS CLOSED — an unreadable store answers 503 and &#x60;unavailable&#x60; — so a replica whose volume has gone bad stops taking traffic instead of answering every search with nothing found. It touches no tenant data and needs no credential.
-     * @return ApiResponse&lt;Void&gt;
+     * Reports whether the search plane can serve.
+     * Reports whether the search plane can serve.  Answers the dialect&#39;s &#x60;{\&quot;status\&quot;:\&quot;available\&quot;}&#x60; when the index store is readable. It FAILS CLOSED — an unreadable store answers 503 with &#x60;{\&quot;status\&quot;:\&quot;unavailable\&quot;}&#x60; rather than an empty result set, because a Meilisearch client probes this before it will use a server at all and a cheerful 200 over a broken volume turns \&quot;search is down\&quot; into \&quot;nothing matched\&quot;. It requires no principal and reads no tenant data.
+     * @return ApiResponse&lt;IndexHealth&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> service unavailable </td><td>  -  </td></tr>
+     </table>
      */
-    public ApiResponse<Void> getIndexHealthWithHttpInfo() throws ApiException {
+    public ApiResponse<IndexHealth> getIndexHealthWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getIndexHealthValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<IndexHealth>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Report whether the search plane can serve (asynchronously)
-     * Answers Meilisearch&#39;s &#x60;{\&quot;status\&quot;:\&quot;available\&quot;}&#x60; when the index store is readable. It FAILS CLOSED — an unreadable store answers 503 and &#x60;unavailable&#x60; — so a replica whose volume has gone bad stops taking traffic instead of answering every search with nothing found. It touches no tenant data and needs no credential.
+     * Reports whether the search plane can serve. (asynchronously)
+     * Reports whether the search plane can serve.  Answers the dialect&#39;s &#x60;{\&quot;status\&quot;:\&quot;available\&quot;}&#x60; when the index store is readable. It FAILS CLOSED — an unreadable store answers 503 with &#x60;{\&quot;status\&quot;:\&quot;unavailable\&quot;}&#x60; rather than an empty result set, because a Meilisearch client probes this before it will use a server at all and a cheerful 200 over a broken volume turns \&quot;search is down\&quot; into \&quot;nothing matched\&quot;. It requires no principal and reads no tenant data.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> service unavailable </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call getIndexHealthAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getIndexHealthAsync(final ApiCallback<IndexHealth> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getIndexHealthValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<IndexHealth>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -370,6 +475,12 @@ public class IndexApi {
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
     public okhttp3.Call getIndexIndexesCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -397,6 +508,7 @@ public class IndexApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -421,36 +533,58 @@ public class IndexApi {
     }
 
     /**
-     * List the indexes your org holds
-     * Answers every index in the caller&#39;s org with its primary key and timestamps. It is the only way to enumerate what an org holds — without it an index whose uid a caller has forgotten is unreachable. The tenant is the org minted from the VALIDATED bearer&#39;s owner claim, never a client-supplied header, and every query filters on it, so two orgs may both hold an index named \&quot;messages\&quot; and neither can see the other&#39;s documents. Without a validated principal the answer is 403 carrying Meilisearch&#39;s &#x60;invalid_api_key&#x60; body. Errors use Meilisearch&#39;s {message, code, type, link} shape rather than cloud&#39;s, because that &#x60;code&#x60; is a wire contract a Meilisearch client branches on.
+     * Lists the indexes your org holds.
+     * Lists the indexes your org holds.  Answers every index in the caller&#39;s own org with its primary key and timestamps. Without it an index whose uid a caller has forgotten is unreachable — there is no other way to enumerate what an org holds. The page is the whole set: an org&#39;s index count is small by construction, so &#x60;limit&#x60; and &#x60;total&#x60; both report it.  The tenant is the org minted from the VALIDATED bearer&#39;s owner claim, never a client-supplied header, and two orgs may both hold an index named \&quot;messages\&quot; without either seeing the other. Without a validated principal the answer is 403 carrying the dialect&#39;s &#x60;invalid_api_key&#x60; body.
+     * @return IndexList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public void getIndexIndexes() throws ApiException {
-        getIndexIndexesWithHttpInfo();
+    public IndexList getIndexIndexes() throws ApiException {
+        ApiResponse<IndexList> localVarResp = getIndexIndexesWithHttpInfo();
+        return localVarResp.getData();
     }
 
     /**
-     * List the indexes your org holds
-     * Answers every index in the caller&#39;s org with its primary key and timestamps. It is the only way to enumerate what an org holds — without it an index whose uid a caller has forgotten is unreachable. The tenant is the org minted from the VALIDATED bearer&#39;s owner claim, never a client-supplied header, and every query filters on it, so two orgs may both hold an index named \&quot;messages\&quot; and neither can see the other&#39;s documents. Without a validated principal the answer is 403 carrying Meilisearch&#39;s &#x60;invalid_api_key&#x60; body. Errors use Meilisearch&#39;s {message, code, type, link} shape rather than cloud&#39;s, because that &#x60;code&#x60; is a wire contract a Meilisearch client branches on.
-     * @return ApiResponse&lt;Void&gt;
+     * Lists the indexes your org holds.
+     * Lists the indexes your org holds.  Answers every index in the caller&#39;s own org with its primary key and timestamps. Without it an index whose uid a caller has forgotten is unreachable — there is no other way to enumerate what an org holds. The page is the whole set: an org&#39;s index count is small by construction, so &#x60;limit&#x60; and &#x60;total&#x60; both report it.  The tenant is the org minted from the VALIDATED bearer&#39;s owner claim, never a client-supplied header, and two orgs may both hold an index named \&quot;messages\&quot; without either seeing the other. Without a validated principal the answer is 403 carrying the dialect&#39;s &#x60;invalid_api_key&#x60; body.
+     * @return ApiResponse&lt;IndexList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public ApiResponse<Void> getIndexIndexesWithHttpInfo() throws ApiException {
+    public ApiResponse<IndexList> getIndexIndexesWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getIndexIndexesValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<IndexList>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * List the indexes your org holds (asynchronously)
-     * Answers every index in the caller&#39;s org with its primary key and timestamps. It is the only way to enumerate what an org holds — without it an index whose uid a caller has forgotten is unreachable. The tenant is the org minted from the VALIDATED bearer&#39;s owner claim, never a client-supplied header, and every query filters on it, so two orgs may both hold an index named \&quot;messages\&quot; and neither can see the other&#39;s documents. Without a validated principal the answer is 403 carrying Meilisearch&#39;s &#x60;invalid_api_key&#x60; body. Errors use Meilisearch&#39;s {message, code, type, link} shape rather than cloud&#39;s, because that &#x60;code&#x60; is a wire contract a Meilisearch client branches on.
+     * Lists the indexes your org holds. (asynchronously)
+     * Lists the indexes your org holds.  Answers every index in the caller&#39;s own org with its primary key and timestamps. Without it an index whose uid a caller has forgotten is unreachable — there is no other way to enumerate what an org holds. The page is the whole set: an org&#39;s index count is small by construction, so &#x60;limit&#x60; and &#x60;total&#x60; both report it.  The tenant is the org minted from the VALIDATED bearer&#39;s owner claim, never a client-supplied header, and two orgs may both hold an index named \&quot;messages\&quot; without either seeing the other. Without a validated principal the answer is 403 carrying the dialect&#39;s &#x60;invalid_api_key&#x60; body.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call getIndexIndexesAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getIndexIndexesAsync(final ApiCallback<IndexList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getIndexIndexesValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<IndexList>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -459,6 +593,12 @@ public class IndexApi {
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
     public okhttp3.Call getIndexIndexesByUidCall(@javax.annotation.Nonnull String uid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -487,6 +627,7 @@ public class IndexApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -516,49 +657,79 @@ public class IndexApi {
     }
 
     /**
-     * Read one index&#39;s definition
-     * Answers a single index&#39;s uid, primary key and timestamps. An index the caller&#39;s org does not hold is 404 &#x60;index_not_found&#x60; — which is the same answer another org&#39;s index gives, since the org is a bound predicate on the read. The tenant is the org minted from the VALIDATED bearer&#39;s owner claim, never a client-supplied header, and every query filters on it, so two orgs may both hold an index named \&quot;messages\&quot; and neither can see the other&#39;s documents. Without a validated principal the answer is 403 carrying Meilisearch&#39;s &#x60;invalid_api_key&#x60; body. Errors use Meilisearch&#39;s {message, code, type, link} shape rather than cloud&#39;s, because that &#x60;code&#x60; is a wire contract a Meilisearch client branches on.
+     * Reads one index&#39;s definition.
+     * Reads one index&#39;s definition.  Answers the index&#39;s uid, primary key and timestamps. An index this org does not hold answers 404 carrying the dialect&#39;s &#x60;index_not_found&#x60; — the code a Meilisearch client reads as permission to create it, which is why this is a refusal rather than an empty object.  The uid is scoped to the caller&#39;s own org, so another tenant&#39;s index is indistinguishable from one that never existed: this surface is not an existence oracle.
      * @param uid  (required)
+     * @return IndexView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public void getIndexIndexesByUid(@javax.annotation.Nonnull String uid) throws ApiException {
-        getIndexIndexesByUidWithHttpInfo(uid);
+    public IndexView getIndexIndexesByUid(@javax.annotation.Nonnull String uid) throws ApiException {
+        ApiResponse<IndexView> localVarResp = getIndexIndexesByUidWithHttpInfo(uid);
+        return localVarResp.getData();
     }
 
     /**
-     * Read one index&#39;s definition
-     * Answers a single index&#39;s uid, primary key and timestamps. An index the caller&#39;s org does not hold is 404 &#x60;index_not_found&#x60; — which is the same answer another org&#39;s index gives, since the org is a bound predicate on the read. The tenant is the org minted from the VALIDATED bearer&#39;s owner claim, never a client-supplied header, and every query filters on it, so two orgs may both hold an index named \&quot;messages\&quot; and neither can see the other&#39;s documents. Without a validated principal the answer is 403 carrying Meilisearch&#39;s &#x60;invalid_api_key&#x60; body. Errors use Meilisearch&#39;s {message, code, type, link} shape rather than cloud&#39;s, because that &#x60;code&#x60; is a wire contract a Meilisearch client branches on.
+     * Reads one index&#39;s definition.
+     * Reads one index&#39;s definition.  Answers the index&#39;s uid, primary key and timestamps. An index this org does not hold answers 404 carrying the dialect&#39;s &#x60;index_not_found&#x60; — the code a Meilisearch client reads as permission to create it, which is why this is a refusal rather than an empty object.  The uid is scoped to the caller&#39;s own org, so another tenant&#39;s index is indistinguishable from one that never existed: this surface is not an existence oracle.
      * @param uid  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;IndexView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public ApiResponse<Void> getIndexIndexesByUidWithHttpInfo(@javax.annotation.Nonnull String uid) throws ApiException {
+    public ApiResponse<IndexView> getIndexIndexesByUidWithHttpInfo(@javax.annotation.Nonnull String uid) throws ApiException {
         okhttp3.Call localVarCall = getIndexIndexesByUidValidateBeforeCall(uid, null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<IndexView>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Read one index&#39;s definition (asynchronously)
-     * Answers a single index&#39;s uid, primary key and timestamps. An index the caller&#39;s org does not hold is 404 &#x60;index_not_found&#x60; — which is the same answer another org&#39;s index gives, since the org is a bound predicate on the read. The tenant is the org minted from the VALIDATED bearer&#39;s owner claim, never a client-supplied header, and every query filters on it, so two orgs may both hold an index named \&quot;messages\&quot; and neither can see the other&#39;s documents. Without a validated principal the answer is 403 carrying Meilisearch&#39;s &#x60;invalid_api_key&#x60; body. Errors use Meilisearch&#39;s {message, code, type, link} shape rather than cloud&#39;s, because that &#x60;code&#x60; is a wire contract a Meilisearch client branches on.
+     * Reads one index&#39;s definition. (asynchronously)
+     * Reads one index&#39;s definition.  Answers the index&#39;s uid, primary key and timestamps. An index this org does not hold answers 404 carrying the dialect&#39;s &#x60;index_not_found&#x60; — the code a Meilisearch client reads as permission to create it, which is why this is a refusal rather than an empty object.  The uid is scoped to the caller&#39;s own org, so another tenant&#39;s index is indistinguishable from one that never existed: this surface is not an existence oracle.
      * @param uid  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call getIndexIndexesByUidAsync(@javax.annotation.Nonnull String uid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getIndexIndexesByUidAsync(@javax.annotation.Nonnull String uid, final ApiCallback<IndexView> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getIndexIndexesByUidValidateBeforeCall(uid, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<IndexView>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for getIndexIndexesByUidDocuments
      * @param uid  (required)
+     * @param limit  (optional)
+     * @param offset  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call getIndexIndexesByUidDocumentsCall(@javax.annotation.Nonnull String uid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getIndexIndexesByUidDocumentsCall(@javax.annotation.Nonnull String uid, @javax.annotation.Nullable String limit, @javax.annotation.Nullable String offset, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -584,7 +755,16 @@ public class IndexApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        if (offset != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("offset", offset));
+        }
+
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -603,50 +783,78 @@ public class IndexApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getIndexIndexesByUidDocumentsValidateBeforeCall(@javax.annotation.Nonnull String uid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getIndexIndexesByUidDocumentsValidateBeforeCall(@javax.annotation.Nonnull String uid, @javax.annotation.Nullable String limit, @javax.annotation.Nullable String offset, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'uid' is set
         if (uid == null) {
             throw new ApiException("Missing the required parameter 'uid' when calling getIndexIndexesByUidDocuments(Async)");
         }
 
-        return getIndexIndexesByUidDocumentsCall(uid, _callback);
+        return getIndexIndexesByUidDocumentsCall(uid, limit, offset, _callback);
 
     }
 
     /**
-     * Page through the documents in an index
-     * Answers the documents in one index with a total count. &#x60;limit&#x60; defaults to 20 and is capped at 1000, &#x60;offset&#x60; pages, and the response echoes both back so a pager knows what it actually got. An index the caller&#39;s org does not hold is 404 &#x60;index_not_found&#x60;. The tenant is the org minted from the VALIDATED bearer&#39;s owner claim, never a client-supplied header, and every query filters on it, so two orgs may both hold an index named \&quot;messages\&quot; and neither can see the other&#39;s documents. Without a validated principal the answer is 403 carrying Meilisearch&#39;s &#x60;invalid_api_key&#x60; body. Errors use Meilisearch&#39;s {message, code, type, link} shape rather than cloud&#39;s, because that &#x60;code&#x60; is a wire contract a Meilisearch client branches on.
+     * Pages through the documents in an index.
+     * Pages through the documents in an index.  Answers the org&#39;s stored documents in insertion order, whole, with the page&#39;s bounds and the index&#39;s total. It is the enumeration surface — search ranks by relevance and cannot walk a corpus — so a caller reconciling what it has written reads it here.  An index this org does not hold answers 404 carrying the dialect&#39;s &#x60;index_not_found&#x60;.
      * @param uid  (required)
+     * @param limit  (optional)
+     * @param offset  (optional)
+     * @return IndexDocuments
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public void getIndexIndexesByUidDocuments(@javax.annotation.Nonnull String uid) throws ApiException {
-        getIndexIndexesByUidDocumentsWithHttpInfo(uid);
+    public IndexDocuments getIndexIndexesByUidDocuments(@javax.annotation.Nonnull String uid, @javax.annotation.Nullable String limit, @javax.annotation.Nullable String offset) throws ApiException {
+        ApiResponse<IndexDocuments> localVarResp = getIndexIndexesByUidDocumentsWithHttpInfo(uid, limit, offset);
+        return localVarResp.getData();
     }
 
     /**
-     * Page through the documents in an index
-     * Answers the documents in one index with a total count. &#x60;limit&#x60; defaults to 20 and is capped at 1000, &#x60;offset&#x60; pages, and the response echoes both back so a pager knows what it actually got. An index the caller&#39;s org does not hold is 404 &#x60;index_not_found&#x60;. The tenant is the org minted from the VALIDATED bearer&#39;s owner claim, never a client-supplied header, and every query filters on it, so two orgs may both hold an index named \&quot;messages\&quot; and neither can see the other&#39;s documents. Without a validated principal the answer is 403 carrying Meilisearch&#39;s &#x60;invalid_api_key&#x60; body. Errors use Meilisearch&#39;s {message, code, type, link} shape rather than cloud&#39;s, because that &#x60;code&#x60; is a wire contract a Meilisearch client branches on.
+     * Pages through the documents in an index.
+     * Pages through the documents in an index.  Answers the org&#39;s stored documents in insertion order, whole, with the page&#39;s bounds and the index&#39;s total. It is the enumeration surface — search ranks by relevance and cannot walk a corpus — so a caller reconciling what it has written reads it here.  An index this org does not hold answers 404 carrying the dialect&#39;s &#x60;index_not_found&#x60;.
      * @param uid  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @param limit  (optional)
+     * @param offset  (optional)
+     * @return ApiResponse&lt;IndexDocuments&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public ApiResponse<Void> getIndexIndexesByUidDocumentsWithHttpInfo(@javax.annotation.Nonnull String uid) throws ApiException {
-        okhttp3.Call localVarCall = getIndexIndexesByUidDocumentsValidateBeforeCall(uid, null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<IndexDocuments> getIndexIndexesByUidDocumentsWithHttpInfo(@javax.annotation.Nonnull String uid, @javax.annotation.Nullable String limit, @javax.annotation.Nullable String offset) throws ApiException {
+        okhttp3.Call localVarCall = getIndexIndexesByUidDocumentsValidateBeforeCall(uid, limit, offset, null);
+        Type localVarReturnType = new TypeToken<IndexDocuments>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Page through the documents in an index (asynchronously)
-     * Answers the documents in one index with a total count. &#x60;limit&#x60; defaults to 20 and is capped at 1000, &#x60;offset&#x60; pages, and the response echoes both back so a pager knows what it actually got. An index the caller&#39;s org does not hold is 404 &#x60;index_not_found&#x60;. The tenant is the org minted from the VALIDATED bearer&#39;s owner claim, never a client-supplied header, and every query filters on it, so two orgs may both hold an index named \&quot;messages\&quot; and neither can see the other&#39;s documents. Without a validated principal the answer is 403 carrying Meilisearch&#39;s &#x60;invalid_api_key&#x60; body. Errors use Meilisearch&#39;s {message, code, type, link} shape rather than cloud&#39;s, because that &#x60;code&#x60; is a wire contract a Meilisearch client branches on.
+     * Pages through the documents in an index. (asynchronously)
+     * Pages through the documents in an index.  Answers the org&#39;s stored documents in insertion order, whole, with the page&#39;s bounds and the index&#39;s total. It is the enumeration surface — search ranks by relevance and cannot walk a corpus — so a caller reconciling what it has written reads it here.  An index this org does not hold answers 404 carrying the dialect&#39;s &#x60;index_not_found&#x60;.
      * @param uid  (required)
+     * @param limit  (optional)
+     * @param offset  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call getIndexIndexesByUidDocumentsAsync(@javax.annotation.Nonnull String uid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getIndexIndexesByUidDocumentsAsync(@javax.annotation.Nonnull String uid, @javax.annotation.Nullable String limit, @javax.annotation.Nullable String offset, final ApiCallback<IndexDocuments> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getIndexIndexesByUidDocumentsValidateBeforeCall(uid, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = getIndexIndexesByUidDocumentsValidateBeforeCall(uid, limit, offset, _callback);
+        Type localVarReturnType = new TypeToken<IndexDocuments>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -656,6 +864,12 @@ public class IndexApi {
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
     public okhttp3.Call getIndexIndexesByUidDocumentsByIdCall(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -685,6 +899,7 @@ public class IndexApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -719,42 +934,64 @@ public class IndexApi {
     }
 
     /**
-     * Read one document by its primary key
-     * Answers the stored document whose primary key matches, exactly as it was written. A missing document is 404 &#x60;document_not_found&#x60; and a missing index is 404 &#x60;index_not_found&#x60; — two different codes, because a client that branches on them treats the cases differently. The tenant is the org minted from the VALIDATED bearer&#39;s owner claim, never a client-supplied header, and every query filters on it, so two orgs may both hold an index named \&quot;messages\&quot; and neither can see the other&#39;s documents. Without a validated principal the answer is 403 carrying Meilisearch&#39;s &#x60;invalid_api_key&#x60; body. Errors use Meilisearch&#39;s {message, code, type, link} shape rather than cloud&#39;s, because that &#x60;code&#x60; is a wire contract a Meilisearch client branches on.
+     * Reads one document by its primary key.
+     * Reads one document by its primary key.  Answers the stored document exactly as it was written — this surface keeps documents whole rather than projecting them, so what comes back is what went in. A primary key this index does not hold answers 404 carrying the dialect&#39;s &#x60;document_not_found&#x60;; an index this org does not hold answers &#x60;index_not_found&#x60;, and the two are different facts a client acts on differently.
      * @param uid  (required)
      * @param id  (required)
+     * @return Object
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public void getIndexIndexesByUidDocumentsById(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull String id) throws ApiException {
-        getIndexIndexesByUidDocumentsByIdWithHttpInfo(uid, id);
+    public Object getIndexIndexesByUidDocumentsById(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<Object> localVarResp = getIndexIndexesByUidDocumentsByIdWithHttpInfo(uid, id);
+        return localVarResp.getData();
     }
 
     /**
-     * Read one document by its primary key
-     * Answers the stored document whose primary key matches, exactly as it was written. A missing document is 404 &#x60;document_not_found&#x60; and a missing index is 404 &#x60;index_not_found&#x60; — two different codes, because a client that branches on them treats the cases differently. The tenant is the org minted from the VALIDATED bearer&#39;s owner claim, never a client-supplied header, and every query filters on it, so two orgs may both hold an index named \&quot;messages\&quot; and neither can see the other&#39;s documents. Without a validated principal the answer is 403 carrying Meilisearch&#39;s &#x60;invalid_api_key&#x60; body. Errors use Meilisearch&#39;s {message, code, type, link} shape rather than cloud&#39;s, because that &#x60;code&#x60; is a wire contract a Meilisearch client branches on.
+     * Reads one document by its primary key.
+     * Reads one document by its primary key.  Answers the stored document exactly as it was written — this surface keeps documents whole rather than projecting them, so what comes back is what went in. A primary key this index does not hold answers 404 carrying the dialect&#39;s &#x60;document_not_found&#x60;; an index this org does not hold answers &#x60;index_not_found&#x60;, and the two are different facts a client acts on differently.
      * @param uid  (required)
      * @param id  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;Object&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public ApiResponse<Void> getIndexIndexesByUidDocumentsByIdWithHttpInfo(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<Object> getIndexIndexesByUidDocumentsByIdWithHttpInfo(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = getIndexIndexesByUidDocumentsByIdValidateBeforeCall(uid, id, null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<Object>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Read one document by its primary key (asynchronously)
-     * Answers the stored document whose primary key matches, exactly as it was written. A missing document is 404 &#x60;document_not_found&#x60; and a missing index is 404 &#x60;index_not_found&#x60; — two different codes, because a client that branches on them treats the cases differently. The tenant is the org minted from the VALIDATED bearer&#39;s owner claim, never a client-supplied header, and every query filters on it, so two orgs may both hold an index named \&quot;messages\&quot; and neither can see the other&#39;s documents. Without a validated principal the answer is 403 carrying Meilisearch&#39;s &#x60;invalid_api_key&#x60; body. Errors use Meilisearch&#39;s {message, code, type, link} shape rather than cloud&#39;s, because that &#x60;code&#x60; is a wire contract a Meilisearch client branches on.
+     * Reads one document by its primary key. (asynchronously)
+     * Reads one document by its primary key.  Answers the stored document exactly as it was written — this surface keeps documents whole rather than projecting them, so what comes back is what went in. A primary key this index does not hold answers 404 carrying the dialect&#39;s &#x60;document_not_found&#x60;; an index this org does not hold answers &#x60;index_not_found&#x60;, and the two are different facts a client acts on differently.
      * @param uid  (required)
      * @param id  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call getIndexIndexesByUidDocumentsByIdAsync(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getIndexIndexesByUidDocumentsByIdAsync(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull String id, final ApiCallback<Object> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getIndexIndexesByUidDocumentsByIdValidateBeforeCall(uid, id, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<Object>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -763,6 +1000,12 @@ public class IndexApi {
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
     public okhttp3.Call getIndexIndexesByUidSettingsCall(@javax.annotation.Nonnull String uid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -791,6 +1034,7 @@ public class IndexApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -820,39 +1064,61 @@ public class IndexApi {
     }
 
     /**
-     * Read an index&#39;s filterable attributes
-     * Answers the attributes an index allows filtering on. This dialect implements the filterable-attributes setting and no other, so that is the whole of what comes back. An index the caller&#39;s org does not hold is 404 &#x60;index_not_found&#x60;. The tenant is the org minted from the VALIDATED bearer&#39;s owner claim, never a client-supplied header, and every query filters on it, so two orgs may both hold an index named \&quot;messages\&quot; and neither can see the other&#39;s documents. Without a validated principal the answer is 403 carrying Meilisearch&#39;s &#x60;invalid_api_key&#x60; body. Errors use Meilisearch&#39;s {message, code, type, link} shape rather than cloud&#39;s, because that &#x60;code&#x60; is a wire contract a Meilisearch client branches on.
+     * Reads an index&#39;s filterable attributes.
+     * Reads an index&#39;s filterable attributes.  Answers the settings subset this surface implements: the attributes a search &#x60;filter&#x60; may constrain. An index this org does not hold answers 404 carrying the dialect&#39;s &#x60;index_not_found&#x60;.
      * @param uid  (required)
+     * @return IndexSettings
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public void getIndexIndexesByUidSettings(@javax.annotation.Nonnull String uid) throws ApiException {
-        getIndexIndexesByUidSettingsWithHttpInfo(uid);
+    public IndexSettings getIndexIndexesByUidSettings(@javax.annotation.Nonnull String uid) throws ApiException {
+        ApiResponse<IndexSettings> localVarResp = getIndexIndexesByUidSettingsWithHttpInfo(uid);
+        return localVarResp.getData();
     }
 
     /**
-     * Read an index&#39;s filterable attributes
-     * Answers the attributes an index allows filtering on. This dialect implements the filterable-attributes setting and no other, so that is the whole of what comes back. An index the caller&#39;s org does not hold is 404 &#x60;index_not_found&#x60;. The tenant is the org minted from the VALIDATED bearer&#39;s owner claim, never a client-supplied header, and every query filters on it, so two orgs may both hold an index named \&quot;messages\&quot; and neither can see the other&#39;s documents. Without a validated principal the answer is 403 carrying Meilisearch&#39;s &#x60;invalid_api_key&#x60; body. Errors use Meilisearch&#39;s {message, code, type, link} shape rather than cloud&#39;s, because that &#x60;code&#x60; is a wire contract a Meilisearch client branches on.
+     * Reads an index&#39;s filterable attributes.
+     * Reads an index&#39;s filterable attributes.  Answers the settings subset this surface implements: the attributes a search &#x60;filter&#x60; may constrain. An index this org does not hold answers 404 carrying the dialect&#39;s &#x60;index_not_found&#x60;.
      * @param uid  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;IndexSettings&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public ApiResponse<Void> getIndexIndexesByUidSettingsWithHttpInfo(@javax.annotation.Nonnull String uid) throws ApiException {
+    public ApiResponse<IndexSettings> getIndexIndexesByUidSettingsWithHttpInfo(@javax.annotation.Nonnull String uid) throws ApiException {
         okhttp3.Call localVarCall = getIndexIndexesByUidSettingsValidateBeforeCall(uid, null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<IndexSettings>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Read an index&#39;s filterable attributes (asynchronously)
-     * Answers the attributes an index allows filtering on. This dialect implements the filterable-attributes setting and no other, so that is the whole of what comes back. An index the caller&#39;s org does not hold is 404 &#x60;index_not_found&#x60;. The tenant is the org minted from the VALIDATED bearer&#39;s owner claim, never a client-supplied header, and every query filters on it, so two orgs may both hold an index named \&quot;messages\&quot; and neither can see the other&#39;s documents. Without a validated principal the answer is 403 carrying Meilisearch&#39;s &#x60;invalid_api_key&#x60; body. Errors use Meilisearch&#39;s {message, code, type, link} shape rather than cloud&#39;s, because that &#x60;code&#x60; is a wire contract a Meilisearch client branches on.
+     * Reads an index&#39;s filterable attributes. (asynchronously)
+     * Reads an index&#39;s filterable attributes.  Answers the settings subset this surface implements: the attributes a search &#x60;filter&#x60; may constrain. An index this org does not hold answers 404 carrying the dialect&#39;s &#x60;index_not_found&#x60;.
      * @param uid  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call getIndexIndexesByUidSettingsAsync(@javax.annotation.Nonnull String uid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getIndexIndexesByUidSettingsAsync(@javax.annotation.Nonnull String uid, final ApiCallback<IndexSettings> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getIndexIndexesByUidSettingsValidateBeforeCall(uid, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<IndexSettings>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -860,6 +1126,12 @@ public class IndexApi {
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
     public okhttp3.Call getIndexStatsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -887,6 +1159,7 @@ public class IndexApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -911,36 +1184,58 @@ public class IndexApi {
     }
 
     /**
-     * Count the documents in each of your indexes
-     * Answers a document count per index for the caller&#39;s org, plus their sum. &#x60;isIndexing&#x60; is always false, which is the honest answer here rather than a stub: writes are applied before their response, so there is never a backlog in progress to report. The tenant is the org minted from the VALIDATED bearer&#39;s owner claim, never a client-supplied header, and every query filters on it, so two orgs may both hold an index named \&quot;messages\&quot; and neither can see the other&#39;s documents. Without a validated principal the answer is 403 carrying Meilisearch&#39;s &#x60;invalid_api_key&#x60; body. Errors use Meilisearch&#39;s {message, code, type, link} shape rather than cloud&#39;s, because that &#x60;code&#x60; is a wire contract a Meilisearch client branches on.
+     * Counts the documents in each of your indexes.
+     * Counts the documents in each of your indexes.  Reports every index the caller&#39;s own org holds with its document count, plus the org&#39;s total. &#x60;isIndexing&#x60; is always false because writes here are applied before their response — there is never a background pass to wait on.  The tenant is the org minted from the VALIDATED bearer&#39;s owner claim, never a client-supplied header, so this counts the caller&#39;s own documents and no other tenant&#39;s. Without a validated principal the answer is 403 carrying the dialect&#39;s &#x60;invalid_api_key&#x60; body.
+     * @return IndexStats
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public void getIndexStats() throws ApiException {
-        getIndexStatsWithHttpInfo();
+    public IndexStats getIndexStats() throws ApiException {
+        ApiResponse<IndexStats> localVarResp = getIndexStatsWithHttpInfo();
+        return localVarResp.getData();
     }
 
     /**
-     * Count the documents in each of your indexes
-     * Answers a document count per index for the caller&#39;s org, plus their sum. &#x60;isIndexing&#x60; is always false, which is the honest answer here rather than a stub: writes are applied before their response, so there is never a backlog in progress to report. The tenant is the org minted from the VALIDATED bearer&#39;s owner claim, never a client-supplied header, and every query filters on it, so two orgs may both hold an index named \&quot;messages\&quot; and neither can see the other&#39;s documents. Without a validated principal the answer is 403 carrying Meilisearch&#39;s &#x60;invalid_api_key&#x60; body. Errors use Meilisearch&#39;s {message, code, type, link} shape rather than cloud&#39;s, because that &#x60;code&#x60; is a wire contract a Meilisearch client branches on.
-     * @return ApiResponse&lt;Void&gt;
+     * Counts the documents in each of your indexes.
+     * Counts the documents in each of your indexes.  Reports every index the caller&#39;s own org holds with its document count, plus the org&#39;s total. &#x60;isIndexing&#x60; is always false because writes here are applied before their response — there is never a background pass to wait on.  The tenant is the org minted from the VALIDATED bearer&#39;s owner claim, never a client-supplied header, so this counts the caller&#39;s own documents and no other tenant&#39;s. Without a validated principal the answer is 403 carrying the dialect&#39;s &#x60;invalid_api_key&#x60; body.
+     * @return ApiResponse&lt;IndexStats&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public ApiResponse<Void> getIndexStatsWithHttpInfo() throws ApiException {
+    public ApiResponse<IndexStats> getIndexStatsWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getIndexStatsValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<IndexStats>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Count the documents in each of your indexes (asynchronously)
-     * Answers a document count per index for the caller&#39;s org, plus their sum. &#x60;isIndexing&#x60; is always false, which is the honest answer here rather than a stub: writes are applied before their response, so there is never a backlog in progress to report. The tenant is the org minted from the VALIDATED bearer&#39;s owner claim, never a client-supplied header, and every query filters on it, so two orgs may both hold an index named \&quot;messages\&quot; and neither can see the other&#39;s documents. Without a validated principal the answer is 403 carrying Meilisearch&#39;s &#x60;invalid_api_key&#x60; body. Errors use Meilisearch&#39;s {message, code, type, link} shape rather than cloud&#39;s, because that &#x60;code&#x60; is a wire contract a Meilisearch client branches on.
+     * Counts the documents in each of your indexes. (asynchronously)
+     * Counts the documents in each of your indexes.  Reports every index the caller&#39;s own org holds with its document count, plus the org&#39;s total. &#x60;isIndexing&#x60; is always false because writes here are applied before their response — there is never a background pass to wait on.  The tenant is the org minted from the VALIDATED bearer&#39;s owner claim, never a client-supplied header, so this counts the caller&#39;s own documents and no other tenant&#39;s. Without a validated principal the answer is 403 carrying the dialect&#39;s &#x60;invalid_api_key&#x60; body.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call getIndexStatsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getIndexStatsAsync(final ApiCallback<IndexStats> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getIndexStatsValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<IndexStats>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -949,8 +1244,14 @@ public class IndexApi {
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call getIndexTasksByUidCall(@javax.annotation.Nonnull String uid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getIndexTasksByUidCall(@javax.annotation.Nonnull Integer uid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -977,6 +1278,7 @@ public class IndexApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -995,7 +1297,7 @@ public class IndexApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getIndexTasksByUidValidateBeforeCall(@javax.annotation.Nonnull String uid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getIndexTasksByUidValidateBeforeCall(@javax.annotation.Nonnull Integer uid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'uid' is set
         if (uid == null) {
             throw new ApiException("Missing the required parameter 'uid' when calling getIndexTasksByUid(Async)");
@@ -1006,39 +1308,61 @@ public class IndexApi {
     }
 
     /**
-     * Check a write task, which has already finished
-     * Answers &#x60;succeeded&#x60; for the task id given. It ALWAYS answers succeeded, and that is honest rather than a stub: writes on this surface are applied before their response returns, so by the time any task id exists to ask about, its work is done. It exists so a Meilisearch client&#39;s waitForTask resolves at once instead of polling forever for a queue that was never there. It requires a validated principal but reads no tenant data.
+     * Checks a write task, which has already finished.
+     * Checks a write task, which has already finished.  Always reports &#x60;succeeded&#x60;. Writes here are applied to SQLite before their EnqueuedTask is returned, so a client polling waitForTask resolves on its first call rather than waiting for a queue that was never there. The three timestamps are the same instant for the same reason.  It requires a validated principal but reads no tenant data: the task id it echoes was minted by this process and names nothing about any org.
      * @param uid  (required)
+     * @return IndexTask
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public void getIndexTasksByUid(@javax.annotation.Nonnull String uid) throws ApiException {
-        getIndexTasksByUidWithHttpInfo(uid);
+    public IndexTask getIndexTasksByUid(@javax.annotation.Nonnull Integer uid) throws ApiException {
+        ApiResponse<IndexTask> localVarResp = getIndexTasksByUidWithHttpInfo(uid);
+        return localVarResp.getData();
     }
 
     /**
-     * Check a write task, which has already finished
-     * Answers &#x60;succeeded&#x60; for the task id given. It ALWAYS answers succeeded, and that is honest rather than a stub: writes on this surface are applied before their response returns, so by the time any task id exists to ask about, its work is done. It exists so a Meilisearch client&#39;s waitForTask resolves at once instead of polling forever for a queue that was never there. It requires a validated principal but reads no tenant data.
+     * Checks a write task, which has already finished.
+     * Checks a write task, which has already finished.  Always reports &#x60;succeeded&#x60;. Writes here are applied to SQLite before their EnqueuedTask is returned, so a client polling waitForTask resolves on its first call rather than waiting for a queue that was never there. The three timestamps are the same instant for the same reason.  It requires a validated principal but reads no tenant data: the task id it echoes was minted by this process and names nothing about any org.
      * @param uid  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;IndexTask&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public ApiResponse<Void> getIndexTasksByUidWithHttpInfo(@javax.annotation.Nonnull String uid) throws ApiException {
+    public ApiResponse<IndexTask> getIndexTasksByUidWithHttpInfo(@javax.annotation.Nonnull Integer uid) throws ApiException {
         okhttp3.Call localVarCall = getIndexTasksByUidValidateBeforeCall(uid, null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<IndexTask>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Check a write task, which has already finished (asynchronously)
-     * Answers &#x60;succeeded&#x60; for the task id given. It ALWAYS answers succeeded, and that is honest rather than a stub: writes on this surface are applied before their response returns, so by the time any task id exists to ask about, its work is done. It exists so a Meilisearch client&#39;s waitForTask resolves at once instead of polling forever for a queue that was never there. It requires a validated principal but reads no tenant data.
+     * Checks a write task, which has already finished. (asynchronously)
+     * Checks a write task, which has already finished.  Always reports &#x60;succeeded&#x60;. Writes here are applied to SQLite before their EnqueuedTask is returned, so a client polling waitForTask resolves on its first call rather than waiting for a queue that was never there. The three timestamps are the same instant for the same reason.  It requires a validated principal but reads no tenant data: the task id it echoes was minted by this process and names nothing about any org.
      * @param uid  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call getIndexTasksByUidAsync(@javax.annotation.Nonnull String uid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getIndexTasksByUidAsync(@javax.annotation.Nonnull Integer uid, final ApiCallback<IndexTask> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getIndexTasksByUidValidateBeforeCall(uid, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<IndexTask>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -1046,6 +1370,12 @@ public class IndexApi {
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
     public okhttp3.Call getIndexVersionCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -1073,6 +1403,7 @@ public class IndexApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1097,46 +1428,75 @@ public class IndexApi {
     }
 
     /**
-     * Identify the search implementation answering
-     * Answers the version shape a Meilisearch client expects. It names THIS implementation rather than a Meilisearch release — the commit field reads &#x60;hanzo-cloud&#x60; — so a client that logs it records which server actually answered instead of implying a Meilisearch build. Needs no credential.
+     * Identifies the search implementation answering.
+     * Identifies the search implementation answering.  Reports the dialect&#39;s version shape with &#x60;commitSha&#x60; naming this implementation rather than a Meilisearch build, so a client that logs the version records which server answered instead of implying a release of software this is not. It requires no principal and reads no tenant data.
+     * @return IndexVersion
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public void getIndexVersion() throws ApiException {
-        getIndexVersionWithHttpInfo();
+    public IndexVersion getIndexVersion() throws ApiException {
+        ApiResponse<IndexVersion> localVarResp = getIndexVersionWithHttpInfo();
+        return localVarResp.getData();
     }
 
     /**
-     * Identify the search implementation answering
-     * Answers the version shape a Meilisearch client expects. It names THIS implementation rather than a Meilisearch release — the commit field reads &#x60;hanzo-cloud&#x60; — so a client that logs it records which server actually answered instead of implying a Meilisearch build. Needs no credential.
-     * @return ApiResponse&lt;Void&gt;
+     * Identifies the search implementation answering.
+     * Identifies the search implementation answering.  Reports the dialect&#39;s version shape with &#x60;commitSha&#x60; naming this implementation rather than a Meilisearch build, so a client that logs the version records which server answered instead of implying a release of software this is not. It requires no principal and reads no tenant data.
+     * @return ApiResponse&lt;IndexVersion&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public ApiResponse<Void> getIndexVersionWithHttpInfo() throws ApiException {
+    public ApiResponse<IndexVersion> getIndexVersionWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getIndexVersionValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<IndexVersion>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Identify the search implementation answering (asynchronously)
-     * Answers the version shape a Meilisearch client expects. It names THIS implementation rather than a Meilisearch release — the commit field reads &#x60;hanzo-cloud&#x60; — so a client that logs it records which server actually answered instead of implying a Meilisearch build. Needs no credential.
+     * Identifies the search implementation answering. (asynchronously)
+     * Identifies the search implementation answering.  Reports the dialect&#39;s version shape with &#x60;commitSha&#x60; naming this implementation rather than a Meilisearch build, so a client that logs the version records which server answered instead of implying a release of software this is not. It requires no principal and reads no tenant data.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call getIndexVersionAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getIndexVersionAsync(final ApiCallback<IndexVersion> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getIndexVersionValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<IndexVersion>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for patchIndexIndexesByUidSettings
      * @param uid  (required)
+     * @param indexFilter  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call patchIndexIndexesByUidSettingsCall(@javax.annotation.Nonnull String uid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call patchIndexIndexesByUidSettingsCall(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull IndexFilter indexFilter, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1150,7 +1510,7 @@ public class IndexApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = indexFilter;
 
         // create path and map variables
         String localVarPath = "/v1/index/indexes/{uid}/settings"
@@ -1163,6 +1523,7 @@ public class IndexApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1170,6 +1531,7 @@ public class IndexApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1181,59 +1543,96 @@ public class IndexApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchIndexIndexesByUidSettingsValidateBeforeCall(@javax.annotation.Nonnull String uid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call patchIndexIndexesByUidSettingsValidateBeforeCall(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull IndexFilter indexFilter, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'uid' is set
         if (uid == null) {
             throw new ApiException("Missing the required parameter 'uid' when calling patchIndexIndexesByUidSettings(Async)");
         }
 
-        return patchIndexIndexesByUidSettingsCall(uid, _callback);
+        // verify the required parameter 'indexFilter' is set
+        if (indexFilter == null) {
+            throw new ApiException("Missing the required parameter 'indexFilter' when calling patchIndexIndexesByUidSettings(Async)");
+        }
+
+        return patchIndexIndexesByUidSettingsCall(uid, indexFilter, _callback);
 
     }
 
     /**
-     * Set which attributes an index can be filtered on
-     * Replaces an index&#39;s filterable attributes with the list in &#x60;filterableAttributes&#x60;; omitting the field leaves them as they are. The index is CREATED ON DEMAND rather than 404&#39;d, because a client that configures an index it has just asked for should not have to create it first — this is the one read-shaped path on the surface that writes. The tenant is the org minted from the VALIDATED bearer&#39;s owner claim, never a client-supplied header, and every query filters on it, so two orgs may both hold an index named \&quot;messages\&quot; and neither can see the other&#39;s documents. Without a validated principal the answer is 403 carrying Meilisearch&#39;s &#x60;invalid_api_key&#x60; body. Errors use Meilisearch&#39;s {message, code, type, link} shape rather than cloud&#39;s, because that &#x60;code&#x60; is a wire contract a Meilisearch client branches on.  The 202 and its &#x60;enqueued&#x60; task are DIALECT COMPATIBILITY, not a promise of later work: the write is already applied when this answers, and the task it names is already complete. A client that polls waitForTask resolves immediately rather than waiting, and a client that does not poll has still had its write committed.
+     * Sets which attributes an index can be filtered on.
+     * Sets which attributes an index can be filtered on.  Replaces the whole filterable set. An attribute not listed here cannot be used in a search &#x60;filter&#x60;, so this is what makes a per-user or per-tag narrowing possible at all.  It CREATES the index when it is missing rather than answering 404, because a Meilisearch client configures settings on an index it has just asked for and a refusal there leaves the client with no index at all.  The 202 and its &#x60;enqueued&#x60; task are DIALECT COMPATIBILITY, not a promise of later work: the setting is already applied when this answers.
      * @param uid  (required)
+     * @param indexFilter  (required)
+     * @return IndexEnqueued
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+     </table>
      */
-    public void patchIndexIndexesByUidSettings(@javax.annotation.Nonnull String uid) throws ApiException {
-        patchIndexIndexesByUidSettingsWithHttpInfo(uid);
+    public IndexEnqueued patchIndexIndexesByUidSettings(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull IndexFilter indexFilter) throws ApiException {
+        ApiResponse<IndexEnqueued> localVarResp = patchIndexIndexesByUidSettingsWithHttpInfo(uid, indexFilter);
+        return localVarResp.getData();
     }
 
     /**
-     * Set which attributes an index can be filtered on
-     * Replaces an index&#39;s filterable attributes with the list in &#x60;filterableAttributes&#x60;; omitting the field leaves them as they are. The index is CREATED ON DEMAND rather than 404&#39;d, because a client that configures an index it has just asked for should not have to create it first — this is the one read-shaped path on the surface that writes. The tenant is the org minted from the VALIDATED bearer&#39;s owner claim, never a client-supplied header, and every query filters on it, so two orgs may both hold an index named \&quot;messages\&quot; and neither can see the other&#39;s documents. Without a validated principal the answer is 403 carrying Meilisearch&#39;s &#x60;invalid_api_key&#x60; body. Errors use Meilisearch&#39;s {message, code, type, link} shape rather than cloud&#39;s, because that &#x60;code&#x60; is a wire contract a Meilisearch client branches on.  The 202 and its &#x60;enqueued&#x60; task are DIALECT COMPATIBILITY, not a promise of later work: the write is already applied when this answers, and the task it names is already complete. A client that polls waitForTask resolves immediately rather than waiting, and a client that does not poll has still had its write committed.
+     * Sets which attributes an index can be filtered on.
+     * Sets which attributes an index can be filtered on.  Replaces the whole filterable set. An attribute not listed here cannot be used in a search &#x60;filter&#x60;, so this is what makes a per-user or per-tag narrowing possible at all.  It CREATES the index when it is missing rather than answering 404, because a Meilisearch client configures settings on an index it has just asked for and a refusal there leaves the client with no index at all.  The 202 and its &#x60;enqueued&#x60; task are DIALECT COMPATIBILITY, not a promise of later work: the setting is already applied when this answers.
      * @param uid  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @param indexFilter  (required)
+     * @return ApiResponse&lt;IndexEnqueued&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+     </table>
      */
-    public ApiResponse<Void> patchIndexIndexesByUidSettingsWithHttpInfo(@javax.annotation.Nonnull String uid) throws ApiException {
-        okhttp3.Call localVarCall = patchIndexIndexesByUidSettingsValidateBeforeCall(uid, null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<IndexEnqueued> patchIndexIndexesByUidSettingsWithHttpInfo(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull IndexFilter indexFilter) throws ApiException {
+        okhttp3.Call localVarCall = patchIndexIndexesByUidSettingsValidateBeforeCall(uid, indexFilter, null);
+        Type localVarReturnType = new TypeToken<IndexEnqueued>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Set which attributes an index can be filtered on (asynchronously)
-     * Replaces an index&#39;s filterable attributes with the list in &#x60;filterableAttributes&#x60;; omitting the field leaves them as they are. The index is CREATED ON DEMAND rather than 404&#39;d, because a client that configures an index it has just asked for should not have to create it first — this is the one read-shaped path on the surface that writes. The tenant is the org minted from the VALIDATED bearer&#39;s owner claim, never a client-supplied header, and every query filters on it, so two orgs may both hold an index named \&quot;messages\&quot; and neither can see the other&#39;s documents. Without a validated principal the answer is 403 carrying Meilisearch&#39;s &#x60;invalid_api_key&#x60; body. Errors use Meilisearch&#39;s {message, code, type, link} shape rather than cloud&#39;s, because that &#x60;code&#x60; is a wire contract a Meilisearch client branches on.  The 202 and its &#x60;enqueued&#x60; task are DIALECT COMPATIBILITY, not a promise of later work: the write is already applied when this answers, and the task it names is already complete. A client that polls waitForTask resolves immediately rather than waiting, and a client that does not poll has still had its write committed.
+     * Sets which attributes an index can be filtered on. (asynchronously)
+     * Sets which attributes an index can be filtered on.  Replaces the whole filterable set. An attribute not listed here cannot be used in a search &#x60;filter&#x60;, so this is what makes a per-user or per-tag narrowing possible at all.  It CREATES the index when it is missing rather than answering 404, because a Meilisearch client configures settings on an index it has just asked for and a refusal there leaves the client with no index at all.  The 202 and its &#x60;enqueued&#x60; task are DIALECT COMPATIBILITY, not a promise of later work: the setting is already applied when this answers.
      * @param uid  (required)
+     * @param indexFilter  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call patchIndexIndexesByUidSettingsAsync(@javax.annotation.Nonnull String uid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call patchIndexIndexesByUidSettingsAsync(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull IndexFilter indexFilter, final ApiCallback<IndexEnqueued> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchIndexIndexesByUidSettingsValidateBeforeCall(uid, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = patchIndexIndexesByUidSettingsValidateBeforeCall(uid, indexFilter, _callback);
+        Type localVarReturnType = new TypeToken<IndexEnqueued>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postIndexIndexes
+     * @param indexNew  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call postIndexIndexesCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postIndexIndexesCall(@javax.annotation.Nonnull IndexNew indexNew, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1247,7 +1646,7 @@ public class IndexApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = indexNew;
 
         // create path and map variables
         String localVarPath = "/v1/index/indexes";
@@ -1259,6 +1658,7 @@ public class IndexApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1266,6 +1666,7 @@ public class IndexApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1277,52 +1678,89 @@ public class IndexApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postIndexIndexesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postIndexIndexesCall(_callback);
+    private okhttp3.Call postIndexIndexesValidateBeforeCall(@javax.annotation.Nonnull IndexNew indexNew, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'indexNew' is set
+        if (indexNew == null) {
+            throw new ApiException("Missing the required parameter 'indexNew' when calling postIndexIndexes(Async)");
+        }
+
+        return postIndexIndexesCall(indexNew, _callback);
 
     }
 
     /**
-     * Create an index
-     * Creates an index named by &#x60;uid&#x60; in the caller&#39;s org. &#x60;primaryKey&#x60; names the document field that identifies a document and defaults to &#x60;id&#x60;. Creating an index that already exists is not an error — it settles on the existing one, primary key included — so a client that creates before every write is safe to run repeatedly. A missing or over-long uid is 400 &#x60;invalid_index_uid&#x60;. A new index starts with &#x60;user&#x60; filterable, which is what lets a multi-user app narrow searches to one end user without configuring anything. The tenant is the org minted from the VALIDATED bearer&#39;s owner claim, never a client-supplied header, and every query filters on it, so two orgs may both hold an index named \&quot;messages\&quot; and neither can see the other&#39;s documents. Without a validated principal the answer is 403 carrying Meilisearch&#39;s &#x60;invalid_api_key&#x60; body. Errors use Meilisearch&#39;s {message, code, type, link} shape rather than cloud&#39;s, because that &#x60;code&#x60; is a wire contract a Meilisearch client branches on.  The 202 and its &#x60;enqueued&#x60; task are DIALECT COMPATIBILITY, not a promise of later work: the write is already applied when this answers, and the task it names is already complete. A client that polls waitForTask resolves immediately rather than waiting, and a client that does not poll has still had its write committed.
+     * Creates an index.
+     * Creates an index.  Registers a named index in the caller&#39;s own org and answers the dialect&#39;s EnqueuedTask. It is idempotent: creating an index that already exists returns the same receipt and changes nothing, which is what lets a client create on startup without checking first.  &#x60;primaryKey&#x60; is optional — the first write establishes one when it is omitted. An index is a ROW here rather than a table, so an unusual uid is stored verbatim instead of being sanitised into a schema name.  The 202 and its &#x60;enqueued&#x60; task are DIALECT COMPATIBILITY, not a promise of later work: the write is already applied when this answers. A client that polls waitForTask resolves immediately.
+     * @param indexNew  (required)
+     * @return IndexEnqueued
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+     </table>
      */
-    public void postIndexIndexes() throws ApiException {
-        postIndexIndexesWithHttpInfo();
+    public IndexEnqueued postIndexIndexes(@javax.annotation.Nonnull IndexNew indexNew) throws ApiException {
+        ApiResponse<IndexEnqueued> localVarResp = postIndexIndexesWithHttpInfo(indexNew);
+        return localVarResp.getData();
     }
 
     /**
-     * Create an index
-     * Creates an index named by &#x60;uid&#x60; in the caller&#39;s org. &#x60;primaryKey&#x60; names the document field that identifies a document and defaults to &#x60;id&#x60;. Creating an index that already exists is not an error — it settles on the existing one, primary key included — so a client that creates before every write is safe to run repeatedly. A missing or over-long uid is 400 &#x60;invalid_index_uid&#x60;. A new index starts with &#x60;user&#x60; filterable, which is what lets a multi-user app narrow searches to one end user without configuring anything. The tenant is the org minted from the VALIDATED bearer&#39;s owner claim, never a client-supplied header, and every query filters on it, so two orgs may both hold an index named \&quot;messages\&quot; and neither can see the other&#39;s documents. Without a validated principal the answer is 403 carrying Meilisearch&#39;s &#x60;invalid_api_key&#x60; body. Errors use Meilisearch&#39;s {message, code, type, link} shape rather than cloud&#39;s, because that &#x60;code&#x60; is a wire contract a Meilisearch client branches on.  The 202 and its &#x60;enqueued&#x60; task are DIALECT COMPATIBILITY, not a promise of later work: the write is already applied when this answers, and the task it names is already complete. A client that polls waitForTask resolves immediately rather than waiting, and a client that does not poll has still had its write committed.
-     * @return ApiResponse&lt;Void&gt;
+     * Creates an index.
+     * Creates an index.  Registers a named index in the caller&#39;s own org and answers the dialect&#39;s EnqueuedTask. It is idempotent: creating an index that already exists returns the same receipt and changes nothing, which is what lets a client create on startup without checking first.  &#x60;primaryKey&#x60; is optional — the first write establishes one when it is omitted. An index is a ROW here rather than a table, so an unusual uid is stored verbatim instead of being sanitised into a schema name.  The 202 and its &#x60;enqueued&#x60; task are DIALECT COMPATIBILITY, not a promise of later work: the write is already applied when this answers. A client that polls waitForTask resolves immediately.
+     * @param indexNew  (required)
+     * @return ApiResponse&lt;IndexEnqueued&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+     </table>
      */
-    public ApiResponse<Void> postIndexIndexesWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postIndexIndexesValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<IndexEnqueued> postIndexIndexesWithHttpInfo(@javax.annotation.Nonnull IndexNew indexNew) throws ApiException {
+        okhttp3.Call localVarCall = postIndexIndexesValidateBeforeCall(indexNew, null);
+        Type localVarReturnType = new TypeToken<IndexEnqueued>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Create an index (asynchronously)
-     * Creates an index named by &#x60;uid&#x60; in the caller&#39;s org. &#x60;primaryKey&#x60; names the document field that identifies a document and defaults to &#x60;id&#x60;. Creating an index that already exists is not an error — it settles on the existing one, primary key included — so a client that creates before every write is safe to run repeatedly. A missing or over-long uid is 400 &#x60;invalid_index_uid&#x60;. A new index starts with &#x60;user&#x60; filterable, which is what lets a multi-user app narrow searches to one end user without configuring anything. The tenant is the org minted from the VALIDATED bearer&#39;s owner claim, never a client-supplied header, and every query filters on it, so two orgs may both hold an index named \&quot;messages\&quot; and neither can see the other&#39;s documents. Without a validated principal the answer is 403 carrying Meilisearch&#39;s &#x60;invalid_api_key&#x60; body. Errors use Meilisearch&#39;s {message, code, type, link} shape rather than cloud&#39;s, because that &#x60;code&#x60; is a wire contract a Meilisearch client branches on.  The 202 and its &#x60;enqueued&#x60; task are DIALECT COMPATIBILITY, not a promise of later work: the write is already applied when this answers, and the task it names is already complete. A client that polls waitForTask resolves immediately rather than waiting, and a client that does not poll has still had its write committed.
+     * Creates an index. (asynchronously)
+     * Creates an index.  Registers a named index in the caller&#39;s own org and answers the dialect&#39;s EnqueuedTask. It is idempotent: creating an index that already exists returns the same receipt and changes nothing, which is what lets a client create on startup without checking first.  &#x60;primaryKey&#x60; is optional — the first write establishes one when it is omitted. An index is a ROW here rather than a table, so an unusual uid is stored verbatim instead of being sanitised into a schema name.  The 202 and its &#x60;enqueued&#x60; task are DIALECT COMPATIBILITY, not a promise of later work: the write is already applied when this answers. A client that polls waitForTask resolves immediately.
+     * @param indexNew  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call postIndexIndexesAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postIndexIndexesAsync(@javax.annotation.Nonnull IndexNew indexNew, final ApiCallback<IndexEnqueued> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postIndexIndexesValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = postIndexIndexesValidateBeforeCall(indexNew, _callback);
+        Type localVarReturnType = new TypeToken<IndexEnqueued>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postIndexIndexesByUidDocuments
      * @param uid  (required)
+     * @param requestBody  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call postIndexIndexesByUidDocumentsCall(@javax.annotation.Nonnull String uid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postIndexIndexesByUidDocumentsCall(@javax.annotation.Nonnull String uid, @javax.annotation.Nullable List<Object> requestBody, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1336,7 +1774,7 @@ public class IndexApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = requestBody;
 
         // create path and map variables
         String localVarPath = "/v1/index/indexes/{uid}/documents"
@@ -1349,6 +1787,7 @@ public class IndexApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1356,6 +1795,7 @@ public class IndexApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1367,60 +1807,92 @@ public class IndexApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postIndexIndexesByUidDocumentsValidateBeforeCall(@javax.annotation.Nonnull String uid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postIndexIndexesByUidDocumentsValidateBeforeCall(@javax.annotation.Nonnull String uid, @javax.annotation.Nullable List<Object> requestBody, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'uid' is set
         if (uid == null) {
             throw new ApiException("Missing the required parameter 'uid' when calling postIndexIndexesByUidDocuments(Async)");
         }
 
-        return postIndexIndexesByUidDocumentsCall(uid, _callback);
+        return postIndexIndexesByUidDocumentsCall(uid, requestBody, _callback);
 
     }
 
     /**
      * Add or replace documents in an index
-     * Upserts documents into one index, keyed by the index&#39;s primary key: a document whose key is already present is REPLACED, one that is not is added, and it becomes searchable immediately. Send an array, or a single object — a hand-rolled caller sending one document is accepted rather than 400&#39;d. The index is created on demand, so a first write needs no create call.  This and the PUT on the same path are the SAME operation: both are a whole document upsert, which is what a Meilisearch client&#39;s addDocuments and updateDocuments both reduce to here. A body that is neither an array nor an object is 400. The tenant is the org minted from the VALIDATED bearer&#39;s owner claim, never a client-supplied header, and every query filters on it, so two orgs may both hold an index named \&quot;messages\&quot; and neither can see the other&#39;s documents. Without a validated principal the answer is 403 carrying Meilisearch&#39;s &#x60;invalid_api_key&#x60; body. Errors use Meilisearch&#39;s {message, code, type, link} shape rather than cloud&#39;s, because that &#x60;code&#x60; is a wire contract a Meilisearch client branches on.  The 202 and its &#x60;enqueued&#x60; task are DIALECT COMPATIBILITY, not a promise of later work: the write is already applied when this answers, and the task it names is already complete. A client that polls waitForTask resolves immediately rather than waiting, and a client that does not poll has still had its write committed.
+     * Writes documents into the caller&#39;s own index, keyed by the index&#39;s primary key: a document whose key is already present is REPLACED whole. The body is the dialect&#39;s own — an array of documents, or a single document — and each is stored verbatim, so a read gives back exactly what was written.  The index is CREATED when it is missing rather than refused, because a Meilisearch client writes before it configures.  The tenant is the org minted from the VALIDATED bearer&#39;s owner claim, never a client-supplied header, so two orgs may both hold an index named \&quot;messages\&quot; and neither can see the other&#39;s documents. Without a validated principal the answer is 403 carrying the dialect&#39;s &#x60;invalid_api_key&#x60; body.  The 202 and its &#x60;enqueued&#x60; task are DIALECT COMPATIBILITY, not a promise of later work: the documents are searchable when this answers, and a client that polls waitForTask resolves immediately.
      * @param uid  (required)
+     * @param requestBody  (optional)
+     * @return IndexEnqueued
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
+     </table>
      */
-    public void postIndexIndexesByUidDocuments(@javax.annotation.Nonnull String uid) throws ApiException {
-        postIndexIndexesByUidDocumentsWithHttpInfo(uid);
+    public IndexEnqueued postIndexIndexesByUidDocuments(@javax.annotation.Nonnull String uid, @javax.annotation.Nullable List<Object> requestBody) throws ApiException {
+        ApiResponse<IndexEnqueued> localVarResp = postIndexIndexesByUidDocumentsWithHttpInfo(uid, requestBody);
+        return localVarResp.getData();
     }
 
     /**
      * Add or replace documents in an index
-     * Upserts documents into one index, keyed by the index&#39;s primary key: a document whose key is already present is REPLACED, one that is not is added, and it becomes searchable immediately. Send an array, or a single object — a hand-rolled caller sending one document is accepted rather than 400&#39;d. The index is created on demand, so a first write needs no create call.  This and the PUT on the same path are the SAME operation: both are a whole document upsert, which is what a Meilisearch client&#39;s addDocuments and updateDocuments both reduce to here. A body that is neither an array nor an object is 400. The tenant is the org minted from the VALIDATED bearer&#39;s owner claim, never a client-supplied header, and every query filters on it, so two orgs may both hold an index named \&quot;messages\&quot; and neither can see the other&#39;s documents. Without a validated principal the answer is 403 carrying Meilisearch&#39;s &#x60;invalid_api_key&#x60; body. Errors use Meilisearch&#39;s {message, code, type, link} shape rather than cloud&#39;s, because that &#x60;code&#x60; is a wire contract a Meilisearch client branches on.  The 202 and its &#x60;enqueued&#x60; task are DIALECT COMPATIBILITY, not a promise of later work: the write is already applied when this answers, and the task it names is already complete. A client that polls waitForTask resolves immediately rather than waiting, and a client that does not poll has still had its write committed.
+     * Writes documents into the caller&#39;s own index, keyed by the index&#39;s primary key: a document whose key is already present is REPLACED whole. The body is the dialect&#39;s own — an array of documents, or a single document — and each is stored verbatim, so a read gives back exactly what was written.  The index is CREATED when it is missing rather than refused, because a Meilisearch client writes before it configures.  The tenant is the org minted from the VALIDATED bearer&#39;s owner claim, never a client-supplied header, so two orgs may both hold an index named \&quot;messages\&quot; and neither can see the other&#39;s documents. Without a validated principal the answer is 403 carrying the dialect&#39;s &#x60;invalid_api_key&#x60; body.  The 202 and its &#x60;enqueued&#x60; task are DIALECT COMPATIBILITY, not a promise of later work: the documents are searchable when this answers, and a client that polls waitForTask resolves immediately.
      * @param uid  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @param requestBody  (optional)
+     * @return ApiResponse&lt;IndexEnqueued&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
+     </table>
      */
-    public ApiResponse<Void> postIndexIndexesByUidDocumentsWithHttpInfo(@javax.annotation.Nonnull String uid) throws ApiException {
-        okhttp3.Call localVarCall = postIndexIndexesByUidDocumentsValidateBeforeCall(uid, null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<IndexEnqueued> postIndexIndexesByUidDocumentsWithHttpInfo(@javax.annotation.Nonnull String uid, @javax.annotation.Nullable List<Object> requestBody) throws ApiException {
+        okhttp3.Call localVarCall = postIndexIndexesByUidDocumentsValidateBeforeCall(uid, requestBody, null);
+        Type localVarReturnType = new TypeToken<IndexEnqueued>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Add or replace documents in an index (asynchronously)
-     * Upserts documents into one index, keyed by the index&#39;s primary key: a document whose key is already present is REPLACED, one that is not is added, and it becomes searchable immediately. Send an array, or a single object — a hand-rolled caller sending one document is accepted rather than 400&#39;d. The index is created on demand, so a first write needs no create call.  This and the PUT on the same path are the SAME operation: both are a whole document upsert, which is what a Meilisearch client&#39;s addDocuments and updateDocuments both reduce to here. A body that is neither an array nor an object is 400. The tenant is the org minted from the VALIDATED bearer&#39;s owner claim, never a client-supplied header, and every query filters on it, so two orgs may both hold an index named \&quot;messages\&quot; and neither can see the other&#39;s documents. Without a validated principal the answer is 403 carrying Meilisearch&#39;s &#x60;invalid_api_key&#x60; body. Errors use Meilisearch&#39;s {message, code, type, link} shape rather than cloud&#39;s, because that &#x60;code&#x60; is a wire contract a Meilisearch client branches on.  The 202 and its &#x60;enqueued&#x60; task are DIALECT COMPATIBILITY, not a promise of later work: the write is already applied when this answers, and the task it names is already complete. A client that polls waitForTask resolves immediately rather than waiting, and a client that does not poll has still had its write committed.
+     * Writes documents into the caller&#39;s own index, keyed by the index&#39;s primary key: a document whose key is already present is REPLACED whole. The body is the dialect&#39;s own — an array of documents, or a single document — and each is stored verbatim, so a read gives back exactly what was written.  The index is CREATED when it is missing rather than refused, because a Meilisearch client writes before it configures.  The tenant is the org minted from the VALIDATED bearer&#39;s owner claim, never a client-supplied header, so two orgs may both hold an index named \&quot;messages\&quot; and neither can see the other&#39;s documents. Without a validated principal the answer is 403 carrying the dialect&#39;s &#x60;invalid_api_key&#x60; body.  The 202 and its &#x60;enqueued&#x60; task are DIALECT COMPATIBILITY, not a promise of later work: the documents are searchable when this answers, and a client that polls waitForTask resolves immediately.
      * @param uid  (required)
+     * @param requestBody  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call postIndexIndexesByUidDocumentsAsync(@javax.annotation.Nonnull String uid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postIndexIndexesByUidDocumentsAsync(@javax.annotation.Nonnull String uid, @javax.annotation.Nullable List<Object> requestBody, final ApiCallback<IndexEnqueued> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postIndexIndexesByUidDocumentsValidateBeforeCall(uid, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = postIndexIndexesByUidDocumentsValidateBeforeCall(uid, requestBody, _callback);
+        Type localVarReturnType = new TypeToken<IndexEnqueued>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postIndexIndexesByUidDocumentsDeleteBatch
      * @param uid  (required)
+     * @param postIndexIndexesByUidDocumentsDeleteBatchRequest  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call postIndexIndexesByUidDocumentsDeleteBatchCall(@javax.annotation.Nonnull String uid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postIndexIndexesByUidDocumentsDeleteBatchCall(@javax.annotation.Nonnull String uid, @javax.annotation.Nullable PostIndexIndexesByUidDocumentsDeleteBatchRequest postIndexIndexesByUidDocumentsDeleteBatchRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1434,7 +1906,7 @@ public class IndexApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = postIndexIndexesByUidDocumentsDeleteBatchRequest;
 
         // create path and map variables
         String localVarPath = "/v1/index/indexes/{uid}/documents/delete-batch"
@@ -1447,6 +1919,7 @@ public class IndexApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1454,6 +1927,7 @@ public class IndexApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1465,60 +1939,92 @@ public class IndexApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postIndexIndexesByUidDocumentsDeleteBatchValidateBeforeCall(@javax.annotation.Nonnull String uid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postIndexIndexesByUidDocumentsDeleteBatchValidateBeforeCall(@javax.annotation.Nonnull String uid, @javax.annotation.Nullable PostIndexIndexesByUidDocumentsDeleteBatchRequest postIndexIndexesByUidDocumentsDeleteBatchRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'uid' is set
         if (uid == null) {
             throw new ApiException("Missing the required parameter 'uid' when calling postIndexIndexesByUidDocumentsDeleteBatch(Async)");
         }
 
-        return postIndexIndexesByUidDocumentsDeleteBatchCall(uid, _callback);
+        return postIndexIndexesByUidDocumentsDeleteBatchCall(uid, postIndexIndexesByUidDocumentsDeleteBatchRequest, _callback);
 
     }
 
     /**
      * Delete many documents by primary key in one call
-     * Removes every document named by an array of primary keys. Keys may be sent as strings or numbers — a number keeps its exact decimal form, so an integer key round-trips as &#x60;42&#x60; and never as scientific notation. Keys that are absent from the index are skipped rather than failing the batch, so this is idempotent. A body that is not an array is 400. The tenant is the org minted from the VALIDATED bearer&#39;s owner claim, never a client-supplied header, and every query filters on it, so two orgs may both hold an index named \&quot;messages\&quot; and neither can see the other&#39;s documents. Without a validated principal the answer is 403 carrying Meilisearch&#39;s &#x60;invalid_api_key&#x60; body. Errors use Meilisearch&#39;s {message, code, type, link} shape rather than cloud&#39;s, because that &#x60;code&#x60; is a wire contract a Meilisearch client branches on.  The 202 and its &#x60;enqueued&#x60; task are DIALECT COMPATIBILITY, not a promise of later work: the write is already applied when this answers, and the task it names is already complete. A client that polls waitForTask resolves immediately rather than waiting, and a client that does not poll has still had its write committed.
+     * Removes every named document from the caller&#39;s own index. The body is the dialect&#39;s own: a bare array of primary keys, which may be strings or numbers. A key that is not there is not an error, so a client reconciling its own corpus can send one list rather than checking each key first.  The tenant is the org minted from the VALIDATED bearer&#39;s owner claim, never a client-supplied header. Without a validated principal the answer is 403 carrying the dialect&#39;s &#x60;invalid_api_key&#x60; body.  The 202 and its &#x60;enqueued&#x60; task are DIALECT COMPATIBILITY, not a promise of later work: the documents are already gone when this answers.
      * @param uid  (required)
+     * @param postIndexIndexesByUidDocumentsDeleteBatchRequest  (optional)
+     * @return IndexEnqueued
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
+     </table>
      */
-    public void postIndexIndexesByUidDocumentsDeleteBatch(@javax.annotation.Nonnull String uid) throws ApiException {
-        postIndexIndexesByUidDocumentsDeleteBatchWithHttpInfo(uid);
+    public IndexEnqueued postIndexIndexesByUidDocumentsDeleteBatch(@javax.annotation.Nonnull String uid, @javax.annotation.Nullable PostIndexIndexesByUidDocumentsDeleteBatchRequest postIndexIndexesByUidDocumentsDeleteBatchRequest) throws ApiException {
+        ApiResponse<IndexEnqueued> localVarResp = postIndexIndexesByUidDocumentsDeleteBatchWithHttpInfo(uid, postIndexIndexesByUidDocumentsDeleteBatchRequest);
+        return localVarResp.getData();
     }
 
     /**
      * Delete many documents by primary key in one call
-     * Removes every document named by an array of primary keys. Keys may be sent as strings or numbers — a number keeps its exact decimal form, so an integer key round-trips as &#x60;42&#x60; and never as scientific notation. Keys that are absent from the index are skipped rather than failing the batch, so this is idempotent. A body that is not an array is 400. The tenant is the org minted from the VALIDATED bearer&#39;s owner claim, never a client-supplied header, and every query filters on it, so two orgs may both hold an index named \&quot;messages\&quot; and neither can see the other&#39;s documents. Without a validated principal the answer is 403 carrying Meilisearch&#39;s &#x60;invalid_api_key&#x60; body. Errors use Meilisearch&#39;s {message, code, type, link} shape rather than cloud&#39;s, because that &#x60;code&#x60; is a wire contract a Meilisearch client branches on.  The 202 and its &#x60;enqueued&#x60; task are DIALECT COMPATIBILITY, not a promise of later work: the write is already applied when this answers, and the task it names is already complete. A client that polls waitForTask resolves immediately rather than waiting, and a client that does not poll has still had its write committed.
+     * Removes every named document from the caller&#39;s own index. The body is the dialect&#39;s own: a bare array of primary keys, which may be strings or numbers. A key that is not there is not an error, so a client reconciling its own corpus can send one list rather than checking each key first.  The tenant is the org minted from the VALIDATED bearer&#39;s owner claim, never a client-supplied header. Without a validated principal the answer is 403 carrying the dialect&#39;s &#x60;invalid_api_key&#x60; body.  The 202 and its &#x60;enqueued&#x60; task are DIALECT COMPATIBILITY, not a promise of later work: the documents are already gone when this answers.
      * @param uid  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @param postIndexIndexesByUidDocumentsDeleteBatchRequest  (optional)
+     * @return ApiResponse&lt;IndexEnqueued&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
+     </table>
      */
-    public ApiResponse<Void> postIndexIndexesByUidDocumentsDeleteBatchWithHttpInfo(@javax.annotation.Nonnull String uid) throws ApiException {
-        okhttp3.Call localVarCall = postIndexIndexesByUidDocumentsDeleteBatchValidateBeforeCall(uid, null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<IndexEnqueued> postIndexIndexesByUidDocumentsDeleteBatchWithHttpInfo(@javax.annotation.Nonnull String uid, @javax.annotation.Nullable PostIndexIndexesByUidDocumentsDeleteBatchRequest postIndexIndexesByUidDocumentsDeleteBatchRequest) throws ApiException {
+        okhttp3.Call localVarCall = postIndexIndexesByUidDocumentsDeleteBatchValidateBeforeCall(uid, postIndexIndexesByUidDocumentsDeleteBatchRequest, null);
+        Type localVarReturnType = new TypeToken<IndexEnqueued>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Delete many documents by primary key in one call (asynchronously)
-     * Removes every document named by an array of primary keys. Keys may be sent as strings or numbers — a number keeps its exact decimal form, so an integer key round-trips as &#x60;42&#x60; and never as scientific notation. Keys that are absent from the index are skipped rather than failing the batch, so this is idempotent. A body that is not an array is 400. The tenant is the org minted from the VALIDATED bearer&#39;s owner claim, never a client-supplied header, and every query filters on it, so two orgs may both hold an index named \&quot;messages\&quot; and neither can see the other&#39;s documents. Without a validated principal the answer is 403 carrying Meilisearch&#39;s &#x60;invalid_api_key&#x60; body. Errors use Meilisearch&#39;s {message, code, type, link} shape rather than cloud&#39;s, because that &#x60;code&#x60; is a wire contract a Meilisearch client branches on.  The 202 and its &#x60;enqueued&#x60; task are DIALECT COMPATIBILITY, not a promise of later work: the write is already applied when this answers, and the task it names is already complete. A client that polls waitForTask resolves immediately rather than waiting, and a client that does not poll has still had its write committed.
+     * Removes every named document from the caller&#39;s own index. The body is the dialect&#39;s own: a bare array of primary keys, which may be strings or numbers. A key that is not there is not an error, so a client reconciling its own corpus can send one list rather than checking each key first.  The tenant is the org minted from the VALIDATED bearer&#39;s owner claim, never a client-supplied header. Without a validated principal the answer is 403 carrying the dialect&#39;s &#x60;invalid_api_key&#x60; body.  The 202 and its &#x60;enqueued&#x60; task are DIALECT COMPATIBILITY, not a promise of later work: the documents are already gone when this answers.
      * @param uid  (required)
+     * @param postIndexIndexesByUidDocumentsDeleteBatchRequest  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call postIndexIndexesByUidDocumentsDeleteBatchAsync(@javax.annotation.Nonnull String uid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postIndexIndexesByUidDocumentsDeleteBatchAsync(@javax.annotation.Nonnull String uid, @javax.annotation.Nullable PostIndexIndexesByUidDocumentsDeleteBatchRequest postIndexIndexesByUidDocumentsDeleteBatchRequest, final ApiCallback<IndexEnqueued> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postIndexIndexesByUidDocumentsDeleteBatchValidateBeforeCall(uid, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = postIndexIndexesByUidDocumentsDeleteBatchValidateBeforeCall(uid, postIndexIndexesByUidDocumentsDeleteBatchRequest, _callback);
+        Type localVarReturnType = new TypeToken<IndexEnqueued>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postIndexIndexesByUidSearch
      * @param uid  (required)
+     * @param indexQuery  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call postIndexIndexesByUidSearchCall(@javax.annotation.Nonnull String uid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postIndexIndexesByUidSearchCall(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull IndexQuery indexQuery, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1532,7 +2038,7 @@ public class IndexApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = indexQuery;
 
         // create path and map variables
         String localVarPath = "/v1/index/indexes/{uid}/search"
@@ -1545,6 +2051,7 @@ public class IndexApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1552,6 +2059,7 @@ public class IndexApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1563,60 +2071,97 @@ public class IndexApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postIndexIndexesByUidSearchValidateBeforeCall(@javax.annotation.Nonnull String uid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postIndexIndexesByUidSearchValidateBeforeCall(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull IndexQuery indexQuery, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'uid' is set
         if (uid == null) {
             throw new ApiException("Missing the required parameter 'uid' when calling postIndexIndexesByUidSearch(Async)");
         }
 
-        return postIndexIndexesByUidSearchCall(uid, _callback);
+        // verify the required parameter 'indexQuery' is set
+        if (indexQuery == null) {
+            throw new ApiException("Missing the required parameter 'indexQuery' when calling postIndexIndexesByUidSearch(Async)");
+        }
+
+        return postIndexIndexesByUidSearchCall(uid, indexQuery, _callback);
 
     }
 
     /**
-     * Search an index, forgiving typos
-     * Answers the documents in one index matching &#x60;q&#x60;, ranked by how many of the query&#39;s terms they match, with prefix matching so a partial word still finds its document. &#x60;limit&#x60; defaults to 20 and is capped at 1000, &#x60;offset&#x60; pages; a negative value falls back to the default rather than erroring.  &#x60;filter&#x60; takes a Meilisearch filter expression, or an array of them, and the &#x60;user &#x3D; \&quot;…\&quot;&#x60; and &#x60;user IN […]&#x60; forms are honoured — that is how an app with many end users narrows results to one of them WITHIN the org. &#x60;estimatedTotalHits&#x60; is exact for the page returned, not an estimate, because every hit is materialised. An index the caller&#39;s org does not hold is 404 &#x60;index_not_found&#x60;. The tenant is the org minted from the VALIDATED bearer&#39;s owner claim, never a client-supplied header, and every query filters on it, so two orgs may both hold an index named \&quot;messages\&quot; and neither can see the other&#39;s documents. Without a validated principal the answer is 403 carrying Meilisearch&#39;s &#x60;invalid_api_key&#x60; body. Errors use Meilisearch&#39;s {message, code, type, link} shape rather than cloud&#39;s, because that &#x60;code&#x60; is a wire contract a Meilisearch client branches on.
+     * Searches an index, forgiving typos.
+     * Searches an index, forgiving typos.  Ranks the org&#39;s documents in one index against &#x60;q&#x60; and answers the matching documents whole, most relevant first. A prefix matches, so a partial word finds the documents containing it, and &#x60;filter&#x60; narrows the result to documents whose filterable attributes match — which is how a caller scopes results to one end user within its own org.  &#x60;estimatedTotalHits&#x60; is the dialect&#39;s name for the count; every hit is materialised here, so for this page it is exact. An index this org does not hold answers 404 carrying the dialect&#39;s &#x60;index_not_found&#x60;.
      * @param uid  (required)
+     * @param indexQuery  (required)
+     * @return IndexHits
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public void postIndexIndexesByUidSearch(@javax.annotation.Nonnull String uid) throws ApiException {
-        postIndexIndexesByUidSearchWithHttpInfo(uid);
+    public IndexHits postIndexIndexesByUidSearch(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull IndexQuery indexQuery) throws ApiException {
+        ApiResponse<IndexHits> localVarResp = postIndexIndexesByUidSearchWithHttpInfo(uid, indexQuery);
+        return localVarResp.getData();
     }
 
     /**
-     * Search an index, forgiving typos
-     * Answers the documents in one index matching &#x60;q&#x60;, ranked by how many of the query&#39;s terms they match, with prefix matching so a partial word still finds its document. &#x60;limit&#x60; defaults to 20 and is capped at 1000, &#x60;offset&#x60; pages; a negative value falls back to the default rather than erroring.  &#x60;filter&#x60; takes a Meilisearch filter expression, or an array of them, and the &#x60;user &#x3D; \&quot;…\&quot;&#x60; and &#x60;user IN […]&#x60; forms are honoured — that is how an app with many end users narrows results to one of them WITHIN the org. &#x60;estimatedTotalHits&#x60; is exact for the page returned, not an estimate, because every hit is materialised. An index the caller&#39;s org does not hold is 404 &#x60;index_not_found&#x60;. The tenant is the org minted from the VALIDATED bearer&#39;s owner claim, never a client-supplied header, and every query filters on it, so two orgs may both hold an index named \&quot;messages\&quot; and neither can see the other&#39;s documents. Without a validated principal the answer is 403 carrying Meilisearch&#39;s &#x60;invalid_api_key&#x60; body. Errors use Meilisearch&#39;s {message, code, type, link} shape rather than cloud&#39;s, because that &#x60;code&#x60; is a wire contract a Meilisearch client branches on.
+     * Searches an index, forgiving typos.
+     * Searches an index, forgiving typos.  Ranks the org&#39;s documents in one index against &#x60;q&#x60; and answers the matching documents whole, most relevant first. A prefix matches, so a partial word finds the documents containing it, and &#x60;filter&#x60; narrows the result to documents whose filterable attributes match — which is how a caller scopes results to one end user within its own org.  &#x60;estimatedTotalHits&#x60; is the dialect&#39;s name for the count; every hit is materialised here, so for this page it is exact. An index this org does not hold answers 404 carrying the dialect&#39;s &#x60;index_not_found&#x60;.
      * @param uid  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @param indexQuery  (required)
+     * @return ApiResponse&lt;IndexHits&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public ApiResponse<Void> postIndexIndexesByUidSearchWithHttpInfo(@javax.annotation.Nonnull String uid) throws ApiException {
-        okhttp3.Call localVarCall = postIndexIndexesByUidSearchValidateBeforeCall(uid, null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<IndexHits> postIndexIndexesByUidSearchWithHttpInfo(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull IndexQuery indexQuery) throws ApiException {
+        okhttp3.Call localVarCall = postIndexIndexesByUidSearchValidateBeforeCall(uid, indexQuery, null);
+        Type localVarReturnType = new TypeToken<IndexHits>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Search an index, forgiving typos (asynchronously)
-     * Answers the documents in one index matching &#x60;q&#x60;, ranked by how many of the query&#39;s terms they match, with prefix matching so a partial word still finds its document. &#x60;limit&#x60; defaults to 20 and is capped at 1000, &#x60;offset&#x60; pages; a negative value falls back to the default rather than erroring.  &#x60;filter&#x60; takes a Meilisearch filter expression, or an array of them, and the &#x60;user &#x3D; \&quot;…\&quot;&#x60; and &#x60;user IN […]&#x60; forms are honoured — that is how an app with many end users narrows results to one of them WITHIN the org. &#x60;estimatedTotalHits&#x60; is exact for the page returned, not an estimate, because every hit is materialised. An index the caller&#39;s org does not hold is 404 &#x60;index_not_found&#x60;. The tenant is the org minted from the VALIDATED bearer&#39;s owner claim, never a client-supplied header, and every query filters on it, so two orgs may both hold an index named \&quot;messages\&quot; and neither can see the other&#39;s documents. Without a validated principal the answer is 403 carrying Meilisearch&#39;s &#x60;invalid_api_key&#x60; body. Errors use Meilisearch&#39;s {message, code, type, link} shape rather than cloud&#39;s, because that &#x60;code&#x60; is a wire contract a Meilisearch client branches on.
+     * Searches an index, forgiving typos. (asynchronously)
+     * Searches an index, forgiving typos.  Ranks the org&#39;s documents in one index against &#x60;q&#x60; and answers the matching documents whole, most relevant first. A prefix matches, so a partial word finds the documents containing it, and &#x60;filter&#x60; narrows the result to documents whose filterable attributes match — which is how a caller scopes results to one end user within its own org.  &#x60;estimatedTotalHits&#x60; is the dialect&#39;s name for the count; every hit is materialised here, so for this page it is exact. An index this org does not hold answers 404 carrying the dialect&#39;s &#x60;index_not_found&#x60;.
      * @param uid  (required)
+     * @param indexQuery  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call postIndexIndexesByUidSearchAsync(@javax.annotation.Nonnull String uid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postIndexIndexesByUidSearchAsync(@javax.annotation.Nonnull String uid, @javax.annotation.Nonnull IndexQuery indexQuery, final ApiCallback<IndexHits> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postIndexIndexesByUidSearchValidateBeforeCall(uid, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = postIndexIndexesByUidSearchValidateBeforeCall(uid, indexQuery, _callback);
+        Type localVarReturnType = new TypeToken<IndexHits>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for putIndexIndexesByUidDocuments
      * @param uid  (required)
+     * @param requestBody  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call putIndexIndexesByUidDocumentsCall(@javax.annotation.Nonnull String uid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putIndexIndexesByUidDocumentsCall(@javax.annotation.Nonnull String uid, @javax.annotation.Nullable List<Object> requestBody, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1630,7 +2175,7 @@ public class IndexApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = requestBody;
 
         // create path and map variables
         String localVarPath = "/v1/index/indexes/{uid}/documents"
@@ -1643,6 +2188,7 @@ public class IndexApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1650,6 +2196,7 @@ public class IndexApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -1661,50 +2208,75 @@ public class IndexApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putIndexIndexesByUidDocumentsValidateBeforeCall(@javax.annotation.Nonnull String uid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putIndexIndexesByUidDocumentsValidateBeforeCall(@javax.annotation.Nonnull String uid, @javax.annotation.Nullable List<Object> requestBody, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'uid' is set
         if (uid == null) {
             throw new ApiException("Missing the required parameter 'uid' when calling putIndexIndexesByUidDocuments(Async)");
         }
 
-        return putIndexIndexesByUidDocumentsCall(uid, _callback);
+        return putIndexIndexesByUidDocumentsCall(uid, requestBody, _callback);
 
     }
 
     /**
      * Add or update documents in an index
-     * Upserts documents into one index, keyed by the index&#39;s primary key: a document whose key is already present is REPLACED, one that is not is added, and it becomes searchable immediately. Send an array, or a single object — a hand-rolled caller sending one document is accepted rather than 400&#39;d. The index is created on demand, so a first write needs no create call.  This and the POST on the same path are the SAME operation, served by one handler. Both exist because the Meilisearch dialect has both verbs; there is no partial-update semantics on this one — a document is replaced whole either way. The tenant is the org minted from the VALIDATED bearer&#39;s owner claim, never a client-supplied header, and every query filters on it, so two orgs may both hold an index named \&quot;messages\&quot; and neither can see the other&#39;s documents. Without a validated principal the answer is 403 carrying Meilisearch&#39;s &#x60;invalid_api_key&#x60; body. Errors use Meilisearch&#39;s {message, code, type, link} shape rather than cloud&#39;s, because that &#x60;code&#x60; is a wire contract a Meilisearch client branches on.  The 202 and its &#x60;enqueued&#x60; task are DIALECT COMPATIBILITY, not a promise of later work: the write is already applied when this answers, and the task it names is already complete. A client that polls waitForTask resolves immediately rather than waiting, and a client that does not poll has still had its write committed.
+     * The dialect&#39;s update spelling of the write above, and the same act: an upsert keyed by the index&#39;s primary key. The JS client&#39;s addDocuments and updateDocuments both reduce to this for whole documents, so both spellings are served and both behave identically.  The tenant is the org minted from the VALIDATED bearer&#39;s owner claim, never a client-supplied header. Without a validated principal the answer is 403 carrying the dialect&#39;s &#x60;invalid_api_key&#x60; body.  The 202 and its &#x60;enqueued&#x60; task are DIALECT COMPATIBILITY, not a promise of later work: the write is already applied when this answers.
      * @param uid  (required)
+     * @param requestBody  (optional)
+     * @return IndexEnqueued
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
+     </table>
      */
-    public void putIndexIndexesByUidDocuments(@javax.annotation.Nonnull String uid) throws ApiException {
-        putIndexIndexesByUidDocumentsWithHttpInfo(uid);
+    public IndexEnqueued putIndexIndexesByUidDocuments(@javax.annotation.Nonnull String uid, @javax.annotation.Nullable List<Object> requestBody) throws ApiException {
+        ApiResponse<IndexEnqueued> localVarResp = putIndexIndexesByUidDocumentsWithHttpInfo(uid, requestBody);
+        return localVarResp.getData();
     }
 
     /**
      * Add or update documents in an index
-     * Upserts documents into one index, keyed by the index&#39;s primary key: a document whose key is already present is REPLACED, one that is not is added, and it becomes searchable immediately. Send an array, or a single object — a hand-rolled caller sending one document is accepted rather than 400&#39;d. The index is created on demand, so a first write needs no create call.  This and the POST on the same path are the SAME operation, served by one handler. Both exist because the Meilisearch dialect has both verbs; there is no partial-update semantics on this one — a document is replaced whole either way. The tenant is the org minted from the VALIDATED bearer&#39;s owner claim, never a client-supplied header, and every query filters on it, so two orgs may both hold an index named \&quot;messages\&quot; and neither can see the other&#39;s documents. Without a validated principal the answer is 403 carrying Meilisearch&#39;s &#x60;invalid_api_key&#x60; body. Errors use Meilisearch&#39;s {message, code, type, link} shape rather than cloud&#39;s, because that &#x60;code&#x60; is a wire contract a Meilisearch client branches on.  The 202 and its &#x60;enqueued&#x60; task are DIALECT COMPATIBILITY, not a promise of later work: the write is already applied when this answers, and the task it names is already complete. A client that polls waitForTask resolves immediately rather than waiting, and a client that does not poll has still had its write committed.
+     * The dialect&#39;s update spelling of the write above, and the same act: an upsert keyed by the index&#39;s primary key. The JS client&#39;s addDocuments and updateDocuments both reduce to this for whole documents, so both spellings are served and both behave identically.  The tenant is the org minted from the VALIDATED bearer&#39;s owner claim, never a client-supplied header. Without a validated principal the answer is 403 carrying the dialect&#39;s &#x60;invalid_api_key&#x60; body.  The 202 and its &#x60;enqueued&#x60; task are DIALECT COMPATIBILITY, not a promise of later work: the write is already applied when this answers.
      * @param uid  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @param requestBody  (optional)
+     * @return ApiResponse&lt;IndexEnqueued&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
+     </table>
      */
-    public ApiResponse<Void> putIndexIndexesByUidDocumentsWithHttpInfo(@javax.annotation.Nonnull String uid) throws ApiException {
-        okhttp3.Call localVarCall = putIndexIndexesByUidDocumentsValidateBeforeCall(uid, null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<IndexEnqueued> putIndexIndexesByUidDocumentsWithHttpInfo(@javax.annotation.Nonnull String uid, @javax.annotation.Nullable List<Object> requestBody) throws ApiException {
+        okhttp3.Call localVarCall = putIndexIndexesByUidDocumentsValidateBeforeCall(uid, requestBody, null);
+        Type localVarReturnType = new TypeToken<IndexEnqueued>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Add or update documents in an index (asynchronously)
-     * Upserts documents into one index, keyed by the index&#39;s primary key: a document whose key is already present is REPLACED, one that is not is added, and it becomes searchable immediately. Send an array, or a single object — a hand-rolled caller sending one document is accepted rather than 400&#39;d. The index is created on demand, so a first write needs no create call.  This and the POST on the same path are the SAME operation, served by one handler. Both exist because the Meilisearch dialect has both verbs; there is no partial-update semantics on this one — a document is replaced whole either way. The tenant is the org minted from the VALIDATED bearer&#39;s owner claim, never a client-supplied header, and every query filters on it, so two orgs may both hold an index named \&quot;messages\&quot; and neither can see the other&#39;s documents. Without a validated principal the answer is 403 carrying Meilisearch&#39;s &#x60;invalid_api_key&#x60; body. Errors use Meilisearch&#39;s {message, code, type, link} shape rather than cloud&#39;s, because that &#x60;code&#x60; is a wire contract a Meilisearch client branches on.  The 202 and its &#x60;enqueued&#x60; task are DIALECT COMPATIBILITY, not a promise of later work: the write is already applied when this answers, and the task it names is already complete. A client that polls waitForTask resolves immediately rather than waiting, and a client that does not poll has still had its write committed.
+     * The dialect&#39;s update spelling of the write above, and the same act: an upsert keyed by the index&#39;s primary key. The JS client&#39;s addDocuments and updateDocuments both reduce to this for whole documents, so both spellings are served and both behave identically.  The tenant is the org minted from the VALIDATED bearer&#39;s owner claim, never a client-supplied header. Without a validated principal the answer is 403 carrying the dialect&#39;s &#x60;invalid_api_key&#x60; body.  The 202 and its &#x60;enqueued&#x60; task are DIALECT COMPATIBILITY, not a promise of later work: the write is already applied when this answers.
      * @param uid  (required)
+     * @param requestBody  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call putIndexIndexesByUidDocumentsAsync(@javax.annotation.Nonnull String uid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call putIndexIndexesByUidDocumentsAsync(@javax.annotation.Nonnull String uid, @javax.annotation.Nullable List<Object> requestBody, final ApiCallback<IndexEnqueued> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putIndexIndexesByUidDocumentsValidateBeforeCall(uid, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = putIndexIndexesByUidDocumentsValidateBeforeCall(uid, requestBody, _callback);
+        Type localVarReturnType = new TypeToken<IndexEnqueued>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 }

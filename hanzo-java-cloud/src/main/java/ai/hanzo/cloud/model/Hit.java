@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -95,7 +95,7 @@ public class Hit {
   }
 
   /**
-   * Get doctype
+   * DocType is which kind of knowledge matched: kb-page (a wiki page), kb-memory (a unit of agent memory) or kb-source (a document a connector ingested). Those three are the whole indexed set, and searchIn.DocTypes filters on them.
    * @return doctype
    */
   @javax.annotation.Nullable
@@ -114,7 +114,7 @@ public class Hit {
   }
 
   /**
-   * Get name
+   * Name is the document&#39;s name in the framework store — the id to read or open it with. Unique per (org, doctype), so it identifies the document with DocType and not alone.
    * @return name
    */
   @javax.annotation.Nullable
@@ -133,7 +133,7 @@ public class Hit {
   }
 
   /**
-   * Get project
+   * Project is the project scope the document was saved under. Absent for a document saved with none, which is also why a project-scoped query cannot reach it.
    * @return project
    */
   @javax.annotation.Nullable
@@ -152,7 +152,7 @@ public class Hit {
   }
 
   /**
-   * Get provider
+   * Provider is the connector that ingested the document — github, slack, google or notion. Absent for a page or memory written in the product, which came from no connector.
    * @return provider
    */
   @javax.annotation.Nullable
@@ -171,7 +171,7 @@ public class Hit {
   }
 
   /**
-   * Get score
+   * Score is the cosine similarity between the query&#39;s embedding and the document&#39;s, from -1 to 1, higher being closer — the collection is created with Cosine distance. Hits arrive ordered by it, descending. There is no absolute cutoff: what counts as a good score moves with the query and the embedding model, so compare scores within one response and not across queries.
    * @return score
    */
   @javax.annotation.Nullable
@@ -190,7 +190,7 @@ public class Hit {
   }
 
   /**
-   * Get title
+   * Title is the document&#39;s title as it was indexed. Empty for a document saved without one; it is a label to show, never the id (that is Name).
    * @return title
    */
   @javax.annotation.Nullable
@@ -209,7 +209,7 @@ public class Hit {
   }
 
   /**
-   * Get url
+   * URL is the document&#39;s link back into the app it was ingested from. Absent when the indexed payload carries none, which is the normal case for pages and memories.
    * @return url
    */
   @javax.annotation.Nullable

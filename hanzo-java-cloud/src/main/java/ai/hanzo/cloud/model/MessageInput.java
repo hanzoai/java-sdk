@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -81,7 +81,7 @@ public class MessageInput {
   }
 
   /**
-   * Get from
+   * From is the number to send FROM, in E.164. It must be one this org holds and it must be sms-capable.
    * @return from
    */
   @javax.annotation.Nullable
@@ -108,7 +108,7 @@ public class MessageInput {
   }
 
   /**
-   * Get media
+   * Media are URLs to attach. A message with any is an MMS to the carrier — the distinction is the carrier&#39;s to make, not something the caller declares.
    * @return media
    */
   @javax.annotation.Nullable
@@ -127,7 +127,7 @@ public class MessageInput {
   }
 
   /**
-   * Get text
+   * Text is the message body. It may be empty when Media carries the message.
    * @return text
    */
   @javax.annotation.Nullable
@@ -146,7 +146,7 @@ public class MessageInput {
   }
 
   /**
-   * Get to
+   * To is the number to send to, in E.164.
    * @return to
    */
   @javax.annotation.Nullable

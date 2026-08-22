@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -109,7 +109,7 @@ public class Campaign {
   }
 
   /**
-   * Budget and Spend are minor units (USD cents), clamped to &gt;&#x3D; 0.
+   * Budget is what the campaign is allowed to cost, in USD cents. A negative value is clamped to 0; nothing enforces the ceiling here.
    * @return budget
    */
   @javax.annotation.Nullable
@@ -147,7 +147,7 @@ public class Campaign {
   }
 
   /**
-   * CreatedAt and UpdatedAt are unix seconds, both server-assigned.
+   * CreatedAt is unix seconds when the campaign was registered. Server-assigned and never rewritten — an update leaves it as it was.
    * @return createdAt
    */
   @javax.annotation.Nullable
@@ -242,7 +242,7 @@ public class Campaign {
   }
 
   /**
-   * Get spend
+   * Spend is what the campaign has cost so far, in USD cents, clamped to &gt;&#x3D; 0. The CALLER owns it: no send, ad buy or invoice moves it, so it changes only when create or update carries a new value. It is summed across the org&#39;s campaigns into GET /v1/marketing/summary.
    * @return spend
    */
   @javax.annotation.Nullable
@@ -280,7 +280,7 @@ public class Campaign {
   }
 
   /**
-   * Get updatedAt
+   * UpdatedAt is unix seconds of the last write. Server-assigned on create and on every update or schedule change, and the campaign list is ordered by it, newest first.
    * @return updatedAt
    */
   @javax.annotation.Nullable

@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -129,7 +129,7 @@ public class RiskLineage {
   }
 
   /**
-   * Get dataset
+   * Dataset is the dataset traced.
    * @return dataset
    */
   @javax.annotation.Nullable
@@ -167,7 +167,7 @@ public class RiskLineage {
   }
 
   /**
-   * From and To are the window actually read — To is the window&#39;s end pulled back by the maturity horizon, which is usually earlier than the spec&#39;s.
+   * From is where the window actually read opens, RFC 3339. Same as the spec&#39;s.
    * @return from
    */
   @javax.annotation.Nullable
@@ -224,7 +224,7 @@ public class RiskLineage {
   }
 
   /**
-   * Get refusal
+   * Refusal says which way it failed — the window expired, or the source now holds a different count. Absent when Reproducible is true.
    * @return refusal
    */
   @javax.annotation.Nullable
@@ -243,7 +243,7 @@ public class RiskLineage {
   }
 
   /**
-   * Reproducible is true when the source still holds what this version was built from. Refusal says why not, when it is false.
+   * Reproducible is true when the source still holds what this version was built from — measured by asking it again, not recalled. False is ordinary: the source is fed by a rollup that runs behind the events, so \&quot;it holds more now\&quot; is the common case and it means re-running the spec would not produce this version.
    * @return reproducible
    */
   @javax.annotation.Nullable
@@ -281,7 +281,7 @@ public class RiskLineage {
   }
 
   /**
-   * Rows and Subjects are what the source held for that window at materialisation time.
+   * Rows is how many rows the source held for that window at materialisation time. Holds is the same question asked now, and the difference between them is the whole of the reproducibility claim.
    * @return rows
    */
   @javax.annotation.Nullable
@@ -338,7 +338,7 @@ public class RiskLineage {
   }
 
   /**
-   * Get subjects
+   * Subjects is how many distinct subjects those rows belonged to. It is the real sample size — the row count flatters it whenever a subject is active.
    * @return subjects
    */
   @javax.annotation.Nullable
@@ -357,7 +357,7 @@ public class RiskLineage {
   }
 
   /**
-   * Get to
+   * To is where it ends: the spec&#39;s own end pulled BACK by the maturity horizon, so it is usually earlier than the spec says. This is the window a reproduction has to ask for — asking the spec&#39;s would not return these rows.
    * @return to
    */
   @javax.annotation.Nullable
@@ -376,7 +376,7 @@ public class RiskLineage {
   }
 
   /**
-   * Get version
+   * Version is the version traced — the one asked for, or the newest published one when the request named none.
    * @return version
    */
   @javax.annotation.Nullable

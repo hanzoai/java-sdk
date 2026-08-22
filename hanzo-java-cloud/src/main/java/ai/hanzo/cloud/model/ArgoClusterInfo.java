@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -75,7 +75,7 @@ public class ArgoClusterInfo {
   }
 
   /**
-   * Get applicationsCount
+   * ApplicationsCount is how many of THE CALLER&#39;S applications reconcile into this cluster, so a tenant sees its own count and a SuperAdmin the fleet&#39;s. It is zero for the in-cluster destination when the caller owns nothing, since that destination is listed whether or not anything targets it.
    * @return applicationsCount
    */
   @javax.annotation.Nullable
@@ -94,7 +94,7 @@ public class ArgoClusterInfo {
   }
 
   /**
-   * Get connectionState
+   * ConnectionState repeats the cluster&#39;s own connection state, which is where ArgoCD&#39;s UI reads it from on this object.
    * @return connectionState
    */
   @javax.annotation.Nullable
@@ -113,7 +113,7 @@ public class ArgoClusterInfo {
   }
 
   /**
-   * Get serverVersion
+   * ServerVersion is the kubernetes version of the destination. Always absent: nothing here queries the API server for it.
    * @return serverVersion
    */
   @javax.annotation.Nullable

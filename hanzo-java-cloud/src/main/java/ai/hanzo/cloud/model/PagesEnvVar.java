@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -69,7 +69,7 @@ public class PagesEnvVar {
   }
 
   /**
-   * Get type
+   * Type is \&quot;plain_text\&quot; or \&quot;secret_text\&quot; and decides that: plain text is readable afterwards, secret text is write-only. Empty is Cloudflare&#39;s default, plain_text — so a secret with no type set is stored in the clear.
    * @return type
    */
   @javax.annotation.Nullable
@@ -88,7 +88,7 @@ public class PagesEnvVar {
   }
 
   /**
-   * Get value
+   * Value is the variable&#39;s value. Under type \&quot;secret_text\&quot; Cloudflare encrypts it on arrival and never reads it back, so a later read of the project shows the variable without this.
    * @return value
    */
   @javax.annotation.Nullable

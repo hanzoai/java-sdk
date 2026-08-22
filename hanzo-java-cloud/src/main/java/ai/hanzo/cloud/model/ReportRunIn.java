@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -118,7 +118,7 @@ public class ReportRunIn {
   }
 
   /**
-   * Get changed
+   * Changed says whether the run produced any commit. It is INDEPENDENT of OK: a run can succeed and change nothing (there was nothing to do), and a run can fail after committing some of its work. Two questions, two booleans.
    * @return changed
    */
   @javax.annotation.Nullable
@@ -137,7 +137,7 @@ public class ReportRunIn {
   }
 
   /**
-   * Get commitSha
+   * CommitSha is the tip the run pushed, clamped to 128 characters. Empty when it pushed nothing, which is the same case Changed reports false for.
    * @return commitSha
    */
   @javax.annotation.Nullable
@@ -156,7 +156,7 @@ public class ReportRunIn {
   }
 
   /**
-   * Get diffstat
+   * Diffstat is the run&#39;s own summary of what it changed, as text, clamped to 64 KiB. Free-form: it is shown, never parsed.
    * @return diffstat
    */
   @javax.annotation.Nullable
@@ -175,7 +175,7 @@ public class ReportRunIn {
   }
 
   /**
-   * Get error
+   * Error is why the run failed, clamped to 64 KiB. It is CLAMPED rather than refused — a truncated reason is worth more than a rejected report, because a rejected report leaves the durable workflow waiting forever.
    * @return error
    */
   @javax.annotation.Nullable

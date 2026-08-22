@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -20,7 +20,11 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -50,126 +54,102 @@ import ai.hanzo.cloud.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class O11ySeries {
-  public static final String SERIALIZED_NAME_COST_CENTS = "costCents";
-  @SerializedName(SERIALIZED_NAME_COST_CENTS)
+  public static final String SERIALIZED_NAME_LABELS = "labels";
+  @SerializedName(SERIALIZED_NAME_LABELS)
   @javax.annotation.Nullable
-  private Integer costCents;
+  private Map<String, String> labels = new HashMap<>();
 
-  public static final String SERIALIZED_NAME_ERRORS = "errors";
-  @SerializedName(SERIALIZED_NAME_ERRORS)
+  public static final String SERIALIZED_NAME_LABELS_ARRAY = "labelsArray";
+  @SerializedName(SERIALIZED_NAME_LABELS_ARRAY)
   @javax.annotation.Nullable
-  private Integer errors;
+  private List<Map<String, String>> labelsArray = new ArrayList<>();
 
-  public static final String SERIALIZED_NAME_REQUESTS = "requests";
-  @SerializedName(SERIALIZED_NAME_REQUESTS)
+  public static final String SERIALIZED_NAME_VALUES = "values";
+  @SerializedName(SERIALIZED_NAME_VALUES)
   @javax.annotation.Nullable
-  private Integer requests;
-
-  public static final String SERIALIZED_NAME_TOKENS = "tokens";
-  @SerializedName(SERIALIZED_NAME_TOKENS)
-  @javax.annotation.Nullable
-  private Integer tokens;
-
-  public static final String SERIALIZED_NAME_TS = "ts";
-  @SerializedName(SERIALIZED_NAME_TS)
-  @javax.annotation.Nullable
-  private String ts;
+  private List<Object> values = new ArrayList<>();
 
   public O11ySeries() {
   }
 
-  public O11ySeries costCents(@javax.annotation.Nullable Integer costCents) {
-    this.costCents = costCents;
+  public O11ySeries labels(@javax.annotation.Nullable Map<String, String> labels) {
+    this.labels = labels;
+    return this;
+  }
+
+  public O11ySeries putLabelsItem(String key, String labelsItem) {
+    if (this.labels == null) {
+      this.labels = new HashMap<>();
+    }
+    this.labels.put(key, labelsItem);
     return this;
   }
 
   /**
-   * Get costCents
-   * @return costCents
+   * Get labels
+   * @return labels
    */
   @javax.annotation.Nullable
-  public Integer getCostCents() {
-    return costCents;
+  public Map<String, String> getLabels() {
+    return labels;
   }
 
-  public void setCostCents(@javax.annotation.Nullable Integer costCents) {
-    this.costCents = costCents;
+  public void setLabels(@javax.annotation.Nullable Map<String, String> labels) {
+    this.labels = labels;
   }
 
 
-  public O11ySeries errors(@javax.annotation.Nullable Integer errors) {
-    this.errors = errors;
+  public O11ySeries labelsArray(@javax.annotation.Nullable List<Map<String, String>> labelsArray) {
+    this.labelsArray = labelsArray;
+    return this;
+  }
+
+  public O11ySeries addLabelsArrayItem(Map<String, String> labelsArrayItem) {
+    if (this.labelsArray == null) {
+      this.labelsArray = new ArrayList<>();
+    }
+    this.labelsArray.add(labelsArrayItem);
     return this;
   }
 
   /**
-   * Get errors
-   * @return errors
+   * Get labelsArray
+   * @return labelsArray
    */
   @javax.annotation.Nullable
-  public Integer getErrors() {
-    return errors;
+  public List<Map<String, String>> getLabelsArray() {
+    return labelsArray;
   }
 
-  public void setErrors(@javax.annotation.Nullable Integer errors) {
-    this.errors = errors;
+  public void setLabelsArray(@javax.annotation.Nullable List<Map<String, String>> labelsArray) {
+    this.labelsArray = labelsArray;
   }
 
 
-  public O11ySeries requests(@javax.annotation.Nullable Integer requests) {
-    this.requests = requests;
+  public O11ySeries values(@javax.annotation.Nullable List<Object> values) {
+    this.values = values;
+    return this;
+  }
+
+  public O11ySeries addValuesItem(Object valuesItem) {
+    if (this.values == null) {
+      this.values = new ArrayList<>();
+    }
+    this.values.add(valuesItem);
     return this;
   }
 
   /**
-   * Get requests
-   * @return requests
+   * Get values
+   * @return values
    */
   @javax.annotation.Nullable
-  public Integer getRequests() {
-    return requests;
+  public List<Object> getValues() {
+    return values;
   }
 
-  public void setRequests(@javax.annotation.Nullable Integer requests) {
-    this.requests = requests;
-  }
-
-
-  public O11ySeries tokens(@javax.annotation.Nullable Integer tokens) {
-    this.tokens = tokens;
-    return this;
-  }
-
-  /**
-   * Get tokens
-   * @return tokens
-   */
-  @javax.annotation.Nullable
-  public Integer getTokens() {
-    return tokens;
-  }
-
-  public void setTokens(@javax.annotation.Nullable Integer tokens) {
-    this.tokens = tokens;
-  }
-
-
-  public O11ySeries ts(@javax.annotation.Nullable String ts) {
-    this.ts = ts;
-    return this;
-  }
-
-  /**
-   * Get ts
-   * @return ts
-   */
-  @javax.annotation.Nullable
-  public String getTs() {
-    return ts;
-  }
-
-  public void setTs(@javax.annotation.Nullable String ts) {
-    this.ts = ts;
+  public void setValues(@javax.annotation.Nullable List<Object> values) {
+    this.values = values;
   }
 
 
@@ -183,27 +163,23 @@ public class O11ySeries {
       return false;
     }
     O11ySeries o11ySeries = (O11ySeries) o;
-    return Objects.equals(this.costCents, o11ySeries.costCents) &&
-        Objects.equals(this.errors, o11ySeries.errors) &&
-        Objects.equals(this.requests, o11ySeries.requests) &&
-        Objects.equals(this.tokens, o11ySeries.tokens) &&
-        Objects.equals(this.ts, o11ySeries.ts);
+    return Objects.equals(this.labels, o11ySeries.labels) &&
+        Objects.equals(this.labelsArray, o11ySeries.labelsArray) &&
+        Objects.equals(this.values, o11ySeries.values);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(costCents, errors, requests, tokens, ts);
+    return Objects.hash(labels, labelsArray, values);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class O11ySeries {\n");
-    sb.append("    costCents: ").append(toIndentedString(costCents)).append("\n");
-    sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
-    sb.append("    requests: ").append(toIndentedString(requests)).append("\n");
-    sb.append("    tokens: ").append(toIndentedString(tokens)).append("\n");
-    sb.append("    ts: ").append(toIndentedString(ts)).append("\n");
+    sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
+    sb.append("    labelsArray: ").append(toIndentedString(labelsArray)).append("\n");
+    sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -225,7 +201,7 @@ public class O11ySeries {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("costCents", "errors", "requests", "tokens", "ts"));
+    openapiFields = new HashSet<String>(Arrays.asList("labels", "labelsArray", "values"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -252,8 +228,13 @@ public class O11ySeries {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("ts") != null && !jsonObj.get("ts").isJsonNull()) && !jsonObj.get("ts").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `ts` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ts").toString()));
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("labelsArray") != null && !jsonObj.get("labelsArray").isJsonNull() && !jsonObj.get("labelsArray").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `labelsArray` to be an array in the JSON string but got `%s`", jsonObj.get("labelsArray").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("values") != null && !jsonObj.get("values").isJsonNull() && !jsonObj.get("values").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `values` to be an array in the JSON string but got `%s`", jsonObj.get("values").toString()));
       }
   }
 

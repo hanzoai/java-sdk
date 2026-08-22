@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -74,7 +74,7 @@ public class GitSource {
   }
 
   /**
-   * Get branch
+   * Branch is the branch a push-to-deploy build tracks, &#x60;main&#x60; when the create named none — a push to any other branch, and every tag push, builds nothing here. A deploy may name a commit instead, for that deploy alone.
    * @return branch
    */
   @javax.annotation.Nullable
@@ -93,7 +93,7 @@ public class GitSource {
   }
 
   /**
-   * Get provider
+   * Provider is derived from the URL — github, gitlab, bitbucket, or &#x60;git&#x60; for anything else. It is a label for display; no behaviour keys on it.
    * @return provider
    */
   @javax.annotation.Nullable
@@ -112,7 +112,7 @@ public class GitSource {
   }
 
   /**
-   * Get url
+   * URL is the clone URL a git app builds from, stored as sent once the build path&#39;s allowlist accepted it (validateRepoURL). It is also what a landed push is MATCHED against, so a push to any other repo never builds this app.
    * @return url
    */
   @javax.annotation.Nullable

@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -119,7 +119,7 @@ public class AgentBinding {
   }
 
   /**
-   * Get agentName
+   * AgentName is the cloud Agent (/v1/agents) this machine runs — the agent a message to the bot is actually run against. It is the one field that decides what the bot DOES.
    * @return agentName
    */
   @javax.annotation.Nullable
@@ -138,7 +138,7 @@ public class AgentBinding {
   }
 
   /**
-   * Get botVersion
+   * BotVersion pins the @hanzo/bot runtime version the machine runs. Empty means the machine took the default in force when it was bound.
    * @return botVersion
    */
   @javax.annotation.Nullable
@@ -157,7 +157,7 @@ public class AgentBinding {
   }
 
   /**
-   * Get createdTime
+   * CreatedTime is when the binding was first made.
    * @return createdTime
    */
   @javax.annotation.Nullable
@@ -176,7 +176,7 @@ public class AgentBinding {
   }
 
   /**
-   * Get machineId
+   * MachineId is the bound machine as vm addresses it, owner-qualified (\&quot;&lt;org&gt;/&lt;machine&gt;\&quot;). The unqualified half is what this surface&#39;s :id routes take.
    * @return machineId
    */
   @javax.annotation.Nullable
@@ -195,7 +195,7 @@ public class AgentBinding {
   }
 
   /**
-   * Get message
+   * Message is vm&#39;s human-readable detail on Status (\&quot;machine provisioning; @hanzo/bot runtime not yet confirmed\&quot;) — the reason behind the state, not a second state.
    * @return message
    */
   @javax.annotation.Nullable
@@ -214,7 +214,7 @@ public class AgentBinding {
   }
 
   /**
-   * Get name
+   * Name is the binding&#39;s own key, which is the machine&#39;s id: a machine hosts at most one agent, so the binding is named for it. This is the key a bots list joins bindings onto machines by.
    * @return name
    */
   @javax.annotation.Nullable
@@ -233,7 +233,7 @@ public class AgentBinding {
   }
 
   /**
-   * Get org
+   * Org is the Hanzo tenant the binding belongs to.
    * @return org
    */
   @javax.annotation.Nullable
@@ -252,7 +252,7 @@ public class AgentBinding {
   }
 
   /**
-   * Get owner
+   * Owner is the tenant vm filed the binding under, resolved from the ?owner it was called with — which is the caller&#39;s validated org and never a body field.
    * @return owner
    */
   @javax.annotation.Nullable
@@ -271,7 +271,7 @@ public class AgentBinding {
   }
 
   /**
-   * Get provider
+   * Provider is the cloud the bound machine runs on, carried here so a bindings list says where each bot lives without a second read per machine.
    * @return provider
    */
   @javax.annotation.Nullable
@@ -290,7 +290,7 @@ public class AgentBinding {
   }
 
   /**
-   * Get publicIp
+   * PublicIp is the bound machine&#39;s public address as vm recorded it on the binding. Empty while the machine has none yet.
    * @return publicIp
    */
   @javax.annotation.Nullable
@@ -309,7 +309,7 @@ public class AgentBinding {
   }
 
   /**
-   * Get status
+   * Status is the binding&#39;s lifecycle in VM&#39;s OWN words — \&quot;Pending\&quot; while the machine provisions and the runtime is unconfirmed, \&quot;running\&quot; once vm has confirmed it. The vocabulary is vm&#39;s and passes through unmapped, which is why its capitalization does not match the machine states beside it, and it is vm&#39;s reconciled reading rather than anything asserted here.
    * @return status
    */
   @javax.annotation.Nullable
@@ -328,7 +328,7 @@ public class AgentBinding {
   }
 
   /**
-   * Get updatedTime
+   * UpdatedTime is when vm last reconciled it — the age of Status.
    * @return updatedTime
    */
   @javax.annotation.Nullable

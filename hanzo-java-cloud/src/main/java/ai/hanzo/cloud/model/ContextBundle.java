@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -87,7 +87,7 @@ public class ContextBundle {
   }
 
   /**
-   * Get budgetTokens
+   * BudgetTokens is the ceiling the caller asked for. Packing stops under it, so this is a bound and not a target.
    * @return budgetTokens
    */
   @javax.annotation.Nullable
@@ -106,7 +106,7 @@ public class ContextBundle {
   }
 
   /**
-   * Get query
+   * Query is the ask this bundle was packed for, echoed back so a cached or forwarded bundle still says what it answers.
    * @return query
    */
   @javax.annotation.Nullable
@@ -125,7 +125,7 @@ public class ContextBundle {
   }
 
   /**
-   * Get repo
+   * Repo narrows the retrieval to one repository. Absent means every indexed repo was searched.
    * @return repo
    */
   @javax.annotation.Nullable
@@ -152,7 +152,7 @@ public class ContextBundle {
   }
 
   /**
-   * Get spans
+   * Spans are the packed chunks, most relevant first, each expanded with the definitions it calls and its notable callers. The top match is always present even if it had to be truncated to fit, so a matched query never comes back with nothing.
    * @return spans
    */
   @javax.annotation.Nullable
@@ -171,7 +171,7 @@ public class ContextBundle {
   }
 
   /**
-   * Get usedTokens
+   * UsedTokens is what the returned spans actually cost, by the same estimate the packer used (roughly one token per four characters — an estimate, not a tokenizer&#39;s count, so size a real window with headroom).
    * @return usedTokens
    */
   @javax.annotation.Nullable

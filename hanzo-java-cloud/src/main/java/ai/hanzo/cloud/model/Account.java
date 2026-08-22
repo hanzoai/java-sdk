@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -79,7 +79,7 @@ public class Account {
   }
 
   /**
-   * Get name
+   * Name is the account&#39;s human name, for a statement&#39;s line label.
    * @return name
    */
   @javax.annotation.Nullable
@@ -98,7 +98,7 @@ public class Account {
   }
 
   /**
-   * Get number
+   * Number is the posting key every voucher leg, rule and report references — stable, and the reason the chart is a fixed value rather than a table anybody can edit. It looks numeric and is a string: \&quot;1000\&quot; sorts and compares as text.
    * @return number
    */
   @javax.annotation.Nullable
@@ -117,7 +117,7 @@ public class Account {
   }
 
   /**
-   * Get party
+   * Party marks the account as carrying a SUBLEDGER — receivable is money owed to us, payable money we owe — so a leg posted here also writes a payment-ledger row against a counterparty. Absent means no subledger: a bank, wallet, revenue or cost account tracks no counterparty at all.
    * @return party
    */
   @javax.annotation.Nullable
@@ -136,7 +136,7 @@ public class Account {
   }
 
   /**
-   * Get type
+   * Type is the account&#39;s fundamental class, which is also its NORMAL balance side: asset and expense are debit-normal, liability, income and equity credit-normal.
    * @return type
    */
   @javax.annotation.Nullable

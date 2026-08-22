@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -109,7 +109,7 @@ public class BankTxnRow {
   }
 
   /**
-   * Get amountCents
+   * AmountCents is the size of the movement in whole cents, always POSITIVE — direction carries the sign, so a caller must read both to know which way money went.
    * @return amountCents
    */
   @javax.annotation.Nullable
@@ -128,7 +128,7 @@ public class BankTxnRow {
   }
 
   /**
-   * Get connector
+   * Connector names the feed this row arrived on — which bank or processor connection it was synced from. With externalId it is the row&#39;s identity, so re-syncing the same statement never books a second copy.
    * @return connector
    */
   @javax.annotation.Nullable
@@ -147,7 +147,7 @@ public class BankTxnRow {
   }
 
   /**
-   * Get currency
+   * Currency is the ISO code the bank reported the line in.
    * @return currency
    */
   @javax.annotation.Nullable
@@ -166,7 +166,7 @@ public class BankTxnRow {
   }
 
   /**
-   * Get description
+   * Description is the statement memo as the bank wrote it.
    * @return description
    */
   @javax.annotation.Nullable
@@ -185,7 +185,7 @@ public class BankTxnRow {
   }
 
   /**
-   * Get direction
+   * Direction is which way the money moved: an inflow into the account or an outflow from it, from the org&#39;s point of view.
    * @return direction
    */
   @javax.annotation.Nullable
@@ -204,7 +204,7 @@ public class BankTxnRow {
   }
 
   /**
-   * Get externalId
+   * ExternalID is the bank&#39;s OWN id for the line, carried verbatim. It is unique only within its connector.
    * @return externalId
    */
   @javax.annotation.Nullable
@@ -223,7 +223,7 @@ public class BankTxnRow {
   }
 
   /**
-   * Get matchedVoucher
+   * MatchedVoucher names the ledger voucher this line was reconciled against — the bill it paid, or the settlement it cleared. Absent when nothing matched, which for an inflow is what raises a question.
    * @return matchedVoucher
    */
   @javax.annotation.Nullable
@@ -242,7 +242,7 @@ public class BankTxnRow {
   }
 
   /**
-   * Get merchant
+   * Merchant is the counterparty the feed identified, where it did.
    * @return merchant
    */
   @javax.annotation.Nullable
@@ -261,7 +261,7 @@ public class BankTxnRow {
   }
 
   /**
-   * Get postedAt
+   * PostedAt is the bank&#39;s posting date for the line, not when we synced it.
    * @return postedAt
    */
   @javax.annotation.Nullable
@@ -280,7 +280,7 @@ public class BankTxnRow {
   }
 
   /**
-   * Get status
+   * Status is where the line got to: posted (an outflow booked straight to an expense), settled (an outflow that paid down a scanned bill), reconciled (an inflow that cleared a pending settlement), transfer (a move between the org&#39;s own accounts, recorded but with no effect on the books), or unmatched (an inflow nobody could place, which is waiting on a human answer).
    * @return status
    */
   @javax.annotation.Nullable

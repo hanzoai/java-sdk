@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -104,7 +104,7 @@ public class GLRow {
   }
 
   /**
-   * Get account
+   * Account is the chart-of-accounts number this leg posts to.
    * @return account
    */
   @javax.annotation.Nullable
@@ -123,7 +123,7 @@ public class GLRow {
   }
 
   /**
-   * Get against
+   * Against names the OTHER accounts in the same voucher — the contra side of this leg — so a single row reads as an entry rather than as half of one.
    * @return against
    */
   @javax.annotation.Nullable
@@ -142,7 +142,7 @@ public class GLRow {
   }
 
   /**
-   * Get credit
+   * Credit is the amount credited to that account, in whole cents.
    * @return credit
    */
   @javax.annotation.Nullable
@@ -161,7 +161,7 @@ public class GLRow {
   }
 
   /**
-   * Get debit
+   * Debit is the amount debited to that account, in whole cents. Exactly one of debit and credit is non-zero on a leg; a negative amount is never used to mean the other side.
    * @return debit
    */
   @javax.annotation.Nullable
@@ -180,7 +180,7 @@ public class GLRow {
   }
 
   /**
-   * Get id
+   * ID is the entry&#39;s position in the ledger. The ledger is append-only, so ids ascend with posting order and a higher id is a later entry.
    * @return id
    */
   @javax.annotation.Nullable
@@ -199,7 +199,7 @@ public class GLRow {
   }
 
   /**
-   * Get postingAt
+   * PostingAt is the accounting date this entry belongs to — what the reports window on, which need not be when the row was written.
    * @return postingAt
    */
   @javax.annotation.Nullable
@@ -218,7 +218,7 @@ public class GLRow {
   }
 
   /**
-   * Get remarks
+   * Remarks is the memo carried onto the entry, for a human reading the ledger.
    * @return remarks
    */
   @javax.annotation.Nullable
@@ -237,7 +237,7 @@ public class GLRow {
   }
 
   /**
-   * Get sourceId
+   * SourceID identifies that originating record within its kind.
    * @return sourceId
    */
   @javax.annotation.Nullable
@@ -256,7 +256,7 @@ public class GLRow {
   }
 
   /**
-   * Get sourceKind
+   * SourceKind is what caused the posting: a bank line, a scanned document, a commerce sale. With sourceId it traces the entry back to the thing that produced it.
    * @return sourceKind
    */
   @javax.annotation.Nullable

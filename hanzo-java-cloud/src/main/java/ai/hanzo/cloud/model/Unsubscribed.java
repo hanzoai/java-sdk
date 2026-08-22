@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -74,7 +74,7 @@ public class Unsubscribed {
   }
 
   /**
-   * Get address
+   * Address is the recipient now opted out, normalized (lower-cased, trimmed) to the form the send gate matches on — so it can differ in case from the address the link carried.
    * @return address
    */
   @javax.annotation.Nullable
@@ -93,7 +93,7 @@ public class Unsubscribed {
   }
 
   /**
-   * Get channel
+   * Channel is the ONE surface opted out of: email, sms, social, meta, google or tiktok. The other channels are untouched, and so is this address in every other org.
    * @return channel
    */
   @javax.annotation.Nullable
@@ -112,7 +112,7 @@ public class Unsubscribed {
   }
 
   /**
-   * Get unsubscribed
+   * Unsubscribed is always true here: the opt-out is idempotent, so a second click on the same link confirms the same thing rather than reporting nothing changed. A refused token never reaches this shape — it is a 403.
    * @return unsubscribed
    */
   @javax.annotation.Nullable

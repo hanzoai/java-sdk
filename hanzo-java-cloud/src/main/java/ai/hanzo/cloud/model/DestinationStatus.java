@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -94,6 +94,11 @@ public class DestinationStatus {
   @SerializedName(SERIALIZED_NAME_NAME)
   @javax.annotation.Nullable
   private String name;
+
+  public static final String SERIALIZED_NAME_PIXEL = "pixel";
+  @SerializedName(SERIALIZED_NAME_PIXEL)
+  @javax.annotation.Nullable
+  private Boolean pixel;
 
   public static final String SERIALIZED_NAME_PLATFORM = "platform";
   @SerializedName(SERIALIZED_NAME_PLATFORM)
@@ -244,7 +249,7 @@ public class DestinationStatus {
   }
 
   /**
-   * Live is whether a credential resolves RIGHT NOW: a KMS-sealed secret for this org, else the integrations connection named by the platform&#39;s Fallback, else no credential needed at all (a public-ingest sink like Umami). False on a connected destination whose secret has gone missing — Connected &amp;&amp; !Live is exactly the \&quot;reconnect me\&quot; state.
+   * Live is whether a credential resolves RIGHT NOW: a KMS-sealed secret for this org, else the integrations connection named by the platform&#39;s Fallback, else no credential needed at all (a public-ingest sink like Analytics). False on a connected destination whose secret has gone missing — Connected &amp;&amp; !Live is exactly the \&quot;reconnect me\&quot; state.
    * @return live
    */
   @javax.annotation.Nullable
@@ -273,6 +278,25 @@ public class DestinationStatus {
 
   public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
+  }
+
+
+  public DestinationStatus pixel(@javax.annotation.Nullable Boolean pixel) {
+    this.pixel = pixel;
+    return this;
+  }
+
+  /**
+   * Pixel is whether the hosted tag can inject a browser pixel for this platform, so a console offers a per-SITE pixel input for exactly these. False means the platform receives conversions server-side only, and an input would promise an injection that never happens. Derived from the tag&#39;s own map (event.BrowserTags), never restated — a second list is how a console offers a pixel nothing fires.
+   * @return pixel
+   */
+  @javax.annotation.Nullable
+  public Boolean getPixel() {
+    return pixel;
+  }
+
+  public void setPixel(@javax.annotation.Nullable Boolean pixel) {
+    this.pixel = pixel;
   }
 
 
@@ -340,13 +364,14 @@ public class DestinationStatus {
         Objects.equals(this.fields, destinationStatus.fields) &&
         Objects.equals(this.live, destinationStatus.live) &&
         Objects.equals(this.name, destinationStatus.name) &&
+        Objects.equals(this.pixel, destinationStatus.pixel) &&
         Objects.equals(this.platform, destinationStatus.platform) &&
         Objects.equals(this.secrets, destinationStatus.secrets);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(account, category, config, connected, enabled, fields, live, name, platform, secrets);
+    return Objects.hash(account, category, config, connected, enabled, fields, live, name, pixel, platform, secrets);
   }
 
   @Override
@@ -361,6 +386,7 @@ public class DestinationStatus {
     sb.append("    fields: ").append(toIndentedString(fields)).append("\n");
     sb.append("    live: ").append(toIndentedString(live)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    pixel: ").append(toIndentedString(pixel)).append("\n");
     sb.append("    platform: ").append(toIndentedString(platform)).append("\n");
     sb.append("    secrets: ").append(toIndentedString(secrets)).append("\n");
     sb.append("}");
@@ -384,7 +410,7 @@ public class DestinationStatus {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("account", "category", "config", "connected", "enabled", "fields", "live", "name", "platform", "secrets"));
+    openapiFields = new HashSet<String>(Arrays.asList("account", "category", "config", "connected", "enabled", "fields", "live", "name", "pixel", "platform", "secrets"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);

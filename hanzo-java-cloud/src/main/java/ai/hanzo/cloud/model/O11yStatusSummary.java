@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -120,7 +120,7 @@ public class O11yStatusSummary {
   }
 
   /**
-   * Get inProgressMaintenances
+   * InProgressMaintenances is always empty: this platform has no maintenance scheduling plane, so \&quot;nothing is running\&quot; is a true statement rather than a placeholder.
    * @return inProgressMaintenances
    */
   @javax.annotation.Nullable
@@ -147,7 +147,7 @@ public class O11yStatusSummary {
   }
 
   /**
-   * Get ongoingIncidents
+   * OngoingIncidents is one entry per service that failed its health probe, sorted by name. Empty means every probed service answered — which is a measurement, not an absence of reports.
    * @return ongoingIncidents
    */
   @javax.annotation.Nullable
@@ -166,7 +166,7 @@ public class O11yStatusSummary {
   }
 
   /**
-   * Get pageTitle
+   * PageTitle is the brand&#39;s own status-page title, resolved per request from the Host — a lux caller must never be shown Hanzo&#39;s.
    * @return pageTitle
    */
   @javax.annotation.Nullable
@@ -212,7 +212,7 @@ public class O11yStatusSummary {
   }
 
   /**
-   * Get scheduledMaintenances
+   * ScheduledMaintenances is always empty, for the same reason.
    * @return scheduledMaintenances
    */
   @javax.annotation.Nullable

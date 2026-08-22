@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -84,7 +84,7 @@ public class Source {
   }
 
   /**
-   * Get engine
+   * Engine is the search backend the hit came from: bing, ddg, mojeek or brave. Omitted when the backend did not name itself. Results are merged across backends, so two sources in one answer can carry different engines.
    * @return engine
    */
   @javax.annotation.Nullable
@@ -103,7 +103,7 @@ public class Source {
   }
 
   /**
-   * Get favicon
+   * Favicon is a 64px icon URL derived from the host for the client to render beside the citation. It is Google&#39;s s2 service, not something we host or fetched — an empty host yields the empty string.
    * @return favicon
    */
   @javax.annotation.Nullable
@@ -122,7 +122,7 @@ public class Source {
   }
 
   /**
-   * Get snippet
+   * Snippet is the engine&#39;s summary of the page, clipped to 600 runes. THIS IS WHAT THE CLIENT SHOWS. What the model reads is the fetched page, which is far larger and deliberately never on the wire.
    * @return snippet
    */
   @javax.annotation.Nullable
@@ -141,7 +141,7 @@ public class Source {
   }
 
   /**
-   * Get title
+   * Title is the page title the engine reported, stripped of the bracketed furniture engines staple on (\&quot;[PDF]\&quot;, \&quot;(Official Site)\&quot;). It falls back to the www-stripped host when the engine gave none, so it is never empty and is safe to use as link text.
    * @return title
    */
   @javax.annotation.Nullable
@@ -160,7 +160,7 @@ public class Source {
   }
 
   /**
-   * Get url
+   * URL is the page, absolute, exactly as the engine gave it. It is also the dedupe key — one source per URL, and at most hostCap per host — and what a markdown citation in the answer is checked against, so a link in the prose always matches a URL here.
    * @return url
    */
   @javax.annotation.Nullable

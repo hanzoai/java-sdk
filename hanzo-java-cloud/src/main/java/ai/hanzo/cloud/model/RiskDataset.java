@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -126,7 +126,7 @@ public class RiskDataset {
   }
 
   /**
-   * At is when this version last changed state, and By who.
+   * At is when this version last changed state, RFC 3339 UTC.
    * @return at
    */
   @javax.annotation.Nullable
@@ -145,7 +145,7 @@ public class RiskDataset {
   }
 
   /**
-   * Get by
+   * By is who moved it there: the validated user, or the org itself when the caller is a machine with no user behind it.
    * @return by
    */
   @javax.annotation.Nullable
@@ -202,7 +202,7 @@ public class RiskDataset {
   }
 
   /**
-   * Name and Version identify the version.
+   * Name identifies the dataset across all of its versions.
    * @return name
    */
   @javax.annotation.Nullable
@@ -354,7 +354,7 @@ public class RiskDataset {
   }
 
   /**
-   * Get version
+   * Version is which version this is, from 1 and monotone within the dataset. A number is never reused — not even after a disposal, where the next declare continues the count — so \&quot;signups v3\&quot; means one thing forever, which is what makes a model&#39;s citation of it checkable.
    * @return version
    */
   @javax.annotation.Nullable

@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -116,7 +116,7 @@ public class Endpoint {
   }
 
   /**
-   * Get created
+   * CreatedAt is when the endpoint was registered, RFC3339 in UTC — stored in that spelling because it sorts as a string.
    * @return created
    */
   @javax.annotation.Nullable
@@ -135,7 +135,7 @@ public class Endpoint {
   }
 
   /**
-   * Deliveries7d / Failures7d are cheap usage counters computed from the delivery log over usageWindow (not stored columns) and populated ONLY on list/get. They are 0 when there is no delivery history — never omitempty, so the console always sees them.
+   * Deliveries7d is how many deliveries SETTLED in the trailing 7 days — the attempts that ended ok or failed, so a delivery still retrying is in neither counter yet. It is counted from the log at read time rather than stored, and it is filled only on a list or a get; a create answers 0 because there is no history, which is why it is never omitted.
    * @return deliveries7d
    */
   @javax.annotation.Nullable
@@ -154,7 +154,7 @@ public class Endpoint {
   }
 
   /**
-   * Get description
+   * Description is the operator&#39;s own label for the endpoint. Never sent anywhere.
    * @return description
    */
   @javax.annotation.Nullable
@@ -181,7 +181,7 @@ public class Endpoint {
   }
 
   /**
-   * Get events
+   * Events are the subject patterns this endpoint subscribes to (\&quot;commerce.order.&gt;\&quot;). An EMPTY list means every event, not none.
    * @return events
    */
   @javax.annotation.Nullable
@@ -200,7 +200,7 @@ public class Endpoint {
   }
 
   /**
-   * Get failures7d
+   * Failures7d is how many of those settled as failed — the subscriber never accepted it and no further attempt will be made. It is the numerator to Deliveries7d, over the same window.
    * @return failures7d
    */
   @javax.annotation.Nullable
@@ -219,7 +219,7 @@ public class Endpoint {
   }
 
   /**
-   * Get id
+   * ID is the endpoint&#39;s handle, server-minted and stable for its life. It is what every other route here addresses.
    * @return id
    */
   @javax.annotation.Nullable
@@ -238,7 +238,7 @@ public class Endpoint {
   }
 
   /**
-   * Get org
+   * Org is the tenant that owns the endpoint, taken from the validated principal rather than from any request field.
    * @return org
    */
   @javax.annotation.Nullable
@@ -257,7 +257,7 @@ public class Endpoint {
   }
 
   /**
-   * Get secret
+   * Secret is the HMAC-SHA256 signing key a subscriber recomputes the signature with. It is returned exactly ONCE, on create: a later read of the endpoint omits it, so a lost secret is replaced rather than recovered.
    * @return secret
    */
   @javax.annotation.Nullable
@@ -276,7 +276,7 @@ public class Endpoint {
   }
 
   /**
-   * Get status
+   * Status is \&quot;active\&quot; or \&quot;disabled\&quot; — nothing else is accepted. A disabled endpoint keeps its subscription and receives no deliveries, except a manual test send, which goes out anyway.
    * @return status
    */
   @javax.annotation.Nullable
@@ -295,7 +295,7 @@ public class Endpoint {
   }
 
   /**
-   * Get updated
+   * UpdatedAt is when its url, events, status or description last changed.
    * @return updated
    */
   @javax.annotation.Nullable
@@ -314,7 +314,7 @@ public class Endpoint {
   }
 
   /**
-   * Get url
+   * URL is where the POST goes. Changing it is the one edit that redirects an org&#39;s events, which is why it is never bindable from a query string.
    * @return url
    */
   @javax.annotation.Nullable

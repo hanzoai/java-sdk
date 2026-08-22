@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -81,7 +81,7 @@ public class Blob {
   }
 
   /**
-   * Get data
+   * Data is the file&#39;s bytes, verbatim, base64 on the wire. Empty for a directory and for an empty file alike; Dir is what tells those apart.
    * @return data
    */
   @javax.annotation.Nullable
@@ -100,7 +100,7 @@ public class Blob {
   }
 
   /**
-   * Get dir
+   * Dir says which of the two answers this is: true and the path is a directory, so read Entries; false and it is a file, so read Data. Nothing else distinguishes them — an empty file and an empty directory look alike here.
    * @return dir
    */
   @javax.annotation.Nullable
@@ -127,7 +127,7 @@ public class Blob {
   }
 
   /**
-   * Get entries
+   * Entries is a directory&#39;s contents as bare NAMES, not paths — one level, no recursion, dotfiles included, \&quot;.\&quot; and \&quot;..\&quot; excluded (&#x60;ls -1A&#x60;). Empty for a file, and for an empty directory.
    * @return entries
    */
   @javax.annotation.Nullable
@@ -146,7 +146,7 @@ public class Blob {
   }
 
   /**
-   * Get path
+   * Path is the RESOLVED absolute path that was read — the caller&#39;s relative path joined onto the sandbox&#39;s working directory (Leased.Workdir), so it names the same file for a reader who does not know the class.
    * @return path
    */
   @javax.annotation.Nullable

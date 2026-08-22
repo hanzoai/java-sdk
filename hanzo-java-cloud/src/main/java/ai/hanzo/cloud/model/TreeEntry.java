@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -74,7 +74,7 @@ public class TreeEntry {
   }
 
   /**
-   * Get lang
+   * Lang is the language the indexer parsed the file as (\&quot;go\&quot;, \&quot;python\&quot;, …), or empty when it recognised none — in which case Symbols is 0 because nothing was extracted, not because the file declares nothing.
    * @return lang
    */
   @javax.annotation.Nullable
@@ -93,7 +93,7 @@ public class TreeEntry {
   }
 
   /**
-   * Get path
+   * Path is the file, relative to the repo root. The list is ordered by it, so a reader can see module layout without sorting.
    * @return path
    */
   @javax.annotation.Nullable
@@ -112,7 +112,7 @@ public class TreeEntry {
   }
 
   /**
-   * Get symbols
+   * Symbols is how many top-level declarations the file defines. A file with none is still listed: the file set is the authority here and the counts decorate it.
    * @return symbols
    */
   @javax.annotation.Nullable

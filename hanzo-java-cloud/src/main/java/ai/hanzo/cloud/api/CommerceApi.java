@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -27,6 +27,13 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import ai.hanzo.cloud.model.Cart;
+import ai.hanzo.cloud.model.CartItemSet;
+import ai.hanzo.cloud.model.CartOpen;
+import ai.hanzo.cloud.model.Liveness;
+import ai.hanzo.cloud.model.PaymentIn;
+import ai.hanzo.cloud.model.PaymentOut;
+import ai.hanzo.cloud.model.PaymentRecord;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -562,6 +569,104 @@ public class CommerceApi {
         return localVarCall;
     }
     /**
+     * Build call for deleteCommercePlansEntriesBySlug
+     * @param slug  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call deleteCommercePlansEntriesBySlugCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/commerce/plans/entries/{slug}"
+            .replace("{" + "slug" + "}", localVarApiClient.escapeString(slug.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteCommercePlansEntriesBySlugValidateBeforeCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'slug' is set
+        if (slug == null) {
+            throw new ApiException("Missing the required parameter 'slug' when calling deleteCommercePlansEntriesBySlug(Async)");
+        }
+
+        return deleteCommercePlansEntriesBySlugCall(slug, _callback);
+
+    }
+
+    /**
+     * Remove a plan from the authority
+     * Deletes the addressed plan and answers 204. It removes the plan from the catalog buyers choose from; it does not touch subscriptions already sold against it, which keep their stored plan id. PLATFORM admin only — an org-level admin is refused 403 — and an unknown slug is 404.
+     * @param slug  (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void deleteCommercePlansEntriesBySlug(@javax.annotation.Nonnull String slug) throws ApiException {
+        deleteCommercePlansEntriesBySlugWithHttpInfo(slug);
+    }
+
+    /**
+     * Remove a plan from the authority
+     * Deletes the addressed plan and answers 204. It removes the plan from the catalog buyers choose from; it does not touch subscriptions already sold against it, which keep their stored plan id. PLATFORM admin only — an org-level admin is refused 403 — and an unknown slug is 404.
+     * @param slug  (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> deleteCommercePlansEntriesBySlugWithHttpInfo(@javax.annotation.Nonnull String slug) throws ApiException {
+        okhttp3.Call localVarCall = deleteCommercePlansEntriesBySlugValidateBeforeCall(slug, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Remove a plan from the authority (asynchronously)
+     * Deletes the addressed plan and answers 204. It removes the plan from the catalog buyers choose from; it does not touch subscriptions already sold against it, which keep their stored plan id. PLATFORM admin only — an org-level admin is refused 403 — and an unknown slug is 404.
+     * @param slug  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call deleteCommercePlansEntriesBySlugAsync(@javax.annotation.Nonnull String slug, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteCommercePlansEntriesBySlugValidateBeforeCall(slug, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for deleteCommerceProductByProductid
      * @param productid  (required)
      * @param _callback Callback for upload/download progress
@@ -656,6 +761,104 @@ public class CommerceApi {
     public okhttp3.Call deleteCommerceProductByProductidAsync(@javax.annotation.Nonnull String productid, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteCommerceProductByProductidValidateBeforeCall(productid, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for deleteCommerceRatesEntriesBySlug
+     * @param slug  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call deleteCommerceRatesEntriesBySlugCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/commerce/rates/entries/{slug}"
+            .replace("{" + "slug" + "}", localVarApiClient.escapeString(slug.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteCommerceRatesEntriesBySlugValidateBeforeCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'slug' is set
+        if (slug == null) {
+            throw new ApiException("Missing the required parameter 'slug' when calling deleteCommerceRatesEntriesBySlug(Async)");
+        }
+
+        return deleteCommerceRatesEntriesBySlugCall(slug, _callback);
+
+    }
+
+    /**
+     * Remove a rate outright
+     * Deletes the row. ARCHIVING is usually what is wanted instead — a deleted rate cannot price a historical charge, so a past invoice that has to re-resolve its rate finds nothing to read. Reach for status&#x3D;archived unless the rate never priced anything. SuperAdmin only.
+     * @param slug  (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void deleteCommerceRatesEntriesBySlug(@javax.annotation.Nonnull String slug) throws ApiException {
+        deleteCommerceRatesEntriesBySlugWithHttpInfo(slug);
+    }
+
+    /**
+     * Remove a rate outright
+     * Deletes the row. ARCHIVING is usually what is wanted instead — a deleted rate cannot price a historical charge, so a past invoice that has to re-resolve its rate finds nothing to read. Reach for status&#x3D;archived unless the rate never priced anything. SuperAdmin only.
+     * @param slug  (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> deleteCommerceRatesEntriesBySlugWithHttpInfo(@javax.annotation.Nonnull String slug) throws ApiException {
+        okhttp3.Call localVarCall = deleteCommerceRatesEntriesBySlugValidateBeforeCall(slug, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Remove a rate outright (asynchronously)
+     * Deletes the row. ARCHIVING is usually what is wanted instead — a deleted rate cannot price a historical charge, so a past invoice that has to re-resolve its rate finds nothing to read. Reach for status&#x3D;archived unless the rate never priced anything. SuperAdmin only.
+     * @param slug  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call deleteCommerceRatesEntriesBySlugAsync(@javax.annotation.Nonnull String slug, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteCommerceRatesEntriesBySlugValidateBeforeCall(slug, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
@@ -950,6 +1153,212 @@ public class CommerceApi {
     public okhttp3.Call deleteCommerceStocklocationByStocklocationidAsync(@javax.annotation.Nonnull String stocklocationid, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteCommerceStocklocationByStocklocationidValidateBeforeCall(stocklocationid, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for deleteCommerceStoreByStoreid
+     * @param storeid  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call deleteCommerceStoreByStoreidCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/commerce/store/{storeid}"
+            .replace("{" + "storeid" + "}", localVarApiClient.escapeString(storeid.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteCommerceStoreByStoreidValidateBeforeCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'storeid' is set
+        if (storeid == null) {
+            throw new ApiException("Missing the required parameter 'storeid' when calling deleteCommerceStoreByStoreid(Async)");
+        }
+
+        return deleteCommerceStoreByStoreidCall(storeid, _callback);
+
+    }
+
+    /**
+     * Delete a storefront, keeping a recoverable copy
+     * Removes the addressed store and answers 204 with no body. Before the live row goes, the entity is written once more under a tombstone kind, so the deletion leaves a recoverable copy rather than destroying the record outright; the store&#39;s listing overrides live inside that row and go with it. The id is resolved inside the caller org&#39;s own namespace, so an unknown or foreign id is 404. Requires an admin or store-write token.
+     * @param storeid  (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void deleteCommerceStoreByStoreid(@javax.annotation.Nonnull String storeid) throws ApiException {
+        deleteCommerceStoreByStoreidWithHttpInfo(storeid);
+    }
+
+    /**
+     * Delete a storefront, keeping a recoverable copy
+     * Removes the addressed store and answers 204 with no body. Before the live row goes, the entity is written once more under a tombstone kind, so the deletion leaves a recoverable copy rather than destroying the record outright; the store&#39;s listing overrides live inside that row and go with it. The id is resolved inside the caller org&#39;s own namespace, so an unknown or foreign id is 404. Requires an admin or store-write token.
+     * @param storeid  (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> deleteCommerceStoreByStoreidWithHttpInfo(@javax.annotation.Nonnull String storeid) throws ApiException {
+        okhttp3.Call localVarCall = deleteCommerceStoreByStoreidValidateBeforeCall(storeid, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Delete a storefront, keeping a recoverable copy (asynchronously)
+     * Removes the addressed store and answers 204 with no body. Before the live row goes, the entity is written once more under a tombstone kind, so the deletion leaves a recoverable copy rather than destroying the record outright; the store&#39;s listing overrides live inside that row and go with it. The id is resolved inside the caller org&#39;s own namespace, so an unknown or foreign id is 404. Requires an admin or store-write token.
+     * @param storeid  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call deleteCommerceStoreByStoreidAsync(@javax.annotation.Nonnull String storeid, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteCommerceStoreByStoreidValidateBeforeCall(storeid, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for deleteCommerceStoreByStoreidListingByKey
+     * @param storeid  (required)
+     * @param key  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call deleteCommerceStoreByStoreidListingByKeyCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/commerce/store/{storeid}/listing/{key}"
+            .replace("{" + "storeid" + "}", localVarApiClient.escapeString(storeid.toString()))
+            .replace("{" + "key" + "}", localVarApiClient.escapeString(key.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteCommerceStoreByStoreidListingByKeyValidateBeforeCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'storeid' is set
+        if (storeid == null) {
+            throw new ApiException("Missing the required parameter 'storeid' when calling deleteCommerceStoreByStoreidListingByKey(Async)");
+        }
+
+        // verify the required parameter 'key' is set
+        if (key == null) {
+            throw new ApiException("Missing the required parameter 'key' when calling deleteCommerceStoreByStoreidListingByKey(Async)");
+        }
+
+        return deleteCommerceStoreByStoreidListingByKeyCall(storeid, key, _callback);
+
+    }
+
+    /**
+     * Remove a listing override
+     * Drops the key from the store&#39;s listing map and re-saves the store, answering 204 with no body. It UN-OVERRIDES rather than deletes: the product, variant or bundle itself is untouched and simply reverts to its catalog values on this storefront. A key that is not present is 404, and so is a store id outside the caller org&#39;s namespace. Admin-gated.
+     * @param storeid  (required)
+     * @param key  (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void deleteCommerceStoreByStoreidListingByKey(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key) throws ApiException {
+        deleteCommerceStoreByStoreidListingByKeyWithHttpInfo(storeid, key);
+    }
+
+    /**
+     * Remove a listing override
+     * Drops the key from the store&#39;s listing map and re-saves the store, answering 204 with no body. It UN-OVERRIDES rather than deletes: the product, variant or bundle itself is untouched and simply reverts to its catalog values on this storefront. A key that is not present is 404, and so is a store id outside the caller org&#39;s namespace. Admin-gated.
+     * @param storeid  (required)
+     * @param key  (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> deleteCommerceStoreByStoreidListingByKeyWithHttpInfo(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key) throws ApiException {
+        okhttp3.Call localVarCall = deleteCommerceStoreByStoreidListingByKeyValidateBeforeCall(storeid, key, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Remove a listing override (asynchronously)
+     * Drops the key from the store&#39;s listing map and re-saves the store, answering 204 with no body. It UN-OVERRIDES rather than deletes: the product, variant or bundle itself is untouched and simply reverts to its catalog values on this storefront. A key that is not present is 404, and so is a store id outside the caller org&#39;s namespace. Admin-gated.
+     * @param storeid  (required)
+     * @param key  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call deleteCommerceStoreByStoreidListingByKeyAsync(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteCommerceStoreByStoreidListingByKeyValidateBeforeCall(storeid, key, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
@@ -1738,6 +2147,260 @@ public class CommerceApi {
         return localVarCall;
     }
     /**
+     * Build call for discardCart
+     * @param id ID is the cart&#39;s id, as the open call answered it. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call discardCartCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/commerce/cart/{id}/discard"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call discardCartValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling discardCart(Async)");
+        }
+
+        return discardCartCall(id, _callback);
+
+    }
+
+    /**
+     * Discard a cart the shopper abandoned
+     * Discards a cart the shopper abandoned, and answers it in its final state.  A discarded cart is CLOSED, not deleted: the row stays, so abandoned-basket reporting and any follow-up that keys on it still have something to read. It stops being a cart anything will check out, which is the point — it is how a storefront says \&quot;this basket is over\&quot; without destroying the evidence that it existed.  Discarding is idempotent: a cart already discarded answers its stored state rather than failing, so a retry is safe.  The cart is resolved inside the caller&#39;s own org namespace, so another tenant&#39;s id answers 404.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
+     * @param id ID is the cart&#39;s id, as the open call answered it. (required)
+     * @return Cart
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public Cart discardCart(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<Cart> localVarResp = discardCartWithHttpInfo(id);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Discard a cart the shopper abandoned
+     * Discards a cart the shopper abandoned, and answers it in its final state.  A discarded cart is CLOSED, not deleted: the row stays, so abandoned-basket reporting and any follow-up that keys on it still have something to read. It stops being a cart anything will check out, which is the point — it is how a storefront says \&quot;this basket is over\&quot; without destroying the evidence that it existed.  Discarding is idempotent: a cart already discarded answers its stored state rather than failing, so a retry is safe.  The cart is resolved inside the caller&#39;s own org namespace, so another tenant&#39;s id answers 404.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
+     * @param id ID is the cart&#39;s id, as the open call answered it. (required)
+     * @return ApiResponse&lt;Cart&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Cart> discardCartWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = discardCartValidateBeforeCall(id, null);
+        Type localVarReturnType = new TypeToken<Cart>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Discard a cart the shopper abandoned (asynchronously)
+     * Discards a cart the shopper abandoned, and answers it in its final state.  A discarded cart is CLOSED, not deleted: the row stays, so abandoned-basket reporting and any follow-up that keys on it still have something to read. It stops being a cart anything will check out, which is the point — it is how a storefront says \&quot;this basket is over\&quot; without destroying the evidence that it existed.  Discarding is idempotent: a cart already discarded answers its stored state rather than failing, so a retry is safe.  The cart is resolved inside the caller&#39;s own org namespace, so another tenant&#39;s id answers 404.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
+     * @param id ID is the cart&#39;s id, as the open call answered it. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call discardCartAsync(@javax.annotation.Nonnull String id, final ApiCallback<Cart> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = discardCartValidateBeforeCall(id, _callback);
+        Type localVarReturnType = new TypeToken<Cart>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getCart
+     * @param id ID is the cart&#39;s id, as the open call answered it. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getCartCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/commerce/cart/{id}"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getCartValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling getCart(Async)");
+        }
+
+        return getCartCall(id, _callback);
+
+    }
+
+    /**
+     * Read one cart with its lines and totals
+     * Reads one cart: its lines, its status and what it comes to.  This is what a storefront calls to render the basket, and what a support agent calls to see what a shopper is looking at. The totals are the cart&#39;s STORED tally — shipping and tax stay zero until checkout resolves a shipping option and a tax region, so a cart total before checkout is the merchandise total and is meant to be.  The org scopes the read by construction: the store is namespaced to it, so a cart id belonging to another tenant is simply not found rather than found and then filtered, and answers 404 rather than 403 so the id space cannot be probed.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
+     * @param id ID is the cart&#39;s id, as the open call answered it. (required)
+     * @return Cart
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public Cart getCart(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<Cart> localVarResp = getCartWithHttpInfo(id);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Read one cart with its lines and totals
+     * Reads one cart: its lines, its status and what it comes to.  This is what a storefront calls to render the basket, and what a support agent calls to see what a shopper is looking at. The totals are the cart&#39;s STORED tally — shipping and tax stay zero until checkout resolves a shipping option and a tax region, so a cart total before checkout is the merchandise total and is meant to be.  The org scopes the read by construction: the store is namespaced to it, so a cart id belonging to another tenant is simply not found rather than found and then filtered, and answers 404 rather than 403 so the id space cannot be probed.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
+     * @param id ID is the cart&#39;s id, as the open call answered it. (required)
+     * @return ApiResponse&lt;Cart&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Cart> getCartWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getCartValidateBeforeCall(id, null);
+        Type localVarReturnType = new TypeToken<Cart>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Read one cart with its lines and totals (asynchronously)
+     * Reads one cart: its lines, its status and what it comes to.  This is what a storefront calls to render the basket, and what a support agent calls to see what a shopper is looking at. The totals are the cart&#39;s STORED tally — shipping and tax stay zero until checkout resolves a shipping option and a tax region, so a cart total before checkout is the merchandise total and is meant to be.  The org scopes the read by construction: the store is namespaced to it, so a cart id belonging to another tenant is simply not found rather than found and then filtered, and answers 404 rather than 403 so the id space cannot be probed.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
+     * @param id ID is the cart&#39;s id, as the open call answered it. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getCartAsync(@javax.annotation.Nonnull String id, final ApiCallback<Cart> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getCartValidateBeforeCall(id, _callback);
+        Type localVarReturnType = new TypeToken<Cart>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for getCommerceAdminCatalog
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1910,6 +2573,94 @@ public class CommerceApi {
     public okhttp3.Call getCommerceCatalogAsync(final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCommerceCatalogValidateBeforeCall(_callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getCommerceCatalogEntries
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call getCommerceCatalogEntriesCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/commerce/catalog/entries";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getCommerceCatalogEntriesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getCommerceCatalogEntriesCall(_callback);
+
+    }
+
+    /**
+     * The raw catalog entries, including the unpublished ones
+     * Returns every catalog row as stored — the admin view, which unlike the public projection includes entries that are not published. It is cross-tenant platform data, so the gate is a PLATFORM admin: an org-level admin is refused 403 no matter how privileged they are inside their own org, enforced by the handler itself and not only by the route&#39;s token middleware.
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void getCommerceCatalogEntries() throws ApiException {
+        getCommerceCatalogEntriesWithHttpInfo();
+    }
+
+    /**
+     * The raw catalog entries, including the unpublished ones
+     * Returns every catalog row as stored — the admin view, which unlike the public projection includes entries that are not published. It is cross-tenant platform data, so the gate is a PLATFORM admin: an org-level admin is refused 403 no matter how privileged they are inside their own org, enforced by the handler itself and not only by the route&#39;s token middleware.
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> getCommerceCatalogEntriesWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getCommerceCatalogEntriesValidateBeforeCall(null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * The raw catalog entries, including the unpublished ones (asynchronously)
+     * Returns every catalog row as stored — the admin view, which unlike the public projection includes entries that are not published. It is cross-tenant platform data, so the gate is a PLATFORM admin: an org-level admin is refused 403 no matter how privileged they are inside their own org, enforced by the handler itself and not only by the route&#39;s token middleware.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call getCommerceCatalogEntriesAsync(final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getCommerceCatalogEntriesValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
@@ -2184,6 +2935,94 @@ public class CommerceApi {
     public okhttp3.Call getCommerceCurrenciesAsync(final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCommerceCurrenciesValidateBeforeCall(_callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getCommerceDeposits
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call getCommerceDepositsCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/commerce/deposits";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getCommerceDepositsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getCommerceDepositsCall(_callback);
+
+    }
+
+    /**
+     * Read the crypto deposit watcher&#39;s runtime state, asset by asset
+     * Reports whether the deposit watcher is running, its poll interval, and one row per armed asset: chain, token, contract, pooled address and the last block that asset&#39;s cursor reached. That last block is the only way to see a watcher that is up but no longer advancing, which is what a stalled deposit rail looks like from outside. SuperAdmin only — the reserved admin org&#39;s owner claim; an authenticated caller without it is refused 403 and an anonymous one 401. It is READ-ONLY by design: arming an asset stays a CRYPTO_DEPOSIT_* deployment act and is deliberately not a button here, so there is nothing on this surface that can start crediting a customer&#39;s balance. The asset&#39;s RPC endpoint is reduced to scheme://host before it is returned, because a managed node URL carries its API key in the path or query and echoing it verbatim would publish that credential to every reader of this status.
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void getCommerceDeposits() throws ApiException {
+        getCommerceDepositsWithHttpInfo();
+    }
+
+    /**
+     * Read the crypto deposit watcher&#39;s runtime state, asset by asset
+     * Reports whether the deposit watcher is running, its poll interval, and one row per armed asset: chain, token, contract, pooled address and the last block that asset&#39;s cursor reached. That last block is the only way to see a watcher that is up but no longer advancing, which is what a stalled deposit rail looks like from outside. SuperAdmin only — the reserved admin org&#39;s owner claim; an authenticated caller without it is refused 403 and an anonymous one 401. It is READ-ONLY by design: arming an asset stays a CRYPTO_DEPOSIT_* deployment act and is deliberately not a button here, so there is nothing on this surface that can start crediting a customer&#39;s balance. The asset&#39;s RPC endpoint is reduced to scheme://host before it is returned, because a managed node URL carries its API key in the path or query and echoing it verbatim would publish that credential to every reader of this status.
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> getCommerceDepositsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getCommerceDepositsValidateBeforeCall(null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Read the crypto deposit watcher&#39;s runtime state, asset by asset (asynchronously)
+     * Reports whether the deposit watcher is running, its poll interval, and one row per armed asset: chain, token, contract, pooled address and the last block that asset&#39;s cursor reached. That last block is the only way to see a watcher that is up but no longer advancing, which is what a stalled deposit rail looks like from outside. SuperAdmin only — the reserved admin org&#39;s owner claim; an authenticated caller without it is refused 403 and an anonymous one 401. It is READ-ONLY by design: arming an asset stays a CRYPTO_DEPOSIT_* deployment act and is deliberately not a button here, so there is nothing on this surface that can start crediting a customer&#39;s balance. The asset&#39;s RPC endpoint is reduced to scheme://host before it is returned, because a managed node URL carries its API key in the path or query and echoing it verbatim would publish that credential to every reader of this status.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call getCommerceDepositsAsync(final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getCommerceDepositsValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
@@ -2557,6 +3396,123 @@ public class CommerceApi {
 
         okhttp3.Call localVarCall = getCommerceDiscountByDiscountidValidateBeforeCall(discountid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getCommerceHealth
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getCommerceHealthCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/commerce/health";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getCommerceHealthValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getCommerceHealthCall(_callback);
+
+    }
+
+    /**
+     * Answers ok whenever the commerce subsystem is mounted.
+     * Answers ok whenever the commerce subsystem is mounted. It is registered before the module embed boots, so it keeps answering even when the embed failed and every business route serves the fail-closed 503 — which is the point: it reports that the process is reachable, never that the money plane is healthy. Unauthenticated: a probe that needs a credential is a probe that reports the credential.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
+     * @return Liveness
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public Liveness getCommerceHealth() throws ApiException {
+        ApiResponse<Liveness> localVarResp = getCommerceHealthWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * Answers ok whenever the commerce subsystem is mounted.
+     * Answers ok whenever the commerce subsystem is mounted. It is registered before the module embed boots, so it keeps answering even when the embed failed and every business route serves the fail-closed 503 — which is the point: it reports that the process is reachable, never that the money plane is healthy. Unauthenticated: a probe that needs a credential is a probe that reports the credential.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
+     * @return ApiResponse&lt;Liveness&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Liveness> getCommerceHealthWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getCommerceHealthValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<Liveness>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Answers ok whenever the commerce subsystem is mounted. (asynchronously)
+     * Answers ok whenever the commerce subsystem is mounted. It is registered before the module embed boots, so it keeps answering even when the embed failed and every business route serves the fail-closed 503 — which is the point: it reports that the process is reachable, never that the money plane is healthy. Unauthenticated: a probe that needs a credential is a probe that reports the credential.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getCommerceHealthAsync(final ApiCallback<Liveness> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getCommerceHealthValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<Liveness>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -3020,6 +3976,94 @@ public class CommerceApi {
         return localVarCall;
     }
     /**
+     * Build call for getCommercePlansEntries
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call getCommercePlansEntriesCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/commerce/plans/entries";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getCommercePlansEntriesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getCommercePlansEntriesCall(_callback);
+
+    }
+
+    /**
+     * The raw plan authority rows
+     * Returns every plan row as stored — the administrative view behind the public plan catalog. The plan authority is cross-tenant pricing data, so the gate is a PLATFORM admin enforced by the handler itself: an org-level admin is refused 403 no matter what they may do inside their own org.
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void getCommercePlansEntries() throws ApiException {
+        getCommercePlansEntriesWithHttpInfo();
+    }
+
+    /**
+     * The raw plan authority rows
+     * Returns every plan row as stored — the administrative view behind the public plan catalog. The plan authority is cross-tenant pricing data, so the gate is a PLATFORM admin enforced by the handler itself: an org-level admin is refused 403 no matter what they may do inside their own org.
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> getCommercePlansEntriesWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getCommercePlansEntriesValidateBeforeCall(null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * The raw plan authority rows (asynchronously)
+     * Returns every plan row as stored — the administrative view behind the public plan catalog. The plan authority is cross-tenant pricing data, so the gate is a PLATFORM admin enforced by the handler itself: an org-level admin is refused 403 no matter what they may do inside their own org.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call getCommercePlansEntriesAsync(final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getCommercePlansEntriesValidateBeforeCall(_callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for getCommerceProduct
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -3202,6 +4246,94 @@ public class CommerceApi {
     public okhttp3.Call getCommerceProductByProductidAsync(@javax.annotation.Nonnull String productid, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCommerceProductByProductidValidateBeforeCall(productid, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getCommerceRatesEntries
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call getCommerceRatesEntriesCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/commerce/rates/entries";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getCommerceRatesEntriesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getCommerceRatesEntriesCall(_callback);
+
+    }
+
+    /**
+     * List what one unit of each metered thing costs
+     * Returns the rate authority&#39;s rows — the prices every metered charge resolves against. Narrow with ?product&#x3D; to show one surface at a time rather than every rate at once. SuperAdmin only: a rate is cross-tenant money, so the handler asks for the reserved admin org&#39;s owner claim itself rather than trusting the bundle&#39;s token gate.
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void getCommerceRatesEntries() throws ApiException {
+        getCommerceRatesEntriesWithHttpInfo();
+    }
+
+    /**
+     * List what one unit of each metered thing costs
+     * Returns the rate authority&#39;s rows — the prices every metered charge resolves against. Narrow with ?product&#x3D; to show one surface at a time rather than every rate at once. SuperAdmin only: a rate is cross-tenant money, so the handler asks for the reserved admin org&#39;s owner claim itself rather than trusting the bundle&#39;s token gate.
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> getCommerceRatesEntriesWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getCommerceRatesEntriesValidateBeforeCall(null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * List what one unit of each metered thing costs (asynchronously)
+     * Returns the rate authority&#39;s rows — the prices every metered charge resolves against. Narrow with ?product&#x3D; to show one surface at a time rather than every rate at once. SuperAdmin only: a rate is cross-tenant money, so the handler asks for the reserved admin org&#39;s owner claim itself rather than trusting the bundle&#39;s token gate.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call getCommerceRatesEntriesAsync(final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getCommerceRatesEntriesValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
@@ -3760,6 +4892,898 @@ public class CommerceApi {
     public okhttp3.Call getCommerceStocklocationByStocklocationidAsync(@javax.annotation.Nonnull String stocklocationid, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCommerceStocklocationByStocklocationidValidateBeforeCall(stocklocationid, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getCommerceStore
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call getCommerceStoreCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/commerce/store/";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getCommerceStoreValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getCommerceStoreCall(_callback);
+
+    }
+
+    /**
+     * List your org&#39;s storefronts as a page
+     * Answers a pagination envelope — page, display, the rows, and a total count — read from the caller org&#39;s OWN namespaced database, so one tenant can never list another&#39;s stores. Sorting defaults to the store slug and is overridable with sort; display is the page size and page applies only alongside it, and either one that is not a positive integer is refused rather than silently ignored. The limit query overrides the reported COUNT only and never the rows returned. A request that resolves no org namespace is served an empty page, never an unscoped scan. Readable with an admin token, a store-scoped token, or the anonymous published storefront key.
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void getCommerceStore() throws ApiException {
+        getCommerceStoreWithHttpInfo();
+    }
+
+    /**
+     * List your org&#39;s storefronts as a page
+     * Answers a pagination envelope — page, display, the rows, and a total count — read from the caller org&#39;s OWN namespaced database, so one tenant can never list another&#39;s stores. Sorting defaults to the store slug and is overridable with sort; display is the page size and page applies only alongside it, and either one that is not a positive integer is refused rather than silently ignored. The limit query overrides the reported COUNT only and never the rows returned. A request that resolves no org namespace is served an empty page, never an unscoped scan. Readable with an admin token, a store-scoped token, or the anonymous published storefront key.
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> getCommerceStoreWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getCommerceStoreValidateBeforeCall(null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * List your org&#39;s storefronts as a page (asynchronously)
+     * Answers a pagination envelope — page, display, the rows, and a total count — read from the caller org&#39;s OWN namespaced database, so one tenant can never list another&#39;s stores. Sorting defaults to the store slug and is overridable with sort; display is the page size and page applies only alongside it, and either one that is not a positive integer is refused rather than silently ignored. The limit query overrides the reported COUNT only and never the rows returned. A request that resolves no org namespace is served an empty page, never an unscoped scan. Readable with an admin token, a store-scoped token, or the anonymous published storefront key.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call getCommerceStoreAsync(final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getCommerceStoreValidateBeforeCall(_callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getCommerceStoreAccess
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call getCommerceStoreAccessCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/commerce/store/access";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getCommerceStoreAccessValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getCommerceStoreAccessCall(_callback);
+
+    }
+
+    /**
+     * Whether a store is entitled to trade, and why
+     * Answers allowed, the store id, and a status of trial, active, payment_required, store_required or unavailable — the entitlement check a merchant surface gates on. The rule that surprises people is that entitlement is PER STORE, not per org: the store needs its own current subscription on the entry plan, either trialing with a trial end still ahead or active with a period end still ahead, so an org-wide balance or a sibling store&#39;s plan unlocks nothing here. The store comes from the X-Store-Id header and otherwise falls back to the org&#39;s first store; neither resolving is store_required with allowed false, and a backing-store failure is 503 with status unavailable — a retry signal, not a denial.
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void getCommerceStoreAccess() throws ApiException {
+        getCommerceStoreAccessWithHttpInfo();
+    }
+
+    /**
+     * Whether a store is entitled to trade, and why
+     * Answers allowed, the store id, and a status of trial, active, payment_required, store_required or unavailable — the entitlement check a merchant surface gates on. The rule that surprises people is that entitlement is PER STORE, not per org: the store needs its own current subscription on the entry plan, either trialing with a trial end still ahead or active with a period end still ahead, so an org-wide balance or a sibling store&#39;s plan unlocks nothing here. The store comes from the X-Store-Id header and otherwise falls back to the org&#39;s first store; neither resolving is store_required with allowed false, and a backing-store failure is 503 with status unavailable — a retry signal, not a denial.
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> getCommerceStoreAccessWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getCommerceStoreAccessValidateBeforeCall(null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Whether a store is entitled to trade, and why (asynchronously)
+     * Answers allowed, the store id, and a status of trial, active, payment_required, store_required or unavailable — the entitlement check a merchant surface gates on. The rule that surprises people is that entitlement is PER STORE, not per org: the store needs its own current subscription on the entry plan, either trialing with a trial end still ahead or active with a period end still ahead, so an org-wide balance or a sibling store&#39;s plan unlocks nothing here. The store comes from the X-Store-Id header and otherwise falls back to the org&#39;s first store; neither resolving is store_required with allowed false, and a backing-store failure is 503 with status unavailable — a retry signal, not a denial.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call getCommerceStoreAccessAsync(final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getCommerceStoreAccessValidateBeforeCall(_callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getCommerceStoreByStoreid
+     * @param storeid  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call getCommerceStoreByStoreidCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/commerce/store/{storeid}"
+            .replace("{" + "storeid" + "}", localVarApiClient.escapeString(storeid.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getCommerceStoreByStoreidValidateBeforeCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'storeid' is set
+        if (storeid == null) {
+            throw new ApiException("Missing the required parameter 'storeid' when calling getCommerceStoreByStoreid(Async)");
+        }
+
+        return getCommerceStoreByStoreidCall(storeid, _callback);
+
+    }
+
+    /**
+     * Fetch one storefront
+     * Reads the addressed store from the caller org&#39;s own namespaced database, so an id belonging to another tenant is simply absent there and answers 404 rather than leaking its existence. The body is the stored entity including its embedded listing override map. Readable with an admin or store-read token and also with the anonymous published storefront key, which is what lets a logged-out storefront resolve the store it is rendering.
+     * @param storeid  (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void getCommerceStoreByStoreid(@javax.annotation.Nonnull String storeid) throws ApiException {
+        getCommerceStoreByStoreidWithHttpInfo(storeid);
+    }
+
+    /**
+     * Fetch one storefront
+     * Reads the addressed store from the caller org&#39;s own namespaced database, so an id belonging to another tenant is simply absent there and answers 404 rather than leaking its existence. The body is the stored entity including its embedded listing override map. Readable with an admin or store-read token and also with the anonymous published storefront key, which is what lets a logged-out storefront resolve the store it is rendering.
+     * @param storeid  (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> getCommerceStoreByStoreidWithHttpInfo(@javax.annotation.Nonnull String storeid) throws ApiException {
+        okhttp3.Call localVarCall = getCommerceStoreByStoreidValidateBeforeCall(storeid, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Fetch one storefront (asynchronously)
+     * Reads the addressed store from the caller org&#39;s own namespaced database, so an id belonging to another tenant is simply absent there and answers 404 rather than leaking its existence. The body is the stored entity including its embedded listing override map. Readable with an admin or store-read token and also with the anonymous published storefront key, which is what lets a logged-out storefront resolve the store it is rendering.
+     * @param storeid  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call getCommerceStoreByStoreidAsync(@javax.annotation.Nonnull String storeid, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getCommerceStoreByStoreidValidateBeforeCall(storeid, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getCommerceStoreByStoreidBundleByKey
+     * @param storeid  (required)
+     * @param key  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call getCommerceStoreByStoreidBundleByKeyCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/commerce/store/{storeid}/bundle/{key}"
+            .replace("{" + "storeid" + "}", localVarApiClient.escapeString(storeid.toString()))
+            .replace("{" + "key" + "}", localVarApiClient.escapeString(key.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getCommerceStoreByStoreidBundleByKeyValidateBeforeCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'storeid' is set
+        if (storeid == null) {
+            throw new ApiException("Missing the required parameter 'storeid' when calling getCommerceStoreByStoreidBundleByKey(Async)");
+        }
+
+        // verify the required parameter 'key' is set
+        if (key == null) {
+            throw new ApiException("Missing the required parameter 'key' when calling getCommerceStoreByStoreidBundleByKey(Async)");
+        }
+
+        return getCommerceStoreByStoreidBundleByKeyCall(storeid, key, _callback);
+
+    }
+
+    /**
+     * Fetch a bundle as this storefront sells it
+     * Returns the stored bundle with the store&#39;s listing for it laid over the top — every non-empty listing field wins, and the currency is forced to the store&#39;s own — so the caller reads what this storefront actually sells rather than the catalog-wide record. The overlay is keyed by the item&#39;s ID: a listing filed only under a slug or SKU does not reach it, unlike the listing reads, which do fall back to those. An unknown store or key is 404. Readable with an admin token or the anonymous published storefront key.
+     * @param storeid  (required)
+     * @param key  (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void getCommerceStoreByStoreidBundleByKey(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key) throws ApiException {
+        getCommerceStoreByStoreidBundleByKeyWithHttpInfo(storeid, key);
+    }
+
+    /**
+     * Fetch a bundle as this storefront sells it
+     * Returns the stored bundle with the store&#39;s listing for it laid over the top — every non-empty listing field wins, and the currency is forced to the store&#39;s own — so the caller reads what this storefront actually sells rather than the catalog-wide record. The overlay is keyed by the item&#39;s ID: a listing filed only under a slug or SKU does not reach it, unlike the listing reads, which do fall back to those. An unknown store or key is 404. Readable with an admin token or the anonymous published storefront key.
+     * @param storeid  (required)
+     * @param key  (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> getCommerceStoreByStoreidBundleByKeyWithHttpInfo(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key) throws ApiException {
+        okhttp3.Call localVarCall = getCommerceStoreByStoreidBundleByKeyValidateBeforeCall(storeid, key, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Fetch a bundle as this storefront sells it (asynchronously)
+     * Returns the stored bundle with the store&#39;s listing for it laid over the top — every non-empty listing field wins, and the currency is forced to the store&#39;s own — so the caller reads what this storefront actually sells rather than the catalog-wide record. The overlay is keyed by the item&#39;s ID: a listing filed only under a slug or SKU does not reach it, unlike the listing reads, which do fall back to those. An unknown store or key is 404. Readable with an admin token or the anonymous published storefront key.
+     * @param storeid  (required)
+     * @param key  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call getCommerceStoreByStoreidBundleByKeyAsync(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getCommerceStoreByStoreidBundleByKeyValidateBeforeCall(storeid, key, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getCommerceStoreByStoreidListing
+     * @param storeid  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call getCommerceStoreByStoreidListingCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/commerce/store/{storeid}/listing"
+            .replace("{" + "storeid" + "}", localVarApiClient.escapeString(storeid.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getCommerceStoreByStoreidListingValidateBeforeCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'storeid' is set
+        if (storeid == null) {
+            throw new ApiException("Missing the required parameter 'storeid' when calling getCommerceStoreByStoreidListing(Async)");
+        }
+
+        return getCommerceStoreByStoreidListingCall(storeid, _callback);
+
+    }
+
+    /**
+     * The storefront&#39;s whole listing override map
+     * Returns every override this store applies to catalog items — name, price, list price, media, availability and the hidden flag — keyed by product or variant id, in one read. A listing is an OVERRIDE, not a product: the catalog item exists independently and this map only says how this storefront presents it. Read from the caller org&#39;s own namespaced database, so a store id belonging to another tenant is 404. Readable with an admin token or the anonymous published storefront key.
+     * @param storeid  (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void getCommerceStoreByStoreidListing(@javax.annotation.Nonnull String storeid) throws ApiException {
+        getCommerceStoreByStoreidListingWithHttpInfo(storeid);
+    }
+
+    /**
+     * The storefront&#39;s whole listing override map
+     * Returns every override this store applies to catalog items — name, price, list price, media, availability and the hidden flag — keyed by product or variant id, in one read. A listing is an OVERRIDE, not a product: the catalog item exists independently and this map only says how this storefront presents it. Read from the caller org&#39;s own namespaced database, so a store id belonging to another tenant is 404. Readable with an admin token or the anonymous published storefront key.
+     * @param storeid  (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> getCommerceStoreByStoreidListingWithHttpInfo(@javax.annotation.Nonnull String storeid) throws ApiException {
+        okhttp3.Call localVarCall = getCommerceStoreByStoreidListingValidateBeforeCall(storeid, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * The storefront&#39;s whole listing override map (asynchronously)
+     * Returns every override this store applies to catalog items — name, price, list price, media, availability and the hidden flag — keyed by product or variant id, in one read. A listing is an OVERRIDE, not a product: the catalog item exists independently and this map only says how this storefront presents it. Read from the caller org&#39;s own namespaced database, so a store id belonging to another tenant is 404. Readable with an admin token or the anonymous published storefront key.
+     * @param storeid  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call getCommerceStoreByStoreidListingAsync(@javax.annotation.Nonnull String storeid, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getCommerceStoreByStoreidListingValidateBeforeCall(storeid, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getCommerceStoreByStoreidListingByKey
+     * @param storeid  (required)
+     * @param key  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call getCommerceStoreByStoreidListingByKeyCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/commerce/store/{storeid}/listing/{key}"
+            .replace("{" + "storeid" + "}", localVarApiClient.escapeString(storeid.toString()))
+            .replace("{" + "key" + "}", localVarApiClient.escapeString(key.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getCommerceStoreByStoreidListingByKeyValidateBeforeCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'storeid' is set
+        if (storeid == null) {
+            throw new ApiException("Missing the required parameter 'storeid' when calling getCommerceStoreByStoreidListingByKey(Async)");
+        }
+
+        // verify the required parameter 'key' is set
+        if (key == null) {
+            throw new ApiException("Missing the required parameter 'key' when calling getCommerceStoreByStoreidListingByKey(Async)");
+        }
+
+        return getCommerceStoreByStoreidListingByKeyCall(storeid, key, _callback);
+
+    }
+
+    /**
+     * Fetch one listing override, by item id or by its slug or SKU
+     * Looks the key up in the store&#39;s listing map first and, failing that, matches it against each listing&#39;s slug and then its SKU — so a storefront holding only a product&#39;s URL slug can still resolve the override. That fallback is unique to the listing reads; the item overlay routes match by id alone. A key matching none of the three is 404, as is a store id outside the caller org&#39;s namespace. Readable with an admin token or the anonymous published storefront key.
+     * @param storeid  (required)
+     * @param key  (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void getCommerceStoreByStoreidListingByKey(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key) throws ApiException {
+        getCommerceStoreByStoreidListingByKeyWithHttpInfo(storeid, key);
+    }
+
+    /**
+     * Fetch one listing override, by item id or by its slug or SKU
+     * Looks the key up in the store&#39;s listing map first and, failing that, matches it against each listing&#39;s slug and then its SKU — so a storefront holding only a product&#39;s URL slug can still resolve the override. That fallback is unique to the listing reads; the item overlay routes match by id alone. A key matching none of the three is 404, as is a store id outside the caller org&#39;s namespace. Readable with an admin token or the anonymous published storefront key.
+     * @param storeid  (required)
+     * @param key  (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> getCommerceStoreByStoreidListingByKeyWithHttpInfo(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key) throws ApiException {
+        okhttp3.Call localVarCall = getCommerceStoreByStoreidListingByKeyValidateBeforeCall(storeid, key, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Fetch one listing override, by item id or by its slug or SKU (asynchronously)
+     * Looks the key up in the store&#39;s listing map first and, failing that, matches it against each listing&#39;s slug and then its SKU — so a storefront holding only a product&#39;s URL slug can still resolve the override. That fallback is unique to the listing reads; the item overlay routes match by id alone. A key matching none of the three is 404, as is a store id outside the caller org&#39;s namespace. Readable with an admin token or the anonymous published storefront key.
+     * @param storeid  (required)
+     * @param key  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call getCommerceStoreByStoreidListingByKeyAsync(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getCommerceStoreByStoreidListingByKeyValidateBeforeCall(storeid, key, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getCommerceStoreByStoreidProductByKey
+     * @param storeid  (required)
+     * @param key  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call getCommerceStoreByStoreidProductByKeyCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/commerce/store/{storeid}/product/{key}"
+            .replace("{" + "storeid" + "}", localVarApiClient.escapeString(storeid.toString()))
+            .replace("{" + "key" + "}", localVarApiClient.escapeString(key.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getCommerceStoreByStoreidProductByKeyValidateBeforeCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'storeid' is set
+        if (storeid == null) {
+            throw new ApiException("Missing the required parameter 'storeid' when calling getCommerceStoreByStoreidProductByKey(Async)");
+        }
+
+        // verify the required parameter 'key' is set
+        if (key == null) {
+            throw new ApiException("Missing the required parameter 'key' when calling getCommerceStoreByStoreidProductByKey(Async)");
+        }
+
+        return getCommerceStoreByStoreidProductByKeyCall(storeid, key, _callback);
+
+    }
+
+    /**
+     * Fetch a product as this storefront sells it
+     * Returns the stored product with the store&#39;s listing for it laid over the top — non-empty listing fields replace the catalog values and the currency is forced to the store&#39;s own — which is what lets two storefronts sell the same catalog product at their own price, name and media. The overlay is keyed by the product&#39;s ID, so a listing filed only under a slug or SKU does not apply here. An unknown store or key is 404. Readable with an admin token or the anonymous published storefront key.
+     * @param storeid  (required)
+     * @param key  (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void getCommerceStoreByStoreidProductByKey(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key) throws ApiException {
+        getCommerceStoreByStoreidProductByKeyWithHttpInfo(storeid, key);
+    }
+
+    /**
+     * Fetch a product as this storefront sells it
+     * Returns the stored product with the store&#39;s listing for it laid over the top — non-empty listing fields replace the catalog values and the currency is forced to the store&#39;s own — which is what lets two storefronts sell the same catalog product at their own price, name and media. The overlay is keyed by the product&#39;s ID, so a listing filed only under a slug or SKU does not apply here. An unknown store or key is 404. Readable with an admin token or the anonymous published storefront key.
+     * @param storeid  (required)
+     * @param key  (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> getCommerceStoreByStoreidProductByKeyWithHttpInfo(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key) throws ApiException {
+        okhttp3.Call localVarCall = getCommerceStoreByStoreidProductByKeyValidateBeforeCall(storeid, key, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Fetch a product as this storefront sells it (asynchronously)
+     * Returns the stored product with the store&#39;s listing for it laid over the top — non-empty listing fields replace the catalog values and the currency is forced to the store&#39;s own — which is what lets two storefronts sell the same catalog product at their own price, name and media. The overlay is keyed by the product&#39;s ID, so a listing filed only under a slug or SKU does not apply here. An unknown store or key is 404. Readable with an admin token or the anonymous published storefront key.
+     * @param storeid  (required)
+     * @param key  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call getCommerceStoreByStoreidProductByKeyAsync(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getCommerceStoreByStoreidProductByKeyValidateBeforeCall(storeid, key, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getCommerceStoreByStoreidVariantByKey
+     * @param storeid  (required)
+     * @param key  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call getCommerceStoreByStoreidVariantByKeyCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/commerce/store/{storeid}/variant/{key}"
+            .replace("{" + "storeid" + "}", localVarApiClient.escapeString(storeid.toString()))
+            .replace("{" + "key" + "}", localVarApiClient.escapeString(key.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getCommerceStoreByStoreidVariantByKeyValidateBeforeCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'storeid' is set
+        if (storeid == null) {
+            throw new ApiException("Missing the required parameter 'storeid' when calling getCommerceStoreByStoreidVariantByKey(Async)");
+        }
+
+        // verify the required parameter 'key' is set
+        if (key == null) {
+            throw new ApiException("Missing the required parameter 'key' when calling getCommerceStoreByStoreidVariantByKey(Async)");
+        }
+
+        return getCommerceStoreByStoreidVariantByKeyCall(storeid, key, _callback);
+
+    }
+
+    /**
+     * Fetch a variant as this storefront sells it
+     * Returns the stored variant with the store&#39;s listing for it overlaid — non-empty listing fields replace the catalog values and the currency is forced to the store&#39;s own — which is what makes per-storefront pricing of a shared variant possible. The overlay is keyed by the variant&#39;s ID, never by its slug or SKU. An unknown store or key is 404. Readable with an admin token or the anonymous published storefront key.
+     * @param storeid  (required)
+     * @param key  (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void getCommerceStoreByStoreidVariantByKey(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key) throws ApiException {
+        getCommerceStoreByStoreidVariantByKeyWithHttpInfo(storeid, key);
+    }
+
+    /**
+     * Fetch a variant as this storefront sells it
+     * Returns the stored variant with the store&#39;s listing for it overlaid — non-empty listing fields replace the catalog values and the currency is forced to the store&#39;s own — which is what makes per-storefront pricing of a shared variant possible. The overlay is keyed by the variant&#39;s ID, never by its slug or SKU. An unknown store or key is 404. Readable with an admin token or the anonymous published storefront key.
+     * @param storeid  (required)
+     * @param key  (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> getCommerceStoreByStoreidVariantByKeyWithHttpInfo(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key) throws ApiException {
+        okhttp3.Call localVarCall = getCommerceStoreByStoreidVariantByKeyValidateBeforeCall(storeid, key, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Fetch a variant as this storefront sells it (asynchronously)
+     * Returns the stored variant with the store&#39;s listing for it overlaid — non-empty listing fields replace the catalog values and the currency is forced to the store&#39;s own — which is what makes per-storefront pricing of a shared variant possible. The overlay is keyed by the variant&#39;s ID, never by its slug or SKU. An unknown store or key is 404. Readable with an admin token or the anonymous published storefront key.
+     * @param storeid  (required)
+     * @param key  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call getCommerceStoreByStoreidVariantByKeyAsync(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getCommerceStoreByStoreidVariantByKeyValidateBeforeCall(storeid, key, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getCommerceStoreCurrent
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call getCommerceStoreCurrentCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/commerce/store/current";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getCommerceStoreCurrentValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getCommerceStoreCurrentCall(_callback);
+
+    }
+
+    /**
+     * Resolve your org&#39;s active storefront without naming an id
+     * Returns the caller org&#39;s store resolved FROM THE AUTHENTICATED ORG rather than from a path id — which is how an admin dashboard or a storefront edge learns the store id it should then read and write against. An X-Store-Id header selects a specific store, resolved only inside the caller&#39;s own namespace, so a foreign id cannot cross the tenant boundary and answers 404 instead. With no header the org&#39;s first store is returned, and an org that has none yet has its canonical default provisioned lazily and idempotently, carrying no payment credentials. Only when there is no org in context, or provisioning fails, does it fall back to a placeholder store literally named default, which a storefront edge should treat as unconfigured.
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void getCommerceStoreCurrent() throws ApiException {
+        getCommerceStoreCurrentWithHttpInfo();
+    }
+
+    /**
+     * Resolve your org&#39;s active storefront without naming an id
+     * Returns the caller org&#39;s store resolved FROM THE AUTHENTICATED ORG rather than from a path id — which is how an admin dashboard or a storefront edge learns the store id it should then read and write against. An X-Store-Id header selects a specific store, resolved only inside the caller&#39;s own namespace, so a foreign id cannot cross the tenant boundary and answers 404 instead. With no header the org&#39;s first store is returned, and an org that has none yet has its canonical default provisioned lazily and idempotently, carrying no payment credentials. Only when there is no org in context, or provisioning fails, does it fall back to a placeholder store literally named default, which a storefront edge should treat as unconfigured.
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> getCommerceStoreCurrentWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getCommerceStoreCurrentValidateBeforeCall(null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Resolve your org&#39;s active storefront without naming an id (asynchronously)
+     * Returns the caller org&#39;s store resolved FROM THE AUTHENTICATED ORG rather than from a path id — which is how an admin dashboard or a storefront edge learns the store id it should then read and write against. An X-Store-Id header selects a specific store, resolved only inside the caller&#39;s own namespace, so a foreign id cannot cross the tenant boundary and answers 404 instead. With no header the org&#39;s first store is returned, and an org that has none yet has its canonical default provisioned lazily and idempotently, carrying no payment credentials. Only when there is no org in context, or provisioning fails, does it fall back to a placeholder store literally named default, which a storefront edge should treat as unconfigured.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call getCommerceStoreCurrentAsync(final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getCommerceStoreCurrentValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
@@ -5252,6 +7276,260 @@ public class CommerceApi {
         return localVarCall;
     }
     /**
+     * Build call for getPayment
+     * @param id ID is the ledger transaction id a payment returned. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getPaymentCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/commerce/payments/{id}"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getPaymentValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling getPayment(Async)");
+        }
+
+        return getPaymentCall(id, _callback);
+
+    }
+
+    /**
+     * Read one settled payment by its id
+     * Reads one settled payment out of the caller&#39;s org ledger.  The org scopes the read by construction — the ledger is namespaced to it — so an id belonging to another tenant is simply not found rather than found and then filtered. A ledger row that is not a payment is likewise not found, so this cannot be used to walk the org&#39;s usage debits.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
+     * @param id ID is the ledger transaction id a payment returned. (required)
+     * @return PaymentRecord
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public PaymentRecord getPayment(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<PaymentRecord> localVarResp = getPaymentWithHttpInfo(id);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Read one settled payment by its id
+     * Reads one settled payment out of the caller&#39;s org ledger.  The org scopes the read by construction — the ledger is namespaced to it — so an id belonging to another tenant is simply not found rather than found and then filtered. A ledger row that is not a payment is likewise not found, so this cannot be used to walk the org&#39;s usage debits.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
+     * @param id ID is the ledger transaction id a payment returned. (required)
+     * @return ApiResponse&lt;PaymentRecord&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<PaymentRecord> getPaymentWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getPaymentValidateBeforeCall(id, null);
+        Type localVarReturnType = new TypeToken<PaymentRecord>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Read one settled payment by its id (asynchronously)
+     * Reads one settled payment out of the caller&#39;s org ledger.  The org scopes the read by construction — the ledger is namespaced to it — so an id belonging to another tenant is simply not found rather than found and then filtered. A ledger row that is not a payment is likewise not found, so this cannot be used to walk the org&#39;s usage debits.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
+     * @param id ID is the ledger transaction id a payment returned. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getPaymentAsync(@javax.annotation.Nonnull String id, final ApiCallback<PaymentRecord> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getPaymentValidateBeforeCall(id, _callback);
+        Type localVarReturnType = new TypeToken<PaymentRecord>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for openCart
+     * @param cartOpen  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call openCartCall(@javax.annotation.Nonnull CartOpen cartOpen, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = cartOpen;
+
+        // create path and map variables
+        String localVarPath = "/v1/commerce/cart";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call openCartValidateBeforeCall(@javax.annotation.Nonnull CartOpen cartOpen, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'cartOpen' is set
+        if (cartOpen == null) {
+            throw new ApiException("Missing the required parameter 'cartOpen' when calling openCart(Async)");
+        }
+
+        return openCartCall(cartOpen, _callback);
+
+    }
+
+    /**
+     * Open a cart for a shopper to fill
+     * Opens an empty cart for a shopper to fill, and answers it with its new id.  This is the first step of a sale: hold the id, add items to it with setCartItem, then hand it to checkout. Every field of the request is optional — an empty body opens a perfectly good anonymous cart — and the fields exist only to pre-fill what is already known about the shopper.  The STORE defaults to the org&#39;s own default storefront, so a merchant selling through one storefront never has to name it. The CURRENCY defaults to usd; note that checkout overrides it with the store&#39;s own currency when the sale is authorized, so a currency set here is a hint rather than a commitment.  The cart is created in the CALLER&#39;S OWN org namespace, taken from the validated principal and never from the body, so a cart can never be opened on another tenant&#39;s books.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
+     * @param cartOpen  (required)
+     * @return Cart
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
+     */
+    public Cart openCart(@javax.annotation.Nonnull CartOpen cartOpen) throws ApiException {
+        ApiResponse<Cart> localVarResp = openCartWithHttpInfo(cartOpen);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Open a cart for a shopper to fill
+     * Opens an empty cart for a shopper to fill, and answers it with its new id.  This is the first step of a sale: hold the id, add items to it with setCartItem, then hand it to checkout. Every field of the request is optional — an empty body opens a perfectly good anonymous cart — and the fields exist only to pre-fill what is already known about the shopper.  The STORE defaults to the org&#39;s own default storefront, so a merchant selling through one storefront never has to name it. The CURRENCY defaults to usd; note that checkout overrides it with the store&#39;s own currency when the sale is authorized, so a currency set here is a hint rather than a commitment.  The cart is created in the CALLER&#39;S OWN org namespace, taken from the validated principal and never from the body, so a cart can never be opened on another tenant&#39;s books.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
+     * @param cartOpen  (required)
+     * @return ApiResponse&lt;Cart&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Cart> openCartWithHttpInfo(@javax.annotation.Nonnull CartOpen cartOpen) throws ApiException {
+        okhttp3.Call localVarCall = openCartValidateBeforeCall(cartOpen, null);
+        Type localVarReturnType = new TypeToken<Cart>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Open a cart for a shopper to fill (asynchronously)
+     * Opens an empty cart for a shopper to fill, and answers it with its new id.  This is the first step of a sale: hold the id, add items to it with setCartItem, then hand it to checkout. Every field of the request is optional — an empty body opens a perfectly good anonymous cart — and the fields exist only to pre-fill what is already known about the shopper.  The STORE defaults to the org&#39;s own default storefront, so a merchant selling through one storefront never has to name it. The CURRENCY defaults to usd; note that checkout overrides it with the store&#39;s own currency when the sale is authorized, so a currency set here is a hint rather than a commitment.  The cart is created in the CALLER&#39;S OWN org namespace, taken from the validated principal and never from the body, so a cart can never be opened on another tenant&#39;s books.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
+     * @param cartOpen  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call openCartAsync(@javax.annotation.Nonnull CartOpen cartOpen, final ApiCallback<Cart> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = openCartValidateBeforeCall(cartOpen, _callback);
+        Type localVarReturnType = new TypeToken<Cart>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for patchCommerceCollectionByCollectionid
      * @param collectionid  (required)
      * @param _callback Callback for upload/download progress
@@ -6134,6 +8412,212 @@ public class CommerceApi {
         return localVarCall;
     }
     /**
+     * Build call for patchCommerceStoreByStoreid
+     * @param storeid  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call patchCommerceStoreByStoreidCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/commerce/store/{storeid}"
+            .replace("{" + "storeid" + "}", localVarApiClient.escapeString(storeid.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call patchCommerceStoreByStoreidValidateBeforeCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'storeid' is set
+        if (storeid == null) {
+            throw new ApiException("Missing the required parameter 'storeid' when calling patchCommerceStoreByStoreid(Async)");
+        }
+
+        return patchCommerceStoreByStoreidCall(storeid, _callback);
+
+    }
+
+    /**
+     * Change part of a storefront
+     * Loads the stored store and decodes the body over it, so only the fields the body names change and everything else keeps its stored value — the difference from the full replace, which clears what it is not told. Answers the merged entity. The id is resolved inside the caller org&#39;s own namespace, so an unknown or foreign id is 404. Requires an admin token, or one holding both store read and store write.
+     * @param storeid  (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void patchCommerceStoreByStoreid(@javax.annotation.Nonnull String storeid) throws ApiException {
+        patchCommerceStoreByStoreidWithHttpInfo(storeid);
+    }
+
+    /**
+     * Change part of a storefront
+     * Loads the stored store and decodes the body over it, so only the fields the body names change and everything else keeps its stored value — the difference from the full replace, which clears what it is not told. Answers the merged entity. The id is resolved inside the caller org&#39;s own namespace, so an unknown or foreign id is 404. Requires an admin token, or one holding both store read and store write.
+     * @param storeid  (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> patchCommerceStoreByStoreidWithHttpInfo(@javax.annotation.Nonnull String storeid) throws ApiException {
+        okhttp3.Call localVarCall = patchCommerceStoreByStoreidValidateBeforeCall(storeid, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Change part of a storefront (asynchronously)
+     * Loads the stored store and decodes the body over it, so only the fields the body names change and everything else keeps its stored value — the difference from the full replace, which clears what it is not told. Answers the merged entity. The id is resolved inside the caller org&#39;s own namespace, so an unknown or foreign id is 404. Requires an admin token, or one holding both store read and store write.
+     * @param storeid  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call patchCommerceStoreByStoreidAsync(@javax.annotation.Nonnull String storeid, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = patchCommerceStoreByStoreidValidateBeforeCall(storeid, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for patchCommerceStoreByStoreidListingByKey
+     * @param storeid  (required)
+     * @param key  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call patchCommerceStoreByStoreidListingByKeyCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/commerce/store/{storeid}/listing/{key}"
+            .replace("{" + "storeid" + "}", localVarApiClient.escapeString(storeid.toString()))
+            .replace("{" + "key" + "}", localVarApiClient.escapeString(key.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call patchCommerceStoreByStoreidListingByKeyValidateBeforeCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'storeid' is set
+        if (storeid == null) {
+            throw new ApiException("Missing the required parameter 'storeid' when calling patchCommerceStoreByStoreidListingByKey(Async)");
+        }
+
+        // verify the required parameter 'key' is set
+        if (key == null) {
+            throw new ApiException("Missing the required parameter 'key' when calling patchCommerceStoreByStoreidListingByKey(Async)");
+        }
+
+        return patchCommerceStoreByStoreidListingByKeyCall(storeid, key, _callback);
+
+    }
+
+    /**
+     * Confirm a listing override exists and re-save the store
+     * Requires the key to already be present — an absent one is 404 — and answers the store&#39;s listing map at 200. Read the behaviour before relying on it: the decoded body is applied to a COPY taken out of the map and is never assigned back, so the stored listing is unchanged and the map returned is exactly the map that was already there. An actual edit to an existing listing has to go through the upsert, which does write its result back into the store. A body that fails to decode is still 400. Admin-gated and namespaced to the caller&#39;s org.
+     * @param storeid  (required)
+     * @param key  (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void patchCommerceStoreByStoreidListingByKey(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key) throws ApiException {
+        patchCommerceStoreByStoreidListingByKeyWithHttpInfo(storeid, key);
+    }
+
+    /**
+     * Confirm a listing override exists and re-save the store
+     * Requires the key to already be present — an absent one is 404 — and answers the store&#39;s listing map at 200. Read the behaviour before relying on it: the decoded body is applied to a COPY taken out of the map and is never assigned back, so the stored listing is unchanged and the map returned is exactly the map that was already there. An actual edit to an existing listing has to go through the upsert, which does write its result back into the store. A body that fails to decode is still 400. Admin-gated and namespaced to the caller&#39;s org.
+     * @param storeid  (required)
+     * @param key  (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> patchCommerceStoreByStoreidListingByKeyWithHttpInfo(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key) throws ApiException {
+        okhttp3.Call localVarCall = patchCommerceStoreByStoreidListingByKeyValidateBeforeCall(storeid, key, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Confirm a listing override exists and re-save the store (asynchronously)
+     * Requires the key to already be present — an absent one is 404 — and answers the store&#39;s listing map at 200. Read the behaviour before relying on it: the decoded body is applied to a COPY taken out of the map and is never assigned back, so the stored listing is unchanged and the map returned is exactly the map that was already there. An actual edit to an existing listing has to go through the upsert, which does write its result back into the store. A body that fails to decode is still 400. Admin-gated and namespaced to the caller&#39;s org.
+     * @param storeid  (required)
+     * @param key  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call patchCommerceStoreByStoreidListingByKeyAsync(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = patchCommerceStoreByStoreidListingByKeyValidateBeforeCall(storeid, key, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for patchCommerceSubmissionBySubmissionid
      * @param submissionid  (required)
      * @param _callback Callback for upload/download progress
@@ -6914,6 +9398,358 @@ public class CommerceApi {
     public okhttp3.Call patchCommerceWebhookByWebhookidAsync(@javax.annotation.Nonnull String webhookid, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = patchCommerceWebhookByWebhookidValidateBeforeCall(webhookid, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postCommerceCatalogEntries
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call postCommerceCatalogEntriesCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/commerce/catalog/entries";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postCommerceCatalogEntriesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postCommerceCatalogEntriesCall(_callback);
+
+    }
+
+    /**
+     * Add a catalog entry
+     * Creates a catalog row from the body and answers it at 201. The slug is required and is the globally-unique catalog key, so a second entry claiming a slug already in use is refused 409 rather than shadowing the first. PLATFORM admin only — this is cross-tenant pricing and packaging data, and an org-level admin is refused 403.
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void postCommerceCatalogEntries() throws ApiException {
+        postCommerceCatalogEntriesWithHttpInfo();
+    }
+
+    /**
+     * Add a catalog entry
+     * Creates a catalog row from the body and answers it at 201. The slug is required and is the globally-unique catalog key, so a second entry claiming a slug already in use is refused 409 rather than shadowing the first. PLATFORM admin only — this is cross-tenant pricing and packaging data, and an org-level admin is refused 403.
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> postCommerceCatalogEntriesWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postCommerceCatalogEntriesValidateBeforeCall(null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Add a catalog entry (asynchronously)
+     * Creates a catalog row from the body and answers it at 201. The slug is required and is the globally-unique catalog key, so a second entry claiming a slug already in use is refused 409 rather than shadowing the first. PLATFORM admin only — this is cross-tenant pricing and packaging data, and an org-level admin is refused 403.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call postCommerceCatalogEntriesAsync(final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postCommerceCatalogEntriesValidateBeforeCall(_callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postCommerceCatalogModels
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call postCommerceCatalogModelsCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/commerce/catalog/models";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postCommerceCatalogModelsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postCommerceCatalogModelsCall(_callback);
+
+    }
+
+    /**
+     * Land a syncer&#39;s view of the model catalog: upstream costs and machine facts
+     * Takes a batch of model rows and upserts each one&#39;s upstream COST and machine-observable facts, answering what was created and changed. It deliberately touches nothing a human owns — not the retail price, not the markup, not the entitlement tier — so a sync can never overwrite an administrator&#39;s pricing decision. The gate is a PLATFORM principal rather than a platform ADMIN, because the caller is normally a scheduled job holding the internal service token, which carries platform scope but no admin claim.
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void postCommerceCatalogModels() throws ApiException {
+        postCommerceCatalogModelsWithHttpInfo();
+    }
+
+    /**
+     * Land a syncer&#39;s view of the model catalog: upstream costs and machine facts
+     * Takes a batch of model rows and upserts each one&#39;s upstream COST and machine-observable facts, answering what was created and changed. It deliberately touches nothing a human owns — not the retail price, not the markup, not the entitlement tier — so a sync can never overwrite an administrator&#39;s pricing decision. The gate is a PLATFORM principal rather than a platform ADMIN, because the caller is normally a scheduled job holding the internal service token, which carries platform scope but no admin claim.
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> postCommerceCatalogModelsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postCommerceCatalogModelsValidateBeforeCall(null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Land a syncer&#39;s view of the model catalog: upstream costs and machine facts (asynchronously)
+     * Takes a batch of model rows and upserts each one&#39;s upstream COST and machine-observable facts, answering what was created and changed. It deliberately touches nothing a human owns — not the retail price, not the markup, not the entitlement tier — so a sync can never overwrite an administrator&#39;s pricing decision. The gate is a PLATFORM principal rather than a platform ADMIN, because the caller is normally a scheduled job holding the internal service token, which carries platform scope but no admin claim.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call postCommerceCatalogModelsAsync(final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postCommerceCatalogModelsValidateBeforeCall(_callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postCommerceCatalogModelsRefresh
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call postCommerceCatalogModelsRefreshCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/commerce/catalog/models/refresh";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postCommerceCatalogModelsRefreshValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postCommerceCatalogModelsRefreshCall(_callback);
+
+    }
+
+    /**
+     * Refresh the model catalog by reading the upstream provider
+     * Pulls the upstream model list and lands it through the same upsert the push door uses, so the rule that a sync owns cost and an administrator owns price holds no matter which door a row came through. It takes no body — the upstream is READ rather than told. If that upstream cannot be read the call answers 502 and writes NOTHING: a sync that cannot see its source must never conclude the source is empty, because that conclusion would withdraw every model on sale. The gate is a PLATFORM principal so the scheduled job&#39;s service token qualifies.
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void postCommerceCatalogModelsRefresh() throws ApiException {
+        postCommerceCatalogModelsRefreshWithHttpInfo();
+    }
+
+    /**
+     * Refresh the model catalog by reading the upstream provider
+     * Pulls the upstream model list and lands it through the same upsert the push door uses, so the rule that a sync owns cost and an administrator owns price holds no matter which door a row came through. It takes no body — the upstream is READ rather than told. If that upstream cannot be read the call answers 502 and writes NOTHING: a sync that cannot see its source must never conclude the source is empty, because that conclusion would withdraw every model on sale. The gate is a PLATFORM principal so the scheduled job&#39;s service token qualifies.
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> postCommerceCatalogModelsRefreshWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postCommerceCatalogModelsRefreshValidateBeforeCall(null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Refresh the model catalog by reading the upstream provider (asynchronously)
+     * Pulls the upstream model list and lands it through the same upsert the push door uses, so the rule that a sync owns cost and an administrator owns price holds no matter which door a row came through. It takes no body — the upstream is READ rather than told. If that upstream cannot be read the call answers 502 and writes NOTHING: a sync that cannot see its source must never conclude the source is empty, because that conclusion would withdraw every model on sale. The gate is a PLATFORM principal so the scheduled job&#39;s service token qualifies.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call postCommerceCatalogModelsRefreshAsync(final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postCommerceCatalogModelsRefreshValidateBeforeCall(_callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postCommerceCatalogSeed
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call postCommerceCatalogSeedCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/commerce/catalog/seed";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postCommerceCatalogSeedValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postCommerceCatalogSeedCall(_callback);
+
+    }
+
+    /**
+     * Seed the embedded catalog, without disturbing edits already made
+     * Upserts the shipped catalog seed and answers how many entries it created. It is idempotent and non-destructive — an entry an administrator has since edited is left alone — so it is safe to run against a live catalog to fill in what is missing. PLATFORM admin only; an org-level admin is refused 403.
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void postCommerceCatalogSeed() throws ApiException {
+        postCommerceCatalogSeedWithHttpInfo();
+    }
+
+    /**
+     * Seed the embedded catalog, without disturbing edits already made
+     * Upserts the shipped catalog seed and answers how many entries it created. It is idempotent and non-destructive — an entry an administrator has since edited is left alone — so it is safe to run against a live catalog to fill in what is missing. PLATFORM admin only; an org-level admin is refused 403.
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> postCommerceCatalogSeedWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postCommerceCatalogSeedValidateBeforeCall(null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Seed the embedded catalog, without disturbing edits already made (asynchronously)
+     * Upserts the shipped catalog seed and answers how many entries it created. It is idempotent and non-destructive — an entry an administrator has since edited is left alone — so it is safe to run against a live catalog to fill in what is missing. PLATFORM admin only; an org-level admin is refused 403.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call postCommerceCatalogSeedAsync(final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postCommerceCatalogSeedValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
@@ -7848,6 +10684,182 @@ public class CommerceApi {
         return localVarCall;
     }
     /**
+     * Build call for postCommercePlansEntries
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call postCommercePlansEntriesCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/commerce/plans/entries";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postCommercePlansEntriesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postCommercePlansEntriesCall(_callback);
+
+    }
+
+    /**
+     * Add a subscription plan
+     * Creates a plan from the body and answers it at 201. The slug is required and globally unique — a duplicate is 409 — and the row is marked authoritative on creation, so the corrective seed will leave it alone. Price, annual price and the contact-sales flag are stored exactly as sent, never coerced, so the difference between a free plan and a quote-only plan survives. PLATFORM admin only.
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void postCommercePlansEntries() throws ApiException {
+        postCommercePlansEntriesWithHttpInfo();
+    }
+
+    /**
+     * Add a subscription plan
+     * Creates a plan from the body and answers it at 201. The slug is required and globally unique — a duplicate is 409 — and the row is marked authoritative on creation, so the corrective seed will leave it alone. Price, annual price and the contact-sales flag are stored exactly as sent, never coerced, so the difference between a free plan and a quote-only plan survives. PLATFORM admin only.
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> postCommercePlansEntriesWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postCommercePlansEntriesValidateBeforeCall(null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Add a subscription plan (asynchronously)
+     * Creates a plan from the body and answers it at 201. The slug is required and globally unique — a duplicate is 409 — and the row is marked authoritative on creation, so the corrective seed will leave it alone. Price, annual price and the contact-sales flag are stored exactly as sent, never coerced, so the difference between a free plan and a quote-only plan survives. PLATFORM admin only.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call postCommercePlansEntriesAsync(final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postCommercePlansEntriesValidateBeforeCall(_callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postCommercePlansSeed
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call postCommercePlansSeedCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/commerce/plans/seed";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postCommercePlansSeedValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postCommercePlansSeedCall(_callback);
+
+    }
+
+    /**
+     * Seed the embedded plan catalog, without overwriting administrative edits
+     * Upserts the shipped plan rows and answers how many were created and how many corrected. It is idempotent and non-destructive — a row an administrator authored or edited is left as it stands — so it is safe against a live authority and fills only what is missing or has drifted. PLATFORM admin only, and a deployment with no seed source wired answers 500 rather than quietly seeding nothing.
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void postCommercePlansSeed() throws ApiException {
+        postCommercePlansSeedWithHttpInfo();
+    }
+
+    /**
+     * Seed the embedded plan catalog, without overwriting administrative edits
+     * Upserts the shipped plan rows and answers how many were created and how many corrected. It is idempotent and non-destructive — a row an administrator authored or edited is left as it stands — so it is safe against a live authority and fills only what is missing or has drifted. PLATFORM admin only, and a deployment with no seed source wired answers 500 rather than quietly seeding nothing.
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> postCommercePlansSeedWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postCommercePlansSeedValidateBeforeCall(null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Seed the embedded plan catalog, without overwriting administrative edits (asynchronously)
+     * Upserts the shipped plan rows and answers how many were created and how many corrected. It is idempotent and non-destructive — a row an administrator authored or edited is left as it stands — so it is safe against a live authority and fills only what is missing or has drifted. PLATFORM admin only, and a deployment with no seed source wired answers 500 rather than quietly seeding nothing.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call postCommercePlansSeedAsync(final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postCommercePlansSeedValidateBeforeCall(_callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for postCommerceProduct
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -8030,6 +11042,182 @@ public class CommerceApi {
     public okhttp3.Call postCommerceProductByProductidAsync(@javax.annotation.Nonnull String productid, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postCommerceProductByProductidValidateBeforeCall(productid, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postCommerceRatesEntries
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call postCommerceRatesEntriesCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/commerce/rates/entries";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postCommerceRatesEntriesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postCommerceRatesEntriesCall(_callback);
+
+    }
+
+    /**
+     * Add a rate
+     * Creates one rate. Product AND meter are both required, because together they are the identity: a rate keyed on the metered thing alone would let one product&#39;s price overwrite another&#39;s under the same name. A slug that already exists is refused rather than silently replaced. SuperAdmin only.
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void postCommerceRatesEntries() throws ApiException {
+        postCommerceRatesEntriesWithHttpInfo();
+    }
+
+    /**
+     * Add a rate
+     * Creates one rate. Product AND meter are both required, because together they are the identity: a rate keyed on the metered thing alone would let one product&#39;s price overwrite another&#39;s under the same name. A slug that already exists is refused rather than silently replaced. SuperAdmin only.
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> postCommerceRatesEntriesWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postCommerceRatesEntriesValidateBeforeCall(null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Add a rate (asynchronously)
+     * Creates one rate. Product AND meter are both required, because together they are the identity: a rate keyed on the metered thing alone would let one product&#39;s price overwrite another&#39;s under the same name. A slug that already exists is refused rather than silently replaced. SuperAdmin only.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call postCommerceRatesEntriesAsync(final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postCommerceRatesEntriesValidateBeforeCall(_callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postCommerceRatesImport
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call postCommerceRatesImportCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/commerce/rates/import";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postCommerceRatesImportValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postCommerceRatesImportCall(_callback);
+
+    }
+
+    /**
+     * Load the published price document, reconciling rather than replacing
+     * Takes an array of rates and seeds the authority from it. This is the seed, driven from admin rather than compiled in, because 506 published prices in an embed made a price change wait for a build. It RECONCILES: a row that matches is left alone, a row that has drifted is corrected, and a row an operator edited is skipped — so importing the same document twice is a no-op and importing a corrected one moves exactly the rows that changed. Answers what it received, created, corrected and left unchanged, so an import that changes nothing reads as nothing to do rather than as a failure. An empty array is refused 400. SuperAdmin only.
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void postCommerceRatesImport() throws ApiException {
+        postCommerceRatesImportWithHttpInfo();
+    }
+
+    /**
+     * Load the published price document, reconciling rather than replacing
+     * Takes an array of rates and seeds the authority from it. This is the seed, driven from admin rather than compiled in, because 506 published prices in an embed made a price change wait for a build. It RECONCILES: a row that matches is left alone, a row that has drifted is corrected, and a row an operator edited is skipped — so importing the same document twice is a no-op and importing a corrected one moves exactly the rows that changed. Answers what it received, created, corrected and left unchanged, so an import that changes nothing reads as nothing to do rather than as a failure. An empty array is refused 400. SuperAdmin only.
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> postCommerceRatesImportWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postCommerceRatesImportValidateBeforeCall(null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Load the published price document, reconciling rather than replacing (asynchronously)
+     * Takes an array of rates and seeds the authority from it. This is the seed, driven from admin rather than compiled in, because 506 published prices in an embed made a price change wait for a build. It RECONCILES: a row that matches is left alone, a row that has drifted is corrected, and a row an operator edited is skipped — so importing the same document twice is a no-op and importing a corrected one moves exactly the rows that changed. Answers what it received, created, corrected and left unchanged, so an import that changes nothing reads as nothing to do rather than as a failure. An empty array is refused 400. SuperAdmin only.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call postCommerceRatesImportAsync(final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postCommerceRatesImportValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
@@ -8588,6 +11776,1938 @@ public class CommerceApi {
     public okhttp3.Call postCommerceStocklocationByStocklocationidAsync(@javax.annotation.Nonnull String stocklocationid, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postCommerceStocklocationByStocklocationidValidateBeforeCall(stocklocationid, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postCommerceStore
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call postCommerceStoreCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/commerce/store/";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postCommerceStoreValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postCommerceStoreCall(_callback);
+
+    }
+
+    /**
+     * Create a storefront
+     * Creates a store from the body inside the caller org&#39;s own namespaced database, so the row is physically isolated to that tenant from its first write, and answers it at 201 with a Location header naming its id. Requires an admin or store-write token: the anonymous published storefront key may READ stores but never create one. A body that fails to decode is 400.
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void postCommerceStore() throws ApiException {
+        postCommerceStoreWithHttpInfo();
+    }
+
+    /**
+     * Create a storefront
+     * Creates a store from the body inside the caller org&#39;s own namespaced database, so the row is physically isolated to that tenant from its first write, and answers it at 201 with a Location header naming its id. Requires an admin or store-write token: the anonymous published storefront key may READ stores but never create one. A body that fails to decode is 400.
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> postCommerceStoreWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postCommerceStoreValidateBeforeCall(null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Create a storefront (asynchronously)
+     * Creates a store from the body inside the caller org&#39;s own namespaced database, so the row is physically isolated to that tenant from its first write, and answers it at 201 with a Location header naming its id. Requires an admin or store-write token: the anonymous published storefront key may READ stores but never create one. A body that fails to decode is 400.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call postCommerceStoreAsync(final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postCommerceStoreValidateBeforeCall(_callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postCommerceStoreByStoreid
+     * @param storeid  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call postCommerceStoreByStoreidCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/commerce/store/{storeid}"
+            .replace("{" + "storeid" + "}", localVarApiClient.escapeString(storeid.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postCommerceStoreByStoreidValidateBeforeCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'storeid' is set
+        if (storeid == null) {
+            throw new ApiException("Missing the required parameter 'storeid' when calling postCommerceStoreByStoreid(Async)");
+        }
+
+        return postCommerceStoreByStoreidCall(storeid, _callback);
+
+    }
+
+    /**
+     * Method-override tunnel for clients that cannot send PUT, PATCH or DELETE
+     * Re-dispatches the request into the handler the intended verb would have reached, taking that verb from a _method form value or query parameter and then from the X-HTTP-Method-Override header, the header winning when both are present. Only PUT, PATCH and DELETE are accepted; anything else resolves to 405. The trap is the default: naming NO override at all is treated as a partial update, never as a create. Authorization is whatever the underlying operation requires, since the real handler runs.
+     * @param storeid  (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void postCommerceStoreByStoreid(@javax.annotation.Nonnull String storeid) throws ApiException {
+        postCommerceStoreByStoreidWithHttpInfo(storeid);
+    }
+
+    /**
+     * Method-override tunnel for clients that cannot send PUT, PATCH or DELETE
+     * Re-dispatches the request into the handler the intended verb would have reached, taking that verb from a _method form value or query parameter and then from the X-HTTP-Method-Override header, the header winning when both are present. Only PUT, PATCH and DELETE are accepted; anything else resolves to 405. The trap is the default: naming NO override at all is treated as a partial update, never as a create. Authorization is whatever the underlying operation requires, since the real handler runs.
+     * @param storeid  (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> postCommerceStoreByStoreidWithHttpInfo(@javax.annotation.Nonnull String storeid) throws ApiException {
+        okhttp3.Call localVarCall = postCommerceStoreByStoreidValidateBeforeCall(storeid, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Method-override tunnel for clients that cannot send PUT, PATCH or DELETE (asynchronously)
+     * Re-dispatches the request into the handler the intended verb would have reached, taking that verb from a _method form value or query parameter and then from the X-HTTP-Method-Override header, the header winning when both are present. Only PUT, PATCH and DELETE are accepted; anything else resolves to 405. The trap is the default: naming NO override at all is treated as a partial update, never as a create. Authorization is whatever the underlying operation requires, since the real handler runs.
+     * @param storeid  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call postCommerceStoreByStoreidAsync(@javax.annotation.Nonnull String storeid, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postCommerceStoreByStoreidValidateBeforeCall(storeid, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postCommerceStoreByStoreidAuthorize
+     * @param storeid  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call postCommerceStoreByStoreidAuthorizeCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/commerce/store/{storeid}/authorize"
+            .replace("{" + "storeid" + "}", localVarApiClient.escapeString(storeid.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postCommerceStoreByStoreidAuthorizeValidateBeforeCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'storeid' is set
+        if (storeid == null) {
+            throw new ApiException("Missing the required parameter 'storeid' when calling postCommerceStoreByStoreidAuthorize(Async)");
+        }
+
+        return postCommerceStoreByStoreidAuthorizeCall(storeid, _callback);
+
+    }
+
+    /**
+     * Authorize a new order against a storefront, holding the funds without settling them
+     * Tallies a new order for the addressed store from the user, payment and order body, reserves its items, runs the processor authorization and answers the saved order with a Location header pointing at it. The gate is a token carrying admin or published scope, so a published storefront key is enough; no token is 401 and a token with neither bit is 403. The store is loaded BEFORE any payment work and its currency OVERRIDES whatever the body asked for, so a store that will not load ends the call with 500 and nothing is charged. On any authorization failure the reservations are released and the order and payment are persisted as cancelled, so a failed attempt still leaves a durable record. Capture is a separate call.
+     * @param storeid  (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void postCommerceStoreByStoreidAuthorize(@javax.annotation.Nonnull String storeid) throws ApiException {
+        postCommerceStoreByStoreidAuthorizeWithHttpInfo(storeid);
+    }
+
+    /**
+     * Authorize a new order against a storefront, holding the funds without settling them
+     * Tallies a new order for the addressed store from the user, payment and order body, reserves its items, runs the processor authorization and answers the saved order with a Location header pointing at it. The gate is a token carrying admin or published scope, so a published storefront key is enough; no token is 401 and a token with neither bit is 403. The store is loaded BEFORE any payment work and its currency OVERRIDES whatever the body asked for, so a store that will not load ends the call with 500 and nothing is charged. On any authorization failure the reservations are released and the order and payment are persisted as cancelled, so a failed attempt still leaves a durable record. Capture is a separate call.
+     * @param storeid  (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> postCommerceStoreByStoreidAuthorizeWithHttpInfo(@javax.annotation.Nonnull String storeid) throws ApiException {
+        okhttp3.Call localVarCall = postCommerceStoreByStoreidAuthorizeValidateBeforeCall(storeid, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Authorize a new order against a storefront, holding the funds without settling them (asynchronously)
+     * Tallies a new order for the addressed store from the user, payment and order body, reserves its items, runs the processor authorization and answers the saved order with a Location header pointing at it. The gate is a token carrying admin or published scope, so a published storefront key is enough; no token is 401 and a token with neither bit is 403. The store is loaded BEFORE any payment work and its currency OVERRIDES whatever the body asked for, so a store that will not load ends the call with 500 and nothing is charged. On any authorization failure the reservations are released and the order and payment are persisted as cancelled, so a failed attempt still leaves a durable record. Capture is a separate call.
+     * @param storeid  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call postCommerceStoreByStoreidAuthorizeAsync(@javax.annotation.Nonnull String storeid, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postCommerceStoreByStoreidAuthorizeValidateBeforeCall(storeid, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postCommerceStoreByStoreidAuthorizeByOrderid
+     * @param storeid  (required)
+     * @param orderid  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call postCommerceStoreByStoreidAuthorizeByOrderidCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String orderid, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/commerce/store/{storeid}/authorize/{orderid}"
+            .replace("{" + "storeid" + "}", localVarApiClient.escapeString(storeid.toString()))
+            .replace("{" + "orderid" + "}", localVarApiClient.escapeString(orderid.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postCommerceStoreByStoreidAuthorizeByOrderidValidateBeforeCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String orderid, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'storeid' is set
+        if (storeid == null) {
+            throw new ApiException("Missing the required parameter 'storeid' when calling postCommerceStoreByStoreidAuthorizeByOrderid(Async)");
+        }
+
+        // verify the required parameter 'orderid' is set
+        if (orderid == null) {
+            throw new ApiException("Missing the required parameter 'orderid' when calling postCommerceStoreByStoreidAuthorizeByOrderid(Async)");
+        }
+
+        return postCommerceStoreByStoreidAuthorizeByOrderidCall(storeid, orderid, _callback);
+
+    }
+
+    /**
+     * Authorize an order that already exists, holding the funds without settling them
+     * Continues the order named in the path rather than minting a new one, holding funds for it. The order is loaded from the caller org&#39;s own store, so an id belonging to another tenant is a 404. The rule most callers get wrong is that the body&#39;s order object is MERGED onto the loaded order before the tally — this is not a read-only reference, and a field sent here overwrites what is stored. The gate, the store resolution and the currency override behave exactly as on the bodiless-id sibling, and settling is still the capture call&#39;s job.
+     * @param storeid  (required)
+     * @param orderid  (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void postCommerceStoreByStoreidAuthorizeByOrderid(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String orderid) throws ApiException {
+        postCommerceStoreByStoreidAuthorizeByOrderidWithHttpInfo(storeid, orderid);
+    }
+
+    /**
+     * Authorize an order that already exists, holding the funds without settling them
+     * Continues the order named in the path rather than minting a new one, holding funds for it. The order is loaded from the caller org&#39;s own store, so an id belonging to another tenant is a 404. The rule most callers get wrong is that the body&#39;s order object is MERGED onto the loaded order before the tally — this is not a read-only reference, and a field sent here overwrites what is stored. The gate, the store resolution and the currency override behave exactly as on the bodiless-id sibling, and settling is still the capture call&#39;s job.
+     * @param storeid  (required)
+     * @param orderid  (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> postCommerceStoreByStoreidAuthorizeByOrderidWithHttpInfo(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String orderid) throws ApiException {
+        okhttp3.Call localVarCall = postCommerceStoreByStoreidAuthorizeByOrderidValidateBeforeCall(storeid, orderid, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Authorize an order that already exists, holding the funds without settling them (asynchronously)
+     * Continues the order named in the path rather than minting a new one, holding funds for it. The order is loaded from the caller org&#39;s own store, so an id belonging to another tenant is a 404. The rule most callers get wrong is that the body&#39;s order object is MERGED onto the loaded order before the tally — this is not a read-only reference, and a field sent here overwrites what is stored. The gate, the store resolution and the currency override behave exactly as on the bodiless-id sibling, and settling is still the capture call&#39;s job.
+     * @param storeid  (required)
+     * @param orderid  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call postCommerceStoreByStoreidAuthorizeByOrderidAsync(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String orderid, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postCommerceStoreByStoreidAuthorizeByOrderidValidateBeforeCall(storeid, orderid, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postCommerceStoreByStoreidCaptureByOrderid
+     * @param storeid  (required)
+     * @param orderid  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call postCommerceStoreByStoreidCaptureByOrderidCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String orderid, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/commerce/store/{storeid}/capture/{orderid}"
+            .replace("{" + "storeid" + "}", localVarApiClient.escapeString(storeid.toString()))
+            .replace("{" + "orderid" + "}", localVarApiClient.escapeString(orderid.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postCommerceStoreByStoreidCaptureByOrderidValidateBeforeCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String orderid, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'storeid' is set
+        if (storeid == null) {
+            throw new ApiException("Missing the required parameter 'storeid' when calling postCommerceStoreByStoreidCaptureByOrderid(Async)");
+        }
+
+        // verify the required parameter 'orderid' is set
+        if (orderid == null) {
+            throw new ApiException("Missing the required parameter 'orderid' when calling postCommerceStoreByStoreidCaptureByOrderid(Async)");
+        }
+
+        return postCommerceStoreByStoreidCaptureByOrderidCall(storeid, orderid, _callback);
+
+    }
+
+    /**
+     * Capture a previously authorized order and settle the payment
+     * Settles the order named in the path — the second half of the two-step flow — and answers the updated order with a Location header. Dispatch follows the order&#39;s STORED payment type, and a successful capture is the moment the rest of the system learns about the sale: order and payment rows are updated, coupon redemptions, referral, cart and stats are written, the confirmation email goes out, and the paid and completed events are emitted. A capture failure releases the order&#39;s inventory reservations and answers 400, so a failed settlement never leaves items held.
+     * @param storeid  (required)
+     * @param orderid  (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void postCommerceStoreByStoreidCaptureByOrderid(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String orderid) throws ApiException {
+        postCommerceStoreByStoreidCaptureByOrderidWithHttpInfo(storeid, orderid);
+    }
+
+    /**
+     * Capture a previously authorized order and settle the payment
+     * Settles the order named in the path — the second half of the two-step flow — and answers the updated order with a Location header. Dispatch follows the order&#39;s STORED payment type, and a successful capture is the moment the rest of the system learns about the sale: order and payment rows are updated, coupon redemptions, referral, cart and stats are written, the confirmation email goes out, and the paid and completed events are emitted. A capture failure releases the order&#39;s inventory reservations and answers 400, so a failed settlement never leaves items held.
+     * @param storeid  (required)
+     * @param orderid  (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> postCommerceStoreByStoreidCaptureByOrderidWithHttpInfo(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String orderid) throws ApiException {
+        okhttp3.Call localVarCall = postCommerceStoreByStoreidCaptureByOrderidValidateBeforeCall(storeid, orderid, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Capture a previously authorized order and settle the payment (asynchronously)
+     * Settles the order named in the path — the second half of the two-step flow — and answers the updated order with a Location header. Dispatch follows the order&#39;s STORED payment type, and a successful capture is the moment the rest of the system learns about the sale: order and payment rows are updated, coupon redemptions, referral, cart and stats are written, the confirmation email goes out, and the paid and completed events are emitted. A capture failure releases the order&#39;s inventory reservations and answers 400, so a failed settlement never leaves items held.
+     * @param storeid  (required)
+     * @param orderid  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call postCommerceStoreByStoreidCaptureByOrderidAsync(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String orderid, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postCommerceStoreByStoreidCaptureByOrderidValidateBeforeCall(storeid, orderid, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postCommerceStoreByStoreidCharge
+     * @param storeid  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call postCommerceStoreByStoreidChargeCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/commerce/store/{storeid}/charge"
+            .replace("{" + "storeid" + "}", localVarApiClient.escapeString(storeid.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postCommerceStoreByStoreidChargeValidateBeforeCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'storeid' is set
+        if (storeid == null) {
+            throw new ApiException("Missing the required parameter 'storeid' when calling postCommerceStoreByStoreidCharge(Async)");
+        }
+
+        return postCommerceStoreByStoreidChargeCall(storeid, _callback);
+
+    }
+
+    /**
+     * Authorize and capture a new order in one call
+     * Runs authorization and capture back to back against a freshly created order — the one-step flow for callers with no reason to hold funds. It takes the authorize body and inherits every authorize rule: the store&#39;s currency wins over the body, the items are reserved before the processor is called, and the amount bounds the processor enforces still apply. There is no order id on this address, so it can never continue an existing order. Either half failing answers 400, and the capture side effects — confirmation email, redemptions, stats, the paid and completed events — run only when both halves succeed.
+     * @param storeid  (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void postCommerceStoreByStoreidCharge(@javax.annotation.Nonnull String storeid) throws ApiException {
+        postCommerceStoreByStoreidChargeWithHttpInfo(storeid);
+    }
+
+    /**
+     * Authorize and capture a new order in one call
+     * Runs authorization and capture back to back against a freshly created order — the one-step flow for callers with no reason to hold funds. It takes the authorize body and inherits every authorize rule: the store&#39;s currency wins over the body, the items are reserved before the processor is called, and the amount bounds the processor enforces still apply. There is no order id on this address, so it can never continue an existing order. Either half failing answers 400, and the capture side effects — confirmation email, redemptions, stats, the paid and completed events — run only when both halves succeed.
+     * @param storeid  (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> postCommerceStoreByStoreidChargeWithHttpInfo(@javax.annotation.Nonnull String storeid) throws ApiException {
+        okhttp3.Call localVarCall = postCommerceStoreByStoreidChargeValidateBeforeCall(storeid, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Authorize and capture a new order in one call (asynchronously)
+     * Runs authorization and capture back to back against a freshly created order — the one-step flow for callers with no reason to hold funds. It takes the authorize body and inherits every authorize rule: the store&#39;s currency wins over the body, the items are reserved before the processor is called, and the amount bounds the processor enforces still apply. There is no order id on this address, so it can never continue an existing order. Either half failing answers 400, and the capture side effects — confirmation email, redemptions, stats, the paid and completed events — run only when both halves succeed.
+     * @param storeid  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call postCommerceStoreByStoreidChargeAsync(@javax.annotation.Nonnull String storeid, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postCommerceStoreByStoreidChargeValidateBeforeCall(storeid, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postCommerceStoreByStoreidCheckoutAuthorize
+     * @param storeid  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call postCommerceStoreByStoreidCheckoutAuthorizeCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/commerce/store/{storeid}/checkout/authorize"
+            .replace("{" + "storeid" + "}", localVarApiClient.escapeString(storeid.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postCommerceStoreByStoreidCheckoutAuthorizeValidateBeforeCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'storeid' is set
+        if (storeid == null) {
+            throw new ApiException("Missing the required parameter 'storeid' when calling postCommerceStoreByStoreidCheckoutAuthorize(Async)");
+        }
+
+        return postCommerceStoreByStoreidCheckoutAuthorizeCall(storeid, _callback);
+
+    }
+
+    /**
+     * Authorize a new order against a storefront, holding the funds — the checkout spelling
+     * Authorizes a new order for the addressed store and holds the funds, answering the saved order with a Location header. It binds the identical handler as the shorter authorize address, so the two are ONE operation at two spellings and not two behaviours; the checkout prefix is the newer one. Every rule carries over: admin or published scope on the token, the store loaded first with its currency overriding the body, items reserved before the processor call, and reservations released with the order persisted cancelled on failure. Nothing is settled here.
+     * @param storeid  (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void postCommerceStoreByStoreidCheckoutAuthorize(@javax.annotation.Nonnull String storeid) throws ApiException {
+        postCommerceStoreByStoreidCheckoutAuthorizeWithHttpInfo(storeid);
+    }
+
+    /**
+     * Authorize a new order against a storefront, holding the funds — the checkout spelling
+     * Authorizes a new order for the addressed store and holds the funds, answering the saved order with a Location header. It binds the identical handler as the shorter authorize address, so the two are ONE operation at two spellings and not two behaviours; the checkout prefix is the newer one. Every rule carries over: admin or published scope on the token, the store loaded first with its currency overriding the body, items reserved before the processor call, and reservations released with the order persisted cancelled on failure. Nothing is settled here.
+     * @param storeid  (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> postCommerceStoreByStoreidCheckoutAuthorizeWithHttpInfo(@javax.annotation.Nonnull String storeid) throws ApiException {
+        okhttp3.Call localVarCall = postCommerceStoreByStoreidCheckoutAuthorizeValidateBeforeCall(storeid, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Authorize a new order against a storefront, holding the funds — the checkout spelling (asynchronously)
+     * Authorizes a new order for the addressed store and holds the funds, answering the saved order with a Location header. It binds the identical handler as the shorter authorize address, so the two are ONE operation at two spellings and not two behaviours; the checkout prefix is the newer one. Every rule carries over: admin or published scope on the token, the store loaded first with its currency overriding the body, items reserved before the processor call, and reservations released with the order persisted cancelled on failure. Nothing is settled here.
+     * @param storeid  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call postCommerceStoreByStoreidCheckoutAuthorizeAsync(@javax.annotation.Nonnull String storeid, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postCommerceStoreByStoreidCheckoutAuthorizeValidateBeforeCall(storeid, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postCommerceStoreByStoreidCheckoutAuthorizeByOrderid
+     * @param storeid  (required)
+     * @param orderid  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call postCommerceStoreByStoreidCheckoutAuthorizeByOrderidCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String orderid, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/commerce/store/{storeid}/checkout/authorize/{orderid}"
+            .replace("{" + "storeid" + "}", localVarApiClient.escapeString(storeid.toString()))
+            .replace("{" + "orderid" + "}", localVarApiClient.escapeString(orderid.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postCommerceStoreByStoreidCheckoutAuthorizeByOrderidValidateBeforeCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String orderid, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'storeid' is set
+        if (storeid == null) {
+            throw new ApiException("Missing the required parameter 'storeid' when calling postCommerceStoreByStoreidCheckoutAuthorizeByOrderid(Async)");
+        }
+
+        // verify the required parameter 'orderid' is set
+        if (orderid == null) {
+            throw new ApiException("Missing the required parameter 'orderid' when calling postCommerceStoreByStoreidCheckoutAuthorizeByOrderid(Async)");
+        }
+
+        return postCommerceStoreByStoreidCheckoutAuthorizeByOrderidCall(storeid, orderid, _callback);
+
+    }
+
+    /**
+     * Authorize an existing order, holding the funds — the checkout spelling
+     * Continues the order named in the path rather than minting one, and shares its handler byte for byte with the unprefixed authorize-by-id address. The order is loaded from the caller org&#39;s own store, so another tenant&#39;s id is a 404, and the body&#39;s order object is merged onto the loaded row before the tally — a field sent here overwrites what is stored. Store resolution, the token gate and the currency override behave as on every other authorize address; settle with the capture address and the same order id.
+     * @param storeid  (required)
+     * @param orderid  (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void postCommerceStoreByStoreidCheckoutAuthorizeByOrderid(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String orderid) throws ApiException {
+        postCommerceStoreByStoreidCheckoutAuthorizeByOrderidWithHttpInfo(storeid, orderid);
+    }
+
+    /**
+     * Authorize an existing order, holding the funds — the checkout spelling
+     * Continues the order named in the path rather than minting one, and shares its handler byte for byte with the unprefixed authorize-by-id address. The order is loaded from the caller org&#39;s own store, so another tenant&#39;s id is a 404, and the body&#39;s order object is merged onto the loaded row before the tally — a field sent here overwrites what is stored. Store resolution, the token gate and the currency override behave as on every other authorize address; settle with the capture address and the same order id.
+     * @param storeid  (required)
+     * @param orderid  (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> postCommerceStoreByStoreidCheckoutAuthorizeByOrderidWithHttpInfo(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String orderid) throws ApiException {
+        okhttp3.Call localVarCall = postCommerceStoreByStoreidCheckoutAuthorizeByOrderidValidateBeforeCall(storeid, orderid, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Authorize an existing order, holding the funds — the checkout spelling (asynchronously)
+     * Continues the order named in the path rather than minting one, and shares its handler byte for byte with the unprefixed authorize-by-id address. The order is loaded from the caller org&#39;s own store, so another tenant&#39;s id is a 404, and the body&#39;s order object is merged onto the loaded row before the tally — a field sent here overwrites what is stored. Store resolution, the token gate and the currency override behave as on every other authorize address; settle with the capture address and the same order id.
+     * @param storeid  (required)
+     * @param orderid  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call postCommerceStoreByStoreidCheckoutAuthorizeByOrderidAsync(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String orderid, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postCommerceStoreByStoreidCheckoutAuthorizeByOrderidValidateBeforeCall(storeid, orderid, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postCommerceStoreByStoreidCheckoutCaptureByOrderid
+     * @param storeid  (required)
+     * @param orderid  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call postCommerceStoreByStoreidCheckoutCaptureByOrderidCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String orderid, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/commerce/store/{storeid}/checkout/capture/{orderid}"
+            .replace("{" + "storeid" + "}", localVarApiClient.escapeString(storeid.toString()))
+            .replace("{" + "orderid" + "}", localVarApiClient.escapeString(orderid.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postCommerceStoreByStoreidCheckoutCaptureByOrderidValidateBeforeCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String orderid, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'storeid' is set
+        if (storeid == null) {
+            throw new ApiException("Missing the required parameter 'storeid' when calling postCommerceStoreByStoreidCheckoutCaptureByOrderid(Async)");
+        }
+
+        // verify the required parameter 'orderid' is set
+        if (orderid == null) {
+            throw new ApiException("Missing the required parameter 'orderid' when calling postCommerceStoreByStoreidCheckoutCaptureByOrderid(Async)");
+        }
+
+        return postCommerceStoreByStoreidCheckoutCaptureByOrderidCall(storeid, orderid, _callback);
+
+    }
+
+    /**
+     * Capture a previously authorized order and settle it — the checkout spelling
+     * Settles the authorized order named in the path and answers the updated order with a Location header, running the same handler as the unprefixed capture address. Dispatch follows the order&#39;s stored payment type. Success is what triggers the downstream work — order and payment updates, redemptions, referral, cart and stats, the confirmation email, and the paid and completed events — while a failure releases the order&#39;s inventory reservations and answers 400.
+     * @param storeid  (required)
+     * @param orderid  (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void postCommerceStoreByStoreidCheckoutCaptureByOrderid(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String orderid) throws ApiException {
+        postCommerceStoreByStoreidCheckoutCaptureByOrderidWithHttpInfo(storeid, orderid);
+    }
+
+    /**
+     * Capture a previously authorized order and settle it — the checkout spelling
+     * Settles the authorized order named in the path and answers the updated order with a Location header, running the same handler as the unprefixed capture address. Dispatch follows the order&#39;s stored payment type. Success is what triggers the downstream work — order and payment updates, redemptions, referral, cart and stats, the confirmation email, and the paid and completed events — while a failure releases the order&#39;s inventory reservations and answers 400.
+     * @param storeid  (required)
+     * @param orderid  (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> postCommerceStoreByStoreidCheckoutCaptureByOrderidWithHttpInfo(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String orderid) throws ApiException {
+        okhttp3.Call localVarCall = postCommerceStoreByStoreidCheckoutCaptureByOrderidValidateBeforeCall(storeid, orderid, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Capture a previously authorized order and settle it — the checkout spelling (asynchronously)
+     * Settles the authorized order named in the path and answers the updated order with a Location header, running the same handler as the unprefixed capture address. Dispatch follows the order&#39;s stored payment type. Success is what triggers the downstream work — order and payment updates, redemptions, referral, cart and stats, the confirmation email, and the paid and completed events — while a failure releases the order&#39;s inventory reservations and answers 400.
+     * @param storeid  (required)
+     * @param orderid  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call postCommerceStoreByStoreidCheckoutCaptureByOrderidAsync(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String orderid, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postCommerceStoreByStoreidCheckoutCaptureByOrderidValidateBeforeCall(storeid, orderid, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postCommerceStoreByStoreidCheckoutCharge
+     * @param storeid  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call postCommerceStoreByStoreidCheckoutChargeCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/commerce/store/{storeid}/checkout/charge"
+            .replace("{" + "storeid" + "}", localVarApiClient.escapeString(storeid.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postCommerceStoreByStoreidCheckoutChargeValidateBeforeCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'storeid' is set
+        if (storeid == null) {
+            throw new ApiException("Missing the required parameter 'storeid' when calling postCommerceStoreByStoreidCheckoutCharge(Async)");
+        }
+
+        return postCommerceStoreByStoreidCheckoutChargeCall(storeid, _callback);
+
+    }
+
+    /**
+     * Authorize and capture a new order in one call — the checkout spelling
+     * Performs authorization and capture back to back against a newly created order for the addressed store, on the same handler as the unprefixed charge address. It takes the authorize body and inherits every authorize rule, including the store&#39;s currency winning over the body and the items being reserved before the processor is called. There is no order id on this address, so it can never continue an existing order. Either half failing answers 400, and the capture side effects run only when both succeed.
+     * @param storeid  (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void postCommerceStoreByStoreidCheckoutCharge(@javax.annotation.Nonnull String storeid) throws ApiException {
+        postCommerceStoreByStoreidCheckoutChargeWithHttpInfo(storeid);
+    }
+
+    /**
+     * Authorize and capture a new order in one call — the checkout spelling
+     * Performs authorization and capture back to back against a newly created order for the addressed store, on the same handler as the unprefixed charge address. It takes the authorize body and inherits every authorize rule, including the store&#39;s currency winning over the body and the items being reserved before the processor is called. There is no order id on this address, so it can never continue an existing order. Either half failing answers 400, and the capture side effects run only when both succeed.
+     * @param storeid  (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> postCommerceStoreByStoreidCheckoutChargeWithHttpInfo(@javax.annotation.Nonnull String storeid) throws ApiException {
+        okhttp3.Call localVarCall = postCommerceStoreByStoreidCheckoutChargeValidateBeforeCall(storeid, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Authorize and capture a new order in one call — the checkout spelling (asynchronously)
+     * Performs authorization and capture back to back against a newly created order for the addressed store, on the same handler as the unprefixed charge address. It takes the authorize body and inherits every authorize rule, including the store&#39;s currency winning over the body and the items being reserved before the processor is called. There is no order id on this address, so it can never continue an existing order. Either half failing answers 400, and the capture side effects run only when both succeed.
+     * @param storeid  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call postCommerceStoreByStoreidCheckoutChargeAsync(@javax.annotation.Nonnull String storeid, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postCommerceStoreByStoreidCheckoutChargeValidateBeforeCall(storeid, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postCommerceStoreByStoreidCheckoutPaypalCancelByPaykey
+     * @param storeid  (required)
+     * @param payKey  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call postCommerceStoreByStoreidCheckoutPaypalCancelByPaykeyCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String payKey, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/commerce/store/{storeid}/checkout/paypal/cancel/{payKey}"
+            .replace("{" + "storeid" + "}", localVarApiClient.escapeString(storeid.toString()))
+            .replace("{" + "payKey" + "}", localVarApiClient.escapeString(payKey.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postCommerceStoreByStoreidCheckoutPaypalCancelByPaykeyValidateBeforeCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String payKey, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'storeid' is set
+        if (storeid == null) {
+            throw new ApiException("Missing the required parameter 'storeid' when calling postCommerceStoreByStoreidCheckoutPaypalCancelByPaykey(Async)");
+        }
+
+        // verify the required parameter 'payKey' is set
+        if (payKey == null) {
+            throw new ApiException("Missing the required parameter 'payKey' when calling postCommerceStoreByStoreidCheckoutPaypalCancelByPaykey(Async)");
+        }
+
+        return postCommerceStoreByStoreidCheckoutPaypalCancelByPaykeyCall(storeid, payKey, _callback);
+
+    }
+
+    /**
+     * PayPal cancel by pay key — refuses, exactly as the unprefixed address does
+     * Meant to void the payments carrying the given pay key, stamp them cancelled and cancel the order, but the shared checkout handler resolves its order from an ORDER ID path parameter this route does not carry. The result is an untyped order and a cancel dispatch that refuses with 400 before the pay key lookup ever runs. Token gate, namespacing and store resolution happen first, so a missing token is still 401 and an unloadable store still 500. It is the same handler as the unprefixed cancel address, with the same outcome.
+     * @param storeid  (required)
+     * @param payKey  (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void postCommerceStoreByStoreidCheckoutPaypalCancelByPaykey(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String payKey) throws ApiException {
+        postCommerceStoreByStoreidCheckoutPaypalCancelByPaykeyWithHttpInfo(storeid, payKey);
+    }
+
+    /**
+     * PayPal cancel by pay key — refuses, exactly as the unprefixed address does
+     * Meant to void the payments carrying the given pay key, stamp them cancelled and cancel the order, but the shared checkout handler resolves its order from an ORDER ID path parameter this route does not carry. The result is an untyped order and a cancel dispatch that refuses with 400 before the pay key lookup ever runs. Token gate, namespacing and store resolution happen first, so a missing token is still 401 and an unloadable store still 500. It is the same handler as the unprefixed cancel address, with the same outcome.
+     * @param storeid  (required)
+     * @param payKey  (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> postCommerceStoreByStoreidCheckoutPaypalCancelByPaykeyWithHttpInfo(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String payKey) throws ApiException {
+        okhttp3.Call localVarCall = postCommerceStoreByStoreidCheckoutPaypalCancelByPaykeyValidateBeforeCall(storeid, payKey, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * PayPal cancel by pay key — refuses, exactly as the unprefixed address does (asynchronously)
+     * Meant to void the payments carrying the given pay key, stamp them cancelled and cancel the order, but the shared checkout handler resolves its order from an ORDER ID path parameter this route does not carry. The result is an untyped order and a cancel dispatch that refuses with 400 before the pay key lookup ever runs. Token gate, namespacing and store resolution happen first, so a missing token is still 401 and an unloadable store still 500. It is the same handler as the unprefixed cancel address, with the same outcome.
+     * @param storeid  (required)
+     * @param payKey  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call postCommerceStoreByStoreidCheckoutPaypalCancelByPaykeyAsync(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String payKey, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postCommerceStoreByStoreidCheckoutPaypalCancelByPaykeyValidateBeforeCall(storeid, payKey, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postCommerceStoreByStoreidCheckoutPaypalConfirmByPaykey
+     * @param storeid  (required)
+     * @param payKey  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call postCommerceStoreByStoreidCheckoutPaypalConfirmByPaykeyCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String payKey, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/commerce/store/{storeid}/checkout/paypal/confirm/{payKey}"
+            .replace("{" + "storeid" + "}", localVarApiClient.escapeString(storeid.toString()))
+            .replace("{" + "payKey" + "}", localVarApiClient.escapeString(payKey.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postCommerceStoreByStoreidCheckoutPaypalConfirmByPaykeyValidateBeforeCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String payKey, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'storeid' is set
+        if (storeid == null) {
+            throw new ApiException("Missing the required parameter 'storeid' when calling postCommerceStoreByStoreidCheckoutPaypalConfirmByPaykey(Async)");
+        }
+
+        // verify the required parameter 'payKey' is set
+        if (payKey == null) {
+            throw new ApiException("Missing the required parameter 'payKey' when calling postCommerceStoreByStoreidCheckoutPaypalConfirmByPaykey(Async)");
+        }
+
+        return postCommerceStoreByStoreidCheckoutPaypalConfirmByPaykeyCall(storeid, payKey, _callback);
+
+    }
+
+    /**
+     * PayPal confirm by pay key — refuses, exactly as the unprefixed address does
+     * Meant to mark the payments carrying the given pay key as paid and set the order to paid, it cannot reach that work from this address: the shared checkout handler takes its order from an ORDER ID path parameter this route does not carry, so the order is always fresh and untyped and the confirm dispatch refuses with 400 before the pay key is queried. The token gate, the namespace middleware and the store lookup all run ahead of that, so authentication and store failures surface first. Behaviour is identical to the unprefixed confirm address; the checkout prefix changes nothing here.
+     * @param storeid  (required)
+     * @param payKey  (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void postCommerceStoreByStoreidCheckoutPaypalConfirmByPaykey(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String payKey) throws ApiException {
+        postCommerceStoreByStoreidCheckoutPaypalConfirmByPaykeyWithHttpInfo(storeid, payKey);
+    }
+
+    /**
+     * PayPal confirm by pay key — refuses, exactly as the unprefixed address does
+     * Meant to mark the payments carrying the given pay key as paid and set the order to paid, it cannot reach that work from this address: the shared checkout handler takes its order from an ORDER ID path parameter this route does not carry, so the order is always fresh and untyped and the confirm dispatch refuses with 400 before the pay key is queried. The token gate, the namespace middleware and the store lookup all run ahead of that, so authentication and store failures surface first. Behaviour is identical to the unprefixed confirm address; the checkout prefix changes nothing here.
+     * @param storeid  (required)
+     * @param payKey  (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> postCommerceStoreByStoreidCheckoutPaypalConfirmByPaykeyWithHttpInfo(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String payKey) throws ApiException {
+        okhttp3.Call localVarCall = postCommerceStoreByStoreidCheckoutPaypalConfirmByPaykeyValidateBeforeCall(storeid, payKey, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * PayPal confirm by pay key — refuses, exactly as the unprefixed address does (asynchronously)
+     * Meant to mark the payments carrying the given pay key as paid and set the order to paid, it cannot reach that work from this address: the shared checkout handler takes its order from an ORDER ID path parameter this route does not carry, so the order is always fresh and untyped and the confirm dispatch refuses with 400 before the pay key is queried. The token gate, the namespace middleware and the store lookup all run ahead of that, so authentication and store failures surface first. Behaviour is identical to the unprefixed confirm address; the checkout prefix changes nothing here.
+     * @param storeid  (required)
+     * @param payKey  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call postCommerceStoreByStoreidCheckoutPaypalConfirmByPaykeyAsync(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String payKey, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postCommerceStoreByStoreidCheckoutPaypalConfirmByPaykeyValidateBeforeCall(storeid, payKey, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postCommerceStoreByStoreidCheckoutPaypalPay
+     * @param storeid  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call postCommerceStoreByStoreidCheckoutPaypalPayCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/commerce/store/{storeid}/checkout/paypal/pay"
+            .replace("{" + "storeid" + "}", localVarApiClient.escapeString(storeid.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postCommerceStoreByStoreidCheckoutPaypalPayValidateBeforeCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'storeid' is set
+        if (storeid == null) {
+            throw new ApiException("Missing the required parameter 'storeid' when calling postCommerceStoreByStoreidCheckoutPaypalPay(Async)");
+        }
+
+        return postCommerceStoreByStoreidCheckoutPaypalPayCall(storeid, _callback);
+
+    }
+
+    /**
+     * Start a PayPal authorization for a new order — the checkout spelling
+     * Begins a PayPal authorization by running the ordinary store authorize flow, since the route binds that exact handler — body, store resolution, tally, reservations and failure behaviour are the authorize address&#39;s, unchanged. The processor is chosen from the body&#39;s payment type, so this path reaches PayPal only when that type says so. A successful PayPal authorization stamps a pay key onto the payment, which is the key the confirm and cancel addresses filter on. Build against the plain authorize address instead.
+     * @param storeid  (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void postCommerceStoreByStoreidCheckoutPaypalPay(@javax.annotation.Nonnull String storeid) throws ApiException {
+        postCommerceStoreByStoreidCheckoutPaypalPayWithHttpInfo(storeid);
+    }
+
+    /**
+     * Start a PayPal authorization for a new order — the checkout spelling
+     * Begins a PayPal authorization by running the ordinary store authorize flow, since the route binds that exact handler — body, store resolution, tally, reservations and failure behaviour are the authorize address&#39;s, unchanged. The processor is chosen from the body&#39;s payment type, so this path reaches PayPal only when that type says so. A successful PayPal authorization stamps a pay key onto the payment, which is the key the confirm and cancel addresses filter on. Build against the plain authorize address instead.
+     * @param storeid  (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> postCommerceStoreByStoreidCheckoutPaypalPayWithHttpInfo(@javax.annotation.Nonnull String storeid) throws ApiException {
+        okhttp3.Call localVarCall = postCommerceStoreByStoreidCheckoutPaypalPayValidateBeforeCall(storeid, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Start a PayPal authorization for a new order — the checkout spelling (asynchronously)
+     * Begins a PayPal authorization by running the ordinary store authorize flow, since the route binds that exact handler — body, store resolution, tally, reservations and failure behaviour are the authorize address&#39;s, unchanged. The processor is chosen from the body&#39;s payment type, so this path reaches PayPal only when that type says so. A successful PayPal authorization stamps a pay key onto the payment, which is the key the confirm and cancel addresses filter on. Build against the plain authorize address instead.
+     * @param storeid  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call postCommerceStoreByStoreidCheckoutPaypalPayAsync(@javax.annotation.Nonnull String storeid, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postCommerceStoreByStoreidCheckoutPaypalPayValidateBeforeCall(storeid, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postCommerceStoreByStoreidListingByKey
+     * @param storeid  (required)
+     * @param key  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call postCommerceStoreByStoreidListingByKeyCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/commerce/store/{storeid}/listing/{key}"
+            .replace("{" + "storeid" + "}", localVarApiClient.escapeString(storeid.toString()))
+            .replace("{" + "key" + "}", localVarApiClient.escapeString(key.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postCommerceStoreByStoreidListingByKeyValidateBeforeCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'storeid' is set
+        if (storeid == null) {
+            throw new ApiException("Missing the required parameter 'storeid' when calling postCommerceStoreByStoreidListingByKey(Async)");
+        }
+
+        // verify the required parameter 'key' is set
+        if (key == null) {
+            throw new ApiException("Missing the required parameter 'key' when calling postCommerceStoreByStoreidListingByKey(Async)");
+        }
+
+        return postCommerceStoreByStoreidListingByKeyCall(storeid, key, _callback);
+
+    }
+
+    /**
+     * Add a listing override under a new key
+     * Creates the override and answers the store&#39;s ENTIRE listing map at 201 with a Location header — not just the entry that was added. A key already present is refused 400: creation never silently overwrites, so changing an existing listing has to be an explicit replace. The stored listing has its currency stamped from the store&#39;s own, which the replace path does not do. The key is matched exactly here, with none of the slug or SKU fallback the read allows. Admin-gated and resolved inside the caller org&#39;s namespace.
+     * @param storeid  (required)
+     * @param key  (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void postCommerceStoreByStoreidListingByKey(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key) throws ApiException {
+        postCommerceStoreByStoreidListingByKeyWithHttpInfo(storeid, key);
+    }
+
+    /**
+     * Add a listing override under a new key
+     * Creates the override and answers the store&#39;s ENTIRE listing map at 201 with a Location header — not just the entry that was added. A key already present is refused 400: creation never silently overwrites, so changing an existing listing has to be an explicit replace. The stored listing has its currency stamped from the store&#39;s own, which the replace path does not do. The key is matched exactly here, with none of the slug or SKU fallback the read allows. Admin-gated and resolved inside the caller org&#39;s namespace.
+     * @param storeid  (required)
+     * @param key  (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> postCommerceStoreByStoreidListingByKeyWithHttpInfo(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key) throws ApiException {
+        okhttp3.Call localVarCall = postCommerceStoreByStoreidListingByKeyValidateBeforeCall(storeid, key, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Add a listing override under a new key (asynchronously)
+     * Creates the override and answers the store&#39;s ENTIRE listing map at 201 with a Location header — not just the entry that was added. A key already present is refused 400: creation never silently overwrites, so changing an existing listing has to be an explicit replace. The stored listing has its currency stamped from the store&#39;s own, which the replace path does not do. The key is matched exactly here, with none of the slug or SKU fallback the read allows. Admin-gated and resolved inside the caller org&#39;s namespace.
+     * @param storeid  (required)
+     * @param key  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call postCommerceStoreByStoreidListingByKeyAsync(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postCommerceStoreByStoreidListingByKeyValidateBeforeCall(storeid, key, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postCommerceStoreByStoreidPaypalCancelByPaykey
+     * @param storeid  (required)
+     * @param payKey  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call postCommerceStoreByStoreidPaypalCancelByPaykeyCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String payKey, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/commerce/store/{storeid}/paypal/cancel/{payKey}"
+            .replace("{" + "storeid" + "}", localVarApiClient.escapeString(storeid.toString()))
+            .replace("{" + "payKey" + "}", localVarApiClient.escapeString(payKey.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postCommerceStoreByStoreidPaypalCancelByPaykeyValidateBeforeCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String payKey, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'storeid' is set
+        if (storeid == null) {
+            throw new ApiException("Missing the required parameter 'storeid' when calling postCommerceStoreByStoreidPaypalCancelByPaykey(Async)");
+        }
+
+        // verify the required parameter 'payKey' is set
+        if (payKey == null) {
+            throw new ApiException("Missing the required parameter 'payKey' when calling postCommerceStoreByStoreidPaypalCancelByPaykey(Async)");
+        }
+
+        return postCommerceStoreByStoreidPaypalCancelByPaykeyCall(storeid, payKey, _callback);
+
+    }
+
+    /**
+     * PayPal cancel by pay key — refuses, because a pay key alone does not identify the order
+     * Intended to void the payments carrying the given pay key, stamp them cancelled and cancel the order, it never reaches that work: the shared checkout handler reads its order from an ORDER ID path parameter this route does not carry, leaving an untyped order that the cancel dispatch refuses with 400 before the pay key lookup runs. Authentication, namespacing and store resolution happen ahead of the refusal, so a missing token is 401 and an unloadable store 500. Cancelling a real PayPal authorization needs an address that carries the order id.
+     * @param storeid  (required)
+     * @param payKey  (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void postCommerceStoreByStoreidPaypalCancelByPaykey(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String payKey) throws ApiException {
+        postCommerceStoreByStoreidPaypalCancelByPaykeyWithHttpInfo(storeid, payKey);
+    }
+
+    /**
+     * PayPal cancel by pay key — refuses, because a pay key alone does not identify the order
+     * Intended to void the payments carrying the given pay key, stamp them cancelled and cancel the order, it never reaches that work: the shared checkout handler reads its order from an ORDER ID path parameter this route does not carry, leaving an untyped order that the cancel dispatch refuses with 400 before the pay key lookup runs. Authentication, namespacing and store resolution happen ahead of the refusal, so a missing token is 401 and an unloadable store 500. Cancelling a real PayPal authorization needs an address that carries the order id.
+     * @param storeid  (required)
+     * @param payKey  (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> postCommerceStoreByStoreidPaypalCancelByPaykeyWithHttpInfo(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String payKey) throws ApiException {
+        okhttp3.Call localVarCall = postCommerceStoreByStoreidPaypalCancelByPaykeyValidateBeforeCall(storeid, payKey, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * PayPal cancel by pay key — refuses, because a pay key alone does not identify the order (asynchronously)
+     * Intended to void the payments carrying the given pay key, stamp them cancelled and cancel the order, it never reaches that work: the shared checkout handler reads its order from an ORDER ID path parameter this route does not carry, leaving an untyped order that the cancel dispatch refuses with 400 before the pay key lookup runs. Authentication, namespacing and store resolution happen ahead of the refusal, so a missing token is 401 and an unloadable store 500. Cancelling a real PayPal authorization needs an address that carries the order id.
+     * @param storeid  (required)
+     * @param payKey  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call postCommerceStoreByStoreidPaypalCancelByPaykeyAsync(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String payKey, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postCommerceStoreByStoreidPaypalCancelByPaykeyValidateBeforeCall(storeid, payKey, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postCommerceStoreByStoreidPaypalConfirmByPaykey
+     * @param storeid  (required)
+     * @param payKey  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call postCommerceStoreByStoreidPaypalConfirmByPaykeyCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String payKey, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/commerce/store/{storeid}/paypal/confirm/{payKey}"
+            .replace("{" + "storeid" + "}", localVarApiClient.escapeString(storeid.toString()))
+            .replace("{" + "payKey" + "}", localVarApiClient.escapeString(payKey.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postCommerceStoreByStoreidPaypalConfirmByPaykeyValidateBeforeCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String payKey, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'storeid' is set
+        if (storeid == null) {
+            throw new ApiException("Missing the required parameter 'storeid' when calling postCommerceStoreByStoreidPaypalConfirmByPaykey(Async)");
+        }
+
+        // verify the required parameter 'payKey' is set
+        if (payKey == null) {
+            throw new ApiException("Missing the required parameter 'payKey' when calling postCommerceStoreByStoreidPaypalConfirmByPaykey(Async)");
+        }
+
+        return postCommerceStoreByStoreidPaypalConfirmByPaykeyCall(storeid, payKey, _callback);
+
+    }
+
+    /**
+     * PayPal confirm by pay key — refuses, because a pay key alone does not identify the order
+     * Intended to mark every payment carrying the given pay key as paid and flip the order to paid, it cannot do that from this address and does not pretend to: the shared checkout handler resolves its order from an ORDER ID path parameter that this route does not carry, so it always works against a fresh untyped order and the confirm dispatch refuses it with 400 before the pay key is ever queried. The token gate, the namespace and the store lookup all run ahead of that, so a missing token is still 401 and an unloadable store still 500. Drive a PayPal return through an address that carries the order id.
+     * @param storeid  (required)
+     * @param payKey  (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void postCommerceStoreByStoreidPaypalConfirmByPaykey(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String payKey) throws ApiException {
+        postCommerceStoreByStoreidPaypalConfirmByPaykeyWithHttpInfo(storeid, payKey);
+    }
+
+    /**
+     * PayPal confirm by pay key — refuses, because a pay key alone does not identify the order
+     * Intended to mark every payment carrying the given pay key as paid and flip the order to paid, it cannot do that from this address and does not pretend to: the shared checkout handler resolves its order from an ORDER ID path parameter that this route does not carry, so it always works against a fresh untyped order and the confirm dispatch refuses it with 400 before the pay key is ever queried. The token gate, the namespace and the store lookup all run ahead of that, so a missing token is still 401 and an unloadable store still 500. Drive a PayPal return through an address that carries the order id.
+     * @param storeid  (required)
+     * @param payKey  (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> postCommerceStoreByStoreidPaypalConfirmByPaykeyWithHttpInfo(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String payKey) throws ApiException {
+        okhttp3.Call localVarCall = postCommerceStoreByStoreidPaypalConfirmByPaykeyValidateBeforeCall(storeid, payKey, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * PayPal confirm by pay key — refuses, because a pay key alone does not identify the order (asynchronously)
+     * Intended to mark every payment carrying the given pay key as paid and flip the order to paid, it cannot do that from this address and does not pretend to: the shared checkout handler resolves its order from an ORDER ID path parameter that this route does not carry, so it always works against a fresh untyped order and the confirm dispatch refuses it with 400 before the pay key is ever queried. The token gate, the namespace and the store lookup all run ahead of that, so a missing token is still 401 and an unloadable store still 500. Drive a PayPal return through an address that carries the order id.
+     * @param storeid  (required)
+     * @param payKey  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call postCommerceStoreByStoreidPaypalConfirmByPaykeyAsync(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String payKey, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postCommerceStoreByStoreidPaypalConfirmByPaykeyValidateBeforeCall(storeid, payKey, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postCommerceStoreByStoreidPaypalPay
+     * @param storeid  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call postCommerceStoreByStoreidPaypalPayCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/commerce/store/{storeid}/paypal/pay"
+            .replace("{" + "storeid" + "}", localVarApiClient.escapeString(storeid.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postCommerceStoreByStoreidPaypalPayValidateBeforeCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'storeid' is set
+        if (storeid == null) {
+            throw new ApiException("Missing the required parameter 'storeid' when calling postCommerceStoreByStoreidPaypalPay(Async)");
+        }
+
+        return postCommerceStoreByStoreidPaypalPayCall(storeid, _callback);
+
+    }
+
+    /**
+     * Start a PayPal authorization for a new order
+     * Runs the ordinary store authorize flow — the route binds that very handler, so the body, the store resolution, the tally, the reservations and the failure behaviour are the authorize address&#39;s, unchanged. It reaches PayPal only when the body&#39;s payment type says so; nothing about this path forces the processor, so a card-typed payment posted here authorizes on the card processor instead. A successful PayPal authorization stamps a pay key onto the payment, which is the key the confirm and cancel addresses filter on. It is the older entry point; the plain authorize address is the one to build against.
+     * @param storeid  (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void postCommerceStoreByStoreidPaypalPay(@javax.annotation.Nonnull String storeid) throws ApiException {
+        postCommerceStoreByStoreidPaypalPayWithHttpInfo(storeid);
+    }
+
+    /**
+     * Start a PayPal authorization for a new order
+     * Runs the ordinary store authorize flow — the route binds that very handler, so the body, the store resolution, the tally, the reservations and the failure behaviour are the authorize address&#39;s, unchanged. It reaches PayPal only when the body&#39;s payment type says so; nothing about this path forces the processor, so a card-typed payment posted here authorizes on the card processor instead. A successful PayPal authorization stamps a pay key onto the payment, which is the key the confirm and cancel addresses filter on. It is the older entry point; the plain authorize address is the one to build against.
+     * @param storeid  (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> postCommerceStoreByStoreidPaypalPayWithHttpInfo(@javax.annotation.Nonnull String storeid) throws ApiException {
+        okhttp3.Call localVarCall = postCommerceStoreByStoreidPaypalPayValidateBeforeCall(storeid, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Start a PayPal authorization for a new order (asynchronously)
+     * Runs the ordinary store authorize flow — the route binds that very handler, so the body, the store resolution, the tally, the reservations and the failure behaviour are the authorize address&#39;s, unchanged. It reaches PayPal only when the body&#39;s payment type says so; nothing about this path forces the processor, so a card-typed payment posted here authorizes on the card processor instead. A successful PayPal authorization stamps a pay key onto the payment, which is the key the confirm and cancel addresses filter on. It is the older entry point; the plain authorize address is the one to build against.
+     * @param storeid  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call postCommerceStoreByStoreidPaypalPayAsync(@javax.annotation.Nonnull String storeid, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postCommerceStoreByStoreidPaypalPayValidateBeforeCall(storeid, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postCommerceStoreByStoreidTrial
+     * @param storeid  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call postCommerceStoreByStoreidTrialCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/commerce/store/{storeid}/trial"
+            .replace("{" + "storeid" + "}", localVarApiClient.escapeString(storeid.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postCommerceStoreByStoreidTrialValidateBeforeCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'storeid' is set
+        if (storeid == null) {
+            throw new ApiException("Missing the required parameter 'storeid' when calling postCommerceStoreByStoreidTrial(Async)");
+        }
+
+        return postCommerceStoreByStoreidTrialCall(storeid, _callback);
+
+    }
+
+    /**
+     * Start this store&#39;s no-card trial on the entry plan
+     * Creates a trialing subscription for the addressed store on the entry plan and grants that plan&#39;s trial credit, answering 201 when this call actually started one and 200 with a reason otherwise — not_new when the store already has billing history, trial_not_configured when no entry plan is wired. The window is always the SEVEN-DAY no-card trial, because this address never presents a card; the longer card-present window is reached only by adding a card afterwards. Entitlement is per store while the billing subject is the org, so every store an org owns takes its own trial. Admin-gated and namespaced to the caller&#39;s org: no resolvable store is 404 with store_required, and a backing-store failure is 503.
+     * @param storeid  (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void postCommerceStoreByStoreidTrial(@javax.annotation.Nonnull String storeid) throws ApiException {
+        postCommerceStoreByStoreidTrialWithHttpInfo(storeid);
+    }
+
+    /**
+     * Start this store&#39;s no-card trial on the entry plan
+     * Creates a trialing subscription for the addressed store on the entry plan and grants that plan&#39;s trial credit, answering 201 when this call actually started one and 200 with a reason otherwise — not_new when the store already has billing history, trial_not_configured when no entry plan is wired. The window is always the SEVEN-DAY no-card trial, because this address never presents a card; the longer card-present window is reached only by adding a card afterwards. Entitlement is per store while the billing subject is the org, so every store an org owns takes its own trial. Admin-gated and namespaced to the caller&#39;s org: no resolvable store is 404 with store_required, and a backing-store failure is 503.
+     * @param storeid  (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> postCommerceStoreByStoreidTrialWithHttpInfo(@javax.annotation.Nonnull String storeid) throws ApiException {
+        okhttp3.Call localVarCall = postCommerceStoreByStoreidTrialValidateBeforeCall(storeid, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Start this store&#39;s no-card trial on the entry plan (asynchronously)
+     * Creates a trialing subscription for the addressed store on the entry plan and grants that plan&#39;s trial credit, answering 201 when this call actually started one and 200 with a reason otherwise — not_new when the store already has billing history, trial_not_configured when no entry plan is wired. The window is always the SEVEN-DAY no-card trial, because this address never presents a card; the longer card-present window is reached only by adding a card afterwards. Entitlement is per store while the billing subject is the org, so every store an org owns takes its own trial. Admin-gated and namespaced to the caller&#39;s org: no resolvable store is 404 with store_required, and a backing-store failure is 503.
+     * @param storeid  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call postCommerceStoreByStoreidTrialAsync(@javax.annotation.Nonnull String storeid, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postCommerceStoreByStoreidTrialValidateBeforeCall(storeid, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postCommerceStoreToken
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call postCommerceStoreTokenCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/commerce/store/token";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postCommerceStoreTokenValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postCommerceStoreTokenCall(_callback);
+
+    }
+
+    /**
+     * Mint your org&#39;s least-privilege storefront read key
+     * Answers a freshly minted token carrying ONLY the published-read permission — enough for a logged-out shopper&#39;s storefront to read your published catalog and nothing more, with no write and no admin scope. It is org-bound, signed with the org&#39;s own secret and subject to the org id, so unlike a shared service token it can never act on another tenant. Minting ROTATES rather than accumulates: the previous storefront token is dropped first and is invalid immediately, so re-minting is how you revoke. Admin is enforced by the handler as well as the route, because the route&#39;s token gate does not apply on the identity path and a plain member must not be able to mint their org&#39;s key.
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void postCommerceStoreToken() throws ApiException {
+        postCommerceStoreTokenWithHttpInfo();
+    }
+
+    /**
+     * Mint your org&#39;s least-privilege storefront read key
+     * Answers a freshly minted token carrying ONLY the published-read permission — enough for a logged-out shopper&#39;s storefront to read your published catalog and nothing more, with no write and no admin scope. It is org-bound, signed with the org&#39;s own secret and subject to the org id, so unlike a shared service token it can never act on another tenant. Minting ROTATES rather than accumulates: the previous storefront token is dropped first and is invalid immediately, so re-minting is how you revoke. Admin is enforced by the handler as well as the route, because the route&#39;s token gate does not apply on the identity path and a plain member must not be able to mint their org&#39;s key.
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> postCommerceStoreTokenWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postCommerceStoreTokenValidateBeforeCall(null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Mint your org&#39;s least-privilege storefront read key (asynchronously)
+     * Answers a freshly minted token carrying ONLY the published-read permission — enough for a logged-out shopper&#39;s storefront to read your published catalog and nothing more, with no write and no admin scope. It is org-bound, signed with the org&#39;s own secret and subject to the org id, so unlike a shared service token it can never act on another tenant. Minting ROTATES rather than accumulates: the previous storefront token is dropped first and is invalid immediately, so re-minting is how you revoke. Admin is enforced by the handler as well as the route, because the route&#39;s token gate does not apply on the identity path and a plain member must not be able to mint their org&#39;s key.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call postCommerceStoreTokenAsync(final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postCommerceStoreTokenValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
@@ -10080,6 +15200,104 @@ public class CommerceApi {
         return localVarCall;
     }
     /**
+     * Build call for postCommerceWebhooksByProvider
+     * @param provider  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call postCommerceWebhooksByProviderCall(@javax.annotation.Nonnull String provider, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/commerce/webhooks/{provider}"
+            .replace("{" + "provider" + "}", localVarApiClient.escapeString(provider.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postCommerceWebhooksByProviderValidateBeforeCall(@javax.annotation.Nonnull String provider, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'provider' is set
+        if (provider == null) {
+            throw new ApiException("Missing the required parameter 'provider' when calling postCommerceWebhooksByProvider(Async)");
+        }
+
+        return postCommerceWebhooksByProviderCall(provider, _callback);
+
+    }
+
+    /**
+     * Payment-provider webhook intake for settlement and subscription lifecycle events
+     * Accepts a payment provider&#39;s event, verifies it, records it for audit, and applies subscription lifecycle changes to the matching local row. There is no bearer here and there cannot be: the provider&#39;s SIGNATURE over the body IS the authentication, so a request with no recognized signature header is 400 and one whose signature does not verify is 401. The provider path segment is only a hint for dashboard configuration — verification picks the processor regardless of what the URL says. Redelivery is safe: an event id already recorded is acknowledged as a duplicate without re-applying any side effect, which matters because providers retry for days until they see a 2xx.
+     * @param provider  (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void postCommerceWebhooksByProvider(@javax.annotation.Nonnull String provider) throws ApiException {
+        postCommerceWebhooksByProviderWithHttpInfo(provider);
+    }
+
+    /**
+     * Payment-provider webhook intake for settlement and subscription lifecycle events
+     * Accepts a payment provider&#39;s event, verifies it, records it for audit, and applies subscription lifecycle changes to the matching local row. There is no bearer here and there cannot be: the provider&#39;s SIGNATURE over the body IS the authentication, so a request with no recognized signature header is 400 and one whose signature does not verify is 401. The provider path segment is only a hint for dashboard configuration — verification picks the processor regardless of what the URL says. Redelivery is safe: an event id already recorded is acknowledged as a duplicate without re-applying any side effect, which matters because providers retry for days until they see a 2xx.
+     * @param provider  (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> postCommerceWebhooksByProviderWithHttpInfo(@javax.annotation.Nonnull String provider) throws ApiException {
+        okhttp3.Call localVarCall = postCommerceWebhooksByProviderValidateBeforeCall(provider, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Payment-provider webhook intake for settlement and subscription lifecycle events (asynchronously)
+     * Accepts a payment provider&#39;s event, verifies it, records it for audit, and applies subscription lifecycle changes to the matching local row. There is no bearer here and there cannot be: the provider&#39;s SIGNATURE over the body IS the authentication, so a request with no recognized signature header is 400 and one whose signature does not verify is 401. The provider path segment is only a hint for dashboard configuration — verification picks the processor regardless of what the URL says. Redelivery is safe: an event id already recorded is acknowledged as a duplicate without re-applying any side effect, which matters because providers retry for days until they see a 2xx.
+     * @param provider  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call postCommerceWebhooksByProviderAsync(@javax.annotation.Nonnull String provider, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postCommerceWebhooksByProviderValidateBeforeCall(provider, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for putCommerceCollectionByCollectionid
      * @param collectionid  (required)
      * @param _callback Callback for upload/download progress
@@ -10570,6 +15788,104 @@ public class CommerceApi {
         return localVarCall;
     }
     /**
+     * Build call for putCommercePlansEntriesBySlug
+     * @param slug  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call putCommercePlansEntriesBySlugCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/commerce/plans/entries/{slug}"
+            .replace("{" + "slug" + "}", localVarApiClient.escapeString(slug.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call putCommercePlansEntriesBySlugValidateBeforeCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'slug' is set
+        if (slug == null) {
+            throw new ApiException("Missing the required parameter 'slug' when calling putCommercePlansEntriesBySlug(Async)");
+        }
+
+        return putCommercePlansEntriesBySlugCall(slug, _callback);
+
+    }
+
+    /**
+     * Edit a plan, leaving the fields you omit alone
+     * Loads the addressed plan, applies the body over it and answers the stored result, so a partial edit never silently zeroes a price or the contact-sales flag. The slug is IMMUTABLE: a body naming a different slug is rejected outright before anything is written, because a rename would orphan every subscription that stored the old id — deprecate and create instead. An admin edit marks the row authoritative so the seed stops correcting it. PLATFORM admin only; an unknown slug is 404.
+     * @param slug  (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void putCommercePlansEntriesBySlug(@javax.annotation.Nonnull String slug) throws ApiException {
+        putCommercePlansEntriesBySlugWithHttpInfo(slug);
+    }
+
+    /**
+     * Edit a plan, leaving the fields you omit alone
+     * Loads the addressed plan, applies the body over it and answers the stored result, so a partial edit never silently zeroes a price or the contact-sales flag. The slug is IMMUTABLE: a body naming a different slug is rejected outright before anything is written, because a rename would orphan every subscription that stored the old id — deprecate and create instead. An admin edit marks the row authoritative so the seed stops correcting it. PLATFORM admin only; an unknown slug is 404.
+     * @param slug  (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> putCommercePlansEntriesBySlugWithHttpInfo(@javax.annotation.Nonnull String slug) throws ApiException {
+        okhttp3.Call localVarCall = putCommercePlansEntriesBySlugValidateBeforeCall(slug, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Edit a plan, leaving the fields you omit alone (asynchronously)
+     * Loads the addressed plan, applies the body over it and answers the stored result, so a partial edit never silently zeroes a price or the contact-sales flag. The slug is IMMUTABLE: a body naming a different slug is rejected outright before anything is written, because a rename would orphan every subscription that stored the old id — deprecate and create instead. An admin edit marks the row authoritative so the seed stops correcting it. PLATFORM admin only; an unknown slug is 404.
+     * @param slug  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call putCommercePlansEntriesBySlugAsync(@javax.annotation.Nonnull String slug, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = putCommercePlansEntriesBySlugValidateBeforeCall(slug, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for putCommerceProductByProductid
      * @param productid  (required)
      * @param _callback Callback for upload/download progress
@@ -10664,6 +15980,104 @@ public class CommerceApi {
     public okhttp3.Call putCommerceProductByProductidAsync(@javax.annotation.Nonnull String productid, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = putCommerceProductByProductidValidateBeforeCall(productid, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for putCommerceRatesEntriesBySlug
+     * @param slug  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call putCommerceRatesEntriesBySlugCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/commerce/rates/entries/{slug}"
+            .replace("{" + "slug" + "}", localVarApiClient.escapeString(slug.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call putCommerceRatesEntriesBySlugValidateBeforeCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'slug' is set
+        if (slug == null) {
+            throw new ApiException("Missing the required parameter 'slug' when calling putCommerceRatesEntriesBySlug(Async)");
+        }
+
+        return putCommerceRatesEntriesBySlugCall(slug, _callback);
+
+    }
+
+    /**
+     * Edit a rate, and mark it as operator-set
+     * Edits one rate and MARKS it edited, which is the whole contract with the importer: an operator&#39;s price outranks the document it came from, so a later import leaves this row alone. Without that mark a price set here would apply, work, and silently revert on the next import. Only the editable fields move; identity and bookkeeping are not writable from the body. SuperAdmin only.
+     * @param slug  (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void putCommerceRatesEntriesBySlug(@javax.annotation.Nonnull String slug) throws ApiException {
+        putCommerceRatesEntriesBySlugWithHttpInfo(slug);
+    }
+
+    /**
+     * Edit a rate, and mark it as operator-set
+     * Edits one rate and MARKS it edited, which is the whole contract with the importer: an operator&#39;s price outranks the document it came from, so a later import leaves this row alone. Without that mark a price set here would apply, work, and silently revert on the next import. Only the editable fields move; identity and bookkeeping are not writable from the body. SuperAdmin only.
+     * @param slug  (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> putCommerceRatesEntriesBySlugWithHttpInfo(@javax.annotation.Nonnull String slug) throws ApiException {
+        okhttp3.Call localVarCall = putCommerceRatesEntriesBySlugValidateBeforeCall(slug, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Edit a rate, and mark it as operator-set (asynchronously)
+     * Edits one rate and MARKS it edited, which is the whole contract with the importer: an operator&#39;s price outranks the document it came from, so a later import leaves this row alone. Without that mark a price set here would apply, work, and silently revert on the next import. Only the editable fields move; identity and bookkeeping are not writable from the body. SuperAdmin only.
+     * @param slug  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call putCommerceRatesEntriesBySlugAsync(@javax.annotation.Nonnull String slug, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = putCommerceRatesEntriesBySlugValidateBeforeCall(slug, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
@@ -10958,6 +16372,212 @@ public class CommerceApi {
     public okhttp3.Call putCommerceStocklocationByStocklocationidAsync(@javax.annotation.Nonnull String stocklocationid, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = putCommerceStocklocationByStocklocationidValidateBeforeCall(stocklocationid, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for putCommerceStoreByStoreid
+     * @param storeid  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call putCommerceStoreByStoreidCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/commerce/store/{storeid}"
+            .replace("{" + "storeid" + "}", localVarApiClient.escapeString(storeid.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call putCommerceStoreByStoreidValidateBeforeCall(@javax.annotation.Nonnull String storeid, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'storeid' is set
+        if (storeid == null) {
+            throw new ApiException("Missing the required parameter 'storeid' when calling putCommerceStoreByStoreid(Async)");
+        }
+
+        return putCommerceStoreByStoreidCall(storeid, _callback);
+
+    }
+
+    /**
+     * Replace a storefront outright
+     * This is a true REPLACEMENT, not a merge: the stored key is preserved but the body is decoded onto a fresh entity, so every field the body omits is written back as its zero value. Use the partial update when you mean to change part of a store. The id is resolved inside the caller org&#39;s own namespace, so an unknown or foreign id is a 404 before anything is written. Requires an admin token, or one holding both store read and store write.
+     * @param storeid  (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void putCommerceStoreByStoreid(@javax.annotation.Nonnull String storeid) throws ApiException {
+        putCommerceStoreByStoreidWithHttpInfo(storeid);
+    }
+
+    /**
+     * Replace a storefront outright
+     * This is a true REPLACEMENT, not a merge: the stored key is preserved but the body is decoded onto a fresh entity, so every field the body omits is written back as its zero value. Use the partial update when you mean to change part of a store. The id is resolved inside the caller org&#39;s own namespace, so an unknown or foreign id is a 404 before anything is written. Requires an admin token, or one holding both store read and store write.
+     * @param storeid  (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> putCommerceStoreByStoreidWithHttpInfo(@javax.annotation.Nonnull String storeid) throws ApiException {
+        okhttp3.Call localVarCall = putCommerceStoreByStoreidValidateBeforeCall(storeid, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Replace a storefront outright (asynchronously)
+     * This is a true REPLACEMENT, not a merge: the stored key is preserved but the body is decoded onto a fresh entity, so every field the body omits is written back as its zero value. Use the partial update when you mean to change part of a store. The id is resolved inside the caller org&#39;s own namespace, so an unknown or foreign id is a 404 before anything is written. Requires an admin token, or one holding both store read and store write.
+     * @param storeid  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call putCommerceStoreByStoreidAsync(@javax.annotation.Nonnull String storeid, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = putCommerceStoreByStoreidValidateBeforeCall(storeid, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for putCommerceStoreByStoreidListingByKey
+     * @param storeid  (required)
+     * @param key  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call putCommerceStoreByStoreidListingByKeyCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/commerce/store/{storeid}/listing/{key}"
+            .replace("{" + "storeid" + "}", localVarApiClient.escapeString(storeid.toString()))
+            .replace("{" + "key" + "}", localVarApiClient.escapeString(key.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call putCommerceStoreByStoreidListingByKeyValidateBeforeCall(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'storeid' is set
+        if (storeid == null) {
+            throw new ApiException("Missing the required parameter 'storeid' when calling putCommerceStoreByStoreidListingByKey(Async)");
+        }
+
+        // verify the required parameter 'key' is set
+        if (key == null) {
+            throw new ApiException("Missing the required parameter 'key' when calling putCommerceStoreByStoreidListingByKey(Async)");
+        }
+
+        return putCommerceStoreByStoreidListingByKeyCall(storeid, key, _callback);
+
+    }
+
+    /**
+     * Upsert a listing override
+     * Decodes the body over the existing listing when the key is present, so fields it omits keep their stored values, and builds the listing from the body alone when the key is new. Answers 200 when it replaced something and 201 with a Location header when it created it; either way the body is the store&#39;s entire listing map, not the single entry. Unlike creation, this path does NOT restamp the listing&#39;s currency from the store. Admin-gated, with the store resolved inside the caller org&#39;s namespace.
+     * @param storeid  (required)
+     * @param key  (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void putCommerceStoreByStoreidListingByKey(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key) throws ApiException {
+        putCommerceStoreByStoreidListingByKeyWithHttpInfo(storeid, key);
+    }
+
+    /**
+     * Upsert a listing override
+     * Decodes the body over the existing listing when the key is present, so fields it omits keep their stored values, and builds the listing from the body alone when the key is new. Answers 200 when it replaced something and 201 with a Location header when it created it; either way the body is the store&#39;s entire listing map, not the single entry. Unlike creation, this path does NOT restamp the listing&#39;s currency from the store. Admin-gated, with the store resolved inside the caller org&#39;s namespace.
+     * @param storeid  (required)
+     * @param key  (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> putCommerceStoreByStoreidListingByKeyWithHttpInfo(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key) throws ApiException {
+        okhttp3.Call localVarCall = putCommerceStoreByStoreidListingByKeyValidateBeforeCall(storeid, key, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Upsert a listing override (asynchronously)
+     * Decodes the body over the existing listing when the key is present, so fields it omits keep their stored values, and builds the listing from the body alone when the key is new. Answers 200 when it replaced something and 201 with a Location header when it created it; either way the body is the store&#39;s entire listing map, not the single entry. Unlike creation, this path does NOT restamp the listing&#39;s currency from the store. Admin-gated, with the store resolved inside the caller org&#39;s namespace.
+     * @param storeid  (required)
+     * @param key  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call putCommerceStoreByStoreidListingByKeyAsync(@javax.annotation.Nonnull String storeid, @javax.annotation.Nonnull String key, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = putCommerceStoreByStoreidListingByKeyValidateBeforeCall(storeid, key, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
@@ -11743,6 +17363,270 @@ public class CommerceApi {
 
         okhttp3.Call localVarCall = putCommerceWebhookByWebhookidValidateBeforeCall(webhookid, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for setCartItem
+     * @param id ID is the cart to amend, from the path. (required)
+     * @param cartItemSet  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call setCartItemCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CartItemSet cartItemSet, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = cartItemSet;
+
+        // create path and map variables
+        String localVarPath = "/v1/commerce/cart/{id}/item"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call setCartItemValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CartItemSet cartItemSet, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling setCartItem(Async)");
+        }
+
+        // verify the required parameter 'cartItemSet' is set
+        if (cartItemSet == null) {
+            throw new ApiException("Missing the required parameter 'cartItemSet' when calling setCartItem(Async)");
+        }
+
+        return setCartItemCall(id, cartItemSet, _callback);
+
+    }
+
+    /**
+     * Set one item&#39;s quantity in a cart; zero removes it
+     * Sets how many of one item a cart holds, and answers the whole updated cart.  This is the ONE way a cart&#39;s contents change. The quantity is the RESULT, not a delta: sending 3 leaves 3 however many were there before, so a retry is safe and a double-submit cannot double an order. ZERO REMOVES the line — there is deliberately no separate delete, because removal is the same act at the boundary value and a second spelling would be a second set of edge cases.  Name the item with EITHER product OR variant, never both. Prefer variant for anything sold in sizes, colours or tiers: the price and the stock belong to the variant, so a product-level line on a varianted product prices the wrong thing. Either may be given as an id or as the human key — a product&#39;s URL slug, a variant&#39;s SKU — which is what lets a storefront add to cart straight from a product page URL without a lookup first.  The item&#39;s price and name are CACHED onto the line as it is added, so the cart keeps the price the shopper was shown even if the catalog moves underneath it.  An item that resolves to nothing in the catalog is refused 400 and the cart is left exactly as it was; nothing is partially applied.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
+     * @param id ID is the cart to amend, from the path. (required)
+     * @param cartItemSet  (required)
+     * @return Cart
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public Cart setCartItem(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CartItemSet cartItemSet) throws ApiException {
+        ApiResponse<Cart> localVarResp = setCartItemWithHttpInfo(id, cartItemSet);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Set one item&#39;s quantity in a cart; zero removes it
+     * Sets how many of one item a cart holds, and answers the whole updated cart.  This is the ONE way a cart&#39;s contents change. The quantity is the RESULT, not a delta: sending 3 leaves 3 however many were there before, so a retry is safe and a double-submit cannot double an order. ZERO REMOVES the line — there is deliberately no separate delete, because removal is the same act at the boundary value and a second spelling would be a second set of edge cases.  Name the item with EITHER product OR variant, never both. Prefer variant for anything sold in sizes, colours or tiers: the price and the stock belong to the variant, so a product-level line on a varianted product prices the wrong thing. Either may be given as an id or as the human key — a product&#39;s URL slug, a variant&#39;s SKU — which is what lets a storefront add to cart straight from a product page URL without a lookup first.  The item&#39;s price and name are CACHED onto the line as it is added, so the cart keeps the price the shopper was shown even if the catalog moves underneath it.  An item that resolves to nothing in the catalog is refused 400 and the cart is left exactly as it was; nothing is partially applied.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
+     * @param id ID is the cart to amend, from the path. (required)
+     * @param cartItemSet  (required)
+     * @return ApiResponse&lt;Cart&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Cart> setCartItemWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CartItemSet cartItemSet) throws ApiException {
+        okhttp3.Call localVarCall = setCartItemValidateBeforeCall(id, cartItemSet, null);
+        Type localVarReturnType = new TypeToken<Cart>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Set one item&#39;s quantity in a cart; zero removes it (asynchronously)
+     * Sets how many of one item a cart holds, and answers the whole updated cart.  This is the ONE way a cart&#39;s contents change. The quantity is the RESULT, not a delta: sending 3 leaves 3 however many were there before, so a retry is safe and a double-submit cannot double an order. ZERO REMOVES the line — there is deliberately no separate delete, because removal is the same act at the boundary value and a second spelling would be a second set of edge cases.  Name the item with EITHER product OR variant, never both. Prefer variant for anything sold in sizes, colours or tiers: the price and the stock belong to the variant, so a product-level line on a varianted product prices the wrong thing. Either may be given as an id or as the human key — a product&#39;s URL slug, a variant&#39;s SKU — which is what lets a storefront add to cart straight from a product page URL without a lookup first.  The item&#39;s price and name are CACHED onto the line as it is added, so the cart keeps the price the shopper was shown even if the catalog moves underneath it.  An item that resolves to nothing in the catalog is refused 400 and the cart is left exactly as it was; nothing is partially applied.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
+     * @param id ID is the cart to amend, from the path. (required)
+     * @param cartItemSet  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call setCartItemAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CartItemSet cartItemSet, final ApiCallback<Cart> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = setCartItemValidateBeforeCall(id, cartItemSet, _callback);
+        Type localVarReturnType = new TypeToken<Cart>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for takePayment
+     * @param paymentIn  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call takePaymentCall(@javax.annotation.Nonnull PaymentIn paymentIn, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = paymentIn;
+
+        // create path and map variables
+        String localVarPath = "/v1/commerce/payments";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call takePaymentValidateBeforeCall(@javax.annotation.Nonnull PaymentIn paymentIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'paymentIn' is set
+        if (paymentIn == null) {
+            throw new ApiException("Missing the required parameter 'paymentIn' when calling takePayment(Async)");
+        }
+
+        return takePaymentCall(paymentIn, _callback);
+
+    }
+
+    /**
+     * Take a card payment and credit the org&#39;s balance
+     * Takes a payment: charges a single-use card token and credits the caller&#39;s org balance, exactly once.  This is the operation behind \&quot;collect money from a customer\&quot;. It runs the SAME core the console&#39;s card top-up runs (commerce billing.TakePayment), so the server-side amount bounds, the idempotency guard and the ledger credit are shared rather than reimplemented — a second charge path would eventually double-charge somebody.  The ORG is the caller&#39;s, taken from the validated principal and never from the input, so a payment can only ever credit the account of whoever made the call.  A payment is RISK-SCREENED before the card is charged, so this can be refused without any money moving: 403 means the screen did not authorise it, and 503 means the screen could not reach a decision — that one is worth retrying, and no charge was attempted either way.  Send an idempotencyKey. An agent retries by construction, and the key is what turns a retry into a replay of the first receipt instead of a second charge.  The answer states whether it settled in SANDBOX or live mode (&#x60;test&#x60;), and carries the processor&#39;s own reference (&#x60;processorRef&#x60;) so the charge can be reconciled against the processor rather than taken on trust.  A named builder, not a closure, so zipdoc can lift this prose into the registry.  It BUILDS the handler rather than being it, because the screen has to sit inside the value every projection of this op dispatches to — see exposePayments. &#x60;charge&#x60; is the money move, &#x60;take&#x60; is the screened door onto it, and the only registrable one is the second.
+     * @param paymentIn  (required)
+     * @return PaymentOut
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
+     */
+    public PaymentOut takePayment(@javax.annotation.Nonnull PaymentIn paymentIn) throws ApiException {
+        ApiResponse<PaymentOut> localVarResp = takePaymentWithHttpInfo(paymentIn);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Take a card payment and credit the org&#39;s balance
+     * Takes a payment: charges a single-use card token and credits the caller&#39;s org balance, exactly once.  This is the operation behind \&quot;collect money from a customer\&quot;. It runs the SAME core the console&#39;s card top-up runs (commerce billing.TakePayment), so the server-side amount bounds, the idempotency guard and the ledger credit are shared rather than reimplemented — a second charge path would eventually double-charge somebody.  The ORG is the caller&#39;s, taken from the validated principal and never from the input, so a payment can only ever credit the account of whoever made the call.  A payment is RISK-SCREENED before the card is charged, so this can be refused without any money moving: 403 means the screen did not authorise it, and 503 means the screen could not reach a decision — that one is worth retrying, and no charge was attempted either way.  Send an idempotencyKey. An agent retries by construction, and the key is what turns a retry into a replay of the first receipt instead of a second charge.  The answer states whether it settled in SANDBOX or live mode (&#x60;test&#x60;), and carries the processor&#39;s own reference (&#x60;processorRef&#x60;) so the charge can be reconciled against the processor rather than taken on trust.  A named builder, not a closure, so zipdoc can lift this prose into the registry.  It BUILDS the handler rather than being it, because the screen has to sit inside the value every projection of this op dispatches to — see exposePayments. &#x60;charge&#x60; is the money move, &#x60;take&#x60; is the screened door onto it, and the only registrable one is the second.
+     * @param paymentIn  (required)
+     * @return ApiResponse&lt;PaymentOut&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<PaymentOut> takePaymentWithHttpInfo(@javax.annotation.Nonnull PaymentIn paymentIn) throws ApiException {
+        okhttp3.Call localVarCall = takePaymentValidateBeforeCall(paymentIn, null);
+        Type localVarReturnType = new TypeToken<PaymentOut>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Take a card payment and credit the org&#39;s balance (asynchronously)
+     * Takes a payment: charges a single-use card token and credits the caller&#39;s org balance, exactly once.  This is the operation behind \&quot;collect money from a customer\&quot;. It runs the SAME core the console&#39;s card top-up runs (commerce billing.TakePayment), so the server-side amount bounds, the idempotency guard and the ledger credit are shared rather than reimplemented — a second charge path would eventually double-charge somebody.  The ORG is the caller&#39;s, taken from the validated principal and never from the input, so a payment can only ever credit the account of whoever made the call.  A payment is RISK-SCREENED before the card is charged, so this can be refused without any money moving: 403 means the screen did not authorise it, and 503 means the screen could not reach a decision — that one is worth retrying, and no charge was attempted either way.  Send an idempotencyKey. An agent retries by construction, and the key is what turns a retry into a replay of the first receipt instead of a second charge.  The answer states whether it settled in SANDBOX or live mode (&#x60;test&#x60;), and carries the processor&#39;s own reference (&#x60;processorRef&#x60;) so the charge can be reconciled against the processor rather than taken on trust.  A named builder, not a closure, so zipdoc can lift this prose into the registry.  It BUILDS the handler rather than being it, because the screen has to sit inside the value every projection of this op dispatches to — see exposePayments. &#x60;charge&#x60; is the money move, &#x60;take&#x60; is the screened door onto it, and the only registrable one is the second.
+     * @param paymentIn  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call takePaymentAsync(@javax.annotation.Nonnull PaymentIn paymentIn, final ApiCallback<PaymentOut> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = takePaymentValidateBeforeCall(paymentIn, _callback);
+        Type localVarReturnType = new TypeToken<PaymentOut>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 }

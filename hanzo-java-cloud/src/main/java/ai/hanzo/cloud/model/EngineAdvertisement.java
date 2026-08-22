@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -89,7 +89,7 @@ public class EngineAdvertisement {
   }
 
   /**
-   * [\&quot;openai\&quot;,\&quot;anthropic\&quot;]
+   * APIs are the wire formats the engine serves on that one port: \&quot;openai\&quot;, \&quot;anthropic\&quot;, or both.
    * @return apis
    */
   @javax.annotation.Nullable
@@ -116,7 +116,7 @@ public class EngineAdvertisement {
   }
 
   /**
-   * ids from the node&#39;s GET /v1/models
+   * Models are the model ids the node&#39;s own GET /v1/models answered with — what this GPU can actually be asked for.
    * @return models
    */
   @javax.annotation.Nullable
@@ -135,7 +135,7 @@ public class EngineAdvertisement {
   }
 
   /**
-   * \&quot;ready\&quot; | \&quot;unreachable\&quot;
+   * Status is \&quot;ready\&quot; when the node&#39;s engine answered, \&quot;unreachable\&quot; when it did not. Advertised is not the same as serving, and this is the difference.
    * @return status
    */
   @javax.annotation.Nullable
@@ -154,7 +154,7 @@ public class EngineAdvertisement {
   }
 
   /**
-   * Get url
+   * URL is the base address the node advertised its engine on — where a model call to this GPU is sent. The node chose it, so reaching it is a question about the node&#39;s network, not about this surface.
    * @return url
    */
   @javax.annotation.Nullable

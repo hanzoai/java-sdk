@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -99,7 +99,7 @@ public class Txn {
   }
 
   /**
-   * Get amountCents
+   * AmountCents is the voucher&#39;s total, in whole cents — its total debit, which equals its total credit because every voucher balances. It is the size of the entry and carries no direction; the category says which way it went.
    * @return amountCents
    */
   @javax.annotation.Nullable
@@ -118,7 +118,7 @@ public class Txn {
   }
 
   /**
-   * COA account number of the P&amp;L line
+   * Category is the chart-of-accounts NUMBER of the income or expense account this voucher touched — where it lands on the P&amp;L, not a free-text label.
    * @return category
    */
   @javax.annotation.Nullable
@@ -137,7 +137,7 @@ public class Txn {
   }
 
   /**
-   * Get categoryName
+   * CategoryName is that account&#39;s human name, so a caller need not carry the chart to render the row.
    * @return categoryName
    */
   @javax.annotation.Nullable
@@ -156,7 +156,7 @@ public class Txn {
   }
 
   /**
-   * Get date
+   * Date is when the voucher POSTED — the accounting date the reports window on, which for an imported bank row is the bank&#39;s date and not the day it landed here.
    * @return date
    */
   @javax.annotation.Nullable
@@ -175,7 +175,7 @@ public class Txn {
   }
 
   /**
-   * Get description
+   * Description is the line a person reads: the memo carried in from the source.
    * @return description
    */
   @javax.annotation.Nullable
@@ -194,7 +194,7 @@ public class Txn {
   }
 
   /**
-   * source_kind: bank_txn | scan | commerce_txn
+   * Source is where the entry came from: bank_txn for an imported statement line, scan for a receipt or bill read by the scanner, commerce_txn for a sale booked by the store.
    * @return source
    */
   @javax.annotation.Nullable
@@ -213,7 +213,7 @@ public class Txn {
   }
 
   /**
-   * Get vendor
+   * Vendor is the counterparty, resolved from whatever the source knew — a bank row&#39;s merchant, a scanned bill&#39;s supplier. Absent when the source named none.
    * @return vendor
    */
   @javax.annotation.Nullable
@@ -232,7 +232,7 @@ public class Txn {
   }
 
   /**
-   * Get voucherId
+   * VoucherID identifies the underlying double-entry voucher, so a caller can open the full set of legs behind this single register line.
    * @return voucherId
    */
   @javax.annotation.Nullable

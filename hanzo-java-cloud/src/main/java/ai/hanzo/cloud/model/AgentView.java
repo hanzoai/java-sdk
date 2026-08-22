@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -126,7 +126,7 @@ public class AgentView {
   }
 
   /**
-   * Get computeRef
+   * ComputeRef is the visor machine this bot is bound to, opaque here: this package stores and echoes it, and the binding&#39;s lifecycle belongs elsewhere. Empty means unbound, which is what every one-shot agent is.
    * @return computeRef
    */
   @javax.annotation.Nullable
@@ -145,7 +145,7 @@ public class AgentView {
   }
 
   /**
-   * Get createdAt
+   * CreatedAt is when the agent was defined, RFC 3339 in UTC to the second.
    * @return createdAt
    */
   @javax.annotation.Nullable
@@ -164,7 +164,7 @@ public class AgentView {
   }
 
   /**
-   * Get description
+   * Description is the one line another agent reads when deciding whether to call this one: the tool catalogue publishes it as the description of &#x60;agent_&lt;name&gt;&#x60;, falling back to \&quot;agent &lt;name&gt;\&quot; when it is empty. It is not part of the prompt — Instructions is — so writing the behaviour here reaches the caller and not the model.
    * @return description
    */
   @javax.annotation.Nullable
@@ -183,7 +183,7 @@ public class AgentView {
   }
 
   /**
-   * Get executionMode
+   * ExecutionMode is one-shot or long-running, and it decides who may start this agent. one-shot runs only when something POSTs to it; long-running is additionally invoked by the scheduler on Schedule, once a minute against the cron. An org&#39;s long-running agents are capped, so a switch INTO it can be refused with 409.
    * @return executionMode
    */
   @javax.annotation.Nullable
@@ -202,7 +202,7 @@ public class AgentView {
   }
 
   /**
-   * Get id
+   * ID is the agent&#39;s stable handle, minted here as \&quot;agent_\&quot; + 32 hex characters of crypto/rand. A caller cannot choose it, and it never changes — unlike Name, which is the other way to address the same agent.
    * @return id
    */
   @javax.annotation.Nullable
@@ -221,7 +221,7 @@ public class AgentView {
   }
 
   /**
-   * Get model
+   * Model is the Zen model this agent runs on, and it is always OUR name for it: writes normalize through cloud.ZenModel and the read normalizes again, so an upstream family name never leaves here even from a row written before that rule existed. A create that named none took the deployment&#39;s configured default, so this is where a caller learns which model it actually got.
    * @return model
    */
   @javax.annotation.Nullable
@@ -240,7 +240,7 @@ public class AgentView {
   }
 
   /**
-   * Get name
+   * Name is the agent&#39;s org-unique handle, matching ^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$. It addresses the agent everywhere ID does, it is what a run row records, and it is the suffix of the &#x60;agent_&lt;name&gt;&#x60; tool other agents call this one by. Set once at create; no update route moves it, because moving it would orphan that history.
    * @return name
    */
   @javax.annotation.Nullable
@@ -259,7 +259,7 @@ public class AgentView {
   }
 
   /**
-   * Get runs
+   * Runs is how many executions the org has recorded against this agent, counted at read time. The list and update reads count the WHOLE history; the detail read reports the size of the RecentRuns page it carries, which stops at 20 — so a detail row saying 20 means \&quot;at least 20\&quot;, not \&quot;exactly 20\&quot;.
    * @return runs
    */
   @javax.annotation.Nullable
@@ -278,7 +278,7 @@ public class AgentView {
   }
 
   /**
-   * Get schedule
+   * Schedule is the 5-field cron the scheduler fires a long-running agent on, evaluated once a minute. Required for long-running and DROPPED for one-shot — a one-shot agent&#39;s schedule is not stored, so absence here is the mode&#39;s answer rather than a value nobody set.
    * @return schedule
    */
   @javax.annotation.Nullable
@@ -297,7 +297,7 @@ public class AgentView {
   }
 
   /**
-   * Get serviceAccountId
+   * ServiceAccountID is the IAM agent service account (&lt;org&gt;-&lt;agent&gt;) a scheduled run is billed AS. It is what makes an autonomous run attributable to a principal rather than only to the org; empty means the org itself wears the spend.
    * @return serviceAccountId
    */
   @javax.annotation.Nullable
@@ -316,7 +316,7 @@ public class AgentView {
   }
 
   /**
-   * Get status
+   * Status is the agent&#39;s readiness, and today it is \&quot;ready\&quot; on every row: an agent is a definition rather than a provisioned thing, so nothing transitions it. Server-set at create; no route accepts it.
    * @return status
    */
   @javax.annotation.Nullable
@@ -343,7 +343,7 @@ public class AgentView {
   }
 
   /**
-   * Get tools
+   * Tools are the tool names this agent may call, and the list IS the authority: an agent that declares none gets none. The single entry \&quot;*\&quot; means whatever the fleet&#39;s tool door serves at the moment of the run, resolved per run rather than frozen here, which is how the default assistant reaches subsystems that shipped after it was defined. Empty array, never null.
    * @return tools
    */
   @javax.annotation.Nullable
@@ -362,7 +362,7 @@ public class AgentView {
   }
 
   /**
-   * Get updatedAt
+   * UpdatedAt is the last time any field above was written, same format. It moves on an update to the DEFINITION and never on a run, so a busy agent nobody has edited keeps an old one.
    * @return updatedAt
    */
   @javax.annotation.Nullable

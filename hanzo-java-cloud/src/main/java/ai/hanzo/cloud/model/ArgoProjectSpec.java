@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -91,7 +91,7 @@ public class ArgoProjectSpec {
   }
 
   /**
-   * Get clusterResourceWhitelist
+   * ClusterResourceWhitelist are the cluster-scoped kinds it may create — [{group:\&quot;*\&quot;, kind:\&quot;*\&quot;}] on a synthesized project.
    * @return clusterResourceWhitelist
    */
   @javax.annotation.Nullable
@@ -110,7 +110,7 @@ public class ArgoProjectSpec {
   }
 
   /**
-   * Get description
+   * Description is the project&#39;s human label: the IAM project&#39;s display name, or its description when it has no display name. Absent when IAM carries neither.
    * @return description
    */
   @javax.annotation.Nullable
@@ -137,7 +137,7 @@ public class ArgoProjectSpec {
   }
 
   /**
-   * Get destinations
+   * Destinations are the cluster/namespace pairs it may write to — a single {server:\&quot;*\&quot;, namespace:\&quot;*\&quot;} on a synthesized project, for the same reason.
    * @return destinations
    */
   @javax.annotation.Nullable
@@ -164,7 +164,7 @@ public class ArgoProjectSpec {
   }
 
   /**
-   * Get sourceRepos
+   * SourceRepos are the git repos applications in this project may pull from. [\&quot;*\&quot;] for every project this plane synthesizes or reflects from IAM: the boundary that actually holds on this platform is the IAM org, resolved before a row is ever projected, so the projected fence is deliberately permissive and is NOT an authorization statement.
    * @return sourceRepos
    */
   @javax.annotation.Nullable

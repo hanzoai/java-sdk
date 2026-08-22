@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -102,7 +102,7 @@ public class Extracted {
   }
 
   /**
-   * proposed slug (software|cloud|office|…)
+   * Category is the expense bucket the SCANNER guessed, as a slug — a hint only. Vendor rules override it whenever they know better, so this is the model&#39;s reading and not the account the entry will land on.
    * @return category
    */
   @javax.annotation.Nullable
@@ -121,7 +121,7 @@ public class Extracted {
   }
 
   /**
-   * Get currency
+   * Currency is the ISO code the document is denominated in.
    * @return currency
    */
   @javax.annotation.Nullable
@@ -140,7 +140,7 @@ public class Extracted {
   }
 
   /**
-   * YYYY-MM-DD
+   * IssuedAt is the document&#39;s OWN date as YYYY-MM-DD — when the bill was issued, which is not when it was uploaded or when it will post.
    * @return issuedAt
    */
   @javax.annotation.Nullable
@@ -167,7 +167,7 @@ public class Extracted {
   }
 
   /**
-   * Get lineItems
+   * LineItems are the individual lines read off the document, where it had any. They need not sum to totalCents: a document may carry lines the scanner could not read, and the total is taken from the total.
    * @return lineItems
    */
   @javax.annotation.Nullable
@@ -186,7 +186,7 @@ public class Extracted {
   }
 
   /**
-   * Get merchant
+   * Merchant is the supplier as printed on the document.
    * @return merchant
    */
   @javax.annotation.Nullable
@@ -205,7 +205,7 @@ public class Extracted {
   }
 
   /**
-   * Get note
+   * Note is anything else worth carrying from the document that has no field of its own.
    * @return note
    */
   @javax.annotation.Nullable
@@ -224,7 +224,7 @@ public class Extracted {
   }
 
   /**
-   * Get taxCents
+   * TaxCents is how much of that total is tax, in cents. It is part of totalCents, not additional to it.
    * @return taxCents
    */
   @javax.annotation.Nullable
@@ -243,7 +243,7 @@ public class Extracted {
   }
 
   /**
-   * Get totalCents
+   * TotalCents is the document total in whole cents, tax INCLUDED.
    * @return totalCents
    */
   @javax.annotation.Nullable

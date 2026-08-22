@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -106,7 +106,7 @@ public class UpdateAgentIn {
   }
 
   /**
-   * Get computeRef
+   * ComputeRef re-binds (or, with \&quot;\&quot;, unbinds) the visor machine. Opaque here.
    * @return computeRef
    */
   @javax.annotation.Nullable
@@ -125,7 +125,7 @@ public class UpdateAgentIn {
   }
 
   /**
-   * Get description
+   * Description replaces the line other agents read in the tool catalogue.
    * @return description
    */
   @javax.annotation.Nullable
@@ -144,7 +144,7 @@ public class UpdateAgentIn {
   }
 
   /**
-   * Get executionMode
+   * ExecutionMode switches between one-shot and long-running. The RESULTING mode+schedule are validated together, so switching to long-running without a stored or supplied cron is refused rather than accepted into an agent the scheduler would skip forever. A switch INTO long-running counts against the per-org cap and can be a 409.
    * @return executionMode
    */
   @javax.annotation.Nullable
@@ -163,7 +163,7 @@ public class UpdateAgentIn {
   }
 
   /**
-   * Get instructions
+   * Instructions replaces the system prompt whole, up to 32 KiB. There is no append: a prompt is one text, and sending \&quot;\&quot; clears it.
    * @return instructions
    */
   @javax.annotation.Nullable
@@ -182,7 +182,7 @@ public class UpdateAgentIn {
   }
 
   /**
-   * Get model
+   * Model re-points the agent at another model, checked against the gateway&#39;s served catalogue exactly as create checks it. Empty STRING is refused — say nothing to keep the current one. Past runs keep the model that served them.
    * @return model
    */
   @javax.annotation.Nullable
@@ -220,7 +220,7 @@ public class UpdateAgentIn {
   }
 
   /**
-   * Get schedule
+   * Schedule replaces the cron. It is validated against the mode this update leaves behind, and dropped if that mode is one-shot.
    * @return schedule
    */
   @javax.annotation.Nullable
@@ -239,7 +239,7 @@ public class UpdateAgentIn {
   }
 
   /**
-   * Get serviceAccountId
+   * ServiceAccountID re-points (or, with \&quot;\&quot;, clears) the IAM service account a scheduled run is billed as. Clearing it puts that spend back on the org.
    * @return serviceAccountId
    */
   @javax.annotation.Nullable
@@ -266,7 +266,7 @@ public class UpdateAgentIn {
   }
 
   /**
-   * Get tools
+   * Tools replaces the whole allow-list, it does not add to it. Sending [] takes every tool away, which is the only way to say that.
    * @return tools
    */
   @javax.annotation.Nullable

@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -94,7 +94,7 @@ public class NodePoolView {
   }
 
   /**
-   * Get autoScale
+   * AutoScale reports whether the provider&#39;s cluster autoscaler owns this pool&#39;s size, moving Count between MinNodes and MaxNodes as workloads demand. False means Count changes only when someone scales the pool.
    * @return autoScale
    */
   @javax.annotation.Nullable
@@ -113,7 +113,7 @@ public class NodePoolView {
   }
 
   /**
-   * Get count
+   * Count is how many nodes the pool has right now. Always present, so 0 means a pool that is genuinely empty rather than a figure the provider withheld.
    * @return count
    */
   @javax.annotation.Nullable
@@ -132,7 +132,7 @@ public class NodePoolView {
   }
 
   /**
-   * Get maxNodes
+   * MaxNodes is the ceiling the autoscaler will not grow the pool past, and so the bound on what this pool can cost. Read it only with AutoScale set.
    * @return maxNodes
    */
   @javax.annotation.Nullable
@@ -151,7 +151,7 @@ public class NodePoolView {
   }
 
   /**
-   * Get minNodes
+   * MinNodes is the floor the autoscaler will not shrink the pool below. Read it only with AutoScale set — the provider ignores it otherwise.
    * @return minNodes
    */
   @javax.annotation.Nullable
@@ -170,7 +170,7 @@ public class NodePoolView {
   }
 
   /**
-   * Get name
+   * Name is the pool&#39;s name as the provider knows it.
    * @return name
    */
   @javax.annotation.Nullable
@@ -189,7 +189,7 @@ public class NodePoolView {
   }
 
   /**
-   * Get poolId
+   * PoolID is the provider&#39;s id for the pool — the value the scale and delete routes address it by. It falls back to the pool&#39;s name when the provider answered without one, so it is always something the routes accept.
    * @return poolId
    */
   @javax.annotation.Nullable
@@ -208,7 +208,7 @@ public class NodePoolView {
   }
 
   /**
-   * Get size
+   * Size is the provider size slug every node in the pool runs at (\&quot;s-4vcpu-8gb\&quot;, \&quot;gpu-h100x8-640gb\&quot;). One pool is one size — a mixed cluster is several pools.
    * @return size
    */
   @javax.annotation.Nullable

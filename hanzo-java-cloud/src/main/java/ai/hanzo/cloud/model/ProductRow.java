@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -20,6 +20,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -50,390 +51,102 @@ import ai.hanzo.cloud.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class ProductRow {
-  public static final String SERIALIZED_NAME_CLUSTER = "cluster";
-  @SerializedName(SERIALIZED_NAME_CLUSTER)
+  public static final String SERIALIZED_NAME_ORDERS = "orders";
+  @SerializedName(SERIALIZED_NAME_ORDERS)
   @javax.annotation.Nullable
-  private String cluster;
+  private Integer orders;
 
-  public static final String SERIALIZED_NAME_DECLARED_TAG = "declaredTag";
-  @SerializedName(SERIALIZED_NAME_DECLARED_TAG)
+  public static final String SERIALIZED_NAME_PRODUCT_ID = "productId";
+  @SerializedName(SERIALIZED_NAME_PRODUCT_ID)
   @javax.annotation.Nullable
-  private String declaredTag;
+  private String productId;
 
-  public static final String SERIALIZED_NAME_DRIFT = "drift";
-  @SerializedName(SERIALIZED_NAME_DRIFT)
+  public static final String SERIALIZED_NAME_REVENUE = "revenue";
+  @SerializedName(SERIALIZED_NAME_REVENUE)
   @javax.annotation.Nullable
-  private Boolean drift;
+  private BigDecimal revenue;
 
-  public static final String SERIALIZED_NAME_DRIFT_SEVERITY = "driftSeverity";
-  @SerializedName(SERIALIZED_NAME_DRIFT_SEVERITY)
+  public static final String SERIALIZED_NAME_UNITS = "units";
+  @SerializedName(SERIALIZED_NAME_UNITS)
   @javax.annotation.Nullable
-  private String driftSeverity;
-
-  public static final String SERIALIZED_NAME_ENV = "env";
-  @SerializedName(SERIALIZED_NAME_ENV)
-  @javax.annotation.Nullable
-  private String env;
-
-  public static final String SERIALIZED_NAME_HEALTH = "health";
-  @SerializedName(SERIALIZED_NAME_HEALTH)
-  @javax.annotation.Nullable
-  private String health;
-
-  public static final String SERIALIZED_NAME_KIND = "kind";
-  @SerializedName(SERIALIZED_NAME_KIND)
-  @javax.annotation.Nullable
-  private String kind;
-
-  public static final String SERIALIZED_NAME_LATEST_TAG = "latestTag";
-  @SerializedName(SERIALIZED_NAME_LATEST_TAG)
-  @javax.annotation.Nullable
-  private String latestTag;
-
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  @javax.annotation.Nullable
-  private String name;
-
-  public static final String SERIALIZED_NAME_NAMESPACE = "namespace";
-  @SerializedName(SERIALIZED_NAME_NAMESPACE)
-  @javax.annotation.Nullable
-  private String namespace;
-
-  public static final String SERIALIZED_NAME_ORG = "org";
-  @SerializedName(SERIALIZED_NAME_ORG)
-  @javax.annotation.Nullable
-  private String org;
-
-  public static final String SERIALIZED_NAME_PHASE = "phase";
-  @SerializedName(SERIALIZED_NAME_PHASE)
-  @javax.annotation.Nullable
-  private String phase;
-
-  public static final String SERIALIZED_NAME_REPO = "repo";
-  @SerializedName(SERIALIZED_NAME_REPO)
-  @javax.annotation.Nullable
-  private String repo;
-
-  public static final String SERIALIZED_NAME_RUNNING_TAG = "runningTag";
-  @SerializedName(SERIALIZED_NAME_RUNNING_TAG)
-  @javax.annotation.Nullable
-  private String runningTag;
-
-  public static final String SERIALIZED_NAME_TIER = "tier";
-  @SerializedName(SERIALIZED_NAME_TIER)
-  @javax.annotation.Nullable
-  private String tier;
-
-  public static final String SERIALIZED_NAME_UPDATED = "updated";
-  @SerializedName(SERIALIZED_NAME_UPDATED)
-  @javax.annotation.Nullable
-  private String updated;
+  private Integer units;
 
   public ProductRow() {
   }
 
-  public ProductRow cluster(@javax.annotation.Nullable String cluster) {
-    this.cluster = cluster;
+  public ProductRow orders(@javax.annotation.Nullable Integer orders) {
+    this.orders = orders;
     return this;
   }
 
   /**
-   * hanzo-k8s
-   * @return cluster
+   * Orders is how many order_completed events carried it.
+   * @return orders
    */
   @javax.annotation.Nullable
-  public String getCluster() {
-    return cluster;
+  public Integer getOrders() {
+    return orders;
   }
 
-  public void setCluster(@javax.annotation.Nullable String cluster) {
-    this.cluster = cluster;
+  public void setOrders(@javax.annotation.Nullable Integer orders) {
+    this.orders = orders;
   }
 
 
-  public ProductRow declaredTag(@javax.annotation.Nullable String declaredTag) {
-    this.declaredTag = declaredTag;
+  public ProductRow productId(@javax.annotation.Nullable String productId) {
+    this.productId = productId;
     return this;
   }
 
   /**
-   * spec.image.tag on the App CR (declared truth)
-   * @return declaredTag
+   * ProductID is the product the order events named.
+   * @return productId
    */
   @javax.annotation.Nullable
-  public String getDeclaredTag() {
-    return declaredTag;
+  public String getProductId() {
+    return productId;
   }
 
-  public void setDeclaredTag(@javax.annotation.Nullable String declaredTag) {
-    this.declaredTag = declaredTag;
+  public void setProductId(@javax.annotation.Nullable String productId) {
+    this.productId = productId;
   }
 
 
-  public ProductRow drift(@javax.annotation.Nullable Boolean drift) {
-    this.drift = drift;
+  public ProductRow revenue(@javax.annotation.Nullable BigDecimal revenue) {
+    this.revenue = revenue;
     return this;
   }
 
   /**
-   * any drift flag present
-   * @return drift
+   * Revenue is the total they carried, in the events&#39; own currency unit.
+   * @return revenue
    */
   @javax.annotation.Nullable
-  public Boolean getDrift() {
-    return drift;
+  public BigDecimal getRevenue() {
+    return revenue;
   }
 
-  public void setDrift(@javax.annotation.Nullable Boolean drift) {
-    this.drift = drift;
+  public void setRevenue(@javax.annotation.Nullable BigDecimal revenue) {
+    this.revenue = revenue;
   }
 
 
-  public ProductRow driftSeverity(@javax.annotation.Nullable String driftSeverity) {
-    this.driftSeverity = driftSeverity;
+  public ProductRow units(@javax.annotation.Nullable Integer units) {
+    this.units = units;
     return this;
   }
 
   /**
-   * ok|yellow|red (rolled-up)
-   * @return driftSeverity
+   * Units is the summed quantity sold.
+   * @return units
    */
   @javax.annotation.Nullable
-  public String getDriftSeverity() {
-    return driftSeverity;
+  public Integer getUnits() {
+    return units;
   }
 
-  public void setDriftSeverity(@javax.annotation.Nullable String driftSeverity) {
-    this.driftSeverity = driftSeverity;
-  }
-
-
-  public ProductRow env(@javax.annotation.Nullable String env) {
-    this.env = env;
-    return this;
-  }
-
-  /**
-   * main|test|dev (lifecycle namespace)
-   * @return env
-   */
-  @javax.annotation.Nullable
-  public String getEnv() {
-    return env;
-  }
-
-  public void setEnv(@javax.annotation.Nullable String env) {
-    this.env = env;
-  }
-
-
-  public ProductRow health(@javax.annotation.Nullable String health) {
-    this.health = health;
-    return this;
-  }
-
-  /**
-   * green|yellow|red|unknown
-   * @return health
-   */
-  @javax.annotation.Nullable
-  public String getHealth() {
-    return health;
-  }
-
-  public void setHealth(@javax.annotation.Nullable String health) {
-    this.health = health;
-  }
-
-
-  public ProductRow kind(@javax.annotation.Nullable String kind) {
-    this.kind = kind;
-    return this;
-  }
-
-  /**
-   * operator App CR spec.role (sql|kv|generic|ingress) or \&quot;\&quot;
-   * @return kind
-   */
-  @javax.annotation.Nullable
-  public String getKind() {
-    return kind;
-  }
-
-  public void setKind(@javax.annotation.Nullable String kind) {
-    this.kind = kind;
-  }
-
-
-  public ProductRow latestTag(@javax.annotation.Nullable String latestTag) {
-    this.latestTag = latestTag;
-    return this;
-  }
-
-  /**
-   * newest released tag (GH release reader — empty until wired)
-   * @return latestTag
-   */
-  @javax.annotation.Nullable
-  public String getLatestTag() {
-    return latestTag;
-  }
-
-  public void setLatestTag(@javax.annotation.Nullable String latestTag) {
-    this.latestTag = latestTag;
-  }
-
-
-  public ProductRow name(@javax.annotation.Nullable String name) {
-    this.name = name;
-    return this;
-  }
-
-  /**
-   * Get name
-   * @return name
-   */
-  @javax.annotation.Nullable
-  public String getName() {
-    return name;
-  }
-
-  public void setName(@javax.annotation.Nullable String name) {
-    this.name = name;
-  }
-
-
-  public ProductRow namespace(@javax.annotation.Nullable String namespace) {
-    this.namespace = namespace;
-    return this;
-  }
-
-  /**
-   * k8s namespace
-   * @return namespace
-   */
-  @javax.annotation.Nullable
-  public String getNamespace() {
-    return namespace;
-  }
-
-  public void setNamespace(@javax.annotation.Nullable String namespace) {
-    this.namespace = namespace;
-  }
-
-
-  public ProductRow org(@javax.annotation.Nullable String org) {
-    this.org = org;
-    return this;
-  }
-
-  /**
-   * image namespace (hanzoai|luxfi|docker.io/…)
-   * @return org
-   */
-  @javax.annotation.Nullable
-  public String getOrg() {
-    return org;
-  }
-
-  public void setOrg(@javax.annotation.Nullable String org) {
-    this.org = org;
-  }
-
-
-  public ProductRow phase(@javax.annotation.Nullable String phase) {
-    this.phase = phase;
-    return this;
-  }
-
-  /**
-   * operator status.phase (Running/Creating/…)
-   * @return phase
-   */
-  @javax.annotation.Nullable
-  public String getPhase() {
-    return phase;
-  }
-
-  public void setPhase(@javax.annotation.Nullable String phase) {
-    this.phase = phase;
-  }
-
-
-  public ProductRow repo(@javax.annotation.Nullable String repo) {
-    this.repo = repo;
-    return this;
-  }
-
-  /**
-   * owner/repo image coordinate
-   * @return repo
-   */
-  @javax.annotation.Nullable
-  public String getRepo() {
-    return repo;
-  }
-
-  public void setRepo(@javax.annotation.Nullable String repo) {
-    this.repo = repo;
-  }
-
-
-  public ProductRow runningTag(@javax.annotation.Nullable String runningTag) {
-    this.runningTag = runningTag;
-    return this;
-  }
-
-  /**
-   * observed from the live Deployment
-   * @return runningTag
-   */
-  @javax.annotation.Nullable
-  public String getRunningTag() {
-    return runningTag;
-  }
-
-  public void setRunningTag(@javax.annotation.Nullable String runningTag) {
-    this.runningTag = runningTag;
-  }
-
-
-  public ProductRow tier(@javax.annotation.Nullable String tier) {
-    this.tier = tier;
-    return this;
-  }
-
-  /**
-   * derived: cloud|data|edge|daemon|paas|app (grouping)
-   * @return tier
-   */
-  @javax.annotation.Nullable
-  public String getTier() {
-    return tier;
-  }
-
-  public void setTier(@javax.annotation.Nullable String tier) {
-    this.tier = tier;
-  }
-
-
-  public ProductRow updated(@javax.annotation.Nullable String updated) {
-    this.updated = updated;
-    return this;
-  }
-
-  /**
-   * Get updated
-   * @return updated
-   */
-  @javax.annotation.Nullable
-  public String getUpdated() {
-    return updated;
-  }
-
-  public void setUpdated(@javax.annotation.Nullable String updated) {
-    this.updated = updated;
+  public void setUnits(@javax.annotation.Nullable Integer units) {
+    this.units = units;
   }
 
 
@@ -447,49 +160,25 @@ public class ProductRow {
       return false;
     }
     ProductRow productRow = (ProductRow) o;
-    return Objects.equals(this.cluster, productRow.cluster) &&
-        Objects.equals(this.declaredTag, productRow.declaredTag) &&
-        Objects.equals(this.drift, productRow.drift) &&
-        Objects.equals(this.driftSeverity, productRow.driftSeverity) &&
-        Objects.equals(this.env, productRow.env) &&
-        Objects.equals(this.health, productRow.health) &&
-        Objects.equals(this.kind, productRow.kind) &&
-        Objects.equals(this.latestTag, productRow.latestTag) &&
-        Objects.equals(this.name, productRow.name) &&
-        Objects.equals(this.namespace, productRow.namespace) &&
-        Objects.equals(this.org, productRow.org) &&
-        Objects.equals(this.phase, productRow.phase) &&
-        Objects.equals(this.repo, productRow.repo) &&
-        Objects.equals(this.runningTag, productRow.runningTag) &&
-        Objects.equals(this.tier, productRow.tier) &&
-        Objects.equals(this.updated, productRow.updated);
+    return Objects.equals(this.orders, productRow.orders) &&
+        Objects.equals(this.productId, productRow.productId) &&
+        Objects.equals(this.revenue, productRow.revenue) &&
+        Objects.equals(this.units, productRow.units);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(cluster, declaredTag, drift, driftSeverity, env, health, kind, latestTag, name, namespace, org, phase, repo, runningTag, tier, updated);
+    return Objects.hash(orders, productId, revenue, units);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ProductRow {\n");
-    sb.append("    cluster: ").append(toIndentedString(cluster)).append("\n");
-    sb.append("    declaredTag: ").append(toIndentedString(declaredTag)).append("\n");
-    sb.append("    drift: ").append(toIndentedString(drift)).append("\n");
-    sb.append("    driftSeverity: ").append(toIndentedString(driftSeverity)).append("\n");
-    sb.append("    env: ").append(toIndentedString(env)).append("\n");
-    sb.append("    health: ").append(toIndentedString(health)).append("\n");
-    sb.append("    kind: ").append(toIndentedString(kind)).append("\n");
-    sb.append("    latestTag: ").append(toIndentedString(latestTag)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    namespace: ").append(toIndentedString(namespace)).append("\n");
-    sb.append("    org: ").append(toIndentedString(org)).append("\n");
-    sb.append("    phase: ").append(toIndentedString(phase)).append("\n");
-    sb.append("    repo: ").append(toIndentedString(repo)).append("\n");
-    sb.append("    runningTag: ").append(toIndentedString(runningTag)).append("\n");
-    sb.append("    tier: ").append(toIndentedString(tier)).append("\n");
-    sb.append("    updated: ").append(toIndentedString(updated)).append("\n");
+    sb.append("    orders: ").append(toIndentedString(orders)).append("\n");
+    sb.append("    productId: ").append(toIndentedString(productId)).append("\n");
+    sb.append("    revenue: ").append(toIndentedString(revenue)).append("\n");
+    sb.append("    units: ").append(toIndentedString(units)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -511,7 +200,7 @@ public class ProductRow {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("cluster", "declaredTag", "drift", "driftSeverity", "env", "health", "kind", "latestTag", "name", "namespace", "org", "phase", "repo", "runningTag", "tier", "updated"));
+    openapiFields = new HashSet<String>(Arrays.asList("orders", "productId", "revenue", "units"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -538,50 +227,8 @@ public class ProductRow {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("cluster") != null && !jsonObj.get("cluster").isJsonNull()) && !jsonObj.get("cluster").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `cluster` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cluster").toString()));
-      }
-      if ((jsonObj.get("declaredTag") != null && !jsonObj.get("declaredTag").isJsonNull()) && !jsonObj.get("declaredTag").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `declaredTag` to be a primitive type in the JSON string but got `%s`", jsonObj.get("declaredTag").toString()));
-      }
-      if ((jsonObj.get("driftSeverity") != null && !jsonObj.get("driftSeverity").isJsonNull()) && !jsonObj.get("driftSeverity").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `driftSeverity` to be a primitive type in the JSON string but got `%s`", jsonObj.get("driftSeverity").toString()));
-      }
-      if ((jsonObj.get("env") != null && !jsonObj.get("env").isJsonNull()) && !jsonObj.get("env").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `env` to be a primitive type in the JSON string but got `%s`", jsonObj.get("env").toString()));
-      }
-      if ((jsonObj.get("health") != null && !jsonObj.get("health").isJsonNull()) && !jsonObj.get("health").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `health` to be a primitive type in the JSON string but got `%s`", jsonObj.get("health").toString()));
-      }
-      if ((jsonObj.get("kind") != null && !jsonObj.get("kind").isJsonNull()) && !jsonObj.get("kind").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `kind` to be a primitive type in the JSON string but got `%s`", jsonObj.get("kind").toString()));
-      }
-      if ((jsonObj.get("latestTag") != null && !jsonObj.get("latestTag").isJsonNull()) && !jsonObj.get("latestTag").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `latestTag` to be a primitive type in the JSON string but got `%s`", jsonObj.get("latestTag").toString()));
-      }
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
-      }
-      if ((jsonObj.get("namespace") != null && !jsonObj.get("namespace").isJsonNull()) && !jsonObj.get("namespace").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `namespace` to be a primitive type in the JSON string but got `%s`", jsonObj.get("namespace").toString()));
-      }
-      if ((jsonObj.get("org") != null && !jsonObj.get("org").isJsonNull()) && !jsonObj.get("org").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `org` to be a primitive type in the JSON string but got `%s`", jsonObj.get("org").toString()));
-      }
-      if ((jsonObj.get("phase") != null && !jsonObj.get("phase").isJsonNull()) && !jsonObj.get("phase").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `phase` to be a primitive type in the JSON string but got `%s`", jsonObj.get("phase").toString()));
-      }
-      if ((jsonObj.get("repo") != null && !jsonObj.get("repo").isJsonNull()) && !jsonObj.get("repo").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `repo` to be a primitive type in the JSON string but got `%s`", jsonObj.get("repo").toString()));
-      }
-      if ((jsonObj.get("runningTag") != null && !jsonObj.get("runningTag").isJsonNull()) && !jsonObj.get("runningTag").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `runningTag` to be a primitive type in the JSON string but got `%s`", jsonObj.get("runningTag").toString()));
-      }
-      if ((jsonObj.get("tier") != null && !jsonObj.get("tier").isJsonNull()) && !jsonObj.get("tier").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `tier` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tier").toString()));
-      }
-      if ((jsonObj.get("updated") != null && !jsonObj.get("updated").isJsonNull()) && !jsonObj.get("updated").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `updated` to be a primitive type in the JSON string but got `%s`", jsonObj.get("updated").toString()));
+      if ((jsonObj.get("productId") != null && !jsonObj.get("productId").isJsonNull()) && !jsonObj.get("productId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `productId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("productId").toString()));
       }
   }
 

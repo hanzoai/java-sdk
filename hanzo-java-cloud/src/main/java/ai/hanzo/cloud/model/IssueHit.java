@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -109,7 +109,7 @@ public class IssueHit {
   }
 
   /**
-   * Get assignee
+   * Assignee is who holds the work. EMPTY MEANS UNHELD, which is what makes the issue claimable: claiming one already held by someone else is refused with 409 rather than quietly taken.
    * @return assignee
    */
   @javax.annotation.Nullable
@@ -128,7 +128,7 @@ public class IssueHit {
   }
 
   /**
-   * Get kind
+   * Kind is what the row IS: issue, pr or epic.
    * @return kind
    */
   @javax.annotation.Nullable
@@ -147,7 +147,7 @@ public class IssueHit {
   }
 
   /**
-   * Get number
+   * Number is the issue&#39;s number on that board, from 1 and monotonic there. Unique per board, never across the org — so it addresses an issue only together with Project.
    * @return number
    */
   @javax.annotation.Nullable
@@ -166,7 +166,7 @@ public class IssueHit {
   }
 
   /**
-   * Get priority
+   * Priority is urgent, high, medium, low or none. Never empty — an unset priority is the value \&quot;none\&quot;.
    * @return priority
    */
   @javax.annotation.Nullable
@@ -185,7 +185,7 @@ public class IssueHit {
   }
 
   /**
-   * Get project
+   * Project is the board key the issue is on. It and Number are the issue&#39;s address in every other route on this surface, which is why a hit carries it.
    * @return project
    */
   @javax.annotation.Nullable
@@ -204,7 +204,7 @@ public class IssueHit {
   }
 
   /**
-   * Get repo
+   * Repo is the git repository the issue is bound to, empty when it is not repo-bound.
    * @return repo
    */
   @javax.annotation.Nullable
@@ -223,7 +223,7 @@ public class IssueHit {
   }
 
   /**
-   * Get source
+   * Source is which surface opened it: team, git, crm, helpdesk, cms or agent. \&quot;git\&quot; is how the mirrored forge and GitHub rows are spelled.
    * @return source
    */
   @javax.annotation.Nullable
@@ -242,7 +242,7 @@ public class IssueHit {
   }
 
   /**
-   * Get status
+   * Status is the board column: backlog, todo, in_progress, done or canceled. Claiming moves backlog and todo to in_progress and leaves the other three where they are.
    * @return status
    */
   @javax.annotation.Nullable
@@ -261,7 +261,7 @@ public class IssueHit {
   }
 
   /**
-   * Get title
+   * Title is the issue&#39;s one-line summary — what the q filter matched, along with the description.
    * @return title
    */
   @javax.annotation.Nullable
@@ -280,7 +280,7 @@ public class IssueHit {
   }
 
   /**
-   * Get url
+   * URL is the row&#39;s external anchor — its extRef — which is a link only when the feeder sent one. A mirrored GitHub issue carries \&quot;github:owner/repo#123\&quot; and an agent&#39;s PR row carries the pushed branch. Empty for a row opened here.
    * @return url
    */
   @javax.annotation.Nullable

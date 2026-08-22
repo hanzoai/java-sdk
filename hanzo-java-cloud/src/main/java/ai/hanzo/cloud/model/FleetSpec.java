@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -89,7 +89,7 @@ public class FleetSpec {
   }
 
   /**
-   * Get arch
+   * Arch is the CPU architecture, amd64 or arm64, and it is what decides whether a binary built for the fleet will run here. Only the sources that report one carry it (a linked run-target, a BYO worker).
    * @return arch
    */
   @javax.annotation.Nullable
@@ -108,7 +108,7 @@ public class FleetSpec {
   }
 
   /**
-   * Get cpus
+   * CPUs is logical cores on the unit.
    * @return cpus
    */
   @javax.annotation.Nullable
@@ -127,7 +127,7 @@ public class FleetSpec {
   }
 
   /**
-   * Get gpuModel
+   * GPUModel names the FIRST accelerator (\&quot;NVIDIA GB10\&quot;) as the representative of the set; GPUs carries how many. Empty for a cluster, whose cards are counted rather than modelled, and for a unit with none.
    * @return gpuModel
    */
   @javax.annotation.Nullable
@@ -146,7 +146,7 @@ public class FleetSpec {
   }
 
   /**
-   * Get gpus
+   * GPUs is how many accelerators the unit has. For a cluster it is the vendor totals summed across every node, so it counts cards, not machines.
    * @return gpus
    */
   @javax.annotation.Nullable
@@ -165,7 +165,7 @@ public class FleetSpec {
   }
 
   /**
-   * Get memory
+   * Memory is total system RAM in BYTES — not GB, and not what is free right now (fleetMetrics carries that). Absent when the source reports no RAM figure.
    * @return memory
    */
   @javax.annotation.Nullable
@@ -184,7 +184,7 @@ public class FleetSpec {
   }
 
   /**
-   * Get os
+   * OS is the operating system the unit runs: linux, darwin or windows. Empty when the source does not report one — a cluster row does not.
    * @return os
    */
   @javax.annotation.Nullable

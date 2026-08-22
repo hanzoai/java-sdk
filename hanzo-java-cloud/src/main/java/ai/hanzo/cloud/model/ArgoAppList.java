@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -83,7 +83,7 @@ public class ArgoAppList {
   }
 
   /**
-   * Get apiVersion
+   * APIVersion is the constant \&quot;argoproj.io/v1alpha1\&quot;.
    * @return apiVersion
    */
   @javax.annotation.Nullable
@@ -110,7 +110,7 @@ public class ArgoAppList {
   }
 
   /**
-   * Get items
+   * Items is one entry per operator App CR the caller may see — its own org&#39;s, or every platform namespace&#39;s for a SuperAdmin — followed, for a SuperAdmin only, by every Hanzo CD Application in the cluster. Empty (never null) rather than absent when the caller owns nothing.
    * @return items
    */
   @javax.annotation.Nullable
@@ -129,7 +129,7 @@ public class ArgoAppList {
   }
 
   /**
-   * Get kind
+   * Kind is the constant \&quot;ApplicationList\&quot;.
    * @return kind
    */
   @javax.annotation.Nullable
@@ -148,7 +148,7 @@ public class ArgoAppList {
   }
 
   /**
-   * Get metadata
+   * Metadata is the list envelope the SPA expects; it carries no resume point.
    * @return metadata
    */
   @javax.annotation.Nullable

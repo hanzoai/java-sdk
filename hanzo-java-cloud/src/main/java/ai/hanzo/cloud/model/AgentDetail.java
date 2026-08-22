@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -232,7 +232,7 @@ public class AgentDetail {
   }
 
   /**
-   * Get instructions
+   * Instructions is the agent&#39;s system prompt, verbatim, up to 32 KiB. It is the one field the list read withholds, because it is the agent&#39;s whole behaviour and a page of them would be a page of prompts.
    * @return instructions
    */
   @javax.annotation.Nullable
@@ -297,7 +297,7 @@ public class AgentDetail {
   }
 
   /**
-   * Get recentRuns
+   * RecentRuns is the agent&#39;s 20 most recent executions, newest first. It is a window on the history, not the history: the count beside it is &#x60;runs&#x60;.
    * @return recentRuns
    */
   @javax.annotation.Nullable

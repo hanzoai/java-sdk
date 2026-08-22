@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -89,7 +89,7 @@ public class BoardItem {
   }
 
   /**
-   * Get doctype
+   * DocType is which content type the row came from: Campaign, SocialPost or Asset. The board spans all three at once, so this is what tells them apart.
    * @return doctype
    */
   @javax.annotation.Nullable
@@ -108,7 +108,7 @@ public class BoardItem {
   }
 
   /**
-   * Get name
+   * Name is the document within that type. (doctype, name) is the pair every /v1/content write addresses an item by.
    * @return name
    */
   @javax.annotation.Nullable
@@ -127,7 +127,7 @@ public class BoardItem {
   }
 
   /**
-   * Get project
+   * Project is the brand/site sub-scope within the org. Absent for an item held at org level rather than under one brand.
    * @return project
    */
   @javax.annotation.Nullable
@@ -146,7 +146,7 @@ public class BoardItem {
   }
 
   /**
-   * Get status
+   * Status is the lifecycle state: draft, in_review, approved, queued, published or archived. It decides what a reader may see — the public site pulls exactly \&quot;published\&quot; and nothing else — so it is a visibility fact, not a workflow label.
    * @return status
    */
   @javax.annotation.Nullable
@@ -165,7 +165,7 @@ public class BoardItem {
   }
 
   /**
-   * Get title
+   * Title is the item&#39;s headline, read from its type&#39;s own title field. Empty for a document that has none.
    * @return title
    */
   @javax.annotation.Nullable
@@ -184,7 +184,7 @@ public class BoardItem {
   }
 
   /**
-   * Get updatedAt
+   * UpdatedAt is unix seconds of the document&#39;s last write, and the key the board sorts on, newest first.
    * @return updatedAt
    */
   @javax.annotation.Nullable

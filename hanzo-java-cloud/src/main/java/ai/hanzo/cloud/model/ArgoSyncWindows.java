@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -84,7 +84,7 @@ public class ArgoSyncWindows {
   }
 
   /**
-   * Get activeWindows
+   * ActiveWindows are the sync windows in force right now. Always null: this platform declares none, so nothing is ever in force.
    * @return activeWindows
    */
   @javax.annotation.Nullable
@@ -111,7 +111,7 @@ public class ArgoSyncWindows {
   }
 
   /**
-   * Get assignedWindows
+   * AssignedWindows are the windows configured for this application at all, whether or not currently in force. Always null, for the same reason.
    * @return assignedWindows
    */
   @javax.annotation.Nullable
@@ -130,7 +130,7 @@ public class ArgoSyncWindows {
   }
 
   /**
-   * Get canSync
+   * CanSync is whether a sync would be permitted at this moment. Always true — with no windows there is nothing to deny it. A caller must not read this as \&quot;a sync will succeed\&quot;; it only means no window is blocking one.
    * @return canSync
    */
   @javax.annotation.Nullable

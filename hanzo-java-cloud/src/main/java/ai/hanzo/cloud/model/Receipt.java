@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -119,7 +119,7 @@ public class Receipt {
   }
 
   /**
-   * exact 18-dp USD (money.Amount string)
+   * Amount is what actually moved, as an exact 18-decimal-place USD string. It is NOT the atomic-unit figure the client signed: the challenge quotes the asset&#39;s own units (USDC&#39;s 6 dp) and truncates to fit them, while the ledger moves this exact value.
    * @return amount
    */
   @javax.annotation.Nullable
@@ -138,7 +138,7 @@ public class Receipt {
   }
 
   /**
-   * payer address
+   * From is the payer&#39;s EVM address: the account that signed the EIP-3009 authorization, recovered from the signature rather than taken on trust.
    * @return from
    */
   @javax.annotation.Nullable
@@ -157,7 +157,7 @@ public class Receipt {
   }
 
   /**
-   * Get id
+   * ID is the settle-once key: \&quot;x402_\&quot; + keccak(from|nonce) in hex. It is DERIVED, not minted, so a client that re-submits the same authorization addresses the same settlement and is served again for free rather than charged twice. It is also the id GET /v1/x402/settlements/:id takes.
    * @return id
    */
   @javax.annotation.Nullable
@@ -176,7 +176,7 @@ public class Receipt {
   }
 
   /**
-   * Get network
+   * Network is the CAIP-2 identifier the payment was settled under, e.g. \&quot;eip155:36963\&quot;. Its eip155 reference is the chain id in the EIP-712 domain the payer signed, so it is not a label — changing it invalidates the signature.
    * @return network
    */
   @javax.annotation.Nullable
@@ -195,7 +195,7 @@ public class Receipt {
   }
 
   /**
-   * Get nonce
+   * Nonce is the client-chosen nonce from the authorization, hex — up to 32 bytes, left-padded to the contract&#39;s bytes32. It is the replay anchor: the token contract refuses a second on-chain transfer for one (from, nonce), and this rail refuses a second settlement for the same pair, so a ledger settlement inherits the identical guarantee.
    * @return nonce
    */
   @javax.annotation.Nullable
@@ -214,7 +214,7 @@ public class Receipt {
   }
 
   /**
-   * recipient address
+   * Payee is the recipient&#39;s EVM address — the &#x60;payTo&#x60; the challenge advertised and the authorization named. A payment to any other address never settles.
    * @return payee
    */
   @javax.annotation.Nullable
@@ -233,7 +233,7 @@ public class Receipt {
   }
 
   /**
-   * Get payeeOrg
+   * PayeeOrg is the tenant that owns the recipient wallet, resolved at settlement. It is who got PAID, as Payer is who paid.
    * @return payeeOrg
    */
   @javax.annotation.Nullable
@@ -252,7 +252,7 @@ public class Receipt {
   }
 
   /**
-   * payer ORG (the debited ledger)
+   * Payer is the payer ORG — the tenant whose ledger was debited — and not an address. It is the org the request was authenticated as, so it answers who is billed, which the payer address alone cannot.
    * @return payer
    */
   @javax.annotation.Nullable
@@ -271,7 +271,7 @@ public class Receipt {
   }
 
   /**
-   * Get resource
+   * Resource is what was paid for, in the same spelling the price table and the challenge used: the request path for a priced route, \&quot;tool:&lt;id&gt;\&quot; for a priced tool.
    * @return resource
    */
   @javax.annotation.Nullable
@@ -290,7 +290,7 @@ public class Receipt {
   }
 
   /**
-   * Get settledAt
+   * SettledAt is when this settlement was CLAIMED, in unix seconds — the moment the authorization was accepted, which is also the moment the time window it carried stopped applying. A settlement finished later by reconciliation keeps this instant.
    * @return settledAt
    */
   @javax.annotation.Nullable
@@ -309,7 +309,7 @@ public class Receipt {
   }
 
   /**
-   * \&quot;ledger\&quot; (live) | \&quot;chain\&quot; (seam)
+   * SettledVia is which rail moved the money: \&quot;ledger\&quot;, the live default, or \&quot;chain\&quot; when the authorization is broadcast. Those two values and no others.
    * @return settledVia
    */
   @javax.annotation.Nullable
@@ -328,7 +328,7 @@ public class Receipt {
   }
 
   /**
-   * Get txHash
+   * TxHash is the chain transaction hash, present only for a \&quot;chain\&quot; settlement. Empty on a ledger settlement — that is the normal case today, and it means the money moved without a chain, not that it failed. The wire&#39;s PAYMENT-RESPONSE &#x60;transaction&#x60; falls back to ID when this is empty.
    * @return txHash
    */
   @javax.annotation.Nullable

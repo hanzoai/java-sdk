@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -95,7 +95,7 @@ public class SampleIngest {
   }
 
   /**
-   * Get gpuModel
+   * GPUModel names the representative accelerator (\&quot;GB10\&quot;); GPUs carries how many. A heterogeneous host names its first card rather than inventing a summary.
    * @return gpuModel
    */
   @javax.annotation.Nullable
@@ -133,7 +133,7 @@ public class SampleIngest {
   }
 
   /**
-   * GPUs is how many accelerators the reading covers, GPUModel the representative model name.
+   * GPUs is how many accelerators this reading covers.
    * @return gpus
    */
   @javax.annotation.Nullable
@@ -171,7 +171,7 @@ public class SampleIngest {
   }
 
   /**
-   * Get memFree
+   * MemFree is host memory still available, in BYTES.
    * @return memFree
    */
   @javax.annotation.Nullable
@@ -190,7 +190,7 @@ public class SampleIngest {
   }
 
   /**
-   * MemUsed and MemFree are host memory in bytes.
+   * MemUsed is host memory in use, in BYTES.
    * @return memUsed
    */
   @javax.annotation.Nullable

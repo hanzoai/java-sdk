@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -94,7 +94,7 @@ public class OverviewView {
   }
 
   /**
-   * Get custom
+   * Custom is true when the org replaced the shared playbook with one of its own — the difference between \&quot;everyone&#39;s checklist\&quot; and \&quot;the one you authored\&quot;.
    * @return custom
    */
   @javax.annotation.Nullable
@@ -113,7 +113,7 @@ public class OverviewView {
   }
 
   /**
-   * Get funnel
+   * Funnel is the org&#39;s analytics lens, present only where the read asked for it — absent means it was not requested, never that the org has no traffic.
    * @return funnel
    */
   @javax.annotation.Nullable
@@ -132,7 +132,7 @@ public class OverviewView {
   }
 
   /**
-   * Get progress
+   * Progress is how far through the journey the org is.
    * @return progress
    */
   @javax.annotation.Nullable
@@ -159,7 +159,7 @@ public class OverviewView {
   }
 
   /**
-   * Get steps
+   * Steps are every enabled step with the org&#39;s own state folded in, in authoring order.
    * @return steps
    */
   @javax.annotation.Nullable
@@ -178,7 +178,7 @@ public class OverviewView {
   }
 
   /**
-   * Get title
+   * Title is the playbook&#39;s name as it heads the checklist.
    * @return title
    */
   @javax.annotation.Nullable
@@ -197,7 +197,7 @@ public class OverviewView {
   }
 
   /**
-   * Get version
+   * Version identifies the playbook this journey came from, so a caller can tell that the checklist itself changed under them.
    * @return version
    */
   @javax.annotation.Nullable

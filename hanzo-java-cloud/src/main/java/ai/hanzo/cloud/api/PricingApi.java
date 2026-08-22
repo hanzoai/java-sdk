@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -27,6 +27,8 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import ai.hanzo.cloud.model.EnablementBoard;
+import ai.hanzo.cloud.model.EnablementOptRef;
 import ai.hanzo.cloud.model.PricingHealth;
 import ai.hanzo.cloud.model.PricingModelList;
 import ai.hanzo.cloud.model.PricingPlanList;
@@ -36,6 +38,7 @@ import ai.hanzo.cloud.model.PricingRegionList;
 import ai.hanzo.cloud.model.PricingSyncOut;
 import ai.hanzo.cloud.model.PricingTierList;
 import ai.hanzo.cloud.model.PricingToolList;
+import ai.hanzo.cloud.model.UserEnablementItem;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -1247,6 +1250,123 @@ public class PricingApi {
 
         okhttp3.Call localVarCall = getPricingDatastoreValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<Map<String, Object>>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getPricingEnablement
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getPricingEnablementCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/pricing/enablement";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getPricingEnablementValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getPricingEnablementCall(_callback);
+
+    }
+
+    /**
+     * Returns what the caller&#39;s org can actually use: every managed item with its global state, whether it is effective here, whether this org is already opted into its beta, and whether it may still opt in.
+     * Returns what the caller&#39;s org can actually use: every managed item with its global state, whether it is effective here, whether this org is already opted into its beta, and whether it may still opt in. Read-only and safe for any caller — one without a validated principal simply sees the generally-available items and no opt-in affordance, never another org&#39;s state.
+     * @return EnablementBoard
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public EnablementBoard getPricingEnablement() throws ApiException {
+        ApiResponse<EnablementBoard> localVarResp = getPricingEnablementWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * Returns what the caller&#39;s org can actually use: every managed item with its global state, whether it is effective here, whether this org is already opted into its beta, and whether it may still opt in.
+     * Returns what the caller&#39;s org can actually use: every managed item with its global state, whether it is effective here, whether this org is already opted into its beta, and whether it may still opt in. Read-only and safe for any caller — one without a validated principal simply sees the generally-available items and no opt-in affordance, never another org&#39;s state.
+     * @return ApiResponse&lt;EnablementBoard&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<EnablementBoard> getPricingEnablementWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getPricingEnablementValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<EnablementBoard>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Returns what the caller&#39;s org can actually use: every managed item with its global state, whether it is effective here, whether this org is already opted into its beta, and whether it may still opt in. (asynchronously)
+     * Returns what the caller&#39;s org can actually use: every managed item with its global state, whether it is effective here, whether this org is already opted into its beta, and whether it may still opt in. Read-only and safe for any caller — one without a validated principal simply sees the generally-available items and no opt-in affordance, never another org&#39;s state.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getPricingEnablementAsync(final ApiCallback<EnablementBoard> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getPricingEnablementValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<EnablementBoard>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2895,6 +3015,260 @@ public class PricingApi {
 
         okhttp3.Call localVarCall = getPricingToolsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<PricingToolList>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postPricingEnablementOptin
+     * @param enablementOptRef  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postPricingEnablementOptinCall(@javax.annotation.Nonnull EnablementOptRef enablementOptRef, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = enablementOptRef;
+
+        // create path and map variables
+        String localVarPath = "/v1/pricing/enablement/optin";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postPricingEnablementOptinValidateBeforeCall(@javax.annotation.Nonnull EnablementOptRef enablementOptRef, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'enablementOptRef' is set
+        if (enablementOptRef == null) {
+            throw new ApiException("Missing the required parameter 'enablementOptRef' when calling postPricingEnablementOptin(Async)");
+        }
+
+        return postPricingEnablementOptinCall(enablementOptRef, _callback);
+
+    }
+
+    /**
+     * Opts the caller&#39;s OWN org into a beta item.
+     * Opts the caller&#39;s OWN org into a beta item. The org is the caller&#39;s validated one, so this can never target another org, and the registry refuses anything not in beta — so it can neither re-open an item an operator turned off nor touch one that is already generally available. Requires a signed-in caller with an org.
+     * @param enablementOptRef  (required)
+     * @return UserEnablementItem
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public UserEnablementItem postPricingEnablementOptin(@javax.annotation.Nonnull EnablementOptRef enablementOptRef) throws ApiException {
+        ApiResponse<UserEnablementItem> localVarResp = postPricingEnablementOptinWithHttpInfo(enablementOptRef);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Opts the caller&#39;s OWN org into a beta item.
+     * Opts the caller&#39;s OWN org into a beta item. The org is the caller&#39;s validated one, so this can never target another org, and the registry refuses anything not in beta — so it can neither re-open an item an operator turned off nor touch one that is already generally available. Requires a signed-in caller with an org.
+     * @param enablementOptRef  (required)
+     * @return ApiResponse&lt;UserEnablementItem&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<UserEnablementItem> postPricingEnablementOptinWithHttpInfo(@javax.annotation.Nonnull EnablementOptRef enablementOptRef) throws ApiException {
+        okhttp3.Call localVarCall = postPricingEnablementOptinValidateBeforeCall(enablementOptRef, null);
+        Type localVarReturnType = new TypeToken<UserEnablementItem>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Opts the caller&#39;s OWN org into a beta item. (asynchronously)
+     * Opts the caller&#39;s OWN org into a beta item. The org is the caller&#39;s validated one, so this can never target another org, and the registry refuses anything not in beta — so it can neither re-open an item an operator turned off nor touch one that is already generally available. Requires a signed-in caller with an org.
+     * @param enablementOptRef  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postPricingEnablementOptinAsync(@javax.annotation.Nonnull EnablementOptRef enablementOptRef, final ApiCallback<UserEnablementItem> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postPricingEnablementOptinValidateBeforeCall(enablementOptRef, _callback);
+        Type localVarReturnType = new TypeToken<UserEnablementItem>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postPricingEnablementOptout
+     * @param enablementOptRef  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postPricingEnablementOptoutCall(@javax.annotation.Nonnull EnablementOptRef enablementOptRef, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = enablementOptRef;
+
+        // create path and map variables
+        String localVarPath = "/v1/pricing/enablement/optout";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postPricingEnablementOptoutValidateBeforeCall(@javax.annotation.Nonnull EnablementOptRef enablementOptRef, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'enablementOptRef' is set
+        if (enablementOptRef == null) {
+            throw new ApiException("Missing the required parameter 'enablementOptRef' when calling postPricingEnablementOptout(Async)");
+        }
+
+        return postPricingEnablementOptoutCall(enablementOptRef, _callback);
+
+    }
+
+    /**
+     * Removes the caller&#39;s OWN org from a beta item&#39;s grant list, the reverse of OptIntoBeta and idempotent.
+     * Removes the caller&#39;s OWN org from a beta item&#39;s grant list, the reverse of OptIntoBeta and idempotent. The org is the caller&#39;s validated one, so this can never revoke another org&#39;s grant. Requires a signed-in caller with an org.
+     * @param enablementOptRef  (required)
+     * @return UserEnablementItem
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public UserEnablementItem postPricingEnablementOptout(@javax.annotation.Nonnull EnablementOptRef enablementOptRef) throws ApiException {
+        ApiResponse<UserEnablementItem> localVarResp = postPricingEnablementOptoutWithHttpInfo(enablementOptRef);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Removes the caller&#39;s OWN org from a beta item&#39;s grant list, the reverse of OptIntoBeta and idempotent.
+     * Removes the caller&#39;s OWN org from a beta item&#39;s grant list, the reverse of OptIntoBeta and idempotent. The org is the caller&#39;s validated one, so this can never revoke another org&#39;s grant. Requires a signed-in caller with an org.
+     * @param enablementOptRef  (required)
+     * @return ApiResponse&lt;UserEnablementItem&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<UserEnablementItem> postPricingEnablementOptoutWithHttpInfo(@javax.annotation.Nonnull EnablementOptRef enablementOptRef) throws ApiException {
+        okhttp3.Call localVarCall = postPricingEnablementOptoutValidateBeforeCall(enablementOptRef, null);
+        Type localVarReturnType = new TypeToken<UserEnablementItem>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Removes the caller&#39;s OWN org from a beta item&#39;s grant list, the reverse of OptIntoBeta and idempotent. (asynchronously)
+     * Removes the caller&#39;s OWN org from a beta item&#39;s grant list, the reverse of OptIntoBeta and idempotent. The org is the caller&#39;s validated one, so this can never revoke another org&#39;s grant. Requires a signed-in caller with an org.
+     * @param enablementOptRef  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postPricingEnablementOptoutAsync(@javax.annotation.Nonnull EnablementOptRef enablementOptRef, final ApiCallback<UserEnablementItem> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postPricingEnablementOptoutValidateBeforeCall(enablementOptRef, _callback);
+        Type localVarReturnType = new TypeToken<UserEnablementItem>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

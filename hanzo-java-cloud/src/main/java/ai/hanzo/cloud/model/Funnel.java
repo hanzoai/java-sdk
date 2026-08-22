@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -51,78 +51,174 @@ import ai.hanzo.cloud.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class Funnel {
-  public static final String SERIALIZED_NAME_CONVERTED_ORGS = "convertedOrgs";
-  @SerializedName(SERIALIZED_NAME_CONVERTED_ORGS)
+  public static final String SERIALIZED_NAME_AVAILABLE = "available";
+  @SerializedName(SERIALIZED_NAME_AVAILABLE)
   @javax.annotation.Nullable
-  private Integer convertedOrgs;
+  private Boolean available;
 
-  public static final String SERIALIZED_NAME_RATE_PCT = "ratePct";
-  @SerializedName(SERIALIZED_NAME_RATE_PCT)
+  public static final String SERIALIZED_NAME_ORDERS = "orders";
+  @SerializedName(SERIALIZED_NAME_ORDERS)
   @javax.annotation.Nullable
-  private BigDecimal ratePct;
+  private Integer orders;
 
-  public static final String SERIALIZED_NAME_REFERRED_ORGS = "referredOrgs";
-  @SerializedName(SERIALIZED_NAME_REFERRED_ORGS)
+  public static final String SERIALIZED_NAME_PAGEVIEWS = "pageviews";
+  @SerializedName(SERIALIZED_NAME_PAGEVIEWS)
   @javax.annotation.Nullable
-  private Integer referredOrgs;
+  private Integer pageviews;
+
+  public static final String SERIALIZED_NAME_REVENUE = "revenue";
+  @SerializedName(SERIALIZED_NAME_REVENUE)
+  @javax.annotation.Nullable
+  private BigDecimal revenue;
+
+  public static final String SERIALIZED_NAME_SIGNUPS = "signups";
+  @SerializedName(SERIALIZED_NAME_SIGNUPS)
+  @javax.annotation.Nullable
+  private Integer signups;
+
+  public static final String SERIALIZED_NAME_VISITORS = "visitors";
+  @SerializedName(SERIALIZED_NAME_VISITORS)
+  @javax.annotation.Nullable
+  private Integer visitors;
+
+  public static final String SERIALIZED_NAME_WINDOW_DAYS = "windowDays";
+  @SerializedName(SERIALIZED_NAME_WINDOW_DAYS)
+  @javax.annotation.Nullable
+  private Integer windowDays;
 
   public Funnel() {
   }
 
-  public Funnel convertedOrgs(@javax.annotation.Nullable Integer convertedOrgs) {
-    this.convertedOrgs = convertedOrgs;
+  public Funnel available(@javax.annotation.Nullable Boolean available) {
+    this.available = available;
     return this;
   }
 
   /**
-   * ConvertedOrgs is how many distinct referred orgs have produced positive commission at least once — a referral that actually spent.
-   * @return convertedOrgs
+   * Available separates \&quot;this org has no traffic\&quot; from \&quot;we could not ask\&quot;. False means the warehouse was unreachable or the org has emitted nothing at all, and every count below is then a placeholder zero rather than a measurement — a caller must read this before reading any of them.
+   * @return available
    */
   @javax.annotation.Nullable
-  public Integer getConvertedOrgs() {
-    return convertedOrgs;
+  public Boolean getAvailable() {
+    return available;
   }
 
-  public void setConvertedOrgs(@javax.annotation.Nullable Integer convertedOrgs) {
-    this.convertedOrgs = convertedOrgs;
+  public void setAvailable(@javax.annotation.Nullable Boolean available) {
+    this.available = available;
   }
 
 
-  public Funnel ratePct(@javax.annotation.Nullable BigDecimal ratePct) {
-    this.ratePct = ratePct;
+  public Funnel orders(@javax.annotation.Nullable Integer orders) {
+    this.orders = orders;
     return this;
   }
 
   /**
-   * RatePct is convertedOrgs over referredOrgs as a PERCENTAGE, 0–100, and the one non-integer figure on this board. It is 0 when nothing has been referred yet, not undefined.
-   * @return ratePct
+   * Orders counts completed orders in the window — purchases, not carts started.
+   * @return orders
    */
   @javax.annotation.Nullable
-  public BigDecimal getRatePct() {
-    return ratePct;
+  public Integer getOrders() {
+    return orders;
   }
 
-  public void setRatePct(@javax.annotation.Nullable BigDecimal ratePct) {
-    this.ratePct = ratePct;
+  public void setOrders(@javax.annotation.Nullable Integer orders) {
+    this.orders = orders;
   }
 
 
-  public Funnel referredOrgs(@javax.annotation.Nullable Integer referredOrgs) {
-    this.referredOrgs = referredOrgs;
+  public Funnel pageviews(@javax.annotation.Nullable Integer pageviews) {
+    this.pageviews = pageviews;
     return this;
   }
 
   /**
-   * ReferredOrgs is how many attribution edges exist fleet-wide — one per referred org, first-touch, so it is also the count of distinct referred orgs.
-   * @return referredOrgs
+   * Pageviews counts page events in the window, one per view rather than per person, so a single visitor reading ten pages counts ten.
+   * @return pageviews
    */
   @javax.annotation.Nullable
-  public Integer getReferredOrgs() {
-    return referredOrgs;
+  public Integer getPageviews() {
+    return pageviews;
   }
 
-  public void setReferredOrgs(@javax.annotation.Nullable Integer referredOrgs) {
-    this.referredOrgs = referredOrgs;
+  public void setPageviews(@javax.annotation.Nullable Integer pageviews) {
+    this.pageviews = pageviews;
+  }
+
+
+  public Funnel revenue(@javax.annotation.Nullable BigDecimal revenue) {
+    this.revenue = revenue;
+    return this;
+  }
+
+  /**
+   * Revenue is the sum of the amounts those orders reported, in whatever currency the beacon stamped on them (major units, e.g. 49.5 for $49.50) — NOT cents, and not converted to a single currency. Contrast revenueCents on the profile, which is the money of record.
+   * @return revenue
+   */
+  @javax.annotation.Nullable
+  public BigDecimal getRevenue() {
+    return revenue;
+  }
+
+  public void setRevenue(@javax.annotation.Nullable BigDecimal revenue) {
+    this.revenue = revenue;
+  }
+
+
+  public Funnel signups(@javax.annotation.Nullable Integer signups) {
+    this.signups = signups;
+    return this;
+  }
+
+  /**
+   * Signups counts completed signups in the window, the step where an anonymous visitor becomes somebody with an account.
+   * @return signups
+   */
+  @javax.annotation.Nullable
+  public Integer getSignups() {
+    return signups;
+  }
+
+  public void setSignups(@javax.annotation.Nullable Integer signups) {
+    this.signups = signups;
+  }
+
+
+  public Funnel visitors(@javax.annotation.Nullable Integer visitors) {
+    this.visitors = visitors;
+    return this;
+  }
+
+  /**
+   * Visitors is the number of DISTINCT people seen in the window, counted by the beacon&#39;s distinct id — so it is unique visitors, not sessions and not views.
+   * @return visitors
+   */
+  @javax.annotation.Nullable
+  public Integer getVisitors() {
+    return visitors;
+  }
+
+  public void setVisitors(@javax.annotation.Nullable Integer visitors) {
+    this.visitors = visitors;
+  }
+
+
+  public Funnel windowDays(@javax.annotation.Nullable Integer windowDays) {
+    this.windowDays = windowDays;
+    return this;
+  }
+
+  /**
+   * WindowDays is the length of the trailing window every count covers, so a reader knows whether 40 signups is a month or a day.
+   * @return windowDays
+   */
+  @javax.annotation.Nullable
+  public Integer getWindowDays() {
+    return windowDays;
+  }
+
+  public void setWindowDays(@javax.annotation.Nullable Integer windowDays) {
+    this.windowDays = windowDays;
   }
 
 
@@ -136,23 +232,31 @@ public class Funnel {
       return false;
     }
     Funnel funnel = (Funnel) o;
-    return Objects.equals(this.convertedOrgs, funnel.convertedOrgs) &&
-        Objects.equals(this.ratePct, funnel.ratePct) &&
-        Objects.equals(this.referredOrgs, funnel.referredOrgs);
+    return Objects.equals(this.available, funnel.available) &&
+        Objects.equals(this.orders, funnel.orders) &&
+        Objects.equals(this.pageviews, funnel.pageviews) &&
+        Objects.equals(this.revenue, funnel.revenue) &&
+        Objects.equals(this.signups, funnel.signups) &&
+        Objects.equals(this.visitors, funnel.visitors) &&
+        Objects.equals(this.windowDays, funnel.windowDays);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(convertedOrgs, ratePct, referredOrgs);
+    return Objects.hash(available, orders, pageviews, revenue, signups, visitors, windowDays);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Funnel {\n");
-    sb.append("    convertedOrgs: ").append(toIndentedString(convertedOrgs)).append("\n");
-    sb.append("    ratePct: ").append(toIndentedString(ratePct)).append("\n");
-    sb.append("    referredOrgs: ").append(toIndentedString(referredOrgs)).append("\n");
+    sb.append("    available: ").append(toIndentedString(available)).append("\n");
+    sb.append("    orders: ").append(toIndentedString(orders)).append("\n");
+    sb.append("    pageviews: ").append(toIndentedString(pageviews)).append("\n");
+    sb.append("    revenue: ").append(toIndentedString(revenue)).append("\n");
+    sb.append("    signups: ").append(toIndentedString(signups)).append("\n");
+    sb.append("    visitors: ").append(toIndentedString(visitors)).append("\n");
+    sb.append("    windowDays: ").append(toIndentedString(windowDays)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -174,7 +278,7 @@ public class Funnel {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("convertedOrgs", "ratePct", "referredOrgs"));
+    openapiFields = new HashSet<String>(Arrays.asList("available", "orders", "pageviews", "revenue", "signups", "visitors", "windowDays"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);

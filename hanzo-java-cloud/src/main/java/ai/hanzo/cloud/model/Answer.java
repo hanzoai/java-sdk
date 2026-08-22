@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -147,7 +147,7 @@ public class Answer {
   }
 
   /**
-   * Get completions
+   * Completions is complete&#39;s answer: the candidates at the position, typed and resolved through the repository&#39;s dependencies rather than guessed from text.
    * @return completions
    */
   @javax.annotation.Nullable
@@ -174,7 +174,7 @@ public class Answer {
   }
 
   /**
-   * Get diagnostics
+   * Diagnostics is diagnostics&#39; answer: every problem the server finds in the whole file, position ignored. Empty means it found none.
    * @return diagnostics
    */
   @javax.annotation.Nullable
@@ -193,7 +193,7 @@ public class Answer {
   }
 
   /**
-   * Get hover
+   * Hover is hover&#39;s answer: the type and documentation as the language server itself renders them, so it is prose meant to be shown, not parsed.
    * @return hover
    */
   @javax.annotation.Nullable
@@ -212,7 +212,7 @@ public class Answer {
   }
 
   /**
-   * Get lang
+   * Lang is the language the server that answered speaks (\&quot;go\&quot;), as the daemon reports it. Empty when the daemon named none.
    * @return lang
    */
   @javax.annotation.Nullable
@@ -239,7 +239,7 @@ public class Answer {
   }
 
   /**
-   * Get locations
+   * Locations is locate&#39;s answer: where the symbol is defined, referenced, typed or implemented, per the relation asked for. Empty means the server resolved nothing there, which is an answer.
    * @return locations
    */
   @javax.annotation.Nullable
@@ -258,7 +258,7 @@ public class Answer {
   }
 
   /**
-   * Get op
+   * Op is the question that was asked: hover, locate, symbols, diagnostics or complete. It names which result field below is the populated one.
    * @return op
    */
   @javax.annotation.Nullable
@@ -277,7 +277,7 @@ public class Answer {
   }
 
   /**
-   * Get path
+   * Path is the repo-relative file the question was about, echoed back.
    * @return path
    */
   @javax.annotation.Nullable
@@ -296,7 +296,7 @@ public class Answer {
   }
 
   /**
-   * Get repo
+   * Repo is the repository the question was about, echoed back.
    * @return repo
    */
   @javax.annotation.Nullable
@@ -315,7 +315,7 @@ public class Answer {
   }
 
   /**
-   * Get rev
+   * Rev is the RESOLVED commit sha, never the branch or tag that was asked for. It is what makes an answer re-askable: a branch moves, this does not.
    * @return rev
    */
   @javax.annotation.Nullable
@@ -342,7 +342,7 @@ public class Answer {
   }
 
   /**
-   * Get symbols
+   * Symbols is symbols&#39; answer: the file&#39;s whole outline, position ignored.
    * @return symbols
    */
   @javax.annotation.Nullable

@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -84,7 +84,7 @@ public class GitOpsDeploy {
   }
 
   /**
-   * Get automated
+   * Automated is whether CD started this deploy itself, from its own polling of the tracked git ref (initiatedBy.automated), rather than someone asking for it.
    * @return automated
    */
   @javax.annotation.Nullable
@@ -103,7 +103,7 @@ public class GitOpsDeploy {
   }
 
   /**
-   * Get deployedAt
+   * DeployedAt is when the apply finished, RFC 3339. Absent when CD recorded none.
    * @return deployedAt
    */
   @javax.annotation.Nullable
@@ -122,7 +122,7 @@ public class GitOpsDeploy {
   }
 
   /**
-   * Get id
+   * ID is CD&#39;s own sequence number for this deploy (status.history[].id). It increases with every applied revision, so the largest id in &#x60;history&#x60; is the most recent deploy — which is the first entry, since the list is reversed.
    * @return id
    */
   @javax.annotation.Nullable
@@ -141,7 +141,7 @@ public class GitOpsDeploy {
   }
 
   /**
-   * Get revision
+   * Revision is the git commit this deploy applied, as CD recorded it.
    * @return revision
    */
   @javax.annotation.Nullable
@@ -160,7 +160,7 @@ public class GitOpsDeploy {
   }
 
   /**
-   * Get startedAt
+   * StartedAt is when CD began applying the revision (deployStartedAt), RFC 3339. Absent when CD recorded none.
    * @return startedAt
    */
   @javax.annotation.Nullable

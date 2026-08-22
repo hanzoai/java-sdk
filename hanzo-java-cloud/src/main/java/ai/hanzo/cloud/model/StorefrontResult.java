@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -79,7 +79,7 @@ public class StorefrontResult {
   }
 
   /**
-   * Get imageUrl
+   * ImageURL is the absolute URL the listing&#39;s headerImage now points at. The image is REFERENCED, not copied — it stays in the org&#39;s studio output bucket, so removing it there empties the storefront tile.
    * @return imageUrl
    */
   @javax.annotation.Nullable
@@ -98,7 +98,7 @@ public class StorefrontResult {
   }
 
   /**
-   * Get slug
+   * Slug is the product handle the image was attached to. It IS the asset&#39;s &#x60;design&#x60; field — that equality is the whole join between the studio and the catalog, which is why an asset with no design produces no storefront result at all.
    * @return slug
    */
   @javax.annotation.Nullable
@@ -117,7 +117,7 @@ public class StorefrontResult {
   }
 
   /**
-   * Get status
+   * Status is one of \&quot;published\&quot; (the product image was set), \&quot;not_configured\&quot; (no commerce edge, no store provisioned for the org, or a token that is not admin on the store — a fail-closed no-op) or \&quot;failed\&quot; (commerce answered and errored). None of the three fails the transition that produced it.
    * @return status
    */
   @javax.annotation.Nullable
@@ -136,7 +136,7 @@ public class StorefrontResult {
   }
 
   /**
-   * Get store
+   * Store is the commerce store id the image landed in, resolved for the org mid-call. Present only on \&quot;published\&quot;: a result that never got that far carries none.
    * @return store
    */
   @javax.annotation.Nullable

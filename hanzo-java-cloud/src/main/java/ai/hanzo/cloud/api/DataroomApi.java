@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -40,6 +40,17 @@ import ai.hanzo.cloud.model.DataroomRoomDetailOne;
 import ai.hanzo.cloud.model.DataroomRoomOne;
 import ai.hanzo.cloud.model.DataroomRooms;
 import ai.hanzo.cloud.model.DataroomStats;
+import ai.hanzo.cloud.model.TrustAsk;
+import ai.hanzo.cloud.model.TrustAsked;
+import ai.hanzo.cloud.model.TrustDecision;
+import ai.hanzo.cloud.model.TrustDesk;
+import ai.hanzo.cloud.model.TrustEdit;
+import ai.hanzo.cloud.model.TrustGranted;
+import ai.hanzo.cloud.model.TrustItemView;
+import ai.hanzo.cloud.model.TrustPage;
+import ai.hanzo.cloud.model.TrustPublish;
+import ai.hanzo.cloud.model.TrustRefused;
+import ai.hanzo.cloud.model.TrustSettings;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -1130,6 +1141,358 @@ public class DataroomApi {
         return localVarCall;
     }
     /**
+     * Build call for getDataroomTrust
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getDataroomTrustCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/dataroom/trust";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getDataroomTrustValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getDataroomTrustCall(_callback);
+
+    }
+
+    /**
+     * Answers the caller org&#39;s OWN trust centre: its settings, every item it holds in both tiers, the requests waiting on it, and the grants it has made.
+     * Answers the caller org&#39;s OWN trust centre: its settings, every item it holds in both tiers, the requests waiting on it, and the grants it has made.  The org is the caller&#39;s, taken from the validated bearer and from nothing else, so this op cannot be pointed at another tenant — there is no field for one. An org that has never opened a centre reads back an empty one rather than an error, because having no trust centre is an ordinary state and this is the read that tells you so.
+     * @return TrustDesk
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public TrustDesk getDataroomTrust() throws ApiException {
+        ApiResponse<TrustDesk> localVarResp = getDataroomTrustWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * Answers the caller org&#39;s OWN trust centre: its settings, every item it holds in both tiers, the requests waiting on it, and the grants it has made.
+     * Answers the caller org&#39;s OWN trust centre: its settings, every item it holds in both tiers, the requests waiting on it, and the grants it has made.  The org is the caller&#39;s, taken from the validated bearer and from nothing else, so this op cannot be pointed at another tenant — there is no field for one. An org that has never opened a centre reads back an empty one rather than an error, because having no trust centre is an ordinary state and this is the read that tells you so.
+     * @return ApiResponse&lt;TrustDesk&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<TrustDesk> getDataroomTrustWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getDataroomTrustValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<TrustDesk>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Answers the caller org&#39;s OWN trust centre: its settings, every item it holds in both tiers, the requests waiting on it, and the grants it has made. (asynchronously)
+     * Answers the caller org&#39;s OWN trust centre: its settings, every item it holds in both tiers, the requests waiting on it, and the grants it has made.  The org is the caller&#39;s, taken from the validated bearer and from nothing else, so this op cannot be pointed at another tenant — there is no field for one. An org that has never opened a centre reads back an empty one rather than an error, because having no trust centre is an ordinary state and this is the read that tells you so.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getDataroomTrustAsync(final ApiCallback<TrustDesk> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getDataroomTrustValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<TrustDesk>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getDataroomTrustCenterBySlug
+     * @param slug Slug is the centre&#39;s public address. It resolves only for an org that has published; anything else is not found, so this cannot be used to learn which orgs exist. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getDataroomTrustCenterBySlugCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/dataroom/trust/center/{slug}"
+            .replace("{" + "slug" + "}", localVarApiClient.escapeString(slug.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getDataroomTrustCenterBySlugValidateBeforeCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'slug' is set
+        if (slug == null) {
+            throw new ApiException("Missing the required parameter 'slug' when calling getDataroomTrustCenterBySlug(Async)");
+        }
+
+        return getDataroomTrustCenterBySlugCall(slug, _callback);
+
+    }
+
+    /**
+     * Answers an org&#39;s public trust centre: its name, the text a party must accept to ask for a document, and every item it publishes.
+     * Answers an org&#39;s public trust centre: its name, the text a party must accept to ask for a document, and every item it publishes.  An item is either available NOW — the things the org states itself, its policies, its filled questionnaires, its subprocessor list, its knowledge base — or available ON REQUEST, which is everything an independent auditor put their name to. Both are listed by name and kind, so a reader can see WHAT exists before asking for it; only the second withholds the content.  No principal is involved and none is accepted: the org is resolved from the address, which answers only for a centre its owner has published. An address nobody publishes at is not found, the same answer an unpublished one gets.
+     * @param slug Slug is the centre&#39;s public address. It resolves only for an org that has published; anything else is not found, so this cannot be used to learn which orgs exist. (required)
+     * @return TrustPage
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public TrustPage getDataroomTrustCenterBySlug(@javax.annotation.Nonnull String slug) throws ApiException {
+        ApiResponse<TrustPage> localVarResp = getDataroomTrustCenterBySlugWithHttpInfo(slug);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Answers an org&#39;s public trust centre: its name, the text a party must accept to ask for a document, and every item it publishes.
+     * Answers an org&#39;s public trust centre: its name, the text a party must accept to ask for a document, and every item it publishes.  An item is either available NOW — the things the org states itself, its policies, its filled questionnaires, its subprocessor list, its knowledge base — or available ON REQUEST, which is everything an independent auditor put their name to. Both are listed by name and kind, so a reader can see WHAT exists before asking for it; only the second withholds the content.  No principal is involved and none is accepted: the org is resolved from the address, which answers only for a centre its owner has published. An address nobody publishes at is not found, the same answer an unpublished one gets.
+     * @param slug Slug is the centre&#39;s public address. It resolves only for an org that has published; anything else is not found, so this cannot be used to learn which orgs exist. (required)
+     * @return ApiResponse&lt;TrustPage&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<TrustPage> getDataroomTrustCenterBySlugWithHttpInfo(@javax.annotation.Nonnull String slug) throws ApiException {
+        okhttp3.Call localVarCall = getDataroomTrustCenterBySlugValidateBeforeCall(slug, null);
+        Type localVarReturnType = new TypeToken<TrustPage>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Answers an org&#39;s public trust centre: its name, the text a party must accept to ask for a document, and every item it publishes. (asynchronously)
+     * Answers an org&#39;s public trust centre: its name, the text a party must accept to ask for a document, and every item it publishes.  An item is either available NOW — the things the org states itself, its policies, its filled questionnaires, its subprocessor list, its knowledge base — or available ON REQUEST, which is everything an independent auditor put their name to. Both are listed by name and kind, so a reader can see WHAT exists before asking for it; only the second withholds the content.  No principal is involved and none is accepted: the org is resolved from the address, which answers only for a centre its owner has published. An address nobody publishes at is not found, the same answer an unpublished one gets.
+     * @param slug Slug is the centre&#39;s public address. It resolves only for an org that has published; anything else is not found, so this cannot be used to learn which orgs exist. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getDataroomTrustCenterBySlugAsync(@javax.annotation.Nonnull String slug, final ApiCallback<TrustPage> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getDataroomTrustCenterBySlugValidateBeforeCall(slug, _callback);
+        Type localVarReturnType = new TypeToken<TrustPage>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getDataroomTrustCenterBySlugFileByItem
+     * @param slug  (required)
+     * @param item  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call getDataroomTrustCenterBySlugFileByItemCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String item, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/dataroom/trust/center/{slug}/file/{item}"
+            .replace("{" + "slug" + "}", localVarApiClient.escapeString(slug.toString()))
+            .replace("{" + "item" + "}", localVarApiClient.escapeString(item.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getDataroomTrustCenterBySlugFileByItemValidateBeforeCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String item, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'slug' is set
+        if (slug == null) {
+            throw new ApiException("Missing the required parameter 'slug' when calling getDataroomTrustCenterBySlugFileByItem(Async)");
+        }
+
+        // verify the required parameter 'item' is set
+        if (item == null) {
+            throw new ApiException("Missing the required parameter 'item' when calling getDataroomTrustCenterBySlugFileByItem(Async)");
+        }
+
+        return getDataroomTrustCenterBySlugFileByItemCall(slug, item, _callback);
+
+    }
+
+    /**
+     * Read a public trust-centre item&#39;s bytes
+     * Streams the file behind an item a trust centre publishes openly — a policy, a filled questionnaire, a knowledge-base attachment — under its recorded content type.  No principal and no link: these are the things an org states about itself, so they are served to anyone who asks. The narrowing is in the lookup rather than in a check: the item must be public, must not be retired, and must belong to a centre its owner has published, so an item released only on request is NOT FOUND here rather than refused — the same answer an id that never existed gets, which is what stops this reporting what the released-on-request tier holds.  Bytes that cannot be fetched from object storage are 502, never a truncated file.
+     * @param slug  (required)
+     * @param item  (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void getDataroomTrustCenterBySlugFileByItem(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String item) throws ApiException {
+        getDataroomTrustCenterBySlugFileByItemWithHttpInfo(slug, item);
+    }
+
+    /**
+     * Read a public trust-centre item&#39;s bytes
+     * Streams the file behind an item a trust centre publishes openly — a policy, a filled questionnaire, a knowledge-base attachment — under its recorded content type.  No principal and no link: these are the things an org states about itself, so they are served to anyone who asks. The narrowing is in the lookup rather than in a check: the item must be public, must not be retired, and must belong to a centre its owner has published, so an item released only on request is NOT FOUND here rather than refused — the same answer an id that never existed gets, which is what stops this reporting what the released-on-request tier holds.  Bytes that cannot be fetched from object storage are 502, never a truncated file.
+     * @param slug  (required)
+     * @param item  (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> getDataroomTrustCenterBySlugFileByItemWithHttpInfo(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String item) throws ApiException {
+        okhttp3.Call localVarCall = getDataroomTrustCenterBySlugFileByItemValidateBeforeCall(slug, item, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Read a public trust-centre item&#39;s bytes (asynchronously)
+     * Streams the file behind an item a trust centre publishes openly — a policy, a filled questionnaire, a knowledge-base attachment — under its recorded content type.  No principal and no link: these are the things an org states about itself, so they are served to anyone who asks. The narrowing is in the lookup rather than in a check: the item must be public, must not be retired, and must belong to a centre its owner has published, so an item released only on request is NOT FOUND here rather than refused — the same answer an id that never existed gets, which is what stops this reporting what the released-on-request tier holds.  Bytes that cannot be fetched from object storage are 502, never a truncated file.
+     * @param slug  (required)
+     * @param item  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call getDataroomTrustCenterBySlugFileByItemAsync(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull String item, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getDataroomTrustCenterBySlugFileByItemValidateBeforeCall(slug, item, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for getDataroomViewByLinkid
      * @param linkId  (required)
      * @param _callback Callback for upload/download progress
@@ -1333,6 +1696,143 @@ public class DataroomApi {
 
         okhttp3.Call localVarCall = getDataroomViewByLinkidDocumentByDocumentidFileValidateBeforeCall(linkId, documentId, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for patchDataroomTrustArtifactsById
+     * @param id ID is the item to change, taken from the path. (required)
+     * @param trustEdit  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call patchDataroomTrustArtifactsByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TrustEdit trustEdit, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = trustEdit;
+
+        // create path and map variables
+        String localVarPath = "/v1/dataroom/trust/artifacts/{id}"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call patchDataroomTrustArtifactsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TrustEdit trustEdit, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling patchDataroomTrustArtifactsById(Async)");
+        }
+
+        // verify the required parameter 'trustEdit' is set
+        if (trustEdit == null) {
+            throw new ApiException("Missing the required parameter 'trustEdit' when calling patchDataroomTrustArtifactsById(Async)");
+        }
+
+        return patchDataroomTrustArtifactsByIdCall(id, trustEdit, _callback);
+
+    }
+
+    /**
+     * Amend changes an item on the caller org&#39;s trust centre — replace its file with a newer edition, move it between public and gated, rewrite what it says, or retire it — and answers with the item as it now stands.
+     * Amend changes an item on the caller org&#39;s trust centre — replace its file with a newer edition, move it between public and gated, rewrite what it says, or retire it — and answers with the item as it now stands.  Retiring is the withdrawal: the item leaves the public centre immediately and can no longer be granted, while grants already made over it stand, because a release that happened is part of the record and un-happening it in the record would be a lie. Restoring is the same call with retired false.  Moving an item an independent auditor signed to the public tier is refused, and refused by the database rather than only here. Only an admin of the org may call it, and the item is resolved in that org&#39;s own store, so another org&#39;s id is not found.
+     * @param id ID is the item to change, taken from the path. (required)
+     * @param trustEdit  (required)
+     * @return TrustItemView
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public TrustItemView patchDataroomTrustArtifactsById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TrustEdit trustEdit) throws ApiException {
+        ApiResponse<TrustItemView> localVarResp = patchDataroomTrustArtifactsByIdWithHttpInfo(id, trustEdit);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Amend changes an item on the caller org&#39;s trust centre — replace its file with a newer edition, move it between public and gated, rewrite what it says, or retire it — and answers with the item as it now stands.
+     * Amend changes an item on the caller org&#39;s trust centre — replace its file with a newer edition, move it between public and gated, rewrite what it says, or retire it — and answers with the item as it now stands.  Retiring is the withdrawal: the item leaves the public centre immediately and can no longer be granted, while grants already made over it stand, because a release that happened is part of the record and un-happening it in the record would be a lie. Restoring is the same call with retired false.  Moving an item an independent auditor signed to the public tier is refused, and refused by the database rather than only here. Only an admin of the org may call it, and the item is resolved in that org&#39;s own store, so another org&#39;s id is not found.
+     * @param id ID is the item to change, taken from the path. (required)
+     * @param trustEdit  (required)
+     * @return ApiResponse&lt;TrustItemView&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<TrustItemView> patchDataroomTrustArtifactsByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TrustEdit trustEdit) throws ApiException {
+        okhttp3.Call localVarCall = patchDataroomTrustArtifactsByIdValidateBeforeCall(id, trustEdit, null);
+        Type localVarReturnType = new TypeToken<TrustItemView>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Amend changes an item on the caller org&#39;s trust centre — replace its file with a newer edition, move it between public and gated, rewrite what it says, or retire it — and answers with the item as it now stands. (asynchronously)
+     * Amend changes an item on the caller org&#39;s trust centre — replace its file with a newer edition, move it between public and gated, rewrite what it says, or retire it — and answers with the item as it now stands.  Retiring is the withdrawal: the item leaves the public centre immediately and can no longer be granted, while grants already made over it stand, because a release that happened is part of the record and un-happening it in the record would be a lie. Restoring is the same call with retired false.  Moving an item an independent auditor signed to the public tier is refused, and refused by the database rather than only here. Only an admin of the org may call it, and the item is resolved in that org&#39;s own store, so another org&#39;s id is not found.
+     * @param id ID is the item to change, taken from the path. (required)
+     * @param trustEdit  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call patchDataroomTrustArtifactsByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TrustEdit trustEdit, final ApiCallback<TrustItemView> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = patchDataroomTrustArtifactsByIdValidateBeforeCall(id, trustEdit, _callback);
+        Type localVarReturnType = new TypeToken<TrustItemView>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -1815,6 +2315,544 @@ public class DataroomApi {
         return localVarCall;
     }
     /**
+     * Build call for postDataroomTrustArtifacts
+     * @param trustPublish  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postDataroomTrustArtifactsCall(@javax.annotation.Nonnull TrustPublish trustPublish, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = trustPublish;
+
+        // create path and map variables
+        String localVarPath = "/v1/dataroom/trust/artifacts";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postDataroomTrustArtifactsValidateBeforeCall(@javax.annotation.Nonnull TrustPublish trustPublish, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'trustPublish' is set
+        if (trustPublish == null) {
+            throw new ApiException("Missing the required parameter 'trustPublish' when calling postDataroomTrustArtifacts(Async)");
+        }
+
+        return postDataroomTrustArtifactsCall(trustPublish, _callback);
+
+    }
+
+    /**
+     * Publish puts an item on the caller org&#39;s trust centre and answers with it.
+     * Publish puts an item on the caller org&#39;s trust centre and answers with it.  The item is GATED unless it says otherwise, so a kind nobody has thought of yet arrives private and someone has to release it deliberately — that default is what keeps an auditor&#39;s report from becoming readable because a field went unset. An item whose attester is \&quot;auditor\&quot; cannot be public at all: the database refuses the pair, so no path through this API can publish one.  A file is optional and is uploaded FIRST, through POST /v1/dataroom/documents, then named here — the data room is the one place bytes enter, so a trust centre document is an ordinary data-room document and inherits its storage, its grants and its page-by-page access record. A gated item that has a file is added to the org&#39;s release room, which is what lets a party be granted the whole gated tier in one link.  Only an admin of the org may call it.
+     * @param trustPublish  (required)
+     * @return TrustItemView
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public TrustItemView postDataroomTrustArtifacts(@javax.annotation.Nonnull TrustPublish trustPublish) throws ApiException {
+        ApiResponse<TrustItemView> localVarResp = postDataroomTrustArtifactsWithHttpInfo(trustPublish);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Publish puts an item on the caller org&#39;s trust centre and answers with it.
+     * Publish puts an item on the caller org&#39;s trust centre and answers with it.  The item is GATED unless it says otherwise, so a kind nobody has thought of yet arrives private and someone has to release it deliberately — that default is what keeps an auditor&#39;s report from becoming readable because a field went unset. An item whose attester is \&quot;auditor\&quot; cannot be public at all: the database refuses the pair, so no path through this API can publish one.  A file is optional and is uploaded FIRST, through POST /v1/dataroom/documents, then named here — the data room is the one place bytes enter, so a trust centre document is an ordinary data-room document and inherits its storage, its grants and its page-by-page access record. A gated item that has a file is added to the org&#39;s release room, which is what lets a party be granted the whole gated tier in one link.  Only an admin of the org may call it.
+     * @param trustPublish  (required)
+     * @return ApiResponse&lt;TrustItemView&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<TrustItemView> postDataroomTrustArtifactsWithHttpInfo(@javax.annotation.Nonnull TrustPublish trustPublish) throws ApiException {
+        okhttp3.Call localVarCall = postDataroomTrustArtifactsValidateBeforeCall(trustPublish, null);
+        Type localVarReturnType = new TypeToken<TrustItemView>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Publish puts an item on the caller org&#39;s trust centre and answers with it. (asynchronously)
+     * Publish puts an item on the caller org&#39;s trust centre and answers with it.  The item is GATED unless it says otherwise, so a kind nobody has thought of yet arrives private and someone has to release it deliberately — that default is what keeps an auditor&#39;s report from becoming readable because a field went unset. An item whose attester is \&quot;auditor\&quot; cannot be public at all: the database refuses the pair, so no path through this API can publish one.  A file is optional and is uploaded FIRST, through POST /v1/dataroom/documents, then named here — the data room is the one place bytes enter, so a trust centre document is an ordinary data-room document and inherits its storage, its grants and its page-by-page access record. A gated item that has a file is added to the org&#39;s release room, which is what lets a party be granted the whole gated tier in one link.  Only an admin of the org may call it.
+     * @param trustPublish  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postDataroomTrustArtifactsAsync(@javax.annotation.Nonnull TrustPublish trustPublish, final ApiCallback<TrustItemView> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postDataroomTrustArtifactsValidateBeforeCall(trustPublish, _callback);
+        Type localVarReturnType = new TypeToken<TrustItemView>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postDataroomTrustCenterBySlugRequests
+     * @param slug Slug is the centre&#39;s public address, taken from the path. (required)
+     * @param trustAsk  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postDataroomTrustCenterBySlugRequestsCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull TrustAsk trustAsk, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = trustAsk;
+
+        // create path and map variables
+        String localVarPath = "/v1/dataroom/trust/center/{slug}/requests"
+            .replace("{" + "slug" + "}", localVarApiClient.escapeString(slug.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postDataroomTrustCenterBySlugRequestsValidateBeforeCall(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull TrustAsk trustAsk, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'slug' is set
+        if (slug == null) {
+            throw new ApiException("Missing the required parameter 'slug' when calling postDataroomTrustCenterBySlugRequests(Async)");
+        }
+
+        // verify the required parameter 'trustAsk' is set
+        if (trustAsk == null) {
+            throw new ApiException("Missing the required parameter 'trustAsk' when calling postDataroomTrustCenterBySlugRequests(Async)");
+        }
+
+        return postDataroomTrustCenterBySlugRequestsCall(slug, trustAsk, _callback);
+
+    }
+
+    /**
+     * Records a request to read what an independent auditor signed, and answers with its id.
+     * Records a request to read what an independent auditor signed, and answers with its id.  The org that owns the centre decides. Nothing is released here and no link is minted: this writes the ask down, which is the whole promise the form makes. The write is the answer — a request that could not be stored is an error, never a receipt, so a form can never appear to have been sent and be gone.  &#x60;email&#x60; is required and is the ONLY address the eventual grant will admit, so an address the asker cannot read is an ask that cannot be answered. Where the centre states an NDA, &#x60;accept&#x60; must be true and the text in force is recorded verbatim against the request.  Asking twice for the same thing from the same address is the SAME ask: the second answers with the first&#39;s id rather than opening a second row, which is also what keeps an anonymous door from filling a tenant&#39;s store.
+     * @param slug Slug is the centre&#39;s public address, taken from the path. (required)
+     * @param trustAsk  (required)
+     * @return TrustAsked
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public TrustAsked postDataroomTrustCenterBySlugRequests(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull TrustAsk trustAsk) throws ApiException {
+        ApiResponse<TrustAsked> localVarResp = postDataroomTrustCenterBySlugRequestsWithHttpInfo(slug, trustAsk);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Records a request to read what an independent auditor signed, and answers with its id.
+     * Records a request to read what an independent auditor signed, and answers with its id.  The org that owns the centre decides. Nothing is released here and no link is minted: this writes the ask down, which is the whole promise the form makes. The write is the answer — a request that could not be stored is an error, never a receipt, so a form can never appear to have been sent and be gone.  &#x60;email&#x60; is required and is the ONLY address the eventual grant will admit, so an address the asker cannot read is an ask that cannot be answered. Where the centre states an NDA, &#x60;accept&#x60; must be true and the text in force is recorded verbatim against the request.  Asking twice for the same thing from the same address is the SAME ask: the second answers with the first&#39;s id rather than opening a second row, which is also what keeps an anonymous door from filling a tenant&#39;s store.
+     * @param slug Slug is the centre&#39;s public address, taken from the path. (required)
+     * @param trustAsk  (required)
+     * @return ApiResponse&lt;TrustAsked&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<TrustAsked> postDataroomTrustCenterBySlugRequestsWithHttpInfo(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull TrustAsk trustAsk) throws ApiException {
+        okhttp3.Call localVarCall = postDataroomTrustCenterBySlugRequestsValidateBeforeCall(slug, trustAsk, null);
+        Type localVarReturnType = new TypeToken<TrustAsked>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Records a request to read what an independent auditor signed, and answers with its id. (asynchronously)
+     * Records a request to read what an independent auditor signed, and answers with its id.  The org that owns the centre decides. Nothing is released here and no link is minted: this writes the ask down, which is the whole promise the form makes. The write is the answer — a request that could not be stored is an error, never a receipt, so a form can never appear to have been sent and be gone.  &#x60;email&#x60; is required and is the ONLY address the eventual grant will admit, so an address the asker cannot read is an ask that cannot be answered. Where the centre states an NDA, &#x60;accept&#x60; must be true and the text in force is recorded verbatim against the request.  Asking twice for the same thing from the same address is the SAME ask: the second answers with the first&#39;s id rather than opening a second row, which is also what keeps an anonymous door from filling a tenant&#39;s store.
+     * @param slug Slug is the centre&#39;s public address, taken from the path. (required)
+     * @param trustAsk  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postDataroomTrustCenterBySlugRequestsAsync(@javax.annotation.Nonnull String slug, @javax.annotation.Nonnull TrustAsk trustAsk, final ApiCallback<TrustAsked> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postDataroomTrustCenterBySlugRequestsValidateBeforeCall(slug, trustAsk, _callback);
+        Type localVarReturnType = new TypeToken<TrustAsked>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postDataroomTrustRequestsByIdGrant
+     * @param id ID is the request to answer, taken from the path. (required)
+     * @param trustDecision  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postDataroomTrustRequestsByIdGrantCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TrustDecision trustDecision, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = trustDecision;
+
+        // create path and map variables
+        String localVarPath = "/v1/dataroom/trust/requests/{id}/grant"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postDataroomTrustRequestsByIdGrantValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TrustDecision trustDecision, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling postDataroomTrustRequestsByIdGrant(Async)");
+        }
+
+        // verify the required parameter 'trustDecision' is set
+        if (trustDecision == null) {
+            throw new ApiException("Missing the required parameter 'trustDecision' when calling postDataroomTrustRequestsByIdGrant(Async)");
+        }
+
+        return postDataroomTrustRequestsByIdGrantCall(id, trustDecision, _callback);
+
+    }
+
+    /**
+     * Grant answers a request by opening access: it mints a share link over what was asked for, addressed to the address that asked and closing at expiry, records the decision, and mails the asker.
+     * Grant answers a request by opening access: it mints a share link over what was asked for, addressed to the address that asked and closing at expiry, records the decision, and mails the asker.  The link is NEVER a public URL. It carries the asker&#39;s address on its allow list, so forwarding it to somebody else does not open it, and it expires. What the party then does with it — which document, which page, for how long — is recorded by the data room&#39;s own view tracking, which is where the access record for this release lives; there is no second log.  A request that was already answered is refused rather than answered twice, so a second click cannot mint a second link. Only an admin of the org may call it, and the request is resolved in that org&#39;s own store, so another org&#39;s request id is not found — which is also what stops one org deciding another&#39;s queue.  Mail is best effort and the grant does not depend on it: a deployment that sends no mail still records the grant and says so in &#x60;delivery&#x60;, so the approver knows to pass the address on themselves.
+     * @param id ID is the request to answer, taken from the path. (required)
+     * @param trustDecision  (required)
+     * @return TrustGranted
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public TrustGranted postDataroomTrustRequestsByIdGrant(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TrustDecision trustDecision) throws ApiException {
+        ApiResponse<TrustGranted> localVarResp = postDataroomTrustRequestsByIdGrantWithHttpInfo(id, trustDecision);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Grant answers a request by opening access: it mints a share link over what was asked for, addressed to the address that asked and closing at expiry, records the decision, and mails the asker.
+     * Grant answers a request by opening access: it mints a share link over what was asked for, addressed to the address that asked and closing at expiry, records the decision, and mails the asker.  The link is NEVER a public URL. It carries the asker&#39;s address on its allow list, so forwarding it to somebody else does not open it, and it expires. What the party then does with it — which document, which page, for how long — is recorded by the data room&#39;s own view tracking, which is where the access record for this release lives; there is no second log.  A request that was already answered is refused rather than answered twice, so a second click cannot mint a second link. Only an admin of the org may call it, and the request is resolved in that org&#39;s own store, so another org&#39;s request id is not found — which is also what stops one org deciding another&#39;s queue.  Mail is best effort and the grant does not depend on it: a deployment that sends no mail still records the grant and says so in &#x60;delivery&#x60;, so the approver knows to pass the address on themselves.
+     * @param id ID is the request to answer, taken from the path. (required)
+     * @param trustDecision  (required)
+     * @return ApiResponse&lt;TrustGranted&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<TrustGranted> postDataroomTrustRequestsByIdGrantWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TrustDecision trustDecision) throws ApiException {
+        okhttp3.Call localVarCall = postDataroomTrustRequestsByIdGrantValidateBeforeCall(id, trustDecision, null);
+        Type localVarReturnType = new TypeToken<TrustGranted>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Grant answers a request by opening access: it mints a share link over what was asked for, addressed to the address that asked and closing at expiry, records the decision, and mails the asker. (asynchronously)
+     * Grant answers a request by opening access: it mints a share link over what was asked for, addressed to the address that asked and closing at expiry, records the decision, and mails the asker.  The link is NEVER a public URL. It carries the asker&#39;s address on its allow list, so forwarding it to somebody else does not open it, and it expires. What the party then does with it — which document, which page, for how long — is recorded by the data room&#39;s own view tracking, which is where the access record for this release lives; there is no second log.  A request that was already answered is refused rather than answered twice, so a second click cannot mint a second link. Only an admin of the org may call it, and the request is resolved in that org&#39;s own store, so another org&#39;s request id is not found — which is also what stops one org deciding another&#39;s queue.  Mail is best effort and the grant does not depend on it: a deployment that sends no mail still records the grant and says so in &#x60;delivery&#x60;, so the approver knows to pass the address on themselves.
+     * @param id ID is the request to answer, taken from the path. (required)
+     * @param trustDecision  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postDataroomTrustRequestsByIdGrantAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TrustDecision trustDecision, final ApiCallback<TrustGranted> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postDataroomTrustRequestsByIdGrantValidateBeforeCall(id, trustDecision, _callback);
+        Type localVarReturnType = new TypeToken<TrustGranted>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postDataroomTrustRequestsByIdRefuse
+     * @param id ID is the request to answer, taken from the path. (required)
+     * @param trustDecision  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postDataroomTrustRequestsByIdRefuseCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TrustDecision trustDecision, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = trustDecision;
+
+        // create path and map variables
+        String localVarPath = "/v1/dataroom/trust/requests/{id}/refuse"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postDataroomTrustRequestsByIdRefuseValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TrustDecision trustDecision, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling postDataroomTrustRequestsByIdRefuse(Async)");
+        }
+
+        // verify the required parameter 'trustDecision' is set
+        if (trustDecision == null) {
+            throw new ApiException("Missing the required parameter 'trustDecision' when calling postDataroomTrustRequestsByIdRefuse(Async)");
+        }
+
+        return postDataroomTrustRequestsByIdRefuseCall(id, trustDecision, _callback);
+
+    }
+
+    /**
+     * Refuse answers a request by declining it, recording who declined and why.
+     * Refuse answers a request by declining it, recording who declined and why.  Nothing is released and no link is minted. The refusal STAYS on the record beside the ask — a request that was turned down is part of the access record exactly as one that was granted is, and deleting it would leave a queue that only ever shows the decisions somebody liked.  A request that was already answered is refused rather than answered twice. Only an admin of the org may call it, and the request is resolved in that org&#39;s own store, so another org&#39;s request id is not found.
+     * @param id ID is the request to answer, taken from the path. (required)
+     * @param trustDecision  (required)
+     * @return TrustRefused
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public TrustRefused postDataroomTrustRequestsByIdRefuse(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TrustDecision trustDecision) throws ApiException {
+        ApiResponse<TrustRefused> localVarResp = postDataroomTrustRequestsByIdRefuseWithHttpInfo(id, trustDecision);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Refuse answers a request by declining it, recording who declined and why.
+     * Refuse answers a request by declining it, recording who declined and why.  Nothing is released and no link is minted. The refusal STAYS on the record beside the ask — a request that was turned down is part of the access record exactly as one that was granted is, and deleting it would leave a queue that only ever shows the decisions somebody liked.  A request that was already answered is refused rather than answered twice. Only an admin of the org may call it, and the request is resolved in that org&#39;s own store, so another org&#39;s request id is not found.
+     * @param id ID is the request to answer, taken from the path. (required)
+     * @param trustDecision  (required)
+     * @return ApiResponse&lt;TrustRefused&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<TrustRefused> postDataroomTrustRequestsByIdRefuseWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TrustDecision trustDecision) throws ApiException {
+        okhttp3.Call localVarCall = postDataroomTrustRequestsByIdRefuseValidateBeforeCall(id, trustDecision, null);
+        Type localVarReturnType = new TypeToken<TrustRefused>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Refuse answers a request by declining it, recording who declined and why. (asynchronously)
+     * Refuse answers a request by declining it, recording who declined and why.  Nothing is released and no link is minted. The refusal STAYS on the record beside the ask — a request that was turned down is part of the access record exactly as one that was granted is, and deleting it would leave a queue that only ever shows the decisions somebody liked.  A request that was already answered is refused rather than answered twice. Only an admin of the org may call it, and the request is resolved in that org&#39;s own store, so another org&#39;s request id is not found.
+     * @param id ID is the request to answer, taken from the path. (required)
+     * @param trustDecision  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postDataroomTrustRequestsByIdRefuseAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TrustDecision trustDecision, final ApiCallback<TrustRefused> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postDataroomTrustRequestsByIdRefuseValidateBeforeCall(id, trustDecision, _callback);
+        Type localVarReturnType = new TypeToken<TrustRefused>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for postDataroomViewByLinkidAuthenticate
      * @param linkId  (required)
      * @param _callback Callback for upload/download progress
@@ -2008,6 +3046,133 @@ public class DataroomApi {
 
         okhttp3.Call localVarCall = postDataroomViewByLinkidPageviewValidateBeforeCall(linkId, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for putDataroomTrust
+     * @param trustSettings  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call putDataroomTrustCall(@javax.annotation.Nonnull TrustSettings trustSettings, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = trustSettings;
+
+        // create path and map variables
+        String localVarPath = "/v1/dataroom/trust";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call putDataroomTrustValidateBeforeCall(@javax.annotation.Nonnull TrustSettings trustSettings, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'trustSettings' is set
+        if (trustSettings == null) {
+            throw new ApiException("Missing the required parameter 'trustSettings' when calling putDataroomTrust(Async)");
+        }
+
+        return putDataroomTrustCall(trustSettings, _callback);
+
+    }
+
+    /**
+     * SetCenter opens, publishes or withdraws the caller org&#39;s trust centre and answers with the centre as it now stands.
+     * SetCenter opens, publishes or withdraws the caller org&#39;s trust centre and answers with the centre as it now stands.  Publishing requires a name and an address, and the address must be free: another org already answering there is a conflict, never a takeover. Withdrawing closes the public door only — items, grants and the access record are untouched, so an org can go quiet and come back without losing anything.  Only an admin of the org may call it. The org is the caller&#39;s own, so there is no field naming one and no way to point this at another tenant.
+     * @param trustSettings  (required)
+     * @return TrustDesk
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public TrustDesk putDataroomTrust(@javax.annotation.Nonnull TrustSettings trustSettings) throws ApiException {
+        ApiResponse<TrustDesk> localVarResp = putDataroomTrustWithHttpInfo(trustSettings);
+        return localVarResp.getData();
+    }
+
+    /**
+     * SetCenter opens, publishes or withdraws the caller org&#39;s trust centre and answers with the centre as it now stands.
+     * SetCenter opens, publishes or withdraws the caller org&#39;s trust centre and answers with the centre as it now stands.  Publishing requires a name and an address, and the address must be free: another org already answering there is a conflict, never a takeover. Withdrawing closes the public door only — items, grants and the access record are untouched, so an org can go quiet and come back without losing anything.  Only an admin of the org may call it. The org is the caller&#39;s own, so there is no field naming one and no way to point this at another tenant.
+     * @param trustSettings  (required)
+     * @return ApiResponse&lt;TrustDesk&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<TrustDesk> putDataroomTrustWithHttpInfo(@javax.annotation.Nonnull TrustSettings trustSettings) throws ApiException {
+        okhttp3.Call localVarCall = putDataroomTrustValidateBeforeCall(trustSettings, null);
+        Type localVarReturnType = new TypeToken<TrustDesk>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * SetCenter opens, publishes or withdraws the caller org&#39;s trust centre and answers with the centre as it now stands. (asynchronously)
+     * SetCenter opens, publishes or withdraws the caller org&#39;s trust centre and answers with the centre as it now stands.  Publishing requires a name and an address, and the address must be free: another org already answering there is a conflict, never a takeover. Withdrawing closes the public door only — items, grants and the access record are untouched, so an org can go quiet and come back without losing anything.  Only an admin of the org may call it. The org is the caller&#39;s own, so there is no field naming one and no way to point this at another tenant.
+     * @param trustSettings  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call putDataroomTrustAsync(@javax.annotation.Nonnull TrustSettings trustSettings, final ApiCallback<TrustDesk> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = putDataroomTrustValidateBeforeCall(trustSettings, _callback);
+        Type localVarReturnType = new TypeToken<TrustDesk>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 }

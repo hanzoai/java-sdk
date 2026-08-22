@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -102,7 +102,7 @@ public class BalanceSheet {
   }
 
   /**
-   * Get asOf
+   * AsOf is the posting time the statement is taken at, inclusive. A balance sheet is a snapshot, not a window, so there is no From. Absent means as of now.
    * @return asOf
    */
   @javax.annotation.Nullable
@@ -129,7 +129,7 @@ public class BalanceSheet {
   }
 
   /**
-   * Get assets
+   * Assets are what the org OWNS at that instant, one line per account that has a balance. Cash, receivables, funds captured but not yet settled.
    * @return assets
    */
   @javax.annotation.Nullable
@@ -148,7 +148,7 @@ public class BalanceSheet {
   }
 
   /**
-   * TotalAssets &#x3D;&#x3D; TotalLiabilities + TotalEquity
+   * Balanced is whether assets equal liabilities plus equity — the accounting equation, computed from the totals above rather than assumed. False means the ledger is broken, not that the statement is.
    * @return balanced
    */
   @javax.annotation.Nullable
@@ -175,7 +175,7 @@ public class BalanceSheet {
   }
 
   /**
-   * Get equity
+   * Equity is what is left over for the owners. It carries a DERIVED retained earnings line holding cumulative income minus expense, because this ledger has no period close that sweeps the P&amp;L into equity — without that line the equation would not close.
    * @return equity
    */
   @javax.annotation.Nullable
@@ -202,7 +202,7 @@ public class BalanceSheet {
   }
 
   /**
-   * Get liabilities
+   * Liabilities are what the org OWES — including customers&#39; unspent prepaid credit, which is their money until it is consumed and so is carried here rather than counted as revenue.
    * @return liabilities
    */
   @javax.annotation.Nullable
@@ -221,7 +221,7 @@ public class BalanceSheet {
   }
 
   /**
-   * Get totalAssets
+   * TotalAssets is the sum of the asset lines, in cents.
    * @return totalAssets
    */
   @javax.annotation.Nullable
@@ -240,7 +240,7 @@ public class BalanceSheet {
   }
 
   /**
-   * Get totalEquity
+   * TotalEquity is the sum of the equity lines including retained earnings, in cents.
    * @return totalEquity
    */
   @javax.annotation.Nullable
@@ -259,7 +259,7 @@ public class BalanceSheet {
   }
 
   /**
-   * Get totalLiabilities
+   * TotalLiabilities is the sum of the liability lines, in cents.
    * @return totalLiabilities
    */
   @javax.annotation.Nullable

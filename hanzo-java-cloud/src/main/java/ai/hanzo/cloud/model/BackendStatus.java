@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -84,7 +84,7 @@ public class BackendStatus {
   }
 
   /**
-   * Get error
+   * Error is the failure text from a leg whose status is degraded — the reason a configured backend could not answer. Absent otherwise.
    * @return error
    */
   @javax.annotation.Nullable
@@ -103,7 +103,7 @@ public class BackendStatus {
   }
 
   /**
-   * Get hits
+   * Hits is how many results this leg returned, counted BEFORE fusion, so it is not the number that survived into Response.Hits — fusion merges what both legs found and the caller&#39;s limit and offset then page it. 0 for a leg that did not run.
    * @return hits
    */
   @javax.annotation.Nullable
@@ -122,7 +122,7 @@ public class BackendStatus {
   }
 
   /**
-   * Get name
+   * Name is which leg this reports: \&quot;index\&quot;, the lexical store, \&quot;vector\&quot;, the semantic one, or \&quot;code\&quot;, the org&#39;s own repositories. Match.Backend uses the same three names.
    * @return name
    */
   @javax.annotation.Nullable
@@ -141,7 +141,7 @@ public class BackendStatus {
   }
 
   /**
-   * Get status
+   * Status is one of ok, degraded, disabled, skipped — four distinct operational facts that are never collapsed. It ran and answered; it is configured and FAILED (Error says how, and only this one is a fault); this deployment never provisioned it; or the request&#39;s mode excluded it.
    * @return status
    */
   @javax.annotation.Nullable
@@ -160,7 +160,7 @@ public class BackendStatus {
   }
 
   /**
-   * Get tookMs
+   * TookMS is how long this leg took, in milliseconds, timed around its own call and excluding fusion. 0 for a leg that was skipped or is disabled, since nothing was called.
    * @return tookMs
    */
   @javax.annotation.Nullable

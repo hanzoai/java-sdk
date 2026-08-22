@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -104,7 +104,7 @@ public class DefRow {
   }
 
   /**
-   * Get key
+   * Key is the flag&#39;s primary key in the caller&#39;s (org, project) store, and the name evaluation looks it up by. On a write it is taken from the URL, never from the body: the stored document&#39;s own \&quot;key\&quot; is forced to match.
    * @return key
    */
   @javax.annotation.Nullable
@@ -123,7 +123,7 @@ public class DefRow {
   }
 
   /**
-   * Get updatedAt
+   * UpdatedAt is when the definition was last written, RFC 3339 UTC.
    * @return updatedAt
    */
   @javax.annotation.Nullable
@@ -142,7 +142,7 @@ public class DefRow {
   }
 
   /**
-   * Get updatedBy
+   * UpdatedBy is the email of the principal who last wrote it. Empty when the write came from an in-process composer (an experiment registering its own assignment flag) rather than from a signed-in person.
    * @return updatedBy
    */
   @javax.annotation.Nullable
@@ -161,7 +161,7 @@ public class DefRow {
   }
 
   /**
-   * Get version
+   * Version is 1 when the key was created and rises by one on every overwrite. It counts writes, not content changes: re-storing an identical document bumps it.
    * @return version
    */
   @javax.annotation.Nullable

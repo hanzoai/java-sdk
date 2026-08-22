@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -79,7 +79,7 @@ public class BalanceLine {
   }
 
   /**
-   * Get account
+   * Account is the chart-of-accounts number this line reports on. ABSENT marks a DERIVED line that no account holds — retained earnings is the one such line, computed from cumulative income minus expense.
    * @return account
    */
   @javax.annotation.Nullable
@@ -98,7 +98,7 @@ public class BalanceLine {
   }
 
   /**
-   * cents, display sign
+   * Amount is the balance as of the statement date, in whole cents, in its NATURAL sign: positive when the account behaved normally, on all three sides. Assets are debit-normal and shown as stored; liabilities and equity are credit-normal and flipped once here for display. A negative asset is a real overdraft, not a sign convention.
    * @return amount
    */
   @javax.annotation.Nullable
@@ -117,7 +117,7 @@ public class BalanceLine {
   }
 
   /**
-   * Get name
+   * Name is the account&#39;s human name, or the derived line&#39;s own name.
    * @return name
    */
   @javax.annotation.Nullable
@@ -136,7 +136,7 @@ public class BalanceLine {
   }
 
   /**
-   * Get type
+   * Type is the account&#39;s fundamental class. Absent on a derived line, which belongs to no account and therefore has none.
    * @return type
    */
   @javax.annotation.Nullable

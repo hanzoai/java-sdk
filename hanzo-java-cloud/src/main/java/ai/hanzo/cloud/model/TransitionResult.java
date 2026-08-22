@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -91,7 +91,7 @@ public class TransitionResult {
   }
 
   /**
-   * Get distribution
+   * Distribution is the channel fan-out this move triggered. Present ONLY on the move to published, the single edge that distributes — so its absence means no fan-out was attempted, never that one failed quietly. A fan-out that DID fail is present carrying its own honest status, because distribution never rolls the status change back.
    * @return distribution
    */
   @javax.annotation.Nullable
@@ -110,7 +110,7 @@ public class TransitionResult {
   }
 
   /**
-   * Get doctype
+   * DocType is the content type that moved — Campaign, SocialPost or Asset — echoed from the path.
    * @return doctype
    */
   @javax.annotation.Nullable
@@ -129,7 +129,7 @@ public class TransitionResult {
   }
 
   /**
-   * Get from
+   * From is the state the item held when it was read. A document carrying no status yet reads as \&quot;draft\&quot;.
    * @return from
    */
   @javax.annotation.Nullable
@@ -148,7 +148,7 @@ public class TransitionResult {
   }
 
   /**
-   * Get name
+   * Name is the document that moved, echoed from the path.
    * @return name
    */
   @javax.annotation.Nullable
@@ -167,7 +167,7 @@ public class TransitionResult {
   }
 
   /**
-   * Get storefront
+   * Storefront is the catalog side effect, present only when a published Asset was product imagery — it carries a design and a kind of ecom, product or lifestyle. Absent for everything else, so absence reads as \&quot;not catalog imagery\&quot; rather than \&quot;the catalog failed\&quot;.
    * @return storefront
    */
   @javax.annotation.Nullable
@@ -186,7 +186,7 @@ public class TransitionResult {
   }
 
   /**
-   * Get to
+   * To is the state it holds now. From &#x3D;&#x3D; To on an idempotent re-transition, which is legal and is where a caller that lost a publish race lands.
    * @return to
    */
   @javax.annotation.Nullable

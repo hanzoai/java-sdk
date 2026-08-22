@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -84,7 +84,7 @@ public class Citation {
   }
 
   /**
-   * Get endLine
+   * EndLine is its last line, inclusive.
    * @return endLine
    */
   @javax.annotation.Nullable
@@ -103,7 +103,7 @@ public class Citation {
   }
 
   /**
-   * Get _file
+   * File is the path inside the repo, relative to its root.
    * @return _file
    */
   @javax.annotation.Nullable
@@ -122,7 +122,7 @@ public class Citation {
   }
 
   /**
-   * Get line
+   * Line is the first line of the cited region, 1-based.
    * @return line
    */
   @javax.annotation.Nullable
@@ -141,7 +141,7 @@ public class Citation {
   }
 
   /**
-   * Get repo
+   * Repo is the repository the cited code lives in (\&quot;owner/name\&quot;), absent when the ask was already scoped to one.
    * @return repo
    */
   @javax.annotation.Nullable
@@ -160,7 +160,7 @@ public class Citation {
   }
 
   /**
-   * Get symbol
+   * Symbol is the declaration the region belongs to, when it belongs to one.
    * @return symbol
    */
   @javax.annotation.Nullable

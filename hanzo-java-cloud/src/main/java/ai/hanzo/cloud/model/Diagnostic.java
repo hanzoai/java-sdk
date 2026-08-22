@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -85,7 +85,7 @@ public class Diagnostic {
   }
 
   /**
-   * Get code
+   * Code is the checker&#39;s own identifier for the rule, a string or a number depending on the server. Absent when it published none.
    * @return code
    */
   @javax.annotation.Nullable
@@ -104,7 +104,7 @@ public class Diagnostic {
   }
 
   /**
-   * Get message
+   * Message is the problem in the server&#39;s own words, meant to be shown.
    * @return message
    */
   @javax.annotation.Nullable
@@ -123,7 +123,7 @@ public class Diagnostic {
   }
 
   /**
-   * Get range
+   * Range is the span the problem is about.
    * @return range
    */
   @javax.annotation.Nullable
@@ -142,7 +142,7 @@ public class Diagnostic {
   }
 
   /**
-   * Get severity
+   * Severity is the LSP&#39;s: 1 error, 2 warning, 3 information, 4 hint. A file with only 3s and 4s still compiles.
    * @return severity
    */
   @javax.annotation.Nullable
@@ -161,7 +161,7 @@ public class Diagnostic {
   }
 
   /**
-   * Get source
+   * Source is which checker reported it (\&quot;compiler\&quot;, \&quot;go vet\&quot;, a linter&#39;s name), which is what separates a build error from a style opinion.
    * @return source
    */
   @javax.annotation.Nullable

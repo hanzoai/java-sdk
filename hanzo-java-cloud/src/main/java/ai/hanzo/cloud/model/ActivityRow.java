@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * Composed from each subsystem's own projection of its router, in the fleet's mount order — every operation below is a route the subsystem that publishes it registered. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -89,7 +89,7 @@ public class ActivityRow {
   }
 
   /**
-   * Get action
+   * Action is one of created, updated, deleted.
    * @return action
    */
   @javax.annotation.Nullable
@@ -108,7 +108,7 @@ public class ActivityRow {
   }
 
   /**
-   * Get actor
+   * Actor is the email of the principal who made the change. Empty for a write by an in-process composer; a project key can never appear here, because evaluating flags is all a key may do.
    * @return actor
    */
   @javax.annotation.Nullable
@@ -127,7 +127,7 @@ public class ActivityRow {
   }
 
   /**
-   * Get at
+   * At is when the change was made, RFC 3339 UTC.
    * @return at
    */
   @javax.annotation.Nullable
@@ -146,7 +146,7 @@ public class ActivityRow {
   }
 
   /**
-   * Get detail
+   * Detail is free-form context about the change. Nothing writes it today, so it is absent from every row the store serves.
    * @return detail
    */
   @javax.annotation.Nullable
@@ -165,7 +165,7 @@ public class ActivityRow {
   }
 
   /**
-   * Get id
+   * ID is the log&#39;s own sequence number, rising with each entry. The log is served newest-first, which is this descending.
    * @return id
    */
   @javax.annotation.Nullable
@@ -184,7 +184,7 @@ public class ActivityRow {
   }
 
   /**
-   * Get key
+   * Key is the flag that changed. It survives a delete, so the log still names flags the definition store no longer holds.
    * @return key
    */
   @javax.annotation.Nullable
