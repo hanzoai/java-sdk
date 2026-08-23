@@ -1,6 +1,6 @@
 # Hanzo Cloud — Java SDK
 
-Java client for the [Hanzo Cloud](https://hanzo.ai) API: **2,479 operations
+Java client for the [Hanzo Cloud](https://hanzo.ai) API: **<!--counts-->2,259 operations over 1,620 paths, grouped into 117 services<!--/counts-->
 across 192 API classes and 2,461 models**, covering every `/v1` route the
 gateway serves. It is generated from the document hanzoai/cloud emits from its
 own routers — the one the API publishes at
