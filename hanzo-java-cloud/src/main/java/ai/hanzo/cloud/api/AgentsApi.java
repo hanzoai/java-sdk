@@ -37,7 +37,11 @@ import ai.hanzo.cloud.model.ClaimKeyOut;
 import ai.hanzo.cloud.model.CodingStartIn;
 import ai.hanzo.cloud.model.CodingStarted;
 import ai.hanzo.cloud.model.ControlDrain;
+import ai.hanzo.cloud.model.ControlIn;
+import ai.hanzo.cloud.model.ControlResult;
 import ai.hanzo.cloud.model.CreateAgentIn;
+import ai.hanzo.cloud.model.EventIn;
+import ai.hanzo.cloud.model.EventView;
 import ai.hanzo.cloud.model.MetricsView;
 import ai.hanzo.cloud.model.PatchSessionIn;
 import ai.hanzo.cloud.model.PatchTargetIn;
@@ -3496,12 +3500,19 @@ public class AgentsApi {
     }
     /**
      * Build call for postAgentsSessionsByIdEvents
-     * @param id  (required)
+     * @param id ID is the session to append to, from the path. (required)
+     * @param eventIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call postAgentsSessionsByIdEventsCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAgentsSessionsByIdEventsCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull EventIn eventIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3515,7 +3526,7 @@ public class AgentsApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = eventIn;
 
         // create path and map variables
         String localVarPath = "/v1/agents/sessions/{id}/events"
@@ -3528,6 +3539,7 @@ public class AgentsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -3535,6 +3547,7 @@ public class AgentsApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -3546,60 +3559,97 @@ public class AgentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postAgentsSessionsByIdEventsValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postAgentsSessionsByIdEventsValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull EventIn eventIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling postAgentsSessionsByIdEvents(Async)");
         }
 
-        return postAgentsSessionsByIdEventsCall(id, _callback);
+        // verify the required parameter 'eventIn' is set
+        if (eventIn == null) {
+            throw new ApiException("Missing the required parameter 'eventIn' when calling postAgentsSessionsByIdEvents(Async)");
+        }
+
+        return postAgentsSessionsByIdEventsCall(id, eventIn, _callback);
 
     }
 
     /**
-     * Append one turn to a session&#39;s ordered log.
-     * Records a message, tool-call, spawn, log, status or control turn against the session and answers 201 with the stored event, including the monotonic &#x60;seq&#x60; the store assigned — the cursor every reader pages from. The same turn is fanned out live to every stream subscriber watching that session&#39;s tree.  Requires a validated principal carrying an org, and the session must already exist IN THAT ORG: an id belonging to another tenant is a 404 exactly like one that does not exist, so the log can never be written across a tenant boundary. &#x60;actor&#x60; defaults to the calling principal when the body names none. &#x60;kind&#x60; must be one of the six above, and &#x60;payload&#x60; must be valid JSON of at most 64 KiB.  The payload is scanned for credentials BEFORE it is stored, and a hit REFUSES the write with 422 rather than redacting it: {status, code: \&quot;secret_in_transcript\&quot;, error, findings:[…]}, each finding naming the rule, severity, line, a masked preview and a SHA-256 fingerprint the author can match against the value they rotate. The detected value itself appears nowhere in that body, because it was never stored. That in-band findings array is the reason this operation cannot be typed.
-     * @param id  (required)
+     * Records one turn of a session&#39;s transcript and answers 201 with it.
+     * Records one turn of a session&#39;s transcript and answers 201 with it.  THE TURN IS SCANNED BEFORE IT IS STORED. The same engine the code-security surface runs reads the payload at this boundary, and a credential in it refuses the append with 422 rather than redacting it — a redacted transcript is one that still had the secret in it once, and this way the author learns which value to rotate. The refusal carries every finding: the rule, the severity, the line, a MASKED preview and the fingerprint. The secret is never in the answer.
+     * @param id ID is the session to append to, from the path. (required)
+     * @param eventIn  (required)
+     * @return EventView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
      */
-    public void postAgentsSessionsByIdEvents(@javax.annotation.Nonnull String id) throws ApiException {
-        postAgentsSessionsByIdEventsWithHttpInfo(id);
+    public EventView postAgentsSessionsByIdEvents(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull EventIn eventIn) throws ApiException {
+        ApiResponse<EventView> localVarResp = postAgentsSessionsByIdEventsWithHttpInfo(id, eventIn);
+        return localVarResp.getData();
     }
 
     /**
-     * Append one turn to a session&#39;s ordered log.
-     * Records a message, tool-call, spawn, log, status or control turn against the session and answers 201 with the stored event, including the monotonic &#x60;seq&#x60; the store assigned — the cursor every reader pages from. The same turn is fanned out live to every stream subscriber watching that session&#39;s tree.  Requires a validated principal carrying an org, and the session must already exist IN THAT ORG: an id belonging to another tenant is a 404 exactly like one that does not exist, so the log can never be written across a tenant boundary. &#x60;actor&#x60; defaults to the calling principal when the body names none. &#x60;kind&#x60; must be one of the six above, and &#x60;payload&#x60; must be valid JSON of at most 64 KiB.  The payload is scanned for credentials BEFORE it is stored, and a hit REFUSES the write with 422 rather than redacting it: {status, code: \&quot;secret_in_transcript\&quot;, error, findings:[…]}, each finding naming the rule, severity, line, a masked preview and a SHA-256 fingerprint the author can match against the value they rotate. The detected value itself appears nowhere in that body, because it was never stored. That in-band findings array is the reason this operation cannot be typed.
-     * @param id  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * Records one turn of a session&#39;s transcript and answers 201 with it.
+     * Records one turn of a session&#39;s transcript and answers 201 with it.  THE TURN IS SCANNED BEFORE IT IS STORED. The same engine the code-security surface runs reads the payload at this boundary, and a credential in it refuses the append with 422 rather than redacting it — a redacted transcript is one that still had the secret in it once, and this way the author learns which value to rotate. The refusal carries every finding: the rule, the severity, the line, a MASKED preview and the fingerprint. The secret is never in the answer.
+     * @param id ID is the session to append to, from the path. (required)
+     * @param eventIn  (required)
+     * @return ApiResponse&lt;EventView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
      */
-    public ApiResponse<Void> postAgentsSessionsByIdEventsWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = postAgentsSessionsByIdEventsValidateBeforeCall(id, null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<EventView> postAgentsSessionsByIdEventsWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull EventIn eventIn) throws ApiException {
+        okhttp3.Call localVarCall = postAgentsSessionsByIdEventsValidateBeforeCall(id, eventIn, null);
+        Type localVarReturnType = new TypeToken<EventView>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Append one turn to a session&#39;s ordered log. (asynchronously)
-     * Records a message, tool-call, spawn, log, status or control turn against the session and answers 201 with the stored event, including the monotonic &#x60;seq&#x60; the store assigned — the cursor every reader pages from. The same turn is fanned out live to every stream subscriber watching that session&#39;s tree.  Requires a validated principal carrying an org, and the session must already exist IN THAT ORG: an id belonging to another tenant is a 404 exactly like one that does not exist, so the log can never be written across a tenant boundary. &#x60;actor&#x60; defaults to the calling principal when the body names none. &#x60;kind&#x60; must be one of the six above, and &#x60;payload&#x60; must be valid JSON of at most 64 KiB.  The payload is scanned for credentials BEFORE it is stored, and a hit REFUSES the write with 422 rather than redacting it: {status, code: \&quot;secret_in_transcript\&quot;, error, findings:[…]}, each finding naming the rule, severity, line, a masked preview and a SHA-256 fingerprint the author can match against the value they rotate. The detected value itself appears nowhere in that body, because it was never stored. That in-band findings array is the reason this operation cannot be typed.
-     * @param id  (required)
+     * Records one turn of a session&#39;s transcript and answers 201 with it. (asynchronously)
+     * Records one turn of a session&#39;s transcript and answers 201 with it.  THE TURN IS SCANNED BEFORE IT IS STORED. The same engine the code-security surface runs reads the payload at this boundary, and a credential in it refuses the append with 422 rather than redacting it — a redacted transcript is one that still had the secret in it once, and this way the author learns which value to rotate. The refusal carries every finding: the rule, the severity, the line, a MASKED preview and the fingerprint. The secret is never in the answer.
+     * @param id ID is the session to append to, from the path. (required)
+     * @param eventIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call postAgentsSessionsByIdEventsAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postAgentsSessionsByIdEventsAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull EventIn eventIn, final ApiCallback<EventView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postAgentsSessionsByIdEventsValidateBeforeCall(id, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = postAgentsSessionsByIdEventsValidateBeforeCall(id, eventIn, _callback);
+        Type localVarReturnType = new TypeToken<EventView>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postAgentsSessionsByIdMessage
-     * @param id  (required)
+     * @param id ID is the session to steer, from the path. (required)
+     * @param controlIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call postAgentsSessionsByIdMessageCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAgentsSessionsByIdMessageCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ControlIn controlIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3613,7 +3663,7 @@ public class AgentsApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = controlIn;
 
         // create path and map variables
         String localVarPath = "/v1/agents/sessions/{id}/message"
@@ -3626,6 +3676,7 @@ public class AgentsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -3633,6 +3684,7 @@ public class AgentsApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -3644,60 +3696,97 @@ public class AgentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postAgentsSessionsByIdMessageValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postAgentsSessionsByIdMessageValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ControlIn controlIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling postAgentsSessionsByIdMessage(Async)");
         }
 
-        return postAgentsSessionsByIdMessageCall(id, _callback);
+        // verify the required parameter 'controlIn' is set
+        if (controlIn == null) {
+            throw new ApiException("Missing the required parameter 'controlIn' when calling postAgentsSessionsByIdMessage(Async)");
+        }
+
+        return postAgentsSessionsByIdMessageCall(id, controlIn, _callback);
 
     }
 
     /**
-     * Send text into a running session.
-     * Records &#x60;message&#x60; as a durable control event carrying the caller&#39;s text and answers 200 with {command, event, forwarded} — this is how a dashboard steers an agent mid-run. It is the one command with a required body: a &#x60;message&#x60; (up to 16 KiB) or a &#x60;payload&#x60;, and 400 with neither. The credential scan that guards an appended turn covers &#x60;payload&#x60; here; &#x60;message&#x60; is bounded but not scanned.   Requires a validated principal carrying an org, and the session must exist IN THAT ORG — a foreign id is a 404, so no tenant can steer another&#39;s agents. A FINISHED session (done or error) refuses every command with 409: a run that has ended cannot be steered.  THE COMMAND IS AN INTENT, NOT A STATE CHANGE. Nothing here writes the session&#39;s status. A 200 means the command was durably recorded and delivered, never that the agent has actually paused, resumed or stopped; the status becomes paused, done or error only when the surface running the agent reports it back through a session update. That surface learns of the command in one of two ways: a task-backed session (one carrying a workflow id, with a tasks backend wired) has it forwarded to the durable-execution engine, and &#x60;forwarded&#x60; says so; everything else is record-only, and the running surface — a locally started &#x60;hanzo code&#x60; session, for one — drains it by polling the session&#39;s control endpoint. Today that is every session: the only controller wired forwards nothing, so &#x60;forwarded&#x60; is false and polling is how a command arrives. If a forward is attempted and fails, the answer is 502 stating that the command was recorded but not forwarded: the intent is never lost.
-     * @param id  (required)
+     * Sends a steering message to a running session — the door a human or another agent interrupts through.
+     * Sends a steering message to a running session — the door a human or another agent interrupts through. It requires a &#x60;message&#x60; or a &#x60;payload&#x60;; the other three commands do not.
+     * @param id ID is the session to steer, from the path. (required)
+     * @param controlIn  (required)
+     * @return ControlResult
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public void postAgentsSessionsByIdMessage(@javax.annotation.Nonnull String id) throws ApiException {
-        postAgentsSessionsByIdMessageWithHttpInfo(id);
+    public ControlResult postAgentsSessionsByIdMessage(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ControlIn controlIn) throws ApiException {
+        ApiResponse<ControlResult> localVarResp = postAgentsSessionsByIdMessageWithHttpInfo(id, controlIn);
+        return localVarResp.getData();
     }
 
     /**
-     * Send text into a running session.
-     * Records &#x60;message&#x60; as a durable control event carrying the caller&#39;s text and answers 200 with {command, event, forwarded} — this is how a dashboard steers an agent mid-run. It is the one command with a required body: a &#x60;message&#x60; (up to 16 KiB) or a &#x60;payload&#x60;, and 400 with neither. The credential scan that guards an appended turn covers &#x60;payload&#x60; here; &#x60;message&#x60; is bounded but not scanned.   Requires a validated principal carrying an org, and the session must exist IN THAT ORG — a foreign id is a 404, so no tenant can steer another&#39;s agents. A FINISHED session (done or error) refuses every command with 409: a run that has ended cannot be steered.  THE COMMAND IS AN INTENT, NOT A STATE CHANGE. Nothing here writes the session&#39;s status. A 200 means the command was durably recorded and delivered, never that the agent has actually paused, resumed or stopped; the status becomes paused, done or error only when the surface running the agent reports it back through a session update. That surface learns of the command in one of two ways: a task-backed session (one carrying a workflow id, with a tasks backend wired) has it forwarded to the durable-execution engine, and &#x60;forwarded&#x60; says so; everything else is record-only, and the running surface — a locally started &#x60;hanzo code&#x60; session, for one — drains it by polling the session&#39;s control endpoint. Today that is every session: the only controller wired forwards nothing, so &#x60;forwarded&#x60; is false and polling is how a command arrives. If a forward is attempted and fails, the answer is 502 stating that the command was recorded but not forwarded: the intent is never lost.
-     * @param id  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * Sends a steering message to a running session — the door a human or another agent interrupts through.
+     * Sends a steering message to a running session — the door a human or another agent interrupts through. It requires a &#x60;message&#x60; or a &#x60;payload&#x60;; the other three commands do not.
+     * @param id ID is the session to steer, from the path. (required)
+     * @param controlIn  (required)
+     * @return ApiResponse&lt;ControlResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public ApiResponse<Void> postAgentsSessionsByIdMessageWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = postAgentsSessionsByIdMessageValidateBeforeCall(id, null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<ControlResult> postAgentsSessionsByIdMessageWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ControlIn controlIn) throws ApiException {
+        okhttp3.Call localVarCall = postAgentsSessionsByIdMessageValidateBeforeCall(id, controlIn, null);
+        Type localVarReturnType = new TypeToken<ControlResult>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Send text into a running session. (asynchronously)
-     * Records &#x60;message&#x60; as a durable control event carrying the caller&#39;s text and answers 200 with {command, event, forwarded} — this is how a dashboard steers an agent mid-run. It is the one command with a required body: a &#x60;message&#x60; (up to 16 KiB) or a &#x60;payload&#x60;, and 400 with neither. The credential scan that guards an appended turn covers &#x60;payload&#x60; here; &#x60;message&#x60; is bounded but not scanned.   Requires a validated principal carrying an org, and the session must exist IN THAT ORG — a foreign id is a 404, so no tenant can steer another&#39;s agents. A FINISHED session (done or error) refuses every command with 409: a run that has ended cannot be steered.  THE COMMAND IS AN INTENT, NOT A STATE CHANGE. Nothing here writes the session&#39;s status. A 200 means the command was durably recorded and delivered, never that the agent has actually paused, resumed or stopped; the status becomes paused, done or error only when the surface running the agent reports it back through a session update. That surface learns of the command in one of two ways: a task-backed session (one carrying a workflow id, with a tasks backend wired) has it forwarded to the durable-execution engine, and &#x60;forwarded&#x60; says so; everything else is record-only, and the running surface — a locally started &#x60;hanzo code&#x60; session, for one — drains it by polling the session&#39;s control endpoint. Today that is every session: the only controller wired forwards nothing, so &#x60;forwarded&#x60; is false and polling is how a command arrives. If a forward is attempted and fails, the answer is 502 stating that the command was recorded but not forwarded: the intent is never lost.
-     * @param id  (required)
+     * Sends a steering message to a running session — the door a human or another agent interrupts through. (asynchronously)
+     * Sends a steering message to a running session — the door a human or another agent interrupts through. It requires a &#x60;message&#x60; or a &#x60;payload&#x60;; the other three commands do not.
+     * @param id ID is the session to steer, from the path. (required)
+     * @param controlIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call postAgentsSessionsByIdMessageAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postAgentsSessionsByIdMessageAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ControlIn controlIn, final ApiCallback<ControlResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postAgentsSessionsByIdMessageValidateBeforeCall(id, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = postAgentsSessionsByIdMessageValidateBeforeCall(id, controlIn, _callback);
+        Type localVarReturnType = new TypeToken<ControlResult>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postAgentsSessionsByIdPause
-     * @param id  (required)
+     * @param id ID is the session to steer, from the path. (required)
+     * @param controlIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call postAgentsSessionsByIdPauseCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAgentsSessionsByIdPauseCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ControlIn controlIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3711,7 +3800,7 @@ public class AgentsApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = controlIn;
 
         // create path and map variables
         String localVarPath = "/v1/agents/sessions/{id}/pause"
@@ -3724,6 +3813,7 @@ public class AgentsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -3731,6 +3821,7 @@ public class AgentsApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -3742,60 +3833,97 @@ public class AgentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postAgentsSessionsByIdPauseValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postAgentsSessionsByIdPauseValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ControlIn controlIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling postAgentsSessionsByIdPause(Async)");
         }
 
-        return postAgentsSessionsByIdPauseCall(id, _callback);
+        // verify the required parameter 'controlIn' is set
+        if (controlIn == null) {
+            throw new ApiException("Missing the required parameter 'controlIn' when calling postAgentsSessionsByIdPause(Async)");
+        }
+
+        return postAgentsSessionsByIdPauseCall(id, controlIn, _callback);
 
     }
 
     /**
-     * Ask a running session to pause.
-     * Records &#x60;pause&#x60; as a durable control event on the session and answers 200 with {command, event, forwarded} — the stored event carries the &#x60;seq&#x60; that orders it against every other turn.   Requires a validated principal carrying an org, and the session must exist IN THAT ORG — a foreign id is a 404, so no tenant can steer another&#39;s agents. A FINISHED session (done or error) refuses every command with 409: a run that has ended cannot be steered.  THE COMMAND IS AN INTENT, NOT A STATE CHANGE. Nothing here writes the session&#39;s status. A 200 means the command was durably recorded and delivered, never that the agent has actually paused, resumed or stopped; the status becomes paused, done or error only when the surface running the agent reports it back through a session update. That surface learns of the command in one of two ways: a task-backed session (one carrying a workflow id, with a tasks backend wired) has it forwarded to the durable-execution engine, and &#x60;forwarded&#x60; says so; everything else is record-only, and the running surface — a locally started &#x60;hanzo code&#x60; session, for one — drains it by polling the session&#39;s control endpoint. Today that is every session: the only controller wired forwards nothing, so &#x60;forwarded&#x60; is false and polling is how a command arrives. If a forward is attempted and fails, the answer is 502 stating that the command was recorded but not forwarded: the intent is never lost.
-     * @param id  (required)
+     * Asks a running session to pause.
+     * Asks a running session to pause. Recorded durably, and forwarded to the durable-execution engine when the session is task-backed.
+     * @param id ID is the session to steer, from the path. (required)
+     * @param controlIn  (required)
+     * @return ControlResult
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public void postAgentsSessionsByIdPause(@javax.annotation.Nonnull String id) throws ApiException {
-        postAgentsSessionsByIdPauseWithHttpInfo(id);
+    public ControlResult postAgentsSessionsByIdPause(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ControlIn controlIn) throws ApiException {
+        ApiResponse<ControlResult> localVarResp = postAgentsSessionsByIdPauseWithHttpInfo(id, controlIn);
+        return localVarResp.getData();
     }
 
     /**
-     * Ask a running session to pause.
-     * Records &#x60;pause&#x60; as a durable control event on the session and answers 200 with {command, event, forwarded} — the stored event carries the &#x60;seq&#x60; that orders it against every other turn.   Requires a validated principal carrying an org, and the session must exist IN THAT ORG — a foreign id is a 404, so no tenant can steer another&#39;s agents. A FINISHED session (done or error) refuses every command with 409: a run that has ended cannot be steered.  THE COMMAND IS AN INTENT, NOT A STATE CHANGE. Nothing here writes the session&#39;s status. A 200 means the command was durably recorded and delivered, never that the agent has actually paused, resumed or stopped; the status becomes paused, done or error only when the surface running the agent reports it back through a session update. That surface learns of the command in one of two ways: a task-backed session (one carrying a workflow id, with a tasks backend wired) has it forwarded to the durable-execution engine, and &#x60;forwarded&#x60; says so; everything else is record-only, and the running surface — a locally started &#x60;hanzo code&#x60; session, for one — drains it by polling the session&#39;s control endpoint. Today that is every session: the only controller wired forwards nothing, so &#x60;forwarded&#x60; is false and polling is how a command arrives. If a forward is attempted and fails, the answer is 502 stating that the command was recorded but not forwarded: the intent is never lost.
-     * @param id  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * Asks a running session to pause.
+     * Asks a running session to pause. Recorded durably, and forwarded to the durable-execution engine when the session is task-backed.
+     * @param id ID is the session to steer, from the path. (required)
+     * @param controlIn  (required)
+     * @return ApiResponse&lt;ControlResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public ApiResponse<Void> postAgentsSessionsByIdPauseWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = postAgentsSessionsByIdPauseValidateBeforeCall(id, null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<ControlResult> postAgentsSessionsByIdPauseWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ControlIn controlIn) throws ApiException {
+        okhttp3.Call localVarCall = postAgentsSessionsByIdPauseValidateBeforeCall(id, controlIn, null);
+        Type localVarReturnType = new TypeToken<ControlResult>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Ask a running session to pause. (asynchronously)
-     * Records &#x60;pause&#x60; as a durable control event on the session and answers 200 with {command, event, forwarded} — the stored event carries the &#x60;seq&#x60; that orders it against every other turn.   Requires a validated principal carrying an org, and the session must exist IN THAT ORG — a foreign id is a 404, so no tenant can steer another&#39;s agents. A FINISHED session (done or error) refuses every command with 409: a run that has ended cannot be steered.  THE COMMAND IS AN INTENT, NOT A STATE CHANGE. Nothing here writes the session&#39;s status. A 200 means the command was durably recorded and delivered, never that the agent has actually paused, resumed or stopped; the status becomes paused, done or error only when the surface running the agent reports it back through a session update. That surface learns of the command in one of two ways: a task-backed session (one carrying a workflow id, with a tasks backend wired) has it forwarded to the durable-execution engine, and &#x60;forwarded&#x60; says so; everything else is record-only, and the running surface — a locally started &#x60;hanzo code&#x60; session, for one — drains it by polling the session&#39;s control endpoint. Today that is every session: the only controller wired forwards nothing, so &#x60;forwarded&#x60; is false and polling is how a command arrives. If a forward is attempted and fails, the answer is 502 stating that the command was recorded but not forwarded: the intent is never lost.
-     * @param id  (required)
+     * Asks a running session to pause. (asynchronously)
+     * Asks a running session to pause. Recorded durably, and forwarded to the durable-execution engine when the session is task-backed.
+     * @param id ID is the session to steer, from the path. (required)
+     * @param controlIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call postAgentsSessionsByIdPauseAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postAgentsSessionsByIdPauseAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ControlIn controlIn, final ApiCallback<ControlResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postAgentsSessionsByIdPauseValidateBeforeCall(id, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = postAgentsSessionsByIdPauseValidateBeforeCall(id, controlIn, _callback);
+        Type localVarReturnType = new TypeToken<ControlResult>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postAgentsSessionsByIdResume
-     * @param id  (required)
+     * @param id ID is the session to steer, from the path. (required)
+     * @param controlIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call postAgentsSessionsByIdResumeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAgentsSessionsByIdResumeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ControlIn controlIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3809,7 +3937,7 @@ public class AgentsApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = controlIn;
 
         // create path and map variables
         String localVarPath = "/v1/agents/sessions/{id}/resume"
@@ -3822,6 +3950,7 @@ public class AgentsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -3829,6 +3958,7 @@ public class AgentsApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -3840,60 +3970,97 @@ public class AgentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postAgentsSessionsByIdResumeValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postAgentsSessionsByIdResumeValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ControlIn controlIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling postAgentsSessionsByIdResume(Async)");
         }
 
-        return postAgentsSessionsByIdResumeCall(id, _callback);
+        // verify the required parameter 'controlIn' is set
+        if (controlIn == null) {
+            throw new ApiException("Missing the required parameter 'controlIn' when calling postAgentsSessionsByIdResume(Async)");
+        }
+
+        return postAgentsSessionsByIdResumeCall(id, controlIn, _callback);
 
     }
 
     /**
-     * Ask a paused session to carry on.
-     * Records &#x60;resume&#x60; as a durable control event on the session and answers 200 with {command, event, forwarded}. The session is NOT required to be paused first: the only status this refuses is a finished one, because the live status is the running surface&#39;s to report rather than this endpoint&#39;s to enforce.   Requires a validated principal carrying an org, and the session must exist IN THAT ORG — a foreign id is a 404, so no tenant can steer another&#39;s agents. A FINISHED session (done or error) refuses every command with 409: a run that has ended cannot be steered.  THE COMMAND IS AN INTENT, NOT A STATE CHANGE. Nothing here writes the session&#39;s status. A 200 means the command was durably recorded and delivered, never that the agent has actually paused, resumed or stopped; the status becomes paused, done or error only when the surface running the agent reports it back through a session update. That surface learns of the command in one of two ways: a task-backed session (one carrying a workflow id, with a tasks backend wired) has it forwarded to the durable-execution engine, and &#x60;forwarded&#x60; says so; everything else is record-only, and the running surface — a locally started &#x60;hanzo code&#x60; session, for one — drains it by polling the session&#39;s control endpoint. Today that is every session: the only controller wired forwards nothing, so &#x60;forwarded&#x60; is false and polling is how a command arrives. If a forward is attempted and fails, the answer is 502 stating that the command was recorded but not forwarded: the intent is never lost.
-     * @param id  (required)
+     * Asks a paused session to continue, on the same terms as a pause.
+     * Asks a paused session to continue, on the same terms as a pause.
+     * @param id ID is the session to steer, from the path. (required)
+     * @param controlIn  (required)
+     * @return ControlResult
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public void postAgentsSessionsByIdResume(@javax.annotation.Nonnull String id) throws ApiException {
-        postAgentsSessionsByIdResumeWithHttpInfo(id);
+    public ControlResult postAgentsSessionsByIdResume(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ControlIn controlIn) throws ApiException {
+        ApiResponse<ControlResult> localVarResp = postAgentsSessionsByIdResumeWithHttpInfo(id, controlIn);
+        return localVarResp.getData();
     }
 
     /**
-     * Ask a paused session to carry on.
-     * Records &#x60;resume&#x60; as a durable control event on the session and answers 200 with {command, event, forwarded}. The session is NOT required to be paused first: the only status this refuses is a finished one, because the live status is the running surface&#39;s to report rather than this endpoint&#39;s to enforce.   Requires a validated principal carrying an org, and the session must exist IN THAT ORG — a foreign id is a 404, so no tenant can steer another&#39;s agents. A FINISHED session (done or error) refuses every command with 409: a run that has ended cannot be steered.  THE COMMAND IS AN INTENT, NOT A STATE CHANGE. Nothing here writes the session&#39;s status. A 200 means the command was durably recorded and delivered, never that the agent has actually paused, resumed or stopped; the status becomes paused, done or error only when the surface running the agent reports it back through a session update. That surface learns of the command in one of two ways: a task-backed session (one carrying a workflow id, with a tasks backend wired) has it forwarded to the durable-execution engine, and &#x60;forwarded&#x60; says so; everything else is record-only, and the running surface — a locally started &#x60;hanzo code&#x60; session, for one — drains it by polling the session&#39;s control endpoint. Today that is every session: the only controller wired forwards nothing, so &#x60;forwarded&#x60; is false and polling is how a command arrives. If a forward is attempted and fails, the answer is 502 stating that the command was recorded but not forwarded: the intent is never lost.
-     * @param id  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * Asks a paused session to continue, on the same terms as a pause.
+     * Asks a paused session to continue, on the same terms as a pause.
+     * @param id ID is the session to steer, from the path. (required)
+     * @param controlIn  (required)
+     * @return ApiResponse&lt;ControlResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public ApiResponse<Void> postAgentsSessionsByIdResumeWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = postAgentsSessionsByIdResumeValidateBeforeCall(id, null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<ControlResult> postAgentsSessionsByIdResumeWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ControlIn controlIn) throws ApiException {
+        okhttp3.Call localVarCall = postAgentsSessionsByIdResumeValidateBeforeCall(id, controlIn, null);
+        Type localVarReturnType = new TypeToken<ControlResult>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Ask a paused session to carry on. (asynchronously)
-     * Records &#x60;resume&#x60; as a durable control event on the session and answers 200 with {command, event, forwarded}. The session is NOT required to be paused first: the only status this refuses is a finished one, because the live status is the running surface&#39;s to report rather than this endpoint&#39;s to enforce.   Requires a validated principal carrying an org, and the session must exist IN THAT ORG — a foreign id is a 404, so no tenant can steer another&#39;s agents. A FINISHED session (done or error) refuses every command with 409: a run that has ended cannot be steered.  THE COMMAND IS AN INTENT, NOT A STATE CHANGE. Nothing here writes the session&#39;s status. A 200 means the command was durably recorded and delivered, never that the agent has actually paused, resumed or stopped; the status becomes paused, done or error only when the surface running the agent reports it back through a session update. That surface learns of the command in one of two ways: a task-backed session (one carrying a workflow id, with a tasks backend wired) has it forwarded to the durable-execution engine, and &#x60;forwarded&#x60; says so; everything else is record-only, and the running surface — a locally started &#x60;hanzo code&#x60; session, for one — drains it by polling the session&#39;s control endpoint. Today that is every session: the only controller wired forwards nothing, so &#x60;forwarded&#x60; is false and polling is how a command arrives. If a forward is attempted and fails, the answer is 502 stating that the command was recorded but not forwarded: the intent is never lost.
-     * @param id  (required)
+     * Asks a paused session to continue, on the same terms as a pause. (asynchronously)
+     * Asks a paused session to continue, on the same terms as a pause.
+     * @param id ID is the session to steer, from the path. (required)
+     * @param controlIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call postAgentsSessionsByIdResumeAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postAgentsSessionsByIdResumeAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ControlIn controlIn, final ApiCallback<ControlResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postAgentsSessionsByIdResumeValidateBeforeCall(id, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = postAgentsSessionsByIdResumeValidateBeforeCall(id, controlIn, _callback);
+        Type localVarReturnType = new TypeToken<ControlResult>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postAgentsSessionsByIdStop
-     * @param id  (required)
+     * @param id ID is the session to steer, from the path. (required)
+     * @param controlIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call postAgentsSessionsByIdStopCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAgentsSessionsByIdStopCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ControlIn controlIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3907,7 +4074,7 @@ public class AgentsApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = controlIn;
 
         // create path and map variables
         String localVarPath = "/v1/agents/sessions/{id}/stop"
@@ -3920,6 +4087,7 @@ public class AgentsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -3927,6 +4095,7 @@ public class AgentsApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -3938,50 +4107,80 @@ public class AgentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postAgentsSessionsByIdStopValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postAgentsSessionsByIdStopValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ControlIn controlIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling postAgentsSessionsByIdStop(Async)");
         }
 
-        return postAgentsSessionsByIdStopCall(id, _callback);
+        // verify the required parameter 'controlIn' is set
+        if (controlIn == null) {
+            throw new ApiException("Missing the required parameter 'controlIn' when calling postAgentsSessionsByIdStop(Async)");
+        }
+
+        return postAgentsSessionsByIdStopCall(id, controlIn, _callback);
 
     }
 
     /**
-     * Ask a session to stop for good.
-     * Records &#x60;stop&#x60; as a durable control event on the session and answers 200 with {command, event, forwarded}. Stop is the one command that CANCELS a task-backed session&#39;s durable workflow instead of signalling it — pause, resume and message are cooperative signals the workflow decides how to act on, while this tears it down, with the request&#39;s &#x60;message&#x60; recorded as the cancellation reason (a default stands in when none is given).   Requires a validated principal carrying an org, and the session must exist IN THAT ORG — a foreign id is a 404, so no tenant can steer another&#39;s agents. A FINISHED session (done or error) refuses every command with 409: a run that has ended cannot be steered.  THE COMMAND IS AN INTENT, NOT A STATE CHANGE. Nothing here writes the session&#39;s status. A 200 means the command was durably recorded and delivered, never that the agent has actually paused, resumed or stopped; the status becomes paused, done or error only when the surface running the agent reports it back through a session update. That surface learns of the command in one of two ways: a task-backed session (one carrying a workflow id, with a tasks backend wired) has it forwarded to the durable-execution engine, and &#x60;forwarded&#x60; says so; everything else is record-only, and the running surface — a locally started &#x60;hanzo code&#x60; session, for one — drains it by polling the session&#39;s control endpoint. Today that is every session: the only controller wired forwards nothing, so &#x60;forwarded&#x60; is false and polling is how a command arrives. If a forward is attempted and fails, the answer is 502 stating that the command was recorded but not forwarded: the intent is never lost.
-     * @param id  (required)
+     * Ends a running session.
+     * Ends a running session. &#x60;message&#x60; is recorded as the cancellation reason, which is what a later reader of the transcript sees.  STOPPING IS NOT DELETING: the session, its transcript and anything it produced stay readable. A session that has already finished is 409 rather than a second stop.
+     * @param id ID is the session to steer, from the path. (required)
+     * @param controlIn  (required)
+     * @return ControlResult
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public void postAgentsSessionsByIdStop(@javax.annotation.Nonnull String id) throws ApiException {
-        postAgentsSessionsByIdStopWithHttpInfo(id);
+    public ControlResult postAgentsSessionsByIdStop(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ControlIn controlIn) throws ApiException {
+        ApiResponse<ControlResult> localVarResp = postAgentsSessionsByIdStopWithHttpInfo(id, controlIn);
+        return localVarResp.getData();
     }
 
     /**
-     * Ask a session to stop for good.
-     * Records &#x60;stop&#x60; as a durable control event on the session and answers 200 with {command, event, forwarded}. Stop is the one command that CANCELS a task-backed session&#39;s durable workflow instead of signalling it — pause, resume and message are cooperative signals the workflow decides how to act on, while this tears it down, with the request&#39;s &#x60;message&#x60; recorded as the cancellation reason (a default stands in when none is given).   Requires a validated principal carrying an org, and the session must exist IN THAT ORG — a foreign id is a 404, so no tenant can steer another&#39;s agents. A FINISHED session (done or error) refuses every command with 409: a run that has ended cannot be steered.  THE COMMAND IS AN INTENT, NOT A STATE CHANGE. Nothing here writes the session&#39;s status. A 200 means the command was durably recorded and delivered, never that the agent has actually paused, resumed or stopped; the status becomes paused, done or error only when the surface running the agent reports it back through a session update. That surface learns of the command in one of two ways: a task-backed session (one carrying a workflow id, with a tasks backend wired) has it forwarded to the durable-execution engine, and &#x60;forwarded&#x60; says so; everything else is record-only, and the running surface — a locally started &#x60;hanzo code&#x60; session, for one — drains it by polling the session&#39;s control endpoint. Today that is every session: the only controller wired forwards nothing, so &#x60;forwarded&#x60; is false and polling is how a command arrives. If a forward is attempted and fails, the answer is 502 stating that the command was recorded but not forwarded: the intent is never lost.
-     * @param id  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * Ends a running session.
+     * Ends a running session. &#x60;message&#x60; is recorded as the cancellation reason, which is what a later reader of the transcript sees.  STOPPING IS NOT DELETING: the session, its transcript and anything it produced stay readable. A session that has already finished is 409 rather than a second stop.
+     * @param id ID is the session to steer, from the path. (required)
+     * @param controlIn  (required)
+     * @return ApiResponse&lt;ControlResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public ApiResponse<Void> postAgentsSessionsByIdStopWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = postAgentsSessionsByIdStopValidateBeforeCall(id, null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<ControlResult> postAgentsSessionsByIdStopWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ControlIn controlIn) throws ApiException {
+        okhttp3.Call localVarCall = postAgentsSessionsByIdStopValidateBeforeCall(id, controlIn, null);
+        Type localVarReturnType = new TypeToken<ControlResult>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Ask a session to stop for good. (asynchronously)
-     * Records &#x60;stop&#x60; as a durable control event on the session and answers 200 with {command, event, forwarded}. Stop is the one command that CANCELS a task-backed session&#39;s durable workflow instead of signalling it — pause, resume and message are cooperative signals the workflow decides how to act on, while this tears it down, with the request&#39;s &#x60;message&#x60; recorded as the cancellation reason (a default stands in when none is given).   Requires a validated principal carrying an org, and the session must exist IN THAT ORG — a foreign id is a 404, so no tenant can steer another&#39;s agents. A FINISHED session (done or error) refuses every command with 409: a run that has ended cannot be steered.  THE COMMAND IS AN INTENT, NOT A STATE CHANGE. Nothing here writes the session&#39;s status. A 200 means the command was durably recorded and delivered, never that the agent has actually paused, resumed or stopped; the status becomes paused, done or error only when the surface running the agent reports it back through a session update. That surface learns of the command in one of two ways: a task-backed session (one carrying a workflow id, with a tasks backend wired) has it forwarded to the durable-execution engine, and &#x60;forwarded&#x60; says so; everything else is record-only, and the running surface — a locally started &#x60;hanzo code&#x60; session, for one — drains it by polling the session&#39;s control endpoint. Today that is every session: the only controller wired forwards nothing, so &#x60;forwarded&#x60; is false and polling is how a command arrives. If a forward is attempted and fails, the answer is 502 stating that the command was recorded but not forwarded: the intent is never lost.
-     * @param id  (required)
+     * Ends a running session. (asynchronously)
+     * Ends a running session. &#x60;message&#x60; is recorded as the cancellation reason, which is what a later reader of the transcript sees.  STOPPING IS NOT DELETING: the session, its transcript and anything it produced stay readable. A session that has already finished is 409 rather than a second stop.
+     * @param id ID is the session to steer, from the path. (required)
+     * @param controlIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call postAgentsSessionsByIdStopAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postAgentsSessionsByIdStopAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ControlIn controlIn, final ApiCallback<ControlResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postAgentsSessionsByIdStopValidateBeforeCall(id, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = postAgentsSessionsByIdStopValidateBeforeCall(id, controlIn, _callback);
+        Type localVarReturnType = new TypeToken<ControlResult>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**

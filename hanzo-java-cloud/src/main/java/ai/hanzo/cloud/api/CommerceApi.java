@@ -765,13 +765,14 @@ public class CommerceApi {
         return localVarCall;
     }
     /**
-     * Build call for deleteCommerceRatesEntriesBySlug
-     * @param slug  (required)
+     * Build call for deleteCommerceRatesEntriesByProductByMeter
+     * @param product  (required)
+     * @param meter  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call deleteCommerceRatesEntriesBySlugCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteCommerceRatesEntriesByProductByMeterCall(@javax.annotation.Nonnull String product, @javax.annotation.Nonnull String meter, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -788,8 +789,9 @@ public class CommerceApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/commerce/rates/entries/{slug}"
-            .replace("{" + "slug" + "}", localVarApiClient.escapeString(slug.toString()));
+        String localVarPath = "/v1/commerce/rates/entries/{product}/{meter}"
+            .replace("{" + "product" + "}", localVarApiClient.escapeString(product.toString()))
+            .replace("{" + "meter" + "}", localVarApiClient.escapeString(meter.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -816,49 +818,57 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteCommerceRatesEntriesBySlugValidateBeforeCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'slug' is set
-        if (slug == null) {
-            throw new ApiException("Missing the required parameter 'slug' when calling deleteCommerceRatesEntriesBySlug(Async)");
+    private okhttp3.Call deleteCommerceRatesEntriesByProductByMeterValidateBeforeCall(@javax.annotation.Nonnull String product, @javax.annotation.Nonnull String meter, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'product' is set
+        if (product == null) {
+            throw new ApiException("Missing the required parameter 'product' when calling deleteCommerceRatesEntriesByProductByMeter(Async)");
         }
 
-        return deleteCommerceRatesEntriesBySlugCall(slug, _callback);
+        // verify the required parameter 'meter' is set
+        if (meter == null) {
+            throw new ApiException("Missing the required parameter 'meter' when calling deleteCommerceRatesEntriesByProductByMeter(Async)");
+        }
+
+        return deleteCommerceRatesEntriesByProductByMeterCall(product, meter, _callback);
 
     }
 
     /**
      * Remove a rate outright
      * Deletes the row. ARCHIVING is usually what is wanted instead — a deleted rate cannot price a historical charge, so a past invoice that has to re-resolve its rate finds nothing to read. Reach for status&#x3D;archived unless the rate never priced anything. SuperAdmin only.
-     * @param slug  (required)
+     * @param product  (required)
+     * @param meter  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void deleteCommerceRatesEntriesBySlug(@javax.annotation.Nonnull String slug) throws ApiException {
-        deleteCommerceRatesEntriesBySlugWithHttpInfo(slug);
+    public void deleteCommerceRatesEntriesByProductByMeter(@javax.annotation.Nonnull String product, @javax.annotation.Nonnull String meter) throws ApiException {
+        deleteCommerceRatesEntriesByProductByMeterWithHttpInfo(product, meter);
     }
 
     /**
      * Remove a rate outright
      * Deletes the row. ARCHIVING is usually what is wanted instead — a deleted rate cannot price a historical charge, so a past invoice that has to re-resolve its rate finds nothing to read. Reach for status&#x3D;archived unless the rate never priced anything. SuperAdmin only.
-     * @param slug  (required)
+     * @param product  (required)
+     * @param meter  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> deleteCommerceRatesEntriesBySlugWithHttpInfo(@javax.annotation.Nonnull String slug) throws ApiException {
-        okhttp3.Call localVarCall = deleteCommerceRatesEntriesBySlugValidateBeforeCall(slug, null);
+    public ApiResponse<Void> deleteCommerceRatesEntriesByProductByMeterWithHttpInfo(@javax.annotation.Nonnull String product, @javax.annotation.Nonnull String meter) throws ApiException {
+        okhttp3.Call localVarCall = deleteCommerceRatesEntriesByProductByMeterValidateBeforeCall(product, meter, null);
         return localVarApiClient.execute(localVarCall);
     }
 
     /**
      * Remove a rate outright (asynchronously)
      * Deletes the row. ARCHIVING is usually what is wanted instead — a deleted rate cannot price a historical charge, so a past invoice that has to re-resolve its rate finds nothing to read. Reach for status&#x3D;archived unless the rate never priced anything. SuperAdmin only.
-     * @param slug  (required)
+     * @param product  (required)
+     * @param meter  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call deleteCommerceRatesEntriesBySlugAsync(@javax.annotation.Nonnull String slug, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteCommerceRatesEntriesByProductByMeterAsync(@javax.annotation.Nonnull String product, @javax.annotation.Nonnull String meter, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteCommerceRatesEntriesBySlugValidateBeforeCall(slug, _callback);
+        okhttp3.Call localVarCall = deleteCommerceRatesEntriesByProductByMeterValidateBeforeCall(product, meter, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
@@ -11190,7 +11200,7 @@ public class CommerceApi {
 
     /**
      * Load the published price document, reconciling rather than replacing
-     * Takes an array of rates and seeds the authority from it. This is the seed, driven from admin rather than compiled in, because 506 published prices in an embed made a price change wait for a build. It RECONCILES: a row that matches is left alone, a row that has drifted is corrected, and a row an operator edited is skipped — so importing the same document twice is a no-op and importing a corrected one moves exactly the rows that changed. Answers what it received, created, corrected and left unchanged, so an import that changes nothing reads as nothing to do rather than as a failure. An empty array is refused 400. SuperAdmin only.
+     * Takes an array of rates and seeds the authority from it — the same reconcile the boot catalog runs, driven from admin instead. It RECONCILES: a row that matches is left alone, a row that has drifted is corrected, and a row an operator edited is skipped — so importing the same document twice is a no-op and importing a corrected one moves exactly the rows that changed. Answers what it received, created, corrected and left unchanged, so an import that changes nothing reads as nothing to do rather than as a failure. An empty array is refused 400. SuperAdmin only.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public void postCommerceRatesImport() throws ApiException {
@@ -11199,7 +11209,7 @@ public class CommerceApi {
 
     /**
      * Load the published price document, reconciling rather than replacing
-     * Takes an array of rates and seeds the authority from it. This is the seed, driven from admin rather than compiled in, because 506 published prices in an embed made a price change wait for a build. It RECONCILES: a row that matches is left alone, a row that has drifted is corrected, and a row an operator edited is skipped — so importing the same document twice is a no-op and importing a corrected one moves exactly the rows that changed. Answers what it received, created, corrected and left unchanged, so an import that changes nothing reads as nothing to do rather than as a failure. An empty array is refused 400. SuperAdmin only.
+     * Takes an array of rates and seeds the authority from it — the same reconcile the boot catalog runs, driven from admin instead. It RECONCILES: a row that matches is left alone, a row that has drifted is corrected, and a row an operator edited is skipped — so importing the same document twice is a no-op and importing a corrected one moves exactly the rows that changed. Answers what it received, created, corrected and left unchanged, so an import that changes nothing reads as nothing to do rather than as a failure. An empty array is refused 400. SuperAdmin only.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -11210,7 +11220,7 @@ public class CommerceApi {
 
     /**
      * Load the published price document, reconciling rather than replacing (asynchronously)
-     * Takes an array of rates and seeds the authority from it. This is the seed, driven from admin rather than compiled in, because 506 published prices in an embed made a price change wait for a build. It RECONCILES: a row that matches is left alone, a row that has drifted is corrected, and a row an operator edited is skipped — so importing the same document twice is a no-op and importing a corrected one moves exactly the rows that changed. Answers what it received, created, corrected and left unchanged, so an import that changes nothing reads as nothing to do rather than as a failure. An empty array is refused 400. SuperAdmin only.
+     * Takes an array of rates and seeds the authority from it — the same reconcile the boot catalog runs, driven from admin instead. It RECONCILES: a row that matches is left alone, a row that has drifted is corrected, and a row an operator edited is skipped — so importing the same document twice is a no-op and importing a corrected one moves exactly the rows that changed. Answers what it received, created, corrected and left unchanged, so an import that changes nothing reads as nothing to do rather than as a failure. An empty array is refused 400. SuperAdmin only.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -15984,13 +15994,14 @@ public class CommerceApi {
         return localVarCall;
     }
     /**
-     * Build call for putCommerceRatesEntriesBySlug
-     * @param slug  (required)
+     * Build call for putCommerceRatesEntriesByProductByMeter
+     * @param product  (required)
+     * @param meter  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call putCommerceRatesEntriesBySlugCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putCommerceRatesEntriesByProductByMeterCall(@javax.annotation.Nonnull String product, @javax.annotation.Nonnull String meter, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -16007,8 +16018,9 @@ public class CommerceApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/commerce/rates/entries/{slug}"
-            .replace("{" + "slug" + "}", localVarApiClient.escapeString(slug.toString()));
+        String localVarPath = "/v1/commerce/rates/entries/{product}/{meter}"
+            .replace("{" + "product" + "}", localVarApiClient.escapeString(product.toString()))
+            .replace("{" + "meter" + "}", localVarApiClient.escapeString(meter.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -16035,49 +16047,57 @@ public class CommerceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putCommerceRatesEntriesBySlugValidateBeforeCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'slug' is set
-        if (slug == null) {
-            throw new ApiException("Missing the required parameter 'slug' when calling putCommerceRatesEntriesBySlug(Async)");
+    private okhttp3.Call putCommerceRatesEntriesByProductByMeterValidateBeforeCall(@javax.annotation.Nonnull String product, @javax.annotation.Nonnull String meter, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'product' is set
+        if (product == null) {
+            throw new ApiException("Missing the required parameter 'product' when calling putCommerceRatesEntriesByProductByMeter(Async)");
         }
 
-        return putCommerceRatesEntriesBySlugCall(slug, _callback);
+        // verify the required parameter 'meter' is set
+        if (meter == null) {
+            throw new ApiException("Missing the required parameter 'meter' when calling putCommerceRatesEntriesByProductByMeter(Async)");
+        }
+
+        return putCommerceRatesEntriesByProductByMeterCall(product, meter, _callback);
 
     }
 
     /**
      * Edit a rate, and mark it as operator-set
      * Edits one rate and MARKS it edited, which is the whole contract with the importer: an operator&#39;s price outranks the document it came from, so a later import leaves this row alone. Without that mark a price set here would apply, work, and silently revert on the next import. Only the editable fields move; identity and bookkeeping are not writable from the body. SuperAdmin only.
-     * @param slug  (required)
+     * @param product  (required)
+     * @param meter  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void putCommerceRatesEntriesBySlug(@javax.annotation.Nonnull String slug) throws ApiException {
-        putCommerceRatesEntriesBySlugWithHttpInfo(slug);
+    public void putCommerceRatesEntriesByProductByMeter(@javax.annotation.Nonnull String product, @javax.annotation.Nonnull String meter) throws ApiException {
+        putCommerceRatesEntriesByProductByMeterWithHttpInfo(product, meter);
     }
 
     /**
      * Edit a rate, and mark it as operator-set
      * Edits one rate and MARKS it edited, which is the whole contract with the importer: an operator&#39;s price outranks the document it came from, so a later import leaves this row alone. Without that mark a price set here would apply, work, and silently revert on the next import. Only the editable fields move; identity and bookkeeping are not writable from the body. SuperAdmin only.
-     * @param slug  (required)
+     * @param product  (required)
+     * @param meter  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> putCommerceRatesEntriesBySlugWithHttpInfo(@javax.annotation.Nonnull String slug) throws ApiException {
-        okhttp3.Call localVarCall = putCommerceRatesEntriesBySlugValidateBeforeCall(slug, null);
+    public ApiResponse<Void> putCommerceRatesEntriesByProductByMeterWithHttpInfo(@javax.annotation.Nonnull String product, @javax.annotation.Nonnull String meter) throws ApiException {
+        okhttp3.Call localVarCall = putCommerceRatesEntriesByProductByMeterValidateBeforeCall(product, meter, null);
         return localVarApiClient.execute(localVarCall);
     }
 
     /**
      * Edit a rate, and mark it as operator-set (asynchronously)
      * Edits one rate and MARKS it edited, which is the whole contract with the importer: an operator&#39;s price outranks the document it came from, so a later import leaves this row alone. Without that mark a price set here would apply, work, and silently revert on the next import. Only the editable fields move; identity and bookkeeping are not writable from the body. SuperAdmin only.
-     * @param slug  (required)
+     * @param product  (required)
+     * @param meter  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call putCommerceRatesEntriesBySlugAsync(@javax.annotation.Nonnull String slug, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call putCommerceRatesEntriesByProductByMeterAsync(@javax.annotation.Nonnull String product, @javax.annotation.Nonnull String meter, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putCommerceRatesEntriesBySlugValidateBeforeCall(slug, _callback);
+        okhttp3.Call localVarCall = putCommerceRatesEntriesByProductByMeterValidateBeforeCall(product, meter, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

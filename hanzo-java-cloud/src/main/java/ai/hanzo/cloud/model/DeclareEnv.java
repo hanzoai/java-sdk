@@ -46,43 +46,29 @@ import java.util.Set;
 import ai.hanzo.cloud.JSON;
 
 /**
- * Listing
+ * DeclareEnv
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
-public class Listing {
-  public static final String SERIALIZED_NAME_LAST_MODIFIED = "lastModified";
-  @SerializedName(SERIALIZED_NAME_LAST_MODIFIED)
-  @javax.annotation.Nullable
-  private String lastModified;
-
+public class DeclareEnv {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   @javax.annotation.Nullable
   private String name;
 
-  public Listing() {
-  }
-
-  public Listing lastModified(@javax.annotation.Nullable String lastModified) {
-    this.lastModified = lastModified;
-    return this;
-  }
-
-  /**
-   * Get lastModified
-   * @return lastModified
-   */
+  public static final String SERIALIZED_NAME_PUBLIC = "public";
+  @SerializedName(SERIALIZED_NAME_PUBLIC)
   @javax.annotation.Nullable
-  public String getLastModified() {
-    return lastModified;
+  private Boolean _public;
+
+  public static final String SERIALIZED_NAME_VALUE = "value";
+  @SerializedName(SERIALIZED_NAME_VALUE)
+  @javax.annotation.Nullable
+  private String value;
+
+  public DeclareEnv() {
   }
 
-  public void setLastModified(@javax.annotation.Nullable String lastModified) {
-    this.lastModified = lastModified;
-  }
-
-
-  public Listing name(@javax.annotation.Nullable String name) {
+  public DeclareEnv name(@javax.annotation.Nullable String name) {
     this.name = name;
     return this;
   }
@@ -101,6 +87,44 @@ public class Listing {
   }
 
 
+  public DeclareEnv _public(@javax.annotation.Nullable Boolean _public) {
+    this._public = _public;
+    return this;
+  }
+
+  /**
+   * Public marks a value that may be WRITTEN INTO GIT. Absent, it is false, and the value is sealed into KMS and referenced.  ★ THE DEFAULT IS SECRET, AND THE POLARITY IS THE WHOLE DESIGN. This lane&#39;s output is a commit in a repository replicated to every clone, so a misclassification is not a bug to fix later — it is a credential published forever. A heuristic classifier fails in both directions; what decides is which direction it fails IN. Seal-by-default makes the failure mode \&quot;an operator cannot read back a config value\&quot;, which is a support ticket. Classify-by-shape made it \&quot;a password is in git history\&quot;, which is an incident with no rollback.  It is also the only rule that needs no list. PGPASSWORD, *_PW, a symbol-rich password, a KUBECONFIG, a base32 MFA seed — every one of them slipped a shape classifier, and each miss was a different reason. There is no reason left when the default is to seal.
+   * @return _public
+   */
+  @javax.annotation.Nullable
+  public Boolean getPublic() {
+    return _public;
+  }
+
+  public void setPublic(@javax.annotation.Nullable Boolean _public) {
+    this._public = _public;
+  }
+
+
+  public DeclareEnv value(@javax.annotation.Nullable String value) {
+    this.value = value;
+    return this;
+  }
+
+  /**
+   * Get value
+   * @return value
+   */
+  @javax.annotation.Nullable
+  public String getValue() {
+    return value;
+  }
+
+  public void setValue(@javax.annotation.Nullable String value) {
+    this.value = value;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -110,22 +134,24 @@ public class Listing {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Listing listing = (Listing) o;
-    return Objects.equals(this.lastModified, listing.lastModified) &&
-        Objects.equals(this.name, listing.name);
+    DeclareEnv declareEnv = (DeclareEnv) o;
+    return Objects.equals(this.name, declareEnv.name) &&
+        Objects.equals(this._public, declareEnv._public) &&
+        Objects.equals(this.value, declareEnv.value);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(lastModified, name);
+    return Objects.hash(name, _public, value);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Listing {\n");
-    sb.append("    lastModified: ").append(toIndentedString(lastModified)).append("\n");
+    sb.append("class DeclareEnv {\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    _public: ").append(toIndentedString(_public)).append("\n");
+    sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -147,7 +173,7 @@ public class Listing {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("lastModified", "name"));
+    openapiFields = new HashSet<String>(Arrays.asList("name", "public", "value"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -157,28 +183,28 @@ public class Listing {
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to Listing
+   * @throws IOException if the JSON Element is invalid with respect to DeclareEnv
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!Listing.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in Listing is not found in the empty JSON string", Listing.openapiRequiredFields.toString()));
+        if (!DeclareEnv.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in DeclareEnv is not found in the empty JSON string", DeclareEnv.openapiRequiredFields.toString()));
         }
       }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!Listing.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Listing` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!DeclareEnv.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `DeclareEnv` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("lastModified") != null && !jsonObj.get("lastModified").isJsonNull()) && !jsonObj.get("lastModified").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `lastModified` to be a primitive type in the JSON string but got `%s`", jsonObj.get("lastModified").toString()));
-      }
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      }
+      if ((jsonObj.get("value") != null && !jsonObj.get("value").isJsonNull()) && !jsonObj.get("value").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `value` to be a primitive type in the JSON string but got `%s`", jsonObj.get("value").toString()));
       }
   }
 
@@ -186,22 +212,22 @@ public class Listing {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!Listing.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'Listing' and its subtypes
+       if (!DeclareEnv.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'DeclareEnv' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<Listing> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(Listing.class));
+       final TypeAdapter<DeclareEnv> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(DeclareEnv.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<Listing>() {
+       return (TypeAdapter<T>) new TypeAdapter<DeclareEnv>() {
            @Override
-           public void write(JsonWriter out, Listing value) throws IOException {
+           public void write(JsonWriter out, DeclareEnv value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public Listing read(JsonReader in) throws IOException {
+           public DeclareEnv read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -212,18 +238,18 @@ public class Listing {
   }
 
   /**
-   * Create an instance of Listing given an JSON string
+   * Create an instance of DeclareEnv given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of Listing
-   * @throws IOException if the JSON string is invalid with respect to Listing
+   * @return An instance of DeclareEnv
+   * @throws IOException if the JSON string is invalid with respect to DeclareEnv
    */
-  public static Listing fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, Listing.class);
+  public static DeclareEnv fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, DeclareEnv.class);
   }
 
   /**
-   * Convert an instance of Listing to an JSON string
+   * Convert an instance of DeclareEnv to an JSON string
    *
    * @return JSON string
    */

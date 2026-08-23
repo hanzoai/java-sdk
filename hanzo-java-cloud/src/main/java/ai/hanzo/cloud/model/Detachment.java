@@ -46,58 +46,58 @@ import java.util.Set;
 import ai.hanzo.cloud.JSON;
 
 /**
- * Listing
+ * Detachment
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
-public class Listing {
-  public static final String SERIALIZED_NAME_LAST_MODIFIED = "lastModified";
-  @SerializedName(SERIALIZED_NAME_LAST_MODIFIED)
+public class Detachment {
+  public static final String SERIALIZED_NAME_DELETED = "deleted";
+  @SerializedName(SERIALIZED_NAME_DELETED)
   @javax.annotation.Nullable
-  private String lastModified;
+  private Boolean deleted;
 
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
   @javax.annotation.Nullable
-  private String name;
+  private String id;
 
-  public Listing() {
+  public Detachment() {
   }
 
-  public Listing lastModified(@javax.annotation.Nullable String lastModified) {
-    this.lastModified = lastModified;
+  public Detachment deleted(@javax.annotation.Nullable Boolean deleted) {
+    this.deleted = deleted;
     return this;
   }
 
   /**
-   * Get lastModified
-   * @return lastModified
+   * Deleted is whether the method was actually removed. False with no error means it was already gone, which is a successful detach rather than a failure — a retry must not be an error.
+   * @return deleted
    */
   @javax.annotation.Nullable
-  public String getLastModified() {
-    return lastModified;
+  public Boolean getDeleted() {
+    return deleted;
   }
 
-  public void setLastModified(@javax.annotation.Nullable String lastModified) {
-    this.lastModified = lastModified;
+  public void setDeleted(@javax.annotation.Nullable Boolean deleted) {
+    this.deleted = deleted;
   }
 
 
-  public Listing name(@javax.annotation.Nullable String name) {
-    this.name = name;
+  public Detachment id(@javax.annotation.Nullable String id) {
+    this.id = id;
     return this;
   }
 
   /**
-   * Get name
-   * @return name
+   * ID is the method that was detached, echoed so a caller batching several can tell the answers apart.
+   * @return id
    */
   @javax.annotation.Nullable
-  public String getName() {
-    return name;
+  public String getId() {
+    return id;
   }
 
-  public void setName(@javax.annotation.Nullable String name) {
-    this.name = name;
+  public void setId(@javax.annotation.Nullable String id) {
+    this.id = id;
   }
 
 
@@ -110,22 +110,22 @@ public class Listing {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Listing listing = (Listing) o;
-    return Objects.equals(this.lastModified, listing.lastModified) &&
-        Objects.equals(this.name, listing.name);
+    Detachment detachment = (Detachment) o;
+    return Objects.equals(this.deleted, detachment.deleted) &&
+        Objects.equals(this.id, detachment.id);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(lastModified, name);
+    return Objects.hash(deleted, id);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Listing {\n");
-    sb.append("    lastModified: ").append(toIndentedString(lastModified)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("class Detachment {\n");
+    sb.append("    deleted: ").append(toIndentedString(deleted)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -147,7 +147,7 @@ public class Listing {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("lastModified", "name"));
+    openapiFields = new HashSet<String>(Arrays.asList("deleted", "id"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -157,28 +157,25 @@ public class Listing {
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to Listing
+   * @throws IOException if the JSON Element is invalid with respect to Detachment
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!Listing.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in Listing is not found in the empty JSON string", Listing.openapiRequiredFields.toString()));
+        if (!Detachment.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in Detachment is not found in the empty JSON string", Detachment.openapiRequiredFields.toString()));
         }
       }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!Listing.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Listing` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!Detachment.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Detachment` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("lastModified") != null && !jsonObj.get("lastModified").isJsonNull()) && !jsonObj.get("lastModified").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `lastModified` to be a primitive type in the JSON string but got `%s`", jsonObj.get("lastModified").toString()));
-      }
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
   }
 
@@ -186,22 +183,22 @@ public class Listing {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!Listing.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'Listing' and its subtypes
+       if (!Detachment.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'Detachment' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<Listing> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(Listing.class));
+       final TypeAdapter<Detachment> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(Detachment.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<Listing>() {
+       return (TypeAdapter<T>) new TypeAdapter<Detachment>() {
            @Override
-           public void write(JsonWriter out, Listing value) throws IOException {
+           public void write(JsonWriter out, Detachment value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public Listing read(JsonReader in) throws IOException {
+           public Detachment read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -212,18 +209,18 @@ public class Listing {
   }
 
   /**
-   * Create an instance of Listing given an JSON string
+   * Create an instance of Detachment given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of Listing
-   * @throws IOException if the JSON string is invalid with respect to Listing
+   * @return An instance of Detachment
+   * @throws IOException if the JSON string is invalid with respect to Detachment
    */
-  public static Listing fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, Listing.class);
+  public static Detachment fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, Detachment.class);
   }
 
   /**
-   * Convert an instance of Listing to an JSON string
+   * Convert an instance of Detachment to an JSON string
    *
    * @return JSON string
    */

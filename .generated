@@ -241,6 +241,7 @@ hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/BankQuestion.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/BankTally.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/BankTxnRow.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/BaseHealth.java
+hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/BaseView.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/BeginIn.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/Benchmark.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/BenchmarkCatalog.java
@@ -301,6 +302,7 @@ hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/BusRequest.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/BuyInput.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/ByoGPU.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/ByoWorker.java
+hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/CDApp.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/CalendarPost.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/Call.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/CallInput.java
@@ -365,6 +367,7 @@ hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/CatalogPage.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/Category.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/CategoryIn.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/CategorySpend.java
+hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/CdResp.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/Centre.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/Chain.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/ChainList.java
@@ -378,6 +381,7 @@ hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/ChannelResult.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/ChannelSpec.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/ChannelView.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/Charge.java
+hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/Charged.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/ChatChannels.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/ChatRequest.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/ChatResponse.java
@@ -447,7 +451,9 @@ hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/ContextBundle.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/ContextIn.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/ControlCommandView.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/ControlDrain.java
+hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/ControlIn.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/ControlList.java
+hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/ControlResult.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/CookieAck.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/CorpusView.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/CostLine.java
@@ -495,6 +501,7 @@ hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/DataroomLinkCreate.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/DataroomLinkOne.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/DataroomLinkStats.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/DataroomLinks.java
+hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/DataroomLiveness.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/DataroomMember.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/DataroomMembership.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/DataroomPageStat.java
@@ -510,6 +517,10 @@ hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/DatasetView.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/DecideBody.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/DecisionIn.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/DeckOut.java
+hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/Declaration.java
+hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/DeclareEnv.java
+hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/Declared.java
+hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/DeclaredResp.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/DefRow.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/Definition.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/DefsOut.java
@@ -518,6 +529,7 @@ hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/DeletedOut.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/Delivery.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/DeliveryList.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/DeliveryRow.java
+hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/DeployHealth.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/DeployLogs.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/DeployRecord.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/DeployReq.java
@@ -528,6 +540,7 @@ hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/DestinationField.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/DestinationList.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/DestinationStatus.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/DestinationTest.java
+hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/Detachment.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/DevicePollOut.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/DeviceStartIn.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/DeviceStartOut.java
@@ -608,6 +621,7 @@ hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/EvaluatorList.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/EvaluatorReq.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/EvaluatorView.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/Event.java
+hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/EventIn.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/EventList.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/EventView.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/ExecRequest.java
@@ -1924,6 +1938,7 @@ hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/ProjectsRelease.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/ProjectsRepo.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/ProjectsSite.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/ProjectsSiteDeploy.java
+hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/ProjectsStar.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/ProjectsUpdate.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/ProjectsUpdateRepo.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/ProjectsUploadGrant.java
@@ -1978,6 +1993,8 @@ hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/ReadingReq.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/ReadingView.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/ReadmeJSON.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/Receipt.java
+hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/Recharge.java
+hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/Recharged.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/Record.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/RecordList.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/RedeemInput.java
@@ -2318,6 +2335,7 @@ hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/ToolResult.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/Top.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/TopModels.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/TopProducts.java
+hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/TopupIn.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/TotalView.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/TraceList.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/TraceView.java
@@ -2359,6 +2377,7 @@ hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/TrustSettings.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/TrustTally.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/Txn.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/UTM.java
+hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/Unreadable.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/UnreconciledOut.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/Unsubscribed.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/UpdateAgentIn.java

@@ -3124,7 +3124,7 @@ public class MarketingApi {
 
     /**
      * Publishes a post NOW, synchronously, whatever its schedule.
-     * Publishes a post NOW, synchronously, whatever its schedule. No social connector is wired today, so every channel answers an honest 501 naming the seam a real one would plug into, and the post is recorded failed with that exact reason — never a faked \&quot;published\&quot;.
+     * Publishes a post NOW, synchronously, whatever its schedule. No social connector is wired today, so every channel answers an honest 501 naming the client a real one would plug into, and the post is recorded failed with that exact reason — never a faked \&quot;published\&quot;.
      * @param id ID is the post id from the path, as returned by create. (required)
      * @return CalendarPost
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3142,7 +3142,7 @@ public class MarketingApi {
 
     /**
      * Publishes a post NOW, synchronously, whatever its schedule.
-     * Publishes a post NOW, synchronously, whatever its schedule. No social connector is wired today, so every channel answers an honest 501 naming the seam a real one would plug into, and the post is recorded failed with that exact reason — never a faked \&quot;published\&quot;.
+     * Publishes a post NOW, synchronously, whatever its schedule. No social connector is wired today, so every channel answers an honest 501 naming the client a real one would plug into, and the post is recorded failed with that exact reason — never a faked \&quot;published\&quot;.
      * @param id ID is the post id from the path, as returned by create. (required)
      * @return ApiResponse&lt;CalendarPost&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3161,7 +3161,7 @@ public class MarketingApi {
 
     /**
      * Publishes a post NOW, synchronously, whatever its schedule. (asynchronously)
-     * Publishes a post NOW, synchronously, whatever its schedule. No social connector is wired today, so every channel answers an honest 501 naming the seam a real one would plug into, and the post is recorded failed with that exact reason — never a faked \&quot;published\&quot;.
+     * Publishes a post NOW, synchronously, whatever its schedule. No social connector is wired today, so every channel answers an honest 501 naming the client a real one would plug into, and the post is recorded failed with that exact reason — never a faked \&quot;published\&quot;.
      * @param id ID is the post id from the path, as returned by create. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call

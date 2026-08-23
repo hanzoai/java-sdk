@@ -620,6 +620,155 @@ public class GraphApi {
         return localVarCall;
     }
     /**
+     * Build call for graphSearch
+     * @param q Q is what to look for: words, matched as prefixes, all of them required. Punctuation is text here rather than syntax, so an entity key searches as itself. (optional)
+     * @param relation Relation narrows to one relation. Absent matches every relation. (optional)
+     * @param asOf AsOf bounds the search to what was knowable at an instant, RFC 3339. Absent searches everything this plane holds. (optional)
+     * @param limit Limit caps how many assertions come back. Absent, zero, or anything above the walk ceiling is the ceiling. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call graphSearchCall(@javax.annotation.Nullable String q, @javax.annotation.Nullable String relation, @javax.annotation.Nullable String asOf, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/graph/search";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (q != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("q", q));
+        }
+
+        if (relation != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("relation", relation));
+        }
+
+        if (asOf != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("as_of", asOf));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call graphSearchValidateBeforeCall(@javax.annotation.Nullable String q, @javax.annotation.Nullable String relation, @javax.annotation.Nullable String asOf, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+        return graphSearchCall(q, relation, asOf, limit, _callback);
+
+    }
+
+    /**
+     * Find assertions by their text rather than by an entity key
+     * Finds assertions by their text where read finds them by their keys.  It is the READ with one more term, not a second way to leave the store: same order, same ceiling, same tenancy, and searching composes with narrowing by relation and by instant because all of them are terms of one filter.  It resolves nothing. What matches is what was asserted, including claims that were later corrected — which is the honest answer to \&quot;where is this mentioned\&quot; and the reason the caller then asks resolve about what it found.
+     * @param q Q is what to look for: words, matched as prefixes, all of them required. Punctuation is text here rather than syntax, so an entity key searches as itself. (optional)
+     * @param relation Relation narrows to one relation. Absent matches every relation. (optional)
+     * @param asOf AsOf bounds the search to what was knowable at an instant, RFC 3339. Absent searches everything this plane holds. (optional)
+     * @param limit Limit caps how many assertions come back. Absent, zero, or anything above the walk ceiling is the ceiling. (optional)
+     * @return GraphReadOut
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public GraphReadOut graphSearch(@javax.annotation.Nullable String q, @javax.annotation.Nullable String relation, @javax.annotation.Nullable String asOf, @javax.annotation.Nullable Integer limit) throws ApiException {
+        ApiResponse<GraphReadOut> localVarResp = graphSearchWithHttpInfo(q, relation, asOf, limit);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Find assertions by their text rather than by an entity key
+     * Finds assertions by their text where read finds them by their keys.  It is the READ with one more term, not a second way to leave the store: same order, same ceiling, same tenancy, and searching composes with narrowing by relation and by instant because all of them are terms of one filter.  It resolves nothing. What matches is what was asserted, including claims that were later corrected — which is the honest answer to \&quot;where is this mentioned\&quot; and the reason the caller then asks resolve about what it found.
+     * @param q Q is what to look for: words, matched as prefixes, all of them required. Punctuation is text here rather than syntax, so an entity key searches as itself. (optional)
+     * @param relation Relation narrows to one relation. Absent matches every relation. (optional)
+     * @param asOf AsOf bounds the search to what was knowable at an instant, RFC 3339. Absent searches everything this plane holds. (optional)
+     * @param limit Limit caps how many assertions come back. Absent, zero, or anything above the walk ceiling is the ceiling. (optional)
+     * @return ApiResponse&lt;GraphReadOut&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GraphReadOut> graphSearchWithHttpInfo(@javax.annotation.Nullable String q, @javax.annotation.Nullable String relation, @javax.annotation.Nullable String asOf, @javax.annotation.Nullable Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = graphSearchValidateBeforeCall(q, relation, asOf, limit, null);
+        Type localVarReturnType = new TypeToken<GraphReadOut>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Find assertions by their text rather than by an entity key (asynchronously)
+     * Finds assertions by their text where read finds them by their keys.  It is the READ with one more term, not a second way to leave the store: same order, same ceiling, same tenancy, and searching composes with narrowing by relation and by instant because all of them are terms of one filter.  It resolves nothing. What matches is what was asserted, including claims that were later corrected — which is the honest answer to \&quot;where is this mentioned\&quot; and the reason the caller then asks resolve about what it found.
+     * @param q Q is what to look for: words, matched as prefixes, all of them required. Punctuation is text here rather than syntax, so an entity key searches as itself. (optional)
+     * @param relation Relation narrows to one relation. Absent matches every relation. (optional)
+     * @param asOf AsOf bounds the search to what was knowable at an instant, RFC 3339. Absent searches everything this plane holds. (optional)
+     * @param limit Limit caps how many assertions come back. Absent, zero, or anything above the walk ceiling is the ceiling. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call graphSearchAsync(@javax.annotation.Nullable String q, @javax.annotation.Nullable String relation, @javax.annotation.Nullable String asOf, @javax.annotation.Nullable Integer limit, final ApiCallback<GraphReadOut> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = graphSearchValidateBeforeCall(q, relation, asOf, limit, _callback);
+        Type localVarReturnType = new TypeToken<GraphReadOut>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for graphVocabulary
      * @param _callback Callback for upload/download progress
      * @return Call to execute

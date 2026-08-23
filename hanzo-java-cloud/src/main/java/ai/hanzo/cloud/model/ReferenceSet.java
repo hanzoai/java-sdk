@@ -184,7 +184,7 @@ public class ReferenceSet {
   }
 
   /**
-   * Kind is how the baseline comes to exist: fetch (downloaded from a publisher), local (computed here), attest (held by the component that screens against it, freshness reported), or seam (declared and NOT held, because the source needs a licence we do not have).
+   * Kind is how the baseline comes to exist: fetch (downloaded from a publisher), local (computed here), attest (held by the component that screens against it, freshness reported), or client (declared and NOT held, because the source needs a licence we do not have).
    * @return kind
    */
   @javax.annotation.Nullable
