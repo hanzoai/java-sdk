@@ -35,6 +35,7 @@ import ai.hanzo.cloud.model.ArgoRevisionMetadata;
 import ai.hanzo.cloud.model.ArgoSyncWindows;
 import ai.hanzo.cloud.model.ArgoTree;
 import ai.hanzo.cloud.model.ConsoleSettings;
+import ai.hanzo.cloud.model.DeployHealth;
 import ai.hanzo.cloud.model.GitOpsPlane;
 import ai.hanzo.cloud.model.SessionUser;
 import ai.hanzo.cloud.model.VersionMessage;
@@ -1044,6 +1045,13 @@ public class DeployApi {
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> service unavailable </td><td>  -  </td></tr>
+     </table>
      */
     public okhttp3.Call getDeployHealthCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -1071,6 +1079,7 @@ public class DeployApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1095,36 +1104,61 @@ public class DeployApi {
     }
 
     /**
-     * Whether this control plane can actually reach the cluster it deploys to
-     * Reports the plane&#39;s real reachability: 200 only when the Kubernetes API server answers AND the App CRD is served, 503 with the same body shape otherwise, so a caller reads the same &#x60;k8s&#x60; and &#x60;crd&#x60; booleans either way rather than parsing an error envelope. It is a genuine dependency probe, not a process liveness ping — a running plane with no cluster behind it reports degraded.  This is the ONE unauthenticated route that reports state, because liveness must be probe-able without a JWT. It therefore discloses booleans only: the underlying failure — the API server address, an RBAC refusal — is logged server-side and never put on the wire.
+     * Health reports whether this deployment can observe the delivery plane.
+     * Health reports whether this deployment can observe the delivery plane.  200 only when the Kubernetes API answers AND the App custom resource is served; 503 with the same shape otherwise, naming which half failed. It reports BOOLEANS and never the underlying error, because the route is unauthenticated — liveness must be probe-able without a token — and a raw client error can disclose the apiserver address or an RBAC detail. That detail is logged server-side instead.
+     * @return DeployHealth
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> service unavailable </td><td>  -  </td></tr>
+     </table>
      */
-    public void getDeployHealth() throws ApiException {
-        getDeployHealthWithHttpInfo();
+    public DeployHealth getDeployHealth() throws ApiException {
+        ApiResponse<DeployHealth> localVarResp = getDeployHealthWithHttpInfo();
+        return localVarResp.getData();
     }
 
     /**
-     * Whether this control plane can actually reach the cluster it deploys to
-     * Reports the plane&#39;s real reachability: 200 only when the Kubernetes API server answers AND the App CRD is served, 503 with the same body shape otherwise, so a caller reads the same &#x60;k8s&#x60; and &#x60;crd&#x60; booleans either way rather than parsing an error envelope. It is a genuine dependency probe, not a process liveness ping — a running plane with no cluster behind it reports degraded.  This is the ONE unauthenticated route that reports state, because liveness must be probe-able without a JWT. It therefore discloses booleans only: the underlying failure — the API server address, an RBAC refusal — is logged server-side and never put on the wire.
-     * @return ApiResponse&lt;Void&gt;
+     * Health reports whether this deployment can observe the delivery plane.
+     * Health reports whether this deployment can observe the delivery plane.  200 only when the Kubernetes API answers AND the App custom resource is served; 503 with the same shape otherwise, naming which half failed. It reports BOOLEANS and never the underlying error, because the route is unauthenticated — liveness must be probe-able without a token — and a raw client error can disclose the apiserver address or an RBAC detail. That detail is logged server-side instead.
+     * @return ApiResponse&lt;DeployHealth&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> service unavailable </td><td>  -  </td></tr>
+     </table>
      */
-    public ApiResponse<Void> getDeployHealthWithHttpInfo() throws ApiException {
+    public ApiResponse<DeployHealth> getDeployHealthWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getDeployHealthValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<DeployHealth>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Whether this control plane can actually reach the cluster it deploys to (asynchronously)
-     * Reports the plane&#39;s real reachability: 200 only when the Kubernetes API server answers AND the App CRD is served, 503 with the same body shape otherwise, so a caller reads the same &#x60;k8s&#x60; and &#x60;crd&#x60; booleans either way rather than parsing an error envelope. It is a genuine dependency probe, not a process liveness ping — a running plane with no cluster behind it reports degraded.  This is the ONE unauthenticated route that reports state, because liveness must be probe-able without a JWT. It therefore discloses booleans only: the underlying failure — the API server address, an RBAC refusal — is logged server-side and never put on the wire.
+     * Health reports whether this deployment can observe the delivery plane. (asynchronously)
+     * Health reports whether this deployment can observe the delivery plane.  200 only when the Kubernetes API answers AND the App custom resource is served; 503 with the same shape otherwise, naming which half failed. It reports BOOLEANS and never the underlying error, because the route is unauthenticated — liveness must be probe-able without a token — and a raw client error can disclose the apiserver address or an RBAC detail. That detail is logged server-side instead.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 503 </td><td> service unavailable </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call getDeployHealthAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getDeployHealthAsync(final ApiCallback<DeployHealth> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getDeployHealthValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<DeployHealth>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -1933,7 +1967,7 @@ public class DeployApi {
 
     /**
      * The console&#39;s rollback control — today it requests a reconcile, nothing more
-     * Performs exactly what the sync action performs: it stamps the sync-requested timestamp onto the application&#39;s App CR and answers the application re-projected. It does NOT select, pin or revert to a prior image tag, and that is the one thing to know before wiring anything to it — the name is the console&#39;s, the behaviour is the sync. Pinning a previous release rides the release seam, which this address does not call yet.  SuperAdmin-only and fail-closed, reading no request body, with an unknown application name a 404 and no cluster client a 503 — the same gate and the same failures as the sync it shares a handler with.
+     * Performs exactly what the sync action performs: it stamps the sync-requested timestamp onto the application&#39;s App CR and answers the application re-projected. It does NOT select, pin or revert to a prior image tag, and that is the one thing to know before wiring anything to it — the name is the console&#39;s, the behaviour is the sync. Pinning a previous release rides the release client, which this address does not call yet.  SuperAdmin-only and fail-closed, reading no request body, with an unknown application name a 404 and no cluster client a 503 — the same gate and the same failures as the sync it shares a handler with.
      * @param name  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -1943,7 +1977,7 @@ public class DeployApi {
 
     /**
      * The console&#39;s rollback control — today it requests a reconcile, nothing more
-     * Performs exactly what the sync action performs: it stamps the sync-requested timestamp onto the application&#39;s App CR and answers the application re-projected. It does NOT select, pin or revert to a prior image tag, and that is the one thing to know before wiring anything to it — the name is the console&#39;s, the behaviour is the sync. Pinning a previous release rides the release seam, which this address does not call yet.  SuperAdmin-only and fail-closed, reading no request body, with an unknown application name a 404 and no cluster client a 503 — the same gate and the same failures as the sync it shares a handler with.
+     * Performs exactly what the sync action performs: it stamps the sync-requested timestamp onto the application&#39;s App CR and answers the application re-projected. It does NOT select, pin or revert to a prior image tag, and that is the one thing to know before wiring anything to it — the name is the console&#39;s, the behaviour is the sync. Pinning a previous release rides the release client, which this address does not call yet.  SuperAdmin-only and fail-closed, reading no request body, with an unknown application name a 404 and no cluster client a 503 — the same gate and the same failures as the sync it shares a handler with.
      * @param name  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1955,7 +1989,7 @@ public class DeployApi {
 
     /**
      * The console&#39;s rollback control — today it requests a reconcile, nothing more (asynchronously)
-     * Performs exactly what the sync action performs: it stamps the sync-requested timestamp onto the application&#39;s App CR and answers the application re-projected. It does NOT select, pin or revert to a prior image tag, and that is the one thing to know before wiring anything to it — the name is the console&#39;s, the behaviour is the sync. Pinning a previous release rides the release seam, which this address does not call yet.  SuperAdmin-only and fail-closed, reading no request body, with an unknown application name a 404 and no cluster client a 503 — the same gate and the same failures as the sync it shares a handler with.
+     * Performs exactly what the sync action performs: it stamps the sync-requested timestamp onto the application&#39;s App CR and answers the application re-projected. It does NOT select, pin or revert to a prior image tag, and that is the one thing to know before wiring anything to it — the name is the console&#39;s, the behaviour is the sync. Pinning a previous release rides the release client, which this address does not call yet.  SuperAdmin-only and fail-closed, reading no request body, with an unknown application name a 404 and no cluster client a 503 — the same gate and the same failures as the sync it shares a handler with.
      * @param name  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call

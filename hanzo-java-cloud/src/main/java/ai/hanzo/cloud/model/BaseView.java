@@ -46,58 +46,82 @@ import java.util.Set;
 import ai.hanzo.cloud.JSON;
 
 /**
- * Listing
+ * BaseView
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
-public class Listing {
-  public static final String SERIALIZED_NAME_LAST_MODIFIED = "lastModified";
-  @SerializedName(SERIALIZED_NAME_LAST_MODIFIED)
+public class BaseView {
+  public static final String SERIALIZED_NAME_BYTES = "bytes";
+  @SerializedName(SERIALIZED_NAME_BYTES)
   @javax.annotation.Nullable
-  private String lastModified;
+  private Integer bytes;
 
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
+  public static final String SERIALIZED_NAME_EXISTS = "exists";
+  @SerializedName(SERIALIZED_NAME_EXISTS)
   @javax.annotation.Nullable
-  private String name;
+  private Boolean exists;
 
-  public Listing() {
+  public static final String SERIALIZED_NAME_ORG = "org";
+  @SerializedName(SERIALIZED_NAME_ORG)
+  @javax.annotation.Nullable
+  private String org;
+
+  public BaseView() {
   }
 
-  public Listing lastModified(@javax.annotation.Nullable String lastModified) {
-    this.lastModified = lastModified;
+  public BaseView bytes(@javax.annotation.Nullable Integer bytes) {
+    this.bytes = bytes;
     return this;
   }
 
   /**
-   * Get lastModified
-   * @return lastModified
+   * Bytes is the store&#39;s size on disk, present only once it exists. It is what this Base occupies, not a quota.
+   * @return bytes
    */
   @javax.annotation.Nullable
-  public String getLastModified() {
-    return lastModified;
+  public Integer getBytes() {
+    return bytes;
   }
 
-  public void setLastModified(@javax.annotation.Nullable String lastModified) {
-    this.lastModified = lastModified;
+  public void setBytes(@javax.annotation.Nullable Integer bytes) {
+    this.bytes = bytes;
   }
 
 
-  public Listing name(@javax.annotation.Nullable String name) {
-    this.name = name;
+  public BaseView exists(@javax.annotation.Nullable Boolean exists) {
+    this.exists = exists;
     return this;
   }
 
   /**
-   * Get name
-   * @return name
+   * Exists reports whether this Base&#39;s store has been provisioned. False is an org nobody has stored anything for yet, which is a state to name rather than an error: the store is created the first time anything writes.
+   * @return exists
    */
   @javax.annotation.Nullable
-  public String getName() {
-    return name;
+  public Boolean getExists() {
+    return exists;
   }
 
-  public void setName(@javax.annotation.Nullable String name) {
-    this.name = name;
+  public void setExists(@javax.annotation.Nullable Boolean exists) {
+    this.exists = exists;
+  }
+
+
+  public BaseView org(@javax.annotation.Nullable String org) {
+    this.org = org;
+    return this;
+  }
+
+  /**
+   * Org is the org this Base belongs to. It is the address every other Base call is scoped by, and a Base has no name of its own.
+   * @return org
+   */
+  @javax.annotation.Nullable
+  public String getOrg() {
+    return org;
+  }
+
+  public void setOrg(@javax.annotation.Nullable String org) {
+    this.org = org;
   }
 
 
@@ -110,22 +134,24 @@ public class Listing {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Listing listing = (Listing) o;
-    return Objects.equals(this.lastModified, listing.lastModified) &&
-        Objects.equals(this.name, listing.name);
+    BaseView baseView = (BaseView) o;
+    return Objects.equals(this.bytes, baseView.bytes) &&
+        Objects.equals(this.exists, baseView.exists) &&
+        Objects.equals(this.org, baseView.org);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(lastModified, name);
+    return Objects.hash(bytes, exists, org);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Listing {\n");
-    sb.append("    lastModified: ").append(toIndentedString(lastModified)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("class BaseView {\n");
+    sb.append("    bytes: ").append(toIndentedString(bytes)).append("\n");
+    sb.append("    exists: ").append(toIndentedString(exists)).append("\n");
+    sb.append("    org: ").append(toIndentedString(org)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -147,7 +173,7 @@ public class Listing {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("lastModified", "name"));
+    openapiFields = new HashSet<String>(Arrays.asList("bytes", "exists", "org"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -157,28 +183,25 @@ public class Listing {
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to Listing
+   * @throws IOException if the JSON Element is invalid with respect to BaseView
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!Listing.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in Listing is not found in the empty JSON string", Listing.openapiRequiredFields.toString()));
+        if (!BaseView.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in BaseView is not found in the empty JSON string", BaseView.openapiRequiredFields.toString()));
         }
       }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!Listing.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Listing` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!BaseView.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `BaseView` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("lastModified") != null && !jsonObj.get("lastModified").isJsonNull()) && !jsonObj.get("lastModified").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `lastModified` to be a primitive type in the JSON string but got `%s`", jsonObj.get("lastModified").toString()));
-      }
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      if ((jsonObj.get("org") != null && !jsonObj.get("org").isJsonNull()) && !jsonObj.get("org").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `org` to be a primitive type in the JSON string but got `%s`", jsonObj.get("org").toString()));
       }
   }
 
@@ -186,22 +209,22 @@ public class Listing {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!Listing.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'Listing' and its subtypes
+       if (!BaseView.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'BaseView' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<Listing> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(Listing.class));
+       final TypeAdapter<BaseView> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(BaseView.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<Listing>() {
+       return (TypeAdapter<T>) new TypeAdapter<BaseView>() {
            @Override
-           public void write(JsonWriter out, Listing value) throws IOException {
+           public void write(JsonWriter out, BaseView value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public Listing read(JsonReader in) throws IOException {
+           public BaseView read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -212,18 +235,18 @@ public class Listing {
   }
 
   /**
-   * Create an instance of Listing given an JSON string
+   * Create an instance of BaseView given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of Listing
-   * @throws IOException if the JSON string is invalid with respect to Listing
+   * @return An instance of BaseView
+   * @throws IOException if the JSON string is invalid with respect to BaseView
    */
-  public static Listing fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, Listing.class);
+  public static BaseView fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, BaseView.class);
   }
 
   /**
-   * Convert an instance of Listing to an JSON string
+   * Convert an instance of BaseView to an JSON string
    *
    * @return JSON string
    */

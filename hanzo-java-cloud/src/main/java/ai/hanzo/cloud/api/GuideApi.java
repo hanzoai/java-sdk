@@ -1611,10 +1611,16 @@ public class GuideApi {
     }
     /**
      * Build call for postGuideStepsByIdDone
-     * @param id  (required)
+     * @param id ID is the step&#39;s id, as it appears in the journey (e.g. \&quot;gsuite\&quot;). (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
     public okhttp3.Call postGuideStepsByIdDoneCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -1643,6 +1649,7 @@ public class GuideApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1672,39 +1679,61 @@ public class GuideApi {
     }
 
     /**
-     * Mark a step of your org&#39;s journey finished
-     * Moves one step of the caller org&#39;s journey to done and answers the whole refreshed journey, which is what unblocks everything downstream of it.  Dependency-GATED like start: finishing a step whose prerequisites are themselves unfinished is 409 carrying &#x60;{error, step, blockedBy}&#x60; naming what is in the way, not a silent success. A step id the org&#39;s active journey does not contain is 404. Skipping is the ungated alternative — a founder declaring a step does not apply — and it lives at /skip.  Requires a validated org; 403 without one. The mark is recorded as &#x60;manual&#x60;, and /reset returns the step to todo.
-     * @param id  (required)
+     * Marks one step of the caller org&#39;s journey complete and returns the refreshed journey.
+     * Marks one step of the caller org&#39;s journey complete and returns the refreshed journey.  Dependency-GATED, exactly as start is: a step whose prerequisites are unfinished is refused 409 carrying {error, step, blockedBy} naming what is in the way.
+     * @param id ID is the step&#39;s id, as it appears in the journey (e.g. \&quot;gsuite\&quot;). (required)
+     * @return OverviewView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public void postGuideStepsByIdDone(@javax.annotation.Nonnull String id) throws ApiException {
-        postGuideStepsByIdDoneWithHttpInfo(id);
+    public OverviewView postGuideStepsByIdDone(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<OverviewView> localVarResp = postGuideStepsByIdDoneWithHttpInfo(id);
+        return localVarResp.getData();
     }
 
     /**
-     * Mark a step of your org&#39;s journey finished
-     * Moves one step of the caller org&#39;s journey to done and answers the whole refreshed journey, which is what unblocks everything downstream of it.  Dependency-GATED like start: finishing a step whose prerequisites are themselves unfinished is 409 carrying &#x60;{error, step, blockedBy}&#x60; naming what is in the way, not a silent success. A step id the org&#39;s active journey does not contain is 404. Skipping is the ungated alternative — a founder declaring a step does not apply — and it lives at /skip.  Requires a validated org; 403 without one. The mark is recorded as &#x60;manual&#x60;, and /reset returns the step to todo.
-     * @param id  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * Marks one step of the caller org&#39;s journey complete and returns the refreshed journey.
+     * Marks one step of the caller org&#39;s journey complete and returns the refreshed journey.  Dependency-GATED, exactly as start is: a step whose prerequisites are unfinished is refused 409 carrying {error, step, blockedBy} naming what is in the way.
+     * @param id ID is the step&#39;s id, as it appears in the journey (e.g. \&quot;gsuite\&quot;). (required)
+     * @return ApiResponse&lt;OverviewView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public ApiResponse<Void> postGuideStepsByIdDoneWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<OverviewView> postGuideStepsByIdDoneWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = postGuideStepsByIdDoneValidateBeforeCall(id, null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<OverviewView>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Mark a step of your org&#39;s journey finished (asynchronously)
-     * Moves one step of the caller org&#39;s journey to done and answers the whole refreshed journey, which is what unblocks everything downstream of it.  Dependency-GATED like start: finishing a step whose prerequisites are themselves unfinished is 409 carrying &#x60;{error, step, blockedBy}&#x60; naming what is in the way, not a silent success. A step id the org&#39;s active journey does not contain is 404. Skipping is the ungated alternative — a founder declaring a step does not apply — and it lives at /skip.  Requires a validated org; 403 without one. The mark is recorded as &#x60;manual&#x60;, and /reset returns the step to todo.
-     * @param id  (required)
+     * Marks one step of the caller org&#39;s journey complete and returns the refreshed journey. (asynchronously)
+     * Marks one step of the caller org&#39;s journey complete and returns the refreshed journey.  Dependency-GATED, exactly as start is: a step whose prerequisites are unfinished is refused 409 carrying {error, step, blockedBy} naming what is in the way.
+     * @param id ID is the step&#39;s id, as it appears in the journey (e.g. \&quot;gsuite\&quot;). (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call postGuideStepsByIdDoneAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postGuideStepsByIdDoneAsync(@javax.annotation.Nonnull String id, final ApiCallback<OverviewView> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postGuideStepsByIdDoneValidateBeforeCall(id, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<OverviewView>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -1963,10 +1992,16 @@ public class GuideApi {
     }
     /**
      * Build call for postGuideStepsByIdStart
-     * @param id  (required)
+     * @param id ID is the step&#39;s id, as it appears in the journey (e.g. \&quot;gsuite\&quot;). (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
     public okhttp3.Call postGuideStepsByIdStartCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -1995,6 +2030,7 @@ public class GuideApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2024,39 +2060,61 @@ public class GuideApi {
     }
 
     /**
-     * Mark a step of your org&#39;s journey started
-     * Moves one step of the caller org&#39;s journey to in-progress and answers the whole refreshed journey, so a console needs no second read.  The transition is dependency-GATED, and that is why the answer set is wider than a success: a step whose prerequisites are unfinished is 409 carrying &#x60;{error, step, blockedBy}&#x60;, where &#x60;blockedBy&#x60; names the exact steps in the way — enough to render the blockage rather than merely report it. A step id the org&#39;s active journey does not contain is 404.  Requires a validated org; 403 without one, and the journey read and written is that org&#39;s alone. The mark is recorded as &#x60;manual&#x60;, and the journey is reconciled against the auto-detectors on every read, so a step the org has demonstrably completed elsewhere can still be moved to done underneath it.
-     * @param id  (required)
+     * Marks one step of the caller org&#39;s journey in progress and returns the refreshed journey.
+     * Marks one step of the caller org&#39;s journey in progress and returns the refreshed journey.  Dependency-GATED: a step whose prerequisites are unfinished is refused 409 carrying {error, step, blockedBy}, where blockedBy names the exact steps in the way — enough to render the reason without asking again.
+     * @param id ID is the step&#39;s id, as it appears in the journey (e.g. \&quot;gsuite\&quot;). (required)
+     * @return OverviewView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public void postGuideStepsByIdStart(@javax.annotation.Nonnull String id) throws ApiException {
-        postGuideStepsByIdStartWithHttpInfo(id);
+    public OverviewView postGuideStepsByIdStart(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<OverviewView> localVarResp = postGuideStepsByIdStartWithHttpInfo(id);
+        return localVarResp.getData();
     }
 
     /**
-     * Mark a step of your org&#39;s journey started
-     * Moves one step of the caller org&#39;s journey to in-progress and answers the whole refreshed journey, so a console needs no second read.  The transition is dependency-GATED, and that is why the answer set is wider than a success: a step whose prerequisites are unfinished is 409 carrying &#x60;{error, step, blockedBy}&#x60;, where &#x60;blockedBy&#x60; names the exact steps in the way — enough to render the blockage rather than merely report it. A step id the org&#39;s active journey does not contain is 404.  Requires a validated org; 403 without one, and the journey read and written is that org&#39;s alone. The mark is recorded as &#x60;manual&#x60;, and the journey is reconciled against the auto-detectors on every read, so a step the org has demonstrably completed elsewhere can still be moved to done underneath it.
-     * @param id  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * Marks one step of the caller org&#39;s journey in progress and returns the refreshed journey.
+     * Marks one step of the caller org&#39;s journey in progress and returns the refreshed journey.  Dependency-GATED: a step whose prerequisites are unfinished is refused 409 carrying {error, step, blockedBy}, where blockedBy names the exact steps in the way — enough to render the reason without asking again.
+     * @param id ID is the step&#39;s id, as it appears in the journey (e.g. \&quot;gsuite\&quot;). (required)
+     * @return ApiResponse&lt;OverviewView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public ApiResponse<Void> postGuideStepsByIdStartWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<OverviewView> postGuideStepsByIdStartWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = postGuideStepsByIdStartValidateBeforeCall(id, null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<OverviewView>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Mark a step of your org&#39;s journey started (asynchronously)
-     * Moves one step of the caller org&#39;s journey to in-progress and answers the whole refreshed journey, so a console needs no second read.  The transition is dependency-GATED, and that is why the answer set is wider than a success: a step whose prerequisites are unfinished is 409 carrying &#x60;{error, step, blockedBy}&#x60;, where &#x60;blockedBy&#x60; names the exact steps in the way — enough to render the blockage rather than merely report it. A step id the org&#39;s active journey does not contain is 404.  Requires a validated org; 403 without one, and the journey read and written is that org&#39;s alone. The mark is recorded as &#x60;manual&#x60;, and the journey is reconciled against the auto-detectors on every read, so a step the org has demonstrably completed elsewhere can still be moved to done underneath it.
-     * @param id  (required)
+     * Marks one step of the caller org&#39;s journey in progress and returns the refreshed journey. (asynchronously)
+     * Marks one step of the caller org&#39;s journey in progress and returns the refreshed journey.  Dependency-GATED: a step whose prerequisites are unfinished is refused 409 carrying {error, step, blockedBy}, where blockedBy names the exact steps in the way — enough to render the reason without asking again.
+     * @param id ID is the step&#39;s id, as it appears in the journey (e.g. \&quot;gsuite\&quot;). (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call postGuideStepsByIdStartAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postGuideStepsByIdStartAsync(@javax.annotation.Nonnull String id, final ApiCallback<OverviewView> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postGuideStepsByIdStartValidateBeforeCall(id, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<OverviewView>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**

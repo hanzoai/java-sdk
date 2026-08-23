@@ -28,6 +28,7 @@ import java.io.IOException;
 
 
 import ai.hanzo.cloud.model.BaseHealth;
+import ai.hanzo.cloud.model.BaseView;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -72,6 +73,250 @@ public class BaseApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
+    /**
+     * Build call for getBaseBases
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getBaseBasesCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/base/bases";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getBaseBasesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getBaseBasesCall(_callback);
+
+    }
+
+    /**
+     * Lists every Base the caller can reach, one per org their token carries.
+     * Lists every Base the caller can reach, one per org their token carries.  The orgs come from IAM&#39;s signed membership set, so the list is exactly the orgs the caller is a member of and cannot be widened by asking. It is the account-wide view: a Base is per org, so this is one entry per org and there is nothing to page.  A caller with no membership set — a machine credential, an API key — reaches no Base and receives an empty list rather than a refusal, because holding no membership is an answer and not a failure.
+     * @return List&lt;BaseView&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public List<BaseView> getBaseBases() throws ApiException {
+        ApiResponse<List<BaseView>> localVarResp = getBaseBasesWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * Lists every Base the caller can reach, one per org their token carries.
+     * Lists every Base the caller can reach, one per org their token carries.  The orgs come from IAM&#39;s signed membership set, so the list is exactly the orgs the caller is a member of and cannot be widened by asking. It is the account-wide view: a Base is per org, so this is one entry per org and there is nothing to page.  A caller with no membership set — a machine credential, an API key — reaches no Base and receives an empty list rather than a refusal, because holding no membership is an answer and not a failure.
+     * @return ApiResponse&lt;List&lt;BaseView&gt;&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<List<BaseView>> getBaseBasesWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getBaseBasesValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<List<BaseView>>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Lists every Base the caller can reach, one per org their token carries. (asynchronously)
+     * Lists every Base the caller can reach, one per org their token carries.  The orgs come from IAM&#39;s signed membership set, so the list is exactly the orgs the caller is a member of and cannot be widened by asking. It is the account-wide view: a Base is per org, so this is one entry per org and there is nothing to page.  A caller with no membership set — a machine credential, an API key — reaches no Base and receives an empty list rather than a refusal, because holding no membership is an answer and not a failure.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getBaseBasesAsync(final ApiCallback<List<BaseView>> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getBaseBasesValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<List<BaseView>>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getBaseBasesByOrg
+     * @param org Org is the org whose Base to describe, from the path. An org the caller&#39;s token does not carry is not found — the same answer a nonexistent one gets, so the listing cannot be used to discover which orgs exist. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getBaseBasesByOrgCall(@javax.annotation.Nonnull String org, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/base/bases/{org}"
+            .replace("{" + "org" + "}", localVarApiClient.escapeString(org.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getBaseBasesByOrgValidateBeforeCall(@javax.annotation.Nonnull String org, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'org' is set
+        if (org == null) {
+            throw new ApiException("Missing the required parameter 'org' when calling getBaseBasesByOrg(Async)");
+        }
+
+        return getBaseBasesByOrgCall(org, _callback);
+
+    }
+
+    /**
+     * Describes ONE org&#39;s Base — whether its store exists, and what it occupies.
+     * Describes ONE org&#39;s Base — whether its store exists, and what it occupies.  The org must be one the caller&#39;s token carries; any other is not found, so this cannot be used to learn which orgs exist. That check is the same membership set the listing is built from, which is why the two can never disagree about what a caller may see.
+     * @param org Org is the org whose Base to describe, from the path. An org the caller&#39;s token does not carry is not found — the same answer a nonexistent one gets, so the listing cannot be used to discover which orgs exist. (required)
+     * @return BaseView
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public BaseView getBaseBasesByOrg(@javax.annotation.Nonnull String org) throws ApiException {
+        ApiResponse<BaseView> localVarResp = getBaseBasesByOrgWithHttpInfo(org);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Describes ONE org&#39;s Base — whether its store exists, and what it occupies.
+     * Describes ONE org&#39;s Base — whether its store exists, and what it occupies.  The org must be one the caller&#39;s token carries; any other is not found, so this cannot be used to learn which orgs exist. That check is the same membership set the listing is built from, which is why the two can never disagree about what a caller may see.
+     * @param org Org is the org whose Base to describe, from the path. An org the caller&#39;s token does not carry is not found — the same answer a nonexistent one gets, so the listing cannot be used to discover which orgs exist. (required)
+     * @return ApiResponse&lt;BaseView&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<BaseView> getBaseBasesByOrgWithHttpInfo(@javax.annotation.Nonnull String org) throws ApiException {
+        okhttp3.Call localVarCall = getBaseBasesByOrgValidateBeforeCall(org, null);
+        Type localVarReturnType = new TypeToken<BaseView>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Describes ONE org&#39;s Base — whether its store exists, and what it occupies. (asynchronously)
+     * Describes ONE org&#39;s Base — whether its store exists, and what it occupies.  The org must be one the caller&#39;s token carries; any other is not found, so this cannot be used to learn which orgs exist. That check is the same membership set the listing is built from, which is why the two can never disagree about what a caller may see.
+     * @param org Org is the org whose Base to describe, from the path. An org the caller&#39;s token does not carry is not found — the same answer a nonexistent one gets, so the listing cannot be used to discover which orgs exist. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getBaseBasesByOrgAsync(@javax.annotation.Nonnull String org, final ApiCallback<BaseView> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getBaseBasesByOrgValidateBeforeCall(org, _callback);
+        Type localVarReturnType = new TypeToken<BaseView>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
     /**
      * Build call for getBaseHealth
      * @param _callback Callback for upload/download progress

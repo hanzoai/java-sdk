@@ -45,6 +45,7 @@ import ai.hanzo.cloud.model.ProjectsPublish;
 import ai.hanzo.cloud.model.ProjectsRelease;
 import ai.hanzo.cloud.model.ProjectsSite;
 import ai.hanzo.cloud.model.ProjectsSiteDeploy;
+import ai.hanzo.cloud.model.ProjectsStar;
 import ai.hanzo.cloud.model.ProjectsUpdate;
 import ai.hanzo.cloud.model.TagConfig;
 
@@ -343,6 +344,133 @@ public class ProjectsApi {
 
         okhttp3.Call localVarCall = deleteProjectsBySlugDomainsByHostValidateBeforeCall(slug, host, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for deleteProjectsBySlugStar
+     * @param slug Slug is the project to act on, from the path. It is unique within the caller&#39;s org and nowhere else, so another tenant&#39;s slug is a 404. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteProjectsBySlugStarCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/projects/{slug}/star"
+            .replace("{" + "slug" + "}", localVarApiClient.escapeString(slug.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteProjectsBySlugStarValidateBeforeCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'slug' is set
+        if (slug == null) {
+            throw new ApiException("Missing the required parameter 'slug' when calling deleteProjectsBySlugStar(Async)");
+        }
+
+        return deleteProjectsBySlugStarCall(slug, _callback);
+
+    }
+
+    /**
+     * Removes the caller&#39;s own bookmark from a project, and answers whether it is starred afterwards.
+     * Removes the caller&#39;s own bookmark from a project, and answers whether it is starred afterwards.  It removes only YOUR star — the same one star wrote — so a project other people have starred stays on their lists. Unstarring one you had not starred is not an error; it leaves it unstarred.
+     * @param slug Slug is the project to act on, from the path. It is unique within the caller&#39;s org and nowhere else, so another tenant&#39;s slug is a 404. (required)
+     * @return ProjectsStar
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ProjectsStar deleteProjectsBySlugStar(@javax.annotation.Nonnull String slug) throws ApiException {
+        ApiResponse<ProjectsStar> localVarResp = deleteProjectsBySlugStarWithHttpInfo(slug);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Removes the caller&#39;s own bookmark from a project, and answers whether it is starred afterwards.
+     * Removes the caller&#39;s own bookmark from a project, and answers whether it is starred afterwards.  It removes only YOUR star — the same one star wrote — so a project other people have starred stays on their lists. Unstarring one you had not starred is not an error; it leaves it unstarred.
+     * @param slug Slug is the project to act on, from the path. It is unique within the caller&#39;s org and nowhere else, so another tenant&#39;s slug is a 404. (required)
+     * @return ApiResponse&lt;ProjectsStar&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ProjectsStar> deleteProjectsBySlugStarWithHttpInfo(@javax.annotation.Nonnull String slug) throws ApiException {
+        okhttp3.Call localVarCall = deleteProjectsBySlugStarValidateBeforeCall(slug, null);
+        Type localVarReturnType = new TypeToken<ProjectsStar>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Removes the caller&#39;s own bookmark from a project, and answers whether it is starred afterwards. (asynchronously)
+     * Removes the caller&#39;s own bookmark from a project, and answers whether it is starred afterwards.  It removes only YOUR star — the same one star wrote — so a project other people have starred stays on their lists. Unstarring one you had not starred is not an error; it leaves it unstarred.
+     * @param slug Slug is the project to act on, from the path. It is unique within the caller&#39;s org and nowhere else, so another tenant&#39;s slug is a 404. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteProjectsBySlugStarAsync(@javax.annotation.Nonnull String slug, final ApiCallback<ProjectsStar> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteProjectsBySlugStarValidateBeforeCall(slug, _callback);
+        Type localVarReturnType = new TypeToken<ProjectsStar>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -3557,6 +3685,133 @@ public class ProjectsApi {
 
         okhttp3.Call localVarCall = postProjectsSitesDeployValidateBeforeCall(projectsDeploySite, _callback);
         Type localVarReturnType = new TypeToken<ProjectsSiteDeploy>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for putProjectsBySlugStar
+     * @param slug Slug is the project to act on, from the path. It is unique within the caller&#39;s org and nowhere else, so another tenant&#39;s slug is a 404. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call putProjectsBySlugStarCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/projects/{slug}/star"
+            .replace("{" + "slug" + "}", localVarApiClient.escapeString(slug.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call putProjectsBySlugStarValidateBeforeCall(@javax.annotation.Nonnull String slug, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'slug' is set
+        if (slug == null) {
+            throw new ApiException("Missing the required parameter 'slug' when calling putProjectsBySlugStar(Async)");
+        }
+
+        return putProjectsBySlugStarCall(slug, _callback);
+
+    }
+
+    /**
+     * Bookmarks a project for the person calling, and answers whether it is starred afterwards.
+     * Bookmarks a project for the person calling, and answers whether it is starred afterwards.  The star is YOURS: it is keyed by you as well as by the project, so two people see two answers for the same one and starring it says nothing about anybody else&#39;s list. Starring a project you have already starred leaves it starred.
+     * @param slug Slug is the project to act on, from the path. It is unique within the caller&#39;s org and nowhere else, so another tenant&#39;s slug is a 404. (required)
+     * @return ProjectsStar
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ProjectsStar putProjectsBySlugStar(@javax.annotation.Nonnull String slug) throws ApiException {
+        ApiResponse<ProjectsStar> localVarResp = putProjectsBySlugStarWithHttpInfo(slug);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Bookmarks a project for the person calling, and answers whether it is starred afterwards.
+     * Bookmarks a project for the person calling, and answers whether it is starred afterwards.  The star is YOURS: it is keyed by you as well as by the project, so two people see two answers for the same one and starring it says nothing about anybody else&#39;s list. Starring a project you have already starred leaves it starred.
+     * @param slug Slug is the project to act on, from the path. It is unique within the caller&#39;s org and nowhere else, so another tenant&#39;s slug is a 404. (required)
+     * @return ApiResponse&lt;ProjectsStar&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ProjectsStar> putProjectsBySlugStarWithHttpInfo(@javax.annotation.Nonnull String slug) throws ApiException {
+        okhttp3.Call localVarCall = putProjectsBySlugStarValidateBeforeCall(slug, null);
+        Type localVarReturnType = new TypeToken<ProjectsStar>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Bookmarks a project for the person calling, and answers whether it is starred afterwards. (asynchronously)
+     * Bookmarks a project for the person calling, and answers whether it is starred afterwards.  The star is YOURS: it is keyed by you as well as by the project, so two people see two answers for the same one and starring it says nothing about anybody else&#39;s list. Starring a project you have already starred leaves it starred.
+     * @param slug Slug is the project to act on, from the path. It is unique within the caller&#39;s org and nowhere else, so another tenant&#39;s slug is a 404. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call putProjectsBySlugStarAsync(@javax.annotation.Nonnull String slug, final ApiCallback<ProjectsStar> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = putProjectsBySlugStarValidateBeforeCall(slug, _callback);
+        Type localVarReturnType = new TypeToken<ProjectsStar>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

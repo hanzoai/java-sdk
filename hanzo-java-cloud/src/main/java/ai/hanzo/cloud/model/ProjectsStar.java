@@ -46,58 +46,34 @@ import java.util.Set;
 import ai.hanzo.cloud.JSON;
 
 /**
- * Listing
+ * ProjectsStar
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
-public class Listing {
-  public static final String SERIALIZED_NAME_LAST_MODIFIED = "lastModified";
-  @SerializedName(SERIALIZED_NAME_LAST_MODIFIED)
+public class ProjectsStar {
+  public static final String SERIALIZED_NAME_STARRED = "starred";
+  @SerializedName(SERIALIZED_NAME_STARRED)
   @javax.annotation.Nullable
-  private String lastModified;
+  private Boolean starred;
 
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  @javax.annotation.Nullable
-  private String name;
-
-  public Listing() {
+  public ProjectsStar() {
   }
 
-  public Listing lastModified(@javax.annotation.Nullable String lastModified) {
-    this.lastModified = lastModified;
+  public ProjectsStar starred(@javax.annotation.Nullable Boolean starred) {
+    this.starred = starred;
     return this;
   }
 
   /**
-   * Get lastModified
-   * @return lastModified
+   * Starred is whether THIS caller has starred the project after the toggle — their own bookmark, not a property the project carries, so two people see two answers for one project.
+   * @return starred
    */
   @javax.annotation.Nullable
-  public String getLastModified() {
-    return lastModified;
+  public Boolean getStarred() {
+    return starred;
   }
 
-  public void setLastModified(@javax.annotation.Nullable String lastModified) {
-    this.lastModified = lastModified;
-  }
-
-
-  public Listing name(@javax.annotation.Nullable String name) {
-    this.name = name;
-    return this;
-  }
-
-  /**
-   * Get name
-   * @return name
-   */
-  @javax.annotation.Nullable
-  public String getName() {
-    return name;
-  }
-
-  public void setName(@javax.annotation.Nullable String name) {
-    this.name = name;
+  public void setStarred(@javax.annotation.Nullable Boolean starred) {
+    this.starred = starred;
   }
 
 
@@ -110,22 +86,20 @@ public class Listing {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Listing listing = (Listing) o;
-    return Objects.equals(this.lastModified, listing.lastModified) &&
-        Objects.equals(this.name, listing.name);
+    ProjectsStar projectsStar = (ProjectsStar) o;
+    return Objects.equals(this.starred, projectsStar.starred);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(lastModified, name);
+    return Objects.hash(starred);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Listing {\n");
-    sb.append("    lastModified: ").append(toIndentedString(lastModified)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("class ProjectsStar {\n");
+    sb.append("    starred: ").append(toIndentedString(starred)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -147,7 +121,7 @@ public class Listing {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("lastModified", "name"));
+    openapiFields = new HashSet<String>(Arrays.asList("starred"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -157,51 +131,45 @@ public class Listing {
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to Listing
+   * @throws IOException if the JSON Element is invalid with respect to ProjectsStar
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!Listing.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in Listing is not found in the empty JSON string", Listing.openapiRequiredFields.toString()));
+        if (!ProjectsStar.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in ProjectsStar is not found in the empty JSON string", ProjectsStar.openapiRequiredFields.toString()));
         }
       }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!Listing.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Listing` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!ProjectsStar.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ProjectsStar` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("lastModified") != null && !jsonObj.get("lastModified").isJsonNull()) && !jsonObj.get("lastModified").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `lastModified` to be a primitive type in the JSON string but got `%s`", jsonObj.get("lastModified").toString()));
-      }
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!Listing.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'Listing' and its subtypes
+       if (!ProjectsStar.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'ProjectsStar' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<Listing> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(Listing.class));
+       final TypeAdapter<ProjectsStar> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(ProjectsStar.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<Listing>() {
+       return (TypeAdapter<T>) new TypeAdapter<ProjectsStar>() {
            @Override
-           public void write(JsonWriter out, Listing value) throws IOException {
+           public void write(JsonWriter out, ProjectsStar value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public Listing read(JsonReader in) throws IOException {
+           public ProjectsStar read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -212,18 +180,18 @@ public class Listing {
   }
 
   /**
-   * Create an instance of Listing given an JSON string
+   * Create an instance of ProjectsStar given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of Listing
-   * @throws IOException if the JSON string is invalid with respect to Listing
+   * @return An instance of ProjectsStar
+   * @throws IOException if the JSON string is invalid with respect to ProjectsStar
    */
-  public static Listing fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, Listing.class);
+  public static ProjectsStar fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, ProjectsStar.class);
   }
 
   /**
-   * Convert an instance of Listing to an JSON string
+   * Convert an instance of ProjectsStar to an JSON string
    *
    * @return JSON string
    */

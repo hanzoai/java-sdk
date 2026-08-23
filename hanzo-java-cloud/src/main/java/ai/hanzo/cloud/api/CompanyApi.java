@@ -923,8 +923,8 @@ public class CompanyApi {
     }
 
     /**
-     * Renders the formation documents for the chosen structure and jurisdiction, ingests each into the org&#39;s data room, and submits the state filing through the filing seam.
-     * Renders the formation documents for the chosen structure and jurisdiction, ingests each into the org&#39;s data room, and submits the state filing through the filing seam.  With no filing partner wired the filing is recorded honestly as \&quot;manual\&quot; — no filing id is fabricated. Available only at the documents stage.
+     * Renders the formation documents for the chosen structure and jurisdiction, ingests each into the org&#39;s data room, and submits the state filing through the filing client.
+     * Renders the formation documents for the chosen structure and jurisdiction, ingests each into the org&#39;s data room, and submits the state filing through the filing client.  With no filing partner wired the filing is recorded honestly as \&quot;manual\&quot; — no filing id is fabricated. Available only at the documents stage.
      * @return FormationView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -940,8 +940,8 @@ public class CompanyApi {
     }
 
     /**
-     * Renders the formation documents for the chosen structure and jurisdiction, ingests each into the org&#39;s data room, and submits the state filing through the filing seam.
-     * Renders the formation documents for the chosen structure and jurisdiction, ingests each into the org&#39;s data room, and submits the state filing through the filing seam.  With no filing partner wired the filing is recorded honestly as \&quot;manual\&quot; — no filing id is fabricated. Available only at the documents stage.
+     * Renders the formation documents for the chosen structure and jurisdiction, ingests each into the org&#39;s data room, and submits the state filing through the filing client.
+     * Renders the formation documents for the chosen structure and jurisdiction, ingests each into the org&#39;s data room, and submits the state filing through the filing client.  With no filing partner wired the filing is recorded honestly as \&quot;manual\&quot; — no filing id is fabricated. Available only at the documents stage.
      * @return ApiResponse&lt;FormationView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -958,8 +958,8 @@ public class CompanyApi {
     }
 
     /**
-     * Renders the formation documents for the chosen structure and jurisdiction, ingests each into the org&#39;s data room, and submits the state filing through the filing seam. (asynchronously)
-     * Renders the formation documents for the chosen structure and jurisdiction, ingests each into the org&#39;s data room, and submits the state filing through the filing seam.  With no filing partner wired the filing is recorded honestly as \&quot;manual\&quot; — no filing id is fabricated. Available only at the documents stage.
+     * Renders the formation documents for the chosen structure and jurisdiction, ingests each into the org&#39;s data room, and submits the state filing through the filing client. (asynchronously)
+     * Renders the formation documents for the chosen structure and jurisdiction, ingests each into the org&#39;s data room, and submits the state filing through the filing client.  With no filing partner wired the filing is recorded honestly as \&quot;manual\&quot; — no filing id is fabricated. Available only at the documents stage.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2530,7 +2530,7 @@ public class CompanyApi {
 
     /**
      * RefreshKYC reconciles each pending founder&#39;s KYC with the WIRED provider — the PULL path to a provider-reported terminal status.
-     * RefreshKYC reconciles each pending founder&#39;s KYC with the WIRED provider — the PULL path to a provider-reported terminal status. For the manual provider the check stays pending; for a real provider it reflects the settled decision, ATTRIBUTED to the provider.  It NEVER trusts a client-asserted status — the status comes from the provider seam — so a client cannot force a pass here, and an already-passing founder (e.g. a reviewer confirmation) is left untouched.
+     * RefreshKYC reconciles each pending founder&#39;s KYC with the WIRED provider — the PULL path to a provider-reported terminal status. For the manual provider the check stays pending; for a real provider it reflects the settled decision, ATTRIBUTED to the provider.  It NEVER trusts a client-asserted status — the status comes from the provider client — so a client cannot force a pass here, and an already-passing founder (e.g. a reviewer confirmation) is left untouched.
      * @return KycRefreshOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2547,7 +2547,7 @@ public class CompanyApi {
 
     /**
      * RefreshKYC reconciles each pending founder&#39;s KYC with the WIRED provider — the PULL path to a provider-reported terminal status.
-     * RefreshKYC reconciles each pending founder&#39;s KYC with the WIRED provider — the PULL path to a provider-reported terminal status. For the manual provider the check stays pending; for a real provider it reflects the settled decision, ATTRIBUTED to the provider.  It NEVER trusts a client-asserted status — the status comes from the provider seam — so a client cannot force a pass here, and an already-passing founder (e.g. a reviewer confirmation) is left untouched.
+     * RefreshKYC reconciles each pending founder&#39;s KYC with the WIRED provider — the PULL path to a provider-reported terminal status. For the manual provider the check stays pending; for a real provider it reflects the settled decision, ATTRIBUTED to the provider.  It NEVER trusts a client-asserted status — the status comes from the provider client — so a client cannot force a pass here, and an already-passing founder (e.g. a reviewer confirmation) is left untouched.
      * @return ApiResponse&lt;KycRefreshOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -2565,7 +2565,7 @@ public class CompanyApi {
 
     /**
      * RefreshKYC reconciles each pending founder&#39;s KYC with the WIRED provider — the PULL path to a provider-reported terminal status. (asynchronously)
-     * RefreshKYC reconciles each pending founder&#39;s KYC with the WIRED provider — the PULL path to a provider-reported terminal status. For the manual provider the check stays pending; for a real provider it reflects the settled decision, ATTRIBUTED to the provider.  It NEVER trusts a client-asserted status — the status comes from the provider seam — so a client cannot force a pass here, and an already-passing founder (e.g. a reviewer confirmation) is left untouched.
+     * RefreshKYC reconciles each pending founder&#39;s KYC with the WIRED provider — the PULL path to a provider-reported terminal status. For the manual provider the check stays pending; for a real provider it reflects the settled decision, ATTRIBUTED to the provider.  It NEVER trusts a client-asserted status — the status comes from the provider client — so a client cannot force a pass here, and an already-passing founder (e.g. a reviewer confirmation) is left untouched.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

@@ -30,7 +30,11 @@ import java.io.IOException;
 import ai.hanzo.cloud.model.AddDomainReq;
 import ai.hanzo.cloud.model.AppView;
 import ai.hanzo.cloud.model.BuildBoard;
+import ai.hanzo.cloud.model.CDApp;
+import ai.hanzo.cloud.model.CdResp;
 import ai.hanzo.cloud.model.CreateAppReq;
+import ai.hanzo.cloud.model.Declaration;
+import ai.hanzo.cloud.model.DeclaredResp;
 import ai.hanzo.cloud.model.DeployLogs;
 import ai.hanzo.cloud.model.DeployReq;
 import ai.hanzo.cloud.model.DeploymentView;
@@ -374,11 +378,18 @@ public class PlatformApi {
     }
     /**
      * Build call for getPlatformApps
+     * @param org Org names the organisation whose declarations to read, defaulting to the caller&#39;s own. Only a SuperAdmin may name one that is not theirs; anyone else naming a foreign org is refused, so this widens nothing by itself. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call getPlatformAppsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPlatformAppsCall(@javax.annotation.Nullable String org, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -403,7 +414,12 @@ public class PlatformApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (org != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("org", org));
+        }
+
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -422,52 +438,84 @@ public class PlatformApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getPlatformAppsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getPlatformAppsCall(_callback);
+    private okhttp3.Call getPlatformAppsValidateBeforeCall(@javax.annotation.Nullable String org, final ApiCallback _callback) throws ApiException {
+        return getPlatformAppsCall(org, _callback);
 
     }
 
     /**
-     * What this organization has declared, and what CD did with it
-     * Returns the declarations in the caller&#39;s own org directory, each joined with the Hanzo CD Application reconciling it — sync verdict, health, the universe commit last applied. &#x60;cd&#x60; is null for a declaration the delivery plane has no Application for, which is the normal state of one that exists only on a branch.  If the delivery plane cannot be read, the declarations are still returned and &#x60;cdUnavailable&#x60; says why. An unreadable plane never renders as \&quot;nothing has been reconciled\&quot;.
+     * Answers what this organisation has declared, joined with what the delivery plane has done about it.
+     * Answers what this organisation has declared, joined with what the delivery plane has done about it.  The join is best-effort BY DESIGN and says so when it is missing: the declarations ARE the answer to \&quot;what have I deployed\&quot;, so refusing the whole board because the cluster is unreadable would lose the half that is readable. What must never happen is a silent null — an unreadable plane is reported as &#x60;cd.unavailable&#x60; carrying the reason, never as an app with no reconciliation.
+     * @param org Org names the organisation whose declarations to read, defaulting to the caller&#39;s own. Only a SuperAdmin may name one that is not theirs; anyone else naming a foreign org is refused, so this widens nothing by itself. (optional)
+     * @return DeclaredResp
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public void getPlatformApps() throws ApiException {
-        getPlatformAppsWithHttpInfo();
+    public DeclaredResp getPlatformApps(@javax.annotation.Nullable String org) throws ApiException {
+        ApiResponse<DeclaredResp> localVarResp = getPlatformAppsWithHttpInfo(org);
+        return localVarResp.getData();
     }
 
     /**
-     * What this organization has declared, and what CD did with it
-     * Returns the declarations in the caller&#39;s own org directory, each joined with the Hanzo CD Application reconciling it — sync verdict, health, the universe commit last applied. &#x60;cd&#x60; is null for a declaration the delivery plane has no Application for, which is the normal state of one that exists only on a branch.  If the delivery plane cannot be read, the declarations are still returned and &#x60;cdUnavailable&#x60; says why. An unreadable plane never renders as \&quot;nothing has been reconciled\&quot;.
-     * @return ApiResponse&lt;Void&gt;
+     * Answers what this organisation has declared, joined with what the delivery plane has done about it.
+     * Answers what this organisation has declared, joined with what the delivery plane has done about it.  The join is best-effort BY DESIGN and says so when it is missing: the declarations ARE the answer to \&quot;what have I deployed\&quot;, so refusing the whole board because the cluster is unreadable would lose the half that is readable. What must never happen is a silent null — an unreadable plane is reported as &#x60;cd.unavailable&#x60; carrying the reason, never as an app with no reconciliation.
+     * @param org Org names the organisation whose declarations to read, defaulting to the caller&#39;s own. Only a SuperAdmin may name one that is not theirs; anyone else naming a foreign org is refused, so this widens nothing by itself. (optional)
+     * @return ApiResponse&lt;DeclaredResp&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public ApiResponse<Void> getPlatformAppsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getPlatformAppsValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<DeclaredResp> getPlatformAppsWithHttpInfo(@javax.annotation.Nullable String org) throws ApiException {
+        okhttp3.Call localVarCall = getPlatformAppsValidateBeforeCall(org, null);
+        Type localVarReturnType = new TypeToken<DeclaredResp>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * What this organization has declared, and what CD did with it (asynchronously)
-     * Returns the declarations in the caller&#39;s own org directory, each joined with the Hanzo CD Application reconciling it — sync verdict, health, the universe commit last applied. &#x60;cd&#x60; is null for a declaration the delivery plane has no Application for, which is the normal state of one that exists only on a branch.  If the delivery plane cannot be read, the declarations are still returned and &#x60;cdUnavailable&#x60; says why. An unreadable plane never renders as \&quot;nothing has been reconciled\&quot;.
+     * Answers what this organisation has declared, joined with what the delivery plane has done about it. (asynchronously)
+     * Answers what this organisation has declared, joined with what the delivery plane has done about it.  The join is best-effort BY DESIGN and says so when it is missing: the declarations ARE the answer to \&quot;what have I deployed\&quot;, so refusing the whole board because the cluster is unreadable would lose the half that is readable. What must never happen is a silent null — an unreadable plane is reported as &#x60;cd.unavailable&#x60; carrying the reason, never as an app with no reconciliation.
+     * @param org Org names the organisation whose declarations to read, defaulting to the caller&#39;s own. Only a SuperAdmin may name one that is not theirs; anyone else naming a foreign org is refused, so this widens nothing by itself. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call getPlatformAppsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getPlatformAppsAsync(@javax.annotation.Nullable String org, final ApiCallback<DeclaredResp> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getPlatformAppsValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = getPlatformAppsValidateBeforeCall(org, _callback);
+        Type localVarReturnType = new TypeToken<DeclaredResp>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for getPlatformAppsByApp
-     * @param app  (required)
+     * @param app App is the DNS-1123 label of the declaration. The URL is the addressing authority — a path segment binds after the body and after the query — so the address decides which app is read whatever else is sent. (required)
+     * @param org Org names the organisation the declaration lives in, defaulting to the caller&#39;s own and subject to the same SuperAdmin rule as the listing. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call getPlatformAppsByAppCall(@javax.annotation.Nonnull String app, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPlatformAppsByAppCall(@javax.annotation.Nonnull String app, @javax.annotation.Nullable String org, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -493,7 +541,12 @@ public class PlatformApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (org != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("org", org));
+        }
+
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -512,60 +565,92 @@ public class PlatformApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getPlatformAppsByAppValidateBeforeCall(@javax.annotation.Nonnull String app, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getPlatformAppsByAppValidateBeforeCall(@javax.annotation.Nonnull String app, @javax.annotation.Nullable String org, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'app' is set
         if (app == null) {
             throw new ApiException("Missing the required parameter 'app' when calling getPlatformAppsByApp(Async)");
         }
 
-        return getPlatformAppsByAppCall(app, _callback);
+        return getPlatformAppsByAppCall(app, org, _callback);
 
     }
 
     /**
-     * One declaration
-     * The values file for one app as git declares it: image repository and tag, hosts, replicas, and whether CD is automated on it. 404 when this organization declares no such app.
-     * @param app  (required)
+     * Answers ONE declaration — what git says this app is, before the delivery plane has had any say in it.
+     * Answers ONE declaration — what git says this app is, before the delivery plane has had any say in it.
+     * @param app App is the DNS-1123 label of the declaration. The URL is the addressing authority — a path segment binds after the body and after the query — so the address decides which app is read whatever else is sent. (required)
+     * @param org Org names the organisation the declaration lives in, defaulting to the caller&#39;s own and subject to the same SuperAdmin rule as the listing. (optional)
+     * @return Declaration
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public void getPlatformAppsByApp(@javax.annotation.Nonnull String app) throws ApiException {
-        getPlatformAppsByAppWithHttpInfo(app);
+    public Declaration getPlatformAppsByApp(@javax.annotation.Nonnull String app, @javax.annotation.Nullable String org) throws ApiException {
+        ApiResponse<Declaration> localVarResp = getPlatformAppsByAppWithHttpInfo(app, org);
+        return localVarResp.getData();
     }
 
     /**
-     * One declaration
-     * The values file for one app as git declares it: image repository and tag, hosts, replicas, and whether CD is automated on it. 404 when this organization declares no such app.
-     * @param app  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * Answers ONE declaration — what git says this app is, before the delivery plane has had any say in it.
+     * Answers ONE declaration — what git says this app is, before the delivery plane has had any say in it.
+     * @param app App is the DNS-1123 label of the declaration. The URL is the addressing authority — a path segment binds after the body and after the query — so the address decides which app is read whatever else is sent. (required)
+     * @param org Org names the organisation the declaration lives in, defaulting to the caller&#39;s own and subject to the same SuperAdmin rule as the listing. (optional)
+     * @return ApiResponse&lt;Declaration&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public ApiResponse<Void> getPlatformAppsByAppWithHttpInfo(@javax.annotation.Nonnull String app) throws ApiException {
-        okhttp3.Call localVarCall = getPlatformAppsByAppValidateBeforeCall(app, null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<Declaration> getPlatformAppsByAppWithHttpInfo(@javax.annotation.Nonnull String app, @javax.annotation.Nullable String org) throws ApiException {
+        okhttp3.Call localVarCall = getPlatformAppsByAppValidateBeforeCall(app, org, null);
+        Type localVarReturnType = new TypeToken<Declaration>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * One declaration (asynchronously)
-     * The values file for one app as git declares it: image repository and tag, hosts, replicas, and whether CD is automated on it. 404 when this organization declares no such app.
-     * @param app  (required)
+     * Answers ONE declaration — what git says this app is, before the delivery plane has had any say in it. (asynchronously)
+     * Answers ONE declaration — what git says this app is, before the delivery plane has had any say in it.
+     * @param app App is the DNS-1123 label of the declaration. The URL is the addressing authority — a path segment binds after the body and after the query — so the address decides which app is read whatever else is sent. (required)
+     * @param org Org names the organisation the declaration lives in, defaulting to the caller&#39;s own and subject to the same SuperAdmin rule as the listing. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call getPlatformAppsByAppAsync(@javax.annotation.Nonnull String app, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getPlatformAppsByAppAsync(@javax.annotation.Nonnull String app, @javax.annotation.Nullable String org, final ApiCallback<Declaration> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getPlatformAppsByAppValidateBeforeCall(app, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = getPlatformAppsByAppValidateBeforeCall(app, org, _callback);
+        Type localVarReturnType = new TypeToken<Declaration>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for getPlatformAppsByAppCd
-     * @param app  (required)
+     * @param app App is the DNS-1123 label of the declaration. The URL is the addressing authority — a path segment binds after the body and after the query — so the address decides which app is read whatever else is sent. (required)
+     * @param org Org names the organisation the declaration lives in, defaulting to the caller&#39;s own and subject to the same SuperAdmin rule as the listing. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call getPlatformAppsByAppCdCall(@javax.annotation.Nonnull String app, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getPlatformAppsByAppCdCall(@javax.annotation.Nonnull String app, @javax.annotation.Nullable String org, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -591,7 +676,12 @@ public class PlatformApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (org != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("org", org));
+        }
+
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -610,50 +700,75 @@ public class PlatformApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getPlatformAppsByAppCdValidateBeforeCall(@javax.annotation.Nonnull String app, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getPlatformAppsByAppCdValidateBeforeCall(@javax.annotation.Nonnull String app, @javax.annotation.Nullable String org, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'app' is set
         if (app == null) {
             throw new ApiException("Missing the required parameter 'app' when calling getPlatformAppsByAppCd(Async)");
         }
 
-        return getPlatformAppsByAppCdCall(app, _callback);
+        return getPlatformAppsByAppCdCall(app, org, _callback);
 
     }
 
     /**
-     * One app&#39;s reconciliation
-     * The Hanzo CD Application for one declaration, on its own — the poll a deploy view makes while it waits, without re-reading the whole inventory. 404 while the declaration exists only on a branch, because the generator reads main.
-     * @param app  (required)
+     * Answers ONE app&#39;s reconciliation alone — the poll a deploy console makes while it waits, without re-reading the whole inventory each time.
+     * Answers ONE app&#39;s reconciliation alone — the poll a deploy console makes while it waits, without re-reading the whole inventory each time.
+     * @param app App is the DNS-1123 label of the declaration. The URL is the addressing authority — a path segment binds after the body and after the query — so the address decides which app is read whatever else is sent. (required)
+     * @param org Org names the organisation the declaration lives in, defaulting to the caller&#39;s own and subject to the same SuperAdmin rule as the listing. (optional)
+     * @return CDApp
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public void getPlatformAppsByAppCd(@javax.annotation.Nonnull String app) throws ApiException {
-        getPlatformAppsByAppCdWithHttpInfo(app);
+    public CDApp getPlatformAppsByAppCd(@javax.annotation.Nonnull String app, @javax.annotation.Nullable String org) throws ApiException {
+        ApiResponse<CDApp> localVarResp = getPlatformAppsByAppCdWithHttpInfo(app, org);
+        return localVarResp.getData();
     }
 
     /**
-     * One app&#39;s reconciliation
-     * The Hanzo CD Application for one declaration, on its own — the poll a deploy view makes while it waits, without re-reading the whole inventory. 404 while the declaration exists only on a branch, because the generator reads main.
-     * @param app  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * Answers ONE app&#39;s reconciliation alone — the poll a deploy console makes while it waits, without re-reading the whole inventory each time.
+     * Answers ONE app&#39;s reconciliation alone — the poll a deploy console makes while it waits, without re-reading the whole inventory each time.
+     * @param app App is the DNS-1123 label of the declaration. The URL is the addressing authority — a path segment binds after the body and after the query — so the address decides which app is read whatever else is sent. (required)
+     * @param org Org names the organisation the declaration lives in, defaulting to the caller&#39;s own and subject to the same SuperAdmin rule as the listing. (optional)
+     * @return ApiResponse&lt;CDApp&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public ApiResponse<Void> getPlatformAppsByAppCdWithHttpInfo(@javax.annotation.Nonnull String app) throws ApiException {
-        okhttp3.Call localVarCall = getPlatformAppsByAppCdValidateBeforeCall(app, null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<CDApp> getPlatformAppsByAppCdWithHttpInfo(@javax.annotation.Nonnull String app, @javax.annotation.Nullable String org) throws ApiException {
+        okhttp3.Call localVarCall = getPlatformAppsByAppCdValidateBeforeCall(app, org, null);
+        Type localVarReturnType = new TypeToken<CDApp>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * One app&#39;s reconciliation (asynchronously)
-     * The Hanzo CD Application for one declaration, on its own — the poll a deploy view makes while it waits, without re-reading the whole inventory. 404 while the declaration exists only on a branch, because the generator reads main.
-     * @param app  (required)
+     * Answers ONE app&#39;s reconciliation alone — the poll a deploy console makes while it waits, without re-reading the whole inventory each time. (asynchronously)
+     * Answers ONE app&#39;s reconciliation alone — the poll a deploy console makes while it waits, without re-reading the whole inventory each time.
+     * @param app App is the DNS-1123 label of the declaration. The URL is the addressing authority — a path segment binds after the body and after the query — so the address decides which app is read whatever else is sent. (required)
+     * @param org Org names the organisation the declaration lives in, defaulting to the caller&#39;s own and subject to the same SuperAdmin rule as the listing. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call getPlatformAppsByAppCdAsync(@javax.annotation.Nonnull String app, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getPlatformAppsByAppCdAsync(@javax.annotation.Nonnull String app, @javax.annotation.Nullable String org, final ApiCallback<CDApp> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getPlatformAppsByAppCdValidateBeforeCall(app, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = getPlatformAppsByAppCdValidateBeforeCall(app, org, _callback);
+        Type localVarReturnType = new TypeToken<CDApp>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -778,6 +893,12 @@ public class PlatformApi {
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
     public okhttp3.Call getPlatformCdCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -805,6 +926,7 @@ public class PlatformApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -829,36 +951,58 @@ public class PlatformApi {
     }
 
     /**
-     * The delivery plane
-     * Every Hanzo CD Application this caller may observe, with its sync verdict, health, the universe revision last applied, and whether automation and self-heal are on. A SuperAdmin sees the fleet; an org admin sees only Applications whose destination namespace IS its own organization, and never a reserved one.  A cluster with no CD installed answers an empty plane. A plane that cannot be READ answers 503 and says why — the two are opposite facts and never share a shape.
+     * Answers every Application the delivery plane holds.
+     * Answers every Application the delivery plane holds.  Scoped to the namespaces the caller&#39;s own validated org owns: the ROLE opens the door and the tenant boundary is applied inside, so an admin of one org never observes another&#39;s.
+     * @return CdResp
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public void getPlatformCd() throws ApiException {
-        getPlatformCdWithHttpInfo();
+    public CdResp getPlatformCd() throws ApiException {
+        ApiResponse<CdResp> localVarResp = getPlatformCdWithHttpInfo();
+        return localVarResp.getData();
     }
 
     /**
-     * The delivery plane
-     * Every Hanzo CD Application this caller may observe, with its sync verdict, health, the universe revision last applied, and whether automation and self-heal are on. A SuperAdmin sees the fleet; an org admin sees only Applications whose destination namespace IS its own organization, and never a reserved one.  A cluster with no CD installed answers an empty plane. A plane that cannot be READ answers 503 and says why — the two are opposite facts and never share a shape.
-     * @return ApiResponse&lt;Void&gt;
+     * Answers every Application the delivery plane holds.
+     * Answers every Application the delivery plane holds.  Scoped to the namespaces the caller&#39;s own validated org owns: the ROLE opens the door and the tenant boundary is applied inside, so an admin of one org never observes another&#39;s.
+     * @return ApiResponse&lt;CdResp&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public ApiResponse<Void> getPlatformCdWithHttpInfo() throws ApiException {
+    public ApiResponse<CdResp> getPlatformCdWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getPlatformCdValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<CdResp>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * The delivery plane (asynchronously)
-     * Every Hanzo CD Application this caller may observe, with its sync verdict, health, the universe revision last applied, and whether automation and self-heal are on. A SuperAdmin sees the fleet; an org admin sees only Applications whose destination namespace IS its own organization, and never a reserved one.  A cluster with no CD installed answers an empty plane. A plane that cannot be READ answers 503 and says why — the two are opposite facts and never share a shape.
+     * Answers every Application the delivery plane holds. (asynchronously)
+     * Answers every Application the delivery plane holds.  Scoped to the namespaces the caller&#39;s own validated org owns: the ROLE opens the door and the tenant boundary is applied inside, so an admin of one org never observes another&#39;s.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call getPlatformCdAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getPlatformCdAsync(final ApiCallback<CdResp> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPlatformCdValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<CdResp>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -3072,7 +3216,7 @@ public class PlatformApi {
 
     /**
      * Receive a push from the forge and trigger its build
-     * The forge&#39;s push-to-deploy door. git.hanzo.ai runs as a separate server, so its pushes never reach this fleet&#39;s own receive-pack; without this a push to the host we call canonical builds nothing. A verified push is handed to the SAME two seams a native push travels — the single-registrant deploy trigger, and the many-subscriber lifecycle stream that notifies and indexes — and the build decision itself stays downstream in the one place that knows what a push means.  PUBLIC at the JWT layer, because the forge carries no Hanzo session: AUTHENTICATION IS THE SIGNATURE. The HMAC covers the raw bytes and is verified BEFORE the payload is parsed, so an unauthenticated body is never decoded. The secret is read from KMS; a deployment that cannot read it answers 503 and processes nothing, rather than trusting a delivery it could not check. The body is read UNCOMPRESSED — a request declaring a Content-Encoding is refused 415 before it is touched, because decoding one is unbounded work bought with a few bytes and no credential. A bad signature is 401, a payload over 8 MiB is 413, and a malformed one 400.  A verified push that reaches both seams answers 200 with fired true and the NUMBER OF BUILDS it launched — zero is ordinary, since most pushes track no application, and it is the answer &#39;fired&#39; cannot give. A push that could not be dispatched answers 500: the delivery page shows it red, and the Replay that prompts reaches a fresh attempt rather than being declined as already landed.  The deliveries deliberately ignored answer 200 with a reason and nothing else: a payload that is not a push, a ref DELETE (a zero &#x60;after&#x60; has no commit to build), a BOT-authored push (release automation pushes as the forge&#39;s own Actions user, and a release must never rebuild itself), a push from a forge namespace that maps to no org, and a redelivery of a push already fired. Branches and tags both reach the build trigger, because releases are cut by tag and filtering here would silently stop publishing.
+     * The forge&#39;s push-to-deploy door. git.hanzo.ai runs as a separate server, so its pushes never reach this fleet&#39;s own receive-pack; without this a push to the host we call canonical builds nothing. A verified push is handed to the SAME two clients a native push travels — the single-registrant deploy trigger, and the many-subscriber lifecycle stream that notifies and indexes — and the build decision itself stays downstream in the one place that knows what a push means.  PUBLIC at the JWT layer, because the forge carries no Hanzo session: AUTHENTICATION IS THE SIGNATURE. The HMAC covers the raw bytes and is verified BEFORE the payload is parsed, so an unauthenticated body is never decoded. The secret is read from KMS; a deployment that cannot read it answers 503 and processes nothing, rather than trusting a delivery it could not check. The body is read UNCOMPRESSED — a request declaring a Content-Encoding is refused 415 before it is touched, because decoding one is unbounded work bought with a few bytes and no credential. A bad signature is 401, a payload over 8 MiB is 413, and a malformed one 400.  A verified push that reaches both clients answers 200 with fired true and the NUMBER OF BUILDS it launched — zero is ordinary, since most pushes track no application, and it is the answer &#39;fired&#39; cannot give. A push that could not be dispatched answers 500: the delivery page shows it red, and the Replay that prompts reaches a fresh attempt rather than being declined as already landed.  The deliveries deliberately ignored answer 200 with a reason and nothing else: a payload that is not a push, a ref DELETE (a zero &#x60;after&#x60; has no commit to build), a BOT-authored push (release automation pushes as the forge&#39;s own Actions user, and a release must never rebuild itself), a push from a forge namespace that maps to no org, and a redelivery of a push already fired. Branches and tags both reach the build trigger, because releases are cut by tag and filtering here would silently stop publishing.
      * @param push  (optional)
      * @return Verdict
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3090,7 +3234,7 @@ public class PlatformApi {
 
     /**
      * Receive a push from the forge and trigger its build
-     * The forge&#39;s push-to-deploy door. git.hanzo.ai runs as a separate server, so its pushes never reach this fleet&#39;s own receive-pack; without this a push to the host we call canonical builds nothing. A verified push is handed to the SAME two seams a native push travels — the single-registrant deploy trigger, and the many-subscriber lifecycle stream that notifies and indexes — and the build decision itself stays downstream in the one place that knows what a push means.  PUBLIC at the JWT layer, because the forge carries no Hanzo session: AUTHENTICATION IS THE SIGNATURE. The HMAC covers the raw bytes and is verified BEFORE the payload is parsed, so an unauthenticated body is never decoded. The secret is read from KMS; a deployment that cannot read it answers 503 and processes nothing, rather than trusting a delivery it could not check. The body is read UNCOMPRESSED — a request declaring a Content-Encoding is refused 415 before it is touched, because decoding one is unbounded work bought with a few bytes and no credential. A bad signature is 401, a payload over 8 MiB is 413, and a malformed one 400.  A verified push that reaches both seams answers 200 with fired true and the NUMBER OF BUILDS it launched — zero is ordinary, since most pushes track no application, and it is the answer &#39;fired&#39; cannot give. A push that could not be dispatched answers 500: the delivery page shows it red, and the Replay that prompts reaches a fresh attempt rather than being declined as already landed.  The deliveries deliberately ignored answer 200 with a reason and nothing else: a payload that is not a push, a ref DELETE (a zero &#x60;after&#x60; has no commit to build), a BOT-authored push (release automation pushes as the forge&#39;s own Actions user, and a release must never rebuild itself), a push from a forge namespace that maps to no org, and a redelivery of a push already fired. Branches and tags both reach the build trigger, because releases are cut by tag and filtering here would silently stop publishing.
+     * The forge&#39;s push-to-deploy door. git.hanzo.ai runs as a separate server, so its pushes never reach this fleet&#39;s own receive-pack; without this a push to the host we call canonical builds nothing. A verified push is handed to the SAME two clients a native push travels — the single-registrant deploy trigger, and the many-subscriber lifecycle stream that notifies and indexes — and the build decision itself stays downstream in the one place that knows what a push means.  PUBLIC at the JWT layer, because the forge carries no Hanzo session: AUTHENTICATION IS THE SIGNATURE. The HMAC covers the raw bytes and is verified BEFORE the payload is parsed, so an unauthenticated body is never decoded. The secret is read from KMS; a deployment that cannot read it answers 503 and processes nothing, rather than trusting a delivery it could not check. The body is read UNCOMPRESSED — a request declaring a Content-Encoding is refused 415 before it is touched, because decoding one is unbounded work bought with a few bytes and no credential. A bad signature is 401, a payload over 8 MiB is 413, and a malformed one 400.  A verified push that reaches both clients answers 200 with fired true and the NUMBER OF BUILDS it launched — zero is ordinary, since most pushes track no application, and it is the answer &#39;fired&#39; cannot give. A push that could not be dispatched answers 500: the delivery page shows it red, and the Replay that prompts reaches a fresh attempt rather than being declined as already landed.  The deliveries deliberately ignored answer 200 with a reason and nothing else: a payload that is not a push, a ref DELETE (a zero &#x60;after&#x60; has no commit to build), a BOT-authored push (release automation pushes as the forge&#39;s own Actions user, and a release must never rebuild itself), a push from a forge namespace that maps to no org, and a redelivery of a push already fired. Branches and tags both reach the build trigger, because releases are cut by tag and filtering here would silently stop publishing.
      * @param push  (optional)
      * @return ApiResponse&lt;Verdict&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3109,7 +3253,7 @@ public class PlatformApi {
 
     /**
      * Receive a push from the forge and trigger its build (asynchronously)
-     * The forge&#39;s push-to-deploy door. git.hanzo.ai runs as a separate server, so its pushes never reach this fleet&#39;s own receive-pack; without this a push to the host we call canonical builds nothing. A verified push is handed to the SAME two seams a native push travels — the single-registrant deploy trigger, and the many-subscriber lifecycle stream that notifies and indexes — and the build decision itself stays downstream in the one place that knows what a push means.  PUBLIC at the JWT layer, because the forge carries no Hanzo session: AUTHENTICATION IS THE SIGNATURE. The HMAC covers the raw bytes and is verified BEFORE the payload is parsed, so an unauthenticated body is never decoded. The secret is read from KMS; a deployment that cannot read it answers 503 and processes nothing, rather than trusting a delivery it could not check. The body is read UNCOMPRESSED — a request declaring a Content-Encoding is refused 415 before it is touched, because decoding one is unbounded work bought with a few bytes and no credential. A bad signature is 401, a payload over 8 MiB is 413, and a malformed one 400.  A verified push that reaches both seams answers 200 with fired true and the NUMBER OF BUILDS it launched — zero is ordinary, since most pushes track no application, and it is the answer &#39;fired&#39; cannot give. A push that could not be dispatched answers 500: the delivery page shows it red, and the Replay that prompts reaches a fresh attempt rather than being declined as already landed.  The deliveries deliberately ignored answer 200 with a reason and nothing else: a payload that is not a push, a ref DELETE (a zero &#x60;after&#x60; has no commit to build), a BOT-authored push (release automation pushes as the forge&#39;s own Actions user, and a release must never rebuild itself), a push from a forge namespace that maps to no org, and a redelivery of a push already fired. Branches and tags both reach the build trigger, because releases are cut by tag and filtering here would silently stop publishing.
+     * The forge&#39;s push-to-deploy door. git.hanzo.ai runs as a separate server, so its pushes never reach this fleet&#39;s own receive-pack; without this a push to the host we call canonical builds nothing. A verified push is handed to the SAME two clients a native push travels — the single-registrant deploy trigger, and the many-subscriber lifecycle stream that notifies and indexes — and the build decision itself stays downstream in the one place that knows what a push means.  PUBLIC at the JWT layer, because the forge carries no Hanzo session: AUTHENTICATION IS THE SIGNATURE. The HMAC covers the raw bytes and is verified BEFORE the payload is parsed, so an unauthenticated body is never decoded. The secret is read from KMS; a deployment that cannot read it answers 503 and processes nothing, rather than trusting a delivery it could not check. The body is read UNCOMPRESSED — a request declaring a Content-Encoding is refused 415 before it is touched, because decoding one is unbounded work bought with a few bytes and no credential. A bad signature is 401, a payload over 8 MiB is 413, and a malformed one 400.  A verified push that reaches both clients answers 200 with fired true and the NUMBER OF BUILDS it launched — zero is ordinary, since most pushes track no application, and it is the answer &#39;fired&#39; cannot give. A push that could not be dispatched answers 500: the delivery page shows it red, and the Replay that prompts reaches a fresh attempt rather than being declined as already landed.  The deliveries deliberately ignored answer 200 with a reason and nothing else: a payload that is not a push, a ref DELETE (a zero &#x60;after&#x60; has no commit to build), a BOT-authored push (release automation pushes as the forge&#39;s own Actions user, and a release must never rebuild itself), a push from a forge namespace that maps to no org, and a redelivery of a push already fired. Branches and tags both reach the build trigger, because releases are cut by tag and filtering here would silently stop publishing.
      * @param push  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call

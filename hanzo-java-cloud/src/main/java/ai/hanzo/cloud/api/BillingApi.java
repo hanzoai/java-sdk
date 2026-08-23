@@ -33,12 +33,14 @@ import ai.hanzo.cloud.model.AlertPatch;
 import ai.hanzo.cloud.model.AlertSpec;
 import ai.hanzo.cloud.model.BillingAccount;
 import ai.hanzo.cloud.model.CapVerdict;
+import ai.hanzo.cloud.model.Charged;
 import ai.hanzo.cloud.model.Collected;
 import ai.hanzo.cloud.model.CreditBalance;
 import ai.hanzo.cloud.model.CreditGrants;
 import ai.hanzo.cloud.model.CryptoAsset;
 import ai.hanzo.cloud.model.CryptoDeposit;
 import ai.hanzo.cloud.model.CryptoOptions;
+import ai.hanzo.cloud.model.Detachment;
 import ai.hanzo.cloud.model.FinanceLedgerEntry;
 import ai.hanzo.cloud.model.Holder;
 import ai.hanzo.cloud.model.Invoice;
@@ -48,11 +50,13 @@ import ai.hanzo.cloud.model.ModeIn;
 import ai.hanzo.cloud.model.PaymentConfig;
 import ai.hanzo.cloud.model.Payout;
 import ai.hanzo.cloud.model.RaiseIn;
+import ai.hanzo.cloud.model.Recharge;
 import ai.hanzo.cloud.model.Rollup;
 import ai.hanzo.cloud.model.Subscription;
 import ai.hanzo.cloud.model.SubscriptionRef;
 import ai.hanzo.cloud.model.Subscriptions;
 import ai.hanzo.cloud.model.Tier;
+import ai.hanzo.cloud.model.TopupIn;
 import ai.hanzo.cloud.model.Transactions;
 import ai.hanzo.cloud.model.WireInstructions;
 
@@ -365,10 +369,16 @@ public class BillingApi {
     }
     /**
      * Build call for deleteBillingAlertsById
-     * @param id  (required)
+     * @param id ID is the cap to remove, from the path. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+     </table>
      */
     public okhttp3.Call deleteBillingAlertsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -426,21 +436,33 @@ public class BillingApi {
     }
 
     /**
-     * Remove one spend cap
-     * Deletes a budget the caller&#39;s org owns and answers 204.  Removing a cap REMOVES A CEILING, so it takes the same bar as setting one: a validated org admin, the platform SuperAdmin, or the trusted in-process service token. A member who could delete the org&#39;s cap would have unbounded spend.  A cap this org does not own is NOT FOUND rather than refused — the same answer whether the id is unknown or belongs to another customer — so an id cannot be probed for existence by trying to delete it.
-     * @param id  (required)
+     * Removes one of the caller&#39;s spend caps and answers 204.
+     * Removes one of the caller&#39;s spend caps and answers 204.  Removing a cap RAISES what the org may spend, so it takes the same authority setting one does. The caps that remain still bind: this drops one, never the whole policy.
+     * @param id ID is the cap to remove, from the path. (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+     </table>
      */
     public void deleteBillingAlertsById(@javax.annotation.Nonnull String id) throws ApiException {
         deleteBillingAlertsByIdWithHttpInfo(id);
     }
 
     /**
-     * Remove one spend cap
-     * Deletes a budget the caller&#39;s org owns and answers 204.  Removing a cap REMOVES A CEILING, so it takes the same bar as setting one: a validated org admin, the platform SuperAdmin, or the trusted in-process service token. A member who could delete the org&#39;s cap would have unbounded spend.  A cap this org does not own is NOT FOUND rather than refused — the same answer whether the id is unknown or belongs to another customer — so an id cannot be probed for existence by trying to delete it.
-     * @param id  (required)
+     * Removes one of the caller&#39;s spend caps and answers 204.
+     * Removes one of the caller&#39;s spend caps and answers 204.  Removing a cap RAISES what the org may spend, so it takes the same authority setting one does. The caps that remain still bind: this drops one, never the whole policy.
+     * @param id ID is the cap to remove, from the path. (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+     </table>
      */
     public ApiResponse<Void> deleteBillingAlertsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = deleteBillingAlertsByIdValidateBeforeCall(id, null);
@@ -448,12 +470,18 @@ public class BillingApi {
     }
 
     /**
-     * Remove one spend cap (asynchronously)
-     * Deletes a budget the caller&#39;s org owns and answers 204.  Removing a cap REMOVES A CEILING, so it takes the same bar as setting one: a validated org admin, the platform SuperAdmin, or the trusted in-process service token. A member who could delete the org&#39;s cap would have unbounded spend.  A cap this org does not own is NOT FOUND rather than refused — the same answer whether the id is unknown or belongs to another customer — so an id cannot be probed for existence by trying to delete it.
-     * @param id  (required)
+     * Removes one of the caller&#39;s spend caps and answers 204. (asynchronously)
+     * Removes one of the caller&#39;s spend caps and answers 204.  Removing a cap RAISES what the org may spend, so it takes the same authority setting one does. The caps that remain still bind: this drops one, never the whole policy.
+     * @param id ID is the cap to remove, from the path. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+     </table>
      */
     public okhttp3.Call deleteBillingAlertsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
 
@@ -463,10 +491,16 @@ public class BillingApi {
     }
     /**
      * Build call for deleteBillingMethodsById
-     * @param id  (required)
+     * @param id ID is the saved method to detach, from the path. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
     public okhttp3.Call deleteBillingMethodsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -495,6 +529,7 @@ public class BillingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -524,47 +559,75 @@ public class BillingApi {
     }
 
     /**
-     * Remove one saved card or account
-     * Detaches the method at the processor and drops the row.  A method the caller does not own is NOT FOUND rather than refused — the same answer whether the id names nothing or names somebody else&#39;s card — so an id cannot be probed for existence.  A platform operator or the trusted in-process service token may act on any subject inside the org; everyone else may only remove their own.
-     * @param id  (required)
+     * Removes one card or account the caller has saved.
+     * Removes one card or account the caller has saved.  It detaches only the CALLER&#39;S own — the wallet this request bills from, resolved server-side — so an id belonging to another customer of the same org is not something this operation can reach. A platform or service caller detaches on the subject&#39;s behalf, and that authority is decided HERE, where the credential is, and travels as a value: authority decided twice is authority that eventually disagrees with itself.  The card is vaulted at the processor, so what goes is our token for it.
+     * @param id ID is the saved method to detach, from the path. (required)
+     * @return Detachment
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public void deleteBillingMethodsById(@javax.annotation.Nonnull String id) throws ApiException {
-        deleteBillingMethodsByIdWithHttpInfo(id);
+    public Detachment deleteBillingMethodsById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<Detachment> localVarResp = deleteBillingMethodsByIdWithHttpInfo(id);
+        return localVarResp.getData();
     }
 
     /**
-     * Remove one saved card or account
-     * Detaches the method at the processor and drops the row.  A method the caller does not own is NOT FOUND rather than refused — the same answer whether the id names nothing or names somebody else&#39;s card — so an id cannot be probed for existence.  A platform operator or the trusted in-process service token may act on any subject inside the org; everyone else may only remove their own.
-     * @param id  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * Removes one card or account the caller has saved.
+     * Removes one card or account the caller has saved.  It detaches only the CALLER&#39;S own — the wallet this request bills from, resolved server-side — so an id belonging to another customer of the same org is not something this operation can reach. A platform or service caller detaches on the subject&#39;s behalf, and that authority is decided HERE, where the credential is, and travels as a value: authority decided twice is authority that eventually disagrees with itself.  The card is vaulted at the processor, so what goes is our token for it.
+     * @param id ID is the saved method to detach, from the path. (required)
+     * @return ApiResponse&lt;Detachment&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public ApiResponse<Void> deleteBillingMethodsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<Detachment> deleteBillingMethodsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = deleteBillingMethodsByIdValidateBeforeCall(id, null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<Detachment>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Remove one saved card or account (asynchronously)
-     * Detaches the method at the processor and drops the row.  A method the caller does not own is NOT FOUND rather than refused — the same answer whether the id names nothing or names somebody else&#39;s card — so an id cannot be probed for existence.  A platform operator or the trusted in-process service token may act on any subject inside the org; everyone else may only remove their own.
-     * @param id  (required)
+     * Removes one card or account the caller has saved. (asynchronously)
+     * Removes one card or account the caller has saved.  It detaches only the CALLER&#39;S own — the wallet this request bills from, resolved server-side — so an id belonging to another customer of the same org is not something this operation can reach. A platform or service caller detaches on the subject&#39;s behalf, and that authority is decided HERE, where the credential is, and travels as a value: authority decided twice is authority that eventually disagrees with itself.  The card is vaulted at the processor, so what goes is our token for it.
+     * @param id ID is the saved method to detach, from the path. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call deleteBillingMethodsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteBillingMethodsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Detachment> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteBillingMethodsByIdValidateBeforeCall(id, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<Detachment>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for deleteBillingPortalMethodsById
-     * @param id  (required)
+     * @param id ID is the saved method to detach, from the path. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
     public okhttp3.Call deleteBillingPortalMethodsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -593,6 +656,7 @@ public class BillingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -622,39 +686,61 @@ public class BillingApi {
     }
 
     /**
-     * Remove one saved card or account
-     * Detaches the method at the processor and drops the row.  A method the caller does not own is NOT FOUND rather than refused — the same answer whether the id names nothing or names somebody else&#39;s card — so an id cannot be probed for existence.  A platform operator or the trusted in-process service token may act on any subject inside the org; everyone else may only remove their own.
-     * @param id  (required)
+     * DetachPortalMethod is DetachMethod at the address a hosted checkout addresses it by.
+     * DetachPortalMethod is DetachMethod at the address a hosted checkout addresses it by. One set of rows, two spellings: a card detached at either is gone from both, because there is one store behind them.
+     * @param id ID is the saved method to detach, from the path. (required)
+     * @return Detachment
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public void deleteBillingPortalMethodsById(@javax.annotation.Nonnull String id) throws ApiException {
-        deleteBillingPortalMethodsByIdWithHttpInfo(id);
+    public Detachment deleteBillingPortalMethodsById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<Detachment> localVarResp = deleteBillingPortalMethodsByIdWithHttpInfo(id);
+        return localVarResp.getData();
     }
 
     /**
-     * Remove one saved card or account
-     * Detaches the method at the processor and drops the row.  A method the caller does not own is NOT FOUND rather than refused — the same answer whether the id names nothing or names somebody else&#39;s card — so an id cannot be probed for existence.  A platform operator or the trusted in-process service token may act on any subject inside the org; everyone else may only remove their own.
-     * @param id  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * DetachPortalMethod is DetachMethod at the address a hosted checkout addresses it by.
+     * DetachPortalMethod is DetachMethod at the address a hosted checkout addresses it by. One set of rows, two spellings: a card detached at either is gone from both, because there is one store behind them.
+     * @param id ID is the saved method to detach, from the path. (required)
+     * @return ApiResponse&lt;Detachment&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public ApiResponse<Void> deleteBillingPortalMethodsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<Detachment> deleteBillingPortalMethodsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = deleteBillingPortalMethodsByIdValidateBeforeCall(id, null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<Detachment>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Remove one saved card or account (asynchronously)
-     * Detaches the method at the processor and drops the row.  A method the caller does not own is NOT FOUND rather than refused — the same answer whether the id names nothing or names somebody else&#39;s card — so an id cannot be probed for existence.  A platform operator or the trusted in-process service token may act on any subject inside the org; everyone else may only remove their own.
-     * @param id  (required)
+     * DetachPortalMethod is DetachMethod at the address a hosted checkout addresses it by. (asynchronously)
+     * DetachPortalMethod is DetachMethod at the address a hosted checkout addresses it by. One set of rows, two spellings: a card detached at either is gone from both, because there is one store behind them.
+     * @param id ID is the saved method to detach, from the path. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call deleteBillingPortalMethodsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteBillingPortalMethodsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Detachment> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteBillingPortalMethodsByIdValidateBeforeCall(id, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<Detachment>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -4455,6 +4541,12 @@ public class BillingApi {
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
     public okhttp3.Call postBillingRechargeRunAllCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -4482,6 +4574,7 @@ public class BillingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -4506,36 +4599,58 @@ public class BillingApi {
     }
 
     /**
-     * Recharge every org that has fallen below its threshold
-     * Sweeps every organization and, for those with auto-recharge on whose available balance has dropped below their own threshold, charges the default card and credits the balance.  It charges cards across EVERY tenant, so it is platform authority only — never an org owner, who could otherwise sweep-charge saved cards estate-wide. Its caller is a schedule, not a person.  &#x60;orgs&#x60; is the population considered, not the row count: that difference is how a reader tells &#39;nobody was below threshold&#39; from &#39;the sweep never ran&#39;. One org&#39;s failure is reported in its own row and does not stop the rest.
+     * Sweeps every org&#39;s auto-recharge and answers what it did.
+     * Sweeps every org&#39;s auto-recharge and answers what it did.  PLATFORM AUTHORITY ONLY. It charges saved cards across every tenant, so an org owner reaching it could sweep-charge the estate; a caller without it is refused before anything is charged.  The answer explains a sweep that charged nobody as readily as one that charged: it names how many orgs were considered and how many needed charging, with a row each.
+     * @return Recharge
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public void postBillingRechargeRunAll() throws ApiException {
-        postBillingRechargeRunAllWithHttpInfo();
+    public Recharge postBillingRechargeRunAll() throws ApiException {
+        ApiResponse<Recharge> localVarResp = postBillingRechargeRunAllWithHttpInfo();
+        return localVarResp.getData();
     }
 
     /**
-     * Recharge every org that has fallen below its threshold
-     * Sweeps every organization and, for those with auto-recharge on whose available balance has dropped below their own threshold, charges the default card and credits the balance.  It charges cards across EVERY tenant, so it is platform authority only — never an org owner, who could otherwise sweep-charge saved cards estate-wide. Its caller is a schedule, not a person.  &#x60;orgs&#x60; is the population considered, not the row count: that difference is how a reader tells &#39;nobody was below threshold&#39; from &#39;the sweep never ran&#39;. One org&#39;s failure is reported in its own row and does not stop the rest.
-     * @return ApiResponse&lt;Void&gt;
+     * Sweeps every org&#39;s auto-recharge and answers what it did.
+     * Sweeps every org&#39;s auto-recharge and answers what it did.  PLATFORM AUTHORITY ONLY. It charges saved cards across every tenant, so an org owner reaching it could sweep-charge the estate; a caller without it is refused before anything is charged.  The answer explains a sweep that charged nobody as readily as one that charged: it names how many orgs were considered and how many needed charging, with a row each.
+     * @return ApiResponse&lt;Recharge&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public ApiResponse<Void> postBillingRechargeRunAllWithHttpInfo() throws ApiException {
+    public ApiResponse<Recharge> postBillingRechargeRunAllWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = postBillingRechargeRunAllValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<Recharge>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Recharge every org that has fallen below its threshold (asynchronously)
-     * Sweeps every organization and, for those with auto-recharge on whose available balance has dropped below their own threshold, charges the default card and credits the balance.  It charges cards across EVERY tenant, so it is platform authority only — never an org owner, who could otherwise sweep-charge saved cards estate-wide. Its caller is a schedule, not a person.  &#x60;orgs&#x60; is the population considered, not the row count: that difference is how a reader tells &#39;nobody was below threshold&#39; from &#39;the sweep never ran&#39;. One org&#39;s failure is reported in its own row and does not stop the rest.
+     * Sweeps every org&#39;s auto-recharge and answers what it did. (asynchronously)
+     * Sweeps every org&#39;s auto-recharge and answers what it did.  PLATFORM AUTHORITY ONLY. It charges saved cards across every tenant, so an org owner reaching it could sweep-charge the estate; a caller without it is refused before anything is charged.  The answer explains a sweep that charged nobody as readily as one that charged: it names how many orgs were considered and how many needed charging, with a row each.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call postBillingRechargeRunAllAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postBillingRechargeRunAllAsync(final ApiCallback<Recharge> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postBillingRechargeRunAllValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<Recharge>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -4628,11 +4743,19 @@ public class BillingApi {
     }
     /**
      * Build call for postBillingTopup
+     * @param topupIn  (required)
+     * @param xIdempotencyKey  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call postBillingTopupCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postBillingTopupCall(@javax.annotation.Nonnull TopupIn topupIn, @javax.annotation.Nullable String xIdempotencyKey, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4646,7 +4769,7 @@ public class BillingApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = topupIn;
 
         // create path and map variables
         String localVarPath = "/v1/billing/topup";
@@ -4658,6 +4781,7 @@ public class BillingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -4665,62 +4789,109 @@ public class BillingApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
+        if (xIdempotencyKey != null) {
+            localVarHeaderParams.put("X-Idempotency-Key", localVarApiClient.parameterToString(xIdempotencyKey));
+        }
+
+
         String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postBillingTopupValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postBillingTopupCall(_callback);
+    private okhttp3.Call postBillingTopupValidateBeforeCall(@javax.annotation.Nonnull TopupIn topupIn, @javax.annotation.Nullable String xIdempotencyKey, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'topupIn' is set
+        if (topupIn == null) {
+            throw new ApiException("Missing the required parameter 'topupIn' when calling postBillingTopup(Async)");
+        }
+
+        return postBillingTopupCall(topupIn, xIdempotencyKey, _callback);
 
     }
 
     /**
-     * Add funds with a card already on file
-     * Charges a saved card and credits the caller&#39;s prepaid wallet.  The method must belong to the caller: one that does not is NOT FOUND rather than refused, so an id cannot be probed for existence. A saved row whose card is no longer chargeable is 422 — add the card again — which is a different thing to do than a decline (402) or a bad amount (400).  Retries behave exactly as they do for a token top-up: same key, same replay, same exactly-once at the processor.
+     * Charges a card the caller already saved and credits the balance.
+     * Charges a card the caller already saved and credits the balance. Same receipt and the same retry safety as the token door; the only difference is which card, so a caller topping up from a saved method never re-enters one.
+     * @param topupIn  (required)
+     * @param xIdempotencyKey  (optional)
+     * @return Charged
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public void postBillingTopup() throws ApiException {
-        postBillingTopupWithHttpInfo();
+    public Charged postBillingTopup(@javax.annotation.Nonnull TopupIn topupIn, @javax.annotation.Nullable String xIdempotencyKey) throws ApiException {
+        ApiResponse<Charged> localVarResp = postBillingTopupWithHttpInfo(topupIn, xIdempotencyKey);
+        return localVarResp.getData();
     }
 
     /**
-     * Add funds with a card already on file
-     * Charges a saved card and credits the caller&#39;s prepaid wallet.  The method must belong to the caller: one that does not is NOT FOUND rather than refused, so an id cannot be probed for existence. A saved row whose card is no longer chargeable is 422 — add the card again — which is a different thing to do than a decline (402) or a bad amount (400).  Retries behave exactly as they do for a token top-up: same key, same replay, same exactly-once at the processor.
-     * @return ApiResponse&lt;Void&gt;
+     * Charges a card the caller already saved and credits the balance.
+     * Charges a card the caller already saved and credits the balance. Same receipt and the same retry safety as the token door; the only difference is which card, so a caller topping up from a saved method never re-enters one.
+     * @param topupIn  (required)
+     * @param xIdempotencyKey  (optional)
+     * @return ApiResponse&lt;Charged&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public ApiResponse<Void> postBillingTopupWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postBillingTopupValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<Charged> postBillingTopupWithHttpInfo(@javax.annotation.Nonnull TopupIn topupIn, @javax.annotation.Nullable String xIdempotencyKey) throws ApiException {
+        okhttp3.Call localVarCall = postBillingTopupValidateBeforeCall(topupIn, xIdempotencyKey, null);
+        Type localVarReturnType = new TypeToken<Charged>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Add funds with a card already on file (asynchronously)
-     * Charges a saved card and credits the caller&#39;s prepaid wallet.  The method must belong to the caller: one that does not is NOT FOUND rather than refused, so an id cannot be probed for existence. A saved row whose card is no longer chargeable is 422 — add the card again — which is a different thing to do than a decline (402) or a bad amount (400).  Retries behave exactly as they do for a token top-up: same key, same replay, same exactly-once at the processor.
+     * Charges a card the caller already saved and credits the balance. (asynchronously)
+     * Charges a card the caller already saved and credits the balance. Same receipt and the same retry safety as the token door; the only difference is which card, so a caller topping up from a saved method never re-enters one.
+     * @param topupIn  (required)
+     * @param xIdempotencyKey  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call postBillingTopupAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postBillingTopupAsync(@javax.annotation.Nonnull TopupIn topupIn, @javax.annotation.Nullable String xIdempotencyKey, final ApiCallback<Charged> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postBillingTopupValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = postBillingTopupValidateBeforeCall(topupIn, xIdempotencyKey, _callback);
+        Type localVarReturnType = new TypeToken<Charged>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postBillingTopupToken
+     * @param topupIn  (required)
+     * @param xIdempotencyKey  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call postBillingTopupTokenCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postBillingTopupTokenCall(@javax.annotation.Nonnull TopupIn topupIn, @javax.annotation.Nullable String xIdempotencyKey, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4734,7 +4905,7 @@ public class BillingApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = topupIn;
 
         // create path and map variables
         String localVarPath = "/v1/billing/topup/token";
@@ -4746,6 +4917,7 @@ public class BillingApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -4753,53 +4925,92 @@ public class BillingApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
+        if (xIdempotencyKey != null) {
+            localVarHeaderParams.put("X-Idempotency-Key", localVarApiClient.parameterToString(xIdempotencyKey));
+        }
+
+
         String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postBillingTopupTokenValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postBillingTopupTokenCall(_callback);
+    private okhttp3.Call postBillingTopupTokenValidateBeforeCall(@javax.annotation.Nonnull TopupIn topupIn, @javax.annotation.Nullable String xIdempotencyKey, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'topupIn' is set
+        if (topupIn == null) {
+            throw new ApiException("Missing the required parameter 'topupIn' when calling postBillingTopupToken(Async)");
+        }
+
+        return postBillingTopupTokenCall(topupIn, xIdempotencyKey, _callback);
 
     }
 
     /**
-     * Add funds with a single-use card token
-     * Charges a card token from the browser&#39;s payment SDK and credits the caller&#39;s prepaid wallet — the cold-customer path, where nothing has to be saved first.  The wallet credited is the CALLER&#39;S OWN, resolved from their signed identity. It is never a value in the request: a client-set selector is how a customer once topped up one account while their usage drew from another.  &#x60;X-Idempotency-Key&#x60; makes a retry safe. With one, a repeat replays the first result; without one, the same amount from the same subject inside a short window does too. The key reaches the processor as well as our own guard, so the charge is exactly-once at the gateway even if our guard store is down.  The amount is bounded server-side. A decline is 402 and nothing is credited.
+     * Charges a single-use card token and credits the caller&#39;s balance.
+     * Charges a single-use card token and credits the caller&#39;s balance.  The token comes from the payment form and is vaulted as part of the charge, so no card number reaches this service and none is stored here. The receipt names the ledger entry, the new balance, and the PROCESSOR&#39;s own reference — which is the only field that proves money moved at the gateway rather than only in our ledger.  Retry-safe on X-Idempotency-Key: the same key settles one charge and returns the first receipt.
+     * @param topupIn  (required)
+     * @param xIdempotencyKey  (optional)
+     * @return Charged
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public void postBillingTopupToken() throws ApiException {
-        postBillingTopupTokenWithHttpInfo();
+    public Charged postBillingTopupToken(@javax.annotation.Nonnull TopupIn topupIn, @javax.annotation.Nullable String xIdempotencyKey) throws ApiException {
+        ApiResponse<Charged> localVarResp = postBillingTopupTokenWithHttpInfo(topupIn, xIdempotencyKey);
+        return localVarResp.getData();
     }
 
     /**
-     * Add funds with a single-use card token
-     * Charges a card token from the browser&#39;s payment SDK and credits the caller&#39;s prepaid wallet — the cold-customer path, where nothing has to be saved first.  The wallet credited is the CALLER&#39;S OWN, resolved from their signed identity. It is never a value in the request: a client-set selector is how a customer once topped up one account while their usage drew from another.  &#x60;X-Idempotency-Key&#x60; makes a retry safe. With one, a repeat replays the first result; without one, the same amount from the same subject inside a short window does too. The key reaches the processor as well as our own guard, so the charge is exactly-once at the gateway even if our guard store is down.  The amount is bounded server-side. A decline is 402 and nothing is credited.
-     * @return ApiResponse&lt;Void&gt;
+     * Charges a single-use card token and credits the caller&#39;s balance.
+     * Charges a single-use card token and credits the caller&#39;s balance.  The token comes from the payment form and is vaulted as part of the charge, so no card number reaches this service and none is stored here. The receipt names the ledger entry, the new balance, and the PROCESSOR&#39;s own reference — which is the only field that proves money moved at the gateway rather than only in our ledger.  Retry-safe on X-Idempotency-Key: the same key settles one charge and returns the first receipt.
+     * @param topupIn  (required)
+     * @param xIdempotencyKey  (optional)
+     * @return ApiResponse&lt;Charged&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public ApiResponse<Void> postBillingTopupTokenWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postBillingTopupTokenValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<Charged> postBillingTopupTokenWithHttpInfo(@javax.annotation.Nonnull TopupIn topupIn, @javax.annotation.Nullable String xIdempotencyKey) throws ApiException {
+        okhttp3.Call localVarCall = postBillingTopupTokenValidateBeforeCall(topupIn, xIdempotencyKey, null);
+        Type localVarReturnType = new TypeToken<Charged>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Add funds with a single-use card token (asynchronously)
-     * Charges a card token from the browser&#39;s payment SDK and credits the caller&#39;s prepaid wallet — the cold-customer path, where nothing has to be saved first.  The wallet credited is the CALLER&#39;S OWN, resolved from their signed identity. It is never a value in the request: a client-set selector is how a customer once topped up one account while their usage drew from another.  &#x60;X-Idempotency-Key&#x60; makes a retry safe. With one, a repeat replays the first result; without one, the same amount from the same subject inside a short window does too. The key reaches the processor as well as our own guard, so the charge is exactly-once at the gateway even if our guard store is down.  The amount is bounded server-side. A decline is 402 and nothing is credited.
+     * Charges a single-use card token and credits the caller&#39;s balance. (asynchronously)
+     * Charges a single-use card token and credits the caller&#39;s balance.  The token comes from the payment form and is vaulted as part of the charge, so no card number reaches this service and none is stored here. The receipt names the ledger entry, the new balance, and the PROCESSOR&#39;s own reference — which is the only field that proves money moved at the gateway rather than only in our ledger.  Retry-safe on X-Idempotency-Key: the same key settles one charge and returns the first receipt.
+     * @param topupIn  (required)
+     * @param xIdempotencyKey  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call postBillingTopupTokenAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postBillingTopupTokenAsync(@javax.annotation.Nonnull TopupIn topupIn, @javax.annotation.Nullable String xIdempotencyKey, final ApiCallback<Charged> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postBillingTopupTokenValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = postBillingTopupTokenValidateBeforeCall(topupIn, xIdempotencyKey, _callback);
+        Type localVarReturnType = new TypeToken<Charged>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**

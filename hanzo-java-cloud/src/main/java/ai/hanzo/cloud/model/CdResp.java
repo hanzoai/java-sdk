@@ -14,13 +14,16 @@
 package ai.hanzo.cloud.model;
 
 import java.util.Objects;
+import ai.hanzo.cloud.model.CDApp;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -46,58 +49,42 @@ import java.util.Set;
 import ai.hanzo.cloud.JSON;
 
 /**
- * Listing
+ * CdResp
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
-public class Listing {
-  public static final String SERIALIZED_NAME_LAST_MODIFIED = "lastModified";
-  @SerializedName(SERIALIZED_NAME_LAST_MODIFIED)
+public class CdResp {
+  public static final String SERIALIZED_NAME_APPLICATIONS = "applications";
+  @SerializedName(SERIALIZED_NAME_APPLICATIONS)
   @javax.annotation.Nullable
-  private String lastModified;
+  private List<CDApp> applications = new ArrayList<>();
 
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  @javax.annotation.Nullable
-  private String name;
-
-  public Listing() {
+  public CdResp() {
   }
 
-  public Listing lastModified(@javax.annotation.Nullable String lastModified) {
-    this.lastModified = lastModified;
+  public CdResp applications(@javax.annotation.Nullable List<CDApp> applications) {
+    this.applications = applications;
+    return this;
+  }
+
+  public CdResp addApplicationsItem(CDApp applicationsItem) {
+    if (this.applications == null) {
+      this.applications = new ArrayList<>();
+    }
+    this.applications.add(applicationsItem);
     return this;
   }
 
   /**
-   * Get lastModified
-   * @return lastModified
+   * Get applications
+   * @return applications
    */
   @javax.annotation.Nullable
-  public String getLastModified() {
-    return lastModified;
+  public List<CDApp> getApplications() {
+    return applications;
   }
 
-  public void setLastModified(@javax.annotation.Nullable String lastModified) {
-    this.lastModified = lastModified;
-  }
-
-
-  public Listing name(@javax.annotation.Nullable String name) {
-    this.name = name;
-    return this;
-  }
-
-  /**
-   * Get name
-   * @return name
-   */
-  @javax.annotation.Nullable
-  public String getName() {
-    return name;
-  }
-
-  public void setName(@javax.annotation.Nullable String name) {
-    this.name = name;
+  public void setApplications(@javax.annotation.Nullable List<CDApp> applications) {
+    this.applications = applications;
   }
 
 
@@ -110,22 +97,20 @@ public class Listing {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Listing listing = (Listing) o;
-    return Objects.equals(this.lastModified, listing.lastModified) &&
-        Objects.equals(this.name, listing.name);
+    CdResp cdResp = (CdResp) o;
+    return Objects.equals(this.applications, cdResp.applications);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(lastModified, name);
+    return Objects.hash(applications);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Listing {\n");
-    sb.append("    lastModified: ").append(toIndentedString(lastModified)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("class CdResp {\n");
+    sb.append("    applications: ").append(toIndentedString(applications)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -147,7 +132,7 @@ public class Listing {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("lastModified", "name"));
+    openapiFields = new HashSet<String>(Arrays.asList("applications"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -157,28 +142,36 @@ public class Listing {
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to Listing
+   * @throws IOException if the JSON Element is invalid with respect to CdResp
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!Listing.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in Listing is not found in the empty JSON string", Listing.openapiRequiredFields.toString()));
+        if (!CdResp.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in CdResp is not found in the empty JSON string", CdResp.openapiRequiredFields.toString()));
         }
       }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!Listing.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Listing` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!CdResp.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `CdResp` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("lastModified") != null && !jsonObj.get("lastModified").isJsonNull()) && !jsonObj.get("lastModified").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `lastModified` to be a primitive type in the JSON string but got `%s`", jsonObj.get("lastModified").toString()));
-      }
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      if (jsonObj.get("applications") != null && !jsonObj.get("applications").isJsonNull()) {
+        JsonArray jsonArrayapplications = jsonObj.getAsJsonArray("applications");
+        if (jsonArrayapplications != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("applications").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `applications` to be an array in the JSON string but got `%s`", jsonObj.get("applications").toString()));
+          }
+
+          // validate the optional field `applications` (array)
+          for (int i = 0; i < jsonArrayapplications.size(); i++) {
+            CDApp.validateJsonElement(jsonArrayapplications.get(i));
+          };
+        }
       }
   }
 
@@ -186,22 +179,22 @@ public class Listing {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!Listing.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'Listing' and its subtypes
+       if (!CdResp.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'CdResp' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<Listing> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(Listing.class));
+       final TypeAdapter<CdResp> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(CdResp.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<Listing>() {
+       return (TypeAdapter<T>) new TypeAdapter<CdResp>() {
            @Override
-           public void write(JsonWriter out, Listing value) throws IOException {
+           public void write(JsonWriter out, CdResp value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public Listing read(JsonReader in) throws IOException {
+           public CdResp read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -212,18 +205,18 @@ public class Listing {
   }
 
   /**
-   * Create an instance of Listing given an JSON string
+   * Create an instance of CdResp given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of Listing
-   * @throws IOException if the JSON string is invalid with respect to Listing
+   * @return An instance of CdResp
+   * @throws IOException if the JSON string is invalid with respect to CdResp
    */
-  public static Listing fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, Listing.class);
+  public static CdResp fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, CdResp.class);
   }
 
   /**
-   * Convert an instance of Listing to an JSON string
+   * Convert an instance of CdResp to an JSON string
    *
    * @return JSON string
    */

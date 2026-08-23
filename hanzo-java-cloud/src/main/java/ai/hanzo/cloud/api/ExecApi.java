@@ -29,6 +29,7 @@ import java.io.IOException;
 
 import ai.hanzo.cloud.model.CodeResult;
 import ai.hanzo.cloud.model.CodeRun;
+import ai.hanzo.cloud.model.Listing;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -75,10 +76,16 @@ public class ExecApi {
 
     /**
      * Build call for getExecFilesBySid
-     * @param sid  (required)
+     * @param sid SID is the session identifier — the sandbox this listing is of. The URL is the addressing authority: a path segment binds after the body and after the query, so the address decides which session is read whatever else is sent. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
     public okhttp3.Call getExecFilesBySidCall(@javax.annotation.Nonnull String sid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -107,6 +114,7 @@ public class ExecApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -136,39 +144,61 @@ public class ExecApi {
     }
 
     /**
-     * List the files in an execution session
-     * Lists what a session&#39;s sandbox holds — the uploads a run can read and the artifacts it produced — each then fetched from /v1/exec/download.  It answers a BARE JSON ARRAY of {name, lastModified}, where &#x60;name&#x60; is the same {session_id}/{fileId} identifier download takes, because that is what the client matches on. An object wrapper would be a wire change, which is why this is not a typed operation.
-     * @param sid  (required)
+     * Files lists what a session holds.
+     * Files lists what a session holds.  One recursive &#x60;find&#x60;, the same traversal the artifact sweep makes. It used to be &#x60;ls -1A&#x60; — top level only — while the sweep collected with &#x60;find&#x60;, so a run that wrote a nested artifact reported it in its reply and then omitted it here, and the client&#39;s prefix match read the file as expired. Two traversals of one directory is two answers about what a session holds; there is one now.
+     * @param sid SID is the session identifier — the sandbox this listing is of. The URL is the addressing authority: a path segment binds after the body and after the query, so the address decides which session is read whatever else is sent. (required)
+     * @return List&lt;Listing&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public void getExecFilesBySid(@javax.annotation.Nonnull String sid) throws ApiException {
-        getExecFilesBySidWithHttpInfo(sid);
+    public List<Listing> getExecFilesBySid(@javax.annotation.Nonnull String sid) throws ApiException {
+        ApiResponse<List<Listing>> localVarResp = getExecFilesBySidWithHttpInfo(sid);
+        return localVarResp.getData();
     }
 
     /**
-     * List the files in an execution session
-     * Lists what a session&#39;s sandbox holds — the uploads a run can read and the artifacts it produced — each then fetched from /v1/exec/download.  It answers a BARE JSON ARRAY of {name, lastModified}, where &#x60;name&#x60; is the same {session_id}/{fileId} identifier download takes, because that is what the client matches on. An object wrapper would be a wire change, which is why this is not a typed operation.
-     * @param sid  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * Files lists what a session holds.
+     * Files lists what a session holds.  One recursive &#x60;find&#x60;, the same traversal the artifact sweep makes. It used to be &#x60;ls -1A&#x60; — top level only — while the sweep collected with &#x60;find&#x60;, so a run that wrote a nested artifact reported it in its reply and then omitted it here, and the client&#39;s prefix match read the file as expired. Two traversals of one directory is two answers about what a session holds; there is one now.
+     * @param sid SID is the session identifier — the sandbox this listing is of. The URL is the addressing authority: a path segment binds after the body and after the query, so the address decides which session is read whatever else is sent. (required)
+     * @return ApiResponse&lt;List&lt;Listing&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public ApiResponse<Void> getExecFilesBySidWithHttpInfo(@javax.annotation.Nonnull String sid) throws ApiException {
+    public ApiResponse<List<Listing>> getExecFilesBySidWithHttpInfo(@javax.annotation.Nonnull String sid) throws ApiException {
         okhttp3.Call localVarCall = getExecFilesBySidValidateBeforeCall(sid, null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<List<Listing>>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * List the files in an execution session (asynchronously)
-     * Lists what a session&#39;s sandbox holds — the uploads a run can read and the artifacts it produced — each then fetched from /v1/exec/download.  It answers a BARE JSON ARRAY of {name, lastModified}, where &#x60;name&#x60; is the same {session_id}/{fileId} identifier download takes, because that is what the client matches on. An object wrapper would be a wire change, which is why this is not a typed operation.
-     * @param sid  (required)
+     * Files lists what a session holds. (asynchronously)
+     * Files lists what a session holds.  One recursive &#x60;find&#x60;, the same traversal the artifact sweep makes. It used to be &#x60;ls -1A&#x60; — top level only — while the sweep collected with &#x60;find&#x60;, so a run that wrote a nested artifact reported it in its reply and then omitted it here, and the client&#39;s prefix match read the file as expired. Two traversals of one directory is two answers about what a session holds; there is one now.
+     * @param sid SID is the session identifier — the sandbox this listing is of. The URL is the addressing authority: a path segment binds after the body and after the query, so the address decides which session is read whatever else is sent. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call getExecFilesBySidAsync(@javax.annotation.Nonnull String sid, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getExecFilesBySidAsync(@javax.annotation.Nonnull String sid, final ApiCallback<List<Listing>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getExecFilesBySidValidateBeforeCall(sid, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<List<Listing>>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**

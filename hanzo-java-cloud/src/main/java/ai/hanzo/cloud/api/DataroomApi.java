@@ -35,6 +35,7 @@ import ai.hanzo.cloud.model.DataroomLinkCreate;
 import ai.hanzo.cloud.model.DataroomLinkOne;
 import ai.hanzo.cloud.model.DataroomLinkStats;
 import ai.hanzo.cloud.model.DataroomLinks;
+import ai.hanzo.cloud.model.DataroomLiveness;
 import ai.hanzo.cloud.model.DataroomMembership;
 import ai.hanzo.cloud.model.DataroomRoomDetailOne;
 import ai.hanzo.cloud.model.DataroomRoomOne;
@@ -940,6 +941,12 @@ public class DataroomApi {
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
     public okhttp3.Call getDataroomHealthCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -967,6 +974,7 @@ public class DataroomApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -991,36 +999,58 @@ public class DataroomApi {
     }
 
     /**
-     * Liveness of the dataroom subsystem
-     * Answers {service, status} unconditionally — no principal, no tenant. It is registered BEFORE the bundle, the link index and the object-storage seam are wired, so it keeps answering when any of those fail and the subsystem degrades to health-only. That is the point, and the limit: a 200 here says the process is alive, never that a data room can be read or written.
+     * Health reports that the data room subsystem is up.
+     * Health reports that the data room subsystem is up.  It answers before the bundle loads, holds no state and touches no store, so it stays true in exactly the situation an operator is probing for. It says nothing about whether a room can be OPENED — that is what the room operations answer — because a liveness probe that fails on a dependency takes a working process out of rotation.
+     * @return DataroomLiveness
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public void getDataroomHealth() throws ApiException {
-        getDataroomHealthWithHttpInfo();
+    public DataroomLiveness getDataroomHealth() throws ApiException {
+        ApiResponse<DataroomLiveness> localVarResp = getDataroomHealthWithHttpInfo();
+        return localVarResp.getData();
     }
 
     /**
-     * Liveness of the dataroom subsystem
-     * Answers {service, status} unconditionally — no principal, no tenant. It is registered BEFORE the bundle, the link index and the object-storage seam are wired, so it keeps answering when any of those fail and the subsystem degrades to health-only. That is the point, and the limit: a 200 here says the process is alive, never that a data room can be read or written.
-     * @return ApiResponse&lt;Void&gt;
+     * Health reports that the data room subsystem is up.
+     * Health reports that the data room subsystem is up.  It answers before the bundle loads, holds no state and touches no store, so it stays true in exactly the situation an operator is probing for. It says nothing about whether a room can be OPENED — that is what the room operations answer — because a liveness probe that fails on a dependency takes a working process out of rotation.
+     * @return ApiResponse&lt;DataroomLiveness&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public ApiResponse<Void> getDataroomHealthWithHttpInfo() throws ApiException {
+    public ApiResponse<DataroomLiveness> getDataroomHealthWithHttpInfo() throws ApiException {
         okhttp3.Call localVarCall = getDataroomHealthValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<DataroomLiveness>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Liveness of the dataroom subsystem (asynchronously)
-     * Answers {service, status} unconditionally — no principal, no tenant. It is registered BEFORE the bundle, the link index and the object-storage seam are wired, so it keeps answering when any of those fail and the subsystem degrades to health-only. That is the point, and the limit: a 200 here says the process is alive, never that a data room can be read or written.
+     * Health reports that the data room subsystem is up. (asynchronously)
+     * Health reports that the data room subsystem is up.  It answers before the bundle loads, holds no state and touches no store, so it stays true in exactly the situation an operator is probing for. It says nothing about whether a room can be OPENED — that is what the room operations answer — because a liveness probe that fails on a dependency takes a working process out of rotation.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call getDataroomHealthAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getDataroomHealthAsync(final ApiCallback<DataroomLiveness> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getDataroomHealthValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<DataroomLiveness>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -2156,7 +2186,7 @@ public class DataroomApi {
 
     /**
      * Upload a document&#39;s bytes and record it
-     * Takes the file ITSELF as the raw request body — not a JSON envelope, not multipart — stores it on the object-storage seam, and records the metadata row, answering with the new document. &#x60;?name&#x3D;&#x60; names it (default \&quot;document\&quot;), the request&#39;s Content-Type becomes the recorded mime type, and &#x60;?numPages&#x3D;&#x60; is optional.  Requires a validated principal; 403 without one. An empty body is 400 and anything over 64 MiB is 413 — a data room holds decks and PDFs, not a media library.  The storage key is 128 random bits under the tenant&#39;s own key prefix, minted before the bytes are written: if the system&#39;s randomness is unavailable the upload fails 500 rather than fall back to a predictable key that could overwrite another document&#39;s bytes. A storage write that fails is 502 and no metadata row is recorded, so a document never exists without its file.
+     * Takes the file ITSELF as the raw request body — not a JSON envelope, not multipart — stores it on the object-storage client, and records the metadata row, answering with the new document. &#x60;?name&#x3D;&#x60; names it (default \&quot;document\&quot;), the request&#39;s Content-Type becomes the recorded mime type, and &#x60;?numPages&#x3D;&#x60; is optional.  Requires a validated principal; 403 without one. An empty body is 400 and anything over 64 MiB is 413 — a data room holds decks and PDFs, not a media library.  The storage key is 128 random bits under the tenant&#39;s own key prefix, minted before the bytes are written: if the system&#39;s randomness is unavailable the upload fails 500 rather than fall back to a predictable key that could overwrite another document&#39;s bytes. A storage write that fails is 502 and no metadata row is recorded, so a document never exists without its file.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public void postDataroomDocuments() throws ApiException {
@@ -2165,7 +2195,7 @@ public class DataroomApi {
 
     /**
      * Upload a document&#39;s bytes and record it
-     * Takes the file ITSELF as the raw request body — not a JSON envelope, not multipart — stores it on the object-storage seam, and records the metadata row, answering with the new document. &#x60;?name&#x3D;&#x60; names it (default \&quot;document\&quot;), the request&#39;s Content-Type becomes the recorded mime type, and &#x60;?numPages&#x3D;&#x60; is optional.  Requires a validated principal; 403 without one. An empty body is 400 and anything over 64 MiB is 413 — a data room holds decks and PDFs, not a media library.  The storage key is 128 random bits under the tenant&#39;s own key prefix, minted before the bytes are written: if the system&#39;s randomness is unavailable the upload fails 500 rather than fall back to a predictable key that could overwrite another document&#39;s bytes. A storage write that fails is 502 and no metadata row is recorded, so a document never exists without its file.
+     * Takes the file ITSELF as the raw request body — not a JSON envelope, not multipart — stores it on the object-storage client, and records the metadata row, answering with the new document. &#x60;?name&#x3D;&#x60; names it (default \&quot;document\&quot;), the request&#39;s Content-Type becomes the recorded mime type, and &#x60;?numPages&#x3D;&#x60; is optional.  Requires a validated principal; 403 without one. An empty body is 400 and anything over 64 MiB is 413 — a data room holds decks and PDFs, not a media library.  The storage key is 128 random bits under the tenant&#39;s own key prefix, minted before the bytes are written: if the system&#39;s randomness is unavailable the upload fails 500 rather than fall back to a predictable key that could overwrite another document&#39;s bytes. A storage write that fails is 502 and no metadata row is recorded, so a document never exists without its file.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -2176,7 +2206,7 @@ public class DataroomApi {
 
     /**
      * Upload a document&#39;s bytes and record it (asynchronously)
-     * Takes the file ITSELF as the raw request body — not a JSON envelope, not multipart — stores it on the object-storage seam, and records the metadata row, answering with the new document. &#x60;?name&#x3D;&#x60; names it (default \&quot;document\&quot;), the request&#39;s Content-Type becomes the recorded mime type, and &#x60;?numPages&#x3D;&#x60; is optional.  Requires a validated principal; 403 without one. An empty body is 400 and anything over 64 MiB is 413 — a data room holds decks and PDFs, not a media library.  The storage key is 128 random bits under the tenant&#39;s own key prefix, minted before the bytes are written: if the system&#39;s randomness is unavailable the upload fails 500 rather than fall back to a predictable key that could overwrite another document&#39;s bytes. A storage write that fails is 502 and no metadata row is recorded, so a document never exists without its file.
+     * Takes the file ITSELF as the raw request body — not a JSON envelope, not multipart — stores it on the object-storage client, and records the metadata row, answering with the new document. &#x60;?name&#x3D;&#x60; names it (default \&quot;document\&quot;), the request&#39;s Content-Type becomes the recorded mime type, and &#x60;?numPages&#x3D;&#x60; is optional.  Requires a validated principal; 403 without one. An empty body is 400 and anything over 64 MiB is 413 — a data room holds decks and PDFs, not a media library.  The storage key is 128 random bits under the tenant&#39;s own key prefix, minted before the bytes are written: if the system&#39;s randomness is unavailable the upload fails 500 rather than fall back to a predictable key that could overwrite another document&#39;s bytes. A storage write that fails is 502 and no metadata row is recorded, so a document never exists without its file.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
