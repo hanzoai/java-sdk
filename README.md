@@ -1,15 +1,14 @@
 # Hanzo Cloud — Java SDK
 
 Java client for the [Hanzo Cloud](https://hanzo.ai) API, covering every `/v1`
-route the gateway serves. It is generated from the document hanzoai/cloud emits from its
-own routers — the one the API publishes at
-[`/v1/openapi.json`](https://api.hanzo.ai/v1/openapi.json) — so every method
-here is a route some subsystem registered, and method names are that document's
-operation ids camel-cased: `get_keys` → `getKeys`, `get_kv_by_name` →
-`getKvByName`.
+route the gateway serves. It is generated from the API's own OpenAPI document —
+the one published at
+[`/v1/openapi.json`](https://api.hanzo.ai/v1/openapi.json) — so method names are
+that document's operation ids camel-cased: `get_keys` → `getKeys`,
+`get_kv_by_name` → `getKvByName`.
 
-Which release this client is a projection of is in [`.spec-lock`](.spec-lock):
-the ref, and the digest of the bytes it was cut from.
+[`.spec-lock`](.spec-lock) names the ref and the digest of the bytes this client
+was cut from.
 
 ## Install
 
@@ -42,20 +41,17 @@ Maven reads `~/.m2` first, so there it is the coordinates and nothing else:
 </dependency>
 ```
 
-Java 11 or newer — the classes are major version 55.
+Java 11 or newer.
 
 ## Authenticate
 
-The document declares one security scheme — `bearer`, HTTP bearer — and applies
-it to every operation except the four that say `security: []`. So the credential
-lives in the generated client: `ApiClient` registers an `HttpBearerAuth`, 2,498
-of the 2,502 call sites name it, and `setBearerToken` is the one place a token
-goes in.
+The document declares one security scheme — `bearer` — and applies it to every
+operation except four. `setBearerToken` is the one place a token goes in:
 
 ```java
 ApiClient hanzo = new ApiClient();
-hanzo.setBearerToken(token);          // Authorization: Bearer …, on the 2,498
-new ModelsApi(hanzo).getModels();     // one of the 4 that need no token
+hanzo.setBearerToken(token);          // Authorization: Bearer …
+new ModelsApi(hanzo).getModels();     // one of the four that need no token
 ```
 
 [`ai.hanzo.Hanzo`](hanzo-java-cloud/src/main/java/ai/hanzo/Hanzo.java) is the
@@ -81,7 +77,7 @@ export HANZO_API_KEY=$(curl -s https://api.hanzo.ai/v1/iam/oauth/token \
 ```
 
 `X-Org-Id` stays a default header rather than a second credential: it selects a
-tenant, no scheme declares it, and no generated signature accepts it.
+tenant, and no scheme declares it.
 
 ## Quickstart
 
@@ -109,24 +105,21 @@ public class Whoami {
 HANZO_API_KEY=… ./gradlew :examples:hello   # the same call, in this repo
 ```
 
-`GET /v1/keys` is the call that says no — with no key, or a bad one, it answers
-`403 {"status":403,"code":"forbidden","error":"sign in to manage API keys"}` —
-so reaching the loop at all proves the credential works. Against api.hanzo.ai
-with an IAM access token it prints `the key is good, and it owns no keys of its
-own`; with `HANZO_API_KEY` unset, `keys refused: HTTP 403`. That pair is the
-proof, and one half of it alone is not.
+`GET /v1/keys` refuses without a credential — `403
+{"status":403,"code":"forbidden","error":"sign in to manage API keys"}` — so
+reaching the loop at all proves the key works.
 
-Getters carry the document's own answer about a field: `@javax.annotation.Nullable`
-unless it is required, which most are not — hence the `requireNonNullElse`. A
-refusal arrives as a checked `ApiException` carrying `getCode()` and
-`getResponseBody()`.
+Getters carry the document's own answer about a field:
+`@javax.annotation.Nullable` unless it is required, which most are not — hence
+the `requireNonNullElse`. A refusal arrives as a checked `ApiException` carrying
+`getCode()` and `getResponseBody()`.
 
 ## Examples
 
-Six flows, one per directory, each a complete program. Which six is not this
-repo's choice: `flows.yaml` in hanzoai/openapi prescribes them for every Hanzo
-SDK, so a reader who knows one language's set can find their way around
-another's. The build compiles them against the client, so they cannot rot.
+Six flows, one per directory, each a complete program. `flows.yaml` in
+hanzoai/openapi prescribes them for every Hanzo SDK, so a reader who knows one
+language's set can find their way around another's. The build compiles them
+against the client.
 
 | flow | what it does |
 |---|---|
@@ -145,8 +138,6 @@ export HANZO_ORG_ID=my-org      # store and agent only
 ./gradlew :examples:hello       # or tools, money, chat, store, agent
 ```
 
-Observed against api.hanzo.ai with an IAM access token:
-
 ```
 $ ./gradlew --console=plain -q :examples:hello
 the key is good, and it owns no keys of its own
@@ -162,9 +153,8 @@ usage    HTTP 200
 
 `chat` and `money` print a status rather than a body: those routes are published
 with no request or response schema, so the generated methods take no argument
-and return `void`. Decoding a body the client was never told the shape of would
-be an opinion about the API living inside a generated client. When the source
-declares the shapes, a regeneration prints them.
+and return `void`. When the document declares the shapes, a regeneration prints
+them.
 
 ## Build
 
@@ -182,21 +172,15 @@ hand; to change it, change the code that emits the document.
 SPEC=/path/to/openapi.yaml OPENAPI=/path/to/hanzoai/openapi ./scripts/generate.sh
 ```
 
-`scripts/generate.sh` is a call site, not a generator invocation: the invocation
-lives once in `hanzoai/openapi/generate.py`, and every knob — generator, HTTP
-library, coordinates, packages — is data in `sdks.yaml` beside it. Both inputs
-arrive as values: `SPEC` is the document, `OPENAPI` is the checkout holding the
-driver.
-
-The examples are the gate. `./gradlew build` compiles the client and all six
-flows against it, so a document change that renames or drops an operation goes
-red here instead of in someone's app.
+`scripts/generate.sh` is a call site: the invocation lives once in
+`hanzoai/openapi/generate.py`, and every knob — generator, HTTP library,
+coordinates, packages — is data in `sdks.yaml` beside it.
 
 ## Docs
 
 [docs.hanzo.ai](https://docs.hanzo.ai) for the API itself.
 [`/v1/openapi.json`](https://api.hanzo.ai/v1/openapi.json) is the document this
-client is cut from — the authority on what any route accepts and returns.
+client is cut from.
 
 ## License
 
