@@ -22,14 +22,14 @@ cd java-sdk
 ./gradlew :hanzo-java-cloud:publishToMavenLocal
 ```
 
-That writes `ai.hanzo:hanzo-java-cloud:8.0.1` — jar, sources and javadoc — to
-`~/.m2/repository/ai/hanzo/hanzo-java-cloud/8.0.1/`. Depend on it from your own
+That writes `ai.hanzo:hanzo-java-cloud:8.5.89` — jar, sources and javadoc — to
+`~/.m2/repository/ai/hanzo/hanzo-java-cloud/8.5.89/`. Depend on it from your own
 build:
 
 ```groovy
 repositories { mavenLocal(); mavenCentral() }
 
-dependencies { implementation 'ai.hanzo:hanzo-java-cloud:8.0.1' }
+dependencies { implementation 'ai.hanzo:hanzo-java-cloud:8.5.89' }
 ```
 
 Maven reads `~/.m2` first, so there it is the coordinates and nothing else:
@@ -38,7 +38,7 @@ Maven reads `~/.m2` first, so there it is the coordinates and nothing else:
 <dependency>
   <groupId>ai.hanzo</groupId>
   <artifactId>hanzo-java-cloud</artifactId>
-  <version>8.0.1</version>
+  <version>8.5.89</version>
 </dependency>
 ```
 
