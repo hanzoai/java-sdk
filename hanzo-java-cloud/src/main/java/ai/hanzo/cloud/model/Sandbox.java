@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay routes, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -54,6 +54,11 @@ public class Sandbox {
   @SerializedName(SERIALIZED_NAME_PROPERTY_CLASS)
   @javax.annotation.Nullable
   private String propertyClass;
+
+  public static final String SERIALIZED_NAME_CONNECTED_AT = "connectedAt";
+  @SerializedName(SERIALIZED_NAME_CONNECTED_AT)
+  @javax.annotation.Nullable
+  private Integer connectedAt;
 
   public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
@@ -134,6 +139,25 @@ public class Sandbox {
 
   public void setPropertyClass(@javax.annotation.Nullable String propertyClass) {
     this.propertyClass = propertyClass;
+  }
+
+
+  public Sandbox connectedAt(@javax.annotation.Nullable Integer connectedAt) {
+    this.connectedAt = connectedAt;
+    return this;
+  }
+
+  /**
+   * ConnectedAt is when somebody was last known to have this sandbox&#39;s project OPEN, Unix seconds. It is a fact with an EXPIRY rather than a flag: a watcher restamps it every beat of its stream, and it goes stale on its own when the stream dies, so nothing has to be turned off by a process that may not be there any more. The reaper reads it to choose WHICH idle allowance applies — see lifecycle.go.  Zero means nobody has said so, which puts the sandbox on the short clock.
+   * @return connectedAt
+   */
+  @javax.annotation.Nullable
+  public Integer getConnectedAt() {
+    return connectedAt;
+  }
+
+  public void setConnectedAt(@javax.annotation.Nullable Integer connectedAt) {
+    this.connectedAt = connectedAt;
   }
 
 
@@ -376,6 +400,7 @@ public class Sandbox {
     }
     Sandbox sandbox = (Sandbox) o;
     return Objects.equals(this.propertyClass, sandbox.propertyClass) &&
+        Objects.equals(this.connectedAt, sandbox.connectedAt) &&
         Objects.equals(this.createdAt, sandbox.createdAt) &&
         Objects.equals(this.error, sandbox.error) &&
         Objects.equals(this.expiresAt, sandbox.expiresAt) &&
@@ -392,7 +417,7 @@ public class Sandbox {
 
   @Override
   public int hashCode() {
-    return Objects.hash(propertyClass, createdAt, error, expiresAt, id, image, kind, lastUsedAt, org, project, runtime, status, volume);
+    return Objects.hash(propertyClass, connectedAt, createdAt, error, expiresAt, id, image, kind, lastUsedAt, org, project, runtime, status, volume);
   }
 
   @Override
@@ -400,6 +425,7 @@ public class Sandbox {
     StringBuilder sb = new StringBuilder();
     sb.append("class Sandbox {\n");
     sb.append("    propertyClass: ").append(toIndentedString(propertyClass)).append("\n");
+    sb.append("    connectedAt: ").append(toIndentedString(connectedAt)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    error: ").append(toIndentedString(error)).append("\n");
     sb.append("    expiresAt: ").append(toIndentedString(expiresAt)).append("\n");
@@ -433,7 +459,7 @@ public class Sandbox {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("class", "createdAt", "error", "expiresAt", "id", "image", "kind", "lastUsedAt", "org", "project", "runtime", "status", "volume"));
+    openapiFields = new HashSet<String>(Arrays.asList("class", "connectedAt", "createdAt", "error", "expiresAt", "id", "image", "kind", "lastUsedAt", "org", "project", "runtime", "status", "volume"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);

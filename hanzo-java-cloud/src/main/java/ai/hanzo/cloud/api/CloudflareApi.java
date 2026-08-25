@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay routes, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -2861,7 +2861,7 @@ public class CloudflareApi {
     /**
      * Build call for postCloudflareD1DatabasesByDatabaseQuery
      * @param database  (required)
-     * @param d1Query  (optional)
+     * @param d1Query  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2869,10 +2869,10 @@ public class CloudflareApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postCloudflareD1DatabasesByDatabaseQueryCall(@javax.annotation.Nonnull String database, @javax.annotation.Nullable D1Query d1Query, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCloudflareD1DatabasesByDatabaseQueryCall(@javax.annotation.Nonnull String database, @javax.annotation.Nonnull D1Query d1Query, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2919,10 +2919,15 @@ public class CloudflareApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postCloudflareD1DatabasesByDatabaseQueryValidateBeforeCall(@javax.annotation.Nonnull String database, @javax.annotation.Nullable D1Query d1Query, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postCloudflareD1DatabasesByDatabaseQueryValidateBeforeCall(@javax.annotation.Nonnull String database, @javax.annotation.Nonnull D1Query d1Query, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'database' is set
         if (database == null) {
             throw new ApiException("Missing the required parameter 'database' when calling postCloudflareD1DatabasesByDatabaseQuery(Async)");
+        }
+
+        // verify the required parameter 'd1Query' is set
+        if (d1Query == null) {
+            throw new ApiException("Missing the required parameter 'd1Query' when calling postCloudflareD1DatabasesByDatabaseQuery(Async)");
         }
 
         return postCloudflareD1DatabasesByDatabaseQueryCall(database, d1Query, _callback);
@@ -2930,49 +2935,49 @@ public class CloudflareApi {
     }
 
     /**
-     * Run a SQL statement against a D1 database
-     * Executes a statement on one D1 database on the org&#39;s OWN Cloudflare account and relays D1&#39;s result set. &#x60;sql&#x60; is required and &#x60;params&#x60; carries the bound values in placeholder order — use them rather than interpolating values into the statement.  The body is checked for a non-empty &#x60;sql&#x60; and then forwarded VERBATIM, so every field D1 accepts reaches D1 even though only two are named here; the declared schema is open for that reason. That verbatim forward is why this is not a typed op — decoding and re-encoding the body would drop &#x60;params&#x60;, where the query&#39;s bound values live. Requires ORG ADMIN (403 otherwise); a malformed body or missing &#x60;sql&#x60; is 400; 503 if the org has never connected a Cloudflare token.
+     * Runs one SQL statement against a D1 database.
+     * Runs one SQL statement against a D1 database. It executes on the org&#39;s OWN Cloudflare account and relays D1&#39;s result set. The body is checked for a non-empty &#x60;sql&#x60; and then forwarded VERBATIM, so every field D1 accepts reaches D1 even though only two are named here.  Requires ORG ADMIN — a statement may INSERT, UPDATE or DROP, so a query takes the write gate rather than the read one — and a caller who is only an org member is refused 403. A missing &#x60;sql&#x60; is 400; 503 if the org has never connected a Cloudflare token.
      * @param database  (required)
-     * @param d1Query  (optional)
+     * @param d1Query  (required)
      * @return Object
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Object postCloudflareD1DatabasesByDatabaseQuery(@javax.annotation.Nonnull String database, @javax.annotation.Nullable D1Query d1Query) throws ApiException {
+    public Object postCloudflareD1DatabasesByDatabaseQuery(@javax.annotation.Nonnull String database, @javax.annotation.Nonnull D1Query d1Query) throws ApiException {
         ApiResponse<Object> localVarResp = postCloudflareD1DatabasesByDatabaseQueryWithHttpInfo(database, d1Query);
         return localVarResp.getData();
     }
 
     /**
-     * Run a SQL statement against a D1 database
-     * Executes a statement on one D1 database on the org&#39;s OWN Cloudflare account and relays D1&#39;s result set. &#x60;sql&#x60; is required and &#x60;params&#x60; carries the bound values in placeholder order — use them rather than interpolating values into the statement.  The body is checked for a non-empty &#x60;sql&#x60; and then forwarded VERBATIM, so every field D1 accepts reaches D1 even though only two are named here; the declared schema is open for that reason. That verbatim forward is why this is not a typed op — decoding and re-encoding the body would drop &#x60;params&#x60;, where the query&#39;s bound values live. Requires ORG ADMIN (403 otherwise); a malformed body or missing &#x60;sql&#x60; is 400; 503 if the org has never connected a Cloudflare token.
+     * Runs one SQL statement against a D1 database.
+     * Runs one SQL statement against a D1 database. It executes on the org&#39;s OWN Cloudflare account and relays D1&#39;s result set. The body is checked for a non-empty &#x60;sql&#x60; and then forwarded VERBATIM, so every field D1 accepts reaches D1 even though only two are named here.  Requires ORG ADMIN — a statement may INSERT, UPDATE or DROP, so a query takes the write gate rather than the read one — and a caller who is only an org member is refused 403. A missing &#x60;sql&#x60; is 400; 503 if the org has never connected a Cloudflare token.
      * @param database  (required)
-     * @param d1Query  (optional)
+     * @param d1Query  (required)
      * @return ApiResponse&lt;Object&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> postCloudflareD1DatabasesByDatabaseQueryWithHttpInfo(@javax.annotation.Nonnull String database, @javax.annotation.Nullable D1Query d1Query) throws ApiException {
+    public ApiResponse<Object> postCloudflareD1DatabasesByDatabaseQueryWithHttpInfo(@javax.annotation.Nonnull String database, @javax.annotation.Nonnull D1Query d1Query) throws ApiException {
         okhttp3.Call localVarCall = postCloudflareD1DatabasesByDatabaseQueryValidateBeforeCall(database, d1Query, null);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Run a SQL statement against a D1 database (asynchronously)
-     * Executes a statement on one D1 database on the org&#39;s OWN Cloudflare account and relays D1&#39;s result set. &#x60;sql&#x60; is required and &#x60;params&#x60; carries the bound values in placeholder order — use them rather than interpolating values into the statement.  The body is checked for a non-empty &#x60;sql&#x60; and then forwarded VERBATIM, so every field D1 accepts reaches D1 even though only two are named here; the declared schema is open for that reason. That verbatim forward is why this is not a typed op — decoding and re-encoding the body would drop &#x60;params&#x60;, where the query&#39;s bound values live. Requires ORG ADMIN (403 otherwise); a malformed body or missing &#x60;sql&#x60; is 400; 503 if the org has never connected a Cloudflare token.
+     * Runs one SQL statement against a D1 database. (asynchronously)
+     * Runs one SQL statement against a D1 database. It executes on the org&#39;s OWN Cloudflare account and relays D1&#39;s result set. The body is checked for a non-empty &#x60;sql&#x60; and then forwarded VERBATIM, so every field D1 accepts reaches D1 even though only two are named here.  Requires ORG ADMIN — a statement may INSERT, UPDATE or DROP, so a query takes the write gate rather than the read one — and a caller who is only an org member is refused 403. A missing &#x60;sql&#x60; is 400; 503 if the org has never connected a Cloudflare token.
      * @param database  (required)
-     * @param d1Query  (optional)
+     * @param d1Query  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2980,10 +2985,10 @@ public class CloudflareApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postCloudflareD1DatabasesByDatabaseQueryAsync(@javax.annotation.Nonnull String database, @javax.annotation.Nullable D1Query d1Query, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call postCloudflareD1DatabasesByDatabaseQueryAsync(@javax.annotation.Nonnull String database, @javax.annotation.Nonnull D1Query d1Query, final ApiCallback<Object> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postCloudflareD1DatabasesByDatabaseQueryValidateBeforeCall(database, d1Query, _callback);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
@@ -4161,8 +4166,8 @@ public class CloudflareApi {
     }
     /**
      * Build call for putCloudflareWorkersScriptsByScript
-     * @param script  (required)
-     * @param workerScriptPut  (optional)
+     * @param script Script means two things on this route, and the document says so in both places it appears: the PATH segment names the Worker to publish, and the BODY field carries that Worker&#39;s ES-module source — the code itself, never a name or a URL. A blank or absent source is refused; there is no empty Worker. (required)
+     * @param workerScriptPut  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -4170,10 +4175,10 @@ public class CloudflareApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putCloudflareWorkersScriptsByScriptCall(@javax.annotation.Nonnull String script, @javax.annotation.Nullable WorkerScriptPut workerScriptPut, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putCloudflareWorkersScriptsByScriptCall(@javax.annotation.Nonnull String script, @javax.annotation.Nonnull WorkerScriptPut workerScriptPut, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4220,10 +4225,15 @@ public class CloudflareApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putCloudflareWorkersScriptsByScriptValidateBeforeCall(@javax.annotation.Nonnull String script, @javax.annotation.Nullable WorkerScriptPut workerScriptPut, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putCloudflareWorkersScriptsByScriptValidateBeforeCall(@javax.annotation.Nonnull String script, @javax.annotation.Nonnull WorkerScriptPut workerScriptPut, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'script' is set
         if (script == null) {
             throw new ApiException("Missing the required parameter 'script' when calling putCloudflareWorkersScriptsByScript(Async)");
+        }
+
+        // verify the required parameter 'workerScriptPut' is set
+        if (workerScriptPut == null) {
+            throw new ApiException("Missing the required parameter 'workerScriptPut' when calling putCloudflareWorkersScriptsByScript(Async)");
         }
 
         return putCloudflareWorkersScriptsByScriptCall(script, workerScriptPut, _callback);
@@ -4231,49 +4241,49 @@ public class CloudflareApi {
     }
 
     /**
-     * Upload or replace a module Worker script
-     * Publishes a module Worker to the org&#39;s OWN Cloudflare account under the name in the path, replacing whatever was there, and relays Cloudflare&#39;s result. &#x60;script&#x60; carries the module SOURCE; the optional compatibility date, compatibility flags and bindings are packed into the multipart upload Cloudflare expects.  The path names the script and the body field named &#x60;script&#x60; is its source — two different things that share a name, which is exactly why this cannot be a typed op: a binder that gives the URL the last word would overwrite the source with the script&#39;s name. Requires ORG ADMIN (403 otherwise); an unparseable body or empty source is 400; 503 if the org has never connected a Cloudflare token.
-     * @param script  (required)
-     * @param workerScriptPut  (optional)
+     * Uploads or replaces a module Worker script.
+     * Uploads or replaces a module Worker script. It publishes to the org&#39;s OWN Cloudflare account under the name in the path, replacing whatever was there, and relays Cloudflare&#39;s result. The compatibility date, compatibility flags and bindings are packed into the multipart upload Cloudflare expects, beside the module source.  Requires ORG ADMIN — a Worker is arbitrary code on the org&#39;s own account and domains — so a caller who is only an org member is refused 403. An empty source is 400, as is a &#x60;mainModule&#x60; that is not a plain file name; 503 if the org has never connected a Cloudflare token.
+     * @param script Script means two things on this route, and the document says so in both places it appears: the PATH segment names the Worker to publish, and the BODY field carries that Worker&#39;s ES-module source — the code itself, never a name or a URL. A blank or absent source is refused; there is no empty Worker. (required)
+     * @param workerScriptPut  (required)
      * @return Object
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Object putCloudflareWorkersScriptsByScript(@javax.annotation.Nonnull String script, @javax.annotation.Nullable WorkerScriptPut workerScriptPut) throws ApiException {
+    public Object putCloudflareWorkersScriptsByScript(@javax.annotation.Nonnull String script, @javax.annotation.Nonnull WorkerScriptPut workerScriptPut) throws ApiException {
         ApiResponse<Object> localVarResp = putCloudflareWorkersScriptsByScriptWithHttpInfo(script, workerScriptPut);
         return localVarResp.getData();
     }
 
     /**
-     * Upload or replace a module Worker script
-     * Publishes a module Worker to the org&#39;s OWN Cloudflare account under the name in the path, replacing whatever was there, and relays Cloudflare&#39;s result. &#x60;script&#x60; carries the module SOURCE; the optional compatibility date, compatibility flags and bindings are packed into the multipart upload Cloudflare expects.  The path names the script and the body field named &#x60;script&#x60; is its source — two different things that share a name, which is exactly why this cannot be a typed op: a binder that gives the URL the last word would overwrite the source with the script&#39;s name. Requires ORG ADMIN (403 otherwise); an unparseable body or empty source is 400; 503 if the org has never connected a Cloudflare token.
-     * @param script  (required)
-     * @param workerScriptPut  (optional)
+     * Uploads or replaces a module Worker script.
+     * Uploads or replaces a module Worker script. It publishes to the org&#39;s OWN Cloudflare account under the name in the path, replacing whatever was there, and relays Cloudflare&#39;s result. The compatibility date, compatibility flags and bindings are packed into the multipart upload Cloudflare expects, beside the module source.  Requires ORG ADMIN — a Worker is arbitrary code on the org&#39;s own account and domains — so a caller who is only an org member is refused 403. An empty source is 400, as is a &#x60;mainModule&#x60; that is not a plain file name; 503 if the org has never connected a Cloudflare token.
+     * @param script Script means two things on this route, and the document says so in both places it appears: the PATH segment names the Worker to publish, and the BODY field carries that Worker&#39;s ES-module source — the code itself, never a name or a URL. A blank or absent source is refused; there is no empty Worker. (required)
+     * @param workerScriptPut  (required)
      * @return ApiResponse&lt;Object&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> putCloudflareWorkersScriptsByScriptWithHttpInfo(@javax.annotation.Nonnull String script, @javax.annotation.Nullable WorkerScriptPut workerScriptPut) throws ApiException {
+    public ApiResponse<Object> putCloudflareWorkersScriptsByScriptWithHttpInfo(@javax.annotation.Nonnull String script, @javax.annotation.Nonnull WorkerScriptPut workerScriptPut) throws ApiException {
         okhttp3.Call localVarCall = putCloudflareWorkersScriptsByScriptValidateBeforeCall(script, workerScriptPut, null);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Upload or replace a module Worker script (asynchronously)
-     * Publishes a module Worker to the org&#39;s OWN Cloudflare account under the name in the path, replacing whatever was there, and relays Cloudflare&#39;s result. &#x60;script&#x60; carries the module SOURCE; the optional compatibility date, compatibility flags and bindings are packed into the multipart upload Cloudflare expects.  The path names the script and the body field named &#x60;script&#x60; is its source — two different things that share a name, which is exactly why this cannot be a typed op: a binder that gives the URL the last word would overwrite the source with the script&#39;s name. Requires ORG ADMIN (403 otherwise); an unparseable body or empty source is 400; 503 if the org has never connected a Cloudflare token.
-     * @param script  (required)
-     * @param workerScriptPut  (optional)
+     * Uploads or replaces a module Worker script. (asynchronously)
+     * Uploads or replaces a module Worker script. It publishes to the org&#39;s OWN Cloudflare account under the name in the path, replacing whatever was there, and relays Cloudflare&#39;s result. The compatibility date, compatibility flags and bindings are packed into the multipart upload Cloudflare expects, beside the module source.  Requires ORG ADMIN — a Worker is arbitrary code on the org&#39;s own account and domains — so a caller who is only an org member is refused 403. An empty source is 400, as is a &#x60;mainModule&#x60; that is not a plain file name; 503 if the org has never connected a Cloudflare token.
+     * @param script Script means two things on this route, and the document says so in both places it appears: the PATH segment names the Worker to publish, and the BODY field carries that Worker&#39;s ES-module source — the code itself, never a name or a URL. A blank or absent source is refused; there is no empty Worker. (required)
+     * @param workerScriptPut  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -4281,10 +4291,10 @@ public class CloudflareApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putCloudflareWorkersScriptsByScriptAsync(@javax.annotation.Nonnull String script, @javax.annotation.Nullable WorkerScriptPut workerScriptPut, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call putCloudflareWorkersScriptsByScriptAsync(@javax.annotation.Nonnull String script, @javax.annotation.Nonnull WorkerScriptPut workerScriptPut, final ApiCallback<Object> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = putCloudflareWorkersScriptsByScriptValidateBeforeCall(script, workerScriptPut, _callback);
         Type localVarReturnType = new TypeToken<Object>(){}.getType();

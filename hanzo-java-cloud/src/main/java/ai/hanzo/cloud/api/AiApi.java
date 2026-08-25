@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay routes, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -74,7 +74,7 @@ public class AiApi {
 
     /**
      * Build call for aiMCPTools
-     * @param names Names asks for this process&#39;s tool NAMES and not only how many there are. Off by default: a list of names is a page, and the question this op exists to answer (\&quot;is the door up and does it have anything behind it\&quot;) is answered by the count. (optional)
+     * @param names Names asks for this process&#39;s tool NAMES and not only how many there are. Off by default: a list of names is a page, and the question this op exists to answer (\&quot;is the MCP server up and does it have anything behind it\&quot;) is answered by the count. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -140,9 +140,9 @@ public class AiApi {
     }
 
     /**
-     * Tools reports what THIS PROCESS&#39;s MCP door carries: how many tools its own registry projects, optionally their names, and which subsystems this process composed.
-     * Tools reports what THIS PROCESS&#39;s MCP door carries: how many tools its own registry projects, optionally their names, and which subsystems this process composed. It is the answer to \&quot;is this door up and does it have anything behind it\&quot; — a question a status code cannot answer, since an empty door and a full one are both 200. What the FLEET&#39;s door carries is the fleet door&#39;s own answer: POST /v1/mcp, tools/list, which asks every subsystem and names the ones that did not reply.
-     * @param names Names asks for this process&#39;s tool NAMES and not only how many there are. Off by default: a list of names is a page, and the question this op exists to answer (\&quot;is the door up and does it have anything behind it\&quot;) is answered by the count. (optional)
+     * Tools reports what THIS PROCESS&#39;s MCP server carries: how many tools its own registry projects, optionally their names, and which subsystems this process composed.
+     * Tools reports what THIS PROCESS&#39;s MCP server carries: how many tools its own registry projects, optionally their names, and which subsystems this process composed. It is the answer to \&quot;is this MCP server up and does it have anything behind it\&quot; — a question a status code cannot answer, since an empty server and a full one are both 200. What the FLEET&#39;s server carries is the fleet server&#39;s own answer: POST /v1/mcp, tools/list, which asks every subsystem and names the ones that did not reply.
+     * @param names Names asks for this process&#39;s tool NAMES and not only how many there are. Off by default: a list of names is a page, and the question this op exists to answer (\&quot;is the MCP server up and does it have anything behind it\&quot;) is answered by the count. (optional)
      * @return AiMCPSurface
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -158,9 +158,9 @@ public class AiApi {
     }
 
     /**
-     * Tools reports what THIS PROCESS&#39;s MCP door carries: how many tools its own registry projects, optionally their names, and which subsystems this process composed.
-     * Tools reports what THIS PROCESS&#39;s MCP door carries: how many tools its own registry projects, optionally their names, and which subsystems this process composed. It is the answer to \&quot;is this door up and does it have anything behind it\&quot; — a question a status code cannot answer, since an empty door and a full one are both 200. What the FLEET&#39;s door carries is the fleet door&#39;s own answer: POST /v1/mcp, tools/list, which asks every subsystem and names the ones that did not reply.
-     * @param names Names asks for this process&#39;s tool NAMES and not only how many there are. Off by default: a list of names is a page, and the question this op exists to answer (\&quot;is the door up and does it have anything behind it\&quot;) is answered by the count. (optional)
+     * Tools reports what THIS PROCESS&#39;s MCP server carries: how many tools its own registry projects, optionally their names, and which subsystems this process composed.
+     * Tools reports what THIS PROCESS&#39;s MCP server carries: how many tools its own registry projects, optionally their names, and which subsystems this process composed. It is the answer to \&quot;is this MCP server up and does it have anything behind it\&quot; — a question a status code cannot answer, since an empty server and a full one are both 200. What the FLEET&#39;s server carries is the fleet server&#39;s own answer: POST /v1/mcp, tools/list, which asks every subsystem and names the ones that did not reply.
+     * @param names Names asks for this process&#39;s tool NAMES and not only how many there are. Off by default: a list of names is a page, and the question this op exists to answer (\&quot;is the MCP server up and does it have anything behind it\&quot;) is answered by the count. (optional)
      * @return ApiResponse&lt;AiMCPSurface&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -177,9 +177,9 @@ public class AiApi {
     }
 
     /**
-     * Tools reports what THIS PROCESS&#39;s MCP door carries: how many tools its own registry projects, optionally their names, and which subsystems this process composed. (asynchronously)
-     * Tools reports what THIS PROCESS&#39;s MCP door carries: how many tools its own registry projects, optionally their names, and which subsystems this process composed. It is the answer to \&quot;is this door up and does it have anything behind it\&quot; — a question a status code cannot answer, since an empty door and a full one are both 200. What the FLEET&#39;s door carries is the fleet door&#39;s own answer: POST /v1/mcp, tools/list, which asks every subsystem and names the ones that did not reply.
-     * @param names Names asks for this process&#39;s tool NAMES and not only how many there are. Off by default: a list of names is a page, and the question this op exists to answer (\&quot;is the door up and does it have anything behind it\&quot;) is answered by the count. (optional)
+     * Tools reports what THIS PROCESS&#39;s MCP server carries: how many tools its own registry projects, optionally their names, and which subsystems this process composed. (asynchronously)
+     * Tools reports what THIS PROCESS&#39;s MCP server carries: how many tools its own registry projects, optionally their names, and which subsystems this process composed. It is the answer to \&quot;is this MCP server up and does it have anything behind it\&quot; — a question a status code cannot answer, since an empty server and a full one are both 200. What the FLEET&#39;s server carries is the fleet server&#39;s own answer: POST /v1/mcp, tools/list, which asks every subsystem and names the ones that did not reply.
+     * @param names Names asks for this process&#39;s tool NAMES and not only how many there are. Off by default: a list of names is a page, and the question this op exists to answer (\&quot;is the MCP server up and does it have anything behind it\&quot;) is answered by the count. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

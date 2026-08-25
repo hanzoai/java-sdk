@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay routes, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -28,6 +28,8 @@ import java.io.IOException;
 
 
 import ai.hanzo.cloud.model.MeetHealth;
+import ai.hanzo.cloud.model.RecordIn;
+import ai.hanzo.cloud.model.Recording;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -279,6 +281,393 @@ public class MeetApi {
 
         okhttp3.Call localVarCall = getMeetSessionValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for meetRecordRead
+     * @param room Room is the LiveKit room, named the way the office client names one (&#x60;&lt;workspace&gt;_&lt;name&gt;_&lt;id&gt;&#x60;). Its leading segment is what binds the room to a tenant, and it is the segment the caller&#39;s membership is checked against. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call meetRecordReadCall(@javax.annotation.Nonnull String room, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/meet/record";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (room != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("room", room));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call meetRecordReadValidateBeforeCall(@javax.annotation.Nonnull String room, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'room' is set
+        if (room == null) {
+            throw new ApiException("Missing the required parameter 'room' when calling meetRecordRead(Async)");
+        }
+
+        return meetRecordReadCall(room, _callback);
+
+    }
+
+    /**
+     * What is being recorded in a room, and where the file goes
+     * Answers what is being recorded in a room, and where the file went.  It reports the recording that is RUNNING, and once none is, the most recent one the media server still holds — with its final status and its object. That second case is the one that matters for finding a file: the answer to a start is the only other place the location appears, and a client that lost it, or a colleague who was not the one to press record, has nowhere else to look.  It is behind the same check as starting one: where a recording of a private conversation is kept is a fact about that conversation, so it is told to the people the room admits and to nobody else.
+     * @param room Room is the LiveKit room, named the way the office client names one (&#x60;&lt;workspace&gt;_&lt;name&gt;_&lt;id&gt;&#x60;). Its leading segment is what binds the room to a tenant, and it is the segment the caller&#39;s membership is checked against. (required)
+     * @return Recording
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public Recording meetRecordRead(@javax.annotation.Nonnull String room) throws ApiException {
+        ApiResponse<Recording> localVarResp = meetRecordReadWithHttpInfo(room);
+        return localVarResp.getData();
+    }
+
+    /**
+     * What is being recorded in a room, and where the file goes
+     * Answers what is being recorded in a room, and where the file went.  It reports the recording that is RUNNING, and once none is, the most recent one the media server still holds — with its final status and its object. That second case is the one that matters for finding a file: the answer to a start is the only other place the location appears, and a client that lost it, or a colleague who was not the one to press record, has nowhere else to look.  It is behind the same check as starting one: where a recording of a private conversation is kept is a fact about that conversation, so it is told to the people the room admits and to nobody else.
+     * @param room Room is the LiveKit room, named the way the office client names one (&#x60;&lt;workspace&gt;_&lt;name&gt;_&lt;id&gt;&#x60;). Its leading segment is what binds the room to a tenant, and it is the segment the caller&#39;s membership is checked against. (required)
+     * @return ApiResponse&lt;Recording&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Recording> meetRecordReadWithHttpInfo(@javax.annotation.Nonnull String room) throws ApiException {
+        okhttp3.Call localVarCall = meetRecordReadValidateBeforeCall(room, null);
+        Type localVarReturnType = new TypeToken<Recording>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * What is being recorded in a room, and where the file goes (asynchronously)
+     * Answers what is being recorded in a room, and where the file went.  It reports the recording that is RUNNING, and once none is, the most recent one the media server still holds — with its final status and its object. That second case is the one that matters for finding a file: the answer to a start is the only other place the location appears, and a client that lost it, or a colleague who was not the one to press record, has nowhere else to look.  It is behind the same check as starting one: where a recording of a private conversation is kept is a fact about that conversation, so it is told to the people the room admits and to nobody else.
+     * @param room Room is the LiveKit room, named the way the office client names one (&#x60;&lt;workspace&gt;_&lt;name&gt;_&lt;id&gt;&#x60;). Its leading segment is what binds the room to a tenant, and it is the segment the caller&#39;s membership is checked against. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call meetRecordReadAsync(@javax.annotation.Nonnull String room, final ApiCallback<Recording> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = meetRecordReadValidateBeforeCall(room, _callback);
+        Type localVarReturnType = new TypeToken<Recording>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for meetRecordStart
+     * @param recordIn  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call meetRecordStartCall(@javax.annotation.Nonnull RecordIn recordIn, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = recordIn;
+
+        // create path and map variables
+        String localVarPath = "/v1/meet/record";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call meetRecordStartValidateBeforeCall(@javax.annotation.Nonnull RecordIn recordIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'recordIn' is set
+        if (recordIn == null) {
+            throw new ApiException("Missing the required parameter 'recordIn' when calling meetRecordStart(Async)");
+        }
+
+        return meetRecordStartCall(recordIn, _callback);
+
+    }
+
+    /**
+     * Start recording a room, or return the recording already running
+     * Begins recording a room, or hands back the recording already running.  A recording is a durable artifact of a conversation, so only someone this room would admit may make one: the caller is authorized by the SAME decision /v1/meet/getToken makes about the same room, and refused with the same 401.  A SECOND START RETURNS THE FIRST rather than refusing it. There is at most one recording per room and this operation&#39;s job is to establish that there is one — which is already true when a colleague, or the caller&#39;s own double-click, started it a moment ago. The answer is the same shape either way, naming the recording that is actually running, so a client never has to tell the two cases apart to find the id.  A deployment with no media server address or no object store answers 503 naming which, because a recording that silently does not happen is worse than one that is refused. The reason reaches only a caller this room already admits.
+     * @param recordIn  (required)
+     * @return Recording
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public Recording meetRecordStart(@javax.annotation.Nonnull RecordIn recordIn) throws ApiException {
+        ApiResponse<Recording> localVarResp = meetRecordStartWithHttpInfo(recordIn);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Start recording a room, or return the recording already running
+     * Begins recording a room, or hands back the recording already running.  A recording is a durable artifact of a conversation, so only someone this room would admit may make one: the caller is authorized by the SAME decision /v1/meet/getToken makes about the same room, and refused with the same 401.  A SECOND START RETURNS THE FIRST rather than refusing it. There is at most one recording per room and this operation&#39;s job is to establish that there is one — which is already true when a colleague, or the caller&#39;s own double-click, started it a moment ago. The answer is the same shape either way, naming the recording that is actually running, so a client never has to tell the two cases apart to find the id.  A deployment with no media server address or no object store answers 503 naming which, because a recording that silently does not happen is worse than one that is refused. The reason reaches only a caller this room already admits.
+     * @param recordIn  (required)
+     * @return ApiResponse&lt;Recording&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Recording> meetRecordStartWithHttpInfo(@javax.annotation.Nonnull RecordIn recordIn) throws ApiException {
+        okhttp3.Call localVarCall = meetRecordStartValidateBeforeCall(recordIn, null);
+        Type localVarReturnType = new TypeToken<Recording>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Start recording a room, or return the recording already running (asynchronously)
+     * Begins recording a room, or hands back the recording already running.  A recording is a durable artifact of a conversation, so only someone this room would admit may make one: the caller is authorized by the SAME decision /v1/meet/getToken makes about the same room, and refused with the same 401.  A SECOND START RETURNS THE FIRST rather than refusing it. There is at most one recording per room and this operation&#39;s job is to establish that there is one — which is already true when a colleague, or the caller&#39;s own double-click, started it a moment ago. The answer is the same shape either way, naming the recording that is actually running, so a client never has to tell the two cases apart to find the id.  A deployment with no media server address or no object store answers 503 naming which, because a recording that silently does not happen is worse than one that is refused. The reason reaches only a caller this room already admits.
+     * @param recordIn  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call meetRecordStartAsync(@javax.annotation.Nonnull RecordIn recordIn, final ApiCallback<Recording> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = meetRecordStartValidateBeforeCall(recordIn, _callback);
+        Type localVarReturnType = new TypeToken<Recording>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for meetRecordStop
+     * @param room Room is the LiveKit room, named the way the office client names one (&#x60;&lt;workspace&gt;_&lt;name&gt;_&lt;id&gt;&#x60;). Its leading segment is what binds the room to a tenant, and it is the segment the caller&#39;s membership is checked against. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call meetRecordStopCall(@javax.annotation.Nonnull String room, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/meet/record";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (room != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("room", room));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call meetRecordStopValidateBeforeCall(@javax.annotation.Nonnull String room, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'room' is set
+        if (room == null) {
+            throw new ApiException("Missing the required parameter 'room' when calling meetRecordStop(Async)");
+        }
+
+        return meetRecordStopCall(room, _callback);
+
+    }
+
+    /**
+     * Stop a room&#39;s recording
+     * Ends a room&#39;s recording — EVERY one of them.  Whoever the room admits may stop it, including someone who did not start it: a person being recorded has to be able to end it, and a rule that only the starter may stop would deny exactly that. Stopping is free — a caller made to pay to stop being recorded would be paying for the wrong thing.  200 MEANS THE ROOM IS NOT BEING RECORDED, and that is why this ends all of them rather than the first. \&quot;At most one per room\&quot; is an invariant this surface wants and cannot impose: reading the list and starting are two calls, and two replicas racing through that window both start. When the list comes back holding two, two is the truth — and ending one while answering 200 tells the person withdrawing consent that it stopped while a second worker keeps writing. A stop that cannot finish the job says so instead.  Stopping a room that is not being recorded is not an error. The answer names the room with no recording on it, which is the state the caller asked for.
+     * @param room Room is the LiveKit room, named the way the office client names one (&#x60;&lt;workspace&gt;_&lt;name&gt;_&lt;id&gt;&#x60;). Its leading segment is what binds the room to a tenant, and it is the segment the caller&#39;s membership is checked against. (required)
+     * @return Recording
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public Recording meetRecordStop(@javax.annotation.Nonnull String room) throws ApiException {
+        ApiResponse<Recording> localVarResp = meetRecordStopWithHttpInfo(room);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Stop a room&#39;s recording
+     * Ends a room&#39;s recording — EVERY one of them.  Whoever the room admits may stop it, including someone who did not start it: a person being recorded has to be able to end it, and a rule that only the starter may stop would deny exactly that. Stopping is free — a caller made to pay to stop being recorded would be paying for the wrong thing.  200 MEANS THE ROOM IS NOT BEING RECORDED, and that is why this ends all of them rather than the first. \&quot;At most one per room\&quot; is an invariant this surface wants and cannot impose: reading the list and starting are two calls, and two replicas racing through that window both start. When the list comes back holding two, two is the truth — and ending one while answering 200 tells the person withdrawing consent that it stopped while a second worker keeps writing. A stop that cannot finish the job says so instead.  Stopping a room that is not being recorded is not an error. The answer names the room with no recording on it, which is the state the caller asked for.
+     * @param room Room is the LiveKit room, named the way the office client names one (&#x60;&lt;workspace&gt;_&lt;name&gt;_&lt;id&gt;&#x60;). Its leading segment is what binds the room to a tenant, and it is the segment the caller&#39;s membership is checked against. (required)
+     * @return ApiResponse&lt;Recording&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Recording> meetRecordStopWithHttpInfo(@javax.annotation.Nonnull String room) throws ApiException {
+        okhttp3.Call localVarCall = meetRecordStopValidateBeforeCall(room, null);
+        Type localVarReturnType = new TypeToken<Recording>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Stop a room&#39;s recording (asynchronously)
+     * Ends a room&#39;s recording — EVERY one of them.  Whoever the room admits may stop it, including someone who did not start it: a person being recorded has to be able to end it, and a rule that only the starter may stop would deny exactly that. Stopping is free — a caller made to pay to stop being recorded would be paying for the wrong thing.  200 MEANS THE ROOM IS NOT BEING RECORDED, and that is why this ends all of them rather than the first. \&quot;At most one per room\&quot; is an invariant this surface wants and cannot impose: reading the list and starting are two calls, and two replicas racing through that window both start. When the list comes back holding two, two is the truth — and ending one while answering 200 tells the person withdrawing consent that it stopped while a second worker keeps writing. A stop that cannot finish the job says so instead.  Stopping a room that is not being recorded is not an error. The answer names the room with no recording on it, which is the state the caller asked for.
+     * @param room Room is the LiveKit room, named the way the office client names one (&#x60;&lt;workspace&gt;_&lt;name&gt;_&lt;id&gt;&#x60;). Its leading segment is what binds the room to a tenant, and it is the segment the caller&#39;s membership is checked against. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call meetRecordStopAsync(@javax.annotation.Nonnull String room, final ApiCallback<Recording> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = meetRecordStopValidateBeforeCall(room, _callback);
+        Type localVarReturnType = new TypeToken<Recording>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**

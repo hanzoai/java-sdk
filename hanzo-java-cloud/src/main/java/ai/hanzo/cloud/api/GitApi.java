@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay routes, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -4941,7 +4941,7 @@ public class GitApi {
 
     /**
      * Retired — forge pushes build via platform.hanzo.ai
-     * GONE (410). This was the canonical forge&#39;s push-to-deploy door, and it never dispatched a build in its life.  It handed each verified push to cloud.OnGitPush, a single-registrant client whose only registrant lives in apps/platform. cloud runs each app as its own OS process, so in the git process that builder is nil forever — and this handler answered 204 either way. Delivered, signature valid, green on the forge&#39;s hook page, and nothing built.  Push-to-deploy now belongs to POST https://platform.hanzo.ai/v1/git-webhook, which owns the build system-of-record and dispatches BuildKit Jobs. git.hanzo.ai delivers there through ONE forge-wide system webhook covering every repository; a repo opts in by committing hanzo.yml, not by owning a hook of its own.  The route is kept, and answers 410 naming that address, precisely so a misdirected delivery says what is wrong. Deleting it would 404, and a 404 here reads as &#39;the API is switched off&#39; — the wrong conclusion this estate has already drawn twice.
+     * GONE (410). Push-to-deploy belongs to POST https://platform.hanzo.ai/v1/git-webhook, which owns the build system-of-record and dispatches BuildKit Jobs. git.hanzo.ai delivers there through ONE forge-wide system webhook covering every repository; a repo opts in by committing hanzo.yml, not by owning a hook of its own.  Every delivery answers 410 whatever it carries — this endpoint reads no body and authenticates nothing.  410 rather than 404, because the address was real and its meaning moved, which is the distinction 410 carries. A 404 from this estate is ambiguous: Hanzo Git serves /v1, so /api/v1 404s too and reads as \&quot;the API is switched off\&quot;. A retired endpoint says it is retired and names its replacement, so the answer carries its own fix.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public void postGitWebhook() throws ApiException {
@@ -4950,7 +4950,7 @@ public class GitApi {
 
     /**
      * Retired — forge pushes build via platform.hanzo.ai
-     * GONE (410). This was the canonical forge&#39;s push-to-deploy door, and it never dispatched a build in its life.  It handed each verified push to cloud.OnGitPush, a single-registrant client whose only registrant lives in apps/platform. cloud runs each app as its own OS process, so in the git process that builder is nil forever — and this handler answered 204 either way. Delivered, signature valid, green on the forge&#39;s hook page, and nothing built.  Push-to-deploy now belongs to POST https://platform.hanzo.ai/v1/git-webhook, which owns the build system-of-record and dispatches BuildKit Jobs. git.hanzo.ai delivers there through ONE forge-wide system webhook covering every repository; a repo opts in by committing hanzo.yml, not by owning a hook of its own.  The route is kept, and answers 410 naming that address, precisely so a misdirected delivery says what is wrong. Deleting it would 404, and a 404 here reads as &#39;the API is switched off&#39; — the wrong conclusion this estate has already drawn twice.
+     * GONE (410). Push-to-deploy belongs to POST https://platform.hanzo.ai/v1/git-webhook, which owns the build system-of-record and dispatches BuildKit Jobs. git.hanzo.ai delivers there through ONE forge-wide system webhook covering every repository; a repo opts in by committing hanzo.yml, not by owning a hook of its own.  Every delivery answers 410 whatever it carries — this endpoint reads no body and authenticates nothing.  410 rather than 404, because the address was real and its meaning moved, which is the distinction 410 carries. A 404 from this estate is ambiguous: Hanzo Git serves /v1, so /api/v1 404s too and reads as \&quot;the API is switched off\&quot;. A retired endpoint says it is retired and names its replacement, so the answer carries its own fix.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -4961,7 +4961,7 @@ public class GitApi {
 
     /**
      * Retired — forge pushes build via platform.hanzo.ai (asynchronously)
-     * GONE (410). This was the canonical forge&#39;s push-to-deploy door, and it never dispatched a build in its life.  It handed each verified push to cloud.OnGitPush, a single-registrant client whose only registrant lives in apps/platform. cloud runs each app as its own OS process, so in the git process that builder is nil forever — and this handler answered 204 either way. Delivered, signature valid, green on the forge&#39;s hook page, and nothing built.  Push-to-deploy now belongs to POST https://platform.hanzo.ai/v1/git-webhook, which owns the build system-of-record and dispatches BuildKit Jobs. git.hanzo.ai delivers there through ONE forge-wide system webhook covering every repository; a repo opts in by committing hanzo.yml, not by owning a hook of its own.  The route is kept, and answers 410 naming that address, precisely so a misdirected delivery says what is wrong. Deleting it would 404, and a 404 here reads as &#39;the API is switched off&#39; — the wrong conclusion this estate has already drawn twice.
+     * GONE (410). Push-to-deploy belongs to POST https://platform.hanzo.ai/v1/git-webhook, which owns the build system-of-record and dispatches BuildKit Jobs. git.hanzo.ai delivers there through ONE forge-wide system webhook covering every repository; a repo opts in by committing hanzo.yml, not by owning a hook of its own.  Every delivery answers 410 whatever it carries — this endpoint reads no body and authenticates nothing.  410 rather than 404, because the address was real and its meaning moved, which is the distinction 410 carries. A 404 from this estate is ambiguous: Hanzo Git serves /v1, so /api/v1 404s too and reads as \&quot;the API is switched off\&quot;. A retired endpoint says it is retired and names its replacement, so the answer carries its own fix.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -5031,7 +5031,7 @@ public class GitApi {
 
     /**
      * Create a repository over the ZAP transport
-     * Creates a repository in the caller&#39;s org and project scope and answers with its record. &#x60;name&#x60; is required and &#x60;description&#x60; is optional; &#x60;project&#x60; narrows the scope within the org. A name already taken in that scope is a 409 envelope and an invalid name a 400.  A ZAP PROCEDURE, not a REST resource. It answers the bridge&#39;s {status, msg, data} envelope rather than the raw view the /v1 route returns — which is a wire shape a typed op cannot produce, and the reason this stays a raw handler — and it calls the SAME core function the REST route calls, so the two transports cannot diverge in behaviour. Org and project scope come from the request identity and NEVER from the body: the body cannot widen the caller&#39;s scope. Without a validated org the answer is a 403 envelope.
+     * Creates a repository in the caller&#39;s org and project scope and answers with its record. &#x60;name&#x60; is required and &#x60;description&#x60; is optional; &#x60;project&#x60; narrows the scope within the org. A name already taken in that scope is a 409 envelope and an invalid name a 400.  A ZAP PROCEDURE, not a REST resource. It answers the bridge&#39;s {status, msg, data} envelope rather than the raw view the /v1 route returns, and it calls the SAME core function the REST route calls, so the two transports cannot diverge in behaviour. Org and project scope come from the request identity and NEVER from the body: the body cannot widen the caller&#39;s scope. Without a validated org the answer is a 403 envelope.
      * @param zapProcReq  (optional)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -5041,7 +5041,7 @@ public class GitApi {
 
     /**
      * Create a repository over the ZAP transport
-     * Creates a repository in the caller&#39;s org and project scope and answers with its record. &#x60;name&#x60; is required and &#x60;description&#x60; is optional; &#x60;project&#x60; narrows the scope within the org. A name already taken in that scope is a 409 envelope and an invalid name a 400.  A ZAP PROCEDURE, not a REST resource. It answers the bridge&#39;s {status, msg, data} envelope rather than the raw view the /v1 route returns — which is a wire shape a typed op cannot produce, and the reason this stays a raw handler — and it calls the SAME core function the REST route calls, so the two transports cannot diverge in behaviour. Org and project scope come from the request identity and NEVER from the body: the body cannot widen the caller&#39;s scope. Without a validated org the answer is a 403 envelope.
+     * Creates a repository in the caller&#39;s org and project scope and answers with its record. &#x60;name&#x60; is required and &#x60;description&#x60; is optional; &#x60;project&#x60; narrows the scope within the org. A name already taken in that scope is a 409 envelope and an invalid name a 400.  A ZAP PROCEDURE, not a REST resource. It answers the bridge&#39;s {status, msg, data} envelope rather than the raw view the /v1 route returns, and it calls the SAME core function the REST route calls, so the two transports cannot diverge in behaviour. Org and project scope come from the request identity and NEVER from the body: the body cannot widen the caller&#39;s scope. Without a validated org the answer is a 403 envelope.
      * @param zapProcReq  (optional)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -5053,7 +5053,7 @@ public class GitApi {
 
     /**
      * Create a repository over the ZAP transport (asynchronously)
-     * Creates a repository in the caller&#39;s org and project scope and answers with its record. &#x60;name&#x60; is required and &#x60;description&#x60; is optional; &#x60;project&#x60; narrows the scope within the org. A name already taken in that scope is a 409 envelope and an invalid name a 400.  A ZAP PROCEDURE, not a REST resource. It answers the bridge&#39;s {status, msg, data} envelope rather than the raw view the /v1 route returns — which is a wire shape a typed op cannot produce, and the reason this stays a raw handler — and it calls the SAME core function the REST route calls, so the two transports cannot diverge in behaviour. Org and project scope come from the request identity and NEVER from the body: the body cannot widen the caller&#39;s scope. Without a validated org the answer is a 403 envelope.
+     * Creates a repository in the caller&#39;s org and project scope and answers with its record. &#x60;name&#x60; is required and &#x60;description&#x60; is optional; &#x60;project&#x60; narrows the scope within the org. A name already taken in that scope is a 409 envelope and an invalid name a 400.  A ZAP PROCEDURE, not a REST resource. It answers the bridge&#39;s {status, msg, data} envelope rather than the raw view the /v1 route returns, and it calls the SAME core function the REST route calls, so the two transports cannot diverge in behaviour. Org and project scope come from the request identity and NEVER from the body: the body cannot widen the caller&#39;s scope. Without a validated org the answer is a 403 envelope.
      * @param zapProcReq  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -5124,7 +5124,7 @@ public class GitApi {
 
     /**
      * Delete a repository over the ZAP transport
-     * Deletes the repository named by &#x60;name&#x60; and answers with the deleted name. A repository outside the caller&#39;s org and project scope is a 404 envelope, so a delete can never reach another tenant&#39;s repository.  A ZAP PROCEDURE, not a REST resource. It answers the bridge&#39;s {status, msg, data} envelope rather than the raw view the /v1 route returns — which is a wire shape a typed op cannot produce, and the reason this stays a raw handler — and it calls the SAME core function the REST route calls, so the two transports cannot diverge in behaviour. Org and project scope come from the request identity and NEVER from the body: the body cannot widen the caller&#39;s scope. Without a validated org the answer is a 403 envelope.
+     * Deletes the repository named by &#x60;name&#x60; and answers with the deleted name. A repository outside the caller&#39;s org and project scope is a 404 envelope, so a delete can never reach another tenant&#39;s repository.  A ZAP PROCEDURE, not a REST resource. It answers the bridge&#39;s {status, msg, data} envelope rather than the raw view the /v1 route returns, and it calls the SAME core function the REST route calls, so the two transports cannot diverge in behaviour. Org and project scope come from the request identity and NEVER from the body: the body cannot widen the caller&#39;s scope. Without a validated org the answer is a 403 envelope.
      * @param zapProcReq  (optional)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -5134,7 +5134,7 @@ public class GitApi {
 
     /**
      * Delete a repository over the ZAP transport
-     * Deletes the repository named by &#x60;name&#x60; and answers with the deleted name. A repository outside the caller&#39;s org and project scope is a 404 envelope, so a delete can never reach another tenant&#39;s repository.  A ZAP PROCEDURE, not a REST resource. It answers the bridge&#39;s {status, msg, data} envelope rather than the raw view the /v1 route returns — which is a wire shape a typed op cannot produce, and the reason this stays a raw handler — and it calls the SAME core function the REST route calls, so the two transports cannot diverge in behaviour. Org and project scope come from the request identity and NEVER from the body: the body cannot widen the caller&#39;s scope. Without a validated org the answer is a 403 envelope.
+     * Deletes the repository named by &#x60;name&#x60; and answers with the deleted name. A repository outside the caller&#39;s org and project scope is a 404 envelope, so a delete can never reach another tenant&#39;s repository.  A ZAP PROCEDURE, not a REST resource. It answers the bridge&#39;s {status, msg, data} envelope rather than the raw view the /v1 route returns, and it calls the SAME core function the REST route calls, so the two transports cannot diverge in behaviour. Org and project scope come from the request identity and NEVER from the body: the body cannot widen the caller&#39;s scope. Without a validated org the answer is a 403 envelope.
      * @param zapProcReq  (optional)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -5146,7 +5146,7 @@ public class GitApi {
 
     /**
      * Delete a repository over the ZAP transport (asynchronously)
-     * Deletes the repository named by &#x60;name&#x60; and answers with the deleted name. A repository outside the caller&#39;s org and project scope is a 404 envelope, so a delete can never reach another tenant&#39;s repository.  A ZAP PROCEDURE, not a REST resource. It answers the bridge&#39;s {status, msg, data} envelope rather than the raw view the /v1 route returns — which is a wire shape a typed op cannot produce, and the reason this stays a raw handler — and it calls the SAME core function the REST route calls, so the two transports cannot diverge in behaviour. Org and project scope come from the request identity and NEVER from the body: the body cannot widen the caller&#39;s scope. Without a validated org the answer is a 403 envelope.
+     * Deletes the repository named by &#x60;name&#x60; and answers with the deleted name. A repository outside the caller&#39;s org and project scope is a 404 envelope, so a delete can never reach another tenant&#39;s repository.  A ZAP PROCEDURE, not a REST resource. It answers the bridge&#39;s {status, msg, data} envelope rather than the raw view the /v1 route returns, and it calls the SAME core function the REST route calls, so the two transports cannot diverge in behaviour. Org and project scope come from the request identity and NEVER from the body: the body cannot widen the caller&#39;s scope. Without a validated org the answer is a 403 envelope.
      * @param zapProcReq  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -5217,7 +5217,7 @@ public class GitApi {
 
     /**
      * Read one repository over the ZAP transport
-     * Answers a single repository&#39;s record, named by &#x60;name&#x60;. A repository outside the caller&#39;s org and project scope is a 404 envelope, the same answer one that does not exist gets.  A ZAP PROCEDURE, not a REST resource. It answers the bridge&#39;s {status, msg, data} envelope rather than the raw view the /v1 route returns — which is a wire shape a typed op cannot produce, and the reason this stays a raw handler — and it calls the SAME core function the REST route calls, so the two transports cannot diverge in behaviour. Org and project scope come from the request identity and NEVER from the body: the body cannot widen the caller&#39;s scope. Without a validated org the answer is a 403 envelope.
+     * Answers a single repository&#39;s record, named by &#x60;name&#x60;. A repository outside the caller&#39;s org and project scope is a 404 envelope, the same answer one that does not exist gets.  A ZAP PROCEDURE, not a REST resource. It answers the bridge&#39;s {status, msg, data} envelope rather than the raw view the /v1 route returns, and it calls the SAME core function the REST route calls, so the two transports cannot diverge in behaviour. Org and project scope come from the request identity and NEVER from the body: the body cannot widen the caller&#39;s scope. Without a validated org the answer is a 403 envelope.
      * @param zapProcReq  (optional)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -5227,7 +5227,7 @@ public class GitApi {
 
     /**
      * Read one repository over the ZAP transport
-     * Answers a single repository&#39;s record, named by &#x60;name&#x60;. A repository outside the caller&#39;s org and project scope is a 404 envelope, the same answer one that does not exist gets.  A ZAP PROCEDURE, not a REST resource. It answers the bridge&#39;s {status, msg, data} envelope rather than the raw view the /v1 route returns — which is a wire shape a typed op cannot produce, and the reason this stays a raw handler — and it calls the SAME core function the REST route calls, so the two transports cannot diverge in behaviour. Org and project scope come from the request identity and NEVER from the body: the body cannot widen the caller&#39;s scope. Without a validated org the answer is a 403 envelope.
+     * Answers a single repository&#39;s record, named by &#x60;name&#x60;. A repository outside the caller&#39;s org and project scope is a 404 envelope, the same answer one that does not exist gets.  A ZAP PROCEDURE, not a REST resource. It answers the bridge&#39;s {status, msg, data} envelope rather than the raw view the /v1 route returns, and it calls the SAME core function the REST route calls, so the two transports cannot diverge in behaviour. Org and project scope come from the request identity and NEVER from the body: the body cannot widen the caller&#39;s scope. Without a validated org the answer is a 403 envelope.
      * @param zapProcReq  (optional)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -5239,7 +5239,7 @@ public class GitApi {
 
     /**
      * Read one repository over the ZAP transport (asynchronously)
-     * Answers a single repository&#39;s record, named by &#x60;name&#x60;. A repository outside the caller&#39;s org and project scope is a 404 envelope, the same answer one that does not exist gets.  A ZAP PROCEDURE, not a REST resource. It answers the bridge&#39;s {status, msg, data} envelope rather than the raw view the /v1 route returns — which is a wire shape a typed op cannot produce, and the reason this stays a raw handler — and it calls the SAME core function the REST route calls, so the two transports cannot diverge in behaviour. Org and project scope come from the request identity and NEVER from the body: the body cannot widen the caller&#39;s scope. Without a validated org the answer is a 403 envelope.
+     * Answers a single repository&#39;s record, named by &#x60;name&#x60;. A repository outside the caller&#39;s org and project scope is a 404 envelope, the same answer one that does not exist gets.  A ZAP PROCEDURE, not a REST resource. It answers the bridge&#39;s {status, msg, data} envelope rather than the raw view the /v1 route returns, and it calls the SAME core function the REST route calls, so the two transports cannot diverge in behaviour. Org and project scope come from the request identity and NEVER from the body: the body cannot widen the caller&#39;s scope. Without a validated org the answer is a 403 envelope.
      * @param zapProcReq  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -5308,7 +5308,7 @@ public class GitApi {
 
     /**
      * List your repositories over the ZAP transport
-     * Answers every repository in the caller&#39;s org and project scope. It reads NO body — the scope is entirely the caller&#39;s identity — so a request with an empty object is correct.  A ZAP PROCEDURE, not a REST resource. It answers the bridge&#39;s {status, msg, data} envelope rather than the raw view the /v1 route returns — which is a wire shape a typed op cannot produce, and the reason this stays a raw handler — and it calls the SAME core function the REST route calls, so the two transports cannot diverge in behaviour. Org and project scope come from the request identity and NEVER from the body: the body cannot widen the caller&#39;s scope. Without a validated org the answer is a 403 envelope.
+     * Answers every repository in the caller&#39;s org and project scope. It reads NO body — the scope is entirely the caller&#39;s identity — so a request with an empty object is correct.  A ZAP PROCEDURE, not a REST resource. It answers the bridge&#39;s {status, msg, data} envelope rather than the raw view the /v1 route returns, and it calls the SAME core function the REST route calls, so the two transports cannot diverge in behaviour. Org and project scope come from the request identity and NEVER from the body: the body cannot widen the caller&#39;s scope. Without a validated org the answer is a 403 envelope.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public void postGitZapListrepos() throws ApiException {
@@ -5317,7 +5317,7 @@ public class GitApi {
 
     /**
      * List your repositories over the ZAP transport
-     * Answers every repository in the caller&#39;s org and project scope. It reads NO body — the scope is entirely the caller&#39;s identity — so a request with an empty object is correct.  A ZAP PROCEDURE, not a REST resource. It answers the bridge&#39;s {status, msg, data} envelope rather than the raw view the /v1 route returns — which is a wire shape a typed op cannot produce, and the reason this stays a raw handler — and it calls the SAME core function the REST route calls, so the two transports cannot diverge in behaviour. Org and project scope come from the request identity and NEVER from the body: the body cannot widen the caller&#39;s scope. Without a validated org the answer is a 403 envelope.
+     * Answers every repository in the caller&#39;s org and project scope. It reads NO body — the scope is entirely the caller&#39;s identity — so a request with an empty object is correct.  A ZAP PROCEDURE, not a REST resource. It answers the bridge&#39;s {status, msg, data} envelope rather than the raw view the /v1 route returns, and it calls the SAME core function the REST route calls, so the two transports cannot diverge in behaviour. Org and project scope come from the request identity and NEVER from the body: the body cannot widen the caller&#39;s scope. Without a validated org the answer is a 403 envelope.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -5328,7 +5328,7 @@ public class GitApi {
 
     /**
      * List your repositories over the ZAP transport (asynchronously)
-     * Answers every repository in the caller&#39;s org and project scope. It reads NO body — the scope is entirely the caller&#39;s identity — so a request with an empty object is correct.  A ZAP PROCEDURE, not a REST resource. It answers the bridge&#39;s {status, msg, data} envelope rather than the raw view the /v1 route returns — which is a wire shape a typed op cannot produce, and the reason this stays a raw handler — and it calls the SAME core function the REST route calls, so the two transports cannot diverge in behaviour. Org and project scope come from the request identity and NEVER from the body: the body cannot widen the caller&#39;s scope. Without a validated org the answer is a 403 envelope.
+     * Answers every repository in the caller&#39;s org and project scope. It reads NO body — the scope is entirely the caller&#39;s identity — so a request with an empty object is correct.  A ZAP PROCEDURE, not a REST resource. It answers the bridge&#39;s {status, msg, data} envelope rather than the raw view the /v1 route returns, and it calls the SAME core function the REST route calls, so the two transports cannot diverge in behaviour. Org and project scope come from the request identity and NEVER from the body: the body cannot widen the caller&#39;s scope. Without a validated org the answer is a 403 envelope.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -5396,7 +5396,7 @@ public class GitApi {
 
     /**
      * Report your org&#39;s git storage footprint over the ZAP transport
-     * Answers every repository in the caller&#39;s org with its size in bytes, plus the org&#39;s total — what git storage is actually being used, and by which repository. It reads NO body, and it is scoped to the caller&#39;s own org, so it is that org&#39;s footprint and never the fleet&#39;s.  A ZAP PROCEDURE, not a REST resource. It answers the bridge&#39;s {status, msg, data} envelope rather than the raw view the /v1 route returns — which is a wire shape a typed op cannot produce, and the reason this stays a raw handler — and it calls the SAME core function the REST route calls, so the two transports cannot diverge in behaviour. Org and project scope come from the request identity and NEVER from the body: the body cannot widen the caller&#39;s scope. Without a validated org the answer is a 403 envelope.
+     * Answers every repository in the caller&#39;s org with its size in bytes, plus the org&#39;s total — what git storage is actually being used, and by which repository. It reads NO body, and it is scoped to the caller&#39;s own org, so it is that org&#39;s footprint and never the fleet&#39;s.  A ZAP PROCEDURE, not a REST resource. It answers the bridge&#39;s {status, msg, data} envelope rather than the raw view the /v1 route returns, and it calls the SAME core function the REST route calls, so the two transports cannot diverge in behaviour. Org and project scope come from the request identity and NEVER from the body: the body cannot widen the caller&#39;s scope. Without a validated org the answer is a 403 envelope.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public void postGitZapUsage() throws ApiException {
@@ -5405,7 +5405,7 @@ public class GitApi {
 
     /**
      * Report your org&#39;s git storage footprint over the ZAP transport
-     * Answers every repository in the caller&#39;s org with its size in bytes, plus the org&#39;s total — what git storage is actually being used, and by which repository. It reads NO body, and it is scoped to the caller&#39;s own org, so it is that org&#39;s footprint and never the fleet&#39;s.  A ZAP PROCEDURE, not a REST resource. It answers the bridge&#39;s {status, msg, data} envelope rather than the raw view the /v1 route returns — which is a wire shape a typed op cannot produce, and the reason this stays a raw handler — and it calls the SAME core function the REST route calls, so the two transports cannot diverge in behaviour. Org and project scope come from the request identity and NEVER from the body: the body cannot widen the caller&#39;s scope. Without a validated org the answer is a 403 envelope.
+     * Answers every repository in the caller&#39;s org with its size in bytes, plus the org&#39;s total — what git storage is actually being used, and by which repository. It reads NO body, and it is scoped to the caller&#39;s own org, so it is that org&#39;s footprint and never the fleet&#39;s.  A ZAP PROCEDURE, not a REST resource. It answers the bridge&#39;s {status, msg, data} envelope rather than the raw view the /v1 route returns, and it calls the SAME core function the REST route calls, so the two transports cannot diverge in behaviour. Org and project scope come from the request identity and NEVER from the body: the body cannot widen the caller&#39;s scope. Without a validated org the answer is a 403 envelope.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -5416,7 +5416,7 @@ public class GitApi {
 
     /**
      * Report your org&#39;s git storage footprint over the ZAP transport (asynchronously)
-     * Answers every repository in the caller&#39;s org with its size in bytes, plus the org&#39;s total — what git storage is actually being used, and by which repository. It reads NO body, and it is scoped to the caller&#39;s own org, so it is that org&#39;s footprint and never the fleet&#39;s.  A ZAP PROCEDURE, not a REST resource. It answers the bridge&#39;s {status, msg, data} envelope rather than the raw view the /v1 route returns — which is a wire shape a typed op cannot produce, and the reason this stays a raw handler — and it calls the SAME core function the REST route calls, so the two transports cannot diverge in behaviour. Org and project scope come from the request identity and NEVER from the body: the body cannot widen the caller&#39;s scope. Without a validated org the answer is a 403 envelope.
+     * Answers every repository in the caller&#39;s org with its size in bytes, plus the org&#39;s total — what git storage is actually being used, and by which repository. It reads NO body, and it is scoped to the caller&#39;s own org, so it is that org&#39;s footprint and never the fleet&#39;s.  A ZAP PROCEDURE, not a REST resource. It answers the bridge&#39;s {status, msg, data} envelope rather than the raw view the /v1 route returns, and it calls the SAME core function the REST route calls, so the two transports cannot diverge in behaviour. Org and project scope come from the request identity and NEVER from the body: the body cannot widen the caller&#39;s scope. Without a validated org the answer is a 403 envelope.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay routes, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -69,7 +69,7 @@ public class Listing {
   }
 
   /**
-   * Get lastModified
+   * LastModified is when the BYTES last changed, as RFC 3339 in UTC to the second — &#x60;2026-01-02T03:04:05Z&#x60;, the sandbox&#39;s own &#x60;date -u -r&#x60; on the file. It is an mtime and not a creation time, so a file a later run overwrote carries that run&#39;s clock. Never empty: a row exists only because &#x60;find&#x60; stat-ed the file.
    * @return lastModified
    */
   @javax.annotation.Nullable
@@ -88,7 +88,7 @@ public class Listing {
   }
 
   /**
-   * Get name
+   * Name is the file&#39;s IDENTIFIER, &#x60;{session_id}/{fileId}&#x60; whole — never the bare filename, and never URL-escaped. It is exactly what GET /v1/exec/download takes after its prefix, and hanzo.chat matches it as a PREFIX (&#x60;name.startsWith(session + \&quot;/\&quot;)&#x60;) to decide which rows belong to a session it is holding. &#x60;fileId&#x60; is the path RELATIVE to the session&#39;s artifact directory, so it carries &#x60;/&#x60; for anything the run wrote in a sub-directory.
    * @return name
    */
   @javax.annotation.Nullable

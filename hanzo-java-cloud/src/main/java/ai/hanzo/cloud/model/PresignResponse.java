@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay routes, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -98,7 +98,7 @@ public class PresignResponse {
   }
 
   /**
-   * Get key
+   * Key is the object key the URL was signed for, relative to the bucket root and path-cleaned — so it is what the store will actually read or write, which is not always the string the caller sent. The signature covers this one bucket and this one key: a URL minted here reaches nothing else.
    * @return key
    */
   @javax.annotation.Nullable
