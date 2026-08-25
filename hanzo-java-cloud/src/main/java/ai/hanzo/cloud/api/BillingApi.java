@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay routes, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -4818,7 +4818,7 @@ public class BillingApi {
 
     /**
      * Charges a card the caller already saved and credits the balance.
-     * Charges a card the caller already saved and credits the balance. Same receipt and the same retry safety as the token door; the only difference is which card, so a caller topping up from a saved method never re-enters one.
+     * Charges a card the caller already saved and credits the balance. Same receipt and the same retry safety as the token endpoint; the only difference is which card, so a caller topping up from a saved method never re-enters one.
      * @param topupIn  (required)
      * @param xIdempotencyKey  (optional)
      * @return Charged
@@ -4837,7 +4837,7 @@ public class BillingApi {
 
     /**
      * Charges a card the caller already saved and credits the balance.
-     * Charges a card the caller already saved and credits the balance. Same receipt and the same retry safety as the token door; the only difference is which card, so a caller topping up from a saved method never re-enters one.
+     * Charges a card the caller already saved and credits the balance. Same receipt and the same retry safety as the token endpoint; the only difference is which card, so a caller topping up from a saved method never re-enters one.
      * @param topupIn  (required)
      * @param xIdempotencyKey  (optional)
      * @return ApiResponse&lt;Charged&gt;
@@ -4857,7 +4857,7 @@ public class BillingApi {
 
     /**
      * Charges a card the caller already saved and credits the balance. (asynchronously)
-     * Charges a card the caller already saved and credits the balance. Same receipt and the same retry safety as the token door; the only difference is which card, so a caller topping up from a saved method never re-enters one.
+     * Charges a card the caller already saved and credits the balance. Same receipt and the same retry safety as the token endpoint; the only difference is which card, so a caller topping up from a saved method never re-enters one.
      * @param topupIn  (required)
      * @param xIdempotencyKey  (optional)
      * @param _callback The callback to be executed when the API call finishes

@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay routes, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -951,7 +951,7 @@ public class GraphApi {
 
     /**
      * Ask the graph in one request, traversing.
-     * Runs a GraphQL query against this organization&#39;s assertions.  It is the one door here a caller can TRAVERSE: the REST ops each answer a single question, so composing them — the entities this one points at, and what each of those resolves to — costs a request per hop with the intermediate keys held by the caller. Here that is one query and the nesting is the answer&#39;s shape.  It adds no way to ask anything new. Every field runs the SAME operation the matching REST route runs, so the tenancy, the as-of bound, the traversal bounds and the conflict rule are the ones already in force; the schema is served by introspection.  A query that cannot run answers 200 with an &#x60;errors&#x60; list, which is the wire every GraphQL client parses.
+     * Runs a GraphQL query against this organization&#39;s assertions.  It is the one endpoint here a caller can TRAVERSE: the REST ops each answer a single question, so composing them — the entities this one points at, and what each of those resolves to — costs a request per hop with the intermediate keys held by the caller. Here that is one query and the nesting is the answer&#39;s shape.  It adds no way to ask anything new. Every field runs the SAME operation the matching REST route runs, so the tenancy, the as-of bound, the traversal bounds and the conflict rule are the ones already in force; the schema is served by introspection.  A query that cannot run answers 200 with an &#x60;errors&#x60; list, which is the wire every GraphQL client parses.
      * @param graphQLIn  (optional)
      * @return GraphQLOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -969,7 +969,7 @@ public class GraphApi {
 
     /**
      * Ask the graph in one request, traversing.
-     * Runs a GraphQL query against this organization&#39;s assertions.  It is the one door here a caller can TRAVERSE: the REST ops each answer a single question, so composing them — the entities this one points at, and what each of those resolves to — costs a request per hop with the intermediate keys held by the caller. Here that is one query and the nesting is the answer&#39;s shape.  It adds no way to ask anything new. Every field runs the SAME operation the matching REST route runs, so the tenancy, the as-of bound, the traversal bounds and the conflict rule are the ones already in force; the schema is served by introspection.  A query that cannot run answers 200 with an &#x60;errors&#x60; list, which is the wire every GraphQL client parses.
+     * Runs a GraphQL query against this organization&#39;s assertions.  It is the one endpoint here a caller can TRAVERSE: the REST ops each answer a single question, so composing them — the entities this one points at, and what each of those resolves to — costs a request per hop with the intermediate keys held by the caller. Here that is one query and the nesting is the answer&#39;s shape.  It adds no way to ask anything new. Every field runs the SAME operation the matching REST route runs, so the tenancy, the as-of bound, the traversal bounds and the conflict rule are the ones already in force; the schema is served by introspection.  A query that cannot run answers 200 with an &#x60;errors&#x60; list, which is the wire every GraphQL client parses.
      * @param graphQLIn  (optional)
      * @return ApiResponse&lt;GraphQLOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -988,7 +988,7 @@ public class GraphApi {
 
     /**
      * Ask the graph in one request, traversing. (asynchronously)
-     * Runs a GraphQL query against this organization&#39;s assertions.  It is the one door here a caller can TRAVERSE: the REST ops each answer a single question, so composing them — the entities this one points at, and what each of those resolves to — costs a request per hop with the intermediate keys held by the caller. Here that is one query and the nesting is the answer&#39;s shape.  It adds no way to ask anything new. Every field runs the SAME operation the matching REST route runs, so the tenancy, the as-of bound, the traversal bounds and the conflict rule are the ones already in force; the schema is served by introspection.  A query that cannot run answers 200 with an &#x60;errors&#x60; list, which is the wire every GraphQL client parses.
+     * Runs a GraphQL query against this organization&#39;s assertions.  It is the one endpoint here a caller can TRAVERSE: the REST ops each answer a single question, so composing them — the entities this one points at, and what each of those resolves to — costs a request per hop with the intermediate keys held by the caller. Here that is one query and the nesting is the answer&#39;s shape.  It adds no way to ask anything new. Every field runs the SAME operation the matching REST route runs, so the tenancy, the as-of bound, the traversal bounds and the conflict rule are the ones already in force; the schema is served by introspection.  A query that cannot run answers 200 with an &#x60;errors&#x60; list, which is the wire every GraphQL client parses.
      * @param graphQLIn  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call

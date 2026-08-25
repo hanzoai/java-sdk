@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay routes, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -29,20 +29,33 @@ import java.io.IOException;
 
 import ai.hanzo.cloud.model.CaptableCompany;
 import ai.hanzo.cloud.model.CaptableCompanyUpdate;
+import ai.hanzo.cloud.model.CaptableConvertibleIn;
+import ai.hanzo.cloud.model.CaptableCreated;
 import ai.hanzo.cloud.model.CaptableDeleted;
+import ai.hanzo.cloud.model.CaptableEquityPlanIn;
 import ai.hanzo.cloud.model.CaptableEquityPlans;
+import ai.hanzo.cloud.model.CaptableInvested;
+import ai.hanzo.cloud.model.CaptableInvestmentIn;
 import ai.hanzo.cloud.model.CaptableInvestments;
 import ai.hanzo.cloud.model.CaptableNotes;
+import ai.hanzo.cloud.model.CaptableOptionIn;
 import ai.hanzo.cloud.model.CaptableOptions;
 import ai.hanzo.cloud.model.CaptableRoundCloseRequest;
 import ai.hanzo.cloud.model.CaptableRoundDetail;
+import ai.hanzo.cloud.model.CaptableRoundIn;
 import ai.hanzo.cloud.model.CaptableRounds;
+import ai.hanzo.cloud.model.CaptableSafeIn;
 import ai.hanzo.cloud.model.CaptableSafes;
 import ai.hanzo.cloud.model.CaptableShareClass;
+import ai.hanzo.cloud.model.CaptableShareClassAmend;
+import ai.hanzo.cloud.model.CaptableShareClassIn;
+import ai.hanzo.cloud.model.CaptableShareIn;
+import ai.hanzo.cloud.model.CaptableShareTransfer;
 import ai.hanzo.cloud.model.CaptableShares;
 import ai.hanzo.cloud.model.CaptableStakeholder;
 import ai.hanzo.cloud.model.CaptableStakeholderPatch;
 import ai.hanzo.cloud.model.CaptableSummary;
+import ai.hanzo.cloud.model.CaptableTransferred;
 import ai.hanzo.cloud.model.CaptableUpdated;
 
 import java.lang.reflect.Type;
@@ -2139,12 +2152,19 @@ public class CaptableApi {
     }
     /**
      * Build call for patchCaptableClassesById
-     * @param id  (required)
+     * @param id ID addresses the resource. The URL is the addressing authority — a path segment binds after the body and after the query — so the address decides which row is written whatever a body claims. (required)
+     * @param captableShareClassAmend  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call patchCaptableClassesByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call patchCaptableClassesByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CaptableShareClassAmend captableShareClassAmend, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2158,7 +2178,7 @@ public class CaptableApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = captableShareClassAmend;
 
         // create path and map variables
         String localVarPath = "/v1/captable/classes/{id}"
@@ -2171,6 +2191,7 @@ public class CaptableApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2178,6 +2199,7 @@ public class CaptableApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -2189,50 +2211,80 @@ public class CaptableApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchCaptableClassesByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call patchCaptableClassesByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CaptableShareClassAmend captableShareClassAmend, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling patchCaptableClassesById(Async)");
         }
 
-        return patchCaptableClassesByIdCall(id, _callback);
+        // verify the required parameter 'captableShareClassAmend' is set
+        if (captableShareClassAmend == null) {
+            throw new ApiException("Missing the required parameter 'captableShareClassAmend' when calling patchCaptableClassesById(Async)");
+        }
+
+        return patchCaptableClassesByIdCall(id, captableShareClassAmend, _callback);
 
     }
 
     /**
-     * Amend a share class
-     * Rewrites one share class — the amendment path for a class whose authorized count, price, seniority or preference terms have changed.  It REPLACES the class rather than merging into it: every field is taken from this body, so an omitted field resets to the create-time default instead of keeping its current value. Send the full class. The index and the derived prefix are unchanged by an amendment. An id that is not this company&#39;s is not found.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
-     * @param id  (required)
+     * Replaces one share class&#39;s terms.
+     * Replaces one share class&#39;s terms.  It is a full REPLACE and not a merge, despite the PATCH: every field is written as sent, so a field omitted is written empty rather than left alone. Send the whole class. The method is PATCH because the resource is addressed by id, not because the body is partial — and getting that backwards silently blanks terms every later issuance prices against.
+     * @param id ID addresses the resource. The URL is the addressing authority — a path segment binds after the body and after the query — so the address decides which row is written whatever a body claims. (required)
+     * @param captableShareClassAmend  (required)
+     * @return CaptableUpdated
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public void patchCaptableClassesById(@javax.annotation.Nonnull String id) throws ApiException {
-        patchCaptableClassesByIdWithHttpInfo(id);
+    public CaptableUpdated patchCaptableClassesById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CaptableShareClassAmend captableShareClassAmend) throws ApiException {
+        ApiResponse<CaptableUpdated> localVarResp = patchCaptableClassesByIdWithHttpInfo(id, captableShareClassAmend);
+        return localVarResp.getData();
     }
 
     /**
-     * Amend a share class
-     * Rewrites one share class — the amendment path for a class whose authorized count, price, seniority or preference terms have changed.  It REPLACES the class rather than merging into it: every field is taken from this body, so an omitted field resets to the create-time default instead of keeping its current value. Send the full class. The index and the derived prefix are unchanged by an amendment. An id that is not this company&#39;s is not found.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
-     * @param id  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * Replaces one share class&#39;s terms.
+     * Replaces one share class&#39;s terms.  It is a full REPLACE and not a merge, despite the PATCH: every field is written as sent, so a field omitted is written empty rather than left alone. Send the whole class. The method is PATCH because the resource is addressed by id, not because the body is partial — and getting that backwards silently blanks terms every later issuance prices against.
+     * @param id ID addresses the resource. The URL is the addressing authority — a path segment binds after the body and after the query — so the address decides which row is written whatever a body claims. (required)
+     * @param captableShareClassAmend  (required)
+     * @return ApiResponse&lt;CaptableUpdated&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public ApiResponse<Void> patchCaptableClassesByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = patchCaptableClassesByIdValidateBeforeCall(id, null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<CaptableUpdated> patchCaptableClassesByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CaptableShareClassAmend captableShareClassAmend) throws ApiException {
+        okhttp3.Call localVarCall = patchCaptableClassesByIdValidateBeforeCall(id, captableShareClassAmend, null);
+        Type localVarReturnType = new TypeToken<CaptableUpdated>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Amend a share class (asynchronously)
-     * Rewrites one share class — the amendment path for a class whose authorized count, price, seniority or preference terms have changed.  It REPLACES the class rather than merging into it: every field is taken from this body, so an omitted field resets to the create-time default instead of keeping its current value. Send the full class. The index and the derived prefix are unchanged by an amendment. An id that is not this company&#39;s is not found.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
-     * @param id  (required)
+     * Replaces one share class&#39;s terms. (asynchronously)
+     * Replaces one share class&#39;s terms.  It is a full REPLACE and not a merge, despite the PATCH: every field is written as sent, so a field omitted is written empty rather than left alone. Send the whole class. The method is PATCH because the resource is addressed by id, not because the body is partial — and getting that backwards silently blanks terms every later issuance prices against.
+     * @param id ID addresses the resource. The URL is the addressing authority — a path segment binds after the body and after the query — so the address decides which row is written whatever a body claims. (required)
+     * @param captableShareClassAmend  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call patchCaptableClassesByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call patchCaptableClassesByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CaptableShareClassAmend captableShareClassAmend, final ApiCallback<CaptableUpdated> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchCaptableClassesByIdValidateBeforeCall(id, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = patchCaptableClassesByIdValidateBeforeCall(id, captableShareClassAmend, _callback);
+        Type localVarReturnType = new TypeToken<CaptableUpdated>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -2374,11 +2426,18 @@ public class CaptableApi {
     }
     /**
      * Build call for postCaptableClasses
+     * @param captableShareClassIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call postCaptableClassesCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCaptableClassesCall(@javax.annotation.Nonnull CaptableShareClassIn captableShareClassIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2392,7 +2451,7 @@ public class CaptableApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = captableShareClassIn;
 
         // create path and map variables
         String localVarPath = "/v1/captable/classes";
@@ -2404,6 +2463,7 @@ public class CaptableApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2411,6 +2471,7 @@ public class CaptableApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -2422,51 +2483,88 @@ public class CaptableApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postCaptableClassesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postCaptableClassesCall(_callback);
+    private okhttp3.Call postCaptableClassesValidateBeforeCall(@javax.annotation.Nonnull CaptableShareClassIn captableShareClassIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'captableShareClassIn' is set
+        if (captableShareClassIn == null) {
+            throw new ApiException("Missing the required parameter 'captableShareClassIn' when calling postCaptableClasses(Async)");
+        }
+
+        return postCaptableClassesCall(captableShareClassIn, _callback);
 
     }
 
     /**
-     * Define a share class
-     * Creates a class of stock — its authorized share count, votes per share, par and issue price, seniority, conversion rights and liquidation/participation multiples — which is what shares, priced rounds and equity plans are then issued against.  Two fields are the company&#39;s to assign, not the caller&#39;s: the class index auto-increments per company, and the certificate prefix is DERIVED from the class type (CS for COMMON, PS for anything else), so a prefix in the body is ignored.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
+     * Defines a new class of shares.
+     * Defines a new class of shares.  Every field but convertsToShareClassId is required — a class is the instrument every later issuance prices against, so a partially-specified one would silently mis-value every share issued into it. &#x60;seniority&#x60; orders liquidation preference with LOWER first.
+     * @param captableShareClassIn  (required)
+     * @return CaptableCreated
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
      */
-    public void postCaptableClasses() throws ApiException {
-        postCaptableClassesWithHttpInfo();
+    public CaptableCreated postCaptableClasses(@javax.annotation.Nonnull CaptableShareClassIn captableShareClassIn) throws ApiException {
+        ApiResponse<CaptableCreated> localVarResp = postCaptableClassesWithHttpInfo(captableShareClassIn);
+        return localVarResp.getData();
     }
 
     /**
-     * Define a share class
-     * Creates a class of stock — its authorized share count, votes per share, par and issue price, seniority, conversion rights and liquidation/participation multiples — which is what shares, priced rounds and equity plans are then issued against.  Two fields are the company&#39;s to assign, not the caller&#39;s: the class index auto-increments per company, and the certificate prefix is DERIVED from the class type (CS for COMMON, PS for anything else), so a prefix in the body is ignored.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
-     * @return ApiResponse&lt;Void&gt;
+     * Defines a new class of shares.
+     * Defines a new class of shares.  Every field but convertsToShareClassId is required — a class is the instrument every later issuance prices against, so a partially-specified one would silently mis-value every share issued into it. &#x60;seniority&#x60; orders liquidation preference with LOWER first.
+     * @param captableShareClassIn  (required)
+     * @return ApiResponse&lt;CaptableCreated&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
      */
-    public ApiResponse<Void> postCaptableClassesWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postCaptableClassesValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<CaptableCreated> postCaptableClassesWithHttpInfo(@javax.annotation.Nonnull CaptableShareClassIn captableShareClassIn) throws ApiException {
+        okhttp3.Call localVarCall = postCaptableClassesValidateBeforeCall(captableShareClassIn, null);
+        Type localVarReturnType = new TypeToken<CaptableCreated>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Define a share class (asynchronously)
-     * Creates a class of stock — its authorized share count, votes per share, par and issue price, seniority, conversion rights and liquidation/participation multiples — which is what shares, priced rounds and equity plans are then issued against.  Two fields are the company&#39;s to assign, not the caller&#39;s: the class index auto-increments per company, and the certificate prefix is DERIVED from the class type (CS for COMMON, PS for anything else), so a prefix in the body is ignored.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
+     * Defines a new class of shares. (asynchronously)
+     * Defines a new class of shares.  Every field but convertsToShareClassId is required — a class is the instrument every later issuance prices against, so a partially-specified one would silently mis-value every share issued into it. &#x60;seniority&#x60; orders liquidation preference with LOWER first.
+     * @param captableShareClassIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call postCaptableClassesAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postCaptableClassesAsync(@javax.annotation.Nonnull CaptableShareClassIn captableShareClassIn, final ApiCallback<CaptableCreated> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postCaptableClassesValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = postCaptableClassesValidateBeforeCall(captableShareClassIn, _callback);
+        Type localVarReturnType = new TypeToken<CaptableCreated>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postCaptableConvertibles
+     * @param captableConvertibleIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call postCaptableConvertiblesCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCaptableConvertiblesCall(@javax.annotation.Nonnull CaptableConvertibleIn captableConvertibleIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2480,7 +2578,7 @@ public class CaptableApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = captableConvertibleIn;
 
         // create path and map variables
         String localVarPath = "/v1/captable/convertibles";
@@ -2492,6 +2590,7 @@ public class CaptableApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2499,6 +2598,7 @@ public class CaptableApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -2510,51 +2610,88 @@ public class CaptableApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postCaptableConvertiblesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postCaptableConvertiblesCall(_callback);
+    private okhttp3.Call postCaptableConvertiblesValidateBeforeCall(@javax.annotation.Nonnull CaptableConvertibleIn captableConvertibleIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'captableConvertibleIn' is set
+        if (captableConvertibleIn == null) {
+            throw new ApiException("Missing the required parameter 'captableConvertibleIn' when calling postCaptableConvertibles(Async)");
+        }
+
+        return postCaptableConvertiblesCall(captableConvertibleIn, _callback);
 
     }
 
     /**
-     * Record a convertible note
-     * Records a convertible note held by a stakeholder: the principal, the conversion cap, discount and interest rate, MFN, and the issue and board-approval dates.  The stakeholder must already exist in this company, and the note&#39;s public id must be unused there — a reused id is a conflict rather than an overwrite. Like a SAFE, this records the instrument only; conversion is not performed here.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
+     * Records a convertible note.
+     * Records a convertible note.
+     * @param captableConvertibleIn  (required)
+     * @return CaptableCreated
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
      */
-    public void postCaptableConvertibles() throws ApiException {
-        postCaptableConvertiblesWithHttpInfo();
+    public CaptableCreated postCaptableConvertibles(@javax.annotation.Nonnull CaptableConvertibleIn captableConvertibleIn) throws ApiException {
+        ApiResponse<CaptableCreated> localVarResp = postCaptableConvertiblesWithHttpInfo(captableConvertibleIn);
+        return localVarResp.getData();
     }
 
     /**
-     * Record a convertible note
-     * Records a convertible note held by a stakeholder: the principal, the conversion cap, discount and interest rate, MFN, and the issue and board-approval dates.  The stakeholder must already exist in this company, and the note&#39;s public id must be unused there — a reused id is a conflict rather than an overwrite. Like a SAFE, this records the instrument only; conversion is not performed here.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
-     * @return ApiResponse&lt;Void&gt;
+     * Records a convertible note.
+     * Records a convertible note.
+     * @param captableConvertibleIn  (required)
+     * @return ApiResponse&lt;CaptableCreated&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
      */
-    public ApiResponse<Void> postCaptableConvertiblesWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postCaptableConvertiblesValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<CaptableCreated> postCaptableConvertiblesWithHttpInfo(@javax.annotation.Nonnull CaptableConvertibleIn captableConvertibleIn) throws ApiException {
+        okhttp3.Call localVarCall = postCaptableConvertiblesValidateBeforeCall(captableConvertibleIn, null);
+        Type localVarReturnType = new TypeToken<CaptableCreated>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Record a convertible note (asynchronously)
-     * Records a convertible note held by a stakeholder: the principal, the conversion cap, discount and interest rate, MFN, and the issue and board-approval dates.  The stakeholder must already exist in this company, and the note&#39;s public id must be unused there — a reused id is a conflict rather than an overwrite. Like a SAFE, this records the instrument only; conversion is not performed here.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
+     * Records a convertible note. (asynchronously)
+     * Records a convertible note.
+     * @param captableConvertibleIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call postCaptableConvertiblesAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postCaptableConvertiblesAsync(@javax.annotation.Nonnull CaptableConvertibleIn captableConvertibleIn, final ApiCallback<CaptableCreated> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postCaptableConvertiblesValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = postCaptableConvertiblesValidateBeforeCall(captableConvertibleIn, _callback);
+        Type localVarReturnType = new TypeToken<CaptableCreated>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postCaptableOptions
+     * @param captableOptionIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call postCaptableOptionsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCaptableOptionsCall(@javax.annotation.Nonnull CaptableOptionIn captableOptionIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2568,7 +2705,7 @@ public class CaptableApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = captableOptionIn;
 
         // create path and map variables
         String localVarPath = "/v1/captable/options";
@@ -2580,6 +2717,7 @@ public class CaptableApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2587,6 +2725,7 @@ public class CaptableApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -2598,51 +2737,88 @@ public class CaptableApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postCaptableOptionsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postCaptableOptionsCall(_callback);
+    private okhttp3.Call postCaptableOptionsValidateBeforeCall(@javax.annotation.Nonnull CaptableOptionIn captableOptionIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'captableOptionIn' is set
+        if (captableOptionIn == null) {
+            throw new ApiException("Missing the required parameter 'captableOptionIn' when calling postCaptableOptions(Async)");
+        }
+
+        return postCaptableOptionsCall(captableOptionIn, _callback);
 
     }
 
     /**
-     * Grant options from an equity plan
-     * Records an option grant to a stakeholder under an equity plan — quantity, exercise price, ISO/NSO type, cliff and vesting years, and the issue, expiration, vesting-start, board-approval and Rule 144 dates.  The stakeholder and the equity plan must both already exist in this company, and the grant id must be unused there — a reused grant id is a conflict, so a grant can never be overwritten by a later one carrying the same number.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
+     * Grants options to a stakeholder from an equity plan.
+     * Grants options to a stakeholder from an equity plan.
+     * @param captableOptionIn  (required)
+     * @return CaptableCreated
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
      */
-    public void postCaptableOptions() throws ApiException {
-        postCaptableOptionsWithHttpInfo();
+    public CaptableCreated postCaptableOptions(@javax.annotation.Nonnull CaptableOptionIn captableOptionIn) throws ApiException {
+        ApiResponse<CaptableCreated> localVarResp = postCaptableOptionsWithHttpInfo(captableOptionIn);
+        return localVarResp.getData();
     }
 
     /**
-     * Grant options from an equity plan
-     * Records an option grant to a stakeholder under an equity plan — quantity, exercise price, ISO/NSO type, cliff and vesting years, and the issue, expiration, vesting-start, board-approval and Rule 144 dates.  The stakeholder and the equity plan must both already exist in this company, and the grant id must be unused there — a reused grant id is a conflict, so a grant can never be overwritten by a later one carrying the same number.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
-     * @return ApiResponse&lt;Void&gt;
+     * Grants options to a stakeholder from an equity plan.
+     * Grants options to a stakeholder from an equity plan.
+     * @param captableOptionIn  (required)
+     * @return ApiResponse&lt;CaptableCreated&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
      */
-    public ApiResponse<Void> postCaptableOptionsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postCaptableOptionsValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<CaptableCreated> postCaptableOptionsWithHttpInfo(@javax.annotation.Nonnull CaptableOptionIn captableOptionIn) throws ApiException {
+        okhttp3.Call localVarCall = postCaptableOptionsValidateBeforeCall(captableOptionIn, null);
+        Type localVarReturnType = new TypeToken<CaptableCreated>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Grant options from an equity plan (asynchronously)
-     * Records an option grant to a stakeholder under an equity plan — quantity, exercise price, ISO/NSO type, cliff and vesting years, and the issue, expiration, vesting-start, board-approval and Rule 144 dates.  The stakeholder and the equity plan must both already exist in this company, and the grant id must be unused there — a reused grant id is a conflict, so a grant can never be overwritten by a later one carrying the same number.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
+     * Grants options to a stakeholder from an equity plan. (asynchronously)
+     * Grants options to a stakeholder from an equity plan.
+     * @param captableOptionIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call postCaptableOptionsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postCaptableOptionsAsync(@javax.annotation.Nonnull CaptableOptionIn captableOptionIn, final ApiCallback<CaptableCreated> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postCaptableOptionsValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = postCaptableOptionsValidateBeforeCall(captableOptionIn, _callback);
+        Type localVarReturnType = new TypeToken<CaptableCreated>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postCaptablePlans
+     * @param captableEquityPlanIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call postCaptablePlansCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCaptablePlansCall(@javax.annotation.Nonnull CaptableEquityPlanIn captableEquityPlanIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2656,7 +2832,7 @@ public class CaptableApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = captableEquityPlanIn;
 
         // create path and map variables
         String localVarPath = "/v1/captable/plans";
@@ -2668,6 +2844,7 @@ public class CaptableApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2675,6 +2852,7 @@ public class CaptableApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -2686,51 +2864,88 @@ public class CaptableApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postCaptablePlansValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postCaptablePlansCall(_callback);
+    private okhttp3.Call postCaptablePlansValidateBeforeCall(@javax.annotation.Nonnull CaptableEquityPlanIn captableEquityPlanIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'captableEquityPlanIn' is set
+        if (captableEquityPlanIn == null) {
+            throw new ApiException("Missing the required parameter 'captableEquityPlanIn' when calling postCaptablePlans(Async)");
+        }
+
+        return postCaptablePlansCall(captableEquityPlanIn, _callback);
 
     }
 
     /**
-     * Open an equity incentive plan
-     * Reserves a pool of shares out of a share class for option grants, with the board approval and effective dates and what happens to cancelled options.  The share class must already exist in this company — a plan cannot reserve out of nothing. Note the field name the bundle reads for the cancellation behaviour is &#x60;defaultCancellatonBehavior&#x60;; that spelling is the wire, and a correctly spelled key is simply not seen.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
+     * Opens an equity plan that options are granted from.
+     * Opens an equity plan that options are granted from.
+     * @param captableEquityPlanIn  (required)
+     * @return CaptableCreated
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
      */
-    public void postCaptablePlans() throws ApiException {
-        postCaptablePlansWithHttpInfo();
+    public CaptableCreated postCaptablePlans(@javax.annotation.Nonnull CaptableEquityPlanIn captableEquityPlanIn) throws ApiException {
+        ApiResponse<CaptableCreated> localVarResp = postCaptablePlansWithHttpInfo(captableEquityPlanIn);
+        return localVarResp.getData();
     }
 
     /**
-     * Open an equity incentive plan
-     * Reserves a pool of shares out of a share class for option grants, with the board approval and effective dates and what happens to cancelled options.  The share class must already exist in this company — a plan cannot reserve out of nothing. Note the field name the bundle reads for the cancellation behaviour is &#x60;defaultCancellatonBehavior&#x60;; that spelling is the wire, and a correctly spelled key is simply not seen.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
-     * @return ApiResponse&lt;Void&gt;
+     * Opens an equity plan that options are granted from.
+     * Opens an equity plan that options are granted from.
+     * @param captableEquityPlanIn  (required)
+     * @return ApiResponse&lt;CaptableCreated&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
      */
-    public ApiResponse<Void> postCaptablePlansWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postCaptablePlansValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<CaptableCreated> postCaptablePlansWithHttpInfo(@javax.annotation.Nonnull CaptableEquityPlanIn captableEquityPlanIn) throws ApiException {
+        okhttp3.Call localVarCall = postCaptablePlansValidateBeforeCall(captableEquityPlanIn, null);
+        Type localVarReturnType = new TypeToken<CaptableCreated>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Open an equity incentive plan (asynchronously)
-     * Reserves a pool of shares out of a share class for option grants, with the board approval and effective dates and what happens to cancelled options.  The share class must already exist in this company — a plan cannot reserve out of nothing. Note the field name the bundle reads for the cancellation behaviour is &#x60;defaultCancellatonBehavior&#x60;; that spelling is the wire, and a correctly spelled key is simply not seen.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
+     * Opens an equity plan that options are granted from. (asynchronously)
+     * Opens an equity plan that options are granted from.
+     * @param captableEquityPlanIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call postCaptablePlansAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postCaptablePlansAsync(@javax.annotation.Nonnull CaptableEquityPlanIn captableEquityPlanIn, final ApiCallback<CaptableCreated> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postCaptablePlansValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = postCaptablePlansValidateBeforeCall(captableEquityPlanIn, _callback);
+        Type localVarReturnType = new TypeToken<CaptableCreated>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postCaptableRounds
+     * @param captableRoundIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call postCaptableRoundsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCaptableRoundsCall(@javax.annotation.Nonnull CaptableRoundIn captableRoundIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2744,7 +2959,7 @@ public class CaptableApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = captableRoundIn;
 
         // create path and map variables
         String localVarPath = "/v1/captable/rounds";
@@ -2756,6 +2971,7 @@ public class CaptableApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2763,6 +2979,7 @@ public class CaptableApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -2774,42 +2991,72 @@ public class CaptableApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postCaptableRoundsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postCaptableRoundsCall(_callback);
+    private okhttp3.Call postCaptableRoundsValidateBeforeCall(@javax.annotation.Nonnull CaptableRoundIn captableRoundIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'captableRoundIn' is set
+        if (captableRoundIn == null) {
+            throw new ApiException("Missing the required parameter 'captableRoundIn' when calling postCaptableRounds(Async)");
+        }
+
+        return postCaptableRoundsCall(captableRoundIn, _callback);
 
     }
 
     /**
-     * Open a funding round
-     * Opens a round with its name, type and target amount. It starts OPEN with nothing raised; investments are then added to it, and closing it is its own call.  A PRICED round is the constrained case: it requires a share class that exists in this company and a price per share above zero, because that price is what converts each investment into issued shares. Its pre-money valuation is optional. A non-priced round carries none of the three.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
+     * Opens a priced round that investments can be added to.
+     * Opens a priced round that investments can be added to.  The round opens OPEN; investing into a closed one is refused.
+     * @param captableRoundIn  (required)
+     * @return CaptableCreated
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
      */
-    public void postCaptableRounds() throws ApiException {
-        postCaptableRoundsWithHttpInfo();
+    public CaptableCreated postCaptableRounds(@javax.annotation.Nonnull CaptableRoundIn captableRoundIn) throws ApiException {
+        ApiResponse<CaptableCreated> localVarResp = postCaptableRoundsWithHttpInfo(captableRoundIn);
+        return localVarResp.getData();
     }
 
     /**
-     * Open a funding round
-     * Opens a round with its name, type and target amount. It starts OPEN with nothing raised; investments are then added to it, and closing it is its own call.  A PRICED round is the constrained case: it requires a share class that exists in this company and a price per share above zero, because that price is what converts each investment into issued shares. Its pre-money valuation is optional. A non-priced round carries none of the three.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
-     * @return ApiResponse&lt;Void&gt;
+     * Opens a priced round that investments can be added to.
+     * Opens a priced round that investments can be added to.  The round opens OPEN; investing into a closed one is refused.
+     * @param captableRoundIn  (required)
+     * @return ApiResponse&lt;CaptableCreated&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
      */
-    public ApiResponse<Void> postCaptableRoundsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postCaptableRoundsValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<CaptableCreated> postCaptableRoundsWithHttpInfo(@javax.annotation.Nonnull CaptableRoundIn captableRoundIn) throws ApiException {
+        okhttp3.Call localVarCall = postCaptableRoundsValidateBeforeCall(captableRoundIn, null);
+        Type localVarReturnType = new TypeToken<CaptableCreated>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Open a funding round (asynchronously)
-     * Opens a round with its name, type and target amount. It starts OPEN with nothing raised; investments are then added to it, and closing it is its own call.  A PRICED round is the constrained case: it requires a share class that exists in this company and a price per share above zero, because that price is what converts each investment into issued shares. Its pre-money valuation is optional. A non-priced round carries none of the three.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
+     * Opens a priced round that investments can be added to. (asynchronously)
+     * Opens a priced round that investments can be added to.  The round opens OPEN; investing into a closed one is refused.
+     * @param captableRoundIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call postCaptableRoundsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postCaptableRoundsAsync(@javax.annotation.Nonnull CaptableRoundIn captableRoundIn, final ApiCallback<CaptableCreated> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postCaptableRoundsValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = postCaptableRoundsValidateBeforeCall(captableRoundIn, _callback);
+        Type localVarReturnType = new TypeToken<CaptableCreated>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -2951,12 +3198,19 @@ public class CaptableApi {
     }
     /**
      * Build call for postCaptableRoundsByIdInvestments
-     * @param id  (required)
+     * @param id ID is the round to invest in. The URL is the addressing authority — a path segment binds after the body and after the query — so the address decides which round is written whatever a body claims. (required)
+     * @param captableInvestmentIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call postCaptableRoundsByIdInvestmentsCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCaptableRoundsByIdInvestmentsCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CaptableInvestmentIn captableInvestmentIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2970,7 +3224,7 @@ public class CaptableApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = captableInvestmentIn;
 
         // create path and map variables
         String localVarPath = "/v1/captable/rounds/{id}/investments"
@@ -2983,6 +3237,7 @@ public class CaptableApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2990,6 +3245,7 @@ public class CaptableApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -3001,59 +3257,96 @@ public class CaptableApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postCaptableRoundsByIdInvestmentsValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postCaptableRoundsByIdInvestmentsValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CaptableInvestmentIn captableInvestmentIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling postCaptableRoundsByIdInvestments(Async)");
         }
 
-        return postCaptableRoundsByIdInvestmentsCall(id, _callback);
+        // verify the required parameter 'captableInvestmentIn' is set
+        if (captableInvestmentIn == null) {
+            throw new ApiException("Missing the required parameter 'captableInvestmentIn' when calling postCaptableRoundsByIdInvestments(Async)");
+        }
+
+        return postCaptableRoundsByIdInvestmentsCall(id, captableInvestmentIn, _callback);
 
     }
 
     /**
-     * Record an investment into a round
-     * Records what a stakeholder put into a round and adds it to the round&#39;s raised total.  On a PRICED round this ISSUES SHARES as well as recording the money: the amount is divided by the round&#39;s price per share, rounded DOWN to whole shares, and a new certificate for them is issued to the investor in the round&#39;s share class — so an amount too small to buy one whole share is refused rather than recorded as a zero-share investment. On a non-priced round the money is recorded and no shares are issued.  The round must exist in this company and still be OPEN — a closed round refuses further investment — and the investor must already be a stakeholder here. The date defaults to today when omitted.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
-     * @param id  (required)
+     * Records one investor&#39;s money into an open round.
+     * Records one investor&#39;s money into an open round.  The round must be OPEN; investing into a closed one is refused. Where the round carries a price per share, the investment also issues the shares it buys and the answer names them.
+     * @param id ID is the round to invest in. The URL is the addressing authority — a path segment binds after the body and after the query — so the address decides which round is written whatever a body claims. (required)
+     * @param captableInvestmentIn  (required)
+     * @return CaptableInvested
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
      */
-    public void postCaptableRoundsByIdInvestments(@javax.annotation.Nonnull String id) throws ApiException {
-        postCaptableRoundsByIdInvestmentsWithHttpInfo(id);
+    public CaptableInvested postCaptableRoundsByIdInvestments(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CaptableInvestmentIn captableInvestmentIn) throws ApiException {
+        ApiResponse<CaptableInvested> localVarResp = postCaptableRoundsByIdInvestmentsWithHttpInfo(id, captableInvestmentIn);
+        return localVarResp.getData();
     }
 
     /**
-     * Record an investment into a round
-     * Records what a stakeholder put into a round and adds it to the round&#39;s raised total.  On a PRICED round this ISSUES SHARES as well as recording the money: the amount is divided by the round&#39;s price per share, rounded DOWN to whole shares, and a new certificate for them is issued to the investor in the round&#39;s share class — so an amount too small to buy one whole share is refused rather than recorded as a zero-share investment. On a non-priced round the money is recorded and no shares are issued.  The round must exist in this company and still be OPEN — a closed round refuses further investment — and the investor must already be a stakeholder here. The date defaults to today when omitted.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
-     * @param id  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * Records one investor&#39;s money into an open round.
+     * Records one investor&#39;s money into an open round.  The round must be OPEN; investing into a closed one is refused. Where the round carries a price per share, the investment also issues the shares it buys and the answer names them.
+     * @param id ID is the round to invest in. The URL is the addressing authority — a path segment binds after the body and after the query — so the address decides which round is written whatever a body claims. (required)
+     * @param captableInvestmentIn  (required)
+     * @return ApiResponse&lt;CaptableInvested&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
      */
-    public ApiResponse<Void> postCaptableRoundsByIdInvestmentsWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = postCaptableRoundsByIdInvestmentsValidateBeforeCall(id, null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<CaptableInvested> postCaptableRoundsByIdInvestmentsWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CaptableInvestmentIn captableInvestmentIn) throws ApiException {
+        okhttp3.Call localVarCall = postCaptableRoundsByIdInvestmentsValidateBeforeCall(id, captableInvestmentIn, null);
+        Type localVarReturnType = new TypeToken<CaptableInvested>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Record an investment into a round (asynchronously)
-     * Records what a stakeholder put into a round and adds it to the round&#39;s raised total.  On a PRICED round this ISSUES SHARES as well as recording the money: the amount is divided by the round&#39;s price per share, rounded DOWN to whole shares, and a new certificate for them is issued to the investor in the round&#39;s share class — so an amount too small to buy one whole share is refused rather than recorded as a zero-share investment. On a non-priced round the money is recorded and no shares are issued.  The round must exist in this company and still be OPEN — a closed round refuses further investment — and the investor must already be a stakeholder here. The date defaults to today when omitted.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
-     * @param id  (required)
+     * Records one investor&#39;s money into an open round. (asynchronously)
+     * Records one investor&#39;s money into an open round.  The round must be OPEN; investing into a closed one is refused. Where the round carries a price per share, the investment also issues the shares it buys and the answer names them.
+     * @param id ID is the round to invest in. The URL is the addressing authority — a path segment binds after the body and after the query — so the address decides which round is written whatever a body claims. (required)
+     * @param captableInvestmentIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call postCaptableRoundsByIdInvestmentsAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postCaptableRoundsByIdInvestmentsAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CaptableInvestmentIn captableInvestmentIn, final ApiCallback<CaptableInvested> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postCaptableRoundsByIdInvestmentsValidateBeforeCall(id, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = postCaptableRoundsByIdInvestmentsValidateBeforeCall(id, captableInvestmentIn, _callback);
+        Type localVarReturnType = new TypeToken<CaptableInvested>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postCaptableSafes
+     * @param captableSafeIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call postCaptableSafesCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCaptableSafesCall(@javax.annotation.Nonnull CaptableSafeIn captableSafeIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3067,7 +3360,7 @@ public class CaptableApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = captableSafeIn;
 
         // create path and map variables
         String localVarPath = "/v1/captable/safes";
@@ -3079,6 +3372,7 @@ public class CaptableApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -3086,6 +3380,7 @@ public class CaptableApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -3097,51 +3392,88 @@ public class CaptableApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postCaptableSafesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postCaptableSafesCall(_callback);
+    private okhttp3.Call postCaptableSafesValidateBeforeCall(@javax.annotation.Nonnull CaptableSafeIn captableSafeIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'captableSafeIn' is set
+        if (captableSafeIn == null) {
+            throw new ApiException("Missing the required parameter 'captableSafeIn' when calling postCaptableSafes(Async)");
+        }
+
+        return postCaptableSafesCall(captableSafeIn, _callback);
 
     }
 
     /**
-     * Record a SAFE
-     * Records a Simple Agreement for Future Equity held by a stakeholder: the capital in, the valuation cap and discount, MFN and pro-rata rights, pre- or post-money type, and the issue and board-approval dates.  The stakeholder must already exist in this company, and the SAFE&#39;s public id must be unused there — a reused id is a conflict rather than an overwrite. This records the instrument; it does not convert it, so nothing is issued against a share class until a round does that.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
+     * Records a SAFE — a simple agreement for future equity.
+     * Records a SAFE — a simple agreement for future equity.
+     * @param captableSafeIn  (required)
+     * @return CaptableCreated
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
      */
-    public void postCaptableSafes() throws ApiException {
-        postCaptableSafesWithHttpInfo();
+    public CaptableCreated postCaptableSafes(@javax.annotation.Nonnull CaptableSafeIn captableSafeIn) throws ApiException {
+        ApiResponse<CaptableCreated> localVarResp = postCaptableSafesWithHttpInfo(captableSafeIn);
+        return localVarResp.getData();
     }
 
     /**
-     * Record a SAFE
-     * Records a Simple Agreement for Future Equity held by a stakeholder: the capital in, the valuation cap and discount, MFN and pro-rata rights, pre- or post-money type, and the issue and board-approval dates.  The stakeholder must already exist in this company, and the SAFE&#39;s public id must be unused there — a reused id is a conflict rather than an overwrite. This records the instrument; it does not convert it, so nothing is issued against a share class until a round does that.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
-     * @return ApiResponse&lt;Void&gt;
+     * Records a SAFE — a simple agreement for future equity.
+     * Records a SAFE — a simple agreement for future equity.
+     * @param captableSafeIn  (required)
+     * @return ApiResponse&lt;CaptableCreated&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
      */
-    public ApiResponse<Void> postCaptableSafesWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postCaptableSafesValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<CaptableCreated> postCaptableSafesWithHttpInfo(@javax.annotation.Nonnull CaptableSafeIn captableSafeIn) throws ApiException {
+        okhttp3.Call localVarCall = postCaptableSafesValidateBeforeCall(captableSafeIn, null);
+        Type localVarReturnType = new TypeToken<CaptableCreated>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Record a SAFE (asynchronously)
-     * Records a Simple Agreement for Future Equity held by a stakeholder: the capital in, the valuation cap and discount, MFN and pro-rata rights, pre- or post-money type, and the issue and board-approval dates.  The stakeholder must already exist in this company, and the SAFE&#39;s public id must be unused there — a reused id is a conflict rather than an overwrite. This records the instrument; it does not convert it, so nothing is issued against a share class until a round does that.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
+     * Records a SAFE — a simple agreement for future equity. (asynchronously)
+     * Records a SAFE — a simple agreement for future equity.
+     * @param captableSafeIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call postCaptableSafesAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postCaptableSafesAsync(@javax.annotation.Nonnull CaptableSafeIn captableSafeIn, final ApiCallback<CaptableCreated> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postCaptableSafesValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = postCaptableSafesValidateBeforeCall(captableSafeIn, _callback);
+        Type localVarReturnType = new TypeToken<CaptableCreated>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postCaptableShares
+     * @param captableShareIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call postCaptableSharesCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCaptableSharesCall(@javax.annotation.Nonnull CaptableShareIn captableShareIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3155,7 +3487,7 @@ public class CaptableApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = captableShareIn;
 
         // create path and map variables
         String localVarPath = "/v1/captable/shares";
@@ -3167,6 +3499,7 @@ public class CaptableApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -3174,6 +3507,7 @@ public class CaptableApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -3185,51 +3519,88 @@ public class CaptableApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postCaptableSharesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postCaptableSharesCall(_callback);
+    private okhttp3.Call postCaptableSharesValidateBeforeCall(@javax.annotation.Nonnull CaptableShareIn captableShareIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'captableShareIn' is set
+        if (captableShareIn == null) {
+            throw new ApiException("Missing the required parameter 'captableShareIn' when calling postCaptableShares(Async)");
+        }
+
+        return postCaptableSharesCall(captableShareIn, _callback);
 
     }
 
     /**
-     * Issue a share certificate
-     * Issues shares of a class to a stakeholder as a certificate: quantity, price and capital contributed, the vesting cliff and term, the legends on the certificate, and the issue, Rule 144, vesting-start and board-approval dates.  Both the stakeholder and the share class must already exist in this company, and the certificate id must be unused there — a reused id is a conflict, never a silent overwrite of an existing certificate.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
+     * Issues a share certificate to a stakeholder.
+     * Issues a share certificate to a stakeholder.  The certificate id must be UNIQUE within the company — a duplicate is refused 409, not silently merged — and both the stakeholder and the share class must belong to this company, so an id from another tenant is a 400 rather than a cross-company issuance.
+     * @param captableShareIn  (required)
+     * @return CaptableCreated
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
      */
-    public void postCaptableShares() throws ApiException {
-        postCaptableSharesWithHttpInfo();
+    public CaptableCreated postCaptableShares(@javax.annotation.Nonnull CaptableShareIn captableShareIn) throws ApiException {
+        ApiResponse<CaptableCreated> localVarResp = postCaptableSharesWithHttpInfo(captableShareIn);
+        return localVarResp.getData();
     }
 
     /**
-     * Issue a share certificate
-     * Issues shares of a class to a stakeholder as a certificate: quantity, price and capital contributed, the vesting cliff and term, the legends on the certificate, and the issue, Rule 144, vesting-start and board-approval dates.  Both the stakeholder and the share class must already exist in this company, and the certificate id must be unused there — a reused id is a conflict, never a silent overwrite of an existing certificate.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
-     * @return ApiResponse&lt;Void&gt;
+     * Issues a share certificate to a stakeholder.
+     * Issues a share certificate to a stakeholder.  The certificate id must be UNIQUE within the company — a duplicate is refused 409, not silently merged — and both the stakeholder and the share class must belong to this company, so an id from another tenant is a 400 rather than a cross-company issuance.
+     * @param captableShareIn  (required)
+     * @return ApiResponse&lt;CaptableCreated&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
      */
-    public ApiResponse<Void> postCaptableSharesWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postCaptableSharesValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<CaptableCreated> postCaptableSharesWithHttpInfo(@javax.annotation.Nonnull CaptableShareIn captableShareIn) throws ApiException {
+        okhttp3.Call localVarCall = postCaptableSharesValidateBeforeCall(captableShareIn, null);
+        Type localVarReturnType = new TypeToken<CaptableCreated>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Issue a share certificate (asynchronously)
-     * Issues shares of a class to a stakeholder as a certificate: quantity, price and capital contributed, the vesting cliff and term, the legends on the certificate, and the issue, Rule 144, vesting-start and board-approval dates.  Both the stakeholder and the share class must already exist in this company, and the certificate id must be unused there — a reused id is a conflict, never a silent overwrite of an existing certificate.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
+     * Issues a share certificate to a stakeholder. (asynchronously)
+     * Issues a share certificate to a stakeholder.  The certificate id must be UNIQUE within the company — a duplicate is refused 409, not silently merged — and both the stakeholder and the share class must belong to this company, so an id from another tenant is a 400 rather than a cross-company issuance.
+     * @param captableShareIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call postCaptableSharesAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postCaptableSharesAsync(@javax.annotation.Nonnull CaptableShareIn captableShareIn, final ApiCallback<CaptableCreated> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postCaptableSharesValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = postCaptableSharesValidateBeforeCall(captableShareIn, _callback);
+        Type localVarReturnType = new TypeToken<CaptableCreated>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for postCaptableSharesTransfer
+     * @param captableShareTransfer  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call postCaptableSharesTransferCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCaptableSharesTransferCall(@javax.annotation.Nonnull CaptableShareTransfer captableShareTransfer, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3243,7 +3614,7 @@ public class CaptableApi {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = captableShareTransfer;
 
         // create path and map variables
         String localVarPath = "/v1/captable/shares/transfer";
@@ -3255,6 +3626,7 @@ public class CaptableApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
+            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -3262,6 +3634,7 @@ public class CaptableApi {
         }
 
         final String[] localVarContentTypes = {
+            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -3273,42 +3646,72 @@ public class CaptableApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postCaptableSharesTransferValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postCaptableSharesTransferCall(_callback);
+    private okhttp3.Call postCaptableSharesTransferValidateBeforeCall(@javax.annotation.Nonnull CaptableShareTransfer captableShareTransfer, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'captableShareTransfer' is set
+        if (captableShareTransfer == null) {
+            throw new ApiException("Missing the required parameter 'captableShareTransfer' when calling postCaptableSharesTransfer(Async)");
+        }
+
+        return postCaptableSharesTransferCall(captableShareTransfer, _callback);
 
     }
 
     /**
-     * Transfer shares to another stakeholder
-     * Moves shares from one certificate to another stakeholder, in one atomic step.  OMITTING &#x60;quantity&#x60; transfers the WHOLE certificate, which simply reassigns it and answers newShareId null — that is the difference between a full and a partial transfer, and it is why quantity is absent rather than zero. A partial transfer shrinks the source certificate and issues a NEW one to the recipient, so it requires a &#x60;certificateId&#x60; for that new certificate and refuses a reused one. The quantity must be between 1 and what the source certificate actually holds; the recipient must be a stakeholder of this same company.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
+     * Moves shares from one stakeholder to another.
+     * Moves shares from one stakeholder to another.  Omit &#x60;quantity&#x60; to transfer the whole certificate, which REASSIGNS it and mints no new share. Send a quantity below the amount held to SPLIT it — the source certificate keeps the remainder, and a split additionally requires &#x60;certificateId&#x60; for the new certificate, which must be unique in the company. A quantity outside 1..held is refused, so a transfer can never over-issue.  Both outcomes answer 200: a transfer records a movement between holders and mints no security of its own, which is why this is not a 201 the way an investment is.
+     * @param captableShareTransfer  (required)
+     * @return CaptableTransferred
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public void postCaptableSharesTransfer() throws ApiException {
-        postCaptableSharesTransferWithHttpInfo();
+    public CaptableTransferred postCaptableSharesTransfer(@javax.annotation.Nonnull CaptableShareTransfer captableShareTransfer) throws ApiException {
+        ApiResponse<CaptableTransferred> localVarResp = postCaptableSharesTransferWithHttpInfo(captableShareTransfer);
+        return localVarResp.getData();
     }
 
     /**
-     * Transfer shares to another stakeholder
-     * Moves shares from one certificate to another stakeholder, in one atomic step.  OMITTING &#x60;quantity&#x60; transfers the WHOLE certificate, which simply reassigns it and answers newShareId null — that is the difference between a full and a partial transfer, and it is why quantity is absent rather than zero. A partial transfer shrinks the source certificate and issues a NEW one to the recipient, so it requires a &#x60;certificateId&#x60; for that new certificate and refuses a reused one. The quantity must be between 1 and what the source certificate actually holds; the recipient must be a stakeholder of this same company.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
-     * @return ApiResponse&lt;Void&gt;
+     * Moves shares from one stakeholder to another.
+     * Moves shares from one stakeholder to another.  Omit &#x60;quantity&#x60; to transfer the whole certificate, which REASSIGNS it and mints no new share. Send a quantity below the amount held to SPLIT it — the source certificate keeps the remainder, and a split additionally requires &#x60;certificateId&#x60; for the new certificate, which must be unique in the company. A quantity outside 1..held is refused, so a transfer can never over-issue.  Both outcomes answer 200: a transfer records a movement between holders and mints no security of its own, which is why this is not a 201 the way an investment is.
+     * @param captableShareTransfer  (required)
+     * @return ApiResponse&lt;CaptableTransferred&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public ApiResponse<Void> postCaptableSharesTransferWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postCaptableSharesTransferValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<CaptableTransferred> postCaptableSharesTransferWithHttpInfo(@javax.annotation.Nonnull CaptableShareTransfer captableShareTransfer) throws ApiException {
+        okhttp3.Call localVarCall = postCaptableSharesTransferValidateBeforeCall(captableShareTransfer, null);
+        Type localVarReturnType = new TypeToken<CaptableTransferred>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Transfer shares to another stakeholder (asynchronously)
-     * Moves shares from one certificate to another stakeholder, in one atomic step.  OMITTING &#x60;quantity&#x60; transfers the WHOLE certificate, which simply reassigns it and answers newShareId null — that is the difference between a full and a partial transfer, and it is why quantity is absent rather than zero. A partial transfer shrinks the source certificate and issues a NEW one to the recipient, so it requires a &#x60;certificateId&#x60; for that new certificate and refuses a reused one. The quantity must be between 1 and what the source certificate actually holds; the recipient must be a stakeholder of this same company.  Writes the caller&#39;s OWN cap table: the org resolved from the validated principal selects the tenant&#39;s store and scopes every row, so there is no field by which a caller can write into another company&#39;s table; a request with no validated org is refused. The whole write runs in one transaction, so a refusal leaves nothing behind. Validation is the cap-table bundle&#39;s and so is its refusal: a bad body comes back as {success:false, message, errors:[…]} with the failing fields listed, and numeric fields accept a number OR a numeric string. Bodies are capped at 1 MiB.
+     * Moves shares from one stakeholder to another. (asynchronously)
+     * Moves shares from one stakeholder to another.  Omit &#x60;quantity&#x60; to transfer the whole certificate, which REASSIGNS it and mints no new share. Send a quantity below the amount held to SPLIT it — the source certificate keeps the remainder, and a split additionally requires &#x60;certificateId&#x60; for the new certificate, which must be unique in the company. A quantity outside 1..held is refused, so a transfer can never over-issue.  Both outcomes answer 200: a transfer records a movement between holders and mints no security of its own, which is why this is not a 201 the way an investment is.
+     * @param captableShareTransfer  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
      */
-    public okhttp3.Call postCaptableSharesTransferAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postCaptableSharesTransferAsync(@javax.annotation.Nonnull CaptableShareTransfer captableShareTransfer, final ApiCallback<CaptableTransferred> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postCaptableSharesTransferValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = postCaptableSharesTransferValidateBeforeCall(captableShareTransfer, _callback);
+        Type localVarReturnType = new TypeToken<CaptableTransferred>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**

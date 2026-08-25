@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay routes, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -285,7 +285,7 @@ public class TrustApi {
 
     /**
      * Reads YOUR organization&#39;s whole trust centre, including the addresses of your own gated documents.
-     * Reads YOUR organization&#39;s whole trust centre, including the addresses of your own gated documents. Same shape as the published door; the difference is that this one is resolved from your validated bearer and shows you your own artifacts.
+     * Reads YOUR organization&#39;s whole trust centre, including the addresses of your own gated documents. Same shape as the published endpoint; the difference is that this one is resolved from your validated bearer and shows you your own artifacts.
      * @return Centre
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -302,7 +302,7 @@ public class TrustApi {
 
     /**
      * Reads YOUR organization&#39;s whole trust centre, including the addresses of your own gated documents.
-     * Reads YOUR organization&#39;s whole trust centre, including the addresses of your own gated documents. Same shape as the published door; the difference is that this one is resolved from your validated bearer and shows you your own artifacts.
+     * Reads YOUR organization&#39;s whole trust centre, including the addresses of your own gated documents. Same shape as the published endpoint; the difference is that this one is resolved from your validated bearer and shows you your own artifacts.
      * @return ApiResponse&lt;Centre&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -320,7 +320,7 @@ public class TrustApi {
 
     /**
      * Reads YOUR organization&#39;s whole trust centre, including the addresses of your own gated documents. (asynchronously)
-     * Reads YOUR organization&#39;s whole trust centre, including the addresses of your own gated documents. Same shape as the published door; the difference is that this one is resolved from your validated bearer and shows you your own artifacts.
+     * Reads YOUR organization&#39;s whole trust centre, including the addresses of your own gated documents. Same shape as the published endpoint; the difference is that this one is resolved from your validated bearer and shows you your own artifacts.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -890,7 +890,7 @@ public class TrustApi {
 
     /**
      * Lists your organization&#39;s documents.
-     * Lists your organization&#39;s documents. Because this is your own centre, a gated artifact carries its address here; through the published door it does not.
+     * Lists your organization&#39;s documents. Because this is your own centre, a gated artifact carries its address here; through the published endpoint it does not.
      * @return TrustDocuments
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -907,7 +907,7 @@ public class TrustApi {
 
     /**
      * Lists your organization&#39;s documents.
-     * Lists your organization&#39;s documents. Because this is your own centre, a gated artifact carries its address here; through the published door it does not.
+     * Lists your organization&#39;s documents. Because this is your own centre, a gated artifact carries its address here; through the published endpoint it does not.
      * @return ApiResponse&lt;TrustDocuments&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -925,7 +925,7 @@ public class TrustApi {
 
     /**
      * Lists your organization&#39;s documents. (asynchronously)
-     * Lists your organization&#39;s documents. Because this is your own centre, a gated artifact carries its address here; through the published door it does not.
+     * Lists your organization&#39;s documents. Because this is your own centre, a gated artifact carries its address here; through the published endpoint it does not.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1631,7 +1631,7 @@ public class TrustApi {
 
     /**
      * Reads a published trust centre — the whole thing in one answer: the organization&#39;s profile, its control inventory, coverage computed against each framework&#39;s whole published clause list, its documents, subprocessors, policies, knowledge base, updates and risk profile.
-     * Reads a published trust centre — the whole thing in one answer: the organization&#39;s profile, its control inventory, coverage computed against each framework&#39;s whole published clause list, its documents, subprocessors, policies, knowledge base, updates and risk profile.  This is the PUBLIC door and needs no credential, because a published trust centre is a public document. It answers only for an organization that has published one — an organization that has not is not found rather than empty, since an empty centre and a centre nobody meant to show read the same and are not the same thing.  A gated document appears here with its title, its type and its date and NO address: the listing says the artifact exists and that reading it takes a grant. Nothing an independent auditor signed is ever released through this door.
+     * Reads a published trust centre — the whole thing in one answer: the organization&#39;s profile, its control inventory, coverage computed against each framework&#39;s whole published clause list, its documents, subprocessors, policies, knowledge base, updates and risk profile.  This is the PUBLIC endpoint and needs no credential, because a published trust centre is a public document. It answers only for an organization that has published one — an organization that has not is not found rather than empty, since an empty centre and a centre nobody meant to show read the same and are not the same thing.  A gated document appears here with its title, its type and its date and NO address: the listing says the artifact exists and that reading it takes a grant. Nothing an independent auditor signed is ever released through this endpoint.
      * @param org Org is the organization&#39;s slug — the name in its address. (required)
      * @return Centre
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1649,7 +1649,7 @@ public class TrustApi {
 
     /**
      * Reads a published trust centre — the whole thing in one answer: the organization&#39;s profile, its control inventory, coverage computed against each framework&#39;s whole published clause list, its documents, subprocessors, policies, knowledge base, updates and risk profile.
-     * Reads a published trust centre — the whole thing in one answer: the organization&#39;s profile, its control inventory, coverage computed against each framework&#39;s whole published clause list, its documents, subprocessors, policies, knowledge base, updates and risk profile.  This is the PUBLIC door and needs no credential, because a published trust centre is a public document. It answers only for an organization that has published one — an organization that has not is not found rather than empty, since an empty centre and a centre nobody meant to show read the same and are not the same thing.  A gated document appears here with its title, its type and its date and NO address: the listing says the artifact exists and that reading it takes a grant. Nothing an independent auditor signed is ever released through this door.
+     * Reads a published trust centre — the whole thing in one answer: the organization&#39;s profile, its control inventory, coverage computed against each framework&#39;s whole published clause list, its documents, subprocessors, policies, knowledge base, updates and risk profile.  This is the PUBLIC endpoint and needs no credential, because a published trust centre is a public document. It answers only for an organization that has published one — an organization that has not is not found rather than empty, since an empty centre and a centre nobody meant to show read the same and are not the same thing.  A gated document appears here with its title, its type and its date and NO address: the listing says the artifact exists and that reading it takes a grant. Nothing an independent auditor signed is ever released through this endpoint.
      * @param org Org is the organization&#39;s slug — the name in its address. (required)
      * @return ApiResponse&lt;Centre&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1668,7 +1668,7 @@ public class TrustApi {
 
     /**
      * Reads a published trust centre — the whole thing in one answer: the organization&#39;s profile, its control inventory, coverage computed against each framework&#39;s whole published clause list, its documents, subprocessors, policies, knowledge base, updates and risk profile. (asynchronously)
-     * Reads a published trust centre — the whole thing in one answer: the organization&#39;s profile, its control inventory, coverage computed against each framework&#39;s whole published clause list, its documents, subprocessors, policies, knowledge base, updates and risk profile.  This is the PUBLIC door and needs no credential, because a published trust centre is a public document. It answers only for an organization that has published one — an organization that has not is not found rather than empty, since an empty centre and a centre nobody meant to show read the same and are not the same thing.  A gated document appears here with its title, its type and its date and NO address: the listing says the artifact exists and that reading it takes a grant. Nothing an independent auditor signed is ever released through this door.
+     * Reads a published trust centre — the whole thing in one answer: the organization&#39;s profile, its control inventory, coverage computed against each framework&#39;s whole published clause list, its documents, subprocessors, policies, knowledge base, updates and risk profile.  This is the PUBLIC endpoint and needs no credential, because a published trust centre is a public document. It answers only for an organization that has published one — an organization that has not is not found rather than empty, since an empty centre and a centre nobody meant to show read the same and are not the same thing.  A gated document appears here with its title, its type and its date and NO address: the listing says the artifact exists and that reading it takes a grant. Nothing an independent auditor signed is ever released through this endpoint.
      * @param org Org is the organization&#39;s slug — the name in its address. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call

@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay routes, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -117,7 +117,7 @@ public class TopupIn {
   }
 
   /**
-   * MethodID names a card the subject already saved, for the saved-card door.
+   * MethodID names a card the subject already saved, for the saved-card endpoint.
    * @return paymentMethodId
    */
   @javax.annotation.Nullable
@@ -136,7 +136,7 @@ public class TopupIn {
   }
 
   /**
-   * SourceID is a single-use card token from the payment form, for the token door. It is vaulted as part of the charge, so a caller never holds card numbers and this service never sees one.
+   * SourceID is a single-use card token from the payment form, for the token endpoint. It is vaulted as part of the charge, so a caller never holds card numbers and this service never sees one.
    * @return sourceId
    */
   @javax.annotation.Nullable

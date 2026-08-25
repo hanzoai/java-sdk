@@ -1,6 +1,6 @@
 /*
  * Hanzo Cloud API
- * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay doors, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
+ * The Hanzo Cloud API as a customer calls it: every operation under /v1/ except the operator's admin product, relay routes, legacy spellings and capabilities still reached by flag. Tagged by product: the first path segment after /v1/.
  *
  * The version of the OpenAPI document: v1
  * 
@@ -121,7 +121,7 @@ public class RiskLabelVocabulary {
   }
 
   /**
-   * Kinds, Dispositions and Sources are the closed vocabularies. A value outside them is refused at the door.
+   * Kinds, Dispositions and Sources are the closed vocabularies. A value outside them is refused at the endpoint.
    * @return kinds
    */
   @javax.annotation.Nullable
