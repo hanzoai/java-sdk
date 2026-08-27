@@ -16,6 +16,7 @@ package ai.hanzo.cloud.model;
 import java.util.Objects;
 import ai.hanzo.cloud.model.EventView;
 import ai.hanzo.cloud.model.LastEventView;
+import ai.hanzo.cloud.model.SessionProgress;
 import ai.hanzo.cloud.model.SessionView;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -124,6 +125,11 @@ public class SessionDetail {
   @SerializedName(SERIALIZED_NAME_PARENT_SESSION_ID)
   @javax.annotation.Nullable
   private String parentSessionId;
+
+  public static final String SERIALIZED_NAME_PROGRESS = "progress";
+  @SerializedName(SERIALIZED_NAME_PROGRESS)
+  @javax.annotation.Nullable
+  private SessionProgress progress;
 
   public static final String SERIALIZED_NAME_PROJECT = "project";
   @SerializedName(SERIALIZED_NAME_PROJECT)
@@ -477,6 +483,25 @@ public class SessionDetail {
   }
 
 
+  public SessionDetail progress(@javax.annotation.Nullable SessionProgress progress) {
+    this.progress = progress;
+    return this;
+  }
+
+  /**
+   * Get progress
+   * @return progress
+   */
+  @javax.annotation.Nullable
+  public SessionProgress getProgress() {
+    return progress;
+  }
+
+  public void setProgress(@javax.annotation.Nullable SessionProgress progress) {
+    this.progress = progress;
+  }
+
+
   public SessionDetail project(@javax.annotation.Nullable String project) {
     this.project = project;
     return this;
@@ -794,6 +819,7 @@ public class SessionDetail {
         Objects.equals(this.lastEvent, sessionDetail.lastEvent) &&
         Objects.equals(this.org, sessionDetail.org) &&
         Objects.equals(this.parentSessionId, sessionDetail.parentSessionId) &&
+        Objects.equals(this.progress, sessionDetail.progress) &&
         Objects.equals(this.project, sessionDetail.project) &&
         Objects.equals(this.provider, sessionDetail.provider) &&
         Objects.equals(this.published, sessionDetail.published) &&
@@ -813,7 +839,7 @@ public class SessionDetail {
 
   @Override
   public int hashCode() {
-    return Objects.hash(account, actor, agent, childSessions, children, createdAt, cwd, endedAt, events, host, id, lastEvent, org, parentSessionId, project, provider, published, recentEvents, repo, room, rootSessionId, startedAt, status, target, taskRunId, taskWorkflowId, terminal, title, updatedAt);
+    return Objects.hash(account, actor, agent, childSessions, children, createdAt, cwd, endedAt, events, host, id, lastEvent, org, parentSessionId, progress, project, provider, published, recentEvents, repo, room, rootSessionId, startedAt, status, target, taskRunId, taskWorkflowId, terminal, title, updatedAt);
   }
 
   @Override
@@ -834,6 +860,7 @@ public class SessionDetail {
     sb.append("    lastEvent: ").append(toIndentedString(lastEvent)).append("\n");
     sb.append("    org: ").append(toIndentedString(org)).append("\n");
     sb.append("    parentSessionId: ").append(toIndentedString(parentSessionId)).append("\n");
+    sb.append("    progress: ").append(toIndentedString(progress)).append("\n");
     sb.append("    project: ").append(toIndentedString(project)).append("\n");
     sb.append("    provider: ").append(toIndentedString(provider)).append("\n");
     sb.append("    published: ").append(toIndentedString(published)).append("\n");
@@ -870,7 +897,7 @@ public class SessionDetail {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("account", "actor", "agent", "childSessions", "children", "createdAt", "cwd", "endedAt", "events", "host", "id", "lastEvent", "org", "parentSessionId", "project", "provider", "published", "recentEvents", "repo", "room", "rootSessionId", "startedAt", "status", "target", "taskRunId", "taskWorkflowId", "terminal", "title", "updatedAt"));
+    openapiFields = new HashSet<String>(Arrays.asList("account", "actor", "agent", "childSessions", "children", "createdAt", "cwd", "endedAt", "events", "host", "id", "lastEvent", "org", "parentSessionId", "progress", "project", "provider", "published", "recentEvents", "repo", "room", "rootSessionId", "startedAt", "status", "target", "taskRunId", "taskWorkflowId", "terminal", "title", "updatedAt"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -944,6 +971,10 @@ public class SessionDetail {
       }
       if ((jsonObj.get("parentSessionId") != null && !jsonObj.get("parentSessionId").isJsonNull()) && !jsonObj.get("parentSessionId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `parentSessionId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("parentSessionId").toString()));
+      }
+      // validate the optional field `progress`
+      if (jsonObj.get("progress") != null && !jsonObj.get("progress").isJsonNull()) {
+        SessionProgress.validateJsonElement(jsonObj.get("progress"));
       }
       if ((jsonObj.get("project") != null && !jsonObj.get("project").isJsonNull()) && !jsonObj.get("project").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `project` to be a primitive type in the JSON string but got `%s`", jsonObj.get("project").toString()));

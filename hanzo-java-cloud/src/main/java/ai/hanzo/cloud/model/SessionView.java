@@ -15,6 +15,7 @@ package ai.hanzo.cloud.model;
 
 import java.util.Objects;
 import ai.hanzo.cloud.model.LastEventView;
+import ai.hanzo.cloud.model.SessionProgress;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -115,6 +116,11 @@ public class SessionView {
   @SerializedName(SERIALIZED_NAME_PARENT_SESSION_ID)
   @javax.annotation.Nullable
   private String parentSessionId;
+
+  public static final String SERIALIZED_NAME_PROGRESS = "progress";
+  @SerializedName(SERIALIZED_NAME_PROGRESS)
+  @javax.annotation.Nullable
+  private SessionProgress progress;
 
   public static final String SERIALIZED_NAME_PROJECT = "project";
   @SerializedName(SERIALIZED_NAME_PROJECT)
@@ -436,6 +442,25 @@ public class SessionView {
   }
 
 
+  public SessionView progress(@javax.annotation.Nullable SessionProgress progress) {
+    this.progress = progress;
+    return this;
+  }
+
+  /**
+   * Progress is how far along this run is — a share of its goal, a phase, and a line saying what it is doing. Always present, so a board never branches on whether it is there; &#x60;phase&#x60; says \&quot;unknown\&quot; when nothing has estimated it. It is a MODEL ESTIMATE wherever &#x60;estimated&#x60; is true, and the row&#39;s own word where it is false. See progress.go.
+   * @return progress
+   */
+  @javax.annotation.Nullable
+  public SessionProgress getProgress() {
+    return progress;
+  }
+
+  public void setProgress(@javax.annotation.Nullable SessionProgress progress) {
+    this.progress = progress;
+  }
+
+
   public SessionView project(@javax.annotation.Nullable String project) {
     this.project = project;
     return this;
@@ -725,6 +750,7 @@ public class SessionView {
         Objects.equals(this.lastEvent, sessionView.lastEvent) &&
         Objects.equals(this.org, sessionView.org) &&
         Objects.equals(this.parentSessionId, sessionView.parentSessionId) &&
+        Objects.equals(this.progress, sessionView.progress) &&
         Objects.equals(this.project, sessionView.project) &&
         Objects.equals(this.provider, sessionView.provider) &&
         Objects.equals(this.published, sessionView.published) &&
@@ -743,7 +769,7 @@ public class SessionView {
 
   @Override
   public int hashCode() {
-    return Objects.hash(account, actor, agent, children, createdAt, cwd, endedAt, events, host, id, lastEvent, org, parentSessionId, project, provider, published, repo, room, rootSessionId, startedAt, status, target, taskRunId, taskWorkflowId, terminal, title, updatedAt);
+    return Objects.hash(account, actor, agent, children, createdAt, cwd, endedAt, events, host, id, lastEvent, org, parentSessionId, progress, project, provider, published, repo, room, rootSessionId, startedAt, status, target, taskRunId, taskWorkflowId, terminal, title, updatedAt);
   }
 
   @Override
@@ -763,6 +789,7 @@ public class SessionView {
     sb.append("    lastEvent: ").append(toIndentedString(lastEvent)).append("\n");
     sb.append("    org: ").append(toIndentedString(org)).append("\n");
     sb.append("    parentSessionId: ").append(toIndentedString(parentSessionId)).append("\n");
+    sb.append("    progress: ").append(toIndentedString(progress)).append("\n");
     sb.append("    project: ").append(toIndentedString(project)).append("\n");
     sb.append("    provider: ").append(toIndentedString(provider)).append("\n");
     sb.append("    published: ").append(toIndentedString(published)).append("\n");
@@ -798,7 +825,7 @@ public class SessionView {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("account", "actor", "agent", "children", "createdAt", "cwd", "endedAt", "events", "host", "id", "lastEvent", "org", "parentSessionId", "project", "provider", "published", "repo", "room", "rootSessionId", "startedAt", "status", "target", "taskRunId", "taskWorkflowId", "terminal", "title", "updatedAt"));
+    openapiFields = new HashSet<String>(Arrays.asList("account", "actor", "agent", "children", "createdAt", "cwd", "endedAt", "events", "host", "id", "lastEvent", "org", "parentSessionId", "progress", "project", "provider", "published", "repo", "room", "rootSessionId", "startedAt", "status", "target", "taskRunId", "taskWorkflowId", "terminal", "title", "updatedAt"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -858,6 +885,10 @@ public class SessionView {
       }
       if ((jsonObj.get("parentSessionId") != null && !jsonObj.get("parentSessionId").isJsonNull()) && !jsonObj.get("parentSessionId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `parentSessionId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("parentSessionId").toString()));
+      }
+      // validate the optional field `progress`
+      if (jsonObj.get("progress") != null && !jsonObj.get("progress").isJsonNull()) {
+        SessionProgress.validateJsonElement(jsonObj.get("progress"));
       }
       if ((jsonObj.get("project") != null && !jsonObj.get("project").isJsonNull()) && !jsonObj.get("project").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `project` to be a primitive type in the JSON string but got `%s`", jsonObj.get("project").toString()));
