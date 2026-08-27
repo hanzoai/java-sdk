@@ -1648,6 +1648,7 @@ public class AgentsApi {
      * @param parent Parent scopes the page to the direct children of one session. Ignored when root is set; with neither, only ROOT sessions come back. (optional)
      * @param status Status filters to running, paused, done or error. (optional)
      * @param project Project filters to the sessions tagged with one product slug. (optional)
+     * @param room Room filters to the sessions started in one collaborative room — the query a workspace view runs to show what has been run in it. (optional)
      * @param limit Limit caps the page. Absent, zero or over 500 reads as 100. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1659,7 +1660,7 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAgentsSessionsCall(@javax.annotation.Nullable String root, @javax.annotation.Nullable String parent, @javax.annotation.Nullable String status, @javax.annotation.Nullable String project, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAgentsSessionsCall(@javax.annotation.Nullable String root, @javax.annotation.Nullable String parent, @javax.annotation.Nullable String status, @javax.annotation.Nullable String project, @javax.annotation.Nullable String room, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1700,6 +1701,10 @@ public class AgentsApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("project", project));
         }
 
+        if (room != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("room", room));
+        }
+
         if (limit != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
         }
@@ -1724,8 +1729,8 @@ public class AgentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getAgentsSessionsValidateBeforeCall(@javax.annotation.Nullable String root, @javax.annotation.Nullable String parent, @javax.annotation.Nullable String status, @javax.annotation.Nullable String project, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
-        return getAgentsSessionsCall(root, parent, status, project, limit, _callback);
+    private okhttp3.Call getAgentsSessionsValidateBeforeCall(@javax.annotation.Nullable String root, @javax.annotation.Nullable String parent, @javax.annotation.Nullable String status, @javax.annotation.Nullable String project, @javax.annotation.Nullable String room, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+        return getAgentsSessionsCall(root, parent, status, project, room, limit, _callback);
 
     }
 
@@ -1736,6 +1741,7 @@ public class AgentsApi {
      * @param parent Parent scopes the page to the direct children of one session. Ignored when root is set; with neither, only ROOT sessions come back. (optional)
      * @param status Status filters to running, paused, done or error. (optional)
      * @param project Project filters to the sessions tagged with one product slug. (optional)
+     * @param room Room filters to the sessions started in one collaborative room — the query a workspace view runs to show what has been run in it. (optional)
      * @param limit Limit caps the page. Absent, zero or over 500 reads as 100. (optional)
      * @return SessionList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1746,8 +1752,8 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public SessionList getAgentsSessions(@javax.annotation.Nullable String root, @javax.annotation.Nullable String parent, @javax.annotation.Nullable String status, @javax.annotation.Nullable String project, @javax.annotation.Nullable Integer limit) throws ApiException {
-        ApiResponse<SessionList> localVarResp = getAgentsSessionsWithHttpInfo(root, parent, status, project, limit);
+    public SessionList getAgentsSessions(@javax.annotation.Nullable String root, @javax.annotation.Nullable String parent, @javax.annotation.Nullable String status, @javax.annotation.Nullable String project, @javax.annotation.Nullable String room, @javax.annotation.Nullable Integer limit) throws ApiException {
+        ApiResponse<SessionList> localVarResp = getAgentsSessionsWithHttpInfo(root, parent, status, project, room, limit);
         return localVarResp.getData();
     }
 
@@ -1758,6 +1764,7 @@ public class AgentsApi {
      * @param parent Parent scopes the page to the direct children of one session. Ignored when root is set; with neither, only ROOT sessions come back. (optional)
      * @param status Status filters to running, paused, done or error. (optional)
      * @param project Project filters to the sessions tagged with one product slug. (optional)
+     * @param room Room filters to the sessions started in one collaborative room — the query a workspace view runs to show what has been run in it. (optional)
      * @param limit Limit caps the page. Absent, zero or over 500 reads as 100. (optional)
      * @return ApiResponse&lt;SessionList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1768,8 +1775,8 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SessionList> getAgentsSessionsWithHttpInfo(@javax.annotation.Nullable String root, @javax.annotation.Nullable String parent, @javax.annotation.Nullable String status, @javax.annotation.Nullable String project, @javax.annotation.Nullable Integer limit) throws ApiException {
-        okhttp3.Call localVarCall = getAgentsSessionsValidateBeforeCall(root, parent, status, project, limit, null);
+    public ApiResponse<SessionList> getAgentsSessionsWithHttpInfo(@javax.annotation.Nullable String root, @javax.annotation.Nullable String parent, @javax.annotation.Nullable String status, @javax.annotation.Nullable String project, @javax.annotation.Nullable String room, @javax.annotation.Nullable Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = getAgentsSessionsValidateBeforeCall(root, parent, status, project, room, limit, null);
         Type localVarReturnType = new TypeToken<SessionList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1781,6 +1788,7 @@ public class AgentsApi {
      * @param parent Parent scopes the page to the direct children of one session. Ignored when root is set; with neither, only ROOT sessions come back. (optional)
      * @param status Status filters to running, paused, done or error. (optional)
      * @param project Project filters to the sessions tagged with one product slug. (optional)
+     * @param room Room filters to the sessions started in one collaborative room — the query a workspace view runs to show what has been run in it. (optional)
      * @param limit Limit caps the page. Absent, zero or over 500 reads as 100. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1792,9 +1800,9 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAgentsSessionsAsync(@javax.annotation.Nullable String root, @javax.annotation.Nullable String parent, @javax.annotation.Nullable String status, @javax.annotation.Nullable String project, @javax.annotation.Nullable Integer limit, final ApiCallback<SessionList> _callback) throws ApiException {
+    public okhttp3.Call getAgentsSessionsAsync(@javax.annotation.Nullable String root, @javax.annotation.Nullable String parent, @javax.annotation.Nullable String status, @javax.annotation.Nullable String project, @javax.annotation.Nullable String room, @javax.annotation.Nullable Integer limit, final ApiCallback<SessionList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getAgentsSessionsValidateBeforeCall(root, parent, status, project, limit, _callback);
+        okhttp3.Call localVarCall = getAgentsSessionsValidateBeforeCall(root, parent, status, project, room, limit, _callback);
         Type localVarReturnType = new TypeToken<SessionList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

@@ -44,6 +44,7 @@ hanzo-java-cloud/src/main/java/ai/hanzo/cloud/api/DataroomApi.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/api/DatasetApi.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/api/DeployApi.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/api/DestinationApi.java
+hanzo-java-cloud/src/main/java/ai/hanzo/cloud/api/DnsApi.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/api/DomainApi.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/api/EngineApi.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/api/EntitlementApi.java
@@ -2135,6 +2136,7 @@ hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/RollbackReq.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/Rollup.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/RollupAllotment.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/RollupBalance.java
+hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/RoomWork.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/Root.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/RoundInput.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/RoundOut.java
@@ -2336,6 +2338,9 @@ hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/TariffIn.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/Taxon.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/TaxonIn.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/Taxonomy.java
+hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/TeamRoom.java
+hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/TeamRoomBind.java
+hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/TeamRooms.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/TemplateCatalog.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/TemplateOverride.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/TemplateReply.java

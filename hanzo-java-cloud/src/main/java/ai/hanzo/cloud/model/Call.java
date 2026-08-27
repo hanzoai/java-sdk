@@ -50,150 +50,78 @@ import ai.hanzo.cloud.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class Call {
-  public static final String SERIALIZED_NAME_AGENT = "agent";
-  @SerializedName(SERIALIZED_NAME_AGENT)
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
   @javax.annotation.Nullable
-  private String agent;
+  private String name;
 
-  public static final String SERIALIZED_NAME_FROM = "from";
-  @SerializedName(SERIALIZED_NAME_FROM)
+  public static final String SERIALIZED_NAME_READY = "ready";
+  @SerializedName(SERIALIZED_NAME_READY)
   @javax.annotation.Nullable
-  private String from;
+  private Boolean ready;
 
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
+  public static final String SERIALIZED_NAME_WS = "ws";
+  @SerializedName(SERIALIZED_NAME_WS)
   @javax.annotation.Nullable
-  private String id;
-
-  public static final String SERIALIZED_NAME_ORG = "org";
-  @SerializedName(SERIALIZED_NAME_ORG)
-  @javax.annotation.Nullable
-  private String org;
-
-  public static final String SERIALIZED_NAME_STATUS = "status";
-  @SerializedName(SERIALIZED_NAME_STATUS)
-  @javax.annotation.Nullable
-  private String status;
-
-  public static final String SERIALIZED_NAME_TO = "to";
-  @SerializedName(SERIALIZED_NAME_TO)
-  @javax.annotation.Nullable
-  private String to;
+  private String ws;
 
   public Call() {
   }
 
-  public Call agent(@javax.annotation.Nullable String agent) {
-    this.agent = agent;
+  public Call name(@javax.annotation.Nullable String name) {
+    this.name = name;
     return this;
   }
 
   /**
-   * Agent names the Hanzo assistant handling the call. Set means the call was answered by that assistant rather than connected to a person.
-   * @return agent
+   * Name is the media room to join: the value POST /v1/meet/getToken takes as roomName, and the value the media server keys participants on.
+   * @return name
    */
   @javax.annotation.Nullable
-  public String getAgent() {
-    return agent;
+  public String getName() {
+    return name;
   }
 
-  public void setAgent(@javax.annotation.Nullable String agent) {
-    this.agent = agent;
+  public void setName(@javax.annotation.Nullable String name) {
+    this.name = name;
   }
 
 
-  public Call from(@javax.annotation.Nullable String from) {
-    this.from = from;
+  public Call ready(@javax.annotation.Nullable Boolean ready) {
+    this.ready = ready;
     return this;
   }
 
   /**
-   * From is the calling number in E.164. It must be one this org holds: a carrier refuses an origination from a number nobody proved they own.
-   * @return from
+   * Ready reports that this deployment can mint a join token for this room. It is false on a deployment holding no media-server key, where Name is still correct — the name is a property of the room and the key is a property of the deployment, so a caller learns the room&#39;s identity either way and learns not to offer a join button.
+   * @return ready
    */
   @javax.annotation.Nullable
-  public String getFrom() {
-    return from;
+  public Boolean getReady() {
+    return ready;
   }
 
-  public void setFrom(@javax.annotation.Nullable String from) {
-    this.from = from;
+  public void setReady(@javax.annotation.Nullable Boolean ready) {
+    this.ready = ready;
   }
 
 
-  public Call id(@javax.annotation.Nullable String id) {
-    this.id = id;
+  public Call ws(@javax.annotation.Nullable String ws) {
+    this.ws = ws;
     return this;
   }
 
   /**
-   * ID is the carrier&#39;s handle for the call — what a hangup or a lookup names.
-   * @return id
+   * WS is where the media plane is — the address a client opens its own browser-to-server connection to. Empty when this deployment has not been told where its media server lives, which is reported rather than refused: a surface can say a call is unavailable without a second request.
+   * @return ws
    */
   @javax.annotation.Nullable
-  public String getId() {
-    return id;
+  public String getWs() {
+    return ws;
   }
 
-  public void setId(@javax.annotation.Nullable String id) {
-    this.id = id;
-  }
-
-
-  public Call org(@javax.annotation.Nullable String org) {
-    this.org = org;
-    return this;
-  }
-
-  /**
-   * Org is the tenant the call was placed for or received by.
-   * @return org
-   */
-  @javax.annotation.Nullable
-  public String getOrg() {
-    return org;
-  }
-
-  public void setOrg(@javax.annotation.Nullable String org) {
-    this.org = org;
-  }
-
-
-  public Call status(@javax.annotation.Nullable String status) {
-    this.status = status;
-    return this;
-  }
-
-  /**
-   * Status is where the call is: \&quot;queued\&quot;, \&quot;ringing\&quot;, \&quot;answered\&quot;, \&quot;completed\&quot; or \&quot;failed\&quot;. Only the last two are terminal.
-   * @return status
-   */
-  @javax.annotation.Nullable
-  public String getStatus() {
-    return status;
-  }
-
-  public void setStatus(@javax.annotation.Nullable String status) {
-    this.status = status;
-  }
-
-
-  public Call to(@javax.annotation.Nullable String to) {
-    this.to = to;
-    return this;
-  }
-
-  /**
-   * To is the called number in E.164.
-   * @return to
-   */
-  @javax.annotation.Nullable
-  public String getTo() {
-    return to;
-  }
-
-  public void setTo(@javax.annotation.Nullable String to) {
-    this.to = to;
+  public void setWs(@javax.annotation.Nullable String ws) {
+    this.ws = ws;
   }
 
 
@@ -207,29 +135,23 @@ public class Call {
       return false;
     }
     Call call = (Call) o;
-    return Objects.equals(this.agent, call.agent) &&
-        Objects.equals(this.from, call.from) &&
-        Objects.equals(this.id, call.id) &&
-        Objects.equals(this.org, call.org) &&
-        Objects.equals(this.status, call.status) &&
-        Objects.equals(this.to, call.to);
+    return Objects.equals(this.name, call.name) &&
+        Objects.equals(this.ready, call.ready) &&
+        Objects.equals(this.ws, call.ws);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(agent, from, id, org, status, to);
+    return Objects.hash(name, ready, ws);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Call {\n");
-    sb.append("    agent: ").append(toIndentedString(agent)).append("\n");
-    sb.append("    from: ").append(toIndentedString(from)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    org: ").append(toIndentedString(org)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    to: ").append(toIndentedString(to)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    ready: ").append(toIndentedString(ready)).append("\n");
+    sb.append("    ws: ").append(toIndentedString(ws)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -251,7 +173,7 @@ public class Call {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("agent", "from", "id", "org", "status", "to"));
+    openapiFields = new HashSet<String>(Arrays.asList("name", "ready", "ws"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -278,23 +200,11 @@ public class Call {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("agent") != null && !jsonObj.get("agent").isJsonNull()) && !jsonObj.get("agent").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `agent` to be a primitive type in the JSON string but got `%s`", jsonObj.get("agent").toString()));
+      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
-      if ((jsonObj.get("from") != null && !jsonObj.get("from").isJsonNull()) && !jsonObj.get("from").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `from` to be a primitive type in the JSON string but got `%s`", jsonObj.get("from").toString()));
-      }
-      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
-      }
-      if ((jsonObj.get("org") != null && !jsonObj.get("org").isJsonNull()) && !jsonObj.get("org").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `org` to be a primitive type in the JSON string but got `%s`", jsonObj.get("org").toString()));
-      }
-      if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
-      }
-      if ((jsonObj.get("to") != null && !jsonObj.get("to").isJsonNull()) && !jsonObj.get("to").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `to` to be a primitive type in the JSON string but got `%s`", jsonObj.get("to").toString()));
+      if ((jsonObj.get("ws") != null && !jsonObj.get("ws").isJsonNull()) && !jsonObj.get("ws").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ws` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ws").toString()));
       }
   }
 

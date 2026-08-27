@@ -150,6 +150,11 @@ public class SessionDetail {
   @javax.annotation.Nullable
   private String repo;
 
+  public static final String SERIALIZED_NAME_ROOM = "room";
+  @SerializedName(SERIALIZED_NAME_ROOM)
+  @javax.annotation.Nullable
+  private String room;
+
   public static final String SERIALIZED_NAME_ROOT_SESSION_ID = "rootSessionId";
   @SerializedName(SERIALIZED_NAME_ROOT_SESSION_ID)
   @javax.annotation.Nullable
@@ -575,6 +580,25 @@ public class SessionDetail {
   }
 
 
+  public SessionDetail room(@javax.annotation.Nullable String room) {
+    this.room = room;
+    return this;
+  }
+
+  /**
+   * Get room
+   * @return room
+   */
+  @javax.annotation.Nullable
+  public String getRoom() {
+    return room;
+  }
+
+  public void setRoom(@javax.annotation.Nullable String room) {
+    this.room = room;
+  }
+
+
   public SessionDetail rootSessionId(@javax.annotation.Nullable String rootSessionId) {
     this.rootSessionId = rootSessionId;
     return this;
@@ -775,6 +799,7 @@ public class SessionDetail {
         Objects.equals(this.published, sessionDetail.published) &&
         Objects.equals(this.recentEvents, sessionDetail.recentEvents) &&
         Objects.equals(this.repo, sessionDetail.repo) &&
+        Objects.equals(this.room, sessionDetail.room) &&
         Objects.equals(this.rootSessionId, sessionDetail.rootSessionId) &&
         Objects.equals(this.startedAt, sessionDetail.startedAt) &&
         Objects.equals(this.status, sessionDetail.status) &&
@@ -788,7 +813,7 @@ public class SessionDetail {
 
   @Override
   public int hashCode() {
-    return Objects.hash(account, actor, agent, childSessions, children, createdAt, cwd, endedAt, events, host, id, lastEvent, org, parentSessionId, project, provider, published, recentEvents, repo, rootSessionId, startedAt, status, target, taskRunId, taskWorkflowId, terminal, title, updatedAt);
+    return Objects.hash(account, actor, agent, childSessions, children, createdAt, cwd, endedAt, events, host, id, lastEvent, org, parentSessionId, project, provider, published, recentEvents, repo, room, rootSessionId, startedAt, status, target, taskRunId, taskWorkflowId, terminal, title, updatedAt);
   }
 
   @Override
@@ -814,6 +839,7 @@ public class SessionDetail {
     sb.append("    published: ").append(toIndentedString(published)).append("\n");
     sb.append("    recentEvents: ").append(toIndentedString(recentEvents)).append("\n");
     sb.append("    repo: ").append(toIndentedString(repo)).append("\n");
+    sb.append("    room: ").append(toIndentedString(room)).append("\n");
     sb.append("    rootSessionId: ").append(toIndentedString(rootSessionId)).append("\n");
     sb.append("    startedAt: ").append(toIndentedString(startedAt)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
@@ -844,7 +870,7 @@ public class SessionDetail {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("account", "actor", "agent", "childSessions", "children", "createdAt", "cwd", "endedAt", "events", "host", "id", "lastEvent", "org", "parentSessionId", "project", "provider", "published", "recentEvents", "repo", "rootSessionId", "startedAt", "status", "target", "taskRunId", "taskWorkflowId", "terminal", "title", "updatedAt"));
+    openapiFields = new HashSet<String>(Arrays.asList("account", "actor", "agent", "childSessions", "children", "createdAt", "cwd", "endedAt", "events", "host", "id", "lastEvent", "org", "parentSessionId", "project", "provider", "published", "recentEvents", "repo", "room", "rootSessionId", "startedAt", "status", "target", "taskRunId", "taskWorkflowId", "terminal", "title", "updatedAt"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -941,6 +967,9 @@ public class SessionDetail {
       }
       if ((jsonObj.get("repo") != null && !jsonObj.get("repo").isJsonNull()) && !jsonObj.get("repo").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `repo` to be a primitive type in the JSON string but got `%s`", jsonObj.get("repo").toString()));
+      }
+      if ((jsonObj.get("room") != null && !jsonObj.get("room").isJsonNull()) && !jsonObj.get("room").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `room` to be a primitive type in the JSON string but got `%s`", jsonObj.get("room").toString()));
       }
       if ((jsonObj.get("rootSessionId") != null && !jsonObj.get("rootSessionId").isJsonNull()) && !jsonObj.get("rootSessionId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `rootSessionId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("rootSessionId").toString()));

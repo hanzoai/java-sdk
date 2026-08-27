@@ -160,7 +160,7 @@ public class CaptableClassHolding {
   }
 
   /**
-   * ShareClassID is the share class.
+   * ShareClassID addresses the class this position is for.
    * @return shareClassId
    */
   @javax.annotation.Nullable

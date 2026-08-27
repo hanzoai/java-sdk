@@ -233,7 +233,7 @@ public class TrustItemView {
   }
 
   /**
-   * Kind is what it is.
+   * Kind is one of report, letter, policy, questionnaire, subprocessor, article or update — the closed set the public centre knows how to draw.
    * @return kind
    */
   @javax.annotation.Nullable
@@ -252,7 +252,7 @@ public class TrustItemView {
   }
 
   /**
-   * Name is its title.
+   * Name is the label the centre lists it under.
    * @return name
    */
   @javax.annotation.Nullable
