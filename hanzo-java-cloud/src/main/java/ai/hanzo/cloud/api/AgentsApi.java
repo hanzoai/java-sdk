@@ -52,6 +52,7 @@ import ai.hanzo.cloud.model.RoutedRunOut;
 import ai.hanzo.cloud.model.RunList;
 import ai.hanzo.cloud.model.SessionDetail;
 import ai.hanzo.cloud.model.SessionList;
+import ai.hanzo.cloud.model.SessionProgress;
 import ai.hanzo.cloud.model.SessionView;
 import ai.hanzo.cloud.model.TargetDeleted;
 import ai.hanzo.cloud.model.TargetList;
@@ -2066,6 +2067,133 @@ public class AgentsApi {
 
         okhttp3.Call localVarCall = getAgentsSessionsByIdControlValidateBeforeCall(id, after, _callback);
         Type localVarReturnType = new TypeToken<ControlDrain>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getAgentsSessionsByIdProgress
+     * @param id ID is the session to act on, from the path. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAgentsSessionsByIdProgressCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/agents/sessions/{id}/progress"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getAgentsSessionsByIdProgressValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling getAgentsSessionsByIdProgress(Async)");
+        }
+
+        return getAgentsSessionsByIdProgressCall(id, _callback);
+
+    }
+
+    /**
+     * Returns how far along one run is: the share of its goal that is done, whether it is running, blocked or finished, and a line saying what it is doing right now.
+     * Returns how far along one run is: the share of its goal that is done, whether it is running, blocked or finished, and a line saying what it is doing right now.  It is a MODEL ESTIMATE read off the run&#39;s own transcript, not a measurement — &#x60;estimated&#x60; says so on every answer, and a run whose progress cannot be told reports phase \&quot;unknown\&quot; with no percentage rather than a zero it does not mean. A session that has already finished answers from its own status instead, and is marked not estimated.  The list and detail reads carry the same value; this address is the one that WAITS. Where the stored estimate has gone stale it is remade before answering, so a human deciding whether to step into a run gets a current reading rather than the last poll&#39;s — which costs one small completion, charged to the same wallet the session already names, at most once every thirty seconds per run.
+     * @param id ID is the session to act on, from the path. (required)
+     * @return SessionProgress
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public SessionProgress getAgentsSessionsByIdProgress(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<SessionProgress> localVarResp = getAgentsSessionsByIdProgressWithHttpInfo(id);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Returns how far along one run is: the share of its goal that is done, whether it is running, blocked or finished, and a line saying what it is doing right now.
+     * Returns how far along one run is: the share of its goal that is done, whether it is running, blocked or finished, and a line saying what it is doing right now.  It is a MODEL ESTIMATE read off the run&#39;s own transcript, not a measurement — &#x60;estimated&#x60; says so on every answer, and a run whose progress cannot be told reports phase \&quot;unknown\&quot; with no percentage rather than a zero it does not mean. A session that has already finished answers from its own status instead, and is marked not estimated.  The list and detail reads carry the same value; this address is the one that WAITS. Where the stored estimate has gone stale it is remade before answering, so a human deciding whether to step into a run gets a current reading rather than the last poll&#39;s — which costs one small completion, charged to the same wallet the session already names, at most once every thirty seconds per run.
+     * @param id ID is the session to act on, from the path. (required)
+     * @return ApiResponse&lt;SessionProgress&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<SessionProgress> getAgentsSessionsByIdProgressWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getAgentsSessionsByIdProgressValidateBeforeCall(id, null);
+        Type localVarReturnType = new TypeToken<SessionProgress>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Returns how far along one run is: the share of its goal that is done, whether it is running, blocked or finished, and a line saying what it is doing right now. (asynchronously)
+     * Returns how far along one run is: the share of its goal that is done, whether it is running, blocked or finished, and a line saying what it is doing right now.  It is a MODEL ESTIMATE read off the run&#39;s own transcript, not a measurement — &#x60;estimated&#x60; says so on every answer, and a run whose progress cannot be told reports phase \&quot;unknown\&quot; with no percentage rather than a zero it does not mean. A session that has already finished answers from its own status instead, and is marked not estimated.  The list and detail reads carry the same value; this address is the one that WAITS. Where the stored estimate has gone stale it is remade before answering, so a human deciding whether to step into a run gets a current reading rather than the last poll&#39;s — which costs one small completion, charged to the same wallet the session already names, at most once every thirty seconds per run.
+     * @param id ID is the session to act on, from the path. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getAgentsSessionsByIdProgressAsync(@javax.annotation.Nonnull String id, final ApiCallback<SessionProgress> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getAgentsSessionsByIdProgressValidateBeforeCall(id, _callback);
+        Type localVarReturnType = new TypeToken<SessionProgress>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

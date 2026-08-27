@@ -2235,6 +2235,7 @@ hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/SeriesPoint.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/SessionDetail.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/SessionEnded.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/SessionList.java
+hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/SessionProgress.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/SessionUser.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/SessionView.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/SetEnvReq.java
