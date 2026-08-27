@@ -100,7 +100,7 @@ public class CaptableRoundDetail {
   }
 
   /**
-   * Round is the round itself.
+   * Round is the round&#39;s own terms — name, type, valuation, target and status — as against the investments beside it.
    * @return round
    */
   @javax.annotation.Nullable

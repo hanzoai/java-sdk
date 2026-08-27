@@ -32,6 +32,7 @@ import ai.hanzo.cloud.model.IssueHit;
 import ai.hanzo.cloud.model.IssueHits;
 import ai.hanzo.cloud.model.IssueView;
 import ai.hanzo.cloud.model.NewIssue;
+import ai.hanzo.cloud.model.RoomWork;
 import ai.hanzo.cloud.model.TodoProject;
 
 import java.lang.reflect.Type;
@@ -355,6 +356,7 @@ public class TodoApi {
      * @param status Status keeps one board column: backlog, todo, in_progress, done, canceled. (optional)
      * @param kind Kind keeps one shape: issue, pr, epic. (optional)
      * @param repo Repo keeps issues bound to one git repository. (optional)
+     * @param room Room keeps issues bound to one collaboration room, spelled \&quot;&lt;workspace&gt;_&lt;room&gt;\&quot; — the exact value GET /v1/meet/call answers with, so a channel&#39;s call and its todo list name the room the same way. This is the read a channel view runs to draw its own list; it spans every board of the org, because the work a channel is about is not confined to one board. (optional)
      * @param source Source keeps one origin: team, git, crm, helpdesk, cms, agent. \&quot;git\&quot; is how you ask for the mirrored GitHub issues specifically. (optional)
      * @param assignee Assignee keeps issues held by one person. Pass \&quot;me\&quot; for yourself. (optional)
      * @param limit Limit caps the answer; 0 means the default, and anything above the ceiling is clamped rather than refused — a search that errors on being too broad teaches people to guess. (optional)
@@ -368,7 +370,7 @@ public class TodoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getTodoIssuesCall(@javax.annotation.Nullable String q, @javax.annotation.Nullable String project, @javax.annotation.Nullable String status, @javax.annotation.Nullable String kind, @javax.annotation.Nullable String repo, @javax.annotation.Nullable String source, @javax.annotation.Nullable String assignee, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getTodoIssuesCall(@javax.annotation.Nullable String q, @javax.annotation.Nullable String project, @javax.annotation.Nullable String status, @javax.annotation.Nullable String kind, @javax.annotation.Nullable String repo, @javax.annotation.Nullable String room, @javax.annotation.Nullable String source, @javax.annotation.Nullable String assignee, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -413,6 +415,10 @@ public class TodoApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("repo", repo));
         }
 
+        if (room != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("room", room));
+        }
+
         if (source != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("source", source));
         }
@@ -445,8 +451,8 @@ public class TodoApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getTodoIssuesValidateBeforeCall(@javax.annotation.Nullable String q, @javax.annotation.Nullable String project, @javax.annotation.Nullable String status, @javax.annotation.Nullable String kind, @javax.annotation.Nullable String repo, @javax.annotation.Nullable String source, @javax.annotation.Nullable String assignee, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
-        return getTodoIssuesCall(q, project, status, kind, repo, source, assignee, limit, _callback);
+    private okhttp3.Call getTodoIssuesValidateBeforeCall(@javax.annotation.Nullable String q, @javax.annotation.Nullable String project, @javax.annotation.Nullable String status, @javax.annotation.Nullable String kind, @javax.annotation.Nullable String repo, @javax.annotation.Nullable String room, @javax.annotation.Nullable String source, @javax.annotation.Nullable String assignee, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+        return getTodoIssuesCall(q, project, status, kind, repo, room, source, assignee, limit, _callback);
 
     }
 
@@ -458,6 +464,7 @@ public class TodoApi {
      * @param status Status keeps one board column: backlog, todo, in_progress, done, canceled. (optional)
      * @param kind Kind keeps one shape: issue, pr, epic. (optional)
      * @param repo Repo keeps issues bound to one git repository. (optional)
+     * @param room Room keeps issues bound to one collaboration room, spelled \&quot;&lt;workspace&gt;_&lt;room&gt;\&quot; — the exact value GET /v1/meet/call answers with, so a channel&#39;s call and its todo list name the room the same way. This is the read a channel view runs to draw its own list; it spans every board of the org, because the work a channel is about is not confined to one board. (optional)
      * @param source Source keeps one origin: team, git, crm, helpdesk, cms, agent. \&quot;git\&quot; is how you ask for the mirrored GitHub issues specifically. (optional)
      * @param assignee Assignee keeps issues held by one person. Pass \&quot;me\&quot; for yourself. (optional)
      * @param limit Limit caps the answer; 0 means the default, and anything above the ceiling is clamped rather than refused — a search that errors on being too broad teaches people to guess. (optional)
@@ -470,8 +477,8 @@ public class TodoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public IssueHits getTodoIssues(@javax.annotation.Nullable String q, @javax.annotation.Nullable String project, @javax.annotation.Nullable String status, @javax.annotation.Nullable String kind, @javax.annotation.Nullable String repo, @javax.annotation.Nullable String source, @javax.annotation.Nullable String assignee, @javax.annotation.Nullable Integer limit) throws ApiException {
-        ApiResponse<IssueHits> localVarResp = getTodoIssuesWithHttpInfo(q, project, status, kind, repo, source, assignee, limit);
+    public IssueHits getTodoIssues(@javax.annotation.Nullable String q, @javax.annotation.Nullable String project, @javax.annotation.Nullable String status, @javax.annotation.Nullable String kind, @javax.annotation.Nullable String repo, @javax.annotation.Nullable String room, @javax.annotation.Nullable String source, @javax.annotation.Nullable String assignee, @javax.annotation.Nullable Integer limit) throws ApiException {
+        ApiResponse<IssueHits> localVarResp = getTodoIssuesWithHttpInfo(q, project, status, kind, repo, room, source, assignee, limit);
         return localVarResp.getData();
     }
 
@@ -483,6 +490,7 @@ public class TodoApi {
      * @param status Status keeps one board column: backlog, todo, in_progress, done, canceled. (optional)
      * @param kind Kind keeps one shape: issue, pr, epic. (optional)
      * @param repo Repo keeps issues bound to one git repository. (optional)
+     * @param room Room keeps issues bound to one collaboration room, spelled \&quot;&lt;workspace&gt;_&lt;room&gt;\&quot; — the exact value GET /v1/meet/call answers with, so a channel&#39;s call and its todo list name the room the same way. This is the read a channel view runs to draw its own list; it spans every board of the org, because the work a channel is about is not confined to one board. (optional)
      * @param source Source keeps one origin: team, git, crm, helpdesk, cms, agent. \&quot;git\&quot; is how you ask for the mirrored GitHub issues specifically. (optional)
      * @param assignee Assignee keeps issues held by one person. Pass \&quot;me\&quot; for yourself. (optional)
      * @param limit Limit caps the answer; 0 means the default, and anything above the ceiling is clamped rather than refused — a search that errors on being too broad teaches people to guess. (optional)
@@ -495,8 +503,8 @@ public class TodoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IssueHits> getTodoIssuesWithHttpInfo(@javax.annotation.Nullable String q, @javax.annotation.Nullable String project, @javax.annotation.Nullable String status, @javax.annotation.Nullable String kind, @javax.annotation.Nullable String repo, @javax.annotation.Nullable String source, @javax.annotation.Nullable String assignee, @javax.annotation.Nullable Integer limit) throws ApiException {
-        okhttp3.Call localVarCall = getTodoIssuesValidateBeforeCall(q, project, status, kind, repo, source, assignee, limit, null);
+    public ApiResponse<IssueHits> getTodoIssuesWithHttpInfo(@javax.annotation.Nullable String q, @javax.annotation.Nullable String project, @javax.annotation.Nullable String status, @javax.annotation.Nullable String kind, @javax.annotation.Nullable String repo, @javax.annotation.Nullable String room, @javax.annotation.Nullable String source, @javax.annotation.Nullable String assignee, @javax.annotation.Nullable Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = getTodoIssuesValidateBeforeCall(q, project, status, kind, repo, room, source, assignee, limit, null);
         Type localVarReturnType = new TypeToken<IssueHits>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -509,6 +517,7 @@ public class TodoApi {
      * @param status Status keeps one board column: backlog, todo, in_progress, done, canceled. (optional)
      * @param kind Kind keeps one shape: issue, pr, epic. (optional)
      * @param repo Repo keeps issues bound to one git repository. (optional)
+     * @param room Room keeps issues bound to one collaboration room, spelled \&quot;&lt;workspace&gt;_&lt;room&gt;\&quot; — the exact value GET /v1/meet/call answers with, so a channel&#39;s call and its todo list name the room the same way. This is the read a channel view runs to draw its own list; it spans every board of the org, because the work a channel is about is not confined to one board. (optional)
      * @param source Source keeps one origin: team, git, crm, helpdesk, cms, agent. \&quot;git\&quot; is how you ask for the mirrored GitHub issues specifically. (optional)
      * @param assignee Assignee keeps issues held by one person. Pass \&quot;me\&quot; for yourself. (optional)
      * @param limit Limit caps the answer; 0 means the default, and anything above the ceiling is clamped rather than refused — a search that errors on being too broad teaches people to guess. (optional)
@@ -522,9 +531,9 @@ public class TodoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getTodoIssuesAsync(@javax.annotation.Nullable String q, @javax.annotation.Nullable String project, @javax.annotation.Nullable String status, @javax.annotation.Nullable String kind, @javax.annotation.Nullable String repo, @javax.annotation.Nullable String source, @javax.annotation.Nullable String assignee, @javax.annotation.Nullable Integer limit, final ApiCallback<IssueHits> _callback) throws ApiException {
+    public okhttp3.Call getTodoIssuesAsync(@javax.annotation.Nullable String q, @javax.annotation.Nullable String project, @javax.annotation.Nullable String status, @javax.annotation.Nullable String kind, @javax.annotation.Nullable String repo, @javax.annotation.Nullable String room, @javax.annotation.Nullable String source, @javax.annotation.Nullable String assignee, @javax.annotation.Nullable Integer limit, final ApiCallback<IssueHits> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getTodoIssuesValidateBeforeCall(q, project, status, kind, repo, source, assignee, limit, _callback);
+        okhttp3.Call localVarCall = getTodoIssuesValidateBeforeCall(q, project, status, kind, repo, room, source, assignee, limit, _callback);
         Type localVarReturnType = new TypeToken<IssueHits>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1082,6 +1091,133 @@ public class TodoApi {
 
         okhttp3.Call localVarCall = getTodoProjectsByKeyIssuesByNumValidateBeforeCall(key, num, _callback);
         Type localVarReturnType = new TypeToken<IssueView>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getTodoRoomsByRoom
+     * @param room Room is the room, spelled \&quot;&lt;workspace&gt;_&lt;room&gt;\&quot; — the same value GET /v1/meet/call answers with, so a channel&#39;s call and its work name the room identically. From the path. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getTodoRoomsByRoomCall(@javax.annotation.Nonnull String room, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/todo/rooms/{room}"
+            .replace("{" + "room" + "}", localVarApiClient.escapeString(room.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getTodoRoomsByRoomValidateBeforeCall(@javax.annotation.Nonnull String room, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'room' is set
+        if (room == null) {
+            throw new ApiException("Missing the required parameter 'room' when calling getTodoRoomsByRoom(Async)");
+        }
+
+        return getTodoRoomsByRoomCall(room, _callback);
+
+    }
+
+    /**
+     * Summarises one room&#39;s work.
+     * Summarises one room&#39;s work.  The room is opaque here and is deliberately not resolved: this package cannot say whether a room exists — apps/team owns that document — so an unknown room answers an EMPTY board rather than a 404. That is the honest answer and the useful one: a channel that has never had an item filed in it and a channel id that was mistyped both have no work, and inventing a distinction would require this surface to hold a second copy of the room list (HIP-0523 §2 forbids it, and it would drift the first time a room was renamed).  Tenancy is the validated principal&#39;s org and nothing else, so a caller cannot read another tenant&#39;s channel by naming its room.
+     * @param room Room is the room, spelled \&quot;&lt;workspace&gt;_&lt;room&gt;\&quot; — the same value GET /v1/meet/call answers with, so a channel&#39;s call and its work name the room identically. From the path. (required)
+     * @return RoomWork
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public RoomWork getTodoRoomsByRoom(@javax.annotation.Nonnull String room) throws ApiException {
+        ApiResponse<RoomWork> localVarResp = getTodoRoomsByRoomWithHttpInfo(room);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Summarises one room&#39;s work.
+     * Summarises one room&#39;s work.  The room is opaque here and is deliberately not resolved: this package cannot say whether a room exists — apps/team owns that document — so an unknown room answers an EMPTY board rather than a 404. That is the honest answer and the useful one: a channel that has never had an item filed in it and a channel id that was mistyped both have no work, and inventing a distinction would require this surface to hold a second copy of the room list (HIP-0523 §2 forbids it, and it would drift the first time a room was renamed).  Tenancy is the validated principal&#39;s org and nothing else, so a caller cannot read another tenant&#39;s channel by naming its room.
+     * @param room Room is the room, spelled \&quot;&lt;workspace&gt;_&lt;room&gt;\&quot; — the same value GET /v1/meet/call answers with, so a channel&#39;s call and its work name the room identically. From the path. (required)
+     * @return ApiResponse&lt;RoomWork&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<RoomWork> getTodoRoomsByRoomWithHttpInfo(@javax.annotation.Nonnull String room) throws ApiException {
+        okhttp3.Call localVarCall = getTodoRoomsByRoomValidateBeforeCall(room, null);
+        Type localVarReturnType = new TypeToken<RoomWork>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Summarises one room&#39;s work. (asynchronously)
+     * Summarises one room&#39;s work.  The room is opaque here and is deliberately not resolved: this package cannot say whether a room exists — apps/team owns that document — so an unknown room answers an EMPTY board rather than a 404. That is the honest answer and the useful one: a channel that has never had an item filed in it and a channel id that was mistyped both have no work, and inventing a distinction would require this surface to hold a second copy of the room list (HIP-0523 §2 forbids it, and it would drift the first time a room was renamed).  Tenancy is the validated principal&#39;s org and nothing else, so a caller cannot read another tenant&#39;s channel by naming its room.
+     * @param room Room is the room, spelled \&quot;&lt;workspace&gt;_&lt;room&gt;\&quot; — the same value GET /v1/meet/call answers with, so a channel&#39;s call and its work name the room identically. From the path. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getTodoRoomsByRoomAsync(@javax.annotation.Nonnull String room, final ApiCallback<RoomWork> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getTodoRoomsByRoomValidateBeforeCall(room, _callback);
+        Type localVarReturnType = new TypeToken<RoomWork>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

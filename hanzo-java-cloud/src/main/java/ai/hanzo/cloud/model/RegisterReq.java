@@ -100,6 +100,11 @@ public class RegisterReq {
   @javax.annotation.Nullable
   private String repo;
 
+  public static final String SERIALIZED_NAME_ROOM = "room";
+  @SerializedName(SERIALIZED_NAME_ROOM)
+  @javax.annotation.Nullable
+  private String room;
+
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
   @javax.annotation.Nullable
@@ -323,6 +328,25 @@ public class RegisterReq {
   }
 
 
+  public RegisterReq room(@javax.annotation.Nullable String room) {
+    this.room = room;
+    return this;
+  }
+
+  /**
+   * Room is the collaborative room this run was started in (HIP-0523), so a workspace view can list the sessions of one room. It is PROVENANCE and is set only here: there is deliberately no way to move a session to another room, so it is absent from the patch input and from UpdateSession&#39;s SET list.
+   * @return room
+   */
+  @javax.annotation.Nullable
+  public String getRoom() {
+    return room;
+  }
+
+  public void setRoom(@javax.annotation.Nullable String room) {
+    this.room = room;
+  }
+
+
   public RegisterReq status(@javax.annotation.Nullable String status) {
     this.status = status;
     return this;
@@ -457,6 +481,7 @@ public class RegisterReq {
         Objects.equals(this.provider, registerReq.provider) &&
         Objects.equals(this.published, registerReq.published) &&
         Objects.equals(this.repo, registerReq.repo) &&
+        Objects.equals(this.room, registerReq.room) &&
         Objects.equals(this.status, registerReq.status) &&
         Objects.equals(this.target, registerReq.target) &&
         Objects.equals(this.taskRunId, registerReq.taskRunId) &&
@@ -467,7 +492,7 @@ public class RegisterReq {
 
   @Override
   public int hashCode() {
-    return Objects.hash(account, actor, agent, cwd, host, parentSessionId, project, provider, published, repo, status, target, taskRunId, taskWorkflowId, terminal, title);
+    return Objects.hash(account, actor, agent, cwd, host, parentSessionId, project, provider, published, repo, room, status, target, taskRunId, taskWorkflowId, terminal, title);
   }
 
   @Override
@@ -484,6 +509,7 @@ public class RegisterReq {
     sb.append("    provider: ").append(toIndentedString(provider)).append("\n");
     sb.append("    published: ").append(toIndentedString(published)).append("\n");
     sb.append("    repo: ").append(toIndentedString(repo)).append("\n");
+    sb.append("    room: ").append(toIndentedString(room)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    target: ").append(toIndentedString(target)).append("\n");
     sb.append("    taskRunId: ").append(toIndentedString(taskRunId)).append("\n");
@@ -511,7 +537,7 @@ public class RegisterReq {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("account", "actor", "agent", "cwd", "host", "parentSessionId", "project", "provider", "published", "repo", "status", "target", "taskRunId", "taskWorkflowId", "terminal", "title"));
+    openapiFields = new HashSet<String>(Arrays.asList("account", "actor", "agent", "cwd", "host", "parentSessionId", "project", "provider", "published", "repo", "room", "status", "target", "taskRunId", "taskWorkflowId", "terminal", "title"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -564,6 +590,9 @@ public class RegisterReq {
       }
       if ((jsonObj.get("repo") != null && !jsonObj.get("repo").isJsonNull()) && !jsonObj.get("repo").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `repo` to be a primitive type in the JSON string but got `%s`", jsonObj.get("repo").toString()));
+      }
+      if ((jsonObj.get("room") != null && !jsonObj.get("room").isJsonNull()) && !jsonObj.get("room").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `room` to be a primitive type in the JSON string but got `%s`", jsonObj.get("room").toString()));
       }
       if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));

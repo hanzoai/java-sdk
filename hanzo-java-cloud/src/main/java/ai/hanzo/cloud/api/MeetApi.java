@@ -27,6 +27,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import ai.hanzo.cloud.model.Call;
 import ai.hanzo.cloud.model.MeetHealth;
 import ai.hanzo.cloud.model.RecordIn;
 import ai.hanzo.cloud.model.Recording;
@@ -281,6 +282,149 @@ public class MeetApi {
 
         okhttp3.Call localVarCall = getMeetSessionValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for meetCall
+     * @param workspace Workspace is the workspace uuid holding the room, as GET /v1/team/rooms reports it. It is the segment the caller&#39;s membership is checked against. (required)
+     * @param room Room is the room&#39;s own id within that workspace, as GET /v1/team/rooms reports it. It is opaque here: meet keeps no rooms and cannot say whether one exists, only whether this caller may be seated in the workspace holding it. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call meetCallCall(@javax.annotation.Nonnull String workspace, @javax.annotation.Nonnull String room, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/meet/call";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (workspace != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("workspace", workspace));
+        }
+
+        if (room != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("room", room));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call meetCallValidateBeforeCall(@javax.annotation.Nonnull String workspace, @javax.annotation.Nonnull String room, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'workspace' is set
+        if (workspace == null) {
+            throw new ApiException("Missing the required parameter 'workspace' when calling meetCall(Async)");
+        }
+
+        // verify the required parameter 'room' is set
+        if (room == null) {
+            throw new ApiException("Missing the required parameter 'room' when calling meetCall(Async)");
+        }
+
+        return meetCallCall(workspace, room, _callback);
+
+    }
+
+    /**
+     * Where a room&#39;s call happens
+     * Answers where a room&#39;s call happens, for a caller who may join it.  It is the \&quot;resolved at render\&quot; half of HIP-0523 §12: a surface showing a channel asks for the room&#39;s call at the moment it draws one, rather than reading a media room name someone stored on the room. Nothing here is persisted and nothing is created — a media room begins existing when the first participant connects and stops when the last leaves, so there is no call to create and none to clean up.  AUTHORIZATION IS THE JOIN DECISION, unchanged and shared. It delegates to state.admits, the same function POST /v1/meet/getToken and all three recording operations admit on, so a caller who is told where a call is, is a caller who could have joined it. Answering the address to someone who cannot join would make this a workspace-membership oracle for anyone who can guess a room id.  It deliberately does NOT report whether a call is in progress. That is a fact the media server holds and this binary would have to ask for it over the network, which is a different decision with a different failure mode — and reporting \&quot;nobody is in this call\&quot; when the question could not be asked would be exactly the unknown-rendered-as-zero this surface refuses elsewhere.
+     * @param workspace Workspace is the workspace uuid holding the room, as GET /v1/team/rooms reports it. It is the segment the caller&#39;s membership is checked against. (required)
+     * @param room Room is the room&#39;s own id within that workspace, as GET /v1/team/rooms reports it. It is opaque here: meet keeps no rooms and cannot say whether one exists, only whether this caller may be seated in the workspace holding it. (required)
+     * @return Call
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public Call meetCall(@javax.annotation.Nonnull String workspace, @javax.annotation.Nonnull String room) throws ApiException {
+        ApiResponse<Call> localVarResp = meetCallWithHttpInfo(workspace, room);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Where a room&#39;s call happens
+     * Answers where a room&#39;s call happens, for a caller who may join it.  It is the \&quot;resolved at render\&quot; half of HIP-0523 §12: a surface showing a channel asks for the room&#39;s call at the moment it draws one, rather than reading a media room name someone stored on the room. Nothing here is persisted and nothing is created — a media room begins existing when the first participant connects and stops when the last leaves, so there is no call to create and none to clean up.  AUTHORIZATION IS THE JOIN DECISION, unchanged and shared. It delegates to state.admits, the same function POST /v1/meet/getToken and all three recording operations admit on, so a caller who is told where a call is, is a caller who could have joined it. Answering the address to someone who cannot join would make this a workspace-membership oracle for anyone who can guess a room id.  It deliberately does NOT report whether a call is in progress. That is a fact the media server holds and this binary would have to ask for it over the network, which is a different decision with a different failure mode — and reporting \&quot;nobody is in this call\&quot; when the question could not be asked would be exactly the unknown-rendered-as-zero this surface refuses elsewhere.
+     * @param workspace Workspace is the workspace uuid holding the room, as GET /v1/team/rooms reports it. It is the segment the caller&#39;s membership is checked against. (required)
+     * @param room Room is the room&#39;s own id within that workspace, as GET /v1/team/rooms reports it. It is opaque here: meet keeps no rooms and cannot say whether one exists, only whether this caller may be seated in the workspace holding it. (required)
+     * @return ApiResponse&lt;Call&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Call> meetCallWithHttpInfo(@javax.annotation.Nonnull String workspace, @javax.annotation.Nonnull String room) throws ApiException {
+        okhttp3.Call localVarCall = meetCallValidateBeforeCall(workspace, room, null);
+        Type localVarReturnType = new TypeToken<Call>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Where a room&#39;s call happens (asynchronously)
+     * Answers where a room&#39;s call happens, for a caller who may join it.  It is the \&quot;resolved at render\&quot; half of HIP-0523 §12: a surface showing a channel asks for the room&#39;s call at the moment it draws one, rather than reading a media room name someone stored on the room. Nothing here is persisted and nothing is created — a media room begins existing when the first participant connects and stops when the last leaves, so there is no call to create and none to clean up.  AUTHORIZATION IS THE JOIN DECISION, unchanged and shared. It delegates to state.admits, the same function POST /v1/meet/getToken and all three recording operations admit on, so a caller who is told where a call is, is a caller who could have joined it. Answering the address to someone who cannot join would make this a workspace-membership oracle for anyone who can guess a room id.  It deliberately does NOT report whether a call is in progress. That is a fact the media server holds and this binary would have to ask for it over the network, which is a different decision with a different failure mode — and reporting \&quot;nobody is in this call\&quot; when the question could not be asked would be exactly the unknown-rendered-as-zero this surface refuses elsewhere.
+     * @param workspace Workspace is the workspace uuid holding the room, as GET /v1/team/rooms reports it. It is the segment the caller&#39;s membership is checked against. (required)
+     * @param room Room is the room&#39;s own id within that workspace, as GET /v1/team/rooms reports it. It is opaque here: meet keeps no rooms and cannot say whether one exists, only whether this caller may be seated in the workspace holding it. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call meetCallAsync(@javax.annotation.Nonnull String workspace, @javax.annotation.Nonnull String room, final ApiCallback<Call> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = meetCallValidateBeforeCall(workspace, room, _callback);
+        Type localVarReturnType = new TypeToken<Call>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**

@@ -14,6 +14,7 @@
 package ai.hanzo.cloud.model;
 
 import java.util.Objects;
+import ai.hanzo.cloud.model.TeamRoom;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -48,42 +49,42 @@ import java.util.Set;
 import ai.hanzo.cloud.JSON;
 
 /**
- * PolicyList
+ * TeamRooms
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
-public class PolicyList {
-  public static final String SERIALIZED_NAME_POLICIES = "policies";
-  @SerializedName(SERIALIZED_NAME_POLICIES)
+public class TeamRooms {
+  public static final String SERIALIZED_NAME_ROOMS = "rooms";
+  @SerializedName(SERIALIZED_NAME_ROOMS)
   @javax.annotation.Nullable
-  private List<Object> policies = new ArrayList<>();
+  private List<TeamRoom> rooms = new ArrayList<>();
 
-  public PolicyList() {
+  public TeamRooms() {
   }
 
-  public PolicyList policies(@javax.annotation.Nullable List<Object> policies) {
-    this.policies = policies;
+  public TeamRooms rooms(@javax.annotation.Nullable List<TeamRoom> rooms) {
+    this.rooms = rooms;
     return this;
   }
 
-  public PolicyList addPoliciesItem(Object policiesItem) {
-    if (this.policies == null) {
-      this.policies = new ArrayList<>();
+  public TeamRooms addRoomsItem(TeamRoom roomsItem) {
+    if (this.rooms == null) {
+      this.rooms = new ArrayList<>();
     }
-    this.policies.add(policiesItem);
+    this.rooms.add(roomsItem);
     return this;
   }
 
   /**
-   * Policies is the organization&#39;s published policy documents, each as the centre holds it.
-   * @return policies
+   * Rooms is every room of every workspace the caller&#39;s org owns, each with the work facet it carries.
+   * @return rooms
    */
   @javax.annotation.Nullable
-  public List<Object> getPolicies() {
-    return policies;
+  public List<TeamRoom> getRooms() {
+    return rooms;
   }
 
-  public void setPolicies(@javax.annotation.Nullable List<Object> policies) {
-    this.policies = policies;
+  public void setRooms(@javax.annotation.Nullable List<TeamRoom> rooms) {
+    this.rooms = rooms;
   }
 
 
@@ -96,20 +97,20 @@ public class PolicyList {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    PolicyList policyList = (PolicyList) o;
-    return Objects.equals(this.policies, policyList.policies);
+    TeamRooms teamRooms = (TeamRooms) o;
+    return Objects.equals(this.rooms, teamRooms.rooms);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(policies);
+    return Objects.hash(rooms);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class PolicyList {\n");
-    sb.append("    policies: ").append(toIndentedString(policies)).append("\n");
+    sb.append("class TeamRooms {\n");
+    sb.append("    rooms: ").append(toIndentedString(rooms)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -131,7 +132,7 @@ public class PolicyList {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("policies"));
+    openapiFields = new HashSet<String>(Arrays.asList("rooms"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -141,26 +142,36 @@ public class PolicyList {
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to PolicyList
+   * @throws IOException if the JSON Element is invalid with respect to TeamRooms
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!PolicyList.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in PolicyList is not found in the empty JSON string", PolicyList.openapiRequiredFields.toString()));
+        if (!TeamRooms.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in TeamRooms is not found in the empty JSON string", TeamRooms.openapiRequiredFields.toString()));
         }
       }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!PolicyList.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `PolicyList` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!TeamRooms.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `TeamRooms` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("policies") != null && !jsonObj.get("policies").isJsonNull() && !jsonObj.get("policies").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `policies` to be an array in the JSON string but got `%s`", jsonObj.get("policies").toString()));
+      if (jsonObj.get("rooms") != null && !jsonObj.get("rooms").isJsonNull()) {
+        JsonArray jsonArrayrooms = jsonObj.getAsJsonArray("rooms");
+        if (jsonArrayrooms != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("rooms").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `rooms` to be an array in the JSON string but got `%s`", jsonObj.get("rooms").toString()));
+          }
+
+          // validate the optional field `rooms` (array)
+          for (int i = 0; i < jsonArrayrooms.size(); i++) {
+            TeamRoom.validateJsonElement(jsonArrayrooms.get(i));
+          };
+        }
       }
   }
 
@@ -168,22 +179,22 @@ public class PolicyList {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!PolicyList.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'PolicyList' and its subtypes
+       if (!TeamRooms.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'TeamRooms' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<PolicyList> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(PolicyList.class));
+       final TypeAdapter<TeamRooms> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(TeamRooms.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<PolicyList>() {
+       return (TypeAdapter<T>) new TypeAdapter<TeamRooms>() {
            @Override
-           public void write(JsonWriter out, PolicyList value) throws IOException {
+           public void write(JsonWriter out, TeamRooms value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public PolicyList read(JsonReader in) throws IOException {
+           public TeamRooms read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -194,18 +205,18 @@ public class PolicyList {
   }
 
   /**
-   * Create an instance of PolicyList given an JSON string
+   * Create an instance of TeamRooms given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of PolicyList
-   * @throws IOException if the JSON string is invalid with respect to PolicyList
+   * @return An instance of TeamRooms
+   * @throws IOException if the JSON string is invalid with respect to TeamRooms
    */
-  public static PolicyList fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, PolicyList.class);
+  public static TeamRooms fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, TeamRooms.class);
   }
 
   /**
-   * Convert an instance of PolicyList to an JSON string
+   * Convert an instance of TeamRooms to an JSON string
    *
    * @return JSON string
    */

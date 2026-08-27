@@ -185,7 +185,7 @@ public class CaptableHolding {
   }
 
   /**
-   * StakeholderID is the stakeholder.
+   * StakeholderID addresses the stakeholder these totals are for.
    * @return stakeholderId
    */
   @javax.annotation.Nullable

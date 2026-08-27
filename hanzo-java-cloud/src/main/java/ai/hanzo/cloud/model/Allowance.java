@@ -75,6 +75,11 @@ public class Allowance {
   @javax.annotation.Nullable
   private Integer used;
 
+  public static final String SERIALIZED_NAME_WINDOW = "window";
+  @SerializedName(SERIALIZED_NAME_WINDOW)
+  @javax.annotation.Nullable
+  private String window;
+
   public Allowance() {
   }
 
@@ -122,7 +127,7 @@ public class Allowance {
   }
 
   /**
-   * unix seconds; when the count starts again
+   * unix seconds; when THAT window starts again
    * @return resets
    */
   @javax.annotation.Nullable
@@ -173,6 +178,25 @@ public class Allowance {
   }
 
 
+  public Allowance window(@javax.annotation.Nullable String window) {
+    this.window = window;
+    return this;
+  }
+
+  /**
+   * Window is which ceiling these numbers describe — \&quot;hour\&quot; or \&quot;day\&quot; — because a caller is held to both and only one of them is the answer. It is the window that REFUSED where one did, and otherwise the one with least left, so Limit-Used is always the number that will actually stop them next. Empty where no window bounds the subject at all.
+   * @return window
+   */
+  @javax.annotation.Nullable
+  public String getWindow() {
+    return window;
+  }
+
+  public void setWindow(@javax.annotation.Nullable String window) {
+    this.window = window;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -187,12 +211,13 @@ public class Allowance {
         Objects.equals(this.plan, allowance.plan) &&
         Objects.equals(this.resets, allowance.resets) &&
         Objects.equals(this.spent, allowance.spent) &&
-        Objects.equals(this.used, allowance.used);
+        Objects.equals(this.used, allowance.used) &&
+        Objects.equals(this.window, allowance.window);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(limit, plan, resets, spent, used);
+    return Objects.hash(limit, plan, resets, spent, used, window);
   }
 
   @Override
@@ -204,6 +229,7 @@ public class Allowance {
     sb.append("    resets: ").append(toIndentedString(resets)).append("\n");
     sb.append("    spent: ").append(toIndentedString(spent)).append("\n");
     sb.append("    used: ").append(toIndentedString(used)).append("\n");
+    sb.append("    window: ").append(toIndentedString(window)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -225,7 +251,7 @@ public class Allowance {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("limit", "plan", "resets", "spent", "used"));
+    openapiFields = new HashSet<String>(Arrays.asList("limit", "plan", "resets", "spent", "used", "window"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -254,6 +280,9 @@ public class Allowance {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("plan") != null && !jsonObj.get("plan").isJsonNull()) && !jsonObj.get("plan").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `plan` to be a primitive type in the JSON string but got `%s`", jsonObj.get("plan").toString()));
+      }
+      if ((jsonObj.get("window") != null && !jsonObj.get("window").isJsonNull()) && !jsonObj.get("window").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `window` to be a primitive type in the JSON string but got `%s`", jsonObj.get("window").toString()));
       }
   }
 

@@ -122,7 +122,7 @@ public class ReferenceVersion {
   }
 
   /**
-   * Set is the set.
+   * Set is the name the consulted set is addressed by.
    * @return set
    */
   @javax.annotation.Nullable

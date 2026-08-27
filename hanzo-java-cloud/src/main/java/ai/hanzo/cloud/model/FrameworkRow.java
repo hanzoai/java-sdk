@@ -208,7 +208,7 @@ public class FrameworkRow {
   }
 
   /**
-   * Units is the plural of Unit.
+   * Units is Unit&#39;s plural, carried so a caller renders \&quot;12 controls\&quot; without having to pluralise a word it does not know.
    * @return units
    */
   @javax.annotation.Nullable

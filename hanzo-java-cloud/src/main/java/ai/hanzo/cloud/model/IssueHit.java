@@ -80,6 +80,11 @@ public class IssueHit {
   @javax.annotation.Nullable
   private String repo;
 
+  public static final String SERIALIZED_NAME_ROOM = "room";
+  @SerializedName(SERIALIZED_NAME_ROOM)
+  @javax.annotation.Nullable
+  private String room;
+
   public static final String SERIALIZED_NAME_SOURCE = "source";
   @SerializedName(SERIALIZED_NAME_SOURCE)
   @javax.annotation.Nullable
@@ -217,6 +222,25 @@ public class IssueHit {
   }
 
 
+  public IssueHit room(@javax.annotation.Nullable String room) {
+    this.room = room;
+    return this;
+  }
+
+  /**
+   * Room is the collaboration room the issue belongs to, spelled \&quot;&lt;workspace&gt;_&lt;room&gt;\&quot; — empty when it is not room-bound, which is most of them. It is here so an org-wide search says which channel each item came from without a second read.
+   * @return room
+   */
+  @javax.annotation.Nullable
+  public String getRoom() {
+    return room;
+  }
+
+  public void setRoom(@javax.annotation.Nullable String room) {
+    this.room = room;
+  }
+
+
   public IssueHit source(@javax.annotation.Nullable String source) {
     this.source = source;
     return this;
@@ -309,6 +333,7 @@ public class IssueHit {
         Objects.equals(this.priority, issueHit.priority) &&
         Objects.equals(this.project, issueHit.project) &&
         Objects.equals(this.repo, issueHit.repo) &&
+        Objects.equals(this.room, issueHit.room) &&
         Objects.equals(this.source, issueHit.source) &&
         Objects.equals(this.status, issueHit.status) &&
         Objects.equals(this.title, issueHit.title) &&
@@ -317,7 +342,7 @@ public class IssueHit {
 
   @Override
   public int hashCode() {
-    return Objects.hash(assignee, kind, number, priority, project, repo, source, status, title, url);
+    return Objects.hash(assignee, kind, number, priority, project, repo, room, source, status, title, url);
   }
 
   @Override
@@ -330,6 +355,7 @@ public class IssueHit {
     sb.append("    priority: ").append(toIndentedString(priority)).append("\n");
     sb.append("    project: ").append(toIndentedString(project)).append("\n");
     sb.append("    repo: ").append(toIndentedString(repo)).append("\n");
+    sb.append("    room: ").append(toIndentedString(room)).append("\n");
     sb.append("    source: ").append(toIndentedString(source)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
@@ -355,7 +381,7 @@ public class IssueHit {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("assignee", "kind", "number", "priority", "project", "repo", "source", "status", "title", "url"));
+    openapiFields = new HashSet<String>(Arrays.asList("assignee", "kind", "number", "priority", "project", "repo", "room", "source", "status", "title", "url"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -396,6 +422,9 @@ public class IssueHit {
       }
       if ((jsonObj.get("repo") != null && !jsonObj.get("repo").isJsonNull()) && !jsonObj.get("repo").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `repo` to be a primitive type in the JSON string but got `%s`", jsonObj.get("repo").toString()));
+      }
+      if ((jsonObj.get("room") != null && !jsonObj.get("room").isJsonNull()) && !jsonObj.get("room").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `room` to be a primitive type in the JSON string but got `%s`", jsonObj.get("room").toString()));
       }
       if ((jsonObj.get("source") != null && !jsonObj.get("source").isJsonNull()) && !jsonObj.get("source").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `source` to be a primitive type in the JSON string but got `%s`", jsonObj.get("source").toString()));

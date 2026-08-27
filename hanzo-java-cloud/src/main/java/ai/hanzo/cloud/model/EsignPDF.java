@@ -103,7 +103,7 @@ public class EsignPDF {
   }
 
   /**
-   * ID is the document.
+   * ID is the document this PDF was rendered from.
    * @return id
    */
   @javax.annotation.Nullable

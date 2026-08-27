@@ -36,6 +36,9 @@ import java.io.File;
 import ai.hanzo.cloud.model.PlanInfo;
 import ai.hanzo.cloud.model.ProviderInfo;
 import ai.hanzo.cloud.model.StatsOut;
+import ai.hanzo.cloud.model.TeamRoom;
+import ai.hanzo.cloud.model.TeamRoomBind;
+import ai.hanzo.cloud.model.TeamRooms;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -1227,6 +1230,123 @@ public class TeamApi {
         return localVarCall;
     }
     /**
+     * Build call for getTeamRooms
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getTeamRoomsCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/team/rooms";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getTeamRoomsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getTeamRoomsCall(_callback);
+
+    }
+
+    /**
+     * Returns every room of the caller&#39;s org, across the workspaces it owns, with the work facet each carries.
+     * Returns every room of the caller&#39;s org, across the workspaces it owns, with the work facet each carries.  It reads the SAME Chunter documents the transactor serves, so a room opened in the Team client appears here with no sync, and a facet written here is read by anything holding the document. Direct messages are included: a room between two people is a room with no name, not a different kind of thing.
+     * @return TeamRooms
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public TeamRooms getTeamRooms() throws ApiException {
+        ApiResponse<TeamRooms> localVarResp = getTeamRoomsWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * Returns every room of the caller&#39;s org, across the workspaces it owns, with the work facet each carries.
+     * Returns every room of the caller&#39;s org, across the workspaces it owns, with the work facet each carries.  It reads the SAME Chunter documents the transactor serves, so a room opened in the Team client appears here with no sync, and a facet written here is read by anything holding the document. Direct messages are included: a room between two people is a room with no name, not a different kind of thing.
+     * @return ApiResponse&lt;TeamRooms&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<TeamRooms> getTeamRoomsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getTeamRoomsValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<TeamRooms>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Returns every room of the caller&#39;s org, across the workspaces it owns, with the work facet each carries. (asynchronously)
+     * Returns every room of the caller&#39;s org, across the workspaces it owns, with the work facet each carries.  It reads the SAME Chunter documents the transactor serves, so a room opened in the Team client appears here with no sync, and a facet written here is read by anything holding the document. Direct messages are included: a room between two people is a room with no name, not a different kind of thing.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getTeamRoomsAsync(final ApiCallback<TeamRooms> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getTeamRoomsValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<TeamRooms>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for getTeamTransactorApiV1Statistics
      * @param token Token is the workspace token minted by selectWorkspace. (optional)
      * @param _callback Callback for upload/download progress
@@ -2162,6 +2282,143 @@ public class TeamApi {
 
         okhttp3.Call localVarCall = putTeamAccountCookieValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<CookieAck>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for putTeamRoomsById
+     * @param id ID is the room to bind, from the path. The URL is the authority; a body carrying another id cannot redirect the write. (required)
+     * @param teamRoomBind  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call putTeamRoomsByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TeamRoomBind teamRoomBind, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = teamRoomBind;
+
+        // create path and map variables
+        String localVarPath = "/v1/team/rooms/{id}"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call putTeamRoomsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TeamRoomBind teamRoomBind, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling putTeamRoomsById(Async)");
+        }
+
+        // verify the required parameter 'teamRoomBind' is set
+        if (teamRoomBind == null) {
+            throw new ApiException("Missing the required parameter 'teamRoomBind' when calling putTeamRoomsById(Async)");
+        }
+
+        return putTeamRoomsByIdCall(id, teamRoomBind, _callback);
+
+    }
+
+    /**
+     * States what a room is for: its lifecycle intent, and what it is about.
+     * States what a room is for: its lifecycle intent, and what it is about. It answers the room as it now stands.  The write is a platform MIXIN on the room document, applied through the SAME applyTx path the Team client&#39;s own writes take and broadcast to every connected client — so a room bound here updates live in an open workspace rather than on the next reload.
+     * @param id ID is the room to bind, from the path. The URL is the authority; a body carrying another id cannot redirect the write. (required)
+     * @param teamRoomBind  (required)
+     * @return TeamRoom
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public TeamRoom putTeamRoomsById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TeamRoomBind teamRoomBind) throws ApiException {
+        ApiResponse<TeamRoom> localVarResp = putTeamRoomsByIdWithHttpInfo(id, teamRoomBind);
+        return localVarResp.getData();
+    }
+
+    /**
+     * States what a room is for: its lifecycle intent, and what it is about.
+     * States what a room is for: its lifecycle intent, and what it is about. It answers the room as it now stands.  The write is a platform MIXIN on the room document, applied through the SAME applyTx path the Team client&#39;s own writes take and broadcast to every connected client — so a room bound here updates live in an open workspace rather than on the next reload.
+     * @param id ID is the room to bind, from the path. The URL is the authority; a body carrying another id cannot redirect the write. (required)
+     * @param teamRoomBind  (required)
+     * @return ApiResponse&lt;TeamRoom&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<TeamRoom> putTeamRoomsByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TeamRoomBind teamRoomBind) throws ApiException {
+        okhttp3.Call localVarCall = putTeamRoomsByIdValidateBeforeCall(id, teamRoomBind, null);
+        Type localVarReturnType = new TypeToken<TeamRoom>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * States what a room is for: its lifecycle intent, and what it is about. (asynchronously)
+     * States what a room is for: its lifecycle intent, and what it is about. It answers the room as it now stands.  The write is a platform MIXIN on the room document, applied through the SAME applyTx path the Team client&#39;s own writes take and broadcast to every connected client — so a room bound here updates live in an open workspace rather than on the next reload.
+     * @param id ID is the room to bind, from the path. The URL is the authority; a body carrying another id cannot redirect the write. (required)
+     * @param teamRoomBind  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call putTeamRoomsByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TeamRoomBind teamRoomBind, final ApiCallback<TeamRoom> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = putTeamRoomsByIdValidateBeforeCall(id, teamRoomBind, _callback);
+        Type localVarReturnType = new TypeToken<TeamRoom>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
