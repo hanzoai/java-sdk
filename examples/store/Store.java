@@ -2,7 +2,7 @@ package ai.hanzo.cloud.examples;
 
 import ai.hanzo.Hanzo;
 import ai.hanzo.cloud.ApiException;
-import ai.hanzo.cloud.api.InstancesApi;
+import ai.hanzo.cloud.api.ProvisioningApi;
 import ai.hanzo.cloud.model.ProvisionRequest;
 import ai.hanzo.cloud.model.ProvisionResult;
 import ai.hanzo.cloud.model.ProvisionedResource;
@@ -34,17 +34,17 @@ import java.util.UUID;
 public final class Store {
 
     public static void main(String[] args) {
-        InstancesApi kv = new InstancesApi(Hanzo.client());
+        ProvisioningApi kv = new ProvisioningApi(Hanzo.client());
 
         // Names are org-unique, so the example makes a fresh one rather than
         // colliding with whatever the last run left.
         String name = "sdk-example-" + UUID.randomUUID().toString().substring(0, 8);
 
         try {
-            ProvisionResult created = kv.postInstancesKv(new ProvisionRequest().name(name));
+            ProvisionResult created = kv.postProvisioningKv(new ProvisionRequest().name(name));
             System.out.printf("created  %s (%s)%n", created.getName(), created.getStatus());
 
-            ProvisionedResource read = kv.getInstancesKvByName(name);
+            ProvisionedResource read = kv.getProvisioningKvByName(name);
             System.out.printf("read     %s host=%s port=%s status=%s%n",
                     read.getName(), read.getHost(), read.getPort(), read.getStatus());
         } catch (ApiException e) {
@@ -52,7 +52,7 @@ public final class Store {
             System.exit(1);
         } finally {
             try {
-                kv.deleteInstancesKvByName(name);
+                kv.deleteProvisioningKvByName(name);
                 System.out.printf("deleted  %s%n", name);
             } catch (ApiException e) {
                 System.err.printf("delete %s failed: HTTP %d %s%n", name, e.getCode(), e.getResponseBody());

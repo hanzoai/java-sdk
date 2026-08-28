@@ -2,7 +2,7 @@ package ai.hanzo.cloud.examples;
 
 import ai.hanzo.Hanzo;
 import ai.hanzo.cloud.ApiException;
-import ai.hanzo.cloud.api.KeysApi;
+import ai.hanzo.cloud.api.AccountApi;
 import ai.hanzo.cloud.model.ApiKey;
 import ai.hanzo.cloud.model.ApiKeyList;
 
@@ -28,9 +28,9 @@ import java.util.List;
 public final class Hello {
 
     public static void main(String[] args) {
-        KeysApi keys = new KeysApi(Hanzo.client());
+        AccountApi keys = new AccountApi(Hanzo.client());
         try {
-            ApiKeyList mine = keys.getKeys();
+            ApiKeyList mine = keys.getAccountKeys();
             List<ApiKey> owned = mine.getKeys();
             if (owned == null || owned.isEmpty()) {
                 System.out.println("the key is good, and it owns no keys of its own");
