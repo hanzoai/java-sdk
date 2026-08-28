@@ -50,10 +50,10 @@ import java.util.Set;
 import ai.hanzo.cloud.JSON;
 
 /**
- * Response
+ * Fusion
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
-public class Response {
+public class Fusion {
   public static final String SERIALIZED_NAME_BACKENDS = "backends";
   @SerializedName(SERIALIZED_NAME_BACKENDS)
   @javax.annotation.Nullable
@@ -79,15 +79,15 @@ public class Response {
   @javax.annotation.Nullable
   private Integer tookMs;
 
-  public Response() {
+  public Fusion() {
   }
 
-  public Response backends(@javax.annotation.Nullable List<BackendStatus> backends) {
+  public Fusion backends(@javax.annotation.Nullable List<BackendStatus> backends) {
     this.backends = backends;
     return this;
   }
 
-  public Response addBackendsItem(BackendStatus backendsItem) {
+  public Fusion addBackendsItem(BackendStatus backendsItem) {
     if (this.backends == null) {
       this.backends = new ArrayList<>();
     }
@@ -109,12 +109,12 @@ public class Response {
   }
 
 
-  public Response hits(@javax.annotation.Nullable List<Hit> hits) {
+  public Fusion hits(@javax.annotation.Nullable List<Hit> hits) {
     this.hits = hits;
     return this;
   }
 
-  public Response addHitsItem(Hit hitsItem) {
+  public Fusion addHitsItem(Hit hitsItem) {
     if (this.hits == null) {
       this.hits = new ArrayList<>();
     }
@@ -136,7 +136,7 @@ public class Response {
   }
 
 
-  public Response mode(@javax.annotation.Nullable String mode) {
+  public Fusion mode(@javax.annotation.Nullable String mode) {
     this.mode = mode;
     return this;
   }
@@ -155,7 +155,7 @@ public class Response {
   }
 
 
-  public Response status(@javax.annotation.Nullable String status) {
+  public Fusion status(@javax.annotation.Nullable String status) {
     this.status = status;
     return this;
   }
@@ -174,7 +174,7 @@ public class Response {
   }
 
 
-  public Response tookMs(@javax.annotation.Nullable Integer tookMs) {
+  public Fusion tookMs(@javax.annotation.Nullable Integer tookMs) {
     this.tookMs = tookMs;
     return this;
   }
@@ -202,12 +202,12 @@ public class Response {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Response response = (Response) o;
-    return Objects.equals(this.backends, response.backends) &&
-        Objects.equals(this.hits, response.hits) &&
-        Objects.equals(this.mode, response.mode) &&
-        Objects.equals(this.status, response.status) &&
-        Objects.equals(this.tookMs, response.tookMs);
+    Fusion fusion = (Fusion) o;
+    return Objects.equals(this.backends, fusion.backends) &&
+        Objects.equals(this.hits, fusion.hits) &&
+        Objects.equals(this.mode, fusion.mode) &&
+        Objects.equals(this.status, fusion.status) &&
+        Objects.equals(this.tookMs, fusion.tookMs);
   }
 
   @Override
@@ -218,7 +218,7 @@ public class Response {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Response {\n");
+    sb.append("class Fusion {\n");
     sb.append("    backends: ").append(toIndentedString(backends)).append("\n");
     sb.append("    hits: ").append(toIndentedString(hits)).append("\n");
     sb.append("    mode: ").append(toIndentedString(mode)).append("\n");
@@ -255,20 +255,20 @@ public class Response {
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to Response
+   * @throws IOException if the JSON Element is invalid with respect to Fusion
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!Response.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in Response is not found in the empty JSON string", Response.openapiRequiredFields.toString()));
+        if (!Fusion.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in Fusion is not found in the empty JSON string", Fusion.openapiRequiredFields.toString()));
         }
       }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!Response.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Response` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!Fusion.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Fusion` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
@@ -312,22 +312,22 @@ public class Response {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!Response.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'Response' and its subtypes
+       if (!Fusion.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'Fusion' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<Response> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(Response.class));
+       final TypeAdapter<Fusion> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(Fusion.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<Response>() {
+       return (TypeAdapter<T>) new TypeAdapter<Fusion>() {
            @Override
-           public void write(JsonWriter out, Response value) throws IOException {
+           public void write(JsonWriter out, Fusion value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public Response read(JsonReader in) throws IOException {
+           public Fusion read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -338,18 +338,18 @@ public class Response {
   }
 
   /**
-   * Create an instance of Response given an JSON string
+   * Create an instance of Fusion given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of Response
-   * @throws IOException if the JSON string is invalid with respect to Response
+   * @return An instance of Fusion
+   * @throws IOException if the JSON string is invalid with respect to Fusion
    */
-  public static Response fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, Response.class);
+  public static Fusion fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, Fusion.class);
   }
 
   /**
-   * Convert an instance of Response to an JSON string
+   * Convert an instance of Fusion to an JSON string
    *
    * @return JSON string
    */
