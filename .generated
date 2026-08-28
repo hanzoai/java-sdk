@@ -2430,6 +2430,7 @@ hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/ValidatorList.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/Variant.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/VendorRow.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/VendorsOut.java
+hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/Venue.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/Verdict.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/VerificationDecision.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/VerificationReq.java
