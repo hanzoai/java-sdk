@@ -27,8 +27,8 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import ai.hanzo.cloud.model.Fusion;
 import ai.hanzo.cloud.model.Request;
-import ai.hanzo.cloud.model.Response;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -146,7 +146,7 @@ public class SearchApi {
      * Hybrid search over the org&#39;s own corpora
      * Is the typed op behind POST /v1/search. It does exactly two things the in-process entry point must not do: resolve the tenant from the validated principal, and refuse when there is none. Everything else is ForOrg.
      * @param request  (required)
-     * @return Response
+     * @return Fusion
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -155,8 +155,8 @@ public class SearchApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Response search(@javax.annotation.Nonnull Request request) throws ApiException {
-        ApiResponse<Response> localVarResp = searchWithHttpInfo(request);
+    public Fusion search(@javax.annotation.Nonnull Request request) throws ApiException {
+        ApiResponse<Fusion> localVarResp = searchWithHttpInfo(request);
         return localVarResp.getData();
     }
 
@@ -164,7 +164,7 @@ public class SearchApi {
      * Hybrid search over the org&#39;s own corpora
      * Is the typed op behind POST /v1/search. It does exactly two things the in-process entry point must not do: resolve the tenant from the validated principal, and refuse when there is none. Everything else is ForOrg.
      * @param request  (required)
-     * @return ApiResponse&lt;Response&gt;
+     * @return ApiResponse&lt;Fusion&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -173,9 +173,9 @@ public class SearchApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Response> searchWithHttpInfo(@javax.annotation.Nonnull Request request) throws ApiException {
+    public ApiResponse<Fusion> searchWithHttpInfo(@javax.annotation.Nonnull Request request) throws ApiException {
         okhttp3.Call localVarCall = searchValidateBeforeCall(request, null);
-        Type localVarReturnType = new TypeToken<Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<Fusion>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -193,10 +193,10 @@ public class SearchApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchAsync(@javax.annotation.Nonnull Request request, final ApiCallback<Response> _callback) throws ApiException {
+    public okhttp3.Call searchAsync(@javax.annotation.Nonnull Request request, final ApiCallback<Fusion> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = searchValidateBeforeCall(request, _callback);
-        Type localVarReturnType = new TypeToken<Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<Fusion>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

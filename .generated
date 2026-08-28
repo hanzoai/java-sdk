@@ -685,6 +685,7 @@ hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/FrameworkRow.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/FunctionDetail.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/FunctionView.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/Funnel.java
+hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/Fusion.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/GLRow.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/GPU.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/GcOut.java
@@ -995,7 +996,6 @@ hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/MachineView.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/MakeIn.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/MarketCatalog.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/MarketItem.java
-hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/Match.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/McpCatalog.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/McpCatalogSync.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/McpServerList.java
@@ -1965,6 +1965,7 @@ hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/PromptList.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/PromptMeta.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/PromptReq.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/PropSpec.java
+hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/Provenance.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/ProviderBreakdown.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/ProviderInfo.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/ProviderRow.java
@@ -2070,7 +2071,6 @@ hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/Request.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/ResolveReferenceIn.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/ResolveReferenceOut.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/ResourceUsage.java
-hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/Response.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/Responsible.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/RestartRef.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/Restarted.java

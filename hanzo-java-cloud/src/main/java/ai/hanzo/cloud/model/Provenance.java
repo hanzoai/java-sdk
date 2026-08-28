@@ -47,10 +47,10 @@ import java.util.Set;
 import ai.hanzo.cloud.JSON;
 
 /**
- * Match
+ * Provenance
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
-public class Match {
+public class Provenance {
   public static final String SERIALIZED_NAME_BACKEND = "backend";
   @SerializedName(SERIALIZED_NAME_BACKEND)
   @javax.annotation.Nullable
@@ -66,16 +66,16 @@ public class Match {
   @javax.annotation.Nullable
   private BigDecimal score;
 
-  public Match() {
+  public Provenance() {
   }
 
-  public Match backend(@javax.annotation.Nullable String backend) {
+  public Provenance backend(@javax.annotation.Nullable String backend) {
     this.backend = backend;
     return this;
   }
 
   /**
-   * Backend is the leg that contributed this match: \&quot;index\&quot; (lexical), \&quot;vector\&quot; (semantic) or \&quot;code\&quot; (the org&#39;s repositories). It is the same name that leg reports itself under in Response.Backends, so a hit can be traced to a status.
+   * Backend is the leg that contributed this match: \&quot;index\&quot; (lexical), \&quot;vector\&quot; (semantic) or \&quot;code\&quot; (the org&#39;s repositories). It is the same name that leg reports itself under in Fusion.Backends, so a hit can be traced to a status.
    * @return backend
    */
   @javax.annotation.Nullable
@@ -88,7 +88,7 @@ public class Match {
   }
 
 
-  public Match rank(@javax.annotation.Nullable Integer rank) {
+  public Provenance rank(@javax.annotation.Nullable Integer rank) {
     this.rank = rank;
     return this;
   }
@@ -107,7 +107,7 @@ public class Match {
   }
 
 
-  public Match score(@javax.annotation.Nullable BigDecimal score) {
+  public Provenance score(@javax.annotation.Nullable BigDecimal score) {
     this.score = score;
     return this;
   }
@@ -135,10 +135,10 @@ public class Match {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Match match = (Match) o;
-    return Objects.equals(this.backend, match.backend) &&
-        Objects.equals(this.rank, match.rank) &&
-        Objects.equals(this.score, match.score);
+    Provenance provenance = (Provenance) o;
+    return Objects.equals(this.backend, provenance.backend) &&
+        Objects.equals(this.rank, provenance.rank) &&
+        Objects.equals(this.score, provenance.score);
   }
 
   @Override
@@ -149,7 +149,7 @@ public class Match {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Match {\n");
+    sb.append("class Provenance {\n");
     sb.append("    backend: ").append(toIndentedString(backend)).append("\n");
     sb.append("    rank: ").append(toIndentedString(rank)).append("\n");
     sb.append("    score: ").append(toIndentedString(score)).append("\n");
@@ -184,20 +184,20 @@ public class Match {
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to Match
+   * @throws IOException if the JSON Element is invalid with respect to Provenance
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!Match.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in Match is not found in the empty JSON string", Match.openapiRequiredFields.toString()));
+        if (!Provenance.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in Provenance is not found in the empty JSON string", Provenance.openapiRequiredFields.toString()));
         }
       }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!Match.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Match` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!Provenance.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Provenance` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
@@ -210,22 +210,22 @@ public class Match {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!Match.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'Match' and its subtypes
+       if (!Provenance.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'Provenance' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<Match> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(Match.class));
+       final TypeAdapter<Provenance> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(Provenance.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<Match>() {
+       return (TypeAdapter<T>) new TypeAdapter<Provenance>() {
            @Override
-           public void write(JsonWriter out, Match value) throws IOException {
+           public void write(JsonWriter out, Provenance value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public Match read(JsonReader in) throws IOException {
+           public Provenance read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -236,18 +236,18 @@ public class Match {
   }
 
   /**
-   * Create an instance of Match given an JSON string
+   * Create an instance of Provenance given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of Match
-   * @throws IOException if the JSON string is invalid with respect to Match
+   * @return An instance of Provenance
+   * @throws IOException if the JSON string is invalid with respect to Provenance
    */
-  public static Match fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, Match.class);
+  public static Provenance fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, Provenance.class);
   }
 
   /**
-   * Convert an instance of Match to an JSON string
+   * Convert an instance of Provenance to an JSON string
    *
    * @return JSON string
    */
