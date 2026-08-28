@@ -40,7 +40,6 @@ import ai.hanzo.cloud.model.IndexStats;
 import ai.hanzo.cloud.model.IndexTask;
 import ai.hanzo.cloud.model.IndexVersion;
 import ai.hanzo.cloud.model.IndexView;
-import ai.hanzo.cloud.model.PostIndexIndexesByUidDocumentsDeleteBatchRequest;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -1881,7 +1880,7 @@ public class IndexApi {
     /**
      * Build call for postIndexIndexesByUidDocumentsDeleteBatch
      * @param uid  (required)
-     * @param postIndexIndexesByUidDocumentsDeleteBatchRequest  (optional)
+     * @param requestBody  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1892,7 +1891,7 @@ public class IndexApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postIndexIndexesByUidDocumentsDeleteBatchCall(@javax.annotation.Nonnull String uid, @javax.annotation.Nullable PostIndexIndexesByUidDocumentsDeleteBatchRequest postIndexIndexesByUidDocumentsDeleteBatchRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postIndexIndexesByUidDocumentsDeleteBatchCall(@javax.annotation.Nonnull String uid, @javax.annotation.Nullable List<Object> requestBody, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1906,7 +1905,7 @@ public class IndexApi {
             basePath = null;
         }
 
-        Object localVarPostBody = postIndexIndexesByUidDocumentsDeleteBatchRequest;
+        Object localVarPostBody = requestBody;
 
         // create path and map variables
         String localVarPath = "/v1/index/indexes/{uid}/documents/delete-batch"
@@ -1939,13 +1938,13 @@ public class IndexApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postIndexIndexesByUidDocumentsDeleteBatchValidateBeforeCall(@javax.annotation.Nonnull String uid, @javax.annotation.Nullable PostIndexIndexesByUidDocumentsDeleteBatchRequest postIndexIndexesByUidDocumentsDeleteBatchRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postIndexIndexesByUidDocumentsDeleteBatchValidateBeforeCall(@javax.annotation.Nonnull String uid, @javax.annotation.Nullable List<Object> requestBody, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'uid' is set
         if (uid == null) {
             throw new ApiException("Missing the required parameter 'uid' when calling postIndexIndexesByUidDocumentsDeleteBatch(Async)");
         }
 
-        return postIndexIndexesByUidDocumentsDeleteBatchCall(uid, postIndexIndexesByUidDocumentsDeleteBatchRequest, _callback);
+        return postIndexIndexesByUidDocumentsDeleteBatchCall(uid, requestBody, _callback);
 
     }
 
@@ -1953,7 +1952,7 @@ public class IndexApi {
      * Delete many documents by primary key in one call
      * Removes every named document from the caller&#39;s own index. The body is the dialect&#39;s own: a bare array of primary keys, which may be strings or numbers. A key that is not there is not an error, so a client reconciling its own corpus can send one list rather than checking each key first.  The tenant is the org minted from the VALIDATED bearer&#39;s owner claim, never a client-supplied header. Without a validated principal the answer is 403 carrying the dialect&#39;s &#x60;invalid_api_key&#x60; body.  The 202 and its &#x60;enqueued&#x60; task are DIALECT COMPATIBILITY, not a promise of later work: the documents are already gone when this answers.
      * @param uid  (required)
-     * @param postIndexIndexesByUidDocumentsDeleteBatchRequest  (optional)
+     * @param requestBody  (optional)
      * @return IndexEnqueued
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1963,8 +1962,8 @@ public class IndexApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public IndexEnqueued postIndexIndexesByUidDocumentsDeleteBatch(@javax.annotation.Nonnull String uid, @javax.annotation.Nullable PostIndexIndexesByUidDocumentsDeleteBatchRequest postIndexIndexesByUidDocumentsDeleteBatchRequest) throws ApiException {
-        ApiResponse<IndexEnqueued> localVarResp = postIndexIndexesByUidDocumentsDeleteBatchWithHttpInfo(uid, postIndexIndexesByUidDocumentsDeleteBatchRequest);
+    public IndexEnqueued postIndexIndexesByUidDocumentsDeleteBatch(@javax.annotation.Nonnull String uid, @javax.annotation.Nullable List<Object> requestBody) throws ApiException {
+        ApiResponse<IndexEnqueued> localVarResp = postIndexIndexesByUidDocumentsDeleteBatchWithHttpInfo(uid, requestBody);
         return localVarResp.getData();
     }
 
@@ -1972,7 +1971,7 @@ public class IndexApi {
      * Delete many documents by primary key in one call
      * Removes every named document from the caller&#39;s own index. The body is the dialect&#39;s own: a bare array of primary keys, which may be strings or numbers. A key that is not there is not an error, so a client reconciling its own corpus can send one list rather than checking each key first.  The tenant is the org minted from the VALIDATED bearer&#39;s owner claim, never a client-supplied header. Without a validated principal the answer is 403 carrying the dialect&#39;s &#x60;invalid_api_key&#x60; body.  The 202 and its &#x60;enqueued&#x60; task are DIALECT COMPATIBILITY, not a promise of later work: the documents are already gone when this answers.
      * @param uid  (required)
-     * @param postIndexIndexesByUidDocumentsDeleteBatchRequest  (optional)
+     * @param requestBody  (optional)
      * @return ApiResponse&lt;IndexEnqueued&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1982,8 +1981,8 @@ public class IndexApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IndexEnqueued> postIndexIndexesByUidDocumentsDeleteBatchWithHttpInfo(@javax.annotation.Nonnull String uid, @javax.annotation.Nullable PostIndexIndexesByUidDocumentsDeleteBatchRequest postIndexIndexesByUidDocumentsDeleteBatchRequest) throws ApiException {
-        okhttp3.Call localVarCall = postIndexIndexesByUidDocumentsDeleteBatchValidateBeforeCall(uid, postIndexIndexesByUidDocumentsDeleteBatchRequest, null);
+    public ApiResponse<IndexEnqueued> postIndexIndexesByUidDocumentsDeleteBatchWithHttpInfo(@javax.annotation.Nonnull String uid, @javax.annotation.Nullable List<Object> requestBody) throws ApiException {
+        okhttp3.Call localVarCall = postIndexIndexesByUidDocumentsDeleteBatchValidateBeforeCall(uid, requestBody, null);
         Type localVarReturnType = new TypeToken<IndexEnqueued>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1992,7 +1991,7 @@ public class IndexApi {
      * Delete many documents by primary key in one call (asynchronously)
      * Removes every named document from the caller&#39;s own index. The body is the dialect&#39;s own: a bare array of primary keys, which may be strings or numbers. A key that is not there is not an error, so a client reconciling its own corpus can send one list rather than checking each key first.  The tenant is the org minted from the VALIDATED bearer&#39;s owner claim, never a client-supplied header. Without a validated principal the answer is 403 carrying the dialect&#39;s &#x60;invalid_api_key&#x60; body.  The 202 and its &#x60;enqueued&#x60; task are DIALECT COMPATIBILITY, not a promise of later work: the documents are already gone when this answers.
      * @param uid  (required)
-     * @param postIndexIndexesByUidDocumentsDeleteBatchRequest  (optional)
+     * @param requestBody  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2003,9 +2002,9 @@ public class IndexApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postIndexIndexesByUidDocumentsDeleteBatchAsync(@javax.annotation.Nonnull String uid, @javax.annotation.Nullable PostIndexIndexesByUidDocumentsDeleteBatchRequest postIndexIndexesByUidDocumentsDeleteBatchRequest, final ApiCallback<IndexEnqueued> _callback) throws ApiException {
+    public okhttp3.Call postIndexIndexesByUidDocumentsDeleteBatchAsync(@javax.annotation.Nonnull String uid, @javax.annotation.Nullable List<Object> requestBody, final ApiCallback<IndexEnqueued> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postIndexIndexesByUidDocumentsDeleteBatchValidateBeforeCall(uid, postIndexIndexesByUidDocumentsDeleteBatchRequest, _callback);
+        okhttp3.Call localVarCall = postIndexIndexesByUidDocumentsDeleteBatchValidateBeforeCall(uid, requestBody, _callback);
         Type localVarReturnType = new TypeToken<IndexEnqueued>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

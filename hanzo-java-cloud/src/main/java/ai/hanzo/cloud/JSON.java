@@ -1868,7 +1868,6 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.PopulatedFlow.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.Position.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.PostEventRequest.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.PostIndexIndexesByUidDocumentsDeleteBatchRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.PostList.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.PrefsView.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new ai.hanzo.cloud.model.Preset.CustomTypeAdapterFactory());

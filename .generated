@@ -1906,7 +1906,6 @@ hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/PoolScale.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/PopulatedFlow.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/Position.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/PostEventRequest.java
-hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/PostIndexIndexesByUidDocumentsDeleteBatchRequest.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/PostList.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/PrefsView.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/Preset.java
