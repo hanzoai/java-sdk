@@ -14,7 +14,7 @@
 package ai.hanzo.cloud.model;
 
 import java.util.Objects;
-import ai.hanzo.cloud.model.ModuleInfo;
+import ai.hanzo.cloud.model.Module;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -56,17 +56,17 @@ public class ModuleList {
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
-  private List<ModuleInfo> data = new ArrayList<>();
+  private List<Module> data = new ArrayList<>();
 
   public ModuleList() {
   }
 
-  public ModuleList data(@javax.annotation.Nullable List<ModuleInfo> data) {
+  public ModuleList data(@javax.annotation.Nullable List<Module> data) {
     this.data = data;
     return this;
   }
 
-  public ModuleList addDataItem(ModuleInfo dataItem) {
+  public ModuleList addDataItem(Module dataItem) {
     if (this.data == null) {
       this.data = new ArrayList<>();
     }
@@ -75,15 +75,15 @@ public class ModuleList {
   }
 
   /**
-   * Data is every module compiled into this binary, with the DocTypes it installs.
+   * Data is every module compiled into this binary, with the DocTypes it installs and whether the caller&#39;s org has turned it on.
    * @return data
    */
   @javax.annotation.Nullable
-  public List<ModuleInfo> getData() {
+  public List<Module> getData() {
     return data;
   }
 
-  public void setData(@javax.annotation.Nullable List<ModuleInfo> data) {
+  public void setData(@javax.annotation.Nullable List<Module> data) {
     this.data = data;
   }
 
@@ -169,7 +169,7 @@ public class ModuleList {
 
           // validate the optional field `data` (array)
           for (int i = 0; i < jsonArraydata.size(); i++) {
-            ModuleInfo.validateJsonElement(jsonArraydata.get(i));
+            Module.validateJsonElement(jsonArraydata.get(i));
           };
         }
       }
