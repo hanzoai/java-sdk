@@ -2,7 +2,7 @@ package ai.hanzo.cloud.examples;
 
 import ai.hanzo.Hanzo;
 import ai.hanzo.cloud.ApiException;
-import ai.hanzo.cloud.api.ChatApi;
+import ai.hanzo.cloud.api.AiApi;
 
 /**
  * chat — one completion.
@@ -36,7 +36,7 @@ import ai.hanzo.cloud.api.ChatApi;
 public final class Chat {
 
     public static void main(String[] args) {
-        ChatApi chat = new ChatApi(Hanzo.client());
+        AiApi chat = new AiApi(Hanzo.client());
         try {
             System.out.printf("completion  HTTP %d%n", chat.postChatCompletionsWithHttpInfo().getStatusCode());
         } catch (ApiException e) {
