@@ -214,7 +214,7 @@ public class ChannelView {
   }
 
   /**
-   * ID is the fixed transport identifier — discord, slack, teams or telegram — and the value every route on this surface names a channel by, including the &#x60;:channel&#x60; segment of the send path. The listing is always in that order.
+   * ID is the fixed transport identifier — discord, slack, teams, telegram or whatsapp — and the value every route on this surface names a channel by, including the &#x60;:channel&#x60; segment of the send path. The listing is always in that order.
    * @return id
    */
   @javax.annotation.Nullable

@@ -120,7 +120,7 @@ public class AllowlistPutIn {
   }
 
   /**
-   * Channel is the transport to edit: discord, slack, teams or telegram. Required; an unknown value is a 404.
+   * Channel is the transport to edit: discord, slack, teams, telegram or whatsapp. Required; an unknown value is a 404.
    * @return channel
    */
   @javax.annotation.Nullable
