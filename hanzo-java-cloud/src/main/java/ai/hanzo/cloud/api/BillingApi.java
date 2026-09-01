@@ -31,6 +31,8 @@ import ai.hanzo.cloud.model.Accounts;
 import ai.hanzo.cloud.model.Alert;
 import ai.hanzo.cloud.model.AlertPatch;
 import ai.hanzo.cloud.model.AlertSpec;
+import ai.hanzo.cloud.model.AutoRecharge;
+import ai.hanzo.cloud.model.AutoRechargeEdit;
 import ai.hanzo.cloud.model.BillingAccount;
 import ai.hanzo.cloud.model.CapVerdict;
 import ai.hanzo.cloud.model.Charged;
@@ -57,6 +59,7 @@ import ai.hanzo.cloud.model.SubscriptionRef;
 import ai.hanzo.cloud.model.Subscriptions;
 import ai.hanzo.cloud.model.Tier;
 import ai.hanzo.cloud.model.TopupIn;
+import ai.hanzo.cloud.model.Transaction;
 import ai.hanzo.cloud.model.Transactions;
 import ai.hanzo.cloud.model.WireInstructions;
 
@@ -2658,6 +2661,123 @@ public class BillingApi {
         return localVarCall;
     }
     /**
+     * Build call for getBillingRecharge
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getBillingRechargeCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/billing/recharge";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getBillingRechargeValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getBillingRechargeCall(_callback);
+
+    }
+
+    /**
+     * Reads the caller&#39;s auto-reload rule: top the balance up by &#x60;amountCents&#x60; whenever it falls below &#x60;thresholdCents&#x60;, charging the card on file off-session.
+     * Reads the caller&#39;s auto-reload rule: top the balance up by &#x60;amountCents&#x60; whenever it falls below &#x60;thresholdCents&#x60;, charging the card on file off-session. It is the same setting every prepaid AI account calls auto-reload.  An org that has never set one reads as disabled with zeroes rather than as an error — \&quot;no rule\&quot; answers the question — and &#x60;stored&#x60; is how a caller tells never-configured from deliberately-off.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
+     * @return AutoRecharge
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public AutoRecharge getBillingRecharge() throws ApiException {
+        ApiResponse<AutoRecharge> localVarResp = getBillingRechargeWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * Reads the caller&#39;s auto-reload rule: top the balance up by &#x60;amountCents&#x60; whenever it falls below &#x60;thresholdCents&#x60;, charging the card on file off-session.
+     * Reads the caller&#39;s auto-reload rule: top the balance up by &#x60;amountCents&#x60; whenever it falls below &#x60;thresholdCents&#x60;, charging the card on file off-session. It is the same setting every prepaid AI account calls auto-reload.  An org that has never set one reads as disabled with zeroes rather than as an error — \&quot;no rule\&quot; answers the question — and &#x60;stored&#x60; is how a caller tells never-configured from deliberately-off.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
+     * @return ApiResponse&lt;AutoRecharge&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<AutoRecharge> getBillingRechargeWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getBillingRechargeValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<AutoRecharge>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Reads the caller&#39;s auto-reload rule: top the balance up by &#x60;amountCents&#x60; whenever it falls below &#x60;thresholdCents&#x60;, charging the card on file off-session. (asynchronously)
+     * Reads the caller&#39;s auto-reload rule: top the balance up by &#x60;amountCents&#x60; whenever it falls below &#x60;thresholdCents&#x60;, charging the card on file off-session. It is the same setting every prepaid AI account calls auto-reload.  An org that has never set one reads as disabled with zeroes rather than as an error — \&quot;no rule\&quot; answers the question — and &#x60;stored&#x60; is how a caller tells never-configured from deliberately-off.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getBillingRechargeAsync(final ApiCallback<AutoRecharge> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getBillingRechargeValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<AutoRecharge>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for getBillingSettings
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -3146,6 +3266,133 @@ public class BillingApi {
 
         okhttp3.Call localVarCall = getBillingTransactionsValidateBeforeCall(currency, limit, offset, _callback);
         Type localVarReturnType = new TypeToken<Transactions>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getBillingTransactionsById
+     * @param id  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getBillingTransactionsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/billing/transactions/{id}"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getBillingTransactionsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling getBillingTransactionsById(Async)");
+        }
+
+        return getBillingTransactionsByIdCall(id, _callback);
+
+    }
+
+    /**
+     * Reads one ledger entry by its id.
+     * Reads one ledger entry by its id.  It is the MEMBER of the collection beside it rather than a second way to ask — the same rows GET /v1/billing/transactions lists, addressed one at a time. A top-up receipt is read here, because a receipt IS a ledger entry: the id this takes is the &#x60;transactionId&#x60; a top-up hands back.  The read is narrower than the list: commerce&#39;s core loads the row and refuses anything that is not a deposit, so a row that exists but is not a top-up answers 404. That asymmetry is stated rather than closed, because widening a money read to make two shapes match is not a change worth making for symmetry.  The books are the caller&#39;s own and cannot be named, so a guessed id misses rather than reaching another tenant&#39;s ledger.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
+     * @param id  (required)
+     * @return Transaction
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public Transaction getBillingTransactionsById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<Transaction> localVarResp = getBillingTransactionsByIdWithHttpInfo(id);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Reads one ledger entry by its id.
+     * Reads one ledger entry by its id.  It is the MEMBER of the collection beside it rather than a second way to ask — the same rows GET /v1/billing/transactions lists, addressed one at a time. A top-up receipt is read here, because a receipt IS a ledger entry: the id this takes is the &#x60;transactionId&#x60; a top-up hands back.  The read is narrower than the list: commerce&#39;s core loads the row and refuses anything that is not a deposit, so a row that exists but is not a top-up answers 404. That asymmetry is stated rather than closed, because widening a money read to make two shapes match is not a change worth making for symmetry.  The books are the caller&#39;s own and cannot be named, so a guessed id misses rather than reaching another tenant&#39;s ledger.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
+     * @param id  (required)
+     * @return ApiResponse&lt;Transaction&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Transaction> getBillingTransactionsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getBillingTransactionsByIdValidateBeforeCall(id, null);
+        Type localVarReturnType = new TypeToken<Transaction>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Reads one ledger entry by its id. (asynchronously)
+     * Reads one ledger entry by its id.  It is the MEMBER of the collection beside it rather than a second way to ask — the same rows GET /v1/billing/transactions lists, addressed one at a time. A top-up receipt is read here, because a receipt IS a ledger entry: the id this takes is the &#x60;transactionId&#x60; a top-up hands back.  The read is narrower than the list: commerce&#39;s core loads the row and refuses anything that is not a deposit, so a row that exists but is not a top-up answers 404. That asymmetry is stated rather than closed, because widening a money read to make two shapes match is not a change worth making for symmetry.  The books are the caller&#39;s own and cannot be named, so a guessed id misses rather than reaching another tenant&#39;s ledger.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
+     * @param id  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getBillingTransactionsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Transaction> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getBillingTransactionsByIdValidateBeforeCall(id, _callback);
+        Type localVarReturnType = new TypeToken<Transaction>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -5010,6 +5257,133 @@ public class BillingApi {
 
         okhttp3.Call localVarCall = postBillingTopupTokenValidateBeforeCall(topupIn, xIdempotencyKey, _callback);
         Type localVarReturnType = new TypeToken<Charged>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for putBillingRecharge
+     * @param autoRechargeEdit  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call putBillingRechargeCall(@javax.annotation.Nonnull AutoRechargeEdit autoRechargeEdit, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = autoRechargeEdit;
+
+        // create path and map variables
+        String localVarPath = "/v1/billing/recharge";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call putBillingRechargeValidateBeforeCall(@javax.annotation.Nonnull AutoRechargeEdit autoRechargeEdit, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'autoRechargeEdit' is set
+        if (autoRechargeEdit == null) {
+            throw new ApiException("Missing the required parameter 'autoRechargeEdit' when calling putBillingRecharge(Async)");
+        }
+
+        return putBillingRechargeCall(autoRechargeEdit, _callback);
+
+    }
+
+    /**
+     * Sets the caller&#39;s auto-reload rule, and answers with the rule as stored.
+     * Sets the caller&#39;s auto-reload rule, and answers with the rule as stored.  ENABLING REQUIRES A CARD ON FILE (400), because the sweep charges off-session: a rule naming no chargeable method is a promise the schedule cannot keep. A non-positive amount and a negative threshold are refused the same way, each naming the field that was wrong.  The rule is the caller&#39;s OWN. The org comes from the validated principal and the body names none, so there is no field a write could be steered through onto another tenant&#39;s schedule.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
+     * @param autoRechargeEdit  (required)
+     * @return AutoRecharge
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public AutoRecharge putBillingRecharge(@javax.annotation.Nonnull AutoRechargeEdit autoRechargeEdit) throws ApiException {
+        ApiResponse<AutoRecharge> localVarResp = putBillingRechargeWithHttpInfo(autoRechargeEdit);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Sets the caller&#39;s auto-reload rule, and answers with the rule as stored.
+     * Sets the caller&#39;s auto-reload rule, and answers with the rule as stored.  ENABLING REQUIRES A CARD ON FILE (400), because the sweep charges off-session: a rule naming no chargeable method is a promise the schedule cannot keep. A non-positive amount and a negative threshold are refused the same way, each naming the field that was wrong.  The rule is the caller&#39;s OWN. The org comes from the validated principal and the body names none, so there is no field a write could be steered through onto another tenant&#39;s schedule.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
+     * @param autoRechargeEdit  (required)
+     * @return ApiResponse&lt;AutoRecharge&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<AutoRecharge> putBillingRechargeWithHttpInfo(@javax.annotation.Nonnull AutoRechargeEdit autoRechargeEdit) throws ApiException {
+        okhttp3.Call localVarCall = putBillingRechargeValidateBeforeCall(autoRechargeEdit, null);
+        Type localVarReturnType = new TypeToken<AutoRecharge>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Sets the caller&#39;s auto-reload rule, and answers with the rule as stored. (asynchronously)
+     * Sets the caller&#39;s auto-reload rule, and answers with the rule as stored.  ENABLING REQUIRES A CARD ON FILE (400), because the sweep charges off-session: a rule naming no chargeable method is a promise the schedule cannot keep. A non-positive amount and a negative threshold are refused the same way, each naming the field that was wrong.  The rule is the caller&#39;s OWN. The org comes from the validated principal and the body names none, so there is no field a write could be steered through onto another tenant&#39;s schedule.  A named handler, not a closure, so zipdoc can lift this prose into the registry.
+     * @param autoRechargeEdit  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call putBillingRechargeAsync(@javax.annotation.Nonnull AutoRechargeEdit autoRechargeEdit, final ApiCallback<AutoRecharge> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = putBillingRechargeValidateBeforeCall(autoRechargeEdit, _callback);
+        Type localVarReturnType = new TypeToken<AutoRecharge>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

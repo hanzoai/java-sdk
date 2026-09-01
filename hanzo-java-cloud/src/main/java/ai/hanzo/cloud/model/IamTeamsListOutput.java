@@ -14,7 +14,7 @@
 package ai.hanzo.cloud.model;
 
 import java.util.Objects;
-import ai.hanzo.cloud.model.RoleAssignment;
+import ai.hanzo.cloud.model.IamTeam;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -49,42 +49,66 @@ import java.util.Set;
 import ai.hanzo.cloud.JSON;
 
 /**
- * RoleList
+ * IamTeamsListOutput
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
-public class RoleList {
-  public static final String SERIALIZED_NAME_DATA = "data";
-  @SerializedName(SERIALIZED_NAME_DATA)
+public class IamTeamsListOutput {
+  public static final String SERIALIZED_NAME_TEAMS = "teams";
+  @SerializedName(SERIALIZED_NAME_TEAMS)
   @javax.annotation.Nullable
-  private List<RoleAssignment> data = new ArrayList<>();
+  private List<IamTeam> teams = new ArrayList<>();
 
-  public RoleList() {
+  public static final String SERIALIZED_NAME_TOTAL = "total";
+  @SerializedName(SERIALIZED_NAME_TOTAL)
+  @javax.annotation.Nullable
+  private Integer total;
+
+  public IamTeamsListOutput() {
   }
 
-  public RoleList data(@javax.annotation.Nullable List<RoleAssignment> data) {
-    this.data = data;
+  public IamTeamsListOutput teams(@javax.annotation.Nullable List<IamTeam> teams) {
+    this.teams = teams;
     return this;
   }
 
-  public RoleList addDataItem(RoleAssignment dataItem) {
-    if (this.data == null) {
-      this.data = new ArrayList<>();
+  public IamTeamsListOutput addTeamsItem(IamTeam teamsItem) {
+    if (this.teams == null) {
+      this.teams = new ArrayList<>();
     }
-    this.data.add(dataItem);
+    this.teams.add(teamsItem);
     return this;
   }
 
   /**
-   * Data is every (user, role) assignment in the caller&#39;s org.
-   * @return data
+   * Get teams
+   * @return teams
    */
   @javax.annotation.Nullable
-  public List<RoleAssignment> getData() {
-    return data;
+  public List<IamTeam> getTeams() {
+    return teams;
   }
 
-  public void setData(@javax.annotation.Nullable List<RoleAssignment> data) {
-    this.data = data;
+  public void setTeams(@javax.annotation.Nullable List<IamTeam> teams) {
+    this.teams = teams;
+  }
+
+
+  public IamTeamsListOutput total(@javax.annotation.Nullable Integer total) {
+    this.total = total;
+    return this;
+  }
+
+  /**
+   * Get total
+   * @return total
+   */
+  @javax.annotation.Nullable
+  public Integer getTotal() {
+    return total;
+  }
+
+  public void setTotal(@javax.annotation.Nullable Integer total) {
+    this.total = total;
   }
 
 
@@ -97,20 +121,22 @@ public class RoleList {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RoleList roleList = (RoleList) o;
-    return Objects.equals(this.data, roleList.data);
+    IamTeamsListOutput iamTeamsListOutput = (IamTeamsListOutput) o;
+    return Objects.equals(this.teams, iamTeamsListOutput.teams) &&
+        Objects.equals(this.total, iamTeamsListOutput.total);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(data);
+    return Objects.hash(teams, total);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RoleList {\n");
-    sb.append("    data: ").append(toIndentedString(data)).append("\n");
+    sb.append("class IamTeamsListOutput {\n");
+    sb.append("    teams: ").append(toIndentedString(teams)).append("\n");
+    sb.append("    total: ").append(toIndentedString(total)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -132,7 +158,7 @@ public class RoleList {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("data"));
+    openapiFields = new HashSet<String>(Arrays.asList("teams", "total"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -142,34 +168,34 @@ public class RoleList {
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to RoleList
+   * @throws IOException if the JSON Element is invalid with respect to IamTeamsListOutput
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!RoleList.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in RoleList is not found in the empty JSON string", RoleList.openapiRequiredFields.toString()));
+        if (!IamTeamsListOutput.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in IamTeamsListOutput is not found in the empty JSON string", IamTeamsListOutput.openapiRequiredFields.toString()));
         }
       }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!RoleList.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `RoleList` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!IamTeamsListOutput.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `IamTeamsListOutput` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
-        JsonArray jsonArraydata = jsonObj.getAsJsonArray("data");
-        if (jsonArraydata != null) {
+      if (jsonObj.get("teams") != null && !jsonObj.get("teams").isJsonNull()) {
+        JsonArray jsonArrayteams = jsonObj.getAsJsonArray("teams");
+        if (jsonArrayteams != null) {
           // ensure the json data is an array
-          if (!jsonObj.get("data").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `data` to be an array in the JSON string but got `%s`", jsonObj.get("data").toString()));
+          if (!jsonObj.get("teams").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `teams` to be an array in the JSON string but got `%s`", jsonObj.get("teams").toString()));
           }
 
-          // validate the optional field `data` (array)
-          for (int i = 0; i < jsonArraydata.size(); i++) {
-            RoleAssignment.validateJsonElement(jsonArraydata.get(i));
+          // validate the optional field `teams` (array)
+          for (int i = 0; i < jsonArrayteams.size(); i++) {
+            IamTeam.validateJsonElement(jsonArrayteams.get(i));
           };
         }
       }
@@ -179,22 +205,22 @@ public class RoleList {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!RoleList.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'RoleList' and its subtypes
+       if (!IamTeamsListOutput.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'IamTeamsListOutput' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<RoleList> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(RoleList.class));
+       final TypeAdapter<IamTeamsListOutput> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(IamTeamsListOutput.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<RoleList>() {
+       return (TypeAdapter<T>) new TypeAdapter<IamTeamsListOutput>() {
            @Override
-           public void write(JsonWriter out, RoleList value) throws IOException {
+           public void write(JsonWriter out, IamTeamsListOutput value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public RoleList read(JsonReader in) throws IOException {
+           public IamTeamsListOutput read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -205,18 +231,18 @@ public class RoleList {
   }
 
   /**
-   * Create an instance of RoleList given an JSON string
+   * Create an instance of IamTeamsListOutput given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of RoleList
-   * @throws IOException if the JSON string is invalid with respect to RoleList
+   * @return An instance of IamTeamsListOutput
+   * @throws IOException if the JSON string is invalid with respect to IamTeamsListOutput
    */
-  public static RoleList fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, RoleList.class);
+  public static IamTeamsListOutput fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, IamTeamsListOutput.class);
   }
 
   /**
-   * Convert an instance of RoleList to an JSON string
+   * Convert an instance of IamTeamsListOutput to an JSON string
    *
    * @return JSON string
    */

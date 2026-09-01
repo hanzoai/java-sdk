@@ -72,11 +72,6 @@ public class IamRolesInput {
   @javax.annotation.Nullable
   private List<String> domains = new ArrayList<>();
 
-  public static final String SERIALIZED_NAME_GROUPS = "groups";
-  @SerializedName(SERIALIZED_NAME_GROUPS)
-  @javax.annotation.Nullable
-  private List<String> groups = new ArrayList<>();
-
   public static final String SERIALIZED_NAME_IS_ENABLED = "isEnabled";
   @SerializedName(SERIALIZED_NAME_IS_ENABLED)
   @javax.annotation.Nullable
@@ -96,6 +91,11 @@ public class IamRolesInput {
   @SerializedName(SERIALIZED_NAME_ROLES)
   @javax.annotation.Nullable
   private List<String> roles = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_TEAMS = "teams";
+  @SerializedName(SERIALIZED_NAME_TEAMS)
+  @javax.annotation.Nullable
+  private List<String> teams = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_USERS = "users";
   @SerializedName(SERIALIZED_NAME_USERS)
@@ -189,33 +189,6 @@ public class IamRolesInput {
   }
 
 
-  public IamRolesInput groups(@javax.annotation.Nullable List<String> groups) {
-    this.groups = groups;
-    return this;
-  }
-
-  public IamRolesInput addGroupsItem(String groupsItem) {
-    if (this.groups == null) {
-      this.groups = new ArrayList<>();
-    }
-    this.groups.add(groupsItem);
-    return this;
-  }
-
-  /**
-   * Get groups
-   * @return groups
-   */
-  @javax.annotation.Nullable
-  public List<String> getGroups() {
-    return groups;
-  }
-
-  public void setGroups(@javax.annotation.Nullable List<String> groups) {
-    this.groups = groups;
-  }
-
-
   public IamRolesInput isEnabled(@javax.annotation.Nullable Boolean isEnabled) {
     this.isEnabled = isEnabled;
     return this;
@@ -300,6 +273,33 @@ public class IamRolesInput {
   }
 
 
+  public IamRolesInput teams(@javax.annotation.Nullable List<String> teams) {
+    this.teams = teams;
+    return this;
+  }
+
+  public IamRolesInput addTeamsItem(String teamsItem) {
+    if (this.teams == null) {
+      this.teams = new ArrayList<>();
+    }
+    this.teams.add(teamsItem);
+    return this;
+  }
+
+  /**
+   * Get teams
+   * @return teams
+   */
+  @javax.annotation.Nullable
+  public List<String> getTeams() {
+    return teams;
+  }
+
+  public void setTeams(@javax.annotation.Nullable List<String> teams) {
+    this.teams = teams;
+  }
+
+
   public IamRolesInput users(@javax.annotation.Nullable List<String> users) {
     this.users = users;
     return this;
@@ -341,17 +341,17 @@ public class IamRolesInput {
         Objects.equals(this.description, iamRolesInput.description) &&
         Objects.equals(this.displayName, iamRolesInput.displayName) &&
         Objects.equals(this.domains, iamRolesInput.domains) &&
-        Objects.equals(this.groups, iamRolesInput.groups) &&
         Objects.equals(this.isEnabled, iamRolesInput.isEnabled) &&
         Objects.equals(this.name, iamRolesInput.name) &&
         Objects.equals(this.owner, iamRolesInput.owner) &&
         Objects.equals(this.roles, iamRolesInput.roles) &&
+        Objects.equals(this.teams, iamRolesInput.teams) &&
         Objects.equals(this.users, iamRolesInput.users);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdTime, description, displayName, domains, groups, isEnabled, name, owner, roles, users);
+    return Objects.hash(createdTime, description, displayName, domains, isEnabled, name, owner, roles, teams, users);
   }
 
   @Override
@@ -362,11 +362,11 @@ public class IamRolesInput {
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
     sb.append("    domains: ").append(toIndentedString(domains)).append("\n");
-    sb.append("    groups: ").append(toIndentedString(groups)).append("\n");
     sb.append("    isEnabled: ").append(toIndentedString(isEnabled)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    owner: ").append(toIndentedString(owner)).append("\n");
     sb.append("    roles: ").append(toIndentedString(roles)).append("\n");
+    sb.append("    teams: ").append(toIndentedString(teams)).append("\n");
     sb.append("    users: ").append(toIndentedString(users)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -389,7 +389,7 @@ public class IamRolesInput {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("createdTime", "description", "displayName", "domains", "groups", "isEnabled", "name", "owner", "roles", "users"));
+    openapiFields = new HashSet<String>(Arrays.asList("createdTime", "description", "displayName", "domains", "isEnabled", "name", "owner", "roles", "teams", "users"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -429,10 +429,6 @@ public class IamRolesInput {
       if (jsonObj.get("domains") != null && !jsonObj.get("domains").isJsonNull() && !jsonObj.get("domains").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `domains` to be an array in the JSON string but got `%s`", jsonObj.get("domains").toString()));
       }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("groups") != null && !jsonObj.get("groups").isJsonNull() && !jsonObj.get("groups").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `groups` to be an array in the JSON string but got `%s`", jsonObj.get("groups").toString()));
-      }
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
@@ -442,6 +438,10 @@ public class IamRolesInput {
       // ensure the optional json data is an array if present
       if (jsonObj.get("roles") != null && !jsonObj.get("roles").isJsonNull() && !jsonObj.get("roles").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `roles` to be an array in the JSON string but got `%s`", jsonObj.get("roles").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("teams") != null && !jsonObj.get("teams").isJsonNull() && !jsonObj.get("teams").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `teams` to be an array in the JSON string but got `%s`", jsonObj.get("teams").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("users") != null && !jsonObj.get("users").isJsonNull() && !jsonObj.get("users").isJsonArray()) {

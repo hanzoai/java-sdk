@@ -108,11 +108,6 @@ public class IamPermission {
   @javax.annotation.Nullable
   private String effect;
 
-  public static final String SERIALIZED_NAME_GROUPS = "groups";
-  @SerializedName(SERIALIZED_NAME_GROUPS)
-  @javax.annotation.Nullable
-  private List<String> groups = new ArrayList<>();
-
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   @javax.annotation.Nullable
@@ -162,6 +157,11 @@ public class IamPermission {
   @SerializedName(SERIALIZED_NAME_SUBMITTER)
   @javax.annotation.Nullable
   private String submitter;
+
+  public static final String SERIALIZED_NAME_TEAMS = "teams";
+  @SerializedName(SERIALIZED_NAME_TEAMS)
+  @javax.annotation.Nullable
+  private List<String> teams = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)
@@ -401,33 +401,6 @@ public class IamPermission {
   }
 
 
-  public IamPermission groups(@javax.annotation.Nullable List<String> groups) {
-    this.groups = groups;
-    return this;
-  }
-
-  public IamPermission addGroupsItem(String groupsItem) {
-    if (this.groups == null) {
-      this.groups = new ArrayList<>();
-    }
-    this.groups.add(groupsItem);
-    return this;
-  }
-
-  /**
-   * Get groups
-   * @return groups
-   */
-  @javax.annotation.Nullable
-  public List<String> getGroups() {
-    return groups;
-  }
-
-  public void setGroups(@javax.annotation.Nullable List<String> groups) {
-    this.groups = groups;
-  }
-
-
   public IamPermission id(@javax.annotation.Nullable String id) {
     this.id = id;
     return this;
@@ -634,6 +607,33 @@ public class IamPermission {
   }
 
 
+  public IamPermission teams(@javax.annotation.Nullable List<String> teams) {
+    this.teams = teams;
+    return this;
+  }
+
+  public IamPermission addTeamsItem(String teamsItem) {
+    if (this.teams == null) {
+      this.teams = new ArrayList<>();
+    }
+    this.teams.add(teamsItem);
+    return this;
+  }
+
+  /**
+   * Get teams
+   * @return teams
+   */
+  @javax.annotation.Nullable
+  public List<String> getTeams() {
+    return teams;
+  }
+
+  public void setTeams(@javax.annotation.Nullable List<String> teams) {
+    this.teams = teams;
+  }
+
+
   public IamPermission updatedAt(@javax.annotation.Nullable OffsetDateTime updatedAt) {
     this.updatedAt = updatedAt;
     return this;
@@ -701,7 +701,6 @@ public class IamPermission {
         Objects.equals(this.displayName, iamPermission.displayName) &&
         Objects.equals(this.domains, iamPermission.domains) &&
         Objects.equals(this.effect, iamPermission.effect) &&
-        Objects.equals(this.groups, iamPermission.groups) &&
         Objects.equals(this.id, iamPermission.id) &&
         Objects.equals(this.isEnabled, iamPermission.isEnabled) &&
         Objects.equals(this.model, iamPermission.model) &&
@@ -712,13 +711,14 @@ public class IamPermission {
         Objects.equals(this.roles, iamPermission.roles) &&
         Objects.equals(this.state, iamPermission.state) &&
         Objects.equals(this.submitter, iamPermission.submitter) &&
+        Objects.equals(this.teams, iamPermission.teams) &&
         Objects.equals(this.updatedAt, iamPermission.updatedAt) &&
         Objects.equals(this.users, iamPermission.users);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(actions, adapter, approveTime, approver, createdAt, createdTime, deleted, description, displayName, domains, effect, groups, id, isEnabled, model, name, owner, resourceType, resources, roles, state, submitter, updatedAt, users);
+    return Objects.hash(actions, adapter, approveTime, approver, createdAt, createdTime, deleted, description, displayName, domains, effect, id, isEnabled, model, name, owner, resourceType, resources, roles, state, submitter, teams, updatedAt, users);
   }
 
   @Override
@@ -736,7 +736,6 @@ public class IamPermission {
     sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
     sb.append("    domains: ").append(toIndentedString(domains)).append("\n");
     sb.append("    effect: ").append(toIndentedString(effect)).append("\n");
-    sb.append("    groups: ").append(toIndentedString(groups)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    isEnabled: ").append(toIndentedString(isEnabled)).append("\n");
     sb.append("    model: ").append(toIndentedString(model)).append("\n");
@@ -747,6 +746,7 @@ public class IamPermission {
     sb.append("    roles: ").append(toIndentedString(roles)).append("\n");
     sb.append("    state: ").append(toIndentedString(state)).append("\n");
     sb.append("    submitter: ").append(toIndentedString(submitter)).append("\n");
+    sb.append("    teams: ").append(toIndentedString(teams)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("    users: ").append(toIndentedString(users)).append("\n");
     sb.append("}");
@@ -770,7 +770,7 @@ public class IamPermission {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("actions", "adapter", "approveTime", "approver", "createdAt", "createdTime", "deleted", "description", "displayName", "domains", "effect", "groups", "id", "isEnabled", "model", "name", "owner", "resourceType", "resources", "roles", "state", "submitter", "updatedAt", "users"));
+    openapiFields = new HashSet<String>(Arrays.asList("actions", "adapter", "approveTime", "approver", "createdAt", "createdTime", "deleted", "description", "displayName", "domains", "effect", "id", "isEnabled", "model", "name", "owner", "resourceType", "resources", "roles", "state", "submitter", "teams", "updatedAt", "users"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -826,10 +826,6 @@ public class IamPermission {
       if ((jsonObj.get("effect") != null && !jsonObj.get("effect").isJsonNull()) && !jsonObj.get("effect").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `effect` to be a primitive type in the JSON string but got `%s`", jsonObj.get("effect").toString()));
       }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("groups") != null && !jsonObj.get("groups").isJsonNull() && !jsonObj.get("groups").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `groups` to be an array in the JSON string but got `%s`", jsonObj.get("groups").toString()));
-      }
       if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
@@ -858,6 +854,10 @@ public class IamPermission {
       }
       if ((jsonObj.get("submitter") != null && !jsonObj.get("submitter").isJsonNull()) && !jsonObj.get("submitter").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `submitter` to be a primitive type in the JSON string but got `%s`", jsonObj.get("submitter").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("teams") != null && !jsonObj.get("teams").isJsonNull() && !jsonObj.get("teams").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `teams` to be an array in the JSON string but got `%s`", jsonObj.get("teams").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("users") != null && !jsonObj.get("users").isJsonNull() && !jsonObj.get("users").isJsonArray()) {

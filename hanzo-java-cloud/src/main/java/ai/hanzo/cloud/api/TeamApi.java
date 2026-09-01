@@ -36,8 +36,12 @@ import java.io.File;
 import ai.hanzo.cloud.model.PlanInfo;
 import ai.hanzo.cloud.model.ProviderInfo;
 import ai.hanzo.cloud.model.StatsOut;
+import ai.hanzo.cloud.model.TeamMessage;
+import ai.hanzo.cloud.model.TeamMessageWrite;
+import ai.hanzo.cloud.model.TeamMessages;
 import ai.hanzo.cloud.model.TeamRoom;
 import ai.hanzo.cloud.model.TeamRoomBind;
+import ai.hanzo.cloud.model.TeamRoomNew;
 import ai.hanzo.cloud.model.TeamRooms;
 
 import java.lang.reflect.Type;
@@ -201,8 +205,8 @@ public class TeamApi {
         return localVarCall;
     }
     /**
-     * Build call for deleteTeamFilesByWorkspaceByFilename
-     * @param workspace Workspace is the workspace uuid the blob belongs to, from the path. (required)
+     * Build call for deleteTeamFilesBySpaceByFilename
+     * @param space Space is the space uuid the blob belongs to, from the path. (required)
      * @param filename Filename is the last path segment, which the front sets to the blob id when it sends no explicit &#x60;file&#x60;. (required)
      * @param _file File is the blob id, and wins over the path segment when both are present. (optional)
      * @param _callback Callback for upload/download progress
@@ -215,7 +219,7 @@ public class TeamApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteTeamFilesByWorkspaceByFilenameCall(@javax.annotation.Nonnull String workspace, @javax.annotation.Nonnull String filename, @javax.annotation.Nullable String _file, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteTeamFilesBySpaceByFilenameCall(@javax.annotation.Nonnull String space, @javax.annotation.Nonnull String filename, @javax.annotation.Nullable String _file, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -232,8 +236,8 @@ public class TeamApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/team/files/{workspace}/{filename}"
-            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+        String localVarPath = "/v1/team/files/{space}/{filename}"
+            .replace("{" + "space" + "}", localVarApiClient.escapeString(space.toString()))
             .replace("{" + "filename" + "}", localVarApiClient.escapeString(filename.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -265,25 +269,25 @@ public class TeamApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteTeamFilesByWorkspaceByFilenameValidateBeforeCall(@javax.annotation.Nonnull String workspace, @javax.annotation.Nonnull String filename, @javax.annotation.Nullable String _file, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'workspace' is set
-        if (workspace == null) {
-            throw new ApiException("Missing the required parameter 'workspace' when calling deleteTeamFilesByWorkspaceByFilename(Async)");
+    private okhttp3.Call deleteTeamFilesBySpaceByFilenameValidateBeforeCall(@javax.annotation.Nonnull String space, @javax.annotation.Nonnull String filename, @javax.annotation.Nullable String _file, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'space' is set
+        if (space == null) {
+            throw new ApiException("Missing the required parameter 'space' when calling deleteTeamFilesBySpaceByFilename(Async)");
         }
 
         // verify the required parameter 'filename' is set
         if (filename == null) {
-            throw new ApiException("Missing the required parameter 'filename' when calling deleteTeamFilesByWorkspaceByFilename(Async)");
+            throw new ApiException("Missing the required parameter 'filename' when calling deleteTeamFilesBySpaceByFilename(Async)");
         }
 
-        return deleteTeamFilesByWorkspaceByFilenameCall(workspace, filename, _file, _callback);
+        return deleteTeamFilesBySpaceByFilenameCall(space, filename, _file, _callback);
 
     }
 
     /**
-     * Removes one blob from a workspace&#39;s file store.
-     * Removes one blob from a workspace&#39;s file store. The caller must hold a verified session AND be a member of the workspace; anything else — an unknown workspace, another tenant&#39;s workspace, a workspace the caller is not in — answers the same 404, so a probe learns nothing about what exists.  It is IDEMPOTENT: deleting a present or an absent blob both answer 204, so a delete never confirms a blob&#39;s existence and a foreign blob id (a physical key the caller can never name into another tenant&#39;s box) is a harmless no-op. A storage backend that is unavailable fails closed with 502 rather than lying about success.
-     * @param workspace Workspace is the workspace uuid the blob belongs to, from the path. (required)
+     * Removes one blob from a space&#39;s file store.
+     * Removes one blob from a space&#39;s file store. The caller must hold a verified session AND be a member of the space; anything else — an unknown space, another tenant&#39;s space, a space the caller is not in — answers the same 404, so a probe learns nothing about what exists.  It is IDEMPOTENT: deleting a present or an absent blob both answer 204, so a delete never confirms a blob&#39;s existence and a foreign blob id (a physical key the caller can never name into another tenant&#39;s box) is a harmless no-op. A storage backend that is unavailable fails closed with 502 rather than lying about success.
+     * @param space Space is the space uuid the blob belongs to, from the path. (required)
      * @param filename Filename is the last path segment, which the front sets to the blob id when it sends no explicit &#x60;file&#x60;. (required)
      * @param _file File is the blob id, and wins over the path segment when both are present. (optional)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -294,14 +298,14 @@ public class TeamApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteTeamFilesByWorkspaceByFilename(@javax.annotation.Nonnull String workspace, @javax.annotation.Nonnull String filename, @javax.annotation.Nullable String _file) throws ApiException {
-        deleteTeamFilesByWorkspaceByFilenameWithHttpInfo(workspace, filename, _file);
+    public void deleteTeamFilesBySpaceByFilename(@javax.annotation.Nonnull String space, @javax.annotation.Nonnull String filename, @javax.annotation.Nullable String _file) throws ApiException {
+        deleteTeamFilesBySpaceByFilenameWithHttpInfo(space, filename, _file);
     }
 
     /**
-     * Removes one blob from a workspace&#39;s file store.
-     * Removes one blob from a workspace&#39;s file store. The caller must hold a verified session AND be a member of the workspace; anything else — an unknown workspace, another tenant&#39;s workspace, a workspace the caller is not in — answers the same 404, so a probe learns nothing about what exists.  It is IDEMPOTENT: deleting a present or an absent blob both answer 204, so a delete never confirms a blob&#39;s existence and a foreign blob id (a physical key the caller can never name into another tenant&#39;s box) is a harmless no-op. A storage backend that is unavailable fails closed with 502 rather than lying about success.
-     * @param workspace Workspace is the workspace uuid the blob belongs to, from the path. (required)
+     * Removes one blob from a space&#39;s file store.
+     * Removes one blob from a space&#39;s file store. The caller must hold a verified session AND be a member of the space; anything else — an unknown space, another tenant&#39;s space, a space the caller is not in — answers the same 404, so a probe learns nothing about what exists.  It is IDEMPOTENT: deleting a present or an absent blob both answer 204, so a delete never confirms a blob&#39;s existence and a foreign blob id (a physical key the caller can never name into another tenant&#39;s box) is a harmless no-op. A storage backend that is unavailable fails closed with 502 rather than lying about success.
+     * @param space Space is the space uuid the blob belongs to, from the path. (required)
      * @param filename Filename is the last path segment, which the front sets to the blob id when it sends no explicit &#x60;file&#x60;. (required)
      * @param _file File is the blob id, and wins over the path segment when both are present. (optional)
      * @return ApiResponse&lt;Void&gt;
@@ -313,15 +317,15 @@ public class TeamApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteTeamFilesByWorkspaceByFilenameWithHttpInfo(@javax.annotation.Nonnull String workspace, @javax.annotation.Nonnull String filename, @javax.annotation.Nullable String _file) throws ApiException {
-        okhttp3.Call localVarCall = deleteTeamFilesByWorkspaceByFilenameValidateBeforeCall(workspace, filename, _file, null);
+    public ApiResponse<Void> deleteTeamFilesBySpaceByFilenameWithHttpInfo(@javax.annotation.Nonnull String space, @javax.annotation.Nonnull String filename, @javax.annotation.Nullable String _file) throws ApiException {
+        okhttp3.Call localVarCall = deleteTeamFilesBySpaceByFilenameValidateBeforeCall(space, filename, _file, null);
         return localVarApiClient.execute(localVarCall);
     }
 
     /**
-     * Removes one blob from a workspace&#39;s file store. (asynchronously)
-     * Removes one blob from a workspace&#39;s file store. The caller must hold a verified session AND be a member of the workspace; anything else — an unknown workspace, another tenant&#39;s workspace, a workspace the caller is not in — answers the same 404, so a probe learns nothing about what exists.  It is IDEMPOTENT: deleting a present or an absent blob both answer 204, so a delete never confirms a blob&#39;s existence and a foreign blob id (a physical key the caller can never name into another tenant&#39;s box) is a harmless no-op. A storage backend that is unavailable fails closed with 502 rather than lying about success.
-     * @param workspace Workspace is the workspace uuid the blob belongs to, from the path. (required)
+     * Removes one blob from a space&#39;s file store. (asynchronously)
+     * Removes one blob from a space&#39;s file store. The caller must hold a verified session AND be a member of the space; anything else — an unknown space, another tenant&#39;s space, a space the caller is not in — answers the same 404, so a probe learns nothing about what exists.  It is IDEMPOTENT: deleting a present or an absent blob both answer 204, so a delete never confirms a blob&#39;s existence and a foreign blob id (a physical key the caller can never name into another tenant&#39;s box) is a harmless no-op. A storage backend that is unavailable fails closed with 502 rather than lying about success.
+     * @param space Space is the space uuid the blob belongs to, from the path. (required)
      * @param filename Filename is the last path segment, which the front sets to the blob id when it sends no explicit &#x60;file&#x60;. (required)
      * @param _file File is the blob id, and wins over the path segment when both are present. (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -334,9 +338,9 @@ public class TeamApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteTeamFilesByWorkspaceByFilenameAsync(@javax.annotation.Nonnull String workspace, @javax.annotation.Nonnull String filename, @javax.annotation.Nullable String _file, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteTeamFilesBySpaceByFilenameAsync(@javax.annotation.Nonnull String space, @javax.annotation.Nonnull String filename, @javax.annotation.Nullable String _file, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteTeamFilesByWorkspaceByFilenameValidateBeforeCall(workspace, filename, _file, _callback);
+        okhttp3.Call localVarCall = deleteTeamFilesBySpaceByFilenameValidateBeforeCall(space, filename, _file, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
@@ -502,7 +506,7 @@ public class TeamApi {
 
     /**
      * Complete a sign-in and hand the browser its session
-     * COMPLETES the OAuth hop: hanzo.id redirects the browser here with ?code and ?state, and the answer is another 302 — back to the client&#39;s login route carrying the freshly minted team session token in the query. Never JSON, and never a token in this response&#39;s own body.  THE STATE IS CHECKED FIRST, before the code is even looked at: the flow cookie is read and cleared one-shot, and a callback whose ?state does not equal the nonce it held is bounced with error&#x3D;state_mismatch and NEVER exchanged. That is what makes a forged or replayed callback inert. Only then is the code exchanged server-side — team is a confidential client with a client_secret, so there is no PKCE and the code never passes through the browser&#39;s JS.  The tenant is derived from the IAM access token VERIFIED RS256 against the JWKS, the same trust anchor the identity boundary uses; a token whose owner claim is empty fails closed with no login at all. Every org that token proves gets a workspace ensured, so a member of two orgs is a counted seat in both. The IAM access token is also parked in an HttpOnly cookie for the same-origin agents proxy — page JS never reads it.  EVERY failure is a redirect, not a status: a denied consent, a missing code, a failed exchange, an unreadable userinfo, an unverifiable org and a token-mint failure each bounce to the login page with an ?error code naming the step.
+     * COMPLETES the OAuth hop: hanzo.id redirects the browser here with ?code and ?state, and the answer is another 302 — back to the client&#39;s login route carrying the freshly minted team session token in the query. Never JSON, and never a token in this response&#39;s own body.  THE STATE IS CHECKED FIRST, before the code is even looked at: the flow cookie is read and cleared one-shot, and a callback whose ?state does not equal the nonce it held is bounced with error&#x3D;state_mismatch and NEVER exchanged. That is what makes a forged or replayed callback inert. Only then is the code exchanged server-side — team is a confidential client with a client_secret, so there is no PKCE and the code never passes through the browser&#39;s JS.  The tenant is derived from the IAM access token VERIFIED RS256 against the JWKS, the same trust anchor the identity boundary uses; a token whose owner claim is empty fails closed with no login at all. Every org that token proves gets a space ensured, so a member of two orgs is a counted seat in both. The IAM access token is also parked in an HttpOnly cookie for the same-origin agents proxy — page JS never reads it.  EVERY failure is a redirect, not a status: a denied consent, a missing code, a failed exchange, an unreadable userinfo, an unverifiable org and a token-mint failure each bounce to the login page with an ?error code naming the step.
      * @param provider  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -512,7 +516,7 @@ public class TeamApi {
 
     /**
      * Complete a sign-in and hand the browser its session
-     * COMPLETES the OAuth hop: hanzo.id redirects the browser here with ?code and ?state, and the answer is another 302 — back to the client&#39;s login route carrying the freshly minted team session token in the query. Never JSON, and never a token in this response&#39;s own body.  THE STATE IS CHECKED FIRST, before the code is even looked at: the flow cookie is read and cleared one-shot, and a callback whose ?state does not equal the nonce it held is bounced with error&#x3D;state_mismatch and NEVER exchanged. That is what makes a forged or replayed callback inert. Only then is the code exchanged server-side — team is a confidential client with a client_secret, so there is no PKCE and the code never passes through the browser&#39;s JS.  The tenant is derived from the IAM access token VERIFIED RS256 against the JWKS, the same trust anchor the identity boundary uses; a token whose owner claim is empty fails closed with no login at all. Every org that token proves gets a workspace ensured, so a member of two orgs is a counted seat in both. The IAM access token is also parked in an HttpOnly cookie for the same-origin agents proxy — page JS never reads it.  EVERY failure is a redirect, not a status: a denied consent, a missing code, a failed exchange, an unreadable userinfo, an unverifiable org and a token-mint failure each bounce to the login page with an ?error code naming the step.
+     * COMPLETES the OAuth hop: hanzo.id redirects the browser here with ?code and ?state, and the answer is another 302 — back to the client&#39;s login route carrying the freshly minted team session token in the query. Never JSON, and never a token in this response&#39;s own body.  THE STATE IS CHECKED FIRST, before the code is even looked at: the flow cookie is read and cleared one-shot, and a callback whose ?state does not equal the nonce it held is bounced with error&#x3D;state_mismatch and NEVER exchanged. That is what makes a forged or replayed callback inert. Only then is the code exchanged server-side — team is a confidential client with a client_secret, so there is no PKCE and the code never passes through the browser&#39;s JS.  The tenant is derived from the IAM access token VERIFIED RS256 against the JWKS, the same trust anchor the identity boundary uses; a token whose owner claim is empty fails closed with no login at all. Every org that token proves gets a space ensured, so a member of two orgs is a counted seat in both. The IAM access token is also parked in an HttpOnly cookie for the same-origin agents proxy — page JS never reads it.  EVERY failure is a redirect, not a status: a denied consent, a missing code, a failed exchange, an unreadable userinfo, an unverifiable org and a token-mint failure each bounce to the login page with an ?error code naming the step.
      * @param provider  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -524,7 +528,7 @@ public class TeamApi {
 
     /**
      * Complete a sign-in and hand the browser its session (asynchronously)
-     * COMPLETES the OAuth hop: hanzo.id redirects the browser here with ?code and ?state, and the answer is another 302 — back to the client&#39;s login route carrying the freshly minted team session token in the query. Never JSON, and never a token in this response&#39;s own body.  THE STATE IS CHECKED FIRST, before the code is even looked at: the flow cookie is read and cleared one-shot, and a callback whose ?state does not equal the nonce it held is bounced with error&#x3D;state_mismatch and NEVER exchanged. That is what makes a forged or replayed callback inert. Only then is the code exchanged server-side — team is a confidential client with a client_secret, so there is no PKCE and the code never passes through the browser&#39;s JS.  The tenant is derived from the IAM access token VERIFIED RS256 against the JWKS, the same trust anchor the identity boundary uses; a token whose owner claim is empty fails closed with no login at all. Every org that token proves gets a workspace ensured, so a member of two orgs is a counted seat in both. The IAM access token is also parked in an HttpOnly cookie for the same-origin agents proxy — page JS never reads it.  EVERY failure is a redirect, not a status: a denied consent, a missing code, a failed exchange, an unreadable userinfo, an unverifiable org and a token-mint failure each bounce to the login page with an ?error code naming the step.
+     * COMPLETES the OAuth hop: hanzo.id redirects the browser here with ?code and ?state, and the answer is another 302 — back to the client&#39;s login route carrying the freshly minted team session token in the query. Never JSON, and never a token in this response&#39;s own body.  THE STATE IS CHECKED FIRST, before the code is even looked at: the flow cookie is read and cleared one-shot, and a callback whose ?state does not equal the nonce it held is bounced with error&#x3D;state_mismatch and NEVER exchanged. That is what makes a forged or replayed callback inert. Only then is the code exchanged server-side — team is a confidential client with a client_secret, so there is no PKCE and the code never passes through the browser&#39;s JS.  The tenant is derived from the IAM access token VERIFIED RS256 against the JWKS, the same trust anchor the identity boundary uses; a token whose owner claim is empty fails closed with no login at all. Every org that token proves gets a space ensured, so a member of two orgs is a counted seat in both. The IAM access token is also parked in an HttpOnly cookie for the same-origin agents proxy — page JS never reads it.  EVERY failure is a redirect, not a status: a denied consent, a missing code, a failed exchange, an unreadable userinfo, an unverifiable org and a token-mint failure each bounce to the login page with an ?error code naming the step.
      * @param provider  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -950,8 +954,8 @@ public class TeamApi {
     }
 
     /**
-     * Returns the caller org&#39;s bot members — the org&#39;s agents projected as the workspace Employees they become, each with the member account uuid and Person reference the roster addresses it by.
-     * Returns the caller org&#39;s bot members — the org&#39;s agents projected as the workspace Employees they become, each with the member account uuid and Person reference the roster addresses it by. An agents subsystem that is not mounted answers an empty list, never an error.
+     * Returns the caller org&#39;s bot members — the org&#39;s agents projected as the space Employees they become, each with the member account uuid and Person reference the roster addresses it by.
+     * Returns the caller org&#39;s bot members — the org&#39;s agents projected as the space Employees they become, each with the member account uuid and Person reference the roster addresses it by. An agents subsystem that is not mounted answers an empty list, never an error.
      * @return BotRoster
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -967,8 +971,8 @@ public class TeamApi {
     }
 
     /**
-     * Returns the caller org&#39;s bot members — the org&#39;s agents projected as the workspace Employees they become, each with the member account uuid and Person reference the roster addresses it by.
-     * Returns the caller org&#39;s bot members — the org&#39;s agents projected as the workspace Employees they become, each with the member account uuid and Person reference the roster addresses it by. An agents subsystem that is not mounted answers an empty list, never an error.
+     * Returns the caller org&#39;s bot members — the org&#39;s agents projected as the space Employees they become, each with the member account uuid and Person reference the roster addresses it by.
+     * Returns the caller org&#39;s bot members — the org&#39;s agents projected as the space Employees they become, each with the member account uuid and Person reference the roster addresses it by. An agents subsystem that is not mounted answers an empty list, never an error.
      * @return ApiResponse&lt;BotRoster&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -985,8 +989,8 @@ public class TeamApi {
     }
 
     /**
-     * Returns the caller org&#39;s bot members — the org&#39;s agents projected as the workspace Employees they become, each with the member account uuid and Person reference the roster addresses it by. (asynchronously)
-     * Returns the caller org&#39;s bot members — the org&#39;s agents projected as the workspace Employees they become, each with the member account uuid and Person reference the roster addresses it by. An agents subsystem that is not mounted answers an empty list, never an error.
+     * Returns the caller org&#39;s bot members — the org&#39;s agents projected as the space Employees they become, each with the member account uuid and Person reference the roster addresses it by. (asynchronously)
+     * Returns the caller org&#39;s bot members — the org&#39;s agents projected as the space Employees they become, each with the member account uuid and Person reference the roster addresses it by. An agents subsystem that is not mounted answers an empty list, never an error.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1061,7 +1065,7 @@ public class TeamApi {
 
     /**
      * Open the live collaborative-editing socket
-     * Upgrades to the hocuspocus WebSocket the Team editor syncs its Y.js documents over: binary frames of document name, message type and payload, with ONE socket multiplexing every document a tab has open. The server is a relay and an ordered update log, not a CRDT engine — it replays the log to each joining peer and broadcasts every update to the rest, which converges because Y.js updates are commutative and idempotent. There is no body; the response is a protocol upgrade.  BOTH LANES SHARE ONE ROOT. The client derives them from one configured URL — this socket at its root, the markup-snapshot RPC one segment in — so pointing the editor at this service is one value, and the two lanes cannot drift apart.  AUTH IS IN-BAND, PER DOCUMENT, NOT ON THE UPGRADE. The handshake gates only on browser Origin (403 outside the team surfaces; no Origin at all is admitted, which is what a non-browser sends), and then the first frame for a document must be an Auth message carrying the same session or workspace token every other team route verifies — a browser WebSocket cannot set an Authorization header, which is why the token rides inside the protocol. Anything else on an unauthenticated document is answered with one permission denial and nothing further.  Every document is authorized on its own: the document&#39;s workspace must be the token&#39;s workspace when the token pins one, and the caller must be a member of it. A mismatch, an unknown workspace and a non-member deny alike with \&quot;document not found\&quot;. Rooms are keyed by org and workspace and the persisted log&#39;s key embeds both, so a foreign document id can neither join a room nor read a blob.  The server pings every twenty seconds and drops a socket silent for sixty, so a backgrounded tab — whose JS timers are throttled but whose network stack still auto-pongs — stays connected instead of dying into a reconnect loop.
+     * Upgrades to the hocuspocus WebSocket the Team editor syncs its Y.js documents over: binary frames of document name, message type and payload, with ONE socket multiplexing every document a tab has open. The server is a relay and an ordered update log, not a CRDT engine — it replays the log to each joining peer and broadcasts every update to the rest, which converges because Y.js updates are commutative and idempotent. There is no body; the response is a protocol upgrade.  BOTH LANES SHARE ONE ROOT. The client derives them from one configured URL — this socket at its root, the markup-snapshot RPC one segment in — so pointing the editor at this service is one value, and the two lanes cannot drift apart.  AUTH IS IN-BAND, PER DOCUMENT, NOT ON THE UPGRADE. The handshake gates only on browser Origin (403 outside the team surfaces; no Origin at all is admitted, which is what a non-browser sends), and then the first frame for a document must be an Auth message carrying the same session or space token every other team route verifies — a browser WebSocket cannot set an Authorization header, which is why the token rides inside the protocol. Anything else on an unauthenticated document is answered with one permission denial and nothing further.  Every document is authorized on its own: the document&#39;s space must be the token&#39;s space when the token pins one, and the caller must be a member of it. A mismatch, an unknown space and a non-member deny alike with \&quot;document not found\&quot;. Rooms are keyed by org and space and the persisted log&#39;s key embeds both, so a foreign document id can neither join a room nor read a blob.  The server pings every twenty seconds and drops a socket silent for sixty, so a backgrounded tab — whose JS timers are throttled but whose network stack still auto-pongs — stays connected instead of dying into a reconnect loop.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public void getTeamCollaborator() throws ApiException {
@@ -1070,7 +1074,7 @@ public class TeamApi {
 
     /**
      * Open the live collaborative-editing socket
-     * Upgrades to the hocuspocus WebSocket the Team editor syncs its Y.js documents over: binary frames of document name, message type and payload, with ONE socket multiplexing every document a tab has open. The server is a relay and an ordered update log, not a CRDT engine — it replays the log to each joining peer and broadcasts every update to the rest, which converges because Y.js updates are commutative and idempotent. There is no body; the response is a protocol upgrade.  BOTH LANES SHARE ONE ROOT. The client derives them from one configured URL — this socket at its root, the markup-snapshot RPC one segment in — so pointing the editor at this service is one value, and the two lanes cannot drift apart.  AUTH IS IN-BAND, PER DOCUMENT, NOT ON THE UPGRADE. The handshake gates only on browser Origin (403 outside the team surfaces; no Origin at all is admitted, which is what a non-browser sends), and then the first frame for a document must be an Auth message carrying the same session or workspace token every other team route verifies — a browser WebSocket cannot set an Authorization header, which is why the token rides inside the protocol. Anything else on an unauthenticated document is answered with one permission denial and nothing further.  Every document is authorized on its own: the document&#39;s workspace must be the token&#39;s workspace when the token pins one, and the caller must be a member of it. A mismatch, an unknown workspace and a non-member deny alike with \&quot;document not found\&quot;. Rooms are keyed by org and workspace and the persisted log&#39;s key embeds both, so a foreign document id can neither join a room nor read a blob.  The server pings every twenty seconds and drops a socket silent for sixty, so a backgrounded tab — whose JS timers are throttled but whose network stack still auto-pongs — stays connected instead of dying into a reconnect loop.
+     * Upgrades to the hocuspocus WebSocket the Team editor syncs its Y.js documents over: binary frames of document name, message type and payload, with ONE socket multiplexing every document a tab has open. The server is a relay and an ordered update log, not a CRDT engine — it replays the log to each joining peer and broadcasts every update to the rest, which converges because Y.js updates are commutative and idempotent. There is no body; the response is a protocol upgrade.  BOTH LANES SHARE ONE ROOT. The client derives them from one configured URL — this socket at its root, the markup-snapshot RPC one segment in — so pointing the editor at this service is one value, and the two lanes cannot drift apart.  AUTH IS IN-BAND, PER DOCUMENT, NOT ON THE UPGRADE. The handshake gates only on browser Origin (403 outside the team surfaces; no Origin at all is admitted, which is what a non-browser sends), and then the first frame for a document must be an Auth message carrying the same session or space token every other team route verifies — a browser WebSocket cannot set an Authorization header, which is why the token rides inside the protocol. Anything else on an unauthenticated document is answered with one permission denial and nothing further.  Every document is authorized on its own: the document&#39;s space must be the token&#39;s space when the token pins one, and the caller must be a member of it. A mismatch, an unknown space and a non-member deny alike with \&quot;document not found\&quot;. Rooms are keyed by org and space and the persisted log&#39;s key embeds both, so a foreign document id can neither join a room nor read a blob.  The server pings every twenty seconds and drops a socket silent for sixty, so a backgrounded tab — whose JS timers are throttled but whose network stack still auto-pongs — stays connected instead of dying into a reconnect loop.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -1081,7 +1085,7 @@ public class TeamApi {
 
     /**
      * Open the live collaborative-editing socket (asynchronously)
-     * Upgrades to the hocuspocus WebSocket the Team editor syncs its Y.js documents over: binary frames of document name, message type and payload, with ONE socket multiplexing every document a tab has open. The server is a relay and an ordered update log, not a CRDT engine — it replays the log to each joining peer and broadcasts every update to the rest, which converges because Y.js updates are commutative and idempotent. There is no body; the response is a protocol upgrade.  BOTH LANES SHARE ONE ROOT. The client derives them from one configured URL — this socket at its root, the markup-snapshot RPC one segment in — so pointing the editor at this service is one value, and the two lanes cannot drift apart.  AUTH IS IN-BAND, PER DOCUMENT, NOT ON THE UPGRADE. The handshake gates only on browser Origin (403 outside the team surfaces; no Origin at all is admitted, which is what a non-browser sends), and then the first frame for a document must be an Auth message carrying the same session or workspace token every other team route verifies — a browser WebSocket cannot set an Authorization header, which is why the token rides inside the protocol. Anything else on an unauthenticated document is answered with one permission denial and nothing further.  Every document is authorized on its own: the document&#39;s workspace must be the token&#39;s workspace when the token pins one, and the caller must be a member of it. A mismatch, an unknown workspace and a non-member deny alike with \&quot;document not found\&quot;. Rooms are keyed by org and workspace and the persisted log&#39;s key embeds both, so a foreign document id can neither join a room nor read a blob.  The server pings every twenty seconds and drops a socket silent for sixty, so a backgrounded tab — whose JS timers are throttled but whose network stack still auto-pongs — stays connected instead of dying into a reconnect loop.
+     * Upgrades to the hocuspocus WebSocket the Team editor syncs its Y.js documents over: binary frames of document name, message type and payload, with ONE socket multiplexing every document a tab has open. The server is a relay and an ordered update log, not a CRDT engine — it replays the log to each joining peer and broadcasts every update to the rest, which converges because Y.js updates are commutative and idempotent. There is no body; the response is a protocol upgrade.  BOTH LANES SHARE ONE ROOT. The client derives them from one configured URL — this socket at its root, the markup-snapshot RPC one segment in — so pointing the editor at this service is one value, and the two lanes cannot drift apart.  AUTH IS IN-BAND, PER DOCUMENT, NOT ON THE UPGRADE. The handshake gates only on browser Origin (403 outside the team surfaces; no Origin at all is admitted, which is what a non-browser sends), and then the first frame for a document must be an Auth message carrying the same session or space token every other team route verifies — a browser WebSocket cannot set an Authorization header, which is why the token rides inside the protocol. Anything else on an unauthenticated document is answered with one permission denial and nothing further.  Every document is authorized on its own: the document&#39;s space must be the token&#39;s space when the token pins one, and the caller must be a member of it. A mismatch, an unknown space and a non-member deny alike with \&quot;document not found\&quot;. Rooms are keyed by org and space and the persisted log&#39;s key embeds both, so a foreign document id can neither join a room nor read a blob.  The server pings every twenty seconds and drops a socket silent for sixty, so a backgrounded tab — whose JS timers are throttled but whose network stack still auto-pongs — stays connected instead of dying into a reconnect loop.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1093,8 +1097,8 @@ public class TeamApi {
         return localVarCall;
     }
     /**
-     * Build call for getTeamFilesByWorkspaceByFilename
-     * @param workspace  (required)
+     * Build call for getTeamFilesBySpaceByFilename
+     * @param space  (required)
      * @param filename  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1106,7 +1110,7 @@ public class TeamApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getTeamFilesByWorkspaceByFilenameCall(@javax.annotation.Nonnull String workspace, @javax.annotation.Nonnull String filename, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getTeamFilesBySpaceByFilenameCall(@javax.annotation.Nonnull String space, @javax.annotation.Nonnull String filename, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1123,8 +1127,8 @@ public class TeamApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/team/files/{workspace}/{filename}"
-            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()))
+        String localVarPath = "/v1/team/files/{space}/{filename}"
+            .replace("{" + "space" + "}", localVarApiClient.escapeString(space.toString()))
             .replace("{" + "filename" + "}", localVarApiClient.escapeString(filename.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -1153,25 +1157,25 @@ public class TeamApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getTeamFilesByWorkspaceByFilenameValidateBeforeCall(@javax.annotation.Nonnull String workspace, @javax.annotation.Nonnull String filename, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'workspace' is set
-        if (workspace == null) {
-            throw new ApiException("Missing the required parameter 'workspace' when calling getTeamFilesByWorkspaceByFilename(Async)");
+    private okhttp3.Call getTeamFilesBySpaceByFilenameValidateBeforeCall(@javax.annotation.Nonnull String space, @javax.annotation.Nonnull String filename, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'space' is set
+        if (space == null) {
+            throw new ApiException("Missing the required parameter 'space' when calling getTeamFilesBySpaceByFilename(Async)");
         }
 
         // verify the required parameter 'filename' is set
         if (filename == null) {
-            throw new ApiException("Missing the required parameter 'filename' when calling getTeamFilesByWorkspaceByFilename(Async)");
+            throw new ApiException("Missing the required parameter 'filename' when calling getTeamFilesBySpaceByFilename(Async)");
         }
 
-        return getTeamFilesByWorkspaceByFilenameCall(workspace, filename, _callback);
+        return getTeamFilesBySpaceByFilenameCall(space, filename, _callback);
 
     }
 
     /**
-     * Download a workspace file
-     * Streams one blob&#39;s raw BYTES back — this is the read side of the workspace file store, not a JSON envelope around it.  THE BLOB IS NAMED BY THE &#x60;file&#x60; QUERY PARAMETER, NOT BY :filename. The path segment is only the name a browser saves the download under; a request without ?file&#x3D; is a 400 no matter what the path says.  The Content-Type is derived from the STORED BYTES, never from the name: only png, jpeg, gif and webp, recognized by their magic bytes, are served inline under their true type, and everything else is served inert as application/octet-stream with an attachment disposition. Every response carries nosniff, so a file uploaded under an .svg or .html name cannot be talked into executing in a viewer&#39;s origin. Blobs are immutable, so a hit caches privately for a year.  Same gate as the upload: verified token, membership of the workspace. A genuine miss, another tenant&#39;s workspace, a workspace the caller is not in, and a blob id belonging to a different workspace are ONE answer — 404 — because the physical key is org- and workspace-scoped and a foreign id is simply a key that does not exist. An unavailable backend is a 502, never an empty 200.
-     * @param workspace  (required)
+     * Download a space file
+     * Streams one blob&#39;s raw BYTES back — this is the read side of the space file store, not a JSON envelope around it.  THE BLOB IS NAMED BY THE &#x60;file&#x60; QUERY PARAMETER, NOT BY :filename. The path segment is only the name a browser saves the download under; a request without ?file&#x3D; is a 400 no matter what the path says.  The Content-Type is derived from the STORED BYTES, never from the name: only png, jpeg, gif and webp, recognized by their magic bytes, are served inline under their true type, and everything else is served inert as application/octet-stream with an attachment disposition. Every response carries nosniff, so a file uploaded under an .svg or .html name cannot be talked into executing in a viewer&#39;s origin. Blobs are immutable, so a hit caches privately for a year.  Same gate as the upload: verified token, membership of the space. A genuine miss, another tenant&#39;s space, a space the caller is not in, and a blob id belonging to a different space are ONE answer — 404 — because the physical key is org- and space-scoped and a foreign id is simply a key that does not exist. An unavailable backend is a 502, never an empty 200.
+     * @param space  (required)
      * @param filename  (required)
      * @return File
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1182,15 +1186,15 @@ public class TeamApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public File getTeamFilesByWorkspaceByFilename(@javax.annotation.Nonnull String workspace, @javax.annotation.Nonnull String filename) throws ApiException {
-        ApiResponse<File> localVarResp = getTeamFilesByWorkspaceByFilenameWithHttpInfo(workspace, filename);
+    public File getTeamFilesBySpaceByFilename(@javax.annotation.Nonnull String space, @javax.annotation.Nonnull String filename) throws ApiException {
+        ApiResponse<File> localVarResp = getTeamFilesBySpaceByFilenameWithHttpInfo(space, filename);
         return localVarResp.getData();
     }
 
     /**
-     * Download a workspace file
-     * Streams one blob&#39;s raw BYTES back — this is the read side of the workspace file store, not a JSON envelope around it.  THE BLOB IS NAMED BY THE &#x60;file&#x60; QUERY PARAMETER, NOT BY :filename. The path segment is only the name a browser saves the download under; a request without ?file&#x3D; is a 400 no matter what the path says.  The Content-Type is derived from the STORED BYTES, never from the name: only png, jpeg, gif and webp, recognized by their magic bytes, are served inline under their true type, and everything else is served inert as application/octet-stream with an attachment disposition. Every response carries nosniff, so a file uploaded under an .svg or .html name cannot be talked into executing in a viewer&#39;s origin. Blobs are immutable, so a hit caches privately for a year.  Same gate as the upload: verified token, membership of the workspace. A genuine miss, another tenant&#39;s workspace, a workspace the caller is not in, and a blob id belonging to a different workspace are ONE answer — 404 — because the physical key is org- and workspace-scoped and a foreign id is simply a key that does not exist. An unavailable backend is a 502, never an empty 200.
-     * @param workspace  (required)
+     * Download a space file
+     * Streams one blob&#39;s raw BYTES back — this is the read side of the space file store, not a JSON envelope around it.  THE BLOB IS NAMED BY THE &#x60;file&#x60; QUERY PARAMETER, NOT BY :filename. The path segment is only the name a browser saves the download under; a request without ?file&#x3D; is a 400 no matter what the path says.  The Content-Type is derived from the STORED BYTES, never from the name: only png, jpeg, gif and webp, recognized by their magic bytes, are served inline under their true type, and everything else is served inert as application/octet-stream with an attachment disposition. Every response carries nosniff, so a file uploaded under an .svg or .html name cannot be talked into executing in a viewer&#39;s origin. Blobs are immutable, so a hit caches privately for a year.  Same gate as the upload: verified token, membership of the space. A genuine miss, another tenant&#39;s space, a space the caller is not in, and a blob id belonging to a different space are ONE answer — 404 — because the physical key is org- and space-scoped and a foreign id is simply a key that does not exist. An unavailable backend is a 502, never an empty 200.
+     * @param space  (required)
      * @param filename  (required)
      * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1201,16 +1205,16 @@ public class TeamApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<File> getTeamFilesByWorkspaceByFilenameWithHttpInfo(@javax.annotation.Nonnull String workspace, @javax.annotation.Nonnull String filename) throws ApiException {
-        okhttp3.Call localVarCall = getTeamFilesByWorkspaceByFilenameValidateBeforeCall(workspace, filename, null);
+    public ApiResponse<File> getTeamFilesBySpaceByFilenameWithHttpInfo(@javax.annotation.Nonnull String space, @javax.annotation.Nonnull String filename) throws ApiException {
+        okhttp3.Call localVarCall = getTeamFilesBySpaceByFilenameValidateBeforeCall(space, filename, null);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Download a workspace file (asynchronously)
-     * Streams one blob&#39;s raw BYTES back — this is the read side of the workspace file store, not a JSON envelope around it.  THE BLOB IS NAMED BY THE &#x60;file&#x60; QUERY PARAMETER, NOT BY :filename. The path segment is only the name a browser saves the download under; a request without ?file&#x3D; is a 400 no matter what the path says.  The Content-Type is derived from the STORED BYTES, never from the name: only png, jpeg, gif and webp, recognized by their magic bytes, are served inline under their true type, and everything else is served inert as application/octet-stream with an attachment disposition. Every response carries nosniff, so a file uploaded under an .svg or .html name cannot be talked into executing in a viewer&#39;s origin. Blobs are immutable, so a hit caches privately for a year.  Same gate as the upload: verified token, membership of the workspace. A genuine miss, another tenant&#39;s workspace, a workspace the caller is not in, and a blob id belonging to a different workspace are ONE answer — 404 — because the physical key is org- and workspace-scoped and a foreign id is simply a key that does not exist. An unavailable backend is a 502, never an empty 200.
-     * @param workspace  (required)
+     * Download a space file (asynchronously)
+     * Streams one blob&#39;s raw BYTES back — this is the read side of the space file store, not a JSON envelope around it.  THE BLOB IS NAMED BY THE &#x60;file&#x60; QUERY PARAMETER, NOT BY :filename. The path segment is only the name a browser saves the download under; a request without ?file&#x3D; is a 400 no matter what the path says.  The Content-Type is derived from the STORED BYTES, never from the name: only png, jpeg, gif and webp, recognized by their magic bytes, are served inline under their true type, and everything else is served inert as application/octet-stream with an attachment disposition. Every response carries nosniff, so a file uploaded under an .svg or .html name cannot be talked into executing in a viewer&#39;s origin. Blobs are immutable, so a hit caches privately for a year.  Same gate as the upload: verified token, membership of the space. A genuine miss, another tenant&#39;s space, a space the caller is not in, and a blob id belonging to a different space are ONE answer — 404 — because the physical key is org- and space-scoped and a foreign id is simply a key that does not exist. An unavailable backend is a 502, never an empty 200.
+     * @param space  (required)
      * @param filename  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1222,9 +1226,9 @@ public class TeamApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getTeamFilesByWorkspaceByFilenameAsync(@javax.annotation.Nonnull String workspace, @javax.annotation.Nonnull String filename, final ApiCallback<File> _callback) throws ApiException {
+    public okhttp3.Call getTeamFilesBySpaceByFilenameAsync(@javax.annotation.Nonnull String space, @javax.annotation.Nonnull String filename, final ApiCallback<File> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getTeamFilesByWorkspaceByFilenameValidateBeforeCall(workspace, filename, _callback);
+        okhttp3.Call localVarCall = getTeamFilesBySpaceByFilenameValidateBeforeCall(space, filename, _callback);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1292,8 +1296,8 @@ public class TeamApi {
     }
 
     /**
-     * Returns every room of the caller&#39;s org, across the workspaces it owns, with the work facet each carries.
-     * Returns every room of the caller&#39;s org, across the workspaces it owns, with the work facet each carries.  It reads the SAME Chunter documents the transactor serves, so a room opened in the Team client appears here with no sync, and a facet written here is read by anything holding the document. Direct messages are included: a room between two people is a room with no name, not a different kind of thing.
+     * Returns every room of the caller&#39;s org, across the spaces it owns, with the work facet each carries.
+     * Returns every room of the caller&#39;s org, across the spaces it owns, with the work facet each carries.  It reads the SAME Chunter documents the transactor serves, so a room opened in the Team client appears here with no sync, and a facet written here is read by anything holding the document. Direct messages are included: a room between two people is a room with no name, not a different kind of thing.
      * @return TeamRooms
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1309,8 +1313,8 @@ public class TeamApi {
     }
 
     /**
-     * Returns every room of the caller&#39;s org, across the workspaces it owns, with the work facet each carries.
-     * Returns every room of the caller&#39;s org, across the workspaces it owns, with the work facet each carries.  It reads the SAME Chunter documents the transactor serves, so a room opened in the Team client appears here with no sync, and a facet written here is read by anything holding the document. Direct messages are included: a room between two people is a room with no name, not a different kind of thing.
+     * Returns every room of the caller&#39;s org, across the spaces it owns, with the work facet each carries.
+     * Returns every room of the caller&#39;s org, across the spaces it owns, with the work facet each carries.  It reads the SAME Chunter documents the transactor serves, so a room opened in the Team client appears here with no sync, and a facet written here is read by anything holding the document. Direct messages are included: a room between two people is a room with no name, not a different kind of thing.
      * @return ApiResponse&lt;TeamRooms&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1327,8 +1331,8 @@ public class TeamApi {
     }
 
     /**
-     * Returns every room of the caller&#39;s org, across the workspaces it owns, with the work facet each carries. (asynchronously)
-     * Returns every room of the caller&#39;s org, across the workspaces it owns, with the work facet each carries.  It reads the SAME Chunter documents the transactor serves, so a room opened in the Team client appears here with no sync, and a facet written here is read by anything holding the document. Direct messages are included: a room between two people is a room with no name, not a different kind of thing.
+     * Returns every room of the caller&#39;s org, across the spaces it owns, with the work facet each carries. (asynchronously)
+     * Returns every room of the caller&#39;s org, across the spaces it owns, with the work facet each carries.  It reads the SAME Chunter documents the transactor serves, so a room opened in the Team client appears here with no sync, and a facet written here is read by anything holding the document. Direct messages are included: a room between two people is a room with no name, not a different kind of thing.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1343,6 +1347,141 @@ public class TeamApi {
 
         okhttp3.Call localVarCall = getTeamRoomsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<TeamRooms>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getTeamRoomsByIdMessages
+     * @param id ID is the room, from the path. The URL is the authority. (required)
+     * @param space Space names the space holding the room, and is required for the reason the bind op requires it: a room id is unique within a space and not across the org, so searching every space for a match would make the answer depend on iteration order. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getTeamRoomsByIdMessagesCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable String space, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/team/rooms/{id}/messages"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (space != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("space", space));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getTeamRoomsByIdMessagesValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable String space, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling getTeamRoomsByIdMessages(Async)");
+        }
+
+        return getTeamRoomsByIdMessagesCall(id, space, _callback);
+
+    }
+
+    /**
+     * Returns the tail of one room&#39;s conversation, oldest first.
+     * Returns the tail of one room&#39;s conversation, oldest first.  It reads the SAME Chunter documents the transactor serves, so a message typed in the Team client is here with no sync. A room the caller&#39;s org does not own answers 404 rather than 403, so a probe learns nothing about what exists.
+     * @param id ID is the room, from the path. The URL is the authority. (required)
+     * @param space Space names the space holding the room, and is required for the reason the bind op requires it: a room id is unique within a space and not across the org, so searching every space for a match would make the answer depend on iteration order. (optional)
+     * @return TeamMessages
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public TeamMessages getTeamRoomsByIdMessages(@javax.annotation.Nonnull String id, @javax.annotation.Nullable String space) throws ApiException {
+        ApiResponse<TeamMessages> localVarResp = getTeamRoomsByIdMessagesWithHttpInfo(id, space);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Returns the tail of one room&#39;s conversation, oldest first.
+     * Returns the tail of one room&#39;s conversation, oldest first.  It reads the SAME Chunter documents the transactor serves, so a message typed in the Team client is here with no sync. A room the caller&#39;s org does not own answers 404 rather than 403, so a probe learns nothing about what exists.
+     * @param id ID is the room, from the path. The URL is the authority. (required)
+     * @param space Space names the space holding the room, and is required for the reason the bind op requires it: a room id is unique within a space and not across the org, so searching every space for a match would make the answer depend on iteration order. (optional)
+     * @return ApiResponse&lt;TeamMessages&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<TeamMessages> getTeamRoomsByIdMessagesWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nullable String space) throws ApiException {
+        okhttp3.Call localVarCall = getTeamRoomsByIdMessagesValidateBeforeCall(id, space, null);
+        Type localVarReturnType = new TypeToken<TeamMessages>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Returns the tail of one room&#39;s conversation, oldest first. (asynchronously)
+     * Returns the tail of one room&#39;s conversation, oldest first.  It reads the SAME Chunter documents the transactor serves, so a message typed in the Team client is here with no sync. A room the caller&#39;s org does not own answers 404 rather than 403, so a probe learns nothing about what exists.
+     * @param id ID is the room, from the path. The URL is the authority. (required)
+     * @param space Space names the space holding the room, and is required for the reason the bind op requires it: a room id is unique within a space and not across the org, so searching every space for a match would make the answer depend on iteration order. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getTeamRoomsByIdMessagesAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nullable String space, final ApiCallback<TeamMessages> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getTeamRoomsByIdMessagesValidateBeforeCall(id, space, _callback);
+        Type localVarReturnType = new TypeToken<TeamMessages>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1409,8 +1548,8 @@ public class TeamApi {
     }
 
     /**
-     * Open the workspace data-plane socket
-     * Upgrades to the WebSocket the Team client runs an entire workspace over: every frame is a ZAP envelope wrapping one JSON-RPC message — findAll/findOne reads against the workspace&#39;s documents, tx writes that broadcast to the other live sessions, hello negotiating JSON rather than msgpack. The response is a protocol upgrade, so there is no body to read.  THE PATH SEGMENT IS THE CREDENTIAL. It is the workspace token selectWorkspace minted — bearer-equivalent, and sitting in a URL that proxies and access logs record, which is exactly why it expires in twelve hours and is re-minted on demand rather than being long-lived like the session token. It is decoded and verified (signature and expiry) BEFORE the upgrade, so a bad one is a 401 and never a socket that is accepted and then dropped, and it must carry both an account and a workspace claim. Nothing ambient authorizes this socket: a WebSocket is exempt from CORS, so a cookie-borne credential would make the Origin check the only access control on the whole data plane.  The tenant is the token&#39;s SIGNED org claim and it keys every store path, so no header can name another workspace&#39;s data. The upgrade ALSO refuses a browser Origin outside the team surfaces with 403 — otherwise any page could open an authenticated socket with a token it lured out of a logged-in browser — while a request with no Origin at all is admitted, because that is what a non-browser client sends.  On connect the workspace&#39;s system spaces are seeded once and the roster is reconciled every time, so the org&#39;s human members and its bots are present as workspace people without a separate sync call.
+     * Open the space data-plane socket
+     * Upgrades to the WebSocket the Team client runs an entire space over: every frame is a ZAP envelope wrapping one JSON-RPC message — findAll/findOne reads against the space&#39;s documents, tx writes that broadcast to the other live sessions, hello negotiating JSON rather than msgpack. The response is a protocol upgrade, so there is no body to read.  THE PATH SEGMENT IS THE CREDENTIAL. It is the space token selectWorkspace minted — bearer-equivalent, and sitting in a URL that proxies and access logs record, which is exactly why it expires in twelve hours and is re-minted on demand rather than being long-lived like the session token. It is decoded and verified (signature and expiry) BEFORE the upgrade, so a bad one is a 401 and never a socket that is accepted and then dropped, and it must carry both an account and a space claim. Nothing ambient authorizes this socket: a WebSocket is exempt from CORS, so a cookie-borne credential would make the Origin check the only access control on the whole data plane.  The tenant is the token&#39;s SIGNED org claim and it keys every store path, so no header can name another space&#39;s data. The upgrade ALSO refuses a browser Origin outside the team surfaces with 403 — otherwise any page could open an authenticated socket with a token it lured out of a logged-in browser — while a request with no Origin at all is admitted, because that is what a non-browser client sends.  On connect the space&#39;s system spaces are seeded once and the roster is reconciled every time, so the org&#39;s human members and its bots are present as space people without a separate sync call.
      * @param token  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -1419,8 +1558,8 @@ public class TeamApi {
     }
 
     /**
-     * Open the workspace data-plane socket
-     * Upgrades to the WebSocket the Team client runs an entire workspace over: every frame is a ZAP envelope wrapping one JSON-RPC message — findAll/findOne reads against the workspace&#39;s documents, tx writes that broadcast to the other live sessions, hello negotiating JSON rather than msgpack. The response is a protocol upgrade, so there is no body to read.  THE PATH SEGMENT IS THE CREDENTIAL. It is the workspace token selectWorkspace minted — bearer-equivalent, and sitting in a URL that proxies and access logs record, which is exactly why it expires in twelve hours and is re-minted on demand rather than being long-lived like the session token. It is decoded and verified (signature and expiry) BEFORE the upgrade, so a bad one is a 401 and never a socket that is accepted and then dropped, and it must carry both an account and a workspace claim. Nothing ambient authorizes this socket: a WebSocket is exempt from CORS, so a cookie-borne credential would make the Origin check the only access control on the whole data plane.  The tenant is the token&#39;s SIGNED org claim and it keys every store path, so no header can name another workspace&#39;s data. The upgrade ALSO refuses a browser Origin outside the team surfaces with 403 — otherwise any page could open an authenticated socket with a token it lured out of a logged-in browser — while a request with no Origin at all is admitted, because that is what a non-browser client sends.  On connect the workspace&#39;s system spaces are seeded once and the roster is reconciled every time, so the org&#39;s human members and its bots are present as workspace people without a separate sync call.
+     * Open the space data-plane socket
+     * Upgrades to the WebSocket the Team client runs an entire space over: every frame is a ZAP envelope wrapping one JSON-RPC message — findAll/findOne reads against the space&#39;s documents, tx writes that broadcast to the other live sessions, hello negotiating JSON rather than msgpack. The response is a protocol upgrade, so there is no body to read.  THE PATH SEGMENT IS THE CREDENTIAL. It is the space token selectWorkspace minted — bearer-equivalent, and sitting in a URL that proxies and access logs record, which is exactly why it expires in twelve hours and is re-minted on demand rather than being long-lived like the session token. It is decoded and verified (signature and expiry) BEFORE the upgrade, so a bad one is a 401 and never a socket that is accepted and then dropped, and it must carry both an account and a space claim. Nothing ambient authorizes this socket: a WebSocket is exempt from CORS, so a cookie-borne credential would make the Origin check the only access control on the whole data plane.  The tenant is the token&#39;s SIGNED org claim and it keys every store path, so no header can name another space&#39;s data. The upgrade ALSO refuses a browser Origin outside the team surfaces with 403 — otherwise any page could open an authenticated socket with a token it lured out of a logged-in browser — while a request with no Origin at all is admitted, because that is what a non-browser client sends.  On connect the space&#39;s system spaces are seeded once and the roster is reconciled every time, so the org&#39;s human members and its bots are present as space people without a separate sync call.
      * @param token  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1431,8 +1570,8 @@ public class TeamApi {
     }
 
     /**
-     * Open the workspace data-plane socket (asynchronously)
-     * Upgrades to the WebSocket the Team client runs an entire workspace over: every frame is a ZAP envelope wrapping one JSON-RPC message — findAll/findOne reads against the workspace&#39;s documents, tx writes that broadcast to the other live sessions, hello negotiating JSON rather than msgpack. The response is a protocol upgrade, so there is no body to read.  THE PATH SEGMENT IS THE CREDENTIAL. It is the workspace token selectWorkspace minted — bearer-equivalent, and sitting in a URL that proxies and access logs record, which is exactly why it expires in twelve hours and is re-minted on demand rather than being long-lived like the session token. It is decoded and verified (signature and expiry) BEFORE the upgrade, so a bad one is a 401 and never a socket that is accepted and then dropped, and it must carry both an account and a workspace claim. Nothing ambient authorizes this socket: a WebSocket is exempt from CORS, so a cookie-borne credential would make the Origin check the only access control on the whole data plane.  The tenant is the token&#39;s SIGNED org claim and it keys every store path, so no header can name another workspace&#39;s data. The upgrade ALSO refuses a browser Origin outside the team surfaces with 403 — otherwise any page could open an authenticated socket with a token it lured out of a logged-in browser — while a request with no Origin at all is admitted, because that is what a non-browser client sends.  On connect the workspace&#39;s system spaces are seeded once and the roster is reconciled every time, so the org&#39;s human members and its bots are present as workspace people without a separate sync call.
+     * Open the space data-plane socket (asynchronously)
+     * Upgrades to the WebSocket the Team client runs an entire space over: every frame is a ZAP envelope wrapping one JSON-RPC message — findAll/findOne reads against the space&#39;s documents, tx writes that broadcast to the other live sessions, hello negotiating JSON rather than msgpack. The response is a protocol upgrade, so there is no body to read.  THE PATH SEGMENT IS THE CREDENTIAL. It is the space token selectWorkspace minted — bearer-equivalent, and sitting in a URL that proxies and access logs record, which is exactly why it expires in twelve hours and is re-minted on demand rather than being long-lived like the session token. It is decoded and verified (signature and expiry) BEFORE the upgrade, so a bad one is a 401 and never a socket that is accepted and then dropped, and it must carry both an account and a space claim. Nothing ambient authorizes this socket: a WebSocket is exempt from CORS, so a cookie-borne credential would make the Origin check the only access control on the whole data plane.  The tenant is the token&#39;s SIGNED org claim and it keys every store path, so no header can name another space&#39;s data. The upgrade ALSO refuses a browser Origin outside the team surfaces with 403 — otherwise any page could open an authenticated socket with a token it lured out of a logged-in browser — while a request with no Origin at all is admitted, because that is what a non-browser client sends.  On connect the space&#39;s system spaces are seeded once and the roster is reconciled every time, so the org&#39;s human members and its bots are present as space people without a separate sync call.
      * @param token  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1446,7 +1585,7 @@ public class TeamApi {
     }
     /**
      * Build call for getTeamTransactorStatistics
-     * @param token Token is the workspace token minted by selectWorkspace. (optional)
+     * @param token Token is the space token minted by selectWorkspace. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1512,9 +1651,9 @@ public class TeamApi {
     }
 
     /**
-     * Statistics returns the transactor&#39;s live sessions for the workspace the caller&#39;s credential names — the endpoint the front&#39;s workspace switcher and server panel poll on the transactor base.
-     * Statistics returns the transactor&#39;s live sessions for the workspace the caller&#39;s credential names — the endpoint the front&#39;s workspace switcher and server panel poll on the transactor base. &#x60;token&#x60; carries the same two lanes the socket&#39;s path segment does: a workspace UUID names the workspace and is authorized against the membership rows, an HS256 workspace token names it in its signed claims. activeSessions carries ONLY that one workspace, never another tenant&#39;s sessions. An unverifiable credential, or one the caller is no member under, is 401.
-     * @param token Token is the workspace token minted by selectWorkspace. (optional)
+     * Statistics returns the transactor&#39;s live sessions for the space the caller&#39;s credential names — the endpoint the front&#39;s space switcher and server panel poll on the transactor base.
+     * Statistics returns the transactor&#39;s live sessions for the space the caller&#39;s credential names — the endpoint the front&#39;s space switcher and server panel poll on the transactor base. &#x60;token&#x60; carries the same two lanes the socket&#39;s path segment does: a space UUID names the space and is authorized against the membership rows, an HS256 space token names it in its signed claims. activeSessions carries ONLY that one space, never another tenant&#39;s sessions. An unverifiable credential, or one the caller is no member under, is 401.
+     * @param token Token is the space token minted by selectWorkspace. (optional)
      * @return StatsOut
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1530,9 +1669,9 @@ public class TeamApi {
     }
 
     /**
-     * Statistics returns the transactor&#39;s live sessions for the workspace the caller&#39;s credential names — the endpoint the front&#39;s workspace switcher and server panel poll on the transactor base.
-     * Statistics returns the transactor&#39;s live sessions for the workspace the caller&#39;s credential names — the endpoint the front&#39;s workspace switcher and server panel poll on the transactor base. &#x60;token&#x60; carries the same two lanes the socket&#39;s path segment does: a workspace UUID names the workspace and is authorized against the membership rows, an HS256 workspace token names it in its signed claims. activeSessions carries ONLY that one workspace, never another tenant&#39;s sessions. An unverifiable credential, or one the caller is no member under, is 401.
-     * @param token Token is the workspace token minted by selectWorkspace. (optional)
+     * Statistics returns the transactor&#39;s live sessions for the space the caller&#39;s credential names — the endpoint the front&#39;s space switcher and server panel poll on the transactor base.
+     * Statistics returns the transactor&#39;s live sessions for the space the caller&#39;s credential names — the endpoint the front&#39;s space switcher and server panel poll on the transactor base. &#x60;token&#x60; carries the same two lanes the socket&#39;s path segment does: a space UUID names the space and is authorized against the membership rows, an HS256 space token names it in its signed claims. activeSessions carries ONLY that one space, never another tenant&#39;s sessions. An unverifiable credential, or one the caller is no member under, is 401.
+     * @param token Token is the space token minted by selectWorkspace. (optional)
      * @return ApiResponse&lt;StatsOut&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1549,9 +1688,9 @@ public class TeamApi {
     }
 
     /**
-     * Statistics returns the transactor&#39;s live sessions for the workspace the caller&#39;s credential names — the endpoint the front&#39;s workspace switcher and server panel poll on the transactor base. (asynchronously)
-     * Statistics returns the transactor&#39;s live sessions for the workspace the caller&#39;s credential names — the endpoint the front&#39;s workspace switcher and server panel poll on the transactor base. &#x60;token&#x60; carries the same two lanes the socket&#39;s path segment does: a workspace UUID names the workspace and is authorized against the membership rows, an HS256 workspace token names it in its signed claims. activeSessions carries ONLY that one workspace, never another tenant&#39;s sessions. An unverifiable credential, or one the caller is no member under, is 401.
-     * @param token Token is the workspace token minted by selectWorkspace. (optional)
+     * Statistics returns the transactor&#39;s live sessions for the space the caller&#39;s credential names — the endpoint the front&#39;s space switcher and server panel poll on the transactor base. (asynchronously)
+     * Statistics returns the transactor&#39;s live sessions for the space the caller&#39;s credential names — the endpoint the front&#39;s space switcher and server panel poll on the transactor base. &#x60;token&#x60; carries the same two lanes the socket&#39;s path segment does: a space UUID names the space and is authorized against the membership rows, an HS256 space token names it in its signed claims. activeSessions carries ONLY that one space, never another tenant&#39;s sessions. An unverifiable credential, or one the caller is no member under, is 401.
+     * @param token Token is the space token minted by selectWorkspace. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1625,8 +1764,8 @@ public class TeamApi {
     }
 
     /**
-     * Read the caller&#39;s account and switch workspace
-     * The account control plane the Team client speaks: one POST carries a &#x60;method&#x60; verb and its &#x60;params&#x60;, and answers {\&quot;result\&quot;: …}. The verbs are the session&#39;s own reads and the workspace switch — getLoginInfoByToken, getUserWorkspaces, selectWorkspace, getWorkspaceInfo, getMemberships, getPerson, getSocialIds, getRegionInfo, isReadOnlyGuest — plus sendInvite, which adds a member to a workspace and is refused for a caller who is not its owner or admin.  A REFUSAL IS HTTP 200 carrying {\&quot;error\&quot;: {severity, code, params}} — the platform Status the client translates — not a 4xx. An unreadable body, an unauthorized session and an unknown verb all arrive that way, so a caller that reads only the status code reads every failure here as a success.  NO CREDENTIAL IS EVER HANDLED HERE. login, signUp, the OTP verbs, password change and reset, join and the guest-token exchange each answer Unauthorized with \&quot;sign in at hanzo.id\&quot; — a stated policy, not an unknown method, so the refusal is a fact a test can pin. Sessions come from the OAuth pair under /account/auth.  Auth is the team session token: Authorization: Bearer, else the HttpOnly account-token cookie. The tenant is that token&#39;s SIGNED org claim, never a header, and selectWorkspace resolves only among the orgs the token proves membership of. It also demands an explicit workspaceUrl — it never falls back to a first workspace, and a slug that resolves in two of the caller&#39;s orgs answers Ambiguous rather than picking one.
+     * Read the caller&#39;s account and switch space
+     * The account control plane the Team client speaks: one POST carries a &#x60;method&#x60; verb and its &#x60;params&#x60;, and answers {\&quot;result\&quot;: …}. The verbs are the session&#39;s own reads and the space switch — getLoginInfoByToken, getUserWorkspaces, selectWorkspace, getWorkspaceInfo, getMemberships, getPerson, getSocialIds, getRegionInfo, isReadOnlyGuest — plus sendInvite, which adds a member to a space and is refused for a caller who is not its owner or admin.  A REFUSAL IS HTTP 200 carrying {\&quot;error\&quot;: {severity, code, params}} — the platform Status the client translates — not a 4xx. An unreadable body, an unauthorized session and an unknown verb all arrive that way, so a caller that reads only the status code reads every failure here as a success.  NO CREDENTIAL IS EVER HANDLED HERE. login, signUp, the OTP verbs, password change and reset, join and the guest-token exchange each answer Unauthorized with \&quot;sign in at hanzo.id\&quot; — a stated policy, not an unknown method, so the refusal is a fact a test can pin. Sessions come from the OAuth pair under /account/auth.  Auth is the team session token: Authorization: Bearer, else the HttpOnly account-token cookie. The tenant is that token&#39;s SIGNED org claim, never a header, and selectWorkspace resolves only among the orgs the token proves membership of. It also demands an explicit workspaceUrl — it never falls back to a first space, and a slug that resolves in two of the caller&#39;s orgs answers Ambiguous rather than picking one.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public void postTeamAccount() throws ApiException {
@@ -1634,8 +1773,8 @@ public class TeamApi {
     }
 
     /**
-     * Read the caller&#39;s account and switch workspace
-     * The account control plane the Team client speaks: one POST carries a &#x60;method&#x60; verb and its &#x60;params&#x60;, and answers {\&quot;result\&quot;: …}. The verbs are the session&#39;s own reads and the workspace switch — getLoginInfoByToken, getUserWorkspaces, selectWorkspace, getWorkspaceInfo, getMemberships, getPerson, getSocialIds, getRegionInfo, isReadOnlyGuest — plus sendInvite, which adds a member to a workspace and is refused for a caller who is not its owner or admin.  A REFUSAL IS HTTP 200 carrying {\&quot;error\&quot;: {severity, code, params}} — the platform Status the client translates — not a 4xx. An unreadable body, an unauthorized session and an unknown verb all arrive that way, so a caller that reads only the status code reads every failure here as a success.  NO CREDENTIAL IS EVER HANDLED HERE. login, signUp, the OTP verbs, password change and reset, join and the guest-token exchange each answer Unauthorized with \&quot;sign in at hanzo.id\&quot; — a stated policy, not an unknown method, so the refusal is a fact a test can pin. Sessions come from the OAuth pair under /account/auth.  Auth is the team session token: Authorization: Bearer, else the HttpOnly account-token cookie. The tenant is that token&#39;s SIGNED org claim, never a header, and selectWorkspace resolves only among the orgs the token proves membership of. It also demands an explicit workspaceUrl — it never falls back to a first workspace, and a slug that resolves in two of the caller&#39;s orgs answers Ambiguous rather than picking one.
+     * Read the caller&#39;s account and switch space
+     * The account control plane the Team client speaks: one POST carries a &#x60;method&#x60; verb and its &#x60;params&#x60;, and answers {\&quot;result\&quot;: …}. The verbs are the session&#39;s own reads and the space switch — getLoginInfoByToken, getUserWorkspaces, selectWorkspace, getWorkspaceInfo, getMemberships, getPerson, getSocialIds, getRegionInfo, isReadOnlyGuest — plus sendInvite, which adds a member to a space and is refused for a caller who is not its owner or admin.  A REFUSAL IS HTTP 200 carrying {\&quot;error\&quot;: {severity, code, params}} — the platform Status the client translates — not a 4xx. An unreadable body, an unauthorized session and an unknown verb all arrive that way, so a caller that reads only the status code reads every failure here as a success.  NO CREDENTIAL IS EVER HANDLED HERE. login, signUp, the OTP verbs, password change and reset, join and the guest-token exchange each answer Unauthorized with \&quot;sign in at hanzo.id\&quot; — a stated policy, not an unknown method, so the refusal is a fact a test can pin. Sessions come from the OAuth pair under /account/auth.  Auth is the team session token: Authorization: Bearer, else the HttpOnly account-token cookie. The tenant is that token&#39;s SIGNED org claim, never a header, and selectWorkspace resolves only among the orgs the token proves membership of. It also demands an explicit workspaceUrl — it never falls back to a first space, and a slug that resolves in two of the caller&#39;s orgs answers Ambiguous rather than picking one.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -1645,8 +1784,8 @@ public class TeamApi {
     }
 
     /**
-     * Read the caller&#39;s account and switch workspace (asynchronously)
-     * The account control plane the Team client speaks: one POST carries a &#x60;method&#x60; verb and its &#x60;params&#x60;, and answers {\&quot;result\&quot;: …}. The verbs are the session&#39;s own reads and the workspace switch — getLoginInfoByToken, getUserWorkspaces, selectWorkspace, getWorkspaceInfo, getMemberships, getPerson, getSocialIds, getRegionInfo, isReadOnlyGuest — plus sendInvite, which adds a member to a workspace and is refused for a caller who is not its owner or admin.  A REFUSAL IS HTTP 200 carrying {\&quot;error\&quot;: {severity, code, params}} — the platform Status the client translates — not a 4xx. An unreadable body, an unauthorized session and an unknown verb all arrive that way, so a caller that reads only the status code reads every failure here as a success.  NO CREDENTIAL IS EVER HANDLED HERE. login, signUp, the OTP verbs, password change and reset, join and the guest-token exchange each answer Unauthorized with \&quot;sign in at hanzo.id\&quot; — a stated policy, not an unknown method, so the refusal is a fact a test can pin. Sessions come from the OAuth pair under /account/auth.  Auth is the team session token: Authorization: Bearer, else the HttpOnly account-token cookie. The tenant is that token&#39;s SIGNED org claim, never a header, and selectWorkspace resolves only among the orgs the token proves membership of. It also demands an explicit workspaceUrl — it never falls back to a first workspace, and a slug that resolves in two of the caller&#39;s orgs answers Ambiguous rather than picking one.
+     * Read the caller&#39;s account and switch space (asynchronously)
+     * The account control plane the Team client speaks: one POST carries a &#x60;method&#x60; verb and its &#x60;params&#x60;, and answers {\&quot;result\&quot;: …}. The verbs are the session&#39;s own reads and the space switch — getLoginInfoByToken, getUserWorkspaces, selectWorkspace, getWorkspaceInfo, getMemberships, getPerson, getSocialIds, getRegionInfo, isReadOnlyGuest — plus sendInvite, which adds a member to a space and is refused for a caller who is not its owner or admin.  A REFUSAL IS HTTP 200 carrying {\&quot;error\&quot;: {severity, code, params}} — the platform Status the client translates — not a 4xx. An unreadable body, an unauthorized session and an unknown verb all arrive that way, so a caller that reads only the status code reads every failure here as a success.  NO CREDENTIAL IS EVER HANDLED HERE. login, signUp, the OTP verbs, password change and reset, join and the guest-token exchange each answer Unauthorized with \&quot;sign in at hanzo.id\&quot; — a stated policy, not an unknown method, so the refusal is a fact a test can pin. Sessions come from the OAuth pair under /account/auth.  Auth is the team session token: Authorization: Bearer, else the HttpOnly account-token cookie. The tenant is that token&#39;s SIGNED org claim, never a header, and selectWorkspace resolves only among the orgs the token proves membership of. It also demands an explicit workspaceUrl — it never falls back to a first space, and a slug that resolves in two of the caller&#39;s orgs answers Ambiguous rather than picking one.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1720,8 +1859,8 @@ public class TeamApi {
     }
 
     /**
-     * SyncBots re-projects the caller org&#39;s agents as workspace members into EVERY workspace of the org, and removes the ones whose agent is gone.
-     * SyncBots re-projects the caller org&#39;s agents as workspace members into EVERY workspace of the org, and removes the ones whose agent is gone. It is idempotent, and admin only: mutating a workspace&#39;s roster requires the gateway-minted admin flag, which a client can never forge. It answers how many roster entries the reconcile touched.
+     * SyncBots re-projects the caller org&#39;s agents as space members into EVERY space of the org, and removes the ones whose agent is gone.
+     * SyncBots re-projects the caller org&#39;s agents as space members into EVERY space of the org, and removes the ones whose agent is gone. It is idempotent, and admin only: mutating a space&#39;s roster requires the gateway-minted admin flag, which a client can never forge. It answers how many roster entries the reconcile touched.
      * @return BotSync
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1737,8 +1876,8 @@ public class TeamApi {
     }
 
     /**
-     * SyncBots re-projects the caller org&#39;s agents as workspace members into EVERY workspace of the org, and removes the ones whose agent is gone.
-     * SyncBots re-projects the caller org&#39;s agents as workspace members into EVERY workspace of the org, and removes the ones whose agent is gone. It is idempotent, and admin only: mutating a workspace&#39;s roster requires the gateway-minted admin flag, which a client can never forge. It answers how many roster entries the reconcile touched.
+     * SyncBots re-projects the caller org&#39;s agents as space members into EVERY space of the org, and removes the ones whose agent is gone.
+     * SyncBots re-projects the caller org&#39;s agents as space members into EVERY space of the org, and removes the ones whose agent is gone. It is idempotent, and admin only: mutating a space&#39;s roster requires the gateway-minted admin flag, which a client can never forge. It answers how many roster entries the reconcile touched.
      * @return ApiResponse&lt;BotSync&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1755,8 +1894,8 @@ public class TeamApi {
     }
 
     /**
-     * SyncBots re-projects the caller org&#39;s agents as workspace members into EVERY workspace of the org, and removes the ones whose agent is gone. (asynchronously)
-     * SyncBots re-projects the caller org&#39;s agents as workspace members into EVERY workspace of the org, and removes the ones whose agent is gone. It is idempotent, and admin only: mutating a workspace&#39;s roster requires the gateway-minted admin flag, which a client can never forge. It answers how many roster entries the reconcile touched.
+     * SyncBots re-projects the caller org&#39;s agents as space members into EVERY space of the org, and removes the ones whose agent is gone. (asynchronously)
+     * SyncBots re-projects the caller org&#39;s agents as space members into EVERY space of the org, and removes the ones whose agent is gone. It is idempotent, and admin only: mutating a space&#39;s roster requires the gateway-minted admin flag, which a client can never forge. It answers how many roster entries the reconcile touched.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1776,7 +1915,7 @@ public class TeamApi {
     }
     /**
      * Build call for postTeamCollaboratorRpcByDocumentid
-     * @param documentId DocumentID addresses the document field, as \&quot;&lt;workspaceUuid&gt;|&lt;objectClass&gt;|&lt;objectId&gt;|&lt;objectAttr&gt;\&quot; — the collaborator-client encodeDocumentId shape, from the path. (required)
+     * @param documentId DocumentID addresses the document field, as \&quot;&lt;spaceUuid&gt;|&lt;objectClass&gt;|&lt;objectId&gt;|&lt;objectAttr&gt;\&quot; — the collaborator-client encodeDocumentId shape, from the path. (required)
      * @param collabRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1852,8 +1991,8 @@ public class TeamApi {
 
     /**
      * CollabRPC is the collaborative-markup snapshot plane the Team front&#39;s editor speaks: createContent stores a document field&#39;s markup at a fresh, immutable blob ref and returns it, updateContent stores a new snapshot and answers nothing, and getContent reads back the exact snapshot a ref names.
-     * CollabRPC is the collaborative-markup snapshot plane the Team front&#39;s editor speaks: createContent stores a document field&#39;s markup at a fresh, immutable blob ref and returns it, updateContent stores a new snapshot and answers nothing, and getContent reads back the exact snapshot a ref names.  createContent ALSO seeds the live-editing update log from the front-supplied Y.js update, so a dialog-authored description is visible in the collaborative editor — which replays that log — and not only in snapshot reads. updateContent never touches that log: peers may be live-editing the document, and their edits are not this call&#39;s to overwrite.  Every call is scoped to the caller&#39;s VERIFIED session or workspace token: the documentId&#39;s workspace must be the token&#39;s workspace when the token names one, and the caller must be a member of it. An unknown workspace, another tenant&#39;s workspace and a workspace the caller is not in all answer the same 404, so a probe learns nothing about what exists.
-     * @param documentId DocumentID addresses the document field, as \&quot;&lt;workspaceUuid&gt;|&lt;objectClass&gt;|&lt;objectId&gt;|&lt;objectAttr&gt;\&quot; — the collaborator-client encodeDocumentId shape, from the path. (required)
+     * CollabRPC is the collaborative-markup snapshot plane the Team front&#39;s editor speaks: createContent stores a document field&#39;s markup at a fresh, immutable blob ref and returns it, updateContent stores a new snapshot and answers nothing, and getContent reads back the exact snapshot a ref names.  createContent ALSO seeds the live-editing update log from the front-supplied Y.js update, so a dialog-authored description is visible in the collaborative editor — which replays that log — and not only in snapshot reads. updateContent never touches that log: peers may be live-editing the document, and their edits are not this call&#39;s to overwrite.  Every call is scoped to the caller&#39;s VERIFIED session or space token: the documentId&#39;s space must be the token&#39;s space when the token names one, and the caller must be a member of it. An unknown space, another tenant&#39;s space and a space the caller is not in all answer the same 404, so a probe learns nothing about what exists.
+     * @param documentId DocumentID addresses the document field, as \&quot;&lt;spaceUuid&gt;|&lt;objectClass&gt;|&lt;objectId&gt;|&lt;objectAttr&gt;\&quot; — the collaborator-client encodeDocumentId shape, from the path. (required)
      * @param collabRequest  (required)
      * @return CollabResult
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1871,8 +2010,8 @@ public class TeamApi {
 
     /**
      * CollabRPC is the collaborative-markup snapshot plane the Team front&#39;s editor speaks: createContent stores a document field&#39;s markup at a fresh, immutable blob ref and returns it, updateContent stores a new snapshot and answers nothing, and getContent reads back the exact snapshot a ref names.
-     * CollabRPC is the collaborative-markup snapshot plane the Team front&#39;s editor speaks: createContent stores a document field&#39;s markup at a fresh, immutable blob ref and returns it, updateContent stores a new snapshot and answers nothing, and getContent reads back the exact snapshot a ref names.  createContent ALSO seeds the live-editing update log from the front-supplied Y.js update, so a dialog-authored description is visible in the collaborative editor — which replays that log — and not only in snapshot reads. updateContent never touches that log: peers may be live-editing the document, and their edits are not this call&#39;s to overwrite.  Every call is scoped to the caller&#39;s VERIFIED session or workspace token: the documentId&#39;s workspace must be the token&#39;s workspace when the token names one, and the caller must be a member of it. An unknown workspace, another tenant&#39;s workspace and a workspace the caller is not in all answer the same 404, so a probe learns nothing about what exists.
-     * @param documentId DocumentID addresses the document field, as \&quot;&lt;workspaceUuid&gt;|&lt;objectClass&gt;|&lt;objectId&gt;|&lt;objectAttr&gt;\&quot; — the collaborator-client encodeDocumentId shape, from the path. (required)
+     * CollabRPC is the collaborative-markup snapshot plane the Team front&#39;s editor speaks: createContent stores a document field&#39;s markup at a fresh, immutable blob ref and returns it, updateContent stores a new snapshot and answers nothing, and getContent reads back the exact snapshot a ref names.  createContent ALSO seeds the live-editing update log from the front-supplied Y.js update, so a dialog-authored description is visible in the collaborative editor — which replays that log — and not only in snapshot reads. updateContent never touches that log: peers may be live-editing the document, and their edits are not this call&#39;s to overwrite.  Every call is scoped to the caller&#39;s VERIFIED session or space token: the documentId&#39;s space must be the token&#39;s space when the token names one, and the caller must be a member of it. An unknown space, another tenant&#39;s space and a space the caller is not in all answer the same 404, so a probe learns nothing about what exists.
+     * @param documentId DocumentID addresses the document field, as \&quot;&lt;spaceUuid&gt;|&lt;objectClass&gt;|&lt;objectId&gt;|&lt;objectAttr&gt;\&quot; — the collaborator-client encodeDocumentId shape, from the path. (required)
      * @param collabRequest  (required)
      * @return ApiResponse&lt;CollabResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1891,8 +2030,8 @@ public class TeamApi {
 
     /**
      * CollabRPC is the collaborative-markup snapshot plane the Team front&#39;s editor speaks: createContent stores a document field&#39;s markup at a fresh, immutable blob ref and returns it, updateContent stores a new snapshot and answers nothing, and getContent reads back the exact snapshot a ref names. (asynchronously)
-     * CollabRPC is the collaborative-markup snapshot plane the Team front&#39;s editor speaks: createContent stores a document field&#39;s markup at a fresh, immutable blob ref and returns it, updateContent stores a new snapshot and answers nothing, and getContent reads back the exact snapshot a ref names.  createContent ALSO seeds the live-editing update log from the front-supplied Y.js update, so a dialog-authored description is visible in the collaborative editor — which replays that log — and not only in snapshot reads. updateContent never touches that log: peers may be live-editing the document, and their edits are not this call&#39;s to overwrite.  Every call is scoped to the caller&#39;s VERIFIED session or workspace token: the documentId&#39;s workspace must be the token&#39;s workspace when the token names one, and the caller must be a member of it. An unknown workspace, another tenant&#39;s workspace and a workspace the caller is not in all answer the same 404, so a probe learns nothing about what exists.
-     * @param documentId DocumentID addresses the document field, as \&quot;&lt;workspaceUuid&gt;|&lt;objectClass&gt;|&lt;objectId&gt;|&lt;objectAttr&gt;\&quot; — the collaborator-client encodeDocumentId shape, from the path. (required)
+     * CollabRPC is the collaborative-markup snapshot plane the Team front&#39;s editor speaks: createContent stores a document field&#39;s markup at a fresh, immutable blob ref and returns it, updateContent stores a new snapshot and answers nothing, and getContent reads back the exact snapshot a ref names.  createContent ALSO seeds the live-editing update log from the front-supplied Y.js update, so a dialog-authored description is visible in the collaborative editor — which replays that log — and not only in snapshot reads. updateContent never touches that log: peers may be live-editing the document, and their edits are not this call&#39;s to overwrite.  Every call is scoped to the caller&#39;s VERIFIED session or space token: the documentId&#39;s space must be the token&#39;s space when the token names one, and the caller must be a member of it. An unknown space, another tenant&#39;s space and a space the caller is not in all answer the same 404, so a probe learns nothing about what exists.
+     * @param documentId DocumentID addresses the document field, as \&quot;&lt;spaceUuid&gt;|&lt;objectClass&gt;|&lt;objectId&gt;|&lt;objectAttr&gt;\&quot; — the collaborator-client encodeDocumentId shape, from the path. (required)
      * @param collabRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1912,8 +2051,8 @@ public class TeamApi {
         return localVarCall;
     }
     /**
-     * Build call for postTeamFilesByWorkspace
-     * @param workspace  (required)
+     * Build call for postTeamFilesBySpace
+     * @param space  (required)
      * @param body  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1925,7 +2064,7 @@ public class TeamApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postTeamFilesByWorkspaceCall(@javax.annotation.Nonnull String workspace, @javax.annotation.Nullable File body, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postTeamFilesBySpaceCall(@javax.annotation.Nonnull String space, @javax.annotation.Nullable File body, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1942,8 +2081,8 @@ public class TeamApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/v1/team/files/{workspace}"
-            .replace("{" + "workspace" + "}", localVarApiClient.escapeString(workspace.toString()));
+        String localVarPath = "/v1/team/files/{space}"
+            .replace("{" + "space" + "}", localVarApiClient.escapeString(space.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1972,20 +2111,20 @@ public class TeamApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postTeamFilesByWorkspaceValidateBeforeCall(@javax.annotation.Nonnull String workspace, @javax.annotation.Nullable File body, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'workspace' is set
-        if (workspace == null) {
-            throw new ApiException("Missing the required parameter 'workspace' when calling postTeamFilesByWorkspace(Async)");
+    private okhttp3.Call postTeamFilesBySpaceValidateBeforeCall(@javax.annotation.Nonnull String space, @javax.annotation.Nullable File body, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'space' is set
+        if (space == null) {
+            throw new ApiException("Missing the required parameter 'space' when calling postTeamFilesBySpace(Async)");
         }
 
-        return postTeamFilesByWorkspaceCall(workspace, body, _callback);
+        return postTeamFilesBySpaceCall(space, body, _callback);
 
     }
 
     /**
-     * Upload a file into a workspace
-     * Stores one file in a workspace&#39;s blob store and answers the blob id it is addressable by, as plain text — the front discards that body, it is there for a caller driving this by hand.  The body is a multipart form with a &#x60;file&#x60; part, and THAT PART&#39;S FILENAME IS THE BLOB ID: the client mints it (a uuid v4) and the server stores under it, so a part whose filename is not a uuid is refused rather than assigned one. A file over 100 MiB is 413 and an empty one is 400.  The caller must hold a verified session or workspace token AND be a member of the workspace; an unknown workspace, another tenant&#39;s workspace and a workspace the caller is not in all answer the same 404, so a probe learns nothing about what exists. The stored key embeds the verified org and the workspace, so an upload cannot land in another tenant&#39;s box whatever id it names. A storage backend that is unavailable fails closed with 502 rather than reporting a write it never made.
-     * @param workspace  (required)
+     * Upload a file into a space
+     * Stores one file in a space&#39;s blob store and answers the blob id it is addressable by, as plain text — the front discards that body, it is there for a caller driving this by hand.  The body is a multipart form with a &#x60;file&#x60; part, and THAT PART&#39;S FILENAME IS THE BLOB ID: the client mints it (a uuid v4) and the server stores under it, so a part whose filename is not a uuid is refused rather than assigned one. A file over 100 MiB is 413 and an empty one is 400.  The caller must hold a verified session or space token AND be a member of the space; an unknown space, another tenant&#39;s space and a space the caller is not in all answer the same 404, so a probe learns nothing about what exists. The stored key embeds the verified org and the space, so an upload cannot land in another tenant&#39;s box whatever id it names. A storage backend that is unavailable fails closed with 502 rather than reporting a write it never made.
+     * @param space  (required)
      * @param body  (optional)
      * @return File
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1996,15 +2135,15 @@ public class TeamApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public File postTeamFilesByWorkspace(@javax.annotation.Nonnull String workspace, @javax.annotation.Nullable File body) throws ApiException {
-        ApiResponse<File> localVarResp = postTeamFilesByWorkspaceWithHttpInfo(workspace, body);
+    public File postTeamFilesBySpace(@javax.annotation.Nonnull String space, @javax.annotation.Nullable File body) throws ApiException {
+        ApiResponse<File> localVarResp = postTeamFilesBySpaceWithHttpInfo(space, body);
         return localVarResp.getData();
     }
 
     /**
-     * Upload a file into a workspace
-     * Stores one file in a workspace&#39;s blob store and answers the blob id it is addressable by, as plain text — the front discards that body, it is there for a caller driving this by hand.  The body is a multipart form with a &#x60;file&#x60; part, and THAT PART&#39;S FILENAME IS THE BLOB ID: the client mints it (a uuid v4) and the server stores under it, so a part whose filename is not a uuid is refused rather than assigned one. A file over 100 MiB is 413 and an empty one is 400.  The caller must hold a verified session or workspace token AND be a member of the workspace; an unknown workspace, another tenant&#39;s workspace and a workspace the caller is not in all answer the same 404, so a probe learns nothing about what exists. The stored key embeds the verified org and the workspace, so an upload cannot land in another tenant&#39;s box whatever id it names. A storage backend that is unavailable fails closed with 502 rather than reporting a write it never made.
-     * @param workspace  (required)
+     * Upload a file into a space
+     * Stores one file in a space&#39;s blob store and answers the blob id it is addressable by, as plain text — the front discards that body, it is there for a caller driving this by hand.  The body is a multipart form with a &#x60;file&#x60; part, and THAT PART&#39;S FILENAME IS THE BLOB ID: the client mints it (a uuid v4) and the server stores under it, so a part whose filename is not a uuid is refused rather than assigned one. A file over 100 MiB is 413 and an empty one is 400.  The caller must hold a verified session or space token AND be a member of the space; an unknown space, another tenant&#39;s space and a space the caller is not in all answer the same 404, so a probe learns nothing about what exists. The stored key embeds the verified org and the space, so an upload cannot land in another tenant&#39;s box whatever id it names. A storage backend that is unavailable fails closed with 502 rather than reporting a write it never made.
+     * @param space  (required)
      * @param body  (optional)
      * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2015,16 +2154,16 @@ public class TeamApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<File> postTeamFilesByWorkspaceWithHttpInfo(@javax.annotation.Nonnull String workspace, @javax.annotation.Nullable File body) throws ApiException {
-        okhttp3.Call localVarCall = postTeamFilesByWorkspaceValidateBeforeCall(workspace, body, null);
+    public ApiResponse<File> postTeamFilesBySpaceWithHttpInfo(@javax.annotation.Nonnull String space, @javax.annotation.Nullable File body) throws ApiException {
+        okhttp3.Call localVarCall = postTeamFilesBySpaceValidateBeforeCall(space, body, null);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Upload a file into a workspace (asynchronously)
-     * Stores one file in a workspace&#39;s blob store and answers the blob id it is addressable by, as plain text — the front discards that body, it is there for a caller driving this by hand.  The body is a multipart form with a &#x60;file&#x60; part, and THAT PART&#39;S FILENAME IS THE BLOB ID: the client mints it (a uuid v4) and the server stores under it, so a part whose filename is not a uuid is refused rather than assigned one. A file over 100 MiB is 413 and an empty one is 400.  The caller must hold a verified session or workspace token AND be a member of the workspace; an unknown workspace, another tenant&#39;s workspace and a workspace the caller is not in all answer the same 404, so a probe learns nothing about what exists. The stored key embeds the verified org and the workspace, so an upload cannot land in another tenant&#39;s box whatever id it names. A storage backend that is unavailable fails closed with 502 rather than reporting a write it never made.
-     * @param workspace  (required)
+     * Upload a file into a space (asynchronously)
+     * Stores one file in a space&#39;s blob store and answers the blob id it is addressable by, as plain text — the front discards that body, it is there for a caller driving this by hand.  The body is a multipart form with a &#x60;file&#x60; part, and THAT PART&#39;S FILENAME IS THE BLOB ID: the client mints it (a uuid v4) and the server stores under it, so a part whose filename is not a uuid is refused rather than assigned one. A file over 100 MiB is 413 and an empty one is 400.  The caller must hold a verified session or space token AND be a member of the space; an unknown space, another tenant&#39;s space and a space the caller is not in all answer the same 404, so a probe learns nothing about what exists. The stored key embeds the verified org and the space, so an upload cannot land in another tenant&#39;s box whatever id it names. A storage backend that is unavailable fails closed with 502 rather than reporting a write it never made.
+     * @param space  (required)
      * @param body  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2036,10 +2175,274 @@ public class TeamApi {
         <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postTeamFilesByWorkspaceAsync(@javax.annotation.Nonnull String workspace, @javax.annotation.Nullable File body, final ApiCallback<File> _callback) throws ApiException {
+    public okhttp3.Call postTeamFilesBySpaceAsync(@javax.annotation.Nonnull String space, @javax.annotation.Nullable File body, final ApiCallback<File> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postTeamFilesByWorkspaceValidateBeforeCall(workspace, body, _callback);
+        okhttp3.Call localVarCall = postTeamFilesBySpaceValidateBeforeCall(space, body, _callback);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postTeamRooms
+     * @param teamRoomNew  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postTeamRoomsCall(@javax.annotation.Nonnull TeamRoomNew teamRoomNew, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = teamRoomNew;
+
+        // create path and map variables
+        String localVarPath = "/v1/team/rooms";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postTeamRoomsValidateBeforeCall(@javax.annotation.Nonnull TeamRoomNew teamRoomNew, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'teamRoomNew' is set
+        if (teamRoomNew == null) {
+            throw new ApiException("Missing the required parameter 'teamRoomNew' when calling postTeamRooms(Async)");
+        }
+
+        return postTeamRoomsCall(teamRoomNew, _callback);
+
+    }
+
+    /**
+     * Opens a named room and answers it as the store now holds it.
+     * Opens a named room and answers it as the store now holds it.  It writes through the SAME applyTx path the Team client uses, so a room opened here is broadcast to every live client of the space and appears in an open sidebar without a reload — the same property listRooms rests on, read from the write side.  TWO TRANSACTIONS, NOT ONE, when the request states a facet. The document and its mixin are separate writes in this model (bindRoom writes only the second), and composing them here rather than inventing a combined tx keeps one write path for each. A create that lands and a facet that does not is visible as a room with default intent, which is the honest partial state.
+     * @param teamRoomNew  (required)
+     * @return TeamRoom
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
+     */
+    public TeamRoom postTeamRooms(@javax.annotation.Nonnull TeamRoomNew teamRoomNew) throws ApiException {
+        ApiResponse<TeamRoom> localVarResp = postTeamRoomsWithHttpInfo(teamRoomNew);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Opens a named room and answers it as the store now holds it.
+     * Opens a named room and answers it as the store now holds it.  It writes through the SAME applyTx path the Team client uses, so a room opened here is broadcast to every live client of the space and appears in an open sidebar without a reload — the same property listRooms rests on, read from the write side.  TWO TRANSACTIONS, NOT ONE, when the request states a facet. The document and its mixin are separate writes in this model (bindRoom writes only the second), and composing them here rather than inventing a combined tx keeps one write path for each. A create that lands and a facet that does not is visible as a room with default intent, which is the honest partial state.
+     * @param teamRoomNew  (required)
+     * @return ApiResponse&lt;TeamRoom&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<TeamRoom> postTeamRoomsWithHttpInfo(@javax.annotation.Nonnull TeamRoomNew teamRoomNew) throws ApiException {
+        okhttp3.Call localVarCall = postTeamRoomsValidateBeforeCall(teamRoomNew, null);
+        Type localVarReturnType = new TypeToken<TeamRoom>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Opens a named room and answers it as the store now holds it. (asynchronously)
+     * Opens a named room and answers it as the store now holds it.  It writes through the SAME applyTx path the Team client uses, so a room opened here is broadcast to every live client of the space and appears in an open sidebar without a reload — the same property listRooms rests on, read from the write side.  TWO TRANSACTIONS, NOT ONE, when the request states a facet. The document and its mixin are separate writes in this model (bindRoom writes only the second), and composing them here rather than inventing a combined tx keeps one write path for each. A create that lands and a facet that does not is visible as a room with default intent, which is the honest partial state.
+     * @param teamRoomNew  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postTeamRoomsAsync(@javax.annotation.Nonnull TeamRoomNew teamRoomNew, final ApiCallback<TeamRoom> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postTeamRoomsValidateBeforeCall(teamRoomNew, _callback);
+        Type localVarReturnType = new TypeToken<TeamRoom>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postTeamRoomsByIdMessages
+     * @param id ID is the room to say it in, from the path. (required)
+     * @param teamMessageWrite  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postTeamRoomsByIdMessagesCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TeamMessageWrite teamMessageWrite, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = teamMessageWrite;
+
+        // create path and map variables
+        String localVarPath = "/v1/team/rooms/{id}/messages"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postTeamRoomsByIdMessagesValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TeamMessageWrite teamMessageWrite, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling postTeamRoomsByIdMessages(Async)");
+        }
+
+        // verify the required parameter 'teamMessageWrite' is set
+        if (teamMessageWrite == null) {
+            throw new ApiException("Missing the required parameter 'teamMessageWrite' when calling postTeamRoomsByIdMessages(Async)");
+        }
+
+        return postTeamRoomsByIdMessagesCall(id, teamMessageWrite, _callback);
+
+    }
+
+    /**
+     * Says one thing in a room, as the caller.
+     * Says one thing in a room, as the caller.  The write goes through the SAME applyTx path the Team client&#39;s own messages take and is broadcast to every connected client of the space, so a message sent here appears live in an open room rather than on the next reload. It answers the message as the store now HOLDS it.
+     * @param id ID is the room to say it in, from the path. (required)
+     * @param teamMessageWrite  (required)
+     * @return TeamMessage
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
+     */
+    public TeamMessage postTeamRoomsByIdMessages(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TeamMessageWrite teamMessageWrite) throws ApiException {
+        ApiResponse<TeamMessage> localVarResp = postTeamRoomsByIdMessagesWithHttpInfo(id, teamMessageWrite);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Says one thing in a room, as the caller.
+     * Says one thing in a room, as the caller.  The write goes through the SAME applyTx path the Team client&#39;s own messages take and is broadcast to every connected client of the space, so a message sent here appears live in an open room rather than on the next reload. It answers the message as the store now HOLDS it.
+     * @param id ID is the room to say it in, from the path. (required)
+     * @param teamMessageWrite  (required)
+     * @return ApiResponse&lt;TeamMessage&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<TeamMessage> postTeamRoomsByIdMessagesWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TeamMessageWrite teamMessageWrite) throws ApiException {
+        okhttp3.Call localVarCall = postTeamRoomsByIdMessagesValidateBeforeCall(id, teamMessageWrite, null);
+        Type localVarReturnType = new TypeToken<TeamMessage>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Says one thing in a room, as the caller. (asynchronously)
+     * Says one thing in a room, as the caller.  The write goes through the SAME applyTx path the Team client&#39;s own messages take and is broadcast to every connected client of the space, so a message sent here appears live in an open room rather than on the next reload. It answers the message as the store now HOLDS it.
+     * @param id ID is the room to say it in, from the path. (required)
+     * @param teamMessageWrite  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postTeamRoomsByIdMessagesAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull TeamMessageWrite teamMessageWrite, final ApiCallback<TeamMessage> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postTeamRoomsByIdMessagesValidateBeforeCall(id, teamMessageWrite, _callback);
+        Type localVarReturnType = new TypeToken<TeamMessage>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2238,7 +2641,7 @@ public class TeamApi {
 
     /**
      * States what a room is for: its lifecycle intent, and what it is about.
-     * States what a room is for: its lifecycle intent, and what it is about. It answers the room as it now stands.  The write is a platform MIXIN on the room document, applied through the SAME applyTx path the Team client&#39;s own writes take and broadcast to every connected client — so a room bound here updates live in an open workspace rather than on the next reload.
+     * States what a room is for: its lifecycle intent, and what it is about. It answers the room as it now stands.  The write is a platform MIXIN on the room document, applied through the SAME applyTx path the Team client&#39;s own writes take and broadcast to every connected client — so a room bound here updates live in an open space rather than on the next reload.
      * @param id ID is the room to bind, from the path. The URL is the authority; a body carrying another id cannot redirect the write. (required)
      * @param teamRoomBind  (required)
      * @return TeamRoom
@@ -2257,7 +2660,7 @@ public class TeamApi {
 
     /**
      * States what a room is for: its lifecycle intent, and what it is about.
-     * States what a room is for: its lifecycle intent, and what it is about. It answers the room as it now stands.  The write is a platform MIXIN on the room document, applied through the SAME applyTx path the Team client&#39;s own writes take and broadcast to every connected client — so a room bound here updates live in an open workspace rather than on the next reload.
+     * States what a room is for: its lifecycle intent, and what it is about. It answers the room as it now stands.  The write is a platform MIXIN on the room document, applied through the SAME applyTx path the Team client&#39;s own writes take and broadcast to every connected client — so a room bound here updates live in an open space rather than on the next reload.
      * @param id ID is the room to bind, from the path. The URL is the authority; a body carrying another id cannot redirect the write. (required)
      * @param teamRoomBind  (required)
      * @return ApiResponse&lt;TeamRoom&gt;
@@ -2277,7 +2680,7 @@ public class TeamApi {
 
     /**
      * States what a room is for: its lifecycle intent, and what it is about. (asynchronously)
-     * States what a room is for: its lifecycle intent, and what it is about. It answers the room as it now stands.  The write is a platform MIXIN on the room document, applied through the SAME applyTx path the Team client&#39;s own writes take and broadcast to every connected client — so a room bound here updates live in an open workspace rather than on the next reload.
+     * States what a room is for: its lifecycle intent, and what it is about. It answers the room as it now stands.  The write is a platform MIXIN on the room document, applied through the SAME applyTx path the Team client&#39;s own writes take and broadcast to every connected client — so a room bound here updates live in an open space rather than on the next reload.
      * @param id ID is the room to bind, from the path. The URL is the authority; a body carrying another id cannot redirect the write. (required)
      * @param teamRoomBind  (required)
      * @param _callback The callback to be executed when the API call finishes

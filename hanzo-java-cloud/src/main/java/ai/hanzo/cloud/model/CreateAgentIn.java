@@ -52,6 +52,11 @@ import ai.hanzo.cloud.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class CreateAgentIn {
+  public static final String SERIALIZED_NAME_AVATAR = "avatar";
+  @SerializedName(SERIALIZED_NAME_AVATAR)
+  @javax.annotation.Nullable
+  private String avatar;
+
   public static final String SERIALIZED_NAME_COMPUTE_REF = "computeRef";
   @SerializedName(SERIALIZED_NAME_COMPUTE_REF)
   @javax.annotation.Nullable
@@ -61,6 +66,11 @@ public class CreateAgentIn {
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   @javax.annotation.Nullable
   private String description;
+
+  public static final String SERIALIZED_NAME_EMOJI = "emoji";
+  @SerializedName(SERIALIZED_NAME_EMOJI)
+  @javax.annotation.Nullable
+  private String emoji;
 
   public static final String SERIALIZED_NAME_EXECUTION_MODE = "executionMode";
   @SerializedName(SERIALIZED_NAME_EXECUTION_MODE)
@@ -100,6 +110,25 @@ public class CreateAgentIn {
   public CreateAgentIn() {
   }
 
+  public CreateAgentIn avatar(@javax.annotation.Nullable String avatar) {
+    this.avatar = avatar;
+    return this;
+  }
+
+  /**
+   * Avatar and Emoji are how the agent APPEARS. An image wins when both are given — it is the thing somebody made — and both empty leaves the agent drawn as its initial. Validated by iam/pkg/schema, the same rule a person&#39;s avatar passes, so the 96 KiB bound and the accepted URL forms are stated once for every subject that has a face.
+   * @return avatar
+   */
+  @javax.annotation.Nullable
+  public String getAvatar() {
+    return avatar;
+  }
+
+  public void setAvatar(@javax.annotation.Nullable String avatar) {
+    this.avatar = avatar;
+  }
+
+
   public CreateAgentIn computeRef(@javax.annotation.Nullable String computeRef) {
     this.computeRef = computeRef;
     return this;
@@ -135,6 +164,25 @@ public class CreateAgentIn {
 
   public void setDescription(@javax.annotation.Nullable String description) {
     this.description = description;
+  }
+
+
+  public CreateAgentIn emoji(@javax.annotation.Nullable String emoji) {
+    this.emoji = emoji;
+    return this;
+  }
+
+  /**
+   * Emoji is the single glyph shown when there is no image. An image WINS when both are given — it is the thing somebody made — and both empty leaves the agent drawn as its initial.
+   * @return emoji
+   */
+  @javax.annotation.Nullable
+  public String getEmoji() {
+    return emoji;
+  }
+
+  public void setEmoji(@javax.annotation.Nullable String emoji) {
+    this.emoji = emoji;
   }
 
 
@@ -289,8 +337,10 @@ public class CreateAgentIn {
       return false;
     }
     CreateAgentIn createAgentIn = (CreateAgentIn) o;
-    return Objects.equals(this.computeRef, createAgentIn.computeRef) &&
+    return Objects.equals(this.avatar, createAgentIn.avatar) &&
+        Objects.equals(this.computeRef, createAgentIn.computeRef) &&
         Objects.equals(this.description, createAgentIn.description) &&
+        Objects.equals(this.emoji, createAgentIn.emoji) &&
         Objects.equals(this.executionMode, createAgentIn.executionMode) &&
         Objects.equals(this.instructions, createAgentIn.instructions) &&
         Objects.equals(this.model, createAgentIn.model) &&
@@ -302,15 +352,17 @@ public class CreateAgentIn {
 
   @Override
   public int hashCode() {
-    return Objects.hash(computeRef, description, executionMode, instructions, model, name, schedule, serviceAccountId, tools);
+    return Objects.hash(avatar, computeRef, description, emoji, executionMode, instructions, model, name, schedule, serviceAccountId, tools);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateAgentIn {\n");
+    sb.append("    avatar: ").append(toIndentedString(avatar)).append("\n");
     sb.append("    computeRef: ").append(toIndentedString(computeRef)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    emoji: ").append(toIndentedString(emoji)).append("\n");
     sb.append("    executionMode: ").append(toIndentedString(executionMode)).append("\n");
     sb.append("    instructions: ").append(toIndentedString(instructions)).append("\n");
     sb.append("    model: ").append(toIndentedString(model)).append("\n");
@@ -339,7 +391,7 @@ public class CreateAgentIn {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("computeRef", "description", "executionMode", "instructions", "model", "name", "schedule", "serviceAccountId", "tools"));
+    openapiFields = new HashSet<String>(Arrays.asList("avatar", "computeRef", "description", "emoji", "executionMode", "instructions", "model", "name", "schedule", "serviceAccountId", "tools"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -366,11 +418,17 @@ public class CreateAgentIn {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if ((jsonObj.get("avatar") != null && !jsonObj.get("avatar").isJsonNull()) && !jsonObj.get("avatar").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `avatar` to be a primitive type in the JSON string but got `%s`", jsonObj.get("avatar").toString()));
+      }
       if ((jsonObj.get("computeRef") != null && !jsonObj.get("computeRef").isJsonNull()) && !jsonObj.get("computeRef").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `computeRef` to be a primitive type in the JSON string but got `%s`", jsonObj.get("computeRef").toString()));
       }
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
+      }
+      if ((jsonObj.get("emoji") != null && !jsonObj.get("emoji").isJsonNull()) && !jsonObj.get("emoji").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `emoji` to be a primitive type in the JSON string but got `%s`", jsonObj.get("emoji").toString()));
       }
       if ((jsonObj.get("executionMode") != null && !jsonObj.get("executionMode").isJsonNull()) && !jsonObj.get("executionMode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `executionMode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("executionMode").toString()));

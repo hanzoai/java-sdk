@@ -176,7 +176,7 @@ public class GenerateInput {
   }
 
   /**
-   * Campaign | SocialPost | Asset
+   * marketing.Campaign | marketing.SocialPost | marketing.Asset
    * @return doctype
    */
   @javax.annotation.Nullable

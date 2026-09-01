@@ -67,10 +67,10 @@ public class TeamRoomBind {
   @javax.annotation.Nullable
   private String life;
 
-  public static final String SERIALIZED_NAME_WORKSPACE = "workspace";
-  @SerializedName(SERIALIZED_NAME_WORKSPACE)
+  public static final String SERIALIZED_NAME_SPACE = "space";
+  @SerializedName(SERIALIZED_NAME_SPACE)
   @javax.annotation.Nullable
-  private String workspace;
+  private String space;
 
   public TeamRoomBind() {
   }
@@ -140,22 +140,22 @@ public class TeamRoomBind {
   }
 
 
-  public TeamRoomBind workspace(@javax.annotation.Nullable String workspace) {
-    this.workspace = workspace;
+  public TeamRoomBind space(@javax.annotation.Nullable String space) {
+    this.space = space;
     return this;
   }
 
   /**
-   * Workspace names the workspace holding the room. It is required, because a room id is unique only within one and searching every workspace for a matching id would make the write&#39;s target depend on iteration order.
-   * @return workspace
+   * Space names the space holding the room. It is required, because a room id is unique only within one and searching every space for a matching id would make the write&#39;s target depend on iteration order.
+   * @return space
    */
   @javax.annotation.Nullable
-  public String getWorkspace() {
-    return workspace;
+  public String getSpace() {
+    return space;
   }
 
-  public void setWorkspace(@javax.annotation.Nullable String workspace) {
-    this.workspace = workspace;
+  public void setSpace(@javax.annotation.Nullable String space) {
+    this.space = space;
   }
 
 
@@ -172,12 +172,12 @@ public class TeamRoomBind {
     return Objects.equals(this.bindings, teamRoomBind.bindings) &&
         Objects.equals(this.id, teamRoomBind.id) &&
         Objects.equals(this.life, teamRoomBind.life) &&
-        Objects.equals(this.workspace, teamRoomBind.workspace);
+        Objects.equals(this.space, teamRoomBind.space);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(bindings, id, life, workspace);
+    return Objects.hash(bindings, id, life, space);
   }
 
   @Override
@@ -187,7 +187,7 @@ public class TeamRoomBind {
     sb.append("    bindings: ").append(toIndentedString(bindings)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    life: ").append(toIndentedString(life)).append("\n");
-    sb.append("    workspace: ").append(toIndentedString(workspace)).append("\n");
+    sb.append("    space: ").append(toIndentedString(space)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -209,7 +209,7 @@ public class TeamRoomBind {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("bindings", "id", "life", "workspace"));
+    openapiFields = new HashSet<String>(Arrays.asList("bindings", "id", "life", "space"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -246,8 +246,8 @@ public class TeamRoomBind {
       if ((jsonObj.get("life") != null && !jsonObj.get("life").isJsonNull()) && !jsonObj.get("life").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `life` to be a primitive type in the JSON string but got `%s`", jsonObj.get("life").toString()));
       }
-      if ((jsonObj.get("workspace") != null && !jsonObj.get("workspace").isJsonNull()) && !jsonObj.get("workspace").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `workspace` to be a primitive type in the JSON string but got `%s`", jsonObj.get("workspace").toString()));
+      if ((jsonObj.get("space") != null && !jsonObj.get("space").isJsonNull()) && !jsonObj.get("space").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `space` to be a primitive type in the JSON string but got `%s`", jsonObj.get("space").toString()));
       }
   }
 

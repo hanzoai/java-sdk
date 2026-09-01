@@ -88,7 +88,7 @@ public class OnboardReq {
   }
 
   /**
-   * Personal asks for the caller&#39;s own workspace: the name is derived from their username and the slug auto-suffixes to stay unique. Meaningless — and refused — for a caller who already has an organization.
+   * Personal asks for the caller&#39;s own space: the name is derived from their username and the slug auto-suffixes to stay unique. Meaningless — and refused — for a caller who already has an organization.
    * @return personal
    */
   @javax.annotation.Nullable

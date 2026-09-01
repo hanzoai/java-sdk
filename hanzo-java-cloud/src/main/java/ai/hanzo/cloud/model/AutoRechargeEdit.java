@@ -46,10 +46,10 @@ import java.util.Set;
 import ai.hanzo.cloud.JSON;
 
 /**
- * PaymentIn
+ * AutoRechargeEdit
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
-public class PaymentIn {
+public class AutoRechargeEdit {
   public static final String SERIALIZED_NAME_AMOUNT_CENTS = "amountCents";
   @SerializedName(SERIALIZED_NAME_AMOUNT_CENTS)
   @javax.annotation.Nullable
@@ -60,26 +60,26 @@ public class PaymentIn {
   @javax.annotation.Nullable
   private String currency;
 
-  public static final String SERIALIZED_NAME_IDEMPOTENCY_KEY = "idempotencyKey";
-  @SerializedName(SERIALIZED_NAME_IDEMPOTENCY_KEY)
+  public static final String SERIALIZED_NAME_ENABLED = "enabled";
+  @SerializedName(SERIALIZED_NAME_ENABLED)
   @javax.annotation.Nullable
-  private String idempotencyKey;
+  private Boolean enabled;
 
-  public static final String SERIALIZED_NAME_SOURCE_ID = "sourceId";
-  @SerializedName(SERIALIZED_NAME_SOURCE_ID)
+  public static final String SERIALIZED_NAME_THRESHOLD_CENTS = "thresholdCents";
+  @SerializedName(SERIALIZED_NAME_THRESHOLD_CENTS)
   @javax.annotation.Nullable
-  private String sourceId;
+  private Integer thresholdCents;
 
-  public PaymentIn() {
+  public AutoRechargeEdit() {
   }
 
-  public PaymentIn amountCents(@javax.annotation.Nullable Integer amountCents) {
+  public AutoRechargeEdit amountCents(@javax.annotation.Nullable Integer amountCents) {
     this.amountCents = amountCents;
     return this;
   }
 
   /**
-   * AmountCents is the amount to charge, in whole cents (5000 is $50.00). Server-side bounds apply and are authoritative — the default floor is $1 and the ceiling $5,000, so a fat-fingered or hostile amount is refused before any money moves.
+   * Get amountCents
    * @return amountCents
    */
   @javax.annotation.Nullable
@@ -92,13 +92,13 @@ public class PaymentIn {
   }
 
 
-  public PaymentIn currency(@javax.annotation.Nullable String currency) {
+  public AutoRechargeEdit currency(@javax.annotation.Nullable String currency) {
     this.currency = currency;
     return this;
   }
 
   /**
-   * Currency is the ISO 4217 code, lower-cased. Empty means usd.
+   * Get currency
    * @return currency
    */
   @javax.annotation.Nullable
@@ -111,41 +111,41 @@ public class PaymentIn {
   }
 
 
-  public PaymentIn idempotencyKey(@javax.annotation.Nullable String idempotencyKey) {
-    this.idempotencyKey = idempotencyKey;
+  public AutoRechargeEdit enabled(@javax.annotation.Nullable Boolean enabled) {
+    this.enabled = enabled;
     return this;
   }
 
   /**
-   * IdempotencyKey makes a retry safe: the same key never charges twice, it replays the first result. Sending one is strongly recommended for an agent, which retries by construction. Empty falls back to a windowed key derived from the amount and currency, so a double-submit inside 15 minutes still collapses onto one charge.
-   * @return idempotencyKey
+   * Get enabled
+   * @return enabled
    */
   @javax.annotation.Nullable
-  public String getIdempotencyKey() {
-    return idempotencyKey;
+  public Boolean getEnabled() {
+    return enabled;
   }
 
-  public void setIdempotencyKey(@javax.annotation.Nullable String idempotencyKey) {
-    this.idempotencyKey = idempotencyKey;
+  public void setEnabled(@javax.annotation.Nullable Boolean enabled) {
+    this.enabled = enabled;
   }
 
 
-  public PaymentIn sourceId(@javax.annotation.Nullable String sourceId) {
-    this.sourceId = sourceId;
+  public AutoRechargeEdit thresholdCents(@javax.annotation.Nullable Integer thresholdCents) {
+    this.thresholdCents = thresholdCents;
     return this;
   }
 
   /**
-   * SourceID is the single-use payment token that stands in for the card: a Square Web Payments SDK nonce minted in the browser, or a Square sandbox test nonce when the org&#39;s credentials are sandbox ones. The card number itself never reaches this process, which is what keeps it out of PCI scope.
-   * @return sourceId
+   * Get thresholdCents
+   * @return thresholdCents
    */
   @javax.annotation.Nullable
-  public String getSourceId() {
-    return sourceId;
+  public Integer getThresholdCents() {
+    return thresholdCents;
   }
 
-  public void setSourceId(@javax.annotation.Nullable String sourceId) {
-    this.sourceId = sourceId;
+  public void setThresholdCents(@javax.annotation.Nullable Integer thresholdCents) {
+    this.thresholdCents = thresholdCents;
   }
 
 
@@ -158,26 +158,26 @@ public class PaymentIn {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    PaymentIn paymentIn = (PaymentIn) o;
-    return Objects.equals(this.amountCents, paymentIn.amountCents) &&
-        Objects.equals(this.currency, paymentIn.currency) &&
-        Objects.equals(this.idempotencyKey, paymentIn.idempotencyKey) &&
-        Objects.equals(this.sourceId, paymentIn.sourceId);
+    AutoRechargeEdit autoRechargeEdit = (AutoRechargeEdit) o;
+    return Objects.equals(this.amountCents, autoRechargeEdit.amountCents) &&
+        Objects.equals(this.currency, autoRechargeEdit.currency) &&
+        Objects.equals(this.enabled, autoRechargeEdit.enabled) &&
+        Objects.equals(this.thresholdCents, autoRechargeEdit.thresholdCents);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(amountCents, currency, idempotencyKey, sourceId);
+    return Objects.hash(amountCents, currency, enabled, thresholdCents);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class PaymentIn {\n");
+    sb.append("class AutoRechargeEdit {\n");
     sb.append("    amountCents: ").append(toIndentedString(amountCents)).append("\n");
     sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
-    sb.append("    idempotencyKey: ").append(toIndentedString(idempotencyKey)).append("\n");
-    sb.append("    sourceId: ").append(toIndentedString(sourceId)).append("\n");
+    sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
+    sb.append("    thresholdCents: ").append(toIndentedString(thresholdCents)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -199,7 +199,7 @@ public class PaymentIn {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("amountCents", "currency", "idempotencyKey", "sourceId"));
+    openapiFields = new HashSet<String>(Arrays.asList("amountCents", "currency", "enabled", "thresholdCents"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -209,31 +209,25 @@ public class PaymentIn {
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to PaymentIn
+   * @throws IOException if the JSON Element is invalid with respect to AutoRechargeEdit
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!PaymentIn.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in PaymentIn is not found in the empty JSON string", PaymentIn.openapiRequiredFields.toString()));
+        if (!AutoRechargeEdit.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in AutoRechargeEdit is not found in the empty JSON string", AutoRechargeEdit.openapiRequiredFields.toString()));
         }
       }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!PaymentIn.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `PaymentIn` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!AutoRechargeEdit.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `AutoRechargeEdit` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("currency") != null && !jsonObj.get("currency").isJsonNull()) && !jsonObj.get("currency").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `currency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("currency").toString()));
-      }
-      if ((jsonObj.get("idempotencyKey") != null && !jsonObj.get("idempotencyKey").isJsonNull()) && !jsonObj.get("idempotencyKey").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `idempotencyKey` to be a primitive type in the JSON string but got `%s`", jsonObj.get("idempotencyKey").toString()));
-      }
-      if ((jsonObj.get("sourceId") != null && !jsonObj.get("sourceId").isJsonNull()) && !jsonObj.get("sourceId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `sourceId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sourceId").toString()));
       }
   }
 
@@ -241,22 +235,22 @@ public class PaymentIn {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!PaymentIn.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'PaymentIn' and its subtypes
+       if (!AutoRechargeEdit.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'AutoRechargeEdit' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<PaymentIn> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(PaymentIn.class));
+       final TypeAdapter<AutoRechargeEdit> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(AutoRechargeEdit.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<PaymentIn>() {
+       return (TypeAdapter<T>) new TypeAdapter<AutoRechargeEdit>() {
            @Override
-           public void write(JsonWriter out, PaymentIn value) throws IOException {
+           public void write(JsonWriter out, AutoRechargeEdit value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public PaymentIn read(JsonReader in) throws IOException {
+           public AutoRechargeEdit read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -267,18 +261,18 @@ public class PaymentIn {
   }
 
   /**
-   * Create an instance of PaymentIn given an JSON string
+   * Create an instance of AutoRechargeEdit given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of PaymentIn
-   * @throws IOException if the JSON string is invalid with respect to PaymentIn
+   * @return An instance of AutoRechargeEdit
+   * @throws IOException if the JSON string is invalid with respect to AutoRechargeEdit
    */
-  public static PaymentIn fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, PaymentIn.class);
+  public static AutoRechargeEdit fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, AutoRechargeEdit.class);
   }
 
   /**
-   * Convert an instance of PaymentIn to an JSON string
+   * Convert an instance of AutoRechargeEdit to an JSON string
    *
    * @return JSON string
    */

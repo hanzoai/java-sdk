@@ -33,8 +33,6 @@ import ai.hanzo.cloud.model.DocumentList;
 import ai.hanzo.cloud.model.Install;
 import ai.hanzo.cloud.model.ModuleList;
 import ai.hanzo.cloud.model.ModuleState;
-import ai.hanzo.cloud.model.RoleAssignment;
-import ai.hanzo.cloud.model.RoleList;
 import ai.hanzo.cloud.model.SummaryView;
 
 import java.lang.reflect.Type;
@@ -82,7 +80,7 @@ public class FrameworkApi {
 
     /**
      * Build call for deleteFrameworkByDoctypeByName
-     * @param doctype DocType is the document&#39;s DocType, from the path. (required)
+     * @param doctype DocType is the document&#39;s DocType, by ADDRESS — \&quot;module.name\&quot;, from the path. (required)
      * @param name Name is the document&#39;s name — its key within the DocType — from the path. A name containing a space arrives percent-encoded and is decoded before it is matched against the stored one. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -158,7 +156,7 @@ public class FrameworkApi {
     /**
      * Removes one document, after its on_trash hooks agree.
      * Removes one document, after its on_trash hooks agree. A SUBMITTED document cannot be deleted — cancel it first. Answers 204.
-     * @param doctype DocType is the document&#39;s DocType, from the path. (required)
+     * @param doctype DocType is the document&#39;s DocType, by ADDRESS — \&quot;module.name\&quot;, from the path. (required)
      * @param name Name is the document&#39;s name — its key within the DocType — from the path. A name containing a space arrives percent-encoded and is decoded before it is matched against the stored one. (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -175,7 +173,7 @@ public class FrameworkApi {
     /**
      * Removes one document, after its on_trash hooks agree.
      * Removes one document, after its on_trash hooks agree. A SUBMITTED document cannot be deleted — cancel it first. Answers 204.
-     * @param doctype DocType is the document&#39;s DocType, from the path. (required)
+     * @param doctype DocType is the document&#39;s DocType, by ADDRESS — \&quot;module.name\&quot;, from the path. (required)
      * @param name Name is the document&#39;s name — its key within the DocType — from the path. A name containing a space arrives percent-encoded and is decoded before it is matched against the stored one. (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -194,7 +192,7 @@ public class FrameworkApi {
     /**
      * Removes one document, after its on_trash hooks agree. (asynchronously)
      * Removes one document, after its on_trash hooks agree. A SUBMITTED document cannot be deleted — cancel it first. Answers 204.
-     * @param doctype DocType is the document&#39;s DocType, from the path. (required)
+     * @param doctype DocType is the document&#39;s DocType, by ADDRESS — \&quot;module.name\&quot;, from the path. (required)
      * @param name Name is the document&#39;s name — its key within the DocType — from the path. A name containing a space arrives percent-encoded and is decoded before it is matched against the stored one. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -214,7 +212,7 @@ public class FrameworkApi {
     }
     /**
      * Build call for deleteFrameworkDoctypesByName
-     * @param name Name is the DocType&#39;s name, from the path. A name containing a space (\&quot;Sales Invoice\&quot;) arrives percent-encoded and is decoded before it is matched against the stored one. (required)
+     * @param name Name is the DocType&#39;s ADDRESS — \&quot;module.name\&quot;, e.g. \&quot;kb.page\&quot;. A name containing a space (\&quot;erp.Sales Invoice\&quot;) arrives percent-encoded and is decoded before it is matched against the stored one. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -283,7 +281,7 @@ public class FrameworkApi {
     /**
      * Removes a DocType and every document stored under it.
      * Removes a DocType and every document stored under it. The definition and its data go together — a document with no schema can be neither validated nor read back — so there is no undo. Manager-only. Answers 204.
-     * @param name Name is the DocType&#39;s name, from the path. A name containing a space (\&quot;Sales Invoice\&quot;) arrives percent-encoded and is decoded before it is matched against the stored one. (required)
+     * @param name Name is the DocType&#39;s ADDRESS — \&quot;module.name\&quot;, e.g. \&quot;kb.page\&quot;. A name containing a space (\&quot;erp.Sales Invoice\&quot;) arrives percent-encoded and is decoded before it is matched against the stored one. (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -299,7 +297,7 @@ public class FrameworkApi {
     /**
      * Removes a DocType and every document stored under it.
      * Removes a DocType and every document stored under it. The definition and its data go together — a document with no schema can be neither validated nor read back — so there is no undo. Manager-only. Answers 204.
-     * @param name Name is the DocType&#39;s name, from the path. A name containing a space (\&quot;Sales Invoice\&quot;) arrives percent-encoded and is decoded before it is matched against the stored one. (required)
+     * @param name Name is the DocType&#39;s ADDRESS — \&quot;module.name\&quot;, e.g. \&quot;kb.page\&quot;. A name containing a space (\&quot;erp.Sales Invoice\&quot;) arrives percent-encoded and is decoded before it is matched against the stored one. (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -317,7 +315,7 @@ public class FrameworkApi {
     /**
      * Removes a DocType and every document stored under it. (asynchronously)
      * Removes a DocType and every document stored under it. The definition and its data go together — a document with no schema can be neither validated nor read back — so there is no undo. Manager-only. Answers 204.
-     * @param name Name is the DocType&#39;s name, from the path. A name containing a space (\&quot;Sales Invoice\&quot;) arrives percent-encoded and is decoded before it is matched against the stored one. (required)
+     * @param name Name is the DocType&#39;s ADDRESS — \&quot;module.name\&quot;, e.g. \&quot;kb.page\&quot;. A name containing a space (\&quot;erp.Sales Invoice\&quot;) arrives percent-encoded and is decoded before it is matched against the stored one. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -335,140 +333,8 @@ public class FrameworkApi {
         return localVarCall;
     }
     /**
-     * Build call for deleteFrameworkRolesByUserByRole
-     * @param user User is the assignee whose grant is being revoked, from the path. (required)
-     * @param role Role is the role to revoke, from the path. A role name containing a space (\&quot;System Manager\&quot;) arrives percent-encoded and is decoded before it is matched against the stored assignment. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteFrameworkRolesByUserByRoleCall(@javax.annotation.Nonnull String user, @javax.annotation.Nonnull String role, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/framework/roles/{user}/{role}"
-            .replace("{" + "user" + "}", localVarApiClient.escapeString(user.toString()))
-            .replace("{" + "role" + "}", localVarApiClient.escapeString(role.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteFrameworkRolesByUserByRoleValidateBeforeCall(@javax.annotation.Nonnull String user, @javax.annotation.Nonnull String role, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'user' is set
-        if (user == null) {
-            throw new ApiException("Missing the required parameter 'user' when calling deleteFrameworkRolesByUserByRole(Async)");
-        }
-
-        // verify the required parameter 'role' is set
-        if (role == null) {
-            throw new ApiException("Missing the required parameter 'role' when calling deleteFrameworkRolesByUserByRole(Async)");
-        }
-
-        return deleteFrameworkRolesByUserByRoleCall(user, role, _callback);
-
-    }
-
-    /**
-     * Removes one (user, role) grant in the caller&#39;s org.
-     * Removes one (user, role) grant in the caller&#39;s org. Manager-only. Answers 204; a grant that does not exist is not found.
-     * @param user User is the assignee whose grant is being revoked, from the path. (required)
-     * @param role Role is the role to revoke, from the path. A role name containing a space (\&quot;System Manager\&quot;) arrives percent-encoded and is decoded before it is matched against the stored assignment. (required)
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
-     </table>
-     */
-    public void deleteFrameworkRolesByUserByRole(@javax.annotation.Nonnull String user, @javax.annotation.Nonnull String role) throws ApiException {
-        deleteFrameworkRolesByUserByRoleWithHttpInfo(user, role);
-    }
-
-    /**
-     * Removes one (user, role) grant in the caller&#39;s org.
-     * Removes one (user, role) grant in the caller&#39;s org. Manager-only. Answers 204; a grant that does not exist is not found.
-     * @param user User is the assignee whose grant is being revoked, from the path. (required)
-     * @param role Role is the role to revoke, from the path. A role name containing a space (\&quot;System Manager\&quot;) arrives percent-encoded and is decoded before it is matched against the stored assignment. (required)
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Void> deleteFrameworkRolesByUserByRoleWithHttpInfo(@javax.annotation.Nonnull String user, @javax.annotation.Nonnull String role) throws ApiException {
-        okhttp3.Call localVarCall = deleteFrameworkRolesByUserByRoleValidateBeforeCall(user, role, null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * Removes one (user, role) grant in the caller&#39;s org. (asynchronously)
-     * Removes one (user, role) grant in the caller&#39;s org. Manager-only. Answers 204; a grant that does not exist is not found.
-     * @param user User is the assignee whose grant is being revoked, from the path. (required)
-     * @param role Role is the role to revoke, from the path. A role name containing a space (\&quot;System Manager\&quot;) arrives percent-encoded and is decoded before it is matched against the stored assignment. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteFrameworkRolesByUserByRoleAsync(@javax.annotation.Nonnull String user, @javax.annotation.Nonnull String role, final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = deleteFrameworkRolesByUserByRoleValidateBeforeCall(user, role, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
      * Build call for getFrameworkByDoctype
-     * @param doctype DocType is the DocType to list, from the path. (required)
+     * @param doctype DocType is the DocType to list, by ADDRESS — \&quot;module.name\&quot;, from the path. (required)
      * @param filters Filters is a JSON object of equality matches, e.g. {\&quot;priority\&quot;:\&quot;High\&quot;}. Every key must be a field the DocType declares (or the managed name / docstatus); an undeclared one is refused rather than silently ignored. (optional)
      * @param fields Fields projects the response to a subset — a JSON array [\&quot;a\&quot;,\&quot;b\&quot;] or a comma list \&quot;a,b\&quot;. The envelope keys are always returned. (optional)
      * @param orderBy OrderBy is \&quot;&lt;field&gt; [asc|desc]\&quot;. Empty means most-recently-updated first. (optional)
@@ -558,7 +424,7 @@ public class FrameworkApi {
     /**
      * Returns the caller org&#39;s documents of one DocType, filtered, ordered and projected by the query.
      * Returns the caller org&#39;s documents of one DocType, filtered, ordered and projected by the query. The DocType is resolved FIRST — through the same permission gate the list itself uses — because the query is validated against its schema: a filter, sort or field name the DocType does not declare is refused rather than reaching the store.
-     * @param doctype DocType is the DocType to list, from the path. (required)
+     * @param doctype DocType is the DocType to list, by ADDRESS — \&quot;module.name\&quot;, from the path. (required)
      * @param filters Filters is a JSON object of equality matches, e.g. {\&quot;priority\&quot;:\&quot;High\&quot;}. Every key must be a field the DocType declares (or the managed name / docstatus); an undeclared one is refused rather than silently ignored. (optional)
      * @param fields Fields projects the response to a subset — a JSON array [\&quot;a\&quot;,\&quot;b\&quot;] or a comma list \&quot;a,b\&quot;. The envelope keys are always returned. (optional)
      * @param orderBy OrderBy is \&quot;&lt;field&gt; [asc|desc]\&quot;. Empty means most-recently-updated first. (optional)
@@ -580,7 +446,7 @@ public class FrameworkApi {
     /**
      * Returns the caller org&#39;s documents of one DocType, filtered, ordered and projected by the query.
      * Returns the caller org&#39;s documents of one DocType, filtered, ordered and projected by the query. The DocType is resolved FIRST — through the same permission gate the list itself uses — because the query is validated against its schema: a filter, sort or field name the DocType does not declare is refused rather than reaching the store.
-     * @param doctype DocType is the DocType to list, from the path. (required)
+     * @param doctype DocType is the DocType to list, by ADDRESS — \&quot;module.name\&quot;, from the path. (required)
      * @param filters Filters is a JSON object of equality matches, e.g. {\&quot;priority\&quot;:\&quot;High\&quot;}. Every key must be a field the DocType declares (or the managed name / docstatus); an undeclared one is refused rather than silently ignored. (optional)
      * @param fields Fields projects the response to a subset — a JSON array [\&quot;a\&quot;,\&quot;b\&quot;] or a comma list \&quot;a,b\&quot;. The envelope keys are always returned. (optional)
      * @param orderBy OrderBy is \&quot;&lt;field&gt; [asc|desc]\&quot;. Empty means most-recently-updated first. (optional)
@@ -603,7 +469,7 @@ public class FrameworkApi {
     /**
      * Returns the caller org&#39;s documents of one DocType, filtered, ordered and projected by the query. (asynchronously)
      * Returns the caller org&#39;s documents of one DocType, filtered, ordered and projected by the query. The DocType is resolved FIRST — through the same permission gate the list itself uses — because the query is validated against its schema: a filter, sort or field name the DocType does not declare is refused rather than reaching the store.
-     * @param doctype DocType is the DocType to list, from the path. (required)
+     * @param doctype DocType is the DocType to list, by ADDRESS — \&quot;module.name\&quot;, from the path. (required)
      * @param filters Filters is a JSON object of equality matches, e.g. {\&quot;priority\&quot;:\&quot;High\&quot;}. Every key must be a field the DocType declares (or the managed name / docstatus); an undeclared one is refused rather than silently ignored. (optional)
      * @param fields Fields projects the response to a subset — a JSON array [\&quot;a\&quot;,\&quot;b\&quot;] or a comma list \&quot;a,b\&quot;. The envelope keys are always returned. (optional)
      * @param orderBy OrderBy is \&quot;&lt;field&gt; [asc|desc]\&quot;. Empty means most-recently-updated first. (optional)
@@ -627,7 +493,7 @@ public class FrameworkApi {
     }
     /**
      * Build call for getFrameworkByDoctypeByName
-     * @param doctype DocType is the document&#39;s DocType, from the path. (required)
+     * @param doctype DocType is the document&#39;s DocType, by ADDRESS — \&quot;module.name\&quot;, from the path. (required)
      * @param name Name is the document&#39;s name — its key within the DocType — from the path. A name containing a space arrives percent-encoded and is decoded before it is matched against the stored one. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -704,7 +570,7 @@ public class FrameworkApi {
     /**
      * Returns one document by name, with Password fields redacted.
      * Returns one document by name, with Password fields redacted.
-     * @param doctype DocType is the document&#39;s DocType, from the path. (required)
+     * @param doctype DocType is the document&#39;s DocType, by ADDRESS — \&quot;module.name\&quot;, from the path. (required)
      * @param name Name is the document&#39;s name — its key within the DocType — from the path. A name containing a space arrives percent-encoded and is decoded before it is matched against the stored one. (required)
      * @return Map&lt;String, Object&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -723,7 +589,7 @@ public class FrameworkApi {
     /**
      * Returns one document by name, with Password fields redacted.
      * Returns one document by name, with Password fields redacted.
-     * @param doctype DocType is the document&#39;s DocType, from the path. (required)
+     * @param doctype DocType is the document&#39;s DocType, by ADDRESS — \&quot;module.name\&quot;, from the path. (required)
      * @param name Name is the document&#39;s name — its key within the DocType — from the path. A name containing a space arrives percent-encoded and is decoded before it is matched against the stored one. (required)
      * @return ApiResponse&lt;Map&lt;String, Object&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -743,7 +609,7 @@ public class FrameworkApi {
     /**
      * Returns one document by name, with Password fields redacted. (asynchronously)
      * Returns one document by name, with Password fields redacted.
-     * @param doctype DocType is the document&#39;s DocType, from the path. (required)
+     * @param doctype DocType is the document&#39;s DocType, by ADDRESS — \&quot;module.name\&quot;, from the path. (required)
      * @param name Name is the document&#39;s name — its key within the DocType — from the path. A name containing a space arrives percent-encoded and is decoded before it is matched against the stored one. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -881,7 +747,7 @@ public class FrameworkApi {
     }
     /**
      * Build call for getFrameworkDoctypesByName
-     * @param name Name is the DocType&#39;s name, from the path. A name containing a space (\&quot;Sales Invoice\&quot;) arrives percent-encoded and is decoded before it is matched against the stored one. (required)
+     * @param name Name is the DocType&#39;s ADDRESS — \&quot;module.name\&quot;, e.g. \&quot;kb.page\&quot;. A name containing a space (\&quot;erp.Sales Invoice\&quot;) arrives percent-encoded and is decoded before it is matched against the stored one. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -951,7 +817,7 @@ public class FrameworkApi {
     /**
      * Returns one DocType definition — its fields, naming rule, permissions and lifecycle flags.
      * Returns one DocType definition — its fields, naming rule, permissions and lifecycle flags. Scoped to the caller&#39;s org, so another tenant&#39;s DocType of the same name is simply not found.
-     * @param name Name is the DocType&#39;s name, from the path. A name containing a space (\&quot;Sales Invoice\&quot;) arrives percent-encoded and is decoded before it is matched against the stored one. (required)
+     * @param name Name is the DocType&#39;s ADDRESS — \&quot;module.name\&quot;, e.g. \&quot;kb.page\&quot;. A name containing a space (\&quot;erp.Sales Invoice\&quot;) arrives percent-encoded and is decoded before it is matched against the stored one. (required)
      * @return DocType
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -969,7 +835,7 @@ public class FrameworkApi {
     /**
      * Returns one DocType definition — its fields, naming rule, permissions and lifecycle flags.
      * Returns one DocType definition — its fields, naming rule, permissions and lifecycle flags. Scoped to the caller&#39;s org, so another tenant&#39;s DocType of the same name is simply not found.
-     * @param name Name is the DocType&#39;s name, from the path. A name containing a space (\&quot;Sales Invoice\&quot;) arrives percent-encoded and is decoded before it is matched against the stored one. (required)
+     * @param name Name is the DocType&#39;s ADDRESS — \&quot;module.name\&quot;, e.g. \&quot;kb.page\&quot;. A name containing a space (\&quot;erp.Sales Invoice\&quot;) arrives percent-encoded and is decoded before it is matched against the stored one. (required)
      * @return ApiResponse&lt;DocType&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -988,7 +854,7 @@ public class FrameworkApi {
     /**
      * Returns one DocType definition — its fields, naming rule, permissions and lifecycle flags. (asynchronously)
      * Returns one DocType definition — its fields, naming rule, permissions and lifecycle flags. Scoped to the caller&#39;s org, so another tenant&#39;s DocType of the same name is simply not found.
-     * @param name Name is the DocType&#39;s name, from the path. A name containing a space (\&quot;Sales Invoice\&quot;) arrives percent-encoded and is decoded before it is matched against the stored one. (required)
+     * @param name Name is the DocType&#39;s ADDRESS — \&quot;module.name\&quot;, e.g. \&quot;kb.page\&quot;. A name containing a space (\&quot;erp.Sales Invoice\&quot;) arrives percent-encoded and is decoded before it is matched against the stored one. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1251,123 +1117,6 @@ public class FrameworkApi {
         return localVarCall;
     }
     /**
-     * Build call for getFrameworkRoles
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getFrameworkRolesCall(final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/framework/roles";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getFrameworkRolesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getFrameworkRolesCall(_callback);
-
-    }
-
-    /**
-     * Returns every (user, role) assignment in the caller&#39;s org.
-     * Returns every (user, role) assignment in the caller&#39;s org. Roles are what DocType permissions are written against, so this is the grant table the permission calculus resolves a member&#39;s rights from.
-     * @return RoleList
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public RoleList getFrameworkRoles() throws ApiException {
-        ApiResponse<RoleList> localVarResp = getFrameworkRolesWithHttpInfo();
-        return localVarResp.getData();
-    }
-
-    /**
-     * Returns every (user, role) assignment in the caller&#39;s org.
-     * Returns every (user, role) assignment in the caller&#39;s org. Roles are what DocType permissions are written against, so this is the grant table the permission calculus resolves a member&#39;s rights from.
-     * @return ApiResponse&lt;RoleList&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<RoleList> getFrameworkRolesWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getFrameworkRolesValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<RoleList>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Returns every (user, role) assignment in the caller&#39;s org. (asynchronously)
-     * Returns every (user, role) assignment in the caller&#39;s org. Roles are what DocType permissions are written against, so this is the grant table the permission calculus resolves a member&#39;s rights from.
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getFrameworkRolesAsync(final ApiCallback<RoleList> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getFrameworkRolesValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<RoleList>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
      * Build call for getFrameworkSummary
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1584,7 +1333,7 @@ public class FrameworkApi {
     }
     /**
      * Build call for postFrameworkByDoctypeByNameCancel
-     * @param doctype DocType is the document&#39;s DocType, from the path. (required)
+     * @param doctype DocType is the document&#39;s DocType, by ADDRESS — \&quot;module.name\&quot;, from the path. (required)
      * @param name Name is the document&#39;s name — its key within the DocType — from the path. A name containing a space arrives percent-encoded and is decoded before it is matched against the stored one. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1661,7 +1410,7 @@ public class FrameworkApi {
     /**
      * Moves a submitted document to cancelled (docstatus 1 → 2) after its on_cancel hooks agree.
      * Moves a submitted document to cancelled (docstatus 1 → 2) after its on_cancel hooks agree. Cancelling is terminal — a cancelled document cannot be re-submitted — but it CAN then be deleted.
-     * @param doctype DocType is the document&#39;s DocType, from the path. (required)
+     * @param doctype DocType is the document&#39;s DocType, by ADDRESS — \&quot;module.name\&quot;, from the path. (required)
      * @param name Name is the document&#39;s name — its key within the DocType — from the path. A name containing a space arrives percent-encoded and is decoded before it is matched against the stored one. (required)
      * @return Map&lt;String, Object&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1680,7 +1429,7 @@ public class FrameworkApi {
     /**
      * Moves a submitted document to cancelled (docstatus 1 → 2) after its on_cancel hooks agree.
      * Moves a submitted document to cancelled (docstatus 1 → 2) after its on_cancel hooks agree. Cancelling is terminal — a cancelled document cannot be re-submitted — but it CAN then be deleted.
-     * @param doctype DocType is the document&#39;s DocType, from the path. (required)
+     * @param doctype DocType is the document&#39;s DocType, by ADDRESS — \&quot;module.name\&quot;, from the path. (required)
      * @param name Name is the document&#39;s name — its key within the DocType — from the path. A name containing a space arrives percent-encoded and is decoded before it is matched against the stored one. (required)
      * @return ApiResponse&lt;Map&lt;String, Object&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1700,7 +1449,7 @@ public class FrameworkApi {
     /**
      * Moves a submitted document to cancelled (docstatus 1 → 2) after its on_cancel hooks agree. (asynchronously)
      * Moves a submitted document to cancelled (docstatus 1 → 2) after its on_cancel hooks agree. Cancelling is terminal — a cancelled document cannot be re-submitted — but it CAN then be deleted.
-     * @param doctype DocType is the document&#39;s DocType, from the path. (required)
+     * @param doctype DocType is the document&#39;s DocType, by ADDRESS — \&quot;module.name\&quot;, from the path. (required)
      * @param name Name is the document&#39;s name — its key within the DocType — from the path. A name containing a space arrives percent-encoded and is decoded before it is matched against the stored one. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1721,7 +1470,7 @@ public class FrameworkApi {
     }
     /**
      * Build call for postFrameworkByDoctypeByNameSubmit
-     * @param doctype DocType is the document&#39;s DocType, from the path. (required)
+     * @param doctype DocType is the document&#39;s DocType, by ADDRESS — \&quot;module.name\&quot;, from the path. (required)
      * @param name Name is the document&#39;s name — its key within the DocType — from the path. A name containing a space arrives percent-encoded and is decoded before it is matched against the stored one. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1798,7 +1547,7 @@ public class FrameworkApi {
     /**
      * Moves a draft to submitted (docstatus 0 → 1) after its on_submit hooks agree.
      * Moves a draft to submitted (docstatus 0 → 1) after its on_submit hooks agree. A submitted document is IMMUTABLE: further writes and deletes are refused until it is cancelled. Only a submittable DocType has this lifecycle; any other docstatus is an illegal transition.
-     * @param doctype DocType is the document&#39;s DocType, from the path. (required)
+     * @param doctype DocType is the document&#39;s DocType, by ADDRESS — \&quot;module.name\&quot;, from the path. (required)
      * @param name Name is the document&#39;s name — its key within the DocType — from the path. A name containing a space arrives percent-encoded and is decoded before it is matched against the stored one. (required)
      * @return Map&lt;String, Object&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1817,7 +1566,7 @@ public class FrameworkApi {
     /**
      * Moves a draft to submitted (docstatus 0 → 1) after its on_submit hooks agree.
      * Moves a draft to submitted (docstatus 0 → 1) after its on_submit hooks agree. A submitted document is IMMUTABLE: further writes and deletes are refused until it is cancelled. Only a submittable DocType has this lifecycle; any other docstatus is an illegal transition.
-     * @param doctype DocType is the document&#39;s DocType, from the path. (required)
+     * @param doctype DocType is the document&#39;s DocType, by ADDRESS — \&quot;module.name\&quot;, from the path. (required)
      * @param name Name is the document&#39;s name — its key within the DocType — from the path. A name containing a space arrives percent-encoded and is decoded before it is matched against the stored one. (required)
      * @return ApiResponse&lt;Map&lt;String, Object&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1837,7 +1586,7 @@ public class FrameworkApi {
     /**
      * Moves a draft to submitted (docstatus 0 → 1) after its on_submit hooks agree. (asynchronously)
      * Moves a draft to submitted (docstatus 0 → 1) after its on_submit hooks agree. A submitted document is IMMUTABLE: further writes and deletes are refused until it is cancelled. Only a submittable DocType has this lifecycle; any other docstatus is an illegal transition.
-     * @param doctype DocType is the document&#39;s DocType, from the path. (required)
+     * @param doctype DocType is the document&#39;s DocType, by ADDRESS — \&quot;module.name\&quot;, from the path. (required)
      * @param name Name is the document&#39;s name — its key within the DocType — from the path. A name containing a space arrives percent-encoded and is decoded before it is matched against the stored one. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -2107,133 +1856,6 @@ public class FrameworkApi {
 
         okhttp3.Call localVarCall = postFrameworkModulesByModuleInstallValidateBeforeCall(module, _callback);
         Type localVarReturnType = new TypeToken<Install>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postFrameworkRoles
-     * @param roleAssignment  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postFrameworkRolesCall(@javax.annotation.Nonnull RoleAssignment roleAssignment, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = roleAssignment;
-
-        // create path and map variables
-        String localVarPath = "/v1/framework/roles";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postFrameworkRolesValidateBeforeCall(@javax.annotation.Nonnull RoleAssignment roleAssignment, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'roleAssignment' is set
-        if (roleAssignment == null) {
-            throw new ApiException("Missing the required parameter 'roleAssignment' when calling postFrameworkRoles(Async)");
-        }
-
-        return postFrameworkRolesCall(roleAssignment, _callback);
-
-    }
-
-    /**
-     * Grants one user one role in the caller&#39;s org — how a member gains rights on a DocType, since permissions name roles and never users.
-     * Grants one user one role in the caller&#39;s org — how a member gains rights on a DocType, since permissions name roles and never users. Manager-only. Answers 201.
-     * @param roleAssignment  (required)
-     * @return RoleAssignment
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
-     </table>
-     */
-    public RoleAssignment postFrameworkRoles(@javax.annotation.Nonnull RoleAssignment roleAssignment) throws ApiException {
-        ApiResponse<RoleAssignment> localVarResp = postFrameworkRolesWithHttpInfo(roleAssignment);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Grants one user one role in the caller&#39;s org — how a member gains rights on a DocType, since permissions name roles and never users.
-     * Grants one user one role in the caller&#39;s org — how a member gains rights on a DocType, since permissions name roles and never users. Manager-only. Answers 201.
-     * @param roleAssignment  (required)
-     * @return ApiResponse&lt;RoleAssignment&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<RoleAssignment> postFrameworkRolesWithHttpInfo(@javax.annotation.Nonnull RoleAssignment roleAssignment) throws ApiException {
-        okhttp3.Call localVarCall = postFrameworkRolesValidateBeforeCall(roleAssignment, null);
-        Type localVarReturnType = new TypeToken<RoleAssignment>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Grants one user one role in the caller&#39;s org — how a member gains rights on a DocType, since permissions name roles and never users. (asynchronously)
-     * Grants one user one role in the caller&#39;s org — how a member gains rights on a DocType, since permissions name roles and never users. Manager-only. Answers 201.
-     * @param roleAssignment  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postFrameworkRolesAsync(@javax.annotation.Nonnull RoleAssignment roleAssignment, final ApiCallback<RoleAssignment> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postFrameworkRolesValidateBeforeCall(roleAssignment, _callback);
-        Type localVarReturnType = new TypeToken<RoleAssignment>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

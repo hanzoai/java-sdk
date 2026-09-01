@@ -46,58 +46,34 @@ import java.util.Set;
 import ai.hanzo.cloud.JSON;
 
 /**
- * RoleAssignment
+ * LinearBackfillIn
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
-public class RoleAssignment {
-  public static final String SERIALIZED_NAME_ROLE = "role";
-  @SerializedName(SERIALIZED_NAME_ROLE)
+public class LinearBackfillIn {
+  public static final String SERIALIZED_NAME_STATE = "state";
+  @SerializedName(SERIALIZED_NAME_STATE)
   @javax.annotation.Nullable
-  private String role;
+  private String state;
 
-  public static final String SERIALIZED_NAME_USER = "user";
-  @SerializedName(SERIALIZED_NAME_USER)
-  @javax.annotation.Nullable
-  private String user;
-
-  public RoleAssignment() {
+  public LinearBackfillIn() {
   }
 
-  public RoleAssignment role(@javax.annotation.Nullable String role) {
-    this.role = role;
+  public LinearBackfillIn state(@javax.annotation.Nullable String state) {
+    this.state = state;
     return this;
   }
 
   /**
-   * Role is the granted role&#39;s name.
-   * @return role
+   * State is the set of issues to walk: \&quot;open\&quot; (the default), \&quot;closed\&quot; or \&quot;all\&quot;.
+   * @return state
    */
   @javax.annotation.Nullable
-  public String getRole() {
-    return role;
+  public String getState() {
+    return state;
   }
 
-  public void setRole(@javax.annotation.Nullable String role) {
-    this.role = role;
-  }
-
-
-  public RoleAssignment user(@javax.annotation.Nullable String user) {
-    this.user = user;
-    return this;
-  }
-
-  /**
-   * User is the member the role is granted to.
-   * @return user
-   */
-  @javax.annotation.Nullable
-  public String getUser() {
-    return user;
-  }
-
-  public void setUser(@javax.annotation.Nullable String user) {
-    this.user = user;
+  public void setState(@javax.annotation.Nullable String state) {
+    this.state = state;
   }
 
 
@@ -110,22 +86,20 @@ public class RoleAssignment {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RoleAssignment roleAssignment = (RoleAssignment) o;
-    return Objects.equals(this.role, roleAssignment.role) &&
-        Objects.equals(this.user, roleAssignment.user);
+    LinearBackfillIn linearBackfillIn = (LinearBackfillIn) o;
+    return Objects.equals(this.state, linearBackfillIn.state);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(role, user);
+    return Objects.hash(state);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RoleAssignment {\n");
-    sb.append("    role: ").append(toIndentedString(role)).append("\n");
-    sb.append("    user: ").append(toIndentedString(user)).append("\n");
+    sb.append("class LinearBackfillIn {\n");
+    sb.append("    state: ").append(toIndentedString(state)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -147,7 +121,7 @@ public class RoleAssignment {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("role", "user"));
+    openapiFields = new HashSet<String>(Arrays.asList("state"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -157,28 +131,25 @@ public class RoleAssignment {
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to RoleAssignment
+   * @throws IOException if the JSON Element is invalid with respect to LinearBackfillIn
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!RoleAssignment.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in RoleAssignment is not found in the empty JSON string", RoleAssignment.openapiRequiredFields.toString()));
+        if (!LinearBackfillIn.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in LinearBackfillIn is not found in the empty JSON string", LinearBackfillIn.openapiRequiredFields.toString()));
         }
       }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!RoleAssignment.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `RoleAssignment` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!LinearBackfillIn.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `LinearBackfillIn` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("role") != null && !jsonObj.get("role").isJsonNull()) && !jsonObj.get("role").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `role` to be a primitive type in the JSON string but got `%s`", jsonObj.get("role").toString()));
-      }
-      if ((jsonObj.get("user") != null && !jsonObj.get("user").isJsonNull()) && !jsonObj.get("user").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `user` to be a primitive type in the JSON string but got `%s`", jsonObj.get("user").toString()));
+      if ((jsonObj.get("state") != null && !jsonObj.get("state").isJsonNull()) && !jsonObj.get("state").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `state` to be a primitive type in the JSON string but got `%s`", jsonObj.get("state").toString()));
       }
   }
 
@@ -186,22 +157,22 @@ public class RoleAssignment {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!RoleAssignment.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'RoleAssignment' and its subtypes
+       if (!LinearBackfillIn.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'LinearBackfillIn' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<RoleAssignment> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(RoleAssignment.class));
+       final TypeAdapter<LinearBackfillIn> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(LinearBackfillIn.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<RoleAssignment>() {
+       return (TypeAdapter<T>) new TypeAdapter<LinearBackfillIn>() {
            @Override
-           public void write(JsonWriter out, RoleAssignment value) throws IOException {
+           public void write(JsonWriter out, LinearBackfillIn value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public RoleAssignment read(JsonReader in) throws IOException {
+           public LinearBackfillIn read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -212,18 +183,18 @@ public class RoleAssignment {
   }
 
   /**
-   * Create an instance of RoleAssignment given an JSON string
+   * Create an instance of LinearBackfillIn given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of RoleAssignment
-   * @throws IOException if the JSON string is invalid with respect to RoleAssignment
+   * @return An instance of LinearBackfillIn
+   * @throws IOException if the JSON string is invalid with respect to LinearBackfillIn
    */
-  public static RoleAssignment fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, RoleAssignment.class);
+  public static LinearBackfillIn fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, LinearBackfillIn.class);
   }
 
   /**
-   * Convert an instance of RoleAssignment to an JSON string
+   * Convert an instance of LinearBackfillIn to an JSON string
    *
    * @return JSON string
    */

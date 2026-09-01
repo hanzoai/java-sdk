@@ -92,15 +92,15 @@ public class TeamRoom {
   @javax.annotation.Nullable
   private Boolean _private;
 
+  public static final String SERIALIZED_NAME_SPACE = "space";
+  @SerializedName(SERIALIZED_NAME_SPACE)
+  @javax.annotation.Nullable
+  private String space;
+
   public static final String SERIALIZED_NAME_TOPIC = "topic";
   @SerializedName(SERIALIZED_NAME_TOPIC)
   @javax.annotation.Nullable
   private String topic;
-
-  public static final String SERIALIZED_NAME_WORKSPACE = "workspace";
-  @SerializedName(SERIALIZED_NAME_WORKSPACE)
-  @javax.annotation.Nullable
-  private String workspace;
 
   public TeamRoom() {
   }
@@ -176,7 +176,7 @@ public class TeamRoom {
   }
 
   /**
-   * ID is the room document&#39;s own id, and the value the bind op addresses. It is unique within a workspace, not across the org.
+   * ID is the room document&#39;s own id, and the value the bind op addresses. It is unique within a space, not across the org.
    * @return id
    */
   @javax.annotation.Nullable
@@ -222,7 +222,7 @@ public class TeamRoom {
   }
 
   /**
-   * Members are the account uuids in the room, agents included: an agent projects as a workspace member under a uuid derived from its id, so a caller comparing this against GET /v1/team/bots learns which rooms an agent is in.
+   * Members are the account uuids in the room, agents included: an agent projects as a space member under a uuid derived from its id, so a caller comparing this against GET /v1/team/bots learns which rooms an agent is in.
    * @return members
    */
   @javax.annotation.Nullable
@@ -273,6 +273,25 @@ public class TeamRoom {
   }
 
 
+  public TeamRoom space(@javax.annotation.Nullable String space) {
+    this.space = space;
+    return this;
+  }
+
+  /**
+   * Space is the space uuid holding this room. It is part of the room&#39;s address: two spaces of one org may each hold a room with the same name, and only the pair identifies one.
+   * @return space
+   */
+  @javax.annotation.Nullable
+  public String getSpace() {
+    return space;
+  }
+
+  public void setSpace(@javax.annotation.Nullable String space) {
+    this.space = space;
+  }
+
+
   public TeamRoom topic(@javax.annotation.Nullable String topic) {
     this.topic = topic;
     return this;
@@ -289,25 +308,6 @@ public class TeamRoom {
 
   public void setTopic(@javax.annotation.Nullable String topic) {
     this.topic = topic;
-  }
-
-
-  public TeamRoom workspace(@javax.annotation.Nullable String workspace) {
-    this.workspace = workspace;
-    return this;
-  }
-
-  /**
-   * Workspace is the workspace uuid holding this room. It is part of the room&#39;s address: two workspaces of one org may each hold a room with the same name, and only the pair identifies one.
-   * @return workspace
-   */
-  @javax.annotation.Nullable
-  public String getWorkspace() {
-    return workspace;
-  }
-
-  public void setWorkspace(@javax.annotation.Nullable String workspace) {
-    this.workspace = workspace;
   }
 
 
@@ -329,13 +329,13 @@ public class TeamRoom {
         Objects.equals(this.members, teamRoom.members) &&
         Objects.equals(this.name, teamRoom.name) &&
         Objects.equals(this._private, teamRoom._private) &&
-        Objects.equals(this.topic, teamRoom.topic) &&
-        Objects.equals(this.workspace, teamRoom.workspace);
+        Objects.equals(this.space, teamRoom.space) &&
+        Objects.equals(this.topic, teamRoom.topic);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(archived, bindings, direct, id, life, members, name, _private, topic, workspace);
+    return Objects.hash(archived, bindings, direct, id, life, members, name, _private, space, topic);
   }
 
   @Override
@@ -350,8 +350,8 @@ public class TeamRoom {
     sb.append("    members: ").append(toIndentedString(members)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    _private: ").append(toIndentedString(_private)).append("\n");
+    sb.append("    space: ").append(toIndentedString(space)).append("\n");
     sb.append("    topic: ").append(toIndentedString(topic)).append("\n");
-    sb.append("    workspace: ").append(toIndentedString(workspace)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -373,7 +373,7 @@ public class TeamRoom {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("archived", "bindings", "direct", "id", "life", "members", "name", "private", "topic", "workspace"));
+    openapiFields = new HashSet<String>(Arrays.asList("archived", "bindings", "direct", "id", "life", "members", "name", "private", "space", "topic"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -417,11 +417,11 @@ public class TeamRoom {
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
+      if ((jsonObj.get("space") != null && !jsonObj.get("space").isJsonNull()) && !jsonObj.get("space").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `space` to be a primitive type in the JSON string but got `%s`", jsonObj.get("space").toString()));
+      }
       if ((jsonObj.get("topic") != null && !jsonObj.get("topic").isJsonNull()) && !jsonObj.get("topic").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `topic` to be a primitive type in the JSON string but got `%s`", jsonObj.get("topic").toString()));
-      }
-      if ((jsonObj.get("workspace") != null && !jsonObj.get("workspace").isJsonNull()) && !jsonObj.get("workspace").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `workspace` to be a primitive type in the JSON string but got `%s`", jsonObj.get("workspace").toString()));
       }
   }
 
