@@ -53,6 +53,11 @@ import ai.hanzo.cloud.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class AgentDetail {
+  public static final String SERIALIZED_NAME_AVATAR = "avatar";
+  @SerializedName(SERIALIZED_NAME_AVATAR)
+  @javax.annotation.Nullable
+  private String avatar;
+
   public static final String SERIALIZED_NAME_COMPUTE_REF = "computeRef";
   @SerializedName(SERIALIZED_NAME_COMPUTE_REF)
   @javax.annotation.Nullable
@@ -67,6 +72,11 @@ public class AgentDetail {
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   @javax.annotation.Nullable
   private String description;
+
+  public static final String SERIALIZED_NAME_EMOJI = "emoji";
+  @SerializedName(SERIALIZED_NAME_EMOJI)
+  @javax.annotation.Nullable
+  private String emoji;
 
   public static final String SERIALIZED_NAME_EXECUTION_MODE = "executionMode";
   @SerializedName(SERIALIZED_NAME_EXECUTION_MODE)
@@ -131,6 +141,25 @@ public class AgentDetail {
   public AgentDetail() {
   }
 
+  public AgentDetail avatar(@javax.annotation.Nullable String avatar) {
+    this.avatar = avatar;
+    return this;
+  }
+
+  /**
+   * Get avatar
+   * @return avatar
+   */
+  @javax.annotation.Nullable
+  public String getAvatar() {
+    return avatar;
+  }
+
+  public void setAvatar(@javax.annotation.Nullable String avatar) {
+    this.avatar = avatar;
+  }
+
+
   public AgentDetail computeRef(@javax.annotation.Nullable String computeRef) {
     this.computeRef = computeRef;
     return this;
@@ -185,6 +214,25 @@ public class AgentDetail {
 
   public void setDescription(@javax.annotation.Nullable String description) {
     this.description = description;
+  }
+
+
+  public AgentDetail emoji(@javax.annotation.Nullable String emoji) {
+    this.emoji = emoji;
+    return this;
+  }
+
+  /**
+   * Get emoji
+   * @return emoji
+   */
+  @javax.annotation.Nullable
+  public String getEmoji() {
+    return emoji;
+  }
+
+  public void setEmoji(@javax.annotation.Nullable String emoji) {
+    this.emoji = emoji;
   }
 
 
@@ -442,9 +490,11 @@ public class AgentDetail {
       return false;
     }
     AgentDetail agentDetail = (AgentDetail) o;
-    return Objects.equals(this.computeRef, agentDetail.computeRef) &&
+    return Objects.equals(this.avatar, agentDetail.avatar) &&
+        Objects.equals(this.computeRef, agentDetail.computeRef) &&
         Objects.equals(this.createdAt, agentDetail.createdAt) &&
         Objects.equals(this.description, agentDetail.description) &&
+        Objects.equals(this.emoji, agentDetail.emoji) &&
         Objects.equals(this.executionMode, agentDetail.executionMode) &&
         Objects.equals(this.id, agentDetail.id) &&
         Objects.equals(this.instructions, agentDetail.instructions) &&
@@ -461,16 +511,18 @@ public class AgentDetail {
 
   @Override
   public int hashCode() {
-    return Objects.hash(computeRef, createdAt, description, executionMode, id, instructions, model, name, recentRuns, runs, schedule, serviceAccountId, status, tools, updatedAt);
+    return Objects.hash(avatar, computeRef, createdAt, description, emoji, executionMode, id, instructions, model, name, recentRuns, runs, schedule, serviceAccountId, status, tools, updatedAt);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class AgentDetail {\n");
+    sb.append("    avatar: ").append(toIndentedString(avatar)).append("\n");
     sb.append("    computeRef: ").append(toIndentedString(computeRef)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    emoji: ").append(toIndentedString(emoji)).append("\n");
     sb.append("    executionMode: ").append(toIndentedString(executionMode)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    instructions: ").append(toIndentedString(instructions)).append("\n");
@@ -504,7 +556,7 @@ public class AgentDetail {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("computeRef", "createdAt", "description", "executionMode", "id", "instructions", "model", "name", "recentRuns", "runs", "schedule", "serviceAccountId", "status", "tools", "updatedAt"));
+    openapiFields = new HashSet<String>(Arrays.asList("avatar", "computeRef", "createdAt", "description", "emoji", "executionMode", "id", "instructions", "model", "name", "recentRuns", "runs", "schedule", "serviceAccountId", "status", "tools", "updatedAt"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -531,6 +583,9 @@ public class AgentDetail {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if ((jsonObj.get("avatar") != null && !jsonObj.get("avatar").isJsonNull()) && !jsonObj.get("avatar").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `avatar` to be a primitive type in the JSON string but got `%s`", jsonObj.get("avatar").toString()));
+      }
       if ((jsonObj.get("computeRef") != null && !jsonObj.get("computeRef").isJsonNull()) && !jsonObj.get("computeRef").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `computeRef` to be a primitive type in the JSON string but got `%s`", jsonObj.get("computeRef").toString()));
       }
@@ -539,6 +594,9 @@ public class AgentDetail {
       }
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
+      }
+      if ((jsonObj.get("emoji") != null && !jsonObj.get("emoji").isJsonNull()) && !jsonObj.get("emoji").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `emoji` to be a primitive type in the JSON string but got `%s`", jsonObj.get("emoji").toString()));
       }
       if ((jsonObj.get("executionMode") != null && !jsonObj.get("executionMode").isJsonNull()) && !jsonObj.get("executionMode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `executionMode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("executionMode").toString()));

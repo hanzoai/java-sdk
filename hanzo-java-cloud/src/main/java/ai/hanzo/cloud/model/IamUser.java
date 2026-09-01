@@ -22,8 +22,6 @@ import ai.hanzo.cloud.model.IamManagedAccount;
 import ai.hanzo.cloud.model.IamMfaAccount;
 import ai.hanzo.cloud.model.IamMfaItem;
 import ai.hanzo.cloud.model.IamMfaProps;
-import ai.hanzo.cloud.model.IamPermission;
-import ai.hanzo.cloud.model.IamRole;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -411,11 +409,6 @@ public class IamUser {
   @javax.annotation.Nullable
   private String google;
 
-  public static final String SERIALIZED_NAME_GROUPS = "groups";
-  @SerializedName(SERIALIZED_NAME_GROUPS)
-  @javax.annotation.Nullable
-  private List<String> groups = new ArrayList<>();
-
   public static final String SERIALIZED_NAME_HASH = "hash";
   @SerializedName(SERIALIZED_NAME_HASH)
   @javax.annotation.Nullable
@@ -756,11 +749,6 @@ public class IamUser {
   @javax.annotation.Nullable
   private String permanentAvatar;
 
-  public static final String SERIALIZED_NAME_PERMISSIONS = "permissions";
-  @SerializedName(SERIALIZED_NAME_PERMISSIONS)
-  @javax.annotation.Nullable
-  private List<IamPermission> permissions = new ArrayList<>();
-
   public static final String SERIALIZED_NAME_PHONE = "phone";
   @SerializedName(SERIALIZED_NAME_PHONE)
   @javax.annotation.Nullable
@@ -815,11 +803,6 @@ public class IamUser {
   @SerializedName(SERIALIZED_NAME_REGISTER_TYPE)
   @javax.annotation.Nullable
   private String registerType;
-
-  public static final String SERIALIZED_NAME_ROLES = "roles";
-  @SerializedName(SERIALIZED_NAME_ROLES)
-  @javax.annotation.Nullable
-  private List<IamRole> roles = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_SALESFORCE = "salesforce";
   @SerializedName(SERIALIZED_NAME_SALESFORCE)
@@ -1010,7 +993,7 @@ public class IamUser {
   }
 
   /**
-   * API credentials. AccessSecret / AccessSecretHash / the OAuth tokens are bearer material. AccessSecretHash MUST persist (orm stores via JSON; a json:\&quot;-\&quot; field is never saved), so it carries a real json tag and the handler&#39;s redact() strips it (and AccessSecret + the token fields) before responding.
+   * API credentials. AccessSecret / AccessSecretHash / the OAuth tokens are bearer material, so Mask blanks them and the handler&#39;s redact() strips them before responding. They carry real json tags because a field orm never saves is a field that silently vanishes.  A presented secret is resolved through Key.AccessSecretDigest and nowhere else, so no credential is ISSUED into these columns: they hold what older rows left behind, and every writer that touches them clears them.
    * @return accessKey
    */
   @javax.annotation.Nullable
@@ -2355,33 +2338,6 @@ public class IamUser {
   }
 
 
-  public IamUser groups(@javax.annotation.Nullable List<String> groups) {
-    this.groups = groups;
-    return this;
-  }
-
-  public IamUser addGroupsItem(String groupsItem) {
-    if (this.groups == null) {
-      this.groups = new ArrayList<>();
-    }
-    this.groups.add(groupsItem);
-    return this;
-  }
-
-  /**
-   * Get groups
-   * @return groups
-   */
-  @javax.annotation.Nullable
-  public List<String> getGroups() {
-    return groups;
-  }
-
-  public void setGroups(@javax.annotation.Nullable List<String> groups) {
-    this.groups = groups;
-  }
-
-
   public IamUser hash(@javax.annotation.Nullable String hash) {
     this.hash = hash;
     return this;
@@ -3706,33 +3662,6 @@ public class IamUser {
   }
 
 
-  public IamUser permissions(@javax.annotation.Nullable List<IamPermission> permissions) {
-    this.permissions = permissions;
-    return this;
-  }
-
-  public IamUser addPermissionsItem(IamPermission permissionsItem) {
-    if (this.permissions == null) {
-      this.permissions = new ArrayList<>();
-    }
-    this.permissions.add(permissionsItem);
-    return this;
-  }
-
-  /**
-   * Get permissions
-   * @return permissions
-   */
-  @javax.annotation.Nullable
-  public List<IamPermission> getPermissions() {
-    return permissions;
-  }
-
-  public void setPermissions(@javax.annotation.Nullable List<IamPermission> permissions) {
-    this.permissions = permissions;
-  }
-
-
   public IamUser phone(@javax.annotation.Nullable String phone) {
     this.phone = phone;
     return this;
@@ -3955,33 +3884,6 @@ public class IamUser {
 
   public void setRegisterType(@javax.annotation.Nullable String registerType) {
     this.registerType = registerType;
-  }
-
-
-  public IamUser roles(@javax.annotation.Nullable List<IamRole> roles) {
-    this.roles = roles;
-    return this;
-  }
-
-  public IamUser addRolesItem(IamRole rolesItem) {
-    if (this.roles == null) {
-      this.roles = new ArrayList<>();
-    }
-    this.roles.add(rolesItem);
-    return this;
-  }
-
-  /**
-   * Authorization attachments. Roles and Permissions are computed on read from the authz store and carried here for API parity with v1.
-   * @return roles
-   */
-  @javax.annotation.Nullable
-  public List<IamRole> getRoles() {
-    return roles;
-  }
-
-  public void setRoles(@javax.annotation.Nullable List<IamRole> roles) {
-    this.roles = roles;
   }
 
 
@@ -4756,7 +4658,6 @@ public class IamUser {
         Objects.equals(this.github, iamUser.github) &&
         Objects.equals(this.gitlab, iamUser.gitlab) &&
         Objects.equals(this.google, iamUser.google) &&
-        Objects.equals(this.groups, iamUser.groups) &&
         Objects.equals(this.hash, iamUser.hash) &&
         Objects.equals(this.heroku, iamUser.heroku) &&
         Objects.equals(this.homepage, iamUser.homepage) &&
@@ -4825,7 +4726,6 @@ public class IamUser {
         Objects.equals(this.patreon, iamUser.patreon) &&
         Objects.equals(this.paypal, iamUser.paypal) &&
         Objects.equals(this.permanentAvatar, iamUser.permanentAvatar) &&
-        Objects.equals(this.permissions, iamUser.permissions) &&
         Objects.equals(this.phone, iamUser.phone) &&
         Objects.equals(this.preHash, iamUser.preHash) &&
         Objects.equals(this.preferredMfaType, iamUser.preferredMfaType) &&
@@ -4837,7 +4737,6 @@ public class IamUser {
         Objects.equals(this.region, iamUser.region) &&
         Objects.equals(this.registerSource, iamUser.registerSource) &&
         Objects.equals(this.registerType, iamUser.registerType) &&
-        Objects.equals(this.roles, iamUser.roles) &&
         Objects.equals(this.salesforce, iamUser.salesforce) &&
         Objects.equals(this.score, iamUser.score) &&
         Objects.equals(this.shopify, iamUser.shopify) &&
@@ -4878,7 +4777,7 @@ public class IamUser {
 
   @Override
   public int hashCode() {
-    return Objects.hash(accessKey, accessSecret, accessSecretHash, accessToken, address, addresses, adfs, affiliation, alipay, amazon, apple, applicationScopes, auth0, avatar, avatarType, azuread, azureadb2c, baidu, balance, balanceCredit, balanceCurrency, battlenet, bilibili, bio, birthday, bitbucket, box, cart, cloudfoundry, countryCode, createdAt, createdIp, createdTime, currency, custom, custom2, custom3, custom4, custom5, custom6, custom7, custom8, custom9, custom10, dailymotion, deezer, deleted, deletedTime, digitalocean, dingtalk, discord, displayName, douyin, dropbox, education, email, emailVerified, eveonline, externalId, faceIds, facebook, firstName, fitbit, gender, gitea, gitee, github, gitlab, google, groups, hash, heroku, homepage, iam, id, idCard, idCardType, influxcloud, infoflow, instagram, intercom, invitation, invitationCode, ipWhitelist, isAdmin, isDefaultAvatar, isDeleted, isForbidden, isOnline, isVerified, kakao, karma, kwai, language, lark, lastChangePasswordTime, lastName, lastSigninIp, lastSigninTime, lastSigninWrongTime, lastfm, ldap, line, linkedin, location, mailru, managedAccounts, meetup, mfaAccounts, mfaEmailEnabled, mfaItems, mfaPhoneEnabled, mfaPushEnabled, mfaPushProvider, mfaPushReceiver, mfaRadiusEnabled, mfaRadiusProvider, mfaRadiusUsername, mfaRememberDeadline, mfaRememberDigest, microsoftonline, multiFactorAuths, name, naver, needUpdatePassword, nextcloud, okta, onedrive, originalRefreshToken, originalToken, oura, owner, passwordHash, passwordSalt, passwordType, patreon, paypal, permanentAvatar, permissions, phone, preHash, preferredMfaType, properties, qq, ranking, realName, recoveryCodes, region, registerSource, registerType, roles, salesforce, score, shopify, signinWrongTimes, signupApplication, slack, soundcloud, spotify, steam, strava, stripe, tag, telegram, tiktok, title, totpSecret, tumblr, twitch, twitter, type, typetalk, uber, updatedAt, updatedTime, verificationCode, vk, webauthnCredentials, wechat, wecom, weibo, wepay, xero, yahoo, yammer, yandex, zoom);
+    return Objects.hash(accessKey, accessSecret, accessSecretHash, accessToken, address, addresses, adfs, affiliation, alipay, amazon, apple, applicationScopes, auth0, avatar, avatarType, azuread, azureadb2c, baidu, balance, balanceCredit, balanceCurrency, battlenet, bilibili, bio, birthday, bitbucket, box, cart, cloudfoundry, countryCode, createdAt, createdIp, createdTime, currency, custom, custom2, custom3, custom4, custom5, custom6, custom7, custom8, custom9, custom10, dailymotion, deezer, deleted, deletedTime, digitalocean, dingtalk, discord, displayName, douyin, dropbox, education, email, emailVerified, eveonline, externalId, faceIds, facebook, firstName, fitbit, gender, gitea, gitee, github, gitlab, google, hash, heroku, homepage, iam, id, idCard, idCardType, influxcloud, infoflow, instagram, intercom, invitation, invitationCode, ipWhitelist, isAdmin, isDefaultAvatar, isDeleted, isForbidden, isOnline, isVerified, kakao, karma, kwai, language, lark, lastChangePasswordTime, lastName, lastSigninIp, lastSigninTime, lastSigninWrongTime, lastfm, ldap, line, linkedin, location, mailru, managedAccounts, meetup, mfaAccounts, mfaEmailEnabled, mfaItems, mfaPhoneEnabled, mfaPushEnabled, mfaPushProvider, mfaPushReceiver, mfaRadiusEnabled, mfaRadiusProvider, mfaRadiusUsername, mfaRememberDeadline, mfaRememberDigest, microsoftonline, multiFactorAuths, name, naver, needUpdatePassword, nextcloud, okta, onedrive, originalRefreshToken, originalToken, oura, owner, passwordHash, passwordSalt, passwordType, patreon, paypal, permanentAvatar, phone, preHash, preferredMfaType, properties, qq, ranking, realName, recoveryCodes, region, registerSource, registerType, salesforce, score, shopify, signinWrongTimes, signupApplication, slack, soundcloud, spotify, steam, strava, stripe, tag, telegram, tiktok, title, totpSecret, tumblr, twitch, twitter, type, typetalk, uber, updatedAt, updatedTime, verificationCode, vk, webauthnCredentials, wechat, wecom, weibo, wepay, xero, yahoo, yammer, yandex, zoom);
   }
 
   @Override
@@ -4954,7 +4853,6 @@ public class IamUser {
     sb.append("    github: ").append(toIndentedString(github)).append("\n");
     sb.append("    gitlab: ").append(toIndentedString(gitlab)).append("\n");
     sb.append("    google: ").append(toIndentedString(google)).append("\n");
-    sb.append("    groups: ").append(toIndentedString(groups)).append("\n");
     sb.append("    hash: ").append(toIndentedString(hash)).append("\n");
     sb.append("    heroku: ").append(toIndentedString(heroku)).append("\n");
     sb.append("    homepage: ").append(toIndentedString(homepage)).append("\n");
@@ -5023,7 +4921,6 @@ public class IamUser {
     sb.append("    patreon: ").append(toIndentedString(patreon)).append("\n");
     sb.append("    paypal: ").append(toIndentedString(paypal)).append("\n");
     sb.append("    permanentAvatar: ").append(toIndentedString(permanentAvatar)).append("\n");
-    sb.append("    permissions: ").append(toIndentedString(permissions)).append("\n");
     sb.append("    phone: ").append(toIndentedString(phone)).append("\n");
     sb.append("    preHash: ").append(toIndentedString(preHash)).append("\n");
     sb.append("    preferredMfaType: ").append(toIndentedString(preferredMfaType)).append("\n");
@@ -5035,7 +4932,6 @@ public class IamUser {
     sb.append("    region: ").append(toIndentedString(region)).append("\n");
     sb.append("    registerSource: ").append(toIndentedString(registerSource)).append("\n");
     sb.append("    registerType: ").append(toIndentedString(registerType)).append("\n");
-    sb.append("    roles: ").append(toIndentedString(roles)).append("\n");
     sb.append("    salesforce: ").append(toIndentedString(salesforce)).append("\n");
     sb.append("    score: ").append(toIndentedString(score)).append("\n");
     sb.append("    shopify: ").append(toIndentedString(shopify)).append("\n");
@@ -5093,7 +4989,7 @@ public class IamUser {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("accessKey", "accessSecret", "accessSecretHash", "accessToken", "address", "addresses", "adfs", "affiliation", "alipay", "amazon", "apple", "applicationScopes", "auth0", "avatar", "avatarType", "azuread", "azureadb2c", "baidu", "balance", "balanceCredit", "balanceCurrency", "battlenet", "bilibili", "bio", "birthday", "bitbucket", "box", "cart", "cloudfoundry", "countryCode", "createdAt", "createdIp", "createdTime", "currency", "custom", "custom2", "custom3", "custom4", "custom5", "custom6", "custom7", "custom8", "custom9", "custom10", "dailymotion", "deezer", "deleted", "deletedTime", "digitalocean", "dingtalk", "discord", "displayName", "douyin", "dropbox", "education", "email", "emailVerified", "eveonline", "externalId", "faceIds", "facebook", "firstName", "fitbit", "gender", "gitea", "gitee", "github", "gitlab", "google", "groups", "hash", "heroku", "homepage", "iam", "id", "idCard", "idCardType", "influxcloud", "infoflow", "instagram", "intercom", "invitation", "invitationCode", "ipWhitelist", "isAdmin", "isDefaultAvatar", "isDeleted", "isForbidden", "isOnline", "isVerified", "kakao", "karma", "kwai", "language", "lark", "lastChangePasswordTime", "lastName", "lastSigninIp", "lastSigninTime", "lastSigninWrongTime", "lastfm", "ldap", "line", "linkedin", "location", "mailru", "managedAccounts", "meetup", "mfaAccounts", "mfaEmailEnabled", "mfaItems", "mfaPhoneEnabled", "mfaPushEnabled", "mfaPushProvider", "mfaPushReceiver", "mfaRadiusEnabled", "mfaRadiusProvider", "mfaRadiusUsername", "mfaRememberDeadline", "mfaRememberDigest", "microsoftonline", "multiFactorAuths", "name", "naver", "needUpdatePassword", "nextcloud", "okta", "onedrive", "originalRefreshToken", "originalToken", "oura", "owner", "passwordHash", "passwordSalt", "passwordType", "patreon", "paypal", "permanentAvatar", "permissions", "phone", "preHash", "preferredMfaType", "properties", "qq", "ranking", "realName", "recoveryCodes", "region", "registerSource", "registerType", "roles", "salesforce", "score", "shopify", "signinWrongTimes", "signupApplication", "slack", "soundcloud", "spotify", "steam", "strava", "stripe", "tag", "telegram", "tiktok", "title", "totpSecret", "tumblr", "twitch", "twitter", "type", "typetalk", "uber", "updatedAt", "updatedTime", "verificationCode", "vk", "webauthnCredentials", "wechat", "wecom", "weibo", "wepay", "xero", "yahoo", "yammer", "yandex", "zoom"));
+    openapiFields = new HashSet<String>(Arrays.asList("accessKey", "accessSecret", "accessSecretHash", "accessToken", "address", "addresses", "adfs", "affiliation", "alipay", "amazon", "apple", "applicationScopes", "auth0", "avatar", "avatarType", "azuread", "azureadb2c", "baidu", "balance", "balanceCredit", "balanceCurrency", "battlenet", "bilibili", "bio", "birthday", "bitbucket", "box", "cart", "cloudfoundry", "countryCode", "createdAt", "createdIp", "createdTime", "currency", "custom", "custom2", "custom3", "custom4", "custom5", "custom6", "custom7", "custom8", "custom9", "custom10", "dailymotion", "deezer", "deleted", "deletedTime", "digitalocean", "dingtalk", "discord", "displayName", "douyin", "dropbox", "education", "email", "emailVerified", "eveonline", "externalId", "faceIds", "facebook", "firstName", "fitbit", "gender", "gitea", "gitee", "github", "gitlab", "google", "hash", "heroku", "homepage", "iam", "id", "idCard", "idCardType", "influxcloud", "infoflow", "instagram", "intercom", "invitation", "invitationCode", "ipWhitelist", "isAdmin", "isDefaultAvatar", "isDeleted", "isForbidden", "isOnline", "isVerified", "kakao", "karma", "kwai", "language", "lark", "lastChangePasswordTime", "lastName", "lastSigninIp", "lastSigninTime", "lastSigninWrongTime", "lastfm", "ldap", "line", "linkedin", "location", "mailru", "managedAccounts", "meetup", "mfaAccounts", "mfaEmailEnabled", "mfaItems", "mfaPhoneEnabled", "mfaPushEnabled", "mfaPushProvider", "mfaPushReceiver", "mfaRadiusEnabled", "mfaRadiusProvider", "mfaRadiusUsername", "mfaRememberDeadline", "mfaRememberDigest", "microsoftonline", "multiFactorAuths", "name", "naver", "needUpdatePassword", "nextcloud", "okta", "onedrive", "originalRefreshToken", "originalToken", "oura", "owner", "passwordHash", "passwordSalt", "passwordType", "patreon", "paypal", "permanentAvatar", "phone", "preHash", "preferredMfaType", "properties", "qq", "ranking", "realName", "recoveryCodes", "region", "registerSource", "registerType", "salesforce", "score", "shopify", "signinWrongTimes", "signupApplication", "slack", "soundcloud", "spotify", "steam", "strava", "stripe", "tag", "telegram", "tiktok", "title", "totpSecret", "tumblr", "twitch", "twitter", "type", "typetalk", "uber", "updatedAt", "updatedTime", "verificationCode", "vk", "webauthnCredentials", "wechat", "wecom", "weibo", "wepay", "xero", "yahoo", "yammer", "yandex", "zoom"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -5357,10 +5253,6 @@ public class IamUser {
       if ((jsonObj.get("google") != null && !jsonObj.get("google").isJsonNull()) && !jsonObj.get("google").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `google` to be a primitive type in the JSON string but got `%s`", jsonObj.get("google").toString()));
       }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("groups") != null && !jsonObj.get("groups").isJsonNull() && !jsonObj.get("groups").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `groups` to be an array in the JSON string but got `%s`", jsonObj.get("groups").toString()));
-      }
       if ((jsonObj.get("hash") != null && !jsonObj.get("hash").isJsonNull()) && !jsonObj.get("hash").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `hash` to be a primitive type in the JSON string but got `%s`", jsonObj.get("hash").toString()));
       }
@@ -5573,20 +5465,6 @@ public class IamUser {
       if ((jsonObj.get("permanentAvatar") != null && !jsonObj.get("permanentAvatar").isJsonNull()) && !jsonObj.get("permanentAvatar").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `permanentAvatar` to be a primitive type in the JSON string but got `%s`", jsonObj.get("permanentAvatar").toString()));
       }
-      if (jsonObj.get("permissions") != null && !jsonObj.get("permissions").isJsonNull()) {
-        JsonArray jsonArraypermissions = jsonObj.getAsJsonArray("permissions");
-        if (jsonArraypermissions != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("permissions").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `permissions` to be an array in the JSON string but got `%s`", jsonObj.get("permissions").toString()));
-          }
-
-          // validate the optional field `permissions` (array)
-          for (int i = 0; i < jsonArraypermissions.size(); i++) {
-            IamPermission.validateJsonElement(jsonArraypermissions.get(i));
-          };
-        }
-      }
       if ((jsonObj.get("phone") != null && !jsonObj.get("phone").isJsonNull()) && !jsonObj.get("phone").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `phone` to be a primitive type in the JSON string but got `%s`", jsonObj.get("phone").toString()));
       }
@@ -5614,20 +5492,6 @@ public class IamUser {
       }
       if ((jsonObj.get("registerType") != null && !jsonObj.get("registerType").isJsonNull()) && !jsonObj.get("registerType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `registerType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("registerType").toString()));
-      }
-      if (jsonObj.get("roles") != null && !jsonObj.get("roles").isJsonNull()) {
-        JsonArray jsonArrayroles = jsonObj.getAsJsonArray("roles");
-        if (jsonArrayroles != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("roles").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `roles` to be an array in the JSON string but got `%s`", jsonObj.get("roles").toString()));
-          }
-
-          // validate the optional field `roles` (array)
-          for (int i = 0; i < jsonArrayroles.size(); i++) {
-            IamRole.validateJsonElement(jsonArrayroles.get(i));
-          };
-        }
       }
       if ((jsonObj.get("salesforce") != null && !jsonObj.get("salesforce").isJsonNull()) && !jsonObj.get("salesforce").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `salesforce` to be a primitive type in the JSON string but got `%s`", jsonObj.get("salesforce").toString()));

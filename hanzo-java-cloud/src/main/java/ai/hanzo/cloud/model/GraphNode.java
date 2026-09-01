@@ -160,7 +160,7 @@ public class GraphNode {
   }
 
   /**
-   * kb-page | kb-memory | kb-source | kb-connector | unresolved
+   * kb.page | kb.memory | kb.source | kb.connector | unresolved
    * @return type
    */
   @javax.annotation.Nullable

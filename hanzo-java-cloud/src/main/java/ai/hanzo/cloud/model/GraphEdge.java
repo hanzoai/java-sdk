@@ -74,7 +74,7 @@ public class GraphEdge {
   }
 
   /**
-   * From is the id of the node the edge starts at: the child page for a parent edge, the page holding the wikilink for a link edge, the kb-source for a provenance edge. Always one of Nodes.
+   * From is the id of the node the edge starts at: the child page for a parent edge, the page holding the wikilink for a link edge, the kb.source for a provenance edge. Always one of Nodes.
    * @return from
    */
   @javax.annotation.Nullable
@@ -112,7 +112,7 @@ public class GraphEdge {
   }
 
   /**
-   * To is the id of the node the edge points at: the parent page, the linked page, the kb-connector. Always one of Nodes — a wikilink matching no page points at a synthetic \&quot;unresolved:&lt;lowercased title&gt;\&quot; node rather than dangling.
+   * To is the id of the node the edge points at: the parent page, the linked page, the kb.connector. Always one of Nodes — a wikilink matching no page points at a synthetic \&quot;unresolved:&lt;lowercased title&gt;\&quot; node rather than dangling.
    * @return to
    */
   @javax.annotation.Nullable

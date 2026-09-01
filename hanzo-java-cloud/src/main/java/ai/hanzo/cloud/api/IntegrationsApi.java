@@ -58,6 +58,12 @@ import ai.hanzo.cloud.model.GithubReposOut;
 import ai.hanzo.cloud.model.GithubSearchOut;
 import ai.hanzo.cloud.model.GithubSearchReq;
 import ai.hanzo.cloud.model.GitlabProjectsOut;
+import ai.hanzo.cloud.model.LinearBackfillIn;
+import ai.hanzo.cloud.model.LinearBackfillResult;
+import ai.hanzo.cloud.model.LinearClaimIn;
+import ai.hanzo.cloud.model.LinearClaimOut;
+import ai.hanzo.cloud.model.LinearCommentIn;
+import ai.hanzo.cloud.model.LinearCommentOut;
 import ai.hanzo.cloud.model.ListOut;
 import ai.hanzo.cloud.model.ProviderView;
 import ai.hanzo.cloud.model.RefreshOut;
@@ -4774,6 +4780,475 @@ public class IntegrationsApi {
     public okhttp3.Call postIntegrationsGithubWebhookAsync(final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postIntegrationsGithubWebhookValidateBeforeCall(_callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postIntegrationsLinearClaim
+     * @param linearClaimIn  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postIntegrationsLinearClaimCall(@javax.annotation.Nonnull LinearClaimIn linearClaimIn, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = linearClaimIn;
+
+        // create path and map variables
+        String localVarPath = "/v1/integrations/linear/claim";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postIntegrationsLinearClaimValidateBeforeCall(@javax.annotation.Nonnull LinearClaimIn linearClaimIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'linearClaimIn' is set
+        if (linearClaimIn == null) {
+            throw new ApiException("Missing the required parameter 'linearClaimIn' when calling postIntegrationsLinearClaim(Async)");
+        }
+
+        return postIntegrationsLinearClaimCall(linearClaimIn, _callback);
+
+    }
+
+    /**
+     * Binds the caller&#39;s Linear organization to the org and seals the webhook secret.
+     * Binds the caller&#39;s Linear organization to the org and seals the webhook secret. The organization is READ from the caller&#39;s own key, never taken from the body: a person can only bind an organization they are a member of. An organization another org already holds is refused.
+     * @param linearClaimIn  (required)
+     * @return LinearClaimOut
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public LinearClaimOut postIntegrationsLinearClaim(@javax.annotation.Nonnull LinearClaimIn linearClaimIn) throws ApiException {
+        ApiResponse<LinearClaimOut> localVarResp = postIntegrationsLinearClaimWithHttpInfo(linearClaimIn);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Binds the caller&#39;s Linear organization to the org and seals the webhook secret.
+     * Binds the caller&#39;s Linear organization to the org and seals the webhook secret. The organization is READ from the caller&#39;s own key, never taken from the body: a person can only bind an organization they are a member of. An organization another org already holds is refused.
+     * @param linearClaimIn  (required)
+     * @return ApiResponse&lt;LinearClaimOut&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<LinearClaimOut> postIntegrationsLinearClaimWithHttpInfo(@javax.annotation.Nonnull LinearClaimIn linearClaimIn) throws ApiException {
+        okhttp3.Call localVarCall = postIntegrationsLinearClaimValidateBeforeCall(linearClaimIn, null);
+        Type localVarReturnType = new TypeToken<LinearClaimOut>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Binds the caller&#39;s Linear organization to the org and seals the webhook secret. (asynchronously)
+     * Binds the caller&#39;s Linear organization to the org and seals the webhook secret. The organization is READ from the caller&#39;s own key, never taken from the body: a person can only bind an organization they are a member of. An organization another org already holds is refused.
+     * @param linearClaimIn  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postIntegrationsLinearClaimAsync(@javax.annotation.Nonnull LinearClaimIn linearClaimIn, final ApiCallback<LinearClaimOut> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postIntegrationsLinearClaimValidateBeforeCall(linearClaimIn, _callback);
+        Type localVarReturnType = new TypeToken<LinearClaimOut>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postIntegrationsLinearComments
+     * @param linearCommentIn  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postIntegrationsLinearCommentsCall(@javax.annotation.Nonnull LinearCommentIn linearCommentIn, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = linearCommentIn;
+
+        // create path and map variables
+        String localVarPath = "/v1/integrations/linear/comments";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postIntegrationsLinearCommentsValidateBeforeCall(@javax.annotation.Nonnull LinearCommentIn linearCommentIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'linearCommentIn' is set
+        if (linearCommentIn == null) {
+            throw new ApiException("Missing the required parameter 'linearCommentIn' when calling postIntegrationsLinearComments(Async)");
+        }
+
+        return postIntegrationsLinearCommentsCall(linearCommentIn, _callback);
+
+    }
+
+    /**
+     * Posts a comment on a Linear issue with the caller&#39;s own key, so it carries their name.
+     * Posts a comment on a Linear issue with the caller&#39;s own key, so it carries their name. This is the op an agent is offered when it should answer in Linear rather than in chat.
+     * @param linearCommentIn  (required)
+     * @return LinearCommentOut
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
+     */
+    public LinearCommentOut postIntegrationsLinearComments(@javax.annotation.Nonnull LinearCommentIn linearCommentIn) throws ApiException {
+        ApiResponse<LinearCommentOut> localVarResp = postIntegrationsLinearCommentsWithHttpInfo(linearCommentIn);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Posts a comment on a Linear issue with the caller&#39;s own key, so it carries their name.
+     * Posts a comment on a Linear issue with the caller&#39;s own key, so it carries their name. This is the op an agent is offered when it should answer in Linear rather than in chat.
+     * @param linearCommentIn  (required)
+     * @return ApiResponse&lt;LinearCommentOut&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<LinearCommentOut> postIntegrationsLinearCommentsWithHttpInfo(@javax.annotation.Nonnull LinearCommentIn linearCommentIn) throws ApiException {
+        okhttp3.Call localVarCall = postIntegrationsLinearCommentsValidateBeforeCall(linearCommentIn, null);
+        Type localVarReturnType = new TypeToken<LinearCommentOut>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Posts a comment on a Linear issue with the caller&#39;s own key, so it carries their name. (asynchronously)
+     * Posts a comment on a Linear issue with the caller&#39;s own key, so it carries their name. This is the op an agent is offered when it should answer in Linear rather than in chat.
+     * @param linearCommentIn  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postIntegrationsLinearCommentsAsync(@javax.annotation.Nonnull LinearCommentIn linearCommentIn, final ApiCallback<LinearCommentOut> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postIntegrationsLinearCommentsValidateBeforeCall(linearCommentIn, _callback);
+        Type localVarReturnType = new TypeToken<LinearCommentOut>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postIntegrationsLinearIssuesBackfill
+     * @param linearBackfillIn  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postIntegrationsLinearIssuesBackfillCall(@javax.annotation.Nonnull LinearBackfillIn linearBackfillIn, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = linearBackfillIn;
+
+        // create path and map variables
+        String localVarPath = "/v1/integrations/linear/issues/backfill";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postIntegrationsLinearIssuesBackfillValidateBeforeCall(@javax.annotation.Nonnull LinearBackfillIn linearBackfillIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'linearBackfillIn' is set
+        if (linearBackfillIn == null) {
+            throw new ApiException("Missing the required parameter 'linearBackfillIn' when calling postIntegrationsLinearIssuesBackfill(Async)");
+        }
+
+        return postIntegrationsLinearIssuesBackfillCall(linearBackfillIn, _callback);
+
+    }
+
+    /**
+     * Seeds the native todo with the EXISTING Linear issues the caller&#39;s key can see (default state&#x3D;open); the webhook keeps them live thereafter.
+     * Seeds the native todo with the EXISTING Linear issues the caller&#39;s key can see (default state&#x3D;open); the webhook keeps them live thereafter. Synchronous and bounded, idempotent by ExtRef.
+     * @param linearBackfillIn  (required)
+     * @return LinearBackfillResult
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public LinearBackfillResult postIntegrationsLinearIssuesBackfill(@javax.annotation.Nonnull LinearBackfillIn linearBackfillIn) throws ApiException {
+        ApiResponse<LinearBackfillResult> localVarResp = postIntegrationsLinearIssuesBackfillWithHttpInfo(linearBackfillIn);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Seeds the native todo with the EXISTING Linear issues the caller&#39;s key can see (default state&#x3D;open); the webhook keeps them live thereafter.
+     * Seeds the native todo with the EXISTING Linear issues the caller&#39;s key can see (default state&#x3D;open); the webhook keeps them live thereafter. Synchronous and bounded, idempotent by ExtRef.
+     * @param linearBackfillIn  (required)
+     * @return ApiResponse&lt;LinearBackfillResult&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<LinearBackfillResult> postIntegrationsLinearIssuesBackfillWithHttpInfo(@javax.annotation.Nonnull LinearBackfillIn linearBackfillIn) throws ApiException {
+        okhttp3.Call localVarCall = postIntegrationsLinearIssuesBackfillValidateBeforeCall(linearBackfillIn, null);
+        Type localVarReturnType = new TypeToken<LinearBackfillResult>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Seeds the native todo with the EXISTING Linear issues the caller&#39;s key can see (default state&#x3D;open); the webhook keeps them live thereafter. (asynchronously)
+     * Seeds the native todo with the EXISTING Linear issues the caller&#39;s key can see (default state&#x3D;open); the webhook keeps them live thereafter. Synchronous and bounded, idempotent by ExtRef.
+     * @param linearBackfillIn  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postIntegrationsLinearIssuesBackfillAsync(@javax.annotation.Nonnull LinearBackfillIn linearBackfillIn, final ApiCallback<LinearBackfillResult> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postIntegrationsLinearIssuesBackfillValidateBeforeCall(linearBackfillIn, _callback);
+        Type localVarReturnType = new TypeToken<LinearBackfillResult>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postIntegrationsLinearWebhook
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call postIntegrationsLinearWebhookCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/integrations/linear/webhook";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postIntegrationsLinearWebhookValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postIntegrationsLinearWebhookCall(_callback);
+
+    }
+
+    /**
+     * Linear webhook
+     * The address Linear delivers Issue and Comment events to. An issue event is mirrored into the native todo — idempotently by identifier, so ENG-123 is one row however many times it is edited, moved or closed — and every issue and comment event is handed to the automations engine as a verified trigger, which is how an org runs an agent when an issue is assigned to it or a comment mentions it. A remove is never propagated: the native side is canonical.  It answers a benign 200 for what it does not act on — an unknown organization, other event types — so Linear does not retry-storm. A bad signature and a delivery older than a minute are 401; only a sink failure is 502.  The delivery names its Linear organization; that organization&#39;s own webhook secret — sealed at /v1/integrations/linear/claim — verifies the HMAC over the raw body, so the tenant is the organization the signature proves, never a header.  The caller here is the PLATFORM, not a Hanzo tenant, so there is no bearer and no principal. The signature check IS the authentication, and it fails closed. The tenant is never read from the payload either: it is resolved from the verified platform identifier through the connection map, so an event from a workspace nobody connected does nothing. Refusals are written with their own status rather than being flattened to a 500, so a rejected signature reads as 401 and a malformed body as 400.
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void postIntegrationsLinearWebhook() throws ApiException {
+        postIntegrationsLinearWebhookWithHttpInfo();
+    }
+
+    /**
+     * Linear webhook
+     * The address Linear delivers Issue and Comment events to. An issue event is mirrored into the native todo — idempotently by identifier, so ENG-123 is one row however many times it is edited, moved or closed — and every issue and comment event is handed to the automations engine as a verified trigger, which is how an org runs an agent when an issue is assigned to it or a comment mentions it. A remove is never propagated: the native side is canonical.  It answers a benign 200 for what it does not act on — an unknown organization, other event types — so Linear does not retry-storm. A bad signature and a delivery older than a minute are 401; only a sink failure is 502.  The delivery names its Linear organization; that organization&#39;s own webhook secret — sealed at /v1/integrations/linear/claim — verifies the HMAC over the raw body, so the tenant is the organization the signature proves, never a header.  The caller here is the PLATFORM, not a Hanzo tenant, so there is no bearer and no principal. The signature check IS the authentication, and it fails closed. The tenant is never read from the payload either: it is resolved from the verified platform identifier through the connection map, so an event from a workspace nobody connected does nothing. Refusals are written with their own status rather than being flattened to a 500, so a rejected signature reads as 401 and a malformed body as 400.
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> postIntegrationsLinearWebhookWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postIntegrationsLinearWebhookValidateBeforeCall(null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Linear webhook (asynchronously)
+     * The address Linear delivers Issue and Comment events to. An issue event is mirrored into the native todo — idempotently by identifier, so ENG-123 is one row however many times it is edited, moved or closed — and every issue and comment event is handed to the automations engine as a verified trigger, which is how an org runs an agent when an issue is assigned to it or a comment mentions it. A remove is never propagated: the native side is canonical.  It answers a benign 200 for what it does not act on — an unknown organization, other event types — so Linear does not retry-storm. A bad signature and a delivery older than a minute are 401; only a sink failure is 502.  The delivery names its Linear organization; that organization&#39;s own webhook secret — sealed at /v1/integrations/linear/claim — verifies the HMAC over the raw body, so the tenant is the organization the signature proves, never a header.  The caller here is the PLATFORM, not a Hanzo tenant, so there is no bearer and no principal. The signature check IS the authentication, and it fails closed. The tenant is never read from the payload either: it is resolved from the verified platform identifier through the connection map, so an event from a workspace nobody connected does nothing. Refusals are written with their own status rather than being flattened to a 500, so a rejected signature reads as 401 and a malformed body as 400.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call postIntegrationsLinearWebhookAsync(final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postIntegrationsLinearWebhookValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

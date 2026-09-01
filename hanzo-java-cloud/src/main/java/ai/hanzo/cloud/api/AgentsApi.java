@@ -1649,7 +1649,7 @@ public class AgentsApi {
      * @param parent Parent scopes the page to the direct children of one session. Ignored when root is set; with neither, only ROOT sessions come back. (optional)
      * @param status Status filters to running, paused, done or error. (optional)
      * @param project Project filters to the sessions tagged with one product slug. (optional)
-     * @param room Room filters to the sessions started in one collaborative room — the query a workspace view runs to show what has been run in it. (optional)
+     * @param room Room filters to the sessions started in one collaborative room — the query a space view runs to show what has been run in it. (optional)
      * @param limit Limit caps the page. Absent, zero or over 500 reads as 100. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1742,7 +1742,7 @@ public class AgentsApi {
      * @param parent Parent scopes the page to the direct children of one session. Ignored when root is set; with neither, only ROOT sessions come back. (optional)
      * @param status Status filters to running, paused, done or error. (optional)
      * @param project Project filters to the sessions tagged with one product slug. (optional)
-     * @param room Room filters to the sessions started in one collaborative room — the query a workspace view runs to show what has been run in it. (optional)
+     * @param room Room filters to the sessions started in one collaborative room — the query a space view runs to show what has been run in it. (optional)
      * @param limit Limit caps the page. Absent, zero or over 500 reads as 100. (optional)
      * @return SessionList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1765,7 +1765,7 @@ public class AgentsApi {
      * @param parent Parent scopes the page to the direct children of one session. Ignored when root is set; with neither, only ROOT sessions come back. (optional)
      * @param status Status filters to running, paused, done or error. (optional)
      * @param project Project filters to the sessions tagged with one product slug. (optional)
-     * @param room Room filters to the sessions started in one collaborative room — the query a workspace view runs to show what has been run in it. (optional)
+     * @param room Room filters to the sessions started in one collaborative room — the query a space view runs to show what has been run in it. (optional)
      * @param limit Limit caps the page. Absent, zero or over 500 reads as 100. (optional)
      * @return ApiResponse&lt;SessionList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1789,7 +1789,7 @@ public class AgentsApi {
      * @param parent Parent scopes the page to the direct children of one session. Ignored when root is set; with neither, only ROOT sessions come back. (optional)
      * @param status Status filters to running, paused, done or error. (optional)
      * @param project Project filters to the sessions tagged with one product slug. (optional)
-     * @param room Room filters to the sessions started in one collaborative room — the query a workspace view runs to show what has been run in it. (optional)
+     * @param room Room filters to the sessions started in one collaborative room — the query a space view runs to show what has been run in it. (optional)
      * @param limit Limit caps the page. Absent, zero or over 500 reads as 100. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -3377,6 +3377,94 @@ public class AgentsApi {
     public okhttp3.Call postAgentsChatAsync(final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postAgentsChatValidateBeforeCall(_callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postAgentsChatConversations
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call postAgentsChatConversationsCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/agents/chat/conversations";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postAgentsChatConversationsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postAgentsChatConversationsCall(_callback);
+
+    }
+
+    /**
+     * Record turns in a conversation
+     * Writes turns to the caller&#39;s thread store without running a completion, and answers the &#x60;conversationId&#x60; they were written under. An absent &#x60;conversationId&#x60; opens a new thread; supplying one appends to it.  This is for a client that streams its own turn through /v1/chat/completions and still wants the conversation in its history — the round records what IT answers, and is otherwise the only writer. It takes the same store, the same per-org isolation and the same notion of a thread: what is recorded here reads back through the two GETs beside it and the round can continue it by id. A validated principal with a non-empty org is required; 403 without one.
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void postAgentsChatConversations() throws ApiException {
+        postAgentsChatConversationsWithHttpInfo();
+    }
+
+    /**
+     * Record turns in a conversation
+     * Writes turns to the caller&#39;s thread store without running a completion, and answers the &#x60;conversationId&#x60; they were written under. An absent &#x60;conversationId&#x60; opens a new thread; supplying one appends to it.  This is for a client that streams its own turn through /v1/chat/completions and still wants the conversation in its history — the round records what IT answers, and is otherwise the only writer. It takes the same store, the same per-org isolation and the same notion of a thread: what is recorded here reads back through the two GETs beside it and the round can continue it by id. A validated principal with a non-empty org is required; 403 without one.
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> postAgentsChatConversationsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postAgentsChatConversationsValidateBeforeCall(null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Record turns in a conversation (asynchronously)
+     * Writes turns to the caller&#39;s thread store without running a completion, and answers the &#x60;conversationId&#x60; they were written under. An absent &#x60;conversationId&#x60; opens a new thread; supplying one appends to it.  This is for a client that streams its own turn through /v1/chat/completions and still wants the conversation in its history — the round records what IT answers, and is otherwise the only writer. It takes the same store, the same per-org isolation and the same notion of a thread: what is recorded here reads back through the two GETs beside it and the round can continue it by id. A validated principal with a non-empty org is required; 403 without one.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call postAgentsChatConversationsAsync(final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postAgentsChatConversationsValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

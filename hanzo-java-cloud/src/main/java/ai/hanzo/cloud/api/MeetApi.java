@@ -253,7 +253,7 @@ public class MeetApi {
 
     /**
      * What this caller may open a room in
-     * Answers the three facts the native lobby cannot know on its own: the identity a seat would be taken under, the LiveKit address the browser dials, and the workspaces this caller may open a room in.  It is the SAME decision getToken makes, asked before the room exists rather than after it is named. A room is bound to its tenant by its name&#39;s leading workspace segment, and only a workspace this answer lists will be admitted — so the lobby offers exactly what the mint would grant, and a person is never shown a room they would then be refused. Workspaces the caller holds only a guest role in are omitted for that reason.  An empty list is a real answer, not a fault: an IAM identity with no workspace has no room to open, and the lobby says so instead of failing.  &#x60;ws&#x60; is empty when this deployment has not been told where its media plane is (LIVEKIT_WS). Token minting is unaffected — the published office client supplies its own address — so this is a degraded native UI, not a degraded service, and the lobby refuses to dial rather than guessing a host.
+     * Answers the three facts the native lobby cannot know on its own: the identity a seat would be taken under, the LiveKit address the browser dials, and the spaces this caller may open a room in.  It is the SAME decision getToken makes, asked before the room exists rather than after it is named. A room is bound to its tenant by its name&#39;s leading space segment, and only a space this answer lists will be admitted — so the lobby offers exactly what the mint would grant, and a person is never shown a room they would then be refused. Spaces the caller holds only a guest role in are omitted for that reason.  An empty list is a real answer, not a fault: an IAM identity with no space has no room to open, and the lobby says so instead of failing.  &#x60;ws&#x60; is empty when this deployment has not been told where its media plane is (LIVEKIT_WS). Token minting is unaffected — the published office client supplies its own address — so this is a degraded native UI, not a degraded service, and the lobby refuses to dial rather than guessing a host.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public void getMeetSession() throws ApiException {
@@ -262,7 +262,7 @@ public class MeetApi {
 
     /**
      * What this caller may open a room in
-     * Answers the three facts the native lobby cannot know on its own: the identity a seat would be taken under, the LiveKit address the browser dials, and the workspaces this caller may open a room in.  It is the SAME decision getToken makes, asked before the room exists rather than after it is named. A room is bound to its tenant by its name&#39;s leading workspace segment, and only a workspace this answer lists will be admitted — so the lobby offers exactly what the mint would grant, and a person is never shown a room they would then be refused. Workspaces the caller holds only a guest role in are omitted for that reason.  An empty list is a real answer, not a fault: an IAM identity with no workspace has no room to open, and the lobby says so instead of failing.  &#x60;ws&#x60; is empty when this deployment has not been told where its media plane is (LIVEKIT_WS). Token minting is unaffected — the published office client supplies its own address — so this is a degraded native UI, not a degraded service, and the lobby refuses to dial rather than guessing a host.
+     * Answers the three facts the native lobby cannot know on its own: the identity a seat would be taken under, the LiveKit address the browser dials, and the spaces this caller may open a room in.  It is the SAME decision getToken makes, asked before the room exists rather than after it is named. A room is bound to its tenant by its name&#39;s leading space segment, and only a space this answer lists will be admitted — so the lobby offers exactly what the mint would grant, and a person is never shown a room they would then be refused. Spaces the caller holds only a guest role in are omitted for that reason.  An empty list is a real answer, not a fault: an IAM identity with no space has no room to open, and the lobby says so instead of failing.  &#x60;ws&#x60; is empty when this deployment has not been told where its media plane is (LIVEKIT_WS). Token minting is unaffected — the published office client supplies its own address — so this is a degraded native UI, not a degraded service, and the lobby refuses to dial rather than guessing a host.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -273,7 +273,7 @@ public class MeetApi {
 
     /**
      * What this caller may open a room in (asynchronously)
-     * Answers the three facts the native lobby cannot know on its own: the identity a seat would be taken under, the LiveKit address the browser dials, and the workspaces this caller may open a room in.  It is the SAME decision getToken makes, asked before the room exists rather than after it is named. A room is bound to its tenant by its name&#39;s leading workspace segment, and only a workspace this answer lists will be admitted — so the lobby offers exactly what the mint would grant, and a person is never shown a room they would then be refused. Workspaces the caller holds only a guest role in are omitted for that reason.  An empty list is a real answer, not a fault: an IAM identity with no workspace has no room to open, and the lobby says so instead of failing.  &#x60;ws&#x60; is empty when this deployment has not been told where its media plane is (LIVEKIT_WS). Token minting is unaffected — the published office client supplies its own address — so this is a degraded native UI, not a degraded service, and the lobby refuses to dial rather than guessing a host.
+     * Answers the three facts the native lobby cannot know on its own: the identity a seat would be taken under, the LiveKit address the browser dials, and the spaces this caller may open a room in.  It is the SAME decision getToken makes, asked before the room exists rather than after it is named. A room is bound to its tenant by its name&#39;s leading space segment, and only a space this answer lists will be admitted — so the lobby offers exactly what the mint would grant, and a person is never shown a room they would then be refused. Spaces the caller holds only a guest role in are omitted for that reason.  An empty list is a real answer, not a fault: an IAM identity with no space has no room to open, and the lobby says so instead of failing.  &#x60;ws&#x60; is empty when this deployment has not been told where its media plane is (LIVEKIT_WS). Token minting is unaffected — the published office client supplies its own address — so this is a degraded native UI, not a degraded service, and the lobby refuses to dial rather than guessing a host.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -286,8 +286,8 @@ public class MeetApi {
     }
     /**
      * Build call for meetCall
-     * @param workspace Workspace is the workspace uuid holding the room, as GET /v1/team/rooms reports it. It is the segment the caller&#39;s membership is checked against. (required)
-     * @param room Room is the room&#39;s own id within that workspace, as GET /v1/team/rooms reports it. It is opaque here: meet keeps no rooms and cannot say whether one exists, only whether this caller may be seated in the workspace holding it. (required)
+     * @param space Space is the space uuid holding the room, as GET /v1/team/rooms reports it. It is the segment the caller&#39;s membership is checked against. (required)
+     * @param room Room is the room&#39;s own id within that space, as GET /v1/team/rooms reports it. It is opaque here: meet keeps no rooms and cannot say whether one exists, only whether this caller may be seated in the space holding it. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -298,7 +298,7 @@ public class MeetApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call meetCallCall(@javax.annotation.Nonnull String workspace, @javax.annotation.Nonnull String room, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call meetCallCall(@javax.annotation.Nonnull String space, @javax.annotation.Nonnull String room, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -323,8 +323,8 @@ public class MeetApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        if (workspace != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("workspace", workspace));
+        if (space != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("space", space));
         }
 
         if (room != null) {
@@ -351,10 +351,10 @@ public class MeetApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call meetCallValidateBeforeCall(@javax.annotation.Nonnull String workspace, @javax.annotation.Nonnull String room, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'workspace' is set
-        if (workspace == null) {
-            throw new ApiException("Missing the required parameter 'workspace' when calling meetCall(Async)");
+    private okhttp3.Call meetCallValidateBeforeCall(@javax.annotation.Nonnull String space, @javax.annotation.Nonnull String room, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'space' is set
+        if (space == null) {
+            throw new ApiException("Missing the required parameter 'space' when calling meetCall(Async)");
         }
 
         // verify the required parameter 'room' is set
@@ -362,15 +362,15 @@ public class MeetApi {
             throw new ApiException("Missing the required parameter 'room' when calling meetCall(Async)");
         }
 
-        return meetCallCall(workspace, room, _callback);
+        return meetCallCall(space, room, _callback);
 
     }
 
     /**
      * Where a room&#39;s call happens
-     * Answers where a room&#39;s call happens, for a caller who may join it.  It is the \&quot;resolved at render\&quot; half of HIP-0523 §12: a surface showing a channel asks for the room&#39;s call at the moment it draws one, rather than reading a media room name someone stored on the room. Nothing here is persisted and nothing is created — a media room begins existing when the first participant connects and stops when the last leaves, so there is no call to create and none to clean up.  AUTHORIZATION IS THE JOIN DECISION, unchanged and shared. It delegates to state.admits, the same function POST /v1/meet/getToken and all three recording operations admit on, so a caller who is told where a call is, is a caller who could have joined it. Answering the address to someone who cannot join would make this a workspace-membership oracle for anyone who can guess a room id.  It deliberately does NOT report whether a call is in progress. That is a fact the media server holds and this binary would have to ask for it over the network, which is a different decision with a different failure mode — and reporting \&quot;nobody is in this call\&quot; when the question could not be asked would be exactly the unknown-rendered-as-zero this surface refuses elsewhere.
-     * @param workspace Workspace is the workspace uuid holding the room, as GET /v1/team/rooms reports it. It is the segment the caller&#39;s membership is checked against. (required)
-     * @param room Room is the room&#39;s own id within that workspace, as GET /v1/team/rooms reports it. It is opaque here: meet keeps no rooms and cannot say whether one exists, only whether this caller may be seated in the workspace holding it. (required)
+     * Answers where a room&#39;s call happens, for a caller who may join it.  It is the \&quot;resolved at render\&quot; half of HIP-0523 §12: a surface showing a channel asks for the room&#39;s call at the moment it draws one, rather than reading a media room name someone stored on the room. Nothing here is persisted and nothing is created — a media room begins existing when the first participant connects and stops when the last leaves, so there is no call to create and none to clean up.  AUTHORIZATION IS THE JOIN DECISION, unchanged and shared. It delegates to state.admits, the same function POST /v1/meet/getToken and all three recording operations admit on, so a caller who is told where a call is, is a caller who could have joined it. Answering the address to someone who cannot join would make this a space-membership oracle for anyone who can guess a room id.  It deliberately does NOT report whether a call is in progress. That is a fact the media server holds and this binary would have to ask for it over the network, which is a different decision with a different failure mode — and reporting \&quot;nobody is in this call\&quot; when the question could not be asked would be exactly the unknown-rendered-as-zero this surface refuses elsewhere.
+     * @param space Space is the space uuid holding the room, as GET /v1/team/rooms reports it. It is the segment the caller&#39;s membership is checked against. (required)
+     * @param room Room is the room&#39;s own id within that space, as GET /v1/team/rooms reports it. It is opaque here: meet keeps no rooms and cannot say whether one exists, only whether this caller may be seated in the space holding it. (required)
      * @return Venue
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -380,16 +380,16 @@ public class MeetApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Venue meetCall(@javax.annotation.Nonnull String workspace, @javax.annotation.Nonnull String room) throws ApiException {
-        ApiResponse<Venue> localVarResp = meetCallWithHttpInfo(workspace, room);
+    public Venue meetCall(@javax.annotation.Nonnull String space, @javax.annotation.Nonnull String room) throws ApiException {
+        ApiResponse<Venue> localVarResp = meetCallWithHttpInfo(space, room);
         return localVarResp.getData();
     }
 
     /**
      * Where a room&#39;s call happens
-     * Answers where a room&#39;s call happens, for a caller who may join it.  It is the \&quot;resolved at render\&quot; half of HIP-0523 §12: a surface showing a channel asks for the room&#39;s call at the moment it draws one, rather than reading a media room name someone stored on the room. Nothing here is persisted and nothing is created — a media room begins existing when the first participant connects and stops when the last leaves, so there is no call to create and none to clean up.  AUTHORIZATION IS THE JOIN DECISION, unchanged and shared. It delegates to state.admits, the same function POST /v1/meet/getToken and all three recording operations admit on, so a caller who is told where a call is, is a caller who could have joined it. Answering the address to someone who cannot join would make this a workspace-membership oracle for anyone who can guess a room id.  It deliberately does NOT report whether a call is in progress. That is a fact the media server holds and this binary would have to ask for it over the network, which is a different decision with a different failure mode — and reporting \&quot;nobody is in this call\&quot; when the question could not be asked would be exactly the unknown-rendered-as-zero this surface refuses elsewhere.
-     * @param workspace Workspace is the workspace uuid holding the room, as GET /v1/team/rooms reports it. It is the segment the caller&#39;s membership is checked against. (required)
-     * @param room Room is the room&#39;s own id within that workspace, as GET /v1/team/rooms reports it. It is opaque here: meet keeps no rooms and cannot say whether one exists, only whether this caller may be seated in the workspace holding it. (required)
+     * Answers where a room&#39;s call happens, for a caller who may join it.  It is the \&quot;resolved at render\&quot; half of HIP-0523 §12: a surface showing a channel asks for the room&#39;s call at the moment it draws one, rather than reading a media room name someone stored on the room. Nothing here is persisted and nothing is created — a media room begins existing when the first participant connects and stops when the last leaves, so there is no call to create and none to clean up.  AUTHORIZATION IS THE JOIN DECISION, unchanged and shared. It delegates to state.admits, the same function POST /v1/meet/getToken and all three recording operations admit on, so a caller who is told where a call is, is a caller who could have joined it. Answering the address to someone who cannot join would make this a space-membership oracle for anyone who can guess a room id.  It deliberately does NOT report whether a call is in progress. That is a fact the media server holds and this binary would have to ask for it over the network, which is a different decision with a different failure mode — and reporting \&quot;nobody is in this call\&quot; when the question could not be asked would be exactly the unknown-rendered-as-zero this surface refuses elsewhere.
+     * @param space Space is the space uuid holding the room, as GET /v1/team/rooms reports it. It is the segment the caller&#39;s membership is checked against. (required)
+     * @param room Room is the room&#39;s own id within that space, as GET /v1/team/rooms reports it. It is opaque here: meet keeps no rooms and cannot say whether one exists, only whether this caller may be seated in the space holding it. (required)
      * @return ApiResponse&lt;Venue&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -399,17 +399,17 @@ public class MeetApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Venue> meetCallWithHttpInfo(@javax.annotation.Nonnull String workspace, @javax.annotation.Nonnull String room) throws ApiException {
-        okhttp3.Call localVarCall = meetCallValidateBeforeCall(workspace, room, null);
+    public ApiResponse<Venue> meetCallWithHttpInfo(@javax.annotation.Nonnull String space, @javax.annotation.Nonnull String room) throws ApiException {
+        okhttp3.Call localVarCall = meetCallValidateBeforeCall(space, room, null);
         Type localVarReturnType = new TypeToken<Venue>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Where a room&#39;s call happens (asynchronously)
-     * Answers where a room&#39;s call happens, for a caller who may join it.  It is the \&quot;resolved at render\&quot; half of HIP-0523 §12: a surface showing a channel asks for the room&#39;s call at the moment it draws one, rather than reading a media room name someone stored on the room. Nothing here is persisted and nothing is created — a media room begins existing when the first participant connects and stops when the last leaves, so there is no call to create and none to clean up.  AUTHORIZATION IS THE JOIN DECISION, unchanged and shared. It delegates to state.admits, the same function POST /v1/meet/getToken and all three recording operations admit on, so a caller who is told where a call is, is a caller who could have joined it. Answering the address to someone who cannot join would make this a workspace-membership oracle for anyone who can guess a room id.  It deliberately does NOT report whether a call is in progress. That is a fact the media server holds and this binary would have to ask for it over the network, which is a different decision with a different failure mode — and reporting \&quot;nobody is in this call\&quot; when the question could not be asked would be exactly the unknown-rendered-as-zero this surface refuses elsewhere.
-     * @param workspace Workspace is the workspace uuid holding the room, as GET /v1/team/rooms reports it. It is the segment the caller&#39;s membership is checked against. (required)
-     * @param room Room is the room&#39;s own id within that workspace, as GET /v1/team/rooms reports it. It is opaque here: meet keeps no rooms and cannot say whether one exists, only whether this caller may be seated in the workspace holding it. (required)
+     * Answers where a room&#39;s call happens, for a caller who may join it.  It is the \&quot;resolved at render\&quot; half of HIP-0523 §12: a surface showing a channel asks for the room&#39;s call at the moment it draws one, rather than reading a media room name someone stored on the room. Nothing here is persisted and nothing is created — a media room begins existing when the first participant connects and stops when the last leaves, so there is no call to create and none to clean up.  AUTHORIZATION IS THE JOIN DECISION, unchanged and shared. It delegates to state.admits, the same function POST /v1/meet/getToken and all three recording operations admit on, so a caller who is told where a call is, is a caller who could have joined it. Answering the address to someone who cannot join would make this a space-membership oracle for anyone who can guess a room id.  It deliberately does NOT report whether a call is in progress. That is a fact the media server holds and this binary would have to ask for it over the network, which is a different decision with a different failure mode — and reporting \&quot;nobody is in this call\&quot; when the question could not be asked would be exactly the unknown-rendered-as-zero this surface refuses elsewhere.
+     * @param space Space is the space uuid holding the room, as GET /v1/team/rooms reports it. It is the segment the caller&#39;s membership is checked against. (required)
+     * @param room Room is the room&#39;s own id within that space, as GET /v1/team/rooms reports it. It is opaque here: meet keeps no rooms and cannot say whether one exists, only whether this caller may be seated in the space holding it. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -420,16 +420,16 @@ public class MeetApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call meetCallAsync(@javax.annotation.Nonnull String workspace, @javax.annotation.Nonnull String room, final ApiCallback<Venue> _callback) throws ApiException {
+    public okhttp3.Call meetCallAsync(@javax.annotation.Nonnull String space, @javax.annotation.Nonnull String room, final ApiCallback<Venue> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = meetCallValidateBeforeCall(workspace, room, _callback);
+        okhttp3.Call localVarCall = meetCallValidateBeforeCall(space, room, _callback);
         Type localVarReturnType = new TypeToken<Venue>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for meetRecordRead
-     * @param room Room is the LiveKit room, named the way the office client names one (&#x60;&lt;workspace&gt;_&lt;name&gt;_&lt;id&gt;&#x60;). Its leading segment is what binds the room to a tenant, and it is the segment the caller&#39;s membership is checked against. (required)
+     * @param room Room is the LiveKit room, named the way the office client names one (&#x60;&lt;space&gt;_&lt;name&gt;_&lt;id&gt;&#x60;). Its leading segment is what binds the room to a tenant, and it is the segment the caller&#39;s membership is checked against. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -502,7 +502,7 @@ public class MeetApi {
     /**
      * What is being recorded in a room, and where the file goes
      * Answers what is being recorded in a room, and where the file went.  It reports the recording that is RUNNING, and once none is, the most recent one the media server still holds — with its final status and its object. That second case is the one that matters for finding a file: the answer to a start is the only other place the location appears, and a client that lost it, or a colleague who was not the one to press record, has nowhere else to look.  It is behind the same check as starting one: where a recording of a private conversation is kept is a fact about that conversation, so it is told to the people the room admits and to nobody else.
-     * @param room Room is the LiveKit room, named the way the office client names one (&#x60;&lt;workspace&gt;_&lt;name&gt;_&lt;id&gt;&#x60;). Its leading segment is what binds the room to a tenant, and it is the segment the caller&#39;s membership is checked against. (required)
+     * @param room Room is the LiveKit room, named the way the office client names one (&#x60;&lt;space&gt;_&lt;name&gt;_&lt;id&gt;&#x60;). Its leading segment is what binds the room to a tenant, and it is the segment the caller&#39;s membership is checked against. (required)
      * @return Recording
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -520,7 +520,7 @@ public class MeetApi {
     /**
      * What is being recorded in a room, and where the file goes
      * Answers what is being recorded in a room, and where the file went.  It reports the recording that is RUNNING, and once none is, the most recent one the media server still holds — with its final status and its object. That second case is the one that matters for finding a file: the answer to a start is the only other place the location appears, and a client that lost it, or a colleague who was not the one to press record, has nowhere else to look.  It is behind the same check as starting one: where a recording of a private conversation is kept is a fact about that conversation, so it is told to the people the room admits and to nobody else.
-     * @param room Room is the LiveKit room, named the way the office client names one (&#x60;&lt;workspace&gt;_&lt;name&gt;_&lt;id&gt;&#x60;). Its leading segment is what binds the room to a tenant, and it is the segment the caller&#39;s membership is checked against. (required)
+     * @param room Room is the LiveKit room, named the way the office client names one (&#x60;&lt;space&gt;_&lt;name&gt;_&lt;id&gt;&#x60;). Its leading segment is what binds the room to a tenant, and it is the segment the caller&#39;s membership is checked against. (required)
      * @return ApiResponse&lt;Recording&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -539,7 +539,7 @@ public class MeetApi {
     /**
      * What is being recorded in a room, and where the file goes (asynchronously)
      * Answers what is being recorded in a room, and where the file went.  It reports the recording that is RUNNING, and once none is, the most recent one the media server still holds — with its final status and its object. That second case is the one that matters for finding a file: the answer to a start is the only other place the location appears, and a client that lost it, or a colleague who was not the one to press record, has nowhere else to look.  It is behind the same check as starting one: where a recording of a private conversation is kept is a fact about that conversation, so it is told to the people the room admits and to nobody else.
-     * @param room Room is the LiveKit room, named the way the office client names one (&#x60;&lt;workspace&gt;_&lt;name&gt;_&lt;id&gt;&#x60;). Its leading segment is what binds the room to a tenant, and it is the segment the caller&#39;s membership is checked against. (required)
+     * @param room Room is the LiveKit room, named the way the office client names one (&#x60;&lt;space&gt;_&lt;name&gt;_&lt;id&gt;&#x60;). Its leading segment is what binds the room to a tenant, and it is the segment the caller&#39;s membership is checked against. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -686,7 +686,7 @@ public class MeetApi {
     }
     /**
      * Build call for meetRecordStop
-     * @param room Room is the LiveKit room, named the way the office client names one (&#x60;&lt;workspace&gt;_&lt;name&gt;_&lt;id&gt;&#x60;). Its leading segment is what binds the room to a tenant, and it is the segment the caller&#39;s membership is checked against. (required)
+     * @param room Room is the LiveKit room, named the way the office client names one (&#x60;&lt;space&gt;_&lt;name&gt;_&lt;id&gt;&#x60;). Its leading segment is what binds the room to a tenant, and it is the segment the caller&#39;s membership is checked against. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -759,7 +759,7 @@ public class MeetApi {
     /**
      * Stop a room&#39;s recording
      * Ends a room&#39;s recording — EVERY one of them.  Whoever the room admits may stop it, including someone who did not start it: a person being recorded has to be able to end it, and a rule that only the starter may stop would deny exactly that. Stopping is free — a caller made to pay to stop being recorded would be paying for the wrong thing.  200 MEANS THE ROOM IS NOT BEING RECORDED, and that is why this ends all of them rather than the first. \&quot;At most one per room\&quot; is an invariant this surface wants and cannot impose: reading the list and starting are two calls, and two replicas racing through that window both start. When the list comes back holding two, two is the truth — and ending one while answering 200 tells the person withdrawing consent that it stopped while a second worker keeps writing. A stop that cannot finish the job says so instead.  Stopping a room that is not being recorded is not an error. The answer names the room with no recording on it, which is the state the caller asked for.
-     * @param room Room is the LiveKit room, named the way the office client names one (&#x60;&lt;workspace&gt;_&lt;name&gt;_&lt;id&gt;&#x60;). Its leading segment is what binds the room to a tenant, and it is the segment the caller&#39;s membership is checked against. (required)
+     * @param room Room is the LiveKit room, named the way the office client names one (&#x60;&lt;space&gt;_&lt;name&gt;_&lt;id&gt;&#x60;). Its leading segment is what binds the room to a tenant, and it is the segment the caller&#39;s membership is checked against. (required)
      * @return Recording
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -777,7 +777,7 @@ public class MeetApi {
     /**
      * Stop a room&#39;s recording
      * Ends a room&#39;s recording — EVERY one of them.  Whoever the room admits may stop it, including someone who did not start it: a person being recorded has to be able to end it, and a rule that only the starter may stop would deny exactly that. Stopping is free — a caller made to pay to stop being recorded would be paying for the wrong thing.  200 MEANS THE ROOM IS NOT BEING RECORDED, and that is why this ends all of them rather than the first. \&quot;At most one per room\&quot; is an invariant this surface wants and cannot impose: reading the list and starting are two calls, and two replicas racing through that window both start. When the list comes back holding two, two is the truth — and ending one while answering 200 tells the person withdrawing consent that it stopped while a second worker keeps writing. A stop that cannot finish the job says so instead.  Stopping a room that is not being recorded is not an error. The answer names the room with no recording on it, which is the state the caller asked for.
-     * @param room Room is the LiveKit room, named the way the office client names one (&#x60;&lt;workspace&gt;_&lt;name&gt;_&lt;id&gt;&#x60;). Its leading segment is what binds the room to a tenant, and it is the segment the caller&#39;s membership is checked against. (required)
+     * @param room Room is the LiveKit room, named the way the office client names one (&#x60;&lt;space&gt;_&lt;name&gt;_&lt;id&gt;&#x60;). Its leading segment is what binds the room to a tenant, and it is the segment the caller&#39;s membership is checked against. (required)
      * @return ApiResponse&lt;Recording&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -796,7 +796,7 @@ public class MeetApi {
     /**
      * Stop a room&#39;s recording (asynchronously)
      * Ends a room&#39;s recording — EVERY one of them.  Whoever the room admits may stop it, including someone who did not start it: a person being recorded has to be able to end it, and a rule that only the starter may stop would deny exactly that. Stopping is free — a caller made to pay to stop being recorded would be paying for the wrong thing.  200 MEANS THE ROOM IS NOT BEING RECORDED, and that is why this ends all of them rather than the first. \&quot;At most one per room\&quot; is an invariant this surface wants and cannot impose: reading the list and starting are two calls, and two replicas racing through that window both start. When the list comes back holding two, two is the truth — and ending one while answering 200 tells the person withdrawing consent that it stopped while a second worker keeps writing. A stop that cannot finish the job says so instead.  Stopping a room that is not being recorded is not an error. The answer names the room with no recording on it, which is the state the caller asked for.
-     * @param room Room is the LiveKit room, named the way the office client names one (&#x60;&lt;workspace&gt;_&lt;name&gt;_&lt;id&gt;&#x60;). Its leading segment is what binds the room to a tenant, and it is the segment the caller&#39;s membership is checked against. (required)
+     * @param room Room is the LiveKit room, named the way the office client names one (&#x60;&lt;space&gt;_&lt;name&gt;_&lt;id&gt;&#x60;). Its leading segment is what binds the room to a tenant, and it is the segment the caller&#39;s membership is checked against. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -871,7 +871,7 @@ public class MeetApi {
 
     /**
      * Mint a join token for one video room
-     * Answers with a LiveKit join token for exactly the room named in the body. The body is the RAW token as text/plain — one opaque string, not JSON and not wrapped in an envelope, which is what the office client reads.  The caller presents its workspace session as a Bearer. Every clause is a refusal: the session must verify, its SIGNED workspace claim must equal the room&#39;s leading name segment — rooms are named &#x60;&lt;workspace&gt;_&lt;room&gt;_&lt;id&gt;&#x60;, and that prefix is the only thing binding a room to a tenant — and the session must carry a privileged workspace role, so a guest is refused rather than seated.  The participant identity is the SESSION&#39;S, never the body&#39;s. &#x60;_id&#x60; is accepted for compatibility with the published client bundle and deliberately ignored: LiveKit treats the identity as unique and ejects a duplicate, so honouring a caller-chosen one would let anyone in a workspace kick out a colleague and impersonate them. &#x60;participantName&#x60; is a display name only.  An unconfigured deployment answers 503 under its own name rather than 404, and the refusal states only that the office is unconfigured — the reason names key material and stays in the boot log.
+     * Answers with a LiveKit join token for exactly the room named in the body. The body is the RAW token as text/plain — one opaque string, not JSON and not wrapped in an envelope, which is what the office client reads.  The caller presents its space session as a Bearer. Every clause is a refusal: the session must verify, its SIGNED space claim must equal the room&#39;s leading name segment — rooms are named &#x60;&lt;space&gt;_&lt;room&gt;_&lt;id&gt;&#x60;, and that prefix is the only thing binding a room to a tenant — and the session must carry a privileged space role, so a guest is refused rather than seated.  The participant identity is the SESSION&#39;S, never the body&#39;s. &#x60;_id&#x60; is accepted for compatibility with the published client bundle and deliberately ignored: LiveKit treats the identity as unique and ejects a duplicate, so honouring a caller-chosen one would let anyone in a space kick out a colleague and impersonate them. &#x60;participantName&#x60; is a display name only.  An unconfigured deployment answers 503 under its own name rather than 404, and the refusal states only that the office is unconfigured — the reason names key material and stays in the boot log.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public void postMeetGettoken() throws ApiException {
@@ -880,7 +880,7 @@ public class MeetApi {
 
     /**
      * Mint a join token for one video room
-     * Answers with a LiveKit join token for exactly the room named in the body. The body is the RAW token as text/plain — one opaque string, not JSON and not wrapped in an envelope, which is what the office client reads.  The caller presents its workspace session as a Bearer. Every clause is a refusal: the session must verify, its SIGNED workspace claim must equal the room&#39;s leading name segment — rooms are named &#x60;&lt;workspace&gt;_&lt;room&gt;_&lt;id&gt;&#x60;, and that prefix is the only thing binding a room to a tenant — and the session must carry a privileged workspace role, so a guest is refused rather than seated.  The participant identity is the SESSION&#39;S, never the body&#39;s. &#x60;_id&#x60; is accepted for compatibility with the published client bundle and deliberately ignored: LiveKit treats the identity as unique and ejects a duplicate, so honouring a caller-chosen one would let anyone in a workspace kick out a colleague and impersonate them. &#x60;participantName&#x60; is a display name only.  An unconfigured deployment answers 503 under its own name rather than 404, and the refusal states only that the office is unconfigured — the reason names key material and stays in the boot log.
+     * Answers with a LiveKit join token for exactly the room named in the body. The body is the RAW token as text/plain — one opaque string, not JSON and not wrapped in an envelope, which is what the office client reads.  The caller presents its space session as a Bearer. Every clause is a refusal: the session must verify, its SIGNED space claim must equal the room&#39;s leading name segment — rooms are named &#x60;&lt;space&gt;_&lt;room&gt;_&lt;id&gt;&#x60;, and that prefix is the only thing binding a room to a tenant — and the session must carry a privileged space role, so a guest is refused rather than seated.  The participant identity is the SESSION&#39;S, never the body&#39;s. &#x60;_id&#x60; is accepted for compatibility with the published client bundle and deliberately ignored: LiveKit treats the identity as unique and ejects a duplicate, so honouring a caller-chosen one would let anyone in a space kick out a colleague and impersonate them. &#x60;participantName&#x60; is a display name only.  An unconfigured deployment answers 503 under its own name rather than 404, and the refusal states only that the office is unconfigured — the reason names key material and stays in the boot log.
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -891,7 +891,7 @@ public class MeetApi {
 
     /**
      * Mint a join token for one video room (asynchronously)
-     * Answers with a LiveKit join token for exactly the room named in the body. The body is the RAW token as text/plain — one opaque string, not JSON and not wrapped in an envelope, which is what the office client reads.  The caller presents its workspace session as a Bearer. Every clause is a refusal: the session must verify, its SIGNED workspace claim must equal the room&#39;s leading name segment — rooms are named &#x60;&lt;workspace&gt;_&lt;room&gt;_&lt;id&gt;&#x60;, and that prefix is the only thing binding a room to a tenant — and the session must carry a privileged workspace role, so a guest is refused rather than seated.  The participant identity is the SESSION&#39;S, never the body&#39;s. &#x60;_id&#x60; is accepted for compatibility with the published client bundle and deliberately ignored: LiveKit treats the identity as unique and ejects a duplicate, so honouring a caller-chosen one would let anyone in a workspace kick out a colleague and impersonate them. &#x60;participantName&#x60; is a display name only.  An unconfigured deployment answers 503 under its own name rather than 404, and the refusal states only that the office is unconfigured — the reason names key material and stays in the boot log.
+     * Answers with a LiveKit join token for exactly the room named in the body. The body is the RAW token as text/plain — one opaque string, not JSON and not wrapped in an envelope, which is what the office client reads.  The caller presents its space session as a Bearer. Every clause is a refusal: the session must verify, its SIGNED space claim must equal the room&#39;s leading name segment — rooms are named &#x60;&lt;space&gt;_&lt;room&gt;_&lt;id&gt;&#x60;, and that prefix is the only thing binding a room to a tenant — and the session must carry a privileged space role, so a guest is refused rather than seated.  The participant identity is the SESSION&#39;S, never the body&#39;s. &#x60;_id&#x60; is accepted for compatibility with the published client bundle and deliberately ignored: LiveKit treats the identity as unique and ejects a duplicate, so honouring a caller-chosen one would let anyone in a space kick out a colleague and impersonate them. &#x60;participantName&#x60; is a display name only.  An unconfigured deployment answers 503 under its own name rather than 404, and the refusal states only that the office is unconfigured — the reason names key material and stays in the boot log.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

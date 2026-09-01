@@ -75,7 +75,7 @@ public class BotRoster {
   }
 
   /**
-   * Bots is every agent of the caller&#39;s org, projected as a workspace member.
+   * Bots is every agent of the caller&#39;s org, projected as a space member.
    * @return bots
    */
   @javax.annotation.Nullable

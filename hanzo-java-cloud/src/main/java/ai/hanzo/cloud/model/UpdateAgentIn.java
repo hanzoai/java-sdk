@@ -52,6 +52,11 @@ import ai.hanzo.cloud.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class UpdateAgentIn {
+  public static final String SERIALIZED_NAME_AVATAR = "avatar";
+  @SerializedName(SERIALIZED_NAME_AVATAR)
+  @javax.annotation.Nullable
+  private String avatar;
+
   public static final String SERIALIZED_NAME_COMPUTE_REF = "computeRef";
   @SerializedName(SERIALIZED_NAME_COMPUTE_REF)
   @javax.annotation.Nullable
@@ -61,6 +66,11 @@ public class UpdateAgentIn {
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   @javax.annotation.Nullable
   private String description;
+
+  public static final String SERIALIZED_NAME_EMOJI = "emoji";
+  @SerializedName(SERIALIZED_NAME_EMOJI)
+  @javax.annotation.Nullable
+  private String emoji;
 
   public static final String SERIALIZED_NAME_EXECUTION_MODE = "executionMode";
   @SerializedName(SERIALIZED_NAME_EXECUTION_MODE)
@@ -100,6 +110,25 @@ public class UpdateAgentIn {
   public UpdateAgentIn() {
   }
 
+  public UpdateAgentIn avatar(@javax.annotation.Nullable String avatar) {
+    this.avatar = avatar;
+    return this;
+  }
+
+  /**
+   * Avatar and Emoji re-draw the agent. Sending either replaces the pair, so setting an image clears a glyph and \&quot;\&quot; for both goes back to the initial — there is no state where a row holds two answers.
+   * @return avatar
+   */
+  @javax.annotation.Nullable
+  public String getAvatar() {
+    return avatar;
+  }
+
+  public void setAvatar(@javax.annotation.Nullable String avatar) {
+    this.avatar = avatar;
+  }
+
+
   public UpdateAgentIn computeRef(@javax.annotation.Nullable String computeRef) {
     this.computeRef = computeRef;
     return this;
@@ -135,6 +164,25 @@ public class UpdateAgentIn {
 
   public void setDescription(@javax.annotation.Nullable String description) {
     this.description = description;
+  }
+
+
+  public UpdateAgentIn emoji(@javax.annotation.Nullable String emoji) {
+    this.emoji = emoji;
+    return this;
+  }
+
+  /**
+   * Emoji re-draws the agent as a glyph. Sending either of the pair replaces BOTH, so setting a glyph clears an image and \&quot;\&quot; for both goes back to the initial — there is no state where a row holds two answers.
+   * @return emoji
+   */
+  @javax.annotation.Nullable
+  public String getEmoji() {
+    return emoji;
+  }
+
+  public void setEmoji(@javax.annotation.Nullable String emoji) {
+    this.emoji = emoji;
   }
 
 
@@ -289,8 +337,10 @@ public class UpdateAgentIn {
       return false;
     }
     UpdateAgentIn updateAgentIn = (UpdateAgentIn) o;
-    return Objects.equals(this.computeRef, updateAgentIn.computeRef) &&
+    return Objects.equals(this.avatar, updateAgentIn.avatar) &&
+        Objects.equals(this.computeRef, updateAgentIn.computeRef) &&
         Objects.equals(this.description, updateAgentIn.description) &&
+        Objects.equals(this.emoji, updateAgentIn.emoji) &&
         Objects.equals(this.executionMode, updateAgentIn.executionMode) &&
         Objects.equals(this.instructions, updateAgentIn.instructions) &&
         Objects.equals(this.model, updateAgentIn.model) &&
@@ -302,15 +352,17 @@ public class UpdateAgentIn {
 
   @Override
   public int hashCode() {
-    return Objects.hash(computeRef, description, executionMode, instructions, model, ref, schedule, serviceAccountId, tools);
+    return Objects.hash(avatar, computeRef, description, emoji, executionMode, instructions, model, ref, schedule, serviceAccountId, tools);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class UpdateAgentIn {\n");
+    sb.append("    avatar: ").append(toIndentedString(avatar)).append("\n");
     sb.append("    computeRef: ").append(toIndentedString(computeRef)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    emoji: ").append(toIndentedString(emoji)).append("\n");
     sb.append("    executionMode: ").append(toIndentedString(executionMode)).append("\n");
     sb.append("    instructions: ").append(toIndentedString(instructions)).append("\n");
     sb.append("    model: ").append(toIndentedString(model)).append("\n");
@@ -339,7 +391,7 @@ public class UpdateAgentIn {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("computeRef", "description", "executionMode", "instructions", "model", "ref", "schedule", "serviceAccountId", "tools"));
+    openapiFields = new HashSet<String>(Arrays.asList("avatar", "computeRef", "description", "emoji", "executionMode", "instructions", "model", "ref", "schedule", "serviceAccountId", "tools"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -366,11 +418,17 @@ public class UpdateAgentIn {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if ((jsonObj.get("avatar") != null && !jsonObj.get("avatar").isJsonNull()) && !jsonObj.get("avatar").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `avatar` to be a primitive type in the JSON string but got `%s`", jsonObj.get("avatar").toString()));
+      }
       if ((jsonObj.get("computeRef") != null && !jsonObj.get("computeRef").isJsonNull()) && !jsonObj.get("computeRef").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `computeRef` to be a primitive type in the JSON string but got `%s`", jsonObj.get("computeRef").toString()));
       }
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
+      }
+      if ((jsonObj.get("emoji") != null && !jsonObj.get("emoji").isJsonNull()) && !jsonObj.get("emoji").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `emoji` to be a primitive type in the JSON string but got `%s`", jsonObj.get("emoji").toString()));
       }
       if ((jsonObj.get("executionMode") != null && !jsonObj.get("executionMode").isJsonNull()) && !jsonObj.get("executionMode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `executionMode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("executionMode").toString()));

@@ -50,6 +50,11 @@ import ai.hanzo.cloud.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class IssueEdit {
+  public static final String SERIALIZED_NAME_ASSIGNEE = "assignee";
+  @SerializedName(SERIALIZED_NAME_ASSIGNEE)
+  @javax.annotation.Nullable
+  private String assignee;
+
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   @javax.annotation.Nullable
@@ -82,6 +87,25 @@ public class IssueEdit {
 
   public IssueEdit() {
   }
+
+  public IssueEdit assignee(@javax.annotation.Nullable String assignee) {
+    this.assignee = assignee;
+    return this;
+  }
+
+  /**
+   * Assignee hands the work to somebody — a person or an agent, by the name they are known by on the forge. \&quot;\&quot; TAKES IT OFF whoever holds it, which is why this is a pointer: absent leaves the holder alone.  It is the other half of &#x60;claim&#x60;, which that handler already named: a claim takes work for the CALLER and refuses to name anyone else, because giving work away is a different act with different authority. This is that act, and until it existed a board could only be worked by whoever clicked first — an agent could never be given anything.
+   * @return assignee
+   */
+  @javax.annotation.Nullable
+  public String getAssignee() {
+    return assignee;
+  }
+
+  public void setAssignee(@javax.annotation.Nullable String assignee) {
+    this.assignee = assignee;
+  }
+
 
   public IssueEdit description(@javax.annotation.Nullable String description) {
     this.description = description;
@@ -207,7 +231,8 @@ public class IssueEdit {
       return false;
     }
     IssueEdit issueEdit = (IssueEdit) o;
-    return Objects.equals(this.description, issueEdit.description) &&
+    return Objects.equals(this.assignee, issueEdit.assignee) &&
+        Objects.equals(this.description, issueEdit.description) &&
         Objects.equals(this.key, issueEdit.key) &&
         Objects.equals(this.num, issueEdit.num) &&
         Objects.equals(this.priority, issueEdit.priority) &&
@@ -217,13 +242,14 @@ public class IssueEdit {
 
   @Override
   public int hashCode() {
-    return Objects.hash(description, key, num, priority, status, title);
+    return Objects.hash(assignee, description, key, num, priority, status, title);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class IssueEdit {\n");
+    sb.append("    assignee: ").append(toIndentedString(assignee)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    key: ").append(toIndentedString(key)).append("\n");
     sb.append("    num: ").append(toIndentedString(num)).append("\n");
@@ -251,7 +277,7 @@ public class IssueEdit {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("description", "key", "num", "priority", "status", "title"));
+    openapiFields = new HashSet<String>(Arrays.asList("assignee", "description", "key", "num", "priority", "status", "title"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -278,6 +304,9 @@ public class IssueEdit {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if ((jsonObj.get("assignee") != null && !jsonObj.get("assignee").isJsonNull()) && !jsonObj.get("assignee").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `assignee` to be a primitive type in the JSON string but got `%s`", jsonObj.get("assignee").toString()));
+      }
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
