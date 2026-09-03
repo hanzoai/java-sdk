@@ -96,7 +96,7 @@ public class LegalApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getLegalDocumentsCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getLegalDocumentsCall(@javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -145,7 +145,7 @@ public class LegalApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getLegalDocumentsValidateBeforeCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getLegalDocumentsValidateBeforeCall(@javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         return getLegalDocumentsCall(limit, _callback);
 
     }
@@ -163,7 +163,7 @@ public class LegalApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public DocumentPage getLegalDocuments(@javax.annotation.Nullable Integer limit) throws ApiException {
+    public DocumentPage getLegalDocuments(@javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<DocumentPage> localVarResp = getLegalDocumentsWithHttpInfo(limit);
         return localVarResp.getData();
     }
@@ -181,7 +181,7 @@ public class LegalApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DocumentPage> getLegalDocumentsWithHttpInfo(@javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<DocumentPage> getLegalDocumentsWithHttpInfo(@javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getLegalDocumentsValidateBeforeCall(limit, null);
         Type localVarReturnType = new TypeToken<DocumentPage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -201,7 +201,7 @@ public class LegalApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getLegalDocumentsAsync(@javax.annotation.Nullable Integer limit, final ApiCallback<DocumentPage> _callback) throws ApiException {
+    public okhttp3.Call getLegalDocumentsAsync(@javax.annotation.Nullable Long limit, final ApiCallback<DocumentPage> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getLegalDocumentsValidateBeforeCall(limit, _callback);
         Type localVarReturnType = new TypeToken<DocumentPage>(){}.getType();
@@ -348,7 +348,7 @@ public class LegalApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getLegalFilingsCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getLegalFilingsCall(@javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -397,7 +397,7 @@ public class LegalApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getLegalFilingsValidateBeforeCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getLegalFilingsValidateBeforeCall(@javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         return getLegalFilingsCall(limit, _callback);
 
     }
@@ -415,7 +415,7 @@ public class LegalApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public FilingPage getLegalFilings(@javax.annotation.Nullable Integer limit) throws ApiException {
+    public FilingPage getLegalFilings(@javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<FilingPage> localVarResp = getLegalFilingsWithHttpInfo(limit);
         return localVarResp.getData();
     }
@@ -433,7 +433,7 @@ public class LegalApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<FilingPage> getLegalFilingsWithHttpInfo(@javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<FilingPage> getLegalFilingsWithHttpInfo(@javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getLegalFilingsValidateBeforeCall(limit, null);
         Type localVarReturnType = new TypeToken<FilingPage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -453,7 +453,7 @@ public class LegalApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getLegalFilingsAsync(@javax.annotation.Nullable Integer limit, final ApiCallback<FilingPage> _callback) throws ApiException {
+    public okhttp3.Call getLegalFilingsAsync(@javax.annotation.Nullable Long limit, final ApiCallback<FilingPage> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getLegalFilingsValidateBeforeCall(limit, _callback);
         Type localVarReturnType = new TypeToken<FilingPage>(){}.getType();

@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -59,17 +58,17 @@ public class BreakdownRow {
   public static final String SERIALIZED_NAME_PAGEVIEWS = "pageviews";
   @SerializedName(SERIALIZED_NAME_PAGEVIEWS)
   @javax.annotation.Nullable
-  private Integer pageviews;
+  private Long pageviews;
 
   public static final String SERIALIZED_NAME_PCT = "pct";
   @SerializedName(SERIALIZED_NAME_PCT)
   @javax.annotation.Nullable
-  private BigDecimal pct;
+  private Double pct;
 
   public static final String SERIALIZED_NAME_VISITORS = "visitors";
   @SerializedName(SERIALIZED_NAME_VISITORS)
   @javax.annotation.Nullable
-  private Integer visitors;
+  private Long visitors;
 
   public BreakdownRow() {
   }
@@ -93,7 +92,7 @@ public class BreakdownRow {
   }
 
 
-  public BreakdownRow pageviews(@javax.annotation.Nullable Integer pageviews) {
+  public BreakdownRow pageviews(@javax.annotation.Nullable Long pageviews) {
     this.pageviews = pageviews;
     return this;
   }
@@ -103,16 +102,16 @@ public class BreakdownRow {
    * @return pageviews
    */
   @javax.annotation.Nullable
-  public Integer getPageviews() {
+  public Long getPageviews() {
     return pageviews;
   }
 
-  public void setPageviews(@javax.annotation.Nullable Integer pageviews) {
+  public void setPageviews(@javax.annotation.Nullable Long pageviews) {
     this.pageviews = pageviews;
   }
 
 
-  public BreakdownRow pct(@javax.annotation.Nullable BigDecimal pct) {
+  public BreakdownRow pct(@javax.annotation.Nullable Double pct) {
     this.pct = pct;
     return this;
   }
@@ -122,16 +121,16 @@ public class BreakdownRow {
    * @return pct
    */
   @javax.annotation.Nullable
-  public BigDecimal getPct() {
+  public Double getPct() {
     return pct;
   }
 
-  public void setPct(@javax.annotation.Nullable BigDecimal pct) {
+  public void setPct(@javax.annotation.Nullable Double pct) {
     this.pct = pct;
   }
 
 
-  public BreakdownRow visitors(@javax.annotation.Nullable Integer visitors) {
+  public BreakdownRow visitors(@javax.annotation.Nullable Long visitors) {
     this.visitors = visitors;
     return this;
   }
@@ -141,11 +140,11 @@ public class BreakdownRow {
    * @return visitors
    */
   @javax.annotation.Nullable
-  public Integer getVisitors() {
+  public Long getVisitors() {
     return visitors;
   }
 
-  public void setVisitors(@javax.annotation.Nullable Integer visitors) {
+  public void setVisitors(@javax.annotation.Nullable Long visitors) {
     this.visitors = visitors;
   }
 

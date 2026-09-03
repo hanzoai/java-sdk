@@ -46,54 +46,73 @@ import java.util.Set;
 import ai.hanzo.cloud.JSON;
 
 /**
- * ZapProcReq
+ * JoinFailure
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
-public class ZapProcReq {
-  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
-  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+public class JoinFailure {
+  public static final String SERIALIZED_NAME_CHANNEL = "channel";
+  @SerializedName(SERIALIZED_NAME_CHANNEL)
   @javax.annotation.Nullable
-  private String description;
+  private String channel;
+
+  public static final String SERIALIZED_NAME_ERROR = "error";
+  @SerializedName(SERIALIZED_NAME_ERROR)
+  @javax.annotation.Nullable
+  private String error;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   @javax.annotation.Nullable
   private String name;
 
-  public static final String SERIALIZED_NAME_PROJECT = "project";
-  @SerializedName(SERIALIZED_NAME_PROJECT)
-  @javax.annotation.Nullable
-  private String project;
-
-  public ZapProcReq() {
+  public JoinFailure() {
   }
 
-  public ZapProcReq description(@javax.annotation.Nullable String description) {
-    this.description = description;
+  public JoinFailure channel(@javax.annotation.Nullable String channel) {
+    this.channel = channel;
     return this;
   }
 
   /**
-   * Get description
-   * @return description
+   * Channel is Slack&#39;s id for the room that refused.
+   * @return channel
    */
   @javax.annotation.Nullable
-  public String getDescription() {
-    return description;
+  public String getChannel() {
+    return channel;
   }
 
-  public void setDescription(@javax.annotation.Nullable String description) {
-    this.description = description;
+  public void setChannel(@javax.annotation.Nullable String channel) {
+    this.channel = channel;
   }
 
 
-  public ZapProcReq name(@javax.annotation.Nullable String name) {
+  public JoinFailure error(@javax.annotation.Nullable String error) {
+    this.error = error;
+    return this;
+  }
+
+  /**
+   * Error is Slack&#39;s own code, carried through unchanged.
+   * @return error
+   */
+  @javax.annotation.Nullable
+  public String getError() {
+    return error;
+  }
+
+  public void setError(@javax.annotation.Nullable String error) {
+    this.error = error;
+  }
+
+
+  public JoinFailure name(@javax.annotation.Nullable String name) {
     this.name = name;
     return this;
   }
 
   /**
-   * Get name
+   * Name is that room&#39;s human name, so the operator does not have to look the id up.
    * @return name
    */
   @javax.annotation.Nullable
@@ -106,25 +125,6 @@ public class ZapProcReq {
   }
 
 
-  public ZapProcReq project(@javax.annotation.Nullable String project) {
-    this.project = project;
-    return this;
-  }
-
-  /**
-   * Get project
-   * @return project
-   */
-  @javax.annotation.Nullable
-  public String getProject() {
-    return project;
-  }
-
-  public void setProject(@javax.annotation.Nullable String project) {
-    this.project = project;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -134,24 +134,24 @@ public class ZapProcReq {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ZapProcReq zapProcReq = (ZapProcReq) o;
-    return Objects.equals(this.description, zapProcReq.description) &&
-        Objects.equals(this.name, zapProcReq.name) &&
-        Objects.equals(this.project, zapProcReq.project);
+    JoinFailure joinFailure = (JoinFailure) o;
+    return Objects.equals(this.channel, joinFailure.channel) &&
+        Objects.equals(this.error, joinFailure.error) &&
+        Objects.equals(this.name, joinFailure.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(description, name, project);
+    return Objects.hash(channel, error, name);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ZapProcReq {\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("class JoinFailure {\n");
+    sb.append("    channel: ").append(toIndentedString(channel)).append("\n");
+    sb.append("    error: ").append(toIndentedString(error)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    project: ").append(toIndentedString(project)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -173,7 +173,7 @@ public class ZapProcReq {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("description", "name", "project"));
+    openapiFields = new HashSet<String>(Arrays.asList("channel", "error", "name"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -183,31 +183,31 @@ public class ZapProcReq {
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to ZapProcReq
+   * @throws IOException if the JSON Element is invalid with respect to JoinFailure
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!ZapProcReq.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ZapProcReq is not found in the empty JSON string", ZapProcReq.openapiRequiredFields.toString()));
+        if (!JoinFailure.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in JoinFailure is not found in the empty JSON string", JoinFailure.openapiRequiredFields.toString()));
         }
       }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!ZapProcReq.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ZapProcReq` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!JoinFailure.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `JoinFailure` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
+      if ((jsonObj.get("channel") != null && !jsonObj.get("channel").isJsonNull()) && !jsonObj.get("channel").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `channel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("channel").toString()));
+      }
+      if ((jsonObj.get("error") != null && !jsonObj.get("error").isJsonNull()) && !jsonObj.get("error").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `error` to be a primitive type in the JSON string but got `%s`", jsonObj.get("error").toString()));
       }
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
-      }
-      if ((jsonObj.get("project") != null && !jsonObj.get("project").isJsonNull()) && !jsonObj.get("project").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `project` to be a primitive type in the JSON string but got `%s`", jsonObj.get("project").toString()));
       }
   }
 
@@ -215,22 +215,22 @@ public class ZapProcReq {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!ZapProcReq.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'ZapProcReq' and its subtypes
+       if (!JoinFailure.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'JoinFailure' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<ZapProcReq> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(ZapProcReq.class));
+       final TypeAdapter<JoinFailure> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(JoinFailure.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<ZapProcReq>() {
+       return (TypeAdapter<T>) new TypeAdapter<JoinFailure>() {
            @Override
-           public void write(JsonWriter out, ZapProcReq value) throws IOException {
+           public void write(JsonWriter out, JoinFailure value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public ZapProcReq read(JsonReader in) throws IOException {
+           public JoinFailure read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -241,18 +241,18 @@ public class ZapProcReq {
   }
 
   /**
-   * Create an instance of ZapProcReq given an JSON string
+   * Create an instance of JoinFailure given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of ZapProcReq
-   * @throws IOException if the JSON string is invalid with respect to ZapProcReq
+   * @return An instance of JoinFailure
+   * @throws IOException if the JSON string is invalid with respect to JoinFailure
    */
-  public static ZapProcReq fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, ZapProcReq.class);
+  public static JoinFailure fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, JoinFailure.class);
   }
 
   /**
-   * Convert an instance of ZapProcReq to an JSON string
+   * Convert an instance of JoinFailure to an JSON string
    *
    * @return JSON string
    */

@@ -96,7 +96,7 @@ public class ContentApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getContentBoardCall(@javax.annotation.Nullable String status, @javax.annotation.Nullable String project, @javax.annotation.Nullable String doctype, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getContentBoardCall(@javax.annotation.Nullable String status, @javax.annotation.Nullable String project, @javax.annotation.Nullable String doctype, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -157,7 +157,7 @@ public class ContentApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getContentBoardValidateBeforeCall(@javax.annotation.Nullable String status, @javax.annotation.Nullable String project, @javax.annotation.Nullable String doctype, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getContentBoardValidateBeforeCall(@javax.annotation.Nullable String status, @javax.annotation.Nullable String project, @javax.annotation.Nullable String doctype, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         return getContentBoardCall(status, project, doctype, limit, _callback);
 
     }
@@ -178,7 +178,7 @@ public class ContentApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public BoardPage getContentBoard(@javax.annotation.Nullable String status, @javax.annotation.Nullable String project, @javax.annotation.Nullable String doctype, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public BoardPage getContentBoard(@javax.annotation.Nullable String status, @javax.annotation.Nullable String project, @javax.annotation.Nullable String doctype, @javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<BoardPage> localVarResp = getContentBoardWithHttpInfo(status, project, doctype, limit);
         return localVarResp.getData();
     }
@@ -199,7 +199,7 @@ public class ContentApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BoardPage> getContentBoardWithHttpInfo(@javax.annotation.Nullable String status, @javax.annotation.Nullable String project, @javax.annotation.Nullable String doctype, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<BoardPage> getContentBoardWithHttpInfo(@javax.annotation.Nullable String status, @javax.annotation.Nullable String project, @javax.annotation.Nullable String doctype, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getContentBoardValidateBeforeCall(status, project, doctype, limit, null);
         Type localVarReturnType = new TypeToken<BoardPage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -222,7 +222,7 @@ public class ContentApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getContentBoardAsync(@javax.annotation.Nullable String status, @javax.annotation.Nullable String project, @javax.annotation.Nullable String doctype, @javax.annotation.Nullable Integer limit, final ApiCallback<BoardPage> _callback) throws ApiException {
+    public okhttp3.Call getContentBoardAsync(@javax.annotation.Nullable String status, @javax.annotation.Nullable String project, @javax.annotation.Nullable String doctype, @javax.annotation.Nullable Long limit, final ApiCallback<BoardPage> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getContentBoardValidateBeforeCall(status, project, doctype, limit, _callback);
         Type localVarReturnType = new TypeToken<BoardPage>(){}.getType();

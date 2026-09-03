@@ -53,7 +53,7 @@ public class ContextIn {
   public static final String SERIALIZED_NAME_BUDGET_TOKENS = "budgetTokens";
   @SerializedName(SERIALIZED_NAME_BUDGET_TOKENS)
   @javax.annotation.Nullable
-  private Integer budgetTokens;
+  private Long budgetTokens;
 
   public static final String SERIALIZED_NAME_QUERY = "query";
   @SerializedName(SERIALIZED_NAME_QUERY)
@@ -68,7 +68,7 @@ public class ContextIn {
   public ContextIn() {
   }
 
-  public ContextIn budgetTokens(@javax.annotation.Nullable Integer budgetTokens) {
+  public ContextIn budgetTokens(@javax.annotation.Nullable Long budgetTokens) {
     this.budgetTokens = budgetTokens;
     return this;
   }
@@ -78,11 +78,11 @@ public class ContextIn {
    * @return budgetTokens
    */
   @javax.annotation.Nullable
-  public Integer getBudgetTokens() {
+  public Long getBudgetTokens() {
     return budgetTokens;
   }
 
-  public void setBudgetTokens(@javax.annotation.Nullable Integer budgetTokens) {
+  public void setBudgetTokens(@javax.annotation.Nullable Long budgetTokens) {
     this.budgetTokens = budgetTokens;
   }
 

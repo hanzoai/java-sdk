@@ -53,7 +53,7 @@ public class SetReferenceOut {
   public static final String SERIALIZED_NAME_OVERRIDES = "overrides";
   @SerializedName(SERIALIZED_NAME_OVERRIDES)
   @javax.annotation.Nullable
-  private Integer overrides;
+  private Long overrides;
 
   public static final String SERIALIZED_NAME_SET = "set";
   @SerializedName(SERIALIZED_NAME_SET)
@@ -63,12 +63,12 @@ public class SetReferenceOut {
   public static final String SERIALIZED_NAME_WRITTEN = "written";
   @SerializedName(SERIALIZED_NAME_WRITTEN)
   @javax.annotation.Nullable
-  private Integer written;
+  private Long written;
 
   public SetReferenceOut() {
   }
 
-  public SetReferenceOut overrides(@javax.annotation.Nullable Integer overrides) {
+  public SetReferenceOut overrides(@javax.annotation.Nullable Long overrides) {
     this.overrides = overrides;
     return this;
   }
@@ -78,11 +78,11 @@ public class SetReferenceOut {
    * @return overrides
    */
   @javax.annotation.Nullable
-  public Integer getOverrides() {
+  public Long getOverrides() {
     return overrides;
   }
 
-  public void setOverrides(@javax.annotation.Nullable Integer overrides) {
+  public void setOverrides(@javax.annotation.Nullable Long overrides) {
     this.overrides = overrides;
   }
 
@@ -106,7 +106,7 @@ public class SetReferenceOut {
   }
 
 
-  public SetReferenceOut written(@javax.annotation.Nullable Integer written) {
+  public SetReferenceOut written(@javax.annotation.Nullable Long written) {
     this.written = written;
     return this;
   }
@@ -116,11 +116,11 @@ public class SetReferenceOut {
    * @return written
    */
   @javax.annotation.Nullable
-  public Integer getWritten() {
+  public Long getWritten() {
     return written;
   }
 
-  public void setWritten(@javax.annotation.Nullable Integer written) {
+  public void setWritten(@javax.annotation.Nullable Long written) {
     this.written = written;
   }
 

@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -59,12 +58,12 @@ public class Provenance {
   public static final String SERIALIZED_NAME_RANK = "rank";
   @SerializedName(SERIALIZED_NAME_RANK)
   @javax.annotation.Nullable
-  private Integer rank;
+  private Long rank;
 
   public static final String SERIALIZED_NAME_SCORE = "score";
   @SerializedName(SERIALIZED_NAME_SCORE)
   @javax.annotation.Nullable
-  private BigDecimal score;
+  private Double score;
 
   public Provenance() {
   }
@@ -75,7 +74,7 @@ public class Provenance {
   }
 
   /**
-   * Backend is the leg that contributed this match: \&quot;index\&quot; (lexical), \&quot;vector\&quot; (semantic) or \&quot;code\&quot; (the org&#39;s repositories). It is the same name that leg reports itself under in Fusion.Backends, so a hit can be traced to a status.
+   * Backend is the leg that contributed this match: \&quot;index\&quot; (lexical), \&quot;vector\&quot; (semantic), \&quot;code\&quot; (the org&#39;s repositories) or \&quot;rerank\&quot; (the cross-encoder pass, whose Score is the relevance it assigned). It is the same name that leg reports itself under in Fusion.Backends, so a hit can be traced to a status.
    * @return backend
    */
   @javax.annotation.Nullable
@@ -88,7 +87,7 @@ public class Provenance {
   }
 
 
-  public Provenance rank(@javax.annotation.Nullable Integer rank) {
+  public Provenance rank(@javax.annotation.Nullable Long rank) {
     this.rank = rank;
     return this;
   }
@@ -98,16 +97,16 @@ public class Provenance {
    * @return rank
    */
   @javax.annotation.Nullable
-  public Integer getRank() {
+  public Long getRank() {
     return rank;
   }
 
-  public void setRank(@javax.annotation.Nullable Integer rank) {
+  public void setRank(@javax.annotation.Nullable Long rank) {
     this.rank = rank;
   }
 
 
-  public Provenance score(@javax.annotation.Nullable BigDecimal score) {
+  public Provenance score(@javax.annotation.Nullable Double score) {
     this.score = score;
     return this;
   }
@@ -117,11 +116,11 @@ public class Provenance {
    * @return score
    */
   @javax.annotation.Nullable
-  public BigDecimal getScore() {
+  public Double getScore() {
     return score;
   }
 
-  public void setScore(@javax.annotation.Nullable BigDecimal score) {
+  public void setScore(@javax.annotation.Nullable Double score) {
     this.score = score;
   }
 

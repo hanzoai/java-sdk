@@ -56,17 +56,17 @@ public class TreasuryReport {
   public static final String SERIALIZED_NAME_ACCRUED_CENTS = "accruedCents";
   @SerializedName(SERIALIZED_NAME_ACCRUED_CENTS)
   @javax.annotation.Nullable
-  private Integer accruedCents;
+  private Long accruedCents;
 
   public static final String SERIALIZED_NAME_BY_PROGRAM_CENTS = "byProgramCents";
   @SerializedName(SERIALIZED_NAME_BY_PROGRAM_CENTS)
   @javax.annotation.Nullable
-  private Map<String, Integer> byProgramCents = new HashMap<>();
+  private Map<String, Long> byProgramCents = new HashMap<>();
 
   public static final String SERIALIZED_NAME_PAID_CENTS = "paidCents";
   @SerializedName(SERIALIZED_NAME_PAID_CENTS)
   @javax.annotation.Nullable
-  private Integer paidCents;
+  private Long paidCents;
 
   public static final String SERIALIZED_NAME_POLICY = "policy";
   @SerializedName(SERIALIZED_NAME_POLICY)
@@ -76,7 +76,7 @@ public class TreasuryReport {
   public static final String SERIALIZED_NAME_RESERVE_CENTS = "reserveCents";
   @SerializedName(SERIALIZED_NAME_RESERVE_CENTS)
   @javax.annotation.Nullable
-  private Integer reserveCents;
+  private Long reserveCents;
 
   public static final String SERIALIZED_NAME_SOLVENT_FOR_PAYOUT = "solventForPayout";
   @SerializedName(SERIALIZED_NAME_SOLVENT_FOR_PAYOUT)
@@ -86,7 +86,7 @@ public class TreasuryReport {
   public TreasuryReport() {
   }
 
-  public TreasuryReport accruedCents(@javax.annotation.Nullable Integer accruedCents) {
+  public TreasuryReport accruedCents(@javax.annotation.Nullable Long accruedCents) {
     this.accruedCents = accruedCents;
     return this;
   }
@@ -96,21 +96,21 @@ public class TreasuryReport {
    * @return accruedCents
    */
   @javax.annotation.Nullable
-  public Integer getAccruedCents() {
+  public Long getAccruedCents() {
     return accruedCents;
   }
 
-  public void setAccruedCents(@javax.annotation.Nullable Integer accruedCents) {
+  public void setAccruedCents(@javax.annotation.Nullable Long accruedCents) {
     this.accruedCents = accruedCents;
   }
 
 
-  public TreasuryReport byProgramCents(@javax.annotation.Nullable Map<String, Integer> byProgramCents) {
+  public TreasuryReport byProgramCents(@javax.annotation.Nullable Map<String, Long> byProgramCents) {
     this.byProgramCents = byProgramCents;
     return this;
   }
 
-  public TreasuryReport putByProgramCentsItem(String key, Integer byProgramCentsItem) {
+  public TreasuryReport putByProgramCentsItem(String key, Long byProgramCentsItem) {
     if (this.byProgramCents == null) {
       this.byProgramCents = new HashMap<>();
     }
@@ -123,16 +123,16 @@ public class TreasuryReport {
    * @return byProgramCents
    */
   @javax.annotation.Nullable
-  public Map<String, Integer> getByProgramCents() {
+  public Map<String, Long> getByProgramCents() {
     return byProgramCents;
   }
 
-  public void setByProgramCents(@javax.annotation.Nullable Map<String, Integer> byProgramCents) {
+  public void setByProgramCents(@javax.annotation.Nullable Map<String, Long> byProgramCents) {
     this.byProgramCents = byProgramCents;
   }
 
 
-  public TreasuryReport paidCents(@javax.annotation.Nullable Integer paidCents) {
+  public TreasuryReport paidCents(@javax.annotation.Nullable Long paidCents) {
     this.paidCents = paidCents;
     return this;
   }
@@ -142,11 +142,11 @@ public class TreasuryReport {
    * @return paidCents
    */
   @javax.annotation.Nullable
-  public Integer getPaidCents() {
+  public Long getPaidCents() {
     return paidCents;
   }
 
-  public void setPaidCents(@javax.annotation.Nullable Integer paidCents) {
+  public void setPaidCents(@javax.annotation.Nullable Long paidCents) {
     this.paidCents = paidCents;
   }
 
@@ -170,7 +170,7 @@ public class TreasuryReport {
   }
 
 
-  public TreasuryReport reserveCents(@javax.annotation.Nullable Integer reserveCents) {
+  public TreasuryReport reserveCents(@javax.annotation.Nullable Long reserveCents) {
     this.reserveCents = reserveCents;
     return this;
   }
@@ -180,11 +180,11 @@ public class TreasuryReport {
    * @return reserveCents
    */
   @javax.annotation.Nullable
-  public Integer getReserveCents() {
+  public Long getReserveCents() {
     return reserveCents;
   }
 
-  public void setReserveCents(@javax.annotation.Nullable Integer reserveCents) {
+  public void setReserveCents(@javax.annotation.Nullable Long reserveCents) {
     this.reserveCents = reserveCents;
   }
 

@@ -73,7 +73,7 @@ public class BlobJSON {
   public static final String SERIALIZED_NAME_SIZE = "size";
   @SerializedName(SERIALIZED_NAME_SIZE)
   @javax.annotation.Nullable
-  private Integer size;
+  private Long size;
 
   public static final String SERIALIZED_NAME_TRUNCATED = "truncated";
   @SerializedName(SERIALIZED_NAME_TRUNCATED)
@@ -159,7 +159,7 @@ public class BlobJSON {
   }
 
 
-  public BlobJSON size(@javax.annotation.Nullable Integer size) {
+  public BlobJSON size(@javax.annotation.Nullable Long size) {
     this.size = size;
     return this;
   }
@@ -169,11 +169,11 @@ public class BlobJSON {
    * @return size
    */
   @javax.annotation.Nullable
-  public Integer getSize() {
+  public Long getSize() {
     return size;
   }
 
-  public void setSize(@javax.annotation.Nullable Integer size) {
+  public void setSize(@javax.annotation.Nullable Long size) {
     this.size = size;
   }
 

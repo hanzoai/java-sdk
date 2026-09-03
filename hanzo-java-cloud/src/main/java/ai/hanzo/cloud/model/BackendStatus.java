@@ -58,7 +58,7 @@ public class BackendStatus {
   public static final String SERIALIZED_NAME_HITS = "hits";
   @SerializedName(SERIALIZED_NAME_HITS)
   @javax.annotation.Nullable
-  private Integer hits;
+  private Long hits;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -73,7 +73,7 @@ public class BackendStatus {
   public static final String SERIALIZED_NAME_TOOK_MS = "took_ms";
   @SerializedName(SERIALIZED_NAME_TOOK_MS)
   @javax.annotation.Nullable
-  private Integer tookMs;
+  private Long tookMs;
 
   public BackendStatus() {
   }
@@ -97,7 +97,7 @@ public class BackendStatus {
   }
 
 
-  public BackendStatus hits(@javax.annotation.Nullable Integer hits) {
+  public BackendStatus hits(@javax.annotation.Nullable Long hits) {
     this.hits = hits;
     return this;
   }
@@ -107,11 +107,11 @@ public class BackendStatus {
    * @return hits
    */
   @javax.annotation.Nullable
-  public Integer getHits() {
+  public Long getHits() {
     return hits;
   }
 
-  public void setHits(@javax.annotation.Nullable Integer hits) {
+  public void setHits(@javax.annotation.Nullable Long hits) {
     this.hits = hits;
   }
 
@@ -122,7 +122,7 @@ public class BackendStatus {
   }
 
   /**
-   * Name is which leg this reports: \&quot;index\&quot;, the lexical store, \&quot;vector\&quot;, the semantic one, or \&quot;code\&quot;, the org&#39;s own repositories. Match.Backend uses the same three names.
+   * Name is which leg this reports: \&quot;index\&quot;, the lexical store, \&quot;vector\&quot;, the semantic one, \&quot;code\&quot;, the org&#39;s own repositories, or \&quot;rerank\&quot;, the relevance pass over the fused window. Match.Backend uses the same names.
    * @return name
    */
   @javax.annotation.Nullable
@@ -154,7 +154,7 @@ public class BackendStatus {
   }
 
 
-  public BackendStatus tookMs(@javax.annotation.Nullable Integer tookMs) {
+  public BackendStatus tookMs(@javax.annotation.Nullable Long tookMs) {
     this.tookMs = tookMs;
     return this;
   }
@@ -164,11 +164,11 @@ public class BackendStatus {
    * @return tookMs
    */
   @javax.annotation.Nullable
-  public Integer getTookMs() {
+  public Long getTookMs() {
     return tookMs;
   }
 
-  public void setTookMs(@javax.annotation.Nullable Integer tookMs) {
+  public void setTookMs(@javax.annotation.Nullable Long tookMs) {
     this.tookMs = tookMs;
   }
 

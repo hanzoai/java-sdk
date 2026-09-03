@@ -73,7 +73,7 @@ public class HelpArticleCard {
   public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)
   @javax.annotation.Nullable
-  private Integer updatedAt;
+  private Long updatedAt;
 
   public HelpArticleCard() {
   }
@@ -154,7 +154,7 @@ public class HelpArticleCard {
   }
 
 
-  public HelpArticleCard updatedAt(@javax.annotation.Nullable Integer updatedAt) {
+  public HelpArticleCard updatedAt(@javax.annotation.Nullable Long updatedAt) {
     this.updatedAt = updatedAt;
     return this;
   }
@@ -164,11 +164,11 @@ public class HelpArticleCard {
    * @return updatedAt
    */
   @javax.annotation.Nullable
-  public Integer getUpdatedAt() {
+  public Long getUpdatedAt() {
     return updatedAt;
   }
 
-  public void setUpdatedAt(@javax.annotation.Nullable Integer updatedAt) {
+  public void setUpdatedAt(@javax.annotation.Nullable Long updatedAt) {
     this.updatedAt = updatedAt;
   }
 

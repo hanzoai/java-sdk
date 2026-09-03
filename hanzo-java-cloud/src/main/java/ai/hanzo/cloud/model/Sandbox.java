@@ -55,15 +55,20 @@ public class Sandbox {
   @javax.annotation.Nullable
   private String propertyClass;
 
+  public static final String SERIALIZED_NAME_CLUSTER = "cluster";
+  @SerializedName(SERIALIZED_NAME_CLUSTER)
+  @javax.annotation.Nullable
+  private String cluster;
+
   public static final String SERIALIZED_NAME_CONNECTED_AT = "connectedAt";
   @SerializedName(SERIALIZED_NAME_CONNECTED_AT)
   @javax.annotation.Nullable
-  private Integer connectedAt;
+  private Long connectedAt;
 
   public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
   @javax.annotation.Nullable
-  private Integer createdAt;
+  private Long createdAt;
 
   public static final String SERIALIZED_NAME_ERROR = "error";
   @SerializedName(SERIALIZED_NAME_ERROR)
@@ -73,7 +78,7 @@ public class Sandbox {
   public static final String SERIALIZED_NAME_EXPIRES_AT = "expiresAt";
   @SerializedName(SERIALIZED_NAME_EXPIRES_AT)
   @javax.annotation.Nullable
-  private Integer expiresAt;
+  private Long expiresAt;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -93,7 +98,7 @@ public class Sandbox {
   public static final String SERIALIZED_NAME_LAST_USED_AT = "lastUsedAt";
   @SerializedName(SERIALIZED_NAME_LAST_USED_AT)
   @javax.annotation.Nullable
-  private Integer lastUsedAt;
+  private Long lastUsedAt;
 
   public static final String SERIALIZED_NAME_ORG = "org";
   @SerializedName(SERIALIZED_NAME_ORG)
@@ -142,7 +147,26 @@ public class Sandbox {
   }
 
 
-  public Sandbox connectedAt(@javax.annotation.Nullable Integer connectedAt) {
+  public Sandbox cluster(@javax.annotation.Nullable String cluster) {
+    this.cluster = cluster;
+    return this;
+  }
+
+  /**
+   * Cluster is the attached cluster this sandbox runs on — the fleet-local name the lease named — or empty for the home cluster. Immutable for the life of the lease, like the pod it locates: every later call into the sandbox reads it to reach the right apiserver.
+   * @return cluster
+   */
+  @javax.annotation.Nullable
+  public String getCluster() {
+    return cluster;
+  }
+
+  public void setCluster(@javax.annotation.Nullable String cluster) {
+    this.cluster = cluster;
+  }
+
+
+  public Sandbox connectedAt(@javax.annotation.Nullable Long connectedAt) {
     this.connectedAt = connectedAt;
     return this;
   }
@@ -152,16 +176,16 @@ public class Sandbox {
    * @return connectedAt
    */
   @javax.annotation.Nullable
-  public Integer getConnectedAt() {
+  public Long getConnectedAt() {
     return connectedAt;
   }
 
-  public void setConnectedAt(@javax.annotation.Nullable Integer connectedAt) {
+  public void setConnectedAt(@javax.annotation.Nullable Long connectedAt) {
     this.connectedAt = connectedAt;
   }
 
 
-  public Sandbox createdAt(@javax.annotation.Nullable Integer createdAt) {
+  public Sandbox createdAt(@javax.annotation.Nullable Long createdAt) {
     this.createdAt = createdAt;
     return this;
   }
@@ -171,11 +195,11 @@ public class Sandbox {
    * @return createdAt
    */
   @javax.annotation.Nullable
-  public Integer getCreatedAt() {
+  public Long getCreatedAt() {
     return createdAt;
   }
 
-  public void setCreatedAt(@javax.annotation.Nullable Integer createdAt) {
+  public void setCreatedAt(@javax.annotation.Nullable Long createdAt) {
     this.createdAt = createdAt;
   }
 
@@ -199,7 +223,7 @@ public class Sandbox {
   }
 
 
-  public Sandbox expiresAt(@javax.annotation.Nullable Integer expiresAt) {
+  public Sandbox expiresAt(@javax.annotation.Nullable Long expiresAt) {
     this.expiresAt = expiresAt;
     return this;
   }
@@ -209,11 +233,11 @@ public class Sandbox {
    * @return expiresAt
    */
   @javax.annotation.Nullable
-  public Integer getExpiresAt() {
+  public Long getExpiresAt() {
     return expiresAt;
   }
 
-  public void setExpiresAt(@javax.annotation.Nullable Integer expiresAt) {
+  public void setExpiresAt(@javax.annotation.Nullable Long expiresAt) {
     this.expiresAt = expiresAt;
   }
 
@@ -275,7 +299,7 @@ public class Sandbox {
   }
 
 
-  public Sandbox lastUsedAt(@javax.annotation.Nullable Integer lastUsedAt) {
+  public Sandbox lastUsedAt(@javax.annotation.Nullable Long lastUsedAt) {
     this.lastUsedAt = lastUsedAt;
     return this;
   }
@@ -285,11 +309,11 @@ public class Sandbox {
    * @return lastUsedAt
    */
   @javax.annotation.Nullable
-  public Integer getLastUsedAt() {
+  public Long getLastUsedAt() {
     return lastUsedAt;
   }
 
-  public void setLastUsedAt(@javax.annotation.Nullable Integer lastUsedAt) {
+  public void setLastUsedAt(@javax.annotation.Nullable Long lastUsedAt) {
     this.lastUsedAt = lastUsedAt;
   }
 
@@ -400,6 +424,7 @@ public class Sandbox {
     }
     Sandbox sandbox = (Sandbox) o;
     return Objects.equals(this.propertyClass, sandbox.propertyClass) &&
+        Objects.equals(this.cluster, sandbox.cluster) &&
         Objects.equals(this.connectedAt, sandbox.connectedAt) &&
         Objects.equals(this.createdAt, sandbox.createdAt) &&
         Objects.equals(this.error, sandbox.error) &&
@@ -417,7 +442,7 @@ public class Sandbox {
 
   @Override
   public int hashCode() {
-    return Objects.hash(propertyClass, connectedAt, createdAt, error, expiresAt, id, image, kind, lastUsedAt, org, project, runtime, status, volume);
+    return Objects.hash(propertyClass, cluster, connectedAt, createdAt, error, expiresAt, id, image, kind, lastUsedAt, org, project, runtime, status, volume);
   }
 
   @Override
@@ -425,6 +450,7 @@ public class Sandbox {
     StringBuilder sb = new StringBuilder();
     sb.append("class Sandbox {\n");
     sb.append("    propertyClass: ").append(toIndentedString(propertyClass)).append("\n");
+    sb.append("    cluster: ").append(toIndentedString(cluster)).append("\n");
     sb.append("    connectedAt: ").append(toIndentedString(connectedAt)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    error: ").append(toIndentedString(error)).append("\n");
@@ -459,7 +485,7 @@ public class Sandbox {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("class", "connectedAt", "createdAt", "error", "expiresAt", "id", "image", "kind", "lastUsedAt", "org", "project", "runtime", "status", "volume"));
+    openapiFields = new HashSet<String>(Arrays.asList("class", "cluster", "connectedAt", "createdAt", "error", "expiresAt", "id", "image", "kind", "lastUsedAt", "org", "project", "runtime", "status", "volume"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -488,6 +514,9 @@ public class Sandbox {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("class") != null && !jsonObj.get("class").isJsonNull()) && !jsonObj.get("class").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `class` to be a primitive type in the JSON string but got `%s`", jsonObj.get("class").toString()));
+      }
+      if ((jsonObj.get("cluster") != null && !jsonObj.get("cluster").isJsonNull()) && !jsonObj.get("cluster").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `cluster` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cluster").toString()));
       }
       if ((jsonObj.get("error") != null && !jsonObj.get("error").isJsonNull()) && !jsonObj.get("error").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `error` to be a primitive type in the JSON string but got `%s`", jsonObj.get("error").toString()));

@@ -53,7 +53,7 @@ public class Ran {
   public static final String SERIALIZED_NAME_EXIT_CODE = "exitCode";
   @SerializedName(SERIALIZED_NAME_EXIT_CODE)
   @javax.annotation.Nullable
-  private Integer exitCode;
+  private Long exitCode;
 
   public static final String SERIALIZED_NAME_STDERR = "stderr";
   @SerializedName(SERIALIZED_NAME_STDERR)
@@ -68,7 +68,7 @@ public class Ran {
   public Ran() {
   }
 
-  public Ran exitCode(@javax.annotation.Nullable Integer exitCode) {
+  public Ran exitCode(@javax.annotation.Nullable Long exitCode) {
     this.exitCode = exitCode;
     return this;
   }
@@ -78,11 +78,11 @@ public class Ran {
    * @return exitCode
    */
   @javax.annotation.Nullable
-  public Integer getExitCode() {
+  public Long getExitCode() {
     return exitCode;
   }
 
-  public void setExitCode(@javax.annotation.Nullable Integer exitCode) {
+  public void setExitCode(@javax.annotation.Nullable Long exitCode) {
     this.exitCode = exitCode;
   }
 

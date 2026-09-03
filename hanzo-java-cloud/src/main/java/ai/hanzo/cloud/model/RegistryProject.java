@@ -53,12 +53,12 @@ public class RegistryProject {
   public static final String SERIALIZED_NAME_IMAGES = "images";
   @SerializedName(SERIALIZED_NAME_IMAGES)
   @javax.annotation.Nullable
-  private Integer images;
+  private Long images;
 
   public static final String SERIALIZED_NAME_PACKAGES = "packages";
   @SerializedName(SERIALIZED_NAME_PACKAGES)
   @javax.annotation.Nullable
-  private Integer packages;
+  private Long packages;
 
   public static final String SERIALIZED_NAME_PROJECT = "project";
   @SerializedName(SERIALIZED_NAME_PROJECT)
@@ -68,7 +68,7 @@ public class RegistryProject {
   public RegistryProject() {
   }
 
-  public RegistryProject images(@javax.annotation.Nullable Integer images) {
+  public RegistryProject images(@javax.annotation.Nullable Long images) {
     this.images = images;
     return this;
   }
@@ -78,16 +78,16 @@ public class RegistryProject {
    * @return images
    */
   @javax.annotation.Nullable
-  public Integer getImages() {
+  public Long getImages() {
     return images;
   }
 
-  public void setImages(@javax.annotation.Nullable Integer images) {
+  public void setImages(@javax.annotation.Nullable Long images) {
     this.images = images;
   }
 
 
-  public RegistryProject packages(@javax.annotation.Nullable Integer packages) {
+  public RegistryProject packages(@javax.annotation.Nullable Long packages) {
     this.packages = packages;
     return this;
   }
@@ -97,11 +97,11 @@ public class RegistryProject {
    * @return packages
    */
   @javax.annotation.Nullable
-  public Integer getPackages() {
+  public Long getPackages() {
     return packages;
   }
 
-  public void setPackages(@javax.annotation.Nullable Integer packages) {
+  public void setPackages(@javax.annotation.Nullable Long packages) {
     this.packages = packages;
   }
 

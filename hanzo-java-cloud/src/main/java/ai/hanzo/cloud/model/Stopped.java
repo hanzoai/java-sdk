@@ -53,12 +53,12 @@ public class Stopped {
   public static final String SERIALIZED_NAME_STOPPED = "stopped";
   @SerializedName(SERIALIZED_NAME_STOPPED)
   @javax.annotation.Nullable
-  private Integer stopped;
+  private Long stopped;
 
   public Stopped() {
   }
 
-  public Stopped stopped(@javax.annotation.Nullable Integer stopped) {
+  public Stopped stopped(@javax.annotation.Nullable Long stopped) {
     this.stopped = stopped;
     return this;
   }
@@ -68,11 +68,11 @@ public class Stopped {
    * @return stopped
    */
   @javax.annotation.Nullable
-  public Integer getStopped() {
+  public Long getStopped() {
     return stopped;
   }
 
-  public void setStopped(@javax.annotation.Nullable Integer stopped) {
+  public void setStopped(@javax.annotation.Nullable Long stopped) {
     this.stopped = stopped;
   }
 

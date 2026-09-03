@@ -63,7 +63,7 @@ public class NetworkView {
   public static final String SERIALIZED_NAME_NODES = "nodes";
   @SerializedName(SERIALIZED_NAME_NODES)
   @javax.annotation.Nullable
-  private Integer nodes;
+  private Long nodes;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
@@ -111,7 +111,7 @@ public class NetworkView {
   }
 
 
-  public NetworkView nodes(@javax.annotation.Nullable Integer nodes) {
+  public NetworkView nodes(@javax.annotation.Nullable Long nodes) {
     this.nodes = nodes;
     return this;
   }
@@ -121,11 +121,11 @@ public class NetworkView {
    * @return nodes
    */
   @javax.annotation.Nullable
-  public Integer getNodes() {
+  public Long getNodes() {
     return nodes;
   }
 
-  public void setNodes(@javax.annotation.Nullable Integer nodes) {
+  public void setNodes(@javax.annotation.Nullable Long nodes) {
     this.nodes = nodes;
   }
 

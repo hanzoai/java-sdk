@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -59,27 +58,27 @@ public class Outcome {
   public static final String SERIALIZED_NAME_CONVERTED = "converted";
   @SerializedName(SERIALIZED_NAME_CONVERTED)
   @javax.annotation.Nullable
-  private Integer converted;
+  private Long converted;
 
   public static final String SERIALIZED_NAME_EXPOSED = "exposed";
   @SerializedName(SERIALIZED_NAME_EXPOSED)
   @javax.annotation.Nullable
-  private Integer exposed;
+  private Long exposed;
 
   public static final String SERIALIZED_NAME_LIFT = "lift";
   @SerializedName(SERIALIZED_NAME_LIFT)
   @javax.annotation.Nullable
-  private BigDecimal lift;
+  private Double lift;
 
   public static final String SERIALIZED_NAME_P_VALUE = "pValue";
   @SerializedName(SERIALIZED_NAME_P_VALUE)
   @javax.annotation.Nullable
-  private BigDecimal pValue;
+  private Double pValue;
 
   public static final String SERIALIZED_NAME_RATE = "rate";
   @SerializedName(SERIALIZED_NAME_RATE)
   @javax.annotation.Nullable
-  private BigDecimal rate;
+  private Double rate;
 
   public static final String SERIALIZED_NAME_SIGNIFICANT = "significant";
   @SerializedName(SERIALIZED_NAME_SIGNIFICANT)
@@ -94,7 +93,7 @@ public class Outcome {
   public static final String SERIALIZED_NAME_Z = "z";
   @SerializedName(SERIALIZED_NAME_Z)
   @javax.annotation.Nullable
-  private BigDecimal z;
+  private Double z;
 
   public Outcome() {
   }
@@ -118,7 +117,7 @@ public class Outcome {
   }
 
 
-  public Outcome converted(@javax.annotation.Nullable Integer converted) {
+  public Outcome converted(@javax.annotation.Nullable Long converted) {
     this.converted = converted;
     return this;
   }
@@ -128,16 +127,16 @@ public class Outcome {
    * @return converted
    */
   @javax.annotation.Nullable
-  public Integer getConverted() {
+  public Long getConverted() {
     return converted;
   }
 
-  public void setConverted(@javax.annotation.Nullable Integer converted) {
+  public void setConverted(@javax.annotation.Nullable Long converted) {
     this.converted = converted;
   }
 
 
-  public Outcome exposed(@javax.annotation.Nullable Integer exposed) {
+  public Outcome exposed(@javax.annotation.Nullable Long exposed) {
     this.exposed = exposed;
     return this;
   }
@@ -147,16 +146,16 @@ public class Outcome {
    * @return exposed
    */
   @javax.annotation.Nullable
-  public Integer getExposed() {
+  public Long getExposed() {
     return exposed;
   }
 
-  public void setExposed(@javax.annotation.Nullable Integer exposed) {
+  public void setExposed(@javax.annotation.Nullable Long exposed) {
     this.exposed = exposed;
   }
 
 
-  public Outcome lift(@javax.annotation.Nullable BigDecimal lift) {
+  public Outcome lift(@javax.annotation.Nullable Double lift) {
     this.lift = lift;
     return this;
   }
@@ -166,16 +165,16 @@ public class Outcome {
    * @return lift
    */
   @javax.annotation.Nullable
-  public BigDecimal getLift() {
+  public Double getLift() {
     return lift;
   }
 
-  public void setLift(@javax.annotation.Nullable BigDecimal lift) {
+  public void setLift(@javax.annotation.Nullable Double lift) {
     this.lift = lift;
   }
 
 
-  public Outcome pValue(@javax.annotation.Nullable BigDecimal pValue) {
+  public Outcome pValue(@javax.annotation.Nullable Double pValue) {
     this.pValue = pValue;
     return this;
   }
@@ -185,16 +184,16 @@ public class Outcome {
    * @return pValue
    */
   @javax.annotation.Nullable
-  public BigDecimal getpValue() {
+  public Double getpValue() {
     return pValue;
   }
 
-  public void setpValue(@javax.annotation.Nullable BigDecimal pValue) {
+  public void setpValue(@javax.annotation.Nullable Double pValue) {
     this.pValue = pValue;
   }
 
 
-  public Outcome rate(@javax.annotation.Nullable BigDecimal rate) {
+  public Outcome rate(@javax.annotation.Nullable Double rate) {
     this.rate = rate;
     return this;
   }
@@ -204,11 +203,11 @@ public class Outcome {
    * @return rate
    */
   @javax.annotation.Nullable
-  public BigDecimal getRate() {
+  public Double getRate() {
     return rate;
   }
 
-  public void setRate(@javax.annotation.Nullable BigDecimal rate) {
+  public void setRate(@javax.annotation.Nullable Double rate) {
     this.rate = rate;
   }
 
@@ -251,7 +250,7 @@ public class Outcome {
   }
 
 
-  public Outcome z(@javax.annotation.Nullable BigDecimal z) {
+  public Outcome z(@javax.annotation.Nullable Double z) {
     this.z = z;
     return this;
   }
@@ -261,11 +260,11 @@ public class Outcome {
    * @return z
    */
   @javax.annotation.Nullable
-  public BigDecimal getZ() {
+  public Double getZ() {
     return z;
   }
 
-  public void setZ(@javax.annotation.Nullable BigDecimal z) {
+  public void setZ(@javax.annotation.Nullable Double z) {
     this.z = z;
   }
 

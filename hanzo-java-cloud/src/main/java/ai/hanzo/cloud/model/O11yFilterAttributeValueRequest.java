@@ -71,7 +71,7 @@ public class O11yFilterAttributeValueRequest {
   public static final String SERIALIZED_NAME_END_TIME_MILLIS = "endTimeMillis";
   @SerializedName(SERIALIZED_NAME_END_TIME_MILLIS)
   @javax.annotation.Nullable
-  private Integer endTimeMillis;
+  private Long endTimeMillis;
 
   public static final String SERIALIZED_NAME_EXISTING_FILTER_ITEMS = "existingFilterItems";
   @SerializedName(SERIALIZED_NAME_EXISTING_FILTER_ITEMS)
@@ -96,7 +96,7 @@ public class O11yFilterAttributeValueRequest {
   public static final String SERIALIZED_NAME_LIMIT = "limit";
   @SerializedName(SERIALIZED_NAME_LIMIT)
   @javax.annotation.Nullable
-  private Integer limit;
+  private Long limit;
 
   public static final String SERIALIZED_NAME_METRIC_NAMES = "metricNames";
   @SerializedName(SERIALIZED_NAME_METRIC_NAMES)
@@ -111,7 +111,7 @@ public class O11yFilterAttributeValueRequest {
   public static final String SERIALIZED_NAME_START_TIME_MILLIS = "startTimeMillis";
   @SerializedName(SERIALIZED_NAME_START_TIME_MILLIS)
   @javax.annotation.Nullable
-  private Integer startTimeMillis;
+  private Long startTimeMillis;
 
   public static final String SERIALIZED_NAME_TAG_TYPE = "tagType";
   @SerializedName(SERIALIZED_NAME_TAG_TYPE)
@@ -178,7 +178,7 @@ public class O11yFilterAttributeValueRequest {
   }
 
 
-  public O11yFilterAttributeValueRequest endTimeMillis(@javax.annotation.Nullable Integer endTimeMillis) {
+  public O11yFilterAttributeValueRequest endTimeMillis(@javax.annotation.Nullable Long endTimeMillis) {
     this.endTimeMillis = endTimeMillis;
     return this;
   }
@@ -188,11 +188,11 @@ public class O11yFilterAttributeValueRequest {
    * @return endTimeMillis
    */
   @javax.annotation.Nullable
-  public Integer getEndTimeMillis() {
+  public Long getEndTimeMillis() {
     return endTimeMillis;
   }
 
-  public void setEndTimeMillis(@javax.annotation.Nullable Integer endTimeMillis) {
+  public void setEndTimeMillis(@javax.annotation.Nullable Long endTimeMillis) {
     this.endTimeMillis = endTimeMillis;
   }
 
@@ -281,7 +281,7 @@ public class O11yFilterAttributeValueRequest {
   }
 
 
-  public O11yFilterAttributeValueRequest limit(@javax.annotation.Nullable Integer limit) {
+  public O11yFilterAttributeValueRequest limit(@javax.annotation.Nullable Long limit) {
     this.limit = limit;
     return this;
   }
@@ -291,11 +291,11 @@ public class O11yFilterAttributeValueRequest {
    * @return limit
    */
   @javax.annotation.Nullable
-  public Integer getLimit() {
+  public Long getLimit() {
     return limit;
   }
 
-  public void setLimit(@javax.annotation.Nullable Integer limit) {
+  public void setLimit(@javax.annotation.Nullable Long limit) {
     this.limit = limit;
   }
 
@@ -346,7 +346,7 @@ public class O11yFilterAttributeValueRequest {
   }
 
 
-  public O11yFilterAttributeValueRequest startTimeMillis(@javax.annotation.Nullable Integer startTimeMillis) {
+  public O11yFilterAttributeValueRequest startTimeMillis(@javax.annotation.Nullable Long startTimeMillis) {
     this.startTimeMillis = startTimeMillis;
     return this;
   }
@@ -356,11 +356,11 @@ public class O11yFilterAttributeValueRequest {
    * @return startTimeMillis
    */
   @javax.annotation.Nullable
-  public Integer getStartTimeMillis() {
+  public Long getStartTimeMillis() {
     return startTimeMillis;
   }
 
-  public void setStartTimeMillis(@javax.annotation.Nullable Integer startTimeMillis) {
+  public void setStartTimeMillis(@javax.annotation.Nullable Long startTimeMillis) {
     this.startTimeMillis = startTimeMillis;
   }
 

@@ -58,7 +58,7 @@ public class SeriesPoint {
   public static final String SERIALIZED_NAME_V = "v";
   @SerializedName(SERIALIZED_NAME_V)
   @javax.annotation.Nullable
-  private Integer v;
+  private Long v;
 
   public SeriesPoint() {
   }
@@ -82,7 +82,7 @@ public class SeriesPoint {
   }
 
 
-  public SeriesPoint v(@javax.annotation.Nullable Integer v) {
+  public SeriesPoint v(@javax.annotation.Nullable Long v) {
     this.v = v;
     return this;
   }
@@ -92,11 +92,11 @@ public class SeriesPoint {
    * @return v
    */
   @javax.annotation.Nullable
-  public Integer getV() {
+  public Long getV() {
     return v;
   }
 
-  public void setV(@javax.annotation.Nullable Integer v) {
+  public void setV(@javax.annotation.Nullable Long v) {
     this.v = v;
   }
 

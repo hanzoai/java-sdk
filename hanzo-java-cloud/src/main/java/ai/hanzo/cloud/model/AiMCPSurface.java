@@ -66,7 +66,7 @@ public class AiMCPSurface {
   public static final String SERIALIZED_NAME_TOOLS = "tools";
   @SerializedName(SERIALIZED_NAME_TOOLS)
   @javax.annotation.Nullable
-  private Integer tools;
+  private Long tools;
 
   public AiMCPSurface() {
   }
@@ -125,7 +125,7 @@ public class AiMCPSurface {
   }
 
 
-  public AiMCPSurface tools(@javax.annotation.Nullable Integer tools) {
+  public AiMCPSurface tools(@javax.annotation.Nullable Long tools) {
     this.tools = tools;
     return this;
   }
@@ -135,11 +135,11 @@ public class AiMCPSurface {
    * @return tools
    */
   @javax.annotation.Nullable
-  public Integer getTools() {
+  public Long getTools() {
     return tools;
   }
 
-  public void setTools(@javax.annotation.Nullable Integer tools) {
+  public void setTools(@javax.annotation.Nullable Long tools) {
     this.tools = tools;
   }
 

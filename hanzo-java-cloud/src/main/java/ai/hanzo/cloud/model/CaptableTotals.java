@@ -53,32 +53,32 @@ public class CaptableTotals {
   public static final String SERIALIZED_NAME_FULLY_DILUTED_SHARES = "fullyDilutedShares";
   @SerializedName(SERIALIZED_NAME_FULLY_DILUTED_SHARES)
   @javax.annotation.Nullable
-  private Integer fullyDilutedShares;
+  private Long fullyDilutedShares;
 
   public static final String SERIALIZED_NAME_GRANTED_OPTIONS = "grantedOptions";
   @SerializedName(SERIALIZED_NAME_GRANTED_OPTIONS)
   @javax.annotation.Nullable
-  private Integer grantedOptions;
+  private Long grantedOptions;
 
   public static final String SERIALIZED_NAME_OUTSTANDING_SHARES = "outstandingShares";
   @SerializedName(SERIALIZED_NAME_OUTSTANDING_SHARES)
   @javax.annotation.Nullable
-  private Integer outstandingShares;
+  private Long outstandingShares;
 
   public static final String SERIALIZED_NAME_SHARE_CLASSES = "shareClasses";
   @SerializedName(SERIALIZED_NAME_SHARE_CLASSES)
   @javax.annotation.Nullable
-  private Integer shareClasses;
+  private Long shareClasses;
 
   public static final String SERIALIZED_NAME_STAKEHOLDERS = "stakeholders";
   @SerializedName(SERIALIZED_NAME_STAKEHOLDERS)
   @javax.annotation.Nullable
-  private Integer stakeholders;
+  private Long stakeholders;
 
   public CaptableTotals() {
   }
 
-  public CaptableTotals fullyDilutedShares(@javax.annotation.Nullable Integer fullyDilutedShares) {
+  public CaptableTotals fullyDilutedShares(@javax.annotation.Nullable Long fullyDilutedShares) {
     this.fullyDilutedShares = fullyDilutedShares;
     return this;
   }
@@ -88,16 +88,16 @@ public class CaptableTotals {
    * @return fullyDilutedShares
    */
   @javax.annotation.Nullable
-  public Integer getFullyDilutedShares() {
+  public Long getFullyDilutedShares() {
     return fullyDilutedShares;
   }
 
-  public void setFullyDilutedShares(@javax.annotation.Nullable Integer fullyDilutedShares) {
+  public void setFullyDilutedShares(@javax.annotation.Nullable Long fullyDilutedShares) {
     this.fullyDilutedShares = fullyDilutedShares;
   }
 
 
-  public CaptableTotals grantedOptions(@javax.annotation.Nullable Integer grantedOptions) {
+  public CaptableTotals grantedOptions(@javax.annotation.Nullable Long grantedOptions) {
     this.grantedOptions = grantedOptions;
     return this;
   }
@@ -107,16 +107,16 @@ public class CaptableTotals {
    * @return grantedOptions
    */
   @javax.annotation.Nullable
-  public Integer getGrantedOptions() {
+  public Long getGrantedOptions() {
     return grantedOptions;
   }
 
-  public void setGrantedOptions(@javax.annotation.Nullable Integer grantedOptions) {
+  public void setGrantedOptions(@javax.annotation.Nullable Long grantedOptions) {
     this.grantedOptions = grantedOptions;
   }
 
 
-  public CaptableTotals outstandingShares(@javax.annotation.Nullable Integer outstandingShares) {
+  public CaptableTotals outstandingShares(@javax.annotation.Nullable Long outstandingShares) {
     this.outstandingShares = outstandingShares;
     return this;
   }
@@ -126,16 +126,16 @@ public class CaptableTotals {
    * @return outstandingShares
    */
   @javax.annotation.Nullable
-  public Integer getOutstandingShares() {
+  public Long getOutstandingShares() {
     return outstandingShares;
   }
 
-  public void setOutstandingShares(@javax.annotation.Nullable Integer outstandingShares) {
+  public void setOutstandingShares(@javax.annotation.Nullable Long outstandingShares) {
     this.outstandingShares = outstandingShares;
   }
 
 
-  public CaptableTotals shareClasses(@javax.annotation.Nullable Integer shareClasses) {
+  public CaptableTotals shareClasses(@javax.annotation.Nullable Long shareClasses) {
     this.shareClasses = shareClasses;
     return this;
   }
@@ -145,16 +145,16 @@ public class CaptableTotals {
    * @return shareClasses
    */
   @javax.annotation.Nullable
-  public Integer getShareClasses() {
+  public Long getShareClasses() {
     return shareClasses;
   }
 
-  public void setShareClasses(@javax.annotation.Nullable Integer shareClasses) {
+  public void setShareClasses(@javax.annotation.Nullable Long shareClasses) {
     this.shareClasses = shareClasses;
   }
 
 
-  public CaptableTotals stakeholders(@javax.annotation.Nullable Integer stakeholders) {
+  public CaptableTotals stakeholders(@javax.annotation.Nullable Long stakeholders) {
     this.stakeholders = stakeholders;
     return this;
   }
@@ -164,11 +164,11 @@ public class CaptableTotals {
    * @return stakeholders
    */
   @javax.annotation.Nullable
-  public Integer getStakeholders() {
+  public Long getStakeholders() {
     return stakeholders;
   }
 
-  public void setStakeholders(@javax.annotation.Nullable Integer stakeholders) {
+  public void setStakeholders(@javax.annotation.Nullable Long stakeholders) {
     this.stakeholders = stakeholders;
   }
 

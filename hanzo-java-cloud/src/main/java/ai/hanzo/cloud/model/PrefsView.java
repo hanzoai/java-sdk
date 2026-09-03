@@ -59,7 +59,7 @@ public class PrefsView {
   public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)
   @javax.annotation.Nullable
-  private Integer updatedAt;
+  private Long updatedAt;
 
   public PrefsView() {
   }
@@ -83,7 +83,7 @@ public class PrefsView {
   }
 
 
-  public PrefsView updatedAt(@javax.annotation.Nullable Integer updatedAt) {
+  public PrefsView updatedAt(@javax.annotation.Nullable Long updatedAt) {
     this.updatedAt = updatedAt;
     return this;
   }
@@ -93,11 +93,11 @@ public class PrefsView {
    * @return updatedAt
    */
   @javax.annotation.Nullable
-  public Integer getUpdatedAt() {
+  public Long getUpdatedAt() {
     return updatedAt;
   }
 
-  public void setUpdatedAt(@javax.annotation.Nullable Integer updatedAt) {
+  public void setUpdatedAt(@javax.annotation.Nullable Long updatedAt) {
     this.updatedAt = updatedAt;
   }
 

@@ -60,12 +60,12 @@ public class AudiencePreview {
   public static final String SERIALIZED_NAME_COUNT = "count";
   @SerializedName(SERIALIZED_NAME_COUNT)
   @javax.annotation.Nullable
-  private Integer count;
+  private Long count;
 
   public static final String SERIALIZED_NAME_DELIVERABLE = "deliverable";
   @SerializedName(SERIALIZED_NAME_DELIVERABLE)
   @javax.annotation.Nullable
-  private Integer deliverable;
+  private Long deliverable;
 
   public static final String SERIALIZED_NAME_REASON = "reason";
   @SerializedName(SERIALIZED_NAME_REASON)
@@ -85,7 +85,7 @@ public class AudiencePreview {
   public static final String SERIALIZED_NAME_UNMATCHED = "unmatched";
   @SerializedName(SERIALIZED_NAME_UNMATCHED)
   @javax.annotation.Nullable
-  private Integer unmatched;
+  private Long unmatched;
 
   public AudiencePreview() {
   }
@@ -109,7 +109,7 @@ public class AudiencePreview {
   }
 
 
-  public AudiencePreview count(@javax.annotation.Nullable Integer count) {
+  public AudiencePreview count(@javax.annotation.Nullable Long count) {
     this.count = count;
     return this;
   }
@@ -119,16 +119,16 @@ public class AudiencePreview {
    * @return count
    */
   @javax.annotation.Nullable
-  public Integer getCount() {
+  public Long getCount() {
     return count;
   }
 
-  public void setCount(@javax.annotation.Nullable Integer count) {
+  public void setCount(@javax.annotation.Nullable Long count) {
     this.count = count;
   }
 
 
-  public AudiencePreview deliverable(@javax.annotation.Nullable Integer deliverable) {
+  public AudiencePreview deliverable(@javax.annotation.Nullable Long deliverable) {
     this.deliverable = deliverable;
     return this;
   }
@@ -138,11 +138,11 @@ public class AudiencePreview {
    * @return deliverable
    */
   @javax.annotation.Nullable
-  public Integer getDeliverable() {
+  public Long getDeliverable() {
     return deliverable;
   }
 
-  public void setDeliverable(@javax.annotation.Nullable Integer deliverable) {
+  public void setDeliverable(@javax.annotation.Nullable Long deliverable) {
     this.deliverable = deliverable;
   }
 
@@ -212,7 +212,7 @@ public class AudiencePreview {
   }
 
 
-  public AudiencePreview unmatched(@javax.annotation.Nullable Integer unmatched) {
+  public AudiencePreview unmatched(@javax.annotation.Nullable Long unmatched) {
     this.unmatched = unmatched;
     return this;
   }
@@ -222,11 +222,11 @@ public class AudiencePreview {
    * @return unmatched
    */
   @javax.annotation.Nullable
-  public Integer getUnmatched() {
+  public Long getUnmatched() {
     return unmatched;
   }
 
-  public void setUnmatched(@javax.annotation.Nullable Integer unmatched) {
+  public void setUnmatched(@javax.annotation.Nullable Long unmatched) {
     this.unmatched = unmatched;
   }
 

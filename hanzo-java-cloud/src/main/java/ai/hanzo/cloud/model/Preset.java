@@ -75,7 +75,7 @@ public class Preset {
   public static final String SERIALIZED_NAME_PANEL = "panel";
   @SerializedName(SERIALIZED_NAME_PANEL)
   @javax.annotation.Nullable
-  private Integer panel;
+  private Long panel;
 
   public static final String SERIALIZED_NAME_RANK = "rank";
   @SerializedName(SERIALIZED_NAME_RANK)
@@ -169,7 +169,7 @@ public class Preset {
   }
 
 
-  public Preset panel(@javax.annotation.Nullable Integer panel) {
+  public Preset panel(@javax.annotation.Nullable Long panel) {
     this.panel = panel;
     return this;
   }
@@ -179,11 +179,11 @@ public class Preset {
    * @return panel
    */
   @javax.annotation.Nullable
-  public Integer getPanel() {
+  public Long getPanel() {
     return panel;
   }
 
-  public void setPanel(@javax.annotation.Nullable Integer panel) {
+  public void setPanel(@javax.annotation.Nullable Long panel) {
     this.panel = panel;
   }
 

@@ -68,7 +68,7 @@ public class IssueEdit {
   public static final String SERIALIZED_NAME_NUM = "num";
   @SerializedName(SERIALIZED_NAME_NUM)
   @javax.annotation.Nullable
-  private Integer num;
+  private Long num;
 
   public static final String SERIALIZED_NAME_PRIORITY = "priority";
   @SerializedName(SERIALIZED_NAME_PRIORITY)
@@ -145,7 +145,7 @@ public class IssueEdit {
   }
 
 
-  public IssueEdit num(@javax.annotation.Nullable Integer num) {
+  public IssueEdit num(@javax.annotation.Nullable Long num) {
     this.num = num;
     return this;
   }
@@ -155,11 +155,11 @@ public class IssueEdit {
    * @return num
    */
   @javax.annotation.Nullable
-  public Integer getNum() {
+  public Long getNum() {
     return num;
   }
 
-  public void setNum(@javax.annotation.Nullable Integer num) {
+  public void setNum(@javax.annotation.Nullable Long num) {
     this.num = num;
   }
 

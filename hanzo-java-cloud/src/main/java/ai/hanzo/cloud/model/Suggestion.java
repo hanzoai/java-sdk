@@ -78,7 +78,7 @@ public class Suggestion {
   public static final String SERIALIZED_NAME_UNLOCKS = "unlocks";
   @SerializedName(SERIALIZED_NAME_UNLOCKS)
   @javax.annotation.Nullable
-  private Integer unlocks;
+  private Long unlocks;
 
   public Suggestion() {
   }
@@ -178,7 +178,7 @@ public class Suggestion {
   }
 
 
-  public Suggestion unlocks(@javax.annotation.Nullable Integer unlocks) {
+  public Suggestion unlocks(@javax.annotation.Nullable Long unlocks) {
     this.unlocks = unlocks;
     return this;
   }
@@ -188,11 +188,11 @@ public class Suggestion {
    * @return unlocks
    */
   @javax.annotation.Nullable
-  public Integer getUnlocks() {
+  public Long getUnlocks() {
     return unlocks;
   }
 
-  public void setUnlocks(@javax.annotation.Nullable Integer unlocks) {
+  public void setUnlocks(@javax.annotation.Nullable Long unlocks) {
     this.unlocks = unlocks;
   }
 

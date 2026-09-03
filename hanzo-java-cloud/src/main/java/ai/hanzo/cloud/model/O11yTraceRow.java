@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -54,7 +53,7 @@ public class O11yTraceRow {
   public static final String SERIALIZED_NAME_DURATION_MS = "durationMs";
   @SerializedName(SERIALIZED_NAME_DURATION_MS)
   @javax.annotation.Nullable
-  private BigDecimal durationMs;
+  private Double durationMs;
 
   public static final String SERIALIZED_NAME_END = "end";
   @SerializedName(SERIALIZED_NAME_END)
@@ -64,7 +63,7 @@ public class O11yTraceRow {
   public static final String SERIALIZED_NAME_NUM_SPANS = "numSpans";
   @SerializedName(SERIALIZED_NAME_NUM_SPANS)
   @javax.annotation.Nullable
-  private Integer numSpans;
+  private Long numSpans;
 
   public static final String SERIALIZED_NAME_START = "start";
   @SerializedName(SERIALIZED_NAME_START)
@@ -79,7 +78,7 @@ public class O11yTraceRow {
   public O11yTraceRow() {
   }
 
-  public O11yTraceRow durationMs(@javax.annotation.Nullable BigDecimal durationMs) {
+  public O11yTraceRow durationMs(@javax.annotation.Nullable Double durationMs) {
     this.durationMs = durationMs;
     return this;
   }
@@ -89,11 +88,11 @@ public class O11yTraceRow {
    * @return durationMs
    */
   @javax.annotation.Nullable
-  public BigDecimal getDurationMs() {
+  public Double getDurationMs() {
     return durationMs;
   }
 
-  public void setDurationMs(@javax.annotation.Nullable BigDecimal durationMs) {
+  public void setDurationMs(@javax.annotation.Nullable Double durationMs) {
     this.durationMs = durationMs;
   }
 
@@ -117,7 +116,7 @@ public class O11yTraceRow {
   }
 
 
-  public O11yTraceRow numSpans(@javax.annotation.Nullable Integer numSpans) {
+  public O11yTraceRow numSpans(@javax.annotation.Nullable Long numSpans) {
     this.numSpans = numSpans;
     return this;
   }
@@ -127,11 +126,11 @@ public class O11yTraceRow {
    * @return numSpans
    */
   @javax.annotation.Nullable
-  public Integer getNumSpans() {
+  public Long getNumSpans() {
     return numSpans;
   }
 
-  public void setNumSpans(@javax.annotation.Nullable Integer numSpans) {
+  public void setNumSpans(@javax.annotation.Nullable Long numSpans) {
     this.numSpans = numSpans;
   }
 

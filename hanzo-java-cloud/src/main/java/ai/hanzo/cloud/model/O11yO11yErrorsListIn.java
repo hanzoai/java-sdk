@@ -66,12 +66,12 @@ public class O11yO11yErrorsListIn {
   public static final String SERIALIZED_NAME_LIMIT = "limit";
   @SerializedName(SERIALIZED_NAME_LIMIT)
   @javax.annotation.Nullable
-  private Integer limit;
+  private Long limit;
 
   public static final String SERIALIZED_NAME_OFFSET = "offset";
   @SerializedName(SERIALIZED_NAME_OFFSET)
   @javax.annotation.Nullable
-  private Integer offset;
+  private Long offset;
 
   public static final String SERIALIZED_NAME_ORDER = "order";
   @SerializedName(SERIALIZED_NAME_ORDER)
@@ -139,7 +139,7 @@ public class O11yO11yErrorsListIn {
   }
 
 
-  public O11yO11yErrorsListIn limit(@javax.annotation.Nullable Integer limit) {
+  public O11yO11yErrorsListIn limit(@javax.annotation.Nullable Long limit) {
     this.limit = limit;
     return this;
   }
@@ -149,16 +149,16 @@ public class O11yO11yErrorsListIn {
    * @return limit
    */
   @javax.annotation.Nullable
-  public Integer getLimit() {
+  public Long getLimit() {
     return limit;
   }
 
-  public void setLimit(@javax.annotation.Nullable Integer limit) {
+  public void setLimit(@javax.annotation.Nullable Long limit) {
     this.limit = limit;
   }
 
 
-  public O11yO11yErrorsListIn offset(@javax.annotation.Nullable Integer offset) {
+  public O11yO11yErrorsListIn offset(@javax.annotation.Nullable Long offset) {
     this.offset = offset;
     return this;
   }
@@ -168,11 +168,11 @@ public class O11yO11yErrorsListIn {
    * @return offset
    */
   @javax.annotation.Nullable
-  public Integer getOffset() {
+  public Long getOffset() {
     return offset;
   }
 
-  public void setOffset(@javax.annotation.Nullable Integer offset) {
+  public void setOffset(@javax.annotation.Nullable Long offset) {
     this.offset = offset;
   }
 

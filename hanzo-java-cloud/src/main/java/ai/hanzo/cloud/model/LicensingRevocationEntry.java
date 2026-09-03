@@ -53,7 +53,7 @@ public class LicensingRevocationEntry {
   public static final String SERIALIZED_NAME_AT = "at";
   @SerializedName(SERIALIZED_NAME_AT)
   @javax.annotation.Nullable
-  private Integer at;
+  private Long at;
 
   public static final String SERIALIZED_NAME_BY = "by";
   @SerializedName(SERIALIZED_NAME_BY)
@@ -78,7 +78,7 @@ public class LicensingRevocationEntry {
   public LicensingRevocationEntry() {
   }
 
-  public LicensingRevocationEntry at(@javax.annotation.Nullable Integer at) {
+  public LicensingRevocationEntry at(@javax.annotation.Nullable Long at) {
     this.at = at;
     return this;
   }
@@ -88,11 +88,11 @@ public class LicensingRevocationEntry {
    * @return at
    */
   @javax.annotation.Nullable
-  public Integer getAt() {
+  public Long getAt() {
     return at;
   }
 
-  public void setAt(@javax.annotation.Nullable Integer at) {
+  public void setAt(@javax.annotation.Nullable Long at) {
     this.at = at;
   }
 

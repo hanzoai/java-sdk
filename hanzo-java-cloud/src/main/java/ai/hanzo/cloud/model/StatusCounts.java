@@ -53,22 +53,22 @@ public class StatusCounts {
   public static final String SERIALIZED_NAME_QUALIFIED = "qualified";
   @SerializedName(SERIALIZED_NAME_QUALIFIED)
   @javax.annotation.Nullable
-  private Integer qualified;
+  private Long qualified;
 
   public static final String SERIALIZED_NAME_SIGNUP = "signup";
   @SerializedName(SERIALIZED_NAME_SIGNUP)
   @javax.annotation.Nullable
-  private Integer signup;
+  private Long signup;
 
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)
   @javax.annotation.Nullable
-  private Integer total;
+  private Long total;
 
   public StatusCounts() {
   }
 
-  public StatusCounts qualified(@javax.annotation.Nullable Integer qualified) {
+  public StatusCounts qualified(@javax.annotation.Nullable Long qualified) {
     this.qualified = qualified;
     return this;
   }
@@ -78,16 +78,16 @@ public class StatusCounts {
    * @return qualified
    */
   @javax.annotation.Nullable
-  public Integer getQualified() {
+  public Long getQualified() {
     return qualified;
   }
 
-  public void setQualified(@javax.annotation.Nullable Integer qualified) {
+  public void setQualified(@javax.annotation.Nullable Long qualified) {
     this.qualified = qualified;
   }
 
 
-  public StatusCounts signup(@javax.annotation.Nullable Integer signup) {
+  public StatusCounts signup(@javax.annotation.Nullable Long signup) {
     this.signup = signup;
     return this;
   }
@@ -97,16 +97,16 @@ public class StatusCounts {
    * @return signup
    */
   @javax.annotation.Nullable
-  public Integer getSignup() {
+  public Long getSignup() {
     return signup;
   }
 
-  public void setSignup(@javax.annotation.Nullable Integer signup) {
+  public void setSignup(@javax.annotation.Nullable Long signup) {
     this.signup = signup;
   }
 
 
-  public StatusCounts total(@javax.annotation.Nullable Integer total) {
+  public StatusCounts total(@javax.annotation.Nullable Long total) {
     this.total = total;
     return this;
   }
@@ -116,11 +116,11 @@ public class StatusCounts {
    * @return total
    */
   @javax.annotation.Nullable
-  public Integer getTotal() {
+  public Long getTotal() {
     return total;
   }
 
-  public void setTotal(@javax.annotation.Nullable Integer total) {
+  public void setTotal(@javax.annotation.Nullable Long total) {
     this.total = total;
   }
 

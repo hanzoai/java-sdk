@@ -53,7 +53,7 @@ public class ReferenceTaken {
   public static final String SERIALIZED_NAME_KEYS = "keys";
   @SerializedName(SERIALIZED_NAME_KEYS)
   @javax.annotation.Nullable
-  private Integer keys;
+  private Long keys;
 
   public static final String SERIALIZED_NAME_REFUSAL = "refusal";
   @SerializedName(SERIALIZED_NAME_REFUSAL)
@@ -83,12 +83,12 @@ public class ReferenceTaken {
   public static final String SERIALIZED_NAME_WROTE = "wrote";
   @SerializedName(SERIALIZED_NAME_WROTE)
   @javax.annotation.Nullable
-  private Integer wrote;
+  private Long wrote;
 
   public ReferenceTaken() {
   }
 
-  public ReferenceTaken keys(@javax.annotation.Nullable Integer keys) {
+  public ReferenceTaken keys(@javax.annotation.Nullable Long keys) {
     this.keys = keys;
     return this;
   }
@@ -98,11 +98,11 @@ public class ReferenceTaken {
    * @return keys
    */
   @javax.annotation.Nullable
-  public Integer getKeys() {
+  public Long getKeys() {
     return keys;
   }
 
-  public void setKeys(@javax.annotation.Nullable Integer keys) {
+  public void setKeys(@javax.annotation.Nullable Long keys) {
     this.keys = keys;
   }
 
@@ -202,7 +202,7 @@ public class ReferenceTaken {
   }
 
 
-  public ReferenceTaken wrote(@javax.annotation.Nullable Integer wrote) {
+  public ReferenceTaken wrote(@javax.annotation.Nullable Long wrote) {
     this.wrote = wrote;
     return this;
   }
@@ -212,11 +212,11 @@ public class ReferenceTaken {
    * @return wrote
    */
   @javax.annotation.Nullable
-  public Integer getWrote() {
+  public Long getWrote() {
     return wrote;
   }
 
-  public void setWrote(@javax.annotation.Nullable Integer wrote) {
+  public void setWrote(@javax.annotation.Nullable Long wrote) {
     this.wrote = wrote;
   }
 

@@ -61,7 +61,7 @@ public class RunReq {
   public static final String SERIALIZED_NAME_GPU = "gpu";
   @SerializedName(SERIALIZED_NAME_GPU)
   @javax.annotation.Nullable
-  private Integer gpu;
+  private Long gpu;
 
   public static final String SERIALIZED_NAME_IMAGE = "image";
   @SerializedName(SERIALIZED_NAME_IMAGE)
@@ -71,12 +71,12 @@ public class RunReq {
   public static final String SERIALIZED_NAME_MAX_SCALE = "maxScale";
   @SerializedName(SERIALIZED_NAME_MAX_SCALE)
   @javax.annotation.Nullable
-  private Integer maxScale;
+  private Long maxScale;
 
   public static final String SERIALIZED_NAME_MIN_SCALE = "minScale";
   @SerializedName(SERIALIZED_NAME_MIN_SCALE)
   @javax.annotation.Nullable
-  private Integer minScale;
+  private Long minScale;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -86,7 +86,7 @@ public class RunReq {
   public static final String SERIALIZED_NAME_PORT = "port";
   @SerializedName(SERIALIZED_NAME_PORT)
   @javax.annotation.Nullable
-  private Integer port;
+  private Long port;
 
   public static final String SERIALIZED_NAME_RUNTIME = "runtime";
   @SerializedName(SERIALIZED_NAME_RUNTIME)
@@ -128,7 +128,7 @@ public class RunReq {
   }
 
 
-  public RunReq gpu(@javax.annotation.Nullable Integer gpu) {
+  public RunReq gpu(@javax.annotation.Nullable Long gpu) {
     this.gpu = gpu;
     return this;
   }
@@ -138,11 +138,11 @@ public class RunReq {
    * @return gpu
    */
   @javax.annotation.Nullable
-  public Integer getGpu() {
+  public Long getGpu() {
     return gpu;
   }
 
-  public void setGpu(@javax.annotation.Nullable Integer gpu) {
+  public void setGpu(@javax.annotation.Nullable Long gpu) {
     this.gpu = gpu;
   }
 
@@ -166,7 +166,7 @@ public class RunReq {
   }
 
 
-  public RunReq maxScale(@javax.annotation.Nullable Integer maxScale) {
+  public RunReq maxScale(@javax.annotation.Nullable Long maxScale) {
     this.maxScale = maxScale;
     return this;
   }
@@ -176,16 +176,16 @@ public class RunReq {
    * @return maxScale
    */
   @javax.annotation.Nullable
-  public Integer getMaxScale() {
+  public Long getMaxScale() {
     return maxScale;
   }
 
-  public void setMaxScale(@javax.annotation.Nullable Integer maxScale) {
+  public void setMaxScale(@javax.annotation.Nullable Long maxScale) {
     this.maxScale = maxScale;
   }
 
 
-  public RunReq minScale(@javax.annotation.Nullable Integer minScale) {
+  public RunReq minScale(@javax.annotation.Nullable Long minScale) {
     this.minScale = minScale;
     return this;
   }
@@ -195,11 +195,11 @@ public class RunReq {
    * @return minScale
    */
   @javax.annotation.Nullable
-  public Integer getMinScale() {
+  public Long getMinScale() {
     return minScale;
   }
 
-  public void setMinScale(@javax.annotation.Nullable Integer minScale) {
+  public void setMinScale(@javax.annotation.Nullable Long minScale) {
     this.minScale = minScale;
   }
 
@@ -223,7 +223,7 @@ public class RunReq {
   }
 
 
-  public RunReq port(@javax.annotation.Nullable Integer port) {
+  public RunReq port(@javax.annotation.Nullable Long port) {
     this.port = port;
     return this;
   }
@@ -233,11 +233,11 @@ public class RunReq {
    * @return port
    */
   @javax.annotation.Nullable
-  public Integer getPort() {
+  public Long getPort() {
     return port;
   }
 
-  public void setPort(@javax.annotation.Nullable Integer port) {
+  public void setPort(@javax.annotation.Nullable Long port) {
     this.port = port;
   }
 

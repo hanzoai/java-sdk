@@ -58,12 +58,12 @@ public class Step {
   public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
   @javax.annotation.Nullable
-  private Integer createdAt;
+  private Long createdAt;
 
   public static final String SERIALIZED_NAME_DELAY_SECONDS = "delaySeconds";
   @SerializedName(SERIALIZED_NAME_DELAY_SECONDS)
   @javax.annotation.Nullable
-  private Integer delaySeconds;
+  private Long delaySeconds;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -73,7 +73,7 @@ public class Step {
   public static final String SERIALIZED_NAME_IDX = "idx";
   @SerializedName(SERIALIZED_NAME_IDX)
   @javax.annotation.Nullable
-  private Integer idx;
+  private Long idx;
 
   public static final String SERIALIZED_NAME_SEQUENCE_ID = "sequenceId";
   @SerializedName(SERIALIZED_NAME_SEQUENCE_ID)
@@ -107,7 +107,7 @@ public class Step {
   }
 
 
-  public Step createdAt(@javax.annotation.Nullable Integer createdAt) {
+  public Step createdAt(@javax.annotation.Nullable Long createdAt) {
     this.createdAt = createdAt;
     return this;
   }
@@ -117,16 +117,16 @@ public class Step {
    * @return createdAt
    */
   @javax.annotation.Nullable
-  public Integer getCreatedAt() {
+  public Long getCreatedAt() {
     return createdAt;
   }
 
-  public void setCreatedAt(@javax.annotation.Nullable Integer createdAt) {
+  public void setCreatedAt(@javax.annotation.Nullable Long createdAt) {
     this.createdAt = createdAt;
   }
 
 
-  public Step delaySeconds(@javax.annotation.Nullable Integer delaySeconds) {
+  public Step delaySeconds(@javax.annotation.Nullable Long delaySeconds) {
     this.delaySeconds = delaySeconds;
     return this;
   }
@@ -136,11 +136,11 @@ public class Step {
    * @return delaySeconds
    */
   @javax.annotation.Nullable
-  public Integer getDelaySeconds() {
+  public Long getDelaySeconds() {
     return delaySeconds;
   }
 
-  public void setDelaySeconds(@javax.annotation.Nullable Integer delaySeconds) {
+  public void setDelaySeconds(@javax.annotation.Nullable Long delaySeconds) {
     this.delaySeconds = delaySeconds;
   }
 
@@ -164,7 +164,7 @@ public class Step {
   }
 
 
-  public Step idx(@javax.annotation.Nullable Integer idx) {
+  public Step idx(@javax.annotation.Nullable Long idx) {
     this.idx = idx;
     return this;
   }
@@ -174,11 +174,11 @@ public class Step {
    * @return idx
    */
   @javax.annotation.Nullable
-  public Integer getIdx() {
+  public Long getIdx() {
     return idx;
   }
 
-  public void setIdx(@javax.annotation.Nullable Integer idx) {
+  public void setIdx(@javax.annotation.Nullable Long idx) {
     this.idx = idx;
   }
 

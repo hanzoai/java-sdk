@@ -21,7 +21,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -62,7 +61,7 @@ public class ReportReq {
   public static final String SERIALIZED_NAME_CACHED_INPUT_TOKENS = "cachedInputTokens";
   @SerializedName(SERIALIZED_NAME_CACHED_INPUT_TOKENS)
   @javax.annotation.Nullable
-  private Integer cachedInputTokens;
+  private Long cachedInputTokens;
 
   public static final String SERIALIZED_NAME_CONFIDENCE = "confidence";
   @SerializedName(SERIALIZED_NAME_CONFIDENCE)
@@ -72,12 +71,12 @@ public class ReportReq {
   public static final String SERIALIZED_NAME_COST_CENTS = "costCents";
   @SerializedName(SERIALIZED_NAME_COST_CENTS)
   @javax.annotation.Nullable
-  private Integer costCents;
+  private Long costCents;
 
   public static final String SERIALIZED_NAME_COST_LIMIT_CENTS = "costLimitCents";
   @SerializedName(SERIALIZED_NAME_COST_LIMIT_CENTS)
   @javax.annotation.Nullable
-  private Integer costLimitCents;
+  private Long costLimitCents;
 
   public static final String SERIALIZED_NAME_CURRENCY = "currency";
   @SerializedName(SERIALIZED_NAME_CURRENCY)
@@ -87,7 +86,7 @@ public class ReportReq {
   public static final String SERIALIZED_NAME_INPUT_TOKENS = "inputTokens";
   @SerializedName(SERIALIZED_NAME_INPUT_TOKENS)
   @javax.annotation.Nullable
-  private Integer inputTokens;
+  private Long inputTokens;
 
   public static final String SERIALIZED_NAME_KIND = "kind";
   @SerializedName(SERIALIZED_NAME_KIND)
@@ -107,7 +106,7 @@ public class ReportReq {
   public static final String SERIALIZED_NAME_OUTPUT_TOKENS = "outputTokens";
   @SerializedName(SERIALIZED_NAME_OUTPUT_TOKENS)
   @javax.annotation.Nullable
-  private Integer outputTokens;
+  private Long outputTokens;
 
   public static final String SERIALIZED_NAME_PLAN = "plan";
   @SerializedName(SERIALIZED_NAME_PLAN)
@@ -122,7 +121,7 @@ public class ReportReq {
   public static final String SERIALIZED_NAME_REQUESTS = "requests";
   @SerializedName(SERIALIZED_NAME_REQUESTS)
   @javax.annotation.Nullable
-  private Integer requests;
+  private Long requests;
 
   public static final String SERIALIZED_NAME_RESETS_AT = "resetsAt";
   @SerializedName(SERIALIZED_NAME_RESETS_AT)
@@ -142,12 +141,12 @@ public class ReportReq {
   public static final String SERIALIZED_NAME_TOTAL_TOKENS = "totalTokens";
   @SerializedName(SERIALIZED_NAME_TOTAL_TOKENS)
   @javax.annotation.Nullable
-  private Integer totalTokens;
+  private Long totalTokens;
 
   public static final String SERIALIZED_NAME_USED_PCT = "usedPct";
   @SerializedName(SERIALIZED_NAME_USED_PCT)
   @javax.annotation.Nullable
-  private BigDecimal usedPct;
+  private Double usedPct;
 
   public static final String SERIALIZED_NAME_WINDOW = "window";
   @SerializedName(SERIALIZED_NAME_WINDOW)
@@ -186,7 +185,7 @@ public class ReportReq {
   }
 
 
-  public ReportReq cachedInputTokens(@javax.annotation.Nullable Integer cachedInputTokens) {
+  public ReportReq cachedInputTokens(@javax.annotation.Nullable Long cachedInputTokens) {
     this.cachedInputTokens = cachedInputTokens;
     return this;
   }
@@ -196,11 +195,11 @@ public class ReportReq {
    * @return cachedInputTokens
    */
   @javax.annotation.Nullable
-  public Integer getCachedInputTokens() {
+  public Long getCachedInputTokens() {
     return cachedInputTokens;
   }
 
-  public void setCachedInputTokens(@javax.annotation.Nullable Integer cachedInputTokens) {
+  public void setCachedInputTokens(@javax.annotation.Nullable Long cachedInputTokens) {
     this.cachedInputTokens = cachedInputTokens;
   }
 
@@ -224,7 +223,7 @@ public class ReportReq {
   }
 
 
-  public ReportReq costCents(@javax.annotation.Nullable Integer costCents) {
+  public ReportReq costCents(@javax.annotation.Nullable Long costCents) {
     this.costCents = costCents;
     return this;
   }
@@ -234,16 +233,16 @@ public class ReportReq {
    * @return costCents
    */
   @javax.annotation.Nullable
-  public Integer getCostCents() {
+  public Long getCostCents() {
     return costCents;
   }
 
-  public void setCostCents(@javax.annotation.Nullable Integer costCents) {
+  public void setCostCents(@javax.annotation.Nullable Long costCents) {
     this.costCents = costCents;
   }
 
 
-  public ReportReq costLimitCents(@javax.annotation.Nullable Integer costLimitCents) {
+  public ReportReq costLimitCents(@javax.annotation.Nullable Long costLimitCents) {
     this.costLimitCents = costLimitCents;
     return this;
   }
@@ -253,11 +252,11 @@ public class ReportReq {
    * @return costLimitCents
    */
   @javax.annotation.Nullable
-  public Integer getCostLimitCents() {
+  public Long getCostLimitCents() {
     return costLimitCents;
   }
 
-  public void setCostLimitCents(@javax.annotation.Nullable Integer costLimitCents) {
+  public void setCostLimitCents(@javax.annotation.Nullable Long costLimitCents) {
     this.costLimitCents = costLimitCents;
   }
 
@@ -281,7 +280,7 @@ public class ReportReq {
   }
 
 
-  public ReportReq inputTokens(@javax.annotation.Nullable Integer inputTokens) {
+  public ReportReq inputTokens(@javax.annotation.Nullable Long inputTokens) {
     this.inputTokens = inputTokens;
     return this;
   }
@@ -291,11 +290,11 @@ public class ReportReq {
    * @return inputTokens
    */
   @javax.annotation.Nullable
-  public Integer getInputTokens() {
+  public Long getInputTokens() {
     return inputTokens;
   }
 
-  public void setInputTokens(@javax.annotation.Nullable Integer inputTokens) {
+  public void setInputTokens(@javax.annotation.Nullable Long inputTokens) {
     this.inputTokens = inputTokens;
   }
 
@@ -357,7 +356,7 @@ public class ReportReq {
   }
 
 
-  public ReportReq outputTokens(@javax.annotation.Nullable Integer outputTokens) {
+  public ReportReq outputTokens(@javax.annotation.Nullable Long outputTokens) {
     this.outputTokens = outputTokens;
     return this;
   }
@@ -367,11 +366,11 @@ public class ReportReq {
    * @return outputTokens
    */
   @javax.annotation.Nullable
-  public Integer getOutputTokens() {
+  public Long getOutputTokens() {
     return outputTokens;
   }
 
-  public void setOutputTokens(@javax.annotation.Nullable Integer outputTokens) {
+  public void setOutputTokens(@javax.annotation.Nullable Long outputTokens) {
     this.outputTokens = outputTokens;
   }
 
@@ -414,7 +413,7 @@ public class ReportReq {
   }
 
 
-  public ReportReq requests(@javax.annotation.Nullable Integer requests) {
+  public ReportReq requests(@javax.annotation.Nullable Long requests) {
     this.requests = requests;
     return this;
   }
@@ -424,11 +423,11 @@ public class ReportReq {
    * @return requests
    */
   @javax.annotation.Nullable
-  public Integer getRequests() {
+  public Long getRequests() {
     return requests;
   }
 
-  public void setRequests(@javax.annotation.Nullable Integer requests) {
+  public void setRequests(@javax.annotation.Nullable Long requests) {
     this.requests = requests;
   }
 
@@ -498,7 +497,7 @@ public class ReportReq {
   }
 
 
-  public ReportReq totalTokens(@javax.annotation.Nullable Integer totalTokens) {
+  public ReportReq totalTokens(@javax.annotation.Nullable Long totalTokens) {
     this.totalTokens = totalTokens;
     return this;
   }
@@ -508,16 +507,16 @@ public class ReportReq {
    * @return totalTokens
    */
   @javax.annotation.Nullable
-  public Integer getTotalTokens() {
+  public Long getTotalTokens() {
     return totalTokens;
   }
 
-  public void setTotalTokens(@javax.annotation.Nullable Integer totalTokens) {
+  public void setTotalTokens(@javax.annotation.Nullable Long totalTokens) {
     this.totalTokens = totalTokens;
   }
 
 
-  public ReportReq usedPct(@javax.annotation.Nullable BigDecimal usedPct) {
+  public ReportReq usedPct(@javax.annotation.Nullable Double usedPct) {
     this.usedPct = usedPct;
     return this;
   }
@@ -527,11 +526,11 @@ public class ReportReq {
    * @return usedPct
    */
   @javax.annotation.Nullable
-  public BigDecimal getUsedPct() {
+  public Double getUsedPct() {
     return usedPct;
   }
 
-  public void setUsedPct(@javax.annotation.Nullable BigDecimal usedPct) {
+  public void setUsedPct(@javax.annotation.Nullable Double usedPct) {
     this.usedPct = usedPct;
   }
 

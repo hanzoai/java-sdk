@@ -31,7 +31,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -108,12 +107,12 @@ public class IamApplication {
   public static final String SERIALIZED_NAME_CODE_RESEND_TIMEOUT = "codeResendTimeout";
   @SerializedName(SERIALIZED_NAME_CODE_RESEND_TIMEOUT)
   @javax.annotation.Nullable
-  private Integer codeResendTimeout;
+  private Long codeResendTimeout;
 
   public static final String SERIALIZED_NAME_COOKIE_EXPIRE_IN_HOURS = "cookieExpireInHours";
   @SerializedName(SERIALIZED_NAME_COOKIE_EXPIRE_IN_HOURS)
   @javax.annotation.Nullable
-  private Integer cookieExpireInHours;
+  private Long cookieExpireInHours;
 
   public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
@@ -233,17 +232,17 @@ public class IamApplication {
   public static final String SERIALIZED_NAME_EXPIRE_IN_HOURS = "expireInHours";
   @SerializedName(SERIALIZED_NAME_EXPIRE_IN_HOURS)
   @javax.annotation.Nullable
-  private BigDecimal expireInHours;
+  private Double expireInHours;
 
   public static final String SERIALIZED_NAME_FAILED_SIGNIN_FROZEN_TIME = "failedSigninFrozenTime";
   @SerializedName(SERIALIZED_NAME_FAILED_SIGNIN_FROZEN_TIME)
   @javax.annotation.Nullable
-  private Integer failedSigninFrozenTime;
+  private Long failedSigninFrozenTime;
 
   public static final String SERIALIZED_NAME_FAILED_SIGNIN_LIMIT = "failedSigninLimit";
   @SerializedName(SERIALIZED_NAME_FAILED_SIGNIN_LIMIT)
   @javax.annotation.Nullable
-  private Integer failedSigninLimit;
+  private Long failedSigninLimit;
 
   public static final String SERIALIZED_NAME_FAVICON = "favicon";
   @SerializedName(SERIALIZED_NAME_FAVICON)
@@ -288,7 +287,7 @@ public class IamApplication {
   public static final String SERIALIZED_NAME_FORM_OFFSET = "formOffset";
   @SerializedName(SERIALIZED_NAME_FORM_OFFSET)
   @javax.annotation.Nullable
-  private Integer formOffset;
+  private Long formOffset;
 
   public static final String SERIALIZED_NAME_FORM_SIDE_HTML = "formSideHtml";
   @SerializedName(SERIALIZED_NAME_FORM_SIDE_HTML)
@@ -343,7 +342,7 @@ public class IamApplication {
   public static final String SERIALIZED_NAME_ORDER = "order";
   @SerializedName(SERIALIZED_NAME_ORDER)
   @javax.annotation.Nullable
-  private Integer order;
+  private Long order;
 
   public static final String SERIALIZED_NAME_ORG_CHOICE_MODE = "orgChoiceMode";
   @SerializedName(SERIALIZED_NAME_ORG_CHOICE_MODE)
@@ -388,7 +387,7 @@ public class IamApplication {
   public static final String SERIALIZED_NAME_REFRESH_EXPIRE_IN_HOURS = "refreshExpireInHours";
   @SerializedName(SERIALIZED_NAME_REFRESH_EXPIRE_IN_HOURS)
   @javax.annotation.Nullable
-  private BigDecimal refreshExpireInHours;
+  private Double refreshExpireInHours;
 
   public static final String SERIALIZED_NAME_SAML_ATTRIBUTES = "samlAttributes";
   @SerializedName(SERIALIZED_NAME_SAML_ATTRIBUTES)
@@ -670,7 +669,7 @@ public class IamApplication {
   }
 
 
-  public IamApplication codeResendTimeout(@javax.annotation.Nullable Integer codeResendTimeout) {
+  public IamApplication codeResendTimeout(@javax.annotation.Nullable Long codeResendTimeout) {
     this.codeResendTimeout = codeResendTimeout;
     return this;
   }
@@ -680,16 +679,16 @@ public class IamApplication {
    * @return codeResendTimeout
    */
   @javax.annotation.Nullable
-  public Integer getCodeResendTimeout() {
+  public Long getCodeResendTimeout() {
     return codeResendTimeout;
   }
 
-  public void setCodeResendTimeout(@javax.annotation.Nullable Integer codeResendTimeout) {
+  public void setCodeResendTimeout(@javax.annotation.Nullable Long codeResendTimeout) {
     this.codeResendTimeout = codeResendTimeout;
   }
 
 
-  public IamApplication cookieExpireInHours(@javax.annotation.Nullable Integer cookieExpireInHours) {
+  public IamApplication cookieExpireInHours(@javax.annotation.Nullable Long cookieExpireInHours) {
     this.cookieExpireInHours = cookieExpireInHours;
     return this;
   }
@@ -699,11 +698,11 @@ public class IamApplication {
    * @return cookieExpireInHours
    */
   @javax.annotation.Nullable
-  public Integer getCookieExpireInHours() {
+  public Long getCookieExpireInHours() {
     return cookieExpireInHours;
   }
 
-  public void setCookieExpireInHours(@javax.annotation.Nullable Integer cookieExpireInHours) {
+  public void setCookieExpireInHours(@javax.annotation.Nullable Long cookieExpireInHours) {
     this.cookieExpireInHours = cookieExpireInHours;
   }
 
@@ -1153,7 +1152,7 @@ public class IamApplication {
   }
 
 
-  public IamApplication expireInHours(@javax.annotation.Nullable BigDecimal expireInHours) {
+  public IamApplication expireInHours(@javax.annotation.Nullable Double expireInHours) {
     this.expireInHours = expireInHours;
     return this;
   }
@@ -1163,16 +1162,16 @@ public class IamApplication {
    * @return expireInHours
    */
   @javax.annotation.Nullable
-  public BigDecimal getExpireInHours() {
+  public Double getExpireInHours() {
     return expireInHours;
   }
 
-  public void setExpireInHours(@javax.annotation.Nullable BigDecimal expireInHours) {
+  public void setExpireInHours(@javax.annotation.Nullable Double expireInHours) {
     this.expireInHours = expireInHours;
   }
 
 
-  public IamApplication failedSigninFrozenTime(@javax.annotation.Nullable Integer failedSigninFrozenTime) {
+  public IamApplication failedSigninFrozenTime(@javax.annotation.Nullable Long failedSigninFrozenTime) {
     this.failedSigninFrozenTime = failedSigninFrozenTime;
     return this;
   }
@@ -1182,16 +1181,16 @@ public class IamApplication {
    * @return failedSigninFrozenTime
    */
   @javax.annotation.Nullable
-  public Integer getFailedSigninFrozenTime() {
+  public Long getFailedSigninFrozenTime() {
     return failedSigninFrozenTime;
   }
 
-  public void setFailedSigninFrozenTime(@javax.annotation.Nullable Integer failedSigninFrozenTime) {
+  public void setFailedSigninFrozenTime(@javax.annotation.Nullable Long failedSigninFrozenTime) {
     this.failedSigninFrozenTime = failedSigninFrozenTime;
   }
 
 
-  public IamApplication failedSigninLimit(@javax.annotation.Nullable Integer failedSigninLimit) {
+  public IamApplication failedSigninLimit(@javax.annotation.Nullable Long failedSigninLimit) {
     this.failedSigninLimit = failedSigninLimit;
     return this;
   }
@@ -1201,11 +1200,11 @@ public class IamApplication {
    * @return failedSigninLimit
    */
   @javax.annotation.Nullable
-  public Integer getFailedSigninLimit() {
+  public Long getFailedSigninLimit() {
     return failedSigninLimit;
   }
 
-  public void setFailedSigninLimit(@javax.annotation.Nullable Integer failedSigninLimit) {
+  public void setFailedSigninLimit(@javax.annotation.Nullable Long failedSigninLimit) {
     this.failedSigninLimit = failedSigninLimit;
   }
 
@@ -1362,7 +1361,7 @@ public class IamApplication {
   }
 
 
-  public IamApplication formOffset(@javax.annotation.Nullable Integer formOffset) {
+  public IamApplication formOffset(@javax.annotation.Nullable Long formOffset) {
     this.formOffset = formOffset;
     return this;
   }
@@ -1372,11 +1371,11 @@ public class IamApplication {
    * @return formOffset
    */
   @javax.annotation.Nullable
-  public Integer getFormOffset() {
+  public Long getFormOffset() {
     return formOffset;
   }
 
-  public void setFormOffset(@javax.annotation.Nullable Integer formOffset) {
+  public void setFormOffset(@javax.annotation.Nullable Long formOffset) {
     this.formOffset = formOffset;
   }
 
@@ -1579,7 +1578,7 @@ public class IamApplication {
   }
 
 
-  public IamApplication order(@javax.annotation.Nullable Integer order) {
+  public IamApplication order(@javax.annotation.Nullable Long order) {
     this.order = order;
     return this;
   }
@@ -1589,11 +1588,11 @@ public class IamApplication {
    * @return order
    */
   @javax.annotation.Nullable
-  public Integer getOrder() {
+  public Long getOrder() {
     return order;
   }
 
-  public void setOrder(@javax.annotation.Nullable Integer order) {
+  public void setOrder(@javax.annotation.Nullable Long order) {
     this.order = order;
   }
 
@@ -1774,7 +1773,7 @@ public class IamApplication {
   }
 
 
-  public IamApplication refreshExpireInHours(@javax.annotation.Nullable BigDecimal refreshExpireInHours) {
+  public IamApplication refreshExpireInHours(@javax.annotation.Nullable Double refreshExpireInHours) {
     this.refreshExpireInHours = refreshExpireInHours;
     return this;
   }
@@ -1784,11 +1783,11 @@ public class IamApplication {
    * @return refreshExpireInHours
    */
   @javax.annotation.Nullable
-  public BigDecimal getRefreshExpireInHours() {
+  public Double getRefreshExpireInHours() {
     return refreshExpireInHours;
   }
 
-  public void setRefreshExpireInHours(@javax.annotation.Nullable BigDecimal refreshExpireInHours) {
+  public void setRefreshExpireInHours(@javax.annotation.Nullable Double refreshExpireInHours) {
     this.refreshExpireInHours = refreshExpireInHours;
   }
 

@@ -79,7 +79,7 @@ public class O11yO11yLogConfigVersion {
   public static final String SERIALIZED_NAME_DEPLOY_SEQUENCE = "deploySequence";
   @SerializedName(SERIALIZED_NAME_DEPLOY_SEQUENCE)
   @javax.annotation.Nullable
-  private Integer deploySequence;
+  private Long deploySequence;
 
   public static final String SERIALIZED_NAME_DEPLOY_STATUS = "deployStatus";
   @SerializedName(SERIALIZED_NAME_DEPLOY_STATUS)
@@ -119,7 +119,7 @@ public class O11yO11yLogConfigVersion {
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
   @javax.annotation.Nullable
-  private Integer version;
+  private Long version;
 
   public O11yO11yLogConfigVersion() {
   }
@@ -219,7 +219,7 @@ public class O11yO11yLogConfigVersion {
   }
 
 
-  public O11yO11yLogConfigVersion deploySequence(@javax.annotation.Nullable Integer deploySequence) {
+  public O11yO11yLogConfigVersion deploySequence(@javax.annotation.Nullable Long deploySequence) {
     this.deploySequence = deploySequence;
     return this;
   }
@@ -229,11 +229,11 @@ public class O11yO11yLogConfigVersion {
    * @return deploySequence
    */
   @javax.annotation.Nullable
-  public Integer getDeploySequence() {
+  public Long getDeploySequence() {
     return deploySequence;
   }
 
-  public void setDeploySequence(@javax.annotation.Nullable Integer deploySequence) {
+  public void setDeploySequence(@javax.annotation.Nullable Long deploySequence) {
     this.deploySequence = deploySequence;
   }
 
@@ -371,7 +371,7 @@ public class O11yO11yLogConfigVersion {
   }
 
 
-  public O11yO11yLogConfigVersion version(@javax.annotation.Nullable Integer version) {
+  public O11yO11yLogConfigVersion version(@javax.annotation.Nullable Long version) {
     this.version = version;
     return this;
   }
@@ -381,11 +381,11 @@ public class O11yO11yLogConfigVersion {
    * @return version
    */
   @javax.annotation.Nullable
-  public Integer getVersion() {
+  public Long getVersion() {
     return version;
   }
 
-  public void setVersion(@javax.annotation.Nullable Integer version) {
+  public void setVersion(@javax.annotation.Nullable Long version) {
     this.version = version;
   }
 

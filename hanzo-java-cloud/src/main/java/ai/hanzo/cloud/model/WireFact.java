@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -64,7 +63,7 @@ public class WireFact {
   public static final String SERIALIZED_NAME_CONFIDENCE = "confidence";
   @SerializedName(SERIALIZED_NAME_CONFIDENCE)
   @javax.annotation.Nullable
-  private BigDecimal confidence;
+  private Double confidence;
 
   public static final String SERIALIZED_NAME_ENTITY = "entity";
   @SerializedName(SERIALIZED_NAME_ENTITY)
@@ -152,7 +151,7 @@ public class WireFact {
   }
 
 
-  public WireFact confidence(@javax.annotation.Nullable BigDecimal confidence) {
+  public WireFact confidence(@javax.annotation.Nullable Double confidence) {
     this.confidence = confidence;
     return this;
   }
@@ -162,11 +161,11 @@ public class WireFact {
    * @return confidence
    */
   @javax.annotation.Nullable
-  public BigDecimal getConfidence() {
+  public Double getConfidence() {
     return confidence;
   }
 
-  public void setConfidence(@javax.annotation.Nullable BigDecimal confidence) {
+  public void setConfidence(@javax.annotation.Nullable Double confidence) {
     this.confidence = confidence;
   }
 

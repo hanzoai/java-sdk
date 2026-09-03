@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -59,7 +58,7 @@ public class ModelRow {
   public static final String SERIALIZED_NAME_PCT = "pct";
   @SerializedName(SERIALIZED_NAME_PCT)
   @javax.annotation.Nullable
-  private BigDecimal pct;
+  private Double pct;
 
   public static final String SERIALIZED_NAME_PROVIDER = "provider";
   @SerializedName(SERIALIZED_NAME_PROVIDER)
@@ -69,17 +68,17 @@ public class ModelRow {
   public static final String SERIALIZED_NAME_REQUESTS = "requests";
   @SerializedName(SERIALIZED_NAME_REQUESTS)
   @javax.annotation.Nullable
-  private Integer requests;
+  private Long requests;
 
   public static final String SERIALIZED_NAME_SPEND_CENTS = "spendCents";
   @SerializedName(SERIALIZED_NAME_SPEND_CENTS)
   @javax.annotation.Nullable
-  private Integer spendCents;
+  private Long spendCents;
 
   public static final String SERIALIZED_NAME_TOKENS = "tokens";
   @SerializedName(SERIALIZED_NAME_TOKENS)
   @javax.annotation.Nullable
-  private Integer tokens;
+  private Long tokens;
 
   public ModelRow() {
   }
@@ -103,7 +102,7 @@ public class ModelRow {
   }
 
 
-  public ModelRow pct(@javax.annotation.Nullable BigDecimal pct) {
+  public ModelRow pct(@javax.annotation.Nullable Double pct) {
     this.pct = pct;
     return this;
   }
@@ -113,11 +112,11 @@ public class ModelRow {
    * @return pct
    */
   @javax.annotation.Nullable
-  public BigDecimal getPct() {
+  public Double getPct() {
     return pct;
   }
 
-  public void setPct(@javax.annotation.Nullable BigDecimal pct) {
+  public void setPct(@javax.annotation.Nullable Double pct) {
     this.pct = pct;
   }
 
@@ -141,7 +140,7 @@ public class ModelRow {
   }
 
 
-  public ModelRow requests(@javax.annotation.Nullable Integer requests) {
+  public ModelRow requests(@javax.annotation.Nullable Long requests) {
     this.requests = requests;
     return this;
   }
@@ -151,16 +150,16 @@ public class ModelRow {
    * @return requests
    */
   @javax.annotation.Nullable
-  public Integer getRequests() {
+  public Long getRequests() {
     return requests;
   }
 
-  public void setRequests(@javax.annotation.Nullable Integer requests) {
+  public void setRequests(@javax.annotation.Nullable Long requests) {
     this.requests = requests;
   }
 
 
-  public ModelRow spendCents(@javax.annotation.Nullable Integer spendCents) {
+  public ModelRow spendCents(@javax.annotation.Nullable Long spendCents) {
     this.spendCents = spendCents;
     return this;
   }
@@ -170,16 +169,16 @@ public class ModelRow {
    * @return spendCents
    */
   @javax.annotation.Nullable
-  public Integer getSpendCents() {
+  public Long getSpendCents() {
     return spendCents;
   }
 
-  public void setSpendCents(@javax.annotation.Nullable Integer spendCents) {
+  public void setSpendCents(@javax.annotation.Nullable Long spendCents) {
     this.spendCents = spendCents;
   }
 
 
-  public ModelRow tokens(@javax.annotation.Nullable Integer tokens) {
+  public ModelRow tokens(@javax.annotation.Nullable Long tokens) {
     this.tokens = tokens;
     return this;
   }
@@ -189,11 +188,11 @@ public class ModelRow {
    * @return tokens
    */
   @javax.annotation.Nullable
-  public Integer getTokens() {
+  public Long getTokens() {
     return tokens;
   }
 
-  public void setTokens(@javax.annotation.Nullable Integer tokens) {
+  public void setTokens(@javax.annotation.Nullable Long tokens) {
     this.tokens = tokens;
   }
 

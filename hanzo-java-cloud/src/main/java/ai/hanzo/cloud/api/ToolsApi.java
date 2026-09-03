@@ -736,7 +736,7 @@ public class ToolsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getToolsCatalogCall(@javax.annotation.Nullable String q, @javax.annotation.Nullable String featured, @javax.annotation.Nullable String official, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer offset, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getToolsCatalogCall(@javax.annotation.Nullable String q, @javax.annotation.Nullable String featured, @javax.annotation.Nullable String official, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable Long offset, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -801,7 +801,7 @@ public class ToolsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getToolsCatalogValidateBeforeCall(@javax.annotation.Nullable String q, @javax.annotation.Nullable String featured, @javax.annotation.Nullable String official, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer offset, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getToolsCatalogValidateBeforeCall(@javax.annotation.Nullable String q, @javax.annotation.Nullable String featured, @javax.annotation.Nullable String official, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable Long offset, final ApiCallback _callback) throws ApiException {
         return getToolsCatalogCall(q, featured, official, limit, offset, _callback);
 
     }
@@ -823,7 +823,7 @@ public class ToolsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public McpCatalog getToolsCatalog(@javax.annotation.Nullable String q, @javax.annotation.Nullable String featured, @javax.annotation.Nullable String official, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer offset) throws ApiException {
+    public McpCatalog getToolsCatalog(@javax.annotation.Nullable String q, @javax.annotation.Nullable String featured, @javax.annotation.Nullable String official, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable Long offset) throws ApiException {
         ApiResponse<McpCatalog> localVarResp = getToolsCatalogWithHttpInfo(q, featured, official, limit, offset);
         return localVarResp.getData();
     }
@@ -845,7 +845,7 @@ public class ToolsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<McpCatalog> getToolsCatalogWithHttpInfo(@javax.annotation.Nullable String q, @javax.annotation.Nullable String featured, @javax.annotation.Nullable String official, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer offset) throws ApiException {
+    public ApiResponse<McpCatalog> getToolsCatalogWithHttpInfo(@javax.annotation.Nullable String q, @javax.annotation.Nullable String featured, @javax.annotation.Nullable String official, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable Long offset) throws ApiException {
         okhttp3.Call localVarCall = getToolsCatalogValidateBeforeCall(q, featured, official, limit, offset, null);
         Type localVarReturnType = new TypeToken<McpCatalog>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -869,7 +869,7 @@ public class ToolsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getToolsCatalogAsync(@javax.annotation.Nullable String q, @javax.annotation.Nullable String featured, @javax.annotation.Nullable String official, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer offset, final ApiCallback<McpCatalog> _callback) throws ApiException {
+    public okhttp3.Call getToolsCatalogAsync(@javax.annotation.Nullable String q, @javax.annotation.Nullable String featured, @javax.annotation.Nullable String official, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable Long offset, final ApiCallback<McpCatalog> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getToolsCatalogValidateBeforeCall(q, featured, official, limit, offset, _callback);
         Type localVarReturnType = new TypeToken<McpCatalog>(){}.getType();

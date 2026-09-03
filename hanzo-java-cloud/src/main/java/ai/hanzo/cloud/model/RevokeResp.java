@@ -61,12 +61,12 @@ public class RevokeResp {
   public static final String SERIALIZED_NAME_REVOKED = "revoked";
   @SerializedName(SERIALIZED_NAME_REVOKED)
   @javax.annotation.Nullable
-  private Integer revoked;
+  private Long revoked;
 
   public static final String SERIALIZED_NAME_SESSIONS_STOPPED = "sessionsStopped";
   @SerializedName(SERIALIZED_NAME_SESSIONS_STOPPED)
   @javax.annotation.Nullable
-  private Integer sessionsStopped;
+  private Long sessionsStopped;
 
   public RevokeResp() {
   }
@@ -98,7 +98,7 @@ public class RevokeResp {
   }
 
 
-  public RevokeResp revoked(@javax.annotation.Nullable Integer revoked) {
+  public RevokeResp revoked(@javax.annotation.Nullable Long revoked) {
     this.revoked = revoked;
     return this;
   }
@@ -108,16 +108,16 @@ public class RevokeResp {
    * @return revoked
    */
   @javax.annotation.Nullable
-  public Integer getRevoked() {
+  public Long getRevoked() {
     return revoked;
   }
 
-  public void setRevoked(@javax.annotation.Nullable Integer revoked) {
+  public void setRevoked(@javax.annotation.Nullable Long revoked) {
     this.revoked = revoked;
   }
 
 
-  public RevokeResp sessionsStopped(@javax.annotation.Nullable Integer sessionsStopped) {
+  public RevokeResp sessionsStopped(@javax.annotation.Nullable Long sessionsStopped) {
     this.sessionsStopped = sessionsStopped;
     return this;
   }
@@ -127,11 +127,11 @@ public class RevokeResp {
    * @return sessionsStopped
    */
   @javax.annotation.Nullable
-  public Integer getSessionsStopped() {
+  public Long getSessionsStopped() {
     return sessionsStopped;
   }
 
-  public void setSessionsStopped(@javax.annotation.Nullable Integer sessionsStopped) {
+  public void setSessionsStopped(@javax.annotation.Nullable Long sessionsStopped) {
     this.sessionsStopped = sessionsStopped;
   }
 

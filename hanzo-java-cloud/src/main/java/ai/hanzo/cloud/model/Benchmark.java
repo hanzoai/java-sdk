@@ -63,7 +63,7 @@ public class Benchmark {
   public static final String SERIALIZED_NAME_ITEMS = "items";
   @SerializedName(SERIALIZED_NAME_ITEMS)
   @javax.annotation.Nullable
-  private Integer items;
+  private Long items;
 
   public static final String SERIALIZED_NAME_NATIVE = "native";
   @SerializedName(SERIALIZED_NAME_NATIVE)
@@ -121,7 +121,7 @@ public class Benchmark {
   }
 
 
-  public Benchmark items(@javax.annotation.Nullable Integer items) {
+  public Benchmark items(@javax.annotation.Nullable Long items) {
     this.items = items;
     return this;
   }
@@ -131,11 +131,11 @@ public class Benchmark {
    * @return items
    */
   @javax.annotation.Nullable
-  public Integer getItems() {
+  public Long getItems() {
     return items;
   }
 
-  public void setItems(@javax.annotation.Nullable Integer items) {
+  public void setItems(@javax.annotation.Nullable Long items) {
     this.items = items;
   }
 

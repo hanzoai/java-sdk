@@ -55,7 +55,6 @@ import ai.hanzo.cloud.model.SubscriptionList;
 import ai.hanzo.cloud.model.SubscriptionView;
 import ai.hanzo.cloud.model.TreeJSON;
 import ai.hanzo.cloud.model.UsageView;
-import ai.hanzo.cloud.model.ZapProcReq;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -345,138 +344,6 @@ public class GitApi {
         return localVarCall;
     }
     /**
-     * Build call for deleteGitReposByNameMirrorsById
-     * @param name Name is the repo, from the :name path segment. (required)
-     * @param id ID is the row to remove, from the :id path segment. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteGitReposByNameMirrorsByIdCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/git/repos/{name}/mirrors/{id}"
-            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()))
-            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteGitReposByNameMirrorsByIdValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'name' is set
-        if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling deleteGitReposByNameMirrorsById(Async)");
-        }
-
-        // verify the required parameter 'id' is set
-        if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling deleteGitReposByNameMirrorsById(Async)");
-        }
-
-        return deleteGitReposByNameMirrorsByIdCall(name, id, _callback);
-
-    }
-
-    /**
-     * Removes one outbound mirror target; later pushes stop being forwarded to it.
-     * Removes one outbound mirror target; later pushes stop being forwarded to it. Answers 204 with no body. Nothing is done to the downstream remote itself — only this repo&#39;s intent to push there is dropped.
-     * @param name Name is the repo, from the :name path segment. (required)
-     * @param id ID is the row to remove, from the :id path segment. (required)
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
-     </table>
-     */
-    public void deleteGitReposByNameMirrorsById(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull String id) throws ApiException {
-        deleteGitReposByNameMirrorsByIdWithHttpInfo(name, id);
-    }
-
-    /**
-     * Removes one outbound mirror target; later pushes stop being forwarded to it.
-     * Removes one outbound mirror target; later pushes stop being forwarded to it. Answers 204 with no body. Nothing is done to the downstream remote itself — only this repo&#39;s intent to push there is dropped.
-     * @param name Name is the repo, from the :name path segment. (required)
-     * @param id ID is the row to remove, from the :id path segment. (required)
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Void> deleteGitReposByNameMirrorsByIdWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = deleteGitReposByNameMirrorsByIdValidateBeforeCall(name, id, null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * Removes one outbound mirror target; later pushes stop being forwarded to it. (asynchronously)
-     * Removes one outbound mirror target; later pushes stop being forwarded to it. Answers 204 with no body. Nothing is done to the downstream remote itself — only this repo&#39;s intent to push there is dropped.
-     * @param name Name is the repo, from the :name path segment. (required)
-     * @param id ID is the row to remove, from the :id path segment. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteGitReposByNameMirrorsByIdAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = deleteGitReposByNameMirrorsByIdValidateBeforeCall(name, id, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
      * Build call for deleteGitReposByNameSubscriptionsById
      * @param name Name is the repo, from the :name path segment. (required)
      * @param id ID is the row to remove, from the :id path segment. (required)
@@ -605,6 +472,138 @@ public class GitApi {
     public okhttp3.Call deleteGitReposByNameSubscriptionsByIdAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteGitReposByNameSubscriptionsByIdValidateBeforeCall(name, id, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for deleteGitReposByNameTargetsById
+     * @param name Name is the repo, from the :name path segment. (required)
+     * @param id ID is the row to remove, from the :id path segment. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteGitReposByNameTargetsByIdCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/git/repos/{name}/targets/{id}"
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()))
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteGitReposByNameTargetsByIdValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling deleteGitReposByNameTargetsById(Async)");
+        }
+
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling deleteGitReposByNameTargetsById(Async)");
+        }
+
+        return deleteGitReposByNameTargetsByIdCall(name, id, _callback);
+
+    }
+
+    /**
+     * Removes one outbound mirror target; later pushes stop being forwarded to it.
+     * Removes one outbound mirror target; later pushes stop being forwarded to it. Answers 204 with no body. Nothing is done to the downstream remote itself — only this repo&#39;s intent to push there is dropped.
+     * @param name Name is the repo, from the :name path segment. (required)
+     * @param id ID is the row to remove, from the :id path segment. (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+     </table>
+     */
+    public void deleteGitReposByNameTargetsById(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull String id) throws ApiException {
+        deleteGitReposByNameTargetsByIdWithHttpInfo(name, id);
+    }
+
+    /**
+     * Removes one outbound mirror target; later pushes stop being forwarded to it.
+     * Removes one outbound mirror target; later pushes stop being forwarded to it. Answers 204 with no body. Nothing is done to the downstream remote itself — only this repo&#39;s intent to push there is dropped.
+     * @param name Name is the repo, from the :name path segment. (required)
+     * @param id ID is the row to remove, from the :id path segment. (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> deleteGitReposByNameTargetsByIdWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = deleteGitReposByNameTargetsByIdValidateBeforeCall(name, id, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Removes one outbound mirror target; later pushes stop being forwarded to it. (asynchronously)
+     * Removes one outbound mirror target; later pushes stop being forwarded to it. Answers 204 with no body. Nothing is done to the downstream remote itself — only this repo&#39;s intent to push there is dropped.
+     * @param name Name is the repo, from the :name path segment. (required)
+     * @param id ID is the row to remove, from the :id path segment. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteGitReposByNameTargetsByIdAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteGitReposByNameTargetsByIdValidateBeforeCall(name, id, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
@@ -1746,7 +1745,7 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getGitReposByNameCommitsCall(@javax.annotation.Nonnull String name, @javax.annotation.Nullable String ref, @javax.annotation.Nullable String path, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getGitReposByNameCommitsCall(@javax.annotation.Nonnull String name, @javax.annotation.Nullable String ref, @javax.annotation.Nullable String path, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1804,7 +1803,7 @@ public class GitApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getGitReposByNameCommitsValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nullable String ref, @javax.annotation.Nullable String path, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getGitReposByNameCommitsValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nullable String ref, @javax.annotation.Nullable String path, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
             throw new ApiException("Missing the required parameter 'name' when calling getGitReposByNameCommits(Async)");
@@ -1830,7 +1829,7 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public CommitsJSON getGitReposByNameCommits(@javax.annotation.Nonnull String name, @javax.annotation.Nullable String ref, @javax.annotation.Nullable String path, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public CommitsJSON getGitReposByNameCommits(@javax.annotation.Nonnull String name, @javax.annotation.Nullable String ref, @javax.annotation.Nullable String path, @javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<CommitsJSON> localVarResp = getGitReposByNameCommitsWithHttpInfo(name, ref, path, limit);
         return localVarResp.getData();
     }
@@ -1851,7 +1850,7 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CommitsJSON> getGitReposByNameCommitsWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nullable String ref, @javax.annotation.Nullable String path, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<CommitsJSON> getGitReposByNameCommitsWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nullable String ref, @javax.annotation.Nullable String path, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getGitReposByNameCommitsValidateBeforeCall(name, ref, path, limit, null);
         Type localVarReturnType = new TypeToken<CommitsJSON>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -1874,7 +1873,7 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getGitReposByNameCommitsAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nullable String ref, @javax.annotation.Nullable String path, @javax.annotation.Nullable Integer limit, final ApiCallback<CommitsJSON> _callback) throws ApiException {
+    public okhttp3.Call getGitReposByNameCommitsAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nullable String ref, @javax.annotation.Nullable String path, @javax.annotation.Nullable Long limit, final ApiCallback<CommitsJSON> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getGitReposByNameCommitsValidateBeforeCall(name, ref, path, limit, _callback);
         Type localVarReturnType = new TypeToken<CommitsJSON>(){}.getType();
@@ -2021,133 +2020,6 @@ public class GitApi {
 
         okhttp3.Call localVarCall = getGitReposByNameFilesValidateBeforeCall(name, ref, glob, _callback);
         Type localVarReturnType = new TypeToken<FilesJSON>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getGitReposByNameMirrors
-     * @param name Name is the repo&#39;s org-unique handle, from the :name path segment. A trailing \&quot;.git\&quot; is stripped. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getGitReposByNameMirrorsCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/git/repos/{name}/mirrors"
-            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getGitReposByNameMirrorsValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'name' is set
-        if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling getGitReposByNameMirrors(Async)");
-        }
-
-        return getGitReposByNameMirrorsCall(name, _callback);
-
-    }
-
-    /**
-     * Returns a repo&#39;s outbound mirror targets — the downstream remotes the mirror reactor pushes to whenever a push lands here.
-     * Returns a repo&#39;s outbound mirror targets — the downstream remotes the mirror reactor pushes to whenever a push lands here.
-     * @param name Name is the repo&#39;s org-unique handle, from the :name path segment. A trailing \&quot;.git\&quot; is stripped. (required)
-     * @return MirrorList
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public MirrorList getGitReposByNameMirrors(@javax.annotation.Nonnull String name) throws ApiException {
-        ApiResponse<MirrorList> localVarResp = getGitReposByNameMirrorsWithHttpInfo(name);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Returns a repo&#39;s outbound mirror targets — the downstream remotes the mirror reactor pushes to whenever a push lands here.
-     * Returns a repo&#39;s outbound mirror targets — the downstream remotes the mirror reactor pushes to whenever a push lands here.
-     * @param name Name is the repo&#39;s org-unique handle, from the :name path segment. A trailing \&quot;.git\&quot; is stripped. (required)
-     * @return ApiResponse&lt;MirrorList&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<MirrorList> getGitReposByNameMirrorsWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
-        okhttp3.Call localVarCall = getGitReposByNameMirrorsValidateBeforeCall(name, null);
-        Type localVarReturnType = new TypeToken<MirrorList>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Returns a repo&#39;s outbound mirror targets — the downstream remotes the mirror reactor pushes to whenever a push lands here. (asynchronously)
-     * Returns a repo&#39;s outbound mirror targets — the downstream remotes the mirror reactor pushes to whenever a push lands here.
-     * @param name Name is the repo&#39;s org-unique handle, from the :name path segment. A trailing \&quot;.git\&quot; is stripped. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getGitReposByNameMirrorsAsync(@javax.annotation.Nonnull String name, final ApiCallback<MirrorList> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getGitReposByNameMirrorsValidateBeforeCall(name, _callback);
-        Type localVarReturnType = new TypeToken<MirrorList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -2300,7 +2172,7 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getGitReposByNamePullsByNumberCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull Integer number, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getGitReposByNamePullsByNumberCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull Long number, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2347,7 +2219,7 @@ public class GitApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getGitReposByNamePullsByNumberValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull Integer number, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getGitReposByNamePullsByNumberValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull Long number, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
             throw new ApiException("Missing the required parameter 'name' when calling getGitReposByNamePullsByNumber(Async)");
@@ -2376,7 +2248,7 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public PullView getGitReposByNamePullsByNumber(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull Integer number) throws ApiException {
+    public PullView getGitReposByNamePullsByNumber(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull Long number) throws ApiException {
         ApiResponse<PullView> localVarResp = getGitReposByNamePullsByNumberWithHttpInfo(name, number);
         return localVarResp.getData();
     }
@@ -2395,7 +2267,7 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PullView> getGitReposByNamePullsByNumberWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull Integer number) throws ApiException {
+    public ApiResponse<PullView> getGitReposByNamePullsByNumberWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull Long number) throws ApiException {
         okhttp3.Call localVarCall = getGitReposByNamePullsByNumberValidateBeforeCall(name, number, null);
         Type localVarReturnType = new TypeToken<PullView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -2416,7 +2288,7 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getGitReposByNamePullsByNumberAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull Integer number, final ApiCallback<PullView> _callback) throws ApiException {
+    public okhttp3.Call getGitReposByNamePullsByNumberAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull Long number, final ApiCallback<PullView> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getGitReposByNamePullsByNumberValidateBeforeCall(name, number, _callback);
         Type localVarReturnType = new TypeToken<PullView>(){}.getType();
@@ -2809,6 +2681,133 @@ public class GitApi {
 
         okhttp3.Call localVarCall = getGitReposByNameSubscriptionsValidateBeforeCall(name, _callback);
         Type localVarReturnType = new TypeToken<SubscriptionList>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getGitReposByNameTargets
+     * @param name Name is the repo&#39;s org-unique handle, from the :name path segment. A trailing \&quot;.git\&quot; is stripped. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getGitReposByNameTargetsCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/git/repos/{name}/targets"
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getGitReposByNameTargetsValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling getGitReposByNameTargets(Async)");
+        }
+
+        return getGitReposByNameTargetsCall(name, _callback);
+
+    }
+
+    /**
+     * Returns a repo&#39;s outbound mirror targets — the downstream remotes the mirror reactor pushes to whenever a push lands here.
+     * Returns a repo&#39;s outbound mirror targets — the downstream remotes the mirror reactor pushes to whenever a push lands here.
+     * @param name Name is the repo&#39;s org-unique handle, from the :name path segment. A trailing \&quot;.git\&quot; is stripped. (required)
+     * @return MirrorList
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public MirrorList getGitReposByNameTargets(@javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<MirrorList> localVarResp = getGitReposByNameTargetsWithHttpInfo(name);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Returns a repo&#39;s outbound mirror targets — the downstream remotes the mirror reactor pushes to whenever a push lands here.
+     * Returns a repo&#39;s outbound mirror targets — the downstream remotes the mirror reactor pushes to whenever a push lands here.
+     * @param name Name is the repo&#39;s org-unique handle, from the :name path segment. A trailing \&quot;.git\&quot; is stripped. (required)
+     * @return ApiResponse&lt;MirrorList&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<MirrorList> getGitReposByNameTargetsWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = getGitReposByNameTargetsValidateBeforeCall(name, null);
+        Type localVarReturnType = new TypeToken<MirrorList>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Returns a repo&#39;s outbound mirror targets — the downstream remotes the mirror reactor pushes to whenever a push lands here. (asynchronously)
+     * Returns a repo&#39;s outbound mirror targets — the downstream remotes the mirror reactor pushes to whenever a push lands here.
+     * @param name Name is the repo&#39;s org-unique handle, from the :name path segment. A trailing \&quot;.git\&quot; is stripped. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getGitReposByNameTargetsAsync(@javax.annotation.Nonnull String name, final ApiCallback<MirrorList> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getGitReposByNameTargetsValidateBeforeCall(name, _callback);
+        Type localVarReturnType = new TypeToken<MirrorList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -4200,143 +4199,6 @@ public class GitApi {
         return localVarCall;
     }
     /**
-     * Build call for postGitReposByNameMirrors
-     * @param name Name is the repo whose advanced refs are pushed downstream, from the :name path segment. (required)
-     * @param mirrorTargetReq  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postGitReposByNameMirrorsCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull MirrorTargetReq mirrorTargetReq, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = mirrorTargetReq;
-
-        // create path and map variables
-        String localVarPath = "/v1/git/repos/{name}/mirrors"
-            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postGitReposByNameMirrorsValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull MirrorTargetReq mirrorTargetReq, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'name' is set
-        if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling postGitReposByNameMirrors(Async)");
-        }
-
-        // verify the required parameter 'mirrorTargetReq' is set
-        if (mirrorTargetReq == null) {
-            throw new ApiException("Missing the required parameter 'mirrorTargetReq' when calling postGitReposByNameMirrors(Async)");
-        }
-
-        return postGitReposByNameMirrorsCall(name, mirrorTargetReq, _callback);
-
-    }
-
-    /**
-     * Registers a downstream remote the repo&#39;s advanced refs are pushed to whenever a push lands here.
-     * Registers a downstream remote the repo&#39;s advanced refs are pushed to whenever a push lands here. Answers 201. The URL must be https to a host on the mirror allowlist (github.com / gitlab.com): the same set the mirror credential may be sent to, so a target can never capture the shared token or point the push at an internal service. Any embedded userinfo is stripped — credentials ride env-only at push time and never enter the stored URL. One mirror per host per repo; a second is a 409.
-     * @param name Name is the repo whose advanced refs are pushed downstream, from the :name path segment. (required)
-     * @param mirrorTargetReq  (required)
-     * @return MirrorTargetView
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
-     </table>
-     */
-    public MirrorTargetView postGitReposByNameMirrors(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull MirrorTargetReq mirrorTargetReq) throws ApiException {
-        ApiResponse<MirrorTargetView> localVarResp = postGitReposByNameMirrorsWithHttpInfo(name, mirrorTargetReq);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Registers a downstream remote the repo&#39;s advanced refs are pushed to whenever a push lands here.
-     * Registers a downstream remote the repo&#39;s advanced refs are pushed to whenever a push lands here. Answers 201. The URL must be https to a host on the mirror allowlist (github.com / gitlab.com): the same set the mirror credential may be sent to, so a target can never capture the shared token or point the push at an internal service. Any embedded userinfo is stripped — credentials ride env-only at push time and never enter the stored URL. One mirror per host per repo; a second is a 409.
-     * @param name Name is the repo whose advanced refs are pushed downstream, from the :name path segment. (required)
-     * @param mirrorTargetReq  (required)
-     * @return ApiResponse&lt;MirrorTargetView&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<MirrorTargetView> postGitReposByNameMirrorsWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull MirrorTargetReq mirrorTargetReq) throws ApiException {
-        okhttp3.Call localVarCall = postGitReposByNameMirrorsValidateBeforeCall(name, mirrorTargetReq, null);
-        Type localVarReturnType = new TypeToken<MirrorTargetView>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Registers a downstream remote the repo&#39;s advanced refs are pushed to whenever a push lands here. (asynchronously)
-     * Registers a downstream remote the repo&#39;s advanced refs are pushed to whenever a push lands here. Answers 201. The URL must be https to a host on the mirror allowlist (github.com / gitlab.com): the same set the mirror credential may be sent to, so a target can never capture the shared token or point the push at an internal service. Any embedded userinfo is stripped — credentials ride env-only at push time and never enter the stored URL. One mirror per host per repo; a second is a 409.
-     * @param name Name is the repo whose advanced refs are pushed downstream, from the :name path segment. (required)
-     * @param mirrorTargetReq  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postGitReposByNameMirrorsAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull MirrorTargetReq mirrorTargetReq, final ApiCallback<MirrorTargetView> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postGitReposByNameMirrorsValidateBeforeCall(name, mirrorTargetReq, _callback);
-        Type localVarReturnType = new TypeToken<MirrorTargetView>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
      * Build call for postGitReposByNamePulls
      * @param name Name is the repo the proposal belongs to, from the :name path segment. (required)
      * @param openReq  (required)
@@ -4487,7 +4349,7 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postGitReposByNamePullsByNumberMergeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull Integer number, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postGitReposByNamePullsByNumberMergeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull Long number, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4534,7 +4396,7 @@ public class GitApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postGitReposByNamePullsByNumberMergeValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull Integer number, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postGitReposByNamePullsByNumberMergeValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull Long number, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
             throw new ApiException("Missing the required parameter 'name' when calling postGitReposByNamePullsByNumberMerge(Async)");
@@ -4563,7 +4425,7 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public PullView postGitReposByNamePullsByNumberMerge(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull Integer number) throws ApiException {
+    public PullView postGitReposByNamePullsByNumberMerge(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull Long number) throws ApiException {
         ApiResponse<PullView> localVarResp = postGitReposByNamePullsByNumberMergeWithHttpInfo(name, number);
         return localVarResp.getData();
     }
@@ -4582,7 +4444,7 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PullView> postGitReposByNamePullsByNumberMergeWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull Integer number) throws ApiException {
+    public ApiResponse<PullView> postGitReposByNamePullsByNumberMergeWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull Long number) throws ApiException {
         okhttp3.Call localVarCall = postGitReposByNamePullsByNumberMergeValidateBeforeCall(name, number, null);
         Type localVarReturnType = new TypeToken<PullView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -4603,7 +4465,7 @@ public class GitApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postGitReposByNamePullsByNumberMergeAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull Integer number, final ApiCallback<PullView> _callback) throws ApiException {
+    public okhttp3.Call postGitReposByNamePullsByNumberMergeAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull Long number, final ApiCallback<PullView> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postGitReposByNamePullsByNumberMergeValidateBeforeCall(name, number, _callback);
         Type localVarReturnType = new TypeToken<PullView>(){}.getType();
@@ -4885,6 +4747,143 @@ public class GitApi {
         return localVarCall;
     }
     /**
+     * Build call for postGitReposByNameTargets
+     * @param name Name is the repo whose advanced refs are pushed downstream, from the :name path segment. (required)
+     * @param mirrorTargetReq  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postGitReposByNameTargetsCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull MirrorTargetReq mirrorTargetReq, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = mirrorTargetReq;
+
+        // create path and map variables
+        String localVarPath = "/v1/git/repos/{name}/targets"
+            .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postGitReposByNameTargetsValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull MirrorTargetReq mirrorTargetReq, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'name' is set
+        if (name == null) {
+            throw new ApiException("Missing the required parameter 'name' when calling postGitReposByNameTargets(Async)");
+        }
+
+        // verify the required parameter 'mirrorTargetReq' is set
+        if (mirrorTargetReq == null) {
+            throw new ApiException("Missing the required parameter 'mirrorTargetReq' when calling postGitReposByNameTargets(Async)");
+        }
+
+        return postGitReposByNameTargetsCall(name, mirrorTargetReq, _callback);
+
+    }
+
+    /**
+     * Registers a downstream remote the repo&#39;s advanced refs are pushed to whenever a push lands here.
+     * Registers a downstream remote the repo&#39;s advanced refs are pushed to whenever a push lands here. Answers 201. The URL must be https to a host on the mirror allowlist (github.com / gitlab.com): the same set the mirror credential may be sent to, so a target can never capture the shared token or point the push at an internal service. Any embedded userinfo is stripped — credentials ride env-only at push time and never enter the stored URL. One mirror per host per repo; a second is a 409.
+     * @param name Name is the repo whose advanced refs are pushed downstream, from the :name path segment. (required)
+     * @param mirrorTargetReq  (required)
+     * @return MirrorTargetView
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
+     */
+    public MirrorTargetView postGitReposByNameTargets(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull MirrorTargetReq mirrorTargetReq) throws ApiException {
+        ApiResponse<MirrorTargetView> localVarResp = postGitReposByNameTargetsWithHttpInfo(name, mirrorTargetReq);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Registers a downstream remote the repo&#39;s advanced refs are pushed to whenever a push lands here.
+     * Registers a downstream remote the repo&#39;s advanced refs are pushed to whenever a push lands here. Answers 201. The URL must be https to a host on the mirror allowlist (github.com / gitlab.com): the same set the mirror credential may be sent to, so a target can never capture the shared token or point the push at an internal service. Any embedded userinfo is stripped — credentials ride env-only at push time and never enter the stored URL. One mirror per host per repo; a second is a 409.
+     * @param name Name is the repo whose advanced refs are pushed downstream, from the :name path segment. (required)
+     * @param mirrorTargetReq  (required)
+     * @return ApiResponse&lt;MirrorTargetView&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<MirrorTargetView> postGitReposByNameTargetsWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull MirrorTargetReq mirrorTargetReq) throws ApiException {
+        okhttp3.Call localVarCall = postGitReposByNameTargetsValidateBeforeCall(name, mirrorTargetReq, null);
+        Type localVarReturnType = new TypeToken<MirrorTargetView>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Registers a downstream remote the repo&#39;s advanced refs are pushed to whenever a push lands here. (asynchronously)
+     * Registers a downstream remote the repo&#39;s advanced refs are pushed to whenever a push lands here. Answers 201. The URL must be https to a host on the mirror allowlist (github.com / gitlab.com): the same set the mirror credential may be sent to, so a target can never capture the shared token or point the push at an internal service. Any embedded userinfo is stripped — credentials ride env-only at push time and never enter the stored URL. One mirror per host per repo; a second is a 409.
+     * @param name Name is the repo whose advanced refs are pushed downstream, from the :name path segment. (required)
+     * @param mirrorTargetReq  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postGitReposByNameTargetsAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull MirrorTargetReq mirrorTargetReq, final ApiCallback<MirrorTargetView> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postGitReposByNameTargetsValidateBeforeCall(name, mirrorTargetReq, _callback);
+        Type localVarReturnType = new TypeToken<MirrorTargetView>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for postGitWebhook
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -4969,461 +4968,6 @@ public class GitApi {
     public okhttp3.Call postGitWebhookAsync(final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postGitWebhookValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postGitZapCreaterepo
-     * @param zapProcReq  (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public okhttp3.Call postGitZapCreaterepoCall(@javax.annotation.Nullable ZapProcReq zapProcReq, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = zapProcReq;
-
-        // create path and map variables
-        String localVarPath = "/v1/git/zap/createRepo";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postGitZapCreaterepoValidateBeforeCall(@javax.annotation.Nullable ZapProcReq zapProcReq, final ApiCallback _callback) throws ApiException {
-        return postGitZapCreaterepoCall(zapProcReq, _callback);
-
-    }
-
-    /**
-     * Create a repository over the ZAP transport
-     * Creates a repository in the caller&#39;s org and project scope and answers with its record. &#x60;name&#x60; is required and &#x60;description&#x60; is optional; &#x60;project&#x60; narrows the scope within the org. A name already taken in that scope is a 409 envelope and an invalid name a 400.  A ZAP PROCEDURE, not a REST resource. It answers the bridge&#39;s {status, msg, data} envelope rather than the raw view the /v1 route returns, and it calls the SAME core function the REST route calls, so the two transports cannot diverge in behaviour. Org and project scope come from the request identity and NEVER from the body: the body cannot widen the caller&#39;s scope. Without a validated org the answer is a 403 envelope.
-     * @param zapProcReq  (optional)
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public void postGitZapCreaterepo(@javax.annotation.Nullable ZapProcReq zapProcReq) throws ApiException {
-        postGitZapCreaterepoWithHttpInfo(zapProcReq);
-    }
-
-    /**
-     * Create a repository over the ZAP transport
-     * Creates a repository in the caller&#39;s org and project scope and answers with its record. &#x60;name&#x60; is required and &#x60;description&#x60; is optional; &#x60;project&#x60; narrows the scope within the org. A name already taken in that scope is a 409 envelope and an invalid name a 400.  A ZAP PROCEDURE, not a REST resource. It answers the bridge&#39;s {status, msg, data} envelope rather than the raw view the /v1 route returns, and it calls the SAME core function the REST route calls, so the two transports cannot diverge in behaviour. Org and project scope come from the request identity and NEVER from the body: the body cannot widen the caller&#39;s scope. Without a validated org the answer is a 403 envelope.
-     * @param zapProcReq  (optional)
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Void> postGitZapCreaterepoWithHttpInfo(@javax.annotation.Nullable ZapProcReq zapProcReq) throws ApiException {
-        okhttp3.Call localVarCall = postGitZapCreaterepoValidateBeforeCall(zapProcReq, null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * Create a repository over the ZAP transport (asynchronously)
-     * Creates a repository in the caller&#39;s org and project scope and answers with its record. &#x60;name&#x60; is required and &#x60;description&#x60; is optional; &#x60;project&#x60; narrows the scope within the org. A name already taken in that scope is a 409 envelope and an invalid name a 400.  A ZAP PROCEDURE, not a REST resource. It answers the bridge&#39;s {status, msg, data} envelope rather than the raw view the /v1 route returns, and it calls the SAME core function the REST route calls, so the two transports cannot diverge in behaviour. Org and project scope come from the request identity and NEVER from the body: the body cannot widen the caller&#39;s scope. Without a validated org the answer is a 403 envelope.
-     * @param zapProcReq  (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public okhttp3.Call postGitZapCreaterepoAsync(@javax.annotation.Nullable ZapProcReq zapProcReq, final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postGitZapCreaterepoValidateBeforeCall(zapProcReq, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postGitZapDeleterepo
-     * @param zapProcReq  (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public okhttp3.Call postGitZapDeleterepoCall(@javax.annotation.Nullable ZapProcReq zapProcReq, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = zapProcReq;
-
-        // create path and map variables
-        String localVarPath = "/v1/git/zap/deleteRepo";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postGitZapDeleterepoValidateBeforeCall(@javax.annotation.Nullable ZapProcReq zapProcReq, final ApiCallback _callback) throws ApiException {
-        return postGitZapDeleterepoCall(zapProcReq, _callback);
-
-    }
-
-    /**
-     * Delete a repository over the ZAP transport
-     * Deletes the repository named by &#x60;name&#x60; and answers with the deleted name. A repository outside the caller&#39;s org and project scope is a 404 envelope, so a delete can never reach another tenant&#39;s repository.  A ZAP PROCEDURE, not a REST resource. It answers the bridge&#39;s {status, msg, data} envelope rather than the raw view the /v1 route returns, and it calls the SAME core function the REST route calls, so the two transports cannot diverge in behaviour. Org and project scope come from the request identity and NEVER from the body: the body cannot widen the caller&#39;s scope. Without a validated org the answer is a 403 envelope.
-     * @param zapProcReq  (optional)
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public void postGitZapDeleterepo(@javax.annotation.Nullable ZapProcReq zapProcReq) throws ApiException {
-        postGitZapDeleterepoWithHttpInfo(zapProcReq);
-    }
-
-    /**
-     * Delete a repository over the ZAP transport
-     * Deletes the repository named by &#x60;name&#x60; and answers with the deleted name. A repository outside the caller&#39;s org and project scope is a 404 envelope, so a delete can never reach another tenant&#39;s repository.  A ZAP PROCEDURE, not a REST resource. It answers the bridge&#39;s {status, msg, data} envelope rather than the raw view the /v1 route returns, and it calls the SAME core function the REST route calls, so the two transports cannot diverge in behaviour. Org and project scope come from the request identity and NEVER from the body: the body cannot widen the caller&#39;s scope. Without a validated org the answer is a 403 envelope.
-     * @param zapProcReq  (optional)
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Void> postGitZapDeleterepoWithHttpInfo(@javax.annotation.Nullable ZapProcReq zapProcReq) throws ApiException {
-        okhttp3.Call localVarCall = postGitZapDeleterepoValidateBeforeCall(zapProcReq, null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * Delete a repository over the ZAP transport (asynchronously)
-     * Deletes the repository named by &#x60;name&#x60; and answers with the deleted name. A repository outside the caller&#39;s org and project scope is a 404 envelope, so a delete can never reach another tenant&#39;s repository.  A ZAP PROCEDURE, not a REST resource. It answers the bridge&#39;s {status, msg, data} envelope rather than the raw view the /v1 route returns, and it calls the SAME core function the REST route calls, so the two transports cannot diverge in behaviour. Org and project scope come from the request identity and NEVER from the body: the body cannot widen the caller&#39;s scope. Without a validated org the answer is a 403 envelope.
-     * @param zapProcReq  (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public okhttp3.Call postGitZapDeleterepoAsync(@javax.annotation.Nullable ZapProcReq zapProcReq, final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postGitZapDeleterepoValidateBeforeCall(zapProcReq, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postGitZapGetrepo
-     * @param zapProcReq  (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public okhttp3.Call postGitZapGetrepoCall(@javax.annotation.Nullable ZapProcReq zapProcReq, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = zapProcReq;
-
-        // create path and map variables
-        String localVarPath = "/v1/git/zap/getRepo";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postGitZapGetrepoValidateBeforeCall(@javax.annotation.Nullable ZapProcReq zapProcReq, final ApiCallback _callback) throws ApiException {
-        return postGitZapGetrepoCall(zapProcReq, _callback);
-
-    }
-
-    /**
-     * Read one repository over the ZAP transport
-     * Answers a single repository&#39;s record, named by &#x60;name&#x60;. A repository outside the caller&#39;s org and project scope is a 404 envelope, the same answer one that does not exist gets.  A ZAP PROCEDURE, not a REST resource. It answers the bridge&#39;s {status, msg, data} envelope rather than the raw view the /v1 route returns, and it calls the SAME core function the REST route calls, so the two transports cannot diverge in behaviour. Org and project scope come from the request identity and NEVER from the body: the body cannot widen the caller&#39;s scope. Without a validated org the answer is a 403 envelope.
-     * @param zapProcReq  (optional)
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public void postGitZapGetrepo(@javax.annotation.Nullable ZapProcReq zapProcReq) throws ApiException {
-        postGitZapGetrepoWithHttpInfo(zapProcReq);
-    }
-
-    /**
-     * Read one repository over the ZAP transport
-     * Answers a single repository&#39;s record, named by &#x60;name&#x60;. A repository outside the caller&#39;s org and project scope is a 404 envelope, the same answer one that does not exist gets.  A ZAP PROCEDURE, not a REST resource. It answers the bridge&#39;s {status, msg, data} envelope rather than the raw view the /v1 route returns, and it calls the SAME core function the REST route calls, so the two transports cannot diverge in behaviour. Org and project scope come from the request identity and NEVER from the body: the body cannot widen the caller&#39;s scope. Without a validated org the answer is a 403 envelope.
-     * @param zapProcReq  (optional)
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Void> postGitZapGetrepoWithHttpInfo(@javax.annotation.Nullable ZapProcReq zapProcReq) throws ApiException {
-        okhttp3.Call localVarCall = postGitZapGetrepoValidateBeforeCall(zapProcReq, null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * Read one repository over the ZAP transport (asynchronously)
-     * Answers a single repository&#39;s record, named by &#x60;name&#x60;. A repository outside the caller&#39;s org and project scope is a 404 envelope, the same answer one that does not exist gets.  A ZAP PROCEDURE, not a REST resource. It answers the bridge&#39;s {status, msg, data} envelope rather than the raw view the /v1 route returns, and it calls the SAME core function the REST route calls, so the two transports cannot diverge in behaviour. Org and project scope come from the request identity and NEVER from the body: the body cannot widen the caller&#39;s scope. Without a validated org the answer is a 403 envelope.
-     * @param zapProcReq  (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public okhttp3.Call postGitZapGetrepoAsync(@javax.annotation.Nullable ZapProcReq zapProcReq, final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postGitZapGetrepoValidateBeforeCall(zapProcReq, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postGitZapListrepos
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public okhttp3.Call postGitZapListreposCall(final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/git/zap/listRepos";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postGitZapListreposValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postGitZapListreposCall(_callback);
-
-    }
-
-    /**
-     * List your repositories over the ZAP transport
-     * Answers every repository in the caller&#39;s org and project scope. It reads NO body — the scope is entirely the caller&#39;s identity — so a request with an empty object is correct.  A ZAP PROCEDURE, not a REST resource. It answers the bridge&#39;s {status, msg, data} envelope rather than the raw view the /v1 route returns, and it calls the SAME core function the REST route calls, so the two transports cannot diverge in behaviour. Org and project scope come from the request identity and NEVER from the body: the body cannot widen the caller&#39;s scope. Without a validated org the answer is a 403 envelope.
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public void postGitZapListrepos() throws ApiException {
-        postGitZapListreposWithHttpInfo();
-    }
-
-    /**
-     * List your repositories over the ZAP transport
-     * Answers every repository in the caller&#39;s org and project scope. It reads NO body — the scope is entirely the caller&#39;s identity — so a request with an empty object is correct.  A ZAP PROCEDURE, not a REST resource. It answers the bridge&#39;s {status, msg, data} envelope rather than the raw view the /v1 route returns, and it calls the SAME core function the REST route calls, so the two transports cannot diverge in behaviour. Org and project scope come from the request identity and NEVER from the body: the body cannot widen the caller&#39;s scope. Without a validated org the answer is a 403 envelope.
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Void> postGitZapListreposWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postGitZapListreposValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * List your repositories over the ZAP transport (asynchronously)
-     * Answers every repository in the caller&#39;s org and project scope. It reads NO body — the scope is entirely the caller&#39;s identity — so a request with an empty object is correct.  A ZAP PROCEDURE, not a REST resource. It answers the bridge&#39;s {status, msg, data} envelope rather than the raw view the /v1 route returns, and it calls the SAME core function the REST route calls, so the two transports cannot diverge in behaviour. Org and project scope come from the request identity and NEVER from the body: the body cannot widen the caller&#39;s scope. Without a validated org the answer is a 403 envelope.
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public okhttp3.Call postGitZapListreposAsync(final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postGitZapListreposValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postGitZapUsage
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public okhttp3.Call postGitZapUsageCall(final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/git/zap/usage";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postGitZapUsageValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postGitZapUsageCall(_callback);
-
-    }
-
-    /**
-     * Report your org&#39;s git storage footprint over the ZAP transport
-     * Answers every repository in the caller&#39;s org with its size in bytes, plus the org&#39;s total — what git storage is actually being used, and by which repository. It reads NO body, and it is scoped to the caller&#39;s own org, so it is that org&#39;s footprint and never the fleet&#39;s.  A ZAP PROCEDURE, not a REST resource. It answers the bridge&#39;s {status, msg, data} envelope rather than the raw view the /v1 route returns, and it calls the SAME core function the REST route calls, so the two transports cannot diverge in behaviour. Org and project scope come from the request identity and NEVER from the body: the body cannot widen the caller&#39;s scope. Without a validated org the answer is a 403 envelope.
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public void postGitZapUsage() throws ApiException {
-        postGitZapUsageWithHttpInfo();
-    }
-
-    /**
-     * Report your org&#39;s git storage footprint over the ZAP transport
-     * Answers every repository in the caller&#39;s org with its size in bytes, plus the org&#39;s total — what git storage is actually being used, and by which repository. It reads NO body, and it is scoped to the caller&#39;s own org, so it is that org&#39;s footprint and never the fleet&#39;s.  A ZAP PROCEDURE, not a REST resource. It answers the bridge&#39;s {status, msg, data} envelope rather than the raw view the /v1 route returns, and it calls the SAME core function the REST route calls, so the two transports cannot diverge in behaviour. Org and project scope come from the request identity and NEVER from the body: the body cannot widen the caller&#39;s scope. Without a validated org the answer is a 403 envelope.
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Void> postGitZapUsageWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postGitZapUsageValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * Report your org&#39;s git storage footprint over the ZAP transport (asynchronously)
-     * Answers every repository in the caller&#39;s org with its size in bytes, plus the org&#39;s total — what git storage is actually being used, and by which repository. It reads NO body, and it is scoped to the caller&#39;s own org, so it is that org&#39;s footprint and never the fleet&#39;s.  A ZAP PROCEDURE, not a REST resource. It answers the bridge&#39;s {status, msg, data} envelope rather than the raw view the /v1 route returns, and it calls the SAME core function the REST route calls, so the two transports cannot diverge in behaviour. Org and project scope come from the request identity and NEVER from the body: the body cannot widen the caller&#39;s scope. Without a validated org the answer is a 403 envelope.
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public okhttp3.Call postGitZapUsageAsync(final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postGitZapUsageValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }

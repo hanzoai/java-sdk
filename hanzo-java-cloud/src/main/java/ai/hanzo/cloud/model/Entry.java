@@ -118,7 +118,7 @@ public class Entry {
   public static final String SERIALIZED_NAME_STARS = "stars";
   @SerializedName(SERIALIZED_NAME_STARS)
   @javax.annotation.Nullable
-  private Integer stars;
+  private Long stars;
 
   public static final String SERIALIZED_NAME_TEMPLATE = "template";
   @SerializedName(SERIALIZED_NAME_TEMPLATE)
@@ -395,7 +395,7 @@ public class Entry {
   }
 
 
-  public Entry stars(@javax.annotation.Nullable Integer stars) {
+  public Entry stars(@javax.annotation.Nullable Long stars) {
     this.stars = stars;
     return this;
   }
@@ -405,11 +405,11 @@ public class Entry {
    * @return stars
    */
   @javax.annotation.Nullable
-  public Integer getStars() {
+  public Long getStars() {
     return stars;
   }
 
-  public void setStars(@javax.annotation.Nullable Integer stars) {
+  public void setStars(@javax.annotation.Nullable Long stars) {
     this.stars = stars;
   }
 

@@ -58,7 +58,7 @@ public class AuthorRepo {
   public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
   @javax.annotation.Nullable
-  private Integer createdAt;
+  private Long createdAt;
 
   public static final String SERIALIZED_NAME_METHOD = "method";
   @SerializedName(SERIALIZED_NAME_METHOD)
@@ -78,7 +78,7 @@ public class AuthorRepo {
   public static final String SERIALIZED_NAME_VERIFIED_AT = "verifiedAt";
   @SerializedName(SERIALIZED_NAME_VERIFIED_AT)
   @javax.annotation.Nullable
-  private Integer verifiedAt;
+  private Long verifiedAt;
 
   public AuthorRepo() {
   }
@@ -102,7 +102,7 @@ public class AuthorRepo {
   }
 
 
-  public AuthorRepo createdAt(@javax.annotation.Nullable Integer createdAt) {
+  public AuthorRepo createdAt(@javax.annotation.Nullable Long createdAt) {
     this.createdAt = createdAt;
     return this;
   }
@@ -112,11 +112,11 @@ public class AuthorRepo {
    * @return createdAt
    */
   @javax.annotation.Nullable
-  public Integer getCreatedAt() {
+  public Long getCreatedAt() {
     return createdAt;
   }
 
-  public void setCreatedAt(@javax.annotation.Nullable Integer createdAt) {
+  public void setCreatedAt(@javax.annotation.Nullable Long createdAt) {
     this.createdAt = createdAt;
   }
 
@@ -178,7 +178,7 @@ public class AuthorRepo {
   }
 
 
-  public AuthorRepo verifiedAt(@javax.annotation.Nullable Integer verifiedAt) {
+  public AuthorRepo verifiedAt(@javax.annotation.Nullable Long verifiedAt) {
     this.verifiedAt = verifiedAt;
     return this;
   }
@@ -188,11 +188,11 @@ public class AuthorRepo {
    * @return verifiedAt
    */
   @javax.annotation.Nullable
-  public Integer getVerifiedAt() {
+  public Long getVerifiedAt() {
     return verifiedAt;
   }
 
-  public void setVerifiedAt(@javax.annotation.Nullable Integer verifiedAt) {
+  public void setVerifiedAt(@javax.annotation.Nullable Long verifiedAt) {
     this.verifiedAt = verifiedAt;
   }
 

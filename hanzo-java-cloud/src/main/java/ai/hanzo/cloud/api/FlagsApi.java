@@ -217,7 +217,7 @@ public class FlagsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getFlagsActivityCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getFlagsActivityCall(@javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -266,7 +266,7 @@ public class FlagsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getFlagsActivityValidateBeforeCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getFlagsActivityValidateBeforeCall(@javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         return getFlagsActivityCall(limit, _callback);
 
     }
@@ -284,7 +284,7 @@ public class FlagsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ActivityOut getFlagsActivity(@javax.annotation.Nullable Integer limit) throws ApiException {
+    public ActivityOut getFlagsActivity(@javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<ActivityOut> localVarResp = getFlagsActivityWithHttpInfo(limit);
         return localVarResp.getData();
     }
@@ -302,7 +302,7 @@ public class FlagsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ActivityOut> getFlagsActivityWithHttpInfo(@javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<ActivityOut> getFlagsActivityWithHttpInfo(@javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getFlagsActivityValidateBeforeCall(limit, null);
         Type localVarReturnType = new TypeToken<ActivityOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -322,7 +322,7 @@ public class FlagsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getFlagsActivityAsync(@javax.annotation.Nullable Integer limit, final ApiCallback<ActivityOut> _callback) throws ApiException {
+    public okhttp3.Call getFlagsActivityAsync(@javax.annotation.Nullable Long limit, final ApiCallback<ActivityOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getFlagsActivityValidateBeforeCall(limit, _callback);
         Type localVarReturnType = new TypeToken<ActivityOut>(){}.getType();

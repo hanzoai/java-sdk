@@ -65,7 +65,7 @@ public class DataroomLink {
   public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
   @javax.annotation.Nullable
-  private Integer createdAt;
+  private Long createdAt;
 
   public static final String SERIALIZED_NAME_DATAROOM_ID = "dataroomId";
   @SerializedName(SERIALIZED_NAME_DATAROOM_ID)
@@ -90,7 +90,7 @@ public class DataroomLink {
   public static final String SERIALIZED_NAME_EXPIRES_AT = "expiresAt";
   @SerializedName(SERIALIZED_NAME_EXPIRES_AT)
   @javax.annotation.Nullable
-  private Integer expiresAt;
+  private Long expiresAt;
 
   public static final String SERIALIZED_NAME_HAS_PASSWORD = "hasPassword";
   @SerializedName(SERIALIZED_NAME_HAS_PASSWORD)
@@ -120,7 +120,7 @@ public class DataroomLink {
   public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)
   @javax.annotation.Nullable
-  private Integer updatedAt;
+  private Long updatedAt;
 
   public DataroomLink() {
   }
@@ -171,7 +171,7 @@ public class DataroomLink {
   }
 
 
-  public DataroomLink createdAt(@javax.annotation.Nullable Integer createdAt) {
+  public DataroomLink createdAt(@javax.annotation.Nullable Long createdAt) {
     this.createdAt = createdAt;
     return this;
   }
@@ -181,11 +181,11 @@ public class DataroomLink {
    * @return createdAt
    */
   @javax.annotation.Nullable
-  public Integer getCreatedAt() {
+  public Long getCreatedAt() {
     return createdAt;
   }
 
-  public void setCreatedAt(@javax.annotation.Nullable Integer createdAt) {
+  public void setCreatedAt(@javax.annotation.Nullable Long createdAt) {
     this.createdAt = createdAt;
   }
 
@@ -274,7 +274,7 @@ public class DataroomLink {
   }
 
 
-  public DataroomLink expiresAt(@javax.annotation.Nullable Integer expiresAt) {
+  public DataroomLink expiresAt(@javax.annotation.Nullable Long expiresAt) {
     this.expiresAt = expiresAt;
     return this;
   }
@@ -284,11 +284,11 @@ public class DataroomLink {
    * @return expiresAt
    */
   @javax.annotation.Nullable
-  public Integer getExpiresAt() {
+  public Long getExpiresAt() {
     return expiresAt;
   }
 
-  public void setExpiresAt(@javax.annotation.Nullable Integer expiresAt) {
+  public void setExpiresAt(@javax.annotation.Nullable Long expiresAt) {
     this.expiresAt = expiresAt;
   }
 
@@ -388,7 +388,7 @@ public class DataroomLink {
   }
 
 
-  public DataroomLink updatedAt(@javax.annotation.Nullable Integer updatedAt) {
+  public DataroomLink updatedAt(@javax.annotation.Nullable Long updatedAt) {
     this.updatedAt = updatedAt;
     return this;
   }
@@ -398,11 +398,11 @@ public class DataroomLink {
    * @return updatedAt
    */
   @javax.annotation.Nullable
-  public Integer getUpdatedAt() {
+  public Long getUpdatedAt() {
     return updatedAt;
   }
 
-  public void setUpdatedAt(@javax.annotation.Nullable Integer updatedAt) {
+  public void setUpdatedAt(@javax.annotation.Nullable Long updatedAt) {
     this.updatedAt = updatedAt;
   }
 

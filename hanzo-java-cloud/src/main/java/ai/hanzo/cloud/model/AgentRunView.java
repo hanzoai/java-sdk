@@ -63,7 +63,7 @@ public class AgentRunView {
   public static final String SERIALIZED_NAME_COMPLETION_TOKENS = "completionTokens";
   @SerializedName(SERIALIZED_NAME_COMPLETION_TOKENS)
   @javax.annotation.Nullable
-  private Integer completionTokens;
+  private Long completionTokens;
 
   public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
@@ -73,7 +73,7 @@ public class AgentRunView {
   public static final String SERIALIZED_NAME_DURATION_MS = "durationMs";
   @SerializedName(SERIALIZED_NAME_DURATION_MS)
   @javax.annotation.Nullable
-  private Integer durationMs;
+  private Long durationMs;
 
   public static final String SERIALIZED_NAME_ERROR = "error";
   @SerializedName(SERIALIZED_NAME_ERROR)
@@ -103,7 +103,7 @@ public class AgentRunView {
   public static final String SERIALIZED_NAME_PROMPT_TOKENS = "promptTokens";
   @SerializedName(SERIALIZED_NAME_PROMPT_TOKENS)
   @javax.annotation.Nullable
-  private Integer promptTokens;
+  private Long promptTokens;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
@@ -113,7 +113,7 @@ public class AgentRunView {
   public static final String SERIALIZED_NAME_TOOL_CALLS = "toolCalls";
   @SerializedName(SERIALIZED_NAME_TOOL_CALLS)
   @javax.annotation.Nullable
-  private Integer toolCalls;
+  private Long toolCalls;
 
   public static final String SERIALIZED_NAME_TRACE_ID = "traceId";
   @SerializedName(SERIALIZED_NAME_TRACE_ID)
@@ -161,7 +161,7 @@ public class AgentRunView {
   }
 
 
-  public AgentRunView completionTokens(@javax.annotation.Nullable Integer completionTokens) {
+  public AgentRunView completionTokens(@javax.annotation.Nullable Long completionTokens) {
     this.completionTokens = completionTokens;
     return this;
   }
@@ -171,11 +171,11 @@ public class AgentRunView {
    * @return completionTokens
    */
   @javax.annotation.Nullable
-  public Integer getCompletionTokens() {
+  public Long getCompletionTokens() {
     return completionTokens;
   }
 
-  public void setCompletionTokens(@javax.annotation.Nullable Integer completionTokens) {
+  public void setCompletionTokens(@javax.annotation.Nullable Long completionTokens) {
     this.completionTokens = completionTokens;
   }
 
@@ -199,7 +199,7 @@ public class AgentRunView {
   }
 
 
-  public AgentRunView durationMs(@javax.annotation.Nullable Integer durationMs) {
+  public AgentRunView durationMs(@javax.annotation.Nullable Long durationMs) {
     this.durationMs = durationMs;
     return this;
   }
@@ -209,11 +209,11 @@ public class AgentRunView {
    * @return durationMs
    */
   @javax.annotation.Nullable
-  public Integer getDurationMs() {
+  public Long getDurationMs() {
     return durationMs;
   }
 
-  public void setDurationMs(@javax.annotation.Nullable Integer durationMs) {
+  public void setDurationMs(@javax.annotation.Nullable Long durationMs) {
     this.durationMs = durationMs;
   }
 
@@ -313,7 +313,7 @@ public class AgentRunView {
   }
 
 
-  public AgentRunView promptTokens(@javax.annotation.Nullable Integer promptTokens) {
+  public AgentRunView promptTokens(@javax.annotation.Nullable Long promptTokens) {
     this.promptTokens = promptTokens;
     return this;
   }
@@ -323,11 +323,11 @@ public class AgentRunView {
    * @return promptTokens
    */
   @javax.annotation.Nullable
-  public Integer getPromptTokens() {
+  public Long getPromptTokens() {
     return promptTokens;
   }
 
-  public void setPromptTokens(@javax.annotation.Nullable Integer promptTokens) {
+  public void setPromptTokens(@javax.annotation.Nullable Long promptTokens) {
     this.promptTokens = promptTokens;
   }
 
@@ -351,7 +351,7 @@ public class AgentRunView {
   }
 
 
-  public AgentRunView toolCalls(@javax.annotation.Nullable Integer toolCalls) {
+  public AgentRunView toolCalls(@javax.annotation.Nullable Long toolCalls) {
     this.toolCalls = toolCalls;
     return this;
   }
@@ -361,11 +361,11 @@ public class AgentRunView {
    * @return toolCalls
    */
   @javax.annotation.Nullable
-  public Integer getToolCalls() {
+  public Long getToolCalls() {
     return toolCalls;
   }
 
-  public void setToolCalls(@javax.annotation.Nullable Integer toolCalls) {
+  public void setToolCalls(@javax.annotation.Nullable Long toolCalls) {
     this.toolCalls = toolCalls;
   }
 

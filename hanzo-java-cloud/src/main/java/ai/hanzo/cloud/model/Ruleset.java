@@ -53,7 +53,7 @@ public class Ruleset {
   public static final String SERIALIZED_NAME_RULES = "rules";
   @SerializedName(SERIALIZED_NAME_RULES)
   @javax.annotation.Nullable
-  private Integer rules;
+  private Long rules;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
@@ -63,7 +63,7 @@ public class Ruleset {
   public Ruleset() {
   }
 
-  public Ruleset rules(@javax.annotation.Nullable Integer rules) {
+  public Ruleset rules(@javax.annotation.Nullable Long rules) {
     this.rules = rules;
     return this;
   }
@@ -73,11 +73,11 @@ public class Ruleset {
    * @return rules
    */
   @javax.annotation.Nullable
-  public Integer getRules() {
+  public Long getRules() {
     return rules;
   }
 
-  public void setRules(@javax.annotation.Nullable Integer rules) {
+  public void setRules(@javax.annotation.Nullable Long rules) {
     this.rules = rules;
   }
 

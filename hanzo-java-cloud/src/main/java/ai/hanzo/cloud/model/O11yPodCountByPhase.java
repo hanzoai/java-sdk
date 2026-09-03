@@ -53,32 +53,32 @@ public class O11yPodCountByPhase {
   public static final String SERIALIZED_NAME_FAILED = "failed";
   @SerializedName(SERIALIZED_NAME_FAILED)
   @javax.annotation.Nullable
-  private Integer failed;
+  private Long failed;
 
   public static final String SERIALIZED_NAME_PENDING = "pending";
   @SerializedName(SERIALIZED_NAME_PENDING)
   @javax.annotation.Nullable
-  private Integer pending;
+  private Long pending;
 
   public static final String SERIALIZED_NAME_RUNNING = "running";
   @SerializedName(SERIALIZED_NAME_RUNNING)
   @javax.annotation.Nullable
-  private Integer running;
+  private Long running;
 
   public static final String SERIALIZED_NAME_SUCCEEDED = "succeeded";
   @SerializedName(SERIALIZED_NAME_SUCCEEDED)
   @javax.annotation.Nullable
-  private Integer succeeded;
+  private Long succeeded;
 
   public static final String SERIALIZED_NAME_UNKNOWN = "unknown";
   @SerializedName(SERIALIZED_NAME_UNKNOWN)
   @javax.annotation.Nullable
-  private Integer unknown;
+  private Long unknown;
 
   public O11yPodCountByPhase() {
   }
 
-  public O11yPodCountByPhase failed(@javax.annotation.Nullable Integer failed) {
+  public O11yPodCountByPhase failed(@javax.annotation.Nullable Long failed) {
     this.failed = failed;
     return this;
   }
@@ -88,16 +88,16 @@ public class O11yPodCountByPhase {
    * @return failed
    */
   @javax.annotation.Nullable
-  public Integer getFailed() {
+  public Long getFailed() {
     return failed;
   }
 
-  public void setFailed(@javax.annotation.Nullable Integer failed) {
+  public void setFailed(@javax.annotation.Nullable Long failed) {
     this.failed = failed;
   }
 
 
-  public O11yPodCountByPhase pending(@javax.annotation.Nullable Integer pending) {
+  public O11yPodCountByPhase pending(@javax.annotation.Nullable Long pending) {
     this.pending = pending;
     return this;
   }
@@ -107,16 +107,16 @@ public class O11yPodCountByPhase {
    * @return pending
    */
   @javax.annotation.Nullable
-  public Integer getPending() {
+  public Long getPending() {
     return pending;
   }
 
-  public void setPending(@javax.annotation.Nullable Integer pending) {
+  public void setPending(@javax.annotation.Nullable Long pending) {
     this.pending = pending;
   }
 
 
-  public O11yPodCountByPhase running(@javax.annotation.Nullable Integer running) {
+  public O11yPodCountByPhase running(@javax.annotation.Nullable Long running) {
     this.running = running;
     return this;
   }
@@ -126,16 +126,16 @@ public class O11yPodCountByPhase {
    * @return running
    */
   @javax.annotation.Nullable
-  public Integer getRunning() {
+  public Long getRunning() {
     return running;
   }
 
-  public void setRunning(@javax.annotation.Nullable Integer running) {
+  public void setRunning(@javax.annotation.Nullable Long running) {
     this.running = running;
   }
 
 
-  public O11yPodCountByPhase succeeded(@javax.annotation.Nullable Integer succeeded) {
+  public O11yPodCountByPhase succeeded(@javax.annotation.Nullable Long succeeded) {
     this.succeeded = succeeded;
     return this;
   }
@@ -145,16 +145,16 @@ public class O11yPodCountByPhase {
    * @return succeeded
    */
   @javax.annotation.Nullable
-  public Integer getSucceeded() {
+  public Long getSucceeded() {
     return succeeded;
   }
 
-  public void setSucceeded(@javax.annotation.Nullable Integer succeeded) {
+  public void setSucceeded(@javax.annotation.Nullable Long succeeded) {
     this.succeeded = succeeded;
   }
 
 
-  public O11yPodCountByPhase unknown(@javax.annotation.Nullable Integer unknown) {
+  public O11yPodCountByPhase unknown(@javax.annotation.Nullable Long unknown) {
     this.unknown = unknown;
     return this;
   }
@@ -164,11 +164,11 @@ public class O11yPodCountByPhase {
    * @return unknown
    */
   @javax.annotation.Nullable
-  public Integer getUnknown() {
+  public Long getUnknown() {
     return unknown;
   }
 
-  public void setUnknown(@javax.annotation.Nullable Integer unknown) {
+  public void setUnknown(@javax.annotation.Nullable Long unknown) {
     this.unknown = unknown;
   }
 

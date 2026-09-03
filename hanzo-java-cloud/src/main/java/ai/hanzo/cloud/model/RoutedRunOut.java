@@ -88,7 +88,7 @@ public class RoutedRunOut {
   public static final String SERIALIZED_NAME_TIMEOUT_SECONDS = "timeoutSeconds";
   @SerializedName(SERIALIZED_NAME_TIMEOUT_SECONDS)
   @javax.annotation.Nullable
-  private Integer timeoutSeconds;
+  private Long timeoutSeconds;
 
   public RoutedRunOut() {
   }
@@ -226,7 +226,7 @@ public class RoutedRunOut {
   }
 
 
-  public RoutedRunOut timeoutSeconds(@javax.annotation.Nullable Integer timeoutSeconds) {
+  public RoutedRunOut timeoutSeconds(@javax.annotation.Nullable Long timeoutSeconds) {
     this.timeoutSeconds = timeoutSeconds;
     return this;
   }
@@ -236,11 +236,11 @@ public class RoutedRunOut {
    * @return timeoutSeconds
    */
   @javax.annotation.Nullable
-  public Integer getTimeoutSeconds() {
+  public Long getTimeoutSeconds() {
     return timeoutSeconds;
   }
 
-  public void setTimeoutSeconds(@javax.annotation.Nullable Integer timeoutSeconds) {
+  public void setTimeoutSeconds(@javax.annotation.Nullable Long timeoutSeconds) {
     this.timeoutSeconds = timeoutSeconds;
   }
 

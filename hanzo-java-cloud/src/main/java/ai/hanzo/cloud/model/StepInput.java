@@ -58,7 +58,7 @@ public class StepInput {
   public static final String SERIALIZED_NAME_DELAY_SECONDS = "delaySeconds";
   @SerializedName(SERIALIZED_NAME_DELAY_SECONDS)
   @javax.annotation.Nullable
-  private Integer delaySeconds;
+  private Long delaySeconds;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -92,7 +92,7 @@ public class StepInput {
   }
 
 
-  public StepInput delaySeconds(@javax.annotation.Nullable Integer delaySeconds) {
+  public StepInput delaySeconds(@javax.annotation.Nullable Long delaySeconds) {
     this.delaySeconds = delaySeconds;
     return this;
   }
@@ -102,11 +102,11 @@ public class StepInput {
    * @return delaySeconds
    */
   @javax.annotation.Nullable
-  public Integer getDelaySeconds() {
+  public Long getDelaySeconds() {
     return delaySeconds;
   }
 
-  public void setDelaySeconds(@javax.annotation.Nullable Integer delaySeconds) {
+  public void setDelaySeconds(@javax.annotation.Nullable Long delaySeconds) {
     this.delaySeconds = delaySeconds;
   }
 

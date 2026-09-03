@@ -80,7 +80,7 @@ public class ExecRequest {
   public static final String SERIALIZED_NAME_TIMEOUT_SEC = "timeoutSec";
   @SerializedName(SERIALIZED_NAME_TIMEOUT_SEC)
   @javax.annotation.Nullable
-  private Integer timeoutSec;
+  private Long timeoutSec;
 
   public ExecRequest() {
   }
@@ -188,7 +188,7 @@ public class ExecRequest {
   }
 
 
-  public ExecRequest timeoutSec(@javax.annotation.Nullable Integer timeoutSec) {
+  public ExecRequest timeoutSec(@javax.annotation.Nullable Long timeoutSec) {
     this.timeoutSec = timeoutSec;
     return this;
   }
@@ -198,11 +198,11 @@ public class ExecRequest {
    * @return timeoutSec
    */
   @javax.annotation.Nullable
-  public Integer getTimeoutSec() {
+  public Long getTimeoutSec() {
     return timeoutSec;
   }
 
-  public void setTimeoutSec(@javax.annotation.Nullable Integer timeoutSec) {
+  public void setTimeoutSec(@javax.annotation.Nullable Long timeoutSec) {
     this.timeoutSec = timeoutSec;
   }
 

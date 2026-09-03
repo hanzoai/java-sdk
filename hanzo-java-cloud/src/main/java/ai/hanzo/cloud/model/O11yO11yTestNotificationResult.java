@@ -53,7 +53,7 @@ public class O11yO11yTestNotificationResult {
   public static final String SERIALIZED_NAME_ALERT_COUNT = "alertCount";
   @SerializedName(SERIALIZED_NAME_ALERT_COUNT)
   @javax.annotation.Nullable
-  private Integer alertCount;
+  private Long alertCount;
 
   public static final String SERIALIZED_NAME_MESSAGE = "message";
   @SerializedName(SERIALIZED_NAME_MESSAGE)
@@ -63,7 +63,7 @@ public class O11yO11yTestNotificationResult {
   public O11yO11yTestNotificationResult() {
   }
 
-  public O11yO11yTestNotificationResult alertCount(@javax.annotation.Nullable Integer alertCount) {
+  public O11yO11yTestNotificationResult alertCount(@javax.annotation.Nullable Long alertCount) {
     this.alertCount = alertCount;
     return this;
   }
@@ -73,11 +73,11 @@ public class O11yO11yTestNotificationResult {
    * @return alertCount
    */
   @javax.annotation.Nullable
-  public Integer getAlertCount() {
+  public Long getAlertCount() {
     return alertCount;
   }
 
-  public void setAlertCount(@javax.annotation.Nullable Integer alertCount) {
+  public void setAlertCount(@javax.annotation.Nullable Long alertCount) {
     this.alertCount = alertCount;
   }
 

@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -59,7 +58,7 @@ public class SeoRanking {
   public static final String SERIALIZED_NAME_POSITION = "position";
   @SerializedName(SERIALIZED_NAME_POSITION)
   @javax.annotation.Nullable
-  private Integer position;
+  private Long position;
 
   public static final String SERIALIZED_NAME_TITLE = "title";
   @SerializedName(SERIALIZED_NAME_TITLE)
@@ -69,7 +68,7 @@ public class SeoRanking {
   public static final String SERIALIZED_NAME_TRAFFIC = "traffic";
   @SerializedName(SERIALIZED_NAME_TRAFFIC)
   @javax.annotation.Nullable
-  private BigDecimal traffic;
+  private Double traffic;
 
   public static final String SERIALIZED_NAME_URL = "url";
   @SerializedName(SERIALIZED_NAME_URL)
@@ -79,7 +78,7 @@ public class SeoRanking {
   public static final String SERIALIZED_NAME_VOLUME = "volume";
   @SerializedName(SERIALIZED_NAME_VOLUME)
   @javax.annotation.Nullable
-  private Integer volume;
+  private Long volume;
 
   public SeoRanking() {
   }
@@ -103,7 +102,7 @@ public class SeoRanking {
   }
 
 
-  public SeoRanking position(@javax.annotation.Nullable Integer position) {
+  public SeoRanking position(@javax.annotation.Nullable Long position) {
     this.position = position;
     return this;
   }
@@ -113,11 +112,11 @@ public class SeoRanking {
    * @return position
    */
   @javax.annotation.Nullable
-  public Integer getPosition() {
+  public Long getPosition() {
     return position;
   }
 
-  public void setPosition(@javax.annotation.Nullable Integer position) {
+  public void setPosition(@javax.annotation.Nullable Long position) {
     this.position = position;
   }
 
@@ -141,7 +140,7 @@ public class SeoRanking {
   }
 
 
-  public SeoRanking traffic(@javax.annotation.Nullable BigDecimal traffic) {
+  public SeoRanking traffic(@javax.annotation.Nullable Double traffic) {
     this.traffic = traffic;
     return this;
   }
@@ -151,11 +150,11 @@ public class SeoRanking {
    * @return traffic
    */
   @javax.annotation.Nullable
-  public BigDecimal getTraffic() {
+  public Double getTraffic() {
     return traffic;
   }
 
-  public void setTraffic(@javax.annotation.Nullable BigDecimal traffic) {
+  public void setTraffic(@javax.annotation.Nullable Double traffic) {
     this.traffic = traffic;
   }
 
@@ -179,7 +178,7 @@ public class SeoRanking {
   }
 
 
-  public SeoRanking volume(@javax.annotation.Nullable Integer volume) {
+  public SeoRanking volume(@javax.annotation.Nullable Long volume) {
     this.volume = volume;
     return this;
   }
@@ -189,11 +188,11 @@ public class SeoRanking {
    * @return volume
    */
   @javax.annotation.Nullable
-  public Integer getVolume() {
+  public Long getVolume() {
     return volume;
   }
 
-  public void setVolume(@javax.annotation.Nullable Integer volume) {
+  public void setVolume(@javax.annotation.Nullable Long volume) {
     this.volume = volume;
   }
 

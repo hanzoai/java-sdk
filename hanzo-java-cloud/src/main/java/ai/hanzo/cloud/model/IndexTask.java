@@ -78,7 +78,7 @@ public class IndexTask {
   public static final String SERIALIZED_NAME_UID = "uid";
   @SerializedName(SERIALIZED_NAME_UID)
   @javax.annotation.Nullable
-  private Integer uid;
+  private Long uid;
 
   public IndexTask() {
   }
@@ -178,7 +178,7 @@ public class IndexTask {
   }
 
 
-  public IndexTask uid(@javax.annotation.Nullable Integer uid) {
+  public IndexTask uid(@javax.annotation.Nullable Long uid) {
     this.uid = uid;
     return this;
   }
@@ -188,11 +188,11 @@ public class IndexTask {
    * @return uid
    */
   @javax.annotation.Nullable
-  public Integer getUid() {
+  public Long getUid() {
     return uid;
   }
 
-  public void setUid(@javax.annotation.Nullable Integer uid) {
+  public void setUid(@javax.annotation.Nullable Long uid) {
     this.uid = uid;
   }
 

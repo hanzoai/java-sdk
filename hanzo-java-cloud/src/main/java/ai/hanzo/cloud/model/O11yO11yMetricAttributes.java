@@ -61,7 +61,7 @@ public class O11yO11yMetricAttributes {
   public static final String SERIALIZED_NAME_TOTAL_KEYS = "totalKeys";
   @SerializedName(SERIALIZED_NAME_TOTAL_KEYS)
   @javax.annotation.Nullable
-  private Integer totalKeys;
+  private Long totalKeys;
 
   public O11yO11yMetricAttributes() {
   }
@@ -93,7 +93,7 @@ public class O11yO11yMetricAttributes {
   }
 
 
-  public O11yO11yMetricAttributes totalKeys(@javax.annotation.Nullable Integer totalKeys) {
+  public O11yO11yMetricAttributes totalKeys(@javax.annotation.Nullable Long totalKeys) {
     this.totalKeys = totalKeys;
     return this;
   }
@@ -103,11 +103,11 @@ public class O11yO11yMetricAttributes {
    * @return totalKeys
    */
   @javax.annotation.Nullable
-  public Integer getTotalKeys() {
+  public Long getTotalKeys() {
     return totalKeys;
   }
 
-  public void setTotalKeys(@javax.annotation.Nullable Integer totalKeys) {
+  public void setTotalKeys(@javax.annotation.Nullable Long totalKeys) {
     this.totalKeys = totalKeys;
   }
 

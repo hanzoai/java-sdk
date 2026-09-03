@@ -58,7 +58,7 @@ public class WebOverview {
   public static final String SERIALIZED_NAME_PAGEVIEWS = "pageviews";
   @SerializedName(SERIALIZED_NAME_PAGEVIEWS)
   @javax.annotation.Nullable
-  private Integer pageviews;
+  private Long pageviews;
 
   public static final String SERIALIZED_NAME_REASON = "reason";
   @SerializedName(SERIALIZED_NAME_REASON)
@@ -68,7 +68,7 @@ public class WebOverview {
   public static final String SERIALIZED_NAME_SESSIONS = "sessions";
   @SerializedName(SERIALIZED_NAME_SESSIONS)
   @javax.annotation.Nullable
-  private Integer sessions;
+  private Long sessions;
 
   public static final String SERIALIZED_NAME_SOURCE = "source";
   @SerializedName(SERIALIZED_NAME_SOURCE)
@@ -78,7 +78,7 @@ public class WebOverview {
   public static final String SERIALIZED_NAME_VISITORS = "visitors";
   @SerializedName(SERIALIZED_NAME_VISITORS)
   @javax.annotation.Nullable
-  private Integer visitors;
+  private Long visitors;
 
   public WebOverview() {
   }
@@ -102,7 +102,7 @@ public class WebOverview {
   }
 
 
-  public WebOverview pageviews(@javax.annotation.Nullable Integer pageviews) {
+  public WebOverview pageviews(@javax.annotation.Nullable Long pageviews) {
     this.pageviews = pageviews;
     return this;
   }
@@ -112,11 +112,11 @@ public class WebOverview {
    * @return pageviews
    */
   @javax.annotation.Nullable
-  public Integer getPageviews() {
+  public Long getPageviews() {
     return pageviews;
   }
 
-  public void setPageviews(@javax.annotation.Nullable Integer pageviews) {
+  public void setPageviews(@javax.annotation.Nullable Long pageviews) {
     this.pageviews = pageviews;
   }
 
@@ -140,7 +140,7 @@ public class WebOverview {
   }
 
 
-  public WebOverview sessions(@javax.annotation.Nullable Integer sessions) {
+  public WebOverview sessions(@javax.annotation.Nullable Long sessions) {
     this.sessions = sessions;
     return this;
   }
@@ -150,11 +150,11 @@ public class WebOverview {
    * @return sessions
    */
   @javax.annotation.Nullable
-  public Integer getSessions() {
+  public Long getSessions() {
     return sessions;
   }
 
-  public void setSessions(@javax.annotation.Nullable Integer sessions) {
+  public void setSessions(@javax.annotation.Nullable Long sessions) {
     this.sessions = sessions;
   }
 
@@ -178,7 +178,7 @@ public class WebOverview {
   }
 
 
-  public WebOverview visitors(@javax.annotation.Nullable Integer visitors) {
+  public WebOverview visitors(@javax.annotation.Nullable Long visitors) {
     this.visitors = visitors;
     return this;
   }
@@ -188,11 +188,11 @@ public class WebOverview {
    * @return visitors
    */
   @javax.annotation.Nullable
-  public Integer getVisitors() {
+  public Long getVisitors() {
     return visitors;
   }
 
-  public void setVisitors(@javax.annotation.Nullable Integer visitors) {
+  public void setVisitors(@javax.annotation.Nullable Long visitors) {
     this.visitors = visitors;
   }
 

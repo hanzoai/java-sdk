@@ -53,32 +53,32 @@ public class BlueprintCounts {
   public static final String SERIALIZED_NAME_PRINCIPLES = "principles";
   @SerializedName(SERIALIZED_NAME_PRINCIPLES)
   @javax.annotation.Nullable
-  private Integer principles;
+  private Long principles;
 
   public static final String SERIALIZED_NAME_SECTIONS = "sections";
   @SerializedName(SERIALIZED_NAME_SECTIONS)
   @javax.annotation.Nullable
-  private Integer sections;
+  private Long sections;
 
   public static final String SERIALIZED_NAME_STEPS = "steps";
   @SerializedName(SERIALIZED_NAME_STEPS)
   @javax.annotation.Nullable
-  private Integer steps;
+  private Long steps;
 
   public static final String SERIALIZED_NAME_STRATEGIES = "strategies";
   @SerializedName(SERIALIZED_NAME_STRATEGIES)
   @javax.annotation.Nullable
-  private Integer strategies;
+  private Long strategies;
 
   public static final String SERIALIZED_NAME_TEMPLATES = "templates";
   @SerializedName(SERIALIZED_NAME_TEMPLATES)
   @javax.annotation.Nullable
-  private Integer templates;
+  private Long templates;
 
   public BlueprintCounts() {
   }
 
-  public BlueprintCounts principles(@javax.annotation.Nullable Integer principles) {
+  public BlueprintCounts principles(@javax.annotation.Nullable Long principles) {
     this.principles = principles;
     return this;
   }
@@ -88,16 +88,16 @@ public class BlueprintCounts {
    * @return principles
    */
   @javax.annotation.Nullable
-  public Integer getPrinciples() {
+  public Long getPrinciples() {
     return principles;
   }
 
-  public void setPrinciples(@javax.annotation.Nullable Integer principles) {
+  public void setPrinciples(@javax.annotation.Nullable Long principles) {
     this.principles = principles;
   }
 
 
-  public BlueprintCounts sections(@javax.annotation.Nullable Integer sections) {
+  public BlueprintCounts sections(@javax.annotation.Nullable Long sections) {
     this.sections = sections;
     return this;
   }
@@ -107,16 +107,16 @@ public class BlueprintCounts {
    * @return sections
    */
   @javax.annotation.Nullable
-  public Integer getSections() {
+  public Long getSections() {
     return sections;
   }
 
-  public void setSections(@javax.annotation.Nullable Integer sections) {
+  public void setSections(@javax.annotation.Nullable Long sections) {
     this.sections = sections;
   }
 
 
-  public BlueprintCounts steps(@javax.annotation.Nullable Integer steps) {
+  public BlueprintCounts steps(@javax.annotation.Nullable Long steps) {
     this.steps = steps;
     return this;
   }
@@ -126,16 +126,16 @@ public class BlueprintCounts {
    * @return steps
    */
   @javax.annotation.Nullable
-  public Integer getSteps() {
+  public Long getSteps() {
     return steps;
   }
 
-  public void setSteps(@javax.annotation.Nullable Integer steps) {
+  public void setSteps(@javax.annotation.Nullable Long steps) {
     this.steps = steps;
   }
 
 
-  public BlueprintCounts strategies(@javax.annotation.Nullable Integer strategies) {
+  public BlueprintCounts strategies(@javax.annotation.Nullable Long strategies) {
     this.strategies = strategies;
     return this;
   }
@@ -145,16 +145,16 @@ public class BlueprintCounts {
    * @return strategies
    */
   @javax.annotation.Nullable
-  public Integer getStrategies() {
+  public Long getStrategies() {
     return strategies;
   }
 
-  public void setStrategies(@javax.annotation.Nullable Integer strategies) {
+  public void setStrategies(@javax.annotation.Nullable Long strategies) {
     this.strategies = strategies;
   }
 
 
-  public BlueprintCounts templates(@javax.annotation.Nullable Integer templates) {
+  public BlueprintCounts templates(@javax.annotation.Nullable Long templates) {
     this.templates = templates;
     return this;
   }
@@ -164,11 +164,11 @@ public class BlueprintCounts {
    * @return templates
    */
   @javax.annotation.Nullable
-  public Integer getTemplates() {
+  public Long getTemplates() {
     return templates;
   }
 
-  public void setTemplates(@javax.annotation.Nullable Integer templates) {
+  public void setTemplates(@javax.annotation.Nullable Long templates) {
     this.templates = templates;
   }
 

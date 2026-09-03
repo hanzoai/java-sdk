@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -59,12 +58,12 @@ public class SampleView {
   public static final String SERIALIZED_NAME_COST_CENTS = "costCents";
   @SerializedName(SERIALIZED_NAME_COST_CENTS)
   @javax.annotation.Nullable
-  private Integer costCents;
+  private Long costCents;
 
   public static final String SERIALIZED_NAME_CPUS = "cpus";
   @SerializedName(SERIALIZED_NAME_CPUS)
   @javax.annotation.Nullable
-  private Integer cpus;
+  private Long cpus;
 
   public static final String SERIALIZED_NAME_GPU_MODEL = "gpuModel";
   @SerializedName(SERIALIZED_NAME_GPU_MODEL)
@@ -74,12 +73,12 @@ public class SampleView {
   public static final String SERIALIZED_NAME_GPU_UTIL = "gpuUtil";
   @SerializedName(SERIALIZED_NAME_GPU_UTIL)
   @javax.annotation.Nullable
-  private BigDecimal gpuUtil;
+  private Double gpuUtil;
 
   public static final String SERIALIZED_NAME_GPUS = "gpus";
   @SerializedName(SERIALIZED_NAME_GPUS)
   @javax.annotation.Nullable
-  private Integer gpus;
+  private Long gpus;
 
   public static final String SERIALIZED_NAME_HOST = "host";
   @SerializedName(SERIALIZED_NAME_HOST)
@@ -94,32 +93,32 @@ public class SampleView {
   public static final String SERIALIZED_NAME_LOAD1 = "load1";
   @SerializedName(SERIALIZED_NAME_LOAD1)
   @javax.annotation.Nullable
-  private BigDecimal load1;
+  private Double load1;
 
   public static final String SERIALIZED_NAME_LOAD5 = "load5";
   @SerializedName(SERIALIZED_NAME_LOAD5)
   @javax.annotation.Nullable
-  private BigDecimal load5;
+  private Double load5;
 
   public static final String SERIALIZED_NAME_LOAD15 = "load15";
   @SerializedName(SERIALIZED_NAME_LOAD15)
   @javax.annotation.Nullable
-  private BigDecimal load15;
+  private Double load15;
 
   public static final String SERIALIZED_NAME_MEM_FREE = "memFree";
   @SerializedName(SERIALIZED_NAME_MEM_FREE)
   @javax.annotation.Nullable
-  private Integer memFree;
+  private Long memFree;
 
   public static final String SERIALIZED_NAME_MEM_USED = "memUsed";
   @SerializedName(SERIALIZED_NAME_MEM_USED)
   @javax.annotation.Nullable
-  private Integer memUsed;
+  private Long memUsed;
 
   public static final String SERIALIZED_NAME_MEMORY = "memory";
   @SerializedName(SERIALIZED_NAME_MEMORY)
   @javax.annotation.Nullable
-  private Integer memory;
+  private Long memory;
 
   public static final String SERIALIZED_NAME_SOURCE = "source";
   @SerializedName(SERIALIZED_NAME_SOURCE)
@@ -153,7 +152,7 @@ public class SampleView {
   }
 
 
-  public SampleView costCents(@javax.annotation.Nullable Integer costCents) {
+  public SampleView costCents(@javax.annotation.Nullable Long costCents) {
     this.costCents = costCents;
     return this;
   }
@@ -163,16 +162,16 @@ public class SampleView {
    * @return costCents
    */
   @javax.annotation.Nullable
-  public Integer getCostCents() {
+  public Long getCostCents() {
     return costCents;
   }
 
-  public void setCostCents(@javax.annotation.Nullable Integer costCents) {
+  public void setCostCents(@javax.annotation.Nullable Long costCents) {
     this.costCents = costCents;
   }
 
 
-  public SampleView cpus(@javax.annotation.Nullable Integer cpus) {
+  public SampleView cpus(@javax.annotation.Nullable Long cpus) {
     this.cpus = cpus;
     return this;
   }
@@ -182,11 +181,11 @@ public class SampleView {
    * @return cpus
    */
   @javax.annotation.Nullable
-  public Integer getCpus() {
+  public Long getCpus() {
     return cpus;
   }
 
-  public void setCpus(@javax.annotation.Nullable Integer cpus) {
+  public void setCpus(@javax.annotation.Nullable Long cpus) {
     this.cpus = cpus;
   }
 
@@ -210,7 +209,7 @@ public class SampleView {
   }
 
 
-  public SampleView gpuUtil(@javax.annotation.Nullable BigDecimal gpuUtil) {
+  public SampleView gpuUtil(@javax.annotation.Nullable Double gpuUtil) {
     this.gpuUtil = gpuUtil;
     return this;
   }
@@ -220,16 +219,16 @@ public class SampleView {
    * @return gpuUtil
    */
   @javax.annotation.Nullable
-  public BigDecimal getGpuUtil() {
+  public Double getGpuUtil() {
     return gpuUtil;
   }
 
-  public void setGpuUtil(@javax.annotation.Nullable BigDecimal gpuUtil) {
+  public void setGpuUtil(@javax.annotation.Nullable Double gpuUtil) {
     this.gpuUtil = gpuUtil;
   }
 
 
-  public SampleView gpus(@javax.annotation.Nullable Integer gpus) {
+  public SampleView gpus(@javax.annotation.Nullable Long gpus) {
     this.gpus = gpus;
     return this;
   }
@@ -239,11 +238,11 @@ public class SampleView {
    * @return gpus
    */
   @javax.annotation.Nullable
-  public Integer getGpus() {
+  public Long getGpus() {
     return gpus;
   }
 
-  public void setGpus(@javax.annotation.Nullable Integer gpus) {
+  public void setGpus(@javax.annotation.Nullable Long gpus) {
     this.gpus = gpus;
   }
 
@@ -286,7 +285,7 @@ public class SampleView {
   }
 
 
-  public SampleView load1(@javax.annotation.Nullable BigDecimal load1) {
+  public SampleView load1(@javax.annotation.Nullable Double load1) {
     this.load1 = load1;
     return this;
   }
@@ -296,16 +295,16 @@ public class SampleView {
    * @return load1
    */
   @javax.annotation.Nullable
-  public BigDecimal getLoad1() {
+  public Double getLoad1() {
     return load1;
   }
 
-  public void setLoad1(@javax.annotation.Nullable BigDecimal load1) {
+  public void setLoad1(@javax.annotation.Nullable Double load1) {
     this.load1 = load1;
   }
 
 
-  public SampleView load5(@javax.annotation.Nullable BigDecimal load5) {
+  public SampleView load5(@javax.annotation.Nullable Double load5) {
     this.load5 = load5;
     return this;
   }
@@ -315,16 +314,16 @@ public class SampleView {
    * @return load5
    */
   @javax.annotation.Nullable
-  public BigDecimal getLoad5() {
+  public Double getLoad5() {
     return load5;
   }
 
-  public void setLoad5(@javax.annotation.Nullable BigDecimal load5) {
+  public void setLoad5(@javax.annotation.Nullable Double load5) {
     this.load5 = load5;
   }
 
 
-  public SampleView load15(@javax.annotation.Nullable BigDecimal load15) {
+  public SampleView load15(@javax.annotation.Nullable Double load15) {
     this.load15 = load15;
     return this;
   }
@@ -334,16 +333,16 @@ public class SampleView {
    * @return load15
    */
   @javax.annotation.Nullable
-  public BigDecimal getLoad15() {
+  public Double getLoad15() {
     return load15;
   }
 
-  public void setLoad15(@javax.annotation.Nullable BigDecimal load15) {
+  public void setLoad15(@javax.annotation.Nullable Double load15) {
     this.load15 = load15;
   }
 
 
-  public SampleView memFree(@javax.annotation.Nullable Integer memFree) {
+  public SampleView memFree(@javax.annotation.Nullable Long memFree) {
     this.memFree = memFree;
     return this;
   }
@@ -353,16 +352,16 @@ public class SampleView {
    * @return memFree
    */
   @javax.annotation.Nullable
-  public Integer getMemFree() {
+  public Long getMemFree() {
     return memFree;
   }
 
-  public void setMemFree(@javax.annotation.Nullable Integer memFree) {
+  public void setMemFree(@javax.annotation.Nullable Long memFree) {
     this.memFree = memFree;
   }
 
 
-  public SampleView memUsed(@javax.annotation.Nullable Integer memUsed) {
+  public SampleView memUsed(@javax.annotation.Nullable Long memUsed) {
     this.memUsed = memUsed;
     return this;
   }
@@ -372,16 +371,16 @@ public class SampleView {
    * @return memUsed
    */
   @javax.annotation.Nullable
-  public Integer getMemUsed() {
+  public Long getMemUsed() {
     return memUsed;
   }
 
-  public void setMemUsed(@javax.annotation.Nullable Integer memUsed) {
+  public void setMemUsed(@javax.annotation.Nullable Long memUsed) {
     this.memUsed = memUsed;
   }
 
 
-  public SampleView memory(@javax.annotation.Nullable Integer memory) {
+  public SampleView memory(@javax.annotation.Nullable Long memory) {
     this.memory = memory;
     return this;
   }
@@ -391,11 +390,11 @@ public class SampleView {
    * @return memory
    */
   @javax.annotation.Nullable
-  public Integer getMemory() {
+  public Long getMemory() {
     return memory;
   }
 
-  public void setMemory(@javax.annotation.Nullable Integer memory) {
+  public void setMemory(@javax.annotation.Nullable Long memory) {
     this.memory = memory;
   }
 

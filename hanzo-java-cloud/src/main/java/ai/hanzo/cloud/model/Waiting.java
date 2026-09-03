@@ -83,7 +83,7 @@ public class Waiting {
   public static final String SERIALIZED_NAME_SINCE = "since";
   @SerializedName(SERIALIZED_NAME_SINCE)
   @javax.annotation.Nullable
-  private Integer since;
+  private Long since;
 
   public Waiting() {
   }
@@ -202,7 +202,7 @@ public class Waiting {
   }
 
 
-  public Waiting since(@javax.annotation.Nullable Integer since) {
+  public Waiting since(@javax.annotation.Nullable Long since) {
     this.since = since;
     return this;
   }
@@ -212,11 +212,11 @@ public class Waiting {
    * @return since
    */
   @javax.annotation.Nullable
-  public Integer getSince() {
+  public Long getSince() {
     return since;
   }
 
-  public void setSince(@javax.annotation.Nullable Integer since) {
+  public void setSince(@javax.annotation.Nullable Long since) {
     this.since = since;
   }
 

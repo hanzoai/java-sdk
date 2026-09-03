@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -59,7 +58,7 @@ public class O11yPoint {
   public static final String SERIALIZED_NAME_V = "v";
   @SerializedName(SERIALIZED_NAME_V)
   @javax.annotation.Nullable
-  private BigDecimal v;
+  private Double v;
 
   public O11yPoint() {
   }
@@ -83,7 +82,7 @@ public class O11yPoint {
   }
 
 
-  public O11yPoint v(@javax.annotation.Nullable BigDecimal v) {
+  public O11yPoint v(@javax.annotation.Nullable Double v) {
     this.v = v;
     return this;
   }
@@ -93,11 +92,11 @@ public class O11yPoint {
    * @return v
    */
   @javax.annotation.Nullable
-  public BigDecimal getV() {
+  public Double getV() {
     return v;
   }
 
-  public void setV(@javax.annotation.Nullable BigDecimal v) {
+  public void setV(@javax.annotation.Nullable Double v) {
     this.v = v;
   }
 

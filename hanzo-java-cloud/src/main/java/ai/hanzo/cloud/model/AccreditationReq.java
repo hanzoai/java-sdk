@@ -63,7 +63,7 @@ public class AccreditationReq {
   public static final String SERIALIZED_NAME_EXPIRES_AT = "expiresAt";
   @SerializedName(SERIALIZED_NAME_EXPIRES_AT)
   @javax.annotation.Nullable
-  private Integer expiresAt;
+  private Long expiresAt;
 
   public static final String SERIALIZED_NAME_METHOD = "method";
   @SerializedName(SERIALIZED_NAME_METHOD)
@@ -126,7 +126,7 @@ public class AccreditationReq {
   }
 
 
-  public AccreditationReq expiresAt(@javax.annotation.Nullable Integer expiresAt) {
+  public AccreditationReq expiresAt(@javax.annotation.Nullable Long expiresAt) {
     this.expiresAt = expiresAt;
     return this;
   }
@@ -136,11 +136,11 @@ public class AccreditationReq {
    * @return expiresAt
    */
   @javax.annotation.Nullable
-  public Integer getExpiresAt() {
+  public Long getExpiresAt() {
     return expiresAt;
   }
 
-  public void setExpiresAt(@javax.annotation.Nullable Integer expiresAt) {
+  public void setExpiresAt(@javax.annotation.Nullable Long expiresAt) {
     this.expiresAt = expiresAt;
   }
 

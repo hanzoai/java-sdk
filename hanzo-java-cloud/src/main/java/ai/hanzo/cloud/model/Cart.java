@@ -66,7 +66,7 @@ public class Cart {
   public static final String SERIALIZED_NAME_DISCOUNT_CENTS = "discountCents";
   @SerializedName(SERIALIZED_NAME_DISCOUNT_CENTS)
   @javax.annotation.Nullable
-  private Integer discountCents;
+  private Long discountCents;
 
   public static final String SERIALIZED_NAME_EMAIL = "email";
   @SerializedName(SERIALIZED_NAME_EMAIL)
@@ -86,7 +86,7 @@ public class Cart {
   public static final String SERIALIZED_NAME_LINE_TOTAL_CENTS = "lineTotalCents";
   @SerializedName(SERIALIZED_NAME_LINE_TOTAL_CENTS)
   @javax.annotation.Nullable
-  private Integer lineTotalCents;
+  private Long lineTotalCents;
 
   public static final String SERIALIZED_NAME_ORDER = "order";
   @SerializedName(SERIALIZED_NAME_ORDER)
@@ -96,7 +96,7 @@ public class Cart {
   public static final String SERIALIZED_NAME_SHIPPING_CENTS = "shippingCents";
   @SerializedName(SERIALIZED_NAME_SHIPPING_CENTS)
   @javax.annotation.Nullable
-  private Integer shippingCents;
+  private Long shippingCents;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
@@ -111,17 +111,17 @@ public class Cart {
   public static final String SERIALIZED_NAME_SUBTOTAL_CENTS = "subtotalCents";
   @SerializedName(SERIALIZED_NAME_SUBTOTAL_CENTS)
   @javax.annotation.Nullable
-  private Integer subtotalCents;
+  private Long subtotalCents;
 
   public static final String SERIALIZED_NAME_TAX_CENTS = "taxCents";
   @SerializedName(SERIALIZED_NAME_TAX_CENTS)
   @javax.annotation.Nullable
-  private Integer taxCents;
+  private Long taxCents;
 
   public static final String SERIALIZED_NAME_TOTAL_CENTS = "totalCents";
   @SerializedName(SERIALIZED_NAME_TOTAL_CENTS)
   @javax.annotation.Nullable
-  private Integer totalCents;
+  private Long totalCents;
 
   public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)
@@ -174,7 +174,7 @@ public class Cart {
   }
 
 
-  public Cart discountCents(@javax.annotation.Nullable Integer discountCents) {
+  public Cart discountCents(@javax.annotation.Nullable Long discountCents) {
     this.discountCents = discountCents;
     return this;
   }
@@ -184,11 +184,11 @@ public class Cart {
    * @return discountCents
    */
   @javax.annotation.Nullable
-  public Integer getDiscountCents() {
+  public Long getDiscountCents() {
     return discountCents;
   }
 
-  public void setDiscountCents(@javax.annotation.Nullable Integer discountCents) {
+  public void setDiscountCents(@javax.annotation.Nullable Long discountCents) {
     this.discountCents = discountCents;
   }
 
@@ -258,7 +258,7 @@ public class Cart {
   }
 
 
-  public Cart lineTotalCents(@javax.annotation.Nullable Integer lineTotalCents) {
+  public Cart lineTotalCents(@javax.annotation.Nullable Long lineTotalCents) {
     this.lineTotalCents = lineTotalCents;
     return this;
   }
@@ -268,11 +268,11 @@ public class Cart {
    * @return lineTotalCents
    */
   @javax.annotation.Nullable
-  public Integer getLineTotalCents() {
+  public Long getLineTotalCents() {
     return lineTotalCents;
   }
 
-  public void setLineTotalCents(@javax.annotation.Nullable Integer lineTotalCents) {
+  public void setLineTotalCents(@javax.annotation.Nullable Long lineTotalCents) {
     this.lineTotalCents = lineTotalCents;
   }
 
@@ -296,7 +296,7 @@ public class Cart {
   }
 
 
-  public Cart shippingCents(@javax.annotation.Nullable Integer shippingCents) {
+  public Cart shippingCents(@javax.annotation.Nullable Long shippingCents) {
     this.shippingCents = shippingCents;
     return this;
   }
@@ -306,11 +306,11 @@ public class Cart {
    * @return shippingCents
    */
   @javax.annotation.Nullable
-  public Integer getShippingCents() {
+  public Long getShippingCents() {
     return shippingCents;
   }
 
-  public void setShippingCents(@javax.annotation.Nullable Integer shippingCents) {
+  public void setShippingCents(@javax.annotation.Nullable Long shippingCents) {
     this.shippingCents = shippingCents;
   }
 
@@ -353,7 +353,7 @@ public class Cart {
   }
 
 
-  public Cart subtotalCents(@javax.annotation.Nullable Integer subtotalCents) {
+  public Cart subtotalCents(@javax.annotation.Nullable Long subtotalCents) {
     this.subtotalCents = subtotalCents;
     return this;
   }
@@ -363,16 +363,16 @@ public class Cart {
    * @return subtotalCents
    */
   @javax.annotation.Nullable
-  public Integer getSubtotalCents() {
+  public Long getSubtotalCents() {
     return subtotalCents;
   }
 
-  public void setSubtotalCents(@javax.annotation.Nullable Integer subtotalCents) {
+  public void setSubtotalCents(@javax.annotation.Nullable Long subtotalCents) {
     this.subtotalCents = subtotalCents;
   }
 
 
-  public Cart taxCents(@javax.annotation.Nullable Integer taxCents) {
+  public Cart taxCents(@javax.annotation.Nullable Long taxCents) {
     this.taxCents = taxCents;
     return this;
   }
@@ -382,16 +382,16 @@ public class Cart {
    * @return taxCents
    */
   @javax.annotation.Nullable
-  public Integer getTaxCents() {
+  public Long getTaxCents() {
     return taxCents;
   }
 
-  public void setTaxCents(@javax.annotation.Nullable Integer taxCents) {
+  public void setTaxCents(@javax.annotation.Nullable Long taxCents) {
     this.taxCents = taxCents;
   }
 
 
-  public Cart totalCents(@javax.annotation.Nullable Integer totalCents) {
+  public Cart totalCents(@javax.annotation.Nullable Long totalCents) {
     this.totalCents = totalCents;
     return this;
   }
@@ -401,11 +401,11 @@ public class Cart {
    * @return totalCents
    */
   @javax.annotation.Nullable
-  public Integer getTotalCents() {
+  public Long getTotalCents() {
     return totalCents;
   }
 
-  public void setTotalCents(@javax.annotation.Nullable Integer totalCents) {
+  public void setTotalCents(@javax.annotation.Nullable Long totalCents) {
     this.totalCents = totalCents;
   }
 

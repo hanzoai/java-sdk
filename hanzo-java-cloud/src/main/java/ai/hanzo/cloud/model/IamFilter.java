@@ -53,7 +53,7 @@ public class IamFilter {
   public static final String SERIALIZED_NAME_MAX_RESULTS = "maxResults";
   @SerializedName(SERIALIZED_NAME_MAX_RESULTS)
   @javax.annotation.Nullable
-  private Integer maxResults;
+  private Long maxResults;
 
   public static final String SERIALIZED_NAME_SUPPORTED = "supported";
   @SerializedName(SERIALIZED_NAME_SUPPORTED)
@@ -63,7 +63,7 @@ public class IamFilter {
   public IamFilter() {
   }
 
-  public IamFilter maxResults(@javax.annotation.Nullable Integer maxResults) {
+  public IamFilter maxResults(@javax.annotation.Nullable Long maxResults) {
     this.maxResults = maxResults;
     return this;
   }
@@ -73,11 +73,11 @@ public class IamFilter {
    * @return maxResults
    */
   @javax.annotation.Nullable
-  public Integer getMaxResults() {
+  public Long getMaxResults() {
     return maxResults;
   }
 
-  public void setMaxResults(@javax.annotation.Nullable Integer maxResults) {
+  public void setMaxResults(@javax.annotation.Nullable Long maxResults) {
     this.maxResults = maxResults;
   }
 

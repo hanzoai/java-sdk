@@ -58,12 +58,12 @@ public class Day {
   public static final String SERIALIZED_NAME_COUNT = "count";
   @SerializedName(SERIALIZED_NAME_COUNT)
   @javax.annotation.Nullable
-  private Integer count;
+  private Long count;
 
   public static final String SERIALIZED_NAME_DATE = "date";
   @SerializedName(SERIALIZED_NAME_DATE)
   @javax.annotation.Nullable
-  private Integer date;
+  private Long date;
 
   public static final String SERIALIZED_NAME_HIGH = "high";
   @SerializedName(SERIALIZED_NAME_HIGH)
@@ -117,7 +117,7 @@ public class Day {
   }
 
 
-  public Day count(@javax.annotation.Nullable Integer count) {
+  public Day count(@javax.annotation.Nullable Long count) {
     this.count = count;
     return this;
   }
@@ -127,16 +127,16 @@ public class Day {
    * @return count
    */
   @javax.annotation.Nullable
-  public Integer getCount() {
+  public Long getCount() {
     return count;
   }
 
-  public void setCount(@javax.annotation.Nullable Integer count) {
+  public void setCount(@javax.annotation.Nullable Long count) {
     this.count = count;
   }
 
 
-  public Day date(@javax.annotation.Nullable Integer date) {
+  public Day date(@javax.annotation.Nullable Long date) {
     this.date = date;
     return this;
   }
@@ -146,11 +146,11 @@ public class Day {
    * @return date
    */
   @javax.annotation.Nullable
-  public Integer getDate() {
+  public Long getDate() {
     return date;
   }
 
-  public void setDate(@javax.annotation.Nullable Integer date) {
+  public void setDate(@javax.annotation.Nullable Long date) {
     this.date = date;
   }
 

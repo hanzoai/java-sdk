@@ -65,12 +65,12 @@ public class ProfileMetrics {
   public static final String SERIALIZED_NAME_RECORDS = "records";
   @SerializedName(SERIALIZED_NAME_RECORDS)
   @javax.annotation.Nullable
-  private Integer records;
+  private Long records;
 
   public static final String SERIALIZED_NAME_REVENUE_CENTS = "revenueCents";
   @SerializedName(SERIALIZED_NAME_REVENUE_CENTS)
   @javax.annotation.Nullable
-  private Integer revenueCents;
+  private Long revenueCents;
 
   public ProfileMetrics() {
   }
@@ -113,7 +113,7 @@ public class ProfileMetrics {
   }
 
 
-  public ProfileMetrics records(@javax.annotation.Nullable Integer records) {
+  public ProfileMetrics records(@javax.annotation.Nullable Long records) {
     this.records = records;
     return this;
   }
@@ -123,16 +123,16 @@ public class ProfileMetrics {
    * @return records
    */
   @javax.annotation.Nullable
-  public Integer getRecords() {
+  public Long getRecords() {
     return records;
   }
 
-  public void setRecords(@javax.annotation.Nullable Integer records) {
+  public void setRecords(@javax.annotation.Nullable Long records) {
     this.records = records;
   }
 
 
-  public ProfileMetrics revenueCents(@javax.annotation.Nullable Integer revenueCents) {
+  public ProfileMetrics revenueCents(@javax.annotation.Nullable Long revenueCents) {
     this.revenueCents = revenueCents;
     return this;
   }
@@ -142,11 +142,11 @@ public class ProfileMetrics {
    * @return revenueCents
    */
   @javax.annotation.Nullable
-  public Integer getRevenueCents() {
+  public Long getRevenueCents() {
     return revenueCents;
   }
 
-  public void setRevenueCents(@javax.annotation.Nullable Integer revenueCents) {
+  public void setRevenueCents(@javax.annotation.Nullable Long revenueCents) {
     this.revenueCents = revenueCents;
   }
 

@@ -56,7 +56,7 @@ public class RegisterPage {
   public static final String SERIALIZED_NAME_COUNT = "count";
   @SerializedName(SERIALIZED_NAME_COUNT)
   @javax.annotation.Nullable
-  private Integer count;
+  private Long count;
 
   public static final String SERIALIZED_NAME_FORMATIONS = "formations";
   @SerializedName(SERIALIZED_NAME_FORMATIONS)
@@ -66,17 +66,17 @@ public class RegisterPage {
   public static final String SERIALIZED_NAME_LIMIT = "limit";
   @SerializedName(SERIALIZED_NAME_LIMIT)
   @javax.annotation.Nullable
-  private Integer limit;
+  private Long limit;
 
   public static final String SERIALIZED_NAME_OFFSET = "offset";
   @SerializedName(SERIALIZED_NAME_OFFSET)
   @javax.annotation.Nullable
-  private Integer offset;
+  private Long offset;
 
   public RegisterPage() {
   }
 
-  public RegisterPage count(@javax.annotation.Nullable Integer count) {
+  public RegisterPage count(@javax.annotation.Nullable Long count) {
     this.count = count;
     return this;
   }
@@ -86,11 +86,11 @@ public class RegisterPage {
    * @return count
    */
   @javax.annotation.Nullable
-  public Integer getCount() {
+  public Long getCount() {
     return count;
   }
 
-  public void setCount(@javax.annotation.Nullable Integer count) {
+  public void setCount(@javax.annotation.Nullable Long count) {
     this.count = count;
   }
 
@@ -122,7 +122,7 @@ public class RegisterPage {
   }
 
 
-  public RegisterPage limit(@javax.annotation.Nullable Integer limit) {
+  public RegisterPage limit(@javax.annotation.Nullable Long limit) {
     this.limit = limit;
     return this;
   }
@@ -132,16 +132,16 @@ public class RegisterPage {
    * @return limit
    */
   @javax.annotation.Nullable
-  public Integer getLimit() {
+  public Long getLimit() {
     return limit;
   }
 
-  public void setLimit(@javax.annotation.Nullable Integer limit) {
+  public void setLimit(@javax.annotation.Nullable Long limit) {
     this.limit = limit;
   }
 
 
-  public RegisterPage offset(@javax.annotation.Nullable Integer offset) {
+  public RegisterPage offset(@javax.annotation.Nullable Long offset) {
     this.offset = offset;
     return this;
   }
@@ -151,11 +151,11 @@ public class RegisterPage {
    * @return offset
    */
   @javax.annotation.Nullable
-  public Integer getOffset() {
+  public Long getOffset() {
     return offset;
   }
 
-  public void setOffset(@javax.annotation.Nullable Integer offset) {
+  public void setOffset(@javax.annotation.Nullable Long offset) {
     this.offset = offset;
   }
 

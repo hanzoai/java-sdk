@@ -100,7 +100,7 @@ public class O11yFunnelStep {
   public static final String SERIALIZED_NAME_STEP_ORDER = "step_order";
   @SerializedName(SERIALIZED_NAME_STEP_ORDER)
   @javax.annotation.Nullable
-  private Integer stepOrder;
+  private Long stepOrder;
 
   public O11yFunnelStep() {
   }
@@ -276,7 +276,7 @@ public class O11yFunnelStep {
   }
 
 
-  public O11yFunnelStep stepOrder(@javax.annotation.Nullable Integer stepOrder) {
+  public O11yFunnelStep stepOrder(@javax.annotation.Nullable Long stepOrder) {
     this.stepOrder = stepOrder;
     return this;
   }
@@ -286,11 +286,11 @@ public class O11yFunnelStep {
    * @return stepOrder
    */
   @javax.annotation.Nullable
-  public Integer getStepOrder() {
+  public Long getStepOrder() {
     return stepOrder;
   }
 
-  public void setStepOrder(@javax.annotation.Nullable Integer stepOrder) {
+  public void setStepOrder(@javax.annotation.Nullable Long stepOrder) {
     this.stepOrder = stepOrder;
   }
 

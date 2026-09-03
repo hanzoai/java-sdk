@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -61,12 +60,12 @@ public class O11yO11yLogRecord {
   public static final String SERIALIZED_NAME_ATTRIBUTES_FLOAT = "attributes_float";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES_FLOAT)
   @javax.annotation.Nullable
-  private Map<String, BigDecimal> attributesFloat = new HashMap<>();
+  private Map<String, Double> attributesFloat = new HashMap<>();
 
   public static final String SERIALIZED_NAME_ATTRIBUTES_INT = "attributes_int";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES_INT)
   @javax.annotation.Nullable
-  private Map<String, Integer> attributesInt = new HashMap<>();
+  private Map<String, Long> attributesInt = new HashMap<>();
 
   public static final String SERIALIZED_NAME_ATTRIBUTES_STRING = "attributes_string";
   @SerializedName(SERIALIZED_NAME_ATTRIBUTES_STRING)
@@ -148,12 +147,12 @@ public class O11yO11yLogRecord {
   }
 
 
-  public O11yO11yLogRecord attributesFloat(@javax.annotation.Nullable Map<String, BigDecimal> attributesFloat) {
+  public O11yO11yLogRecord attributesFloat(@javax.annotation.Nullable Map<String, Double> attributesFloat) {
     this.attributesFloat = attributesFloat;
     return this;
   }
 
-  public O11yO11yLogRecord putAttributesFloatItem(String key, BigDecimal attributesFloatItem) {
+  public O11yO11yLogRecord putAttributesFloatItem(String key, Double attributesFloatItem) {
     if (this.attributesFloat == null) {
       this.attributesFloat = new HashMap<>();
     }
@@ -166,21 +165,21 @@ public class O11yO11yLogRecord {
    * @return attributesFloat
    */
   @javax.annotation.Nullable
-  public Map<String, BigDecimal> getAttributesFloat() {
+  public Map<String, Double> getAttributesFloat() {
     return attributesFloat;
   }
 
-  public void setAttributesFloat(@javax.annotation.Nullable Map<String, BigDecimal> attributesFloat) {
+  public void setAttributesFloat(@javax.annotation.Nullable Map<String, Double> attributesFloat) {
     this.attributesFloat = attributesFloat;
   }
 
 
-  public O11yO11yLogRecord attributesInt(@javax.annotation.Nullable Map<String, Integer> attributesInt) {
+  public O11yO11yLogRecord attributesInt(@javax.annotation.Nullable Map<String, Long> attributesInt) {
     this.attributesInt = attributesInt;
     return this;
   }
 
-  public O11yO11yLogRecord putAttributesIntItem(String key, Integer attributesIntItem) {
+  public O11yO11yLogRecord putAttributesIntItem(String key, Long attributesIntItem) {
     if (this.attributesInt == null) {
       this.attributesInt = new HashMap<>();
     }
@@ -193,11 +192,11 @@ public class O11yO11yLogRecord {
    * @return attributesInt
    */
   @javax.annotation.Nullable
-  public Map<String, Integer> getAttributesInt() {
+  public Map<String, Long> getAttributesInt() {
     return attributesInt;
   }
 
-  public void setAttributesInt(@javax.annotation.Nullable Map<String, Integer> attributesInt) {
+  public void setAttributesInt(@javax.annotation.Nullable Map<String, Long> attributesInt) {
     this.attributesInt = attributesInt;
   }
 

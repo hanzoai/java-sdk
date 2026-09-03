@@ -65,7 +65,7 @@ public class DatasetView {
   public static final String SERIALIZED_NAME_ITEMS = "items";
   @SerializedName(SERIALIZED_NAME_ITEMS)
   @javax.annotation.Nullable
-  private Integer items;
+  private Long items;
 
   public static final String SERIALIZED_NAME_METADATA = "metadata";
   @SerializedName(SERIALIZED_NAME_METADATA)
@@ -123,7 +123,7 @@ public class DatasetView {
   }
 
 
-  public DatasetView items(@javax.annotation.Nullable Integer items) {
+  public DatasetView items(@javax.annotation.Nullable Long items) {
     this.items = items;
     return this;
   }
@@ -133,11 +133,11 @@ public class DatasetView {
    * @return items
    */
   @javax.annotation.Nullable
-  public Integer getItems() {
+  public Long getItems() {
     return items;
   }
 
-  public void setItems(@javax.annotation.Nullable Integer items) {
+  public void setItems(@javax.annotation.Nullable Long items) {
     this.items = items;
   }
 

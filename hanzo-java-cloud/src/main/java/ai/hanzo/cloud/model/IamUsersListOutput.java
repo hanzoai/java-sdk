@@ -56,7 +56,7 @@ public class IamUsersListOutput {
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)
   @javax.annotation.Nullable
-  private Integer total;
+  private Long total;
 
   public static final String SERIALIZED_NAME_USERS = "users";
   @SerializedName(SERIALIZED_NAME_USERS)
@@ -66,7 +66,7 @@ public class IamUsersListOutput {
   public IamUsersListOutput() {
   }
 
-  public IamUsersListOutput total(@javax.annotation.Nullable Integer total) {
+  public IamUsersListOutput total(@javax.annotation.Nullable Long total) {
     this.total = total;
     return this;
   }
@@ -76,11 +76,11 @@ public class IamUsersListOutput {
    * @return total
    */
   @javax.annotation.Nullable
-  public Integer getTotal() {
+  public Long getTotal() {
     return total;
   }
 
-  public void setTotal(@javax.annotation.Nullable Integer total) {
+  public void setTotal(@javax.annotation.Nullable Long total) {
     this.total = total;
   }
 

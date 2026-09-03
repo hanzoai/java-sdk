@@ -56,12 +56,12 @@ public class O11yMetricsResponseUsage {
   public static final String SERIALIZED_NAME_CALLS = "calls";
   @SerializedName(SERIALIZED_NAME_CALLS)
   @javax.annotation.Nullable
-  private Integer calls;
+  private Long calls;
 
   public static final String SERIALIZED_NAME_COST_CENTS = "costCents";
   @SerializedName(SERIALIZED_NAME_COST_CENTS)
   @javax.annotation.Nullable
-  private Integer costCents;
+  private Long costCents;
 
   public static final String SERIALIZED_NAME_SERIES = "series";
   @SerializedName(SERIALIZED_NAME_SERIES)
@@ -71,12 +71,12 @@ public class O11yMetricsResponseUsage {
   public static final String SERIALIZED_NAME_TOKENS = "tokens";
   @SerializedName(SERIALIZED_NAME_TOKENS)
   @javax.annotation.Nullable
-  private Integer tokens;
+  private Long tokens;
 
   public O11yMetricsResponseUsage() {
   }
 
-  public O11yMetricsResponseUsage calls(@javax.annotation.Nullable Integer calls) {
+  public O11yMetricsResponseUsage calls(@javax.annotation.Nullable Long calls) {
     this.calls = calls;
     return this;
   }
@@ -86,16 +86,16 @@ public class O11yMetricsResponseUsage {
    * @return calls
    */
   @javax.annotation.Nullable
-  public Integer getCalls() {
+  public Long getCalls() {
     return calls;
   }
 
-  public void setCalls(@javax.annotation.Nullable Integer calls) {
+  public void setCalls(@javax.annotation.Nullable Long calls) {
     this.calls = calls;
   }
 
 
-  public O11yMetricsResponseUsage costCents(@javax.annotation.Nullable Integer costCents) {
+  public O11yMetricsResponseUsage costCents(@javax.annotation.Nullable Long costCents) {
     this.costCents = costCents;
     return this;
   }
@@ -105,11 +105,11 @@ public class O11yMetricsResponseUsage {
    * @return costCents
    */
   @javax.annotation.Nullable
-  public Integer getCostCents() {
+  public Long getCostCents() {
     return costCents;
   }
 
-  public void setCostCents(@javax.annotation.Nullable Integer costCents) {
+  public void setCostCents(@javax.annotation.Nullable Long costCents) {
     this.costCents = costCents;
   }
 
@@ -141,7 +141,7 @@ public class O11yMetricsResponseUsage {
   }
 
 
-  public O11yMetricsResponseUsage tokens(@javax.annotation.Nullable Integer tokens) {
+  public O11yMetricsResponseUsage tokens(@javax.annotation.Nullable Long tokens) {
     this.tokens = tokens;
     return this;
   }
@@ -151,11 +151,11 @@ public class O11yMetricsResponseUsage {
    * @return tokens
    */
   @javax.annotation.Nullable
-  public Integer getTokens() {
+  public Long getTokens() {
     return tokens;
   }
 
-  public void setTokens(@javax.annotation.Nullable Integer tokens) {
+  public void setTokens(@javax.annotation.Nullable Long tokens) {
     this.tokens = tokens;
   }
 

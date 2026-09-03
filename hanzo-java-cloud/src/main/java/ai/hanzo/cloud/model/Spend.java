@@ -62,12 +62,12 @@ public class Spend {
   public static final String SERIALIZED_NAME_AVAILABLE_CENTS = "availableCents";
   @SerializedName(SERIALIZED_NAME_AVAILABLE_CENTS)
   @javax.annotation.Nullable
-  private Integer availableCents;
+  private Long availableCents;
 
   public static final String SERIALIZED_NAME_BALANCE_CENTS = "balanceCents";
   @SerializedName(SERIALIZED_NAME_BALANCE_CENTS)
   @javax.annotation.Nullable
-  private Integer balanceCents;
+  private Long balanceCents;
 
   public static final String SERIALIZED_NAME_BY_CATEGORY = "byCategory";
   @SerializedName(SERIALIZED_NAME_BY_CATEGORY)
@@ -77,12 +77,12 @@ public class Spend {
   public static final String SERIALIZED_NAME_MTD_CENTS = "mtdCents";
   @SerializedName(SERIALIZED_NAME_MTD_CENTS)
   @javax.annotation.Nullable
-  private Integer mtdCents;
+  private Long mtdCents;
 
   public static final String SERIALIZED_NAME_OVERAGE_CENTS = "overageCents";
   @SerializedName(SERIALIZED_NAME_OVERAGE_CENTS)
   @javax.annotation.Nullable
-  private Integer overageCents;
+  private Long overageCents;
 
   public static final String SERIALIZED_NAME_SERIES = "series";
   @SerializedName(SERIALIZED_NAME_SERIES)
@@ -97,7 +97,7 @@ public class Spend {
   public static final String SERIALIZED_NAME_TOTAL_CENTS = "totalCents";
   @SerializedName(SERIALIZED_NAME_TOTAL_CENTS)
   @javax.annotation.Nullable
-  private Integer totalCents;
+  private Long totalCents;
 
   public Spend() {
   }
@@ -121,7 +121,7 @@ public class Spend {
   }
 
 
-  public Spend availableCents(@javax.annotation.Nullable Integer availableCents) {
+  public Spend availableCents(@javax.annotation.Nullable Long availableCents) {
     this.availableCents = availableCents;
     return this;
   }
@@ -131,16 +131,16 @@ public class Spend {
    * @return availableCents
    */
   @javax.annotation.Nullable
-  public Integer getAvailableCents() {
+  public Long getAvailableCents() {
     return availableCents;
   }
 
-  public void setAvailableCents(@javax.annotation.Nullable Integer availableCents) {
+  public void setAvailableCents(@javax.annotation.Nullable Long availableCents) {
     this.availableCents = availableCents;
   }
 
 
-  public Spend balanceCents(@javax.annotation.Nullable Integer balanceCents) {
+  public Spend balanceCents(@javax.annotation.Nullable Long balanceCents) {
     this.balanceCents = balanceCents;
     return this;
   }
@@ -150,11 +150,11 @@ public class Spend {
    * @return balanceCents
    */
   @javax.annotation.Nullable
-  public Integer getBalanceCents() {
+  public Long getBalanceCents() {
     return balanceCents;
   }
 
-  public void setBalanceCents(@javax.annotation.Nullable Integer balanceCents) {
+  public void setBalanceCents(@javax.annotation.Nullable Long balanceCents) {
     this.balanceCents = balanceCents;
   }
 
@@ -186,7 +186,7 @@ public class Spend {
   }
 
 
-  public Spend mtdCents(@javax.annotation.Nullable Integer mtdCents) {
+  public Spend mtdCents(@javax.annotation.Nullable Long mtdCents) {
     this.mtdCents = mtdCents;
     return this;
   }
@@ -196,16 +196,16 @@ public class Spend {
    * @return mtdCents
    */
   @javax.annotation.Nullable
-  public Integer getMtdCents() {
+  public Long getMtdCents() {
     return mtdCents;
   }
 
-  public void setMtdCents(@javax.annotation.Nullable Integer mtdCents) {
+  public void setMtdCents(@javax.annotation.Nullable Long mtdCents) {
     this.mtdCents = mtdCents;
   }
 
 
-  public Spend overageCents(@javax.annotation.Nullable Integer overageCents) {
+  public Spend overageCents(@javax.annotation.Nullable Long overageCents) {
     this.overageCents = overageCents;
     return this;
   }
@@ -215,11 +215,11 @@ public class Spend {
    * @return overageCents
    */
   @javax.annotation.Nullable
-  public Integer getOverageCents() {
+  public Long getOverageCents() {
     return overageCents;
   }
 
-  public void setOverageCents(@javax.annotation.Nullable Integer overageCents) {
+  public void setOverageCents(@javax.annotation.Nullable Long overageCents) {
     this.overageCents = overageCents;
   }
 
@@ -270,7 +270,7 @@ public class Spend {
   }
 
 
-  public Spend totalCents(@javax.annotation.Nullable Integer totalCents) {
+  public Spend totalCents(@javax.annotation.Nullable Long totalCents) {
     this.totalCents = totalCents;
     return this;
   }
@@ -280,11 +280,11 @@ public class Spend {
    * @return totalCents
    */
   @javax.annotation.Nullable
-  public Integer getTotalCents() {
+  public Long getTotalCents() {
     return totalCents;
   }
 
-  public void setTotalCents(@javax.annotation.Nullable Integer totalCents) {
+  public void setTotalCents(@javax.annotation.Nullable Long totalCents) {
     this.totalCents = totalCents;
   }
 

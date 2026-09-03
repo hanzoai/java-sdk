@@ -66,7 +66,7 @@ public class O11yStatusResult {
   public static final String SERIALIZED_NAME_LATENCY_MS = "latencyMs";
   @SerializedName(SERIALIZED_NAME_LATENCY_MS)
   @javax.annotation.Nullable
-  private Integer latencyMs;
+  private Long latencyMs;
 
   public static final String SERIALIZED_NAME_PRODUCT = "product";
   @SerializedName(SERIALIZED_NAME_PRODUCT)
@@ -132,7 +132,7 @@ public class O11yStatusResult {
   }
 
 
-  public O11yStatusResult latencyMs(@javax.annotation.Nullable Integer latencyMs) {
+  public O11yStatusResult latencyMs(@javax.annotation.Nullable Long latencyMs) {
     this.latencyMs = latencyMs;
     return this;
   }
@@ -142,11 +142,11 @@ public class O11yStatusResult {
    * @return latencyMs
    */
   @javax.annotation.Nullable
-  public Integer getLatencyMs() {
+  public Long getLatencyMs() {
     return latencyMs;
   }
 
-  public void setLatencyMs(@javax.annotation.Nullable Integer latencyMs) {
+  public void setLatencyMs(@javax.annotation.Nullable Long latencyMs) {
     this.latencyMs = latencyMs;
   }
 

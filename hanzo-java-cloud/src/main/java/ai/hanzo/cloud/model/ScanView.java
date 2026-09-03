@@ -53,27 +53,27 @@ public class ScanView {
   public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
   @javax.annotation.Nullable
-  private Integer createdAt;
+  private Long createdAt;
 
   public static final String SERIALIZED_NAME_CRITICAL = "critical";
   @SerializedName(SERIALIZED_NAME_CRITICAL)
   @javax.annotation.Nullable
-  private Integer critical;
+  private Long critical;
 
   public static final String SERIALIZED_NAME_FILES = "files";
   @SerializedName(SERIALIZED_NAME_FILES)
   @javax.annotation.Nullable
-  private Integer files;
+  private Long files;
 
   public static final String SERIALIZED_NAME_FINDINGS = "findings";
   @SerializedName(SERIALIZED_NAME_FINDINGS)
   @javax.annotation.Nullable
-  private Integer findings;
+  private Long findings;
 
   public static final String SERIALIZED_NAME_HIGH = "high";
   @SerializedName(SERIALIZED_NAME_HIGH)
   @javax.annotation.Nullable
-  private Integer high;
+  private Long high;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -83,12 +83,12 @@ public class ScanView {
   public static final String SERIALIZED_NAME_LOW = "low";
   @SerializedName(SERIALIZED_NAME_LOW)
   @javax.annotation.Nullable
-  private Integer low;
+  private Long low;
 
   public static final String SERIALIZED_NAME_MEDIUM = "medium";
   @SerializedName(SERIALIZED_NAME_MEDIUM)
   @javax.annotation.Nullable
-  private Integer medium;
+  private Long medium;
 
   public static final String SERIALIZED_NAME_PROJECT = "project";
   @SerializedName(SERIALIZED_NAME_PROJECT)
@@ -98,7 +98,7 @@ public class ScanView {
   public ScanView() {
   }
 
-  public ScanView createdAt(@javax.annotation.Nullable Integer createdAt) {
+  public ScanView createdAt(@javax.annotation.Nullable Long createdAt) {
     this.createdAt = createdAt;
     return this;
   }
@@ -108,16 +108,16 @@ public class ScanView {
    * @return createdAt
    */
   @javax.annotation.Nullable
-  public Integer getCreatedAt() {
+  public Long getCreatedAt() {
     return createdAt;
   }
 
-  public void setCreatedAt(@javax.annotation.Nullable Integer createdAt) {
+  public void setCreatedAt(@javax.annotation.Nullable Long createdAt) {
     this.createdAt = createdAt;
   }
 
 
-  public ScanView critical(@javax.annotation.Nullable Integer critical) {
+  public ScanView critical(@javax.annotation.Nullable Long critical) {
     this.critical = critical;
     return this;
   }
@@ -127,16 +127,16 @@ public class ScanView {
    * @return critical
    */
   @javax.annotation.Nullable
-  public Integer getCritical() {
+  public Long getCritical() {
     return critical;
   }
 
-  public void setCritical(@javax.annotation.Nullable Integer critical) {
+  public void setCritical(@javax.annotation.Nullable Long critical) {
     this.critical = critical;
   }
 
 
-  public ScanView files(@javax.annotation.Nullable Integer files) {
+  public ScanView files(@javax.annotation.Nullable Long files) {
     this.files = files;
     return this;
   }
@@ -146,16 +146,16 @@ public class ScanView {
    * @return files
    */
   @javax.annotation.Nullable
-  public Integer getFiles() {
+  public Long getFiles() {
     return files;
   }
 
-  public void setFiles(@javax.annotation.Nullable Integer files) {
+  public void setFiles(@javax.annotation.Nullable Long files) {
     this.files = files;
   }
 
 
-  public ScanView findings(@javax.annotation.Nullable Integer findings) {
+  public ScanView findings(@javax.annotation.Nullable Long findings) {
     this.findings = findings;
     return this;
   }
@@ -165,16 +165,16 @@ public class ScanView {
    * @return findings
    */
   @javax.annotation.Nullable
-  public Integer getFindings() {
+  public Long getFindings() {
     return findings;
   }
 
-  public void setFindings(@javax.annotation.Nullable Integer findings) {
+  public void setFindings(@javax.annotation.Nullable Long findings) {
     this.findings = findings;
   }
 
 
-  public ScanView high(@javax.annotation.Nullable Integer high) {
+  public ScanView high(@javax.annotation.Nullable Long high) {
     this.high = high;
     return this;
   }
@@ -184,11 +184,11 @@ public class ScanView {
    * @return high
    */
   @javax.annotation.Nullable
-  public Integer getHigh() {
+  public Long getHigh() {
     return high;
   }
 
-  public void setHigh(@javax.annotation.Nullable Integer high) {
+  public void setHigh(@javax.annotation.Nullable Long high) {
     this.high = high;
   }
 
@@ -212,7 +212,7 @@ public class ScanView {
   }
 
 
-  public ScanView low(@javax.annotation.Nullable Integer low) {
+  public ScanView low(@javax.annotation.Nullable Long low) {
     this.low = low;
     return this;
   }
@@ -222,16 +222,16 @@ public class ScanView {
    * @return low
    */
   @javax.annotation.Nullable
-  public Integer getLow() {
+  public Long getLow() {
     return low;
   }
 
-  public void setLow(@javax.annotation.Nullable Integer low) {
+  public void setLow(@javax.annotation.Nullable Long low) {
     this.low = low;
   }
 
 
-  public ScanView medium(@javax.annotation.Nullable Integer medium) {
+  public ScanView medium(@javax.annotation.Nullable Long medium) {
     this.medium = medium;
     return this;
   }
@@ -241,11 +241,11 @@ public class ScanView {
    * @return medium
    */
   @javax.annotation.Nullable
-  public Integer getMedium() {
+  public Long getMedium() {
     return medium;
   }
 
-  public void setMedium(@javax.annotation.Nullable Integer medium) {
+  public void setMedium(@javax.annotation.Nullable Long medium) {
     this.medium = medium;
   }
 

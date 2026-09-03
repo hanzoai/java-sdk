@@ -63,7 +63,7 @@ public class UsageRepo {
   public static final String SERIALIZED_NAME_SIZE_BYTES = "sizeBytes";
   @SerializedName(SERIALIZED_NAME_SIZE_BYTES)
   @javax.annotation.Nullable
-  private Integer sizeBytes;
+  private Long sizeBytes;
 
   public UsageRepo() {
   }
@@ -106,7 +106,7 @@ public class UsageRepo {
   }
 
 
-  public UsageRepo sizeBytes(@javax.annotation.Nullable Integer sizeBytes) {
+  public UsageRepo sizeBytes(@javax.annotation.Nullable Long sizeBytes) {
     this.sizeBytes = sizeBytes;
     return this;
   }
@@ -116,11 +116,11 @@ public class UsageRepo {
    * @return sizeBytes
    */
   @javax.annotation.Nullable
-  public Integer getSizeBytes() {
+  public Long getSizeBytes() {
     return sizeBytes;
   }
 
-  public void setSizeBytes(@javax.annotation.Nullable Integer sizeBytes) {
+  public void setSizeBytes(@javax.annotation.Nullable Long sizeBytes) {
     this.sizeBytes = sizeBytes;
   }
 

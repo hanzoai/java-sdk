@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -59,17 +58,17 @@ public class RiskOrgFeature {
   public static final String SERIALIZED_NAME_BUCKETS = "buckets";
   @SerializedName(SERIALIZED_NAME_BUCKETS)
   @javax.annotation.Nullable
-  private Integer buckets;
+  private Long buckets;
 
   public static final String SERIALIZED_NAME_MAX = "max";
   @SerializedName(SERIALIZED_NAME_MAX)
   @javax.annotation.Nullable
-  private BigDecimal max;
+  private Double max;
 
   public static final String SERIALIZED_NAME_MEAN = "mean";
   @SerializedName(SERIALIZED_NAME_MEAN)
   @javax.annotation.Nullable
-  private BigDecimal mean;
+  private Double mean;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -79,7 +78,7 @@ public class RiskOrgFeature {
   public static final String SERIALIZED_NAME_PRESENT = "present";
   @SerializedName(SERIALIZED_NAME_PRESENT)
   @javax.annotation.Nullable
-  private Integer present;
+  private Long present;
 
   public static final String SERIALIZED_NAME_SOURCE = "source";
   @SerializedName(SERIALIZED_NAME_SOURCE)
@@ -113,7 +112,7 @@ public class RiskOrgFeature {
   }
 
 
-  public RiskOrgFeature buckets(@javax.annotation.Nullable Integer buckets) {
+  public RiskOrgFeature buckets(@javax.annotation.Nullable Long buckets) {
     this.buckets = buckets;
     return this;
   }
@@ -123,16 +122,16 @@ public class RiskOrgFeature {
    * @return buckets
    */
   @javax.annotation.Nullable
-  public Integer getBuckets() {
+  public Long getBuckets() {
     return buckets;
   }
 
-  public void setBuckets(@javax.annotation.Nullable Integer buckets) {
+  public void setBuckets(@javax.annotation.Nullable Long buckets) {
     this.buckets = buckets;
   }
 
 
-  public RiskOrgFeature max(@javax.annotation.Nullable BigDecimal max) {
+  public RiskOrgFeature max(@javax.annotation.Nullable Double max) {
     this.max = max;
     return this;
   }
@@ -142,16 +141,16 @@ public class RiskOrgFeature {
    * @return max
    */
   @javax.annotation.Nullable
-  public BigDecimal getMax() {
+  public Double getMax() {
     return max;
   }
 
-  public void setMax(@javax.annotation.Nullable BigDecimal max) {
+  public void setMax(@javax.annotation.Nullable Double max) {
     this.max = max;
   }
 
 
-  public RiskOrgFeature mean(@javax.annotation.Nullable BigDecimal mean) {
+  public RiskOrgFeature mean(@javax.annotation.Nullable Double mean) {
     this.mean = mean;
     return this;
   }
@@ -161,11 +160,11 @@ public class RiskOrgFeature {
    * @return mean
    */
   @javax.annotation.Nullable
-  public BigDecimal getMean() {
+  public Double getMean() {
     return mean;
   }
 
-  public void setMean(@javax.annotation.Nullable BigDecimal mean) {
+  public void setMean(@javax.annotation.Nullable Double mean) {
     this.mean = mean;
   }
 
@@ -189,7 +188,7 @@ public class RiskOrgFeature {
   }
 
 
-  public RiskOrgFeature present(@javax.annotation.Nullable Integer present) {
+  public RiskOrgFeature present(@javax.annotation.Nullable Long present) {
     this.present = present;
     return this;
   }
@@ -199,11 +198,11 @@ public class RiskOrgFeature {
    * @return present
    */
   @javax.annotation.Nullable
-  public Integer getPresent() {
+  public Long getPresent() {
     return present;
   }
 
-  public void setPresent(@javax.annotation.Nullable Integer present) {
+  public void setPresent(@javax.annotation.Nullable Long present) {
     this.present = present;
   }
 

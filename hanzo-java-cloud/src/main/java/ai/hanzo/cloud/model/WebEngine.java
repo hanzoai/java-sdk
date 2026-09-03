@@ -63,7 +63,7 @@ public class WebEngine {
   public static final String SERIALIZED_NAME_RESULTS = "results";
   @SerializedName(SERIALIZED_NAME_RESULTS)
   @javax.annotation.Nullable
-  private Integer results;
+  private Long results;
 
   public WebEngine() {
   }
@@ -106,7 +106,7 @@ public class WebEngine {
   }
 
 
-  public WebEngine results(@javax.annotation.Nullable Integer results) {
+  public WebEngine results(@javax.annotation.Nullable Long results) {
     this.results = results;
     return this;
   }
@@ -116,11 +116,11 @@ public class WebEngine {
    * @return results
    */
   @javax.annotation.Nullable
-  public Integer getResults() {
+  public Long getResults() {
     return results;
   }
 
-  public void setResults(@javax.annotation.Nullable Integer results) {
+  public void setResults(@javax.annotation.Nullable Long results) {
     this.results = results;
   }
 

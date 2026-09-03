@@ -22,7 +22,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -58,22 +57,22 @@ public class O11yClusterRecord {
   public static final String SERIALIZED_NAME_CLUSTER_C_P_U = "clusterCPU";
   @SerializedName(SERIALIZED_NAME_CLUSTER_C_P_U)
   @javax.annotation.Nullable
-  private BigDecimal clusterCPU;
+  private Double clusterCPU;
 
   public static final String SERIALIZED_NAME_CLUSTER_C_P_U_ALLOCATABLE = "clusterCPUAllocatable";
   @SerializedName(SERIALIZED_NAME_CLUSTER_C_P_U_ALLOCATABLE)
   @javax.annotation.Nullable
-  private BigDecimal clusterCPUAllocatable;
+  private Double clusterCPUAllocatable;
 
   public static final String SERIALIZED_NAME_CLUSTER_MEMORY = "clusterMemory";
   @SerializedName(SERIALIZED_NAME_CLUSTER_MEMORY)
   @javax.annotation.Nullable
-  private BigDecimal clusterMemory;
+  private Double clusterMemory;
 
   public static final String SERIALIZED_NAME_CLUSTER_MEMORY_ALLOCATABLE = "clusterMemoryAllocatable";
   @SerializedName(SERIALIZED_NAME_CLUSTER_MEMORY_ALLOCATABLE)
   @javax.annotation.Nullable
-  private BigDecimal clusterMemoryAllocatable;
+  private Double clusterMemoryAllocatable;
 
   public static final String SERIALIZED_NAME_CLUSTER_NAME = "clusterName";
   @SerializedName(SERIALIZED_NAME_CLUSTER_NAME)
@@ -98,7 +97,7 @@ public class O11yClusterRecord {
   public O11yClusterRecord() {
   }
 
-  public O11yClusterRecord clusterCPU(@javax.annotation.Nullable BigDecimal clusterCPU) {
+  public O11yClusterRecord clusterCPU(@javax.annotation.Nullable Double clusterCPU) {
     this.clusterCPU = clusterCPU;
     return this;
   }
@@ -108,16 +107,16 @@ public class O11yClusterRecord {
    * @return clusterCPU
    */
   @javax.annotation.Nullable
-  public BigDecimal getClusterCPU() {
+  public Double getClusterCPU() {
     return clusterCPU;
   }
 
-  public void setClusterCPU(@javax.annotation.Nullable BigDecimal clusterCPU) {
+  public void setClusterCPU(@javax.annotation.Nullable Double clusterCPU) {
     this.clusterCPU = clusterCPU;
   }
 
 
-  public O11yClusterRecord clusterCPUAllocatable(@javax.annotation.Nullable BigDecimal clusterCPUAllocatable) {
+  public O11yClusterRecord clusterCPUAllocatable(@javax.annotation.Nullable Double clusterCPUAllocatable) {
     this.clusterCPUAllocatable = clusterCPUAllocatable;
     return this;
   }
@@ -127,16 +126,16 @@ public class O11yClusterRecord {
    * @return clusterCPUAllocatable
    */
   @javax.annotation.Nullable
-  public BigDecimal getClusterCPUAllocatable() {
+  public Double getClusterCPUAllocatable() {
     return clusterCPUAllocatable;
   }
 
-  public void setClusterCPUAllocatable(@javax.annotation.Nullable BigDecimal clusterCPUAllocatable) {
+  public void setClusterCPUAllocatable(@javax.annotation.Nullable Double clusterCPUAllocatable) {
     this.clusterCPUAllocatable = clusterCPUAllocatable;
   }
 
 
-  public O11yClusterRecord clusterMemory(@javax.annotation.Nullable BigDecimal clusterMemory) {
+  public O11yClusterRecord clusterMemory(@javax.annotation.Nullable Double clusterMemory) {
     this.clusterMemory = clusterMemory;
     return this;
   }
@@ -146,16 +145,16 @@ public class O11yClusterRecord {
    * @return clusterMemory
    */
   @javax.annotation.Nullable
-  public BigDecimal getClusterMemory() {
+  public Double getClusterMemory() {
     return clusterMemory;
   }
 
-  public void setClusterMemory(@javax.annotation.Nullable BigDecimal clusterMemory) {
+  public void setClusterMemory(@javax.annotation.Nullable Double clusterMemory) {
     this.clusterMemory = clusterMemory;
   }
 
 
-  public O11yClusterRecord clusterMemoryAllocatable(@javax.annotation.Nullable BigDecimal clusterMemoryAllocatable) {
+  public O11yClusterRecord clusterMemoryAllocatable(@javax.annotation.Nullable Double clusterMemoryAllocatable) {
     this.clusterMemoryAllocatable = clusterMemoryAllocatable;
     return this;
   }
@@ -165,11 +164,11 @@ public class O11yClusterRecord {
    * @return clusterMemoryAllocatable
    */
   @javax.annotation.Nullable
-  public BigDecimal getClusterMemoryAllocatable() {
+  public Double getClusterMemoryAllocatable() {
     return clusterMemoryAllocatable;
   }
 
-  public void setClusterMemoryAllocatable(@javax.annotation.Nullable BigDecimal clusterMemoryAllocatable) {
+  public void setClusterMemoryAllocatable(@javax.annotation.Nullable Double clusterMemoryAllocatable) {
     this.clusterMemoryAllocatable = clusterMemoryAllocatable;
   }
 

@@ -53,7 +53,7 @@ public class Filing {
   public static final String SERIALIZED_NAME_AT = "at";
   @SerializedName(SERIALIZED_NAME_AT)
   @javax.annotation.Nullable
-  private Integer at;
+  private Long at;
 
   public static final String SERIALIZED_NAME_NOTE = "note";
   @SerializedName(SERIALIZED_NAME_NOTE)
@@ -78,7 +78,7 @@ public class Filing {
   public Filing() {
   }
 
-  public Filing at(@javax.annotation.Nullable Integer at) {
+  public Filing at(@javax.annotation.Nullable Long at) {
     this.at = at;
     return this;
   }
@@ -88,11 +88,11 @@ public class Filing {
    * @return at
    */
   @javax.annotation.Nullable
-  public Integer getAt() {
+  public Long getAt() {
     return at;
   }
 
-  public void setAt(@javax.annotation.Nullable Integer at) {
+  public void setAt(@javax.annotation.Nullable Long at) {
     this.at = at;
   }
 

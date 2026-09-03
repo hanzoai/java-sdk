@@ -119,7 +119,7 @@ public class IamInvitation {
   public static final String SERIALIZED_NAME_QUOTA = "quota";
   @SerializedName(SERIALIZED_NAME_QUOTA)
   @javax.annotation.Nullable
-  private Integer quota;
+  private Long quota;
 
   public static final String SERIALIZED_NAME_SIGNUP_GROUP = "signupGroup";
   @SerializedName(SERIALIZED_NAME_SIGNUP_GROUP)
@@ -144,7 +144,7 @@ public class IamInvitation {
   public static final String SERIALIZED_NAME_USED_COUNT = "usedCount";
   @SerializedName(SERIALIZED_NAME_USED_COUNT)
   @javax.annotation.Nullable
-  private Integer usedCount;
+  private Long usedCount;
 
   public static final String SERIALIZED_NAME_USERNAME = "username";
   @SerializedName(SERIALIZED_NAME_USERNAME)
@@ -401,7 +401,7 @@ public class IamInvitation {
   }
 
 
-  public IamInvitation quota(@javax.annotation.Nullable Integer quota) {
+  public IamInvitation quota(@javax.annotation.Nullable Long quota) {
     this.quota = quota;
     return this;
   }
@@ -411,11 +411,11 @@ public class IamInvitation {
    * @return quota
    */
   @javax.annotation.Nullable
-  public Integer getQuota() {
+  public Long getQuota() {
     return quota;
   }
 
-  public void setQuota(@javax.annotation.Nullable Integer quota) {
+  public void setQuota(@javax.annotation.Nullable Long quota) {
     this.quota = quota;
   }
 
@@ -496,7 +496,7 @@ public class IamInvitation {
   }
 
 
-  public IamInvitation usedCount(@javax.annotation.Nullable Integer usedCount) {
+  public IamInvitation usedCount(@javax.annotation.Nullable Long usedCount) {
     this.usedCount = usedCount;
     return this;
   }
@@ -506,11 +506,11 @@ public class IamInvitation {
    * @return usedCount
    */
   @javax.annotation.Nullable
-  public Integer getUsedCount() {
+  public Long getUsedCount() {
     return usedCount;
   }
 
-  public void setUsedCount(@javax.annotation.Nullable Integer usedCount) {
+  public void setUsedCount(@javax.annotation.Nullable Long usedCount) {
     this.usedCount = usedCount;
   }
 

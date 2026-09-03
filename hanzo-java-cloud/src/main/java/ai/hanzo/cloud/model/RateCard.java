@@ -58,12 +58,12 @@ public class RateCard {
   public static final String SERIALIZED_NAME_MICRO_USD_PER_GB_HOUR = "microUsdPerGbHour";
   @SerializedName(SERIALIZED_NAME_MICRO_USD_PER_GB_HOUR)
   @javax.annotation.Nullable
-  private Integer microUsdPerGbHour;
+  private Long microUsdPerGbHour;
 
   public static final String SERIALIZED_NAME_MICRO_USD_PER_VCPU_HOUR = "microUsdPerVcpuHour";
   @SerializedName(SERIALIZED_NAME_MICRO_USD_PER_VCPU_HOUR)
   @javax.annotation.Nullable
-  private Integer microUsdPerVcpuHour;
+  private Long microUsdPerVcpuHour;
 
   public RateCard() {
   }
@@ -87,7 +87,7 @@ public class RateCard {
   }
 
 
-  public RateCard microUsdPerGbHour(@javax.annotation.Nullable Integer microUsdPerGbHour) {
+  public RateCard microUsdPerGbHour(@javax.annotation.Nullable Long microUsdPerGbHour) {
     this.microUsdPerGbHour = microUsdPerGbHour;
     return this;
   }
@@ -97,16 +97,16 @@ public class RateCard {
    * @return microUsdPerGbHour
    */
   @javax.annotation.Nullable
-  public Integer getMicroUsdPerGbHour() {
+  public Long getMicroUsdPerGbHour() {
     return microUsdPerGbHour;
   }
 
-  public void setMicroUsdPerGbHour(@javax.annotation.Nullable Integer microUsdPerGbHour) {
+  public void setMicroUsdPerGbHour(@javax.annotation.Nullable Long microUsdPerGbHour) {
     this.microUsdPerGbHour = microUsdPerGbHour;
   }
 
 
-  public RateCard microUsdPerVcpuHour(@javax.annotation.Nullable Integer microUsdPerVcpuHour) {
+  public RateCard microUsdPerVcpuHour(@javax.annotation.Nullable Long microUsdPerVcpuHour) {
     this.microUsdPerVcpuHour = microUsdPerVcpuHour;
     return this;
   }
@@ -116,11 +116,11 @@ public class RateCard {
    * @return microUsdPerVcpuHour
    */
   @javax.annotation.Nullable
-  public Integer getMicroUsdPerVcpuHour() {
+  public Long getMicroUsdPerVcpuHour() {
     return microUsdPerVcpuHour;
   }
 
-  public void setMicroUsdPerVcpuHour(@javax.annotation.Nullable Integer microUsdPerVcpuHour) {
+  public void setMicroUsdPerVcpuHour(@javax.annotation.Nullable Long microUsdPerVcpuHour) {
     this.microUsdPerVcpuHour = microUsdPerVcpuHour;
   }
 

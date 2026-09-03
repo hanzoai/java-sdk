@@ -63,17 +63,17 @@ public class PoolCreate {
   public static final String SERIALIZED_NAME_COUNT = "count";
   @SerializedName(SERIALIZED_NAME_COUNT)
   @javax.annotation.Nullable
-  private Integer count;
+  private Long count;
 
   public static final String SERIALIZED_NAME_MAX_NODES = "maxNodes";
   @SerializedName(SERIALIZED_NAME_MAX_NODES)
   @javax.annotation.Nullable
-  private Integer maxNodes;
+  private Long maxNodes;
 
   public static final String SERIALIZED_NAME_MIN_NODES = "minNodes";
   @SerializedName(SERIALIZED_NAME_MIN_NODES)
   @javax.annotation.Nullable
-  private Integer minNodes;
+  private Long minNodes;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -131,7 +131,7 @@ public class PoolCreate {
   }
 
 
-  public PoolCreate count(@javax.annotation.Nullable Integer count) {
+  public PoolCreate count(@javax.annotation.Nullable Long count) {
     this.count = count;
     return this;
   }
@@ -141,16 +141,16 @@ public class PoolCreate {
    * @return count
    */
   @javax.annotation.Nullable
-  public Integer getCount() {
+  public Long getCount() {
     return count;
   }
 
-  public void setCount(@javax.annotation.Nullable Integer count) {
+  public void setCount(@javax.annotation.Nullable Long count) {
     this.count = count;
   }
 
 
-  public PoolCreate maxNodes(@javax.annotation.Nullable Integer maxNodes) {
+  public PoolCreate maxNodes(@javax.annotation.Nullable Long maxNodes) {
     this.maxNodes = maxNodes;
     return this;
   }
@@ -160,16 +160,16 @@ public class PoolCreate {
    * @return maxNodes
    */
   @javax.annotation.Nullable
-  public Integer getMaxNodes() {
+  public Long getMaxNodes() {
     return maxNodes;
   }
 
-  public void setMaxNodes(@javax.annotation.Nullable Integer maxNodes) {
+  public void setMaxNodes(@javax.annotation.Nullable Long maxNodes) {
     this.maxNodes = maxNodes;
   }
 
 
-  public PoolCreate minNodes(@javax.annotation.Nullable Integer minNodes) {
+  public PoolCreate minNodes(@javax.annotation.Nullable Long minNodes) {
     this.minNodes = minNodes;
     return this;
   }
@@ -179,11 +179,11 @@ public class PoolCreate {
    * @return minNodes
    */
   @javax.annotation.Nullable
-  public Integer getMinNodes() {
+  public Long getMinNodes() {
     return minNodes;
   }
 
-  public void setMinNodes(@javax.annotation.Nullable Integer minNodes) {
+  public void setMinNodes(@javax.annotation.Nullable Long minNodes) {
     this.minNodes = minNodes;
   }
 

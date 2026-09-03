@@ -21,7 +21,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -57,47 +56,47 @@ public class O11yJobRecord {
   public static final String SERIALIZED_NAME_ACTIVE_PODS = "activePods";
   @SerializedName(SERIALIZED_NAME_ACTIVE_PODS)
   @javax.annotation.Nullable
-  private Integer activePods;
+  private Long activePods;
 
   public static final String SERIALIZED_NAME_DESIRED_SUCCESSFUL_PODS = "desiredSuccessfulPods";
   @SerializedName(SERIALIZED_NAME_DESIRED_SUCCESSFUL_PODS)
   @javax.annotation.Nullable
-  private Integer desiredSuccessfulPods;
+  private Long desiredSuccessfulPods;
 
   public static final String SERIALIZED_NAME_FAILED_PODS = "failedPods";
   @SerializedName(SERIALIZED_NAME_FAILED_PODS)
   @javax.annotation.Nullable
-  private Integer failedPods;
+  private Long failedPods;
 
   public static final String SERIALIZED_NAME_JOB_C_P_U = "jobCPU";
   @SerializedName(SERIALIZED_NAME_JOB_C_P_U)
   @javax.annotation.Nullable
-  private BigDecimal jobCPU;
+  private Double jobCPU;
 
   public static final String SERIALIZED_NAME_JOB_C_P_U_LIMIT = "jobCPULimit";
   @SerializedName(SERIALIZED_NAME_JOB_C_P_U_LIMIT)
   @javax.annotation.Nullable
-  private BigDecimal jobCPULimit;
+  private Double jobCPULimit;
 
   public static final String SERIALIZED_NAME_JOB_C_P_U_REQUEST = "jobCPURequest";
   @SerializedName(SERIALIZED_NAME_JOB_C_P_U_REQUEST)
   @javax.annotation.Nullable
-  private BigDecimal jobCPURequest;
+  private Double jobCPURequest;
 
   public static final String SERIALIZED_NAME_JOB_MEMORY = "jobMemory";
   @SerializedName(SERIALIZED_NAME_JOB_MEMORY)
   @javax.annotation.Nullable
-  private BigDecimal jobMemory;
+  private Double jobMemory;
 
   public static final String SERIALIZED_NAME_JOB_MEMORY_LIMIT = "jobMemoryLimit";
   @SerializedName(SERIALIZED_NAME_JOB_MEMORY_LIMIT)
   @javax.annotation.Nullable
-  private BigDecimal jobMemoryLimit;
+  private Double jobMemoryLimit;
 
   public static final String SERIALIZED_NAME_JOB_MEMORY_REQUEST = "jobMemoryRequest";
   @SerializedName(SERIALIZED_NAME_JOB_MEMORY_REQUEST)
   @javax.annotation.Nullable
-  private BigDecimal jobMemoryRequest;
+  private Double jobMemoryRequest;
 
   public static final String SERIALIZED_NAME_JOB_NAME = "jobName";
   @SerializedName(SERIALIZED_NAME_JOB_NAME)
@@ -117,12 +116,12 @@ public class O11yJobRecord {
   public static final String SERIALIZED_NAME_SUCCESSFUL_PODS = "successfulPods";
   @SerializedName(SERIALIZED_NAME_SUCCESSFUL_PODS)
   @javax.annotation.Nullable
-  private Integer successfulPods;
+  private Long successfulPods;
 
   public O11yJobRecord() {
   }
 
-  public O11yJobRecord activePods(@javax.annotation.Nullable Integer activePods) {
+  public O11yJobRecord activePods(@javax.annotation.Nullable Long activePods) {
     this.activePods = activePods;
     return this;
   }
@@ -132,16 +131,16 @@ public class O11yJobRecord {
    * @return activePods
    */
   @javax.annotation.Nullable
-  public Integer getActivePods() {
+  public Long getActivePods() {
     return activePods;
   }
 
-  public void setActivePods(@javax.annotation.Nullable Integer activePods) {
+  public void setActivePods(@javax.annotation.Nullable Long activePods) {
     this.activePods = activePods;
   }
 
 
-  public O11yJobRecord desiredSuccessfulPods(@javax.annotation.Nullable Integer desiredSuccessfulPods) {
+  public O11yJobRecord desiredSuccessfulPods(@javax.annotation.Nullable Long desiredSuccessfulPods) {
     this.desiredSuccessfulPods = desiredSuccessfulPods;
     return this;
   }
@@ -151,16 +150,16 @@ public class O11yJobRecord {
    * @return desiredSuccessfulPods
    */
   @javax.annotation.Nullable
-  public Integer getDesiredSuccessfulPods() {
+  public Long getDesiredSuccessfulPods() {
     return desiredSuccessfulPods;
   }
 
-  public void setDesiredSuccessfulPods(@javax.annotation.Nullable Integer desiredSuccessfulPods) {
+  public void setDesiredSuccessfulPods(@javax.annotation.Nullable Long desiredSuccessfulPods) {
     this.desiredSuccessfulPods = desiredSuccessfulPods;
   }
 
 
-  public O11yJobRecord failedPods(@javax.annotation.Nullable Integer failedPods) {
+  public O11yJobRecord failedPods(@javax.annotation.Nullable Long failedPods) {
     this.failedPods = failedPods;
     return this;
   }
@@ -170,16 +169,16 @@ public class O11yJobRecord {
    * @return failedPods
    */
   @javax.annotation.Nullable
-  public Integer getFailedPods() {
+  public Long getFailedPods() {
     return failedPods;
   }
 
-  public void setFailedPods(@javax.annotation.Nullable Integer failedPods) {
+  public void setFailedPods(@javax.annotation.Nullable Long failedPods) {
     this.failedPods = failedPods;
   }
 
 
-  public O11yJobRecord jobCPU(@javax.annotation.Nullable BigDecimal jobCPU) {
+  public O11yJobRecord jobCPU(@javax.annotation.Nullable Double jobCPU) {
     this.jobCPU = jobCPU;
     return this;
   }
@@ -189,16 +188,16 @@ public class O11yJobRecord {
    * @return jobCPU
    */
   @javax.annotation.Nullable
-  public BigDecimal getJobCPU() {
+  public Double getJobCPU() {
     return jobCPU;
   }
 
-  public void setJobCPU(@javax.annotation.Nullable BigDecimal jobCPU) {
+  public void setJobCPU(@javax.annotation.Nullable Double jobCPU) {
     this.jobCPU = jobCPU;
   }
 
 
-  public O11yJobRecord jobCPULimit(@javax.annotation.Nullable BigDecimal jobCPULimit) {
+  public O11yJobRecord jobCPULimit(@javax.annotation.Nullable Double jobCPULimit) {
     this.jobCPULimit = jobCPULimit;
     return this;
   }
@@ -208,16 +207,16 @@ public class O11yJobRecord {
    * @return jobCPULimit
    */
   @javax.annotation.Nullable
-  public BigDecimal getJobCPULimit() {
+  public Double getJobCPULimit() {
     return jobCPULimit;
   }
 
-  public void setJobCPULimit(@javax.annotation.Nullable BigDecimal jobCPULimit) {
+  public void setJobCPULimit(@javax.annotation.Nullable Double jobCPULimit) {
     this.jobCPULimit = jobCPULimit;
   }
 
 
-  public O11yJobRecord jobCPURequest(@javax.annotation.Nullable BigDecimal jobCPURequest) {
+  public O11yJobRecord jobCPURequest(@javax.annotation.Nullable Double jobCPURequest) {
     this.jobCPURequest = jobCPURequest;
     return this;
   }
@@ -227,16 +226,16 @@ public class O11yJobRecord {
    * @return jobCPURequest
    */
   @javax.annotation.Nullable
-  public BigDecimal getJobCPURequest() {
+  public Double getJobCPURequest() {
     return jobCPURequest;
   }
 
-  public void setJobCPURequest(@javax.annotation.Nullable BigDecimal jobCPURequest) {
+  public void setJobCPURequest(@javax.annotation.Nullable Double jobCPURequest) {
     this.jobCPURequest = jobCPURequest;
   }
 
 
-  public O11yJobRecord jobMemory(@javax.annotation.Nullable BigDecimal jobMemory) {
+  public O11yJobRecord jobMemory(@javax.annotation.Nullable Double jobMemory) {
     this.jobMemory = jobMemory;
     return this;
   }
@@ -246,16 +245,16 @@ public class O11yJobRecord {
    * @return jobMemory
    */
   @javax.annotation.Nullable
-  public BigDecimal getJobMemory() {
+  public Double getJobMemory() {
     return jobMemory;
   }
 
-  public void setJobMemory(@javax.annotation.Nullable BigDecimal jobMemory) {
+  public void setJobMemory(@javax.annotation.Nullable Double jobMemory) {
     this.jobMemory = jobMemory;
   }
 
 
-  public O11yJobRecord jobMemoryLimit(@javax.annotation.Nullable BigDecimal jobMemoryLimit) {
+  public O11yJobRecord jobMemoryLimit(@javax.annotation.Nullable Double jobMemoryLimit) {
     this.jobMemoryLimit = jobMemoryLimit;
     return this;
   }
@@ -265,16 +264,16 @@ public class O11yJobRecord {
    * @return jobMemoryLimit
    */
   @javax.annotation.Nullable
-  public BigDecimal getJobMemoryLimit() {
+  public Double getJobMemoryLimit() {
     return jobMemoryLimit;
   }
 
-  public void setJobMemoryLimit(@javax.annotation.Nullable BigDecimal jobMemoryLimit) {
+  public void setJobMemoryLimit(@javax.annotation.Nullable Double jobMemoryLimit) {
     this.jobMemoryLimit = jobMemoryLimit;
   }
 
 
-  public O11yJobRecord jobMemoryRequest(@javax.annotation.Nullable BigDecimal jobMemoryRequest) {
+  public O11yJobRecord jobMemoryRequest(@javax.annotation.Nullable Double jobMemoryRequest) {
     this.jobMemoryRequest = jobMemoryRequest;
     return this;
   }
@@ -284,11 +283,11 @@ public class O11yJobRecord {
    * @return jobMemoryRequest
    */
   @javax.annotation.Nullable
-  public BigDecimal getJobMemoryRequest() {
+  public Double getJobMemoryRequest() {
     return jobMemoryRequest;
   }
 
-  public void setJobMemoryRequest(@javax.annotation.Nullable BigDecimal jobMemoryRequest) {
+  public void setJobMemoryRequest(@javax.annotation.Nullable Double jobMemoryRequest) {
     this.jobMemoryRequest = jobMemoryRequest;
   }
 
@@ -358,7 +357,7 @@ public class O11yJobRecord {
   }
 
 
-  public O11yJobRecord successfulPods(@javax.annotation.Nullable Integer successfulPods) {
+  public O11yJobRecord successfulPods(@javax.annotation.Nullable Long successfulPods) {
     this.successfulPods = successfulPods;
     return this;
   }
@@ -368,11 +367,11 @@ public class O11yJobRecord {
    * @return successfulPods
    */
   @javax.annotation.Nullable
-  public Integer getSuccessfulPods() {
+  public Long getSuccessfulPods() {
     return successfulPods;
   }
 
-  public void setSuccessfulPods(@javax.annotation.Nullable Integer successfulPods) {
+  public void setSuccessfulPods(@javax.annotation.Nullable Long successfulPods) {
     this.successfulPods = successfulPods;
   }
 

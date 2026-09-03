@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -69,17 +68,17 @@ public class RiskPolicyVersion {
   public static final String SERIALIZED_NAME_REVIEW = "review";
   @SerializedName(SERIALIZED_NAME_REVIEW)
   @javax.annotation.Nullable
-  private BigDecimal review;
+  private Double review;
 
   public static final String SERIALIZED_NAME_SAMPLE = "sample";
   @SerializedName(SERIALIZED_NAME_SAMPLE)
   @javax.annotation.Nullable
-  private BigDecimal sample;
+  private Double sample;
 
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
   @javax.annotation.Nullable
-  private Integer version;
+  private Long version;
 
   public RiskPolicyVersion() {
   }
@@ -141,7 +140,7 @@ public class RiskPolicyVersion {
   }
 
 
-  public RiskPolicyVersion review(@javax.annotation.Nullable BigDecimal review) {
+  public RiskPolicyVersion review(@javax.annotation.Nullable Double review) {
     this.review = review;
     return this;
   }
@@ -151,16 +150,16 @@ public class RiskPolicyVersion {
    * @return review
    */
   @javax.annotation.Nullable
-  public BigDecimal getReview() {
+  public Double getReview() {
     return review;
   }
 
-  public void setReview(@javax.annotation.Nullable BigDecimal review) {
+  public void setReview(@javax.annotation.Nullable Double review) {
     this.review = review;
   }
 
 
-  public RiskPolicyVersion sample(@javax.annotation.Nullable BigDecimal sample) {
+  public RiskPolicyVersion sample(@javax.annotation.Nullable Double sample) {
     this.sample = sample;
     return this;
   }
@@ -170,16 +169,16 @@ public class RiskPolicyVersion {
    * @return sample
    */
   @javax.annotation.Nullable
-  public BigDecimal getSample() {
+  public Double getSample() {
     return sample;
   }
 
-  public void setSample(@javax.annotation.Nullable BigDecimal sample) {
+  public void setSample(@javax.annotation.Nullable Double sample) {
     this.sample = sample;
   }
 
 
-  public RiskPolicyVersion version(@javax.annotation.Nullable Integer version) {
+  public RiskPolicyVersion version(@javax.annotation.Nullable Long version) {
     this.version = version;
     return this;
   }
@@ -189,11 +188,11 @@ public class RiskPolicyVersion {
    * @return version
    */
   @javax.annotation.Nullable
-  public Integer getVersion() {
+  public Long getVersion() {
     return version;
   }
 
-  public void setVersion(@javax.annotation.Nullable Integer version) {
+  public void setVersion(@javax.annotation.Nullable Long version) {
     this.version = version;
   }
 

@@ -21,7 +21,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -57,37 +56,37 @@ public class O11yDaemonSetRecord {
   public static final String SERIALIZED_NAME_CURRENT_NODES = "currentNodes";
   @SerializedName(SERIALIZED_NAME_CURRENT_NODES)
   @javax.annotation.Nullable
-  private Integer currentNodes;
+  private Long currentNodes;
 
   public static final String SERIALIZED_NAME_DAEMON_SET_C_P_U = "daemonSetCPU";
   @SerializedName(SERIALIZED_NAME_DAEMON_SET_C_P_U)
   @javax.annotation.Nullable
-  private BigDecimal daemonSetCPU;
+  private Double daemonSetCPU;
 
   public static final String SERIALIZED_NAME_DAEMON_SET_C_P_U_LIMIT = "daemonSetCPULimit";
   @SerializedName(SERIALIZED_NAME_DAEMON_SET_C_P_U_LIMIT)
   @javax.annotation.Nullable
-  private BigDecimal daemonSetCPULimit;
+  private Double daemonSetCPULimit;
 
   public static final String SERIALIZED_NAME_DAEMON_SET_C_P_U_REQUEST = "daemonSetCPURequest";
   @SerializedName(SERIALIZED_NAME_DAEMON_SET_C_P_U_REQUEST)
   @javax.annotation.Nullable
-  private BigDecimal daemonSetCPURequest;
+  private Double daemonSetCPURequest;
 
   public static final String SERIALIZED_NAME_DAEMON_SET_MEMORY = "daemonSetMemory";
   @SerializedName(SERIALIZED_NAME_DAEMON_SET_MEMORY)
   @javax.annotation.Nullable
-  private BigDecimal daemonSetMemory;
+  private Double daemonSetMemory;
 
   public static final String SERIALIZED_NAME_DAEMON_SET_MEMORY_LIMIT = "daemonSetMemoryLimit";
   @SerializedName(SERIALIZED_NAME_DAEMON_SET_MEMORY_LIMIT)
   @javax.annotation.Nullable
-  private BigDecimal daemonSetMemoryLimit;
+  private Double daemonSetMemoryLimit;
 
   public static final String SERIALIZED_NAME_DAEMON_SET_MEMORY_REQUEST = "daemonSetMemoryRequest";
   @SerializedName(SERIALIZED_NAME_DAEMON_SET_MEMORY_REQUEST)
   @javax.annotation.Nullable
-  private BigDecimal daemonSetMemoryRequest;
+  private Double daemonSetMemoryRequest;
 
   public static final String SERIALIZED_NAME_DAEMON_SET_NAME = "daemonSetName";
   @SerializedName(SERIALIZED_NAME_DAEMON_SET_NAME)
@@ -97,7 +96,7 @@ public class O11yDaemonSetRecord {
   public static final String SERIALIZED_NAME_DESIRED_NODES = "desiredNodes";
   @SerializedName(SERIALIZED_NAME_DESIRED_NODES)
   @javax.annotation.Nullable
-  private Integer desiredNodes;
+  private Long desiredNodes;
 
   public static final String SERIALIZED_NAME_META = "meta";
   @SerializedName(SERIALIZED_NAME_META)
@@ -112,7 +111,7 @@ public class O11yDaemonSetRecord {
   public O11yDaemonSetRecord() {
   }
 
-  public O11yDaemonSetRecord currentNodes(@javax.annotation.Nullable Integer currentNodes) {
+  public O11yDaemonSetRecord currentNodes(@javax.annotation.Nullable Long currentNodes) {
     this.currentNodes = currentNodes;
     return this;
   }
@@ -122,16 +121,16 @@ public class O11yDaemonSetRecord {
    * @return currentNodes
    */
   @javax.annotation.Nullable
-  public Integer getCurrentNodes() {
+  public Long getCurrentNodes() {
     return currentNodes;
   }
 
-  public void setCurrentNodes(@javax.annotation.Nullable Integer currentNodes) {
+  public void setCurrentNodes(@javax.annotation.Nullable Long currentNodes) {
     this.currentNodes = currentNodes;
   }
 
 
-  public O11yDaemonSetRecord daemonSetCPU(@javax.annotation.Nullable BigDecimal daemonSetCPU) {
+  public O11yDaemonSetRecord daemonSetCPU(@javax.annotation.Nullable Double daemonSetCPU) {
     this.daemonSetCPU = daemonSetCPU;
     return this;
   }
@@ -141,16 +140,16 @@ public class O11yDaemonSetRecord {
    * @return daemonSetCPU
    */
   @javax.annotation.Nullable
-  public BigDecimal getDaemonSetCPU() {
+  public Double getDaemonSetCPU() {
     return daemonSetCPU;
   }
 
-  public void setDaemonSetCPU(@javax.annotation.Nullable BigDecimal daemonSetCPU) {
+  public void setDaemonSetCPU(@javax.annotation.Nullable Double daemonSetCPU) {
     this.daemonSetCPU = daemonSetCPU;
   }
 
 
-  public O11yDaemonSetRecord daemonSetCPULimit(@javax.annotation.Nullable BigDecimal daemonSetCPULimit) {
+  public O11yDaemonSetRecord daemonSetCPULimit(@javax.annotation.Nullable Double daemonSetCPULimit) {
     this.daemonSetCPULimit = daemonSetCPULimit;
     return this;
   }
@@ -160,16 +159,16 @@ public class O11yDaemonSetRecord {
    * @return daemonSetCPULimit
    */
   @javax.annotation.Nullable
-  public BigDecimal getDaemonSetCPULimit() {
+  public Double getDaemonSetCPULimit() {
     return daemonSetCPULimit;
   }
 
-  public void setDaemonSetCPULimit(@javax.annotation.Nullable BigDecimal daemonSetCPULimit) {
+  public void setDaemonSetCPULimit(@javax.annotation.Nullable Double daemonSetCPULimit) {
     this.daemonSetCPULimit = daemonSetCPULimit;
   }
 
 
-  public O11yDaemonSetRecord daemonSetCPURequest(@javax.annotation.Nullable BigDecimal daemonSetCPURequest) {
+  public O11yDaemonSetRecord daemonSetCPURequest(@javax.annotation.Nullable Double daemonSetCPURequest) {
     this.daemonSetCPURequest = daemonSetCPURequest;
     return this;
   }
@@ -179,16 +178,16 @@ public class O11yDaemonSetRecord {
    * @return daemonSetCPURequest
    */
   @javax.annotation.Nullable
-  public BigDecimal getDaemonSetCPURequest() {
+  public Double getDaemonSetCPURequest() {
     return daemonSetCPURequest;
   }
 
-  public void setDaemonSetCPURequest(@javax.annotation.Nullable BigDecimal daemonSetCPURequest) {
+  public void setDaemonSetCPURequest(@javax.annotation.Nullable Double daemonSetCPURequest) {
     this.daemonSetCPURequest = daemonSetCPURequest;
   }
 
 
-  public O11yDaemonSetRecord daemonSetMemory(@javax.annotation.Nullable BigDecimal daemonSetMemory) {
+  public O11yDaemonSetRecord daemonSetMemory(@javax.annotation.Nullable Double daemonSetMemory) {
     this.daemonSetMemory = daemonSetMemory;
     return this;
   }
@@ -198,16 +197,16 @@ public class O11yDaemonSetRecord {
    * @return daemonSetMemory
    */
   @javax.annotation.Nullable
-  public BigDecimal getDaemonSetMemory() {
+  public Double getDaemonSetMemory() {
     return daemonSetMemory;
   }
 
-  public void setDaemonSetMemory(@javax.annotation.Nullable BigDecimal daemonSetMemory) {
+  public void setDaemonSetMemory(@javax.annotation.Nullable Double daemonSetMemory) {
     this.daemonSetMemory = daemonSetMemory;
   }
 
 
-  public O11yDaemonSetRecord daemonSetMemoryLimit(@javax.annotation.Nullable BigDecimal daemonSetMemoryLimit) {
+  public O11yDaemonSetRecord daemonSetMemoryLimit(@javax.annotation.Nullable Double daemonSetMemoryLimit) {
     this.daemonSetMemoryLimit = daemonSetMemoryLimit;
     return this;
   }
@@ -217,16 +216,16 @@ public class O11yDaemonSetRecord {
    * @return daemonSetMemoryLimit
    */
   @javax.annotation.Nullable
-  public BigDecimal getDaemonSetMemoryLimit() {
+  public Double getDaemonSetMemoryLimit() {
     return daemonSetMemoryLimit;
   }
 
-  public void setDaemonSetMemoryLimit(@javax.annotation.Nullable BigDecimal daemonSetMemoryLimit) {
+  public void setDaemonSetMemoryLimit(@javax.annotation.Nullable Double daemonSetMemoryLimit) {
     this.daemonSetMemoryLimit = daemonSetMemoryLimit;
   }
 
 
-  public O11yDaemonSetRecord daemonSetMemoryRequest(@javax.annotation.Nullable BigDecimal daemonSetMemoryRequest) {
+  public O11yDaemonSetRecord daemonSetMemoryRequest(@javax.annotation.Nullable Double daemonSetMemoryRequest) {
     this.daemonSetMemoryRequest = daemonSetMemoryRequest;
     return this;
   }
@@ -236,11 +235,11 @@ public class O11yDaemonSetRecord {
    * @return daemonSetMemoryRequest
    */
   @javax.annotation.Nullable
-  public BigDecimal getDaemonSetMemoryRequest() {
+  public Double getDaemonSetMemoryRequest() {
     return daemonSetMemoryRequest;
   }
 
-  public void setDaemonSetMemoryRequest(@javax.annotation.Nullable BigDecimal daemonSetMemoryRequest) {
+  public void setDaemonSetMemoryRequest(@javax.annotation.Nullable Double daemonSetMemoryRequest) {
     this.daemonSetMemoryRequest = daemonSetMemoryRequest;
   }
 
@@ -264,7 +263,7 @@ public class O11yDaemonSetRecord {
   }
 
 
-  public O11yDaemonSetRecord desiredNodes(@javax.annotation.Nullable Integer desiredNodes) {
+  public O11yDaemonSetRecord desiredNodes(@javax.annotation.Nullable Long desiredNodes) {
     this.desiredNodes = desiredNodes;
     return this;
   }
@@ -274,11 +273,11 @@ public class O11yDaemonSetRecord {
    * @return desiredNodes
    */
   @javax.annotation.Nullable
-  public Integer getDesiredNodes() {
+  public Long getDesiredNodes() {
     return desiredNodes;
   }
 
-  public void setDesiredNodes(@javax.annotation.Nullable Integer desiredNodes) {
+  public void setDesiredNodes(@javax.annotation.Nullable Long desiredNodes) {
     this.desiredNodes = desiredNodes;
   }
 

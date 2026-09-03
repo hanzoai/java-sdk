@@ -86,7 +86,7 @@ public class O11yHostListResponse {
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)
   @javax.annotation.Nullable
-  private Integer total;
+  private Long total;
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
@@ -234,7 +234,7 @@ public class O11yHostListResponse {
   }
 
 
-  public O11yHostListResponse total(@javax.annotation.Nullable Integer total) {
+  public O11yHostListResponse total(@javax.annotation.Nullable Long total) {
     this.total = total;
     return this;
   }
@@ -244,11 +244,11 @@ public class O11yHostListResponse {
    * @return total
    */
   @javax.annotation.Nullable
-  public Integer getTotal() {
+  public Long getTotal() {
     return total;
   }
 
-  public void setTotal(@javax.annotation.Nullable Integer total) {
+  public void setTotal(@javax.annotation.Nullable Long total) {
     this.total = total;
   }
 

@@ -63,7 +63,7 @@ public class CalendarPost {
   public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
   @javax.annotation.Nullable
-  private Integer createdAt;
+  private Long createdAt;
 
   public static final String SERIALIZED_NAME_ERROR = "error";
   @SerializedName(SERIALIZED_NAME_ERROR)
@@ -78,12 +78,12 @@ public class CalendarPost {
   public static final String SERIALIZED_NAME_PUBLISHED_AT = "publishedAt";
   @SerializedName(SERIALIZED_NAME_PUBLISHED_AT)
   @javax.annotation.Nullable
-  private Integer publishedAt;
+  private Long publishedAt;
 
   public static final String SERIALIZED_NAME_SCHEDULED_AT = "scheduledAt";
   @SerializedName(SERIALIZED_NAME_SCHEDULED_AT)
   @javax.annotation.Nullable
-  private Integer scheduledAt;
+  private Long scheduledAt;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
@@ -98,7 +98,7 @@ public class CalendarPost {
   public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)
   @javax.annotation.Nullable
-  private Integer updatedAt;
+  private Long updatedAt;
 
   public CalendarPost() {
   }
@@ -141,7 +141,7 @@ public class CalendarPost {
   }
 
 
-  public CalendarPost createdAt(@javax.annotation.Nullable Integer createdAt) {
+  public CalendarPost createdAt(@javax.annotation.Nullable Long createdAt) {
     this.createdAt = createdAt;
     return this;
   }
@@ -151,11 +151,11 @@ public class CalendarPost {
    * @return createdAt
    */
   @javax.annotation.Nullable
-  public Integer getCreatedAt() {
+  public Long getCreatedAt() {
     return createdAt;
   }
 
-  public void setCreatedAt(@javax.annotation.Nullable Integer createdAt) {
+  public void setCreatedAt(@javax.annotation.Nullable Long createdAt) {
     this.createdAt = createdAt;
   }
 
@@ -198,7 +198,7 @@ public class CalendarPost {
   }
 
 
-  public CalendarPost publishedAt(@javax.annotation.Nullable Integer publishedAt) {
+  public CalendarPost publishedAt(@javax.annotation.Nullable Long publishedAt) {
     this.publishedAt = publishedAt;
     return this;
   }
@@ -208,16 +208,16 @@ public class CalendarPost {
    * @return publishedAt
    */
   @javax.annotation.Nullable
-  public Integer getPublishedAt() {
+  public Long getPublishedAt() {
     return publishedAt;
   }
 
-  public void setPublishedAt(@javax.annotation.Nullable Integer publishedAt) {
+  public void setPublishedAt(@javax.annotation.Nullable Long publishedAt) {
     this.publishedAt = publishedAt;
   }
 
 
-  public CalendarPost scheduledAt(@javax.annotation.Nullable Integer scheduledAt) {
+  public CalendarPost scheduledAt(@javax.annotation.Nullable Long scheduledAt) {
     this.scheduledAt = scheduledAt;
     return this;
   }
@@ -227,11 +227,11 @@ public class CalendarPost {
    * @return scheduledAt
    */
   @javax.annotation.Nullable
-  public Integer getScheduledAt() {
+  public Long getScheduledAt() {
     return scheduledAt;
   }
 
-  public void setScheduledAt(@javax.annotation.Nullable Integer scheduledAt) {
+  public void setScheduledAt(@javax.annotation.Nullable Long scheduledAt) {
     this.scheduledAt = scheduledAt;
   }
 
@@ -274,7 +274,7 @@ public class CalendarPost {
   }
 
 
-  public CalendarPost updatedAt(@javax.annotation.Nullable Integer updatedAt) {
+  public CalendarPost updatedAt(@javax.annotation.Nullable Long updatedAt) {
     this.updatedAt = updatedAt;
     return this;
   }
@@ -284,11 +284,11 @@ public class CalendarPost {
    * @return updatedAt
    */
   @javax.annotation.Nullable
-  public Integer getUpdatedAt() {
+  public Long getUpdatedAt() {
     return updatedAt;
   }
 
-  public void setUpdatedAt(@javax.annotation.Nullable Integer updatedAt) {
+  public void setUpdatedAt(@javax.annotation.Nullable Long updatedAt) {
     this.updatedAt = updatedAt;
   }
 

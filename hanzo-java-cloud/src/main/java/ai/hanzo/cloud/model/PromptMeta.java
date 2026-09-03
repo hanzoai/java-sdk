@@ -80,7 +80,7 @@ public class PromptMeta {
   public static final String SERIALIZED_NAME_VERSIONS = "versions";
   @SerializedName(SERIALIZED_NAME_VERSIONS)
   @javax.annotation.Nullable
-  private List<Integer> versions = new ArrayList<>();
+  private List<Long> versions = new ArrayList<>();
 
   public PromptMeta() {
   }
@@ -196,12 +196,12 @@ public class PromptMeta {
   }
 
 
-  public PromptMeta versions(@javax.annotation.Nullable List<Integer> versions) {
+  public PromptMeta versions(@javax.annotation.Nullable List<Long> versions) {
     this.versions = versions;
     return this;
   }
 
-  public PromptMeta addVersionsItem(Integer versionsItem) {
+  public PromptMeta addVersionsItem(Long versionsItem) {
     if (this.versions == null) {
       this.versions = new ArrayList<>();
     }
@@ -214,11 +214,11 @@ public class PromptMeta {
    * @return versions
    */
   @javax.annotation.Nullable
-  public List<Integer> getVersions() {
+  public List<Long> getVersions() {
     return versions;
   }
 
-  public void setVersions(@javax.annotation.Nullable List<Integer> versions) {
+  public void setVersions(@javax.annotation.Nullable List<Long> versions) {
     this.versions = versions;
   }
 

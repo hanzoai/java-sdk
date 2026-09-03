@@ -56,7 +56,7 @@ public class O11yO11yRetentionSetIn {
   public static final String SERIALIZED_NAME_COLD_STORAGE_DURATION_DAYS = "coldStorageDurationDays";
   @SerializedName(SERIALIZED_NAME_COLD_STORAGE_DURATION_DAYS)
   @javax.annotation.Nullable
-  private Integer coldStorageDurationDays;
+  private Long coldStorageDurationDays;
 
   public static final String SERIALIZED_NAME_COLD_STORAGE_VOLUME = "coldStorageVolume";
   @SerializedName(SERIALIZED_NAME_COLD_STORAGE_VOLUME)
@@ -66,7 +66,7 @@ public class O11yO11yRetentionSetIn {
   public static final String SERIALIZED_NAME_DEFAULT_T_T_L_DAYS = "defaultTTLDays";
   @SerializedName(SERIALIZED_NAME_DEFAULT_T_T_L_DAYS)
   @javax.annotation.Nullable
-  private Integer defaultTTLDays;
+  private Long defaultTTLDays;
 
   public static final String SERIALIZED_NAME_TTL_CONDITIONS = "ttlConditions";
   @SerializedName(SERIALIZED_NAME_TTL_CONDITIONS)
@@ -81,7 +81,7 @@ public class O11yO11yRetentionSetIn {
   public O11yO11yRetentionSetIn() {
   }
 
-  public O11yO11yRetentionSetIn coldStorageDurationDays(@javax.annotation.Nullable Integer coldStorageDurationDays) {
+  public O11yO11yRetentionSetIn coldStorageDurationDays(@javax.annotation.Nullable Long coldStorageDurationDays) {
     this.coldStorageDurationDays = coldStorageDurationDays;
     return this;
   }
@@ -91,11 +91,11 @@ public class O11yO11yRetentionSetIn {
    * @return coldStorageDurationDays
    */
   @javax.annotation.Nullable
-  public Integer getColdStorageDurationDays() {
+  public Long getColdStorageDurationDays() {
     return coldStorageDurationDays;
   }
 
-  public void setColdStorageDurationDays(@javax.annotation.Nullable Integer coldStorageDurationDays) {
+  public void setColdStorageDurationDays(@javax.annotation.Nullable Long coldStorageDurationDays) {
     this.coldStorageDurationDays = coldStorageDurationDays;
   }
 
@@ -119,7 +119,7 @@ public class O11yO11yRetentionSetIn {
   }
 
 
-  public O11yO11yRetentionSetIn defaultTTLDays(@javax.annotation.Nullable Integer defaultTTLDays) {
+  public O11yO11yRetentionSetIn defaultTTLDays(@javax.annotation.Nullable Long defaultTTLDays) {
     this.defaultTTLDays = defaultTTLDays;
     return this;
   }
@@ -129,11 +129,11 @@ public class O11yO11yRetentionSetIn {
    * @return defaultTTLDays
    */
   @javax.annotation.Nullable
-  public Integer getDefaultTTLDays() {
+  public Long getDefaultTTLDays() {
     return defaultTTLDays;
   }
 
-  public void setDefaultTTLDays(@javax.annotation.Nullable Integer defaultTTLDays) {
+  public void setDefaultTTLDays(@javax.annotation.Nullable Long defaultTTLDays) {
     this.defaultTTLDays = defaultTTLDays;
   }
 

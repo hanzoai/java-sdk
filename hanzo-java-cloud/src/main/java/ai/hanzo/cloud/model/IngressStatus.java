@@ -78,7 +78,7 @@ public class IngressStatus {
   public static final String SERIALIZED_NAME_LIVE_HOSTS = "liveHosts";
   @SerializedName(SERIALIZED_NAME_LIVE_HOSTS)
   @javax.annotation.Nullable
-  private Integer liveHosts;
+  private Long liveHosts;
 
   public static final String SERIALIZED_NAME_PROXY = "proxy";
   @SerializedName(SERIALIZED_NAME_PROXY)
@@ -93,7 +93,7 @@ public class IngressStatus {
   public static final String SERIALIZED_NAME_TLS_HOSTS = "tlsHosts";
   @SerializedName(SERIALIZED_NAME_TLS_HOSTS)
   @javax.annotation.Nullable
-  private Integer tlsHosts;
+  private Long tlsHosts;
 
   public IngressStatus() {
   }
@@ -193,7 +193,7 @@ public class IngressStatus {
   }
 
 
-  public IngressStatus liveHosts(@javax.annotation.Nullable Integer liveHosts) {
+  public IngressStatus liveHosts(@javax.annotation.Nullable Long liveHosts) {
     this.liveHosts = liveHosts;
     return this;
   }
@@ -203,11 +203,11 @@ public class IngressStatus {
    * @return liveHosts
    */
   @javax.annotation.Nullable
-  public Integer getLiveHosts() {
+  public Long getLiveHosts() {
     return liveHosts;
   }
 
-  public void setLiveHosts(@javax.annotation.Nullable Integer liveHosts) {
+  public void setLiveHosts(@javax.annotation.Nullable Long liveHosts) {
     this.liveHosts = liveHosts;
   }
 
@@ -250,7 +250,7 @@ public class IngressStatus {
   }
 
 
-  public IngressStatus tlsHosts(@javax.annotation.Nullable Integer tlsHosts) {
+  public IngressStatus tlsHosts(@javax.annotation.Nullable Long tlsHosts) {
     this.tlsHosts = tlsHosts;
     return this;
   }
@@ -260,11 +260,11 @@ public class IngressStatus {
    * @return tlsHosts
    */
   @javax.annotation.Nullable
-  public Integer getTlsHosts() {
+  public Long getTlsHosts() {
     return tlsHosts;
   }
 
-  public void setTlsHosts(@javax.annotation.Nullable Integer tlsHosts) {
+  public void setTlsHosts(@javax.annotation.Nullable Long tlsHosts) {
     this.tlsHosts = tlsHosts;
   }
 

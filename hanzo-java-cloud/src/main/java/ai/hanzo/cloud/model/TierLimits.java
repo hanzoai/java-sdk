@@ -60,7 +60,7 @@ public class TierLimits {
   public static final String SERIALIZED_NAME_DAILY_CREDITS_CENTS = "dailyCreditsCents";
   @SerializedName(SERIALIZED_NAME_DAILY_CREDITS_CENTS)
   @javax.annotation.Nullable
-  private Integer dailyCreditsCents;
+  private Long dailyCreditsCents;
 
   public static final String SERIALIZED_NAME_DISPLAY_NAME = "displayName";
   @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
@@ -70,7 +70,7 @@ public class TierLimits {
   public static final String SERIALIZED_NAME_MAX_AGENTS = "maxAgents";
   @SerializedName(SERIALIZED_NAME_MAX_AGENTS)
   @javax.annotation.Nullable
-  private Integer maxAgents;
+  private Long maxAgents;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -112,7 +112,7 @@ public class TierLimits {
   }
 
 
-  public TierLimits dailyCreditsCents(@javax.annotation.Nullable Integer dailyCreditsCents) {
+  public TierLimits dailyCreditsCents(@javax.annotation.Nullable Long dailyCreditsCents) {
     this.dailyCreditsCents = dailyCreditsCents;
     return this;
   }
@@ -122,11 +122,11 @@ public class TierLimits {
    * @return dailyCreditsCents
    */
   @javax.annotation.Nullable
-  public Integer getDailyCreditsCents() {
+  public Long getDailyCreditsCents() {
     return dailyCreditsCents;
   }
 
-  public void setDailyCreditsCents(@javax.annotation.Nullable Integer dailyCreditsCents) {
+  public void setDailyCreditsCents(@javax.annotation.Nullable Long dailyCreditsCents) {
     this.dailyCreditsCents = dailyCreditsCents;
   }
 
@@ -150,7 +150,7 @@ public class TierLimits {
   }
 
 
-  public TierLimits maxAgents(@javax.annotation.Nullable Integer maxAgents) {
+  public TierLimits maxAgents(@javax.annotation.Nullable Long maxAgents) {
     this.maxAgents = maxAgents;
     return this;
   }
@@ -160,11 +160,11 @@ public class TierLimits {
    * @return maxAgents
    */
   @javax.annotation.Nullable
-  public Integer getMaxAgents() {
+  public Long getMaxAgents() {
     return maxAgents;
   }
 
-  public void setMaxAgents(@javax.annotation.Nullable Integer maxAgents) {
+  public void setMaxAgents(@javax.annotation.Nullable Long maxAgents) {
     this.maxAgents = maxAgents;
   }
 

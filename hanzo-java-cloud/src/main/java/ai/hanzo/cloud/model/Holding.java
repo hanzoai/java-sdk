@@ -55,7 +55,7 @@ public class Holding {
   public static final String SERIALIZED_NAME_COST_CENTS = "costCents";
   @SerializedName(SERIALIZED_NAME_COST_CENTS)
   @javax.annotation.Nullable
-  private Integer costCents;
+  private Long costCents;
 
   public static final String SERIALIZED_NAME_DOMAIN = "domain";
   @SerializedName(SERIALIZED_NAME_DOMAIN)
@@ -75,7 +75,7 @@ public class Holding {
   public static final String SERIALIZED_NAME_ORDER = "order";
   @SerializedName(SERIALIZED_NAME_ORDER)
   @javax.annotation.Nullable
-  private Integer order;
+  private Long order;
 
   public static final String SERIALIZED_NAME_ORG = "org";
   @SerializedName(SERIALIZED_NAME_ORG)
@@ -85,17 +85,17 @@ public class Holding {
   public static final String SERIALIZED_NAME_PRICE_CENTS = "priceCents";
   @SerializedName(SERIALIZED_NAME_PRICE_CENTS)
   @javax.annotation.Nullable
-  private Integer priceCents;
+  private Long priceCents;
 
   public static final String SERIALIZED_NAME_REGISTERED_AT = "registeredAt";
   @SerializedName(SERIALIZED_NAME_REGISTERED_AT)
   @javax.annotation.Nullable
-  private Integer registeredAt;
+  private Long registeredAt;
 
   public Holding() {
   }
 
-  public Holding costCents(@javax.annotation.Nullable Integer costCents) {
+  public Holding costCents(@javax.annotation.Nullable Long costCents) {
     this.costCents = costCents;
     return this;
   }
@@ -105,11 +105,11 @@ public class Holding {
    * @return costCents
    */
   @javax.annotation.Nullable
-  public Integer getCostCents() {
+  public Long getCostCents() {
     return costCents;
   }
 
-  public void setCostCents(@javax.annotation.Nullable Integer costCents) {
+  public void setCostCents(@javax.annotation.Nullable Long costCents) {
     this.costCents = costCents;
   }
 
@@ -179,7 +179,7 @@ public class Holding {
   }
 
 
-  public Holding order(@javax.annotation.Nullable Integer order) {
+  public Holding order(@javax.annotation.Nullable Long order) {
     this.order = order;
     return this;
   }
@@ -189,11 +189,11 @@ public class Holding {
    * @return order
    */
   @javax.annotation.Nullable
-  public Integer getOrder() {
+  public Long getOrder() {
     return order;
   }
 
-  public void setOrder(@javax.annotation.Nullable Integer order) {
+  public void setOrder(@javax.annotation.Nullable Long order) {
     this.order = order;
   }
 
@@ -217,7 +217,7 @@ public class Holding {
   }
 
 
-  public Holding priceCents(@javax.annotation.Nullable Integer priceCents) {
+  public Holding priceCents(@javax.annotation.Nullable Long priceCents) {
     this.priceCents = priceCents;
     return this;
   }
@@ -227,16 +227,16 @@ public class Holding {
    * @return priceCents
    */
   @javax.annotation.Nullable
-  public Integer getPriceCents() {
+  public Long getPriceCents() {
     return priceCents;
   }
 
-  public void setPriceCents(@javax.annotation.Nullable Integer priceCents) {
+  public void setPriceCents(@javax.annotation.Nullable Long priceCents) {
     this.priceCents = priceCents;
   }
 
 
-  public Holding registeredAt(@javax.annotation.Nullable Integer registeredAt) {
+  public Holding registeredAt(@javax.annotation.Nullable Long registeredAt) {
     this.registeredAt = registeredAt;
     return this;
   }
@@ -246,11 +246,11 @@ public class Holding {
    * @return registeredAt
    */
   @javax.annotation.Nullable
-  public Integer getRegisteredAt() {
+  public Long getRegisteredAt() {
     return registeredAt;
   }
 
-  public void setRegisteredAt(@javax.annotation.Nullable Integer registeredAt) {
+  public void setRegisteredAt(@javax.annotation.Nullable Long registeredAt) {
     this.registeredAt = registeredAt;
   }
 

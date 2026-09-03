@@ -91,7 +91,7 @@ public class PromptDetail {
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
   @javax.annotation.Nullable
-  private Integer version;
+  private Long version;
 
   public static final String SERIALIZED_NAME_VERSION_HISTORY = "versionHistory";
   @SerializedName(SERIALIZED_NAME_VERSION_HISTORY)
@@ -250,7 +250,7 @@ public class PromptDetail {
   }
 
 
-  public PromptDetail version(@javax.annotation.Nullable Integer version) {
+  public PromptDetail version(@javax.annotation.Nullable Long version) {
     this.version = version;
     return this;
   }
@@ -260,11 +260,11 @@ public class PromptDetail {
    * @return version
    */
   @javax.annotation.Nullable
-  public Integer getVersion() {
+  public Long getVersion() {
     return version;
   }
 
-  public void setVersion(@javax.annotation.Nullable Integer version) {
+  public void setVersion(@javax.annotation.Nullable Long version) {
     this.version = version;
   }
 

@@ -54,7 +54,7 @@ public class BlueprintHealth {
   public static final String SERIALIZED_NAME_BLUEPRINTS = "blueprints";
   @SerializedName(SERIALIZED_NAME_BLUEPRINTS)
   @javax.annotation.Nullable
-  private Integer blueprints;
+  private Long blueprints;
 
   public static final String SERIALIZED_NAME_RATE_CARD = "rateCard";
   @SerializedName(SERIALIZED_NAME_RATE_CARD)
@@ -74,7 +74,7 @@ public class BlueprintHealth {
   public BlueprintHealth() {
   }
 
-  public BlueprintHealth blueprints(@javax.annotation.Nullable Integer blueprints) {
+  public BlueprintHealth blueprints(@javax.annotation.Nullable Long blueprints) {
     this.blueprints = blueprints;
     return this;
   }
@@ -84,11 +84,11 @@ public class BlueprintHealth {
    * @return blueprints
    */
   @javax.annotation.Nullable
-  public Integer getBlueprints() {
+  public Long getBlueprints() {
     return blueprints;
   }
 
-  public void setBlueprints(@javax.annotation.Nullable Integer blueprints) {
+  public void setBlueprints(@javax.annotation.Nullable Long blueprints) {
     this.blueprints = blueprints;
   }
 

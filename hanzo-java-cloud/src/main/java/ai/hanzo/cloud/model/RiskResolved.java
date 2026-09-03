@@ -21,7 +21,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -72,7 +71,7 @@ public class RiskResolved {
   public static final String SERIALIZED_NAME_CONFIDENCE = "confidence";
   @SerializedName(SERIALIZED_NAME_CONFIDENCE)
   @javax.annotation.Nullable
-  private BigDecimal confidence;
+  private Double confidence;
 
   public static final String SERIALIZED_NAME_CONFLICTS = "conflicts";
   @SerializedName(SERIALIZED_NAME_CONFLICTS)
@@ -174,7 +173,7 @@ public class RiskResolved {
   }
 
 
-  public RiskResolved confidence(@javax.annotation.Nullable BigDecimal confidence) {
+  public RiskResolved confidence(@javax.annotation.Nullable Double confidence) {
     this.confidence = confidence;
     return this;
   }
@@ -184,11 +183,11 @@ public class RiskResolved {
    * @return confidence
    */
   @javax.annotation.Nullable
-  public BigDecimal getConfidence() {
+  public Double getConfidence() {
     return confidence;
   }
 
-  public void setConfidence(@javax.annotation.Nullable BigDecimal confidence) {
+  public void setConfidence(@javax.annotation.Nullable Double confidence) {
     this.confidence = confidence;
   }
 

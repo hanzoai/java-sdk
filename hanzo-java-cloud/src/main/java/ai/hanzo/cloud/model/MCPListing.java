@@ -117,7 +117,7 @@ public class MCPListing {
   public static final String SERIALIZED_NAME_SYNCED = "synced";
   @SerializedName(SERIALIZED_NAME_SYNCED)
   @javax.annotation.Nullable
-  private Integer synced;
+  private Long synced;
 
   public static final String SERIALIZED_NAME_TITLE = "title";
   @SerializedName(SERIALIZED_NAME_TITLE)
@@ -386,7 +386,7 @@ public class MCPListing {
   }
 
 
-  public MCPListing synced(@javax.annotation.Nullable Integer synced) {
+  public MCPListing synced(@javax.annotation.Nullable Long synced) {
     this.synced = synced;
     return this;
   }
@@ -396,11 +396,11 @@ public class MCPListing {
    * @return synced
    */
   @javax.annotation.Nullable
-  public Integer getSynced() {
+  public Long getSynced() {
     return synced;
   }
 
-  public void setSynced(@javax.annotation.Nullable Integer synced) {
+  public void setSynced(@javax.annotation.Nullable Long synced) {
     this.synced = synced;
   }
 

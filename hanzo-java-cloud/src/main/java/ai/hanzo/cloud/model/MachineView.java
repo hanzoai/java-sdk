@@ -118,7 +118,7 @@ public class MachineView {
   public static final String SERIALIZED_NAME_VCPU = "vcpu";
   @SerializedName(SERIALIZED_NAME_VCPU)
   @javax.annotation.Nullable
-  private Integer vcpu;
+  private Long vcpu;
 
   public MachineView() {
   }
@@ -370,7 +370,7 @@ public class MachineView {
   }
 
 
-  public MachineView vcpu(@javax.annotation.Nullable Integer vcpu) {
+  public MachineView vcpu(@javax.annotation.Nullable Long vcpu) {
     this.vcpu = vcpu;
     return this;
   }
@@ -380,11 +380,11 @@ public class MachineView {
    * @return vcpu
    */
   @javax.annotation.Nullable
-  public Integer getVcpu() {
+  public Long getVcpu() {
     return vcpu;
   }
 
-  public void setVcpu(@javax.annotation.Nullable Integer vcpu) {
+  public void setVcpu(@javax.annotation.Nullable Long vcpu) {
     this.vcpu = vcpu;
   }
 

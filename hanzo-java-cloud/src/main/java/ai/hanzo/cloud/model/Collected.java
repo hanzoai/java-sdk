@@ -54,17 +54,17 @@ public class Collected {
   public static final String SERIALIZED_NAME_BALANCE_USED_CENTS = "balanceUsedCents";
   @SerializedName(SERIALIZED_NAME_BALANCE_USED_CENTS)
   @javax.annotation.Nullable
-  private Integer balanceUsedCents;
+  private Long balanceUsedCents;
 
   public static final String SERIALIZED_NAME_CARD_CHARGED_CENTS = "cardChargedCents";
   @SerializedName(SERIALIZED_NAME_CARD_CHARGED_CENTS)
   @javax.annotation.Nullable
-  private Integer cardChargedCents;
+  private Long cardChargedCents;
 
   public static final String SERIALIZED_NAME_CREDIT_USED_CENTS = "creditUsedCents";
   @SerializedName(SERIALIZED_NAME_CREDIT_USED_CENTS)
   @javax.annotation.Nullable
-  private Integer creditUsedCents;
+  private Long creditUsedCents;
 
   public static final String SERIALIZED_NAME_INVOICE = "invoice";
   @SerializedName(SERIALIZED_NAME_INVOICE)
@@ -89,7 +89,7 @@ public class Collected {
   public Collected() {
   }
 
-  public Collected balanceUsedCents(@javax.annotation.Nullable Integer balanceUsedCents) {
+  public Collected balanceUsedCents(@javax.annotation.Nullable Long balanceUsedCents) {
     this.balanceUsedCents = balanceUsedCents;
     return this;
   }
@@ -99,16 +99,16 @@ public class Collected {
    * @return balanceUsedCents
    */
   @javax.annotation.Nullable
-  public Integer getBalanceUsedCents() {
+  public Long getBalanceUsedCents() {
     return balanceUsedCents;
   }
 
-  public void setBalanceUsedCents(@javax.annotation.Nullable Integer balanceUsedCents) {
+  public void setBalanceUsedCents(@javax.annotation.Nullable Long balanceUsedCents) {
     this.balanceUsedCents = balanceUsedCents;
   }
 
 
-  public Collected cardChargedCents(@javax.annotation.Nullable Integer cardChargedCents) {
+  public Collected cardChargedCents(@javax.annotation.Nullable Long cardChargedCents) {
     this.cardChargedCents = cardChargedCents;
     return this;
   }
@@ -118,16 +118,16 @@ public class Collected {
    * @return cardChargedCents
    */
   @javax.annotation.Nullable
-  public Integer getCardChargedCents() {
+  public Long getCardChargedCents() {
     return cardChargedCents;
   }
 
-  public void setCardChargedCents(@javax.annotation.Nullable Integer cardChargedCents) {
+  public void setCardChargedCents(@javax.annotation.Nullable Long cardChargedCents) {
     this.cardChargedCents = cardChargedCents;
   }
 
 
-  public Collected creditUsedCents(@javax.annotation.Nullable Integer creditUsedCents) {
+  public Collected creditUsedCents(@javax.annotation.Nullable Long creditUsedCents) {
     this.creditUsedCents = creditUsedCents;
     return this;
   }
@@ -137,11 +137,11 @@ public class Collected {
    * @return creditUsedCents
    */
   @javax.annotation.Nullable
-  public Integer getCreditUsedCents() {
+  public Long getCreditUsedCents() {
     return creditUsedCents;
   }
 
-  public void setCreditUsedCents(@javax.annotation.Nullable Integer creditUsedCents) {
+  public void setCreditUsedCents(@javax.annotation.Nullable Long creditUsedCents) {
     this.creditUsedCents = creditUsedCents;
   }
 

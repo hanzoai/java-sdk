@@ -58,12 +58,12 @@ public class FinanceLedgerEntry {
   public static final String SERIALIZED_NAME_BALANCE_CENTS = "balanceCents";
   @SerializedName(SERIALIZED_NAME_BALANCE_CENTS)
   @javax.annotation.Nullable
-  private Integer balanceCents;
+  private Long balanceCents;
 
   public static final String SERIALIZED_NAME_CENTS = "cents";
   @SerializedName(SERIALIZED_NAME_CENTS)
   @javax.annotation.Nullable
-  private Integer cents;
+  private Long cents;
 
   public static final String SERIALIZED_NAME_CURRENCY = "currency";
   @SerializedName(SERIALIZED_NAME_CURRENCY)
@@ -107,7 +107,7 @@ public class FinanceLedgerEntry {
   }
 
 
-  public FinanceLedgerEntry balanceCents(@javax.annotation.Nullable Integer balanceCents) {
+  public FinanceLedgerEntry balanceCents(@javax.annotation.Nullable Long balanceCents) {
     this.balanceCents = balanceCents;
     return this;
   }
@@ -117,16 +117,16 @@ public class FinanceLedgerEntry {
    * @return balanceCents
    */
   @javax.annotation.Nullable
-  public Integer getBalanceCents() {
+  public Long getBalanceCents() {
     return balanceCents;
   }
 
-  public void setBalanceCents(@javax.annotation.Nullable Integer balanceCents) {
+  public void setBalanceCents(@javax.annotation.Nullable Long balanceCents) {
     this.balanceCents = balanceCents;
   }
 
 
-  public FinanceLedgerEntry cents(@javax.annotation.Nullable Integer cents) {
+  public FinanceLedgerEntry cents(@javax.annotation.Nullable Long cents) {
     this.cents = cents;
     return this;
   }
@@ -136,11 +136,11 @@ public class FinanceLedgerEntry {
    * @return cents
    */
   @javax.annotation.Nullable
-  public Integer getCents() {
+  public Long getCents() {
     return cents;
   }
 
-  public void setCents(@javax.annotation.Nullable Integer cents) {
+  public void setCents(@javax.annotation.Nullable Long cents) {
     this.cents = cents;
   }
 

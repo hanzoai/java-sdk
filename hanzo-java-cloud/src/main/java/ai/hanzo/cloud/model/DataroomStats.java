@@ -66,12 +66,12 @@ public class DataroomStats {
   public static final String SERIALIZED_NAME_TOTAL_PAGE_VIEWS = "totalPageViews";
   @SerializedName(SERIALIZED_NAME_TOTAL_PAGE_VIEWS)
   @javax.annotation.Nullable
-  private Integer totalPageViews;
+  private Long totalPageViews;
 
   public static final String SERIALIZED_NAME_TOTAL_VIEWS = "totalViews";
   @SerializedName(SERIALIZED_NAME_TOTAL_VIEWS)
   @javax.annotation.Nullable
-  private Integer totalViews;
+  private Long totalViews;
 
   public DataroomStats() {
   }
@@ -122,7 +122,7 @@ public class DataroomStats {
   }
 
 
-  public DataroomStats totalPageViews(@javax.annotation.Nullable Integer totalPageViews) {
+  public DataroomStats totalPageViews(@javax.annotation.Nullable Long totalPageViews) {
     this.totalPageViews = totalPageViews;
     return this;
   }
@@ -132,16 +132,16 @@ public class DataroomStats {
    * @return totalPageViews
    */
   @javax.annotation.Nullable
-  public Integer getTotalPageViews() {
+  public Long getTotalPageViews() {
     return totalPageViews;
   }
 
-  public void setTotalPageViews(@javax.annotation.Nullable Integer totalPageViews) {
+  public void setTotalPageViews(@javax.annotation.Nullable Long totalPageViews) {
     this.totalPageViews = totalPageViews;
   }
 
 
-  public DataroomStats totalViews(@javax.annotation.Nullable Integer totalViews) {
+  public DataroomStats totalViews(@javax.annotation.Nullable Long totalViews) {
     this.totalViews = totalViews;
     return this;
   }
@@ -151,11 +151,11 @@ public class DataroomStats {
    * @return totalViews
    */
   @javax.annotation.Nullable
-  public Integer getTotalViews() {
+  public Long getTotalViews() {
     return totalViews;
   }
 
-  public void setTotalViews(@javax.annotation.Nullable Integer totalViews) {
+  public void setTotalViews(@javax.annotation.Nullable Long totalViews) {
     this.totalViews = totalViews;
   }
 

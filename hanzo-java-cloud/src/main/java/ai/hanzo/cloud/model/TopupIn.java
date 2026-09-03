@@ -53,7 +53,7 @@ public class TopupIn {
   public static final String SERIALIZED_NAME_AMOUNT_CENTS = "amountCents";
   @SerializedName(SERIALIZED_NAME_AMOUNT_CENTS)
   @javax.annotation.Nullable
-  private Integer amountCents;
+  private Long amountCents;
 
   public static final String SERIALIZED_NAME_CURRENCY = "currency";
   @SerializedName(SERIALIZED_NAME_CURRENCY)
@@ -73,7 +73,7 @@ public class TopupIn {
   public TopupIn() {
   }
 
-  public TopupIn amountCents(@javax.annotation.Nullable Integer amountCents) {
+  public TopupIn amountCents(@javax.annotation.Nullable Long amountCents) {
     this.amountCents = amountCents;
     return this;
   }
@@ -83,11 +83,11 @@ public class TopupIn {
    * @return amountCents
    */
   @javax.annotation.Nullable
-  public Integer getAmountCents() {
+  public Long getAmountCents() {
     return amountCents;
   }
 
-  public void setAmountCents(@javax.annotation.Nullable Integer amountCents) {
+  public void setAmountCents(@javax.annotation.Nullable Long amountCents) {
     this.amountCents = amountCents;
   }
 

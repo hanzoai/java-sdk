@@ -70,7 +70,7 @@ public class CategoryIn {
   public static final String SERIALIZED_NAME_ORDER = "order";
   @SerializedName(SERIALIZED_NAME_ORDER)
   @javax.annotation.Nullable
-  private Integer order;
+  private Long order;
 
   public static final String SERIALIZED_NAME_SUMMARY = "summary";
   @SerializedName(SERIALIZED_NAME_SUMMARY)
@@ -145,7 +145,7 @@ public class CategoryIn {
   }
 
 
-  public CategoryIn order(@javax.annotation.Nullable Integer order) {
+  public CategoryIn order(@javax.annotation.Nullable Long order) {
     this.order = order;
     return this;
   }
@@ -155,11 +155,11 @@ public class CategoryIn {
    * @return order
    */
   @javax.annotation.Nullable
-  public Integer getOrder() {
+  public Long getOrder() {
     return order;
   }
 
-  public void setOrder(@javax.annotation.Nullable Integer order) {
+  public void setOrder(@javax.annotation.Nullable Long order) {
     this.order = order;
   }
 

@@ -69,7 +69,7 @@ public class O11ySpanMapperSource {
   public static final String SERIALIZED_NAME_PRIORITY = "priority";
   @SerializedName(SERIALIZED_NAME_PRIORITY)
   @javax.annotation.Nullable
-  private Integer priority;
+  private Long priority;
 
   public O11ySpanMapperSource() {
   }
@@ -131,7 +131,7 @@ public class O11ySpanMapperSource {
   }
 
 
-  public O11ySpanMapperSource priority(@javax.annotation.Nullable Integer priority) {
+  public O11ySpanMapperSource priority(@javax.annotation.Nullable Long priority) {
     this.priority = priority;
     return this;
   }
@@ -141,11 +141,11 @@ public class O11ySpanMapperSource {
    * @return priority
    */
   @javax.annotation.Nullable
-  public Integer getPriority() {
+  public Long getPriority() {
     return priority;
   }
 
-  public void setPriority(@javax.annotation.Nullable Integer priority) {
+  public void setPriority(@javax.annotation.Nullable Long priority) {
     this.priority = priority;
   }
 

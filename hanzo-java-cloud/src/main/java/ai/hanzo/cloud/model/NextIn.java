@@ -53,7 +53,7 @@ public class NextIn {
   public static final String SERIALIZED_NAME_BATCH = "batch";
   @SerializedName(SERIALIZED_NAME_BATCH)
   @javax.annotation.Nullable
-  private Integer batch;
+  private Long batch;
 
   public static final String SERIALIZED_NAME_EXPIRES = "expires";
   @SerializedName(SERIALIZED_NAME_EXPIRES)
@@ -78,7 +78,7 @@ public class NextIn {
   public NextIn() {
   }
 
-  public NextIn batch(@javax.annotation.Nullable Integer batch) {
+  public NextIn batch(@javax.annotation.Nullable Long batch) {
     this.batch = batch;
     return this;
   }
@@ -88,11 +88,11 @@ public class NextIn {
    * @return batch
    */
   @javax.annotation.Nullable
-  public Integer getBatch() {
+  public Long getBatch() {
     return batch;
   }
 
-  public void setBatch(@javax.annotation.Nullable Integer batch) {
+  public void setBatch(@javax.annotation.Nullable Long batch) {
     this.batch = batch;
   }
 

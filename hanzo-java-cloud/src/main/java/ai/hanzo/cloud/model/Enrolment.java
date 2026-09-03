@@ -68,7 +68,7 @@ public class Enrolment {
   public static final String SERIALIZED_NAME_SHARE_BPS = "shareBps";
   @SerializedName(SERIALIZED_NAME_SHARE_BPS)
   @javax.annotation.Nullable
-  private Integer shareBps;
+  private Long shareBps;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
@@ -155,7 +155,7 @@ public class Enrolment {
   }
 
 
-  public Enrolment shareBps(@javax.annotation.Nullable Integer shareBps) {
+  public Enrolment shareBps(@javax.annotation.Nullable Long shareBps) {
     this.shareBps = shareBps;
     return this;
   }
@@ -165,11 +165,11 @@ public class Enrolment {
    * @return shareBps
    */
   @javax.annotation.Nullable
-  public Integer getShareBps() {
+  public Long getShareBps() {
     return shareBps;
   }
 
-  public void setShareBps(@javax.annotation.Nullable Integer shareBps) {
+  public void setShareBps(@javax.annotation.Nullable Long shareBps) {
     this.shareBps = shareBps;
   }
 

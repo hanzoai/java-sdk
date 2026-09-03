@@ -58,7 +58,7 @@ public class O11yPostableHosts {
   public static final String SERIALIZED_NAME_END = "end";
   @SerializedName(SERIALIZED_NAME_END)
   @javax.annotation.Nullable
-  private Integer end;
+  private Long end;
 
   public static final String SERIALIZED_NAME_FILTER = "filter";
   @SerializedName(SERIALIZED_NAME_FILTER)
@@ -73,12 +73,12 @@ public class O11yPostableHosts {
   public static final String SERIALIZED_NAME_LIMIT = "limit";
   @SerializedName(SERIALIZED_NAME_LIMIT)
   @javax.annotation.Nullable
-  private Integer limit;
+  private Long limit;
 
   public static final String SERIALIZED_NAME_OFFSET = "offset";
   @SerializedName(SERIALIZED_NAME_OFFSET)
   @javax.annotation.Nullable
-  private Integer offset;
+  private Long offset;
 
   public static final String SERIALIZED_NAME_ORDER_BY = "orderBy";
   @SerializedName(SERIALIZED_NAME_ORDER_BY)
@@ -88,12 +88,12 @@ public class O11yPostableHosts {
   public static final String SERIALIZED_NAME_START = "start";
   @SerializedName(SERIALIZED_NAME_START)
   @javax.annotation.Nullable
-  private Integer start;
+  private Long start;
 
   public O11yPostableHosts() {
   }
 
-  public O11yPostableHosts end(@javax.annotation.Nullable Integer end) {
+  public O11yPostableHosts end(@javax.annotation.Nullable Long end) {
     this.end = end;
     return this;
   }
@@ -103,11 +103,11 @@ public class O11yPostableHosts {
    * @return end
    */
   @javax.annotation.Nullable
-  public Integer getEnd() {
+  public Long getEnd() {
     return end;
   }
 
-  public void setEnd(@javax.annotation.Nullable Integer end) {
+  public void setEnd(@javax.annotation.Nullable Long end) {
     this.end = end;
   }
 
@@ -158,7 +158,7 @@ public class O11yPostableHosts {
   }
 
 
-  public O11yPostableHosts limit(@javax.annotation.Nullable Integer limit) {
+  public O11yPostableHosts limit(@javax.annotation.Nullable Long limit) {
     this.limit = limit;
     return this;
   }
@@ -168,16 +168,16 @@ public class O11yPostableHosts {
    * @return limit
    */
   @javax.annotation.Nullable
-  public Integer getLimit() {
+  public Long getLimit() {
     return limit;
   }
 
-  public void setLimit(@javax.annotation.Nullable Integer limit) {
+  public void setLimit(@javax.annotation.Nullable Long limit) {
     this.limit = limit;
   }
 
 
-  public O11yPostableHosts offset(@javax.annotation.Nullable Integer offset) {
+  public O11yPostableHosts offset(@javax.annotation.Nullable Long offset) {
     this.offset = offset;
     return this;
   }
@@ -187,11 +187,11 @@ public class O11yPostableHosts {
    * @return offset
    */
   @javax.annotation.Nullable
-  public Integer getOffset() {
+  public Long getOffset() {
     return offset;
   }
 
-  public void setOffset(@javax.annotation.Nullable Integer offset) {
+  public void setOffset(@javax.annotation.Nullable Long offset) {
     this.offset = offset;
   }
 
@@ -215,7 +215,7 @@ public class O11yPostableHosts {
   }
 
 
-  public O11yPostableHosts start(@javax.annotation.Nullable Integer start) {
+  public O11yPostableHosts start(@javax.annotation.Nullable Long start) {
     this.start = start;
     return this;
   }
@@ -225,11 +225,11 @@ public class O11yPostableHosts {
    * @return start
    */
   @javax.annotation.Nullable
-  public Integer getStart() {
+  public Long getStart() {
     return start;
   }
 
-  public void setStart(@javax.annotation.Nullable Integer start) {
+  public void setStart(@javax.annotation.Nullable Long start) {
     this.start = start;
   }
 

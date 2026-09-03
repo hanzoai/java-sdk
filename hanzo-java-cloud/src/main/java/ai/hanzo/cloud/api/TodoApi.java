@@ -370,7 +370,7 @@ public class TodoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getTodoIssuesCall(@javax.annotation.Nullable String q, @javax.annotation.Nullable String project, @javax.annotation.Nullable String status, @javax.annotation.Nullable String kind, @javax.annotation.Nullable String repo, @javax.annotation.Nullable String room, @javax.annotation.Nullable String source, @javax.annotation.Nullable String assignee, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getTodoIssuesCall(@javax.annotation.Nullable String q, @javax.annotation.Nullable String project, @javax.annotation.Nullable String status, @javax.annotation.Nullable String kind, @javax.annotation.Nullable String repo, @javax.annotation.Nullable String room, @javax.annotation.Nullable String source, @javax.annotation.Nullable String assignee, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -451,7 +451,7 @@ public class TodoApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getTodoIssuesValidateBeforeCall(@javax.annotation.Nullable String q, @javax.annotation.Nullable String project, @javax.annotation.Nullable String status, @javax.annotation.Nullable String kind, @javax.annotation.Nullable String repo, @javax.annotation.Nullable String room, @javax.annotation.Nullable String source, @javax.annotation.Nullable String assignee, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getTodoIssuesValidateBeforeCall(@javax.annotation.Nullable String q, @javax.annotation.Nullable String project, @javax.annotation.Nullable String status, @javax.annotation.Nullable String kind, @javax.annotation.Nullable String repo, @javax.annotation.Nullable String room, @javax.annotation.Nullable String source, @javax.annotation.Nullable String assignee, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         return getTodoIssuesCall(q, project, status, kind, repo, room, source, assignee, limit, _callback);
 
     }
@@ -477,7 +477,7 @@ public class TodoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public IssueHits getTodoIssues(@javax.annotation.Nullable String q, @javax.annotation.Nullable String project, @javax.annotation.Nullable String status, @javax.annotation.Nullable String kind, @javax.annotation.Nullable String repo, @javax.annotation.Nullable String room, @javax.annotation.Nullable String source, @javax.annotation.Nullable String assignee, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public IssueHits getTodoIssues(@javax.annotation.Nullable String q, @javax.annotation.Nullable String project, @javax.annotation.Nullable String status, @javax.annotation.Nullable String kind, @javax.annotation.Nullable String repo, @javax.annotation.Nullable String room, @javax.annotation.Nullable String source, @javax.annotation.Nullable String assignee, @javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<IssueHits> localVarResp = getTodoIssuesWithHttpInfo(q, project, status, kind, repo, room, source, assignee, limit);
         return localVarResp.getData();
     }
@@ -503,7 +503,7 @@ public class TodoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IssueHits> getTodoIssuesWithHttpInfo(@javax.annotation.Nullable String q, @javax.annotation.Nullable String project, @javax.annotation.Nullable String status, @javax.annotation.Nullable String kind, @javax.annotation.Nullable String repo, @javax.annotation.Nullable String room, @javax.annotation.Nullable String source, @javax.annotation.Nullable String assignee, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<IssueHits> getTodoIssuesWithHttpInfo(@javax.annotation.Nullable String q, @javax.annotation.Nullable String project, @javax.annotation.Nullable String status, @javax.annotation.Nullable String kind, @javax.annotation.Nullable String repo, @javax.annotation.Nullable String room, @javax.annotation.Nullable String source, @javax.annotation.Nullable String assignee, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getTodoIssuesValidateBeforeCall(q, project, status, kind, repo, room, source, assignee, limit, null);
         Type localVarReturnType = new TypeToken<IssueHits>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -531,7 +531,7 @@ public class TodoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getTodoIssuesAsync(@javax.annotation.Nullable String q, @javax.annotation.Nullable String project, @javax.annotation.Nullable String status, @javax.annotation.Nullable String kind, @javax.annotation.Nullable String repo, @javax.annotation.Nullable String room, @javax.annotation.Nullable String source, @javax.annotation.Nullable String assignee, @javax.annotation.Nullable Integer limit, final ApiCallback<IssueHits> _callback) throws ApiException {
+    public okhttp3.Call getTodoIssuesAsync(@javax.annotation.Nullable String q, @javax.annotation.Nullable String project, @javax.annotation.Nullable String status, @javax.annotation.Nullable String kind, @javax.annotation.Nullable String repo, @javax.annotation.Nullable String room, @javax.annotation.Nullable String source, @javax.annotation.Nullable String assignee, @javax.annotation.Nullable Long limit, final ApiCallback<IssueHits> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getTodoIssuesValidateBeforeCall(q, project, status, kind, repo, room, source, assignee, limit, _callback);
         Type localVarReturnType = new TypeToken<IssueHits>(){}.getType();
@@ -971,7 +971,7 @@ public class TodoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getTodoProjectsByKeyIssuesByNumCall(@javax.annotation.Nonnull String key, @javax.annotation.Nonnull Integer num, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getTodoProjectsByKeyIssuesByNumCall(@javax.annotation.Nonnull String key, @javax.annotation.Nonnull Long num, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1018,7 +1018,7 @@ public class TodoApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getTodoProjectsByKeyIssuesByNumValidateBeforeCall(@javax.annotation.Nonnull String key, @javax.annotation.Nonnull Integer num, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getTodoProjectsByKeyIssuesByNumValidateBeforeCall(@javax.annotation.Nonnull String key, @javax.annotation.Nonnull Long num, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'key' is set
         if (key == null) {
             throw new ApiException("Missing the required parameter 'key' when calling getTodoProjectsByKeyIssuesByNum(Async)");
@@ -1047,7 +1047,7 @@ public class TodoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public IssueView getTodoProjectsByKeyIssuesByNum(@javax.annotation.Nonnull String key, @javax.annotation.Nonnull Integer num) throws ApiException {
+    public IssueView getTodoProjectsByKeyIssuesByNum(@javax.annotation.Nonnull String key, @javax.annotation.Nonnull Long num) throws ApiException {
         ApiResponse<IssueView> localVarResp = getTodoProjectsByKeyIssuesByNumWithHttpInfo(key, num);
         return localVarResp.getData();
     }
@@ -1066,7 +1066,7 @@ public class TodoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IssueView> getTodoProjectsByKeyIssuesByNumWithHttpInfo(@javax.annotation.Nonnull String key, @javax.annotation.Nonnull Integer num) throws ApiException {
+    public ApiResponse<IssueView> getTodoProjectsByKeyIssuesByNumWithHttpInfo(@javax.annotation.Nonnull String key, @javax.annotation.Nonnull Long num) throws ApiException {
         okhttp3.Call localVarCall = getTodoProjectsByKeyIssuesByNumValidateBeforeCall(key, num, null);
         Type localVarReturnType = new TypeToken<IssueView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -1087,7 +1087,7 @@ public class TodoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getTodoProjectsByKeyIssuesByNumAsync(@javax.annotation.Nonnull String key, @javax.annotation.Nonnull Integer num, final ApiCallback<IssueView> _callback) throws ApiException {
+    public okhttp3.Call getTodoProjectsByKeyIssuesByNumAsync(@javax.annotation.Nonnull String key, @javax.annotation.Nonnull Long num, final ApiCallback<IssueView> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getTodoProjectsByKeyIssuesByNumValidateBeforeCall(key, num, _callback);
         Type localVarReturnType = new TypeToken<IssueView>(){}.getType();
@@ -1334,7 +1334,7 @@ public class TodoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call patchTodoProjectsByKeyIssuesByNumCall(@javax.annotation.Nonnull String key, @javax.annotation.Nonnull Integer num, @javax.annotation.Nonnull IssueEdit issueEdit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call patchTodoProjectsByKeyIssuesByNumCall(@javax.annotation.Nonnull String key, @javax.annotation.Nonnull Long num, @javax.annotation.Nonnull IssueEdit issueEdit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1382,7 +1382,7 @@ public class TodoApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchTodoProjectsByKeyIssuesByNumValidateBeforeCall(@javax.annotation.Nonnull String key, @javax.annotation.Nonnull Integer num, @javax.annotation.Nonnull IssueEdit issueEdit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call patchTodoProjectsByKeyIssuesByNumValidateBeforeCall(@javax.annotation.Nonnull String key, @javax.annotation.Nonnull Long num, @javax.annotation.Nonnull IssueEdit issueEdit, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'key' is set
         if (key == null) {
             throw new ApiException("Missing the required parameter 'key' when calling patchTodoProjectsByKeyIssuesByNum(Async)");
@@ -1417,7 +1417,7 @@ public class TodoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public IssueView patchTodoProjectsByKeyIssuesByNum(@javax.annotation.Nonnull String key, @javax.annotation.Nonnull Integer num, @javax.annotation.Nonnull IssueEdit issueEdit) throws ApiException {
+    public IssueView patchTodoProjectsByKeyIssuesByNum(@javax.annotation.Nonnull String key, @javax.annotation.Nonnull Long num, @javax.annotation.Nonnull IssueEdit issueEdit) throws ApiException {
         ApiResponse<IssueView> localVarResp = patchTodoProjectsByKeyIssuesByNumWithHttpInfo(key, num, issueEdit);
         return localVarResp.getData();
     }
@@ -1437,7 +1437,7 @@ public class TodoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IssueView> patchTodoProjectsByKeyIssuesByNumWithHttpInfo(@javax.annotation.Nonnull String key, @javax.annotation.Nonnull Integer num, @javax.annotation.Nonnull IssueEdit issueEdit) throws ApiException {
+    public ApiResponse<IssueView> patchTodoProjectsByKeyIssuesByNumWithHttpInfo(@javax.annotation.Nonnull String key, @javax.annotation.Nonnull Long num, @javax.annotation.Nonnull IssueEdit issueEdit) throws ApiException {
         okhttp3.Call localVarCall = patchTodoProjectsByKeyIssuesByNumValidateBeforeCall(key, num, issueEdit, null);
         Type localVarReturnType = new TypeToken<IssueView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -1459,7 +1459,7 @@ public class TodoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call patchTodoProjectsByKeyIssuesByNumAsync(@javax.annotation.Nonnull String key, @javax.annotation.Nonnull Integer num, @javax.annotation.Nonnull IssueEdit issueEdit, final ApiCallback<IssueView> _callback) throws ApiException {
+    public okhttp3.Call patchTodoProjectsByKeyIssuesByNumAsync(@javax.annotation.Nonnull String key, @javax.annotation.Nonnull Long num, @javax.annotation.Nonnull IssueEdit issueEdit, final ApiCallback<IssueView> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = patchTodoProjectsByKeyIssuesByNumValidateBeforeCall(key, num, issueEdit, _callback);
         Type localVarReturnType = new TypeToken<IssueView>(){}.getType();
@@ -1705,7 +1705,7 @@ public class TodoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postTodoProjectsByKeyIssuesByNumClaimCall(@javax.annotation.Nonnull String key, @javax.annotation.Nonnull Integer num, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postTodoProjectsByKeyIssuesByNumClaimCall(@javax.annotation.Nonnull String key, @javax.annotation.Nonnull Long num, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1752,7 +1752,7 @@ public class TodoApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postTodoProjectsByKeyIssuesByNumClaimValidateBeforeCall(@javax.annotation.Nonnull String key, @javax.annotation.Nonnull Integer num, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postTodoProjectsByKeyIssuesByNumClaimValidateBeforeCall(@javax.annotation.Nonnull String key, @javax.annotation.Nonnull Long num, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'key' is set
         if (key == null) {
             throw new ApiException("Missing the required parameter 'key' when calling postTodoProjectsByKeyIssuesByNumClaim(Async)");
@@ -1781,7 +1781,7 @@ public class TodoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public IssueHit postTodoProjectsByKeyIssuesByNumClaim(@javax.annotation.Nonnull String key, @javax.annotation.Nonnull Integer num) throws ApiException {
+    public IssueHit postTodoProjectsByKeyIssuesByNumClaim(@javax.annotation.Nonnull String key, @javax.annotation.Nonnull Long num) throws ApiException {
         ApiResponse<IssueHit> localVarResp = postTodoProjectsByKeyIssuesByNumClaimWithHttpInfo(key, num);
         return localVarResp.getData();
     }
@@ -1800,7 +1800,7 @@ public class TodoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IssueHit> postTodoProjectsByKeyIssuesByNumClaimWithHttpInfo(@javax.annotation.Nonnull String key, @javax.annotation.Nonnull Integer num) throws ApiException {
+    public ApiResponse<IssueHit> postTodoProjectsByKeyIssuesByNumClaimWithHttpInfo(@javax.annotation.Nonnull String key, @javax.annotation.Nonnull Long num) throws ApiException {
         okhttp3.Call localVarCall = postTodoProjectsByKeyIssuesByNumClaimValidateBeforeCall(key, num, null);
         Type localVarReturnType = new TypeToken<IssueHit>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -1821,7 +1821,7 @@ public class TodoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postTodoProjectsByKeyIssuesByNumClaimAsync(@javax.annotation.Nonnull String key, @javax.annotation.Nonnull Integer num, final ApiCallback<IssueHit> _callback) throws ApiException {
+    public okhttp3.Call postTodoProjectsByKeyIssuesByNumClaimAsync(@javax.annotation.Nonnull String key, @javax.annotation.Nonnull Long num, final ApiCallback<IssueHit> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postTodoProjectsByKeyIssuesByNumClaimValidateBeforeCall(key, num, _callback);
         Type localVarReturnType = new TypeToken<IssueHit>(){}.getType();

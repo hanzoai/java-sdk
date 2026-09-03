@@ -63,7 +63,7 @@ public class O11yO11yFieldSetting {
   public static final String SERIALIZED_NAME_INDEX_GRANULARITY = "indexGranularity";
   @SerializedName(SERIALIZED_NAME_INDEX_GRANULARITY)
   @javax.annotation.Nullable
-  private Integer indexGranularity;
+  private Long indexGranularity;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -121,7 +121,7 @@ public class O11yO11yFieldSetting {
   }
 
 
-  public O11yO11yFieldSetting indexGranularity(@javax.annotation.Nullable Integer indexGranularity) {
+  public O11yO11yFieldSetting indexGranularity(@javax.annotation.Nullable Long indexGranularity) {
     this.indexGranularity = indexGranularity;
     return this;
   }
@@ -131,11 +131,11 @@ public class O11yO11yFieldSetting {
    * @return indexGranularity
    */
   @javax.annotation.Nullable
-  public Integer getIndexGranularity() {
+  public Long getIndexGranularity() {
     return indexGranularity;
   }
 
-  public void setIndexGranularity(@javax.annotation.Nullable Integer indexGranularity) {
+  public void setIndexGranularity(@javax.annotation.Nullable Long indexGranularity) {
     this.indexGranularity = indexGranularity;
   }
 

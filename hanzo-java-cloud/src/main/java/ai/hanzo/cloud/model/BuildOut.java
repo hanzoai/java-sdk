@@ -54,7 +54,7 @@ public class BuildOut {
   public static final String SERIALIZED_NAME_BYTES = "bytes";
   @SerializedName(SERIALIZED_NAME_BYTES)
   @javax.annotation.Nullable
-  private Integer bytes;
+  private Long bytes;
 
   public static final String SERIALIZED_NAME_GENERATED = "generated";
   @SerializedName(SERIALIZED_NAME_GENERATED)
@@ -69,7 +69,7 @@ public class BuildOut {
   public BuildOut() {
   }
 
-  public BuildOut bytes(@javax.annotation.Nullable Integer bytes) {
+  public BuildOut bytes(@javax.annotation.Nullable Long bytes) {
     this.bytes = bytes;
     return this;
   }
@@ -79,11 +79,11 @@ public class BuildOut {
    * @return bytes
    */
   @javax.annotation.Nullable
-  public Integer getBytes() {
+  public Long getBytes() {
     return bytes;
   }
 
-  public void setBytes(@javax.annotation.Nullable Integer bytes) {
+  public void setBytes(@javax.annotation.Nullable Long bytes) {
     this.bytes = bytes;
   }
 

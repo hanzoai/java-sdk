@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -59,22 +58,22 @@ public class SeoDomain {
   public static final String SERIALIZED_NAME_KEYWORDS = "keywords";
   @SerializedName(SERIALIZED_NAME_KEYWORDS)
   @javax.annotation.Nullable
-  private Integer keywords;
+  private Long keywords;
 
   public static final String SERIALIZED_NAME_POSITION = "position";
   @SerializedName(SERIALIZED_NAME_POSITION)
   @javax.annotation.Nullable
-  private BigDecimal position;
+  private Double position;
 
   public static final String SERIALIZED_NAME_TRAFFIC = "traffic";
   @SerializedName(SERIALIZED_NAME_TRAFFIC)
   @javax.annotation.Nullable
-  private BigDecimal traffic;
+  private Double traffic;
 
   public static final String SERIALIZED_NAME_VISIBILITY = "visibility";
   @SerializedName(SERIALIZED_NAME_VISIBILITY)
   @javax.annotation.Nullable
-  private BigDecimal visibility;
+  private Double visibility;
 
   public SeoDomain() {
   }
@@ -98,7 +97,7 @@ public class SeoDomain {
   }
 
 
-  public SeoDomain keywords(@javax.annotation.Nullable Integer keywords) {
+  public SeoDomain keywords(@javax.annotation.Nullable Long keywords) {
     this.keywords = keywords;
     return this;
   }
@@ -108,16 +107,16 @@ public class SeoDomain {
    * @return keywords
    */
   @javax.annotation.Nullable
-  public Integer getKeywords() {
+  public Long getKeywords() {
     return keywords;
   }
 
-  public void setKeywords(@javax.annotation.Nullable Integer keywords) {
+  public void setKeywords(@javax.annotation.Nullable Long keywords) {
     this.keywords = keywords;
   }
 
 
-  public SeoDomain position(@javax.annotation.Nullable BigDecimal position) {
+  public SeoDomain position(@javax.annotation.Nullable Double position) {
     this.position = position;
     return this;
   }
@@ -127,16 +126,16 @@ public class SeoDomain {
    * @return position
    */
   @javax.annotation.Nullable
-  public BigDecimal getPosition() {
+  public Double getPosition() {
     return position;
   }
 
-  public void setPosition(@javax.annotation.Nullable BigDecimal position) {
+  public void setPosition(@javax.annotation.Nullable Double position) {
     this.position = position;
   }
 
 
-  public SeoDomain traffic(@javax.annotation.Nullable BigDecimal traffic) {
+  public SeoDomain traffic(@javax.annotation.Nullable Double traffic) {
     this.traffic = traffic;
     return this;
   }
@@ -146,16 +145,16 @@ public class SeoDomain {
    * @return traffic
    */
   @javax.annotation.Nullable
-  public BigDecimal getTraffic() {
+  public Double getTraffic() {
     return traffic;
   }
 
-  public void setTraffic(@javax.annotation.Nullable BigDecimal traffic) {
+  public void setTraffic(@javax.annotation.Nullable Double traffic) {
     this.traffic = traffic;
   }
 
 
-  public SeoDomain visibility(@javax.annotation.Nullable BigDecimal visibility) {
+  public SeoDomain visibility(@javax.annotation.Nullable Double visibility) {
     this.visibility = visibility;
     return this;
   }
@@ -165,11 +164,11 @@ public class SeoDomain {
    * @return visibility
    */
   @javax.annotation.Nullable
-  public BigDecimal getVisibility() {
+  public Double getVisibility() {
     return visibility;
   }
 
-  public void setVisibility(@javax.annotation.Nullable BigDecimal visibility) {
+  public void setVisibility(@javax.annotation.Nullable Double visibility) {
     this.visibility = visibility;
   }
 

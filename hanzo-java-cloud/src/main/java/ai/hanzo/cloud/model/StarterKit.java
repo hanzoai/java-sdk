@@ -21,7 +21,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -92,7 +91,7 @@ public class StarterKit {
   public static final String SERIALIZED_NAME_RATING = "rating";
   @SerializedName(SERIALIZED_NAME_RATING)
   @javax.annotation.Nullable
-  private BigDecimal rating;
+  private Double rating;
 
   public static final String SERIALIZED_NAME_SLUG = "slug";
   @SerializedName(SERIALIZED_NAME_SLUG)
@@ -107,7 +106,7 @@ public class StarterKit {
   public static final String SERIALIZED_NAME_TIER = "tier";
   @SerializedName(SERIALIZED_NAME_TIER)
   @javax.annotation.Nullable
-  private Integer tier;
+  private Long tier;
 
   public static final String SERIALIZED_NAME_TITLE = "title";
   @SerializedName(SERIALIZED_NAME_TITLE)
@@ -268,7 +267,7 @@ public class StarterKit {
   }
 
 
-  public StarterKit rating(@javax.annotation.Nullable BigDecimal rating) {
+  public StarterKit rating(@javax.annotation.Nullable Double rating) {
     this.rating = rating;
     return this;
   }
@@ -278,11 +277,11 @@ public class StarterKit {
    * @return rating
    */
   @javax.annotation.Nullable
-  public BigDecimal getRating() {
+  public Double getRating() {
     return rating;
   }
 
-  public void setRating(@javax.annotation.Nullable BigDecimal rating) {
+  public void setRating(@javax.annotation.Nullable Double rating) {
     this.rating = rating;
   }
 
@@ -325,7 +324,7 @@ public class StarterKit {
   }
 
 
-  public StarterKit tier(@javax.annotation.Nullable Integer tier) {
+  public StarterKit tier(@javax.annotation.Nullable Long tier) {
     this.tier = tier;
     return this;
   }
@@ -335,11 +334,11 @@ public class StarterKit {
    * @return tier
    */
   @javax.annotation.Nullable
-  public Integer getTier() {
+  public Long getTier() {
     return tier;
   }
 
-  public void setTier(@javax.annotation.Nullable Integer tier) {
+  public void setTier(@javax.annotation.Nullable Long tier) {
     this.tier = tier;
   }
 

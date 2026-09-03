@@ -63,7 +63,7 @@ public class O11yO11yFunnelUpdateIn {
   public static final String SERIALIZED_NAME_TIMESTAMP = "timestamp";
   @SerializedName(SERIALIZED_NAME_TIMESTAMP)
   @javax.annotation.Nullable
-  private Integer timestamp;
+  private Long timestamp;
 
   public O11yO11yFunnelUpdateIn() {
   }
@@ -106,7 +106,7 @@ public class O11yO11yFunnelUpdateIn {
   }
 
 
-  public O11yO11yFunnelUpdateIn timestamp(@javax.annotation.Nullable Integer timestamp) {
+  public O11yO11yFunnelUpdateIn timestamp(@javax.annotation.Nullable Long timestamp) {
     this.timestamp = timestamp;
     return this;
   }
@@ -116,11 +116,11 @@ public class O11yO11yFunnelUpdateIn {
    * @return timestamp
    */
   @javax.annotation.Nullable
-  public Integer getTimestamp() {
+  public Long getTimestamp() {
     return timestamp;
   }
 
-  public void setTimestamp(@javax.annotation.Nullable Integer timestamp) {
+  public void setTimestamp(@javax.annotation.Nullable Long timestamp) {
     this.timestamp = timestamp;
   }
 

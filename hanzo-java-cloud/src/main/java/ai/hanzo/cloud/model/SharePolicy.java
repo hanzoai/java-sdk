@@ -53,17 +53,17 @@ public class SharePolicy {
   public static final String SERIALIZED_NAME_REVENUE_SHARE_BPS = "revenueShareBps";
   @SerializedName(SERIALIZED_NAME_REVENUE_SHARE_BPS)
   @javax.annotation.Nullable
-  private Integer revenueShareBps;
+  private Long revenueShareBps;
 
   public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)
   @javax.annotation.Nullable
-  private Integer updatedAt;
+  private Long updatedAt;
 
   public SharePolicy() {
   }
 
-  public SharePolicy revenueShareBps(@javax.annotation.Nullable Integer revenueShareBps) {
+  public SharePolicy revenueShareBps(@javax.annotation.Nullable Long revenueShareBps) {
     this.revenueShareBps = revenueShareBps;
     return this;
   }
@@ -73,16 +73,16 @@ public class SharePolicy {
    * @return revenueShareBps
    */
   @javax.annotation.Nullable
-  public Integer getRevenueShareBps() {
+  public Long getRevenueShareBps() {
     return revenueShareBps;
   }
 
-  public void setRevenueShareBps(@javax.annotation.Nullable Integer revenueShareBps) {
+  public void setRevenueShareBps(@javax.annotation.Nullable Long revenueShareBps) {
     this.revenueShareBps = revenueShareBps;
   }
 
 
-  public SharePolicy updatedAt(@javax.annotation.Nullable Integer updatedAt) {
+  public SharePolicy updatedAt(@javax.annotation.Nullable Long updatedAt) {
     this.updatedAt = updatedAt;
     return this;
   }
@@ -92,11 +92,11 @@ public class SharePolicy {
    * @return updatedAt
    */
   @javax.annotation.Nullable
-  public Integer getUpdatedAt() {
+  public Long getUpdatedAt() {
     return updatedAt;
   }
 
-  public void setUpdatedAt(@javax.annotation.Nullable Integer updatedAt) {
+  public void setUpdatedAt(@javax.annotation.Nullable Long updatedAt) {
     this.updatedAt = updatedAt;
   }
 

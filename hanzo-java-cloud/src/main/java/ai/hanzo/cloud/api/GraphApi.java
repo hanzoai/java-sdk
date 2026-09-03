@@ -352,7 +352,7 @@ public class GraphApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call graphReadCall(@javax.annotation.Nullable String entity, @javax.annotation.Nullable String relation, @javax.annotation.Nullable String value, @javax.annotation.Nullable String asOf, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call graphReadCall(@javax.annotation.Nullable String entity, @javax.annotation.Nullable String relation, @javax.annotation.Nullable String value, @javax.annotation.Nullable String asOf, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -417,7 +417,7 @@ public class GraphApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call graphReadValidateBeforeCall(@javax.annotation.Nullable String entity, @javax.annotation.Nullable String relation, @javax.annotation.Nullable String value, @javax.annotation.Nullable String asOf, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call graphReadValidateBeforeCall(@javax.annotation.Nullable String entity, @javax.annotation.Nullable String relation, @javax.annotation.Nullable String value, @javax.annotation.Nullable String asOf, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         return graphReadCall(entity, relation, value, asOf, limit, _callback);
 
     }
@@ -439,7 +439,7 @@ public class GraphApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public GraphReadOut graphRead(@javax.annotation.Nullable String entity, @javax.annotation.Nullable String relation, @javax.annotation.Nullable String value, @javax.annotation.Nullable String asOf, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public GraphReadOut graphRead(@javax.annotation.Nullable String entity, @javax.annotation.Nullable String relation, @javax.annotation.Nullable String value, @javax.annotation.Nullable String asOf, @javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<GraphReadOut> localVarResp = graphReadWithHttpInfo(entity, relation, value, asOf, limit);
         return localVarResp.getData();
     }
@@ -461,7 +461,7 @@ public class GraphApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GraphReadOut> graphReadWithHttpInfo(@javax.annotation.Nullable String entity, @javax.annotation.Nullable String relation, @javax.annotation.Nullable String value, @javax.annotation.Nullable String asOf, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<GraphReadOut> graphReadWithHttpInfo(@javax.annotation.Nullable String entity, @javax.annotation.Nullable String relation, @javax.annotation.Nullable String value, @javax.annotation.Nullable String asOf, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = graphReadValidateBeforeCall(entity, relation, value, asOf, limit, null);
         Type localVarReturnType = new TypeToken<GraphReadOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -485,7 +485,7 @@ public class GraphApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call graphReadAsync(@javax.annotation.Nullable String entity, @javax.annotation.Nullable String relation, @javax.annotation.Nullable String value, @javax.annotation.Nullable String asOf, @javax.annotation.Nullable Integer limit, final ApiCallback<GraphReadOut> _callback) throws ApiException {
+    public okhttp3.Call graphReadAsync(@javax.annotation.Nullable String entity, @javax.annotation.Nullable String relation, @javax.annotation.Nullable String value, @javax.annotation.Nullable String asOf, @javax.annotation.Nullable Long limit, final ApiCallback<GraphReadOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = graphReadValidateBeforeCall(entity, relation, value, asOf, limit, _callback);
         Type localVarReturnType = new TypeToken<GraphReadOut>(){}.getType();
@@ -635,7 +635,7 @@ public class GraphApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call graphSearchCall(@javax.annotation.Nullable String q, @javax.annotation.Nullable String relation, @javax.annotation.Nullable String asOf, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call graphSearchCall(@javax.annotation.Nullable String q, @javax.annotation.Nullable String relation, @javax.annotation.Nullable String asOf, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -696,7 +696,7 @@ public class GraphApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call graphSearchValidateBeforeCall(@javax.annotation.Nullable String q, @javax.annotation.Nullable String relation, @javax.annotation.Nullable String asOf, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call graphSearchValidateBeforeCall(@javax.annotation.Nullable String q, @javax.annotation.Nullable String relation, @javax.annotation.Nullable String asOf, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         return graphSearchCall(q, relation, asOf, limit, _callback);
 
     }
@@ -717,7 +717,7 @@ public class GraphApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public GraphReadOut graphSearch(@javax.annotation.Nullable String q, @javax.annotation.Nullable String relation, @javax.annotation.Nullable String asOf, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public GraphReadOut graphSearch(@javax.annotation.Nullable String q, @javax.annotation.Nullable String relation, @javax.annotation.Nullable String asOf, @javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<GraphReadOut> localVarResp = graphSearchWithHttpInfo(q, relation, asOf, limit);
         return localVarResp.getData();
     }
@@ -738,7 +738,7 @@ public class GraphApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GraphReadOut> graphSearchWithHttpInfo(@javax.annotation.Nullable String q, @javax.annotation.Nullable String relation, @javax.annotation.Nullable String asOf, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<GraphReadOut> graphSearchWithHttpInfo(@javax.annotation.Nullable String q, @javax.annotation.Nullable String relation, @javax.annotation.Nullable String asOf, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = graphSearchValidateBeforeCall(q, relation, asOf, limit, null);
         Type localVarReturnType = new TypeToken<GraphReadOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -761,7 +761,7 @@ public class GraphApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call graphSearchAsync(@javax.annotation.Nullable String q, @javax.annotation.Nullable String relation, @javax.annotation.Nullable String asOf, @javax.annotation.Nullable Integer limit, final ApiCallback<GraphReadOut> _callback) throws ApiException {
+    public okhttp3.Call graphSearchAsync(@javax.annotation.Nullable String q, @javax.annotation.Nullable String relation, @javax.annotation.Nullable String asOf, @javax.annotation.Nullable Long limit, final ApiCallback<GraphReadOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = graphSearchValidateBeforeCall(q, relation, asOf, limit, _callback);
         Type localVarReturnType = new TypeToken<GraphReadOut>(){}.getType();

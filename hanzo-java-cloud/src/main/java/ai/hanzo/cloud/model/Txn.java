@@ -53,7 +53,7 @@ public class Txn {
   public static final String SERIALIZED_NAME_AMOUNT_CENTS = "amountCents";
   @SerializedName(SERIALIZED_NAME_AMOUNT_CENTS)
   @javax.annotation.Nullable
-  private Integer amountCents;
+  private Long amountCents;
 
   public static final String SERIALIZED_NAME_CATEGORY = "category";
   @SerializedName(SERIALIZED_NAME_CATEGORY)
@@ -88,12 +88,12 @@ public class Txn {
   public static final String SERIALIZED_NAME_VOUCHER_ID = "voucherId";
   @SerializedName(SERIALIZED_NAME_VOUCHER_ID)
   @javax.annotation.Nullable
-  private Integer voucherId;
+  private Long voucherId;
 
   public Txn() {
   }
 
-  public Txn amountCents(@javax.annotation.Nullable Integer amountCents) {
+  public Txn amountCents(@javax.annotation.Nullable Long amountCents) {
     this.amountCents = amountCents;
     return this;
   }
@@ -103,11 +103,11 @@ public class Txn {
    * @return amountCents
    */
   @javax.annotation.Nullable
-  public Integer getAmountCents() {
+  public Long getAmountCents() {
     return amountCents;
   }
 
-  public void setAmountCents(@javax.annotation.Nullable Integer amountCents) {
+  public void setAmountCents(@javax.annotation.Nullable Long amountCents) {
     this.amountCents = amountCents;
   }
 
@@ -226,7 +226,7 @@ public class Txn {
   }
 
 
-  public Txn voucherId(@javax.annotation.Nullable Integer voucherId) {
+  public Txn voucherId(@javax.annotation.Nullable Long voucherId) {
     this.voucherId = voucherId;
     return this;
   }
@@ -236,11 +236,11 @@ public class Txn {
    * @return voucherId
    */
   @javax.annotation.Nullable
-  public Integer getVoucherId() {
+  public Long getVoucherId() {
     return voucherId;
   }
 
-  public void setVoucherId(@javax.annotation.Nullable Integer voucherId) {
+  public void setVoucherId(@javax.annotation.Nullable Long voucherId) {
     this.voucherId = voucherId;
   }
 

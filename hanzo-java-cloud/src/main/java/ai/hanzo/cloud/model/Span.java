@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -54,7 +53,7 @@ public class Span {
   public static final String SERIALIZED_NAME_END_LINE = "endLine";
   @SerializedName(SERIALIZED_NAME_END_LINE)
   @javax.annotation.Nullable
-  private Integer endLine;
+  private Long endLine;
 
   public static final String SERIALIZED_NAME_FILE = "file";
   @SerializedName(SERIALIZED_NAME_FILE)
@@ -69,7 +68,7 @@ public class Span {
   public static final String SERIALIZED_NAME_LINE = "line";
   @SerializedName(SERIALIZED_NAME_LINE)
   @javax.annotation.Nullable
-  private Integer line;
+  private Long line;
 
   public static final String SERIALIZED_NAME_REPO = "repo";
   @SerializedName(SERIALIZED_NAME_REPO)
@@ -84,7 +83,7 @@ public class Span {
   public static final String SERIALIZED_NAME_SCORE = "score";
   @SerializedName(SERIALIZED_NAME_SCORE)
   @javax.annotation.Nullable
-  private BigDecimal score;
+  private Double score;
 
   public static final String SERIALIZED_NAME_SNIPPET = "snippet";
   @SerializedName(SERIALIZED_NAME_SNIPPET)
@@ -104,7 +103,7 @@ public class Span {
   public Span() {
   }
 
-  public Span endLine(@javax.annotation.Nullable Integer endLine) {
+  public Span endLine(@javax.annotation.Nullable Long endLine) {
     this.endLine = endLine;
     return this;
   }
@@ -114,11 +113,11 @@ public class Span {
    * @return endLine
    */
   @javax.annotation.Nullable
-  public Integer getEndLine() {
+  public Long getEndLine() {
     return endLine;
   }
 
-  public void setEndLine(@javax.annotation.Nullable Integer endLine) {
+  public void setEndLine(@javax.annotation.Nullable Long endLine) {
     this.endLine = endLine;
   }
 
@@ -161,7 +160,7 @@ public class Span {
   }
 
 
-  public Span line(@javax.annotation.Nullable Integer line) {
+  public Span line(@javax.annotation.Nullable Long line) {
     this.line = line;
     return this;
   }
@@ -171,11 +170,11 @@ public class Span {
    * @return line
    */
   @javax.annotation.Nullable
-  public Integer getLine() {
+  public Long getLine() {
     return line;
   }
 
-  public void setLine(@javax.annotation.Nullable Integer line) {
+  public void setLine(@javax.annotation.Nullable Long line) {
     this.line = line;
   }
 
@@ -218,7 +217,7 @@ public class Span {
   }
 
 
-  public Span score(@javax.annotation.Nullable BigDecimal score) {
+  public Span score(@javax.annotation.Nullable Double score) {
     this.score = score;
     return this;
   }
@@ -228,11 +227,11 @@ public class Span {
    * @return score
    */
   @javax.annotation.Nullable
-  public BigDecimal getScore() {
+  public Double getScore() {
     return score;
   }
 
-  public void setScore(@javax.annotation.Nullable BigDecimal score) {
+  public void setScore(@javax.annotation.Nullable Double score) {
     this.score = score;
   }
 

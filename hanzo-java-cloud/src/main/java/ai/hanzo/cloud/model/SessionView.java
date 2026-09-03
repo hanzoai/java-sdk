@@ -70,7 +70,7 @@ public class SessionView {
   public static final String SERIALIZED_NAME_CHILDREN = "children";
   @SerializedName(SERIALIZED_NAME_CHILDREN)
   @javax.annotation.Nullable
-  private Integer children;
+  private Long children;
 
   public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
@@ -90,7 +90,7 @@ public class SessionView {
   public static final String SERIALIZED_NAME_EVENTS = "events";
   @SerializedName(SERIALIZED_NAME_EVENTS)
   @javax.annotation.Nullable
-  private Integer events;
+  private Long events;
 
   public static final String SERIALIZED_NAME_HOST = "host";
   @SerializedName(SERIALIZED_NAME_HOST)
@@ -252,7 +252,7 @@ public class SessionView {
   }
 
 
-  public SessionView children(@javax.annotation.Nullable Integer children) {
+  public SessionView children(@javax.annotation.Nullable Long children) {
     this.children = children;
     return this;
   }
@@ -262,11 +262,11 @@ public class SessionView {
    * @return children
    */
   @javax.annotation.Nullable
-  public Integer getChildren() {
+  public Long getChildren() {
     return children;
   }
 
-  public void setChildren(@javax.annotation.Nullable Integer children) {
+  public void setChildren(@javax.annotation.Nullable Long children) {
     this.children = children;
   }
 
@@ -328,7 +328,7 @@ public class SessionView {
   }
 
 
-  public SessionView events(@javax.annotation.Nullable Integer events) {
+  public SessionView events(@javax.annotation.Nullable Long events) {
     this.events = events;
     return this;
   }
@@ -338,11 +338,11 @@ public class SessionView {
    * @return events
    */
   @javax.annotation.Nullable
-  public Integer getEvents() {
+  public Long getEvents() {
     return events;
   }
 
-  public void setEvents(@javax.annotation.Nullable Integer events) {
+  public void setEvents(@javax.annotation.Nullable Long events) {
     this.events = events;
   }
 

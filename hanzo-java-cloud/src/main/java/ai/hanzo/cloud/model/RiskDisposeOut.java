@@ -58,12 +58,12 @@ public class RiskDisposeOut {
   public static final String SERIALIZED_NAME_DISPOSED = "disposed";
   @SerializedName(SERIALIZED_NAME_DISPOSED)
   @javax.annotation.Nullable
-  private Integer disposed;
+  private Long disposed;
 
   public static final String SERIALIZED_NAME_HELD = "held";
   @SerializedName(SERIALIZED_NAME_HELD)
   @javax.annotation.Nullable
-  private Integer held;
+  private Long held;
 
   public static final String SERIALIZED_NAME_OLDEST = "oldest";
   @SerializedName(SERIALIZED_NAME_OLDEST)
@@ -73,17 +73,17 @@ public class RiskDisposeOut {
   public static final String SERIALIZED_NAME_REMAINING = "remaining";
   @SerializedName(SERIALIZED_NAME_REMAINING)
   @javax.annotation.Nullable
-  private Integer remaining;
+  private Long remaining;
 
   public static final String SERIALIZED_NAME_RESTORED = "restored";
   @SerializedName(SERIALIZED_NAME_RESTORED)
   @javax.annotation.Nullable
-  private Integer restored;
+  private Long restored;
 
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)
   @javax.annotation.Nullable
-  private Integer total;
+  private Long total;
 
   public RiskDisposeOut() {
   }
@@ -107,7 +107,7 @@ public class RiskDisposeOut {
   }
 
 
-  public RiskDisposeOut disposed(@javax.annotation.Nullable Integer disposed) {
+  public RiskDisposeOut disposed(@javax.annotation.Nullable Long disposed) {
     this.disposed = disposed;
     return this;
   }
@@ -117,16 +117,16 @@ public class RiskDisposeOut {
    * @return disposed
    */
   @javax.annotation.Nullable
-  public Integer getDisposed() {
+  public Long getDisposed() {
     return disposed;
   }
 
-  public void setDisposed(@javax.annotation.Nullable Integer disposed) {
+  public void setDisposed(@javax.annotation.Nullable Long disposed) {
     this.disposed = disposed;
   }
 
 
-  public RiskDisposeOut held(@javax.annotation.Nullable Integer held) {
+  public RiskDisposeOut held(@javax.annotation.Nullable Long held) {
     this.held = held;
     return this;
   }
@@ -136,11 +136,11 @@ public class RiskDisposeOut {
    * @return held
    */
   @javax.annotation.Nullable
-  public Integer getHeld() {
+  public Long getHeld() {
     return held;
   }
 
-  public void setHeld(@javax.annotation.Nullable Integer held) {
+  public void setHeld(@javax.annotation.Nullable Long held) {
     this.held = held;
   }
 
@@ -164,7 +164,7 @@ public class RiskDisposeOut {
   }
 
 
-  public RiskDisposeOut remaining(@javax.annotation.Nullable Integer remaining) {
+  public RiskDisposeOut remaining(@javax.annotation.Nullable Long remaining) {
     this.remaining = remaining;
     return this;
   }
@@ -174,16 +174,16 @@ public class RiskDisposeOut {
    * @return remaining
    */
   @javax.annotation.Nullable
-  public Integer getRemaining() {
+  public Long getRemaining() {
     return remaining;
   }
 
-  public void setRemaining(@javax.annotation.Nullable Integer remaining) {
+  public void setRemaining(@javax.annotation.Nullable Long remaining) {
     this.remaining = remaining;
   }
 
 
-  public RiskDisposeOut restored(@javax.annotation.Nullable Integer restored) {
+  public RiskDisposeOut restored(@javax.annotation.Nullable Long restored) {
     this.restored = restored;
     return this;
   }
@@ -193,16 +193,16 @@ public class RiskDisposeOut {
    * @return restored
    */
   @javax.annotation.Nullable
-  public Integer getRestored() {
+  public Long getRestored() {
     return restored;
   }
 
-  public void setRestored(@javax.annotation.Nullable Integer restored) {
+  public void setRestored(@javax.annotation.Nullable Long restored) {
     this.restored = restored;
   }
 
 
-  public RiskDisposeOut total(@javax.annotation.Nullable Integer total) {
+  public RiskDisposeOut total(@javax.annotation.Nullable Long total) {
     this.total = total;
     return this;
   }
@@ -212,11 +212,11 @@ public class RiskDisposeOut {
    * @return total
    */
   @javax.annotation.Nullable
-  public Integer getTotal() {
+  public Long getTotal() {
     return total;
   }
 
-  public void setTotal(@javax.annotation.Nullable Integer total) {
+  public void setTotal(@javax.annotation.Nullable Long total) {
     this.total = total;
   }
 

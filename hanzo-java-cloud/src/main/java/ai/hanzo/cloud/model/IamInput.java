@@ -113,7 +113,7 @@ public class IamInput {
   public static final String SERIALIZED_NAME_STATUS_CODE = "statusCode";
   @SerializedName(SERIALIZED_NAME_STATUS_CODE)
   @javax.annotation.Nullable
-  private Integer statusCode;
+  private Long statusCode;
 
   public static final String SERIALIZED_NAME_USER = "user";
   @SerializedName(SERIALIZED_NAME_USER)
@@ -351,7 +351,7 @@ public class IamInput {
   }
 
 
-  public IamInput statusCode(@javax.annotation.Nullable Integer statusCode) {
+  public IamInput statusCode(@javax.annotation.Nullable Long statusCode) {
     this.statusCode = statusCode;
     return this;
   }
@@ -361,11 +361,11 @@ public class IamInput {
    * @return statusCode
    */
   @javax.annotation.Nullable
-  public Integer getStatusCode() {
+  public Long getStatusCode() {
     return statusCode;
   }
 
-  public void setStatusCode(@javax.annotation.Nullable Integer statusCode) {
+  public void setStatusCode(@javax.annotation.Nullable Long statusCode) {
     this.statusCode = statusCode;
   }
 

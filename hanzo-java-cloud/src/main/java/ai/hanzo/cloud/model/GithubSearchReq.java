@@ -53,7 +53,7 @@ public class GithubSearchReq {
   public static final String SERIALIZED_NAME_LIMIT = "limit";
   @SerializedName(SERIALIZED_NAME_LIMIT)
   @javax.annotation.Nullable
-  private Integer limit;
+  private Long limit;
 
   public static final String SERIALIZED_NAME_Q = "q";
   @SerializedName(SERIALIZED_NAME_Q)
@@ -63,7 +63,7 @@ public class GithubSearchReq {
   public GithubSearchReq() {
   }
 
-  public GithubSearchReq limit(@javax.annotation.Nullable Integer limit) {
+  public GithubSearchReq limit(@javax.annotation.Nullable Long limit) {
     this.limit = limit;
     return this;
   }
@@ -73,11 +73,11 @@ public class GithubSearchReq {
    * @return limit
    */
   @javax.annotation.Nullable
-  public Integer getLimit() {
+  public Long getLimit() {
     return limit;
   }
 
-  public void setLimit(@javax.annotation.Nullable Integer limit) {
+  public void setLimit(@javax.annotation.Nullable Long limit) {
     this.limit = limit;
   }
 

@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -59,7 +58,7 @@ public class Pairing {
   public static final String SERIALIZED_NAME_A_CORRECT = "a_correct";
   @SerializedName(SERIALIZED_NAME_A_CORRECT)
   @javax.annotation.Nullable
-  private Integer aCorrect;
+  private Long aCorrect;
 
   public static final String SERIALIZED_NAME_B = "b";
   @SerializedName(SERIALIZED_NAME_B)
@@ -69,7 +68,7 @@ public class Pairing {
   public static final String SERIALIZED_NAME_B_CORRECT = "b_correct";
   @SerializedName(SERIALIZED_NAME_B_CORRECT)
   @javax.annotation.Nullable
-  private Integer bCorrect;
+  private Long bCorrect;
 
   public static final String SERIALIZED_NAME_BENCHMARK = "benchmark";
   @SerializedName(SERIALIZED_NAME_BENCHMARK)
@@ -79,27 +78,27 @@ public class Pairing {
   public static final String SERIALIZED_NAME_MCNEMAR_P = "mcnemar_p";
   @SerializedName(SERIALIZED_NAME_MCNEMAR_P)
   @javax.annotation.Nullable
-  private BigDecimal mcnemarP;
+  private Double mcnemarP;
 
   public static final String SERIALIZED_NAME_N_COMMON = "n_common";
   @SerializedName(SERIALIZED_NAME_N_COMMON)
   @javax.annotation.Nullable
-  private Integer nCommon;
+  private Long nCommon;
 
   public static final String SERIALIZED_NAME_NET_A_MINUS_B = "net_a_minus_b";
   @SerializedName(SERIALIZED_NAME_NET_A_MINUS_B)
   @javax.annotation.Nullable
-  private Integer netAMinusB;
+  private Long netAMinusB;
 
   public static final String SERIALIZED_NAME_RESCUE_A_OVER_B = "rescue_a_over_b";
   @SerializedName(SERIALIZED_NAME_RESCUE_A_OVER_B)
   @javax.annotation.Nullable
-  private Integer rescueAOverB;
+  private Long rescueAOverB;
 
   public static final String SERIALIZED_NAME_RESCUE_B_OVER_A = "rescue_b_over_a";
   @SerializedName(SERIALIZED_NAME_RESCUE_B_OVER_A)
   @javax.annotation.Nullable
-  private Integer rescueBOverA;
+  private Long rescueBOverA;
 
   public Pairing() {
   }
@@ -123,7 +122,7 @@ public class Pairing {
   }
 
 
-  public Pairing aCorrect(@javax.annotation.Nullable Integer aCorrect) {
+  public Pairing aCorrect(@javax.annotation.Nullable Long aCorrect) {
     this.aCorrect = aCorrect;
     return this;
   }
@@ -133,11 +132,11 @@ public class Pairing {
    * @return aCorrect
    */
   @javax.annotation.Nullable
-  public Integer getaCorrect() {
+  public Long getaCorrect() {
     return aCorrect;
   }
 
-  public void setaCorrect(@javax.annotation.Nullable Integer aCorrect) {
+  public void setaCorrect(@javax.annotation.Nullable Long aCorrect) {
     this.aCorrect = aCorrect;
   }
 
@@ -161,7 +160,7 @@ public class Pairing {
   }
 
 
-  public Pairing bCorrect(@javax.annotation.Nullable Integer bCorrect) {
+  public Pairing bCorrect(@javax.annotation.Nullable Long bCorrect) {
     this.bCorrect = bCorrect;
     return this;
   }
@@ -171,11 +170,11 @@ public class Pairing {
    * @return bCorrect
    */
   @javax.annotation.Nullable
-  public Integer getbCorrect() {
+  public Long getbCorrect() {
     return bCorrect;
   }
 
-  public void setbCorrect(@javax.annotation.Nullable Integer bCorrect) {
+  public void setbCorrect(@javax.annotation.Nullable Long bCorrect) {
     this.bCorrect = bCorrect;
   }
 
@@ -199,7 +198,7 @@ public class Pairing {
   }
 
 
-  public Pairing mcnemarP(@javax.annotation.Nullable BigDecimal mcnemarP) {
+  public Pairing mcnemarP(@javax.annotation.Nullable Double mcnemarP) {
     this.mcnemarP = mcnemarP;
     return this;
   }
@@ -209,16 +208,16 @@ public class Pairing {
    * @return mcnemarP
    */
   @javax.annotation.Nullable
-  public BigDecimal getMcnemarP() {
+  public Double getMcnemarP() {
     return mcnemarP;
   }
 
-  public void setMcnemarP(@javax.annotation.Nullable BigDecimal mcnemarP) {
+  public void setMcnemarP(@javax.annotation.Nullable Double mcnemarP) {
     this.mcnemarP = mcnemarP;
   }
 
 
-  public Pairing nCommon(@javax.annotation.Nullable Integer nCommon) {
+  public Pairing nCommon(@javax.annotation.Nullable Long nCommon) {
     this.nCommon = nCommon;
     return this;
   }
@@ -228,16 +227,16 @@ public class Pairing {
    * @return nCommon
    */
   @javax.annotation.Nullable
-  public Integer getnCommon() {
+  public Long getnCommon() {
     return nCommon;
   }
 
-  public void setnCommon(@javax.annotation.Nullable Integer nCommon) {
+  public void setnCommon(@javax.annotation.Nullable Long nCommon) {
     this.nCommon = nCommon;
   }
 
 
-  public Pairing netAMinusB(@javax.annotation.Nullable Integer netAMinusB) {
+  public Pairing netAMinusB(@javax.annotation.Nullable Long netAMinusB) {
     this.netAMinusB = netAMinusB;
     return this;
   }
@@ -247,16 +246,16 @@ public class Pairing {
    * @return netAMinusB
    */
   @javax.annotation.Nullable
-  public Integer getNetAMinusB() {
+  public Long getNetAMinusB() {
     return netAMinusB;
   }
 
-  public void setNetAMinusB(@javax.annotation.Nullable Integer netAMinusB) {
+  public void setNetAMinusB(@javax.annotation.Nullable Long netAMinusB) {
     this.netAMinusB = netAMinusB;
   }
 
 
-  public Pairing rescueAOverB(@javax.annotation.Nullable Integer rescueAOverB) {
+  public Pairing rescueAOverB(@javax.annotation.Nullable Long rescueAOverB) {
     this.rescueAOverB = rescueAOverB;
     return this;
   }
@@ -266,16 +265,16 @@ public class Pairing {
    * @return rescueAOverB
    */
   @javax.annotation.Nullable
-  public Integer getRescueAOverB() {
+  public Long getRescueAOverB() {
     return rescueAOverB;
   }
 
-  public void setRescueAOverB(@javax.annotation.Nullable Integer rescueAOverB) {
+  public void setRescueAOverB(@javax.annotation.Nullable Long rescueAOverB) {
     this.rescueAOverB = rescueAOverB;
   }
 
 
-  public Pairing rescueBOverA(@javax.annotation.Nullable Integer rescueBOverA) {
+  public Pairing rescueBOverA(@javax.annotation.Nullable Long rescueBOverA) {
     this.rescueBOverA = rescueBOverA;
     return this;
   }
@@ -285,11 +284,11 @@ public class Pairing {
    * @return rescueBOverA
    */
   @javax.annotation.Nullable
-  public Integer getRescueBOverA() {
+  public Long getRescueBOverA() {
     return rescueBOverA;
   }
 
-  public void setRescueBOverA(@javax.annotation.Nullable Integer rescueBOverA) {
+  public void setRescueBOverA(@javax.annotation.Nullable Long rescueBOverA) {
     this.rescueBOverA = rescueBOverA;
   }
 

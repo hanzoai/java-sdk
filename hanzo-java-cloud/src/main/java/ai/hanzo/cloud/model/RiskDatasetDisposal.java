@@ -58,12 +58,12 @@ public class RiskDatasetDisposal {
   public static final String SERIALIZED_NAME_ROWS = "rows";
   @SerializedName(SERIALIZED_NAME_ROWS)
   @javax.annotation.Nullable
-  private Integer rows;
+  private Long rows;
 
   public static final String SERIALIZED_NAME_VERSIONS = "versions";
   @SerializedName(SERIALIZED_NAME_VERSIONS)
   @javax.annotation.Nullable
-  private Integer versions;
+  private Long versions;
 
   public RiskDatasetDisposal() {
   }
@@ -87,7 +87,7 @@ public class RiskDatasetDisposal {
   }
 
 
-  public RiskDatasetDisposal rows(@javax.annotation.Nullable Integer rows) {
+  public RiskDatasetDisposal rows(@javax.annotation.Nullable Long rows) {
     this.rows = rows;
     return this;
   }
@@ -97,16 +97,16 @@ public class RiskDatasetDisposal {
    * @return rows
    */
   @javax.annotation.Nullable
-  public Integer getRows() {
+  public Long getRows() {
     return rows;
   }
 
-  public void setRows(@javax.annotation.Nullable Integer rows) {
+  public void setRows(@javax.annotation.Nullable Long rows) {
     this.rows = rows;
   }
 
 
-  public RiskDatasetDisposal versions(@javax.annotation.Nullable Integer versions) {
+  public RiskDatasetDisposal versions(@javax.annotation.Nullable Long versions) {
     this.versions = versions;
     return this;
   }
@@ -116,11 +116,11 @@ public class RiskDatasetDisposal {
    * @return versions
    */
   @javax.annotation.Nullable
-  public Integer getVersions() {
+  public Long getVersions() {
     return versions;
   }
 
-  public void setVersions(@javax.annotation.Nullable Integer versions) {
+  public void setVersions(@javax.annotation.Nullable Long versions) {
     this.versions = versions;
   }
 

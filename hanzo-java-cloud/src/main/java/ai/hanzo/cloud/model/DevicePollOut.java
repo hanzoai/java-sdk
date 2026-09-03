@@ -59,7 +59,7 @@ public class DevicePollOut {
   public static final String SERIALIZED_NAME_INTERVAL = "interval";
   @SerializedName(SERIALIZED_NAME_INTERVAL)
   @javax.annotation.Nullable
-  private Integer interval;
+  private Long interval;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
@@ -88,7 +88,7 @@ public class DevicePollOut {
   }
 
 
-  public DevicePollOut interval(@javax.annotation.Nullable Integer interval) {
+  public DevicePollOut interval(@javax.annotation.Nullable Long interval) {
     this.interval = interval;
     return this;
   }
@@ -98,11 +98,11 @@ public class DevicePollOut {
    * @return interval
    */
   @javax.annotation.Nullable
-  public Integer getInterval() {
+  public Long getInterval() {
     return interval;
   }
 
-  public void setInterval(@javax.annotation.Nullable Integer interval) {
+  public void setInterval(@javax.annotation.Nullable Long interval) {
     this.interval = interval;
   }
 

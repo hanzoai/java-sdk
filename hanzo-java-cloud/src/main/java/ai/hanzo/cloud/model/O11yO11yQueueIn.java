@@ -55,17 +55,17 @@ public class O11yO11yQueueIn {
   public static final String SERIALIZED_NAME_END = "end";
   @SerializedName(SERIALIZED_NAME_END)
   @javax.annotation.Nullable
-  private Integer end;
+  private Long end;
 
   public static final String SERIALIZED_NAME_EVAL_TIME = "eval_time";
   @SerializedName(SERIALIZED_NAME_EVAL_TIME)
   @javax.annotation.Nullable
-  private Integer evalTime;
+  private Long evalTime;
 
   public static final String SERIALIZED_NAME_START = "start";
   @SerializedName(SERIALIZED_NAME_START)
   @javax.annotation.Nullable
-  private Integer start;
+  private Long start;
 
   public static final String SERIALIZED_NAME_VARIABLES = "variables";
   @SerializedName(SERIALIZED_NAME_VARIABLES)
@@ -75,7 +75,7 @@ public class O11yO11yQueueIn {
   public O11yO11yQueueIn() {
   }
 
-  public O11yO11yQueueIn end(@javax.annotation.Nullable Integer end) {
+  public O11yO11yQueueIn end(@javax.annotation.Nullable Long end) {
     this.end = end;
     return this;
   }
@@ -85,16 +85,16 @@ public class O11yO11yQueueIn {
    * @return end
    */
   @javax.annotation.Nullable
-  public Integer getEnd() {
+  public Long getEnd() {
     return end;
   }
 
-  public void setEnd(@javax.annotation.Nullable Integer end) {
+  public void setEnd(@javax.annotation.Nullable Long end) {
     this.end = end;
   }
 
 
-  public O11yO11yQueueIn evalTime(@javax.annotation.Nullable Integer evalTime) {
+  public O11yO11yQueueIn evalTime(@javax.annotation.Nullable Long evalTime) {
     this.evalTime = evalTime;
     return this;
   }
@@ -104,16 +104,16 @@ public class O11yO11yQueueIn {
    * @return evalTime
    */
   @javax.annotation.Nullable
-  public Integer getEvalTime() {
+  public Long getEvalTime() {
     return evalTime;
   }
 
-  public void setEvalTime(@javax.annotation.Nullable Integer evalTime) {
+  public void setEvalTime(@javax.annotation.Nullable Long evalTime) {
     this.evalTime = evalTime;
   }
 
 
-  public O11yO11yQueueIn start(@javax.annotation.Nullable Integer start) {
+  public O11yO11yQueueIn start(@javax.annotation.Nullable Long start) {
     this.start = start;
     return this;
   }
@@ -123,11 +123,11 @@ public class O11yO11yQueueIn {
    * @return start
    */
   @javax.annotation.Nullable
-  public Integer getStart() {
+  public Long getStart() {
     return start;
   }
 
-  public void setStart(@javax.annotation.Nullable Integer start) {
+  public void setStart(@javax.annotation.Nullable Long start) {
     this.start = start;
   }
 

@@ -53,7 +53,7 @@ public class GPU {
   public static final String SERIALIZED_NAME_MEMORY = "memory";
   @SerializedName(SERIALIZED_NAME_MEMORY)
   @javax.annotation.Nullable
-  private Integer memory;
+  private Long memory;
 
   public static final String SERIALIZED_NAME_MODEL = "model";
   @SerializedName(SERIALIZED_NAME_MODEL)
@@ -68,7 +68,7 @@ public class GPU {
   public GPU() {
   }
 
-  public GPU memory(@javax.annotation.Nullable Integer memory) {
+  public GPU memory(@javax.annotation.Nullable Long memory) {
     this.memory = memory;
     return this;
   }
@@ -78,11 +78,11 @@ public class GPU {
    * @return memory
    */
   @javax.annotation.Nullable
-  public Integer getMemory() {
+  public Long getMemory() {
     return memory;
   }
 
-  public void setMemory(@javax.annotation.Nullable Integer memory) {
+  public void setMemory(@javax.annotation.Nullable Long memory) {
     this.memory = memory;
   }
 

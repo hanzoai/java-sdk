@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -54,7 +53,7 @@ public class O11yO11yReductionStats {
   public static final String SERIALIZED_NAME_ESTIMATED_MONTHLY_SAVINGS_USD = "estimatedMonthlySavingsUsd";
   @SerializedName(SERIALIZED_NAME_ESTIMATED_MONTHLY_SAVINGS_USD)
   @javax.annotation.Nullable
-  private BigDecimal estimatedMonthlySavingsUsd;
+  private Double estimatedMonthlySavingsUsd;
 
   public static final String SERIALIZED_NAME_INGESTED_SAMPLES = "ingestedSamples";
   @SerializedName(SERIALIZED_NAME_INGESTED_SAMPLES)
@@ -79,7 +78,7 @@ public class O11yO11yReductionStats {
   public O11yO11yReductionStats() {
   }
 
-  public O11yO11yReductionStats estimatedMonthlySavingsUsd(@javax.annotation.Nullable BigDecimal estimatedMonthlySavingsUsd) {
+  public O11yO11yReductionStats estimatedMonthlySavingsUsd(@javax.annotation.Nullable Double estimatedMonthlySavingsUsd) {
     this.estimatedMonthlySavingsUsd = estimatedMonthlySavingsUsd;
     return this;
   }
@@ -89,11 +88,11 @@ public class O11yO11yReductionStats {
    * @return estimatedMonthlySavingsUsd
    */
   @javax.annotation.Nullable
-  public BigDecimal getEstimatedMonthlySavingsUsd() {
+  public Double getEstimatedMonthlySavingsUsd() {
     return estimatedMonthlySavingsUsd;
   }
 
-  public void setEstimatedMonthlySavingsUsd(@javax.annotation.Nullable BigDecimal estimatedMonthlySavingsUsd) {
+  public void setEstimatedMonthlySavingsUsd(@javax.annotation.Nullable Double estimatedMonthlySavingsUsd) {
     this.estimatedMonthlySavingsUsd = estimatedMonthlySavingsUsd;
   }
 

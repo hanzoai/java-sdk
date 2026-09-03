@@ -53,7 +53,7 @@ public class RiskSourceCoverage {
   public static final String SERIALIZED_NAME_FACTS = "facts";
   @SerializedName(SERIALIZED_NAME_FACTS)
   @javax.annotation.Nullable
-  private Integer facts;
+  private Long facts;
 
   public static final String SERIALIZED_NAME_SOURCE = "source";
   @SerializedName(SERIALIZED_NAME_SOURCE)
@@ -63,12 +63,12 @@ public class RiskSourceCoverage {
   public static final String SERIALIZED_NAME_WON = "won";
   @SerializedName(SERIALIZED_NAME_WON)
   @javax.annotation.Nullable
-  private Integer won;
+  private Long won;
 
   public RiskSourceCoverage() {
   }
 
-  public RiskSourceCoverage facts(@javax.annotation.Nullable Integer facts) {
+  public RiskSourceCoverage facts(@javax.annotation.Nullable Long facts) {
     this.facts = facts;
     return this;
   }
@@ -78,11 +78,11 @@ public class RiskSourceCoverage {
    * @return facts
    */
   @javax.annotation.Nullable
-  public Integer getFacts() {
+  public Long getFacts() {
     return facts;
   }
 
-  public void setFacts(@javax.annotation.Nullable Integer facts) {
+  public void setFacts(@javax.annotation.Nullable Long facts) {
     this.facts = facts;
   }
 
@@ -106,7 +106,7 @@ public class RiskSourceCoverage {
   }
 
 
-  public RiskSourceCoverage won(@javax.annotation.Nullable Integer won) {
+  public RiskSourceCoverage won(@javax.annotation.Nullable Long won) {
     this.won = won;
     return this;
   }
@@ -116,11 +116,11 @@ public class RiskSourceCoverage {
    * @return won
    */
   @javax.annotation.Nullable
-  public Integer getWon() {
+  public Long getWon() {
     return won;
   }
 
-  public void setWon(@javax.annotation.Nullable Integer won) {
+  public void setWon(@javax.annotation.Nullable Long won) {
     this.won = won;
   }
 

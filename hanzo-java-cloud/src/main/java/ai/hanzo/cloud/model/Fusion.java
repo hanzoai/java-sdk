@@ -77,7 +77,7 @@ public class Fusion {
   public static final String SERIALIZED_NAME_TOOK_MS = "took_ms";
   @SerializedName(SERIALIZED_NAME_TOOK_MS)
   @javax.annotation.Nullable
-  private Integer tookMs;
+  private Long tookMs;
 
   public Fusion() {
   }
@@ -174,7 +174,7 @@ public class Fusion {
   }
 
 
-  public Fusion tookMs(@javax.annotation.Nullable Integer tookMs) {
+  public Fusion tookMs(@javax.annotation.Nullable Long tookMs) {
     this.tookMs = tookMs;
     return this;
   }
@@ -184,11 +184,11 @@ public class Fusion {
    * @return tookMs
    */
   @javax.annotation.Nullable
-  public Integer getTookMs() {
+  public Long getTookMs() {
     return tookMs;
   }
 
-  public void setTookMs(@javax.annotation.Nullable Integer tookMs) {
+  public void setTookMs(@javax.annotation.Nullable Long tookMs) {
     this.tookMs = tookMs;
   }
 

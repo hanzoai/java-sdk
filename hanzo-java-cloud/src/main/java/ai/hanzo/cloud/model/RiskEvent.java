@@ -73,7 +73,7 @@ public class RiskEvent {
   public static final String SERIALIZED_NAME_NANO = "nano";
   @SerializedName(SERIALIZED_NAME_NANO)
   @javax.annotation.Nullable
-  private Integer nano;
+  private Long nano;
 
   public static final String SERIALIZED_NAME_PEER = "peer";
   @SerializedName(SERIALIZED_NAME_PEER)
@@ -164,7 +164,7 @@ public class RiskEvent {
   }
 
 
-  public RiskEvent nano(@javax.annotation.Nullable Integer nano) {
+  public RiskEvent nano(@javax.annotation.Nullable Long nano) {
     this.nano = nano;
     return this;
   }
@@ -174,11 +174,11 @@ public class RiskEvent {
    * @return nano
    */
   @javax.annotation.Nullable
-  public Integer getNano() {
+  public Long getNano() {
     return nano;
   }
 
-  public void setNano(@javax.annotation.Nullable Integer nano) {
+  public void setNano(@javax.annotation.Nullable Long nano) {
     this.nano = nano;
   }
 

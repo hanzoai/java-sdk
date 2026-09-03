@@ -16,15 +16,21 @@ package ai.hanzo.cloud.model;
 import java.util.Objects;
 import ai.hanzo.cloud.model.CaptureBatch;
 import ai.hanzo.cloud.model.CaptureEvent;
-import ai.hanzo.cloud.model.Event;
+import ai.hanzo.cloud.model.ClipBody;
+import ai.hanzo.cloud.model.ErrorBody;
 import ai.hanzo.cloud.model.InsightsBody;
 import ai.hanzo.cloud.model.InsightsEvent;
+import ai.hanzo.cloud.model.LogBody;
+import ai.hanzo.cloud.model.MetricBody;
+import ai.hanzo.cloud.model.SpanBody;
+import ai.hanzo.cloud.model.UTM;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -78,10 +84,10 @@ public class PostEventRequest extends AbstractOpenApiSchema {
                 return null; // this class only serializes 'PostEventRequest' and its subtypes
             }
             final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-            final TypeAdapter<Event> adapterEvent = gson.getDelegateAdapter(this, TypeToken.get(Event.class));
+            final TypeAdapter<CaptureEvent> adapterCaptureEvent = gson.getDelegateAdapter(this, TypeToken.get(CaptureEvent.class));
 
-            final Type typeInstanceListEvent = new TypeToken<List<Event>>(){}.getType();
-            final TypeAdapter<List<Event>> adapterListEvent = (TypeAdapter<List<Event>>) gson.getDelegateAdapter(this, TypeToken.get(typeInstanceListEvent));
+            final Type typeInstanceListCaptureEvent = new TypeToken<List<CaptureEvent>>(){}.getType();
+            final TypeAdapter<List<CaptureEvent>> adapterListCaptureEvent = (TypeAdapter<List<CaptureEvent>>) gson.getDelegateAdapter(this, TypeToken.get(typeInstanceListCaptureEvent));
             final TypeAdapter<CaptureBatch> adapterCaptureBatch = gson.getDelegateAdapter(this, TypeToken.get(CaptureBatch.class));
             final TypeAdapter<InsightsBody> adapterInsightsBody = gson.getDelegateAdapter(this, TypeToken.get(InsightsBody.class));
 
@@ -93,17 +99,17 @@ public class PostEventRequest extends AbstractOpenApiSchema {
                         return;
                     }
 
-                    // check if the actual instance is of the type `Event`
-                    if (value.getActualInstance() instanceof Event) {
-                        JsonElement element = adapterEvent.toJsonTree((Event)value.getActualInstance());
+                    // check if the actual instance is of the type `CaptureEvent`
+                    if (value.getActualInstance() instanceof CaptureEvent) {
+                        JsonElement element = adapterCaptureEvent.toJsonTree((CaptureEvent)value.getActualInstance());
                         elementAdapter.write(out, element);
                         return;
                     }
-                    // check if the actual instance is of the type `List<Event>`
+                    // check if the actual instance is of the type `List<CaptureEvent>`
                     if (value.getActualInstance() instanceof List<?>) {
                         List<?> list = (List<?>) value.getActualInstance();
-                        if (list.get(0) instanceof Event) {
-                            JsonArray array = adapterListEvent.toJsonTree((List<Event>)value.getActualInstance()).getAsJsonArray();
+                        if (list.get(0) instanceof CaptureEvent) {
+                            JsonArray array = adapterListCaptureEvent.toJsonTree((List<CaptureEvent>)value.getActualInstance()).getAsJsonArray();
                             elementAdapter.write(out, array);
                             return;
                         }
@@ -120,7 +126,7 @@ public class PostEventRequest extends AbstractOpenApiSchema {
                         elementAdapter.write(out, element);
                         return;
                     }
-                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: CaptureBatch, Event, InsightsBody, List<Event>");
+                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: CaptureBatch, CaptureEvent, InsightsBody, List<CaptureEvent>");
                 }
 
                 @Override
@@ -132,19 +138,19 @@ public class PostEventRequest extends AbstractOpenApiSchema {
                     ArrayList<String> errorMessages = new ArrayList<>();
                     TypeAdapter actualAdapter = elementAdapter;
 
-                    // deserialize Event
+                    // deserialize CaptureEvent
                     try {
                         // validate the JSON object to see if any exception is thrown
-                        Event.validateJsonElement(jsonElement);
-                        actualAdapter = adapterEvent;
+                        CaptureEvent.validateJsonElement(jsonElement);
+                        actualAdapter = adapterCaptureEvent;
                         match++;
-                        log.log(Level.FINER, "Input data matches schema 'Event'");
+                        log.log(Level.FINER, "Input data matches schema 'CaptureEvent'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for Event failed with `%s`.", e.getMessage()));
-                        log.log(Level.FINER, "Input data does not match schema 'Event'", e);
+                        errorMessages.add(String.format("Deserialization for CaptureEvent failed with `%s`.", e.getMessage()));
+                        log.log(Level.FINER, "Input data does not match schema 'CaptureEvent'", e);
                     }
-                    // deserialize List<Event>
+                    // deserialize List<CaptureEvent>
                     try {
                         // validate the JSON object to see if any exception is thrown
                         if (!jsonElement.isJsonArray()) {
@@ -154,15 +160,15 @@ public class PostEventRequest extends AbstractOpenApiSchema {
                         JsonArray array = jsonElement.getAsJsonArray();
                         // validate array items
                         for(JsonElement element : array) {
-                            Event.validateJsonElement(element);
+                            CaptureEvent.validateJsonElement(element);
                         }
-                        actualAdapter = adapterListEvent;
+                        actualAdapter = adapterListCaptureEvent;
                         match++;
-                        log.log(Level.FINER, "Input data matches schema 'List<Event>'");
+                        log.log(Level.FINER, "Input data matches schema 'List<CaptureEvent>'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for List<Event> failed with `%s`.", e.getMessage()));
-                        log.log(Level.FINER, "Input data does not match schema 'List<Event>'", e);
+                        errorMessages.add(String.format("Deserialization for List<CaptureEvent> failed with `%s`.", e.getMessage()));
+                        log.log(Level.FINER, "Input data does not match schema 'List<CaptureEvent>'", e);
                     }
                     // deserialize CaptureBatch
                     try {
@@ -214,8 +220,8 @@ public class PostEventRequest extends AbstractOpenApiSchema {
     }
 
     static {
-        schemas.put("Event", Event.class);
-        schemas.put("List<Event>", List.class);
+        schemas.put("CaptureEvent", CaptureEvent.class);
+        schemas.put("List<CaptureEvent>", List.class);
         schemas.put("CaptureBatch", CaptureBatch.class);
         schemas.put("InsightsBody", InsightsBody.class);
     }
@@ -228,20 +234,20 @@ public class PostEventRequest extends AbstractOpenApiSchema {
     /**
      * Set the instance that matches the oneOf child schema, check
      * the instance parameter is valid against the oneOf child schemas:
-     * CaptureBatch, Event, InsightsBody, List<Event>
+     * CaptureBatch, CaptureEvent, InsightsBody, List<CaptureEvent>
      *
      * It could be an instance of the 'oneOf' schemas.
      */
     @Override
     public void setActualInstance(Object instance) {
-        if (instance instanceof Event) {
+        if (instance instanceof CaptureEvent) {
             super.setActualInstance(instance);
             return;
         }
 
         if (instance instanceof List<?>) {
             List<?> list = (List<?>) instance;
-            if (list.get(0) instanceof Event) {
+            if (list.get(0) instanceof CaptureEvent) {
                 super.setActualInstance(instance);
                 return;
             }
@@ -257,14 +263,14 @@ public class PostEventRequest extends AbstractOpenApiSchema {
             return;
         }
 
-        throw new RuntimeException("Invalid instance type. Must be CaptureBatch, Event, InsightsBody, List<Event>");
+        throw new RuntimeException("Invalid instance type. Must be CaptureBatch, CaptureEvent, InsightsBody, List<CaptureEvent>");
     }
 
     /**
      * Get the actual instance, which can be the following:
-     * CaptureBatch, Event, InsightsBody, List<Event>
+     * CaptureBatch, CaptureEvent, InsightsBody, List<CaptureEvent>
      *
-     * @return The actual instance (CaptureBatch, Event, InsightsBody, List<Event>)
+     * @return The actual instance (CaptureBatch, CaptureEvent, InsightsBody, List<CaptureEvent>)
      */
     @SuppressWarnings("unchecked")
     @Override
@@ -273,25 +279,25 @@ public class PostEventRequest extends AbstractOpenApiSchema {
     }
 
     /**
-     * Get the actual instance of `Event`. If the actual instance is not `Event`,
+     * Get the actual instance of `CaptureEvent`. If the actual instance is not `CaptureEvent`,
      * the ClassCastException will be thrown.
      *
-     * @return The actual instance of `Event`
-     * @throws ClassCastException if the instance is not `Event`
+     * @return The actual instance of `CaptureEvent`
+     * @throws ClassCastException if the instance is not `CaptureEvent`
      */
-    public Event getEvent() throws ClassCastException {
-        return (Event)super.getActualInstance();
+    public CaptureEvent getCaptureEvent() throws ClassCastException {
+        return (CaptureEvent)super.getActualInstance();
     }
 
     /**
-     * Get the actual instance of `List<Event>`. If the actual instance is not `List<Event>`,
+     * Get the actual instance of `List<CaptureEvent>`. If the actual instance is not `List<CaptureEvent>`,
      * the ClassCastException will be thrown.
      *
-     * @return The actual instance of `List<Event>`
-     * @throws ClassCastException if the instance is not `List<Event>`
+     * @return The actual instance of `List<CaptureEvent>`
+     * @throws ClassCastException if the instance is not `List<CaptureEvent>`
      */
-    public List<Event> getListEvent() throws ClassCastException {
-        return (List<Event>)super.getActualInstance();
+    public List<CaptureEvent> getListCaptureEvent() throws ClassCastException {
+        return (List<CaptureEvent>)super.getActualInstance();
     }
 
     /**
@@ -326,15 +332,15 @@ public class PostEventRequest extends AbstractOpenApiSchema {
         // validate oneOf schemas one by one
         int validCount = 0;
         ArrayList<String> errorMessages = new ArrayList<>();
-        // validate the json string with Event
+        // validate the json string with CaptureEvent
         try {
-            Event.validateJsonElement(jsonElement);
+            CaptureEvent.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for Event failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format("Deserialization for CaptureEvent failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
-        // validate the json string with List<Event>
+        // validate the json string with List<CaptureEvent>
         try {
             if (!jsonElement.isJsonArray()) {
                 throw new IllegalArgumentException(String.format("Expected json element to be a array type in the JSON string but got `%s`", jsonElement.toString()));
@@ -342,11 +348,11 @@ public class PostEventRequest extends AbstractOpenApiSchema {
             JsonArray array = jsonElement.getAsJsonArray();
             // validate array items
             for(JsonElement element : array) {
-                Event.validateJsonElement(element);
+                CaptureEvent.validateJsonElement(element);
             }
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for List<Event> failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format("Deserialization for List<CaptureEvent> failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with CaptureBatch
@@ -366,7 +372,7 @@ public class PostEventRequest extends AbstractOpenApiSchema {
             // continue to the next one
         }
         if (validCount != 1) {
-            throw new IOException(String.format("The JSON string is invalid for PostEventRequest with oneOf schemas: CaptureBatch, Event, InsightsBody, List<Event>. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+            throw new IOException(String.format("The JSON string is invalid for PostEventRequest with oneOf schemas: CaptureBatch, CaptureEvent, InsightsBody, List<CaptureEvent>. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
         }
     }
 

@@ -58,7 +58,7 @@ public class CreditGrant {
   public static final String SERIALIZED_NAME_AMOUNT_CENTS = "amountCents";
   @SerializedName(SERIALIZED_NAME_AMOUNT_CENTS)
   @javax.annotation.Nullable
-  private Integer amountCents;
+  private Long amountCents;
 
   public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
@@ -93,12 +93,12 @@ public class CreditGrant {
   public static final String SERIALIZED_NAME_PRIORITY = "priority";
   @SerializedName(SERIALIZED_NAME_PRIORITY)
   @javax.annotation.Nullable
-  private Integer priority;
+  private Long priority;
 
   public static final String SERIALIZED_NAME_REMAINING_CENTS = "remainingCents";
   @SerializedName(SERIALIZED_NAME_REMAINING_CENTS)
   @javax.annotation.Nullable
-  private Integer remainingCents;
+  private Long remainingCents;
 
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
@@ -137,7 +137,7 @@ public class CreditGrant {
   }
 
 
-  public CreditGrant amountCents(@javax.annotation.Nullable Integer amountCents) {
+  public CreditGrant amountCents(@javax.annotation.Nullable Long amountCents) {
     this.amountCents = amountCents;
     return this;
   }
@@ -147,11 +147,11 @@ public class CreditGrant {
    * @return amountCents
    */
   @javax.annotation.Nullable
-  public Integer getAmountCents() {
+  public Long getAmountCents() {
     return amountCents;
   }
 
-  public void setAmountCents(@javax.annotation.Nullable Integer amountCents) {
+  public void setAmountCents(@javax.annotation.Nullable Long amountCents) {
     this.amountCents = amountCents;
   }
 
@@ -270,7 +270,7 @@ public class CreditGrant {
   }
 
 
-  public CreditGrant priority(@javax.annotation.Nullable Integer priority) {
+  public CreditGrant priority(@javax.annotation.Nullable Long priority) {
     this.priority = priority;
     return this;
   }
@@ -280,16 +280,16 @@ public class CreditGrant {
    * @return priority
    */
   @javax.annotation.Nullable
-  public Integer getPriority() {
+  public Long getPriority() {
     return priority;
   }
 
-  public void setPriority(@javax.annotation.Nullable Integer priority) {
+  public void setPriority(@javax.annotation.Nullable Long priority) {
     this.priority = priority;
   }
 
 
-  public CreditGrant remainingCents(@javax.annotation.Nullable Integer remainingCents) {
+  public CreditGrant remainingCents(@javax.annotation.Nullable Long remainingCents) {
     this.remainingCents = remainingCents;
     return this;
   }
@@ -299,11 +299,11 @@ public class CreditGrant {
    * @return remainingCents
    */
   @javax.annotation.Nullable
-  public Integer getRemainingCents() {
+  public Long getRemainingCents() {
     return remainingCents;
   }
 
-  public void setRemainingCents(@javax.annotation.Nullable Integer remainingCents) {
+  public void setRemainingCents(@javax.annotation.Nullable Long remainingCents) {
     this.remainingCents = remainingCents;
   }
 

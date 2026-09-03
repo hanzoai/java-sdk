@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -54,17 +53,17 @@ public class CaptableRoundTotals {
   public static final String SERIALIZED_NAME_COUNT = "count";
   @SerializedName(SERIALIZED_NAME_COUNT)
   @javax.annotation.Nullable
-  private Integer count;
+  private Long count;
 
   public static final String SERIALIZED_NAME_TOTAL_RAISED = "totalRaised";
   @SerializedName(SERIALIZED_NAME_TOTAL_RAISED)
   @javax.annotation.Nullable
-  private BigDecimal totalRaised;
+  private Double totalRaised;
 
   public CaptableRoundTotals() {
   }
 
-  public CaptableRoundTotals count(@javax.annotation.Nullable Integer count) {
+  public CaptableRoundTotals count(@javax.annotation.Nullable Long count) {
     this.count = count;
     return this;
   }
@@ -74,16 +73,16 @@ public class CaptableRoundTotals {
    * @return count
    */
   @javax.annotation.Nullable
-  public Integer getCount() {
+  public Long getCount() {
     return count;
   }
 
-  public void setCount(@javax.annotation.Nullable Integer count) {
+  public void setCount(@javax.annotation.Nullable Long count) {
     this.count = count;
   }
 
 
-  public CaptableRoundTotals totalRaised(@javax.annotation.Nullable BigDecimal totalRaised) {
+  public CaptableRoundTotals totalRaised(@javax.annotation.Nullable Double totalRaised) {
     this.totalRaised = totalRaised;
     return this;
   }
@@ -93,11 +92,11 @@ public class CaptableRoundTotals {
    * @return totalRaised
    */
   @javax.annotation.Nullable
-  public BigDecimal getTotalRaised() {
+  public Double getTotalRaised() {
     return totalRaised;
   }
 
-  public void setTotalRaised(@javax.annotation.Nullable BigDecimal totalRaised) {
+  public void setTotalRaised(@javax.annotation.Nullable Double totalRaised) {
     this.totalRaised = totalRaised;
   }
 

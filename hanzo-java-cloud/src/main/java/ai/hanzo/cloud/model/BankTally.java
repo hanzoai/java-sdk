@@ -53,37 +53,37 @@ public class BankTally {
   public static final String SERIALIZED_NAME_INGESTED = "ingested";
   @SerializedName(SERIALIZED_NAME_INGESTED)
   @javax.annotation.Nullable
-  private Integer ingested;
+  private Long ingested;
 
   public static final String SERIALIZED_NAME_POSTED = "posted";
   @SerializedName(SERIALIZED_NAME_POSTED)
   @javax.annotation.Nullable
-  private Integer posted;
+  private Long posted;
 
   public static final String SERIALIZED_NAME_QUESTIONS = "questions";
   @SerializedName(SERIALIZED_NAME_QUESTIONS)
   @javax.annotation.Nullable
-  private Integer questions;
+  private Long questions;
 
   public static final String SERIALIZED_NAME_RECONCILED = "reconciled";
   @SerializedName(SERIALIZED_NAME_RECONCILED)
   @javax.annotation.Nullable
-  private Integer reconciled;
+  private Long reconciled;
 
   public static final String SERIALIZED_NAME_SKIPPED = "skipped";
   @SerializedName(SERIALIZED_NAME_SKIPPED)
   @javax.annotation.Nullable
-  private Integer skipped;
+  private Long skipped;
 
   public static final String SERIALIZED_NAME_TRANSFERS = "transfers";
   @SerializedName(SERIALIZED_NAME_TRANSFERS)
   @javax.annotation.Nullable
-  private Integer transfers;
+  private Long transfers;
 
   public BankTally() {
   }
 
-  public BankTally ingested(@javax.annotation.Nullable Integer ingested) {
+  public BankTally ingested(@javax.annotation.Nullable Long ingested) {
     this.ingested = ingested;
     return this;
   }
@@ -93,16 +93,16 @@ public class BankTally {
    * @return ingested
    */
   @javax.annotation.Nullable
-  public Integer getIngested() {
+  public Long getIngested() {
     return ingested;
   }
 
-  public void setIngested(@javax.annotation.Nullable Integer ingested) {
+  public void setIngested(@javax.annotation.Nullable Long ingested) {
     this.ingested = ingested;
   }
 
 
-  public BankTally posted(@javax.annotation.Nullable Integer posted) {
+  public BankTally posted(@javax.annotation.Nullable Long posted) {
     this.posted = posted;
     return this;
   }
@@ -112,16 +112,16 @@ public class BankTally {
    * @return posted
    */
   @javax.annotation.Nullable
-  public Integer getPosted() {
+  public Long getPosted() {
     return posted;
   }
 
-  public void setPosted(@javax.annotation.Nullable Integer posted) {
+  public void setPosted(@javax.annotation.Nullable Long posted) {
     this.posted = posted;
   }
 
 
-  public BankTally questions(@javax.annotation.Nullable Integer questions) {
+  public BankTally questions(@javax.annotation.Nullable Long questions) {
     this.questions = questions;
     return this;
   }
@@ -131,16 +131,16 @@ public class BankTally {
    * @return questions
    */
   @javax.annotation.Nullable
-  public Integer getQuestions() {
+  public Long getQuestions() {
     return questions;
   }
 
-  public void setQuestions(@javax.annotation.Nullable Integer questions) {
+  public void setQuestions(@javax.annotation.Nullable Long questions) {
     this.questions = questions;
   }
 
 
-  public BankTally reconciled(@javax.annotation.Nullable Integer reconciled) {
+  public BankTally reconciled(@javax.annotation.Nullable Long reconciled) {
     this.reconciled = reconciled;
     return this;
   }
@@ -150,16 +150,16 @@ public class BankTally {
    * @return reconciled
    */
   @javax.annotation.Nullable
-  public Integer getReconciled() {
+  public Long getReconciled() {
     return reconciled;
   }
 
-  public void setReconciled(@javax.annotation.Nullable Integer reconciled) {
+  public void setReconciled(@javax.annotation.Nullable Long reconciled) {
     this.reconciled = reconciled;
   }
 
 
-  public BankTally skipped(@javax.annotation.Nullable Integer skipped) {
+  public BankTally skipped(@javax.annotation.Nullable Long skipped) {
     this.skipped = skipped;
     return this;
   }
@@ -169,16 +169,16 @@ public class BankTally {
    * @return skipped
    */
   @javax.annotation.Nullable
-  public Integer getSkipped() {
+  public Long getSkipped() {
     return skipped;
   }
 
-  public void setSkipped(@javax.annotation.Nullable Integer skipped) {
+  public void setSkipped(@javax.annotation.Nullable Long skipped) {
     this.skipped = skipped;
   }
 
 
-  public BankTally transfers(@javax.annotation.Nullable Integer transfers) {
+  public BankTally transfers(@javax.annotation.Nullable Long transfers) {
     this.transfers = transfers;
     return this;
   }
@@ -188,11 +188,11 @@ public class BankTally {
    * @return transfers
    */
   @javax.annotation.Nullable
-  public Integer getTransfers() {
+  public Long getTransfers() {
     return transfers;
   }
 
-  public void setTransfers(@javax.annotation.Nullable Integer transfers) {
+  public void setTransfers(@javax.annotation.Nullable Long transfers) {
     this.transfers = transfers;
   }
 

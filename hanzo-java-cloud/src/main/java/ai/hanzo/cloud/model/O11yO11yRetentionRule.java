@@ -61,7 +61,7 @@ public class O11yO11yRetentionRule {
   public static final String SERIALIZED_NAME_TTL_DAYS = "ttlDays";
   @SerializedName(SERIALIZED_NAME_TTL_DAYS)
   @javax.annotation.Nullable
-  private Integer ttlDays;
+  private Long ttlDays;
 
   public O11yO11yRetentionRule() {
   }
@@ -93,7 +93,7 @@ public class O11yO11yRetentionRule {
   }
 
 
-  public O11yO11yRetentionRule ttlDays(@javax.annotation.Nullable Integer ttlDays) {
+  public O11yO11yRetentionRule ttlDays(@javax.annotation.Nullable Long ttlDays) {
     this.ttlDays = ttlDays;
     return this;
   }
@@ -103,11 +103,11 @@ public class O11yO11yRetentionRule {
    * @return ttlDays
    */
   @javax.annotation.Nullable
-  public Integer getTtlDays() {
+  public Long getTtlDays() {
     return ttlDays;
   }
 
-  public void setTtlDays(@javax.annotation.Nullable Integer ttlDays) {
+  public void setTtlDays(@javax.annotation.Nullable Long ttlDays) {
     this.ttlDays = ttlDays;
   }
 

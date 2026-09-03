@@ -60,7 +60,7 @@ public class LicensingVerifyResponse {
   public static final String SERIALIZED_NAME_EXP = "exp";
   @SerializedName(SERIALIZED_NAME_EXP)
   @javax.annotation.Nullable
-  private Integer exp;
+  private Long exp;
 
   public static final String SERIALIZED_NAME_FEATURES = "features";
   @SerializedName(SERIALIZED_NAME_FEATURES)
@@ -119,7 +119,7 @@ public class LicensingVerifyResponse {
   }
 
 
-  public LicensingVerifyResponse exp(@javax.annotation.Nullable Integer exp) {
+  public LicensingVerifyResponse exp(@javax.annotation.Nullable Long exp) {
     this.exp = exp;
     return this;
   }
@@ -129,11 +129,11 @@ public class LicensingVerifyResponse {
    * @return exp
    */
   @javax.annotation.Nullable
-  public Integer getExp() {
+  public Long getExp() {
     return exp;
   }
 
-  public void setExp(@javax.annotation.Nullable Integer exp) {
+  public void setExp(@javax.annotation.Nullable Long exp) {
     this.exp = exp;
   }
 

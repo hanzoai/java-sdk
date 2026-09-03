@@ -69,7 +69,7 @@ public class Diagnostic {
   public static final String SERIALIZED_NAME_SEVERITY = "severity";
   @SerializedName(SERIALIZED_NAME_SEVERITY)
   @javax.annotation.Nullable
-  private Integer severity;
+  private Long severity;
 
   public static final String SERIALIZED_NAME_SOURCE = "source";
   @SerializedName(SERIALIZED_NAME_SOURCE)
@@ -136,7 +136,7 @@ public class Diagnostic {
   }
 
 
-  public Diagnostic severity(@javax.annotation.Nullable Integer severity) {
+  public Diagnostic severity(@javax.annotation.Nullable Long severity) {
     this.severity = severity;
     return this;
   }
@@ -146,11 +146,11 @@ public class Diagnostic {
    * @return severity
    */
   @javax.annotation.Nullable
-  public Integer getSeverity() {
+  public Long getSeverity() {
     return severity;
   }
 
-  public void setSeverity(@javax.annotation.Nullable Integer severity) {
+  public void setSeverity(@javax.annotation.Nullable Long severity) {
     this.severity = severity;
   }
 

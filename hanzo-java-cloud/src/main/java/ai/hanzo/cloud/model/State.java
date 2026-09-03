@@ -59,7 +59,7 @@ public class State {
   public static final String SERIALIZED_NAME_CONSUMER_COUNT = "consumer_count";
   @SerializedName(SERIALIZED_NAME_CONSUMER_COUNT)
   @javax.annotation.Nullable
-  private Integer consumerCount;
+  private Long consumerCount;
 
   public static final String SERIALIZED_NAME_FIRST_SEQ = "first_seq";
   @SerializedName(SERIALIZED_NAME_FIRST_SEQ)
@@ -89,7 +89,7 @@ public class State {
   public static final String SERIALIZED_NAME_NUM_DELETED = "num_deleted";
   @SerializedName(SERIALIZED_NAME_NUM_DELETED)
   @javax.annotation.Nullable
-  private Integer numDeleted;
+  private Long numDeleted;
 
   public static final String SERIALIZED_NAME_NUM_SUBJECTS = "num_subjects";
   @SerializedName(SERIALIZED_NAME_NUM_SUBJECTS)
@@ -118,7 +118,7 @@ public class State {
   }
 
 
-  public State consumerCount(@javax.annotation.Nullable Integer consumerCount) {
+  public State consumerCount(@javax.annotation.Nullable Long consumerCount) {
     this.consumerCount = consumerCount;
     return this;
   }
@@ -128,11 +128,11 @@ public class State {
    * @return consumerCount
    */
   @javax.annotation.Nullable
-  public Integer getConsumerCount() {
+  public Long getConsumerCount() {
     return consumerCount;
   }
 
-  public void setConsumerCount(@javax.annotation.Nullable Integer consumerCount) {
+  public void setConsumerCount(@javax.annotation.Nullable Long consumerCount) {
     this.consumerCount = consumerCount;
   }
 
@@ -232,7 +232,7 @@ public class State {
   }
 
 
-  public State numDeleted(@javax.annotation.Nullable Integer numDeleted) {
+  public State numDeleted(@javax.annotation.Nullable Long numDeleted) {
     this.numDeleted = numDeleted;
     return this;
   }
@@ -242,11 +242,11 @@ public class State {
    * @return numDeleted
    */
   @javax.annotation.Nullable
-  public Integer getNumDeleted() {
+  public Long getNumDeleted() {
     return numDeleted;
   }
 
-  public void setNumDeleted(@javax.annotation.Nullable Integer numDeleted) {
+  public void setNumDeleted(@javax.annotation.Nullable Long numDeleted) {
     this.numDeleted = numDeleted;
   }
 

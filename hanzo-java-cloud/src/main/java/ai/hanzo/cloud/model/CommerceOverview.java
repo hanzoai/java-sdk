@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -54,7 +53,7 @@ public class CommerceOverview {
   public static final String SERIALIZED_NAME_AOV = "aov";
   @SerializedName(SERIALIZED_NAME_AOV)
   @javax.annotation.Nullable
-  private BigDecimal aov;
+  private Double aov;
 
   public static final String SERIALIZED_NAME_AVAILABLE = "available";
   @SerializedName(SERIALIZED_NAME_AVAILABLE)
@@ -64,7 +63,7 @@ public class CommerceOverview {
   public static final String SERIALIZED_NAME_ORDERS = "orders";
   @SerializedName(SERIALIZED_NAME_ORDERS)
   @javax.annotation.Nullable
-  private Integer orders;
+  private Long orders;
 
   public static final String SERIALIZED_NAME_REASON = "reason";
   @SerializedName(SERIALIZED_NAME_REASON)
@@ -74,7 +73,7 @@ public class CommerceOverview {
   public static final String SERIALIZED_NAME_REVENUE = "revenue";
   @SerializedName(SERIALIZED_NAME_REVENUE)
   @javax.annotation.Nullable
-  private BigDecimal revenue;
+  private Double revenue;
 
   public static final String SERIALIZED_NAME_SOURCE = "source";
   @SerializedName(SERIALIZED_NAME_SOURCE)
@@ -84,7 +83,7 @@ public class CommerceOverview {
   public CommerceOverview() {
   }
 
-  public CommerceOverview aov(@javax.annotation.Nullable BigDecimal aov) {
+  public CommerceOverview aov(@javax.annotation.Nullable Double aov) {
     this.aov = aov;
     return this;
   }
@@ -94,11 +93,11 @@ public class CommerceOverview {
    * @return aov
    */
   @javax.annotation.Nullable
-  public BigDecimal getAov() {
+  public Double getAov() {
     return aov;
   }
 
-  public void setAov(@javax.annotation.Nullable BigDecimal aov) {
+  public void setAov(@javax.annotation.Nullable Double aov) {
     this.aov = aov;
   }
 
@@ -122,7 +121,7 @@ public class CommerceOverview {
   }
 
 
-  public CommerceOverview orders(@javax.annotation.Nullable Integer orders) {
+  public CommerceOverview orders(@javax.annotation.Nullable Long orders) {
     this.orders = orders;
     return this;
   }
@@ -132,11 +131,11 @@ public class CommerceOverview {
    * @return orders
    */
   @javax.annotation.Nullable
-  public Integer getOrders() {
+  public Long getOrders() {
     return orders;
   }
 
-  public void setOrders(@javax.annotation.Nullable Integer orders) {
+  public void setOrders(@javax.annotation.Nullable Long orders) {
     this.orders = orders;
   }
 
@@ -160,7 +159,7 @@ public class CommerceOverview {
   }
 
 
-  public CommerceOverview revenue(@javax.annotation.Nullable BigDecimal revenue) {
+  public CommerceOverview revenue(@javax.annotation.Nullable Double revenue) {
     this.revenue = revenue;
     return this;
   }
@@ -170,11 +169,11 @@ public class CommerceOverview {
    * @return revenue
    */
   @javax.annotation.Nullable
-  public BigDecimal getRevenue() {
+  public Double getRevenue() {
     return revenue;
   }
 
-  public void setRevenue(@javax.annotation.Nullable BigDecimal revenue) {
+  public void setRevenue(@javax.annotation.Nullable Double revenue) {
     this.revenue = revenue;
   }
 

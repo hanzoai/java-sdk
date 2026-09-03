@@ -63,7 +63,7 @@ public class GcOut {
   public static final String SERIALIZED_NAME_SIZE_BYTES = "sizeBytes";
   @SerializedName(SERIALIZED_NAME_SIZE_BYTES)
   @javax.annotation.Nullable
-  private Integer sizeBytes;
+  private Long sizeBytes;
 
   public GcOut() {
   }
@@ -106,7 +106,7 @@ public class GcOut {
   }
 
 
-  public GcOut sizeBytes(@javax.annotation.Nullable Integer sizeBytes) {
+  public GcOut sizeBytes(@javax.annotation.Nullable Long sizeBytes) {
     this.sizeBytes = sizeBytes;
     return this;
   }
@@ -116,11 +116,11 @@ public class GcOut {
    * @return sizeBytes
    */
   @javax.annotation.Nullable
-  public Integer getSizeBytes() {
+  public Long getSizeBytes() {
     return sizeBytes;
   }
 
-  public void setSizeBytes(@javax.annotation.Nullable Integer sizeBytes) {
+  public void setSizeBytes(@javax.annotation.Nullable Long sizeBytes) {
     this.sizeBytes = sizeBytes;
   }
 

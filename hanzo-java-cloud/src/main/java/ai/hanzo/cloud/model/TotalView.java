@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -59,7 +58,7 @@ public class TotalView {
   public static final String SERIALIZED_NAME_COST_CENTS = "costCents";
   @SerializedName(SERIALIZED_NAME_COST_CENTS)
   @javax.annotation.Nullable
-  private Integer costCents;
+  private Long costCents;
 
   public static final String SERIALIZED_NAME_PROVIDER = "provider";
   @SerializedName(SERIALIZED_NAME_PROVIDER)
@@ -69,7 +68,7 @@ public class TotalView {
   public static final String SERIALIZED_NAME_REQUESTS = "requests";
   @SerializedName(SERIALIZED_NAME_REQUESTS)
   @javax.annotation.Nullable
-  private Integer requests;
+  private Long requests;
 
   public static final String SERIALIZED_NAME_SCOPE = "scope";
   @SerializedName(SERIALIZED_NAME_SCOPE)
@@ -84,12 +83,12 @@ public class TotalView {
   public static final String SERIALIZED_NAME_TOKENS = "tokens";
   @SerializedName(SERIALIZED_NAME_TOKENS)
   @javax.annotation.Nullable
-  private Integer tokens;
+  private Long tokens;
 
   public static final String SERIALIZED_NAME_USED_PCT = "usedPct";
   @SerializedName(SERIALIZED_NAME_USED_PCT)
   @javax.annotation.Nullable
-  private BigDecimal usedPct;
+  private Double usedPct;
 
   public static final String SERIALIZED_NAME_WINDOW = "window";
   @SerializedName(SERIALIZED_NAME_WINDOW)
@@ -99,7 +98,7 @@ public class TotalView {
   public static final String SERIALIZED_NAME_WINDOWS = "windows";
   @SerializedName(SERIALIZED_NAME_WINDOWS)
   @javax.annotation.Nullable
-  private Integer windows;
+  private Long windows;
 
   public TotalView() {
   }
@@ -123,7 +122,7 @@ public class TotalView {
   }
 
 
-  public TotalView costCents(@javax.annotation.Nullable Integer costCents) {
+  public TotalView costCents(@javax.annotation.Nullable Long costCents) {
     this.costCents = costCents;
     return this;
   }
@@ -133,11 +132,11 @@ public class TotalView {
    * @return costCents
    */
   @javax.annotation.Nullable
-  public Integer getCostCents() {
+  public Long getCostCents() {
     return costCents;
   }
 
-  public void setCostCents(@javax.annotation.Nullable Integer costCents) {
+  public void setCostCents(@javax.annotation.Nullable Long costCents) {
     this.costCents = costCents;
   }
 
@@ -161,7 +160,7 @@ public class TotalView {
   }
 
 
-  public TotalView requests(@javax.annotation.Nullable Integer requests) {
+  public TotalView requests(@javax.annotation.Nullable Long requests) {
     this.requests = requests;
     return this;
   }
@@ -171,11 +170,11 @@ public class TotalView {
    * @return requests
    */
   @javax.annotation.Nullable
-  public Integer getRequests() {
+  public Long getRequests() {
     return requests;
   }
 
-  public void setRequests(@javax.annotation.Nullable Integer requests) {
+  public void setRequests(@javax.annotation.Nullable Long requests) {
     this.requests = requests;
   }
 
@@ -218,7 +217,7 @@ public class TotalView {
   }
 
 
-  public TotalView tokens(@javax.annotation.Nullable Integer tokens) {
+  public TotalView tokens(@javax.annotation.Nullable Long tokens) {
     this.tokens = tokens;
     return this;
   }
@@ -228,16 +227,16 @@ public class TotalView {
    * @return tokens
    */
   @javax.annotation.Nullable
-  public Integer getTokens() {
+  public Long getTokens() {
     return tokens;
   }
 
-  public void setTokens(@javax.annotation.Nullable Integer tokens) {
+  public void setTokens(@javax.annotation.Nullable Long tokens) {
     this.tokens = tokens;
   }
 
 
-  public TotalView usedPct(@javax.annotation.Nullable BigDecimal usedPct) {
+  public TotalView usedPct(@javax.annotation.Nullable Double usedPct) {
     this.usedPct = usedPct;
     return this;
   }
@@ -247,11 +246,11 @@ public class TotalView {
    * @return usedPct
    */
   @javax.annotation.Nullable
-  public BigDecimal getUsedPct() {
+  public Double getUsedPct() {
     return usedPct;
   }
 
-  public void setUsedPct(@javax.annotation.Nullable BigDecimal usedPct) {
+  public void setUsedPct(@javax.annotation.Nullable Double usedPct) {
     this.usedPct = usedPct;
   }
 
@@ -275,7 +274,7 @@ public class TotalView {
   }
 
 
-  public TotalView windows(@javax.annotation.Nullable Integer windows) {
+  public TotalView windows(@javax.annotation.Nullable Long windows) {
     this.windows = windows;
     return this;
   }
@@ -285,11 +284,11 @@ public class TotalView {
    * @return windows
    */
   @javax.annotation.Nullable
-  public Integer getWindows() {
+  public Long getWindows() {
     return windows;
   }
 
-  public void setWindows(@javax.annotation.Nullable Integer windows) {
+  public void setWindows(@javax.annotation.Nullable Long windows) {
     this.windows = windows;
   }
 

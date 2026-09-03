@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -71,12 +70,12 @@ public class SeoAuditOut {
   public static final String SERIALIZED_NAME_SCORE = "score";
   @SerializedName(SERIALIZED_NAME_SCORE)
   @javax.annotation.Nullable
-  private BigDecimal score;
+  private Double score;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
   @javax.annotation.Nullable
-  private Integer status;
+  private Long status;
 
   public static final String SERIALIZED_NAME_TITLE = "title";
   @SerializedName(SERIALIZED_NAME_TITLE)
@@ -91,7 +90,7 @@ public class SeoAuditOut {
   public static final String SERIALIZED_NAME_WORDS = "words";
   @SerializedName(SERIALIZED_NAME_WORDS)
   @javax.annotation.Nullable
-  private Integer words;
+  private Long words;
 
   public SeoAuditOut() {
   }
@@ -161,7 +160,7 @@ public class SeoAuditOut {
   }
 
 
-  public SeoAuditOut score(@javax.annotation.Nullable BigDecimal score) {
+  public SeoAuditOut score(@javax.annotation.Nullable Double score) {
     this.score = score;
     return this;
   }
@@ -171,16 +170,16 @@ public class SeoAuditOut {
    * @return score
    */
   @javax.annotation.Nullable
-  public BigDecimal getScore() {
+  public Double getScore() {
     return score;
   }
 
-  public void setScore(@javax.annotation.Nullable BigDecimal score) {
+  public void setScore(@javax.annotation.Nullable Double score) {
     this.score = score;
   }
 
 
-  public SeoAuditOut status(@javax.annotation.Nullable Integer status) {
+  public SeoAuditOut status(@javax.annotation.Nullable Long status) {
     this.status = status;
     return this;
   }
@@ -190,11 +189,11 @@ public class SeoAuditOut {
    * @return status
    */
   @javax.annotation.Nullable
-  public Integer getStatus() {
+  public Long getStatus() {
     return status;
   }
 
-  public void setStatus(@javax.annotation.Nullable Integer status) {
+  public void setStatus(@javax.annotation.Nullable Long status) {
     this.status = status;
   }
 
@@ -237,7 +236,7 @@ public class SeoAuditOut {
   }
 
 
-  public SeoAuditOut words(@javax.annotation.Nullable Integer words) {
+  public SeoAuditOut words(@javax.annotation.Nullable Long words) {
     this.words = words;
     return this;
   }
@@ -247,11 +246,11 @@ public class SeoAuditOut {
    * @return words
    */
   @javax.annotation.Nullable
-  public Integer getWords() {
+  public Long getWords() {
     return words;
   }
 
-  public void setWords(@javax.annotation.Nullable Integer words) {
+  public void setWords(@javax.annotation.Nullable Long words) {
     this.words = words;
   }
 

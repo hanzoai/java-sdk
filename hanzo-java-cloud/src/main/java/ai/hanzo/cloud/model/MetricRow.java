@@ -58,7 +58,7 @@ public class MetricRow {
   public static final String SERIALIZED_NAME_CURRENT_VERSION = "currentVersion";
   @SerializedName(SERIALIZED_NAME_CURRENT_VERSION)
   @javax.annotation.Nullable
-  private Integer currentVersion;
+  private Long currentVersion;
 
   public static final String SERIALIZED_NAME_LAST_UPDATED_AT = "lastUpdatedAt";
   @SerializedName(SERIALIZED_NAME_LAST_UPDATED_AT)
@@ -78,7 +78,7 @@ public class MetricRow {
   public static final String SERIALIZED_NAME_VERSIONS = "versions";
   @SerializedName(SERIALIZED_NAME_VERSIONS)
   @javax.annotation.Nullable
-  private Integer versions;
+  private Long versions;
 
   public MetricRow() {
   }
@@ -102,7 +102,7 @@ public class MetricRow {
   }
 
 
-  public MetricRow currentVersion(@javax.annotation.Nullable Integer currentVersion) {
+  public MetricRow currentVersion(@javax.annotation.Nullable Long currentVersion) {
     this.currentVersion = currentVersion;
     return this;
   }
@@ -112,11 +112,11 @@ public class MetricRow {
    * @return currentVersion
    */
   @javax.annotation.Nullable
-  public Integer getCurrentVersion() {
+  public Long getCurrentVersion() {
     return currentVersion;
   }
 
-  public void setCurrentVersion(@javax.annotation.Nullable Integer currentVersion) {
+  public void setCurrentVersion(@javax.annotation.Nullable Long currentVersion) {
     this.currentVersion = currentVersion;
   }
 
@@ -178,7 +178,7 @@ public class MetricRow {
   }
 
 
-  public MetricRow versions(@javax.annotation.Nullable Integer versions) {
+  public MetricRow versions(@javax.annotation.Nullable Long versions) {
     this.versions = versions;
     return this;
   }
@@ -188,11 +188,11 @@ public class MetricRow {
    * @return versions
    */
   @javax.annotation.Nullable
-  public Integer getVersions() {
+  public Long getVersions() {
     return versions;
   }
 
-  public void setVersions(@javax.annotation.Nullable Integer versions) {
+  public void setVersions(@javax.annotation.Nullable Long versions) {
     this.versions = versions;
   }
 

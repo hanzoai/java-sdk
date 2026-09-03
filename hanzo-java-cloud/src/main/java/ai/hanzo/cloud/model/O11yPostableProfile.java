@@ -65,17 +65,17 @@ public class O11yPostableProfile {
   public static final String SERIALIZED_NAME_LOGS_SCALE_PER_DAY_IN_GB = "logs_scale_per_day_in_gb";
   @SerializedName(SERIALIZED_NAME_LOGS_SCALE_PER_DAY_IN_GB)
   @javax.annotation.Nullable
-  private Integer logsScalePerDayInGb;
+  private Long logsScalePerDayInGb;
 
   public static final String SERIALIZED_NAME_NUMBER_OF_HOSTS = "number_of_hosts";
   @SerializedName(SERIALIZED_NAME_NUMBER_OF_HOSTS)
   @javax.annotation.Nullable
-  private Integer numberOfHosts;
+  private Long numberOfHosts;
 
   public static final String SERIALIZED_NAME_NUMBER_OF_SERVICES = "number_of_services";
   @SerializedName(SERIALIZED_NAME_NUMBER_OF_SERVICES)
   @javax.annotation.Nullable
-  private Integer numberOfServices;
+  private Long numberOfServices;
 
   public static final String SERIALIZED_NAME_REASONS_FOR_INTEREST_IN_O11Y = "reasons_for_interest_in_o11y";
   @SerializedName(SERIALIZED_NAME_REASONS_FOR_INTEREST_IN_O11Y)
@@ -138,7 +138,7 @@ public class O11yPostableProfile {
   }
 
 
-  public O11yPostableProfile logsScalePerDayInGb(@javax.annotation.Nullable Integer logsScalePerDayInGb) {
+  public O11yPostableProfile logsScalePerDayInGb(@javax.annotation.Nullable Long logsScalePerDayInGb) {
     this.logsScalePerDayInGb = logsScalePerDayInGb;
     return this;
   }
@@ -148,16 +148,16 @@ public class O11yPostableProfile {
    * @return logsScalePerDayInGb
    */
   @javax.annotation.Nullable
-  public Integer getLogsScalePerDayInGb() {
+  public Long getLogsScalePerDayInGb() {
     return logsScalePerDayInGb;
   }
 
-  public void setLogsScalePerDayInGb(@javax.annotation.Nullable Integer logsScalePerDayInGb) {
+  public void setLogsScalePerDayInGb(@javax.annotation.Nullable Long logsScalePerDayInGb) {
     this.logsScalePerDayInGb = logsScalePerDayInGb;
   }
 
 
-  public O11yPostableProfile numberOfHosts(@javax.annotation.Nullable Integer numberOfHosts) {
+  public O11yPostableProfile numberOfHosts(@javax.annotation.Nullable Long numberOfHosts) {
     this.numberOfHosts = numberOfHosts;
     return this;
   }
@@ -167,16 +167,16 @@ public class O11yPostableProfile {
    * @return numberOfHosts
    */
   @javax.annotation.Nullable
-  public Integer getNumberOfHosts() {
+  public Long getNumberOfHosts() {
     return numberOfHosts;
   }
 
-  public void setNumberOfHosts(@javax.annotation.Nullable Integer numberOfHosts) {
+  public void setNumberOfHosts(@javax.annotation.Nullable Long numberOfHosts) {
     this.numberOfHosts = numberOfHosts;
   }
 
 
-  public O11yPostableProfile numberOfServices(@javax.annotation.Nullable Integer numberOfServices) {
+  public O11yPostableProfile numberOfServices(@javax.annotation.Nullable Long numberOfServices) {
     this.numberOfServices = numberOfServices;
     return this;
   }
@@ -186,11 +186,11 @@ public class O11yPostableProfile {
    * @return numberOfServices
    */
   @javax.annotation.Nullable
-  public Integer getNumberOfServices() {
+  public Long getNumberOfServices() {
     return numberOfServices;
   }
 
-  public void setNumberOfServices(@javax.annotation.Nullable Integer numberOfServices) {
+  public void setNumberOfServices(@javax.annotation.Nullable Long numberOfServices) {
     this.numberOfServices = numberOfServices;
   }
 

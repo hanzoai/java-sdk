@@ -66,7 +66,7 @@ public class AffiliateLinks {
   public static final String SERIALIZED_NAME_MAX_LINKS = "maxLinks";
   @SerializedName(SERIALIZED_NAME_MAX_LINKS)
   @javax.annotation.Nullable
-  private Integer maxLinks;
+  private Long maxLinks;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
@@ -122,7 +122,7 @@ public class AffiliateLinks {
   }
 
 
-  public AffiliateLinks maxLinks(@javax.annotation.Nullable Integer maxLinks) {
+  public AffiliateLinks maxLinks(@javax.annotation.Nullable Long maxLinks) {
     this.maxLinks = maxLinks;
     return this;
   }
@@ -132,11 +132,11 @@ public class AffiliateLinks {
    * @return maxLinks
    */
   @javax.annotation.Nullable
-  public Integer getMaxLinks() {
+  public Long getMaxLinks() {
     return maxLinks;
   }
 
-  public void setMaxLinks(@javax.annotation.Nullable Integer maxLinks) {
+  public void setMaxLinks(@javax.annotation.Nullable Long maxLinks) {
     this.maxLinks = maxLinks;
   }
 

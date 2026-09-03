@@ -53,12 +53,12 @@ public class IamBulk {
   public static final String SERIALIZED_NAME_MAX_OPERATIONS = "maxOperations";
   @SerializedName(SERIALIZED_NAME_MAX_OPERATIONS)
   @javax.annotation.Nullable
-  private Integer maxOperations;
+  private Long maxOperations;
 
   public static final String SERIALIZED_NAME_MAX_PAYLOAD_SIZE = "maxPayloadSize";
   @SerializedName(SERIALIZED_NAME_MAX_PAYLOAD_SIZE)
   @javax.annotation.Nullable
-  private Integer maxPayloadSize;
+  private Long maxPayloadSize;
 
   public static final String SERIALIZED_NAME_SUPPORTED = "supported";
   @SerializedName(SERIALIZED_NAME_SUPPORTED)
@@ -68,7 +68,7 @@ public class IamBulk {
   public IamBulk() {
   }
 
-  public IamBulk maxOperations(@javax.annotation.Nullable Integer maxOperations) {
+  public IamBulk maxOperations(@javax.annotation.Nullable Long maxOperations) {
     this.maxOperations = maxOperations;
     return this;
   }
@@ -78,16 +78,16 @@ public class IamBulk {
    * @return maxOperations
    */
   @javax.annotation.Nullable
-  public Integer getMaxOperations() {
+  public Long getMaxOperations() {
     return maxOperations;
   }
 
-  public void setMaxOperations(@javax.annotation.Nullable Integer maxOperations) {
+  public void setMaxOperations(@javax.annotation.Nullable Long maxOperations) {
     this.maxOperations = maxOperations;
   }
 
 
-  public IamBulk maxPayloadSize(@javax.annotation.Nullable Integer maxPayloadSize) {
+  public IamBulk maxPayloadSize(@javax.annotation.Nullable Long maxPayloadSize) {
     this.maxPayloadSize = maxPayloadSize;
     return this;
   }
@@ -97,11 +97,11 @@ public class IamBulk {
    * @return maxPayloadSize
    */
   @javax.annotation.Nullable
-  public Integer getMaxPayloadSize() {
+  public Long getMaxPayloadSize() {
     return maxPayloadSize;
   }
 
-  public void setMaxPayloadSize(@javax.annotation.Nullable Integer maxPayloadSize) {
+  public void setMaxPayloadSize(@javax.annotation.Nullable Long maxPayloadSize) {
     this.maxPayloadSize = maxPayloadSize;
   }
 

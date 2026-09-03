@@ -60,7 +60,7 @@ public class IssueView {
   public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
   @javax.annotation.Nullable
-  private Integer createdAt;
+  private Long createdAt;
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
@@ -70,7 +70,7 @@ public class IssueView {
   public static final String SERIALIZED_NAME_DUE_AT = "dueAt";
   @SerializedName(SERIALIZED_NAME_DUE_AT)
   @javax.annotation.Nullable
-  private Integer dueAt;
+  private Long dueAt;
 
   public static final String SERIALIZED_NAME_EXT_REF = "extRef";
   @SerializedName(SERIALIZED_NAME_EXT_REF)
@@ -100,7 +100,7 @@ public class IssueView {
   public static final String SERIALIZED_NAME_NUMBER = "number";
   @SerializedName(SERIALIZED_NAME_NUMBER)
   @javax.annotation.Nullable
-  private Integer number;
+  private Long number;
 
   public static final String SERIALIZED_NAME_PRIORITY = "priority";
   @SerializedName(SERIALIZED_NAME_PRIORITY)
@@ -125,7 +125,7 @@ public class IssueView {
   public static final String SERIALIZED_NAME_START_AT = "startAt";
   @SerializedName(SERIALIZED_NAME_START_AT)
   @javax.annotation.Nullable
-  private Integer startAt;
+  private Long startAt;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
@@ -140,7 +140,7 @@ public class IssueView {
   public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)
   @javax.annotation.Nullable
-  private Integer updatedAt;
+  private Long updatedAt;
 
   public IssueView() {
   }
@@ -164,7 +164,7 @@ public class IssueView {
   }
 
 
-  public IssueView createdAt(@javax.annotation.Nullable Integer createdAt) {
+  public IssueView createdAt(@javax.annotation.Nullable Long createdAt) {
     this.createdAt = createdAt;
     return this;
   }
@@ -174,11 +174,11 @@ public class IssueView {
    * @return createdAt
    */
   @javax.annotation.Nullable
-  public Integer getCreatedAt() {
+  public Long getCreatedAt() {
     return createdAt;
   }
 
-  public void setCreatedAt(@javax.annotation.Nullable Integer createdAt) {
+  public void setCreatedAt(@javax.annotation.Nullable Long createdAt) {
     this.createdAt = createdAt;
   }
 
@@ -202,7 +202,7 @@ public class IssueView {
   }
 
 
-  public IssueView dueAt(@javax.annotation.Nullable Integer dueAt) {
+  public IssueView dueAt(@javax.annotation.Nullable Long dueAt) {
     this.dueAt = dueAt;
     return this;
   }
@@ -212,11 +212,11 @@ public class IssueView {
    * @return dueAt
    */
   @javax.annotation.Nullable
-  public Integer getDueAt() {
+  public Long getDueAt() {
     return dueAt;
   }
 
-  public void setDueAt(@javax.annotation.Nullable Integer dueAt) {
+  public void setDueAt(@javax.annotation.Nullable Long dueAt) {
     this.dueAt = dueAt;
   }
 
@@ -324,7 +324,7 @@ public class IssueView {
   }
 
 
-  public IssueView number(@javax.annotation.Nullable Integer number) {
+  public IssueView number(@javax.annotation.Nullable Long number) {
     this.number = number;
     return this;
   }
@@ -334,11 +334,11 @@ public class IssueView {
    * @return number
    */
   @javax.annotation.Nullable
-  public Integer getNumber() {
+  public Long getNumber() {
     return number;
   }
 
-  public void setNumber(@javax.annotation.Nullable Integer number) {
+  public void setNumber(@javax.annotation.Nullable Long number) {
     this.number = number;
   }
 
@@ -419,7 +419,7 @@ public class IssueView {
   }
 
 
-  public IssueView startAt(@javax.annotation.Nullable Integer startAt) {
+  public IssueView startAt(@javax.annotation.Nullable Long startAt) {
     this.startAt = startAt;
     return this;
   }
@@ -429,11 +429,11 @@ public class IssueView {
    * @return startAt
    */
   @javax.annotation.Nullable
-  public Integer getStartAt() {
+  public Long getStartAt() {
     return startAt;
   }
 
-  public void setStartAt(@javax.annotation.Nullable Integer startAt) {
+  public void setStartAt(@javax.annotation.Nullable Long startAt) {
     this.startAt = startAt;
   }
 
@@ -476,7 +476,7 @@ public class IssueView {
   }
 
 
-  public IssueView updatedAt(@javax.annotation.Nullable Integer updatedAt) {
+  public IssueView updatedAt(@javax.annotation.Nullable Long updatedAt) {
     this.updatedAt = updatedAt;
     return this;
   }
@@ -486,11 +486,11 @@ public class IssueView {
    * @return updatedAt
    */
   @javax.annotation.Nullable
-  public Integer getUpdatedAt() {
+  public Long getUpdatedAt() {
     return updatedAt;
   }
 
-  public void setUpdatedAt(@javax.annotation.Nullable Integer updatedAt) {
+  public void setUpdatedAt(@javax.annotation.Nullable Long updatedAt) {
     this.updatedAt = updatedAt;
   }
 

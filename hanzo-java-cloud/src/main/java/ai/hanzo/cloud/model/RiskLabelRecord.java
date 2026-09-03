@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -64,7 +63,7 @@ public class RiskLabelRecord {
   public static final String SERIALIZED_NAME_CONFIDENCE = "confidence";
   @SerializedName(SERIALIZED_NAME_CONFIDENCE)
   @javax.annotation.Nullable
-  private BigDecimal confidence;
+  private Double confidence;
 
   public static final String SERIALIZED_NAME_DISPOSITION = "disposition";
   @SerializedName(SERIALIZED_NAME_DISPOSITION)
@@ -157,7 +156,7 @@ public class RiskLabelRecord {
   }
 
 
-  public RiskLabelRecord confidence(@javax.annotation.Nullable BigDecimal confidence) {
+  public RiskLabelRecord confidence(@javax.annotation.Nullable Double confidence) {
     this.confidence = confidence;
     return this;
   }
@@ -167,11 +166,11 @@ public class RiskLabelRecord {
    * @return confidence
    */
   @javax.annotation.Nullable
-  public BigDecimal getConfidence() {
+  public Double getConfidence() {
     return confidence;
   }
 
-  public void setConfidence(@javax.annotation.Nullable BigDecimal confidence) {
+  public void setConfidence(@javax.annotation.Nullable Double confidence) {
     this.confidence = confidence;
   }
 

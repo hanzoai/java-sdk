@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -54,42 +53,42 @@ public class Metrics {
   public static final String SERIALIZED_NAME_AT = "at";
   @SerializedName(SERIALIZED_NAME_AT)
   @javax.annotation.Nullable
-  private Integer at;
+  private Long at;
 
   public static final String SERIALIZED_NAME_GPU_UTIL = "gpuUtil";
   @SerializedName(SERIALIZED_NAME_GPU_UTIL)
   @javax.annotation.Nullable
-  private BigDecimal gpuUtil;
+  private Double gpuUtil;
 
   public static final String SERIALIZED_NAME_LOAD1 = "load1";
   @SerializedName(SERIALIZED_NAME_LOAD1)
   @javax.annotation.Nullable
-  private BigDecimal load1;
+  private Double load1;
 
   public static final String SERIALIZED_NAME_LOAD5 = "load5";
   @SerializedName(SERIALIZED_NAME_LOAD5)
   @javax.annotation.Nullable
-  private BigDecimal load5;
+  private Double load5;
 
   public static final String SERIALIZED_NAME_LOAD15 = "load15";
   @SerializedName(SERIALIZED_NAME_LOAD15)
   @javax.annotation.Nullable
-  private BigDecimal load15;
+  private Double load15;
 
   public static final String SERIALIZED_NAME_MEM_FREE = "memFree";
   @SerializedName(SERIALIZED_NAME_MEM_FREE)
   @javax.annotation.Nullable
-  private Integer memFree;
+  private Long memFree;
 
   public static final String SERIALIZED_NAME_MEM_USED = "memUsed";
   @SerializedName(SERIALIZED_NAME_MEM_USED)
   @javax.annotation.Nullable
-  private Integer memUsed;
+  private Long memUsed;
 
   public Metrics() {
   }
 
-  public Metrics at(@javax.annotation.Nullable Integer at) {
+  public Metrics at(@javax.annotation.Nullable Long at) {
     this.at = at;
     return this;
   }
@@ -99,16 +98,16 @@ public class Metrics {
    * @return at
    */
   @javax.annotation.Nullable
-  public Integer getAt() {
+  public Long getAt() {
     return at;
   }
 
-  public void setAt(@javax.annotation.Nullable Integer at) {
+  public void setAt(@javax.annotation.Nullable Long at) {
     this.at = at;
   }
 
 
-  public Metrics gpuUtil(@javax.annotation.Nullable BigDecimal gpuUtil) {
+  public Metrics gpuUtil(@javax.annotation.Nullable Double gpuUtil) {
     this.gpuUtil = gpuUtil;
     return this;
   }
@@ -118,16 +117,16 @@ public class Metrics {
    * @return gpuUtil
    */
   @javax.annotation.Nullable
-  public BigDecimal getGpuUtil() {
+  public Double getGpuUtil() {
     return gpuUtil;
   }
 
-  public void setGpuUtil(@javax.annotation.Nullable BigDecimal gpuUtil) {
+  public void setGpuUtil(@javax.annotation.Nullable Double gpuUtil) {
     this.gpuUtil = gpuUtil;
   }
 
 
-  public Metrics load1(@javax.annotation.Nullable BigDecimal load1) {
+  public Metrics load1(@javax.annotation.Nullable Double load1) {
     this.load1 = load1;
     return this;
   }
@@ -137,16 +136,16 @@ public class Metrics {
    * @return load1
    */
   @javax.annotation.Nullable
-  public BigDecimal getLoad1() {
+  public Double getLoad1() {
     return load1;
   }
 
-  public void setLoad1(@javax.annotation.Nullable BigDecimal load1) {
+  public void setLoad1(@javax.annotation.Nullable Double load1) {
     this.load1 = load1;
   }
 
 
-  public Metrics load5(@javax.annotation.Nullable BigDecimal load5) {
+  public Metrics load5(@javax.annotation.Nullable Double load5) {
     this.load5 = load5;
     return this;
   }
@@ -156,16 +155,16 @@ public class Metrics {
    * @return load5
    */
   @javax.annotation.Nullable
-  public BigDecimal getLoad5() {
+  public Double getLoad5() {
     return load5;
   }
 
-  public void setLoad5(@javax.annotation.Nullable BigDecimal load5) {
+  public void setLoad5(@javax.annotation.Nullable Double load5) {
     this.load5 = load5;
   }
 
 
-  public Metrics load15(@javax.annotation.Nullable BigDecimal load15) {
+  public Metrics load15(@javax.annotation.Nullable Double load15) {
     this.load15 = load15;
     return this;
   }
@@ -175,16 +174,16 @@ public class Metrics {
    * @return load15
    */
   @javax.annotation.Nullable
-  public BigDecimal getLoad15() {
+  public Double getLoad15() {
     return load15;
   }
 
-  public void setLoad15(@javax.annotation.Nullable BigDecimal load15) {
+  public void setLoad15(@javax.annotation.Nullable Double load15) {
     this.load15 = load15;
   }
 
 
-  public Metrics memFree(@javax.annotation.Nullable Integer memFree) {
+  public Metrics memFree(@javax.annotation.Nullable Long memFree) {
     this.memFree = memFree;
     return this;
   }
@@ -194,16 +193,16 @@ public class Metrics {
    * @return memFree
    */
   @javax.annotation.Nullable
-  public Integer getMemFree() {
+  public Long getMemFree() {
     return memFree;
   }
 
-  public void setMemFree(@javax.annotation.Nullable Integer memFree) {
+  public void setMemFree(@javax.annotation.Nullable Long memFree) {
     this.memFree = memFree;
   }
 
 
-  public Metrics memUsed(@javax.annotation.Nullable Integer memUsed) {
+  public Metrics memUsed(@javax.annotation.Nullable Long memUsed) {
     this.memUsed = memUsed;
     return this;
   }
@@ -213,11 +212,11 @@ public class Metrics {
    * @return memUsed
    */
   @javax.annotation.Nullable
-  public Integer getMemUsed() {
+  public Long getMemUsed() {
     return memUsed;
   }
 
-  public void setMemUsed(@javax.annotation.Nullable Integer memUsed) {
+  public void setMemUsed(@javax.annotation.Nullable Long memUsed) {
     this.memUsed = memUsed;
   }
 

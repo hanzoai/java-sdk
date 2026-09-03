@@ -63,7 +63,7 @@ public class UsageAnalyticsGrant {
   public static final String SERIALIZED_NAME_RETENTION_DAYS = "retentionDays";
   @SerializedName(SERIALIZED_NAME_RETENTION_DAYS)
   @javax.annotation.Nullable
-  private Integer retentionDays;
+  private Long retentionDays;
 
   public UsageAnalyticsGrant() {
   }
@@ -106,7 +106,7 @@ public class UsageAnalyticsGrant {
   }
 
 
-  public UsageAnalyticsGrant retentionDays(@javax.annotation.Nullable Integer retentionDays) {
+  public UsageAnalyticsGrant retentionDays(@javax.annotation.Nullable Long retentionDays) {
     this.retentionDays = retentionDays;
     return this;
   }
@@ -116,11 +116,11 @@ public class UsageAnalyticsGrant {
    * @return retentionDays
    */
   @javax.annotation.Nullable
-  public Integer getRetentionDays() {
+  public Long getRetentionDays() {
     return retentionDays;
   }
 
-  public void setRetentionDays(@javax.annotation.Nullable Integer retentionDays) {
+  public void setRetentionDays(@javax.annotation.Nullable Long retentionDays) {
     this.retentionDays = retentionDays;
   }
 

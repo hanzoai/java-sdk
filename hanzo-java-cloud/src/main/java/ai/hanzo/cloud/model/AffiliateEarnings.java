@@ -57,7 +57,7 @@ public class AffiliateEarnings {
   public static final String SERIALIZED_NAME_ACCRUED_CENTS = "accruedCents";
   @SerializedName(SERIALIZED_NAME_ACCRUED_CENTS)
   @javax.annotation.Nullable
-  private Integer accruedCents;
+  private Long accruedCents;
 
   public static final String SERIALIZED_NAME_BY_PERIOD = "byPeriod";
   @SerializedName(SERIALIZED_NAME_BY_PERIOD)
@@ -77,22 +77,22 @@ public class AffiliateEarnings {
   public static final String SERIALIZED_NAME_MARGIN_BPS = "marginBps";
   @SerializedName(SERIALIZED_NAME_MARGIN_BPS)
   @javax.annotation.Nullable
-  private Integer marginBps;
+  private Long marginBps;
 
   public static final String SERIALIZED_NAME_PAID_CENTS = "paidCents";
   @SerializedName(SERIALIZED_NAME_PAID_CENTS)
   @javax.annotation.Nullable
-  private Integer paidCents;
+  private Long paidCents;
 
   public static final String SERIALIZED_NAME_PENDING_CENTS = "pendingCents";
   @SerializedName(SERIALIZED_NAME_PENDING_CENTS)
   @javax.annotation.Nullable
-  private Integer pendingCents;
+  private Long pendingCents;
 
   public AffiliateEarnings() {
   }
 
-  public AffiliateEarnings accruedCents(@javax.annotation.Nullable Integer accruedCents) {
+  public AffiliateEarnings accruedCents(@javax.annotation.Nullable Long accruedCents) {
     this.accruedCents = accruedCents;
     return this;
   }
@@ -102,11 +102,11 @@ public class AffiliateEarnings {
    * @return accruedCents
    */
   @javax.annotation.Nullable
-  public Integer getAccruedCents() {
+  public Long getAccruedCents() {
     return accruedCents;
   }
 
-  public void setAccruedCents(@javax.annotation.Nullable Integer accruedCents) {
+  public void setAccruedCents(@javax.annotation.Nullable Long accruedCents) {
     this.accruedCents = accruedCents;
   }
 
@@ -184,7 +184,7 @@ public class AffiliateEarnings {
   }
 
 
-  public AffiliateEarnings marginBps(@javax.annotation.Nullable Integer marginBps) {
+  public AffiliateEarnings marginBps(@javax.annotation.Nullable Long marginBps) {
     this.marginBps = marginBps;
     return this;
   }
@@ -194,16 +194,16 @@ public class AffiliateEarnings {
    * @return marginBps
    */
   @javax.annotation.Nullable
-  public Integer getMarginBps() {
+  public Long getMarginBps() {
     return marginBps;
   }
 
-  public void setMarginBps(@javax.annotation.Nullable Integer marginBps) {
+  public void setMarginBps(@javax.annotation.Nullable Long marginBps) {
     this.marginBps = marginBps;
   }
 
 
-  public AffiliateEarnings paidCents(@javax.annotation.Nullable Integer paidCents) {
+  public AffiliateEarnings paidCents(@javax.annotation.Nullable Long paidCents) {
     this.paidCents = paidCents;
     return this;
   }
@@ -213,16 +213,16 @@ public class AffiliateEarnings {
    * @return paidCents
    */
   @javax.annotation.Nullable
-  public Integer getPaidCents() {
+  public Long getPaidCents() {
     return paidCents;
   }
 
-  public void setPaidCents(@javax.annotation.Nullable Integer paidCents) {
+  public void setPaidCents(@javax.annotation.Nullable Long paidCents) {
     this.paidCents = paidCents;
   }
 
 
-  public AffiliateEarnings pendingCents(@javax.annotation.Nullable Integer pendingCents) {
+  public AffiliateEarnings pendingCents(@javax.annotation.Nullable Long pendingCents) {
     this.pendingCents = pendingCents;
     return this;
   }
@@ -232,11 +232,11 @@ public class AffiliateEarnings {
    * @return pendingCents
    */
   @javax.annotation.Nullable
-  public Integer getPendingCents() {
+  public Long getPendingCents() {
     return pendingCents;
   }
 
-  public void setPendingCents(@javax.annotation.Nullable Integer pendingCents) {
+  public void setPendingCents(@javax.annotation.Nullable Long pendingCents) {
     this.pendingCents = pendingCents;
   }
 

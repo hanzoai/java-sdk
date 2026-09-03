@@ -63,12 +63,12 @@ public class RoutedUsage {
   public static final String SERIALIZED_NAME_COMPLETION_TOKENS = "completionTokens";
   @SerializedName(SERIALIZED_NAME_COMPLETION_TOKENS)
   @javax.annotation.Nullable
-  private Integer completionTokens;
+  private Long completionTokens;
 
   public static final String SERIALIZED_NAME_COST_CENTS = "costCents";
   @SerializedName(SERIALIZED_NAME_COST_CENTS)
   @javax.annotation.Nullable
-  private Integer costCents;
+  private Long costCents;
 
   public static final String SERIALIZED_NAME_KIND = "kind";
   @SerializedName(SERIALIZED_NAME_KIND)
@@ -78,7 +78,7 @@ public class RoutedUsage {
   public static final String SERIALIZED_NAME_PROMPT_TOKENS = "promptTokens";
   @SerializedName(SERIALIZED_NAME_PROMPT_TOKENS)
   @javax.annotation.Nullable
-  private Integer promptTokens;
+  private Long promptTokens;
 
   public static final String SERIALIZED_NAME_PROVIDER = "provider";
   @SerializedName(SERIALIZED_NAME_PROVIDER)
@@ -88,12 +88,12 @@ public class RoutedUsage {
   public static final String SERIALIZED_NAME_REQUESTS = "requests";
   @SerializedName(SERIALIZED_NAME_REQUESTS)
   @javax.annotation.Nullable
-  private Integer requests;
+  private Long requests;
 
   public static final String SERIALIZED_NAME_TOTAL_TOKENS = "totalTokens";
   @SerializedName(SERIALIZED_NAME_TOTAL_TOKENS)
   @javax.annotation.Nullable
-  private Integer totalTokens;
+  private Long totalTokens;
 
   public RoutedUsage() {
   }
@@ -136,7 +136,7 @@ public class RoutedUsage {
   }
 
 
-  public RoutedUsage completionTokens(@javax.annotation.Nullable Integer completionTokens) {
+  public RoutedUsage completionTokens(@javax.annotation.Nullable Long completionTokens) {
     this.completionTokens = completionTokens;
     return this;
   }
@@ -146,16 +146,16 @@ public class RoutedUsage {
    * @return completionTokens
    */
   @javax.annotation.Nullable
-  public Integer getCompletionTokens() {
+  public Long getCompletionTokens() {
     return completionTokens;
   }
 
-  public void setCompletionTokens(@javax.annotation.Nullable Integer completionTokens) {
+  public void setCompletionTokens(@javax.annotation.Nullable Long completionTokens) {
     this.completionTokens = completionTokens;
   }
 
 
-  public RoutedUsage costCents(@javax.annotation.Nullable Integer costCents) {
+  public RoutedUsage costCents(@javax.annotation.Nullable Long costCents) {
     this.costCents = costCents;
     return this;
   }
@@ -165,11 +165,11 @@ public class RoutedUsage {
    * @return costCents
    */
   @javax.annotation.Nullable
-  public Integer getCostCents() {
+  public Long getCostCents() {
     return costCents;
   }
 
-  public void setCostCents(@javax.annotation.Nullable Integer costCents) {
+  public void setCostCents(@javax.annotation.Nullable Long costCents) {
     this.costCents = costCents;
   }
 
@@ -193,7 +193,7 @@ public class RoutedUsage {
   }
 
 
-  public RoutedUsage promptTokens(@javax.annotation.Nullable Integer promptTokens) {
+  public RoutedUsage promptTokens(@javax.annotation.Nullable Long promptTokens) {
     this.promptTokens = promptTokens;
     return this;
   }
@@ -203,11 +203,11 @@ public class RoutedUsage {
    * @return promptTokens
    */
   @javax.annotation.Nullable
-  public Integer getPromptTokens() {
+  public Long getPromptTokens() {
     return promptTokens;
   }
 
-  public void setPromptTokens(@javax.annotation.Nullable Integer promptTokens) {
+  public void setPromptTokens(@javax.annotation.Nullable Long promptTokens) {
     this.promptTokens = promptTokens;
   }
 
@@ -231,7 +231,7 @@ public class RoutedUsage {
   }
 
 
-  public RoutedUsage requests(@javax.annotation.Nullable Integer requests) {
+  public RoutedUsage requests(@javax.annotation.Nullable Long requests) {
     this.requests = requests;
     return this;
   }
@@ -241,16 +241,16 @@ public class RoutedUsage {
    * @return requests
    */
   @javax.annotation.Nullable
-  public Integer getRequests() {
+  public Long getRequests() {
     return requests;
   }
 
-  public void setRequests(@javax.annotation.Nullable Integer requests) {
+  public void setRequests(@javax.annotation.Nullable Long requests) {
     this.requests = requests;
   }
 
 
-  public RoutedUsage totalTokens(@javax.annotation.Nullable Integer totalTokens) {
+  public RoutedUsage totalTokens(@javax.annotation.Nullable Long totalTokens) {
     this.totalTokens = totalTokens;
     return this;
   }
@@ -260,11 +260,11 @@ public class RoutedUsage {
    * @return totalTokens
    */
   @javax.annotation.Nullable
-  public Integer getTotalTokens() {
+  public Long getTotalTokens() {
     return totalTokens;
   }
 
-  public void setTotalTokens(@javax.annotation.Nullable Integer totalTokens) {
+  public void setTotalTokens(@javax.annotation.Nullable Long totalTokens) {
     this.totalTokens = totalTokens;
   }
 

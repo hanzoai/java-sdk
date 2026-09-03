@@ -312,7 +312,7 @@ public class RiskApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call riskFeaturesCall(@javax.annotation.Nullable Integer days, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call riskFeaturesCall(@javax.annotation.Nullable Long days, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -361,7 +361,7 @@ public class RiskApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call riskFeaturesValidateBeforeCall(@javax.annotation.Nullable Integer days, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call riskFeaturesValidateBeforeCall(@javax.annotation.Nullable Long days, final ApiCallback _callback) throws ApiException {
         return riskFeaturesCall(days, _callback);
 
     }
@@ -379,7 +379,7 @@ public class RiskApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public RiskCatalog riskFeatures(@javax.annotation.Nullable Integer days) throws ApiException {
+    public RiskCatalog riskFeatures(@javax.annotation.Nullable Long days) throws ApiException {
         ApiResponse<RiskCatalog> localVarResp = riskFeaturesWithHttpInfo(days);
         return localVarResp.getData();
     }
@@ -397,7 +397,7 @@ public class RiskApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RiskCatalog> riskFeaturesWithHttpInfo(@javax.annotation.Nullable Integer days) throws ApiException {
+    public ApiResponse<RiskCatalog> riskFeaturesWithHttpInfo(@javax.annotation.Nullable Long days) throws ApiException {
         okhttp3.Call localVarCall = riskFeaturesValidateBeforeCall(days, null);
         Type localVarReturnType = new TypeToken<RiskCatalog>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -417,7 +417,7 @@ public class RiskApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call riskFeaturesAsync(@javax.annotation.Nullable Integer days, final ApiCallback<RiskCatalog> _callback) throws ApiException {
+    public okhttp3.Call riskFeaturesAsync(@javax.annotation.Nullable Long days, final ApiCallback<RiskCatalog> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = riskFeaturesValidateBeforeCall(days, _callback);
         Type localVarReturnType = new TypeToken<RiskCatalog>(){}.getType();

@@ -231,7 +231,7 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCompanyRegisterCall(@javax.annotation.Nullable String stage, @javax.annotation.Nullable String structure, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer offset, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCompanyRegisterCall(@javax.annotation.Nullable String stage, @javax.annotation.Nullable String structure, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable Long offset, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -292,7 +292,7 @@ public class CompanyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getCompanyRegisterValidateBeforeCall(@javax.annotation.Nullable String stage, @javax.annotation.Nullable String structure, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer offset, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getCompanyRegisterValidateBeforeCall(@javax.annotation.Nullable String stage, @javax.annotation.Nullable String structure, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable Long offset, final ApiCallback _callback) throws ApiException {
         return getCompanyRegisterCall(stage, structure, limit, offset, _callback);
 
     }
@@ -313,7 +313,7 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public RegisterPage getCompanyRegister(@javax.annotation.Nullable String stage, @javax.annotation.Nullable String structure, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer offset) throws ApiException {
+    public RegisterPage getCompanyRegister(@javax.annotation.Nullable String stage, @javax.annotation.Nullable String structure, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable Long offset) throws ApiException {
         ApiResponse<RegisterPage> localVarResp = getCompanyRegisterWithHttpInfo(stage, structure, limit, offset);
         return localVarResp.getData();
     }
@@ -334,7 +334,7 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RegisterPage> getCompanyRegisterWithHttpInfo(@javax.annotation.Nullable String stage, @javax.annotation.Nullable String structure, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer offset) throws ApiException {
+    public ApiResponse<RegisterPage> getCompanyRegisterWithHttpInfo(@javax.annotation.Nullable String stage, @javax.annotation.Nullable String structure, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable Long offset) throws ApiException {
         okhttp3.Call localVarCall = getCompanyRegisterValidateBeforeCall(stage, structure, limit, offset, null);
         Type localVarReturnType = new TypeToken<RegisterPage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -357,7 +357,7 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCompanyRegisterAsync(@javax.annotation.Nullable String stage, @javax.annotation.Nullable String structure, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer offset, final ApiCallback<RegisterPage> _callback) throws ApiException {
+    public okhttp3.Call getCompanyRegisterAsync(@javax.annotation.Nullable String stage, @javax.annotation.Nullable String structure, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable Long offset, final ApiCallback<RegisterPage> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCompanyRegisterValidateBeforeCall(stage, structure, limit, offset, _callback);
         Type localVarReturnType = new TypeToken<RegisterPage>(){}.getType();
@@ -494,7 +494,7 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCompanyReviewCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCompanyReviewCall(@javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -543,7 +543,7 @@ public class CompanyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getCompanyReviewValidateBeforeCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getCompanyReviewValidateBeforeCall(@javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         return getCompanyReviewCall(limit, _callback);
 
     }
@@ -561,7 +561,7 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ReviewQueue getCompanyReview(@javax.annotation.Nullable Integer limit) throws ApiException {
+    public ReviewQueue getCompanyReview(@javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<ReviewQueue> localVarResp = getCompanyReviewWithHttpInfo(limit);
         return localVarResp.getData();
     }
@@ -579,7 +579,7 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ReviewQueue> getCompanyReviewWithHttpInfo(@javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<ReviewQueue> getCompanyReviewWithHttpInfo(@javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getCompanyReviewValidateBeforeCall(limit, null);
         Type localVarReturnType = new TypeToken<ReviewQueue>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -599,7 +599,7 @@ public class CompanyApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCompanyReviewAsync(@javax.annotation.Nullable Integer limit, final ApiCallback<ReviewQueue> _callback) throws ApiException {
+    public okhttp3.Call getCompanyReviewAsync(@javax.annotation.Nullable Long limit, final ApiCallback<ReviewQueue> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCompanyReviewValidateBeforeCall(limit, _callback);
         Type localVarReturnType = new TypeToken<ReviewQueue>(){}.getType();

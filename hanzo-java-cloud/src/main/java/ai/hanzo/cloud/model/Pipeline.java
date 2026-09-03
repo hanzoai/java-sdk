@@ -58,7 +58,7 @@ public class Pipeline {
   public static final String SERIALIZED_NAME_BEHIND = "behind";
   @SerializedName(SERIALIZED_NAME_BEHIND)
   @javax.annotation.Nullable
-  private Integer behind;
+  private Long behind;
 
   public static final String SERIALIZED_NAME_BUILT = "built";
   @SerializedName(SERIALIZED_NAME_BUILT)
@@ -108,7 +108,7 @@ public class Pipeline {
   public static final String SERIALIZED_NAME_READY = "ready";
   @SerializedName(SERIALIZED_NAME_READY)
   @javax.annotation.Nullable
-  private Integer ready;
+  private Long ready;
 
   public static final String SERIALIZED_NAME_REPO = "repo";
   @SerializedName(SERIALIZED_NAME_REPO)
@@ -128,12 +128,12 @@ public class Pipeline {
   public static final String SERIALIZED_NAME_WANT = "want";
   @SerializedName(SERIALIZED_NAME_WANT)
   @javax.annotation.Nullable
-  private Integer want;
+  private Long want;
 
   public Pipeline() {
   }
 
-  public Pipeline behind(@javax.annotation.Nullable Integer behind) {
+  public Pipeline behind(@javax.annotation.Nullable Long behind) {
     this.behind = behind;
     return this;
   }
@@ -143,11 +143,11 @@ public class Pipeline {
    * @return behind
    */
   @javax.annotation.Nullable
-  public Integer getBehind() {
+  public Long getBehind() {
     return behind;
   }
 
-  public void setBehind(@javax.annotation.Nullable Integer behind) {
+  public void setBehind(@javax.annotation.Nullable Long behind) {
     this.behind = behind;
   }
 
@@ -331,7 +331,7 @@ public class Pipeline {
   }
 
 
-  public Pipeline ready(@javax.annotation.Nullable Integer ready) {
+  public Pipeline ready(@javax.annotation.Nullable Long ready) {
     this.ready = ready;
     return this;
   }
@@ -341,11 +341,11 @@ public class Pipeline {
    * @return ready
    */
   @javax.annotation.Nullable
-  public Integer getReady() {
+  public Long getReady() {
     return ready;
   }
 
-  public void setReady(@javax.annotation.Nullable Integer ready) {
+  public void setReady(@javax.annotation.Nullable Long ready) {
     this.ready = ready;
   }
 
@@ -407,7 +407,7 @@ public class Pipeline {
   }
 
 
-  public Pipeline want(@javax.annotation.Nullable Integer want) {
+  public Pipeline want(@javax.annotation.Nullable Long want) {
     this.want = want;
     return this;
   }
@@ -417,11 +417,11 @@ public class Pipeline {
    * @return want
    */
   @javax.annotation.Nullable
-  public Integer getWant() {
+  public Long getWant() {
     return want;
   }
 
-  public void setWant(@javax.annotation.Nullable Integer want) {
+  public void setWant(@javax.annotation.Nullable Long want) {
     this.want = want;
   }
 

@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -54,27 +53,27 @@ public class ModelStat {
   public static final String SERIALIZED_NAME_COMPLETION_TOKENS = "completionTokens";
   @SerializedName(SERIALIZED_NAME_COMPLETION_TOKENS)
   @javax.annotation.Nullable
-  private Integer completionTokens;
+  private Long completionTokens;
 
   public static final String SERIALIZED_NAME_COST_CENTS = "costCents";
   @SerializedName(SERIALIZED_NAME_COST_CENTS)
   @javax.annotation.Nullable
-  private Integer costCents;
+  private Long costCents;
 
   public static final String SERIALIZED_NAME_COST_PCT = "costPct";
   @SerializedName(SERIALIZED_NAME_COST_PCT)
   @javax.annotation.Nullable
-  private BigDecimal costPct;
+  private Double costPct;
 
   public static final String SERIALIZED_NAME_ERROR_RATE = "errorRate";
   @SerializedName(SERIALIZED_NAME_ERROR_RATE)
   @javax.annotation.Nullable
-  private BigDecimal errorRate;
+  private Double errorRate;
 
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
   @javax.annotation.Nullable
-  private Integer errors;
+  private Long errors;
 
   public static final String SERIALIZED_NAME_MODEL = "model";
   @SerializedName(SERIALIZED_NAME_MODEL)
@@ -84,27 +83,27 @@ public class ModelStat {
   public static final String SERIALIZED_NAME_MODEL_COUNT = "modelCount";
   @SerializedName(SERIALIZED_NAME_MODEL_COUNT)
   @javax.annotation.Nullable
-  private Integer modelCount;
+  private Long modelCount;
 
   public static final String SERIALIZED_NAME_P50_MS = "p50Ms";
   @SerializedName(SERIALIZED_NAME_P50_MS)
   @javax.annotation.Nullable
-  private BigDecimal p50Ms;
+  private Double p50Ms;
 
   public static final String SERIALIZED_NAME_P95_MS = "p95Ms";
   @SerializedName(SERIALIZED_NAME_P95_MS)
   @javax.annotation.Nullable
-  private BigDecimal p95Ms;
+  private Double p95Ms;
 
   public static final String SERIALIZED_NAME_P99_MS = "p99Ms";
   @SerializedName(SERIALIZED_NAME_P99_MS)
   @javax.annotation.Nullable
-  private BigDecimal p99Ms;
+  private Double p99Ms;
 
   public static final String SERIALIZED_NAME_PROMPT_TOKENS = "promptTokens";
   @SerializedName(SERIALIZED_NAME_PROMPT_TOKENS)
   @javax.annotation.Nullable
-  private Integer promptTokens;
+  private Long promptTokens;
 
   public static final String SERIALIZED_NAME_PROVIDER = "provider";
   @SerializedName(SERIALIZED_NAME_PROVIDER)
@@ -114,17 +113,17 @@ public class ModelStat {
   public static final String SERIALIZED_NAME_REQUESTS = "requests";
   @SerializedName(SERIALIZED_NAME_REQUESTS)
   @javax.annotation.Nullable
-  private Integer requests;
+  private Long requests;
 
   public static final String SERIALIZED_NAME_TOTAL_TOKENS = "totalTokens";
   @SerializedName(SERIALIZED_NAME_TOTAL_TOKENS)
   @javax.annotation.Nullable
-  private Integer totalTokens;
+  private Long totalTokens;
 
   public ModelStat() {
   }
 
-  public ModelStat completionTokens(@javax.annotation.Nullable Integer completionTokens) {
+  public ModelStat completionTokens(@javax.annotation.Nullable Long completionTokens) {
     this.completionTokens = completionTokens;
     return this;
   }
@@ -134,16 +133,16 @@ public class ModelStat {
    * @return completionTokens
    */
   @javax.annotation.Nullable
-  public Integer getCompletionTokens() {
+  public Long getCompletionTokens() {
     return completionTokens;
   }
 
-  public void setCompletionTokens(@javax.annotation.Nullable Integer completionTokens) {
+  public void setCompletionTokens(@javax.annotation.Nullable Long completionTokens) {
     this.completionTokens = completionTokens;
   }
 
 
-  public ModelStat costCents(@javax.annotation.Nullable Integer costCents) {
+  public ModelStat costCents(@javax.annotation.Nullable Long costCents) {
     this.costCents = costCents;
     return this;
   }
@@ -153,16 +152,16 @@ public class ModelStat {
    * @return costCents
    */
   @javax.annotation.Nullable
-  public Integer getCostCents() {
+  public Long getCostCents() {
     return costCents;
   }
 
-  public void setCostCents(@javax.annotation.Nullable Integer costCents) {
+  public void setCostCents(@javax.annotation.Nullable Long costCents) {
     this.costCents = costCents;
   }
 
 
-  public ModelStat costPct(@javax.annotation.Nullable BigDecimal costPct) {
+  public ModelStat costPct(@javax.annotation.Nullable Double costPct) {
     this.costPct = costPct;
     return this;
   }
@@ -172,16 +171,16 @@ public class ModelStat {
    * @return costPct
    */
   @javax.annotation.Nullable
-  public BigDecimal getCostPct() {
+  public Double getCostPct() {
     return costPct;
   }
 
-  public void setCostPct(@javax.annotation.Nullable BigDecimal costPct) {
+  public void setCostPct(@javax.annotation.Nullable Double costPct) {
     this.costPct = costPct;
   }
 
 
-  public ModelStat errorRate(@javax.annotation.Nullable BigDecimal errorRate) {
+  public ModelStat errorRate(@javax.annotation.Nullable Double errorRate) {
     this.errorRate = errorRate;
     return this;
   }
@@ -191,16 +190,16 @@ public class ModelStat {
    * @return errorRate
    */
   @javax.annotation.Nullable
-  public BigDecimal getErrorRate() {
+  public Double getErrorRate() {
     return errorRate;
   }
 
-  public void setErrorRate(@javax.annotation.Nullable BigDecimal errorRate) {
+  public void setErrorRate(@javax.annotation.Nullable Double errorRate) {
     this.errorRate = errorRate;
   }
 
 
-  public ModelStat errors(@javax.annotation.Nullable Integer errors) {
+  public ModelStat errors(@javax.annotation.Nullable Long errors) {
     this.errors = errors;
     return this;
   }
@@ -210,11 +209,11 @@ public class ModelStat {
    * @return errors
    */
   @javax.annotation.Nullable
-  public Integer getErrors() {
+  public Long getErrors() {
     return errors;
   }
 
-  public void setErrors(@javax.annotation.Nullable Integer errors) {
+  public void setErrors(@javax.annotation.Nullable Long errors) {
     this.errors = errors;
   }
 
@@ -238,7 +237,7 @@ public class ModelStat {
   }
 
 
-  public ModelStat modelCount(@javax.annotation.Nullable Integer modelCount) {
+  public ModelStat modelCount(@javax.annotation.Nullable Long modelCount) {
     this.modelCount = modelCount;
     return this;
   }
@@ -248,16 +247,16 @@ public class ModelStat {
    * @return modelCount
    */
   @javax.annotation.Nullable
-  public Integer getModelCount() {
+  public Long getModelCount() {
     return modelCount;
   }
 
-  public void setModelCount(@javax.annotation.Nullable Integer modelCount) {
+  public void setModelCount(@javax.annotation.Nullable Long modelCount) {
     this.modelCount = modelCount;
   }
 
 
-  public ModelStat p50Ms(@javax.annotation.Nullable BigDecimal p50Ms) {
+  public ModelStat p50Ms(@javax.annotation.Nullable Double p50Ms) {
     this.p50Ms = p50Ms;
     return this;
   }
@@ -267,16 +266,16 @@ public class ModelStat {
    * @return p50Ms
    */
   @javax.annotation.Nullable
-  public BigDecimal getP50Ms() {
+  public Double getP50Ms() {
     return p50Ms;
   }
 
-  public void setP50Ms(@javax.annotation.Nullable BigDecimal p50Ms) {
+  public void setP50Ms(@javax.annotation.Nullable Double p50Ms) {
     this.p50Ms = p50Ms;
   }
 
 
-  public ModelStat p95Ms(@javax.annotation.Nullable BigDecimal p95Ms) {
+  public ModelStat p95Ms(@javax.annotation.Nullable Double p95Ms) {
     this.p95Ms = p95Ms;
     return this;
   }
@@ -286,16 +285,16 @@ public class ModelStat {
    * @return p95Ms
    */
   @javax.annotation.Nullable
-  public BigDecimal getP95Ms() {
+  public Double getP95Ms() {
     return p95Ms;
   }
 
-  public void setP95Ms(@javax.annotation.Nullable BigDecimal p95Ms) {
+  public void setP95Ms(@javax.annotation.Nullable Double p95Ms) {
     this.p95Ms = p95Ms;
   }
 
 
-  public ModelStat p99Ms(@javax.annotation.Nullable BigDecimal p99Ms) {
+  public ModelStat p99Ms(@javax.annotation.Nullable Double p99Ms) {
     this.p99Ms = p99Ms;
     return this;
   }
@@ -305,16 +304,16 @@ public class ModelStat {
    * @return p99Ms
    */
   @javax.annotation.Nullable
-  public BigDecimal getP99Ms() {
+  public Double getP99Ms() {
     return p99Ms;
   }
 
-  public void setP99Ms(@javax.annotation.Nullable BigDecimal p99Ms) {
+  public void setP99Ms(@javax.annotation.Nullable Double p99Ms) {
     this.p99Ms = p99Ms;
   }
 
 
-  public ModelStat promptTokens(@javax.annotation.Nullable Integer promptTokens) {
+  public ModelStat promptTokens(@javax.annotation.Nullable Long promptTokens) {
     this.promptTokens = promptTokens;
     return this;
   }
@@ -324,11 +323,11 @@ public class ModelStat {
    * @return promptTokens
    */
   @javax.annotation.Nullable
-  public Integer getPromptTokens() {
+  public Long getPromptTokens() {
     return promptTokens;
   }
 
-  public void setPromptTokens(@javax.annotation.Nullable Integer promptTokens) {
+  public void setPromptTokens(@javax.annotation.Nullable Long promptTokens) {
     this.promptTokens = promptTokens;
   }
 
@@ -352,7 +351,7 @@ public class ModelStat {
   }
 
 
-  public ModelStat requests(@javax.annotation.Nullable Integer requests) {
+  public ModelStat requests(@javax.annotation.Nullable Long requests) {
     this.requests = requests;
     return this;
   }
@@ -362,16 +361,16 @@ public class ModelStat {
    * @return requests
    */
   @javax.annotation.Nullable
-  public Integer getRequests() {
+  public Long getRequests() {
     return requests;
   }
 
-  public void setRequests(@javax.annotation.Nullable Integer requests) {
+  public void setRequests(@javax.annotation.Nullable Long requests) {
     this.requests = requests;
   }
 
 
-  public ModelStat totalTokens(@javax.annotation.Nullable Integer totalTokens) {
+  public ModelStat totalTokens(@javax.annotation.Nullable Long totalTokens) {
     this.totalTokens = totalTokens;
     return this;
   }
@@ -381,11 +380,11 @@ public class ModelStat {
    * @return totalTokens
    */
   @javax.annotation.Nullable
-  public Integer getTotalTokens() {
+  public Long getTotalTokens() {
     return totalTokens;
   }
 
-  public void setTotalTokens(@javax.annotation.Nullable Integer totalTokens) {
+  public void setTotalTokens(@javax.annotation.Nullable Long totalTokens) {
     this.totalTokens = totalTokens;
   }
 

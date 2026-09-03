@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -74,7 +73,7 @@ public class Hit {
   public static final String SERIALIZED_NAME_SCORE = "score";
   @SerializedName(SERIALIZED_NAME_SCORE)
   @javax.annotation.Nullable
-  private BigDecimal score;
+  private Double score;
 
   public static final String SERIALIZED_NAME_TITLE = "title";
   @SerializedName(SERIALIZED_NAME_TITLE)
@@ -165,7 +164,7 @@ public class Hit {
   }
 
 
-  public Hit score(@javax.annotation.Nullable BigDecimal score) {
+  public Hit score(@javax.annotation.Nullable Double score) {
     this.score = score;
     return this;
   }
@@ -175,11 +174,11 @@ public class Hit {
    * @return score
    */
   @javax.annotation.Nullable
-  public BigDecimal getScore() {
+  public Double getScore() {
     return score;
   }
 
-  public void setScore(@javax.annotation.Nullable BigDecimal score) {
+  public void setScore(@javax.annotation.Nullable Double score) {
     this.score = score;
   }
 

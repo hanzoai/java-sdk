@@ -63,7 +63,7 @@ public class DeviceStartOut {
   public static final String SERIALIZED_NAME_INTERVAL = "interval";
   @SerializedName(SERIALIZED_NAME_INTERVAL)
   @javax.annotation.Nullable
-  private Integer interval;
+  private Long interval;
 
   public static final String SERIALIZED_NAME_USER_CODE = "userCode";
   @SerializedName(SERIALIZED_NAME_USER_CODE)
@@ -116,7 +116,7 @@ public class DeviceStartOut {
   }
 
 
-  public DeviceStartOut interval(@javax.annotation.Nullable Integer interval) {
+  public DeviceStartOut interval(@javax.annotation.Nullable Long interval) {
     this.interval = interval;
     return this;
   }
@@ -126,11 +126,11 @@ public class DeviceStartOut {
    * @return interval
    */
   @javax.annotation.Nullable
-  public Integer getInterval() {
+  public Long getInterval() {
     return interval;
   }
 
-  public void setInterval(@javax.annotation.Nullable Integer interval) {
+  public void setInterval(@javax.annotation.Nullable Long interval) {
     this.interval = interval;
   }
 

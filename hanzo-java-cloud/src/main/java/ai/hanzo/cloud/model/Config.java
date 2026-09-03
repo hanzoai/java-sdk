@@ -60,7 +60,7 @@ public class Config {
   public static final String SERIALIZED_NAME_MAX_BYTES = "max_bytes";
   @SerializedName(SERIALIZED_NAME_MAX_BYTES)
   @javax.annotation.Nullable
-  private Integer maxBytes;
+  private Long maxBytes;
 
   public static final String SERIALIZED_NAME_MAX_MSG_SIZE = "max_msg_size";
   @SerializedName(SERIALIZED_NAME_MAX_MSG_SIZE)
@@ -70,7 +70,7 @@ public class Config {
   public static final String SERIALIZED_NAME_MAX_MSGS = "max_msgs";
   @SerializedName(SERIALIZED_NAME_MAX_MSGS)
   @javax.annotation.Nullable
-  private Integer maxMsgs;
+  private Long maxMsgs;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -80,7 +80,7 @@ public class Config {
   public static final String SERIALIZED_NAME_NUM_REPLICAS = "num_replicas";
   @SerializedName(SERIALIZED_NAME_NUM_REPLICAS)
   @javax.annotation.Nullable
-  private Integer numReplicas;
+  private Long numReplicas;
 
   public static final String SERIALIZED_NAME_RETENTION = "retention";
   @SerializedName(SERIALIZED_NAME_RETENTION)
@@ -119,7 +119,7 @@ public class Config {
   }
 
 
-  public Config maxBytes(@javax.annotation.Nullable Integer maxBytes) {
+  public Config maxBytes(@javax.annotation.Nullable Long maxBytes) {
     this.maxBytes = maxBytes;
     return this;
   }
@@ -129,11 +129,11 @@ public class Config {
    * @return maxBytes
    */
   @javax.annotation.Nullable
-  public Integer getMaxBytes() {
+  public Long getMaxBytes() {
     return maxBytes;
   }
 
-  public void setMaxBytes(@javax.annotation.Nullable Integer maxBytes) {
+  public void setMaxBytes(@javax.annotation.Nullable Long maxBytes) {
     this.maxBytes = maxBytes;
   }
 
@@ -157,7 +157,7 @@ public class Config {
   }
 
 
-  public Config maxMsgs(@javax.annotation.Nullable Integer maxMsgs) {
+  public Config maxMsgs(@javax.annotation.Nullable Long maxMsgs) {
     this.maxMsgs = maxMsgs;
     return this;
   }
@@ -167,11 +167,11 @@ public class Config {
    * @return maxMsgs
    */
   @javax.annotation.Nullable
-  public Integer getMaxMsgs() {
+  public Long getMaxMsgs() {
     return maxMsgs;
   }
 
-  public void setMaxMsgs(@javax.annotation.Nullable Integer maxMsgs) {
+  public void setMaxMsgs(@javax.annotation.Nullable Long maxMsgs) {
     this.maxMsgs = maxMsgs;
   }
 
@@ -195,7 +195,7 @@ public class Config {
   }
 
 
-  public Config numReplicas(@javax.annotation.Nullable Integer numReplicas) {
+  public Config numReplicas(@javax.annotation.Nullable Long numReplicas) {
     this.numReplicas = numReplicas;
     return this;
   }
@@ -205,11 +205,11 @@ public class Config {
    * @return numReplicas
    */
   @javax.annotation.Nullable
-  public Integer getNumReplicas() {
+  public Long getNumReplicas() {
     return numReplicas;
   }
 
-  public void setNumReplicas(@javax.annotation.Nullable Integer numReplicas) {
+  public void setNumReplicas(@javax.annotation.Nullable Long numReplicas) {
     this.numReplicas = numReplicas;
   }
 

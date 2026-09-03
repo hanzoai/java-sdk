@@ -53,7 +53,7 @@ public class SbomIngested {
   public static final String SERIALIZED_NAME_COMPONENT_COUNT = "componentCount";
   @SerializedName(SERIALIZED_NAME_COMPONENT_COUNT)
   @javax.annotation.Nullable
-  private Integer componentCount;
+  private Long componentCount;
 
   public static final String SERIALIZED_NAME_IMAGE_DIGEST = "imageDigest";
   @SerializedName(SERIALIZED_NAME_IMAGE_DIGEST)
@@ -63,7 +63,7 @@ public class SbomIngested {
   public SbomIngested() {
   }
 
-  public SbomIngested componentCount(@javax.annotation.Nullable Integer componentCount) {
+  public SbomIngested componentCount(@javax.annotation.Nullable Long componentCount) {
     this.componentCount = componentCount;
     return this;
   }
@@ -73,11 +73,11 @@ public class SbomIngested {
    * @return componentCount
    */
   @javax.annotation.Nullable
-  public Integer getComponentCount() {
+  public Long getComponentCount() {
     return componentCount;
   }
 
-  public void setComponentCount(@javax.annotation.Nullable Integer componentCount) {
+  public void setComponentCount(@javax.annotation.Nullable Long componentCount) {
     this.componentCount = componentCount;
   }
 

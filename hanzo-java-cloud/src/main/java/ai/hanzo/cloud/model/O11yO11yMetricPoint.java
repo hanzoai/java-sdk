@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -61,17 +60,17 @@ public class O11yO11yMetricPoint {
   public static final String SERIALIZED_NAME_TIMESTAMP = "timestamp";
   @SerializedName(SERIALIZED_NAME_TIMESTAMP)
   @javax.annotation.Nullable
-  private Integer timestamp;
+  private Long timestamp;
 
   public static final String SERIALIZED_NAME_VALUE = "value";
   @SerializedName(SERIALIZED_NAME_VALUE)
   @javax.annotation.Nullable
-  private BigDecimal value;
+  private Double value;
 
   public static final String SERIALIZED_NAME_VALUES = "values";
   @SerializedName(SERIALIZED_NAME_VALUES)
   @javax.annotation.Nullable
-  private List<BigDecimal> values = new ArrayList<>();
+  private List<Double> values = new ArrayList<>();
 
   public O11yO11yMetricPoint() {
   }
@@ -95,7 +94,7 @@ public class O11yO11yMetricPoint {
   }
 
 
-  public O11yO11yMetricPoint timestamp(@javax.annotation.Nullable Integer timestamp) {
+  public O11yO11yMetricPoint timestamp(@javax.annotation.Nullable Long timestamp) {
     this.timestamp = timestamp;
     return this;
   }
@@ -105,16 +104,16 @@ public class O11yO11yMetricPoint {
    * @return timestamp
    */
   @javax.annotation.Nullable
-  public Integer getTimestamp() {
+  public Long getTimestamp() {
     return timestamp;
   }
 
-  public void setTimestamp(@javax.annotation.Nullable Integer timestamp) {
+  public void setTimestamp(@javax.annotation.Nullable Long timestamp) {
     this.timestamp = timestamp;
   }
 
 
-  public O11yO11yMetricPoint value(@javax.annotation.Nullable BigDecimal value) {
+  public O11yO11yMetricPoint value(@javax.annotation.Nullable Double value) {
     this.value = value;
     return this;
   }
@@ -124,21 +123,21 @@ public class O11yO11yMetricPoint {
    * @return value
    */
   @javax.annotation.Nullable
-  public BigDecimal getValue() {
+  public Double getValue() {
     return value;
   }
 
-  public void setValue(@javax.annotation.Nullable BigDecimal value) {
+  public void setValue(@javax.annotation.Nullable Double value) {
     this.value = value;
   }
 
 
-  public O11yO11yMetricPoint values(@javax.annotation.Nullable List<BigDecimal> values) {
+  public O11yO11yMetricPoint values(@javax.annotation.Nullable List<Double> values) {
     this.values = values;
     return this;
   }
 
-  public O11yO11yMetricPoint addValuesItem(BigDecimal valuesItem) {
+  public O11yO11yMetricPoint addValuesItem(Double valuesItem) {
     if (this.values == null) {
       this.values = new ArrayList<>();
     }
@@ -151,11 +150,11 @@ public class O11yO11yMetricPoint {
    * @return values
    */
   @javax.annotation.Nullable
-  public List<BigDecimal> getValues() {
+  public List<Double> getValues() {
     return values;
   }
 
-  public void setValues(@javax.annotation.Nullable List<BigDecimal> values) {
+  public void setValues(@javax.annotation.Nullable List<Double> values) {
     this.values = values;
   }
 

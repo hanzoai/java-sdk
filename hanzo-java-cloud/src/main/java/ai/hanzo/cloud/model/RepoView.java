@@ -110,7 +110,7 @@ public class RepoView {
   public static final String SERIALIZED_NAME_SIZE_BYTES = "sizeBytes";
   @SerializedName(SERIALIZED_NAME_SIZE_BYTES)
   @javax.annotation.Nullable
-  private Integer sizeBytes;
+  private Long sizeBytes;
 
   public static final String SERIALIZED_NAME_SSH_URL = "sshUrl";
   @SerializedName(SERIALIZED_NAME_SSH_URL)
@@ -342,7 +342,7 @@ public class RepoView {
   }
 
 
-  public RepoView sizeBytes(@javax.annotation.Nullable Integer sizeBytes) {
+  public RepoView sizeBytes(@javax.annotation.Nullable Long sizeBytes) {
     this.sizeBytes = sizeBytes;
     return this;
   }
@@ -352,11 +352,11 @@ public class RepoView {
    * @return sizeBytes
    */
   @javax.annotation.Nullable
-  public Integer getSizeBytes() {
+  public Long getSizeBytes() {
     return sizeBytes;
   }
 
-  public void setSizeBytes(@javax.annotation.Nullable Integer sizeBytes) {
+  public void setSizeBytes(@javax.annotation.Nullable Long sizeBytes) {
     this.sizeBytes = sizeBytes;
   }
 

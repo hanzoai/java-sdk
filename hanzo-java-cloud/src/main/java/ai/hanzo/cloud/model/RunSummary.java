@@ -21,7 +21,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -57,7 +56,7 @@ public class RunSummary {
   public static final String SERIALIZED_NAME_AVG_SCORE = "avgScore";
   @SerializedName(SERIALIZED_NAME_AVG_SCORE)
   @javax.annotation.Nullable
-  private BigDecimal avgScore;
+  private Double avgScore;
 
   public static final String SERIALIZED_NAME_DATASET = "dataset";
   @SerializedName(SERIALIZED_NAME_DATASET)
@@ -67,7 +66,7 @@ public class RunSummary {
   public static final String SERIALIZED_NAME_ITEMS = "items";
   @SerializedName(SERIALIZED_NAME_ITEMS)
   @javax.annotation.Nullable
-  private Integer items;
+  private Long items;
 
   public static final String SERIALIZED_NAME_JUDGE_MODEL = "judgeModel";
   @SerializedName(SERIALIZED_NAME_JUDGE_MODEL)
@@ -92,12 +91,12 @@ public class RunSummary {
   public static final String SERIALIZED_NAME_SCORED = "scored";
   @SerializedName(SERIALIZED_NAME_SCORED)
   @javax.annotation.Nullable
-  private Integer scored;
+  private Long scored;
 
   public RunSummary() {
   }
 
-  public RunSummary avgScore(@javax.annotation.Nullable BigDecimal avgScore) {
+  public RunSummary avgScore(@javax.annotation.Nullable Double avgScore) {
     this.avgScore = avgScore;
     return this;
   }
@@ -107,11 +106,11 @@ public class RunSummary {
    * @return avgScore
    */
   @javax.annotation.Nullable
-  public BigDecimal getAvgScore() {
+  public Double getAvgScore() {
     return avgScore;
   }
 
-  public void setAvgScore(@javax.annotation.Nullable BigDecimal avgScore) {
+  public void setAvgScore(@javax.annotation.Nullable Double avgScore) {
     this.avgScore = avgScore;
   }
 
@@ -135,7 +134,7 @@ public class RunSummary {
   }
 
 
-  public RunSummary items(@javax.annotation.Nullable Integer items) {
+  public RunSummary items(@javax.annotation.Nullable Long items) {
     this.items = items;
     return this;
   }
@@ -145,11 +144,11 @@ public class RunSummary {
    * @return items
    */
   @javax.annotation.Nullable
-  public Integer getItems() {
+  public Long getItems() {
     return items;
   }
 
-  public void setItems(@javax.annotation.Nullable Integer items) {
+  public void setItems(@javax.annotation.Nullable Long items) {
     this.items = items;
   }
 
@@ -238,7 +237,7 @@ public class RunSummary {
   }
 
 
-  public RunSummary scored(@javax.annotation.Nullable Integer scored) {
+  public RunSummary scored(@javax.annotation.Nullable Long scored) {
     this.scored = scored;
     return this;
   }
@@ -248,11 +247,11 @@ public class RunSummary {
    * @return scored
    */
   @javax.annotation.Nullable
-  public Integer getScored() {
+  public Long getScored() {
     return scored;
   }
 
-  public void setScored(@javax.annotation.Nullable Integer scored) {
+  public void setScored(@javax.annotation.Nullable Long scored) {
     this.scored = scored;
   }
 

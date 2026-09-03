@@ -81,7 +81,7 @@ public class Consumer {
   public static final String SERIALIZED_NAME_NUM_ACK_PENDING = "num_ack_pending";
   @SerializedName(SERIALIZED_NAME_NUM_ACK_PENDING)
   @javax.annotation.Nullable
-  private Integer numAckPending;
+  private Long numAckPending;
 
   public static final String SERIALIZED_NAME_NUM_PENDING = "num_pending";
   @SerializedName(SERIALIZED_NAME_NUM_PENDING)
@@ -91,12 +91,12 @@ public class Consumer {
   public static final String SERIALIZED_NAME_NUM_REDELIVERED = "num_redelivered";
   @SerializedName(SERIALIZED_NAME_NUM_REDELIVERED)
   @javax.annotation.Nullable
-  private Integer numRedelivered;
+  private Long numRedelivered;
 
   public static final String SERIALIZED_NAME_NUM_WAITING = "num_waiting";
   @SerializedName(SERIALIZED_NAME_NUM_WAITING)
   @javax.annotation.Nullable
-  private Integer numWaiting;
+  private Long numWaiting;
 
   public static final String SERIALIZED_NAME_STREAM_NAME = "stream_name";
   @SerializedName(SERIALIZED_NAME_STREAM_NAME)
@@ -201,7 +201,7 @@ public class Consumer {
   }
 
 
-  public Consumer numAckPending(@javax.annotation.Nullable Integer numAckPending) {
+  public Consumer numAckPending(@javax.annotation.Nullable Long numAckPending) {
     this.numAckPending = numAckPending;
     return this;
   }
@@ -211,11 +211,11 @@ public class Consumer {
    * @return numAckPending
    */
   @javax.annotation.Nullable
-  public Integer getNumAckPending() {
+  public Long getNumAckPending() {
     return numAckPending;
   }
 
-  public void setNumAckPending(@javax.annotation.Nullable Integer numAckPending) {
+  public void setNumAckPending(@javax.annotation.Nullable Long numAckPending) {
     this.numAckPending = numAckPending;
   }
 
@@ -239,7 +239,7 @@ public class Consumer {
   }
 
 
-  public Consumer numRedelivered(@javax.annotation.Nullable Integer numRedelivered) {
+  public Consumer numRedelivered(@javax.annotation.Nullable Long numRedelivered) {
     this.numRedelivered = numRedelivered;
     return this;
   }
@@ -249,16 +249,16 @@ public class Consumer {
    * @return numRedelivered
    */
   @javax.annotation.Nullable
-  public Integer getNumRedelivered() {
+  public Long getNumRedelivered() {
     return numRedelivered;
   }
 
-  public void setNumRedelivered(@javax.annotation.Nullable Integer numRedelivered) {
+  public void setNumRedelivered(@javax.annotation.Nullable Long numRedelivered) {
     this.numRedelivered = numRedelivered;
   }
 
 
-  public Consumer numWaiting(@javax.annotation.Nullable Integer numWaiting) {
+  public Consumer numWaiting(@javax.annotation.Nullable Long numWaiting) {
     this.numWaiting = numWaiting;
     return this;
   }
@@ -268,11 +268,11 @@ public class Consumer {
    * @return numWaiting
    */
   @javax.annotation.Nullable
-  public Integer getNumWaiting() {
+  public Long getNumWaiting() {
     return numWaiting;
   }
 
-  public void setNumWaiting(@javax.annotation.Nullable Integer numWaiting) {
+  public void setNumWaiting(@javax.annotation.Nullable Long numWaiting) {
     this.numWaiting = numWaiting;
   }
 

@@ -57,12 +57,12 @@ public class EsignDocument {
   public static final String SERIALIZED_NAME_COMPLETED_AT = "completedAt";
   @SerializedName(SERIALIZED_NAME_COMPLETED_AT)
   @javax.annotation.Nullable
-  private Integer completedAt;
+  private Long completedAt;
 
   public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
   @javax.annotation.Nullable
-  private Integer createdAt;
+  private Long createdAt;
 
   public static final String SERIALIZED_NAME_EXTERNAL_ID = "externalId";
   @SerializedName(SERIALIZED_NAME_EXTERNAL_ID)
@@ -117,12 +117,12 @@ public class EsignDocument {
   public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)
   @javax.annotation.Nullable
-  private Integer updatedAt;
+  private Long updatedAt;
 
   public EsignDocument() {
   }
 
-  public EsignDocument completedAt(@javax.annotation.Nullable Integer completedAt) {
+  public EsignDocument completedAt(@javax.annotation.Nullable Long completedAt) {
     this.completedAt = completedAt;
     return this;
   }
@@ -132,16 +132,16 @@ public class EsignDocument {
    * @return completedAt
    */
   @javax.annotation.Nullable
-  public Integer getCompletedAt() {
+  public Long getCompletedAt() {
     return completedAt;
   }
 
-  public void setCompletedAt(@javax.annotation.Nullable Integer completedAt) {
+  public void setCompletedAt(@javax.annotation.Nullable Long completedAt) {
     this.completedAt = completedAt;
   }
 
 
-  public EsignDocument createdAt(@javax.annotation.Nullable Integer createdAt) {
+  public EsignDocument createdAt(@javax.annotation.Nullable Long createdAt) {
     this.createdAt = createdAt;
     return this;
   }
@@ -151,11 +151,11 @@ public class EsignDocument {
    * @return createdAt
    */
   @javax.annotation.Nullable
-  public Integer getCreatedAt() {
+  public Long getCreatedAt() {
     return createdAt;
   }
 
-  public void setCreatedAt(@javax.annotation.Nullable Integer createdAt) {
+  public void setCreatedAt(@javax.annotation.Nullable Long createdAt) {
     this.createdAt = createdAt;
   }
 
@@ -366,7 +366,7 @@ public class EsignDocument {
   }
 
 
-  public EsignDocument updatedAt(@javax.annotation.Nullable Integer updatedAt) {
+  public EsignDocument updatedAt(@javax.annotation.Nullable Long updatedAt) {
     this.updatedAt = updatedAt;
     return this;
   }
@@ -376,11 +376,11 @@ public class EsignDocument {
    * @return updatedAt
    */
   @javax.annotation.Nullable
-  public Integer getUpdatedAt() {
+  public Long getUpdatedAt() {
     return updatedAt;
   }
 
-  public void setUpdatedAt(@javax.annotation.Nullable Integer updatedAt) {
+  public void setUpdatedAt(@javax.annotation.Nullable Long updatedAt) {
     this.updatedAt = updatedAt;
   }
 

@@ -56,7 +56,7 @@ public class IndexStats {
   public static final String SERIALIZED_NAME_DATABASE_SIZE = "databaseSize";
   @SerializedName(SERIALIZED_NAME_DATABASE_SIZE)
   @javax.annotation.Nullable
-  private Integer databaseSize;
+  private Long databaseSize;
 
   public static final String SERIALIZED_NAME_INDEXES = "indexes";
   @SerializedName(SERIALIZED_NAME_INDEXES)
@@ -66,7 +66,7 @@ public class IndexStats {
   public IndexStats() {
   }
 
-  public IndexStats databaseSize(@javax.annotation.Nullable Integer databaseSize) {
+  public IndexStats databaseSize(@javax.annotation.Nullable Long databaseSize) {
     this.databaseSize = databaseSize;
     return this;
   }
@@ -76,11 +76,11 @@ public class IndexStats {
    * @return databaseSize
    */
   @javax.annotation.Nullable
-  public Integer getDatabaseSize() {
+  public Long getDatabaseSize() {
     return databaseSize;
   }
 
-  public void setDatabaseSize(@javax.annotation.Nullable Integer databaseSize) {
+  public void setDatabaseSize(@javax.annotation.Nullable Long databaseSize) {
     this.databaseSize = databaseSize;
   }
 

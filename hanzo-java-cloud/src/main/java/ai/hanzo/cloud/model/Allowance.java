@@ -53,7 +53,7 @@ public class Allowance {
   public static final String SERIALIZED_NAME_LIMIT = "limit";
   @SerializedName(SERIALIZED_NAME_LIMIT)
   @javax.annotation.Nullable
-  private Integer limit;
+  private Long limit;
 
   public static final String SERIALIZED_NAME_PLAN = "plan";
   @SerializedName(SERIALIZED_NAME_PLAN)
@@ -63,7 +63,7 @@ public class Allowance {
   public static final String SERIALIZED_NAME_RESETS = "resets";
   @SerializedName(SERIALIZED_NAME_RESETS)
   @javax.annotation.Nullable
-  private Integer resets;
+  private Long resets;
 
   public static final String SERIALIZED_NAME_SPENT = "spent";
   @SerializedName(SERIALIZED_NAME_SPENT)
@@ -73,7 +73,7 @@ public class Allowance {
   public static final String SERIALIZED_NAME_USED = "used";
   @SerializedName(SERIALIZED_NAME_USED)
   @javax.annotation.Nullable
-  private Integer used;
+  private Long used;
 
   public static final String SERIALIZED_NAME_WINDOW = "window";
   @SerializedName(SERIALIZED_NAME_WINDOW)
@@ -83,7 +83,7 @@ public class Allowance {
   public Allowance() {
   }
 
-  public Allowance limit(@javax.annotation.Nullable Integer limit) {
+  public Allowance limit(@javax.annotation.Nullable Long limit) {
     this.limit = limit;
     return this;
   }
@@ -93,11 +93,11 @@ public class Allowance {
    * @return limit
    */
   @javax.annotation.Nullable
-  public Integer getLimit() {
+  public Long getLimit() {
     return limit;
   }
 
-  public void setLimit(@javax.annotation.Nullable Integer limit) {
+  public void setLimit(@javax.annotation.Nullable Long limit) {
     this.limit = limit;
   }
 
@@ -121,7 +121,7 @@ public class Allowance {
   }
 
 
-  public Allowance resets(@javax.annotation.Nullable Integer resets) {
+  public Allowance resets(@javax.annotation.Nullable Long resets) {
     this.resets = resets;
     return this;
   }
@@ -131,11 +131,11 @@ public class Allowance {
    * @return resets
    */
   @javax.annotation.Nullable
-  public Integer getResets() {
+  public Long getResets() {
     return resets;
   }
 
-  public void setResets(@javax.annotation.Nullable Integer resets) {
+  public void setResets(@javax.annotation.Nullable Long resets) {
     this.resets = resets;
   }
 
@@ -159,7 +159,7 @@ public class Allowance {
   }
 
 
-  public Allowance used(@javax.annotation.Nullable Integer used) {
+  public Allowance used(@javax.annotation.Nullable Long used) {
     this.used = used;
     return this;
   }
@@ -169,11 +169,11 @@ public class Allowance {
    * @return used
    */
   @javax.annotation.Nullable
-  public Integer getUsed() {
+  public Long getUsed() {
     return used;
   }
 
-  public void setUsed(@javax.annotation.Nullable Integer used) {
+  public void setUsed(@javax.annotation.Nullable Long used) {
     this.used = used;
   }
 

@@ -53,7 +53,7 @@ public class McpCatalogSync {
   public static final String SERIALIZED_NAME_ADDED = "added";
   @SerializedName(SERIALIZED_NAME_ADDED)
   @javax.annotation.Nullable
-  private Integer added;
+  private Long added;
 
   public static final String SERIALIZED_NAME_REGISTRY = "registry";
   @SerializedName(SERIALIZED_NAME_REGISTRY)
@@ -63,17 +63,17 @@ public class McpCatalogSync {
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)
   @javax.annotation.Nullable
-  private Integer total;
+  private Long total;
 
   public static final String SERIALIZED_NAME_UPDATED = "updated";
   @SerializedName(SERIALIZED_NAME_UPDATED)
   @javax.annotation.Nullable
-  private Integer updated;
+  private Long updated;
 
   public McpCatalogSync() {
   }
 
-  public McpCatalogSync added(@javax.annotation.Nullable Integer added) {
+  public McpCatalogSync added(@javax.annotation.Nullable Long added) {
     this.added = added;
     return this;
   }
@@ -83,11 +83,11 @@ public class McpCatalogSync {
    * @return added
    */
   @javax.annotation.Nullable
-  public Integer getAdded() {
+  public Long getAdded() {
     return added;
   }
 
-  public void setAdded(@javax.annotation.Nullable Integer added) {
+  public void setAdded(@javax.annotation.Nullable Long added) {
     this.added = added;
   }
 
@@ -111,7 +111,7 @@ public class McpCatalogSync {
   }
 
 
-  public McpCatalogSync total(@javax.annotation.Nullable Integer total) {
+  public McpCatalogSync total(@javax.annotation.Nullable Long total) {
     this.total = total;
     return this;
   }
@@ -121,16 +121,16 @@ public class McpCatalogSync {
    * @return total
    */
   @javax.annotation.Nullable
-  public Integer getTotal() {
+  public Long getTotal() {
     return total;
   }
 
-  public void setTotal(@javax.annotation.Nullable Integer total) {
+  public void setTotal(@javax.annotation.Nullable Long total) {
     this.total = total;
   }
 
 
-  public McpCatalogSync updated(@javax.annotation.Nullable Integer updated) {
+  public McpCatalogSync updated(@javax.annotation.Nullable Long updated) {
     this.updated = updated;
     return this;
   }
@@ -140,11 +140,11 @@ public class McpCatalogSync {
    * @return updated
    */
   @javax.annotation.Nullable
-  public Integer getUpdated() {
+  public Long getUpdated() {
     return updated;
   }
 
-  public void setUpdated(@javax.annotation.Nullable Integer updated) {
+  public void setUpdated(@javax.annotation.Nullable Long updated) {
     this.updated = updated;
   }
 

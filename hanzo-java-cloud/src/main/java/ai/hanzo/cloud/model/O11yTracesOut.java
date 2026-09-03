@@ -56,17 +56,17 @@ public class O11yTracesOut {
   public static final String SERIALIZED_NAME_COUNT = "count";
   @SerializedName(SERIALIZED_NAME_COUNT)
   @javax.annotation.Nullable
-  private Integer count;
+  private Long count;
 
   public static final String SERIALIZED_NAME_LIMIT = "limit";
   @SerializedName(SERIALIZED_NAME_LIMIT)
   @javax.annotation.Nullable
-  private Integer limit;
+  private Long limit;
 
   public static final String SERIALIZED_NAME_SINCE_SEC = "sinceSec";
   @SerializedName(SERIALIZED_NAME_SINCE_SEC)
   @javax.annotation.Nullable
-  private Integer sinceSec;
+  private Long sinceSec;
 
   public static final String SERIALIZED_NAME_TRACES = "traces";
   @SerializedName(SERIALIZED_NAME_TRACES)
@@ -76,7 +76,7 @@ public class O11yTracesOut {
   public O11yTracesOut() {
   }
 
-  public O11yTracesOut count(@javax.annotation.Nullable Integer count) {
+  public O11yTracesOut count(@javax.annotation.Nullable Long count) {
     this.count = count;
     return this;
   }
@@ -86,16 +86,16 @@ public class O11yTracesOut {
    * @return count
    */
   @javax.annotation.Nullable
-  public Integer getCount() {
+  public Long getCount() {
     return count;
   }
 
-  public void setCount(@javax.annotation.Nullable Integer count) {
+  public void setCount(@javax.annotation.Nullable Long count) {
     this.count = count;
   }
 
 
-  public O11yTracesOut limit(@javax.annotation.Nullable Integer limit) {
+  public O11yTracesOut limit(@javax.annotation.Nullable Long limit) {
     this.limit = limit;
     return this;
   }
@@ -105,16 +105,16 @@ public class O11yTracesOut {
    * @return limit
    */
   @javax.annotation.Nullable
-  public Integer getLimit() {
+  public Long getLimit() {
     return limit;
   }
 
-  public void setLimit(@javax.annotation.Nullable Integer limit) {
+  public void setLimit(@javax.annotation.Nullable Long limit) {
     this.limit = limit;
   }
 
 
-  public O11yTracesOut sinceSec(@javax.annotation.Nullable Integer sinceSec) {
+  public O11yTracesOut sinceSec(@javax.annotation.Nullable Long sinceSec) {
     this.sinceSec = sinceSec;
     return this;
   }
@@ -124,11 +124,11 @@ public class O11yTracesOut {
    * @return sinceSec
    */
   @javax.annotation.Nullable
-  public Integer getSinceSec() {
+  public Long getSinceSec() {
     return sinceSec;
   }
 
-  public void setSinceSec(@javax.annotation.Nullable Integer sinceSec) {
+  public void setSinceSec(@javax.annotation.Nullable Long sinceSec) {
     this.sinceSec = sinceSec;
   }
 

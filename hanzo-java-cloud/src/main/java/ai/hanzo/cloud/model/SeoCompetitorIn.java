@@ -65,12 +65,12 @@ public class SeoCompetitorIn {
   public static final String SERIALIZED_NAME_LIMIT = "limit";
   @SerializedName(SERIALIZED_NAME_LIMIT)
   @javax.annotation.Nullable
-  private Integer limit;
+  private Long limit;
 
   public static final String SERIALIZED_NAME_LOCATION = "location";
   @SerializedName(SERIALIZED_NAME_LOCATION)
   @javax.annotation.Nullable
-  private Integer location;
+  private Long location;
 
   public SeoCompetitorIn() {
   }
@@ -121,7 +121,7 @@ public class SeoCompetitorIn {
   }
 
 
-  public SeoCompetitorIn limit(@javax.annotation.Nullable Integer limit) {
+  public SeoCompetitorIn limit(@javax.annotation.Nullable Long limit) {
     this.limit = limit;
     return this;
   }
@@ -131,16 +131,16 @@ public class SeoCompetitorIn {
    * @return limit
    */
   @javax.annotation.Nullable
-  public Integer getLimit() {
+  public Long getLimit() {
     return limit;
   }
 
-  public void setLimit(@javax.annotation.Nullable Integer limit) {
+  public void setLimit(@javax.annotation.Nullable Long limit) {
     this.limit = limit;
   }
 
 
-  public SeoCompetitorIn location(@javax.annotation.Nullable Integer location) {
+  public SeoCompetitorIn location(@javax.annotation.Nullable Long location) {
     this.location = location;
     return this;
   }
@@ -150,11 +150,11 @@ public class SeoCompetitorIn {
    * @return location
    */
   @javax.annotation.Nullable
-  public Integer getLocation() {
+  public Long getLocation() {
     return location;
   }
 
-  public void setLocation(@javax.annotation.Nullable Integer location) {
+  public void setLocation(@javax.annotation.Nullable Long location) {
     this.location = location;
   }
 

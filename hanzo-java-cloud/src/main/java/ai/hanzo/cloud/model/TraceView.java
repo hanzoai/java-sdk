@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -84,7 +83,7 @@ public class TraceView {
   public static final String SERIALIZED_NAME_LATENCY_MS = "latencyMs";
   @SerializedName(SERIALIZED_NAME_LATENCY_MS)
   @javax.annotation.Nullable
-  private BigDecimal latencyMs;
+  private Double latencyMs;
 
   public static final String SERIALIZED_NAME_MODEL = "model";
   @SerializedName(SERIALIZED_NAME_MODEL)
@@ -243,7 +242,7 @@ public class TraceView {
   }
 
 
-  public TraceView latencyMs(@javax.annotation.Nullable BigDecimal latencyMs) {
+  public TraceView latencyMs(@javax.annotation.Nullable Double latencyMs) {
     this.latencyMs = latencyMs;
     return this;
   }
@@ -253,11 +252,11 @@ public class TraceView {
    * @return latencyMs
    */
   @javax.annotation.Nullable
-  public BigDecimal getLatencyMs() {
+  public Double getLatencyMs() {
     return latencyMs;
   }
 
-  public void setLatencyMs(@javax.annotation.Nullable BigDecimal latencyMs) {
+  public void setLatencyMs(@javax.annotation.Nullable Double latencyMs) {
     this.latencyMs = latencyMs;
   }
 

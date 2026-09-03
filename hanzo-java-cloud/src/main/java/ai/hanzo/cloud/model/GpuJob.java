@@ -53,7 +53,7 @@ public class GpuJob {
   public static final String SERIALIZED_NAME_ATTEMPT = "attempt";
   @SerializedName(SERIALIZED_NAME_ATTEMPT)
   @javax.annotation.Nullable
-  private Integer attempt;
+  private Long attempt;
 
   public static final String SERIALIZED_NAME_CLOSE_TIME = "closeTime";
   @SerializedName(SERIALIZED_NAME_CLOSE_TIME)
@@ -118,7 +118,7 @@ public class GpuJob {
   public GpuJob() {
   }
 
-  public GpuJob attempt(@javax.annotation.Nullable Integer attempt) {
+  public GpuJob attempt(@javax.annotation.Nullable Long attempt) {
     this.attempt = attempt;
     return this;
   }
@@ -128,11 +128,11 @@ public class GpuJob {
    * @return attempt
    */
   @javax.annotation.Nullable
-  public Integer getAttempt() {
+  public Long getAttempt() {
     return attempt;
   }
 
-  public void setAttempt(@javax.annotation.Nullable Integer attempt) {
+  public void setAttempt(@javax.annotation.Nullable Long attempt) {
     this.attempt = attempt;
   }
 

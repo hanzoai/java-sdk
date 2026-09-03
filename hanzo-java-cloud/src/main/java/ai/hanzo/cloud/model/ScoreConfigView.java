@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -71,12 +70,12 @@ public class ScoreConfigView {
   public static final String SERIALIZED_NAME_MAX_VALUE = "maxValue";
   @SerializedName(SERIALIZED_NAME_MAX_VALUE)
   @javax.annotation.Nullable
-  private BigDecimal maxValue;
+  private Double maxValue;
 
   public static final String SERIALIZED_NAME_MIN_VALUE = "minValue";
   @SerializedName(SERIALIZED_NAME_MIN_VALUE)
   @javax.annotation.Nullable
-  private BigDecimal minValue;
+  private Double minValue;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -156,7 +155,7 @@ public class ScoreConfigView {
   }
 
 
-  public ScoreConfigView maxValue(@javax.annotation.Nullable BigDecimal maxValue) {
+  public ScoreConfigView maxValue(@javax.annotation.Nullable Double maxValue) {
     this.maxValue = maxValue;
     return this;
   }
@@ -166,16 +165,16 @@ public class ScoreConfigView {
    * @return maxValue
    */
   @javax.annotation.Nullable
-  public BigDecimal getMaxValue() {
+  public Double getMaxValue() {
     return maxValue;
   }
 
-  public void setMaxValue(@javax.annotation.Nullable BigDecimal maxValue) {
+  public void setMaxValue(@javax.annotation.Nullable Double maxValue) {
     this.maxValue = maxValue;
   }
 
 
-  public ScoreConfigView minValue(@javax.annotation.Nullable BigDecimal minValue) {
+  public ScoreConfigView minValue(@javax.annotation.Nullable Double minValue) {
     this.minValue = minValue;
     return this;
   }
@@ -185,11 +184,11 @@ public class ScoreConfigView {
    * @return minValue
    */
   @javax.annotation.Nullable
-  public BigDecimal getMinValue() {
+  public Double getMinValue() {
     return minValue;
   }
 
-  public void setMinValue(@javax.annotation.Nullable BigDecimal minValue) {
+  public void setMinValue(@javax.annotation.Nullable Double minValue) {
     this.minValue = minValue;
   }
 

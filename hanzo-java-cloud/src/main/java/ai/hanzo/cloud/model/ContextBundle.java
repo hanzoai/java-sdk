@@ -56,7 +56,7 @@ public class ContextBundle {
   public static final String SERIALIZED_NAME_BUDGET_TOKENS = "budgetTokens";
   @SerializedName(SERIALIZED_NAME_BUDGET_TOKENS)
   @javax.annotation.Nullable
-  private Integer budgetTokens;
+  private Long budgetTokens;
 
   public static final String SERIALIZED_NAME_QUERY = "query";
   @SerializedName(SERIALIZED_NAME_QUERY)
@@ -76,12 +76,12 @@ public class ContextBundle {
   public static final String SERIALIZED_NAME_USED_TOKENS = "usedTokens";
   @SerializedName(SERIALIZED_NAME_USED_TOKENS)
   @javax.annotation.Nullable
-  private Integer usedTokens;
+  private Long usedTokens;
 
   public ContextBundle() {
   }
 
-  public ContextBundle budgetTokens(@javax.annotation.Nullable Integer budgetTokens) {
+  public ContextBundle budgetTokens(@javax.annotation.Nullable Long budgetTokens) {
     this.budgetTokens = budgetTokens;
     return this;
   }
@@ -91,11 +91,11 @@ public class ContextBundle {
    * @return budgetTokens
    */
   @javax.annotation.Nullable
-  public Integer getBudgetTokens() {
+  public Long getBudgetTokens() {
     return budgetTokens;
   }
 
-  public void setBudgetTokens(@javax.annotation.Nullable Integer budgetTokens) {
+  public void setBudgetTokens(@javax.annotation.Nullable Long budgetTokens) {
     this.budgetTokens = budgetTokens;
   }
 
@@ -165,7 +165,7 @@ public class ContextBundle {
   }
 
 
-  public ContextBundle usedTokens(@javax.annotation.Nullable Integer usedTokens) {
+  public ContextBundle usedTokens(@javax.annotation.Nullable Long usedTokens) {
     this.usedTokens = usedTokens;
     return this;
   }
@@ -175,11 +175,11 @@ public class ContextBundle {
    * @return usedTokens
    */
   @javax.annotation.Nullable
-  public Integer getUsedTokens() {
+  public Long getUsedTokens() {
     return usedTokens;
   }
 
-  public void setUsedTokens(@javax.annotation.Nullable Integer usedTokens) {
+  public void setUsedTokens(@javax.annotation.Nullable Long usedTokens) {
     this.usedTokens = usedTokens;
   }
 

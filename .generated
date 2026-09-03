@@ -662,6 +662,7 @@ hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/EnrollReq.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/EnrollResult.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/Enrollment.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/EnrollmentList.java
+hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/EnrollmentView.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/Enrolment.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/EntitlementsView.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/Entry.java
@@ -701,7 +702,6 @@ hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/EvaluateIn.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/EvaluatorList.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/EvaluatorReq.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/EvaluatorView.java
-hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/Event.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/EventIn.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/EventList.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/EventView.java
@@ -976,6 +976,9 @@ hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/IamWorkspace.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/IamWorkspacesDeleteOutput.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/IamWorkspacesInput.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/IamWorkspacesListOutput.java
+hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/IdentityIn.java
+hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/IdentityList.java
+hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/IdentityView.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/ImageOrigin.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/ImageView.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/ImportCapTableIn.java
@@ -1038,6 +1041,7 @@ hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/ItemView.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/JobCancel.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/JobCanceled.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/JobList.java
+hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/JoinFailure.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/JourneyStep.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/JudgeSpec.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/KbAuthorizeOut.java
@@ -1109,6 +1113,7 @@ hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/LinkList.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/LinkMint.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/LinkView.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/ListOut.java
+hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/Listed.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/Listing.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/ListingPage.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/Liveness.java
@@ -2175,11 +2180,13 @@ hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/ProvisionRequest.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/ProvisionResult.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/ProvisionedResource.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/ProvisionedSummary.java
+hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/PublicRooms.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/PublishInput.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/PublishKitIn.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/PublishReq.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/PublishResult.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/PublishedClaim.java
+hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/PublishedView.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/PullList.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/PullView.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/Purge.java
@@ -2255,6 +2262,7 @@ hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/RegistryProjectList.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/RegistryStatus.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/RegistryTagList.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/RegistryToken.java
+hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/ReindexOut.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/ReleaseBoard.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/ReleaseRow.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/Remark.java
@@ -2439,6 +2447,7 @@ hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/SeriesLine.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/SeriesPoint.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/Service.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/ServiceDetail.java
+hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/ServiceIn.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/ServicePort.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/Session.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/SessionDetail.java
@@ -2464,6 +2473,7 @@ hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/Skill.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/SkillDeleted.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/SkillIn.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/SkillWritten.java
+hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/SlackJoinOut.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/SlotView.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/SocialAccount.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/SocialAccountBody.java
@@ -2699,4 +2709,3 @@ hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/WorldWire.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/WriteIn.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/Written.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/Wrote.java
-hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/ZapProcReq.java

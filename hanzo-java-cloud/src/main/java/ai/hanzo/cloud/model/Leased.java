@@ -55,6 +55,11 @@ public class Leased {
   @javax.annotation.Nullable
   private String propertyClass;
 
+  public static final String SERIALIZED_NAME_CLUSTER = "cluster";
+  @SerializedName(SERIALIZED_NAME_CLUSTER)
+  @javax.annotation.Nullable
+  private String cluster;
+
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   @javax.annotation.Nullable
@@ -94,6 +99,25 @@ public class Leased {
 
   public void setPropertyClass(@javax.annotation.Nullable String propertyClass) {
     this.propertyClass = propertyClass;
+  }
+
+
+  public Leased cluster(@javax.annotation.Nullable String cluster) {
+    this.cluster = cluster;
+    return this;
+  }
+
+  /**
+   * Cluster is the attached cluster this sandbox runs on, when one was named. Empty is the home cluster.
+   * @return cluster
+   */
+  @javax.annotation.Nullable
+  public String getCluster() {
+    return cluster;
+  }
+
+  public void setCluster(@javax.annotation.Nullable String cluster) {
+    this.cluster = cluster;
   }
 
 
@@ -184,6 +208,7 @@ public class Leased {
     }
     Leased leased = (Leased) o;
     return Objects.equals(this.propertyClass, leased.propertyClass) &&
+        Objects.equals(this.cluster, leased.cluster) &&
         Objects.equals(this.id, leased.id) &&
         Objects.equals(this.runtime, leased.runtime) &&
         Objects.equals(this.status, leased.status) &&
@@ -192,7 +217,7 @@ public class Leased {
 
   @Override
   public int hashCode() {
-    return Objects.hash(propertyClass, id, runtime, status, workdir);
+    return Objects.hash(propertyClass, cluster, id, runtime, status, workdir);
   }
 
   @Override
@@ -200,6 +225,7 @@ public class Leased {
     StringBuilder sb = new StringBuilder();
     sb.append("class Leased {\n");
     sb.append("    propertyClass: ").append(toIndentedString(propertyClass)).append("\n");
+    sb.append("    cluster: ").append(toIndentedString(cluster)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    runtime: ").append(toIndentedString(runtime)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
@@ -225,7 +251,7 @@ public class Leased {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("class", "id", "runtime", "status", "workdir"));
+    openapiFields = new HashSet<String>(Arrays.asList("class", "cluster", "id", "runtime", "status", "workdir"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -254,6 +280,9 @@ public class Leased {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("class") != null && !jsonObj.get("class").isJsonNull()) && !jsonObj.get("class").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `class` to be a primitive type in the JSON string but got `%s`", jsonObj.get("class").toString()));
+      }
+      if ((jsonObj.get("cluster") != null && !jsonObj.get("cluster").isJsonNull()) && !jsonObj.get("cluster").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `cluster` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cluster").toString()));
       }
       if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));

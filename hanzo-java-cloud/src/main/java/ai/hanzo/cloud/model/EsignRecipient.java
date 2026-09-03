@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -89,12 +88,12 @@ public class EsignRecipient {
   public static final String SERIALIZED_NAME_SIGNED_AT = "signedAt";
   @SerializedName(SERIALIZED_NAME_SIGNED_AT)
   @javax.annotation.Nullable
-  private Integer signedAt;
+  private Long signedAt;
 
   public static final String SERIALIZED_NAME_SIGNING_ORDER = "signingOrder";
   @SerializedName(SERIALIZED_NAME_SIGNING_ORDER)
   @javax.annotation.Nullable
-  private BigDecimal signingOrder;
+  private Double signingOrder;
 
   public static final String SERIALIZED_NAME_SIGNING_STATUS = "signingStatus";
   @SerializedName(SERIALIZED_NAME_SIGNING_STATUS)
@@ -237,7 +236,7 @@ public class EsignRecipient {
   }
 
 
-  public EsignRecipient signedAt(@javax.annotation.Nullable Integer signedAt) {
+  public EsignRecipient signedAt(@javax.annotation.Nullable Long signedAt) {
     this.signedAt = signedAt;
     return this;
   }
@@ -247,16 +246,16 @@ public class EsignRecipient {
    * @return signedAt
    */
   @javax.annotation.Nullable
-  public Integer getSignedAt() {
+  public Long getSignedAt() {
     return signedAt;
   }
 
-  public void setSignedAt(@javax.annotation.Nullable Integer signedAt) {
+  public void setSignedAt(@javax.annotation.Nullable Long signedAt) {
     this.signedAt = signedAt;
   }
 
 
-  public EsignRecipient signingOrder(@javax.annotation.Nullable BigDecimal signingOrder) {
+  public EsignRecipient signingOrder(@javax.annotation.Nullable Double signingOrder) {
     this.signingOrder = signingOrder;
     return this;
   }
@@ -266,11 +265,11 @@ public class EsignRecipient {
    * @return signingOrder
    */
   @javax.annotation.Nullable
-  public BigDecimal getSigningOrder() {
+  public Double getSigningOrder() {
     return signingOrder;
   }
 
-  public void setSigningOrder(@javax.annotation.Nullable BigDecimal signingOrder) {
+  public void setSigningOrder(@javax.annotation.Nullable Double signingOrder) {
     this.signingOrder = signingOrder;
   }
 

@@ -90,7 +90,7 @@ public class HelpApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getHelpArticlesCall(@javax.annotation.Nullable String category, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getHelpArticlesCall(@javax.annotation.Nullable String category, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -143,7 +143,7 @@ public class HelpApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getHelpArticlesValidateBeforeCall(@javax.annotation.Nullable String category, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getHelpArticlesValidateBeforeCall(@javax.annotation.Nullable String category, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         return getHelpArticlesCall(category, limit, _callback);
 
     }
@@ -162,7 +162,7 @@ public class HelpApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public HelpArticleList getHelpArticles(@javax.annotation.Nullable String category, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public HelpArticleList getHelpArticles(@javax.annotation.Nullable String category, @javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<HelpArticleList> localVarResp = getHelpArticlesWithHttpInfo(category, limit);
         return localVarResp.getData();
     }
@@ -181,7 +181,7 @@ public class HelpApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<HelpArticleList> getHelpArticlesWithHttpInfo(@javax.annotation.Nullable String category, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<HelpArticleList> getHelpArticlesWithHttpInfo(@javax.annotation.Nullable String category, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getHelpArticlesValidateBeforeCall(category, limit, null);
         Type localVarReturnType = new TypeToken<HelpArticleList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -202,7 +202,7 @@ public class HelpApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getHelpArticlesAsync(@javax.annotation.Nullable String category, @javax.annotation.Nullable Integer limit, final ApiCallback<HelpArticleList> _callback) throws ApiException {
+    public okhttp3.Call getHelpArticlesAsync(@javax.annotation.Nullable String category, @javax.annotation.Nullable Long limit, final ApiCallback<HelpArticleList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getHelpArticlesValidateBeforeCall(category, limit, _callback);
         Type localVarReturnType = new TypeToken<HelpArticleList>(){}.getType();

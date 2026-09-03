@@ -53,12 +53,12 @@ public class SeoBacklinkOut {
   public static final String SERIALIZED_NAME_BACKLINKS = "backlinks";
   @SerializedName(SERIALIZED_NAME_BACKLINKS)
   @javax.annotation.Nullable
-  private Integer backlinks;
+  private Long backlinks;
 
   public static final String SERIALIZED_NAME_BROKEN = "broken";
   @SerializedName(SERIALIZED_NAME_BROKEN)
   @javax.annotation.Nullable
-  private Integer broken;
+  private Long broken;
 
   public static final String SERIALIZED_NAME_COST = "cost";
   @SerializedName(SERIALIZED_NAME_COST)
@@ -68,7 +68,7 @@ public class SeoBacklinkOut {
   public static final String SERIALIZED_NAME_DOMAINS = "domains";
   @SerializedName(SERIALIZED_NAME_DOMAINS)
   @javax.annotation.Nullable
-  private Integer domains;
+  private Long domains;
 
   public static final String SERIALIZED_NAME_FIRST_SEEN = "firstSeen";
   @SerializedName(SERIALIZED_NAME_FIRST_SEEN)
@@ -78,17 +78,17 @@ public class SeoBacklinkOut {
   public static final String SERIALIZED_NAME_PAGES = "pages";
   @SerializedName(SERIALIZED_NAME_PAGES)
   @javax.annotation.Nullable
-  private Integer pages;
+  private Long pages;
 
   public static final String SERIALIZED_NAME_RANK = "rank";
   @SerializedName(SERIALIZED_NAME_RANK)
   @javax.annotation.Nullable
-  private Integer rank;
+  private Long rank;
 
   public static final String SERIALIZED_NAME_SPAM = "spam";
   @SerializedName(SERIALIZED_NAME_SPAM)
   @javax.annotation.Nullable
-  private Integer spam;
+  private Long spam;
 
   public static final String SERIALIZED_NAME_TARGET = "target";
   @SerializedName(SERIALIZED_NAME_TARGET)
@@ -98,7 +98,7 @@ public class SeoBacklinkOut {
   public SeoBacklinkOut() {
   }
 
-  public SeoBacklinkOut backlinks(@javax.annotation.Nullable Integer backlinks) {
+  public SeoBacklinkOut backlinks(@javax.annotation.Nullable Long backlinks) {
     this.backlinks = backlinks;
     return this;
   }
@@ -108,16 +108,16 @@ public class SeoBacklinkOut {
    * @return backlinks
    */
   @javax.annotation.Nullable
-  public Integer getBacklinks() {
+  public Long getBacklinks() {
     return backlinks;
   }
 
-  public void setBacklinks(@javax.annotation.Nullable Integer backlinks) {
+  public void setBacklinks(@javax.annotation.Nullable Long backlinks) {
     this.backlinks = backlinks;
   }
 
 
-  public SeoBacklinkOut broken(@javax.annotation.Nullable Integer broken) {
+  public SeoBacklinkOut broken(@javax.annotation.Nullable Long broken) {
     this.broken = broken;
     return this;
   }
@@ -127,11 +127,11 @@ public class SeoBacklinkOut {
    * @return broken
    */
   @javax.annotation.Nullable
-  public Integer getBroken() {
+  public Long getBroken() {
     return broken;
   }
 
-  public void setBroken(@javax.annotation.Nullable Integer broken) {
+  public void setBroken(@javax.annotation.Nullable Long broken) {
     this.broken = broken;
   }
 
@@ -155,7 +155,7 @@ public class SeoBacklinkOut {
   }
 
 
-  public SeoBacklinkOut domains(@javax.annotation.Nullable Integer domains) {
+  public SeoBacklinkOut domains(@javax.annotation.Nullable Long domains) {
     this.domains = domains;
     return this;
   }
@@ -165,11 +165,11 @@ public class SeoBacklinkOut {
    * @return domains
    */
   @javax.annotation.Nullable
-  public Integer getDomains() {
+  public Long getDomains() {
     return domains;
   }
 
-  public void setDomains(@javax.annotation.Nullable Integer domains) {
+  public void setDomains(@javax.annotation.Nullable Long domains) {
     this.domains = domains;
   }
 
@@ -193,7 +193,7 @@ public class SeoBacklinkOut {
   }
 
 
-  public SeoBacklinkOut pages(@javax.annotation.Nullable Integer pages) {
+  public SeoBacklinkOut pages(@javax.annotation.Nullable Long pages) {
     this.pages = pages;
     return this;
   }
@@ -203,16 +203,16 @@ public class SeoBacklinkOut {
    * @return pages
    */
   @javax.annotation.Nullable
-  public Integer getPages() {
+  public Long getPages() {
     return pages;
   }
 
-  public void setPages(@javax.annotation.Nullable Integer pages) {
+  public void setPages(@javax.annotation.Nullable Long pages) {
     this.pages = pages;
   }
 
 
-  public SeoBacklinkOut rank(@javax.annotation.Nullable Integer rank) {
+  public SeoBacklinkOut rank(@javax.annotation.Nullable Long rank) {
     this.rank = rank;
     return this;
   }
@@ -222,16 +222,16 @@ public class SeoBacklinkOut {
    * @return rank
    */
   @javax.annotation.Nullable
-  public Integer getRank() {
+  public Long getRank() {
     return rank;
   }
 
-  public void setRank(@javax.annotation.Nullable Integer rank) {
+  public void setRank(@javax.annotation.Nullable Long rank) {
     this.rank = rank;
   }
 
 
-  public SeoBacklinkOut spam(@javax.annotation.Nullable Integer spam) {
+  public SeoBacklinkOut spam(@javax.annotation.Nullable Long spam) {
     this.spam = spam;
     return this;
   }
@@ -241,11 +241,11 @@ public class SeoBacklinkOut {
    * @return spam
    */
   @javax.annotation.Nullable
-  public Integer getSpam() {
+  public Long getSpam() {
     return spam;
   }
 
-  public void setSpam(@javax.annotation.Nullable Integer spam) {
+  public void setSpam(@javax.annotation.Nullable Long spam) {
     this.spam = spam;
   }
 

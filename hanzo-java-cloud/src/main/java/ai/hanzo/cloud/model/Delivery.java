@@ -67,7 +67,7 @@ public class Delivery {
   public static final String SERIALIZED_NAME_NUM_DELIVERED = "num_delivered";
   @SerializedName(SERIALIZED_NAME_NUM_DELIVERED)
   @javax.annotation.Nullable
-  private Integer numDelivered;
+  private Long numDelivered;
 
   public static final String SERIALIZED_NAME_NUM_PENDING = "num_pending";
   @SerializedName(SERIALIZED_NAME_NUM_PENDING)
@@ -138,7 +138,7 @@ public class Delivery {
   }
 
 
-  public Delivery numDelivered(@javax.annotation.Nullable Integer numDelivered) {
+  public Delivery numDelivered(@javax.annotation.Nullable Long numDelivered) {
     this.numDelivered = numDelivered;
     return this;
   }
@@ -148,11 +148,11 @@ public class Delivery {
    * @return numDelivered
    */
   @javax.annotation.Nullable
-  public Integer getNumDelivered() {
+  public Long getNumDelivered() {
     return numDelivered;
   }
 
-  public void setNumDelivered(@javax.annotation.Nullable Integer numDelivered) {
+  public void setNumDelivered(@javax.annotation.Nullable Long numDelivered) {
     this.numDelivered = numDelivered;
   }
 

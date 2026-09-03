@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -54,7 +53,7 @@ public class ProductRow {
   public static final String SERIALIZED_NAME_ORDERS = "orders";
   @SerializedName(SERIALIZED_NAME_ORDERS)
   @javax.annotation.Nullable
-  private Integer orders;
+  private Long orders;
 
   public static final String SERIALIZED_NAME_PRODUCT_ID = "productId";
   @SerializedName(SERIALIZED_NAME_PRODUCT_ID)
@@ -64,17 +63,17 @@ public class ProductRow {
   public static final String SERIALIZED_NAME_REVENUE = "revenue";
   @SerializedName(SERIALIZED_NAME_REVENUE)
   @javax.annotation.Nullable
-  private BigDecimal revenue;
+  private Double revenue;
 
   public static final String SERIALIZED_NAME_UNITS = "units";
   @SerializedName(SERIALIZED_NAME_UNITS)
   @javax.annotation.Nullable
-  private Integer units;
+  private Long units;
 
   public ProductRow() {
   }
 
-  public ProductRow orders(@javax.annotation.Nullable Integer orders) {
+  public ProductRow orders(@javax.annotation.Nullable Long orders) {
     this.orders = orders;
     return this;
   }
@@ -84,11 +83,11 @@ public class ProductRow {
    * @return orders
    */
   @javax.annotation.Nullable
-  public Integer getOrders() {
+  public Long getOrders() {
     return orders;
   }
 
-  public void setOrders(@javax.annotation.Nullable Integer orders) {
+  public void setOrders(@javax.annotation.Nullable Long orders) {
     this.orders = orders;
   }
 
@@ -112,7 +111,7 @@ public class ProductRow {
   }
 
 
-  public ProductRow revenue(@javax.annotation.Nullable BigDecimal revenue) {
+  public ProductRow revenue(@javax.annotation.Nullable Double revenue) {
     this.revenue = revenue;
     return this;
   }
@@ -122,16 +121,16 @@ public class ProductRow {
    * @return revenue
    */
   @javax.annotation.Nullable
-  public BigDecimal getRevenue() {
+  public Double getRevenue() {
     return revenue;
   }
 
-  public void setRevenue(@javax.annotation.Nullable BigDecimal revenue) {
+  public void setRevenue(@javax.annotation.Nullable Double revenue) {
     this.revenue = revenue;
   }
 
 
-  public ProductRow units(@javax.annotation.Nullable Integer units) {
+  public ProductRow units(@javax.annotation.Nullable Long units) {
     this.units = units;
     return this;
   }
@@ -141,11 +140,11 @@ public class ProductRow {
    * @return units
    */
   @javax.annotation.Nullable
-  public Integer getUnits() {
+  public Long getUnits() {
     return units;
   }
 
-  public void setUnits(@javax.annotation.Nullable Integer units) {
+  public void setUnits(@javax.annotation.Nullable Long units) {
     this.units = units;
   }
 

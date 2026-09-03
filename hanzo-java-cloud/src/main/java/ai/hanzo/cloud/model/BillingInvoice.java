@@ -56,17 +56,17 @@ public class BillingInvoice {
   public static final String SERIALIZED_NAME_AMOUNT_DUE = "amountDue";
   @SerializedName(SERIALIZED_NAME_AMOUNT_DUE)
   @javax.annotation.Nullable
-  private Integer amountDue;
+  private Long amountDue;
 
   public static final String SERIALIZED_NAME_AMOUNT_PAID = "amountPaid";
   @SerializedName(SERIALIZED_NAME_AMOUNT_PAID)
   @javax.annotation.Nullable
-  private Integer amountPaid;
+  private Long amountPaid;
 
   public static final String SERIALIZED_NAME_ATTEMPT_COUNT = "attemptCount";
   @SerializedName(SERIALIZED_NAME_ATTEMPT_COUNT)
   @javax.annotation.Nullable
-  private Integer attemptCount;
+  private Long attemptCount;
 
   public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
@@ -76,7 +76,7 @@ public class BillingInvoice {
   public static final String SERIALIZED_NAME_CREDIT_APPLIED = "creditApplied";
   @SerializedName(SERIALIZED_NAME_CREDIT_APPLIED)
   @javax.annotation.Nullable
-  private Integer creditApplied;
+  private Long creditApplied;
 
   public static final String SERIALIZED_NAME_CURRENCY = "currency";
   @SerializedName(SERIALIZED_NAME_CURRENCY)
@@ -91,7 +91,7 @@ public class BillingInvoice {
   public static final String SERIALIZED_NAME_DISCOUNT = "discount";
   @SerializedName(SERIALIZED_NAME_DISCOUNT)
   @javax.annotation.Nullable
-  private Integer discount;
+  private Long discount;
 
   public static final String SERIALIZED_NAME_DUE_DATE = "dueDate";
   @SerializedName(SERIALIZED_NAME_DUE_DATE)
@@ -111,7 +111,7 @@ public class BillingInvoice {
   public static final String SERIALIZED_NAME_NUMBER = "number";
   @SerializedName(SERIALIZED_NAME_NUMBER)
   @javax.annotation.Nullable
-  private Integer number;
+  private Long number;
 
   public static final String SERIALIZED_NAME_NUMBER_STR = "numberStr";
   @SerializedName(SERIALIZED_NAME_NUMBER_STR)
@@ -156,12 +156,12 @@ public class BillingInvoice {
   public static final String SERIALIZED_NAME_SUBTOTAL = "subtotal";
   @SerializedName(SERIALIZED_NAME_SUBTOTAL)
   @javax.annotation.Nullable
-  private Integer subtotal;
+  private Long subtotal;
 
   public static final String SERIALIZED_NAME_TAX = "tax";
   @SerializedName(SERIALIZED_NAME_TAX)
   @javax.annotation.Nullable
-  private Integer tax;
+  private Long tax;
 
   public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)
@@ -181,7 +181,7 @@ public class BillingInvoice {
   public BillingInvoice() {
   }
 
-  public BillingInvoice amountDue(@javax.annotation.Nullable Integer amountDue) {
+  public BillingInvoice amountDue(@javax.annotation.Nullable Long amountDue) {
     this.amountDue = amountDue;
     return this;
   }
@@ -191,16 +191,16 @@ public class BillingInvoice {
    * @return amountDue
    */
   @javax.annotation.Nullable
-  public Integer getAmountDue() {
+  public Long getAmountDue() {
     return amountDue;
   }
 
-  public void setAmountDue(@javax.annotation.Nullable Integer amountDue) {
+  public void setAmountDue(@javax.annotation.Nullable Long amountDue) {
     this.amountDue = amountDue;
   }
 
 
-  public BillingInvoice amountPaid(@javax.annotation.Nullable Integer amountPaid) {
+  public BillingInvoice amountPaid(@javax.annotation.Nullable Long amountPaid) {
     this.amountPaid = amountPaid;
     return this;
   }
@@ -210,16 +210,16 @@ public class BillingInvoice {
    * @return amountPaid
    */
   @javax.annotation.Nullable
-  public Integer getAmountPaid() {
+  public Long getAmountPaid() {
     return amountPaid;
   }
 
-  public void setAmountPaid(@javax.annotation.Nullable Integer amountPaid) {
+  public void setAmountPaid(@javax.annotation.Nullable Long amountPaid) {
     this.amountPaid = amountPaid;
   }
 
 
-  public BillingInvoice attemptCount(@javax.annotation.Nullable Integer attemptCount) {
+  public BillingInvoice attemptCount(@javax.annotation.Nullable Long attemptCount) {
     this.attemptCount = attemptCount;
     return this;
   }
@@ -229,11 +229,11 @@ public class BillingInvoice {
    * @return attemptCount
    */
   @javax.annotation.Nullable
-  public Integer getAttemptCount() {
+  public Long getAttemptCount() {
     return attemptCount;
   }
 
-  public void setAttemptCount(@javax.annotation.Nullable Integer attemptCount) {
+  public void setAttemptCount(@javax.annotation.Nullable Long attemptCount) {
     this.attemptCount = attemptCount;
   }
 
@@ -257,7 +257,7 @@ public class BillingInvoice {
   }
 
 
-  public BillingInvoice creditApplied(@javax.annotation.Nullable Integer creditApplied) {
+  public BillingInvoice creditApplied(@javax.annotation.Nullable Long creditApplied) {
     this.creditApplied = creditApplied;
     return this;
   }
@@ -267,11 +267,11 @@ public class BillingInvoice {
    * @return creditApplied
    */
   @javax.annotation.Nullable
-  public Integer getCreditApplied() {
+  public Long getCreditApplied() {
     return creditApplied;
   }
 
-  public void setCreditApplied(@javax.annotation.Nullable Integer creditApplied) {
+  public void setCreditApplied(@javax.annotation.Nullable Long creditApplied) {
     this.creditApplied = creditApplied;
   }
 
@@ -314,7 +314,7 @@ public class BillingInvoice {
   }
 
 
-  public BillingInvoice discount(@javax.annotation.Nullable Integer discount) {
+  public BillingInvoice discount(@javax.annotation.Nullable Long discount) {
     this.discount = discount;
     return this;
   }
@@ -324,11 +324,11 @@ public class BillingInvoice {
    * @return discount
    */
   @javax.annotation.Nullable
-  public Integer getDiscount() {
+  public Long getDiscount() {
     return discount;
   }
 
-  public void setDiscount(@javax.annotation.Nullable Integer discount) {
+  public void setDiscount(@javax.annotation.Nullable Long discount) {
     this.discount = discount;
   }
 
@@ -398,7 +398,7 @@ public class BillingInvoice {
   }
 
 
-  public BillingInvoice number(@javax.annotation.Nullable Integer number) {
+  public BillingInvoice number(@javax.annotation.Nullable Long number) {
     this.number = number;
     return this;
   }
@@ -408,11 +408,11 @@ public class BillingInvoice {
    * @return number
    */
   @javax.annotation.Nullable
-  public Integer getNumber() {
+  public Long getNumber() {
     return number;
   }
 
-  public void setNumber(@javax.annotation.Nullable Integer number) {
+  public void setNumber(@javax.annotation.Nullable Long number) {
     this.number = number;
   }
 
@@ -569,7 +569,7 @@ public class BillingInvoice {
   }
 
 
-  public BillingInvoice subtotal(@javax.annotation.Nullable Integer subtotal) {
+  public BillingInvoice subtotal(@javax.annotation.Nullable Long subtotal) {
     this.subtotal = subtotal;
     return this;
   }
@@ -579,16 +579,16 @@ public class BillingInvoice {
    * @return subtotal
    */
   @javax.annotation.Nullable
-  public Integer getSubtotal() {
+  public Long getSubtotal() {
     return subtotal;
   }
 
-  public void setSubtotal(@javax.annotation.Nullable Integer subtotal) {
+  public void setSubtotal(@javax.annotation.Nullable Long subtotal) {
     this.subtotal = subtotal;
   }
 
 
-  public BillingInvoice tax(@javax.annotation.Nullable Integer tax) {
+  public BillingInvoice tax(@javax.annotation.Nullable Long tax) {
     this.tax = tax;
     return this;
   }
@@ -598,11 +598,11 @@ public class BillingInvoice {
    * @return tax
    */
   @javax.annotation.Nullable
-  public Integer getTax() {
+  public Long getTax() {
     return tax;
   }
 
-  public void setTax(@javax.annotation.Nullable Integer tax) {
+  public void setTax(@javax.annotation.Nullable Long tax) {
     this.tax = tax;
   }
 

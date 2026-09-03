@@ -336,7 +336,7 @@ public class AutoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAutoFlowsCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAutoFlowsCall(@javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -385,7 +385,7 @@ public class AutoApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getAutoFlowsValidateBeforeCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getAutoFlowsValidateBeforeCall(@javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         return getAutoFlowsCall(limit, _callback);
 
     }
@@ -403,7 +403,7 @@ public class AutoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public FlowPage getAutoFlows(@javax.annotation.Nullable Integer limit) throws ApiException {
+    public FlowPage getAutoFlows(@javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<FlowPage> localVarResp = getAutoFlowsWithHttpInfo(limit);
         return localVarResp.getData();
     }
@@ -421,7 +421,7 @@ public class AutoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<FlowPage> getAutoFlowsWithHttpInfo(@javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<FlowPage> getAutoFlowsWithHttpInfo(@javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getAutoFlowsValidateBeforeCall(limit, null);
         Type localVarReturnType = new TypeToken<FlowPage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -441,7 +441,7 @@ public class AutoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAutoFlowsAsync(@javax.annotation.Nullable Integer limit, final ApiCallback<FlowPage> _callback) throws ApiException {
+    public okhttp3.Call getAutoFlowsAsync(@javax.annotation.Nullable Long limit, final ApiCallback<FlowPage> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getAutoFlowsValidateBeforeCall(limit, _callback);
         Type localVarReturnType = new TypeToken<FlowPage>(){}.getType();
@@ -589,7 +589,7 @@ public class AutoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAutoFlowsByIdVersionsCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAutoFlowsByIdVersionsCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -639,7 +639,7 @@ public class AutoApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getAutoFlowsByIdVersionsValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getAutoFlowsByIdVersionsValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling getAutoFlowsByIdVersions(Async)");
@@ -663,7 +663,7 @@ public class AutoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public VersionPage getAutoFlowsByIdVersions(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public VersionPage getAutoFlowsByIdVersions(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<VersionPage> localVarResp = getAutoFlowsByIdVersionsWithHttpInfo(id, limit);
         return localVarResp.getData();
     }
@@ -682,7 +682,7 @@ public class AutoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<VersionPage> getAutoFlowsByIdVersionsWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<VersionPage> getAutoFlowsByIdVersionsWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getAutoFlowsByIdVersionsValidateBeforeCall(id, limit, null);
         Type localVarReturnType = new TypeToken<VersionPage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -703,7 +703,7 @@ public class AutoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAutoFlowsByIdVersionsAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Integer limit, final ApiCallback<VersionPage> _callback) throws ApiException {
+    public okhttp3.Call getAutoFlowsByIdVersionsAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long limit, final ApiCallback<VersionPage> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getAutoFlowsByIdVersionsValidateBeforeCall(id, limit, _callback);
         Type localVarReturnType = new TypeToken<VersionPage>(){}.getType();
@@ -724,7 +724,7 @@ public class AutoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAutoRunsCall(@javax.annotation.Nullable String flowId, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAutoRunsCall(@javax.annotation.Nullable String flowId, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -777,7 +777,7 @@ public class AutoApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getAutoRunsValidateBeforeCall(@javax.annotation.Nullable String flowId, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getAutoRunsValidateBeforeCall(@javax.annotation.Nullable String flowId, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         return getAutoRunsCall(flowId, limit, _callback);
 
     }
@@ -796,7 +796,7 @@ public class AutoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public RunPage getAutoRuns(@javax.annotation.Nullable String flowId, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public RunPage getAutoRuns(@javax.annotation.Nullable String flowId, @javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<RunPage> localVarResp = getAutoRunsWithHttpInfo(flowId, limit);
         return localVarResp.getData();
     }
@@ -815,7 +815,7 @@ public class AutoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RunPage> getAutoRunsWithHttpInfo(@javax.annotation.Nullable String flowId, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<RunPage> getAutoRunsWithHttpInfo(@javax.annotation.Nullable String flowId, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getAutoRunsValidateBeforeCall(flowId, limit, null);
         Type localVarReturnType = new TypeToken<RunPage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -836,7 +836,7 @@ public class AutoApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAutoRunsAsync(@javax.annotation.Nullable String flowId, @javax.annotation.Nullable Integer limit, final ApiCallback<RunPage> _callback) throws ApiException {
+    public okhttp3.Call getAutoRunsAsync(@javax.annotation.Nullable String flowId, @javax.annotation.Nullable Long limit, final ApiCallback<RunPage> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getAutoRunsValidateBeforeCall(flowId, limit, _callback);
         Type localVarReturnType = new TypeToken<RunPage>(){}.getType();

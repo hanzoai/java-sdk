@@ -80,7 +80,7 @@ public class RiskDataset {
   public static final String SERIALIZED_NAME_OVERSIZE = "oversize";
   @SerializedName(SERIALIZED_NAME_OVERSIZE)
   @javax.annotation.Nullable
-  private Integer oversize;
+  private Long oversize;
 
   public static final String SERIALIZED_NAME_REFUSAL = "refusal";
   @SerializedName(SERIALIZED_NAME_REFUSAL)
@@ -95,7 +95,7 @@ public class RiskDataset {
   public static final String SERIALIZED_NAME_SHARE = "share";
   @SerializedName(SERIALIZED_NAME_SHARE)
   @javax.annotation.Nullable
-  private Integer share;
+  private Long share;
 
   public static final String SERIALIZED_NAME_SPEC = "spec";
   @SerializedName(SERIALIZED_NAME_SPEC)
@@ -115,7 +115,7 @@ public class RiskDataset {
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
   @javax.annotation.Nullable
-  private Integer version;
+  private Long version;
 
   public RiskDataset() {
   }
@@ -215,7 +215,7 @@ public class RiskDataset {
   }
 
 
-  public RiskDataset oversize(@javax.annotation.Nullable Integer oversize) {
+  public RiskDataset oversize(@javax.annotation.Nullable Long oversize) {
     this.oversize = oversize;
     return this;
   }
@@ -225,11 +225,11 @@ public class RiskDataset {
    * @return oversize
    */
   @javax.annotation.Nullable
-  public Integer getOversize() {
+  public Long getOversize() {
     return oversize;
   }
 
-  public void setOversize(@javax.annotation.Nullable Integer oversize) {
+  public void setOversize(@javax.annotation.Nullable Long oversize) {
     this.oversize = oversize;
   }
 
@@ -272,7 +272,7 @@ public class RiskDataset {
   }
 
 
-  public RiskDataset share(@javax.annotation.Nullable Integer share) {
+  public RiskDataset share(@javax.annotation.Nullable Long share) {
     this.share = share;
     return this;
   }
@@ -282,11 +282,11 @@ public class RiskDataset {
    * @return share
    */
   @javax.annotation.Nullable
-  public Integer getShare() {
+  public Long getShare() {
     return share;
   }
 
-  public void setShare(@javax.annotation.Nullable Integer share) {
+  public void setShare(@javax.annotation.Nullable Long share) {
     this.share = share;
   }
 
@@ -348,7 +348,7 @@ public class RiskDataset {
   }
 
 
-  public RiskDataset version(@javax.annotation.Nullable Integer version) {
+  public RiskDataset version(@javax.annotation.Nullable Long version) {
     this.version = version;
     return this;
   }
@@ -358,11 +358,11 @@ public class RiskDataset {
    * @return version
    */
   @javax.annotation.Nullable
-  public Integer getVersion() {
+  public Long getVersion() {
     return version;
   }
 
-  public void setVersion(@javax.annotation.Nullable Integer version) {
+  public void setVersion(@javax.annotation.Nullable Long version) {
     this.version = version;
   }
 

@@ -58,7 +58,7 @@ public class KmsToken {
   public static final String SERIALIZED_NAME_EXPIRES_IN = "expiresIn";
   @SerializedName(SERIALIZED_NAME_EXPIRES_IN)
   @javax.annotation.Nullable
-  private Integer expiresIn;
+  private Long expiresIn;
 
   public static final String SERIALIZED_NAME_TOKEN_TYPE = "tokenType";
   @SerializedName(SERIALIZED_NAME_TOKEN_TYPE)
@@ -87,7 +87,7 @@ public class KmsToken {
   }
 
 
-  public KmsToken expiresIn(@javax.annotation.Nullable Integer expiresIn) {
+  public KmsToken expiresIn(@javax.annotation.Nullable Long expiresIn) {
     this.expiresIn = expiresIn;
     return this;
   }
@@ -97,11 +97,11 @@ public class KmsToken {
    * @return expiresIn
    */
   @javax.annotation.Nullable
-  public Integer getExpiresIn() {
+  public Long getExpiresIn() {
     return expiresIn;
   }
 
-  public void setExpiresIn(@javax.annotation.Nullable Integer expiresIn) {
+  public void setExpiresIn(@javax.annotation.Nullable Long expiresIn) {
     this.expiresIn = expiresIn;
   }
 

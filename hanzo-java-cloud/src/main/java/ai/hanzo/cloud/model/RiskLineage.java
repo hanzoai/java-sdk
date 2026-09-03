@@ -68,12 +68,12 @@ public class RiskLineage {
   public static final String SERIALIZED_NAME_HOLDS = "holds";
   @SerializedName(SERIALIZED_NAME_HOLDS)
   @javax.annotation.Nullable
-  private Integer holds;
+  private Long holds;
 
   public static final String SERIALIZED_NAME_OVERSIZE = "oversize";
   @SerializedName(SERIALIZED_NAME_OVERSIZE)
   @javax.annotation.Nullable
-  private Integer oversize;
+  private Long oversize;
 
   public static final String SERIALIZED_NAME_REFUSAL = "refusal";
   @SerializedName(SERIALIZED_NAME_REFUSAL)
@@ -93,12 +93,12 @@ public class RiskLineage {
   public static final String SERIALIZED_NAME_ROWS = "rows";
   @SerializedName(SERIALIZED_NAME_ROWS)
   @javax.annotation.Nullable
-  private Integer rows;
+  private Long rows;
 
   public static final String SERIALIZED_NAME_SHARE = "share";
   @SerializedName(SERIALIZED_NAME_SHARE)
   @javax.annotation.Nullable
-  private Integer share;
+  private Long share;
 
   public static final String SERIALIZED_NAME_SOURCE = "source";
   @SerializedName(SERIALIZED_NAME_SOURCE)
@@ -108,7 +108,7 @@ public class RiskLineage {
   public static final String SERIALIZED_NAME_SUBJECTS = "subjects";
   @SerializedName(SERIALIZED_NAME_SUBJECTS)
   @javax.annotation.Nullable
-  private Integer subjects;
+  private Long subjects;
 
   public static final String SERIALIZED_NAME_TO = "to";
   @SerializedName(SERIALIZED_NAME_TO)
@@ -118,7 +118,7 @@ public class RiskLineage {
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
   @javax.annotation.Nullable
-  private Integer version;
+  private Long version;
 
   public RiskLineage() {
   }
@@ -180,7 +180,7 @@ public class RiskLineage {
   }
 
 
-  public RiskLineage holds(@javax.annotation.Nullable Integer holds) {
+  public RiskLineage holds(@javax.annotation.Nullable Long holds) {
     this.holds = holds;
     return this;
   }
@@ -190,16 +190,16 @@ public class RiskLineage {
    * @return holds
    */
   @javax.annotation.Nullable
-  public Integer getHolds() {
+  public Long getHolds() {
     return holds;
   }
 
-  public void setHolds(@javax.annotation.Nullable Integer holds) {
+  public void setHolds(@javax.annotation.Nullable Long holds) {
     this.holds = holds;
   }
 
 
-  public RiskLineage oversize(@javax.annotation.Nullable Integer oversize) {
+  public RiskLineage oversize(@javax.annotation.Nullable Long oversize) {
     this.oversize = oversize;
     return this;
   }
@@ -209,11 +209,11 @@ public class RiskLineage {
    * @return oversize
    */
   @javax.annotation.Nullable
-  public Integer getOversize() {
+  public Long getOversize() {
     return oversize;
   }
 
-  public void setOversize(@javax.annotation.Nullable Integer oversize) {
+  public void setOversize(@javax.annotation.Nullable Long oversize) {
     this.oversize = oversize;
   }
 
@@ -275,7 +275,7 @@ public class RiskLineage {
   }
 
 
-  public RiskLineage rows(@javax.annotation.Nullable Integer rows) {
+  public RiskLineage rows(@javax.annotation.Nullable Long rows) {
     this.rows = rows;
     return this;
   }
@@ -285,16 +285,16 @@ public class RiskLineage {
    * @return rows
    */
   @javax.annotation.Nullable
-  public Integer getRows() {
+  public Long getRows() {
     return rows;
   }
 
-  public void setRows(@javax.annotation.Nullable Integer rows) {
+  public void setRows(@javax.annotation.Nullable Long rows) {
     this.rows = rows;
   }
 
 
-  public RiskLineage share(@javax.annotation.Nullable Integer share) {
+  public RiskLineage share(@javax.annotation.Nullable Long share) {
     this.share = share;
     return this;
   }
@@ -304,11 +304,11 @@ public class RiskLineage {
    * @return share
    */
   @javax.annotation.Nullable
-  public Integer getShare() {
+  public Long getShare() {
     return share;
   }
 
-  public void setShare(@javax.annotation.Nullable Integer share) {
+  public void setShare(@javax.annotation.Nullable Long share) {
     this.share = share;
   }
 
@@ -332,7 +332,7 @@ public class RiskLineage {
   }
 
 
-  public RiskLineage subjects(@javax.annotation.Nullable Integer subjects) {
+  public RiskLineage subjects(@javax.annotation.Nullable Long subjects) {
     this.subjects = subjects;
     return this;
   }
@@ -342,11 +342,11 @@ public class RiskLineage {
    * @return subjects
    */
   @javax.annotation.Nullable
-  public Integer getSubjects() {
+  public Long getSubjects() {
     return subjects;
   }
 
-  public void setSubjects(@javax.annotation.Nullable Integer subjects) {
+  public void setSubjects(@javax.annotation.Nullable Long subjects) {
     this.subjects = subjects;
   }
 
@@ -370,7 +370,7 @@ public class RiskLineage {
   }
 
 
-  public RiskLineage version(@javax.annotation.Nullable Integer version) {
+  public RiskLineage version(@javax.annotation.Nullable Long version) {
     this.version = version;
     return this;
   }
@@ -380,11 +380,11 @@ public class RiskLineage {
    * @return version
    */
   @javax.annotation.Nullable
-  public Integer getVersion() {
+  public Long getVersion() {
     return version;
   }
 
-  public void setVersion(@javax.annotation.Nullable Integer version) {
+  public void setVersion(@javax.annotation.Nullable Long version) {
     this.version = version;
   }
 

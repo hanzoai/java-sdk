@@ -53,17 +53,17 @@ public class O11yO11yFunnelWindowIn {
   public static final String SERIALIZED_NAME_END_TIME = "end_time";
   @SerializedName(SERIALIZED_NAME_END_TIME)
   @javax.annotation.Nullable
-  private Integer endTime;
+  private Long endTime;
 
   public static final String SERIALIZED_NAME_START_TIME = "start_time";
   @SerializedName(SERIALIZED_NAME_START_TIME)
   @javax.annotation.Nullable
-  private Integer startTime;
+  private Long startTime;
 
   public O11yO11yFunnelWindowIn() {
   }
 
-  public O11yO11yFunnelWindowIn endTime(@javax.annotation.Nullable Integer endTime) {
+  public O11yO11yFunnelWindowIn endTime(@javax.annotation.Nullable Long endTime) {
     this.endTime = endTime;
     return this;
   }
@@ -73,16 +73,16 @@ public class O11yO11yFunnelWindowIn {
    * @return endTime
    */
   @javax.annotation.Nullable
-  public Integer getEndTime() {
+  public Long getEndTime() {
     return endTime;
   }
 
-  public void setEndTime(@javax.annotation.Nullable Integer endTime) {
+  public void setEndTime(@javax.annotation.Nullable Long endTime) {
     this.endTime = endTime;
   }
 
 
-  public O11yO11yFunnelWindowIn startTime(@javax.annotation.Nullable Integer startTime) {
+  public O11yO11yFunnelWindowIn startTime(@javax.annotation.Nullable Long startTime) {
     this.startTime = startTime;
     return this;
   }
@@ -92,11 +92,11 @@ public class O11yO11yFunnelWindowIn {
    * @return startTime
    */
   @javax.annotation.Nullable
-  public Integer getStartTime() {
+  public Long getStartTime() {
     return startTime;
   }
 
-  public void setStartTime(@javax.annotation.Nullable Integer startTime) {
+  public void setStartTime(@javax.annotation.Nullable Long startTime) {
     this.startTime = startTime;
   }
 

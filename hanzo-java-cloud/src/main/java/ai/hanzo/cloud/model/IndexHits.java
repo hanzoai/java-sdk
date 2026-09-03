@@ -55,7 +55,7 @@ public class IndexHits {
   public static final String SERIALIZED_NAME_ESTIMATED_TOTAL_HITS = "estimatedTotalHits";
   @SerializedName(SERIALIZED_NAME_ESTIMATED_TOTAL_HITS)
   @javax.annotation.Nullable
-  private Integer estimatedTotalHits;
+  private Long estimatedTotalHits;
 
   public static final String SERIALIZED_NAME_HITS = "hits";
   @SerializedName(SERIALIZED_NAME_HITS)
@@ -65,17 +65,17 @@ public class IndexHits {
   public static final String SERIALIZED_NAME_LIMIT = "limit";
   @SerializedName(SERIALIZED_NAME_LIMIT)
   @javax.annotation.Nullable
-  private Integer limit;
+  private Long limit;
 
   public static final String SERIALIZED_NAME_OFFSET = "offset";
   @SerializedName(SERIALIZED_NAME_OFFSET)
   @javax.annotation.Nullable
-  private Integer offset;
+  private Long offset;
 
   public static final String SERIALIZED_NAME_PROCESSING_TIME_MS = "processingTimeMs";
   @SerializedName(SERIALIZED_NAME_PROCESSING_TIME_MS)
   @javax.annotation.Nullable
-  private Integer processingTimeMs;
+  private Long processingTimeMs;
 
   public static final String SERIALIZED_NAME_QUERY = "query";
   @SerializedName(SERIALIZED_NAME_QUERY)
@@ -85,7 +85,7 @@ public class IndexHits {
   public IndexHits() {
   }
 
-  public IndexHits estimatedTotalHits(@javax.annotation.Nullable Integer estimatedTotalHits) {
+  public IndexHits estimatedTotalHits(@javax.annotation.Nullable Long estimatedTotalHits) {
     this.estimatedTotalHits = estimatedTotalHits;
     return this;
   }
@@ -95,11 +95,11 @@ public class IndexHits {
    * @return estimatedTotalHits
    */
   @javax.annotation.Nullable
-  public Integer getEstimatedTotalHits() {
+  public Long getEstimatedTotalHits() {
     return estimatedTotalHits;
   }
 
-  public void setEstimatedTotalHits(@javax.annotation.Nullable Integer estimatedTotalHits) {
+  public void setEstimatedTotalHits(@javax.annotation.Nullable Long estimatedTotalHits) {
     this.estimatedTotalHits = estimatedTotalHits;
   }
 
@@ -131,7 +131,7 @@ public class IndexHits {
   }
 
 
-  public IndexHits limit(@javax.annotation.Nullable Integer limit) {
+  public IndexHits limit(@javax.annotation.Nullable Long limit) {
     this.limit = limit;
     return this;
   }
@@ -141,16 +141,16 @@ public class IndexHits {
    * @return limit
    */
   @javax.annotation.Nullable
-  public Integer getLimit() {
+  public Long getLimit() {
     return limit;
   }
 
-  public void setLimit(@javax.annotation.Nullable Integer limit) {
+  public void setLimit(@javax.annotation.Nullable Long limit) {
     this.limit = limit;
   }
 
 
-  public IndexHits offset(@javax.annotation.Nullable Integer offset) {
+  public IndexHits offset(@javax.annotation.Nullable Long offset) {
     this.offset = offset;
     return this;
   }
@@ -160,16 +160,16 @@ public class IndexHits {
    * @return offset
    */
   @javax.annotation.Nullable
-  public Integer getOffset() {
+  public Long getOffset() {
     return offset;
   }
 
-  public void setOffset(@javax.annotation.Nullable Integer offset) {
+  public void setOffset(@javax.annotation.Nullable Long offset) {
     this.offset = offset;
   }
 
 
-  public IndexHits processingTimeMs(@javax.annotation.Nullable Integer processingTimeMs) {
+  public IndexHits processingTimeMs(@javax.annotation.Nullable Long processingTimeMs) {
     this.processingTimeMs = processingTimeMs;
     return this;
   }
@@ -179,11 +179,11 @@ public class IndexHits {
    * @return processingTimeMs
    */
   @javax.annotation.Nullable
-  public Integer getProcessingTimeMs() {
+  public Long getProcessingTimeMs() {
     return processingTimeMs;
   }
 
-  public void setProcessingTimeMs(@javax.annotation.Nullable Integer processingTimeMs) {
+  public void setProcessingTimeMs(@javax.annotation.Nullable Long processingTimeMs) {
     this.processingTimeMs = processingTimeMs;
   }
 

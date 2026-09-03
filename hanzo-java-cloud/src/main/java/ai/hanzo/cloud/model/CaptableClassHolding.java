@@ -53,7 +53,7 @@ public class CaptableClassHolding {
   public static final String SERIALIZED_NAME_AUTHORIZED = "authorized";
   @SerializedName(SERIALIZED_NAME_AUTHORIZED)
   @javax.annotation.Nullable
-  private Integer authorized;
+  private Long authorized;
 
   public static final String SERIALIZED_NAME_CLASS_TYPE = "classType";
   @SerializedName(SERIALIZED_NAME_CLASS_TYPE)
@@ -63,7 +63,7 @@ public class CaptableClassHolding {
   public static final String SERIALIZED_NAME_ISSUED = "issued";
   @SerializedName(SERIALIZED_NAME_ISSUED)
   @javax.annotation.Nullable
-  private Integer issued;
+  private Long issued;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -78,7 +78,7 @@ public class CaptableClassHolding {
   public CaptableClassHolding() {
   }
 
-  public CaptableClassHolding authorized(@javax.annotation.Nullable Integer authorized) {
+  public CaptableClassHolding authorized(@javax.annotation.Nullable Long authorized) {
     this.authorized = authorized;
     return this;
   }
@@ -88,11 +88,11 @@ public class CaptableClassHolding {
    * @return authorized
    */
   @javax.annotation.Nullable
-  public Integer getAuthorized() {
+  public Long getAuthorized() {
     return authorized;
   }
 
-  public void setAuthorized(@javax.annotation.Nullable Integer authorized) {
+  public void setAuthorized(@javax.annotation.Nullable Long authorized) {
     this.authorized = authorized;
   }
 
@@ -116,7 +116,7 @@ public class CaptableClassHolding {
   }
 
 
-  public CaptableClassHolding issued(@javax.annotation.Nullable Integer issued) {
+  public CaptableClassHolding issued(@javax.annotation.Nullable Long issued) {
     this.issued = issued;
     return this;
   }
@@ -126,11 +126,11 @@ public class CaptableClassHolding {
    * @return issued
    */
   @javax.annotation.Nullable
-  public Integer getIssued() {
+  public Long getIssued() {
     return issued;
   }
 
-  public void setIssued(@javax.annotation.Nullable Integer issued) {
+  public void setIssued(@javax.annotation.Nullable Long issued) {
     this.issued = issued;
   }
 

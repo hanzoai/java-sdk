@@ -55,7 +55,7 @@ public class ProjectsComplete {
   public static final String SERIALIZED_NAME_BYTES = "bytes";
   @SerializedName(SERIALIZED_NAME_BYTES)
   @javax.annotation.Nullable
-  private Integer bytes;
+  private Long bytes;
 
   public static final String SERIALIZED_NAME_COMMIT = "commit";
   @SerializedName(SERIALIZED_NAME_COMMIT)
@@ -65,7 +65,7 @@ public class ProjectsComplete {
   public static final String SERIALIZED_NAME_FILES = "files";
   @SerializedName(SERIALIZED_NAME_FILES)
   @javax.annotation.Nullable
-  private Integer files;
+  private Long files;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -100,7 +100,7 @@ public class ProjectsComplete {
   public ProjectsComplete() {
   }
 
-  public ProjectsComplete bytes(@javax.annotation.Nullable Integer bytes) {
+  public ProjectsComplete bytes(@javax.annotation.Nullable Long bytes) {
     this.bytes = bytes;
     return this;
   }
@@ -110,11 +110,11 @@ public class ProjectsComplete {
    * @return bytes
    */
   @javax.annotation.Nullable
-  public Integer getBytes() {
+  public Long getBytes() {
     return bytes;
   }
 
-  public void setBytes(@javax.annotation.Nullable Integer bytes) {
+  public void setBytes(@javax.annotation.Nullable Long bytes) {
     this.bytes = bytes;
   }
 
@@ -138,7 +138,7 @@ public class ProjectsComplete {
   }
 
 
-  public ProjectsComplete files(@javax.annotation.Nullable Integer files) {
+  public ProjectsComplete files(@javax.annotation.Nullable Long files) {
     this.files = files;
     return this;
   }
@@ -148,11 +148,11 @@ public class ProjectsComplete {
    * @return files
    */
   @javax.annotation.Nullable
-  public Integer getFiles() {
+  public Long getFiles() {
     return files;
   }
 
-  public void setFiles(@javax.annotation.Nullable Integer files) {
+  public void setFiles(@javax.annotation.Nullable Long files) {
     this.files = files;
   }
 

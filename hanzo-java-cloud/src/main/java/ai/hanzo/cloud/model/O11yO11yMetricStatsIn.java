@@ -55,7 +55,7 @@ public class O11yO11yMetricStatsIn {
   public static final String SERIALIZED_NAME_END = "end";
   @SerializedName(SERIALIZED_NAME_END)
   @javax.annotation.Nonnull
-  private Integer end;
+  private Long end;
 
   public static final String SERIALIZED_NAME_FILTER = "filter";
   @SerializedName(SERIALIZED_NAME_FILTER)
@@ -65,12 +65,12 @@ public class O11yO11yMetricStatsIn {
   public static final String SERIALIZED_NAME_LIMIT = "limit";
   @SerializedName(SERIALIZED_NAME_LIMIT)
   @javax.annotation.Nonnull
-  private Integer limit;
+  private Long limit;
 
   public static final String SERIALIZED_NAME_OFFSET = "offset";
   @SerializedName(SERIALIZED_NAME_OFFSET)
   @javax.annotation.Nullable
-  private Integer offset;
+  private Long offset;
 
   public static final String SERIALIZED_NAME_ORDER_BY = "orderBy";
   @SerializedName(SERIALIZED_NAME_ORDER_BY)
@@ -80,12 +80,12 @@ public class O11yO11yMetricStatsIn {
   public static final String SERIALIZED_NAME_START = "start";
   @SerializedName(SERIALIZED_NAME_START)
   @javax.annotation.Nonnull
-  private Integer start;
+  private Long start;
 
   public O11yO11yMetricStatsIn() {
   }
 
-  public O11yO11yMetricStatsIn end(@javax.annotation.Nonnull Integer end) {
+  public O11yO11yMetricStatsIn end(@javax.annotation.Nonnull Long end) {
     this.end = end;
     return this;
   }
@@ -95,11 +95,11 @@ public class O11yO11yMetricStatsIn {
    * @return end
    */
   @javax.annotation.Nonnull
-  public Integer getEnd() {
+  public Long getEnd() {
     return end;
   }
 
-  public void setEnd(@javax.annotation.Nonnull Integer end) {
+  public void setEnd(@javax.annotation.Nonnull Long end) {
     this.end = end;
   }
 
@@ -123,7 +123,7 @@ public class O11yO11yMetricStatsIn {
   }
 
 
-  public O11yO11yMetricStatsIn limit(@javax.annotation.Nonnull Integer limit) {
+  public O11yO11yMetricStatsIn limit(@javax.annotation.Nonnull Long limit) {
     this.limit = limit;
     return this;
   }
@@ -133,16 +133,16 @@ public class O11yO11yMetricStatsIn {
    * @return limit
    */
   @javax.annotation.Nonnull
-  public Integer getLimit() {
+  public Long getLimit() {
     return limit;
   }
 
-  public void setLimit(@javax.annotation.Nonnull Integer limit) {
+  public void setLimit(@javax.annotation.Nonnull Long limit) {
     this.limit = limit;
   }
 
 
-  public O11yO11yMetricStatsIn offset(@javax.annotation.Nullable Integer offset) {
+  public O11yO11yMetricStatsIn offset(@javax.annotation.Nullable Long offset) {
     this.offset = offset;
     return this;
   }
@@ -152,11 +152,11 @@ public class O11yO11yMetricStatsIn {
    * @return offset
    */
   @javax.annotation.Nullable
-  public Integer getOffset() {
+  public Long getOffset() {
     return offset;
   }
 
-  public void setOffset(@javax.annotation.Nullable Integer offset) {
+  public void setOffset(@javax.annotation.Nullable Long offset) {
     this.offset = offset;
   }
 
@@ -180,7 +180,7 @@ public class O11yO11yMetricStatsIn {
   }
 
 
-  public O11yO11yMetricStatsIn start(@javax.annotation.Nonnull Integer start) {
+  public O11yO11yMetricStatsIn start(@javax.annotation.Nonnull Long start) {
     this.start = start;
     return this;
   }
@@ -190,11 +190,11 @@ public class O11yO11yMetricStatsIn {
    * @return start
    */
   @javax.annotation.Nonnull
-  public Integer getStart() {
+  public Long getStart() {
     return start;
   }
 
-  public void setStart(@javax.annotation.Nonnull Integer start) {
+  public void setStart(@javax.annotation.Nonnull Long start) {
     this.start = start;
   }
 

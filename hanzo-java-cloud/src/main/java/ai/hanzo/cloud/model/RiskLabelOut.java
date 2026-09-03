@@ -56,7 +56,7 @@ public class RiskLabelOut {
   public static final String SERIALIZED_NAME_DUPLICATE = "duplicate";
   @SerializedName(SERIALIZED_NAME_DUPLICATE)
   @javax.annotation.Nullable
-  private Integer duplicate;
+  private Long duplicate;
 
   public static final String SERIALIZED_NAME_MIRROR = "mirror";
   @SerializedName(SERIALIZED_NAME_MIRROR)
@@ -66,17 +66,17 @@ public class RiskLabelOut {
   public static final String SERIALIZED_NAME_PENDING = "pending";
   @SerializedName(SERIALIZED_NAME_PENDING)
   @javax.annotation.Nullable
-  private Integer pending;
+  private Long pending;
 
   public static final String SERIALIZED_NAME_RECORDED = "recorded";
   @SerializedName(SERIALIZED_NAME_RECORDED)
   @javax.annotation.Nullable
-  private Integer recorded;
+  private Long recorded;
 
   public static final String SERIALIZED_NAME_REFUSED = "refused";
   @SerializedName(SERIALIZED_NAME_REFUSED)
   @javax.annotation.Nullable
-  private Integer refused;
+  private Long refused;
 
   public static final String SERIALIZED_NAME_RESULTS = "results";
   @SerializedName(SERIALIZED_NAME_RESULTS)
@@ -86,7 +86,7 @@ public class RiskLabelOut {
   public RiskLabelOut() {
   }
 
-  public RiskLabelOut duplicate(@javax.annotation.Nullable Integer duplicate) {
+  public RiskLabelOut duplicate(@javax.annotation.Nullable Long duplicate) {
     this.duplicate = duplicate;
     return this;
   }
@@ -96,11 +96,11 @@ public class RiskLabelOut {
    * @return duplicate
    */
   @javax.annotation.Nullable
-  public Integer getDuplicate() {
+  public Long getDuplicate() {
     return duplicate;
   }
 
-  public void setDuplicate(@javax.annotation.Nullable Integer duplicate) {
+  public void setDuplicate(@javax.annotation.Nullable Long duplicate) {
     this.duplicate = duplicate;
   }
 
@@ -124,7 +124,7 @@ public class RiskLabelOut {
   }
 
 
-  public RiskLabelOut pending(@javax.annotation.Nullable Integer pending) {
+  public RiskLabelOut pending(@javax.annotation.Nullable Long pending) {
     this.pending = pending;
     return this;
   }
@@ -134,16 +134,16 @@ public class RiskLabelOut {
    * @return pending
    */
   @javax.annotation.Nullable
-  public Integer getPending() {
+  public Long getPending() {
     return pending;
   }
 
-  public void setPending(@javax.annotation.Nullable Integer pending) {
+  public void setPending(@javax.annotation.Nullable Long pending) {
     this.pending = pending;
   }
 
 
-  public RiskLabelOut recorded(@javax.annotation.Nullable Integer recorded) {
+  public RiskLabelOut recorded(@javax.annotation.Nullable Long recorded) {
     this.recorded = recorded;
     return this;
   }
@@ -153,16 +153,16 @@ public class RiskLabelOut {
    * @return recorded
    */
   @javax.annotation.Nullable
-  public Integer getRecorded() {
+  public Long getRecorded() {
     return recorded;
   }
 
-  public void setRecorded(@javax.annotation.Nullable Integer recorded) {
+  public void setRecorded(@javax.annotation.Nullable Long recorded) {
     this.recorded = recorded;
   }
 
 
-  public RiskLabelOut refused(@javax.annotation.Nullable Integer refused) {
+  public RiskLabelOut refused(@javax.annotation.Nullable Long refused) {
     this.refused = refused;
     return this;
   }
@@ -172,11 +172,11 @@ public class RiskLabelOut {
    * @return refused
    */
   @javax.annotation.Nullable
-  public Integer getRefused() {
+  public Long getRefused() {
     return refused;
   }
 
-  public void setRefused(@javax.annotation.Nullable Integer refused) {
+  public void setRefused(@javax.annotation.Nullable Long refused) {
     this.refused = refused;
   }
 

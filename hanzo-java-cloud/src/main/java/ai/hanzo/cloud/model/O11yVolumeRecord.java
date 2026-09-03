@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -66,32 +65,32 @@ public class O11yVolumeRecord {
   public static final String SERIALIZED_NAME_VOLUME_AVAILABLE = "volumeAvailable";
   @SerializedName(SERIALIZED_NAME_VOLUME_AVAILABLE)
   @javax.annotation.Nullable
-  private BigDecimal volumeAvailable;
+  private Double volumeAvailable;
 
   public static final String SERIALIZED_NAME_VOLUME_CAPACITY = "volumeCapacity";
   @SerializedName(SERIALIZED_NAME_VOLUME_CAPACITY)
   @javax.annotation.Nullable
-  private BigDecimal volumeCapacity;
+  private Double volumeCapacity;
 
   public static final String SERIALIZED_NAME_VOLUME_INODES = "volumeInodes";
   @SerializedName(SERIALIZED_NAME_VOLUME_INODES)
   @javax.annotation.Nullable
-  private BigDecimal volumeInodes;
+  private Double volumeInodes;
 
   public static final String SERIALIZED_NAME_VOLUME_INODES_FREE = "volumeInodesFree";
   @SerializedName(SERIALIZED_NAME_VOLUME_INODES_FREE)
   @javax.annotation.Nullable
-  private BigDecimal volumeInodesFree;
+  private Double volumeInodesFree;
 
   public static final String SERIALIZED_NAME_VOLUME_INODES_USED = "volumeInodesUsed";
   @SerializedName(SERIALIZED_NAME_VOLUME_INODES_USED)
   @javax.annotation.Nullable
-  private BigDecimal volumeInodesUsed;
+  private Double volumeInodesUsed;
 
   public static final String SERIALIZED_NAME_VOLUME_USAGE = "volumeUsage";
   @SerializedName(SERIALIZED_NAME_VOLUME_USAGE)
   @javax.annotation.Nullable
-  private BigDecimal volumeUsage;
+  private Double volumeUsage;
 
   public O11yVolumeRecord() {
   }
@@ -142,7 +141,7 @@ public class O11yVolumeRecord {
   }
 
 
-  public O11yVolumeRecord volumeAvailable(@javax.annotation.Nullable BigDecimal volumeAvailable) {
+  public O11yVolumeRecord volumeAvailable(@javax.annotation.Nullable Double volumeAvailable) {
     this.volumeAvailable = volumeAvailable;
     return this;
   }
@@ -152,16 +151,16 @@ public class O11yVolumeRecord {
    * @return volumeAvailable
    */
   @javax.annotation.Nullable
-  public BigDecimal getVolumeAvailable() {
+  public Double getVolumeAvailable() {
     return volumeAvailable;
   }
 
-  public void setVolumeAvailable(@javax.annotation.Nullable BigDecimal volumeAvailable) {
+  public void setVolumeAvailable(@javax.annotation.Nullable Double volumeAvailable) {
     this.volumeAvailable = volumeAvailable;
   }
 
 
-  public O11yVolumeRecord volumeCapacity(@javax.annotation.Nullable BigDecimal volumeCapacity) {
+  public O11yVolumeRecord volumeCapacity(@javax.annotation.Nullable Double volumeCapacity) {
     this.volumeCapacity = volumeCapacity;
     return this;
   }
@@ -171,16 +170,16 @@ public class O11yVolumeRecord {
    * @return volumeCapacity
    */
   @javax.annotation.Nullable
-  public BigDecimal getVolumeCapacity() {
+  public Double getVolumeCapacity() {
     return volumeCapacity;
   }
 
-  public void setVolumeCapacity(@javax.annotation.Nullable BigDecimal volumeCapacity) {
+  public void setVolumeCapacity(@javax.annotation.Nullable Double volumeCapacity) {
     this.volumeCapacity = volumeCapacity;
   }
 
 
-  public O11yVolumeRecord volumeInodes(@javax.annotation.Nullable BigDecimal volumeInodes) {
+  public O11yVolumeRecord volumeInodes(@javax.annotation.Nullable Double volumeInodes) {
     this.volumeInodes = volumeInodes;
     return this;
   }
@@ -190,16 +189,16 @@ public class O11yVolumeRecord {
    * @return volumeInodes
    */
   @javax.annotation.Nullable
-  public BigDecimal getVolumeInodes() {
+  public Double getVolumeInodes() {
     return volumeInodes;
   }
 
-  public void setVolumeInodes(@javax.annotation.Nullable BigDecimal volumeInodes) {
+  public void setVolumeInodes(@javax.annotation.Nullable Double volumeInodes) {
     this.volumeInodes = volumeInodes;
   }
 
 
-  public O11yVolumeRecord volumeInodesFree(@javax.annotation.Nullable BigDecimal volumeInodesFree) {
+  public O11yVolumeRecord volumeInodesFree(@javax.annotation.Nullable Double volumeInodesFree) {
     this.volumeInodesFree = volumeInodesFree;
     return this;
   }
@@ -209,16 +208,16 @@ public class O11yVolumeRecord {
    * @return volumeInodesFree
    */
   @javax.annotation.Nullable
-  public BigDecimal getVolumeInodesFree() {
+  public Double getVolumeInodesFree() {
     return volumeInodesFree;
   }
 
-  public void setVolumeInodesFree(@javax.annotation.Nullable BigDecimal volumeInodesFree) {
+  public void setVolumeInodesFree(@javax.annotation.Nullable Double volumeInodesFree) {
     this.volumeInodesFree = volumeInodesFree;
   }
 
 
-  public O11yVolumeRecord volumeInodesUsed(@javax.annotation.Nullable BigDecimal volumeInodesUsed) {
+  public O11yVolumeRecord volumeInodesUsed(@javax.annotation.Nullable Double volumeInodesUsed) {
     this.volumeInodesUsed = volumeInodesUsed;
     return this;
   }
@@ -228,16 +227,16 @@ public class O11yVolumeRecord {
    * @return volumeInodesUsed
    */
   @javax.annotation.Nullable
-  public BigDecimal getVolumeInodesUsed() {
+  public Double getVolumeInodesUsed() {
     return volumeInodesUsed;
   }
 
-  public void setVolumeInodesUsed(@javax.annotation.Nullable BigDecimal volumeInodesUsed) {
+  public void setVolumeInodesUsed(@javax.annotation.Nullable Double volumeInodesUsed) {
     this.volumeInodesUsed = volumeInodesUsed;
   }
 
 
-  public O11yVolumeRecord volumeUsage(@javax.annotation.Nullable BigDecimal volumeUsage) {
+  public O11yVolumeRecord volumeUsage(@javax.annotation.Nullable Double volumeUsage) {
     this.volumeUsage = volumeUsage;
     return this;
   }
@@ -247,11 +246,11 @@ public class O11yVolumeRecord {
    * @return volumeUsage
    */
   @javax.annotation.Nullable
-  public BigDecimal getVolumeUsage() {
+  public Double getVolumeUsage() {
     return volumeUsage;
   }
 
-  public void setVolumeUsage(@javax.annotation.Nullable BigDecimal volumeUsage) {
+  public void setVolumeUsage(@javax.annotation.Nullable Double volumeUsage) {
     this.volumeUsage = volumeUsage;
   }
 

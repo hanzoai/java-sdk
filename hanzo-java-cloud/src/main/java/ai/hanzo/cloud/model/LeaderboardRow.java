@@ -53,7 +53,7 @@ public class LeaderboardRow {
   public static final String SERIALIZED_NAME_ACCRUED_CENTS = "accruedCents";
   @SerializedName(SERIALIZED_NAME_ACCRUED_CENTS)
   @javax.annotation.Nullable
-  private Integer accruedCents;
+  private Long accruedCents;
 
   public static final String SERIALIZED_NAME_HANDLE = "handle";
   @SerializedName(SERIALIZED_NAME_HANDLE)
@@ -68,17 +68,17 @@ public class LeaderboardRow {
   public static final String SERIALIZED_NAME_RANK = "rank";
   @SerializedName(SERIALIZED_NAME_RANK)
   @javax.annotation.Nullable
-  private Integer rank;
+  private Long rank;
 
   public static final String SERIALIZED_NAME_REFERRED_COUNT = "referredCount";
   @SerializedName(SERIALIZED_NAME_REFERRED_COUNT)
   @javax.annotation.Nullable
-  private Integer referredCount;
+  private Long referredCount;
 
   public LeaderboardRow() {
   }
 
-  public LeaderboardRow accruedCents(@javax.annotation.Nullable Integer accruedCents) {
+  public LeaderboardRow accruedCents(@javax.annotation.Nullable Long accruedCents) {
     this.accruedCents = accruedCents;
     return this;
   }
@@ -88,11 +88,11 @@ public class LeaderboardRow {
    * @return accruedCents
    */
   @javax.annotation.Nullable
-  public Integer getAccruedCents() {
+  public Long getAccruedCents() {
     return accruedCents;
   }
 
-  public void setAccruedCents(@javax.annotation.Nullable Integer accruedCents) {
+  public void setAccruedCents(@javax.annotation.Nullable Long accruedCents) {
     this.accruedCents = accruedCents;
   }
 
@@ -135,7 +135,7 @@ public class LeaderboardRow {
   }
 
 
-  public LeaderboardRow rank(@javax.annotation.Nullable Integer rank) {
+  public LeaderboardRow rank(@javax.annotation.Nullable Long rank) {
     this.rank = rank;
     return this;
   }
@@ -145,16 +145,16 @@ public class LeaderboardRow {
    * @return rank
    */
   @javax.annotation.Nullable
-  public Integer getRank() {
+  public Long getRank() {
     return rank;
   }
 
-  public void setRank(@javax.annotation.Nullable Integer rank) {
+  public void setRank(@javax.annotation.Nullable Long rank) {
     this.rank = rank;
   }
 
 
-  public LeaderboardRow referredCount(@javax.annotation.Nullable Integer referredCount) {
+  public LeaderboardRow referredCount(@javax.annotation.Nullable Long referredCount) {
     this.referredCount = referredCount;
     return this;
   }
@@ -164,11 +164,11 @@ public class LeaderboardRow {
    * @return referredCount
    */
   @javax.annotation.Nullable
-  public Integer getReferredCount() {
+  public Long getReferredCount() {
     return referredCount;
   }
 
-  public void setReferredCount(@javax.annotation.Nullable Integer referredCount) {
+  public void setReferredCount(@javax.annotation.Nullable Long referredCount) {
     this.referredCount = referredCount;
   }
 

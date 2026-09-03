@@ -56,7 +56,7 @@ public class O11yAnnQueueDetailView {
   public static final String SERIALIZED_NAME_COMPLETED_COUNT = "completedCount";
   @SerializedName(SERIALIZED_NAME_COMPLETED_COUNT)
   @javax.annotation.Nullable
-  private Integer completedCount;
+  private Long completedCount;
 
   public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
@@ -86,7 +86,7 @@ public class O11yAnnQueueDetailView {
   public static final String SERIALIZED_NAME_PENDING_COUNT = "pendingCount";
   @SerializedName(SERIALIZED_NAME_PENDING_COUNT)
   @javax.annotation.Nullable
-  private Integer pendingCount;
+  private Long pendingCount;
 
   public static final String SERIALIZED_NAME_SCORE_CONFIG_IDS = "scoreConfigIds";
   @SerializedName(SERIALIZED_NAME_SCORE_CONFIG_IDS)
@@ -101,7 +101,7 @@ public class O11yAnnQueueDetailView {
   public O11yAnnQueueDetailView() {
   }
 
-  public O11yAnnQueueDetailView completedCount(@javax.annotation.Nullable Integer completedCount) {
+  public O11yAnnQueueDetailView completedCount(@javax.annotation.Nullable Long completedCount) {
     this.completedCount = completedCount;
     return this;
   }
@@ -111,11 +111,11 @@ public class O11yAnnQueueDetailView {
    * @return completedCount
    */
   @javax.annotation.Nullable
-  public Integer getCompletedCount() {
+  public Long getCompletedCount() {
     return completedCount;
   }
 
-  public void setCompletedCount(@javax.annotation.Nullable Integer completedCount) {
+  public void setCompletedCount(@javax.annotation.Nullable Long completedCount) {
     this.completedCount = completedCount;
   }
 
@@ -223,7 +223,7 @@ public class O11yAnnQueueDetailView {
   }
 
 
-  public O11yAnnQueueDetailView pendingCount(@javax.annotation.Nullable Integer pendingCount) {
+  public O11yAnnQueueDetailView pendingCount(@javax.annotation.Nullable Long pendingCount) {
     this.pendingCount = pendingCount;
     return this;
   }
@@ -233,11 +233,11 @@ public class O11yAnnQueueDetailView {
    * @return pendingCount
    */
   @javax.annotation.Nullable
-  public Integer getPendingCount() {
+  public Long getPendingCount() {
     return pendingCount;
   }
 
-  public void setPendingCount(@javax.annotation.Nullable Integer pendingCount) {
+  public void setPendingCount(@javax.annotation.Nullable Long pendingCount) {
     this.pendingCount = pendingCount;
   }
 

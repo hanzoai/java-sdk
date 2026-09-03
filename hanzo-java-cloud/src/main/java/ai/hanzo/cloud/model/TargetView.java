@@ -95,12 +95,12 @@ public class TargetView {
   public static final String SERIALIZED_NAME_RUNNING = "running";
   @SerializedName(SERIALIZED_NAME_RUNNING)
   @javax.annotation.Nullable
-  private Integer running;
+  private Long running;
 
   public static final String SERIALIZED_NAME_SESSIONS = "sessions";
   @SerializedName(SERIALIZED_NAME_SESSIONS)
   @javax.annotation.Nullable
-  private Integer sessions;
+  private Long sessions;
 
   public static final String SERIALIZED_NAME_SPEC = "spec";
   @SerializedName(SERIALIZED_NAME_SPEC)
@@ -272,7 +272,7 @@ public class TargetView {
   }
 
 
-  public TargetView running(@javax.annotation.Nullable Integer running) {
+  public TargetView running(@javax.annotation.Nullable Long running) {
     this.running = running;
     return this;
   }
@@ -282,16 +282,16 @@ public class TargetView {
    * @return running
    */
   @javax.annotation.Nullable
-  public Integer getRunning() {
+  public Long getRunning() {
     return running;
   }
 
-  public void setRunning(@javax.annotation.Nullable Integer running) {
+  public void setRunning(@javax.annotation.Nullable Long running) {
     this.running = running;
   }
 
 
-  public TargetView sessions(@javax.annotation.Nullable Integer sessions) {
+  public TargetView sessions(@javax.annotation.Nullable Long sessions) {
     this.sessions = sessions;
     return this;
   }
@@ -301,11 +301,11 @@ public class TargetView {
    * @return sessions
    */
   @javax.annotation.Nullable
-  public Integer getSessions() {
+  public Long getSessions() {
     return sessions;
   }
 
-  public void setSessions(@javax.annotation.Nullable Integer sessions) {
+  public void setSessions(@javax.annotation.Nullable Long sessions) {
     this.sessions = sessions;
   }
 

@@ -53,17 +53,17 @@ public class BoardPoint {
   public static final String SERIALIZED_NAME_COST_CENTS = "costCents";
   @SerializedName(SERIALIZED_NAME_COST_CENTS)
   @javax.annotation.Nullable
-  private Integer costCents;
+  private Long costCents;
 
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
   @javax.annotation.Nullable
-  private Integer errors;
+  private Long errors;
 
   public static final String SERIALIZED_NAME_GENERATIONS = "generations";
   @SerializedName(SERIALIZED_NAME_GENERATIONS)
   @javax.annotation.Nullable
-  private Integer generations;
+  private Long generations;
 
   public static final String SERIALIZED_NAME_T = "t";
   @SerializedName(SERIALIZED_NAME_T)
@@ -73,12 +73,12 @@ public class BoardPoint {
   public static final String SERIALIZED_NAME_TOTAL_TOKENS = "totalTokens";
   @SerializedName(SERIALIZED_NAME_TOTAL_TOKENS)
   @javax.annotation.Nullable
-  private Integer totalTokens;
+  private Long totalTokens;
 
   public BoardPoint() {
   }
 
-  public BoardPoint costCents(@javax.annotation.Nullable Integer costCents) {
+  public BoardPoint costCents(@javax.annotation.Nullable Long costCents) {
     this.costCents = costCents;
     return this;
   }
@@ -88,16 +88,16 @@ public class BoardPoint {
    * @return costCents
    */
   @javax.annotation.Nullable
-  public Integer getCostCents() {
+  public Long getCostCents() {
     return costCents;
   }
 
-  public void setCostCents(@javax.annotation.Nullable Integer costCents) {
+  public void setCostCents(@javax.annotation.Nullable Long costCents) {
     this.costCents = costCents;
   }
 
 
-  public BoardPoint errors(@javax.annotation.Nullable Integer errors) {
+  public BoardPoint errors(@javax.annotation.Nullable Long errors) {
     this.errors = errors;
     return this;
   }
@@ -107,16 +107,16 @@ public class BoardPoint {
    * @return errors
    */
   @javax.annotation.Nullable
-  public Integer getErrors() {
+  public Long getErrors() {
     return errors;
   }
 
-  public void setErrors(@javax.annotation.Nullable Integer errors) {
+  public void setErrors(@javax.annotation.Nullable Long errors) {
     this.errors = errors;
   }
 
 
-  public BoardPoint generations(@javax.annotation.Nullable Integer generations) {
+  public BoardPoint generations(@javax.annotation.Nullable Long generations) {
     this.generations = generations;
     return this;
   }
@@ -126,11 +126,11 @@ public class BoardPoint {
    * @return generations
    */
   @javax.annotation.Nullable
-  public Integer getGenerations() {
+  public Long getGenerations() {
     return generations;
   }
 
-  public void setGenerations(@javax.annotation.Nullable Integer generations) {
+  public void setGenerations(@javax.annotation.Nullable Long generations) {
     this.generations = generations;
   }
 
@@ -154,7 +154,7 @@ public class BoardPoint {
   }
 
 
-  public BoardPoint totalTokens(@javax.annotation.Nullable Integer totalTokens) {
+  public BoardPoint totalTokens(@javax.annotation.Nullable Long totalTokens) {
     this.totalTokens = totalTokens;
     return this;
   }
@@ -164,11 +164,11 @@ public class BoardPoint {
    * @return totalTokens
    */
   @javax.annotation.Nullable
-  public Integer getTotalTokens() {
+  public Long getTotalTokens() {
     return totalTokens;
   }
 
-  public void setTotalTokens(@javax.annotation.Nullable Integer totalTokens) {
+  public void setTotalTokens(@javax.annotation.Nullable Long totalTokens) {
     this.totalTokens = totalTokens;
   }
 

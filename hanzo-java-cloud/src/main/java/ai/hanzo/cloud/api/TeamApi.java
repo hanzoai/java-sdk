@@ -35,6 +35,7 @@ import ai.hanzo.cloud.model.CookieAck;
 import java.io.File;
 import ai.hanzo.cloud.model.PlanInfo;
 import ai.hanzo.cloud.model.ProviderInfo;
+import ai.hanzo.cloud.model.PublicRooms;
 import ai.hanzo.cloud.model.StatsOut;
 import ai.hanzo.cloud.model.TeamMessage;
 import ai.hanzo.cloud.model.TeamMessageWrite;
@@ -1230,6 +1231,147 @@ public class TeamApi {
 
         okhttp3.Call localVarCall = getTeamFilesBySpaceByFilenameValidateBeforeCall(space, filename, _callback);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getTeamPublic
+     * @param q Q matches a room&#39;s name or its topic. (optional)
+     * @param org Org narrows to one org&#39;s published rooms. (optional)
+     * @param limit Limit caps the page, 50 when unstated and 200 at most. An unparseable value reads as unstated rather than as zero — zero pages is not an answer anybody asked for. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getTeamPublicCall(@javax.annotation.Nullable String q, @javax.annotation.Nullable String org, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/team/public";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (q != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("q", q));
+        }
+
+        if (org != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("org", org));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getTeamPublicValidateBeforeCall(@javax.annotation.Nullable String q, @javax.annotation.Nullable String org, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
+        return getTeamPublicCall(q, org, limit, _callback);
+
+    }
+
+    /**
+     * Lists the rooms orgs have published, across every org.
+     * Lists the rooms orgs have published, across every org.  It is NOT part of GET /rooms, and the separation is the point: that address answers the CALLER&#39;S rooms, so folding these in would put strangers&#39; channels in somebody&#39;s own sidebar.  It reads the directory and never a tenant&#39;s store. Every field it can answer with is one an org published by making a room public, so there is nothing here to scope by org — a directory only its own org can read is not a directory. An authenticated principal is still required, because an anonymous crawler is not who this is for.
+     * @param q Q matches a room&#39;s name or its topic. (optional)
+     * @param org Org narrows to one org&#39;s published rooms. (optional)
+     * @param limit Limit caps the page, 50 when unstated and 200 at most. An unparseable value reads as unstated rather than as zero — zero pages is not an answer anybody asked for. (optional)
+     * @return PublicRooms
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public PublicRooms getTeamPublic(@javax.annotation.Nullable String q, @javax.annotation.Nullable String org, @javax.annotation.Nullable Long limit) throws ApiException {
+        ApiResponse<PublicRooms> localVarResp = getTeamPublicWithHttpInfo(q, org, limit);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Lists the rooms orgs have published, across every org.
+     * Lists the rooms orgs have published, across every org.  It is NOT part of GET /rooms, and the separation is the point: that address answers the CALLER&#39;S rooms, so folding these in would put strangers&#39; channels in somebody&#39;s own sidebar.  It reads the directory and never a tenant&#39;s store. Every field it can answer with is one an org published by making a room public, so there is nothing here to scope by org — a directory only its own org can read is not a directory. An authenticated principal is still required, because an anonymous crawler is not who this is for.
+     * @param q Q matches a room&#39;s name or its topic. (optional)
+     * @param org Org narrows to one org&#39;s published rooms. (optional)
+     * @param limit Limit caps the page, 50 when unstated and 200 at most. An unparseable value reads as unstated rather than as zero — zero pages is not an answer anybody asked for. (optional)
+     * @return ApiResponse&lt;PublicRooms&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<PublicRooms> getTeamPublicWithHttpInfo(@javax.annotation.Nullable String q, @javax.annotation.Nullable String org, @javax.annotation.Nullable Long limit) throws ApiException {
+        okhttp3.Call localVarCall = getTeamPublicValidateBeforeCall(q, org, limit, null);
+        Type localVarReturnType = new TypeToken<PublicRooms>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Lists the rooms orgs have published, across every org. (asynchronously)
+     * Lists the rooms orgs have published, across every org.  It is NOT part of GET /rooms, and the separation is the point: that address answers the CALLER&#39;S rooms, so folding these in would put strangers&#39; channels in somebody&#39;s own sidebar.  It reads the directory and never a tenant&#39;s store. Every field it can answer with is one an org published by making a room public, so there is nothing here to scope by org — a directory only its own org can read is not a directory. An authenticated principal is still required, because an anonymous crawler is not who this is for.
+     * @param q Q matches a room&#39;s name or its topic. (optional)
+     * @param org Org narrows to one org&#39;s published rooms. (optional)
+     * @param limit Limit caps the page, 50 when unstated and 200 at most. An unparseable value reads as unstated rather than as zero — zero pages is not an answer anybody asked for. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getTeamPublicAsync(@javax.annotation.Nullable String q, @javax.annotation.Nullable String org, @javax.annotation.Nullable Long limit, final ApiCallback<PublicRooms> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getTeamPublicValidateBeforeCall(q, org, limit, _callback);
+        Type localVarReturnType = new TypeToken<PublicRooms>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

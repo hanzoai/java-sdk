@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -59,7 +58,7 @@ public class CaptableRound {
   public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
   @javax.annotation.Nullable
-  private Integer createdAt;
+  private Long createdAt;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -74,17 +73,17 @@ public class CaptableRound {
   public static final String SERIALIZED_NAME_PRE_MONEY_VALUATION = "preMoneyValuation";
   @SerializedName(SERIALIZED_NAME_PRE_MONEY_VALUATION)
   @javax.annotation.Nullable
-  private BigDecimal preMoneyValuation;
+  private Double preMoneyValuation;
 
   public static final String SERIALIZED_NAME_PRICE_PER_SHARE = "pricePerShare";
   @SerializedName(SERIALIZED_NAME_PRICE_PER_SHARE)
   @javax.annotation.Nullable
-  private BigDecimal pricePerShare;
+  private Double pricePerShare;
 
   public static final String SERIALIZED_NAME_RAISED_AMOUNT = "raisedAmount";
   @SerializedName(SERIALIZED_NAME_RAISED_AMOUNT)
   @javax.annotation.Nullable
-  private BigDecimal raisedAmount;
+  private Double raisedAmount;
 
   public static final String SERIALIZED_NAME_ROUND_TYPE = "roundType";
   @SerializedName(SERIALIZED_NAME_ROUND_TYPE)
@@ -104,7 +103,7 @@ public class CaptableRound {
   public static final String SERIALIZED_NAME_TARGET_AMOUNT = "targetAmount";
   @SerializedName(SERIALIZED_NAME_TARGET_AMOUNT)
   @javax.annotation.Nullable
-  private BigDecimal targetAmount;
+  private Double targetAmount;
 
   public CaptableRound() {
   }
@@ -128,7 +127,7 @@ public class CaptableRound {
   }
 
 
-  public CaptableRound createdAt(@javax.annotation.Nullable Integer createdAt) {
+  public CaptableRound createdAt(@javax.annotation.Nullable Long createdAt) {
     this.createdAt = createdAt;
     return this;
   }
@@ -138,11 +137,11 @@ public class CaptableRound {
    * @return createdAt
    */
   @javax.annotation.Nullable
-  public Integer getCreatedAt() {
+  public Long getCreatedAt() {
     return createdAt;
   }
 
-  public void setCreatedAt(@javax.annotation.Nullable Integer createdAt) {
+  public void setCreatedAt(@javax.annotation.Nullable Long createdAt) {
     this.createdAt = createdAt;
   }
 
@@ -185,7 +184,7 @@ public class CaptableRound {
   }
 
 
-  public CaptableRound preMoneyValuation(@javax.annotation.Nullable BigDecimal preMoneyValuation) {
+  public CaptableRound preMoneyValuation(@javax.annotation.Nullable Double preMoneyValuation) {
     this.preMoneyValuation = preMoneyValuation;
     return this;
   }
@@ -195,16 +194,16 @@ public class CaptableRound {
    * @return preMoneyValuation
    */
   @javax.annotation.Nullable
-  public BigDecimal getPreMoneyValuation() {
+  public Double getPreMoneyValuation() {
     return preMoneyValuation;
   }
 
-  public void setPreMoneyValuation(@javax.annotation.Nullable BigDecimal preMoneyValuation) {
+  public void setPreMoneyValuation(@javax.annotation.Nullable Double preMoneyValuation) {
     this.preMoneyValuation = preMoneyValuation;
   }
 
 
-  public CaptableRound pricePerShare(@javax.annotation.Nullable BigDecimal pricePerShare) {
+  public CaptableRound pricePerShare(@javax.annotation.Nullable Double pricePerShare) {
     this.pricePerShare = pricePerShare;
     return this;
   }
@@ -214,16 +213,16 @@ public class CaptableRound {
    * @return pricePerShare
    */
   @javax.annotation.Nullable
-  public BigDecimal getPricePerShare() {
+  public Double getPricePerShare() {
     return pricePerShare;
   }
 
-  public void setPricePerShare(@javax.annotation.Nullable BigDecimal pricePerShare) {
+  public void setPricePerShare(@javax.annotation.Nullable Double pricePerShare) {
     this.pricePerShare = pricePerShare;
   }
 
 
-  public CaptableRound raisedAmount(@javax.annotation.Nullable BigDecimal raisedAmount) {
+  public CaptableRound raisedAmount(@javax.annotation.Nullable Double raisedAmount) {
     this.raisedAmount = raisedAmount;
     return this;
   }
@@ -233,11 +232,11 @@ public class CaptableRound {
    * @return raisedAmount
    */
   @javax.annotation.Nullable
-  public BigDecimal getRaisedAmount() {
+  public Double getRaisedAmount() {
     return raisedAmount;
   }
 
-  public void setRaisedAmount(@javax.annotation.Nullable BigDecimal raisedAmount) {
+  public void setRaisedAmount(@javax.annotation.Nullable Double raisedAmount) {
     this.raisedAmount = raisedAmount;
   }
 
@@ -299,7 +298,7 @@ public class CaptableRound {
   }
 
 
-  public CaptableRound targetAmount(@javax.annotation.Nullable BigDecimal targetAmount) {
+  public CaptableRound targetAmount(@javax.annotation.Nullable Double targetAmount) {
     this.targetAmount = targetAmount;
     return this;
   }
@@ -309,11 +308,11 @@ public class CaptableRound {
    * @return targetAmount
    */
   @javax.annotation.Nullable
-  public BigDecimal getTargetAmount() {
+  public Double getTargetAmount() {
     return targetAmount;
   }
 
-  public void setTargetAmount(@javax.annotation.Nullable BigDecimal targetAmount) {
+  public void setTargetAmount(@javax.annotation.Nullable Double targetAmount) {
     this.targetAmount = targetAmount;
   }
 

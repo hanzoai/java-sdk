@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -54,12 +53,12 @@ public class CaptableSafe {
   public static final String SERIALIZED_NAME_CAPITAL = "capital";
   @SerializedName(SERIALIZED_NAME_CAPITAL)
   @javax.annotation.Nullable
-  private BigDecimal capital;
+  private Double capital;
 
   public static final String SERIALIZED_NAME_DISCOUNT_RATE = "discountRate";
   @SerializedName(SERIALIZED_NAME_DISCOUNT_RATE)
   @javax.annotation.Nullable
-  private BigDecimal discountRate;
+  private Double discountRate;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -109,12 +108,12 @@ public class CaptableSafe {
   public static final String SERIALIZED_NAME_VALUATION_CAP = "valuationCap";
   @SerializedName(SERIALIZED_NAME_VALUATION_CAP)
   @javax.annotation.Nullable
-  private BigDecimal valuationCap;
+  private Double valuationCap;
 
   public CaptableSafe() {
   }
 
-  public CaptableSafe capital(@javax.annotation.Nullable BigDecimal capital) {
+  public CaptableSafe capital(@javax.annotation.Nullable Double capital) {
     this.capital = capital;
     return this;
   }
@@ -124,16 +123,16 @@ public class CaptableSafe {
    * @return capital
    */
   @javax.annotation.Nullable
-  public BigDecimal getCapital() {
+  public Double getCapital() {
     return capital;
   }
 
-  public void setCapital(@javax.annotation.Nullable BigDecimal capital) {
+  public void setCapital(@javax.annotation.Nullable Double capital) {
     this.capital = capital;
   }
 
 
-  public CaptableSafe discountRate(@javax.annotation.Nullable BigDecimal discountRate) {
+  public CaptableSafe discountRate(@javax.annotation.Nullable Double discountRate) {
     this.discountRate = discountRate;
     return this;
   }
@@ -143,11 +142,11 @@ public class CaptableSafe {
    * @return discountRate
    */
   @javax.annotation.Nullable
-  public BigDecimal getDiscountRate() {
+  public Double getDiscountRate() {
     return discountRate;
   }
 
-  public void setDiscountRate(@javax.annotation.Nullable BigDecimal discountRate) {
+  public void setDiscountRate(@javax.annotation.Nullable Double discountRate) {
     this.discountRate = discountRate;
   }
 
@@ -323,7 +322,7 @@ public class CaptableSafe {
   }
 
 
-  public CaptableSafe valuationCap(@javax.annotation.Nullable BigDecimal valuationCap) {
+  public CaptableSafe valuationCap(@javax.annotation.Nullable Double valuationCap) {
     this.valuationCap = valuationCap;
     return this;
   }
@@ -333,11 +332,11 @@ public class CaptableSafe {
    * @return valuationCap
    */
   @javax.annotation.Nullable
-  public BigDecimal getValuationCap() {
+  public Double getValuationCap() {
     return valuationCap;
   }
 
-  public void setValuationCap(@javax.annotation.Nullable BigDecimal valuationCap) {
+  public void setValuationCap(@javax.annotation.Nullable Double valuationCap) {
     this.valuationCap = valuationCap;
   }
 

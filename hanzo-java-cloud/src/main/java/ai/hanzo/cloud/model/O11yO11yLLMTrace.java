@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -54,7 +53,7 @@ public class O11yO11yLLMTrace {
   public static final String SERIALIZED_NAME_COMPLETION_TOKENS = "completionTokens";
   @SerializedName(SERIALIZED_NAME_COMPLETION_TOKENS)
   @javax.annotation.Nullable
-  private Integer completionTokens;
+  private Long completionTokens;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -64,17 +63,17 @@ public class O11yO11yLLMTrace {
   public static final String SERIALIZED_NAME_LATENCY_MS = "latencyMs";
   @SerializedName(SERIALIZED_NAME_LATENCY_MS)
   @javax.annotation.Nullable
-  private BigDecimal latencyMs;
+  private Double latencyMs;
 
   public static final String SERIALIZED_NAME_OBSERVATIONS = "observations";
   @SerializedName(SERIALIZED_NAME_OBSERVATIONS)
   @javax.annotation.Nullable
-  private Integer observations;
+  private Long observations;
 
   public static final String SERIALIZED_NAME_PROMPT_TOKENS = "promptTokens";
   @SerializedName(SERIALIZED_NAME_PROMPT_TOKENS)
   @javax.annotation.Nullable
-  private Integer promptTokens;
+  private Long promptTokens;
 
   public static final String SERIALIZED_NAME_SERVICE_NAME = "serviceName";
   @SerializedName(SERIALIZED_NAME_SERVICE_NAME)
@@ -89,12 +88,12 @@ public class O11yO11yLLMTrace {
   public static final String SERIALIZED_NAME_TOTAL_COST = "totalCost";
   @SerializedName(SERIALIZED_NAME_TOTAL_COST)
   @javax.annotation.Nullable
-  private BigDecimal totalCost;
+  private Double totalCost;
 
   public static final String SERIALIZED_NAME_TOTAL_TOKENS = "totalTokens";
   @SerializedName(SERIALIZED_NAME_TOTAL_TOKENS)
   @javax.annotation.Nullable
-  private Integer totalTokens;
+  private Long totalTokens;
 
   public static final String SERIALIZED_NAME_USER_ID = "userId";
   @SerializedName(SERIALIZED_NAME_USER_ID)
@@ -104,7 +103,7 @@ public class O11yO11yLLMTrace {
   public O11yO11yLLMTrace() {
   }
 
-  public O11yO11yLLMTrace completionTokens(@javax.annotation.Nullable Integer completionTokens) {
+  public O11yO11yLLMTrace completionTokens(@javax.annotation.Nullable Long completionTokens) {
     this.completionTokens = completionTokens;
     return this;
   }
@@ -114,11 +113,11 @@ public class O11yO11yLLMTrace {
    * @return completionTokens
    */
   @javax.annotation.Nullable
-  public Integer getCompletionTokens() {
+  public Long getCompletionTokens() {
     return completionTokens;
   }
 
-  public void setCompletionTokens(@javax.annotation.Nullable Integer completionTokens) {
+  public void setCompletionTokens(@javax.annotation.Nullable Long completionTokens) {
     this.completionTokens = completionTokens;
   }
 
@@ -142,7 +141,7 @@ public class O11yO11yLLMTrace {
   }
 
 
-  public O11yO11yLLMTrace latencyMs(@javax.annotation.Nullable BigDecimal latencyMs) {
+  public O11yO11yLLMTrace latencyMs(@javax.annotation.Nullable Double latencyMs) {
     this.latencyMs = latencyMs;
     return this;
   }
@@ -152,16 +151,16 @@ public class O11yO11yLLMTrace {
    * @return latencyMs
    */
   @javax.annotation.Nullable
-  public BigDecimal getLatencyMs() {
+  public Double getLatencyMs() {
     return latencyMs;
   }
 
-  public void setLatencyMs(@javax.annotation.Nullable BigDecimal latencyMs) {
+  public void setLatencyMs(@javax.annotation.Nullable Double latencyMs) {
     this.latencyMs = latencyMs;
   }
 
 
-  public O11yO11yLLMTrace observations(@javax.annotation.Nullable Integer observations) {
+  public O11yO11yLLMTrace observations(@javax.annotation.Nullable Long observations) {
     this.observations = observations;
     return this;
   }
@@ -171,16 +170,16 @@ public class O11yO11yLLMTrace {
    * @return observations
    */
   @javax.annotation.Nullable
-  public Integer getObservations() {
+  public Long getObservations() {
     return observations;
   }
 
-  public void setObservations(@javax.annotation.Nullable Integer observations) {
+  public void setObservations(@javax.annotation.Nullable Long observations) {
     this.observations = observations;
   }
 
 
-  public O11yO11yLLMTrace promptTokens(@javax.annotation.Nullable Integer promptTokens) {
+  public O11yO11yLLMTrace promptTokens(@javax.annotation.Nullable Long promptTokens) {
     this.promptTokens = promptTokens;
     return this;
   }
@@ -190,11 +189,11 @@ public class O11yO11yLLMTrace {
    * @return promptTokens
    */
   @javax.annotation.Nullable
-  public Integer getPromptTokens() {
+  public Long getPromptTokens() {
     return promptTokens;
   }
 
-  public void setPromptTokens(@javax.annotation.Nullable Integer promptTokens) {
+  public void setPromptTokens(@javax.annotation.Nullable Long promptTokens) {
     this.promptTokens = promptTokens;
   }
 
@@ -237,7 +236,7 @@ public class O11yO11yLLMTrace {
   }
 
 
-  public O11yO11yLLMTrace totalCost(@javax.annotation.Nullable BigDecimal totalCost) {
+  public O11yO11yLLMTrace totalCost(@javax.annotation.Nullable Double totalCost) {
     this.totalCost = totalCost;
     return this;
   }
@@ -247,16 +246,16 @@ public class O11yO11yLLMTrace {
    * @return totalCost
    */
   @javax.annotation.Nullable
-  public BigDecimal getTotalCost() {
+  public Double getTotalCost() {
     return totalCost;
   }
 
-  public void setTotalCost(@javax.annotation.Nullable BigDecimal totalCost) {
+  public void setTotalCost(@javax.annotation.Nullable Double totalCost) {
     this.totalCost = totalCost;
   }
 
 
-  public O11yO11yLLMTrace totalTokens(@javax.annotation.Nullable Integer totalTokens) {
+  public O11yO11yLLMTrace totalTokens(@javax.annotation.Nullable Long totalTokens) {
     this.totalTokens = totalTokens;
     return this;
   }
@@ -266,11 +265,11 @@ public class O11yO11yLLMTrace {
    * @return totalTokens
    */
   @javax.annotation.Nullable
-  public Integer getTotalTokens() {
+  public Long getTotalTokens() {
     return totalTokens;
   }
 
-  public void setTotalTokens(@javax.annotation.Nullable Integer totalTokens) {
+  public void setTotalTokens(@javax.annotation.Nullable Long totalTokens) {
     this.totalTokens = totalTokens;
   }
 

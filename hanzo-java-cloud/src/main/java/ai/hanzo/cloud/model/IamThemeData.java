@@ -53,7 +53,7 @@ public class IamThemeData {
   public static final String SERIALIZED_NAME_BORDER_RADIUS = "borderRadius";
   @SerializedName(SERIALIZED_NAME_BORDER_RADIUS)
   @javax.annotation.Nullable
-  private Integer borderRadius;
+  private Long borderRadius;
 
   public static final String SERIALIZED_NAME_COLOR_PRIMARY = "colorPrimary";
   @SerializedName(SERIALIZED_NAME_COLOR_PRIMARY)
@@ -78,7 +78,7 @@ public class IamThemeData {
   public IamThemeData() {
   }
 
-  public IamThemeData borderRadius(@javax.annotation.Nullable Integer borderRadius) {
+  public IamThemeData borderRadius(@javax.annotation.Nullable Long borderRadius) {
     this.borderRadius = borderRadius;
     return this;
   }
@@ -88,11 +88,11 @@ public class IamThemeData {
    * @return borderRadius
    */
   @javax.annotation.Nullable
-  public Integer getBorderRadius() {
+  public Long getBorderRadius() {
     return borderRadius;
   }
 
-  public void setBorderRadius(@javax.annotation.Nullable Integer borderRadius) {
+  public void setBorderRadius(@javax.annotation.Nullable Long borderRadius) {
     this.borderRadius = borderRadius;
   }
 

@@ -59,12 +59,12 @@ public class RedeemResult {
   public static final String SERIALIZED_NAME_CHARGE_CENTS = "chargeCents";
   @SerializedName(SERIALIZED_NAME_CHARGE_CENTS)
   @javax.annotation.Nullable
-  private Integer chargeCents;
+  private Long chargeCents;
 
   public static final String SERIALIZED_NAME_DISCOUNT_CENTS = "discountCents";
   @SerializedName(SERIALIZED_NAME_DISCOUNT_CENTS)
   @javax.annotation.Nullable
-  private Integer discountCents;
+  private Long discountCents;
 
   public static final String SERIALIZED_NAME_REDEMPTION = "redemption";
   @SerializedName(SERIALIZED_NAME_REDEMPTION)
@@ -93,7 +93,7 @@ public class RedeemResult {
   }
 
 
-  public RedeemResult chargeCents(@javax.annotation.Nullable Integer chargeCents) {
+  public RedeemResult chargeCents(@javax.annotation.Nullable Long chargeCents) {
     this.chargeCents = chargeCents;
     return this;
   }
@@ -103,16 +103,16 @@ public class RedeemResult {
    * @return chargeCents
    */
   @javax.annotation.Nullable
-  public Integer getChargeCents() {
+  public Long getChargeCents() {
     return chargeCents;
   }
 
-  public void setChargeCents(@javax.annotation.Nullable Integer chargeCents) {
+  public void setChargeCents(@javax.annotation.Nullable Long chargeCents) {
     this.chargeCents = chargeCents;
   }
 
 
-  public RedeemResult discountCents(@javax.annotation.Nullable Integer discountCents) {
+  public RedeemResult discountCents(@javax.annotation.Nullable Long discountCents) {
     this.discountCents = discountCents;
     return this;
   }
@@ -122,11 +122,11 @@ public class RedeemResult {
    * @return discountCents
    */
   @javax.annotation.Nullable
-  public Integer getDiscountCents() {
+  public Long getDiscountCents() {
     return discountCents;
   }
 
-  public void setDiscountCents(@javax.annotation.Nullable Integer discountCents) {
+  public void setDiscountCents(@javax.annotation.Nullable Long discountCents) {
     this.discountCents = discountCents;
   }
 

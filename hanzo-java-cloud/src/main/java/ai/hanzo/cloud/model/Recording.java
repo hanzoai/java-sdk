@@ -78,7 +78,7 @@ public class Recording {
   public static final String SERIALIZED_NAME_STARTED = "started";
   @SerializedName(SERIALIZED_NAME_STARTED)
   @javax.annotation.Nullable
-  private Integer started;
+  private Long started;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
@@ -183,7 +183,7 @@ public class Recording {
   }
 
 
-  public Recording started(@javax.annotation.Nullable Integer started) {
+  public Recording started(@javax.annotation.Nullable Long started) {
     this.started = started;
     return this;
   }
@@ -193,11 +193,11 @@ public class Recording {
    * @return started
    */
   @javax.annotation.Nullable
-  public Integer getStarted() {
+  public Long getStarted() {
     return started;
   }
 
-  public void setStarted(@javax.annotation.Nullable Integer started) {
+  public void setStarted(@javax.annotation.Nullable Long started) {
     this.started = started;
   }
 

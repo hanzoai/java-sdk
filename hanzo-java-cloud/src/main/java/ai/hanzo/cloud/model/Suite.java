@@ -55,7 +55,7 @@ public class Suite {
   public static final String SERIALIZED_NAME_ATTEMPTS = "attempts";
   @SerializedName(SERIALIZED_NAME_ATTEMPTS)
   @javax.annotation.Nullable
-  private Integer attempts;
+  private Long attempts;
 
   public static final String SERIALIZED_NAME_BENCHMARKS = "benchmarks";
   @SerializedName(SERIALIZED_NAME_BENCHMARKS)
@@ -75,7 +75,7 @@ public class Suite {
   public Suite() {
   }
 
-  public Suite attempts(@javax.annotation.Nullable Integer attempts) {
+  public Suite attempts(@javax.annotation.Nullable Long attempts) {
     this.attempts = attempts;
     return this;
   }
@@ -85,11 +85,11 @@ public class Suite {
    * @return attempts
    */
   @javax.annotation.Nullable
-  public Integer getAttempts() {
+  public Long getAttempts() {
     return attempts;
   }
 
-  public void setAttempts(@javax.annotation.Nullable Integer attempts) {
+  public void setAttempts(@javax.annotation.Nullable Long attempts) {
     this.attempts = attempts;
   }
 

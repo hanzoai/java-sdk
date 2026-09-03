@@ -63,7 +63,7 @@ public class TransferReq {
   public static final String SERIALIZED_NAME_YEARS = "years";
   @SerializedName(SERIALIZED_NAME_YEARS)
   @javax.annotation.Nullable
-  private Integer years;
+  private Long years;
 
   public TransferReq() {
   }
@@ -106,7 +106,7 @@ public class TransferReq {
   }
 
 
-  public TransferReq years(@javax.annotation.Nullable Integer years) {
+  public TransferReq years(@javax.annotation.Nullable Long years) {
     this.years = years;
     return this;
   }
@@ -116,11 +116,11 @@ public class TransferReq {
    * @return years
    */
   @javax.annotation.Nullable
-  public Integer getYears() {
+  public Long getYears() {
     return years;
   }
 
-  public void setYears(@javax.annotation.Nullable Integer years) {
+  public void setYears(@javax.annotation.Nullable Long years) {
     this.years = years;
   }
 

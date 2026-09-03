@@ -58,7 +58,7 @@ public class DataroomDocument {
   public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
   @javax.annotation.Nullable
-  private Integer createdAt;
+  private Long createdAt;
 
   public static final String SERIALIZED_NAME_FILE_KEY = "fileKey";
   @SerializedName(SERIALIZED_NAME_FILE_KEY)
@@ -68,7 +68,7 @@ public class DataroomDocument {
   public static final String SERIALIZED_NAME_FILE_SIZE = "fileSize";
   @SerializedName(SERIALIZED_NAME_FILE_SIZE)
   @javax.annotation.Nullable
-  private Integer fileSize;
+  private Long fileSize;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -83,7 +83,7 @@ public class DataroomDocument {
   public static final String SERIALIZED_NAME_NUM_PAGES = "numPages";
   @SerializedName(SERIALIZED_NAME_NUM_PAGES)
   @javax.annotation.Nullable
-  private Integer numPages;
+  private Long numPages;
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
@@ -93,7 +93,7 @@ public class DataroomDocument {
   public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)
   @javax.annotation.Nullable
-  private Integer updatedAt;
+  private Long updatedAt;
 
   public DataroomDocument() {
   }
@@ -117,7 +117,7 @@ public class DataroomDocument {
   }
 
 
-  public DataroomDocument createdAt(@javax.annotation.Nullable Integer createdAt) {
+  public DataroomDocument createdAt(@javax.annotation.Nullable Long createdAt) {
     this.createdAt = createdAt;
     return this;
   }
@@ -127,11 +127,11 @@ public class DataroomDocument {
    * @return createdAt
    */
   @javax.annotation.Nullable
-  public Integer getCreatedAt() {
+  public Long getCreatedAt() {
     return createdAt;
   }
 
-  public void setCreatedAt(@javax.annotation.Nullable Integer createdAt) {
+  public void setCreatedAt(@javax.annotation.Nullable Long createdAt) {
     this.createdAt = createdAt;
   }
 
@@ -155,7 +155,7 @@ public class DataroomDocument {
   }
 
 
-  public DataroomDocument fileSize(@javax.annotation.Nullable Integer fileSize) {
+  public DataroomDocument fileSize(@javax.annotation.Nullable Long fileSize) {
     this.fileSize = fileSize;
     return this;
   }
@@ -165,11 +165,11 @@ public class DataroomDocument {
    * @return fileSize
    */
   @javax.annotation.Nullable
-  public Integer getFileSize() {
+  public Long getFileSize() {
     return fileSize;
   }
 
-  public void setFileSize(@javax.annotation.Nullable Integer fileSize) {
+  public void setFileSize(@javax.annotation.Nullable Long fileSize) {
     this.fileSize = fileSize;
   }
 
@@ -212,7 +212,7 @@ public class DataroomDocument {
   }
 
 
-  public DataroomDocument numPages(@javax.annotation.Nullable Integer numPages) {
+  public DataroomDocument numPages(@javax.annotation.Nullable Long numPages) {
     this.numPages = numPages;
     return this;
   }
@@ -222,11 +222,11 @@ public class DataroomDocument {
    * @return numPages
    */
   @javax.annotation.Nullable
-  public Integer getNumPages() {
+  public Long getNumPages() {
     return numPages;
   }
 
-  public void setNumPages(@javax.annotation.Nullable Integer numPages) {
+  public void setNumPages(@javax.annotation.Nullable Long numPages) {
     this.numPages = numPages;
   }
 
@@ -250,7 +250,7 @@ public class DataroomDocument {
   }
 
 
-  public DataroomDocument updatedAt(@javax.annotation.Nullable Integer updatedAt) {
+  public DataroomDocument updatedAt(@javax.annotation.Nullable Long updatedAt) {
     this.updatedAt = updatedAt;
     return this;
   }
@@ -260,11 +260,11 @@ public class DataroomDocument {
    * @return updatedAt
    */
   @javax.annotation.Nullable
-  public Integer getUpdatedAt() {
+  public Long getUpdatedAt() {
     return updatedAt;
   }
 
-  public void setUpdatedAt(@javax.annotation.Nullable Integer updatedAt) {
+  public void setUpdatedAt(@javax.annotation.Nullable Long updatedAt) {
     this.updatedAt = updatedAt;
   }
 

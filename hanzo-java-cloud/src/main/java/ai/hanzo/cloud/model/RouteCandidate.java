@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -69,7 +68,7 @@ public class RouteCandidate {
   public static final String SERIALIZED_NAME_HEADROOM_PCT = "headroomPct";
   @SerializedName(SERIALIZED_NAME_HEADROOM_PCT)
   @javax.annotation.Nullable
-  private BigDecimal headroomPct;
+  private Double headroomPct;
 
   public static final String SERIALIZED_NAME_HOST = "host";
   @SerializedName(SERIALIZED_NAME_HOST)
@@ -166,7 +165,7 @@ public class RouteCandidate {
   }
 
 
-  public RouteCandidate headroomPct(@javax.annotation.Nullable BigDecimal headroomPct) {
+  public RouteCandidate headroomPct(@javax.annotation.Nullable Double headroomPct) {
     this.headroomPct = headroomPct;
     return this;
   }
@@ -176,11 +175,11 @@ public class RouteCandidate {
    * @return headroomPct
    */
   @javax.annotation.Nullable
-  public BigDecimal getHeadroomPct() {
+  public Double getHeadroomPct() {
     return headroomPct;
   }
 
-  public void setHeadroomPct(@javax.annotation.Nullable BigDecimal headroomPct) {
+  public void setHeadroomPct(@javax.annotation.Nullable Double headroomPct) {
     this.headroomPct = headroomPct;
   }
 

@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -64,7 +63,7 @@ public class Appearance {
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
   @javax.annotation.Nullable
-  private BigDecimal type;
+  private Double type;
 
   public Appearance() {
   }
@@ -107,7 +106,7 @@ public class Appearance {
   }
 
 
-  public Appearance type(@javax.annotation.Nullable BigDecimal type) {
+  public Appearance type(@javax.annotation.Nullable Double type) {
     this.type = type;
     return this;
   }
@@ -117,11 +116,11 @@ public class Appearance {
    * @return type
    */
   @javax.annotation.Nullable
-  public BigDecimal getType() {
+  public Double getType() {
     return type;
   }
 
-  public void setType(@javax.annotation.Nullable BigDecimal type) {
+  public void setType(@javax.annotation.Nullable Double type) {
     this.type = type;
   }
 

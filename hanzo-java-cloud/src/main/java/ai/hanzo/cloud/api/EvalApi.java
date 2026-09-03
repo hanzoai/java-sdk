@@ -101,7 +101,7 @@ public class EvalApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteEvalDatasetsByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
@@ -131,7 +131,6 @@ public class EvalApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -164,37 +163,34 @@ public class EvalApi {
      * Removes the named dataset of the caller&#39;s org AND all of its examples, in one transaction.
      * Removes the named dataset of the caller&#39;s org AND all of its examples, in one transaction.  This is not a detach: the examples are gone with the set, so a dataset cannot be resurrected by re-creating the name. A name this org does not have is 404 — never a silent success — and a name belonging to another tenant is the same 404, because the delete is predicated on the validated org. Requires a validated principal; 403 without one. Runs and scores already recorded against the dataset are telemetry events and are NOT deleted with it.
      * @param name Name is the dataset the URL names. (required)
-     * @return Object
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public Object deleteEvalDatasetsByName(@javax.annotation.Nonnull String name) throws ApiException {
-        ApiResponse<Object> localVarResp = deleteEvalDatasetsByNameWithHttpInfo(name);
-        return localVarResp.getData();
+    public void deleteEvalDatasetsByName(@javax.annotation.Nonnull String name) throws ApiException {
+        deleteEvalDatasetsByNameWithHttpInfo(name);
     }
 
     /**
      * Removes the named dataset of the caller&#39;s org AND all of its examples, in one transaction.
      * Removes the named dataset of the caller&#39;s org AND all of its examples, in one transaction.  This is not a detach: the examples are gone with the set, so a dataset cannot be resurrected by re-creating the name. A name this org does not have is 404 — never a silent success — and a name belonging to another tenant is the same 404, because the delete is predicated on the validated org. Requires a validated principal; 403 without one. Runs and scores already recorded against the dataset are telemetry events and are NOT deleted with it.
      * @param name Name is the dataset the URL names. (required)
-     * @return ApiResponse&lt;Object&gt;
+     * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> deleteEvalDatasetsByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
+    public ApiResponse<Void> deleteEvalDatasetsByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
         okhttp3.Call localVarCall = deleteEvalDatasetsByNameValidateBeforeCall(name, null);
-        Type localVarReturnType = new TypeToken<Object>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
+        return localVarApiClient.execute(localVarCall);
     }
 
     /**
@@ -208,14 +204,13 @@ public class EvalApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteEvalDatasetsByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call deleteEvalDatasetsByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteEvalDatasetsByNameValidateBeforeCall(name, _callback);
-        Type localVarReturnType = new TypeToken<Object>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
@@ -231,7 +226,7 @@ public class EvalApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getEvalDatasetsCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getEvalDatasetsCall(@javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -280,7 +275,7 @@ public class EvalApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getEvalDatasetsValidateBeforeCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getEvalDatasetsValidateBeforeCall(@javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         return getEvalDatasetsCall(limit, _callback);
 
     }
@@ -298,7 +293,7 @@ public class EvalApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public DatasetList getEvalDatasets(@javax.annotation.Nullable Integer limit) throws ApiException {
+    public DatasetList getEvalDatasets(@javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<DatasetList> localVarResp = getEvalDatasetsWithHttpInfo(limit);
         return localVarResp.getData();
     }
@@ -316,7 +311,7 @@ public class EvalApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DatasetList> getEvalDatasetsWithHttpInfo(@javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<DatasetList> getEvalDatasetsWithHttpInfo(@javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getEvalDatasetsValidateBeforeCall(limit, null);
         Type localVarReturnType = new TypeToken<DatasetList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -336,7 +331,7 @@ public class EvalApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getEvalDatasetsAsync(@javax.annotation.Nullable Integer limit, final ApiCallback<DatasetList> _callback) throws ApiException {
+    public okhttp3.Call getEvalDatasetsAsync(@javax.annotation.Nullable Long limit, final ApiCallback<DatasetList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getEvalDatasetsValidateBeforeCall(limit, _callback);
         Type localVarReturnType = new TypeToken<DatasetList>(){}.getType();
@@ -484,7 +479,7 @@ public class EvalApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getEvalDatasetsByNameItemsCall(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getEvalDatasetsByNameItemsCall(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -534,7 +529,7 @@ public class EvalApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getEvalDatasetsByNameItemsValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getEvalDatasetsByNameItemsValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
             throw new ApiException("Missing the required parameter 'name' when calling getEvalDatasetsByNameItems(Async)");
@@ -558,7 +553,7 @@ public class EvalApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ItemList getEvalDatasetsByNameItems(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public ItemList getEvalDatasetsByNameItems(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<ItemList> localVarResp = getEvalDatasetsByNameItemsWithHttpInfo(name, limit);
         return localVarResp.getData();
     }
@@ -577,7 +572,7 @@ public class EvalApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ItemList> getEvalDatasetsByNameItemsWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<ItemList> getEvalDatasetsByNameItemsWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getEvalDatasetsByNameItemsValidateBeforeCall(name, limit, null);
         Type localVarReturnType = new TypeToken<ItemList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -598,7 +593,7 @@ public class EvalApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getEvalDatasetsByNameItemsAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Integer limit, final ApiCallback<ItemList> _callback) throws ApiException {
+    public okhttp3.Call getEvalDatasetsByNameItemsAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Long limit, final ApiCallback<ItemList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getEvalDatasetsByNameItemsValidateBeforeCall(name, limit, _callback);
         Type localVarReturnType = new TypeToken<ItemList>(){}.getType();
@@ -618,7 +613,7 @@ public class EvalApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getEvalEvaluatorsCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getEvalEvaluatorsCall(@javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -667,7 +662,7 @@ public class EvalApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getEvalEvaluatorsValidateBeforeCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getEvalEvaluatorsValidateBeforeCall(@javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         return getEvalEvaluatorsCall(limit, _callback);
 
     }
@@ -685,7 +680,7 @@ public class EvalApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public EvaluatorList getEvalEvaluators(@javax.annotation.Nullable Integer limit) throws ApiException {
+    public EvaluatorList getEvalEvaluators(@javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<EvaluatorList> localVarResp = getEvalEvaluatorsWithHttpInfo(limit);
         return localVarResp.getData();
     }
@@ -703,7 +698,7 @@ public class EvalApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<EvaluatorList> getEvalEvaluatorsWithHttpInfo(@javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<EvaluatorList> getEvalEvaluatorsWithHttpInfo(@javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getEvalEvaluatorsValidateBeforeCall(limit, null);
         Type localVarReturnType = new TypeToken<EvaluatorList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -723,7 +718,7 @@ public class EvalApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getEvalEvaluatorsAsync(@javax.annotation.Nullable Integer limit, final ApiCallback<EvaluatorList> _callback) throws ApiException {
+    public okhttp3.Call getEvalEvaluatorsAsync(@javax.annotation.Nullable Long limit, final ApiCallback<EvaluatorList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getEvalEvaluatorsValidateBeforeCall(limit, _callback);
         Type localVarReturnType = new TypeToken<EvaluatorList>(){}.getType();
@@ -876,7 +871,7 @@ public class EvalApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getEvalRubricsCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getEvalRubricsCall(@javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -925,7 +920,7 @@ public class EvalApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getEvalRubricsValidateBeforeCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getEvalRubricsValidateBeforeCall(@javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         return getEvalRubricsCall(limit, _callback);
 
     }
@@ -943,7 +938,7 @@ public class EvalApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ScoreConfigList getEvalRubrics(@javax.annotation.Nullable Integer limit) throws ApiException {
+    public ScoreConfigList getEvalRubrics(@javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<ScoreConfigList> localVarResp = getEvalRubricsWithHttpInfo(limit);
         return localVarResp.getData();
     }
@@ -961,7 +956,7 @@ public class EvalApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ScoreConfigList> getEvalRubricsWithHttpInfo(@javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<ScoreConfigList> getEvalRubricsWithHttpInfo(@javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getEvalRubricsValidateBeforeCall(limit, null);
         Type localVarReturnType = new TypeToken<ScoreConfigList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -981,7 +976,7 @@ public class EvalApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getEvalRubricsAsync(@javax.annotation.Nullable Integer limit, final ApiCallback<ScoreConfigList> _callback) throws ApiException {
+    public okhttp3.Call getEvalRubricsAsync(@javax.annotation.Nullable Long limit, final ApiCallback<ScoreConfigList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getEvalRubricsValidateBeforeCall(limit, _callback);
         Type localVarReturnType = new TypeToken<ScoreConfigList>(){}.getType();
@@ -1002,7 +997,7 @@ public class EvalApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getEvalRunsCall(@javax.annotation.Nullable String datasetName, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getEvalRunsCall(@javax.annotation.Nullable String datasetName, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1055,7 +1050,7 @@ public class EvalApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getEvalRunsValidateBeforeCall(@javax.annotation.Nullable String datasetName, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getEvalRunsValidateBeforeCall(@javax.annotation.Nullable String datasetName, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         return getEvalRunsCall(datasetName, limit, _callback);
 
     }
@@ -1074,7 +1069,7 @@ public class EvalApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Runs getEvalRuns(@javax.annotation.Nullable String datasetName, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public Runs getEvalRuns(@javax.annotation.Nullable String datasetName, @javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<Runs> localVarResp = getEvalRunsWithHttpInfo(datasetName, limit);
         return localVarResp.getData();
     }
@@ -1093,7 +1088,7 @@ public class EvalApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Runs> getEvalRunsWithHttpInfo(@javax.annotation.Nullable String datasetName, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<Runs> getEvalRunsWithHttpInfo(@javax.annotation.Nullable String datasetName, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getEvalRunsValidateBeforeCall(datasetName, limit, null);
         Type localVarReturnType = new TypeToken<Runs>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -1114,7 +1109,7 @@ public class EvalApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getEvalRunsAsync(@javax.annotation.Nullable String datasetName, @javax.annotation.Nullable Integer limit, final ApiCallback<Runs> _callback) throws ApiException {
+    public okhttp3.Call getEvalRunsAsync(@javax.annotation.Nullable String datasetName, @javax.annotation.Nullable Long limit, final ApiCallback<Runs> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getEvalRunsValidateBeforeCall(datasetName, limit, _callback);
         Type localVarReturnType = new TypeToken<Runs>(){}.getType();
@@ -1137,7 +1132,7 @@ public class EvalApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getEvalScoresCall(@javax.annotation.Nullable String name, @javax.annotation.Nullable String runName, @javax.annotation.Nullable String traceId, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getEvalScoresCall(@javax.annotation.Nullable String name, @javax.annotation.Nullable String runName, @javax.annotation.Nullable String traceId, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1198,7 +1193,7 @@ public class EvalApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getEvalScoresValidateBeforeCall(@javax.annotation.Nullable String name, @javax.annotation.Nullable String runName, @javax.annotation.Nullable String traceId, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getEvalScoresValidateBeforeCall(@javax.annotation.Nullable String name, @javax.annotation.Nullable String runName, @javax.annotation.Nullable String traceId, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         return getEvalScoresCall(name, runName, traceId, limit, _callback);
 
     }
@@ -1219,7 +1214,7 @@ public class EvalApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ScoreList getEvalScores(@javax.annotation.Nullable String name, @javax.annotation.Nullable String runName, @javax.annotation.Nullable String traceId, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public ScoreList getEvalScores(@javax.annotation.Nullable String name, @javax.annotation.Nullable String runName, @javax.annotation.Nullable String traceId, @javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<ScoreList> localVarResp = getEvalScoresWithHttpInfo(name, runName, traceId, limit);
         return localVarResp.getData();
     }
@@ -1240,7 +1235,7 @@ public class EvalApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ScoreList> getEvalScoresWithHttpInfo(@javax.annotation.Nullable String name, @javax.annotation.Nullable String runName, @javax.annotation.Nullable String traceId, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<ScoreList> getEvalScoresWithHttpInfo(@javax.annotation.Nullable String name, @javax.annotation.Nullable String runName, @javax.annotation.Nullable String traceId, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getEvalScoresValidateBeforeCall(name, runName, traceId, limit, null);
         Type localVarReturnType = new TypeToken<ScoreList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -1263,7 +1258,7 @@ public class EvalApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getEvalScoresAsync(@javax.annotation.Nullable String name, @javax.annotation.Nullable String runName, @javax.annotation.Nullable String traceId, @javax.annotation.Nullable Integer limit, final ApiCallback<ScoreList> _callback) throws ApiException {
+    public okhttp3.Call getEvalScoresAsync(@javax.annotation.Nullable String name, @javax.annotation.Nullable String runName, @javax.annotation.Nullable String traceId, @javax.annotation.Nullable Long limit, final ApiCallback<ScoreList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getEvalScoresValidateBeforeCall(name, runName, traceId, limit, _callback);
         Type localVarReturnType = new TypeToken<ScoreList>(){}.getType();
@@ -1286,7 +1281,7 @@ public class EvalApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getEvalTracesCall(@javax.annotation.Nullable String sessionId, @javax.annotation.Nullable String runName, @javax.annotation.Nullable String datasetName, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getEvalTracesCall(@javax.annotation.Nullable String sessionId, @javax.annotation.Nullable String runName, @javax.annotation.Nullable String datasetName, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1347,7 +1342,7 @@ public class EvalApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getEvalTracesValidateBeforeCall(@javax.annotation.Nullable String sessionId, @javax.annotation.Nullable String runName, @javax.annotation.Nullable String datasetName, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getEvalTracesValidateBeforeCall(@javax.annotation.Nullable String sessionId, @javax.annotation.Nullable String runName, @javax.annotation.Nullable String datasetName, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         return getEvalTracesCall(sessionId, runName, datasetName, limit, _callback);
 
     }
@@ -1368,7 +1363,7 @@ public class EvalApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public TraceList getEvalTraces(@javax.annotation.Nullable String sessionId, @javax.annotation.Nullable String runName, @javax.annotation.Nullable String datasetName, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public TraceList getEvalTraces(@javax.annotation.Nullable String sessionId, @javax.annotation.Nullable String runName, @javax.annotation.Nullable String datasetName, @javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<TraceList> localVarResp = getEvalTracesWithHttpInfo(sessionId, runName, datasetName, limit);
         return localVarResp.getData();
     }
@@ -1389,7 +1384,7 @@ public class EvalApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<TraceList> getEvalTracesWithHttpInfo(@javax.annotation.Nullable String sessionId, @javax.annotation.Nullable String runName, @javax.annotation.Nullable String datasetName, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<TraceList> getEvalTracesWithHttpInfo(@javax.annotation.Nullable String sessionId, @javax.annotation.Nullable String runName, @javax.annotation.Nullable String datasetName, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getEvalTracesValidateBeforeCall(sessionId, runName, datasetName, limit, null);
         Type localVarReturnType = new TypeToken<TraceList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -1412,7 +1407,7 @@ public class EvalApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getEvalTracesAsync(@javax.annotation.Nullable String sessionId, @javax.annotation.Nullable String runName, @javax.annotation.Nullable String datasetName, @javax.annotation.Nullable Integer limit, final ApiCallback<TraceList> _callback) throws ApiException {
+    public okhttp3.Call getEvalTracesAsync(@javax.annotation.Nullable String sessionId, @javax.annotation.Nullable String runName, @javax.annotation.Nullable String datasetName, @javax.annotation.Nullable Long limit, final ApiCallback<TraceList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getEvalTracesValidateBeforeCall(sessionId, runName, datasetName, limit, _callback);
         Type localVarReturnType = new TypeToken<TraceList>(){}.getType();

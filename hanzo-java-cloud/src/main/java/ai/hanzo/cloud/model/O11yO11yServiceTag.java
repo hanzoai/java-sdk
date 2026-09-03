@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -66,7 +65,7 @@ public class O11yO11yServiceTag {
   public static final String SERIALIZED_NAME_NUMBER_VALUES = "NumberValues";
   @SerializedName(SERIALIZED_NAME_NUMBER_VALUES)
   @javax.annotation.Nullable
-  private List<BigDecimal> numberValues = new ArrayList<>();
+  private List<Double> numberValues = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_OPERATOR = "Operator";
   @SerializedName(SERIALIZED_NAME_OPERATOR)
@@ -132,12 +131,12 @@ public class O11yO11yServiceTag {
   }
 
 
-  public O11yO11yServiceTag numberValues(@javax.annotation.Nullable List<BigDecimal> numberValues) {
+  public O11yO11yServiceTag numberValues(@javax.annotation.Nullable List<Double> numberValues) {
     this.numberValues = numberValues;
     return this;
   }
 
-  public O11yO11yServiceTag addNumberValuesItem(BigDecimal numberValuesItem) {
+  public O11yO11yServiceTag addNumberValuesItem(Double numberValuesItem) {
     if (this.numberValues == null) {
       this.numberValues = new ArrayList<>();
     }
@@ -150,11 +149,11 @@ public class O11yO11yServiceTag {
    * @return numberValues
    */
   @javax.annotation.Nullable
-  public List<BigDecimal> getNumberValues() {
+  public List<Double> getNumberValues() {
     return numberValues;
   }
 
-  public void setNumberValues(@javax.annotation.Nullable List<BigDecimal> numberValues) {
+  public void setNumberValues(@javax.annotation.Nullable List<Double> numberValues) {
     this.numberValues = numberValues;
   }
 

@@ -63,12 +63,12 @@ public class Enrollment {
   public static final String SERIALIZED_NAME_CURRENT_STEP = "currentStep";
   @SerializedName(SERIALIZED_NAME_CURRENT_STEP)
   @javax.annotation.Nullable
-  private Integer currentStep;
+  private Long currentStep;
 
   public static final String SERIALIZED_NAME_ENROLLED_AT = "enrolledAt";
   @SerializedName(SERIALIZED_NAME_ENROLLED_AT)
   @javax.annotation.Nullable
-  private Integer enrolledAt;
+  private Long enrolledAt;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -78,7 +78,7 @@ public class Enrollment {
   public static final String SERIALIZED_NAME_NEXT_RUN_AT = "nextRunAt";
   @SerializedName(SERIALIZED_NAME_NEXT_RUN_AT)
   @javax.annotation.Nullable
-  private Integer nextRunAt;
+  private Long nextRunAt;
 
   public static final String SERIALIZED_NAME_SEQUENCE_ID = "sequenceId";
   @SerializedName(SERIALIZED_NAME_SEQUENCE_ID)
@@ -93,7 +93,7 @@ public class Enrollment {
   public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)
   @javax.annotation.Nullable
-  private Integer updatedAt;
+  private Long updatedAt;
 
   public Enrollment() {
   }
@@ -136,7 +136,7 @@ public class Enrollment {
   }
 
 
-  public Enrollment currentStep(@javax.annotation.Nullable Integer currentStep) {
+  public Enrollment currentStep(@javax.annotation.Nullable Long currentStep) {
     this.currentStep = currentStep;
     return this;
   }
@@ -146,16 +146,16 @@ public class Enrollment {
    * @return currentStep
    */
   @javax.annotation.Nullable
-  public Integer getCurrentStep() {
+  public Long getCurrentStep() {
     return currentStep;
   }
 
-  public void setCurrentStep(@javax.annotation.Nullable Integer currentStep) {
+  public void setCurrentStep(@javax.annotation.Nullable Long currentStep) {
     this.currentStep = currentStep;
   }
 
 
-  public Enrollment enrolledAt(@javax.annotation.Nullable Integer enrolledAt) {
+  public Enrollment enrolledAt(@javax.annotation.Nullable Long enrolledAt) {
     this.enrolledAt = enrolledAt;
     return this;
   }
@@ -165,11 +165,11 @@ public class Enrollment {
    * @return enrolledAt
    */
   @javax.annotation.Nullable
-  public Integer getEnrolledAt() {
+  public Long getEnrolledAt() {
     return enrolledAt;
   }
 
-  public void setEnrolledAt(@javax.annotation.Nullable Integer enrolledAt) {
+  public void setEnrolledAt(@javax.annotation.Nullable Long enrolledAt) {
     this.enrolledAt = enrolledAt;
   }
 
@@ -193,7 +193,7 @@ public class Enrollment {
   }
 
 
-  public Enrollment nextRunAt(@javax.annotation.Nullable Integer nextRunAt) {
+  public Enrollment nextRunAt(@javax.annotation.Nullable Long nextRunAt) {
     this.nextRunAt = nextRunAt;
     return this;
   }
@@ -203,11 +203,11 @@ public class Enrollment {
    * @return nextRunAt
    */
   @javax.annotation.Nullable
-  public Integer getNextRunAt() {
+  public Long getNextRunAt() {
     return nextRunAt;
   }
 
-  public void setNextRunAt(@javax.annotation.Nullable Integer nextRunAt) {
+  public void setNextRunAt(@javax.annotation.Nullable Long nextRunAt) {
     this.nextRunAt = nextRunAt;
   }
 
@@ -250,7 +250,7 @@ public class Enrollment {
   }
 
 
-  public Enrollment updatedAt(@javax.annotation.Nullable Integer updatedAt) {
+  public Enrollment updatedAt(@javax.annotation.Nullable Long updatedAt) {
     this.updatedAt = updatedAt;
     return this;
   }
@@ -260,11 +260,11 @@ public class Enrollment {
    * @return updatedAt
    */
   @javax.annotation.Nullable
-  public Integer getUpdatedAt() {
+  public Long getUpdatedAt() {
     return updatedAt;
   }
 
-  public void setUpdatedAt(@javax.annotation.Nullable Integer updatedAt) {
+  public void setUpdatedAt(@javax.annotation.Nullable Long updatedAt) {
     this.updatedAt = updatedAt;
   }
 

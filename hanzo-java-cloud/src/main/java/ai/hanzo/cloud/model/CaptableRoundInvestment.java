@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -54,7 +53,7 @@ public class CaptableRoundInvestment {
   public static final String SERIALIZED_NAME_AMOUNT = "amount";
   @SerializedName(SERIALIZED_NAME_AMOUNT)
   @javax.annotation.Nullable
-  private BigDecimal amount;
+  private Double amount;
 
   public static final String SERIALIZED_NAME_COMMENTS = "comments";
   @SerializedName(SERIALIZED_NAME_COMMENTS)
@@ -74,7 +73,7 @@ public class CaptableRoundInvestment {
   public static final String SERIALIZED_NAME_SHARES = "shares";
   @SerializedName(SERIALIZED_NAME_SHARES)
   @javax.annotation.Nullable
-  private Integer shares;
+  private Long shares;
 
   public static final String SERIALIZED_NAME_STAKEHOLDER_ID = "stakeholderId";
   @SerializedName(SERIALIZED_NAME_STAKEHOLDER_ID)
@@ -89,7 +88,7 @@ public class CaptableRoundInvestment {
   public CaptableRoundInvestment() {
   }
 
-  public CaptableRoundInvestment amount(@javax.annotation.Nullable BigDecimal amount) {
+  public CaptableRoundInvestment amount(@javax.annotation.Nullable Double amount) {
     this.amount = amount;
     return this;
   }
@@ -99,11 +98,11 @@ public class CaptableRoundInvestment {
    * @return amount
    */
   @javax.annotation.Nullable
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 
-  public void setAmount(@javax.annotation.Nullable BigDecimal amount) {
+  public void setAmount(@javax.annotation.Nullable Double amount) {
     this.amount = amount;
   }
 
@@ -165,7 +164,7 @@ public class CaptableRoundInvestment {
   }
 
 
-  public CaptableRoundInvestment shares(@javax.annotation.Nullable Integer shares) {
+  public CaptableRoundInvestment shares(@javax.annotation.Nullable Long shares) {
     this.shares = shares;
     return this;
   }
@@ -175,11 +174,11 @@ public class CaptableRoundInvestment {
    * @return shares
    */
   @javax.annotation.Nullable
-  public Integer getShares() {
+  public Long getShares() {
     return shares;
   }
 
-  public void setShares(@javax.annotation.Nullable Integer shares) {
+  public void setShares(@javax.annotation.Nullable Long shares) {
     this.shares = shares;
   }
 

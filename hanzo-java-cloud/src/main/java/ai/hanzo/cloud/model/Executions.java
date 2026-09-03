@@ -67,7 +67,7 @@ public class Executions {
   public static final String SERIALIZED_NAME_REPOS = "repos";
   @SerializedName(SERIALIZED_NAME_REPOS)
   @javax.annotation.Nullable
-  private Integer repos;
+  private Long repos;
 
   public static final String SERIALIZED_NAME_RUNS = "runs";
   @SerializedName(SERIALIZED_NAME_RUNS)
@@ -133,7 +133,7 @@ public class Executions {
   }
 
 
-  public Executions repos(@javax.annotation.Nullable Integer repos) {
+  public Executions repos(@javax.annotation.Nullable Long repos) {
     this.repos = repos;
     return this;
   }
@@ -143,11 +143,11 @@ public class Executions {
    * @return repos
    */
   @javax.annotation.Nullable
-  public Integer getRepos() {
+  public Long getRepos() {
     return repos;
   }
 
-  public void setRepos(@javax.annotation.Nullable Integer repos) {
+  public void setRepos(@javax.annotation.Nullable Long repos) {
     this.repos = repos;
   }
 

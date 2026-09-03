@@ -91,7 +91,7 @@ public class O11yPostablePipeline {
   public static final String SERIALIZED_NAME_ORDER_ID = "orderId";
   @SerializedName(SERIALIZED_NAME_ORDER_ID)
   @javax.annotation.Nullable
-  private Integer orderId;
+  private Long orderId;
 
   public O11yPostablePipeline() {
   }
@@ -237,7 +237,7 @@ public class O11yPostablePipeline {
   }
 
 
-  public O11yPostablePipeline orderId(@javax.annotation.Nullable Integer orderId) {
+  public O11yPostablePipeline orderId(@javax.annotation.Nullable Long orderId) {
     this.orderId = orderId;
     return this;
   }
@@ -247,11 +247,11 @@ public class O11yPostablePipeline {
    * @return orderId
    */
   @javax.annotation.Nullable
-  public Integer getOrderId() {
+  public Long getOrderId() {
     return orderId;
   }
 
-  public void setOrderId(@javax.annotation.Nullable Integer orderId) {
+  public void setOrderId(@javax.annotation.Nullable Long orderId) {
     this.orderId = orderId;
   }
 

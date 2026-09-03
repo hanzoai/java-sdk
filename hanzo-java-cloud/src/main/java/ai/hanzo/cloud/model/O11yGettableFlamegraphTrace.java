@@ -56,7 +56,7 @@ public class O11yGettableFlamegraphTrace {
   public static final String SERIALIZED_NAME_END_TIMESTAMP_MILLIS = "endTimestampMillis";
   @SerializedName(SERIALIZED_NAME_END_TIMESTAMP_MILLIS)
   @javax.annotation.Nullable
-  private Integer endTimestampMillis;
+  private Long endTimestampMillis;
 
   public static final String SERIALIZED_NAME_HAS_MORE = "hasMore";
   @SerializedName(SERIALIZED_NAME_HAS_MORE)
@@ -71,12 +71,12 @@ public class O11yGettableFlamegraphTrace {
   public static final String SERIALIZED_NAME_START_TIMESTAMP_MILLIS = "startTimestampMillis";
   @SerializedName(SERIALIZED_NAME_START_TIMESTAMP_MILLIS)
   @javax.annotation.Nullable
-  private Integer startTimestampMillis;
+  private Long startTimestampMillis;
 
   public O11yGettableFlamegraphTrace() {
   }
 
-  public O11yGettableFlamegraphTrace endTimestampMillis(@javax.annotation.Nullable Integer endTimestampMillis) {
+  public O11yGettableFlamegraphTrace endTimestampMillis(@javax.annotation.Nullable Long endTimestampMillis) {
     this.endTimestampMillis = endTimestampMillis;
     return this;
   }
@@ -86,11 +86,11 @@ public class O11yGettableFlamegraphTrace {
    * @return endTimestampMillis
    */
   @javax.annotation.Nullable
-  public Integer getEndTimestampMillis() {
+  public Long getEndTimestampMillis() {
     return endTimestampMillis;
   }
 
-  public void setEndTimestampMillis(@javax.annotation.Nullable Integer endTimestampMillis) {
+  public void setEndTimestampMillis(@javax.annotation.Nullable Long endTimestampMillis) {
     this.endTimestampMillis = endTimestampMillis;
   }
 
@@ -141,7 +141,7 @@ public class O11yGettableFlamegraphTrace {
   }
 
 
-  public O11yGettableFlamegraphTrace startTimestampMillis(@javax.annotation.Nullable Integer startTimestampMillis) {
+  public O11yGettableFlamegraphTrace startTimestampMillis(@javax.annotation.Nullable Long startTimestampMillis) {
     this.startTimestampMillis = startTimestampMillis;
     return this;
   }
@@ -151,11 +151,11 @@ public class O11yGettableFlamegraphTrace {
    * @return startTimestampMillis
    */
   @javax.annotation.Nullable
-  public Integer getStartTimestampMillis() {
+  public Long getStartTimestampMillis() {
     return startTimestampMillis;
   }
 
-  public void setStartTimestampMillis(@javax.annotation.Nullable Integer startTimestampMillis) {
+  public void setStartTimestampMillis(@javax.annotation.Nullable Long startTimestampMillis) {
     this.startTimestampMillis = startTimestampMillis;
   }
 

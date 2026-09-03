@@ -53,12 +53,12 @@ public class ProjectView {
   public static final String SERIALIZED_NAME_APPLICATIONS = "applications";
   @SerializedName(SERIALIZED_NAME_APPLICATIONS)
   @javax.annotation.Nullable
-  private Integer applications;
+  private Long applications;
 
   public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
   @javax.annotation.Nullable
-  private Integer createdAt;
+  private Long createdAt;
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
@@ -83,7 +83,7 @@ public class ProjectView {
   public ProjectView() {
   }
 
-  public ProjectView applications(@javax.annotation.Nullable Integer applications) {
+  public ProjectView applications(@javax.annotation.Nullable Long applications) {
     this.applications = applications;
     return this;
   }
@@ -93,16 +93,16 @@ public class ProjectView {
    * @return applications
    */
   @javax.annotation.Nullable
-  public Integer getApplications() {
+  public Long getApplications() {
     return applications;
   }
 
-  public void setApplications(@javax.annotation.Nullable Integer applications) {
+  public void setApplications(@javax.annotation.Nullable Long applications) {
     this.applications = applications;
   }
 
 
-  public ProjectView createdAt(@javax.annotation.Nullable Integer createdAt) {
+  public ProjectView createdAt(@javax.annotation.Nullable Long createdAt) {
     this.createdAt = createdAt;
     return this;
   }
@@ -112,11 +112,11 @@ public class ProjectView {
    * @return createdAt
    */
   @javax.annotation.Nullable
-  public Integer getCreatedAt() {
+  public Long getCreatedAt() {
     return createdAt;
   }
 
-  public void setCreatedAt(@javax.annotation.Nullable Integer createdAt) {
+  public void setCreatedAt(@javax.annotation.Nullable Long createdAt) {
     this.createdAt = createdAt;
   }
 

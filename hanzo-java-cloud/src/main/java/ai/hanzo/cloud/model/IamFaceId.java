@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -56,7 +55,7 @@ public class IamFaceId {
   public static final String SERIALIZED_NAME_FACE_ID_DATA = "faceIdData";
   @SerializedName(SERIALIZED_NAME_FACE_ID_DATA)
   @javax.annotation.Nullable
-  private List<BigDecimal> faceIdData = new ArrayList<>();
+  private List<Double> faceIdData = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_IMAGE_URL = "imageUrl";
   @SerializedName(SERIALIZED_NAME_IMAGE_URL)
@@ -71,12 +70,12 @@ public class IamFaceId {
   public IamFaceId() {
   }
 
-  public IamFaceId faceIdData(@javax.annotation.Nullable List<BigDecimal> faceIdData) {
+  public IamFaceId faceIdData(@javax.annotation.Nullable List<Double> faceIdData) {
     this.faceIdData = faceIdData;
     return this;
   }
 
-  public IamFaceId addFaceIdDataItem(BigDecimal faceIdDataItem) {
+  public IamFaceId addFaceIdDataItem(Double faceIdDataItem) {
     if (this.faceIdData == null) {
       this.faceIdData = new ArrayList<>();
     }
@@ -89,11 +88,11 @@ public class IamFaceId {
    * @return faceIdData
    */
   @javax.annotation.Nullable
-  public List<BigDecimal> getFaceIdData() {
+  public List<Double> getFaceIdData() {
     return faceIdData;
   }
 
-  public void setFaceIdData(@javax.annotation.Nullable List<BigDecimal> faceIdData) {
+  public void setFaceIdData(@javax.annotation.Nullable List<Double> faceIdData) {
     this.faceIdData = faceIdData;
   }
 

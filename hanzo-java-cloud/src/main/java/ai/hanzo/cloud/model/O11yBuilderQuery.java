@@ -70,7 +70,7 @@ public class O11yBuilderQuery {
   public static final String SERIALIZED_NAME_SHIFT_BY = "ShiftBy";
   @SerializedName(SERIALIZED_NAME_SHIFT_BY)
   @javax.annotation.Nullable
-  private Integer shiftBy;
+  private Long shiftBy;
 
   public static final String SERIALIZED_NAME_AGGREGATE_ATTRIBUTE = "aggregateAttribute";
   @SerializedName(SERIALIZED_NAME_AGGREGATE_ATTRIBUTE)
@@ -170,7 +170,7 @@ public class O11yBuilderQuery {
   public static final String SERIALIZED_NAME_STEP_INTERVAL = "stepInterval";
   @SerializedName(SERIALIZED_NAME_STEP_INTERVAL)
   @javax.annotation.Nullable
-  private Integer stepInterval;
+  private Long stepInterval;
 
   public static final String SERIALIZED_NAME_TEMPORALITY = "temporality";
   @SerializedName(SERIALIZED_NAME_TEMPORALITY)
@@ -231,7 +231,7 @@ public class O11yBuilderQuery {
   }
 
 
-  public O11yBuilderQuery shiftBy(@javax.annotation.Nullable Integer shiftBy) {
+  public O11yBuilderQuery shiftBy(@javax.annotation.Nullable Long shiftBy) {
     this.shiftBy = shiftBy;
     return this;
   }
@@ -241,11 +241,11 @@ public class O11yBuilderQuery {
    * @return shiftBy
    */
   @javax.annotation.Nullable
-  public Integer getShiftBy() {
+  public Long getShiftBy() {
     return shiftBy;
   }
 
-  public void setShiftBy(@javax.annotation.Nullable Integer shiftBy) {
+  public void setShiftBy(@javax.annotation.Nullable Long shiftBy) {
     this.shiftBy = shiftBy;
   }
 
@@ -651,7 +651,7 @@ public class O11yBuilderQuery {
   }
 
 
-  public O11yBuilderQuery stepInterval(@javax.annotation.Nullable Integer stepInterval) {
+  public O11yBuilderQuery stepInterval(@javax.annotation.Nullable Long stepInterval) {
     this.stepInterval = stepInterval;
     return this;
   }
@@ -661,11 +661,11 @@ public class O11yBuilderQuery {
    * @return stepInterval
    */
   @javax.annotation.Nullable
-  public Integer getStepInterval() {
+  public Long getStepInterval() {
     return stepInterval;
   }
 
-  public void setStepInterval(@javax.annotation.Nullable Integer stepInterval) {
+  public void setStepInterval(@javax.annotation.Nullable Long stepInterval) {
     this.stepInterval = stepInterval;
   }
 

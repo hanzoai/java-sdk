@@ -58,7 +58,7 @@ public class TrustGranted {
   public static final String SERIALIZED_NAME_EXPIRES_AT = "expiresAt";
   @SerializedName(SERIALIZED_NAME_EXPIRES_AT)
   @javax.annotation.Nullable
-  private Integer expiresAt;
+  private Long expiresAt;
 
   public static final String SERIALIZED_NAME_LINK = "link";
   @SerializedName(SERIALIZED_NAME_LINK)
@@ -92,7 +92,7 @@ public class TrustGranted {
   }
 
 
-  public TrustGranted expiresAt(@javax.annotation.Nullable Integer expiresAt) {
+  public TrustGranted expiresAt(@javax.annotation.Nullable Long expiresAt) {
     this.expiresAt = expiresAt;
     return this;
   }
@@ -102,11 +102,11 @@ public class TrustGranted {
    * @return expiresAt
    */
   @javax.annotation.Nullable
-  public Integer getExpiresAt() {
+  public Long getExpiresAt() {
     return expiresAt;
   }
 
-  public void setExpiresAt(@javax.annotation.Nullable Integer expiresAt) {
+  public void setExpiresAt(@javax.annotation.Nullable Long expiresAt) {
     this.expiresAt = expiresAt;
   }
 

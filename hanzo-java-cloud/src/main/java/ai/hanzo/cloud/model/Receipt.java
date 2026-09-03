@@ -98,7 +98,7 @@ public class Receipt {
   public static final String SERIALIZED_NAME_SETTLED_AT = "settledAt";
   @SerializedName(SERIALIZED_NAME_SETTLED_AT)
   @javax.annotation.Nullable
-  private Integer settledAt;
+  private Long settledAt;
 
   public static final String SERIALIZED_NAME_SETTLED_VIA = "settledVia";
   @SerializedName(SERIALIZED_NAME_SETTLED_VIA)
@@ -284,7 +284,7 @@ public class Receipt {
   }
 
 
-  public Receipt settledAt(@javax.annotation.Nullable Integer settledAt) {
+  public Receipt settledAt(@javax.annotation.Nullable Long settledAt) {
     this.settledAt = settledAt;
     return this;
   }
@@ -294,11 +294,11 @@ public class Receipt {
    * @return settledAt
    */
   @javax.annotation.Nullable
-  public Integer getSettledAt() {
+  public Long getSettledAt() {
     return settledAt;
   }
 
-  public void setSettledAt(@javax.annotation.Nullable Integer settledAt) {
+  public void setSettledAt(@javax.annotation.Nullable Long settledAt) {
     this.settledAt = settledAt;
   }
 

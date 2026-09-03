@@ -61,7 +61,7 @@ public class O11yQueryRangeParamsV3 {
   public static final String SERIALIZED_NAME_END = "end";
   @SerializedName(SERIALIZED_NAME_END)
   @javax.annotation.Nullable
-  private Integer end;
+  private Long end;
 
   public static final String SERIALIZED_NAME_FORMAT_FOR_WEB = "formatForWeb";
   @SerializedName(SERIALIZED_NAME_FORMAT_FOR_WEB)
@@ -76,12 +76,12 @@ public class O11yQueryRangeParamsV3 {
   public static final String SERIALIZED_NAME_START = "start";
   @SerializedName(SERIALIZED_NAME_START)
   @javax.annotation.Nullable
-  private Integer start;
+  private Long start;
 
   public static final String SERIALIZED_NAME_STEP = "step";
   @SerializedName(SERIALIZED_NAME_STEP)
   @javax.annotation.Nullable
-  private Integer step;
+  private Long step;
 
   public static final String SERIALIZED_NAME_VARIABLES = "variables";
   @SerializedName(SERIALIZED_NAME_VARIABLES)
@@ -110,7 +110,7 @@ public class O11yQueryRangeParamsV3 {
   }
 
 
-  public O11yQueryRangeParamsV3 end(@javax.annotation.Nullable Integer end) {
+  public O11yQueryRangeParamsV3 end(@javax.annotation.Nullable Long end) {
     this.end = end;
     return this;
   }
@@ -120,11 +120,11 @@ public class O11yQueryRangeParamsV3 {
    * @return end
    */
   @javax.annotation.Nullable
-  public Integer getEnd() {
+  public Long getEnd() {
     return end;
   }
 
-  public void setEnd(@javax.annotation.Nullable Integer end) {
+  public void setEnd(@javax.annotation.Nullable Long end) {
     this.end = end;
   }
 
@@ -167,7 +167,7 @@ public class O11yQueryRangeParamsV3 {
   }
 
 
-  public O11yQueryRangeParamsV3 start(@javax.annotation.Nullable Integer start) {
+  public O11yQueryRangeParamsV3 start(@javax.annotation.Nullable Long start) {
     this.start = start;
     return this;
   }
@@ -177,16 +177,16 @@ public class O11yQueryRangeParamsV3 {
    * @return start
    */
   @javax.annotation.Nullable
-  public Integer getStart() {
+  public Long getStart() {
     return start;
   }
 
-  public void setStart(@javax.annotation.Nullable Integer start) {
+  public void setStart(@javax.annotation.Nullable Long start) {
     this.start = start;
   }
 
 
-  public O11yQueryRangeParamsV3 step(@javax.annotation.Nullable Integer step) {
+  public O11yQueryRangeParamsV3 step(@javax.annotation.Nullable Long step) {
     this.step = step;
     return this;
   }
@@ -196,11 +196,11 @@ public class O11yQueryRangeParamsV3 {
    * @return step
    */
   @javax.annotation.Nullable
-  public Integer getStep() {
+  public Long getStep() {
     return step;
   }
 
-  public void setStep(@javax.annotation.Nullable Integer step) {
+  public void setStep(@javax.annotation.Nullable Long step) {
     this.step = step;
   }
 

@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -54,7 +53,7 @@ public class CaptableOption {
   public static final String SERIALIZED_NAME_CLIFF_YEARS = "cliffYears";
   @SerializedName(SERIALIZED_NAME_CLIFF_YEARS)
   @javax.annotation.Nullable
-  private Integer cliffYears;
+  private Long cliffYears;
 
   public static final String SERIALIZED_NAME_EQUITY_PLAN_ID = "equityPlanId";
   @SerializedName(SERIALIZED_NAME_EQUITY_PLAN_ID)
@@ -69,7 +68,7 @@ public class CaptableOption {
   public static final String SERIALIZED_NAME_EXERCISE_PRICE = "exercisePrice";
   @SerializedName(SERIALIZED_NAME_EXERCISE_PRICE)
   @javax.annotation.Nullable
-  private BigDecimal exercisePrice;
+  private Double exercisePrice;
 
   public static final String SERIALIZED_NAME_EXPIRATION_DATE = "expirationDate";
   @SerializedName(SERIALIZED_NAME_EXPIRATION_DATE)
@@ -94,7 +93,7 @@ public class CaptableOption {
   public static final String SERIALIZED_NAME_QUANTITY = "quantity";
   @SerializedName(SERIALIZED_NAME_QUANTITY)
   @javax.annotation.Nullable
-  private Integer quantity;
+  private Long quantity;
 
   public static final String SERIALIZED_NAME_STAKEHOLDER_ID = "stakeholderId";
   @SerializedName(SERIALIZED_NAME_STAKEHOLDER_ID)
@@ -119,12 +118,12 @@ public class CaptableOption {
   public static final String SERIALIZED_NAME_VESTING_YEARS = "vestingYears";
   @SerializedName(SERIALIZED_NAME_VESTING_YEARS)
   @javax.annotation.Nullable
-  private Integer vestingYears;
+  private Long vestingYears;
 
   public CaptableOption() {
   }
 
-  public CaptableOption cliffYears(@javax.annotation.Nullable Integer cliffYears) {
+  public CaptableOption cliffYears(@javax.annotation.Nullable Long cliffYears) {
     this.cliffYears = cliffYears;
     return this;
   }
@@ -134,11 +133,11 @@ public class CaptableOption {
    * @return cliffYears
    */
   @javax.annotation.Nullable
-  public Integer getCliffYears() {
+  public Long getCliffYears() {
     return cliffYears;
   }
 
-  public void setCliffYears(@javax.annotation.Nullable Integer cliffYears) {
+  public void setCliffYears(@javax.annotation.Nullable Long cliffYears) {
     this.cliffYears = cliffYears;
   }
 
@@ -181,7 +180,7 @@ public class CaptableOption {
   }
 
 
-  public CaptableOption exercisePrice(@javax.annotation.Nullable BigDecimal exercisePrice) {
+  public CaptableOption exercisePrice(@javax.annotation.Nullable Double exercisePrice) {
     this.exercisePrice = exercisePrice;
     return this;
   }
@@ -191,11 +190,11 @@ public class CaptableOption {
    * @return exercisePrice
    */
   @javax.annotation.Nullable
-  public BigDecimal getExercisePrice() {
+  public Double getExercisePrice() {
     return exercisePrice;
   }
 
-  public void setExercisePrice(@javax.annotation.Nullable BigDecimal exercisePrice) {
+  public void setExercisePrice(@javax.annotation.Nullable Double exercisePrice) {
     this.exercisePrice = exercisePrice;
   }
 
@@ -276,7 +275,7 @@ public class CaptableOption {
   }
 
 
-  public CaptableOption quantity(@javax.annotation.Nullable Integer quantity) {
+  public CaptableOption quantity(@javax.annotation.Nullable Long quantity) {
     this.quantity = quantity;
     return this;
   }
@@ -286,11 +285,11 @@ public class CaptableOption {
    * @return quantity
    */
   @javax.annotation.Nullable
-  public Integer getQuantity() {
+  public Long getQuantity() {
     return quantity;
   }
 
-  public void setQuantity(@javax.annotation.Nullable Integer quantity) {
+  public void setQuantity(@javax.annotation.Nullable Long quantity) {
     this.quantity = quantity;
   }
 
@@ -371,7 +370,7 @@ public class CaptableOption {
   }
 
 
-  public CaptableOption vestingYears(@javax.annotation.Nullable Integer vestingYears) {
+  public CaptableOption vestingYears(@javax.annotation.Nullable Long vestingYears) {
     this.vestingYears = vestingYears;
     return this;
   }
@@ -381,11 +380,11 @@ public class CaptableOption {
    * @return vestingYears
    */
   @javax.annotation.Nullable
-  public Integer getVestingYears() {
+  public Long getVestingYears() {
     return vestingYears;
   }
 
-  public void setVestingYears(@javax.annotation.Nullable Integer vestingYears) {
+  public void setVestingYears(@javax.annotation.Nullable Long vestingYears) {
     this.vestingYears = vestingYears;
   }
 

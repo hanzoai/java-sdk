@@ -53,17 +53,17 @@ public class LimitsBlock {
   public static final String SERIALIZED_NAME_API_RATE_LIMIT = "apiRateLimit";
   @SerializedName(SERIALIZED_NAME_API_RATE_LIMIT)
   @javax.annotation.Nullable
-  private Integer apiRateLimit;
+  private Long apiRateLimit;
 
   public static final String SERIALIZED_NAME_MAX_ALERTS = "maxAlerts";
   @SerializedName(SERIALIZED_NAME_MAX_ALERTS)
   @javax.annotation.Nullable
-  private Integer maxAlerts;
+  private Long maxAlerts;
 
   public static final String SERIALIZED_NAME_MCP_RATE_LIMIT = "mcpRateLimit";
   @SerializedName(SERIALIZED_NAME_MCP_RATE_LIMIT)
   @javax.annotation.Nullable
-  private Integer mcpRateLimit;
+  private Long mcpRateLimit;
 
   public static final String SERIALIZED_NAME_MODEL_API = "modelApi";
   @SerializedName(SERIALIZED_NAME_MODEL_API)
@@ -73,7 +73,7 @@ public class LimitsBlock {
   public LimitsBlock() {
   }
 
-  public LimitsBlock apiRateLimit(@javax.annotation.Nullable Integer apiRateLimit) {
+  public LimitsBlock apiRateLimit(@javax.annotation.Nullable Long apiRateLimit) {
     this.apiRateLimit = apiRateLimit;
     return this;
   }
@@ -83,16 +83,16 @@ public class LimitsBlock {
    * @return apiRateLimit
    */
   @javax.annotation.Nullable
-  public Integer getApiRateLimit() {
+  public Long getApiRateLimit() {
     return apiRateLimit;
   }
 
-  public void setApiRateLimit(@javax.annotation.Nullable Integer apiRateLimit) {
+  public void setApiRateLimit(@javax.annotation.Nullable Long apiRateLimit) {
     this.apiRateLimit = apiRateLimit;
   }
 
 
-  public LimitsBlock maxAlerts(@javax.annotation.Nullable Integer maxAlerts) {
+  public LimitsBlock maxAlerts(@javax.annotation.Nullable Long maxAlerts) {
     this.maxAlerts = maxAlerts;
     return this;
   }
@@ -102,16 +102,16 @@ public class LimitsBlock {
    * @return maxAlerts
    */
   @javax.annotation.Nullable
-  public Integer getMaxAlerts() {
+  public Long getMaxAlerts() {
     return maxAlerts;
   }
 
-  public void setMaxAlerts(@javax.annotation.Nullable Integer maxAlerts) {
+  public void setMaxAlerts(@javax.annotation.Nullable Long maxAlerts) {
     this.maxAlerts = maxAlerts;
   }
 
 
-  public LimitsBlock mcpRateLimit(@javax.annotation.Nullable Integer mcpRateLimit) {
+  public LimitsBlock mcpRateLimit(@javax.annotation.Nullable Long mcpRateLimit) {
     this.mcpRateLimit = mcpRateLimit;
     return this;
   }
@@ -121,11 +121,11 @@ public class LimitsBlock {
    * @return mcpRateLimit
    */
   @javax.annotation.Nullable
-  public Integer getMcpRateLimit() {
+  public Long getMcpRateLimit() {
     return mcpRateLimit;
   }
 
-  public void setMcpRateLimit(@javax.annotation.Nullable Integer mcpRateLimit) {
+  public void setMcpRateLimit(@javax.annotation.Nullable Long mcpRateLimit) {
     this.mcpRateLimit = mcpRateLimit;
   }
 

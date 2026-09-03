@@ -58,12 +58,12 @@ public class PlanInfo {
   public static final String SERIALIZED_NAME_GUEST_LIMIT = "guestLimit";
   @SerializedName(SERIALIZED_NAME_GUEST_LIMIT)
   @javax.annotation.Nullable
-  private Integer guestLimit;
+  private Long guestLimit;
 
   public static final String SERIALIZED_NAME_GUESTS = "guests";
   @SerializedName(SERIALIZED_NAME_GUESTS)
   @javax.annotation.Nullable
-  private Integer guests;
+  private Long guests;
 
   public static final String SERIALIZED_NAME_PLAN = "plan";
   @SerializedName(SERIALIZED_NAME_PLAN)
@@ -73,7 +73,7 @@ public class PlanInfo {
   public static final String SERIALIZED_NAME_SEATS = "seats";
   @SerializedName(SERIALIZED_NAME_SEATS)
   @javax.annotation.Nullable
-  private Integer seats;
+  private Long seats;
 
   public static final String SERIALIZED_NAME_UPGRADE_URL = "upgradeUrl";
   @SerializedName(SERIALIZED_NAME_UPGRADE_URL)
@@ -102,7 +102,7 @@ public class PlanInfo {
   }
 
 
-  public PlanInfo guestLimit(@javax.annotation.Nullable Integer guestLimit) {
+  public PlanInfo guestLimit(@javax.annotation.Nullable Long guestLimit) {
     this.guestLimit = guestLimit;
     return this;
   }
@@ -112,16 +112,16 @@ public class PlanInfo {
    * @return guestLimit
    */
   @javax.annotation.Nullable
-  public Integer getGuestLimit() {
+  public Long getGuestLimit() {
     return guestLimit;
   }
 
-  public void setGuestLimit(@javax.annotation.Nullable Integer guestLimit) {
+  public void setGuestLimit(@javax.annotation.Nullable Long guestLimit) {
     this.guestLimit = guestLimit;
   }
 
 
-  public PlanInfo guests(@javax.annotation.Nullable Integer guests) {
+  public PlanInfo guests(@javax.annotation.Nullable Long guests) {
     this.guests = guests;
     return this;
   }
@@ -131,11 +131,11 @@ public class PlanInfo {
    * @return guests
    */
   @javax.annotation.Nullable
-  public Integer getGuests() {
+  public Long getGuests() {
     return guests;
   }
 
-  public void setGuests(@javax.annotation.Nullable Integer guests) {
+  public void setGuests(@javax.annotation.Nullable Long guests) {
     this.guests = guests;
   }
 
@@ -159,7 +159,7 @@ public class PlanInfo {
   }
 
 
-  public PlanInfo seats(@javax.annotation.Nullable Integer seats) {
+  public PlanInfo seats(@javax.annotation.Nullable Long seats) {
     this.seats = seats;
     return this;
   }
@@ -169,11 +169,11 @@ public class PlanInfo {
    * @return seats
    */
   @javax.annotation.Nullable
-  public Integer getSeats() {
+  public Long getSeats() {
     return seats;
   }
 
-  public void setSeats(@javax.annotation.Nullable Integer seats) {
+  public void setSeats(@javax.annotation.Nullable Long seats) {
     this.seats = seats;
   }
 

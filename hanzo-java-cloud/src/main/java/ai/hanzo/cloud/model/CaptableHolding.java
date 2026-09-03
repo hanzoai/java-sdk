@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -54,7 +53,7 @@ public class CaptableHolding {
   public static final String SERIALIZED_NAME_FULLY_DILUTED = "fullyDiluted";
   @SerializedName(SERIALIZED_NAME_FULLY_DILUTED)
   @javax.annotation.Nullable
-  private Integer fullyDiluted;
+  private Long fullyDiluted;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -64,17 +63,17 @@ public class CaptableHolding {
   public static final String SERIALIZED_NAME_OPTIONS = "options";
   @SerializedName(SERIALIZED_NAME_OPTIONS)
   @javax.annotation.Nullable
-  private Integer options;
+  private Long options;
 
   public static final String SERIALIZED_NAME_OWNERSHIP_PCT = "ownershipPct";
   @SerializedName(SERIALIZED_NAME_OWNERSHIP_PCT)
   @javax.annotation.Nullable
-  private BigDecimal ownershipPct;
+  private Double ownershipPct;
 
   public static final String SERIALIZED_NAME_SHARES = "shares";
   @SerializedName(SERIALIZED_NAME_SHARES)
   @javax.annotation.Nullable
-  private Integer shares;
+  private Long shares;
 
   public static final String SERIALIZED_NAME_STAKEHOLDER_ID = "stakeholderId";
   @SerializedName(SERIALIZED_NAME_STAKEHOLDER_ID)
@@ -84,7 +83,7 @@ public class CaptableHolding {
   public CaptableHolding() {
   }
 
-  public CaptableHolding fullyDiluted(@javax.annotation.Nullable Integer fullyDiluted) {
+  public CaptableHolding fullyDiluted(@javax.annotation.Nullable Long fullyDiluted) {
     this.fullyDiluted = fullyDiluted;
     return this;
   }
@@ -94,11 +93,11 @@ public class CaptableHolding {
    * @return fullyDiluted
    */
   @javax.annotation.Nullable
-  public Integer getFullyDiluted() {
+  public Long getFullyDiluted() {
     return fullyDiluted;
   }
 
-  public void setFullyDiluted(@javax.annotation.Nullable Integer fullyDiluted) {
+  public void setFullyDiluted(@javax.annotation.Nullable Long fullyDiluted) {
     this.fullyDiluted = fullyDiluted;
   }
 
@@ -122,7 +121,7 @@ public class CaptableHolding {
   }
 
 
-  public CaptableHolding options(@javax.annotation.Nullable Integer options) {
+  public CaptableHolding options(@javax.annotation.Nullable Long options) {
     this.options = options;
     return this;
   }
@@ -132,16 +131,16 @@ public class CaptableHolding {
    * @return options
    */
   @javax.annotation.Nullable
-  public Integer getOptions() {
+  public Long getOptions() {
     return options;
   }
 
-  public void setOptions(@javax.annotation.Nullable Integer options) {
+  public void setOptions(@javax.annotation.Nullable Long options) {
     this.options = options;
   }
 
 
-  public CaptableHolding ownershipPct(@javax.annotation.Nullable BigDecimal ownershipPct) {
+  public CaptableHolding ownershipPct(@javax.annotation.Nullable Double ownershipPct) {
     this.ownershipPct = ownershipPct;
     return this;
   }
@@ -151,16 +150,16 @@ public class CaptableHolding {
    * @return ownershipPct
    */
   @javax.annotation.Nullable
-  public BigDecimal getOwnershipPct() {
+  public Double getOwnershipPct() {
     return ownershipPct;
   }
 
-  public void setOwnershipPct(@javax.annotation.Nullable BigDecimal ownershipPct) {
+  public void setOwnershipPct(@javax.annotation.Nullable Double ownershipPct) {
     this.ownershipPct = ownershipPct;
   }
 
 
-  public CaptableHolding shares(@javax.annotation.Nullable Integer shares) {
+  public CaptableHolding shares(@javax.annotation.Nullable Long shares) {
     this.shares = shares;
     return this;
   }
@@ -170,11 +169,11 @@ public class CaptableHolding {
    * @return shares
    */
   @javax.annotation.Nullable
-  public Integer getShares() {
+  public Long getShares() {
     return shares;
   }
 
-  public void setShares(@javax.annotation.Nullable Integer shares) {
+  public void setShares(@javax.annotation.Nullable Long shares) {
     this.shares = shares;
   }
 

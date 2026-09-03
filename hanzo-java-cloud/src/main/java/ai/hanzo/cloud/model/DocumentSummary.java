@@ -58,7 +58,7 @@ public class DocumentSummary {
   public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
   @javax.annotation.Nullable
-  private Integer createdAt;
+  private Long createdAt;
 
   public static final String SERIALIZED_NAME_ESIGN_PROVIDER = "esignProvider";
   @SerializedName(SERIALIZED_NAME_ESIGN_PROVIDER)
@@ -73,7 +73,7 @@ public class DocumentSummary {
   public static final String SERIALIZED_NAME_SIGNED_AT = "signedAt";
   @SerializedName(SERIALIZED_NAME_SIGNED_AT)
   @javax.annotation.Nullable
-  private Integer signedAt;
+  private Long signedAt;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
@@ -88,7 +88,7 @@ public class DocumentSummary {
   public static final String SERIALIZED_NAME_TEMPLATE_VERSION = "templateVersion";
   @SerializedName(SERIALIZED_NAME_TEMPLATE_VERSION)
   @javax.annotation.Nullable
-  private Integer templateVersion;
+  private Long templateVersion;
 
   public static final String SERIALIZED_NAME_TITLE = "title";
   @SerializedName(SERIALIZED_NAME_TITLE)
@@ -98,7 +98,7 @@ public class DocumentSummary {
   public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)
   @javax.annotation.Nullable
-  private Integer updatedAt;
+  private Long updatedAt;
 
   public DocumentSummary() {
   }
@@ -122,7 +122,7 @@ public class DocumentSummary {
   }
 
 
-  public DocumentSummary createdAt(@javax.annotation.Nullable Integer createdAt) {
+  public DocumentSummary createdAt(@javax.annotation.Nullable Long createdAt) {
     this.createdAt = createdAt;
     return this;
   }
@@ -132,11 +132,11 @@ public class DocumentSummary {
    * @return createdAt
    */
   @javax.annotation.Nullable
-  public Integer getCreatedAt() {
+  public Long getCreatedAt() {
     return createdAt;
   }
 
-  public void setCreatedAt(@javax.annotation.Nullable Integer createdAt) {
+  public void setCreatedAt(@javax.annotation.Nullable Long createdAt) {
     this.createdAt = createdAt;
   }
 
@@ -179,7 +179,7 @@ public class DocumentSummary {
   }
 
 
-  public DocumentSummary signedAt(@javax.annotation.Nullable Integer signedAt) {
+  public DocumentSummary signedAt(@javax.annotation.Nullable Long signedAt) {
     this.signedAt = signedAt;
     return this;
   }
@@ -189,11 +189,11 @@ public class DocumentSummary {
    * @return signedAt
    */
   @javax.annotation.Nullable
-  public Integer getSignedAt() {
+  public Long getSignedAt() {
     return signedAt;
   }
 
-  public void setSignedAt(@javax.annotation.Nullable Integer signedAt) {
+  public void setSignedAt(@javax.annotation.Nullable Long signedAt) {
     this.signedAt = signedAt;
   }
 
@@ -236,7 +236,7 @@ public class DocumentSummary {
   }
 
 
-  public DocumentSummary templateVersion(@javax.annotation.Nullable Integer templateVersion) {
+  public DocumentSummary templateVersion(@javax.annotation.Nullable Long templateVersion) {
     this.templateVersion = templateVersion;
     return this;
   }
@@ -246,11 +246,11 @@ public class DocumentSummary {
    * @return templateVersion
    */
   @javax.annotation.Nullable
-  public Integer getTemplateVersion() {
+  public Long getTemplateVersion() {
     return templateVersion;
   }
 
-  public void setTemplateVersion(@javax.annotation.Nullable Integer templateVersion) {
+  public void setTemplateVersion(@javax.annotation.Nullable Long templateVersion) {
     this.templateVersion = templateVersion;
   }
 
@@ -274,7 +274,7 @@ public class DocumentSummary {
   }
 
 
-  public DocumentSummary updatedAt(@javax.annotation.Nullable Integer updatedAt) {
+  public DocumentSummary updatedAt(@javax.annotation.Nullable Long updatedAt) {
     this.updatedAt = updatedAt;
     return this;
   }
@@ -284,11 +284,11 @@ public class DocumentSummary {
    * @return updatedAt
    */
   @javax.annotation.Nullable
-  public Integer getUpdatedAt() {
+  public Long getUpdatedAt() {
     return updatedAt;
   }
 
-  public void setUpdatedAt(@javax.annotation.Nullable Integer updatedAt) {
+  public void setUpdatedAt(@javax.annotation.Nullable Long updatedAt) {
     this.updatedAt = updatedAt;
   }
 

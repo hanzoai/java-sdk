@@ -53,7 +53,7 @@ public class AutoRecharge {
   public static final String SERIALIZED_NAME_AMOUNT_CENTS = "amountCents";
   @SerializedName(SERIALIZED_NAME_AMOUNT_CENTS)
   @javax.annotation.Nullable
-  private Integer amountCents;
+  private Long amountCents;
 
   public static final String SERIALIZED_NAME_CURRENCY = "currency";
   @SerializedName(SERIALIZED_NAME_CURRENCY)
@@ -83,12 +83,12 @@ public class AutoRecharge {
   public static final String SERIALIZED_NAME_THRESHOLD_CENTS = "thresholdCents";
   @SerializedName(SERIALIZED_NAME_THRESHOLD_CENTS)
   @javax.annotation.Nullable
-  private Integer thresholdCents;
+  private Long thresholdCents;
 
   public AutoRecharge() {
   }
 
-  public AutoRecharge amountCents(@javax.annotation.Nullable Integer amountCents) {
+  public AutoRecharge amountCents(@javax.annotation.Nullable Long amountCents) {
     this.amountCents = amountCents;
     return this;
   }
@@ -98,11 +98,11 @@ public class AutoRecharge {
    * @return amountCents
    */
   @javax.annotation.Nullable
-  public Integer getAmountCents() {
+  public Long getAmountCents() {
     return amountCents;
   }
 
-  public void setAmountCents(@javax.annotation.Nullable Integer amountCents) {
+  public void setAmountCents(@javax.annotation.Nullable Long amountCents) {
     this.amountCents = amountCents;
   }
 
@@ -202,7 +202,7 @@ public class AutoRecharge {
   }
 
 
-  public AutoRecharge thresholdCents(@javax.annotation.Nullable Integer thresholdCents) {
+  public AutoRecharge thresholdCents(@javax.annotation.Nullable Long thresholdCents) {
     this.thresholdCents = thresholdCents;
     return this;
   }
@@ -212,11 +212,11 @@ public class AutoRecharge {
    * @return thresholdCents
    */
   @javax.annotation.Nullable
-  public Integer getThresholdCents() {
+  public Long getThresholdCents() {
     return thresholdCents;
   }
 
-  public void setThresholdCents(@javax.annotation.Nullable Integer thresholdCents) {
+  public void setThresholdCents(@javax.annotation.Nullable Long thresholdCents) {
     this.thresholdCents = thresholdCents;
   }
 

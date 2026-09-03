@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -59,12 +58,12 @@ public class SampleIngest {
   public static final String SERIALIZED_NAME_GPU_UTIL = "gpuUtil";
   @SerializedName(SERIALIZED_NAME_GPU_UTIL)
   @javax.annotation.Nullable
-  private BigDecimal gpuUtil;
+  private Double gpuUtil;
 
   public static final String SERIALIZED_NAME_GPUS = "gpus";
   @SerializedName(SERIALIZED_NAME_GPUS)
   @javax.annotation.Nullable
-  private Integer gpus;
+  private Long gpus;
 
   public static final String SERIALIZED_NAME_HOST = "host";
   @SerializedName(SERIALIZED_NAME_HOST)
@@ -74,12 +73,12 @@ public class SampleIngest {
   public static final String SERIALIZED_NAME_MEM_FREE = "memFree";
   @SerializedName(SERIALIZED_NAME_MEM_FREE)
   @javax.annotation.Nullable
-  private Integer memFree;
+  private Long memFree;
 
   public static final String SERIALIZED_NAME_MEM_USED = "memUsed";
   @SerializedName(SERIALIZED_NAME_MEM_USED)
   @javax.annotation.Nullable
-  private Integer memUsed;
+  private Long memUsed;
 
   public static final String SERIALIZED_NAME_UNIT = "unit";
   @SerializedName(SERIALIZED_NAME_UNIT)
@@ -108,7 +107,7 @@ public class SampleIngest {
   }
 
 
-  public SampleIngest gpuUtil(@javax.annotation.Nullable BigDecimal gpuUtil) {
+  public SampleIngest gpuUtil(@javax.annotation.Nullable Double gpuUtil) {
     this.gpuUtil = gpuUtil;
     return this;
   }
@@ -118,16 +117,16 @@ public class SampleIngest {
    * @return gpuUtil
    */
   @javax.annotation.Nullable
-  public BigDecimal getGpuUtil() {
+  public Double getGpuUtil() {
     return gpuUtil;
   }
 
-  public void setGpuUtil(@javax.annotation.Nullable BigDecimal gpuUtil) {
+  public void setGpuUtil(@javax.annotation.Nullable Double gpuUtil) {
     this.gpuUtil = gpuUtil;
   }
 
 
-  public SampleIngest gpus(@javax.annotation.Nullable Integer gpus) {
+  public SampleIngest gpus(@javax.annotation.Nullable Long gpus) {
     this.gpus = gpus;
     return this;
   }
@@ -137,11 +136,11 @@ public class SampleIngest {
    * @return gpus
    */
   @javax.annotation.Nullable
-  public Integer getGpus() {
+  public Long getGpus() {
     return gpus;
   }
 
-  public void setGpus(@javax.annotation.Nullable Integer gpus) {
+  public void setGpus(@javax.annotation.Nullable Long gpus) {
     this.gpus = gpus;
   }
 
@@ -165,7 +164,7 @@ public class SampleIngest {
   }
 
 
-  public SampleIngest memFree(@javax.annotation.Nullable Integer memFree) {
+  public SampleIngest memFree(@javax.annotation.Nullable Long memFree) {
     this.memFree = memFree;
     return this;
   }
@@ -175,16 +174,16 @@ public class SampleIngest {
    * @return memFree
    */
   @javax.annotation.Nullable
-  public Integer getMemFree() {
+  public Long getMemFree() {
     return memFree;
   }
 
-  public void setMemFree(@javax.annotation.Nullable Integer memFree) {
+  public void setMemFree(@javax.annotation.Nullable Long memFree) {
     this.memFree = memFree;
   }
 
 
-  public SampleIngest memUsed(@javax.annotation.Nullable Integer memUsed) {
+  public SampleIngest memUsed(@javax.annotation.Nullable Long memUsed) {
     this.memUsed = memUsed;
     return this;
   }
@@ -194,11 +193,11 @@ public class SampleIngest {
    * @return memUsed
    */
   @javax.annotation.Nullable
-  public Integer getMemUsed() {
+  public Long getMemUsed() {
     return memUsed;
   }
 
-  public void setMemUsed(@javax.annotation.Nullable Integer memUsed) {
+  public void setMemUsed(@javax.annotation.Nullable Long memUsed) {
     this.memUsed = memUsed;
   }
 

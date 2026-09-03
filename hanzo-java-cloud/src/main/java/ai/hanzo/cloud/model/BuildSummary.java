@@ -98,7 +98,7 @@ public class BuildSummary {
   public static final String SERIALIZED_NAME_TURNS = "turns";
   @SerializedName(SERIALIZED_NAME_TURNS)
   @javax.annotation.Nullable
-  private Integer turns;
+  private Long turns;
 
   public BuildSummary() {
   }
@@ -274,7 +274,7 @@ public class BuildSummary {
   }
 
 
-  public BuildSummary turns(@javax.annotation.Nullable Integer turns) {
+  public BuildSummary turns(@javax.annotation.Nullable Long turns) {
     this.turns = turns;
     return this;
   }
@@ -284,11 +284,11 @@ public class BuildSummary {
    * @return turns
    */
   @javax.annotation.Nullable
-  public Integer getTurns() {
+  public Long getTurns() {
     return turns;
   }
 
-  public void setTurns(@javax.annotation.Nullable Integer turns) {
+  public void setTurns(@javax.annotation.Nullable Long turns) {
     this.turns = turns;
   }
 

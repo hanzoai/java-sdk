@@ -71,7 +71,7 @@ public class PnL {
   public static final String SERIALIZED_NAME_NET_INCOME = "netIncome";
   @SerializedName(SERIALIZED_NAME_NET_INCOME)
   @javax.annotation.Nullable
-  private Integer netIncome;
+  private Long netIncome;
 
   public static final String SERIALIZED_NAME_TO = "to";
   @SerializedName(SERIALIZED_NAME_TO)
@@ -81,12 +81,12 @@ public class PnL {
   public static final String SERIALIZED_NAME_TOTAL_EXPENSE = "totalExpense";
   @SerializedName(SERIALIZED_NAME_TOTAL_EXPENSE)
   @javax.annotation.Nullable
-  private Integer totalExpense;
+  private Long totalExpense;
 
   public static final String SERIALIZED_NAME_TOTAL_INCOME = "totalIncome";
   @SerializedName(SERIALIZED_NAME_TOTAL_INCOME)
   @javax.annotation.Nullable
-  private Integer totalIncome;
+  private Long totalIncome;
 
   public PnL() {
   }
@@ -164,7 +164,7 @@ public class PnL {
   }
 
 
-  public PnL netIncome(@javax.annotation.Nullable Integer netIncome) {
+  public PnL netIncome(@javax.annotation.Nullable Long netIncome) {
     this.netIncome = netIncome;
     return this;
   }
@@ -174,11 +174,11 @@ public class PnL {
    * @return netIncome
    */
   @javax.annotation.Nullable
-  public Integer getNetIncome() {
+  public Long getNetIncome() {
     return netIncome;
   }
 
-  public void setNetIncome(@javax.annotation.Nullable Integer netIncome) {
+  public void setNetIncome(@javax.annotation.Nullable Long netIncome) {
     this.netIncome = netIncome;
   }
 
@@ -202,7 +202,7 @@ public class PnL {
   }
 
 
-  public PnL totalExpense(@javax.annotation.Nullable Integer totalExpense) {
+  public PnL totalExpense(@javax.annotation.Nullable Long totalExpense) {
     this.totalExpense = totalExpense;
     return this;
   }
@@ -212,16 +212,16 @@ public class PnL {
    * @return totalExpense
    */
   @javax.annotation.Nullable
-  public Integer getTotalExpense() {
+  public Long getTotalExpense() {
     return totalExpense;
   }
 
-  public void setTotalExpense(@javax.annotation.Nullable Integer totalExpense) {
+  public void setTotalExpense(@javax.annotation.Nullable Long totalExpense) {
     this.totalExpense = totalExpense;
   }
 
 
-  public PnL totalIncome(@javax.annotation.Nullable Integer totalIncome) {
+  public PnL totalIncome(@javax.annotation.Nullable Long totalIncome) {
     this.totalIncome = totalIncome;
     return this;
   }
@@ -231,11 +231,11 @@ public class PnL {
    * @return totalIncome
    */
   @javax.annotation.Nullable
-  public Integer getTotalIncome() {
+  public Long getTotalIncome() {
     return totalIncome;
   }
 
-  public void setTotalIncome(@javax.annotation.Nullable Integer totalIncome) {
+  public void setTotalIncome(@javax.annotation.Nullable Long totalIncome) {
     this.totalIncome = totalIncome;
   }
 

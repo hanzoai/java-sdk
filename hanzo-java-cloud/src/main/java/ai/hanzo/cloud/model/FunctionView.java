@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -54,7 +53,7 @@ public class FunctionView {
   public static final String SERIALIZED_NAME_AVG_DURATION_MS = "avgDurationMs";
   @SerializedName(SERIALIZED_NAME_AVG_DURATION_MS)
   @javax.annotation.Nullable
-  private BigDecimal avgDurationMs;
+  private Double avgDurationMs;
 
   public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
@@ -69,7 +68,7 @@ public class FunctionView {
   public static final String SERIALIZED_NAME_ENV_COUNT = "envCount";
   @SerializedName(SERIALIZED_NAME_ENV_COUNT)
   @javax.annotation.Nullable
-  private Integer envCount;
+  private Long envCount;
 
   public static final String SERIALIZED_NAME_ENVIRONMENT = "environment";
   @SerializedName(SERIALIZED_NAME_ENVIRONMENT)
@@ -79,7 +78,7 @@ public class FunctionView {
   public static final String SERIALIZED_NAME_ERRORS7D = "errors7d";
   @SerializedName(SERIALIZED_NAME_ERRORS7D)
   @javax.annotation.Nullable
-  private Integer errors7d;
+  private Long errors7d;
 
   public static final String SERIALIZED_NAME_IMAGE = "image";
   @SerializedName(SERIALIZED_NAME_IMAGE)
@@ -89,7 +88,7 @@ public class FunctionView {
   public static final String SERIALIZED_NAME_INVOCATIONS7D = "invocations7d";
   @SerializedName(SERIALIZED_NAME_INVOCATIONS7D)
   @javax.annotation.Nullable
-  private Integer invocations7d;
+  private Long invocations7d;
 
   public static final String SERIALIZED_NAME_LAST_DEPLOYED_AT = "lastDeployedAt";
   @SerializedName(SERIALIZED_NAME_LAST_DEPLOYED_AT)
@@ -119,7 +118,7 @@ public class FunctionView {
   public static final String SERIALIZED_NAME_SUCCESS_RATE = "successRate";
   @SerializedName(SERIALIZED_NAME_SUCCESS_RATE)
   @javax.annotation.Nullable
-  private BigDecimal successRate;
+  private Double successRate;
 
   public static final String SERIALIZED_NAME_TARGET = "target";
   @SerializedName(SERIALIZED_NAME_TARGET)
@@ -129,12 +128,12 @@ public class FunctionView {
   public static final String SERIALIZED_NAME_TIMEOUT_SEC = "timeoutSec";
   @SerializedName(SERIALIZED_NAME_TIMEOUT_SEC)
   @javax.annotation.Nullable
-  private Integer timeoutSec;
+  private Long timeoutSec;
 
   public FunctionView() {
   }
 
-  public FunctionView avgDurationMs(@javax.annotation.Nullable BigDecimal avgDurationMs) {
+  public FunctionView avgDurationMs(@javax.annotation.Nullable Double avgDurationMs) {
     this.avgDurationMs = avgDurationMs;
     return this;
   }
@@ -144,11 +143,11 @@ public class FunctionView {
    * @return avgDurationMs
    */
   @javax.annotation.Nullable
-  public BigDecimal getAvgDurationMs() {
+  public Double getAvgDurationMs() {
     return avgDurationMs;
   }
 
-  public void setAvgDurationMs(@javax.annotation.Nullable BigDecimal avgDurationMs) {
+  public void setAvgDurationMs(@javax.annotation.Nullable Double avgDurationMs) {
     this.avgDurationMs = avgDurationMs;
   }
 
@@ -191,7 +190,7 @@ public class FunctionView {
   }
 
 
-  public FunctionView envCount(@javax.annotation.Nullable Integer envCount) {
+  public FunctionView envCount(@javax.annotation.Nullable Long envCount) {
     this.envCount = envCount;
     return this;
   }
@@ -201,11 +200,11 @@ public class FunctionView {
    * @return envCount
    */
   @javax.annotation.Nullable
-  public Integer getEnvCount() {
+  public Long getEnvCount() {
     return envCount;
   }
 
-  public void setEnvCount(@javax.annotation.Nullable Integer envCount) {
+  public void setEnvCount(@javax.annotation.Nullable Long envCount) {
     this.envCount = envCount;
   }
 
@@ -229,7 +228,7 @@ public class FunctionView {
   }
 
 
-  public FunctionView errors7d(@javax.annotation.Nullable Integer errors7d) {
+  public FunctionView errors7d(@javax.annotation.Nullable Long errors7d) {
     this.errors7d = errors7d;
     return this;
   }
@@ -239,11 +238,11 @@ public class FunctionView {
    * @return errors7d
    */
   @javax.annotation.Nullable
-  public Integer getErrors7d() {
+  public Long getErrors7d() {
     return errors7d;
   }
 
-  public void setErrors7d(@javax.annotation.Nullable Integer errors7d) {
+  public void setErrors7d(@javax.annotation.Nullable Long errors7d) {
     this.errors7d = errors7d;
   }
 
@@ -267,7 +266,7 @@ public class FunctionView {
   }
 
 
-  public FunctionView invocations7d(@javax.annotation.Nullable Integer invocations7d) {
+  public FunctionView invocations7d(@javax.annotation.Nullable Long invocations7d) {
     this.invocations7d = invocations7d;
     return this;
   }
@@ -277,11 +276,11 @@ public class FunctionView {
    * @return invocations7d
    */
   @javax.annotation.Nullable
-  public Integer getInvocations7d() {
+  public Long getInvocations7d() {
     return invocations7d;
   }
 
-  public void setInvocations7d(@javax.annotation.Nullable Integer invocations7d) {
+  public void setInvocations7d(@javax.annotation.Nullable Long invocations7d) {
     this.invocations7d = invocations7d;
   }
 
@@ -381,7 +380,7 @@ public class FunctionView {
   }
 
 
-  public FunctionView successRate(@javax.annotation.Nullable BigDecimal successRate) {
+  public FunctionView successRate(@javax.annotation.Nullable Double successRate) {
     this.successRate = successRate;
     return this;
   }
@@ -391,11 +390,11 @@ public class FunctionView {
    * @return successRate
    */
   @javax.annotation.Nullable
-  public BigDecimal getSuccessRate() {
+  public Double getSuccessRate() {
     return successRate;
   }
 
-  public void setSuccessRate(@javax.annotation.Nullable BigDecimal successRate) {
+  public void setSuccessRate(@javax.annotation.Nullable Double successRate) {
     this.successRate = successRate;
   }
 
@@ -419,7 +418,7 @@ public class FunctionView {
   }
 
 
-  public FunctionView timeoutSec(@javax.annotation.Nullable Integer timeoutSec) {
+  public FunctionView timeoutSec(@javax.annotation.Nullable Long timeoutSec) {
     this.timeoutSec = timeoutSec;
     return this;
   }
@@ -429,11 +428,11 @@ public class FunctionView {
    * @return timeoutSec
    */
   @javax.annotation.Nullable
-  public Integer getTimeoutSec() {
+  public Long getTimeoutSec() {
     return timeoutSec;
   }
 
-  public void setTimeoutSec(@javax.annotation.Nullable Integer timeoutSec) {
+  public void setTimeoutSec(@javax.annotation.Nullable Long timeoutSec) {
     this.timeoutSec = timeoutSec;
   }
 

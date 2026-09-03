@@ -56,7 +56,7 @@ public class InboxPage {
   public static final String SERIALIZED_NAME_CURSOR = "cursor";
   @SerializedName(SERIALIZED_NAME_CURSOR)
   @javax.annotation.Nullable
-  private Integer cursor;
+  private Long cursor;
 
   public static final String SERIALIZED_NAME_MESSAGES = "messages";
   @SerializedName(SERIALIZED_NAME_MESSAGES)
@@ -66,7 +66,7 @@ public class InboxPage {
   public InboxPage() {
   }
 
-  public InboxPage cursor(@javax.annotation.Nullable Integer cursor) {
+  public InboxPage cursor(@javax.annotation.Nullable Long cursor) {
     this.cursor = cursor;
     return this;
   }
@@ -76,11 +76,11 @@ public class InboxPage {
    * @return cursor
    */
   @javax.annotation.Nullable
-  public Integer getCursor() {
+  public Long getCursor() {
     return cursor;
   }
 
-  public void setCursor(@javax.annotation.Nullable Integer cursor) {
+  public void setCursor(@javax.annotation.Nullable Long cursor) {
     this.cursor = cursor;
   }
 

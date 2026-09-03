@@ -53,7 +53,7 @@ public class ChallengeView {
   public static final String SERIALIZED_NAME_EXPIRES_AT = "expiresAt";
   @SerializedName(SERIALIZED_NAME_EXPIRES_AT)
   @javax.annotation.Nullable
-  private Integer expiresAt;
+  private Long expiresAt;
 
   public static final String SERIALIZED_NAME_MESSAGE = "message";
   @SerializedName(SERIALIZED_NAME_MESSAGE)
@@ -73,12 +73,12 @@ public class ChallengeView {
   public static final String SERIALIZED_NAME_TTL_SECONDS = "ttlSeconds";
   @SerializedName(SERIALIZED_NAME_TTL_SECONDS)
   @javax.annotation.Nullable
-  private Integer ttlSeconds;
+  private Long ttlSeconds;
 
   public ChallengeView() {
   }
 
-  public ChallengeView expiresAt(@javax.annotation.Nullable Integer expiresAt) {
+  public ChallengeView expiresAt(@javax.annotation.Nullable Long expiresAt) {
     this.expiresAt = expiresAt;
     return this;
   }
@@ -88,11 +88,11 @@ public class ChallengeView {
    * @return expiresAt
    */
   @javax.annotation.Nullable
-  public Integer getExpiresAt() {
+  public Long getExpiresAt() {
     return expiresAt;
   }
 
-  public void setExpiresAt(@javax.annotation.Nullable Integer expiresAt) {
+  public void setExpiresAt(@javax.annotation.Nullable Long expiresAt) {
     this.expiresAt = expiresAt;
   }
 
@@ -154,7 +154,7 @@ public class ChallengeView {
   }
 
 
-  public ChallengeView ttlSeconds(@javax.annotation.Nullable Integer ttlSeconds) {
+  public ChallengeView ttlSeconds(@javax.annotation.Nullable Long ttlSeconds) {
     this.ttlSeconds = ttlSeconds;
     return this;
   }
@@ -164,11 +164,11 @@ public class ChallengeView {
    * @return ttlSeconds
    */
   @javax.annotation.Nullable
-  public Integer getTtlSeconds() {
+  public Long getTtlSeconds() {
     return ttlSeconds;
   }
 
-  public void setTtlSeconds(@javax.annotation.Nullable Integer ttlSeconds) {
+  public void setTtlSeconds(@javax.annotation.Nullable Long ttlSeconds) {
     this.ttlSeconds = ttlSeconds;
   }
 

@@ -59,12 +59,12 @@ public class ImportCapTableOut {
   public static final String SERIALIZED_NAME_ROWS = "rows";
   @SerializedName(SERIALIZED_NAME_ROWS)
   @javax.annotation.Nullable
-  private Integer rows;
+  private Long rows;
 
   public static final String SERIALIZED_NAME_STAKEHOLDERS_IMPORTED = "stakeholdersImported";
   @SerializedName(SERIALIZED_NAME_STAKEHOLDERS_IMPORTED)
   @javax.annotation.Nullable
-  private Integer stakeholdersImported;
+  private Long stakeholdersImported;
 
   public ImportCapTableOut() {
   }
@@ -88,7 +88,7 @@ public class ImportCapTableOut {
   }
 
 
-  public ImportCapTableOut rows(@javax.annotation.Nullable Integer rows) {
+  public ImportCapTableOut rows(@javax.annotation.Nullable Long rows) {
     this.rows = rows;
     return this;
   }
@@ -98,16 +98,16 @@ public class ImportCapTableOut {
    * @return rows
    */
   @javax.annotation.Nullable
-  public Integer getRows() {
+  public Long getRows() {
     return rows;
   }
 
-  public void setRows(@javax.annotation.Nullable Integer rows) {
+  public void setRows(@javax.annotation.Nullable Long rows) {
     this.rows = rows;
   }
 
 
-  public ImportCapTableOut stakeholdersImported(@javax.annotation.Nullable Integer stakeholdersImported) {
+  public ImportCapTableOut stakeholdersImported(@javax.annotation.Nullable Long stakeholdersImported) {
     this.stakeholdersImported = stakeholdersImported;
     return this;
   }
@@ -117,11 +117,11 @@ public class ImportCapTableOut {
    * @return stakeholdersImported
    */
   @javax.annotation.Nullable
-  public Integer getStakeholdersImported() {
+  public Long getStakeholdersImported() {
     return stakeholdersImported;
   }
 
-  public void setStakeholdersImported(@javax.annotation.Nullable Integer stakeholdersImported) {
+  public void setStakeholdersImported(@javax.annotation.Nullable Long stakeholdersImported) {
     this.stakeholdersImported = stakeholdersImported;
   }
 

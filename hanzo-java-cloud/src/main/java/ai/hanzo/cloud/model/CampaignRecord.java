@@ -61,7 +61,7 @@ public class CampaignRecord {
   public static final String SERIALIZED_NAME_BUDGET = "budget";
   @SerializedName(SERIALIZED_NAME_BUDGET)
   @javax.annotation.Nullable
-  private Integer budget;
+  private Long budget;
 
   public static final String SERIALIZED_NAME_CHANNELS = "channels";
   @SerializedName(SERIALIZED_NAME_CHANNELS)
@@ -76,7 +76,7 @@ public class CampaignRecord {
   public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
   @javax.annotation.Nullable
-  private Integer createdAt;
+  private Long createdAt;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -91,7 +91,7 @@ public class CampaignRecord {
   public static final String SERIALIZED_NAME_SCHEDULE_AT = "scheduleAt";
   @SerializedName(SERIALIZED_NAME_SCHEDULE_AT)
   @javax.annotation.Nullable
-  private Integer scheduleAt;
+  private Long scheduleAt;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
@@ -101,7 +101,7 @@ public class CampaignRecord {
   public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)
   @javax.annotation.Nullable
-  private Integer updatedAt;
+  private Long updatedAt;
 
   public CampaignRecord() {
   }
@@ -125,7 +125,7 @@ public class CampaignRecord {
   }
 
 
-  public CampaignRecord budget(@javax.annotation.Nullable Integer budget) {
+  public CampaignRecord budget(@javax.annotation.Nullable Long budget) {
     this.budget = budget;
     return this;
   }
@@ -135,11 +135,11 @@ public class CampaignRecord {
    * @return budget
    */
   @javax.annotation.Nullable
-  public Integer getBudget() {
+  public Long getBudget() {
     return budget;
   }
 
-  public void setBudget(@javax.annotation.Nullable Integer budget) {
+  public void setBudget(@javax.annotation.Nullable Long budget) {
     this.budget = budget;
   }
 
@@ -198,7 +198,7 @@ public class CampaignRecord {
   }
 
 
-  public CampaignRecord createdAt(@javax.annotation.Nullable Integer createdAt) {
+  public CampaignRecord createdAt(@javax.annotation.Nullable Long createdAt) {
     this.createdAt = createdAt;
     return this;
   }
@@ -208,11 +208,11 @@ public class CampaignRecord {
    * @return createdAt
    */
   @javax.annotation.Nullable
-  public Integer getCreatedAt() {
+  public Long getCreatedAt() {
     return createdAt;
   }
 
-  public void setCreatedAt(@javax.annotation.Nullable Integer createdAt) {
+  public void setCreatedAt(@javax.annotation.Nullable Long createdAt) {
     this.createdAt = createdAt;
   }
 
@@ -255,7 +255,7 @@ public class CampaignRecord {
   }
 
 
-  public CampaignRecord scheduleAt(@javax.annotation.Nullable Integer scheduleAt) {
+  public CampaignRecord scheduleAt(@javax.annotation.Nullable Long scheduleAt) {
     this.scheduleAt = scheduleAt;
     return this;
   }
@@ -265,11 +265,11 @@ public class CampaignRecord {
    * @return scheduleAt
    */
   @javax.annotation.Nullable
-  public Integer getScheduleAt() {
+  public Long getScheduleAt() {
     return scheduleAt;
   }
 
-  public void setScheduleAt(@javax.annotation.Nullable Integer scheduleAt) {
+  public void setScheduleAt(@javax.annotation.Nullable Long scheduleAt) {
     this.scheduleAt = scheduleAt;
   }
 
@@ -293,7 +293,7 @@ public class CampaignRecord {
   }
 
 
-  public CampaignRecord updatedAt(@javax.annotation.Nullable Integer updatedAt) {
+  public CampaignRecord updatedAt(@javax.annotation.Nullable Long updatedAt) {
     this.updatedAt = updatedAt;
     return this;
   }
@@ -303,11 +303,11 @@ public class CampaignRecord {
    * @return updatedAt
    */
   @javax.annotation.Nullable
-  public Integer getUpdatedAt() {
+  public Long getUpdatedAt() {
     return updatedAt;
   }
 
-  public void setUpdatedAt(@javax.annotation.Nullable Integer updatedAt) {
+  public void setUpdatedAt(@javax.annotation.Nullable Long updatedAt) {
     this.updatedAt = updatedAt;
   }
 

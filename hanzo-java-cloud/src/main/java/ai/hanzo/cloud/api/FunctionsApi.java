@@ -122,7 +122,6 @@ public class FunctionsApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -155,7 +154,6 @@ public class FunctionsApi {
      * Removes one of the caller org&#39;s functions and answers 204.
      * Removes one of the caller org&#39;s functions and answers 204.  A name this org does not hold is 404 — never a silent success — and a name belonging to another tenant is the same 404, because the delete is predicated on the validated org.
      * @param name Name is the function the URL names. (required)
-     * @return Object
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -164,16 +162,15 @@ public class FunctionsApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public Object deleteFunctionsByName(@javax.annotation.Nonnull String name) throws ApiException {
-        ApiResponse<Object> localVarResp = deleteFunctionsByNameWithHttpInfo(name);
-        return localVarResp.getData();
+    public void deleteFunctionsByName(@javax.annotation.Nonnull String name) throws ApiException {
+        deleteFunctionsByNameWithHttpInfo(name);
     }
 
     /**
      * Removes one of the caller org&#39;s functions and answers 204.
      * Removes one of the caller org&#39;s functions and answers 204.  A name this org does not hold is 404 — never a silent success — and a name belonging to another tenant is the same 404, because the delete is predicated on the validated org.
      * @param name Name is the function the URL names. (required)
-     * @return ApiResponse&lt;Object&gt;
+     * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -182,10 +179,9 @@ public class FunctionsApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> deleteFunctionsByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
+    public ApiResponse<Void> deleteFunctionsByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
         okhttp3.Call localVarCall = deleteFunctionsByNameValidateBeforeCall(name, null);
-        Type localVarReturnType = new TypeToken<Object>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
+        return localVarApiClient.execute(localVarCall);
     }
 
     /**
@@ -202,11 +198,10 @@ public class FunctionsApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteFunctionsByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call deleteFunctionsByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteFunctionsByNameValidateBeforeCall(name, _callback);
-        Type localVarReturnType = new TypeToken<Object>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
@@ -467,7 +462,7 @@ public class FunctionsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getFunctionsByNameInvocationsCall(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getFunctionsByNameInvocationsCall(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -517,7 +512,7 @@ public class FunctionsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getFunctionsByNameInvocationsValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getFunctionsByNameInvocationsValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
             throw new ApiException("Missing the required parameter 'name' when calling getFunctionsByNameInvocations(Async)");
@@ -541,7 +536,7 @@ public class FunctionsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public InvocationList getFunctionsByNameInvocations(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public InvocationList getFunctionsByNameInvocations(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<InvocationList> localVarResp = getFunctionsByNameInvocationsWithHttpInfo(name, limit);
         return localVarResp.getData();
     }
@@ -560,7 +555,7 @@ public class FunctionsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InvocationList> getFunctionsByNameInvocationsWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<InvocationList> getFunctionsByNameInvocationsWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getFunctionsByNameInvocationsValidateBeforeCall(name, limit, null);
         Type localVarReturnType = new TypeToken<InvocationList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -581,7 +576,7 @@ public class FunctionsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getFunctionsByNameInvocationsAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Integer limit, final ApiCallback<InvocationList> _callback) throws ApiException {
+    public okhttp3.Call getFunctionsByNameInvocationsAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Long limit, final ApiCallback<InvocationList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getFunctionsByNameInvocationsValidateBeforeCall(name, limit, _callback);
         Type localVarReturnType = new TypeToken<InvocationList>(){}.getType();

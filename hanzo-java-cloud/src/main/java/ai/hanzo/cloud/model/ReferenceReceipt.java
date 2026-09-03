@@ -58,7 +58,7 @@ public class ReferenceReceipt {
   public static final String SERIALIZED_NAME_KEYS = "keys";
   @SerializedName(SERIALIZED_NAME_KEYS)
   @javax.annotation.Nullable
-  private Integer keys;
+  private Long keys;
 
   public static final String SERIALIZED_NAME_REFUSAL = "refusal";
   @SerializedName(SERIALIZED_NAME_REFUSAL)
@@ -97,7 +97,7 @@ public class ReferenceReceipt {
   }
 
 
-  public ReferenceReceipt keys(@javax.annotation.Nullable Integer keys) {
+  public ReferenceReceipt keys(@javax.annotation.Nullable Long keys) {
     this.keys = keys;
     return this;
   }
@@ -107,11 +107,11 @@ public class ReferenceReceipt {
    * @return keys
    */
   @javax.annotation.Nullable
-  public Integer getKeys() {
+  public Long getKeys() {
     return keys;
   }
 
-  public void setKeys(@javax.annotation.Nullable Integer keys) {
+  public void setKeys(@javax.annotation.Nullable Long keys) {
     this.keys = keys;
   }
 

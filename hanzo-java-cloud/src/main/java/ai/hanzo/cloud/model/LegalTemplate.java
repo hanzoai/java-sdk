@@ -91,7 +91,7 @@ public class LegalTemplate {
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
   @javax.annotation.Nullable
-  private Integer version;
+  private Long version;
 
   public LegalTemplate() {
   }
@@ -237,7 +237,7 @@ public class LegalTemplate {
   }
 
 
-  public LegalTemplate version(@javax.annotation.Nullable Integer version) {
+  public LegalTemplate version(@javax.annotation.Nullable Long version) {
     this.version = version;
     return this;
   }
@@ -247,11 +247,11 @@ public class LegalTemplate {
    * @return version
    */
   @javax.annotation.Nullable
-  public Integer getVersion() {
+  public Long getVersion() {
     return version;
   }
 
-  public void setVersion(@javax.annotation.Nullable Integer version) {
+  public void setVersion(@javax.annotation.Nullable Long version) {
     this.version = version;
   }
 

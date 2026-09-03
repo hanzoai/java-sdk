@@ -53,7 +53,7 @@ public class MyReferralView {
   public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
   @javax.annotation.Nullable
-  private Integer createdAt;
+  private Long createdAt;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -63,7 +63,7 @@ public class MyReferralView {
   public static final String SERIALIZED_NAME_QUALIFIED_AT = "qualifiedAt";
   @SerializedName(SERIALIZED_NAME_QUALIFIED_AT)
   @javax.annotation.Nullable
-  private Integer qualifiedAt;
+  private Long qualifiedAt;
 
   public static final String SERIALIZED_NAME_REFEREE = "referee";
   @SerializedName(SERIALIZED_NAME_REFEREE)
@@ -78,7 +78,7 @@ public class MyReferralView {
   public MyReferralView() {
   }
 
-  public MyReferralView createdAt(@javax.annotation.Nullable Integer createdAt) {
+  public MyReferralView createdAt(@javax.annotation.Nullable Long createdAt) {
     this.createdAt = createdAt;
     return this;
   }
@@ -88,11 +88,11 @@ public class MyReferralView {
    * @return createdAt
    */
   @javax.annotation.Nullable
-  public Integer getCreatedAt() {
+  public Long getCreatedAt() {
     return createdAt;
   }
 
-  public void setCreatedAt(@javax.annotation.Nullable Integer createdAt) {
+  public void setCreatedAt(@javax.annotation.Nullable Long createdAt) {
     this.createdAt = createdAt;
   }
 
@@ -116,7 +116,7 @@ public class MyReferralView {
   }
 
 
-  public MyReferralView qualifiedAt(@javax.annotation.Nullable Integer qualifiedAt) {
+  public MyReferralView qualifiedAt(@javax.annotation.Nullable Long qualifiedAt) {
     this.qualifiedAt = qualifiedAt;
     return this;
   }
@@ -126,11 +126,11 @@ public class MyReferralView {
    * @return qualifiedAt
    */
   @javax.annotation.Nullable
-  public Integer getQualifiedAt() {
+  public Long getQualifiedAt() {
     return qualifiedAt;
   }
 
-  public void setQualifiedAt(@javax.annotation.Nullable Integer qualifiedAt) {
+  public void setQualifiedAt(@javax.annotation.Nullable Long qualifiedAt) {
     this.qualifiedAt = qualifiedAt;
   }
 

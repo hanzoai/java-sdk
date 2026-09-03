@@ -56,7 +56,7 @@ public class ReviewQueue {
   public static final String SERIALIZED_NAME_COUNT = "count";
   @SerializedName(SERIALIZED_NAME_COUNT)
   @javax.annotation.Nullable
-  private Integer count;
+  private Long count;
 
   public static final String SERIALIZED_NAME_QUEUE = "queue";
   @SerializedName(SERIALIZED_NAME_QUEUE)
@@ -66,7 +66,7 @@ public class ReviewQueue {
   public ReviewQueue() {
   }
 
-  public ReviewQueue count(@javax.annotation.Nullable Integer count) {
+  public ReviewQueue count(@javax.annotation.Nullable Long count) {
     this.count = count;
     return this;
   }
@@ -76,11 +76,11 @@ public class ReviewQueue {
    * @return count
    */
   @javax.annotation.Nullable
-  public Integer getCount() {
+  public Long getCount() {
     return count;
   }
 
-  public void setCount(@javax.annotation.Nullable Integer count) {
+  public void setCount(@javax.annotation.Nullable Long count) {
     this.count = count;
   }
 

@@ -53,27 +53,27 @@ public class AdSummary {
   public static final String SERIALIZED_NAME_ACTIVE = "active";
   @SerializedName(SERIALIZED_NAME_ACTIVE)
   @javax.annotation.Nullable
-  private Integer active;
+  private Long active;
 
   public static final String SERIALIZED_NAME_BUDGET = "budget";
   @SerializedName(SERIALIZED_NAME_BUDGET)
   @javax.annotation.Nullable
-  private Integer budget;
+  private Long budget;
 
   public static final String SERIALIZED_NAME_CAMPAIGNS = "campaigns";
   @SerializedName(SERIALIZED_NAME_CAMPAIGNS)
   @javax.annotation.Nullable
-  private Integer campaigns;
+  private Long campaigns;
 
   public static final String SERIALIZED_NAME_SPEND = "spend";
   @SerializedName(SERIALIZED_NAME_SPEND)
   @javax.annotation.Nullable
-  private Integer spend;
+  private Long spend;
 
   public AdSummary() {
   }
 
-  public AdSummary active(@javax.annotation.Nullable Integer active) {
+  public AdSummary active(@javax.annotation.Nullable Long active) {
     this.active = active;
     return this;
   }
@@ -83,16 +83,16 @@ public class AdSummary {
    * @return active
    */
   @javax.annotation.Nullable
-  public Integer getActive() {
+  public Long getActive() {
     return active;
   }
 
-  public void setActive(@javax.annotation.Nullable Integer active) {
+  public void setActive(@javax.annotation.Nullable Long active) {
     this.active = active;
   }
 
 
-  public AdSummary budget(@javax.annotation.Nullable Integer budget) {
+  public AdSummary budget(@javax.annotation.Nullable Long budget) {
     this.budget = budget;
     return this;
   }
@@ -102,16 +102,16 @@ public class AdSummary {
    * @return budget
    */
   @javax.annotation.Nullable
-  public Integer getBudget() {
+  public Long getBudget() {
     return budget;
   }
 
-  public void setBudget(@javax.annotation.Nullable Integer budget) {
+  public void setBudget(@javax.annotation.Nullable Long budget) {
     this.budget = budget;
   }
 
 
-  public AdSummary campaigns(@javax.annotation.Nullable Integer campaigns) {
+  public AdSummary campaigns(@javax.annotation.Nullable Long campaigns) {
     this.campaigns = campaigns;
     return this;
   }
@@ -121,16 +121,16 @@ public class AdSummary {
    * @return campaigns
    */
   @javax.annotation.Nullable
-  public Integer getCampaigns() {
+  public Long getCampaigns() {
     return campaigns;
   }
 
-  public void setCampaigns(@javax.annotation.Nullable Integer campaigns) {
+  public void setCampaigns(@javax.annotation.Nullable Long campaigns) {
     this.campaigns = campaigns;
   }
 
 
-  public AdSummary spend(@javax.annotation.Nullable Integer spend) {
+  public AdSummary spend(@javax.annotation.Nullable Long spend) {
     this.spend = spend;
     return this;
   }
@@ -140,11 +140,11 @@ public class AdSummary {
    * @return spend
    */
   @javax.annotation.Nullable
-  public Integer getSpend() {
+  public Long getSpend() {
     return spend;
   }
 
-  public void setSpend(@javax.annotation.Nullable Integer spend) {
+  public void setSpend(@javax.annotation.Nullable Long spend) {
     this.spend = spend;
   }
 

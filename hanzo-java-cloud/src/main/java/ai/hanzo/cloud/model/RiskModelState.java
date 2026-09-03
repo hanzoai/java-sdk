@@ -23,7 +23,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -66,12 +65,12 @@ public class RiskModelState {
   public static final String SERIALIZED_NAME_BLIND = "blind";
   @SerializedName(SERIALIZED_NAME_BLIND)
   @javax.annotation.Nullable
-  private Map<String, Integer> blind = new HashMap<>();
+  private Map<String, Long> blind = new HashMap<>();
 
   public static final String SERIALIZED_NAME_CUT = "cut";
   @SerializedName(SERIALIZED_NAME_CUT)
   @javax.annotation.Nullable
-  private BigDecimal cut;
+  private Double cut;
 
   public static final String SERIALIZED_NAME_DESCENDS = "descends";
   @SerializedName(SERIALIZED_NAME_DESCENDS)
@@ -81,12 +80,12 @@ public class RiskModelState {
   public static final String SERIALIZED_NAME_DISPOSED = "disposed";
   @SerializedName(SERIALIZED_NAME_DISPOSED)
   @javax.annotation.Nullable
-  private Integer disposed;
+  private Long disposed;
 
   public static final String SERIALIZED_NAME_LEARNED = "learned";
   @SerializedName(SERIALIZED_NAME_LEARNED)
   @javax.annotation.Nullable
-  private Integer learned;
+  private Long learned;
 
   public static final String SERIALIZED_NAME_LIVE = "live";
   @SerializedName(SERIALIZED_NAME_LIVE)
@@ -96,22 +95,22 @@ public class RiskModelState {
   public static final String SERIALIZED_NAME_POLICY = "policy";
   @SerializedName(SERIALIZED_NAME_POLICY)
   @javax.annotation.Nullable
-  private Integer policy;
+  private Long policy;
 
   public static final String SERIALIZED_NAME_REALISED = "realised";
   @SerializedName(SERIALIZED_NAME_REALISED)
   @javax.annotation.Nullable
-  private BigDecimal realised;
+  private Double realised;
 
   public static final String SERIALIZED_NAME_REFUSED = "refused";
   @SerializedName(SERIALIZED_NAME_REFUSED)
   @javax.annotation.Nullable
-  private Map<String, Integer> refused = new HashMap<>();
+  private Map<String, Long> refused = new HashMap<>();
 
   public static final String SERIALIZED_NAME_SAMPLE = "sample";
   @SerializedName(SERIALIZED_NAME_SAMPLE)
   @javax.annotation.Nullable
-  private BigDecimal sample;
+  private Double sample;
 
   public static final String SERIALIZED_NAME_SATURATED = "saturated";
   @SerializedName(SERIALIZED_NAME_SATURATED)
@@ -126,7 +125,7 @@ public class RiskModelState {
   public static final String SERIALIZED_NAME_STATED = "stated";
   @SerializedName(SERIALIZED_NAME_STATED)
   @javax.annotation.Nullable
-  private BigDecimal stated;
+  private Double stated;
 
   public static final String SERIALIZED_NAME_SURFACE = "surface";
   @SerializedName(SERIALIZED_NAME_SURFACE)
@@ -170,12 +169,12 @@ public class RiskModelState {
   }
 
 
-  public RiskModelState blind(@javax.annotation.Nullable Map<String, Integer> blind) {
+  public RiskModelState blind(@javax.annotation.Nullable Map<String, Long> blind) {
     this.blind = blind;
     return this;
   }
 
-  public RiskModelState putBlindItem(String key, Integer blindItem) {
+  public RiskModelState putBlindItem(String key, Long blindItem) {
     if (this.blind == null) {
       this.blind = new HashMap<>();
     }
@@ -188,16 +187,16 @@ public class RiskModelState {
    * @return blind
    */
   @javax.annotation.Nullable
-  public Map<String, Integer> getBlind() {
+  public Map<String, Long> getBlind() {
     return blind;
   }
 
-  public void setBlind(@javax.annotation.Nullable Map<String, Integer> blind) {
+  public void setBlind(@javax.annotation.Nullable Map<String, Long> blind) {
     this.blind = blind;
   }
 
 
-  public RiskModelState cut(@javax.annotation.Nullable BigDecimal cut) {
+  public RiskModelState cut(@javax.annotation.Nullable Double cut) {
     this.cut = cut;
     return this;
   }
@@ -207,11 +206,11 @@ public class RiskModelState {
    * @return cut
    */
   @javax.annotation.Nullable
-  public BigDecimal getCut() {
+  public Double getCut() {
     return cut;
   }
 
-  public void setCut(@javax.annotation.Nullable BigDecimal cut) {
+  public void setCut(@javax.annotation.Nullable Double cut) {
     this.cut = cut;
   }
 
@@ -235,7 +234,7 @@ public class RiskModelState {
   }
 
 
-  public RiskModelState disposed(@javax.annotation.Nullable Integer disposed) {
+  public RiskModelState disposed(@javax.annotation.Nullable Long disposed) {
     this.disposed = disposed;
     return this;
   }
@@ -245,16 +244,16 @@ public class RiskModelState {
    * @return disposed
    */
   @javax.annotation.Nullable
-  public Integer getDisposed() {
+  public Long getDisposed() {
     return disposed;
   }
 
-  public void setDisposed(@javax.annotation.Nullable Integer disposed) {
+  public void setDisposed(@javax.annotation.Nullable Long disposed) {
     this.disposed = disposed;
   }
 
 
-  public RiskModelState learned(@javax.annotation.Nullable Integer learned) {
+  public RiskModelState learned(@javax.annotation.Nullable Long learned) {
     this.learned = learned;
     return this;
   }
@@ -264,11 +263,11 @@ public class RiskModelState {
    * @return learned
    */
   @javax.annotation.Nullable
-  public Integer getLearned() {
+  public Long getLearned() {
     return learned;
   }
 
-  public void setLearned(@javax.annotation.Nullable Integer learned) {
+  public void setLearned(@javax.annotation.Nullable Long learned) {
     this.learned = learned;
   }
 
@@ -292,7 +291,7 @@ public class RiskModelState {
   }
 
 
-  public RiskModelState policy(@javax.annotation.Nullable Integer policy) {
+  public RiskModelState policy(@javax.annotation.Nullable Long policy) {
     this.policy = policy;
     return this;
   }
@@ -302,16 +301,16 @@ public class RiskModelState {
    * @return policy
    */
   @javax.annotation.Nullable
-  public Integer getPolicy() {
+  public Long getPolicy() {
     return policy;
   }
 
-  public void setPolicy(@javax.annotation.Nullable Integer policy) {
+  public void setPolicy(@javax.annotation.Nullable Long policy) {
     this.policy = policy;
   }
 
 
-  public RiskModelState realised(@javax.annotation.Nullable BigDecimal realised) {
+  public RiskModelState realised(@javax.annotation.Nullable Double realised) {
     this.realised = realised;
     return this;
   }
@@ -321,21 +320,21 @@ public class RiskModelState {
    * @return realised
    */
   @javax.annotation.Nullable
-  public BigDecimal getRealised() {
+  public Double getRealised() {
     return realised;
   }
 
-  public void setRealised(@javax.annotation.Nullable BigDecimal realised) {
+  public void setRealised(@javax.annotation.Nullable Double realised) {
     this.realised = realised;
   }
 
 
-  public RiskModelState refused(@javax.annotation.Nullable Map<String, Integer> refused) {
+  public RiskModelState refused(@javax.annotation.Nullable Map<String, Long> refused) {
     this.refused = refused;
     return this;
   }
 
-  public RiskModelState putRefusedItem(String key, Integer refusedItem) {
+  public RiskModelState putRefusedItem(String key, Long refusedItem) {
     if (this.refused == null) {
       this.refused = new HashMap<>();
     }
@@ -348,16 +347,16 @@ public class RiskModelState {
    * @return refused
    */
   @javax.annotation.Nullable
-  public Map<String, Integer> getRefused() {
+  public Map<String, Long> getRefused() {
     return refused;
   }
 
-  public void setRefused(@javax.annotation.Nullable Map<String, Integer> refused) {
+  public void setRefused(@javax.annotation.Nullable Map<String, Long> refused) {
     this.refused = refused;
   }
 
 
-  public RiskModelState sample(@javax.annotation.Nullable BigDecimal sample) {
+  public RiskModelState sample(@javax.annotation.Nullable Double sample) {
     this.sample = sample;
     return this;
   }
@@ -367,11 +366,11 @@ public class RiskModelState {
    * @return sample
    */
   @javax.annotation.Nullable
-  public BigDecimal getSample() {
+  public Double getSample() {
     return sample;
   }
 
-  public void setSample(@javax.annotation.Nullable BigDecimal sample) {
+  public void setSample(@javax.annotation.Nullable Double sample) {
     this.sample = sample;
   }
 
@@ -414,7 +413,7 @@ public class RiskModelState {
   }
 
 
-  public RiskModelState stated(@javax.annotation.Nullable BigDecimal stated) {
+  public RiskModelState stated(@javax.annotation.Nullable Double stated) {
     this.stated = stated;
     return this;
   }
@@ -424,11 +423,11 @@ public class RiskModelState {
    * @return stated
    */
   @javax.annotation.Nullable
-  public BigDecimal getStated() {
+  public Double getStated() {
     return stated;
   }
 
-  public void setStated(@javax.annotation.Nullable BigDecimal stated) {
+  public void setStated(@javax.annotation.Nullable Double stated) {
     this.stated = stated;
   }
 

@@ -21,7 +21,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -62,12 +61,12 @@ public class O11yNamespaceListRecord {
   public static final String SERIALIZED_NAME_CPU_USAGE = "cpuUsage";
   @SerializedName(SERIALIZED_NAME_CPU_USAGE)
   @javax.annotation.Nullable
-  private BigDecimal cpuUsage;
+  private Double cpuUsage;
 
   public static final String SERIALIZED_NAME_MEMORY_USAGE = "memoryUsage";
   @SerializedName(SERIALIZED_NAME_MEMORY_USAGE)
   @javax.annotation.Nullable
-  private BigDecimal memoryUsage;
+  private Double memoryUsage;
 
   public static final String SERIALIZED_NAME_META = "meta";
   @SerializedName(SERIALIZED_NAME_META)
@@ -101,7 +100,7 @@ public class O11yNamespaceListRecord {
   }
 
 
-  public O11yNamespaceListRecord cpuUsage(@javax.annotation.Nullable BigDecimal cpuUsage) {
+  public O11yNamespaceListRecord cpuUsage(@javax.annotation.Nullable Double cpuUsage) {
     this.cpuUsage = cpuUsage;
     return this;
   }
@@ -111,16 +110,16 @@ public class O11yNamespaceListRecord {
    * @return cpuUsage
    */
   @javax.annotation.Nullable
-  public BigDecimal getCpuUsage() {
+  public Double getCpuUsage() {
     return cpuUsage;
   }
 
-  public void setCpuUsage(@javax.annotation.Nullable BigDecimal cpuUsage) {
+  public void setCpuUsage(@javax.annotation.Nullable Double cpuUsage) {
     this.cpuUsage = cpuUsage;
   }
 
 
-  public O11yNamespaceListRecord memoryUsage(@javax.annotation.Nullable BigDecimal memoryUsage) {
+  public O11yNamespaceListRecord memoryUsage(@javax.annotation.Nullable Double memoryUsage) {
     this.memoryUsage = memoryUsage;
     return this;
   }
@@ -130,11 +129,11 @@ public class O11yNamespaceListRecord {
    * @return memoryUsage
    */
   @javax.annotation.Nullable
-  public BigDecimal getMemoryUsage() {
+  public Double getMemoryUsage() {
     return memoryUsage;
   }
 
-  public void setMemoryUsage(@javax.annotation.Nullable BigDecimal memoryUsage) {
+  public void setMemoryUsage(@javax.annotation.Nullable Double memoryUsage) {
     this.memoryUsage = memoryUsage;
   }
 

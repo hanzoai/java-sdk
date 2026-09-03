@@ -53,7 +53,7 @@ public class Charged {
   public static final String SERIALIZED_NAME_BALANCE_CENTS = "balanceCents";
   @SerializedName(SERIALIZED_NAME_BALANCE_CENTS)
   @javax.annotation.Nullable
-  private Integer balanceCents;
+  private Long balanceCents;
 
   public static final String SERIALIZED_NAME_PROCESSOR_REF = "processorRef";
   @SerializedName(SERIALIZED_NAME_PROCESSOR_REF)
@@ -78,7 +78,7 @@ public class Charged {
   public Charged() {
   }
 
-  public Charged balanceCents(@javax.annotation.Nullable Integer balanceCents) {
+  public Charged balanceCents(@javax.annotation.Nullable Long balanceCents) {
     this.balanceCents = balanceCents;
     return this;
   }
@@ -88,11 +88,11 @@ public class Charged {
    * @return balanceCents
    */
   @javax.annotation.Nullable
-  public Integer getBalanceCents() {
+  public Long getBalanceCents() {
     return balanceCents;
   }
 
-  public void setBalanceCents(@javax.annotation.Nullable Integer balanceCents) {
+  public void setBalanceCents(@javax.annotation.Nullable Long balanceCents) {
     this.balanceCents = balanceCents;
   }
 

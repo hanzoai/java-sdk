@@ -56,7 +56,7 @@ public class IngestResp {
   public static final String SERIALIZED_NAME_ACCEPTED = "accepted";
   @SerializedName(SERIALIZED_NAME_ACCEPTED)
   @javax.annotation.Nullable
-  private Integer accepted;
+  private Long accepted;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
@@ -71,7 +71,7 @@ public class IngestResp {
   public IngestResp() {
   }
 
-  public IngestResp accepted(@javax.annotation.Nullable Integer accepted) {
+  public IngestResp accepted(@javax.annotation.Nullable Long accepted) {
     this.accepted = accepted;
     return this;
   }
@@ -81,11 +81,11 @@ public class IngestResp {
    * @return accepted
    */
   @javax.annotation.Nullable
-  public Integer getAccepted() {
+  public Long getAccepted() {
     return accepted;
   }
 
-  public void setAccepted(@javax.annotation.Nullable Integer accepted) {
+  public void setAccepted(@javax.annotation.Nullable Long accepted) {
     this.accepted = accepted;
   }
 

@@ -58,17 +58,17 @@ public class ProjectsRelease {
   public static final String SERIALIZED_NAME_BYTES = "bytes";
   @SerializedName(SERIALIZED_NAME_BYTES)
   @javax.annotation.Nullable
-  private Integer bytes;
+  private Long bytes;
 
   public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
   @javax.annotation.Nullable
-  private Integer createdAt;
+  private Long createdAt;
 
   public static final String SERIALIZED_NAME_OBJECTS = "objects";
   @SerializedName(SERIALIZED_NAME_OBJECTS)
   @javax.annotation.Nullable
-  private Integer objects;
+  private Long objects;
 
   public static final String SERIALIZED_NAME_RELEASE_ID = "releaseId";
   @SerializedName(SERIALIZED_NAME_RELEASE_ID)
@@ -112,7 +112,7 @@ public class ProjectsRelease {
   }
 
 
-  public ProjectsRelease bytes(@javax.annotation.Nullable Integer bytes) {
+  public ProjectsRelease bytes(@javax.annotation.Nullable Long bytes) {
     this.bytes = bytes;
     return this;
   }
@@ -122,16 +122,16 @@ public class ProjectsRelease {
    * @return bytes
    */
   @javax.annotation.Nullable
-  public Integer getBytes() {
+  public Long getBytes() {
     return bytes;
   }
 
-  public void setBytes(@javax.annotation.Nullable Integer bytes) {
+  public void setBytes(@javax.annotation.Nullable Long bytes) {
     this.bytes = bytes;
   }
 
 
-  public ProjectsRelease createdAt(@javax.annotation.Nullable Integer createdAt) {
+  public ProjectsRelease createdAt(@javax.annotation.Nullable Long createdAt) {
     this.createdAt = createdAt;
     return this;
   }
@@ -141,16 +141,16 @@ public class ProjectsRelease {
    * @return createdAt
    */
   @javax.annotation.Nullable
-  public Integer getCreatedAt() {
+  public Long getCreatedAt() {
     return createdAt;
   }
 
-  public void setCreatedAt(@javax.annotation.Nullable Integer createdAt) {
+  public void setCreatedAt(@javax.annotation.Nullable Long createdAt) {
     this.createdAt = createdAt;
   }
 
 
-  public ProjectsRelease objects(@javax.annotation.Nullable Integer objects) {
+  public ProjectsRelease objects(@javax.annotation.Nullable Long objects) {
     this.objects = objects;
     return this;
   }
@@ -160,11 +160,11 @@ public class ProjectsRelease {
    * @return objects
    */
   @javax.annotation.Nullable
-  public Integer getObjects() {
+  public Long getObjects() {
     return objects;
   }
 
-  public void setObjects(@javax.annotation.Nullable Integer objects) {
+  public void setObjects(@javax.annotation.Nullable Long objects) {
     this.objects = objects;
   }
 

@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -56,22 +55,22 @@ public class O11yDaemonSetListRecord {
   public static final String SERIALIZED_NAME_AVAILABLE_NODES = "availableNodes";
   @SerializedName(SERIALIZED_NAME_AVAILABLE_NODES)
   @javax.annotation.Nullable
-  private Integer availableNodes;
+  private Long availableNodes;
 
   public static final String SERIALIZED_NAME_CPU_LIMIT = "cpuLimit";
   @SerializedName(SERIALIZED_NAME_CPU_LIMIT)
   @javax.annotation.Nullable
-  private BigDecimal cpuLimit;
+  private Double cpuLimit;
 
   public static final String SERIALIZED_NAME_CPU_REQUEST = "cpuRequest";
   @SerializedName(SERIALIZED_NAME_CPU_REQUEST)
   @javax.annotation.Nullable
-  private BigDecimal cpuRequest;
+  private Double cpuRequest;
 
   public static final String SERIALIZED_NAME_CPU_USAGE = "cpuUsage";
   @SerializedName(SERIALIZED_NAME_CPU_USAGE)
   @javax.annotation.Nullable
-  private BigDecimal cpuUsage;
+  private Double cpuUsage;
 
   public static final String SERIALIZED_NAME_DAEMON_SET_NAME = "daemonSetName";
   @SerializedName(SERIALIZED_NAME_DAEMON_SET_NAME)
@@ -81,22 +80,22 @@ public class O11yDaemonSetListRecord {
   public static final String SERIALIZED_NAME_DESIRED_NODES = "desiredNodes";
   @SerializedName(SERIALIZED_NAME_DESIRED_NODES)
   @javax.annotation.Nullable
-  private Integer desiredNodes;
+  private Long desiredNodes;
 
   public static final String SERIALIZED_NAME_MEMORY_LIMIT = "memoryLimit";
   @SerializedName(SERIALIZED_NAME_MEMORY_LIMIT)
   @javax.annotation.Nullable
-  private BigDecimal memoryLimit;
+  private Double memoryLimit;
 
   public static final String SERIALIZED_NAME_MEMORY_REQUEST = "memoryRequest";
   @SerializedName(SERIALIZED_NAME_MEMORY_REQUEST)
   @javax.annotation.Nullable
-  private BigDecimal memoryRequest;
+  private Double memoryRequest;
 
   public static final String SERIALIZED_NAME_MEMORY_USAGE = "memoryUsage";
   @SerializedName(SERIALIZED_NAME_MEMORY_USAGE)
   @javax.annotation.Nullable
-  private BigDecimal memoryUsage;
+  private Double memoryUsage;
 
   public static final String SERIALIZED_NAME_META = "meta";
   @SerializedName(SERIALIZED_NAME_META)
@@ -106,12 +105,12 @@ public class O11yDaemonSetListRecord {
   public static final String SERIALIZED_NAME_RESTARTS = "restarts";
   @SerializedName(SERIALIZED_NAME_RESTARTS)
   @javax.annotation.Nullable
-  private Integer restarts;
+  private Long restarts;
 
   public O11yDaemonSetListRecord() {
   }
 
-  public O11yDaemonSetListRecord availableNodes(@javax.annotation.Nullable Integer availableNodes) {
+  public O11yDaemonSetListRecord availableNodes(@javax.annotation.Nullable Long availableNodes) {
     this.availableNodes = availableNodes;
     return this;
   }
@@ -121,16 +120,16 @@ public class O11yDaemonSetListRecord {
    * @return availableNodes
    */
   @javax.annotation.Nullable
-  public Integer getAvailableNodes() {
+  public Long getAvailableNodes() {
     return availableNodes;
   }
 
-  public void setAvailableNodes(@javax.annotation.Nullable Integer availableNodes) {
+  public void setAvailableNodes(@javax.annotation.Nullable Long availableNodes) {
     this.availableNodes = availableNodes;
   }
 
 
-  public O11yDaemonSetListRecord cpuLimit(@javax.annotation.Nullable BigDecimal cpuLimit) {
+  public O11yDaemonSetListRecord cpuLimit(@javax.annotation.Nullable Double cpuLimit) {
     this.cpuLimit = cpuLimit;
     return this;
   }
@@ -140,16 +139,16 @@ public class O11yDaemonSetListRecord {
    * @return cpuLimit
    */
   @javax.annotation.Nullable
-  public BigDecimal getCpuLimit() {
+  public Double getCpuLimit() {
     return cpuLimit;
   }
 
-  public void setCpuLimit(@javax.annotation.Nullable BigDecimal cpuLimit) {
+  public void setCpuLimit(@javax.annotation.Nullable Double cpuLimit) {
     this.cpuLimit = cpuLimit;
   }
 
 
-  public O11yDaemonSetListRecord cpuRequest(@javax.annotation.Nullable BigDecimal cpuRequest) {
+  public O11yDaemonSetListRecord cpuRequest(@javax.annotation.Nullable Double cpuRequest) {
     this.cpuRequest = cpuRequest;
     return this;
   }
@@ -159,16 +158,16 @@ public class O11yDaemonSetListRecord {
    * @return cpuRequest
    */
   @javax.annotation.Nullable
-  public BigDecimal getCpuRequest() {
+  public Double getCpuRequest() {
     return cpuRequest;
   }
 
-  public void setCpuRequest(@javax.annotation.Nullable BigDecimal cpuRequest) {
+  public void setCpuRequest(@javax.annotation.Nullable Double cpuRequest) {
     this.cpuRequest = cpuRequest;
   }
 
 
-  public O11yDaemonSetListRecord cpuUsage(@javax.annotation.Nullable BigDecimal cpuUsage) {
+  public O11yDaemonSetListRecord cpuUsage(@javax.annotation.Nullable Double cpuUsage) {
     this.cpuUsage = cpuUsage;
     return this;
   }
@@ -178,11 +177,11 @@ public class O11yDaemonSetListRecord {
    * @return cpuUsage
    */
   @javax.annotation.Nullable
-  public BigDecimal getCpuUsage() {
+  public Double getCpuUsage() {
     return cpuUsage;
   }
 
-  public void setCpuUsage(@javax.annotation.Nullable BigDecimal cpuUsage) {
+  public void setCpuUsage(@javax.annotation.Nullable Double cpuUsage) {
     this.cpuUsage = cpuUsage;
   }
 
@@ -206,7 +205,7 @@ public class O11yDaemonSetListRecord {
   }
 
 
-  public O11yDaemonSetListRecord desiredNodes(@javax.annotation.Nullable Integer desiredNodes) {
+  public O11yDaemonSetListRecord desiredNodes(@javax.annotation.Nullable Long desiredNodes) {
     this.desiredNodes = desiredNodes;
     return this;
   }
@@ -216,16 +215,16 @@ public class O11yDaemonSetListRecord {
    * @return desiredNodes
    */
   @javax.annotation.Nullable
-  public Integer getDesiredNodes() {
+  public Long getDesiredNodes() {
     return desiredNodes;
   }
 
-  public void setDesiredNodes(@javax.annotation.Nullable Integer desiredNodes) {
+  public void setDesiredNodes(@javax.annotation.Nullable Long desiredNodes) {
     this.desiredNodes = desiredNodes;
   }
 
 
-  public O11yDaemonSetListRecord memoryLimit(@javax.annotation.Nullable BigDecimal memoryLimit) {
+  public O11yDaemonSetListRecord memoryLimit(@javax.annotation.Nullable Double memoryLimit) {
     this.memoryLimit = memoryLimit;
     return this;
   }
@@ -235,16 +234,16 @@ public class O11yDaemonSetListRecord {
    * @return memoryLimit
    */
   @javax.annotation.Nullable
-  public BigDecimal getMemoryLimit() {
+  public Double getMemoryLimit() {
     return memoryLimit;
   }
 
-  public void setMemoryLimit(@javax.annotation.Nullable BigDecimal memoryLimit) {
+  public void setMemoryLimit(@javax.annotation.Nullable Double memoryLimit) {
     this.memoryLimit = memoryLimit;
   }
 
 
-  public O11yDaemonSetListRecord memoryRequest(@javax.annotation.Nullable BigDecimal memoryRequest) {
+  public O11yDaemonSetListRecord memoryRequest(@javax.annotation.Nullable Double memoryRequest) {
     this.memoryRequest = memoryRequest;
     return this;
   }
@@ -254,16 +253,16 @@ public class O11yDaemonSetListRecord {
    * @return memoryRequest
    */
   @javax.annotation.Nullable
-  public BigDecimal getMemoryRequest() {
+  public Double getMemoryRequest() {
     return memoryRequest;
   }
 
-  public void setMemoryRequest(@javax.annotation.Nullable BigDecimal memoryRequest) {
+  public void setMemoryRequest(@javax.annotation.Nullable Double memoryRequest) {
     this.memoryRequest = memoryRequest;
   }
 
 
-  public O11yDaemonSetListRecord memoryUsage(@javax.annotation.Nullable BigDecimal memoryUsage) {
+  public O11yDaemonSetListRecord memoryUsage(@javax.annotation.Nullable Double memoryUsage) {
     this.memoryUsage = memoryUsage;
     return this;
   }
@@ -273,11 +272,11 @@ public class O11yDaemonSetListRecord {
    * @return memoryUsage
    */
   @javax.annotation.Nullable
-  public BigDecimal getMemoryUsage() {
+  public Double getMemoryUsage() {
     return memoryUsage;
   }
 
-  public void setMemoryUsage(@javax.annotation.Nullable BigDecimal memoryUsage) {
+  public void setMemoryUsage(@javax.annotation.Nullable Double memoryUsage) {
     this.memoryUsage = memoryUsage;
   }
 
@@ -309,7 +308,7 @@ public class O11yDaemonSetListRecord {
   }
 
 
-  public O11yDaemonSetListRecord restarts(@javax.annotation.Nullable Integer restarts) {
+  public O11yDaemonSetListRecord restarts(@javax.annotation.Nullable Long restarts) {
     this.restarts = restarts;
     return this;
   }
@@ -319,11 +318,11 @@ public class O11yDaemonSetListRecord {
    * @return restarts
    */
   @javax.annotation.Nullable
-  public Integer getRestarts() {
+  public Long getRestarts() {
     return restarts;
   }
 
-  public void setRestarts(@javax.annotation.Nullable Integer restarts) {
+  public void setRestarts(@javax.annotation.Nullable Long restarts) {
     this.restarts = restarts;
   }
 

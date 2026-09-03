@@ -107,7 +107,7 @@ public class GitOpsApp {
   public static final String SERIALIZED_NAME_RESOURCES = "resources";
   @SerializedName(SERIALIZED_NAME_RESOURCES)
   @javax.annotation.Nullable
-  private Integer resources;
+  private Long resources;
 
   public static final String SERIALIZED_NAME_REVISION = "revision";
   @SerializedName(SERIALIZED_NAME_REVISION)
@@ -330,7 +330,7 @@ public class GitOpsApp {
   }
 
 
-  public GitOpsApp resources(@javax.annotation.Nullable Integer resources) {
+  public GitOpsApp resources(@javax.annotation.Nullable Long resources) {
     this.resources = resources;
     return this;
   }
@@ -340,11 +340,11 @@ public class GitOpsApp {
    * @return resources
    */
   @javax.annotation.Nullable
-  public Integer getResources() {
+  public Long getResources() {
     return resources;
   }
 
-  public void setResources(@javax.annotation.Nullable Integer resources) {
+  public void setResources(@javax.annotation.Nullable Long resources) {
     this.resources = resources;
   }
 

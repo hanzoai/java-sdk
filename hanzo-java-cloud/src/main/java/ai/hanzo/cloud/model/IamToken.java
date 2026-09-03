@@ -84,7 +84,7 @@ public class IamToken {
   public static final String SERIALIZED_NAME_CODE_EXPIRE_IN = "codeExpireIn";
   @SerializedName(SERIALIZED_NAME_CODE_EXPIRE_IN)
   @javax.annotation.Nullable
-  private Integer codeExpireIn;
+  private Long codeExpireIn;
 
   public static final String SERIALIZED_NAME_CODE_IS_USED = "codeIsUsed";
   @SerializedName(SERIALIZED_NAME_CODE_IS_USED)
@@ -109,7 +109,7 @@ public class IamToken {
   public static final String SERIALIZED_NAME_EXPIRES_IN = "expiresIn";
   @SerializedName(SERIALIZED_NAME_EXPIRES_IN)
   @javax.annotation.Nullable
-  private Integer expiresIn;
+  private Long expiresIn;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -154,7 +154,7 @@ public class IamToken {
   public static final String SERIALIZED_NAME_REFRESH_EXPIRE_IN = "refreshExpireIn";
   @SerializedName(SERIALIZED_NAME_REFRESH_EXPIRE_IN)
   @javax.annotation.Nullable
-  private Integer refreshExpireIn;
+  private Long refreshExpireIn;
 
   public static final String SERIALIZED_NAME_REFRESH_FAMILY = "refreshFamily";
   @SerializedName(SERIALIZED_NAME_REFRESH_FAMILY)
@@ -318,7 +318,7 @@ public class IamToken {
   }
 
 
-  public IamToken codeExpireIn(@javax.annotation.Nullable Integer codeExpireIn) {
+  public IamToken codeExpireIn(@javax.annotation.Nullable Long codeExpireIn) {
     this.codeExpireIn = codeExpireIn;
     return this;
   }
@@ -328,11 +328,11 @@ public class IamToken {
    * @return codeExpireIn
    */
   @javax.annotation.Nullable
-  public Integer getCodeExpireIn() {
+  public Long getCodeExpireIn() {
     return codeExpireIn;
   }
 
-  public void setCodeExpireIn(@javax.annotation.Nullable Integer codeExpireIn) {
+  public void setCodeExpireIn(@javax.annotation.Nullable Long codeExpireIn) {
     this.codeExpireIn = codeExpireIn;
   }
 
@@ -413,7 +413,7 @@ public class IamToken {
   }
 
 
-  public IamToken expiresIn(@javax.annotation.Nullable Integer expiresIn) {
+  public IamToken expiresIn(@javax.annotation.Nullable Long expiresIn) {
     this.expiresIn = expiresIn;
     return this;
   }
@@ -423,11 +423,11 @@ public class IamToken {
    * @return expiresIn
    */
   @javax.annotation.Nullable
-  public Integer getExpiresIn() {
+  public Long getExpiresIn() {
     return expiresIn;
   }
 
-  public void setExpiresIn(@javax.annotation.Nullable Integer expiresIn) {
+  public void setExpiresIn(@javax.annotation.Nullable Long expiresIn) {
     this.expiresIn = expiresIn;
   }
 
@@ -584,7 +584,7 @@ public class IamToken {
   }
 
 
-  public IamToken refreshExpireIn(@javax.annotation.Nullable Integer refreshExpireIn) {
+  public IamToken refreshExpireIn(@javax.annotation.Nullable Long refreshExpireIn) {
     this.refreshExpireIn = refreshExpireIn;
     return this;
   }
@@ -594,11 +594,11 @@ public class IamToken {
    * @return refreshExpireIn
    */
   @javax.annotation.Nullable
-  public Integer getRefreshExpireIn() {
+  public Long getRefreshExpireIn() {
     return refreshExpireIn;
   }
 
-  public void setRefreshExpireIn(@javax.annotation.Nullable Integer refreshExpireIn) {
+  public void setRefreshExpireIn(@javax.annotation.Nullable Long refreshExpireIn) {
     this.refreshExpireIn = refreshExpireIn;
   }
 

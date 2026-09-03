@@ -63,12 +63,12 @@ public class CatalogPage {
   public static final String SERIALIZED_NAME_FACETS = "facets";
   @SerializedName(SERIALIZED_NAME_FACETS)
   @javax.annotation.Nullable
-  private Map<String, Map<String, Integer>> facets = new HashMap<>();
+  private Map<String, Map<String, Long>> facets = new HashMap<>();
 
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)
   @javax.annotation.Nullable
-  private Integer total;
+  private Long total;
 
   public CatalogPage() {
   }
@@ -100,12 +100,12 @@ public class CatalogPage {
   }
 
 
-  public CatalogPage facets(@javax.annotation.Nullable Map<String, Map<String, Integer>> facets) {
+  public CatalogPage facets(@javax.annotation.Nullable Map<String, Map<String, Long>> facets) {
     this.facets = facets;
     return this;
   }
 
-  public CatalogPage putFacetsItem(String key, Map<String, Integer> facetsItem) {
+  public CatalogPage putFacetsItem(String key, Map<String, Long> facetsItem) {
     if (this.facets == null) {
       this.facets = new HashMap<>();
     }
@@ -118,16 +118,16 @@ public class CatalogPage {
    * @return facets
    */
   @javax.annotation.Nullable
-  public Map<String, Map<String, Integer>> getFacets() {
+  public Map<String, Map<String, Long>> getFacets() {
     return facets;
   }
 
-  public void setFacets(@javax.annotation.Nullable Map<String, Map<String, Integer>> facets) {
+  public void setFacets(@javax.annotation.Nullable Map<String, Map<String, Long>> facets) {
     this.facets = facets;
   }
 
 
-  public CatalogPage total(@javax.annotation.Nullable Integer total) {
+  public CatalogPage total(@javax.annotation.Nullable Long total) {
     this.total = total;
     return this;
   }
@@ -137,11 +137,11 @@ public class CatalogPage {
    * @return total
    */
   @javax.annotation.Nullable
-  public Integer getTotal() {
+  public Long getTotal() {
     return total;
   }
 
-  public void setTotal(@javax.annotation.Nullable Integer total) {
+  public void setTotal(@javax.annotation.Nullable Long total) {
     this.total = total;
   }
 

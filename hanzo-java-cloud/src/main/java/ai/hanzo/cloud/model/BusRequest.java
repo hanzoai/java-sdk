@@ -70,7 +70,7 @@ public class BusRequest {
   public static final String SERIALIZED_NAME_TIMEOUT_MS = "timeoutMs";
   @SerializedName(SERIALIZED_NAME_TIMEOUT_MS)
   @javax.annotation.Nullable
-  private Integer timeoutMs;
+  private Long timeoutMs;
 
   public BusRequest() {
   }
@@ -140,7 +140,7 @@ public class BusRequest {
   }
 
 
-  public BusRequest timeoutMs(@javax.annotation.Nullable Integer timeoutMs) {
+  public BusRequest timeoutMs(@javax.annotation.Nullable Long timeoutMs) {
     this.timeoutMs = timeoutMs;
     return this;
   }
@@ -150,11 +150,11 @@ public class BusRequest {
    * @return timeoutMs
    */
   @javax.annotation.Nullable
-  public Integer getTimeoutMs() {
+  public Long getTimeoutMs() {
     return timeoutMs;
   }
 
-  public void setTimeoutMs(@javax.annotation.Nullable Integer timeoutMs) {
+  public void setTimeoutMs(@javax.annotation.Nullable Long timeoutMs) {
     this.timeoutMs = timeoutMs;
   }
 

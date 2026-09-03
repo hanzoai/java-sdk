@@ -65,12 +65,12 @@ public class SeoIdeaIn {
   public static final String SERIALIZED_NAME_LIMIT = "limit";
   @SerializedName(SERIALIZED_NAME_LIMIT)
   @javax.annotation.Nullable
-  private Integer limit;
+  private Long limit;
 
   public static final String SERIALIZED_NAME_LOCATION = "location";
   @SerializedName(SERIALIZED_NAME_LOCATION)
   @javax.annotation.Nullable
-  private Integer location;
+  private Long location;
 
   public SeoIdeaIn() {
   }
@@ -121,7 +121,7 @@ public class SeoIdeaIn {
   }
 
 
-  public SeoIdeaIn limit(@javax.annotation.Nullable Integer limit) {
+  public SeoIdeaIn limit(@javax.annotation.Nullable Long limit) {
     this.limit = limit;
     return this;
   }
@@ -131,16 +131,16 @@ public class SeoIdeaIn {
    * @return limit
    */
   @javax.annotation.Nullable
-  public Integer getLimit() {
+  public Long getLimit() {
     return limit;
   }
 
-  public void setLimit(@javax.annotation.Nullable Integer limit) {
+  public void setLimit(@javax.annotation.Nullable Long limit) {
     this.limit = limit;
   }
 
 
-  public SeoIdeaIn location(@javax.annotation.Nullable Integer location) {
+  public SeoIdeaIn location(@javax.annotation.Nullable Long location) {
     this.location = location;
     return this;
   }
@@ -150,11 +150,11 @@ public class SeoIdeaIn {
    * @return location
    */
   @javax.annotation.Nullable
-  public Integer getLocation() {
+  public Long getLocation() {
     return location;
   }
 
-  public void setLocation(@javax.annotation.Nullable Integer location) {
+  public void setLocation(@javax.annotation.Nullable Long location) {
     this.location = location;
   }
 

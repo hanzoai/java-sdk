@@ -61,7 +61,7 @@ public class CampaignWrite {
   public static final String SERIALIZED_NAME_BUDGET = "budget";
   @SerializedName(SERIALIZED_NAME_BUDGET)
   @javax.annotation.Nullable
-  private Integer budget;
+  private Long budget;
 
   public static final String SERIALIZED_NAME_CHANNELS = "channels";
   @SerializedName(SERIALIZED_NAME_CHANNELS)
@@ -81,7 +81,7 @@ public class CampaignWrite {
   public static final String SERIALIZED_NAME_SCHEDULE_AT = "scheduleAt";
   @SerializedName(SERIALIZED_NAME_SCHEDULE_AT)
   @javax.annotation.Nullable
-  private Integer scheduleAt;
+  private Long scheduleAt;
 
   public CampaignWrite() {
   }
@@ -105,7 +105,7 @@ public class CampaignWrite {
   }
 
 
-  public CampaignWrite budget(@javax.annotation.Nullable Integer budget) {
+  public CampaignWrite budget(@javax.annotation.Nullable Long budget) {
     this.budget = budget;
     return this;
   }
@@ -115,11 +115,11 @@ public class CampaignWrite {
    * @return budget
    */
   @javax.annotation.Nullable
-  public Integer getBudget() {
+  public Long getBudget() {
     return budget;
   }
 
-  public void setBudget(@javax.annotation.Nullable Integer budget) {
+  public void setBudget(@javax.annotation.Nullable Long budget) {
     this.budget = budget;
   }
 
@@ -197,7 +197,7 @@ public class CampaignWrite {
   }
 
 
-  public CampaignWrite scheduleAt(@javax.annotation.Nullable Integer scheduleAt) {
+  public CampaignWrite scheduleAt(@javax.annotation.Nullable Long scheduleAt) {
     this.scheduleAt = scheduleAt;
     return this;
   }
@@ -207,11 +207,11 @@ public class CampaignWrite {
    * @return scheduleAt
    */
   @javax.annotation.Nullable
-  public Integer getScheduleAt() {
+  public Long getScheduleAt() {
     return scheduleAt;
   }
 
-  public void setScheduleAt(@javax.annotation.Nullable Integer scheduleAt) {
+  public void setScheduleAt(@javax.annotation.Nullable Long scheduleAt) {
     this.scheduleAt = scheduleAt;
   }
 

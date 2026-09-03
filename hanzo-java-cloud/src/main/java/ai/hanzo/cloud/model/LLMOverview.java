@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -59,37 +58,37 @@ public class LLMOverview {
   public static final String SERIALIZED_NAME_COMPLETION_TOKENS = "completionTokens";
   @SerializedName(SERIALIZED_NAME_COMPLETION_TOKENS)
   @javax.annotation.Nullable
-  private Integer completionTokens;
+  private Long completionTokens;
 
   public static final String SERIALIZED_NAME_ERROR_RATE = "errorRate";
   @SerializedName(SERIALIZED_NAME_ERROR_RATE)
   @javax.annotation.Nullable
-  private BigDecimal errorRate;
+  private Double errorRate;
 
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
   @javax.annotation.Nullable
-  private Integer errors;
+  private Long errors;
 
   public static final String SERIALIZED_NAME_MODELS = "models";
   @SerializedName(SERIALIZED_NAME_MODELS)
   @javax.annotation.Nullable
-  private Integer models;
+  private Long models;
 
   public static final String SERIALIZED_NAME_PROMPT_TOKENS = "promptTokens";
   @SerializedName(SERIALIZED_NAME_PROMPT_TOKENS)
   @javax.annotation.Nullable
-  private Integer promptTokens;
+  private Long promptTokens;
 
   public static final String SERIALIZED_NAME_PROVIDERS = "providers";
   @SerializedName(SERIALIZED_NAME_PROVIDERS)
   @javax.annotation.Nullable
-  private Integer providers;
+  private Long providers;
 
   public static final String SERIALIZED_NAME_REQUESTS = "requests";
   @SerializedName(SERIALIZED_NAME_REQUESTS)
   @javax.annotation.Nullable
-  private Integer requests;
+  private Long requests;
 
   public static final String SERIALIZED_NAME_SOURCE = "source";
   @SerializedName(SERIALIZED_NAME_SOURCE)
@@ -99,12 +98,12 @@ public class LLMOverview {
   public static final String SERIALIZED_NAME_SPEND_CENTS = "spendCents";
   @SerializedName(SERIALIZED_NAME_SPEND_CENTS)
   @javax.annotation.Nullable
-  private Integer spendCents;
+  private Long spendCents;
 
   public static final String SERIALIZED_NAME_TOKENS = "tokens";
   @SerializedName(SERIALIZED_NAME_TOKENS)
   @javax.annotation.Nullable
-  private Integer tokens;
+  private Long tokens;
 
   public LLMOverview() {
   }
@@ -128,7 +127,7 @@ public class LLMOverview {
   }
 
 
-  public LLMOverview completionTokens(@javax.annotation.Nullable Integer completionTokens) {
+  public LLMOverview completionTokens(@javax.annotation.Nullable Long completionTokens) {
     this.completionTokens = completionTokens;
     return this;
   }
@@ -138,16 +137,16 @@ public class LLMOverview {
    * @return completionTokens
    */
   @javax.annotation.Nullable
-  public Integer getCompletionTokens() {
+  public Long getCompletionTokens() {
     return completionTokens;
   }
 
-  public void setCompletionTokens(@javax.annotation.Nullable Integer completionTokens) {
+  public void setCompletionTokens(@javax.annotation.Nullable Long completionTokens) {
     this.completionTokens = completionTokens;
   }
 
 
-  public LLMOverview errorRate(@javax.annotation.Nullable BigDecimal errorRate) {
+  public LLMOverview errorRate(@javax.annotation.Nullable Double errorRate) {
     this.errorRate = errorRate;
     return this;
   }
@@ -157,16 +156,16 @@ public class LLMOverview {
    * @return errorRate
    */
   @javax.annotation.Nullable
-  public BigDecimal getErrorRate() {
+  public Double getErrorRate() {
     return errorRate;
   }
 
-  public void setErrorRate(@javax.annotation.Nullable BigDecimal errorRate) {
+  public void setErrorRate(@javax.annotation.Nullable Double errorRate) {
     this.errorRate = errorRate;
   }
 
 
-  public LLMOverview errors(@javax.annotation.Nullable Integer errors) {
+  public LLMOverview errors(@javax.annotation.Nullable Long errors) {
     this.errors = errors;
     return this;
   }
@@ -176,16 +175,16 @@ public class LLMOverview {
    * @return errors
    */
   @javax.annotation.Nullable
-  public Integer getErrors() {
+  public Long getErrors() {
     return errors;
   }
 
-  public void setErrors(@javax.annotation.Nullable Integer errors) {
+  public void setErrors(@javax.annotation.Nullable Long errors) {
     this.errors = errors;
   }
 
 
-  public LLMOverview models(@javax.annotation.Nullable Integer models) {
+  public LLMOverview models(@javax.annotation.Nullable Long models) {
     this.models = models;
     return this;
   }
@@ -195,16 +194,16 @@ public class LLMOverview {
    * @return models
    */
   @javax.annotation.Nullable
-  public Integer getModels() {
+  public Long getModels() {
     return models;
   }
 
-  public void setModels(@javax.annotation.Nullable Integer models) {
+  public void setModels(@javax.annotation.Nullable Long models) {
     this.models = models;
   }
 
 
-  public LLMOverview promptTokens(@javax.annotation.Nullable Integer promptTokens) {
+  public LLMOverview promptTokens(@javax.annotation.Nullable Long promptTokens) {
     this.promptTokens = promptTokens;
     return this;
   }
@@ -214,16 +213,16 @@ public class LLMOverview {
    * @return promptTokens
    */
   @javax.annotation.Nullable
-  public Integer getPromptTokens() {
+  public Long getPromptTokens() {
     return promptTokens;
   }
 
-  public void setPromptTokens(@javax.annotation.Nullable Integer promptTokens) {
+  public void setPromptTokens(@javax.annotation.Nullable Long promptTokens) {
     this.promptTokens = promptTokens;
   }
 
 
-  public LLMOverview providers(@javax.annotation.Nullable Integer providers) {
+  public LLMOverview providers(@javax.annotation.Nullable Long providers) {
     this.providers = providers;
     return this;
   }
@@ -233,16 +232,16 @@ public class LLMOverview {
    * @return providers
    */
   @javax.annotation.Nullable
-  public Integer getProviders() {
+  public Long getProviders() {
     return providers;
   }
 
-  public void setProviders(@javax.annotation.Nullable Integer providers) {
+  public void setProviders(@javax.annotation.Nullable Long providers) {
     this.providers = providers;
   }
 
 
-  public LLMOverview requests(@javax.annotation.Nullable Integer requests) {
+  public LLMOverview requests(@javax.annotation.Nullable Long requests) {
     this.requests = requests;
     return this;
   }
@@ -252,11 +251,11 @@ public class LLMOverview {
    * @return requests
    */
   @javax.annotation.Nullable
-  public Integer getRequests() {
+  public Long getRequests() {
     return requests;
   }
 
-  public void setRequests(@javax.annotation.Nullable Integer requests) {
+  public void setRequests(@javax.annotation.Nullable Long requests) {
     this.requests = requests;
   }
 
@@ -280,7 +279,7 @@ public class LLMOverview {
   }
 
 
-  public LLMOverview spendCents(@javax.annotation.Nullable Integer spendCents) {
+  public LLMOverview spendCents(@javax.annotation.Nullable Long spendCents) {
     this.spendCents = spendCents;
     return this;
   }
@@ -290,16 +289,16 @@ public class LLMOverview {
    * @return spendCents
    */
   @javax.annotation.Nullable
-  public Integer getSpendCents() {
+  public Long getSpendCents() {
     return spendCents;
   }
 
-  public void setSpendCents(@javax.annotation.Nullable Integer spendCents) {
+  public void setSpendCents(@javax.annotation.Nullable Long spendCents) {
     this.spendCents = spendCents;
   }
 
 
-  public LLMOverview tokens(@javax.annotation.Nullable Integer tokens) {
+  public LLMOverview tokens(@javax.annotation.Nullable Long tokens) {
     this.tokens = tokens;
     return this;
   }
@@ -309,11 +308,11 @@ public class LLMOverview {
    * @return tokens
    */
   @javax.annotation.Nullable
-  public Integer getTokens() {
+  public Long getTokens() {
     return tokens;
   }
 
-  public void setTokens(@javax.annotation.Nullable Integer tokens) {
+  public void setTokens(@javax.annotation.Nullable Long tokens) {
     this.tokens = tokens;
   }
 

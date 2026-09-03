@@ -63,12 +63,12 @@ public class RiskModelValue {
   public static final String SERIALIZED_NAME_LEARNED = "learned";
   @SerializedName(SERIALIZED_NAME_LEARNED)
   @javax.annotation.Nullable
-  private Integer learned;
+  private Long learned;
 
   public static final String SERIALIZED_NAME_SEQUENCE = "sequence";
   @SerializedName(SERIALIZED_NAME_SEQUENCE)
   @javax.annotation.Nullable
-  private Integer sequence;
+  private Long sequence;
 
   public static final String SERIALIZED_NAME_SHAPE = "shape";
   @SerializedName(SERIALIZED_NAME_SHAPE)
@@ -121,7 +121,7 @@ public class RiskModelValue {
   }
 
 
-  public RiskModelValue learned(@javax.annotation.Nullable Integer learned) {
+  public RiskModelValue learned(@javax.annotation.Nullable Long learned) {
     this.learned = learned;
     return this;
   }
@@ -131,16 +131,16 @@ public class RiskModelValue {
    * @return learned
    */
   @javax.annotation.Nullable
-  public Integer getLearned() {
+  public Long getLearned() {
     return learned;
   }
 
-  public void setLearned(@javax.annotation.Nullable Integer learned) {
+  public void setLearned(@javax.annotation.Nullable Long learned) {
     this.learned = learned;
   }
 
 
-  public RiskModelValue sequence(@javax.annotation.Nullable Integer sequence) {
+  public RiskModelValue sequence(@javax.annotation.Nullable Long sequence) {
     this.sequence = sequence;
     return this;
   }
@@ -150,11 +150,11 @@ public class RiskModelValue {
    * @return sequence
    */
   @javax.annotation.Nullable
-  public Integer getSequence() {
+  public Long getSequence() {
     return sequence;
   }
 
-  public void setSequence(@javax.annotation.Nullable Integer sequence) {
+  public void setSequence(@javax.annotation.Nullable Long sequence) {
     this.sequence = sequence;
   }
 

@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -81,7 +80,7 @@ public class IamRegistration {
   public static final String SERIALIZED_NAME_EXPIRE_IN_HOURS = "expireInHours";
   @SerializedName(SERIALIZED_NAME_EXPIRE_IN_HOURS)
   @javax.annotation.Nullable
-  private BigDecimal expireInHours;
+  private Double expireInHours;
 
   public static final String SERIALIZED_NAME_GRANT_TYPES = "grantTypes";
   @SerializedName(SERIALIZED_NAME_GRANT_TYPES)
@@ -116,7 +115,7 @@ public class IamRegistration {
   public static final String SERIALIZED_NAME_REFRESH_EXPIRE_IN_HOURS = "refreshExpireInHours";
   @SerializedName(SERIALIZED_NAME_REFRESH_EXPIRE_IN_HOURS)
   @javax.annotation.Nullable
-  private BigDecimal refreshExpireInHours;
+  private Double refreshExpireInHours;
 
   public IamRegistration() {
   }
@@ -216,7 +215,7 @@ public class IamRegistration {
   }
 
 
-  public IamRegistration expireInHours(@javax.annotation.Nullable BigDecimal expireInHours) {
+  public IamRegistration expireInHours(@javax.annotation.Nullable Double expireInHours) {
     this.expireInHours = expireInHours;
     return this;
   }
@@ -226,11 +225,11 @@ public class IamRegistration {
    * @return expireInHours
    */
   @javax.annotation.Nullable
-  public BigDecimal getExpireInHours() {
+  public Double getExpireInHours() {
     return expireInHours;
   }
 
-  public void setExpireInHours(@javax.annotation.Nullable BigDecimal expireInHours) {
+  public void setExpireInHours(@javax.annotation.Nullable Double expireInHours) {
     this.expireInHours = expireInHours;
   }
 
@@ -365,7 +364,7 @@ public class IamRegistration {
   }
 
 
-  public IamRegistration refreshExpireInHours(@javax.annotation.Nullable BigDecimal refreshExpireInHours) {
+  public IamRegistration refreshExpireInHours(@javax.annotation.Nullable Double refreshExpireInHours) {
     this.refreshExpireInHours = refreshExpireInHours;
     return this;
   }
@@ -375,11 +374,11 @@ public class IamRegistration {
    * @return refreshExpireInHours
    */
   @javax.annotation.Nullable
-  public BigDecimal getRefreshExpireInHours() {
+  public Double getRefreshExpireInHours() {
     return refreshExpireInHours;
   }
 
-  public void setRefreshExpireInHours(@javax.annotation.Nullable BigDecimal refreshExpireInHours) {
+  public void setRefreshExpireInHours(@javax.annotation.Nullable Double refreshExpireInHours) {
     this.refreshExpireInHours = refreshExpireInHours;
   }
 

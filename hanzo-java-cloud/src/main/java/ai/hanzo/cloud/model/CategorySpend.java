@@ -58,12 +58,12 @@ public class CategorySpend {
   public static final String SERIALIZED_NAME_CENTS = "cents";
   @SerializedName(SERIALIZED_NAME_CENTS)
   @javax.annotation.Nullable
-  private Integer cents;
+  private Long cents;
 
   public static final String SERIALIZED_NAME_COUNT = "count";
   @SerializedName(SERIALIZED_NAME_COUNT)
   @javax.annotation.Nullable
-  private Integer count;
+  private Long count;
 
   public CategorySpend() {
   }
@@ -87,7 +87,7 @@ public class CategorySpend {
   }
 
 
-  public CategorySpend cents(@javax.annotation.Nullable Integer cents) {
+  public CategorySpend cents(@javax.annotation.Nullable Long cents) {
     this.cents = cents;
     return this;
   }
@@ -97,16 +97,16 @@ public class CategorySpend {
    * @return cents
    */
   @javax.annotation.Nullable
-  public Integer getCents() {
+  public Long getCents() {
     return cents;
   }
 
-  public void setCents(@javax.annotation.Nullable Integer cents) {
+  public void setCents(@javax.annotation.Nullable Long cents) {
     this.cents = cents;
   }
 
 
-  public CategorySpend count(@javax.annotation.Nullable Integer count) {
+  public CategorySpend count(@javax.annotation.Nullable Long count) {
     this.count = count;
     return this;
   }
@@ -116,11 +116,11 @@ public class CategorySpend {
    * @return count
    */
   @javax.annotation.Nullable
-  public Integer getCount() {
+  public Long getCount() {
     return count;
   }
 
-  public void setCount(@javax.annotation.Nullable Integer count) {
+  public void setCount(@javax.annotation.Nullable Long count) {
     this.count = count;
   }
 

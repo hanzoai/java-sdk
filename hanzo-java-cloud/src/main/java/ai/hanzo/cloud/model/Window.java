@@ -53,12 +53,12 @@ public class Window {
   public static final String SERIALIZED_NAME_LIMIT = "limit";
   @SerializedName(SERIALIZED_NAME_LIMIT)
   @javax.annotation.Nullable
-  private Integer limit;
+  private Long limit;
 
   public static final String SERIALIZED_NAME_REMAINING = "remaining";
   @SerializedName(SERIALIZED_NAME_REMAINING)
   @javax.annotation.Nullable
-  private Integer remaining;
+  private Long remaining;
 
   public static final String SERIALIZED_NAME_RESETS = "resets";
   @SerializedName(SERIALIZED_NAME_RESETS)
@@ -73,12 +73,12 @@ public class Window {
   public static final String SERIALIZED_NAME_USED = "used";
   @SerializedName(SERIALIZED_NAME_USED)
   @javax.annotation.Nullable
-  private Integer used;
+  private Long used;
 
   public Window() {
   }
 
-  public Window limit(@javax.annotation.Nullable Integer limit) {
+  public Window limit(@javax.annotation.Nullable Long limit) {
     this.limit = limit;
     return this;
   }
@@ -88,16 +88,16 @@ public class Window {
    * @return limit
    */
   @javax.annotation.Nullable
-  public Integer getLimit() {
+  public Long getLimit() {
     return limit;
   }
 
-  public void setLimit(@javax.annotation.Nullable Integer limit) {
+  public void setLimit(@javax.annotation.Nullable Long limit) {
     this.limit = limit;
   }
 
 
-  public Window remaining(@javax.annotation.Nullable Integer remaining) {
+  public Window remaining(@javax.annotation.Nullable Long remaining) {
     this.remaining = remaining;
     return this;
   }
@@ -107,11 +107,11 @@ public class Window {
    * @return remaining
    */
   @javax.annotation.Nullable
-  public Integer getRemaining() {
+  public Long getRemaining() {
     return remaining;
   }
 
-  public void setRemaining(@javax.annotation.Nullable Integer remaining) {
+  public void setRemaining(@javax.annotation.Nullable Long remaining) {
     this.remaining = remaining;
   }
 
@@ -154,7 +154,7 @@ public class Window {
   }
 
 
-  public Window used(@javax.annotation.Nullable Integer used) {
+  public Window used(@javax.annotation.Nullable Long used) {
     this.used = used;
     return this;
   }
@@ -164,11 +164,11 @@ public class Window {
    * @return used
    */
   @javax.annotation.Nullable
-  public Integer getUsed() {
+  public Long getUsed() {
     return used;
   }
 
-  public void setUsed(@javax.annotation.Nullable Integer used) {
+  public void setUsed(@javax.annotation.Nullable Long used) {
     this.used = used;
   }
 

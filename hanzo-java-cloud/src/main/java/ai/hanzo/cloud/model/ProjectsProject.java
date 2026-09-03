@@ -71,7 +71,7 @@ public class ProjectsProject {
   public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
   @javax.annotation.Nullable
-  private Integer createdAt;
+  private Long createdAt;
 
   public static final String SERIALIZED_NAME_CURRENT_DEPLOYMENT_ID = "currentDeploymentId";
   @SerializedName(SERIALIZED_NAME_CURRENT_DEPLOYMENT_ID)
@@ -116,7 +116,7 @@ public class ProjectsProject {
   public static final String SERIALIZED_NAME_LAST_PURGE_AT = "lastPurgeAt";
   @SerializedName(SERIALIZED_NAME_LAST_PURGE_AT)
   @javax.annotation.Nullable
-  private Integer lastPurgeAt;
+  private Long lastPurgeAt;
 
   public static final String SERIALIZED_NAME_LICENSE = "license";
   @SerializedName(SERIALIZED_NAME_LICENSE)
@@ -171,7 +171,7 @@ public class ProjectsProject {
   public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)
   @javax.annotation.Nullable
-  private Integer updatedAt;
+  private Long updatedAt;
 
   public static final String SERIALIZED_NAME_UPSTREAM = "upstream";
   @SerializedName(SERIALIZED_NAME_UPSTREAM)
@@ -243,7 +243,7 @@ public class ProjectsProject {
   }
 
 
-  public ProjectsProject createdAt(@javax.annotation.Nullable Integer createdAt) {
+  public ProjectsProject createdAt(@javax.annotation.Nullable Long createdAt) {
     this.createdAt = createdAt;
     return this;
   }
@@ -253,11 +253,11 @@ public class ProjectsProject {
    * @return createdAt
    */
   @javax.annotation.Nullable
-  public Integer getCreatedAt() {
+  public Long getCreatedAt() {
     return createdAt;
   }
 
-  public void setCreatedAt(@javax.annotation.Nullable Integer createdAt) {
+  public void setCreatedAt(@javax.annotation.Nullable Long createdAt) {
     this.createdAt = createdAt;
   }
 
@@ -414,7 +414,7 @@ public class ProjectsProject {
   }
 
 
-  public ProjectsProject lastPurgeAt(@javax.annotation.Nullable Integer lastPurgeAt) {
+  public ProjectsProject lastPurgeAt(@javax.annotation.Nullable Long lastPurgeAt) {
     this.lastPurgeAt = lastPurgeAt;
     return this;
   }
@@ -424,11 +424,11 @@ public class ProjectsProject {
    * @return lastPurgeAt
    */
   @javax.annotation.Nullable
-  public Integer getLastPurgeAt() {
+  public Long getLastPurgeAt() {
     return lastPurgeAt;
   }
 
-  public void setLastPurgeAt(@javax.annotation.Nullable Integer lastPurgeAt) {
+  public void setLastPurgeAt(@javax.annotation.Nullable Long lastPurgeAt) {
     this.lastPurgeAt = lastPurgeAt;
   }
 
@@ -631,7 +631,7 @@ public class ProjectsProject {
   }
 
 
-  public ProjectsProject updatedAt(@javax.annotation.Nullable Integer updatedAt) {
+  public ProjectsProject updatedAt(@javax.annotation.Nullable Long updatedAt) {
     this.updatedAt = updatedAt;
     return this;
   }
@@ -641,11 +641,11 @@ public class ProjectsProject {
    * @return updatedAt
    */
   @javax.annotation.Nullable
-  public Integer getUpdatedAt() {
+  public Long getUpdatedAt() {
     return updatedAt;
   }
 
-  public void setUpdatedAt(@javax.annotation.Nullable Integer updatedAt) {
+  public void setUpdatedAt(@javax.annotation.Nullable Long updatedAt) {
     this.updatedAt = updatedAt;
   }
 

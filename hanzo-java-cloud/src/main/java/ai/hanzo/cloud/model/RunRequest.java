@@ -64,7 +64,7 @@ public class RunRequest {
   public static final String SERIALIZED_NAME_LIMIT = "limit";
   @SerializedName(SERIALIZED_NAME_LIMIT)
   @javax.annotation.Nullable
-  private Integer limit;
+  private Long limit;
 
   public static final String SERIALIZED_NAME_MODEL = "model";
   @SerializedName(SERIALIZED_NAME_MODEL)
@@ -117,7 +117,7 @@ public class RunRequest {
   }
 
 
-  public RunRequest limit(@javax.annotation.Nullable Integer limit) {
+  public RunRequest limit(@javax.annotation.Nullable Long limit) {
     this.limit = limit;
     return this;
   }
@@ -127,11 +127,11 @@ public class RunRequest {
    * @return limit
    */
   @javax.annotation.Nullable
-  public Integer getLimit() {
+  public Long getLimit() {
     return limit;
   }
 
-  public void setLimit(@javax.annotation.Nullable Integer limit) {
+  public void setLimit(@javax.annotation.Nullable Long limit) {
     this.limit = limit;
   }
 

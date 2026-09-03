@@ -78,7 +78,7 @@ public class O11yFlamegraphSpan {
   public static final String SERIALIZED_NAME_LEVEL = "level";
   @SerializedName(SERIALIZED_NAME_LEVEL)
   @javax.annotation.Nullable
-  private Integer level;
+  private Long level;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -200,7 +200,7 @@ public class O11yFlamegraphSpan {
   }
 
 
-  public O11yFlamegraphSpan level(@javax.annotation.Nullable Integer level) {
+  public O11yFlamegraphSpan level(@javax.annotation.Nullable Long level) {
     this.level = level;
     return this;
   }
@@ -210,11 +210,11 @@ public class O11yFlamegraphSpan {
    * @return level
    */
   @javax.annotation.Nullable
-  public Integer getLevel() {
+  public Long getLevel() {
     return level;
   }
 
-  public void setLevel(@javax.annotation.Nullable Integer level) {
+  public void setLevel(@javax.annotation.Nullable Long level) {
     this.level = level;
   }
 

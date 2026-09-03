@@ -62,7 +62,7 @@ public class WebSearchResults {
   public static final String SERIALIZED_NAME_NUMBER_OF_RESULTS = "number_of_results";
   @SerializedName(SERIALIZED_NAME_NUMBER_OF_RESULTS)
   @javax.annotation.Nullable
-  private Integer numberOfResults;
+  private Long numberOfResults;
 
   public static final String SERIALIZED_NAME_QUERY = "query";
   @SerializedName(SERIALIZED_NAME_QUERY)
@@ -104,7 +104,7 @@ public class WebSearchResults {
   }
 
 
-  public WebSearchResults numberOfResults(@javax.annotation.Nullable Integer numberOfResults) {
+  public WebSearchResults numberOfResults(@javax.annotation.Nullable Long numberOfResults) {
     this.numberOfResults = numberOfResults;
     return this;
   }
@@ -114,11 +114,11 @@ public class WebSearchResults {
    * @return numberOfResults
    */
   @javax.annotation.Nullable
-  public Integer getNumberOfResults() {
+  public Long getNumberOfResults() {
     return numberOfResults;
   }
 
-  public void setNumberOfResults(@javax.annotation.Nullable Integer numberOfResults) {
+  public void setNumberOfResults(@javax.annotation.Nullable Long numberOfResults) {
     this.numberOfResults = numberOfResults;
   }
 

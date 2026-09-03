@@ -63,7 +63,7 @@ public class AppView {
   public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
   @javax.annotation.Nullable
-  private Integer createdAt;
+  private Long createdAt;
 
   public static final String SERIALIZED_NAME_CURRENT_DEPLOYMENT_ID = "currentDeploymentId";
   @SerializedName(SERIALIZED_NAME_CURRENT_DEPLOYMENT_ID)
@@ -133,7 +133,7 @@ public class AppView {
   public static final String SERIALIZED_NAME_PORT = "port";
   @SerializedName(SERIALIZED_NAME_PORT)
   @javax.annotation.Nullable
-  private Integer port;
+  private Long port;
 
   public static final String SERIALIZED_NAME_PROJECT_ID = "projectId";
   @SerializedName(SERIALIZED_NAME_PROJECT_ID)
@@ -143,7 +143,7 @@ public class AppView {
   public static final String SERIALIZED_NAME_REPLICAS = "replicas";
   @SerializedName(SERIALIZED_NAME_REPLICAS)
   @javax.annotation.Nullable
-  private Integer replicas;
+  private Long replicas;
 
   public static final String SERIALIZED_NAME_REPO = "repo";
   @SerializedName(SERIALIZED_NAME_REPO)
@@ -178,12 +178,12 @@ public class AppView {
   public static final String SERIALIZED_NAME_STORAGE_GB = "storageGb";
   @SerializedName(SERIALIZED_NAME_STORAGE_GB)
   @javax.annotation.Nullable
-  private Integer storageGb;
+  private Long storageGb;
 
   public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)
   @javax.annotation.Nullable
-  private Integer updatedAt;
+  private Long updatedAt;
 
   public AppView() {
   }
@@ -207,7 +207,7 @@ public class AppView {
   }
 
 
-  public AppView createdAt(@javax.annotation.Nullable Integer createdAt) {
+  public AppView createdAt(@javax.annotation.Nullable Long createdAt) {
     this.createdAt = createdAt;
     return this;
   }
@@ -217,11 +217,11 @@ public class AppView {
    * @return createdAt
    */
   @javax.annotation.Nullable
-  public Integer getCreatedAt() {
+  public Long getCreatedAt() {
     return createdAt;
   }
 
-  public void setCreatedAt(@javax.annotation.Nullable Integer createdAt) {
+  public void setCreatedAt(@javax.annotation.Nullable Long createdAt) {
     this.createdAt = createdAt;
   }
 
@@ -489,7 +489,7 @@ public class AppView {
   }
 
 
-  public AppView port(@javax.annotation.Nullable Integer port) {
+  public AppView port(@javax.annotation.Nullable Long port) {
     this.port = port;
     return this;
   }
@@ -499,11 +499,11 @@ public class AppView {
    * @return port
    */
   @javax.annotation.Nullable
-  public Integer getPort() {
+  public Long getPort() {
     return port;
   }
 
-  public void setPort(@javax.annotation.Nullable Integer port) {
+  public void setPort(@javax.annotation.Nullable Long port) {
     this.port = port;
   }
 
@@ -527,7 +527,7 @@ public class AppView {
   }
 
 
-  public AppView replicas(@javax.annotation.Nullable Integer replicas) {
+  public AppView replicas(@javax.annotation.Nullable Long replicas) {
     this.replicas = replicas;
     return this;
   }
@@ -537,11 +537,11 @@ public class AppView {
    * @return replicas
    */
   @javax.annotation.Nullable
-  public Integer getReplicas() {
+  public Long getReplicas() {
     return replicas;
   }
 
-  public void setReplicas(@javax.annotation.Nullable Integer replicas) {
+  public void setReplicas(@javax.annotation.Nullable Long replicas) {
     this.replicas = replicas;
   }
 
@@ -660,7 +660,7 @@ public class AppView {
   }
 
 
-  public AppView storageGb(@javax.annotation.Nullable Integer storageGb) {
+  public AppView storageGb(@javax.annotation.Nullable Long storageGb) {
     this.storageGb = storageGb;
     return this;
   }
@@ -670,16 +670,16 @@ public class AppView {
    * @return storageGb
    */
   @javax.annotation.Nullable
-  public Integer getStorageGb() {
+  public Long getStorageGb() {
     return storageGb;
   }
 
-  public void setStorageGb(@javax.annotation.Nullable Integer storageGb) {
+  public void setStorageGb(@javax.annotation.Nullable Long storageGb) {
     this.storageGb = storageGb;
   }
 
 
-  public AppView updatedAt(@javax.annotation.Nullable Integer updatedAt) {
+  public AppView updatedAt(@javax.annotation.Nullable Long updatedAt) {
     this.updatedAt = updatedAt;
     return this;
   }
@@ -689,11 +689,11 @@ public class AppView {
    * @return updatedAt
    */
   @javax.annotation.Nullable
-  public Integer getUpdatedAt() {
+  public Long getUpdatedAt() {
     return updatedAt;
   }
 
-  public void setUpdatedAt(@javax.annotation.Nullable Integer updatedAt) {
+  public void setUpdatedAt(@javax.annotation.Nullable Long updatedAt) {
     this.updatedAt = updatedAt;
   }
 

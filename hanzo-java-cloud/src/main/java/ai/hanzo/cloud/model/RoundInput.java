@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -59,12 +58,12 @@ public class RoundInput {
   public static final String SERIALIZED_NAME_PRE_MONEY_VALUATION = "preMoneyValuation";
   @SerializedName(SERIALIZED_NAME_PRE_MONEY_VALUATION)
   @javax.annotation.Nullable
-  private BigDecimal preMoneyValuation;
+  private Double preMoneyValuation;
 
   public static final String SERIALIZED_NAME_PRICE_PER_SHARE = "pricePerShare";
   @SerializedName(SERIALIZED_NAME_PRICE_PER_SHARE)
   @javax.annotation.Nullable
-  private BigDecimal pricePerShare;
+  private Double pricePerShare;
 
   public static final String SERIALIZED_NAME_ROUND_TYPE = "roundType";
   @SerializedName(SERIALIZED_NAME_ROUND_TYPE)
@@ -79,7 +78,7 @@ public class RoundInput {
   public static final String SERIALIZED_NAME_TARGET_AMOUNT = "targetAmount";
   @SerializedName(SERIALIZED_NAME_TARGET_AMOUNT)
   @javax.annotation.Nullable
-  private BigDecimal targetAmount;
+  private Double targetAmount;
 
   public RoundInput() {
   }
@@ -103,7 +102,7 @@ public class RoundInput {
   }
 
 
-  public RoundInput preMoneyValuation(@javax.annotation.Nullable BigDecimal preMoneyValuation) {
+  public RoundInput preMoneyValuation(@javax.annotation.Nullable Double preMoneyValuation) {
     this.preMoneyValuation = preMoneyValuation;
     return this;
   }
@@ -113,16 +112,16 @@ public class RoundInput {
    * @return preMoneyValuation
    */
   @javax.annotation.Nullable
-  public BigDecimal getPreMoneyValuation() {
+  public Double getPreMoneyValuation() {
     return preMoneyValuation;
   }
 
-  public void setPreMoneyValuation(@javax.annotation.Nullable BigDecimal preMoneyValuation) {
+  public void setPreMoneyValuation(@javax.annotation.Nullable Double preMoneyValuation) {
     this.preMoneyValuation = preMoneyValuation;
   }
 
 
-  public RoundInput pricePerShare(@javax.annotation.Nullable BigDecimal pricePerShare) {
+  public RoundInput pricePerShare(@javax.annotation.Nullable Double pricePerShare) {
     this.pricePerShare = pricePerShare;
     return this;
   }
@@ -132,11 +131,11 @@ public class RoundInput {
    * @return pricePerShare
    */
   @javax.annotation.Nullable
-  public BigDecimal getPricePerShare() {
+  public Double getPricePerShare() {
     return pricePerShare;
   }
 
-  public void setPricePerShare(@javax.annotation.Nullable BigDecimal pricePerShare) {
+  public void setPricePerShare(@javax.annotation.Nullable Double pricePerShare) {
     this.pricePerShare = pricePerShare;
   }
 
@@ -179,7 +178,7 @@ public class RoundInput {
   }
 
 
-  public RoundInput targetAmount(@javax.annotation.Nullable BigDecimal targetAmount) {
+  public RoundInput targetAmount(@javax.annotation.Nullable Double targetAmount) {
     this.targetAmount = targetAmount;
     return this;
   }
@@ -189,11 +188,11 @@ public class RoundInput {
    * @return targetAmount
    */
   @javax.annotation.Nullable
-  public BigDecimal getTargetAmount() {
+  public Double getTargetAmount() {
     return targetAmount;
   }
 
-  public void setTargetAmount(@javax.annotation.Nullable BigDecimal targetAmount) {
+  public void setTargetAmount(@javax.annotation.Nullable Double targetAmount) {
     this.targetAmount = targetAmount;
   }
 

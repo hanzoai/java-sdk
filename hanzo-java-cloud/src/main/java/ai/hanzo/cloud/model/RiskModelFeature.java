@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -54,7 +53,7 @@ public class RiskModelFeature {
   public static final String SERIALIZED_NAME_BLIND = "blind";
   @SerializedName(SERIALIZED_NAME_BLIND)
   @javax.annotation.Nullable
-  private Integer blind;
+  private Long blind;
 
   public static final String SERIALIZED_NAME_CITATION = "citation";
   @SerializedName(SERIALIZED_NAME_CITATION)
@@ -74,7 +73,7 @@ public class RiskModelFeature {
   public static final String SERIALIZED_NAME_NEUTRAL = "neutral";
   @SerializedName(SERIALIZED_NAME_NEUTRAL)
   @javax.annotation.Nullable
-  private BigDecimal neutral;
+  private Double neutral;
 
   public static final String SERIALIZED_NAME_SEVERITY = "severity";
   @SerializedName(SERIALIZED_NAME_SEVERITY)
@@ -99,7 +98,7 @@ public class RiskModelFeature {
   public RiskModelFeature() {
   }
 
-  public RiskModelFeature blind(@javax.annotation.Nullable Integer blind) {
+  public RiskModelFeature blind(@javax.annotation.Nullable Long blind) {
     this.blind = blind;
     return this;
   }
@@ -109,11 +108,11 @@ public class RiskModelFeature {
    * @return blind
    */
   @javax.annotation.Nullable
-  public Integer getBlind() {
+  public Long getBlind() {
     return blind;
   }
 
-  public void setBlind(@javax.annotation.Nullable Integer blind) {
+  public void setBlind(@javax.annotation.Nullable Long blind) {
     this.blind = blind;
   }
 
@@ -175,7 +174,7 @@ public class RiskModelFeature {
   }
 
 
-  public RiskModelFeature neutral(@javax.annotation.Nullable BigDecimal neutral) {
+  public RiskModelFeature neutral(@javax.annotation.Nullable Double neutral) {
     this.neutral = neutral;
     return this;
   }
@@ -185,11 +184,11 @@ public class RiskModelFeature {
    * @return neutral
    */
   @javax.annotation.Nullable
-  public BigDecimal getNeutral() {
+  public Double getNeutral() {
     return neutral;
   }
 
-  public void setNeutral(@javax.annotation.Nullable BigDecimal neutral) {
+  public void setNeutral(@javax.annotation.Nullable Double neutral) {
     this.neutral = neutral;
   }
 

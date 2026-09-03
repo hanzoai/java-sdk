@@ -57,7 +57,7 @@ public class ClusterDetailView {
   public static final String SERIALIZED_NAME_AMD_GPU = "amdGpu";
   @SerializedName(SERIALIZED_NAME_AMD_GPU)
   @javax.annotation.Nullable
-  private Integer amdGpu;
+  private Long amdGpu;
 
   public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
@@ -87,7 +87,7 @@ public class ClusterDetailView {
   public static final String SERIALIZED_NAME_NODE_COUNT = "nodeCount";
   @SerializedName(SERIALIZED_NAME_NODE_COUNT)
   @javax.annotation.Nullable
-  private Integer nodeCount;
+  private Long nodeCount;
 
   public static final String SERIALIZED_NAME_NODE_POOLS = "nodePools";
   @SerializedName(SERIALIZED_NAME_NODE_POOLS)
@@ -107,7 +107,7 @@ public class ClusterDetailView {
   public static final String SERIALIZED_NAME_NVIDIA_GPU = "nvidiaGpu";
   @SerializedName(SERIALIZED_NAME_NVIDIA_GPU)
   @javax.annotation.Nullable
-  private Integer nvidiaGpu;
+  private Long nvidiaGpu;
 
   public static final String SERIALIZED_NAME_REGION = "region";
   @SerializedName(SERIALIZED_NAME_REGION)
@@ -122,7 +122,7 @@ public class ClusterDetailView {
   public ClusterDetailView() {
   }
 
-  public ClusterDetailView amdGpu(@javax.annotation.Nullable Integer amdGpu) {
+  public ClusterDetailView amdGpu(@javax.annotation.Nullable Long amdGpu) {
     this.amdGpu = amdGpu;
     return this;
   }
@@ -132,11 +132,11 @@ public class ClusterDetailView {
    * @return amdGpu
    */
   @javax.annotation.Nullable
-  public Integer getAmdGpu() {
+  public Long getAmdGpu() {
     return amdGpu;
   }
 
-  public void setAmdGpu(@javax.annotation.Nullable Integer amdGpu) {
+  public void setAmdGpu(@javax.annotation.Nullable Long amdGpu) {
     this.amdGpu = amdGpu;
   }
 
@@ -236,7 +236,7 @@ public class ClusterDetailView {
   }
 
 
-  public ClusterDetailView nodeCount(@javax.annotation.Nullable Integer nodeCount) {
+  public ClusterDetailView nodeCount(@javax.annotation.Nullable Long nodeCount) {
     this.nodeCount = nodeCount;
     return this;
   }
@@ -246,11 +246,11 @@ public class ClusterDetailView {
    * @return nodeCount
    */
   @javax.annotation.Nullable
-  public Integer getNodeCount() {
+  public Long getNodeCount() {
     return nodeCount;
   }
 
-  public void setNodeCount(@javax.annotation.Nullable Integer nodeCount) {
+  public void setNodeCount(@javax.annotation.Nullable Long nodeCount) {
     this.nodeCount = nodeCount;
   }
 
@@ -328,7 +328,7 @@ public class ClusterDetailView {
   }
 
 
-  public ClusterDetailView nvidiaGpu(@javax.annotation.Nullable Integer nvidiaGpu) {
+  public ClusterDetailView nvidiaGpu(@javax.annotation.Nullable Long nvidiaGpu) {
     this.nvidiaGpu = nvidiaGpu;
     return this;
   }
@@ -338,11 +338,11 @@ public class ClusterDetailView {
    * @return nvidiaGpu
    */
   @javax.annotation.Nullable
-  public Integer getNvidiaGpu() {
+  public Long getNvidiaGpu() {
     return nvidiaGpu;
   }
 
-  public void setNvidiaGpu(@javax.annotation.Nullable Integer nvidiaGpu) {
+  public void setNvidiaGpu(@javax.annotation.Nullable Long nvidiaGpu) {
     this.nvidiaGpu = nvidiaGpu;
   }
 

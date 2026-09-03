@@ -53,12 +53,12 @@ public class RiskHoldOut {
   public static final String SERIALIZED_NAME_CHANGED = "changed";
   @SerializedName(SERIALIZED_NAME_CHANGED)
   @javax.annotation.Nullable
-  private Integer changed;
+  private Long changed;
 
   public static final String SERIALIZED_NAME_HELD = "held";
   @SerializedName(SERIALIZED_NAME_HELD)
   @javax.annotation.Nullable
-  private Integer held;
+  private Long held;
 
   public static final String SERIALIZED_NAME_HOLD = "hold";
   @SerializedName(SERIALIZED_NAME_HOLD)
@@ -68,12 +68,12 @@ public class RiskHoldOut {
   public static final String SERIALIZED_NAME_MISSING = "missing";
   @SerializedName(SERIALIZED_NAME_MISSING)
   @javax.annotation.Nullable
-  private Integer missing;
+  private Long missing;
 
   public RiskHoldOut() {
   }
 
-  public RiskHoldOut changed(@javax.annotation.Nullable Integer changed) {
+  public RiskHoldOut changed(@javax.annotation.Nullable Long changed) {
     this.changed = changed;
     return this;
   }
@@ -83,16 +83,16 @@ public class RiskHoldOut {
    * @return changed
    */
   @javax.annotation.Nullable
-  public Integer getChanged() {
+  public Long getChanged() {
     return changed;
   }
 
-  public void setChanged(@javax.annotation.Nullable Integer changed) {
+  public void setChanged(@javax.annotation.Nullable Long changed) {
     this.changed = changed;
   }
 
 
-  public RiskHoldOut held(@javax.annotation.Nullable Integer held) {
+  public RiskHoldOut held(@javax.annotation.Nullable Long held) {
     this.held = held;
     return this;
   }
@@ -102,11 +102,11 @@ public class RiskHoldOut {
    * @return held
    */
   @javax.annotation.Nullable
-  public Integer getHeld() {
+  public Long getHeld() {
     return held;
   }
 
-  public void setHeld(@javax.annotation.Nullable Integer held) {
+  public void setHeld(@javax.annotation.Nullable Long held) {
     this.held = held;
   }
 
@@ -130,7 +130,7 @@ public class RiskHoldOut {
   }
 
 
-  public RiskHoldOut missing(@javax.annotation.Nullable Integer missing) {
+  public RiskHoldOut missing(@javax.annotation.Nullable Long missing) {
     this.missing = missing;
     return this;
   }
@@ -140,11 +140,11 @@ public class RiskHoldOut {
    * @return missing
    */
   @javax.annotation.Nullable
-  public Integer getMissing() {
+  public Long getMissing() {
     return missing;
   }
 
-  public void setMissing(@javax.annotation.Nullable Integer missing) {
+  public void setMissing(@javax.annotation.Nullable Long missing) {
     this.missing = missing;
   }
 

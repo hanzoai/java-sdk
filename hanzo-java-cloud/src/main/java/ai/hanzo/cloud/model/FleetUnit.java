@@ -75,17 +75,17 @@ public class FleetUnit {
   public static final String SERIALIZED_NAME_QUEUED = "queued";
   @SerializedName(SERIALIZED_NAME_QUEUED)
   @javax.annotation.Nullable
-  private Integer queued;
+  private Long queued;
 
   public static final String SERIALIZED_NAME_RUNNING = "running";
   @SerializedName(SERIALIZED_NAME_RUNNING)
   @javax.annotation.Nullable
-  private Integer running;
+  private Long running;
 
   public static final String SERIALIZED_NAME_SESSIONS = "sessions";
   @SerializedName(SERIALIZED_NAME_SESSIONS)
   @javax.annotation.Nullable
-  private Integer sessions;
+  private Long sessions;
 
   public static final String SERIALIZED_NAME_SOURCE = "source";
   @SerializedName(SERIALIZED_NAME_SOURCE)
@@ -186,7 +186,7 @@ public class FleetUnit {
   }
 
 
-  public FleetUnit queued(@javax.annotation.Nullable Integer queued) {
+  public FleetUnit queued(@javax.annotation.Nullable Long queued) {
     this.queued = queued;
     return this;
   }
@@ -196,16 +196,16 @@ public class FleetUnit {
    * @return queued
    */
   @javax.annotation.Nullable
-  public Integer getQueued() {
+  public Long getQueued() {
     return queued;
   }
 
-  public void setQueued(@javax.annotation.Nullable Integer queued) {
+  public void setQueued(@javax.annotation.Nullable Long queued) {
     this.queued = queued;
   }
 
 
-  public FleetUnit running(@javax.annotation.Nullable Integer running) {
+  public FleetUnit running(@javax.annotation.Nullable Long running) {
     this.running = running;
     return this;
   }
@@ -215,16 +215,16 @@ public class FleetUnit {
    * @return running
    */
   @javax.annotation.Nullable
-  public Integer getRunning() {
+  public Long getRunning() {
     return running;
   }
 
-  public void setRunning(@javax.annotation.Nullable Integer running) {
+  public void setRunning(@javax.annotation.Nullable Long running) {
     this.running = running;
   }
 
 
-  public FleetUnit sessions(@javax.annotation.Nullable Integer sessions) {
+  public FleetUnit sessions(@javax.annotation.Nullable Long sessions) {
     this.sessions = sessions;
     return this;
   }
@@ -234,11 +234,11 @@ public class FleetUnit {
    * @return sessions
    */
   @javax.annotation.Nullable
-  public Integer getSessions() {
+  public Long getSessions() {
     return sessions;
   }
 
-  public void setSessions(@javax.annotation.Nullable Integer sessions) {
+  public void setSessions(@javax.annotation.Nullable Long sessions) {
     this.sessions = sessions;
   }
 

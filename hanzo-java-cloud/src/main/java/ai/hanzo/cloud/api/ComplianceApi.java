@@ -99,7 +99,7 @@ public class ComplianceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getComplianceAccreditationCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getComplianceAccreditationCall(@javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -148,7 +148,7 @@ public class ComplianceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getComplianceAccreditationValidateBeforeCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getComplianceAccreditationValidateBeforeCall(@javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         return getComplianceAccreditationCall(limit, _callback);
 
     }
@@ -166,7 +166,7 @@ public class ComplianceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public AccList getComplianceAccreditation(@javax.annotation.Nullable Integer limit) throws ApiException {
+    public AccList getComplianceAccreditation(@javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<AccList> localVarResp = getComplianceAccreditationWithHttpInfo(limit);
         return localVarResp.getData();
     }
@@ -184,7 +184,7 @@ public class ComplianceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AccList> getComplianceAccreditationWithHttpInfo(@javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<AccList> getComplianceAccreditationWithHttpInfo(@javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getComplianceAccreditationValidateBeforeCall(limit, null);
         Type localVarReturnType = new TypeToken<AccList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -204,7 +204,7 @@ public class ComplianceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getComplianceAccreditationAsync(@javax.annotation.Nullable Integer limit, final ApiCallback<AccList> _callback) throws ApiException {
+    public okhttp3.Call getComplianceAccreditationAsync(@javax.annotation.Nullable Long limit, final ApiCallback<AccList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getComplianceAccreditationValidateBeforeCall(limit, _callback);
         Type localVarReturnType = new TypeToken<AccList>(){}.getType();
@@ -593,7 +593,7 @@ public class ComplianceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getComplianceRecordsCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getComplianceRecordsCall(@javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -642,7 +642,7 @@ public class ComplianceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getComplianceRecordsValidateBeforeCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getComplianceRecordsValidateBeforeCall(@javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         return getComplianceRecordsCall(limit, _callback);
 
     }
@@ -660,7 +660,7 @@ public class ComplianceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public RecordList getComplianceRecords(@javax.annotation.Nullable Integer limit) throws ApiException {
+    public RecordList getComplianceRecords(@javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<RecordList> localVarResp = getComplianceRecordsWithHttpInfo(limit);
         return localVarResp.getData();
     }
@@ -678,7 +678,7 @@ public class ComplianceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RecordList> getComplianceRecordsWithHttpInfo(@javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<RecordList> getComplianceRecordsWithHttpInfo(@javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getComplianceRecordsValidateBeforeCall(limit, null);
         Type localVarReturnType = new TypeToken<RecordList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -698,7 +698,7 @@ public class ComplianceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getComplianceRecordsAsync(@javax.annotation.Nullable Integer limit, final ApiCallback<RecordList> _callback) throws ApiException {
+    public okhttp3.Call getComplianceRecordsAsync(@javax.annotation.Nullable Long limit, final ApiCallback<RecordList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getComplianceRecordsValidateBeforeCall(limit, _callback);
         Type localVarReturnType = new TypeToken<RecordList>(){}.getType();
@@ -835,7 +835,7 @@ public class ComplianceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getComplianceSubjectsCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getComplianceSubjectsCall(@javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -884,7 +884,7 @@ public class ComplianceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getComplianceSubjectsValidateBeforeCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getComplianceSubjectsValidateBeforeCall(@javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         return getComplianceSubjectsCall(limit, _callback);
 
     }
@@ -902,7 +902,7 @@ public class ComplianceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public SubjectList getComplianceSubjects(@javax.annotation.Nullable Integer limit) throws ApiException {
+    public SubjectList getComplianceSubjects(@javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<SubjectList> localVarResp = getComplianceSubjectsWithHttpInfo(limit);
         return localVarResp.getData();
     }
@@ -920,7 +920,7 @@ public class ComplianceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SubjectList> getComplianceSubjectsWithHttpInfo(@javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<SubjectList> getComplianceSubjectsWithHttpInfo(@javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getComplianceSubjectsValidateBeforeCall(limit, null);
         Type localVarReturnType = new TypeToken<SubjectList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -940,7 +940,7 @@ public class ComplianceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getComplianceSubjectsAsync(@javax.annotation.Nullable Integer limit, final ApiCallback<SubjectList> _callback) throws ApiException {
+    public okhttp3.Call getComplianceSubjectsAsync(@javax.annotation.Nullable Long limit, final ApiCallback<SubjectList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getComplianceSubjectsValidateBeforeCall(limit, _callback);
         Type localVarReturnType = new TypeToken<SubjectList>(){}.getType();
@@ -1087,7 +1087,7 @@ public class ComplianceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getComplianceVerificationsCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getComplianceVerificationsCall(@javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1136,7 +1136,7 @@ public class ComplianceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getComplianceVerificationsValidateBeforeCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getComplianceVerificationsValidateBeforeCall(@javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         return getComplianceVerificationsCall(limit, _callback);
 
     }
@@ -1154,7 +1154,7 @@ public class ComplianceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public CheckList getComplianceVerifications(@javax.annotation.Nullable Integer limit) throws ApiException {
+    public CheckList getComplianceVerifications(@javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<CheckList> localVarResp = getComplianceVerificationsWithHttpInfo(limit);
         return localVarResp.getData();
     }
@@ -1172,7 +1172,7 @@ public class ComplianceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CheckList> getComplianceVerificationsWithHttpInfo(@javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<CheckList> getComplianceVerificationsWithHttpInfo(@javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getComplianceVerificationsValidateBeforeCall(limit, null);
         Type localVarReturnType = new TypeToken<CheckList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -1192,7 +1192,7 @@ public class ComplianceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getComplianceVerificationsAsync(@javax.annotation.Nullable Integer limit, final ApiCallback<CheckList> _callback) throws ApiException {
+    public okhttp3.Call getComplianceVerificationsAsync(@javax.annotation.Nullable Long limit, final ApiCallback<CheckList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getComplianceVerificationsValidateBeforeCall(limit, _callback);
         Type localVarReturnType = new TypeToken<CheckList>(){}.getType();

@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -59,12 +58,12 @@ public class O11yO11yLLMPricingCacheCosts {
   public static final String SERIALIZED_NAME_READ = "read";
   @SerializedName(SERIALIZED_NAME_READ)
   @javax.annotation.Nullable
-  private BigDecimal read;
+  private Double read;
 
   public static final String SERIALIZED_NAME_WRITE = "write";
   @SerializedName(SERIALIZED_NAME_WRITE)
   @javax.annotation.Nullable
-  private BigDecimal write;
+  private Double write;
 
   public O11yO11yLLMPricingCacheCosts() {
   }
@@ -88,7 +87,7 @@ public class O11yO11yLLMPricingCacheCosts {
   }
 
 
-  public O11yO11yLLMPricingCacheCosts read(@javax.annotation.Nullable BigDecimal read) {
+  public O11yO11yLLMPricingCacheCosts read(@javax.annotation.Nullable Double read) {
     this.read = read;
     return this;
   }
@@ -98,16 +97,16 @@ public class O11yO11yLLMPricingCacheCosts {
    * @return read
    */
   @javax.annotation.Nullable
-  public BigDecimal getRead() {
+  public Double getRead() {
     return read;
   }
 
-  public void setRead(@javax.annotation.Nullable BigDecimal read) {
+  public void setRead(@javax.annotation.Nullable Double read) {
     this.read = read;
   }
 
 
-  public O11yO11yLLMPricingCacheCosts write(@javax.annotation.Nullable BigDecimal write) {
+  public O11yO11yLLMPricingCacheCosts write(@javax.annotation.Nullable Double write) {
     this.write = write;
     return this;
   }
@@ -117,11 +116,11 @@ public class O11yO11yLLMPricingCacheCosts {
    * @return write
    */
   @javax.annotation.Nullable
-  public BigDecimal getWrite() {
+  public Double getWrite() {
     return write;
   }
 
-  public void setWrite(@javax.annotation.Nullable BigDecimal write) {
+  public void setWrite(@javax.annotation.Nullable Double write) {
     this.write = write;
   }
 

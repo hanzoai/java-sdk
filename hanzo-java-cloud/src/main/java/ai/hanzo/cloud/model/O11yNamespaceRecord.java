@@ -21,7 +21,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -62,12 +61,12 @@ public class O11yNamespaceRecord {
   public static final String SERIALIZED_NAME_NAMESPACE_C_P_U = "namespaceCPU";
   @SerializedName(SERIALIZED_NAME_NAMESPACE_C_P_U)
   @javax.annotation.Nullable
-  private BigDecimal namespaceCPU;
+  private Double namespaceCPU;
 
   public static final String SERIALIZED_NAME_NAMESPACE_MEMORY = "namespaceMemory";
   @SerializedName(SERIALIZED_NAME_NAMESPACE_MEMORY)
   @javax.annotation.Nullable
-  private BigDecimal namespaceMemory;
+  private Double namespaceMemory;
 
   public static final String SERIALIZED_NAME_NAMESPACE_NAME = "namespaceName";
   @SerializedName(SERIALIZED_NAME_NAMESPACE_NAME)
@@ -109,7 +108,7 @@ public class O11yNamespaceRecord {
   }
 
 
-  public O11yNamespaceRecord namespaceCPU(@javax.annotation.Nullable BigDecimal namespaceCPU) {
+  public O11yNamespaceRecord namespaceCPU(@javax.annotation.Nullable Double namespaceCPU) {
     this.namespaceCPU = namespaceCPU;
     return this;
   }
@@ -119,16 +118,16 @@ public class O11yNamespaceRecord {
    * @return namespaceCPU
    */
   @javax.annotation.Nullable
-  public BigDecimal getNamespaceCPU() {
+  public Double getNamespaceCPU() {
     return namespaceCPU;
   }
 
-  public void setNamespaceCPU(@javax.annotation.Nullable BigDecimal namespaceCPU) {
+  public void setNamespaceCPU(@javax.annotation.Nullable Double namespaceCPU) {
     this.namespaceCPU = namespaceCPU;
   }
 
 
-  public O11yNamespaceRecord namespaceMemory(@javax.annotation.Nullable BigDecimal namespaceMemory) {
+  public O11yNamespaceRecord namespaceMemory(@javax.annotation.Nullable Double namespaceMemory) {
     this.namespaceMemory = namespaceMemory;
     return this;
   }
@@ -138,11 +137,11 @@ public class O11yNamespaceRecord {
    * @return namespaceMemory
    */
   @javax.annotation.Nullable
-  public BigDecimal getNamespaceMemory() {
+  public Double getNamespaceMemory() {
     return namespaceMemory;
   }
 
-  public void setNamespaceMemory(@javax.annotation.Nullable BigDecimal namespaceMemory) {
+  public void setNamespaceMemory(@javax.annotation.Nullable Double namespaceMemory) {
     this.namespaceMemory = namespaceMemory;
   }
 

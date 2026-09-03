@@ -28,7 +28,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -157,12 +156,12 @@ public class IamUser {
   public static final String SERIALIZED_NAME_BALANCE = "balance";
   @SerializedName(SERIALIZED_NAME_BALANCE)
   @javax.annotation.Nullable
-  private BigDecimal balance;
+  private Double balance;
 
   public static final String SERIALIZED_NAME_BALANCE_CREDIT = "balanceCredit";
   @SerializedName(SERIALIZED_NAME_BALANCE_CREDIT)
   @javax.annotation.Nullable
-  private BigDecimal balanceCredit;
+  private Double balanceCredit;
 
   public static final String SERIALIZED_NAME_BALANCE_CURRENCY = "balanceCurrency";
   @SerializedName(SERIALIZED_NAME_BALANCE_CURRENCY)
@@ -517,7 +516,7 @@ public class IamUser {
   public static final String SERIALIZED_NAME_KARMA = "karma";
   @SerializedName(SERIALIZED_NAME_KARMA)
   @javax.annotation.Nullable
-  private Integer karma;
+  private Long karma;
 
   public static final String SERIALIZED_NAME_KWAI = "kwai";
   @SerializedName(SERIALIZED_NAME_KWAI)
@@ -777,7 +776,7 @@ public class IamUser {
   public static final String SERIALIZED_NAME_RANKING = "ranking";
   @SerializedName(SERIALIZED_NAME_RANKING)
   @javax.annotation.Nullable
-  private Integer ranking;
+  private Long ranking;
 
   public static final String SERIALIZED_NAME_REAL_NAME = "realName";
   @SerializedName(SERIALIZED_NAME_REAL_NAME)
@@ -812,7 +811,7 @@ public class IamUser {
   public static final String SERIALIZED_NAME_SCORE = "score";
   @SerializedName(SERIALIZED_NAME_SCORE)
   @javax.annotation.Nullable
-  private Integer score;
+  private Long score;
 
   public static final String SERIALIZED_NAME_SHOPIFY = "shopify";
   @SerializedName(SERIALIZED_NAME_SHOPIFY)
@@ -822,7 +821,7 @@ public class IamUser {
   public static final String SERIALIZED_NAME_SIGNIN_WRONG_TIMES = "signinWrongTimes";
   @SerializedName(SERIALIZED_NAME_SIGNIN_WRONG_TIMES)
   @javax.annotation.Nullable
-  private Integer signinWrongTimes;
+  private Long signinWrongTimes;
 
   public static final String SERIALIZED_NAME_SIGNUP_APPLICATION = "signupApplication";
   @SerializedName(SERIALIZED_NAME_SIGNUP_APPLICATION)
@@ -1353,7 +1352,7 @@ public class IamUser {
   }
 
 
-  public IamUser balance(@javax.annotation.Nullable BigDecimal balance) {
+  public IamUser balance(@javax.annotation.Nullable Double balance) {
     this.balance = balance;
     return this;
   }
@@ -1363,16 +1362,16 @@ public class IamUser {
    * @return balance
    */
   @javax.annotation.Nullable
-  public BigDecimal getBalance() {
+  public Double getBalance() {
     return balance;
   }
 
-  public void setBalance(@javax.annotation.Nullable BigDecimal balance) {
+  public void setBalance(@javax.annotation.Nullable Double balance) {
     this.balance = balance;
   }
 
 
-  public IamUser balanceCredit(@javax.annotation.Nullable BigDecimal balanceCredit) {
+  public IamUser balanceCredit(@javax.annotation.Nullable Double balanceCredit) {
     this.balanceCredit = balanceCredit;
     return this;
   }
@@ -1382,11 +1381,11 @@ public class IamUser {
    * @return balanceCredit
    */
   @javax.annotation.Nullable
-  public BigDecimal getBalanceCredit() {
+  public Double getBalanceCredit() {
     return balanceCredit;
   }
 
-  public void setBalanceCredit(@javax.annotation.Nullable BigDecimal balanceCredit) {
+  public void setBalanceCredit(@javax.annotation.Nullable Double balanceCredit) {
     this.balanceCredit = balanceCredit;
   }
 
@@ -2737,7 +2736,7 @@ public class IamUser {
   }
 
 
-  public IamUser karma(@javax.annotation.Nullable Integer karma) {
+  public IamUser karma(@javax.annotation.Nullable Long karma) {
     this.karma = karma;
     return this;
   }
@@ -2747,11 +2746,11 @@ public class IamUser {
    * @return karma
    */
   @javax.annotation.Nullable
-  public Integer getKarma() {
+  public Long getKarma() {
     return karma;
   }
 
-  public void setKarma(@javax.annotation.Nullable Integer karma) {
+  public void setKarma(@javax.annotation.Nullable Long karma) {
     this.karma = karma;
   }
 
@@ -3765,7 +3764,7 @@ public class IamUser {
   }
 
 
-  public IamUser ranking(@javax.annotation.Nullable Integer ranking) {
+  public IamUser ranking(@javax.annotation.Nullable Long ranking) {
     this.ranking = ranking;
     return this;
   }
@@ -3775,11 +3774,11 @@ public class IamUser {
    * @return ranking
    */
   @javax.annotation.Nullable
-  public Integer getRanking() {
+  public Long getRanking() {
     return ranking;
   }
 
-  public void setRanking(@javax.annotation.Nullable Integer ranking) {
+  public void setRanking(@javax.annotation.Nullable Long ranking) {
     this.ranking = ranking;
   }
 
@@ -3906,7 +3905,7 @@ public class IamUser {
   }
 
 
-  public IamUser score(@javax.annotation.Nullable Integer score) {
+  public IamUser score(@javax.annotation.Nullable Long score) {
     this.score = score;
     return this;
   }
@@ -3916,11 +3915,11 @@ public class IamUser {
    * @return score
    */
   @javax.annotation.Nullable
-  public Integer getScore() {
+  public Long getScore() {
     return score;
   }
 
-  public void setScore(@javax.annotation.Nullable Integer score) {
+  public void setScore(@javax.annotation.Nullable Long score) {
     this.score = score;
   }
 
@@ -3944,7 +3943,7 @@ public class IamUser {
   }
 
 
-  public IamUser signinWrongTimes(@javax.annotation.Nullable Integer signinWrongTimes) {
+  public IamUser signinWrongTimes(@javax.annotation.Nullable Long signinWrongTimes) {
     this.signinWrongTimes = signinWrongTimes;
     return this;
   }
@@ -3954,11 +3953,11 @@ public class IamUser {
    * @return signinWrongTimes
    */
   @javax.annotation.Nullable
-  public Integer getSigninWrongTimes() {
+  public Long getSigninWrongTimes() {
     return signinWrongTimes;
   }
 
-  public void setSigninWrongTimes(@javax.annotation.Nullable Integer signinWrongTimes) {
+  public void setSigninWrongTimes(@javax.annotation.Nullable Long signinWrongTimes) {
     this.signinWrongTimes = signinWrongTimes;
   }
 

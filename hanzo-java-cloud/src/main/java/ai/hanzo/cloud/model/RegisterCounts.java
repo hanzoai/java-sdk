@@ -55,22 +55,22 @@ public class RegisterCounts {
   public static final String SERIALIZED_NAME_BY_STAGE = "byStage";
   @SerializedName(SERIALIZED_NAME_BY_STAGE)
   @javax.annotation.Nullable
-  private Map<String, Integer> byStage = new HashMap<>();
+  private Map<String, Long> byStage = new HashMap<>();
 
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)
   @javax.annotation.Nullable
-  private Integer total;
+  private Long total;
 
   public RegisterCounts() {
   }
 
-  public RegisterCounts byStage(@javax.annotation.Nullable Map<String, Integer> byStage) {
+  public RegisterCounts byStage(@javax.annotation.Nullable Map<String, Long> byStage) {
     this.byStage = byStage;
     return this;
   }
 
-  public RegisterCounts putByStageItem(String key, Integer byStageItem) {
+  public RegisterCounts putByStageItem(String key, Long byStageItem) {
     if (this.byStage == null) {
       this.byStage = new HashMap<>();
     }
@@ -83,16 +83,16 @@ public class RegisterCounts {
    * @return byStage
    */
   @javax.annotation.Nullable
-  public Map<String, Integer> getByStage() {
+  public Map<String, Long> getByStage() {
     return byStage;
   }
 
-  public void setByStage(@javax.annotation.Nullable Map<String, Integer> byStage) {
+  public void setByStage(@javax.annotation.Nullable Map<String, Long> byStage) {
     this.byStage = byStage;
   }
 
 
-  public RegisterCounts total(@javax.annotation.Nullable Integer total) {
+  public RegisterCounts total(@javax.annotation.Nullable Long total) {
     this.total = total;
     return this;
   }
@@ -102,11 +102,11 @@ public class RegisterCounts {
    * @return total
    */
   @javax.annotation.Nullable
-  public Integer getTotal() {
+  public Long getTotal() {
     return total;
   }
 
-  public void setTotal(@javax.annotation.Nullable Integer total) {
+  public void setTotal(@javax.annotation.Nullable Long total) {
     this.total = total;
   }
 

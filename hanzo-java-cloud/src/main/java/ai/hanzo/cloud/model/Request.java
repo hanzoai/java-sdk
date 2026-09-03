@@ -65,7 +65,7 @@ public class Request {
   public static final String SERIALIZED_NAME_LIMIT = "limit";
   @SerializedName(SERIALIZED_NAME_LIMIT)
   @javax.annotation.Nullable
-  private Integer limit;
+  private Long limit;
 
   public static final String SERIALIZED_NAME_MODE = "mode";
   @SerializedName(SERIALIZED_NAME_MODE)
@@ -75,7 +75,7 @@ public class Request {
   public static final String SERIALIZED_NAME_OFFSET = "offset";
   @SerializedName(SERIALIZED_NAME_OFFSET)
   @javax.annotation.Nullable
-  private Integer offset;
+  private Long offset;
 
   public static final String SERIALIZED_NAME_PROJECT = "project";
   @SerializedName(SERIALIZED_NAME_PROJECT)
@@ -136,7 +136,7 @@ public class Request {
   }
 
 
-  public Request limit(@javax.annotation.Nullable Integer limit) {
+  public Request limit(@javax.annotation.Nullable Long limit) {
     this.limit = limit;
     return this;
   }
@@ -146,11 +146,11 @@ public class Request {
    * @return limit
    */
   @javax.annotation.Nullable
-  public Integer getLimit() {
+  public Long getLimit() {
     return limit;
   }
 
-  public void setLimit(@javax.annotation.Nullable Integer limit) {
+  public void setLimit(@javax.annotation.Nullable Long limit) {
     this.limit = limit;
   }
 
@@ -174,7 +174,7 @@ public class Request {
   }
 
 
-  public Request offset(@javax.annotation.Nullable Integer offset) {
+  public Request offset(@javax.annotation.Nullable Long offset) {
     this.offset = offset;
     return this;
   }
@@ -184,11 +184,11 @@ public class Request {
    * @return offset
    */
   @javax.annotation.Nullable
-  public Integer getOffset() {
+  public Long getOffset() {
     return offset;
   }
 
-  public void setOffset(@javax.annotation.Nullable Integer offset) {
+  public void setOffset(@javax.annotation.Nullable Long offset) {
     this.offset = offset;
   }
 

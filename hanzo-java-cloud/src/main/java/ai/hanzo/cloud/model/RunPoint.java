@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.Arrays;
 
@@ -60,12 +59,12 @@ public class RunPoint {
   public static final String SERIALIZED_NAME_DELTA = "delta";
   @SerializedName(SERIALIZED_NAME_DELTA)
   @javax.annotation.Nullable
-  private BigDecimal delta;
+  private Double delta;
 
   public static final String SERIALIZED_NAME_N = "n";
   @SerializedName(SERIALIZED_NAME_N)
   @javax.annotation.Nullable
-  private Integer n;
+  private Long n;
 
   public static final String SERIALIZED_NAME_RUN = "run";
   @SerializedName(SERIALIZED_NAME_RUN)
@@ -75,7 +74,7 @@ public class RunPoint {
   public static final String SERIALIZED_NAME_SCORE = "score";
   @SerializedName(SERIALIZED_NAME_SCORE)
   @javax.annotation.Nullable
-  private BigDecimal score;
+  private Double score;
 
   public RunPoint() {
   }
@@ -99,7 +98,7 @@ public class RunPoint {
   }
 
 
-  public RunPoint delta(@javax.annotation.Nullable BigDecimal delta) {
+  public RunPoint delta(@javax.annotation.Nullable Double delta) {
     this.delta = delta;
     return this;
   }
@@ -109,16 +108,16 @@ public class RunPoint {
    * @return delta
    */
   @javax.annotation.Nullable
-  public BigDecimal getDelta() {
+  public Double getDelta() {
     return delta;
   }
 
-  public void setDelta(@javax.annotation.Nullable BigDecimal delta) {
+  public void setDelta(@javax.annotation.Nullable Double delta) {
     this.delta = delta;
   }
 
 
-  public RunPoint n(@javax.annotation.Nullable Integer n) {
+  public RunPoint n(@javax.annotation.Nullable Long n) {
     this.n = n;
     return this;
   }
@@ -128,11 +127,11 @@ public class RunPoint {
    * @return n
    */
   @javax.annotation.Nullable
-  public Integer getN() {
+  public Long getN() {
     return n;
   }
 
-  public void setN(@javax.annotation.Nullable Integer n) {
+  public void setN(@javax.annotation.Nullable Long n) {
     this.n = n;
   }
 
@@ -156,7 +155,7 @@ public class RunPoint {
   }
 
 
-  public RunPoint score(@javax.annotation.Nullable BigDecimal score) {
+  public RunPoint score(@javax.annotation.Nullable Double score) {
     this.score = score;
     return this;
   }
@@ -166,11 +165,11 @@ public class RunPoint {
    * @return score
    */
   @javax.annotation.Nullable
-  public BigDecimal getScore() {
+  public Double getScore() {
     return score;
   }
 
-  public void setScore(@javax.annotation.Nullable BigDecimal score) {
+  public void setScore(@javax.annotation.Nullable Double score) {
     this.score = score;
   }
 

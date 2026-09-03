@@ -21,7 +21,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -67,22 +66,22 @@ public class O11yNodeListRecord {
   public static final String SERIALIZED_NAME_NODE_C_P_U_ALLOCATABLE = "nodeCPUAllocatable";
   @SerializedName(SERIALIZED_NAME_NODE_C_P_U_ALLOCATABLE)
   @javax.annotation.Nullable
-  private BigDecimal nodeCPUAllocatable;
+  private Double nodeCPUAllocatable;
 
   public static final String SERIALIZED_NAME_NODE_C_P_U_USAGE = "nodeCPUUsage";
   @SerializedName(SERIALIZED_NAME_NODE_C_P_U_USAGE)
   @javax.annotation.Nullable
-  private BigDecimal nodeCPUUsage;
+  private Double nodeCPUUsage;
 
   public static final String SERIALIZED_NAME_NODE_MEMORY_ALLOCATABLE = "nodeMemoryAllocatable";
   @SerializedName(SERIALIZED_NAME_NODE_MEMORY_ALLOCATABLE)
   @javax.annotation.Nullable
-  private BigDecimal nodeMemoryAllocatable;
+  private Double nodeMemoryAllocatable;
 
   public static final String SERIALIZED_NAME_NODE_MEMORY_USAGE = "nodeMemoryUsage";
   @SerializedName(SERIALIZED_NAME_NODE_MEMORY_USAGE)
   @javax.annotation.Nullable
-  private BigDecimal nodeMemoryUsage;
+  private Double nodeMemoryUsage;
 
   public static final String SERIALIZED_NAME_NODE_U_I_D = "nodeUID";
   @SerializedName(SERIALIZED_NAME_NODE_U_I_D)
@@ -138,7 +137,7 @@ public class O11yNodeListRecord {
   }
 
 
-  public O11yNodeListRecord nodeCPUAllocatable(@javax.annotation.Nullable BigDecimal nodeCPUAllocatable) {
+  public O11yNodeListRecord nodeCPUAllocatable(@javax.annotation.Nullable Double nodeCPUAllocatable) {
     this.nodeCPUAllocatable = nodeCPUAllocatable;
     return this;
   }
@@ -148,16 +147,16 @@ public class O11yNodeListRecord {
    * @return nodeCPUAllocatable
    */
   @javax.annotation.Nullable
-  public BigDecimal getNodeCPUAllocatable() {
+  public Double getNodeCPUAllocatable() {
     return nodeCPUAllocatable;
   }
 
-  public void setNodeCPUAllocatable(@javax.annotation.Nullable BigDecimal nodeCPUAllocatable) {
+  public void setNodeCPUAllocatable(@javax.annotation.Nullable Double nodeCPUAllocatable) {
     this.nodeCPUAllocatable = nodeCPUAllocatable;
   }
 
 
-  public O11yNodeListRecord nodeCPUUsage(@javax.annotation.Nullable BigDecimal nodeCPUUsage) {
+  public O11yNodeListRecord nodeCPUUsage(@javax.annotation.Nullable Double nodeCPUUsage) {
     this.nodeCPUUsage = nodeCPUUsage;
     return this;
   }
@@ -167,16 +166,16 @@ public class O11yNodeListRecord {
    * @return nodeCPUUsage
    */
   @javax.annotation.Nullable
-  public BigDecimal getNodeCPUUsage() {
+  public Double getNodeCPUUsage() {
     return nodeCPUUsage;
   }
 
-  public void setNodeCPUUsage(@javax.annotation.Nullable BigDecimal nodeCPUUsage) {
+  public void setNodeCPUUsage(@javax.annotation.Nullable Double nodeCPUUsage) {
     this.nodeCPUUsage = nodeCPUUsage;
   }
 
 
-  public O11yNodeListRecord nodeMemoryAllocatable(@javax.annotation.Nullable BigDecimal nodeMemoryAllocatable) {
+  public O11yNodeListRecord nodeMemoryAllocatable(@javax.annotation.Nullable Double nodeMemoryAllocatable) {
     this.nodeMemoryAllocatable = nodeMemoryAllocatable;
     return this;
   }
@@ -186,16 +185,16 @@ public class O11yNodeListRecord {
    * @return nodeMemoryAllocatable
    */
   @javax.annotation.Nullable
-  public BigDecimal getNodeMemoryAllocatable() {
+  public Double getNodeMemoryAllocatable() {
     return nodeMemoryAllocatable;
   }
 
-  public void setNodeMemoryAllocatable(@javax.annotation.Nullable BigDecimal nodeMemoryAllocatable) {
+  public void setNodeMemoryAllocatable(@javax.annotation.Nullable Double nodeMemoryAllocatable) {
     this.nodeMemoryAllocatable = nodeMemoryAllocatable;
   }
 
 
-  public O11yNodeListRecord nodeMemoryUsage(@javax.annotation.Nullable BigDecimal nodeMemoryUsage) {
+  public O11yNodeListRecord nodeMemoryUsage(@javax.annotation.Nullable Double nodeMemoryUsage) {
     this.nodeMemoryUsage = nodeMemoryUsage;
     return this;
   }
@@ -205,11 +204,11 @@ public class O11yNodeListRecord {
    * @return nodeMemoryUsage
    */
   @javax.annotation.Nullable
-  public BigDecimal getNodeMemoryUsage() {
+  public Double getNodeMemoryUsage() {
     return nodeMemoryUsage;
   }
 
-  public void setNodeMemoryUsage(@javax.annotation.Nullable BigDecimal nodeMemoryUsage) {
+  public void setNodeMemoryUsage(@javax.annotation.Nullable Double nodeMemoryUsage) {
     this.nodeMemoryUsage = nodeMemoryUsage;
   }
 

@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -71,7 +70,7 @@ public class RiskDatasetRow {
   public static final String SERIALIZED_NAME_POINT = "point";
   @SerializedName(SERIALIZED_NAME_POINT)
   @javax.annotation.Nullable
-  private List<BigDecimal> point = new ArrayList<>();
+  private List<Double> point = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_SPLIT = "split";
   @SerializedName(SERIALIZED_NAME_SPLIT)
@@ -143,12 +142,12 @@ public class RiskDatasetRow {
   }
 
 
-  public RiskDatasetRow point(@javax.annotation.Nullable List<BigDecimal> point) {
+  public RiskDatasetRow point(@javax.annotation.Nullable List<Double> point) {
     this.point = point;
     return this;
   }
 
-  public RiskDatasetRow addPointItem(BigDecimal pointItem) {
+  public RiskDatasetRow addPointItem(Double pointItem) {
     if (this.point == null) {
       this.point = new ArrayList<>();
     }
@@ -161,11 +160,11 @@ public class RiskDatasetRow {
    * @return point
    */
   @javax.annotation.Nullable
-  public List<BigDecimal> getPoint() {
+  public List<Double> getPoint() {
     return point;
   }
 
-  public void setPoint(@javax.annotation.Nullable List<BigDecimal> point) {
+  public void setPoint(@javax.annotation.Nullable List<Double> point) {
     this.point = point;
   }
 

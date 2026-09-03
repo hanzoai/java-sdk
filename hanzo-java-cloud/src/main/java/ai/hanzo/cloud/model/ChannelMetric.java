@@ -68,7 +68,7 @@ public class ChannelMetric {
   public static final String SERIALIZED_NAME_SPEND_CENTS = "spendCents";
   @SerializedName(SERIALIZED_NAME_SPEND_CENTS)
   @javax.annotation.Nullable
-  private Integer spendCents;
+  private Long spendCents;
 
   public static final String SERIALIZED_NAME_SPEND_ERROR = "spendError";
   @SerializedName(SERIALIZED_NAME_SPEND_ERROR)
@@ -140,7 +140,7 @@ public class ChannelMetric {
   }
 
 
-  public ChannelMetric spendCents(@javax.annotation.Nullable Integer spendCents) {
+  public ChannelMetric spendCents(@javax.annotation.Nullable Long spendCents) {
     this.spendCents = spendCents;
     return this;
   }
@@ -150,11 +150,11 @@ public class ChannelMetric {
    * @return spendCents
    */
   @javax.annotation.Nullable
-  public Integer getSpendCents() {
+  public Long getSpendCents() {
     return spendCents;
   }
 
-  public void setSpendCents(@javax.annotation.Nullable Integer spendCents) {
+  public void setSpendCents(@javax.annotation.Nullable Long spendCents) {
     this.spendCents = spendCents;
   }
 

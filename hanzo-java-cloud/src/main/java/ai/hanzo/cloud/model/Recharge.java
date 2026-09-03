@@ -56,12 +56,12 @@ public class Recharge {
   public static final String SERIALIZED_NAME_CHARGED = "charged";
   @SerializedName(SERIALIZED_NAME_CHARGED)
   @javax.annotation.Nullable
-  private Integer charged;
+  private Long charged;
 
   public static final String SERIALIZED_NAME_ORGS = "orgs";
   @SerializedName(SERIALIZED_NAME_ORGS)
   @javax.annotation.Nullable
-  private Integer orgs;
+  private Long orgs;
 
   public static final String SERIALIZED_NAME_RESULTS = "results";
   @SerializedName(SERIALIZED_NAME_RESULTS)
@@ -71,7 +71,7 @@ public class Recharge {
   public Recharge() {
   }
 
-  public Recharge charged(@javax.annotation.Nullable Integer charged) {
+  public Recharge charged(@javax.annotation.Nullable Long charged) {
     this.charged = charged;
     return this;
   }
@@ -81,16 +81,16 @@ public class Recharge {
    * @return charged
    */
   @javax.annotation.Nullable
-  public Integer getCharged() {
+  public Long getCharged() {
     return charged;
   }
 
-  public void setCharged(@javax.annotation.Nullable Integer charged) {
+  public void setCharged(@javax.annotation.Nullable Long charged) {
     this.charged = charged;
   }
 
 
-  public Recharge orgs(@javax.annotation.Nullable Integer orgs) {
+  public Recharge orgs(@javax.annotation.Nullable Long orgs) {
     this.orgs = orgs;
     return this;
   }
@@ -100,11 +100,11 @@ public class Recharge {
    * @return orgs
    */
   @javax.annotation.Nullable
-  public Integer getOrgs() {
+  public Long getOrgs() {
     return orgs;
   }
 
-  public void setOrgs(@javax.annotation.Nullable Integer orgs) {
+  public void setOrgs(@javax.annotation.Nullable Long orgs) {
     this.orgs = orgs;
   }
 

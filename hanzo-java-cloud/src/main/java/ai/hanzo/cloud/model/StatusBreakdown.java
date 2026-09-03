@@ -53,22 +53,22 @@ public class StatusBreakdown {
   public static final String SERIALIZED_NAME_ERROR = "error";
   @SerializedName(SERIALIZED_NAME_ERROR)
   @javax.annotation.Nullable
-  private Integer error;
+  private Long error;
 
   public static final String SERIALIZED_NAME_SUCCESS = "success";
   @SerializedName(SERIALIZED_NAME_SUCCESS)
   @javax.annotation.Nullable
-  private Integer success;
+  private Long success;
 
   public static final String SERIALIZED_NAME_TIMEOUT = "timeout";
   @SerializedName(SERIALIZED_NAME_TIMEOUT)
   @javax.annotation.Nullable
-  private Integer timeout;
+  private Long timeout;
 
   public StatusBreakdown() {
   }
 
-  public StatusBreakdown error(@javax.annotation.Nullable Integer error) {
+  public StatusBreakdown error(@javax.annotation.Nullable Long error) {
     this.error = error;
     return this;
   }
@@ -78,16 +78,16 @@ public class StatusBreakdown {
    * @return error
    */
   @javax.annotation.Nullable
-  public Integer getError() {
+  public Long getError() {
     return error;
   }
 
-  public void setError(@javax.annotation.Nullable Integer error) {
+  public void setError(@javax.annotation.Nullable Long error) {
     this.error = error;
   }
 
 
-  public StatusBreakdown success(@javax.annotation.Nullable Integer success) {
+  public StatusBreakdown success(@javax.annotation.Nullable Long success) {
     this.success = success;
     return this;
   }
@@ -97,16 +97,16 @@ public class StatusBreakdown {
    * @return success
    */
   @javax.annotation.Nullable
-  public Integer getSuccess() {
+  public Long getSuccess() {
     return success;
   }
 
-  public void setSuccess(@javax.annotation.Nullable Integer success) {
+  public void setSuccess(@javax.annotation.Nullable Long success) {
     this.success = success;
   }
 
 
-  public StatusBreakdown timeout(@javax.annotation.Nullable Integer timeout) {
+  public StatusBreakdown timeout(@javax.annotation.Nullable Long timeout) {
     this.timeout = timeout;
     return this;
   }
@@ -116,11 +116,11 @@ public class StatusBreakdown {
    * @return timeout
    */
   @javax.annotation.Nullable
-  public Integer getTimeout() {
+  public Long getTimeout() {
     return timeout;
   }
 
-  public void setTimeout(@javax.annotation.Nullable Integer timeout) {
+  public void setTimeout(@javax.annotation.Nullable Long timeout) {
     this.timeout = timeout;
   }
 

@@ -67,7 +67,7 @@ public class RiskSearchReport {
   public static final String SERIALIZED_NAME_EVENTS = "events";
   @SerializedName(SERIALIZED_NAME_EVENTS)
   @javax.annotation.Nullable
-  private Integer events;
+  private Long events;
 
   public static final String SERIALIZED_NAME_FITTED = "fitted";
   @SerializedName(SERIALIZED_NAME_FITTED)
@@ -145,7 +145,7 @@ public class RiskSearchReport {
   }
 
 
-  public RiskSearchReport events(@javax.annotation.Nullable Integer events) {
+  public RiskSearchReport events(@javax.annotation.Nullable Long events) {
     this.events = events;
     return this;
   }
@@ -155,11 +155,11 @@ public class RiskSearchReport {
    * @return events
    */
   @javax.annotation.Nullable
-  public Integer getEvents() {
+  public Long getEvents() {
     return events;
   }
 
-  public void setEvents(@javax.annotation.Nullable Integer events) {
+  public void setEvents(@javax.annotation.Nullable Long events) {
     this.events = events;
   }
 

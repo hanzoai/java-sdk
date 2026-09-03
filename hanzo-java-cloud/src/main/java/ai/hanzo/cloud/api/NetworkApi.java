@@ -27,10 +27,15 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import ai.hanzo.cloud.model.IdentityIn;
+import ai.hanzo.cloud.model.IdentityList;
+import ai.hanzo.cloud.model.IdentityView;
 import ai.hanzo.cloud.model.MeshServiceList;
 import ai.hanzo.cloud.model.NetworkList;
 import ai.hanzo.cloud.model.NetworkView;
+import ai.hanzo.cloud.model.PublishedView;
 import ai.hanzo.cloud.model.RouterList;
+import ai.hanzo.cloud.model.ServiceIn;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -75,6 +80,128 @@ public class NetworkApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
+    /**
+     * Build call for deleteNetworkIdentitiesById
+     * @param id ID is the identity id from the path. The URL is the addressing authority, so it binds from there whatever else the request carries. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteNetworkIdentitiesByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/network/identities/{id}"
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteNetworkIdentitiesByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling deleteNetworkIdentitiesById(Async)");
+        }
+
+        return deleteNetworkIdentitiesByIdCall(id, _callback);
+
+    }
+
+    /**
+     * Removes one of the org&#39;s fabric identities.
+     * Removes one of the org&#39;s fabric identities. The device&#39;s credential stops authenticating and its enrollment, if unspent, stops enrolling.  An id belonging to another org — or to nothing — is 404 before any write reaches the controller: whether an identity exists is itself a cross-tenant fact, and a delete may only ever act on what the caller could list.
+     * @param id ID is the identity id from the path. The URL is the addressing authority, so it binds from there whatever else the request carries. (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+     </table>
+     */
+    public void deleteNetworkIdentitiesById(@javax.annotation.Nonnull String id) throws ApiException {
+        deleteNetworkIdentitiesByIdWithHttpInfo(id);
+    }
+
+    /**
+     * Removes one of the org&#39;s fabric identities.
+     * Removes one of the org&#39;s fabric identities. The device&#39;s credential stops authenticating and its enrollment, if unspent, stops enrolling.  An id belonging to another org — or to nothing — is 404 before any write reaches the controller: whether an identity exists is itself a cross-tenant fact, and a delete may only ever act on what the caller could list.
+     * @param id ID is the identity id from the path. The URL is the addressing authority, so it binds from there whatever else the request carries. (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> deleteNetworkIdentitiesByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = deleteNetworkIdentitiesByIdValidateBeforeCall(id, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Removes one of the org&#39;s fabric identities. (asynchronously)
+     * Removes one of the org&#39;s fabric identities. The device&#39;s credential stops authenticating and its enrollment, if unspent, stops enrolling.  An id belonging to another org — or to nothing — is 404 before any write reaches the controller: whether an identity exists is itself a cross-tenant fact, and a delete may only ever act on what the caller could list.
+     * @param id ID is the identity id from the path. The URL is the addressing authority, so it binds from there whatever else the request carries. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteNetworkIdentitiesByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteNetworkIdentitiesByIdValidateBeforeCall(id, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
     /**
      * Build call for getNetwork
      * @param _callback Callback for upload/download progress
@@ -320,6 +447,123 @@ public class NetworkApi {
         return localVarCall;
     }
     /**
+     * Build call for getNetworkIdentities
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getNetworkIdentitiesCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/network/identities";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getNetworkIdentitiesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getNetworkIdentitiesCall(_callback);
+
+    }
+
+    /**
+     * Returns the fabric identities the caller&#39;s org owns.
+     * Returns the fabric identities the caller&#39;s org owns.  One row per identity tagged with the org&#39;s \&quot;org-&lt;org&gt;\&quot; role attribute — a device minted here, enrolled or not. An identity that has not yet enrolled still carries its one-time enrollment, so a mislaid JWT is read again here rather than re-minted.  A tenancy read over the full inventory, so like the mesh list it does NOT degrade: an unconfigured deployment answers 503.
+     * @return IdentityList
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public IdentityList getNetworkIdentities() throws ApiException {
+        ApiResponse<IdentityList> localVarResp = getNetworkIdentitiesWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * Returns the fabric identities the caller&#39;s org owns.
+     * Returns the fabric identities the caller&#39;s org owns.  One row per identity tagged with the org&#39;s \&quot;org-&lt;org&gt;\&quot; role attribute — a device minted here, enrolled or not. An identity that has not yet enrolled still carries its one-time enrollment, so a mislaid JWT is read again here rather than re-minted.  A tenancy read over the full inventory, so like the mesh list it does NOT degrade: an unconfigured deployment answers 503.
+     * @return ApiResponse&lt;IdentityList&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<IdentityList> getNetworkIdentitiesWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getNetworkIdentitiesValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<IdentityList>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Returns the fabric identities the caller&#39;s org owns. (asynchronously)
+     * Returns the fabric identities the caller&#39;s org owns.  One row per identity tagged with the org&#39;s \&quot;org-&lt;org&gt;\&quot; role attribute — a device minted here, enrolled or not. An identity that has not yet enrolled still carries its one-time enrollment, so a mislaid JWT is read again here rather than re-minted.  A tenancy read over the full inventory, so like the mesh list it does NOT degrade: an unconfigured deployment answers 503.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getNetworkIdentitiesAsync(final ApiCallback<IdentityList> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getNetworkIdentitiesValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<IdentityList>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for getNetworkRouters
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -550,6 +794,260 @@ public class NetworkApi {
 
         okhttp3.Call localVarCall = getNetworkServicesValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<MeshServiceList>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postNetworkIdentities
+     * @param identityIn  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postNetworkIdentitiesCall(@javax.annotation.Nonnull IdentityIn identityIn, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = identityIn;
+
+        // create path and map variables
+        String localVarPath = "/v1/network/identities";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postNetworkIdentitiesValidateBeforeCall(@javax.annotation.Nonnull IdentityIn identityIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'identityIn' is set
+        if (identityIn == null) {
+            throw new ApiException("Missing the required parameter 'identityIn' when calling postNetworkIdentities(Async)");
+        }
+
+        return postNetworkIdentitiesCall(identityIn, _callback);
+
+    }
+
+    /**
+     * Mints a fabric identity for a device the caller&#39;s org brings.
+     * Mints a fabric identity for a device the caller&#39;s org brings.  The identity is created of type Device, tagged with the org&#39;s \&quot;org-&lt;org&gt;\&quot; role attribute plus any supplied roles — each scoped to the org, and a \&quot;&lt;service&gt;-host\&quot; role refused unless the org has published that service. The answer carries the controller&#39;s one-time enrollment JWT: the device presents it once to join the fabric, and until it does the same token can be read back off GET /v1/network/identities.  A write, so it does not degrade: an unconfigured deployment answers 503.
+     * @param identityIn  (required)
+     * @return IdentityView
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
+     */
+    public IdentityView postNetworkIdentities(@javax.annotation.Nonnull IdentityIn identityIn) throws ApiException {
+        ApiResponse<IdentityView> localVarResp = postNetworkIdentitiesWithHttpInfo(identityIn);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Mints a fabric identity for a device the caller&#39;s org brings.
+     * Mints a fabric identity for a device the caller&#39;s org brings.  The identity is created of type Device, tagged with the org&#39;s \&quot;org-&lt;org&gt;\&quot; role attribute plus any supplied roles — each scoped to the org, and a \&quot;&lt;service&gt;-host\&quot; role refused unless the org has published that service. The answer carries the controller&#39;s one-time enrollment JWT: the device presents it once to join the fabric, and until it does the same token can be read back off GET /v1/network/identities.  A write, so it does not degrade: an unconfigured deployment answers 503.
+     * @param identityIn  (required)
+     * @return ApiResponse&lt;IdentityView&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<IdentityView> postNetworkIdentitiesWithHttpInfo(@javax.annotation.Nonnull IdentityIn identityIn) throws ApiException {
+        okhttp3.Call localVarCall = postNetworkIdentitiesValidateBeforeCall(identityIn, null);
+        Type localVarReturnType = new TypeToken<IdentityView>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Mints a fabric identity for a device the caller&#39;s org brings. (asynchronously)
+     * Mints a fabric identity for a device the caller&#39;s org brings.  The identity is created of type Device, tagged with the org&#39;s \&quot;org-&lt;org&gt;\&quot; role attribute plus any supplied roles — each scoped to the org, and a \&quot;&lt;service&gt;-host\&quot; role refused unless the org has published that service. The answer carries the controller&#39;s one-time enrollment JWT: the device presents it once to join the fabric, and until it does the same token can be read back off GET /v1/network/identities.  A write, so it does not degrade: an unconfigured deployment answers 503.
+     * @param identityIn  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postNetworkIdentitiesAsync(@javax.annotation.Nonnull IdentityIn identityIn, final ApiCallback<IdentityView> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postNetworkIdentitiesValidateBeforeCall(identityIn, _callback);
+        Type localVarReturnType = new TypeToken<IdentityView>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postNetworkServices
+     * @param serviceIn  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postNetworkServicesCall(@javax.annotation.Nonnull ServiceIn serviceIn, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = serviceIn;
+
+        // create path and map variables
+        String localVarPath = "/v1/network/services";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postNetworkServicesValidateBeforeCall(@javax.annotation.Nonnull ServiceIn serviceIn, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'serviceIn' is set
+        if (serviceIn == null) {
+            throw new ApiException("Missing the required parameter 'serviceIn' when calling postNetworkServices(Async)");
+        }
+
+        return postNetworkServicesCall(serviceIn, _callback);
+
+    }
+
+    /**
+     * Puts a name on the org&#39;s overlay: a fabric service forwarding to host:port on whichever of the org&#39;s devices carries the \&quot;&lt;name&gt;-host\&quot; role, dialable at \&quot;&lt;name&gt;.&lt;org&gt;.zt\&quot; by any of the org&#39;s identities — and by the cloud&#39;s own, which is what lets a BYO cluster&#39;s apiserver be attached to the fleet with a \&quot;.zt\&quot; kubeconfig.
+     * Puts a name on the org&#39;s overlay: a fabric service forwarding to host:port on whichever of the org&#39;s devices carries the \&quot;&lt;name&gt;-host\&quot; role, dialable at \&quot;&lt;name&gt;.&lt;org&gt;.zt\&quot; by any of the org&#39;s identities — and by the cloud&#39;s own, which is what lets a BYO cluster&#39;s apiserver be attached to the fleet with a \&quot;.zt\&quot; kubeconfig.  Answers 201 with the service and its DNS name. The objects behind it are created in dependency order and unwound on failure, so a half-published service never lingers on the fabric.  A write, so it does not degrade: an unconfigured deployment answers 503.
+     * @param serviceIn  (required)
+     * @return PublishedView
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
+     */
+    public PublishedView postNetworkServices(@javax.annotation.Nonnull ServiceIn serviceIn) throws ApiException {
+        ApiResponse<PublishedView> localVarResp = postNetworkServicesWithHttpInfo(serviceIn);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Puts a name on the org&#39;s overlay: a fabric service forwarding to host:port on whichever of the org&#39;s devices carries the \&quot;&lt;name&gt;-host\&quot; role, dialable at \&quot;&lt;name&gt;.&lt;org&gt;.zt\&quot; by any of the org&#39;s identities — and by the cloud&#39;s own, which is what lets a BYO cluster&#39;s apiserver be attached to the fleet with a \&quot;.zt\&quot; kubeconfig.
+     * Puts a name on the org&#39;s overlay: a fabric service forwarding to host:port on whichever of the org&#39;s devices carries the \&quot;&lt;name&gt;-host\&quot; role, dialable at \&quot;&lt;name&gt;.&lt;org&gt;.zt\&quot; by any of the org&#39;s identities — and by the cloud&#39;s own, which is what lets a BYO cluster&#39;s apiserver be attached to the fleet with a \&quot;.zt\&quot; kubeconfig.  Answers 201 with the service and its DNS name. The objects behind it are created in dependency order and unwound on failure, so a half-published service never lingers on the fabric.  A write, so it does not degrade: an unconfigured deployment answers 503.
+     * @param serviceIn  (required)
+     * @return ApiResponse&lt;PublishedView&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<PublishedView> postNetworkServicesWithHttpInfo(@javax.annotation.Nonnull ServiceIn serviceIn) throws ApiException {
+        okhttp3.Call localVarCall = postNetworkServicesValidateBeforeCall(serviceIn, null);
+        Type localVarReturnType = new TypeToken<PublishedView>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Puts a name on the org&#39;s overlay: a fabric service forwarding to host:port on whichever of the org&#39;s devices carries the \&quot;&lt;name&gt;-host\&quot; role, dialable at \&quot;&lt;name&gt;.&lt;org&gt;.zt\&quot; by any of the org&#39;s identities — and by the cloud&#39;s own, which is what lets a BYO cluster&#39;s apiserver be attached to the fleet with a \&quot;.zt\&quot; kubeconfig. (asynchronously)
+     * Puts a name on the org&#39;s overlay: a fabric service forwarding to host:port on whichever of the org&#39;s devices carries the \&quot;&lt;name&gt;-host\&quot; role, dialable at \&quot;&lt;name&gt;.&lt;org&gt;.zt\&quot; by any of the org&#39;s identities — and by the cloud&#39;s own, which is what lets a BYO cluster&#39;s apiserver be attached to the fleet with a \&quot;.zt\&quot; kubeconfig.  Answers 201 with the service and its DNS name. The objects behind it are created in dependency order and unwound on failure, so a half-published service never lingers on the fabric.  A write, so it does not degrade: an unconfigured deployment answers 503.
+     * @param serviceIn  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postNetworkServicesAsync(@javax.annotation.Nonnull ServiceIn serviceIn, final ApiCallback<PublishedView> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postNetworkServicesValidateBeforeCall(serviceIn, _callback);
+        Type localVarReturnType = new TypeToken<PublishedView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

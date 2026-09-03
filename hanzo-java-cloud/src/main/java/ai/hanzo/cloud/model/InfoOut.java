@@ -58,7 +58,7 @@ public class InfoOut {
   public static final String SERIALIZED_NAME_MAX_PAYLOAD = "max_payload";
   @SerializedName(SERIALIZED_NAME_MAX_PAYLOAD)
   @javax.annotation.Nullable
-  private Integer maxPayload;
+  private Long maxPayload;
 
   public static final String SERIALIZED_NAME_SERVER_ID = "server_id";
   @SerializedName(SERIALIZED_NAME_SERVER_ID)
@@ -73,7 +73,7 @@ public class InfoOut {
   public static final String SERIALIZED_NAME_STREAMS = "streams";
   @SerializedName(SERIALIZED_NAME_STREAMS)
   @javax.annotation.Nullable
-  private Integer streams;
+  private Long streams;
 
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
@@ -102,7 +102,7 @@ public class InfoOut {
   }
 
 
-  public InfoOut maxPayload(@javax.annotation.Nullable Integer maxPayload) {
+  public InfoOut maxPayload(@javax.annotation.Nullable Long maxPayload) {
     this.maxPayload = maxPayload;
     return this;
   }
@@ -112,11 +112,11 @@ public class InfoOut {
    * @return maxPayload
    */
   @javax.annotation.Nullable
-  public Integer getMaxPayload() {
+  public Long getMaxPayload() {
     return maxPayload;
   }
 
-  public void setMaxPayload(@javax.annotation.Nullable Integer maxPayload) {
+  public void setMaxPayload(@javax.annotation.Nullable Long maxPayload) {
     this.maxPayload = maxPayload;
   }
 
@@ -159,7 +159,7 @@ public class InfoOut {
   }
 
 
-  public InfoOut streams(@javax.annotation.Nullable Integer streams) {
+  public InfoOut streams(@javax.annotation.Nullable Long streams) {
     this.streams = streams;
     return this;
   }
@@ -169,11 +169,11 @@ public class InfoOut {
    * @return streams
    */
   @javax.annotation.Nullable
-  public Integer getStreams() {
+  public Long getStreams() {
     return streams;
   }
 
-  public void setStreams(@javax.annotation.Nullable Integer streams) {
+  public void setStreams(@javax.annotation.Nullable Long streams) {
     this.streams = streams;
   }
 

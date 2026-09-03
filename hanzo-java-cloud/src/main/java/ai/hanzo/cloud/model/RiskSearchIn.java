@@ -53,12 +53,12 @@ public class RiskSearchIn {
   public static final String SERIALIZED_NAME_DAYS = "days";
   @SerializedName(SERIALIZED_NAME_DAYS)
   @javax.annotation.Nullable
-  private Integer days;
+  private Long days;
 
   public RiskSearchIn() {
   }
 
-  public RiskSearchIn days(@javax.annotation.Nullable Integer days) {
+  public RiskSearchIn days(@javax.annotation.Nullable Long days) {
     this.days = days;
     return this;
   }
@@ -68,11 +68,11 @@ public class RiskSearchIn {
    * @return days
    */
   @javax.annotation.Nullable
-  public Integer getDays() {
+  public Long getDays() {
     return days;
   }
 
-  public void setDays(@javax.annotation.Nullable Integer days) {
+  public void setDays(@javax.annotation.Nullable Long days) {
     this.days = days;
   }
 

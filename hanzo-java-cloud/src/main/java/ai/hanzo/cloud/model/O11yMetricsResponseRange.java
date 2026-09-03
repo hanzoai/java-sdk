@@ -53,17 +53,17 @@ public class O11yMetricsResponseRange {
   public static final String SERIALIZED_NAME_SINCE_SEC = "sinceSec";
   @SerializedName(SERIALIZED_NAME_SINCE_SEC)
   @javax.annotation.Nullable
-  private Integer sinceSec;
+  private Long sinceSec;
 
   public static final String SERIALIZED_NAME_STEP_SEC = "stepSec";
   @SerializedName(SERIALIZED_NAME_STEP_SEC)
   @javax.annotation.Nullable
-  private Integer stepSec;
+  private Long stepSec;
 
   public O11yMetricsResponseRange() {
   }
 
-  public O11yMetricsResponseRange sinceSec(@javax.annotation.Nullable Integer sinceSec) {
+  public O11yMetricsResponseRange sinceSec(@javax.annotation.Nullable Long sinceSec) {
     this.sinceSec = sinceSec;
     return this;
   }
@@ -73,16 +73,16 @@ public class O11yMetricsResponseRange {
    * @return sinceSec
    */
   @javax.annotation.Nullable
-  public Integer getSinceSec() {
+  public Long getSinceSec() {
     return sinceSec;
   }
 
-  public void setSinceSec(@javax.annotation.Nullable Integer sinceSec) {
+  public void setSinceSec(@javax.annotation.Nullable Long sinceSec) {
     this.sinceSec = sinceSec;
   }
 
 
-  public O11yMetricsResponseRange stepSec(@javax.annotation.Nullable Integer stepSec) {
+  public O11yMetricsResponseRange stepSec(@javax.annotation.Nullable Long stepSec) {
     this.stepSec = stepSec;
     return this;
   }
@@ -92,11 +92,11 @@ public class O11yMetricsResponseRange {
    * @return stepSec
    */
   @javax.annotation.Nullable
-  public Integer getStepSec() {
+  public Long getStepSec() {
     return stepSec;
   }
 
-  public void setStepSec(@javax.annotation.Nullable Integer stepSec) {
+  public void setStepSec(@javax.annotation.Nullable Long stepSec) {
     this.stepSec = stepSec;
   }
 

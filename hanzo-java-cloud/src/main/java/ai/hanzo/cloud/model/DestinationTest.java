@@ -68,7 +68,7 @@ public class DestinationTest {
   public static final String SERIALIZED_NAME_SENT = "sent";
   @SerializedName(SERIALIZED_NAME_SENT)
   @javax.annotation.Nullable
-  private Integer sent;
+  private Long sent;
 
   public DestinationTest() {
   }
@@ -130,7 +130,7 @@ public class DestinationTest {
   }
 
 
-  public DestinationTest sent(@javax.annotation.Nullable Integer sent) {
+  public DestinationTest sent(@javax.annotation.Nullable Long sent) {
     this.sent = sent;
     return this;
   }
@@ -140,11 +140,11 @@ public class DestinationTest {
    * @return sent
    */
   @javax.annotation.Nullable
-  public Integer getSent() {
+  public Long getSent() {
     return sent;
   }
 
-  public void setSent(@javax.annotation.Nullable Integer sent) {
+  public void setSent(@javax.annotation.Nullable Long sent) {
     this.sent = sent;
   }
 

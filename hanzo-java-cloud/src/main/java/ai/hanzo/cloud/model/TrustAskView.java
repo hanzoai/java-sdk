@@ -53,12 +53,12 @@ public class TrustAskView {
   public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
   @javax.annotation.Nullable
-  private Integer createdAt;
+  private Long createdAt;
 
   public static final String SERIALIZED_NAME_DECIDED_AT = "decidedAt";
   @SerializedName(SERIALIZED_NAME_DECIDED_AT)
   @javax.annotation.Nullable
-  private Integer decidedAt;
+  private Long decidedAt;
 
   public static final String SERIALIZED_NAME_DECIDED_BY = "decidedBy";
   @SerializedName(SERIALIZED_NAME_DECIDED_BY)
@@ -73,7 +73,7 @@ public class TrustAskView {
   public static final String SERIALIZED_NAME_EXPIRES_AT = "expiresAt";
   @SerializedName(SERIALIZED_NAME_EXPIRES_AT)
   @javax.annotation.Nullable
-  private Integer expiresAt;
+  private Long expiresAt;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -118,7 +118,7 @@ public class TrustAskView {
   public TrustAskView() {
   }
 
-  public TrustAskView createdAt(@javax.annotation.Nullable Integer createdAt) {
+  public TrustAskView createdAt(@javax.annotation.Nullable Long createdAt) {
     this.createdAt = createdAt;
     return this;
   }
@@ -128,16 +128,16 @@ public class TrustAskView {
    * @return createdAt
    */
   @javax.annotation.Nullable
-  public Integer getCreatedAt() {
+  public Long getCreatedAt() {
     return createdAt;
   }
 
-  public void setCreatedAt(@javax.annotation.Nullable Integer createdAt) {
+  public void setCreatedAt(@javax.annotation.Nullable Long createdAt) {
     this.createdAt = createdAt;
   }
 
 
-  public TrustAskView decidedAt(@javax.annotation.Nullable Integer decidedAt) {
+  public TrustAskView decidedAt(@javax.annotation.Nullable Long decidedAt) {
     this.decidedAt = decidedAt;
     return this;
   }
@@ -147,11 +147,11 @@ public class TrustAskView {
    * @return decidedAt
    */
   @javax.annotation.Nullable
-  public Integer getDecidedAt() {
+  public Long getDecidedAt() {
     return decidedAt;
   }
 
-  public void setDecidedAt(@javax.annotation.Nullable Integer decidedAt) {
+  public void setDecidedAt(@javax.annotation.Nullable Long decidedAt) {
     this.decidedAt = decidedAt;
   }
 
@@ -194,7 +194,7 @@ public class TrustAskView {
   }
 
 
-  public TrustAskView expiresAt(@javax.annotation.Nullable Integer expiresAt) {
+  public TrustAskView expiresAt(@javax.annotation.Nullable Long expiresAt) {
     this.expiresAt = expiresAt;
     return this;
   }
@@ -204,11 +204,11 @@ public class TrustAskView {
    * @return expiresAt
    */
   @javax.annotation.Nullable
-  public Integer getExpiresAt() {
+  public Long getExpiresAt() {
     return expiresAt;
   }
 
-  public void setExpiresAt(@javax.annotation.Nullable Integer expiresAt) {
+  public void setExpiresAt(@javax.annotation.Nullable Long expiresAt) {
     this.expiresAt = expiresAt;
   }
 

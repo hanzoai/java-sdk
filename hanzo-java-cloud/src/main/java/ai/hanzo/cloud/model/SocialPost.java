@@ -70,7 +70,7 @@ public class SocialPost {
   public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
   @javax.annotation.Nullable
-  private Integer createdAt;
+  private Long createdAt;
 
   public static final String SERIALIZED_NAME_ERROR = "error";
   @SerializedName(SERIALIZED_NAME_ERROR)
@@ -95,7 +95,7 @@ public class SocialPost {
   public static final String SERIALIZED_NAME_SCHEDULE_AT = "scheduleAt";
   @SerializedName(SERIALIZED_NAME_SCHEDULE_AT)
   @javax.annotation.Nullable
-  private Integer scheduleAt;
+  private Long scheduleAt;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
@@ -105,7 +105,7 @@ public class SocialPost {
   public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)
   @javax.annotation.Nullable
-  private Integer updatedAt;
+  private Long updatedAt;
 
   public SocialPost() {
   }
@@ -167,7 +167,7 @@ public class SocialPost {
   }
 
 
-  public SocialPost createdAt(@javax.annotation.Nullable Integer createdAt) {
+  public SocialPost createdAt(@javax.annotation.Nullable Long createdAt) {
     this.createdAt = createdAt;
     return this;
   }
@@ -177,11 +177,11 @@ public class SocialPost {
    * @return createdAt
    */
   @javax.annotation.Nullable
-  public Integer getCreatedAt() {
+  public Long getCreatedAt() {
     return createdAt;
   }
 
-  public void setCreatedAt(@javax.annotation.Nullable Integer createdAt) {
+  public void setCreatedAt(@javax.annotation.Nullable Long createdAt) {
     this.createdAt = createdAt;
   }
 
@@ -270,7 +270,7 @@ public class SocialPost {
   }
 
 
-  public SocialPost scheduleAt(@javax.annotation.Nullable Integer scheduleAt) {
+  public SocialPost scheduleAt(@javax.annotation.Nullable Long scheduleAt) {
     this.scheduleAt = scheduleAt;
     return this;
   }
@@ -280,11 +280,11 @@ public class SocialPost {
    * @return scheduleAt
    */
   @javax.annotation.Nullable
-  public Integer getScheduleAt() {
+  public Long getScheduleAt() {
     return scheduleAt;
   }
 
-  public void setScheduleAt(@javax.annotation.Nullable Integer scheduleAt) {
+  public void setScheduleAt(@javax.annotation.Nullable Long scheduleAt) {
     this.scheduleAt = scheduleAt;
   }
 
@@ -308,7 +308,7 @@ public class SocialPost {
   }
 
 
-  public SocialPost updatedAt(@javax.annotation.Nullable Integer updatedAt) {
+  public SocialPost updatedAt(@javax.annotation.Nullable Long updatedAt) {
     this.updatedAt = updatedAt;
     return this;
   }
@@ -318,11 +318,11 @@ public class SocialPost {
    * @return updatedAt
    */
   @javax.annotation.Nullable
-  public Integer getUpdatedAt() {
+  public Long getUpdatedAt() {
     return updatedAt;
   }
 
-  public void setUpdatedAt(@javax.annotation.Nullable Integer updatedAt) {
+  public void setUpdatedAt(@javax.annotation.Nullable Long updatedAt) {
     this.updatedAt = updatedAt;
   }
 

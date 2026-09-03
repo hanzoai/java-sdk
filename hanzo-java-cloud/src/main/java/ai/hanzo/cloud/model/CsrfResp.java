@@ -58,7 +58,7 @@ public class CsrfResp {
   public static final String SERIALIZED_NAME_EXPIRES_IN = "expiresIn";
   @SerializedName(SERIALIZED_NAME_EXPIRES_IN)
   @javax.annotation.Nullable
-  private Integer expiresIn;
+  private Long expiresIn;
 
   public CsrfResp() {
   }
@@ -82,7 +82,7 @@ public class CsrfResp {
   }
 
 
-  public CsrfResp expiresIn(@javax.annotation.Nullable Integer expiresIn) {
+  public CsrfResp expiresIn(@javax.annotation.Nullable Long expiresIn) {
     this.expiresIn = expiresIn;
     return this;
   }
@@ -92,11 +92,11 @@ public class CsrfResp {
    * @return expiresIn
    */
   @javax.annotation.Nullable
-  public Integer getExpiresIn() {
+  public Long getExpiresIn() {
     return expiresIn;
   }
 
-  public void setExpiresIn(@javax.annotation.Nullable Integer expiresIn) {
+  public void setExpiresIn(@javax.annotation.Nullable Long expiresIn) {
     this.expiresIn = expiresIn;
   }
 
