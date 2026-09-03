@@ -71,7 +71,7 @@ public class Category {
   public static final String SERIALIZED_NAME_ORDER = "order";
   @SerializedName(SERIALIZED_NAME_ORDER)
   @javax.annotation.Nullable
-  private Integer order;
+  private Long order;
 
   public static final String SERIALIZED_NAME_OWNER = "owner";
   @SerializedName(SERIALIZED_NAME_OWNER)
@@ -156,7 +156,7 @@ public class Category {
   }
 
 
-  public Category order(@javax.annotation.Nullable Integer order) {
+  public Category order(@javax.annotation.Nullable Long order) {
     this.order = order;
     return this;
   }
@@ -166,11 +166,11 @@ public class Category {
    * @return order
    */
   @javax.annotation.Nullable
-  public Integer getOrder() {
+  public Long getOrder() {
     return order;
   }
 
-  public void setOrder(@javax.annotation.Nullable Integer order) {
+  public void setOrder(@javax.annotation.Nullable Long order) {
     this.order = order;
   }
 

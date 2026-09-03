@@ -80,7 +80,7 @@ public class Number {
   public static final String SERIALIZED_NAME_MONTHLY = "monthly";
   @SerializedName(SERIALIZED_NAME_MONTHLY)
   @javax.annotation.Nullable
-  private Integer monthly;
+  private Long monthly;
 
   public static final String SERIALIZED_NAME_ORG = "org";
   @SerializedName(SERIALIZED_NAME_ORG)
@@ -198,7 +198,7 @@ public class Number {
   }
 
 
-  public Number monthly(@javax.annotation.Nullable Integer monthly) {
+  public Number monthly(@javax.annotation.Nullable Long monthly) {
     this.monthly = monthly;
     return this;
   }
@@ -208,11 +208,11 @@ public class Number {
    * @return monthly
    */
   @javax.annotation.Nullable
-  public Integer getMonthly() {
+  public Long getMonthly() {
     return monthly;
   }
 
-  public void setMonthly(@javax.annotation.Nullable Integer monthly) {
+  public void setMonthly(@javax.annotation.Nullable Long monthly) {
     this.monthly = monthly;
   }
 

@@ -71,12 +71,12 @@ public class RiskDatasetRows {
   public static final String SERIALIZED_NAME_LIMIT = "limit";
   @SerializedName(SERIALIZED_NAME_LIMIT)
   @javax.annotation.Nullable
-  private Integer limit;
+  private Long limit;
 
   public static final String SERIALIZED_NAME_OFFSET = "offset";
   @SerializedName(SERIALIZED_NAME_OFFSET)
   @javax.annotation.Nullable
-  private Integer offset;
+  private Long offset;
 
   public static final String SERIALIZED_NAME_ROWS = "rows";
   @SerializedName(SERIALIZED_NAME_ROWS)
@@ -86,7 +86,7 @@ public class RiskDatasetRows {
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
   @javax.annotation.Nullable
-  private Integer version;
+  private Long version;
 
   public RiskDatasetRows() {
   }
@@ -156,7 +156,7 @@ public class RiskDatasetRows {
   }
 
 
-  public RiskDatasetRows limit(@javax.annotation.Nullable Integer limit) {
+  public RiskDatasetRows limit(@javax.annotation.Nullable Long limit) {
     this.limit = limit;
     return this;
   }
@@ -166,16 +166,16 @@ public class RiskDatasetRows {
    * @return limit
    */
   @javax.annotation.Nullable
-  public Integer getLimit() {
+  public Long getLimit() {
     return limit;
   }
 
-  public void setLimit(@javax.annotation.Nullable Integer limit) {
+  public void setLimit(@javax.annotation.Nullable Long limit) {
     this.limit = limit;
   }
 
 
-  public RiskDatasetRows offset(@javax.annotation.Nullable Integer offset) {
+  public RiskDatasetRows offset(@javax.annotation.Nullable Long offset) {
     this.offset = offset;
     return this;
   }
@@ -185,11 +185,11 @@ public class RiskDatasetRows {
    * @return offset
    */
   @javax.annotation.Nullable
-  public Integer getOffset() {
+  public Long getOffset() {
     return offset;
   }
 
-  public void setOffset(@javax.annotation.Nullable Integer offset) {
+  public void setOffset(@javax.annotation.Nullable Long offset) {
     this.offset = offset;
   }
 
@@ -221,7 +221,7 @@ public class RiskDatasetRows {
   }
 
 
-  public RiskDatasetRows version(@javax.annotation.Nullable Integer version) {
+  public RiskDatasetRows version(@javax.annotation.Nullable Long version) {
     this.version = version;
     return this;
   }
@@ -231,11 +231,11 @@ public class RiskDatasetRows {
    * @return version
    */
   @javax.annotation.Nullable
-  public Integer getVersion() {
+  public Long getVersion() {
     return version;
   }
 
-  public void setVersion(@javax.annotation.Nullable Integer version) {
+  public void setVersion(@javax.annotation.Nullable Long version) {
     this.version = version;
   }
 

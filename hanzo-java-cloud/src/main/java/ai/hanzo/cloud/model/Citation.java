@@ -53,7 +53,7 @@ public class Citation {
   public static final String SERIALIZED_NAME_END_LINE = "endLine";
   @SerializedName(SERIALIZED_NAME_END_LINE)
   @javax.annotation.Nullable
-  private Integer endLine;
+  private Long endLine;
 
   public static final String SERIALIZED_NAME_FILE = "file";
   @SerializedName(SERIALIZED_NAME_FILE)
@@ -63,7 +63,7 @@ public class Citation {
   public static final String SERIALIZED_NAME_LINE = "line";
   @SerializedName(SERIALIZED_NAME_LINE)
   @javax.annotation.Nullable
-  private Integer line;
+  private Long line;
 
   public static final String SERIALIZED_NAME_REPO = "repo";
   @SerializedName(SERIALIZED_NAME_REPO)
@@ -78,7 +78,7 @@ public class Citation {
   public Citation() {
   }
 
-  public Citation endLine(@javax.annotation.Nullable Integer endLine) {
+  public Citation endLine(@javax.annotation.Nullable Long endLine) {
     this.endLine = endLine;
     return this;
   }
@@ -88,11 +88,11 @@ public class Citation {
    * @return endLine
    */
   @javax.annotation.Nullable
-  public Integer getEndLine() {
+  public Long getEndLine() {
     return endLine;
   }
 
-  public void setEndLine(@javax.annotation.Nullable Integer endLine) {
+  public void setEndLine(@javax.annotation.Nullable Long endLine) {
     this.endLine = endLine;
   }
 
@@ -116,7 +116,7 @@ public class Citation {
   }
 
 
-  public Citation line(@javax.annotation.Nullable Integer line) {
+  public Citation line(@javax.annotation.Nullable Long line) {
     this.line = line;
     return this;
   }
@@ -126,11 +126,11 @@ public class Citation {
    * @return line
    */
   @javax.annotation.Nullable
-  public Integer getLine() {
+  public Long getLine() {
     return line;
   }
 
-  public void setLine(@javax.annotation.Nullable Integer line) {
+  public void setLine(@javax.annotation.Nullable Long line) {
     this.line = line;
   }
 

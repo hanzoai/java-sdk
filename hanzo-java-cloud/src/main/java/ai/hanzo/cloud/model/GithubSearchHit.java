@@ -88,7 +88,7 @@ public class GithubSearchHit {
   public static final String SERIALIZED_NAME_STARS = "stars";
   @SerializedName(SERIALIZED_NAME_STARS)
   @javax.annotation.Nullable
-  private Integer stars;
+  private Long stars;
 
   public GithubSearchHit() {
   }
@@ -226,7 +226,7 @@ public class GithubSearchHit {
   }
 
 
-  public GithubSearchHit stars(@javax.annotation.Nullable Integer stars) {
+  public GithubSearchHit stars(@javax.annotation.Nullable Long stars) {
     this.stars = stars;
     return this;
   }
@@ -236,11 +236,11 @@ public class GithubSearchHit {
    * @return stars
    */
   @javax.annotation.Nullable
-  public Integer getStars() {
+  public Long getStars() {
     return stars;
   }
 
-  public void setStars(@javax.annotation.Nullable Integer stars) {
+  public void setStars(@javax.annotation.Nullable Long stars) {
     this.stars = stars;
   }
 

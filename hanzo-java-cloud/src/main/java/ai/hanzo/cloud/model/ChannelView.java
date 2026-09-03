@@ -89,7 +89,7 @@ public class ChannelView {
   public static final String SERIALIZED_NAME_PENDING_PAIRING = "pendingPairing";
   @SerializedName(SERIALIZED_NAME_PENDING_PAIRING)
   @javax.annotation.Nullable
-  private Integer pendingPairing;
+  private Long pendingPairing;
 
   public ChannelView() {
   }
@@ -227,7 +227,7 @@ public class ChannelView {
   }
 
 
-  public ChannelView pendingPairing(@javax.annotation.Nullable Integer pendingPairing) {
+  public ChannelView pendingPairing(@javax.annotation.Nullable Long pendingPairing) {
     this.pendingPairing = pendingPairing;
     return this;
   }
@@ -237,11 +237,11 @@ public class ChannelView {
    * @return pendingPairing
    */
   @javax.annotation.Nullable
-  public Integer getPendingPairing() {
+  public Long getPendingPairing() {
     return pendingPairing;
   }
 
-  public void setPendingPairing(@javax.annotation.Nullable Integer pendingPairing) {
+  public void setPendingPairing(@javax.annotation.Nullable Long pendingPairing) {
     this.pendingPairing = pendingPairing;
   }
 

@@ -59,12 +59,12 @@ public class Pool {
   public static final String SERIALIZED_NAME_COUNT = "count";
   @SerializedName(SERIALIZED_NAME_COUNT)
   @javax.annotation.Nullable
-  private Integer count;
+  private Long count;
 
   public static final String SERIALIZED_NAME_FEE = "fee";
   @SerializedName(SERIALIZED_NAME_FEE)
   @javax.annotation.Nullable
-  private Integer fee;
+  private Long fee;
 
   public static final String SERIALIZED_NAME_LOCKED = "locked";
   @SerializedName(SERIALIZED_NAME_LOCKED)
@@ -118,7 +118,7 @@ public class Pool {
   }
 
 
-  public Pool count(@javax.annotation.Nullable Integer count) {
+  public Pool count(@javax.annotation.Nullable Long count) {
     this.count = count;
     return this;
   }
@@ -128,16 +128,16 @@ public class Pool {
    * @return count
    */
   @javax.annotation.Nullable
-  public Integer getCount() {
+  public Long getCount() {
     return count;
   }
 
-  public void setCount(@javax.annotation.Nullable Integer count) {
+  public void setCount(@javax.annotation.Nullable Long count) {
     this.count = count;
   }
 
 
-  public Pool fee(@javax.annotation.Nullable Integer fee) {
+  public Pool fee(@javax.annotation.Nullable Long fee) {
     this.fee = fee;
     return this;
   }
@@ -147,11 +147,11 @@ public class Pool {
    * @return fee
    */
   @javax.annotation.Nullable
-  public Integer getFee() {
+  public Long getFee() {
     return fee;
   }
 
-  public void setFee(@javax.annotation.Nullable Integer fee) {
+  public void setFee(@javax.annotation.Nullable Long fee) {
     this.fee = fee;
   }
 

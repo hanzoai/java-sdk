@@ -53,7 +53,7 @@ public class CreditEntry {
   public static final String SERIALIZED_NAME_AVAILABLE = "available";
   @SerializedName(SERIALIZED_NAME_AVAILABLE)
   @javax.annotation.Nullable
-  private Integer available;
+  private Long available;
 
   public static final String SERIALIZED_NAME_CURRENCY = "currency";
   @SerializedName(SERIALIZED_NAME_CURRENCY)
@@ -63,7 +63,7 @@ public class CreditEntry {
   public CreditEntry() {
   }
 
-  public CreditEntry available(@javax.annotation.Nullable Integer available) {
+  public CreditEntry available(@javax.annotation.Nullable Long available) {
     this.available = available;
     return this;
   }
@@ -73,11 +73,11 @@ public class CreditEntry {
    * @return available
    */
   @javax.annotation.Nullable
-  public Integer getAvailable() {
+  public Long getAvailable() {
     return available;
   }
 
-  public void setAvailable(@javax.annotation.Nullable Integer available) {
+  public void setAvailable(@javax.annotation.Nullable Long available) {
     this.available = available;
   }
 

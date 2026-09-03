@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -59,7 +58,7 @@ public class O11yO11yPercentilePosition {
   public static final String SERIALIZED_NAME_PERCENTILE = "percentile";
   @SerializedName(SERIALIZED_NAME_PERCENTILE)
   @javax.annotation.Nullable
-  private BigDecimal percentile;
+  private Double percentile;
 
   public O11yO11yPercentilePosition() {
   }
@@ -83,7 +82,7 @@ public class O11yO11yPercentilePosition {
   }
 
 
-  public O11yO11yPercentilePosition percentile(@javax.annotation.Nullable BigDecimal percentile) {
+  public O11yO11yPercentilePosition percentile(@javax.annotation.Nullable Double percentile) {
     this.percentile = percentile;
     return this;
   }
@@ -93,11 +92,11 @@ public class O11yO11yPercentilePosition {
    * @return percentile
    */
   @javax.annotation.Nullable
-  public BigDecimal getPercentile() {
+  public Double getPercentile() {
     return percentile;
   }
 
-  public void setPercentile(@javax.annotation.Nullable BigDecimal percentile) {
+  public void setPercentile(@javax.annotation.Nullable Double percentile) {
     this.percentile = percentile;
   }
 

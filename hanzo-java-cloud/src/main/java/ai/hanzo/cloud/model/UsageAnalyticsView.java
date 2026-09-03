@@ -80,7 +80,7 @@ public class UsageAnalyticsView {
   public static final String SERIALIZED_NAME_RETENTION_DAYS = "retentionDays";
   @SerializedName(SERIALIZED_NAME_RETENTION_DAYS)
   @javax.annotation.Nullable
-  private Integer retentionDays;
+  private Long retentionDays;
 
   public static final String SERIALIZED_NAME_SCOPE = "scope";
   @SerializedName(SERIALIZED_NAME_SCOPE)
@@ -190,7 +190,7 @@ public class UsageAnalyticsView {
   }
 
 
-  public UsageAnalyticsView retentionDays(@javax.annotation.Nullable Integer retentionDays) {
+  public UsageAnalyticsView retentionDays(@javax.annotation.Nullable Long retentionDays) {
     this.retentionDays = retentionDays;
     return this;
   }
@@ -200,11 +200,11 @@ public class UsageAnalyticsView {
    * @return retentionDays
    */
   @javax.annotation.Nullable
-  public Integer getRetentionDays() {
+  public Long getRetentionDays() {
     return retentionDays;
   }
 
-  public void setRetentionDays(@javax.annotation.Nullable Integer retentionDays) {
+  public void setRetentionDays(@javax.annotation.Nullable Long retentionDays) {
     this.retentionDays = retentionDays;
   }
 

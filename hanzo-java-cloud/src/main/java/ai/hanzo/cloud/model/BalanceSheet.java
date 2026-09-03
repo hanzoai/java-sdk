@@ -81,17 +81,17 @@ public class BalanceSheet {
   public static final String SERIALIZED_NAME_TOTAL_ASSETS = "totalAssets";
   @SerializedName(SERIALIZED_NAME_TOTAL_ASSETS)
   @javax.annotation.Nullable
-  private Integer totalAssets;
+  private Long totalAssets;
 
   public static final String SERIALIZED_NAME_TOTAL_EQUITY = "totalEquity";
   @SerializedName(SERIALIZED_NAME_TOTAL_EQUITY)
   @javax.annotation.Nullable
-  private Integer totalEquity;
+  private Long totalEquity;
 
   public static final String SERIALIZED_NAME_TOTAL_LIABILITIES = "totalLiabilities";
   @SerializedName(SERIALIZED_NAME_TOTAL_LIABILITIES)
   @javax.annotation.Nullable
-  private Integer totalLiabilities;
+  private Long totalLiabilities;
 
   public BalanceSheet() {
   }
@@ -215,7 +215,7 @@ public class BalanceSheet {
   }
 
 
-  public BalanceSheet totalAssets(@javax.annotation.Nullable Integer totalAssets) {
+  public BalanceSheet totalAssets(@javax.annotation.Nullable Long totalAssets) {
     this.totalAssets = totalAssets;
     return this;
   }
@@ -225,16 +225,16 @@ public class BalanceSheet {
    * @return totalAssets
    */
   @javax.annotation.Nullable
-  public Integer getTotalAssets() {
+  public Long getTotalAssets() {
     return totalAssets;
   }
 
-  public void setTotalAssets(@javax.annotation.Nullable Integer totalAssets) {
+  public void setTotalAssets(@javax.annotation.Nullable Long totalAssets) {
     this.totalAssets = totalAssets;
   }
 
 
-  public BalanceSheet totalEquity(@javax.annotation.Nullable Integer totalEquity) {
+  public BalanceSheet totalEquity(@javax.annotation.Nullable Long totalEquity) {
     this.totalEquity = totalEquity;
     return this;
   }
@@ -244,16 +244,16 @@ public class BalanceSheet {
    * @return totalEquity
    */
   @javax.annotation.Nullable
-  public Integer getTotalEquity() {
+  public Long getTotalEquity() {
     return totalEquity;
   }
 
-  public void setTotalEquity(@javax.annotation.Nullable Integer totalEquity) {
+  public void setTotalEquity(@javax.annotation.Nullable Long totalEquity) {
     this.totalEquity = totalEquity;
   }
 
 
-  public BalanceSheet totalLiabilities(@javax.annotation.Nullable Integer totalLiabilities) {
+  public BalanceSheet totalLiabilities(@javax.annotation.Nullable Long totalLiabilities) {
     this.totalLiabilities = totalLiabilities;
     return this;
   }
@@ -263,11 +263,11 @@ public class BalanceSheet {
    * @return totalLiabilities
    */
   @javax.annotation.Nullable
-  public Integer getTotalLiabilities() {
+  public Long getTotalLiabilities() {
     return totalLiabilities;
   }
 
-  public void setTotalLiabilities(@javax.annotation.Nullable Integer totalLiabilities) {
+  public void setTotalLiabilities(@javax.annotation.Nullable Long totalLiabilities) {
     this.totalLiabilities = totalLiabilities;
   }
 

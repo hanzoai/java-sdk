@@ -69,7 +69,7 @@ public class SectionWrite {
   public static final String SERIALIZED_NAME_ORD = "ord";
   @SerializedName(SERIALIZED_NAME_ORD)
   @javax.annotation.Nullable
-  private Integer ord;
+  private Long ord;
 
   public SectionWrite() {
   }
@@ -131,7 +131,7 @@ public class SectionWrite {
   }
 
 
-  public SectionWrite ord(@javax.annotation.Nullable Integer ord) {
+  public SectionWrite ord(@javax.annotation.Nullable Long ord) {
     this.ord = ord;
     return this;
   }
@@ -141,11 +141,11 @@ public class SectionWrite {
    * @return ord
    */
   @javax.annotation.Nullable
-  public Integer getOrd() {
+  public Long getOrd() {
     return ord;
   }
 
-  public void setOrd(@javax.annotation.Nullable Integer ord) {
+  public void setOrd(@javax.annotation.Nullable Long ord) {
     this.ord = ord;
   }
 

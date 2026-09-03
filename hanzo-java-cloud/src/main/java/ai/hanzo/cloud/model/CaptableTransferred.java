@@ -68,7 +68,7 @@ public class CaptableTransferred {
   public static final String SERIALIZED_NAME_TRANSFERRED = "transferred";
   @SerializedName(SERIALIZED_NAME_TRANSFERRED)
   @javax.annotation.Nullable
-  private Integer transferred;
+  private Long transferred;
 
   public CaptableTransferred() {
   }
@@ -130,7 +130,7 @@ public class CaptableTransferred {
   }
 
 
-  public CaptableTransferred transferred(@javax.annotation.Nullable Integer transferred) {
+  public CaptableTransferred transferred(@javax.annotation.Nullable Long transferred) {
     this.transferred = transferred;
     return this;
   }
@@ -140,11 +140,11 @@ public class CaptableTransferred {
    * @return transferred
    */
   @javax.annotation.Nullable
-  public Integer getTransferred() {
+  public Long getTransferred() {
     return transferred;
   }
 
-  public void setTransferred(@javax.annotation.Nullable Integer transferred) {
+  public void setTransferred(@javax.annotation.Nullable Long transferred) {
     this.transferred = transferred;
   }
 

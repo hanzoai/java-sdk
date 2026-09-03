@@ -21,7 +21,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -63,22 +62,22 @@ public class O11yPodRecord {
   public static final String SERIALIZED_NAME_POD_AGE = "podAge";
   @SerializedName(SERIALIZED_NAME_POD_AGE)
   @javax.annotation.Nullable
-  private Integer podAge;
+  private Long podAge;
 
   public static final String SERIALIZED_NAME_POD_C_P_U = "podCPU";
   @SerializedName(SERIALIZED_NAME_POD_C_P_U)
   @javax.annotation.Nullable
-  private BigDecimal podCPU;
+  private Double podCPU;
 
   public static final String SERIALIZED_NAME_POD_C_P_U_LIMIT = "podCPULimit";
   @SerializedName(SERIALIZED_NAME_POD_C_P_U_LIMIT)
   @javax.annotation.Nullable
-  private BigDecimal podCPULimit;
+  private Double podCPULimit;
 
   public static final String SERIALIZED_NAME_POD_C_P_U_REQUEST = "podCPURequest";
   @SerializedName(SERIALIZED_NAME_POD_C_P_U_REQUEST)
   @javax.annotation.Nullable
-  private BigDecimal podCPURequest;
+  private Double podCPURequest;
 
   public static final String SERIALIZED_NAME_POD_COUNTS_BY_PHASE = "podCountsByPhase";
   @SerializedName(SERIALIZED_NAME_POD_COUNTS_BY_PHASE)
@@ -88,17 +87,17 @@ public class O11yPodRecord {
   public static final String SERIALIZED_NAME_POD_MEMORY = "podMemory";
   @SerializedName(SERIALIZED_NAME_POD_MEMORY)
   @javax.annotation.Nullable
-  private BigDecimal podMemory;
+  private Double podMemory;
 
   public static final String SERIALIZED_NAME_POD_MEMORY_LIMIT = "podMemoryLimit";
   @SerializedName(SERIALIZED_NAME_POD_MEMORY_LIMIT)
   @javax.annotation.Nullable
-  private BigDecimal podMemoryLimit;
+  private Double podMemoryLimit;
 
   public static final String SERIALIZED_NAME_POD_MEMORY_REQUEST = "podMemoryRequest";
   @SerializedName(SERIALIZED_NAME_POD_MEMORY_REQUEST)
   @javax.annotation.Nullable
-  private BigDecimal podMemoryRequest;
+  private Double podMemoryRequest;
 
   public static final String SERIALIZED_NAME_POD_PHASE = "podPhase";
   @SerializedName(SERIALIZED_NAME_POD_PHASE)
@@ -140,7 +139,7 @@ public class O11yPodRecord {
   }
 
 
-  public O11yPodRecord podAge(@javax.annotation.Nullable Integer podAge) {
+  public O11yPodRecord podAge(@javax.annotation.Nullable Long podAge) {
     this.podAge = podAge;
     return this;
   }
@@ -150,16 +149,16 @@ public class O11yPodRecord {
    * @return podAge
    */
   @javax.annotation.Nullable
-  public Integer getPodAge() {
+  public Long getPodAge() {
     return podAge;
   }
 
-  public void setPodAge(@javax.annotation.Nullable Integer podAge) {
+  public void setPodAge(@javax.annotation.Nullable Long podAge) {
     this.podAge = podAge;
   }
 
 
-  public O11yPodRecord podCPU(@javax.annotation.Nullable BigDecimal podCPU) {
+  public O11yPodRecord podCPU(@javax.annotation.Nullable Double podCPU) {
     this.podCPU = podCPU;
     return this;
   }
@@ -169,16 +168,16 @@ public class O11yPodRecord {
    * @return podCPU
    */
   @javax.annotation.Nullable
-  public BigDecimal getPodCPU() {
+  public Double getPodCPU() {
     return podCPU;
   }
 
-  public void setPodCPU(@javax.annotation.Nullable BigDecimal podCPU) {
+  public void setPodCPU(@javax.annotation.Nullable Double podCPU) {
     this.podCPU = podCPU;
   }
 
 
-  public O11yPodRecord podCPULimit(@javax.annotation.Nullable BigDecimal podCPULimit) {
+  public O11yPodRecord podCPULimit(@javax.annotation.Nullable Double podCPULimit) {
     this.podCPULimit = podCPULimit;
     return this;
   }
@@ -188,16 +187,16 @@ public class O11yPodRecord {
    * @return podCPULimit
    */
   @javax.annotation.Nullable
-  public BigDecimal getPodCPULimit() {
+  public Double getPodCPULimit() {
     return podCPULimit;
   }
 
-  public void setPodCPULimit(@javax.annotation.Nullable BigDecimal podCPULimit) {
+  public void setPodCPULimit(@javax.annotation.Nullable Double podCPULimit) {
     this.podCPULimit = podCPULimit;
   }
 
 
-  public O11yPodRecord podCPURequest(@javax.annotation.Nullable BigDecimal podCPURequest) {
+  public O11yPodRecord podCPURequest(@javax.annotation.Nullable Double podCPURequest) {
     this.podCPURequest = podCPURequest;
     return this;
   }
@@ -207,11 +206,11 @@ public class O11yPodRecord {
    * @return podCPURequest
    */
   @javax.annotation.Nullable
-  public BigDecimal getPodCPURequest() {
+  public Double getPodCPURequest() {
     return podCPURequest;
   }
 
-  public void setPodCPURequest(@javax.annotation.Nullable BigDecimal podCPURequest) {
+  public void setPodCPURequest(@javax.annotation.Nullable Double podCPURequest) {
     this.podCPURequest = podCPURequest;
   }
 
@@ -235,7 +234,7 @@ public class O11yPodRecord {
   }
 
 
-  public O11yPodRecord podMemory(@javax.annotation.Nullable BigDecimal podMemory) {
+  public O11yPodRecord podMemory(@javax.annotation.Nullable Double podMemory) {
     this.podMemory = podMemory;
     return this;
   }
@@ -245,16 +244,16 @@ public class O11yPodRecord {
    * @return podMemory
    */
   @javax.annotation.Nullable
-  public BigDecimal getPodMemory() {
+  public Double getPodMemory() {
     return podMemory;
   }
 
-  public void setPodMemory(@javax.annotation.Nullable BigDecimal podMemory) {
+  public void setPodMemory(@javax.annotation.Nullable Double podMemory) {
     this.podMemory = podMemory;
   }
 
 
-  public O11yPodRecord podMemoryLimit(@javax.annotation.Nullable BigDecimal podMemoryLimit) {
+  public O11yPodRecord podMemoryLimit(@javax.annotation.Nullable Double podMemoryLimit) {
     this.podMemoryLimit = podMemoryLimit;
     return this;
   }
@@ -264,16 +263,16 @@ public class O11yPodRecord {
    * @return podMemoryLimit
    */
   @javax.annotation.Nullable
-  public BigDecimal getPodMemoryLimit() {
+  public Double getPodMemoryLimit() {
     return podMemoryLimit;
   }
 
-  public void setPodMemoryLimit(@javax.annotation.Nullable BigDecimal podMemoryLimit) {
+  public void setPodMemoryLimit(@javax.annotation.Nullable Double podMemoryLimit) {
     this.podMemoryLimit = podMemoryLimit;
   }
 
 
-  public O11yPodRecord podMemoryRequest(@javax.annotation.Nullable BigDecimal podMemoryRequest) {
+  public O11yPodRecord podMemoryRequest(@javax.annotation.Nullable Double podMemoryRequest) {
     this.podMemoryRequest = podMemoryRequest;
     return this;
   }
@@ -283,11 +282,11 @@ public class O11yPodRecord {
    * @return podMemoryRequest
    */
   @javax.annotation.Nullable
-  public BigDecimal getPodMemoryRequest() {
+  public Double getPodMemoryRequest() {
     return podMemoryRequest;
   }
 
-  public void setPodMemoryRequest(@javax.annotation.Nullable BigDecimal podMemoryRequest) {
+  public void setPodMemoryRequest(@javax.annotation.Nullable Double podMemoryRequest) {
     this.podMemoryRequest = podMemoryRequest;
   }
 

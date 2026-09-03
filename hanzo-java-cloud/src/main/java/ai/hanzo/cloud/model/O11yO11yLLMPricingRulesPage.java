@@ -61,17 +61,17 @@ public class O11yO11yLLMPricingRulesPage {
   public static final String SERIALIZED_NAME_LIMIT = "limit";
   @SerializedName(SERIALIZED_NAME_LIMIT)
   @javax.annotation.Nullable
-  private Integer limit;
+  private Long limit;
 
   public static final String SERIALIZED_NAME_OFFSET = "offset";
   @SerializedName(SERIALIZED_NAME_OFFSET)
   @javax.annotation.Nullable
-  private Integer offset;
+  private Long offset;
 
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)
   @javax.annotation.Nullable
-  private Integer total;
+  private Long total;
 
   public O11yO11yLLMPricingRulesPage() {
   }
@@ -103,7 +103,7 @@ public class O11yO11yLLMPricingRulesPage {
   }
 
 
-  public O11yO11yLLMPricingRulesPage limit(@javax.annotation.Nullable Integer limit) {
+  public O11yO11yLLMPricingRulesPage limit(@javax.annotation.Nullable Long limit) {
     this.limit = limit;
     return this;
   }
@@ -113,16 +113,16 @@ public class O11yO11yLLMPricingRulesPage {
    * @return limit
    */
   @javax.annotation.Nullable
-  public Integer getLimit() {
+  public Long getLimit() {
     return limit;
   }
 
-  public void setLimit(@javax.annotation.Nullable Integer limit) {
+  public void setLimit(@javax.annotation.Nullable Long limit) {
     this.limit = limit;
   }
 
 
-  public O11yO11yLLMPricingRulesPage offset(@javax.annotation.Nullable Integer offset) {
+  public O11yO11yLLMPricingRulesPage offset(@javax.annotation.Nullable Long offset) {
     this.offset = offset;
     return this;
   }
@@ -132,16 +132,16 @@ public class O11yO11yLLMPricingRulesPage {
    * @return offset
    */
   @javax.annotation.Nullable
-  public Integer getOffset() {
+  public Long getOffset() {
     return offset;
   }
 
-  public void setOffset(@javax.annotation.Nullable Integer offset) {
+  public void setOffset(@javax.annotation.Nullable Long offset) {
     this.offset = offset;
   }
 
 
-  public O11yO11yLLMPricingRulesPage total(@javax.annotation.Nullable Integer total) {
+  public O11yO11yLLMPricingRulesPage total(@javax.annotation.Nullable Long total) {
     this.total = total;
     return this;
   }
@@ -151,11 +151,11 @@ public class O11yO11yLLMPricingRulesPage {
    * @return total
    */
   @javax.annotation.Nullable
-  public Integer getTotal() {
+  public Long getTotal() {
     return total;
   }
 
-  public void setTotal(@javax.annotation.Nullable Integer total) {
+  public void setTotal(@javax.annotation.Nullable Long total) {
     this.total = total;
   }
 

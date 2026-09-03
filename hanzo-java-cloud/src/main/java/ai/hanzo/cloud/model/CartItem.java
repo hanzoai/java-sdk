@@ -73,12 +73,12 @@ public class CartItem {
   public static final String SERIALIZED_NAME_PRICE_CENTS = "priceCents";
   @SerializedName(SERIALIZED_NAME_PRICE_CENTS)
   @javax.annotation.Nullable
-  private Integer priceCents;
+  private Long priceCents;
 
   public static final String SERIALIZED_NAME_QUANTITY = "quantity";
   @SerializedName(SERIALIZED_NAME_QUANTITY)
   @javax.annotation.Nullable
-  private Integer quantity;
+  private Long quantity;
 
   public static final String SERIALIZED_NAME_SKU = "sku";
   @SerializedName(SERIALIZED_NAME_SKU)
@@ -164,7 +164,7 @@ public class CartItem {
   }
 
 
-  public CartItem priceCents(@javax.annotation.Nullable Integer priceCents) {
+  public CartItem priceCents(@javax.annotation.Nullable Long priceCents) {
     this.priceCents = priceCents;
     return this;
   }
@@ -174,16 +174,16 @@ public class CartItem {
    * @return priceCents
    */
   @javax.annotation.Nullable
-  public Integer getPriceCents() {
+  public Long getPriceCents() {
     return priceCents;
   }
 
-  public void setPriceCents(@javax.annotation.Nullable Integer priceCents) {
+  public void setPriceCents(@javax.annotation.Nullable Long priceCents) {
     this.priceCents = priceCents;
   }
 
 
-  public CartItem quantity(@javax.annotation.Nullable Integer quantity) {
+  public CartItem quantity(@javax.annotation.Nullable Long quantity) {
     this.quantity = quantity;
     return this;
   }
@@ -193,11 +193,11 @@ public class CartItem {
    * @return quantity
    */
   @javax.annotation.Nullable
-  public Integer getQuantity() {
+  public Long getQuantity() {
     return quantity;
   }
 
-  public void setQuantity(@javax.annotation.Nullable Integer quantity) {
+  public void setQuantity(@javax.annotation.Nullable Long quantity) {
     this.quantity = quantity;
   }
 

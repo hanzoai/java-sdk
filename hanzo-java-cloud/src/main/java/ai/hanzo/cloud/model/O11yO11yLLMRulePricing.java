@@ -21,7 +21,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -60,12 +59,12 @@ public class O11yO11yLLMRulePricing {
   public static final String SERIALIZED_NAME_INPUT = "input";
   @SerializedName(SERIALIZED_NAME_INPUT)
   @javax.annotation.Nullable
-  private BigDecimal input;
+  private Double input;
 
   public static final String SERIALIZED_NAME_OUTPUT = "output";
   @SerializedName(SERIALIZED_NAME_OUTPUT)
   @javax.annotation.Nullable
-  private BigDecimal output;
+  private Double output;
 
   public O11yO11yLLMRulePricing() {
   }
@@ -89,7 +88,7 @@ public class O11yO11yLLMRulePricing {
   }
 
 
-  public O11yO11yLLMRulePricing input(@javax.annotation.Nullable BigDecimal input) {
+  public O11yO11yLLMRulePricing input(@javax.annotation.Nullable Double input) {
     this.input = input;
     return this;
   }
@@ -99,16 +98,16 @@ public class O11yO11yLLMRulePricing {
    * @return input
    */
   @javax.annotation.Nullable
-  public BigDecimal getInput() {
+  public Double getInput() {
     return input;
   }
 
-  public void setInput(@javax.annotation.Nullable BigDecimal input) {
+  public void setInput(@javax.annotation.Nullable Double input) {
     this.input = input;
   }
 
 
-  public O11yO11yLLMRulePricing output(@javax.annotation.Nullable BigDecimal output) {
+  public O11yO11yLLMRulePricing output(@javax.annotation.Nullable Double output) {
     this.output = output;
     return this;
   }
@@ -118,11 +117,11 @@ public class O11yO11yLLMRulePricing {
    * @return output
    */
   @javax.annotation.Nullable
-  public BigDecimal getOutput() {
+  public Double getOutput() {
     return output;
   }
 
-  public void setOutput(@javax.annotation.Nullable BigDecimal output) {
+  public void setOutput(@javax.annotation.Nullable Double output) {
     this.output = output;
   }
 

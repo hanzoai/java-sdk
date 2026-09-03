@@ -58,7 +58,7 @@ public class AccountView {
   public static final String SERIALIZED_NAME_BALANCE_CENTS = "balanceCents";
   @SerializedName(SERIALIZED_NAME_BALANCE_CENTS)
   @javax.annotation.Nullable
-  private Integer balanceCents;
+  private Long balanceCents;
 
   public AccountView() {
   }
@@ -82,7 +82,7 @@ public class AccountView {
   }
 
 
-  public AccountView balanceCents(@javax.annotation.Nullable Integer balanceCents) {
+  public AccountView balanceCents(@javax.annotation.Nullable Long balanceCents) {
     this.balanceCents = balanceCents;
     return this;
   }
@@ -92,11 +92,11 @@ public class AccountView {
    * @return balanceCents
    */
   @javax.annotation.Nullable
-  public Integer getBalanceCents() {
+  public Long getBalanceCents() {
     return balanceCents;
   }
 
-  public void setBalanceCents(@javax.annotation.Nullable Integer balanceCents) {
+  public void setBalanceCents(@javax.annotation.Nullable Long balanceCents) {
     this.balanceCents = balanceCents;
   }
 

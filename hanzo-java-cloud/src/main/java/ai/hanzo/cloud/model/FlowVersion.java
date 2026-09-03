@@ -54,7 +54,7 @@ public class FlowVersion {
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
   @javax.annotation.Nullable
-  private Integer created;
+  private Long created;
 
   public static final String SERIALIZED_NAME_DISPLAY_NAME = "displayName";
   @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
@@ -89,7 +89,7 @@ public class FlowVersion {
   public static final String SERIALIZED_NAME_UPDATED = "updated";
   @SerializedName(SERIALIZED_NAME_UPDATED)
   @javax.annotation.Nullable
-  private Integer updated;
+  private Long updated;
 
   public static final String SERIALIZED_NAME_VALID = "valid";
   @SerializedName(SERIALIZED_NAME_VALID)
@@ -99,7 +99,7 @@ public class FlowVersion {
   public FlowVersion() {
   }
 
-  public FlowVersion created(@javax.annotation.Nullable Integer created) {
+  public FlowVersion created(@javax.annotation.Nullable Long created) {
     this.created = created;
     return this;
   }
@@ -109,11 +109,11 @@ public class FlowVersion {
    * @return created
    */
   @javax.annotation.Nullable
-  public Integer getCreated() {
+  public Long getCreated() {
     return created;
   }
 
-  public void setCreated(@javax.annotation.Nullable Integer created) {
+  public void setCreated(@javax.annotation.Nullable Long created) {
     this.created = created;
   }
 
@@ -232,7 +232,7 @@ public class FlowVersion {
   }
 
 
-  public FlowVersion updated(@javax.annotation.Nullable Integer updated) {
+  public FlowVersion updated(@javax.annotation.Nullable Long updated) {
     this.updated = updated;
     return this;
   }
@@ -242,11 +242,11 @@ public class FlowVersion {
    * @return updated
    */
   @javax.annotation.Nullable
-  public Integer getUpdated() {
+  public Long getUpdated() {
     return updated;
   }
 
-  public void setUpdated(@javax.annotation.Nullable Integer updated) {
+  public void setUpdated(@javax.annotation.Nullable Long updated) {
     this.updated = updated;
   }
 

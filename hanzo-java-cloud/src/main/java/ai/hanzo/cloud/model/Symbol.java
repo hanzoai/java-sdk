@@ -59,7 +59,7 @@ public class Symbol {
   public static final String SERIALIZED_NAME_KIND = "kind";
   @SerializedName(SERIALIZED_NAME_KIND)
   @javax.annotation.Nullable
-  private Integer kind;
+  private Long kind;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -93,7 +93,7 @@ public class Symbol {
   }
 
 
-  public Symbol kind(@javax.annotation.Nullable Integer kind) {
+  public Symbol kind(@javax.annotation.Nullable Long kind) {
     this.kind = kind;
     return this;
   }
@@ -103,11 +103,11 @@ public class Symbol {
    * @return kind
    */
   @javax.annotation.Nullable
-  public Integer getKind() {
+  public Long getKind() {
     return kind;
   }
 
-  public void setKind(@javax.annotation.Nullable Integer kind) {
+  public void setKind(@javax.annotation.Nullable Long kind) {
     this.kind = kind;
   }
 

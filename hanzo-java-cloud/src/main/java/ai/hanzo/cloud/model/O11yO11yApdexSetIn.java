@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -64,7 +63,7 @@ public class O11yO11yApdexSetIn {
   public static final String SERIALIZED_NAME_THRESHOLD = "threshold";
   @SerializedName(SERIALIZED_NAME_THRESHOLD)
   @javax.annotation.Nullable
-  private BigDecimal threshold;
+  private Double threshold;
 
   public O11yO11yApdexSetIn() {
   }
@@ -107,7 +106,7 @@ public class O11yO11yApdexSetIn {
   }
 
 
-  public O11yO11yApdexSetIn threshold(@javax.annotation.Nullable BigDecimal threshold) {
+  public O11yO11yApdexSetIn threshold(@javax.annotation.Nullable Double threshold) {
     this.threshold = threshold;
     return this;
   }
@@ -117,11 +116,11 @@ public class O11yO11yApdexSetIn {
    * @return threshold
    */
   @javax.annotation.Nullable
-  public BigDecimal getThreshold() {
+  public Double getThreshold() {
     return threshold;
   }
 
-  public void setThreshold(@javax.annotation.Nullable BigDecimal threshold) {
+  public void setThreshold(@javax.annotation.Nullable Double threshold) {
     this.threshold = threshold;
   }
 

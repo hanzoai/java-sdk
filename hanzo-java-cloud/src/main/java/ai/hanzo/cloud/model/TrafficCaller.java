@@ -63,17 +63,17 @@ public class TrafficCaller {
   public static final String SERIALIZED_NAME_FAILURES = "failures";
   @SerializedName(SERIALIZED_NAME_FAILURES)
   @javax.annotation.Nullable
-  private Integer failures;
+  private Long failures;
 
   public static final String SERIALIZED_NAME_HELD_UNTIL = "held_until";
   @SerializedName(SERIALIZED_NAME_HELD_UNTIL)
   @javax.annotation.Nullable
-  private Integer heldUntil;
+  private Long heldUntil;
 
   public static final String SERIALIZED_NAME_PATHS = "paths";
   @SerializedName(SERIALIZED_NAME_PATHS)
   @javax.annotation.Nullable
-  private Integer paths;
+  private Long paths;
 
   public static final String SERIALIZED_NAME_REASON = "reason";
   @SerializedName(SERIALIZED_NAME_REASON)
@@ -83,7 +83,7 @@ public class TrafficCaller {
   public static final String SERIALIZED_NAME_REQUESTS = "requests";
   @SerializedName(SERIALIZED_NAME_REQUESTS)
   @javax.annotation.Nullable
-  private Integer requests;
+  private Long requests;
 
   public TrafficCaller() {
   }
@@ -126,7 +126,7 @@ public class TrafficCaller {
   }
 
 
-  public TrafficCaller failures(@javax.annotation.Nullable Integer failures) {
+  public TrafficCaller failures(@javax.annotation.Nullable Long failures) {
     this.failures = failures;
     return this;
   }
@@ -136,16 +136,16 @@ public class TrafficCaller {
    * @return failures
    */
   @javax.annotation.Nullable
-  public Integer getFailures() {
+  public Long getFailures() {
     return failures;
   }
 
-  public void setFailures(@javax.annotation.Nullable Integer failures) {
+  public void setFailures(@javax.annotation.Nullable Long failures) {
     this.failures = failures;
   }
 
 
-  public TrafficCaller heldUntil(@javax.annotation.Nullable Integer heldUntil) {
+  public TrafficCaller heldUntil(@javax.annotation.Nullable Long heldUntil) {
     this.heldUntil = heldUntil;
     return this;
   }
@@ -155,16 +155,16 @@ public class TrafficCaller {
    * @return heldUntil
    */
   @javax.annotation.Nullable
-  public Integer getHeldUntil() {
+  public Long getHeldUntil() {
     return heldUntil;
   }
 
-  public void setHeldUntil(@javax.annotation.Nullable Integer heldUntil) {
+  public void setHeldUntil(@javax.annotation.Nullable Long heldUntil) {
     this.heldUntil = heldUntil;
   }
 
 
-  public TrafficCaller paths(@javax.annotation.Nullable Integer paths) {
+  public TrafficCaller paths(@javax.annotation.Nullable Long paths) {
     this.paths = paths;
     return this;
   }
@@ -174,11 +174,11 @@ public class TrafficCaller {
    * @return paths
    */
   @javax.annotation.Nullable
-  public Integer getPaths() {
+  public Long getPaths() {
     return paths;
   }
 
-  public void setPaths(@javax.annotation.Nullable Integer paths) {
+  public void setPaths(@javax.annotation.Nullable Long paths) {
     this.paths = paths;
   }
 
@@ -202,7 +202,7 @@ public class TrafficCaller {
   }
 
 
-  public TrafficCaller requests(@javax.annotation.Nullable Integer requests) {
+  public TrafficCaller requests(@javax.annotation.Nullable Long requests) {
     this.requests = requests;
     return this;
   }
@@ -212,11 +212,11 @@ public class TrafficCaller {
    * @return requests
    */
   @javax.annotation.Nullable
-  public Integer getRequests() {
+  public Long getRequests() {
     return requests;
   }
 
-  public void setRequests(@javax.annotation.Nullable Integer requests) {
+  public void setRequests(@javax.annotation.Nullable Long requests) {
     this.requests = requests;
   }
 

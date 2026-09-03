@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -54,52 +53,52 @@ public class BoardTotals {
   public static final String SERIALIZED_NAME_COMPLETION_TOKENS = "completionTokens";
   @SerializedName(SERIALIZED_NAME_COMPLETION_TOKENS)
   @javax.annotation.Nullable
-  private Integer completionTokens;
+  private Long completionTokens;
 
   public static final String SERIALIZED_NAME_COST_CENTS = "costCents";
   @SerializedName(SERIALIZED_NAME_COST_CENTS)
   @javax.annotation.Nullable
-  private Integer costCents;
+  private Long costCents;
 
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
   @javax.annotation.Nullable
-  private Integer errors;
+  private Long errors;
 
   public static final String SERIALIZED_NAME_GENERATIONS = "generations";
   @SerializedName(SERIALIZED_NAME_GENERATIONS)
   @javax.annotation.Nullable
-  private Integer generations;
+  private Long generations;
 
   public static final String SERIALIZED_NAME_MODELS = "models";
   @SerializedName(SERIALIZED_NAME_MODELS)
   @javax.annotation.Nullable
-  private Integer models;
+  private Long models;
 
   public static final String SERIALIZED_NAME_PROMPT_TOKENS = "promptTokens";
   @SerializedName(SERIALIZED_NAME_PROMPT_TOKENS)
   @javax.annotation.Nullable
-  private Integer promptTokens;
+  private Long promptTokens;
 
   public static final String SERIALIZED_NAME_SUCCESS_RATE = "successRate";
   @SerializedName(SERIALIZED_NAME_SUCCESS_RATE)
   @javax.annotation.Nullable
-  private BigDecimal successRate;
+  private Double successRate;
 
   public static final String SERIALIZED_NAME_TOTAL_TOKENS = "totalTokens";
   @SerializedName(SERIALIZED_NAME_TOTAL_TOKENS)
   @javax.annotation.Nullable
-  private Integer totalTokens;
+  private Long totalTokens;
 
   public static final String SERIALIZED_NAME_USERS = "users";
   @SerializedName(SERIALIZED_NAME_USERS)
   @javax.annotation.Nullable
-  private Integer users;
+  private Long users;
 
   public BoardTotals() {
   }
 
-  public BoardTotals completionTokens(@javax.annotation.Nullable Integer completionTokens) {
+  public BoardTotals completionTokens(@javax.annotation.Nullable Long completionTokens) {
     this.completionTokens = completionTokens;
     return this;
   }
@@ -109,16 +108,16 @@ public class BoardTotals {
    * @return completionTokens
    */
   @javax.annotation.Nullable
-  public Integer getCompletionTokens() {
+  public Long getCompletionTokens() {
     return completionTokens;
   }
 
-  public void setCompletionTokens(@javax.annotation.Nullable Integer completionTokens) {
+  public void setCompletionTokens(@javax.annotation.Nullable Long completionTokens) {
     this.completionTokens = completionTokens;
   }
 
 
-  public BoardTotals costCents(@javax.annotation.Nullable Integer costCents) {
+  public BoardTotals costCents(@javax.annotation.Nullable Long costCents) {
     this.costCents = costCents;
     return this;
   }
@@ -128,16 +127,16 @@ public class BoardTotals {
    * @return costCents
    */
   @javax.annotation.Nullable
-  public Integer getCostCents() {
+  public Long getCostCents() {
     return costCents;
   }
 
-  public void setCostCents(@javax.annotation.Nullable Integer costCents) {
+  public void setCostCents(@javax.annotation.Nullable Long costCents) {
     this.costCents = costCents;
   }
 
 
-  public BoardTotals errors(@javax.annotation.Nullable Integer errors) {
+  public BoardTotals errors(@javax.annotation.Nullable Long errors) {
     this.errors = errors;
     return this;
   }
@@ -147,16 +146,16 @@ public class BoardTotals {
    * @return errors
    */
   @javax.annotation.Nullable
-  public Integer getErrors() {
+  public Long getErrors() {
     return errors;
   }
 
-  public void setErrors(@javax.annotation.Nullable Integer errors) {
+  public void setErrors(@javax.annotation.Nullable Long errors) {
     this.errors = errors;
   }
 
 
-  public BoardTotals generations(@javax.annotation.Nullable Integer generations) {
+  public BoardTotals generations(@javax.annotation.Nullable Long generations) {
     this.generations = generations;
     return this;
   }
@@ -166,16 +165,16 @@ public class BoardTotals {
    * @return generations
    */
   @javax.annotation.Nullable
-  public Integer getGenerations() {
+  public Long getGenerations() {
     return generations;
   }
 
-  public void setGenerations(@javax.annotation.Nullable Integer generations) {
+  public void setGenerations(@javax.annotation.Nullable Long generations) {
     this.generations = generations;
   }
 
 
-  public BoardTotals models(@javax.annotation.Nullable Integer models) {
+  public BoardTotals models(@javax.annotation.Nullable Long models) {
     this.models = models;
     return this;
   }
@@ -185,16 +184,16 @@ public class BoardTotals {
    * @return models
    */
   @javax.annotation.Nullable
-  public Integer getModels() {
+  public Long getModels() {
     return models;
   }
 
-  public void setModels(@javax.annotation.Nullable Integer models) {
+  public void setModels(@javax.annotation.Nullable Long models) {
     this.models = models;
   }
 
 
-  public BoardTotals promptTokens(@javax.annotation.Nullable Integer promptTokens) {
+  public BoardTotals promptTokens(@javax.annotation.Nullable Long promptTokens) {
     this.promptTokens = promptTokens;
     return this;
   }
@@ -204,16 +203,16 @@ public class BoardTotals {
    * @return promptTokens
    */
   @javax.annotation.Nullable
-  public Integer getPromptTokens() {
+  public Long getPromptTokens() {
     return promptTokens;
   }
 
-  public void setPromptTokens(@javax.annotation.Nullable Integer promptTokens) {
+  public void setPromptTokens(@javax.annotation.Nullable Long promptTokens) {
     this.promptTokens = promptTokens;
   }
 
 
-  public BoardTotals successRate(@javax.annotation.Nullable BigDecimal successRate) {
+  public BoardTotals successRate(@javax.annotation.Nullable Double successRate) {
     this.successRate = successRate;
     return this;
   }
@@ -223,16 +222,16 @@ public class BoardTotals {
    * @return successRate
    */
   @javax.annotation.Nullable
-  public BigDecimal getSuccessRate() {
+  public Double getSuccessRate() {
     return successRate;
   }
 
-  public void setSuccessRate(@javax.annotation.Nullable BigDecimal successRate) {
+  public void setSuccessRate(@javax.annotation.Nullable Double successRate) {
     this.successRate = successRate;
   }
 
 
-  public BoardTotals totalTokens(@javax.annotation.Nullable Integer totalTokens) {
+  public BoardTotals totalTokens(@javax.annotation.Nullable Long totalTokens) {
     this.totalTokens = totalTokens;
     return this;
   }
@@ -242,16 +241,16 @@ public class BoardTotals {
    * @return totalTokens
    */
   @javax.annotation.Nullable
-  public Integer getTotalTokens() {
+  public Long getTotalTokens() {
     return totalTokens;
   }
 
-  public void setTotalTokens(@javax.annotation.Nullable Integer totalTokens) {
+  public void setTotalTokens(@javax.annotation.Nullable Long totalTokens) {
     this.totalTokens = totalTokens;
   }
 
 
-  public BoardTotals users(@javax.annotation.Nullable Integer users) {
+  public BoardTotals users(@javax.annotation.Nullable Long users) {
     this.users = users;
     return this;
   }
@@ -261,11 +260,11 @@ public class BoardTotals {
    * @return users
    */
   @javax.annotation.Nullable
-  public Integer getUsers() {
+  public Long getUsers() {
     return users;
   }
 
-  public void setUsers(@javax.annotation.Nullable Integer users) {
+  public void setUsers(@javax.annotation.Nullable Long users) {
     this.users = users;
   }
 

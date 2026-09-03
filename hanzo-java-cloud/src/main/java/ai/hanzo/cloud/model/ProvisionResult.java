@@ -88,7 +88,7 @@ public class ProvisionResult {
   public static final String SERIALIZED_NAME_PORT = "port";
   @SerializedName(SERIALIZED_NAME_PORT)
   @javax.annotation.Nullable
-  private Integer port;
+  private Long port;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
@@ -236,7 +236,7 @@ public class ProvisionResult {
   }
 
 
-  public ProvisionResult port(@javax.annotation.Nullable Integer port) {
+  public ProvisionResult port(@javax.annotation.Nullable Long port) {
     this.port = port;
     return this;
   }
@@ -246,11 +246,11 @@ public class ProvisionResult {
    * @return port
    */
   @javax.annotation.Nullable
-  public Integer getPort() {
+  public Long getPort() {
     return port;
   }
 
-  public void setPort(@javax.annotation.Nullable Integer port) {
+  public void setPort(@javax.annotation.Nullable Long port) {
     this.port = port;
   }
 

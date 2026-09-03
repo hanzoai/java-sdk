@@ -53,7 +53,7 @@ public class ProviderRow {
   public static final String SERIALIZED_NAME_COST_CENTS = "costCents";
   @SerializedName(SERIALIZED_NAME_COST_CENTS)
   @javax.annotation.Nullable
-  private Integer costCents;
+  private Long costCents;
 
   public static final String SERIALIZED_NAME_PROVIDER = "provider";
   @SerializedName(SERIALIZED_NAME_PROVIDER)
@@ -63,17 +63,17 @@ public class ProviderRow {
   public static final String SERIALIZED_NAME_REQUESTS = "requests";
   @SerializedName(SERIALIZED_NAME_REQUESTS)
   @javax.annotation.Nullable
-  private Integer requests;
+  private Long requests;
 
   public static final String SERIALIZED_NAME_TOKENS = "tokens";
   @SerializedName(SERIALIZED_NAME_TOKENS)
   @javax.annotation.Nullable
-  private Integer tokens;
+  private Long tokens;
 
   public ProviderRow() {
   }
 
-  public ProviderRow costCents(@javax.annotation.Nullable Integer costCents) {
+  public ProviderRow costCents(@javax.annotation.Nullable Long costCents) {
     this.costCents = costCents;
     return this;
   }
@@ -83,11 +83,11 @@ public class ProviderRow {
    * @return costCents
    */
   @javax.annotation.Nullable
-  public Integer getCostCents() {
+  public Long getCostCents() {
     return costCents;
   }
 
-  public void setCostCents(@javax.annotation.Nullable Integer costCents) {
+  public void setCostCents(@javax.annotation.Nullable Long costCents) {
     this.costCents = costCents;
   }
 
@@ -111,7 +111,7 @@ public class ProviderRow {
   }
 
 
-  public ProviderRow requests(@javax.annotation.Nullable Integer requests) {
+  public ProviderRow requests(@javax.annotation.Nullable Long requests) {
     this.requests = requests;
     return this;
   }
@@ -121,16 +121,16 @@ public class ProviderRow {
    * @return requests
    */
   @javax.annotation.Nullable
-  public Integer getRequests() {
+  public Long getRequests() {
     return requests;
   }
 
-  public void setRequests(@javax.annotation.Nullable Integer requests) {
+  public void setRequests(@javax.annotation.Nullable Long requests) {
     this.requests = requests;
   }
 
 
-  public ProviderRow tokens(@javax.annotation.Nullable Integer tokens) {
+  public ProviderRow tokens(@javax.annotation.Nullable Long tokens) {
     this.tokens = tokens;
     return this;
   }
@@ -140,11 +140,11 @@ public class ProviderRow {
    * @return tokens
    */
   @javax.annotation.Nullable
-  public Integer getTokens() {
+  public Long getTokens() {
     return tokens;
   }
 
-  public void setTokens(@javax.annotation.Nullable Integer tokens) {
+  public void setTokens(@javax.annotation.Nullable Long tokens) {
     this.tokens = tokens;
   }
 

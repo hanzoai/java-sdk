@@ -21,7 +21,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -57,27 +56,27 @@ public class RiskTrial {
   public static final String SERIALIZED_NAME_ALERTED = "alerted";
   @SerializedName(SERIALIZED_NAME_ALERTED)
   @javax.annotation.Nullable
-  private Integer alerted;
+  private Long alerted;
 
   public static final String SERIALIZED_NAME_CURVE = "curve";
   @SerializedName(SERIALIZED_NAME_CURVE)
   @javax.annotation.Nullable
-  private List<BigDecimal> curve = new ArrayList<>();
+  private List<Double> curve = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_FIT = "fit";
   @SerializedName(SERIALIZED_NAME_FIT)
   @javax.annotation.Nullable
-  private BigDecimal fit;
+  private Double fit;
 
   public static final String SERIALIZED_NAME_LEARNED = "learned";
   @SerializedName(SERIALIZED_NAME_LEARNED)
   @javax.annotation.Nullable
-  private Integer learned;
+  private Long learned;
 
   public static final String SERIALIZED_NAME_REALISED = "realised";
   @SerializedName(SERIALIZED_NAME_REALISED)
   @javax.annotation.Nullable
-  private BigDecimal realised;
+  private Double realised;
 
   public static final String SERIALIZED_NAME_SATURATED = "saturated";
   @SerializedName(SERIALIZED_NAME_SATURATED)
@@ -87,12 +86,12 @@ public class RiskTrial {
   public static final String SERIALIZED_NAME_SCORED = "scored";
   @SerializedName(SERIALIZED_NAME_SCORED)
   @javax.annotation.Nullable
-  private Integer scored;
+  private Long scored;
 
   public static final String SERIALIZED_NAME_STATED = "stated";
   @SerializedName(SERIALIZED_NAME_STATED)
   @javax.annotation.Nullable
-  private BigDecimal stated;
+  private Double stated;
 
   public static final String SERIALIZED_NAME_TOPOLOGY = "topology";
   @SerializedName(SERIALIZED_NAME_TOPOLOGY)
@@ -107,7 +106,7 @@ public class RiskTrial {
   public RiskTrial() {
   }
 
-  public RiskTrial alerted(@javax.annotation.Nullable Integer alerted) {
+  public RiskTrial alerted(@javax.annotation.Nullable Long alerted) {
     this.alerted = alerted;
     return this;
   }
@@ -117,21 +116,21 @@ public class RiskTrial {
    * @return alerted
    */
   @javax.annotation.Nullable
-  public Integer getAlerted() {
+  public Long getAlerted() {
     return alerted;
   }
 
-  public void setAlerted(@javax.annotation.Nullable Integer alerted) {
+  public void setAlerted(@javax.annotation.Nullable Long alerted) {
     this.alerted = alerted;
   }
 
 
-  public RiskTrial curve(@javax.annotation.Nullable List<BigDecimal> curve) {
+  public RiskTrial curve(@javax.annotation.Nullable List<Double> curve) {
     this.curve = curve;
     return this;
   }
 
-  public RiskTrial addCurveItem(BigDecimal curveItem) {
+  public RiskTrial addCurveItem(Double curveItem) {
     if (this.curve == null) {
       this.curve = new ArrayList<>();
     }
@@ -144,16 +143,16 @@ public class RiskTrial {
    * @return curve
    */
   @javax.annotation.Nullable
-  public List<BigDecimal> getCurve() {
+  public List<Double> getCurve() {
     return curve;
   }
 
-  public void setCurve(@javax.annotation.Nullable List<BigDecimal> curve) {
+  public void setCurve(@javax.annotation.Nullable List<Double> curve) {
     this.curve = curve;
   }
 
 
-  public RiskTrial fit(@javax.annotation.Nullable BigDecimal fit) {
+  public RiskTrial fit(@javax.annotation.Nullable Double fit) {
     this.fit = fit;
     return this;
   }
@@ -163,16 +162,16 @@ public class RiskTrial {
    * @return fit
    */
   @javax.annotation.Nullable
-  public BigDecimal getFit() {
+  public Double getFit() {
     return fit;
   }
 
-  public void setFit(@javax.annotation.Nullable BigDecimal fit) {
+  public void setFit(@javax.annotation.Nullable Double fit) {
     this.fit = fit;
   }
 
 
-  public RiskTrial learned(@javax.annotation.Nullable Integer learned) {
+  public RiskTrial learned(@javax.annotation.Nullable Long learned) {
     this.learned = learned;
     return this;
   }
@@ -182,16 +181,16 @@ public class RiskTrial {
    * @return learned
    */
   @javax.annotation.Nullable
-  public Integer getLearned() {
+  public Long getLearned() {
     return learned;
   }
 
-  public void setLearned(@javax.annotation.Nullable Integer learned) {
+  public void setLearned(@javax.annotation.Nullable Long learned) {
     this.learned = learned;
   }
 
 
-  public RiskTrial realised(@javax.annotation.Nullable BigDecimal realised) {
+  public RiskTrial realised(@javax.annotation.Nullable Double realised) {
     this.realised = realised;
     return this;
   }
@@ -201,11 +200,11 @@ public class RiskTrial {
    * @return realised
    */
   @javax.annotation.Nullable
-  public BigDecimal getRealised() {
+  public Double getRealised() {
     return realised;
   }
 
-  public void setRealised(@javax.annotation.Nullable BigDecimal realised) {
+  public void setRealised(@javax.annotation.Nullable Double realised) {
     this.realised = realised;
   }
 
@@ -229,7 +228,7 @@ public class RiskTrial {
   }
 
 
-  public RiskTrial scored(@javax.annotation.Nullable Integer scored) {
+  public RiskTrial scored(@javax.annotation.Nullable Long scored) {
     this.scored = scored;
     return this;
   }
@@ -239,16 +238,16 @@ public class RiskTrial {
    * @return scored
    */
   @javax.annotation.Nullable
-  public Integer getScored() {
+  public Long getScored() {
     return scored;
   }
 
-  public void setScored(@javax.annotation.Nullable Integer scored) {
+  public void setScored(@javax.annotation.Nullable Long scored) {
     this.scored = scored;
   }
 
 
-  public RiskTrial stated(@javax.annotation.Nullable BigDecimal stated) {
+  public RiskTrial stated(@javax.annotation.Nullable Double stated) {
     this.stated = stated;
     return this;
   }
@@ -258,11 +257,11 @@ public class RiskTrial {
    * @return stated
    */
   @javax.annotation.Nullable
-  public BigDecimal getStated() {
+  public Double getStated() {
     return stated;
   }
 
-  public void setStated(@javax.annotation.Nullable BigDecimal stated) {
+  public void setStated(@javax.annotation.Nullable Double stated) {
     this.stated = stated;
   }
 

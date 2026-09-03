@@ -53,12 +53,12 @@ public class UsagePoint {
   public static final String SERIALIZED_NAME_REQUESTS = "requests";
   @SerializedName(SERIALIZED_NAME_REQUESTS)
   @javax.annotation.Nullable
-  private Integer requests;
+  private Long requests;
 
   public static final String SERIALIZED_NAME_SPEND_CENTS = "spendCents";
   @SerializedName(SERIALIZED_NAME_SPEND_CENTS)
   @javax.annotation.Nullable
-  private Integer spendCents;
+  private Long spendCents;
 
   public static final String SERIALIZED_NAME_T = "t";
   @SerializedName(SERIALIZED_NAME_T)
@@ -68,12 +68,12 @@ public class UsagePoint {
   public static final String SERIALIZED_NAME_TOKENS = "tokens";
   @SerializedName(SERIALIZED_NAME_TOKENS)
   @javax.annotation.Nullable
-  private Integer tokens;
+  private Long tokens;
 
   public UsagePoint() {
   }
 
-  public UsagePoint requests(@javax.annotation.Nullable Integer requests) {
+  public UsagePoint requests(@javax.annotation.Nullable Long requests) {
     this.requests = requests;
     return this;
   }
@@ -83,16 +83,16 @@ public class UsagePoint {
    * @return requests
    */
   @javax.annotation.Nullable
-  public Integer getRequests() {
+  public Long getRequests() {
     return requests;
   }
 
-  public void setRequests(@javax.annotation.Nullable Integer requests) {
+  public void setRequests(@javax.annotation.Nullable Long requests) {
     this.requests = requests;
   }
 
 
-  public UsagePoint spendCents(@javax.annotation.Nullable Integer spendCents) {
+  public UsagePoint spendCents(@javax.annotation.Nullable Long spendCents) {
     this.spendCents = spendCents;
     return this;
   }
@@ -102,11 +102,11 @@ public class UsagePoint {
    * @return spendCents
    */
   @javax.annotation.Nullable
-  public Integer getSpendCents() {
+  public Long getSpendCents() {
     return spendCents;
   }
 
-  public void setSpendCents(@javax.annotation.Nullable Integer spendCents) {
+  public void setSpendCents(@javax.annotation.Nullable Long spendCents) {
     this.spendCents = spendCents;
   }
 
@@ -130,7 +130,7 @@ public class UsagePoint {
   }
 
 
-  public UsagePoint tokens(@javax.annotation.Nullable Integer tokens) {
+  public UsagePoint tokens(@javax.annotation.Nullable Long tokens) {
     this.tokens = tokens;
     return this;
   }
@@ -140,11 +140,11 @@ public class UsagePoint {
    * @return tokens
    */
   @javax.annotation.Nullable
-  public Integer getTokens() {
+  public Long getTokens() {
     return tokens;
   }
 
-  public void setTokens(@javax.annotation.Nullable Integer tokens) {
+  public void setTokens(@javax.annotation.Nullable Long tokens) {
     this.tokens = tokens;
   }
 

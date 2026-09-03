@@ -89,7 +89,7 @@ public class TranslateApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getTranslateMemoryCall(@javax.annotation.Nullable String target, @javax.annotation.Nullable String state, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getTranslateMemoryCall(@javax.annotation.Nullable String target, @javax.annotation.Nullable String state, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -146,7 +146,7 @@ public class TranslateApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getTranslateMemoryValidateBeforeCall(@javax.annotation.Nullable String target, @javax.annotation.Nullable String state, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getTranslateMemoryValidateBeforeCall(@javax.annotation.Nullable String target, @javax.annotation.Nullable String state, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         return getTranslateMemoryCall(target, state, limit, _callback);
 
     }
@@ -166,7 +166,7 @@ public class TranslateApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public MemoryPage getTranslateMemory(@javax.annotation.Nullable String target, @javax.annotation.Nullable String state, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public MemoryPage getTranslateMemory(@javax.annotation.Nullable String target, @javax.annotation.Nullable String state, @javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<MemoryPage> localVarResp = getTranslateMemoryWithHttpInfo(target, state, limit);
         return localVarResp.getData();
     }
@@ -186,7 +186,7 @@ public class TranslateApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<MemoryPage> getTranslateMemoryWithHttpInfo(@javax.annotation.Nullable String target, @javax.annotation.Nullable String state, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<MemoryPage> getTranslateMemoryWithHttpInfo(@javax.annotation.Nullable String target, @javax.annotation.Nullable String state, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getTranslateMemoryValidateBeforeCall(target, state, limit, null);
         Type localVarReturnType = new TypeToken<MemoryPage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -208,7 +208,7 @@ public class TranslateApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getTranslateMemoryAsync(@javax.annotation.Nullable String target, @javax.annotation.Nullable String state, @javax.annotation.Nullable Integer limit, final ApiCallback<MemoryPage> _callback) throws ApiException {
+    public okhttp3.Call getTranslateMemoryAsync(@javax.annotation.Nullable String target, @javax.annotation.Nullable String state, @javax.annotation.Nullable Long limit, final ApiCallback<MemoryPage> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getTranslateMemoryValidateBeforeCall(target, state, limit, _callback);
         Type localVarReturnType = new TypeToken<MemoryPage>(){}.getType();

@@ -54,7 +54,7 @@ public class RenewResult {
   public static final String SERIALIZED_NAME_PAID_CENTS = "paidCents";
   @SerializedName(SERIALIZED_NAME_PAID_CENTS)
   @javax.annotation.Nullable
-  private Integer paidCents;
+  private Long paidCents;
 
   public static final String SERIALIZED_NAME_RECORD = "record";
   @SerializedName(SERIALIZED_NAME_RECORD)
@@ -64,7 +64,7 @@ public class RenewResult {
   public RenewResult() {
   }
 
-  public RenewResult paidCents(@javax.annotation.Nullable Integer paidCents) {
+  public RenewResult paidCents(@javax.annotation.Nullable Long paidCents) {
     this.paidCents = paidCents;
     return this;
   }
@@ -74,11 +74,11 @@ public class RenewResult {
    * @return paidCents
    */
   @javax.annotation.Nullable
-  public Integer getPaidCents() {
+  public Long getPaidCents() {
     return paidCents;
   }
 
-  public void setPaidCents(@javax.annotation.Nullable Integer paidCents) {
+  public void setPaidCents(@javax.annotation.Nullable Long paidCents) {
     this.paidCents = paidCents;
   }
 

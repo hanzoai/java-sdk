@@ -54,7 +54,7 @@ public class ArgoClusterInfo {
   public static final String SERIALIZED_NAME_APPLICATIONS_COUNT = "applicationsCount";
   @SerializedName(SERIALIZED_NAME_APPLICATIONS_COUNT)
   @javax.annotation.Nullable
-  private Integer applicationsCount;
+  private Long applicationsCount;
 
   public static final String SERIALIZED_NAME_CONNECTION_STATE = "connectionState";
   @SerializedName(SERIALIZED_NAME_CONNECTION_STATE)
@@ -69,7 +69,7 @@ public class ArgoClusterInfo {
   public ArgoClusterInfo() {
   }
 
-  public ArgoClusterInfo applicationsCount(@javax.annotation.Nullable Integer applicationsCount) {
+  public ArgoClusterInfo applicationsCount(@javax.annotation.Nullable Long applicationsCount) {
     this.applicationsCount = applicationsCount;
     return this;
   }
@@ -79,11 +79,11 @@ public class ArgoClusterInfo {
    * @return applicationsCount
    */
   @javax.annotation.Nullable
-  public Integer getApplicationsCount() {
+  public Long getApplicationsCount() {
     return applicationsCount;
   }
 
-  public void setApplicationsCount(@javax.annotation.Nullable Integer applicationsCount) {
+  public void setApplicationsCount(@javax.annotation.Nullable Long applicationsCount) {
     this.applicationsCount = applicationsCount;
   }
 

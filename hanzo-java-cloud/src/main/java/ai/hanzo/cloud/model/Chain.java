@@ -53,7 +53,7 @@ public class Chain {
   public static final String SERIALIZED_NAME_CHAIN_ID = "chainId";
   @SerializedName(SERIALIZED_NAME_CHAIN_ID)
   @javax.annotation.Nullable
-  private Integer chainId;
+  private Long chainId;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -68,7 +68,7 @@ public class Chain {
   public Chain() {
   }
 
-  public Chain chainId(@javax.annotation.Nullable Integer chainId) {
+  public Chain chainId(@javax.annotation.Nullable Long chainId) {
     this.chainId = chainId;
     return this;
   }
@@ -78,11 +78,11 @@ public class Chain {
    * @return chainId
    */
   @javax.annotation.Nullable
-  public Integer getChainId() {
+  public Long getChainId() {
     return chainId;
   }
 
-  public void setChainId(@javax.annotation.Nullable Integer chainId) {
+  public void setChainId(@javax.annotation.Nullable Long chainId) {
     this.chainId = chainId;
   }
 

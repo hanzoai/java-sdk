@@ -53,12 +53,12 @@ public class RiskSearchRun {
   public static final String SERIALIZED_NAME_CANDIDATES = "candidates";
   @SerializedName(SERIALIZED_NAME_CANDIDATES)
   @javax.annotation.Nullable
-  private Integer candidates;
+  private Long candidates;
 
   public static final String SERIALIZED_NAME_EVENTS = "events";
   @SerializedName(SERIALIZED_NAME_EVENTS)
   @javax.annotation.Nullable
-  private Integer events;
+  private Long events;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -68,7 +68,7 @@ public class RiskSearchRun {
   public RiskSearchRun() {
   }
 
-  public RiskSearchRun candidates(@javax.annotation.Nullable Integer candidates) {
+  public RiskSearchRun candidates(@javax.annotation.Nullable Long candidates) {
     this.candidates = candidates;
     return this;
   }
@@ -78,16 +78,16 @@ public class RiskSearchRun {
    * @return candidates
    */
   @javax.annotation.Nullable
-  public Integer getCandidates() {
+  public Long getCandidates() {
     return candidates;
   }
 
-  public void setCandidates(@javax.annotation.Nullable Integer candidates) {
+  public void setCandidates(@javax.annotation.Nullable Long candidates) {
     this.candidates = candidates;
   }
 
 
-  public RiskSearchRun events(@javax.annotation.Nullable Integer events) {
+  public RiskSearchRun events(@javax.annotation.Nullable Long events) {
     this.events = events;
     return this;
   }
@@ -97,11 +97,11 @@ public class RiskSearchRun {
    * @return events
    */
   @javax.annotation.Nullable
-  public Integer getEvents() {
+  public Long getEvents() {
     return events;
   }
 
-  public void setEvents(@javax.annotation.Nullable Integer events) {
+  public void setEvents(@javax.annotation.Nullable Long events) {
     this.events = events;
   }
 

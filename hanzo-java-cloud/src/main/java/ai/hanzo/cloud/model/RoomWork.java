@@ -55,7 +55,7 @@ public class RoomWork {
   public static final String SERIALIZED_NAME_OPEN = "open";
   @SerializedName(SERIALIZED_NAME_OPEN)
   @javax.annotation.Nullable
-  private Integer open;
+  private Long open;
 
   public static final String SERIALIZED_NAME_ROOM = "room";
   @SerializedName(SERIALIZED_NAME_ROOM)
@@ -65,22 +65,22 @@ public class RoomWork {
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
   @javax.annotation.Nullable
-  private Map<String, Integer> status = new HashMap<>();
+  private Map<String, Long> status = new HashMap<>();
 
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)
   @javax.annotation.Nullable
-  private Integer total;
+  private Long total;
 
   public static final String SERIALIZED_NAME_UPDATED = "updated";
   @SerializedName(SERIALIZED_NAME_UPDATED)
   @javax.annotation.Nullable
-  private Integer updated;
+  private Long updated;
 
   public RoomWork() {
   }
 
-  public RoomWork open(@javax.annotation.Nullable Integer open) {
+  public RoomWork open(@javax.annotation.Nullable Long open) {
     this.open = open;
     return this;
   }
@@ -90,11 +90,11 @@ public class RoomWork {
    * @return open
    */
   @javax.annotation.Nullable
-  public Integer getOpen() {
+  public Long getOpen() {
     return open;
   }
 
-  public void setOpen(@javax.annotation.Nullable Integer open) {
+  public void setOpen(@javax.annotation.Nullable Long open) {
     this.open = open;
   }
 
@@ -118,12 +118,12 @@ public class RoomWork {
   }
 
 
-  public RoomWork status(@javax.annotation.Nullable Map<String, Integer> status) {
+  public RoomWork status(@javax.annotation.Nullable Map<String, Long> status) {
     this.status = status;
     return this;
   }
 
-  public RoomWork putStatusItem(String key, Integer statusItem) {
+  public RoomWork putStatusItem(String key, Long statusItem) {
     if (this.status == null) {
       this.status = new HashMap<>();
     }
@@ -136,16 +136,16 @@ public class RoomWork {
    * @return status
    */
   @javax.annotation.Nullable
-  public Map<String, Integer> getStatus() {
+  public Map<String, Long> getStatus() {
     return status;
   }
 
-  public void setStatus(@javax.annotation.Nullable Map<String, Integer> status) {
+  public void setStatus(@javax.annotation.Nullable Map<String, Long> status) {
     this.status = status;
   }
 
 
-  public RoomWork total(@javax.annotation.Nullable Integer total) {
+  public RoomWork total(@javax.annotation.Nullable Long total) {
     this.total = total;
     return this;
   }
@@ -155,16 +155,16 @@ public class RoomWork {
    * @return total
    */
   @javax.annotation.Nullable
-  public Integer getTotal() {
+  public Long getTotal() {
     return total;
   }
 
-  public void setTotal(@javax.annotation.Nullable Integer total) {
+  public void setTotal(@javax.annotation.Nullable Long total) {
     this.total = total;
   }
 
 
-  public RoomWork updated(@javax.annotation.Nullable Integer updated) {
+  public RoomWork updated(@javax.annotation.Nullable Long updated) {
     this.updated = updated;
     return this;
   }
@@ -174,11 +174,11 @@ public class RoomWork {
    * @return updated
    */
   @javax.annotation.Nullable
-  public Integer getUpdated() {
+  public Long getUpdated() {
     return updated;
   }
 
-  public void setUpdated(@javax.annotation.Nullable Integer updated) {
+  public void setUpdated(@javax.annotation.Nullable Long updated) {
     this.updated = updated;
   }
 

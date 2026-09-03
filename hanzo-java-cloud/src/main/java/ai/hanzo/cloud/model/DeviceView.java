@@ -61,7 +61,7 @@ public class DeviceView {
   public static final String SERIALIZED_NAME_ACTIVE_SESSIONS = "activeSessions";
   @SerializedName(SERIALIZED_NAME_ACTIVE_SESSIONS)
   @javax.annotation.Nullable
-  private Integer activeSessions;
+  private Long activeSessions;
 
   public static final String SERIALIZED_NAME_HOST = "host";
   @SerializedName(SERIALIZED_NAME_HOST)
@@ -113,7 +113,7 @@ public class DeviceView {
   }
 
 
-  public DeviceView activeSessions(@javax.annotation.Nullable Integer activeSessions) {
+  public DeviceView activeSessions(@javax.annotation.Nullable Long activeSessions) {
     this.activeSessions = activeSessions;
     return this;
   }
@@ -123,11 +123,11 @@ public class DeviceView {
    * @return activeSessions
    */
   @javax.annotation.Nullable
-  public Integer getActiveSessions() {
+  public Long getActiveSessions() {
     return activeSessions;
   }
 
-  public void setActiveSessions(@javax.annotation.Nullable Integer activeSessions) {
+  public void setActiveSessions(@javax.annotation.Nullable Long activeSessions) {
     this.activeSessions = activeSessions;
   }
 

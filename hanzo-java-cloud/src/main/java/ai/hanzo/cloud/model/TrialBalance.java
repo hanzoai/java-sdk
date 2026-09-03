@@ -76,12 +76,12 @@ public class TrialBalance {
   public static final String SERIALIZED_NAME_TOTAL_CREDIT = "totalCredit";
   @SerializedName(SERIALIZED_NAME_TOTAL_CREDIT)
   @javax.annotation.Nullable
-  private Integer totalCredit;
+  private Long totalCredit;
 
   public static final String SERIALIZED_NAME_TOTAL_DEBIT = "totalDebit";
   @SerializedName(SERIALIZED_NAME_TOTAL_DEBIT)
   @javax.annotation.Nullable
-  private Integer totalDebit;
+  private Long totalDebit;
 
   public TrialBalance() {
   }
@@ -170,7 +170,7 @@ public class TrialBalance {
   }
 
 
-  public TrialBalance totalCredit(@javax.annotation.Nullable Integer totalCredit) {
+  public TrialBalance totalCredit(@javax.annotation.Nullable Long totalCredit) {
     this.totalCredit = totalCredit;
     return this;
   }
@@ -180,16 +180,16 @@ public class TrialBalance {
    * @return totalCredit
    */
   @javax.annotation.Nullable
-  public Integer getTotalCredit() {
+  public Long getTotalCredit() {
     return totalCredit;
   }
 
-  public void setTotalCredit(@javax.annotation.Nullable Integer totalCredit) {
+  public void setTotalCredit(@javax.annotation.Nullable Long totalCredit) {
     this.totalCredit = totalCredit;
   }
 
 
-  public TrialBalance totalDebit(@javax.annotation.Nullable Integer totalDebit) {
+  public TrialBalance totalDebit(@javax.annotation.Nullable Long totalDebit) {
     this.totalDebit = totalDebit;
     return this;
   }
@@ -199,11 +199,11 @@ public class TrialBalance {
    * @return totalDebit
    */
   @javax.annotation.Nullable
-  public Integer getTotalDebit() {
+  public Long getTotalDebit() {
     return totalDebit;
   }
 
-  public void setTotalDebit(@javax.annotation.Nullable Integer totalDebit) {
+  public void setTotalDebit(@javax.annotation.Nullable Long totalDebit) {
     this.totalDebit = totalDebit;
   }
 

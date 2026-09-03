@@ -63,7 +63,7 @@ public class Founder {
   public static final String SERIALIZED_NAME_EQUITY_BPS = "equityBps";
   @SerializedName(SERIALIZED_NAME_EQUITY_BPS)
   @javax.annotation.Nullable
-  private Integer equityBps;
+  private Long equityBps;
 
   public static final String SERIALIZED_NAME_KYC_REF = "kycRef";
   @SerializedName(SERIALIZED_NAME_KYC_REF)
@@ -121,7 +121,7 @@ public class Founder {
   }
 
 
-  public Founder equityBps(@javax.annotation.Nullable Integer equityBps) {
+  public Founder equityBps(@javax.annotation.Nullable Long equityBps) {
     this.equityBps = equityBps;
     return this;
   }
@@ -131,11 +131,11 @@ public class Founder {
    * @return equityBps
    */
   @javax.annotation.Nullable
-  public Integer getEquityBps() {
+  public Long getEquityBps() {
     return equityBps;
   }
 
-  public void setEquityBps(@javax.annotation.Nullable Integer equityBps) {
+  public void setEquityBps(@javax.annotation.Nullable Long equityBps) {
     this.equityBps = equityBps;
   }
 

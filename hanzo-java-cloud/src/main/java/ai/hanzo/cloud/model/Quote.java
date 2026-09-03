@@ -53,7 +53,7 @@ public class Quote {
   public static final String SERIALIZED_NAME_CHARGE_CENTS = "chargeCents";
   @SerializedName(SERIALIZED_NAME_CHARGE_CENTS)
   @javax.annotation.Nullable
-  private Integer chargeCents;
+  private Long chargeCents;
 
   public static final String SERIALIZED_NAME_CODE = "code";
   @SerializedName(SERIALIZED_NAME_CODE)
@@ -63,7 +63,7 @@ public class Quote {
   public static final String SERIALIZED_NAME_DISCOUNT_CENTS = "discountCents";
   @SerializedName(SERIALIZED_NAME_DISCOUNT_CENTS)
   @javax.annotation.Nullable
-  private Integer discountCents;
+  private Long discountCents;
 
   public static final String SERIALIZED_NAME_ELIGIBLE = "eligible";
   @SerializedName(SERIALIZED_NAME_ELIGIBLE)
@@ -73,7 +73,7 @@ public class Quote {
   public static final String SERIALIZED_NAME_LIST_CENTS = "listCents";
   @SerializedName(SERIALIZED_NAME_LIST_CENTS)
   @javax.annotation.Nullable
-  private Integer listCents;
+  private Long listCents;
 
   public static final String SERIALIZED_NAME_PLAN = "plan";
   @SerializedName(SERIALIZED_NAME_PLAN)
@@ -88,17 +88,17 @@ public class Quote {
   public static final String SERIALIZED_NAME_REMAINING = "remaining";
   @SerializedName(SERIALIZED_NAME_REMAINING)
   @javax.annotation.Nullable
-  private Integer remaining;
+  private Long remaining;
 
   public static final String SERIALIZED_NAME_SEATS = "seats";
   @SerializedName(SERIALIZED_NAME_SEATS)
   @javax.annotation.Nullable
-  private Integer seats;
+  private Long seats;
 
   public Quote() {
   }
 
-  public Quote chargeCents(@javax.annotation.Nullable Integer chargeCents) {
+  public Quote chargeCents(@javax.annotation.Nullable Long chargeCents) {
     this.chargeCents = chargeCents;
     return this;
   }
@@ -108,11 +108,11 @@ public class Quote {
    * @return chargeCents
    */
   @javax.annotation.Nullable
-  public Integer getChargeCents() {
+  public Long getChargeCents() {
     return chargeCents;
   }
 
-  public void setChargeCents(@javax.annotation.Nullable Integer chargeCents) {
+  public void setChargeCents(@javax.annotation.Nullable Long chargeCents) {
     this.chargeCents = chargeCents;
   }
 
@@ -136,7 +136,7 @@ public class Quote {
   }
 
 
-  public Quote discountCents(@javax.annotation.Nullable Integer discountCents) {
+  public Quote discountCents(@javax.annotation.Nullable Long discountCents) {
     this.discountCents = discountCents;
     return this;
   }
@@ -146,11 +146,11 @@ public class Quote {
    * @return discountCents
    */
   @javax.annotation.Nullable
-  public Integer getDiscountCents() {
+  public Long getDiscountCents() {
     return discountCents;
   }
 
-  public void setDiscountCents(@javax.annotation.Nullable Integer discountCents) {
+  public void setDiscountCents(@javax.annotation.Nullable Long discountCents) {
     this.discountCents = discountCents;
   }
 
@@ -174,7 +174,7 @@ public class Quote {
   }
 
 
-  public Quote listCents(@javax.annotation.Nullable Integer listCents) {
+  public Quote listCents(@javax.annotation.Nullable Long listCents) {
     this.listCents = listCents;
     return this;
   }
@@ -184,11 +184,11 @@ public class Quote {
    * @return listCents
    */
   @javax.annotation.Nullable
-  public Integer getListCents() {
+  public Long getListCents() {
     return listCents;
   }
 
-  public void setListCents(@javax.annotation.Nullable Integer listCents) {
+  public void setListCents(@javax.annotation.Nullable Long listCents) {
     this.listCents = listCents;
   }
 
@@ -231,7 +231,7 @@ public class Quote {
   }
 
 
-  public Quote remaining(@javax.annotation.Nullable Integer remaining) {
+  public Quote remaining(@javax.annotation.Nullable Long remaining) {
     this.remaining = remaining;
     return this;
   }
@@ -241,16 +241,16 @@ public class Quote {
    * @return remaining
    */
   @javax.annotation.Nullable
-  public Integer getRemaining() {
+  public Long getRemaining() {
     return remaining;
   }
 
-  public void setRemaining(@javax.annotation.Nullable Integer remaining) {
+  public void setRemaining(@javax.annotation.Nullable Long remaining) {
     this.remaining = remaining;
   }
 
 
-  public Quote seats(@javax.annotation.Nullable Integer seats) {
+  public Quote seats(@javax.annotation.Nullable Long seats) {
     this.seats = seats;
     return this;
   }
@@ -260,11 +260,11 @@ public class Quote {
    * @return seats
    */
   @javax.annotation.Nullable
-  public Integer getSeats() {
+  public Long getSeats() {
     return seats;
   }
 
-  public void setSeats(@javax.annotation.Nullable Integer seats) {
+  public void setSeats(@javax.annotation.Nullable Long seats) {
     this.seats = seats;
   }
 

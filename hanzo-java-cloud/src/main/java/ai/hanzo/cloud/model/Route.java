@@ -75,7 +75,7 @@ public class Route {
   public static final String SERIALIZED_NAME_PRIORITY = "priority";
   @SerializedName(SERIALIZED_NAME_PRIORITY)
   @javax.annotation.Nullable
-  private Integer priority;
+  private Long priority;
 
   public static final String SERIALIZED_NAME_SERVICE = "service";
   @SerializedName(SERIALIZED_NAME_SERVICE)
@@ -174,7 +174,7 @@ public class Route {
   }
 
 
-  public Route priority(@javax.annotation.Nullable Integer priority) {
+  public Route priority(@javax.annotation.Nullable Long priority) {
     this.priority = priority;
     return this;
   }
@@ -184,11 +184,11 @@ public class Route {
    * @return priority
    */
   @javax.annotation.Nullable
-  public Integer getPriority() {
+  public Long getPriority() {
     return priority;
   }
 
-  public void setPriority(@javax.annotation.Nullable Integer priority) {
+  public void setPriority(@javax.annotation.Nullable Long priority) {
     this.priority = priority;
   }
 

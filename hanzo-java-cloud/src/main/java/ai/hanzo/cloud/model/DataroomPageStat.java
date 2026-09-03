@@ -53,27 +53,27 @@ public class DataroomPageStat {
   public static final String SERIALIZED_NAME_AVG_DURATION = "avgDuration";
   @SerializedName(SERIALIZED_NAME_AVG_DURATION)
   @javax.annotation.Nullable
-  private Integer avgDuration;
+  private Long avgDuration;
 
   public static final String SERIALIZED_NAME_PAGE_NUMBER = "pageNumber";
   @SerializedName(SERIALIZED_NAME_PAGE_NUMBER)
   @javax.annotation.Nullable
-  private Integer pageNumber;
+  private Long pageNumber;
 
   public static final String SERIALIZED_NAME_TOTAL_DURATION = "totalDuration";
   @SerializedName(SERIALIZED_NAME_TOTAL_DURATION)
   @javax.annotation.Nullable
-  private Integer totalDuration;
+  private Long totalDuration;
 
   public static final String SERIALIZED_NAME_VIEWS = "views";
   @SerializedName(SERIALIZED_NAME_VIEWS)
   @javax.annotation.Nullable
-  private Integer views;
+  private Long views;
 
   public DataroomPageStat() {
   }
 
-  public DataroomPageStat avgDuration(@javax.annotation.Nullable Integer avgDuration) {
+  public DataroomPageStat avgDuration(@javax.annotation.Nullable Long avgDuration) {
     this.avgDuration = avgDuration;
     return this;
   }
@@ -83,16 +83,16 @@ public class DataroomPageStat {
    * @return avgDuration
    */
   @javax.annotation.Nullable
-  public Integer getAvgDuration() {
+  public Long getAvgDuration() {
     return avgDuration;
   }
 
-  public void setAvgDuration(@javax.annotation.Nullable Integer avgDuration) {
+  public void setAvgDuration(@javax.annotation.Nullable Long avgDuration) {
     this.avgDuration = avgDuration;
   }
 
 
-  public DataroomPageStat pageNumber(@javax.annotation.Nullable Integer pageNumber) {
+  public DataroomPageStat pageNumber(@javax.annotation.Nullable Long pageNumber) {
     this.pageNumber = pageNumber;
     return this;
   }
@@ -102,16 +102,16 @@ public class DataroomPageStat {
    * @return pageNumber
    */
   @javax.annotation.Nullable
-  public Integer getPageNumber() {
+  public Long getPageNumber() {
     return pageNumber;
   }
 
-  public void setPageNumber(@javax.annotation.Nullable Integer pageNumber) {
+  public void setPageNumber(@javax.annotation.Nullable Long pageNumber) {
     this.pageNumber = pageNumber;
   }
 
 
-  public DataroomPageStat totalDuration(@javax.annotation.Nullable Integer totalDuration) {
+  public DataroomPageStat totalDuration(@javax.annotation.Nullable Long totalDuration) {
     this.totalDuration = totalDuration;
     return this;
   }
@@ -121,16 +121,16 @@ public class DataroomPageStat {
    * @return totalDuration
    */
   @javax.annotation.Nullable
-  public Integer getTotalDuration() {
+  public Long getTotalDuration() {
     return totalDuration;
   }
 
-  public void setTotalDuration(@javax.annotation.Nullable Integer totalDuration) {
+  public void setTotalDuration(@javax.annotation.Nullable Long totalDuration) {
     this.totalDuration = totalDuration;
   }
 
 
-  public DataroomPageStat views(@javax.annotation.Nullable Integer views) {
+  public DataroomPageStat views(@javax.annotation.Nullable Long views) {
     this.views = views;
     return this;
   }
@@ -140,11 +140,11 @@ public class DataroomPageStat {
    * @return views
    */
   @javax.annotation.Nullable
-  public Integer getViews() {
+  public Long getViews() {
     return views;
   }
 
-  public void setViews(@javax.annotation.Nullable Integer views) {
+  public void setViews(@javax.annotation.Nullable Long views) {
     this.views = views;
   }
 

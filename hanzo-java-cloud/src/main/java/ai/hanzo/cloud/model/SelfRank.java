@@ -53,7 +53,7 @@ public class SelfRank {
   public static final String SERIALIZED_NAME_COST_CENTS = "costCents";
   @SerializedName(SERIALIZED_NAME_COST_CENTS)
   @javax.annotation.Nullable
-  private Integer costCents;
+  private Long costCents;
 
   public static final String SERIALIZED_NAME_HANDLE = "handle";
   @SerializedName(SERIALIZED_NAME_HANDLE)
@@ -68,17 +68,17 @@ public class SelfRank {
   public static final String SERIALIZED_NAME_METRIC = "metric";
   @SerializedName(SERIALIZED_NAME_METRIC)
   @javax.annotation.Nullable
-  private Integer metric;
+  private Long metric;
 
   public static final String SERIALIZED_NAME_OF_TOTAL = "ofTotal";
   @SerializedName(SERIALIZED_NAME_OF_TOTAL)
   @javax.annotation.Nullable
-  private Integer ofTotal;
+  private Long ofTotal;
 
   public static final String SERIALIZED_NAME_RANK = "rank";
   @SerializedName(SERIALIZED_NAME_RANK)
   @javax.annotation.Nullable
-  private Integer rank;
+  private Long rank;
 
   public static final String SERIALIZED_NAME_RANKED = "ranked";
   @SerializedName(SERIALIZED_NAME_RANKED)
@@ -88,17 +88,17 @@ public class SelfRank {
   public static final String SERIALIZED_NAME_REQUESTS = "requests";
   @SerializedName(SERIALIZED_NAME_REQUESTS)
   @javax.annotation.Nullable
-  private Integer requests;
+  private Long requests;
 
   public static final String SERIALIZED_NAME_TOKENS = "tokens";
   @SerializedName(SERIALIZED_NAME_TOKENS)
   @javax.annotation.Nullable
-  private Integer tokens;
+  private Long tokens;
 
   public SelfRank() {
   }
 
-  public SelfRank costCents(@javax.annotation.Nullable Integer costCents) {
+  public SelfRank costCents(@javax.annotation.Nullable Long costCents) {
     this.costCents = costCents;
     return this;
   }
@@ -108,11 +108,11 @@ public class SelfRank {
    * @return costCents
    */
   @javax.annotation.Nullable
-  public Integer getCostCents() {
+  public Long getCostCents() {
     return costCents;
   }
 
-  public void setCostCents(@javax.annotation.Nullable Integer costCents) {
+  public void setCostCents(@javax.annotation.Nullable Long costCents) {
     this.costCents = costCents;
   }
 
@@ -155,7 +155,7 @@ public class SelfRank {
   }
 
 
-  public SelfRank metric(@javax.annotation.Nullable Integer metric) {
+  public SelfRank metric(@javax.annotation.Nullable Long metric) {
     this.metric = metric;
     return this;
   }
@@ -165,16 +165,16 @@ public class SelfRank {
    * @return metric
    */
   @javax.annotation.Nullable
-  public Integer getMetric() {
+  public Long getMetric() {
     return metric;
   }
 
-  public void setMetric(@javax.annotation.Nullable Integer metric) {
+  public void setMetric(@javax.annotation.Nullable Long metric) {
     this.metric = metric;
   }
 
 
-  public SelfRank ofTotal(@javax.annotation.Nullable Integer ofTotal) {
+  public SelfRank ofTotal(@javax.annotation.Nullable Long ofTotal) {
     this.ofTotal = ofTotal;
     return this;
   }
@@ -184,16 +184,16 @@ public class SelfRank {
    * @return ofTotal
    */
   @javax.annotation.Nullable
-  public Integer getOfTotal() {
+  public Long getOfTotal() {
     return ofTotal;
   }
 
-  public void setOfTotal(@javax.annotation.Nullable Integer ofTotal) {
+  public void setOfTotal(@javax.annotation.Nullable Long ofTotal) {
     this.ofTotal = ofTotal;
   }
 
 
-  public SelfRank rank(@javax.annotation.Nullable Integer rank) {
+  public SelfRank rank(@javax.annotation.Nullable Long rank) {
     this.rank = rank;
     return this;
   }
@@ -203,11 +203,11 @@ public class SelfRank {
    * @return rank
    */
   @javax.annotation.Nullable
-  public Integer getRank() {
+  public Long getRank() {
     return rank;
   }
 
-  public void setRank(@javax.annotation.Nullable Integer rank) {
+  public void setRank(@javax.annotation.Nullable Long rank) {
     this.rank = rank;
   }
 
@@ -231,7 +231,7 @@ public class SelfRank {
   }
 
 
-  public SelfRank requests(@javax.annotation.Nullable Integer requests) {
+  public SelfRank requests(@javax.annotation.Nullable Long requests) {
     this.requests = requests;
     return this;
   }
@@ -241,16 +241,16 @@ public class SelfRank {
    * @return requests
    */
   @javax.annotation.Nullable
-  public Integer getRequests() {
+  public Long getRequests() {
     return requests;
   }
 
-  public void setRequests(@javax.annotation.Nullable Integer requests) {
+  public void setRequests(@javax.annotation.Nullable Long requests) {
     this.requests = requests;
   }
 
 
-  public SelfRank tokens(@javax.annotation.Nullable Integer tokens) {
+  public SelfRank tokens(@javax.annotation.Nullable Long tokens) {
     this.tokens = tokens;
     return this;
   }
@@ -260,11 +260,11 @@ public class SelfRank {
    * @return tokens
    */
   @javax.annotation.Nullable
-  public Integer getTokens() {
+  public Long getTokens() {
     return tokens;
   }
 
-  public void setTokens(@javax.annotation.Nullable Integer tokens) {
+  public void setTokens(@javax.annotation.Nullable Long tokens) {
     this.tokens = tokens;
   }
 

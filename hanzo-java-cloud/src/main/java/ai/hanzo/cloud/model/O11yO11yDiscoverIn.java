@@ -71,7 +71,7 @@ public class O11yO11yDiscoverIn {
   public static final String SERIALIZED_NAME_LIMIT = "limit";
   @SerializedName(SERIALIZED_NAME_LIMIT)
   @javax.annotation.Nullable
-  private Integer limit;
+  private Long limit;
 
   public static final String SERIALIZED_NAME_ORDER_BY = "orderBy";
   @SerializedName(SERIALIZED_NAME_ORDER_BY)
@@ -177,7 +177,7 @@ public class O11yO11yDiscoverIn {
   }
 
 
-  public O11yO11yDiscoverIn limit(@javax.annotation.Nullable Integer limit) {
+  public O11yO11yDiscoverIn limit(@javax.annotation.Nullable Long limit) {
     this.limit = limit;
     return this;
   }
@@ -187,11 +187,11 @@ public class O11yO11yDiscoverIn {
    * @return limit
    */
   @javax.annotation.Nullable
-  public Integer getLimit() {
+  public Long getLimit() {
     return limit;
   }
 
-  public void setLimit(@javax.annotation.Nullable Integer limit) {
+  public void setLimit(@javax.annotation.Nullable Long limit) {
     this.limit = limit;
   }
 

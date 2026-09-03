@@ -58,7 +58,7 @@ public class DeployRecord {
   public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
   @javax.annotation.Nullable
-  private Integer createdAt;
+  private Long createdAt;
 
   public static final String SERIALIZED_NAME_DEPLOY_ID = "deployId";
   @SerializedName(SERIALIZED_NAME_DEPLOY_ID)
@@ -102,7 +102,7 @@ public class DeployRecord {
   }
 
 
-  public DeployRecord createdAt(@javax.annotation.Nullable Integer createdAt) {
+  public DeployRecord createdAt(@javax.annotation.Nullable Long createdAt) {
     this.createdAt = createdAt;
     return this;
   }
@@ -112,11 +112,11 @@ public class DeployRecord {
    * @return createdAt
    */
   @javax.annotation.Nullable
-  public Integer getCreatedAt() {
+  public Long getCreatedAt() {
     return createdAt;
   }
 
-  public void setCreatedAt(@javax.annotation.Nullable Integer createdAt) {
+  public void setCreatedAt(@javax.annotation.Nullable Long createdAt) {
     this.createdAt = createdAt;
   }
 

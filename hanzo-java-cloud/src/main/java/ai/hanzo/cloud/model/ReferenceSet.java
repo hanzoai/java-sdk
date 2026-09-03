@@ -66,7 +66,7 @@ public class ReferenceSet {
   public static final String SERIALIZED_NAME_KEYS = "keys";
   @SerializedName(SERIALIZED_NAME_KEYS)
   @javax.annotation.Nullable
-  private Integer keys;
+  private Long keys;
 
   public static final String SERIALIZED_NAME_KIND = "kind";
   @SerializedName(SERIALIZED_NAME_KIND)
@@ -86,7 +86,7 @@ public class ReferenceSet {
   public static final String SERIALIZED_NAME_OVERRIDES = "overrides";
   @SerializedName(SERIALIZED_NAME_OVERRIDES)
   @javax.annotation.Nullable
-  private Integer overrides;
+  private Long overrides;
 
   public static final String SERIALIZED_NAME_REFUSAL = "refusal";
   @SerializedName(SERIALIZED_NAME_REFUSAL)
@@ -159,7 +159,7 @@ public class ReferenceSet {
   }
 
 
-  public ReferenceSet keys(@javax.annotation.Nullable Integer keys) {
+  public ReferenceSet keys(@javax.annotation.Nullable Long keys) {
     this.keys = keys;
     return this;
   }
@@ -169,11 +169,11 @@ public class ReferenceSet {
    * @return keys
    */
   @javax.annotation.Nullable
-  public Integer getKeys() {
+  public Long getKeys() {
     return keys;
   }
 
-  public void setKeys(@javax.annotation.Nullable Integer keys) {
+  public void setKeys(@javax.annotation.Nullable Long keys) {
     this.keys = keys;
   }
 
@@ -235,7 +235,7 @@ public class ReferenceSet {
   }
 
 
-  public ReferenceSet overrides(@javax.annotation.Nullable Integer overrides) {
+  public ReferenceSet overrides(@javax.annotation.Nullable Long overrides) {
     this.overrides = overrides;
     return this;
   }
@@ -245,11 +245,11 @@ public class ReferenceSet {
    * @return overrides
    */
   @javax.annotation.Nullable
-  public Integer getOverrides() {
+  public Long getOverrides() {
     return overrides;
   }
 
-  public void setOverrides(@javax.annotation.Nullable Integer overrides) {
+  public void setOverrides(@javax.annotation.Nullable Long overrides) {
     this.overrides = overrides;
   }
 

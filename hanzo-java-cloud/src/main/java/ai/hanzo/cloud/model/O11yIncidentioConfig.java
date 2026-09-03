@@ -81,7 +81,7 @@ public class O11yIncidentioConfig {
   public static final String SERIALIZED_NAME_TIMEOUT = "timeout";
   @SerializedName(SERIALIZED_NAME_TIMEOUT)
   @javax.annotation.Nullable
-  private Integer timeout;
+  private Long timeout;
 
   public static final String SERIALIZED_NAME_URL = "url";
   @SerializedName(SERIALIZED_NAME_URL)
@@ -191,7 +191,7 @@ public class O11yIncidentioConfig {
   }
 
 
-  public O11yIncidentioConfig timeout(@javax.annotation.Nullable Integer timeout) {
+  public O11yIncidentioConfig timeout(@javax.annotation.Nullable Long timeout) {
     this.timeout = timeout;
     return this;
   }
@@ -201,11 +201,11 @@ public class O11yIncidentioConfig {
    * @return timeout
    */
   @javax.annotation.Nullable
-  public Integer getTimeout() {
+  public Long getTimeout() {
     return timeout;
   }
 
-  public void setTimeout(@javax.annotation.Nullable Integer timeout) {
+  public void setTimeout(@javax.annotation.Nullable Long timeout) {
     this.timeout = timeout;
   }
 

@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -59,22 +58,22 @@ public class FleetMetrics {
   public static final String SERIALIZED_NAME_GPU_UTIL = "gpuUtil";
   @SerializedName(SERIALIZED_NAME_GPU_UTIL)
   @javax.annotation.Nullable
-  private BigDecimal gpuUtil;
+  private Double gpuUtil;
 
   public static final String SERIALIZED_NAME_LOAD1 = "load1";
   @SerializedName(SERIALIZED_NAME_LOAD1)
   @javax.annotation.Nullable
-  private BigDecimal load1;
+  private Double load1;
 
   public static final String SERIALIZED_NAME_MEM_FREE = "memFree";
   @SerializedName(SERIALIZED_NAME_MEM_FREE)
   @javax.annotation.Nullable
-  private Integer memFree;
+  private Long memFree;
 
   public static final String SERIALIZED_NAME_MEM_USED = "memUsed";
   @SerializedName(SERIALIZED_NAME_MEM_USED)
   @javax.annotation.Nullable
-  private Integer memUsed;
+  private Long memUsed;
 
   public FleetMetrics() {
   }
@@ -98,7 +97,7 @@ public class FleetMetrics {
   }
 
 
-  public FleetMetrics gpuUtil(@javax.annotation.Nullable BigDecimal gpuUtil) {
+  public FleetMetrics gpuUtil(@javax.annotation.Nullable Double gpuUtil) {
     this.gpuUtil = gpuUtil;
     return this;
   }
@@ -108,16 +107,16 @@ public class FleetMetrics {
    * @return gpuUtil
    */
   @javax.annotation.Nullable
-  public BigDecimal getGpuUtil() {
+  public Double getGpuUtil() {
     return gpuUtil;
   }
 
-  public void setGpuUtil(@javax.annotation.Nullable BigDecimal gpuUtil) {
+  public void setGpuUtil(@javax.annotation.Nullable Double gpuUtil) {
     this.gpuUtil = gpuUtil;
   }
 
 
-  public FleetMetrics load1(@javax.annotation.Nullable BigDecimal load1) {
+  public FleetMetrics load1(@javax.annotation.Nullable Double load1) {
     this.load1 = load1;
     return this;
   }
@@ -127,16 +126,16 @@ public class FleetMetrics {
    * @return load1
    */
   @javax.annotation.Nullable
-  public BigDecimal getLoad1() {
+  public Double getLoad1() {
     return load1;
   }
 
-  public void setLoad1(@javax.annotation.Nullable BigDecimal load1) {
+  public void setLoad1(@javax.annotation.Nullable Double load1) {
     this.load1 = load1;
   }
 
 
-  public FleetMetrics memFree(@javax.annotation.Nullable Integer memFree) {
+  public FleetMetrics memFree(@javax.annotation.Nullable Long memFree) {
     this.memFree = memFree;
     return this;
   }
@@ -146,16 +145,16 @@ public class FleetMetrics {
    * @return memFree
    */
   @javax.annotation.Nullable
-  public Integer getMemFree() {
+  public Long getMemFree() {
     return memFree;
   }
 
-  public void setMemFree(@javax.annotation.Nullable Integer memFree) {
+  public void setMemFree(@javax.annotation.Nullable Long memFree) {
     this.memFree = memFree;
   }
 
 
-  public FleetMetrics memUsed(@javax.annotation.Nullable Integer memUsed) {
+  public FleetMetrics memUsed(@javax.annotation.Nullable Long memUsed) {
     this.memUsed = memUsed;
     return this;
   }
@@ -165,11 +164,11 @@ public class FleetMetrics {
    * @return memUsed
    */
   @javax.annotation.Nullable
-  public Integer getMemUsed() {
+  public Long getMemUsed() {
     return memUsed;
   }
 
-  public void setMemUsed(@javax.annotation.Nullable Integer memUsed) {
+  public void setMemUsed(@javax.annotation.Nullable Long memUsed) {
     this.memUsed = memUsed;
   }
 

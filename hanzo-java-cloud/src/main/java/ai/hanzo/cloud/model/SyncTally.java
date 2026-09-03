@@ -53,17 +53,17 @@ public class SyncTally {
   public static final String SERIALIZED_NAME_LIVE = "live";
   @SerializedName(SERIALIZED_NAME_LIVE)
   @javax.annotation.Nullable
-  private Integer live;
+  private Long live;
 
   public static final String SERIALIZED_NAME_SANDBOX = "sandbox";
   @SerializedName(SERIALIZED_NAME_SANDBOX)
   @javax.annotation.Nullable
-  private Integer sandbox;
+  private Long sandbox;
 
   public SyncTally() {
   }
 
-  public SyncTally live(@javax.annotation.Nullable Integer live) {
+  public SyncTally live(@javax.annotation.Nullable Long live) {
     this.live = live;
     return this;
   }
@@ -73,16 +73,16 @@ public class SyncTally {
    * @return live
    */
   @javax.annotation.Nullable
-  public Integer getLive() {
+  public Long getLive() {
     return live;
   }
 
-  public void setLive(@javax.annotation.Nullable Integer live) {
+  public void setLive(@javax.annotation.Nullable Long live) {
     this.live = live;
   }
 
 
-  public SyncTally sandbox(@javax.annotation.Nullable Integer sandbox) {
+  public SyncTally sandbox(@javax.annotation.Nullable Long sandbox) {
     this.sandbox = sandbox;
     return this;
   }
@@ -92,11 +92,11 @@ public class SyncTally {
    * @return sandbox
    */
   @javax.annotation.Nullable
-  public Integer getSandbox() {
+  public Long getSandbox() {
     return sandbox;
   }
 
-  public void setSandbox(@javax.annotation.Nullable Integer sandbox) {
+  public void setSandbox(@javax.annotation.Nullable Long sandbox) {
     this.sandbox = sandbox;
   }
 

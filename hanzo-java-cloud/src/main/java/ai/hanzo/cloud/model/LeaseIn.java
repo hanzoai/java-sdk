@@ -55,6 +55,11 @@ public class LeaseIn {
   @javax.annotation.Nullable
   private String propertyClass;
 
+  public static final String SERIALIZED_NAME_CLUSTER = "cluster";
+  @SerializedName(SERIALIZED_NAME_CLUSTER)
+  @javax.annotation.Nullable
+  private String cluster;
+
   public static final String SERIALIZED_NAME_IMAGE = "image";
   @SerializedName(SERIALIZED_NAME_IMAGE)
   @javax.annotation.Nullable
@@ -73,7 +78,7 @@ public class LeaseIn {
   public static final String SERIALIZED_NAME_TTL_SEC = "ttlSec";
   @SerializedName(SERIALIZED_NAME_TTL_SEC)
   @javax.annotation.Nullable
-  private Integer ttlSec;
+  private Long ttlSec;
 
   public LeaseIn() {
   }
@@ -94,6 +99,25 @@ public class LeaseIn {
 
   public void setPropertyClass(@javax.annotation.Nullable String propertyClass) {
     this.propertyClass = propertyClass;
+  }
+
+
+  public LeaseIn cluster(@javax.annotation.Nullable String cluster) {
+    this.cluster = cluster;
+    return this;
+  }
+
+  /**
+   * Cluster names one of the org&#39;s attached clusters to run the sandbox on — the fleet-local name it was registered under. Empty runs on the home cluster. The named cluster must carry the sandbox namespace and the gvisor runtime class; a name the org has not attached is 404.
+   * @return cluster
+   */
+  @javax.annotation.Nullable
+  public String getCluster() {
+    return cluster;
+  }
+
+  public void setCluster(@javax.annotation.Nullable String cluster) {
+    this.cluster = cluster;
   }
 
 
@@ -154,7 +178,7 @@ public class LeaseIn {
   }
 
 
-  public LeaseIn ttlSec(@javax.annotation.Nullable Integer ttlSec) {
+  public LeaseIn ttlSec(@javax.annotation.Nullable Long ttlSec) {
     this.ttlSec = ttlSec;
     return this;
   }
@@ -164,11 +188,11 @@ public class LeaseIn {
    * @return ttlSec
    */
   @javax.annotation.Nullable
-  public Integer getTtlSec() {
+  public Long getTtlSec() {
     return ttlSec;
   }
 
-  public void setTtlSec(@javax.annotation.Nullable Integer ttlSec) {
+  public void setTtlSec(@javax.annotation.Nullable Long ttlSec) {
     this.ttlSec = ttlSec;
   }
 
@@ -184,6 +208,7 @@ public class LeaseIn {
     }
     LeaseIn leaseIn = (LeaseIn) o;
     return Objects.equals(this.propertyClass, leaseIn.propertyClass) &&
+        Objects.equals(this.cluster, leaseIn.cluster) &&
         Objects.equals(this.image, leaseIn.image) &&
         Objects.equals(this.project, leaseIn.project) &&
         Objects.equals(this.runtime, leaseIn.runtime) &&
@@ -192,7 +217,7 @@ public class LeaseIn {
 
   @Override
   public int hashCode() {
-    return Objects.hash(propertyClass, image, project, runtime, ttlSec);
+    return Objects.hash(propertyClass, cluster, image, project, runtime, ttlSec);
   }
 
   @Override
@@ -200,6 +225,7 @@ public class LeaseIn {
     StringBuilder sb = new StringBuilder();
     sb.append("class LeaseIn {\n");
     sb.append("    propertyClass: ").append(toIndentedString(propertyClass)).append("\n");
+    sb.append("    cluster: ").append(toIndentedString(cluster)).append("\n");
     sb.append("    image: ").append(toIndentedString(image)).append("\n");
     sb.append("    project: ").append(toIndentedString(project)).append("\n");
     sb.append("    runtime: ").append(toIndentedString(runtime)).append("\n");
@@ -225,7 +251,7 @@ public class LeaseIn {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("class", "image", "project", "runtime", "ttlSec"));
+    openapiFields = new HashSet<String>(Arrays.asList("class", "cluster", "image", "project", "runtime", "ttlSec"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -254,6 +280,9 @@ public class LeaseIn {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("class") != null && !jsonObj.get("class").isJsonNull()) && !jsonObj.get("class").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `class` to be a primitive type in the JSON string but got `%s`", jsonObj.get("class").toString()));
+      }
+      if ((jsonObj.get("cluster") != null && !jsonObj.get("cluster").isJsonNull()) && !jsonObj.get("cluster").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `cluster` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cluster").toString()));
       }
       if ((jsonObj.get("image") != null && !jsonObj.get("image").isJsonNull()) && !jsonObj.get("image").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `image` to be a primitive type in the JSON string but got `%s`", jsonObj.get("image").toString()));

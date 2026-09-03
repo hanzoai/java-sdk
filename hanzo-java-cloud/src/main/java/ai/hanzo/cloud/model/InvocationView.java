@@ -53,7 +53,7 @@ public class InvocationView {
   public static final String SERIALIZED_NAME_DURATION_MS = "durationMs";
   @SerializedName(SERIALIZED_NAME_DURATION_MS)
   @javax.annotation.Nullable
-  private Integer durationMs;
+  private Long durationMs;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -73,7 +73,7 @@ public class InvocationView {
   public static final String SERIALIZED_NAME_STATUS_CODE = "statusCode";
   @SerializedName(SERIALIZED_NAME_STATUS_CODE)
   @javax.annotation.Nullable
-  private Integer statusCode;
+  private Long statusCode;
 
   public static final String SERIALIZED_NAME_TIME = "time";
   @SerializedName(SERIALIZED_NAME_TIME)
@@ -83,7 +83,7 @@ public class InvocationView {
   public InvocationView() {
   }
 
-  public InvocationView durationMs(@javax.annotation.Nullable Integer durationMs) {
+  public InvocationView durationMs(@javax.annotation.Nullable Long durationMs) {
     this.durationMs = durationMs;
     return this;
   }
@@ -93,11 +93,11 @@ public class InvocationView {
    * @return durationMs
    */
   @javax.annotation.Nullable
-  public Integer getDurationMs() {
+  public Long getDurationMs() {
     return durationMs;
   }
 
-  public void setDurationMs(@javax.annotation.Nullable Integer durationMs) {
+  public void setDurationMs(@javax.annotation.Nullable Long durationMs) {
     this.durationMs = durationMs;
   }
 
@@ -159,7 +159,7 @@ public class InvocationView {
   }
 
 
-  public InvocationView statusCode(@javax.annotation.Nullable Integer statusCode) {
+  public InvocationView statusCode(@javax.annotation.Nullable Long statusCode) {
     this.statusCode = statusCode;
     return this;
   }
@@ -169,11 +169,11 @@ public class InvocationView {
    * @return statusCode
    */
   @javax.annotation.Nullable
-  public Integer getStatusCode() {
+  public Long getStatusCode() {
     return statusCode;
   }
 
-  public void setStatusCode(@javax.annotation.Nullable Integer statusCode) {
+  public void setStatusCode(@javax.annotation.Nullable Long statusCode) {
     this.statusCode = statusCode;
   }
 

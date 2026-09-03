@@ -53,7 +53,7 @@ public class CodeView {
   public static final String SERIALIZED_NAME_CLICKS = "clicks";
   @SerializedName(SERIALIZED_NAME_CLICKS)
   @javax.annotation.Nullable
-  private Integer clicks;
+  private Long clicks;
 
   public static final String SERIALIZED_NAME_CODE = "code";
   @SerializedName(SERIALIZED_NAME_CODE)
@@ -63,12 +63,12 @@ public class CodeView {
   public static final String SERIALIZED_NAME_CONVERSIONS = "conversions";
   @SerializedName(SERIALIZED_NAME_CONVERSIONS)
   @javax.annotation.Nullable
-  private Integer conversions;
+  private Long conversions;
 
   public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
   @javax.annotation.Nullable
-  private Integer createdAt;
+  private Long createdAt;
 
   public static final String SERIALIZED_NAME_LABEL = "label";
   @SerializedName(SERIALIZED_NAME_LABEL)
@@ -78,7 +78,7 @@ public class CodeView {
   public static final String SERIALIZED_NAME_SIGNUPS = "signups";
   @SerializedName(SERIALIZED_NAME_SIGNUPS)
   @javax.annotation.Nullable
-  private Integer signups;
+  private Long signups;
 
   public static final String SERIALIZED_NAME_URL = "url";
   @SerializedName(SERIALIZED_NAME_URL)
@@ -88,7 +88,7 @@ public class CodeView {
   public CodeView() {
   }
 
-  public CodeView clicks(@javax.annotation.Nullable Integer clicks) {
+  public CodeView clicks(@javax.annotation.Nullable Long clicks) {
     this.clicks = clicks;
     return this;
   }
@@ -98,11 +98,11 @@ public class CodeView {
    * @return clicks
    */
   @javax.annotation.Nullable
-  public Integer getClicks() {
+  public Long getClicks() {
     return clicks;
   }
 
-  public void setClicks(@javax.annotation.Nullable Integer clicks) {
+  public void setClicks(@javax.annotation.Nullable Long clicks) {
     this.clicks = clicks;
   }
 
@@ -126,7 +126,7 @@ public class CodeView {
   }
 
 
-  public CodeView conversions(@javax.annotation.Nullable Integer conversions) {
+  public CodeView conversions(@javax.annotation.Nullable Long conversions) {
     this.conversions = conversions;
     return this;
   }
@@ -136,16 +136,16 @@ public class CodeView {
    * @return conversions
    */
   @javax.annotation.Nullable
-  public Integer getConversions() {
+  public Long getConversions() {
     return conversions;
   }
 
-  public void setConversions(@javax.annotation.Nullable Integer conversions) {
+  public void setConversions(@javax.annotation.Nullable Long conversions) {
     this.conversions = conversions;
   }
 
 
-  public CodeView createdAt(@javax.annotation.Nullable Integer createdAt) {
+  public CodeView createdAt(@javax.annotation.Nullable Long createdAt) {
     this.createdAt = createdAt;
     return this;
   }
@@ -155,11 +155,11 @@ public class CodeView {
    * @return createdAt
    */
   @javax.annotation.Nullable
-  public Integer getCreatedAt() {
+  public Long getCreatedAt() {
     return createdAt;
   }
 
-  public void setCreatedAt(@javax.annotation.Nullable Integer createdAt) {
+  public void setCreatedAt(@javax.annotation.Nullable Long createdAt) {
     this.createdAt = createdAt;
   }
 
@@ -183,7 +183,7 @@ public class CodeView {
   }
 
 
-  public CodeView signups(@javax.annotation.Nullable Integer signups) {
+  public CodeView signups(@javax.annotation.Nullable Long signups) {
     this.signups = signups;
     return this;
   }
@@ -193,11 +193,11 @@ public class CodeView {
    * @return signups
    */
   @javax.annotation.Nullable
-  public Integer getSignups() {
+  public Long getSignups() {
     return signups;
   }
 
-  public void setSignups(@javax.annotation.Nullable Integer signups) {
+  public void setSignups(@javax.annotation.Nullable Long signups) {
     this.signups = signups;
   }
 

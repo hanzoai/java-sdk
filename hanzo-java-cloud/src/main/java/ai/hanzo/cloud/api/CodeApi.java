@@ -362,7 +362,7 @@ public class CodeApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCodeSearchCall(@javax.annotation.Nullable String q, @javax.annotation.Nullable String type, @javax.annotation.Nullable String repo, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCodeSearchCall(@javax.annotation.Nullable String q, @javax.annotation.Nullable String type, @javax.annotation.Nullable String repo, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -423,7 +423,7 @@ public class CodeApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getCodeSearchValidateBeforeCall(@javax.annotation.Nullable String q, @javax.annotation.Nullable String type, @javax.annotation.Nullable String repo, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getCodeSearchValidateBeforeCall(@javax.annotation.Nullable String q, @javax.annotation.Nullable String type, @javax.annotation.Nullable String repo, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         return getCodeSearchCall(q, type, repo, limit, _callback);
 
     }
@@ -444,7 +444,7 @@ public class CodeApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public SearchResults getCodeSearch(@javax.annotation.Nullable String q, @javax.annotation.Nullable String type, @javax.annotation.Nullable String repo, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public SearchResults getCodeSearch(@javax.annotation.Nullable String q, @javax.annotation.Nullable String type, @javax.annotation.Nullable String repo, @javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<SearchResults> localVarResp = getCodeSearchWithHttpInfo(q, type, repo, limit);
         return localVarResp.getData();
     }
@@ -465,7 +465,7 @@ public class CodeApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SearchResults> getCodeSearchWithHttpInfo(@javax.annotation.Nullable String q, @javax.annotation.Nullable String type, @javax.annotation.Nullable String repo, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<SearchResults> getCodeSearchWithHttpInfo(@javax.annotation.Nullable String q, @javax.annotation.Nullable String type, @javax.annotation.Nullable String repo, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getCodeSearchValidateBeforeCall(q, type, repo, limit, null);
         Type localVarReturnType = new TypeToken<SearchResults>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -488,7 +488,7 @@ public class CodeApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCodeSearchAsync(@javax.annotation.Nullable String q, @javax.annotation.Nullable String type, @javax.annotation.Nullable String repo, @javax.annotation.Nullable Integer limit, final ApiCallback<SearchResults> _callback) throws ApiException {
+    public okhttp3.Call getCodeSearchAsync(@javax.annotation.Nullable String q, @javax.annotation.Nullable String type, @javax.annotation.Nullable String repo, @javax.annotation.Nullable Long limit, final ApiCallback<SearchResults> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCodeSearchValidateBeforeCall(q, type, repo, limit, _callback);
         Type localVarReturnType = new TypeToken<SearchResults>(){}.getType();

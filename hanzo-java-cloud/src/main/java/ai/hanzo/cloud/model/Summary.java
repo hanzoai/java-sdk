@@ -53,22 +53,22 @@ public class Summary {
   public static final String SERIALIZED_NAME_CALLS = "calls";
   @SerializedName(SERIALIZED_NAME_CALLS)
   @javax.annotation.Nullable
-  private Integer calls;
+  private Long calls;
 
   public static final String SERIALIZED_NAME_MESSAGES = "messages";
   @SerializedName(SERIALIZED_NAME_MESSAGES)
   @javax.annotation.Nullable
-  private Integer messages;
+  private Long messages;
 
   public static final String SERIALIZED_NAME_NUMBERS = "numbers";
   @SerializedName(SERIALIZED_NAME_NUMBERS)
   @javax.annotation.Nullable
-  private Integer numbers;
+  private Long numbers;
 
   public Summary() {
   }
 
-  public Summary calls(@javax.annotation.Nullable Integer calls) {
+  public Summary calls(@javax.annotation.Nullable Long calls) {
     this.calls = calls;
     return this;
   }
@@ -78,16 +78,16 @@ public class Summary {
    * @return calls
    */
   @javax.annotation.Nullable
-  public Integer getCalls() {
+  public Long getCalls() {
     return calls;
   }
 
-  public void setCalls(@javax.annotation.Nullable Integer calls) {
+  public void setCalls(@javax.annotation.Nullable Long calls) {
     this.calls = calls;
   }
 
 
-  public Summary messages(@javax.annotation.Nullable Integer messages) {
+  public Summary messages(@javax.annotation.Nullable Long messages) {
     this.messages = messages;
     return this;
   }
@@ -97,16 +97,16 @@ public class Summary {
    * @return messages
    */
   @javax.annotation.Nullable
-  public Integer getMessages() {
+  public Long getMessages() {
     return messages;
   }
 
-  public void setMessages(@javax.annotation.Nullable Integer messages) {
+  public void setMessages(@javax.annotation.Nullable Long messages) {
     this.messages = messages;
   }
 
 
-  public Summary numbers(@javax.annotation.Nullable Integer numbers) {
+  public Summary numbers(@javax.annotation.Nullable Long numbers) {
     this.numbers = numbers;
     return this;
   }
@@ -116,11 +116,11 @@ public class Summary {
    * @return numbers
    */
   @javax.annotation.Nullable
-  public Integer getNumbers() {
+  public Long getNumbers() {
     return numbers;
   }
 
-  public void setNumbers(@javax.annotation.Nullable Integer numbers) {
+  public void setNumbers(@javax.annotation.Nullable Long numbers) {
     this.numbers = numbers;
   }
 

@@ -60,7 +60,7 @@ public class WebQuestion {
   public static final String SERIALIZED_NAME_MAX_SOURCES = "max_sources";
   @SerializedName(SERIALIZED_NAME_MAX_SOURCES)
   @javax.annotation.Nullable
-  private Integer maxSources;
+  private Long maxSources;
 
   public static final String SERIALIZED_NAME_MODE = "mode";
   @SerializedName(SERIALIZED_NAME_MODE)
@@ -99,7 +99,7 @@ public class WebQuestion {
   }
 
 
-  public WebQuestion maxSources(@javax.annotation.Nullable Integer maxSources) {
+  public WebQuestion maxSources(@javax.annotation.Nullable Long maxSources) {
     this.maxSources = maxSources;
     return this;
   }
@@ -109,11 +109,11 @@ public class WebQuestion {
    * @return maxSources
    */
   @javax.annotation.Nullable
-  public Integer getMaxSources() {
+  public Long getMaxSources() {
     return maxSources;
   }
 
-  public void setMaxSources(@javax.annotation.Nullable Integer maxSources) {
+  public void setMaxSources(@javax.annotation.Nullable Long maxSources) {
     this.maxSources = maxSources;
   }
 

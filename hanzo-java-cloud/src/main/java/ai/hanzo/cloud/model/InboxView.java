@@ -63,12 +63,12 @@ public class InboxView {
   public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
   @javax.annotation.Nullable
-  private Integer createdAt;
+  private Long createdAt;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   @javax.annotation.Nullable
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_REPLY_TO = "replyTo";
   @SerializedName(SERIALIZED_NAME_REPLY_TO)
@@ -141,7 +141,7 @@ public class InboxView {
   }
 
 
-  public InboxView createdAt(@javax.annotation.Nullable Integer createdAt) {
+  public InboxView createdAt(@javax.annotation.Nullable Long createdAt) {
     this.createdAt = createdAt;
     return this;
   }
@@ -151,16 +151,16 @@ public class InboxView {
    * @return createdAt
    */
   @javax.annotation.Nullable
-  public Integer getCreatedAt() {
+  public Long getCreatedAt() {
     return createdAt;
   }
 
-  public void setCreatedAt(@javax.annotation.Nullable Integer createdAt) {
+  public void setCreatedAt(@javax.annotation.Nullable Long createdAt) {
     this.createdAt = createdAt;
   }
 
 
-  public InboxView id(@javax.annotation.Nullable Integer id) {
+  public InboxView id(@javax.annotation.Nullable Long id) {
     this.id = id;
     return this;
   }
@@ -170,11 +170,11 @@ public class InboxView {
    * @return id
    */
   @javax.annotation.Nullable
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-  public void setId(@javax.annotation.Nullable Integer id) {
+  public void setId(@javax.annotation.Nullable Long id) {
     this.id = id;
   }
 

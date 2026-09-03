@@ -55,12 +55,12 @@ public class ControlList {
   public static final String SERIALIZED_NAME_ABSENT = "absent";
   @SerializedName(SERIALIZED_NAME_ABSENT)
   @javax.annotation.Nullable
-  private Integer absent;
+  private Long absent;
 
   public static final String SERIALIZED_NAME_AUTOMATED = "automated";
   @SerializedName(SERIALIZED_NAME_AUTOMATED)
   @javax.annotation.Nullable
-  private Integer automated;
+  private Long automated;
 
   public static final String SERIALIZED_NAME_CONTROLS = "controls";
   @SerializedName(SERIALIZED_NAME_CONTROLS)
@@ -70,7 +70,7 @@ public class ControlList {
   public static final String SERIALIZED_NAME_PARTIAL = "partial";
   @SerializedName(SERIALIZED_NAME_PARTIAL)
   @javax.annotation.Nullable
-  private Integer partial;
+  private Long partial;
 
   public static final String SERIALIZED_NAME_STATEMENT = "statement";
   @SerializedName(SERIALIZED_NAME_STATEMENT)
@@ -80,12 +80,12 @@ public class ControlList {
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)
   @javax.annotation.Nullable
-  private Integer total;
+  private Long total;
 
   public static final String SERIALIZED_NAME_UNVERIFIED = "unverified";
   @SerializedName(SERIALIZED_NAME_UNVERIFIED)
   @javax.annotation.Nullable
-  private Integer unverified;
+  private Long unverified;
 
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
@@ -95,7 +95,7 @@ public class ControlList {
   public ControlList() {
   }
 
-  public ControlList absent(@javax.annotation.Nullable Integer absent) {
+  public ControlList absent(@javax.annotation.Nullable Long absent) {
     this.absent = absent;
     return this;
   }
@@ -105,16 +105,16 @@ public class ControlList {
    * @return absent
    */
   @javax.annotation.Nullable
-  public Integer getAbsent() {
+  public Long getAbsent() {
     return absent;
   }
 
-  public void setAbsent(@javax.annotation.Nullable Integer absent) {
+  public void setAbsent(@javax.annotation.Nullable Long absent) {
     this.absent = absent;
   }
 
 
-  public ControlList automated(@javax.annotation.Nullable Integer automated) {
+  public ControlList automated(@javax.annotation.Nullable Long automated) {
     this.automated = automated;
     return this;
   }
@@ -124,11 +124,11 @@ public class ControlList {
    * @return automated
    */
   @javax.annotation.Nullable
-  public Integer getAutomated() {
+  public Long getAutomated() {
     return automated;
   }
 
-  public void setAutomated(@javax.annotation.Nullable Integer automated) {
+  public void setAutomated(@javax.annotation.Nullable Long automated) {
     this.automated = automated;
   }
 
@@ -160,7 +160,7 @@ public class ControlList {
   }
 
 
-  public ControlList partial(@javax.annotation.Nullable Integer partial) {
+  public ControlList partial(@javax.annotation.Nullable Long partial) {
     this.partial = partial;
     return this;
   }
@@ -170,11 +170,11 @@ public class ControlList {
    * @return partial
    */
   @javax.annotation.Nullable
-  public Integer getPartial() {
+  public Long getPartial() {
     return partial;
   }
 
-  public void setPartial(@javax.annotation.Nullable Integer partial) {
+  public void setPartial(@javax.annotation.Nullable Long partial) {
     this.partial = partial;
   }
 
@@ -198,7 +198,7 @@ public class ControlList {
   }
 
 
-  public ControlList total(@javax.annotation.Nullable Integer total) {
+  public ControlList total(@javax.annotation.Nullable Long total) {
     this.total = total;
     return this;
   }
@@ -208,16 +208,16 @@ public class ControlList {
    * @return total
    */
   @javax.annotation.Nullable
-  public Integer getTotal() {
+  public Long getTotal() {
     return total;
   }
 
-  public void setTotal(@javax.annotation.Nullable Integer total) {
+  public void setTotal(@javax.annotation.Nullable Long total) {
     this.total = total;
   }
 
 
-  public ControlList unverified(@javax.annotation.Nullable Integer unverified) {
+  public ControlList unverified(@javax.annotation.Nullable Long unverified) {
     this.unverified = unverified;
     return this;
   }
@@ -227,11 +227,11 @@ public class ControlList {
    * @return unverified
    */
   @javax.annotation.Nullable
-  public Integer getUnverified() {
+  public Long getUnverified() {
     return unverified;
   }
 
-  public void setUnverified(@javax.annotation.Nullable Integer unverified) {
+  public void setUnverified(@javax.annotation.Nullable Long unverified) {
     this.unverified = unverified;
   }
 

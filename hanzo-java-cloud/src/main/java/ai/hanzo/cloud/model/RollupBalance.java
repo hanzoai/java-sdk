@@ -53,22 +53,22 @@ public class RollupBalance {
   public static final String SERIALIZED_NAME_AVAILABLE_CENTS = "availableCents";
   @SerializedName(SERIALIZED_NAME_AVAILABLE_CENTS)
   @javax.annotation.Nullable
-  private Integer availableCents;
+  private Long availableCents;
 
   public static final String SERIALIZED_NAME_BALANCE_CENTS = "balanceCents";
   @SerializedName(SERIALIZED_NAME_BALANCE_CENTS)
   @javax.annotation.Nullable
-  private Integer balanceCents;
+  private Long balanceCents;
 
   public static final String SERIALIZED_NAME_HOLDS_CENTS = "holdsCents";
   @SerializedName(SERIALIZED_NAME_HOLDS_CENTS)
   @javax.annotation.Nullable
-  private Integer holdsCents;
+  private Long holdsCents;
 
   public RollupBalance() {
   }
 
-  public RollupBalance availableCents(@javax.annotation.Nullable Integer availableCents) {
+  public RollupBalance availableCents(@javax.annotation.Nullable Long availableCents) {
     this.availableCents = availableCents;
     return this;
   }
@@ -78,16 +78,16 @@ public class RollupBalance {
    * @return availableCents
    */
   @javax.annotation.Nullable
-  public Integer getAvailableCents() {
+  public Long getAvailableCents() {
     return availableCents;
   }
 
-  public void setAvailableCents(@javax.annotation.Nullable Integer availableCents) {
+  public void setAvailableCents(@javax.annotation.Nullable Long availableCents) {
     this.availableCents = availableCents;
   }
 
 
-  public RollupBalance balanceCents(@javax.annotation.Nullable Integer balanceCents) {
+  public RollupBalance balanceCents(@javax.annotation.Nullable Long balanceCents) {
     this.balanceCents = balanceCents;
     return this;
   }
@@ -97,16 +97,16 @@ public class RollupBalance {
    * @return balanceCents
    */
   @javax.annotation.Nullable
-  public Integer getBalanceCents() {
+  public Long getBalanceCents() {
     return balanceCents;
   }
 
-  public void setBalanceCents(@javax.annotation.Nullable Integer balanceCents) {
+  public void setBalanceCents(@javax.annotation.Nullable Long balanceCents) {
     this.balanceCents = balanceCents;
   }
 
 
-  public RollupBalance holdsCents(@javax.annotation.Nullable Integer holdsCents) {
+  public RollupBalance holdsCents(@javax.annotation.Nullable Long holdsCents) {
     this.holdsCents = holdsCents;
     return this;
   }
@@ -116,11 +116,11 @@ public class RollupBalance {
    * @return holdsCents
    */
   @javax.annotation.Nullable
-  public Integer getHoldsCents() {
+  public Long getHoldsCents() {
     return holdsCents;
   }
 
-  public void setHoldsCents(@javax.annotation.Nullable Integer holdsCents) {
+  public void setHoldsCents(@javax.annotation.Nullable Long holdsCents) {
     this.holdsCents = holdsCents;
   }
 

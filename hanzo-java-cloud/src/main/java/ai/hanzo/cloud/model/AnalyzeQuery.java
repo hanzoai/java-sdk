@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -54,12 +53,12 @@ public class AnalyzeQuery {
   public static final String SERIALIZED_NAME_ALPHA = "alpha";
   @SerializedName(SERIALIZED_NAME_ALPHA)
   @javax.annotation.Nullable
-  private BigDecimal alpha;
+  private Double alpha;
 
   public static final String SERIALIZED_NAME_DAYS = "days";
   @SerializedName(SERIALIZED_NAME_DAYS)
   @javax.annotation.Nullable
-  private Integer days;
+  private Long days;
 
   public static final String SERIALIZED_NAME_END = "end";
   @SerializedName(SERIALIZED_NAME_END)
@@ -79,7 +78,7 @@ public class AnalyzeQuery {
   public AnalyzeQuery() {
   }
 
-  public AnalyzeQuery alpha(@javax.annotation.Nullable BigDecimal alpha) {
+  public AnalyzeQuery alpha(@javax.annotation.Nullable Double alpha) {
     this.alpha = alpha;
     return this;
   }
@@ -89,16 +88,16 @@ public class AnalyzeQuery {
    * @return alpha
    */
   @javax.annotation.Nullable
-  public BigDecimal getAlpha() {
+  public Double getAlpha() {
     return alpha;
   }
 
-  public void setAlpha(@javax.annotation.Nullable BigDecimal alpha) {
+  public void setAlpha(@javax.annotation.Nullable Double alpha) {
     this.alpha = alpha;
   }
 
 
-  public AnalyzeQuery days(@javax.annotation.Nullable Integer days) {
+  public AnalyzeQuery days(@javax.annotation.Nullable Long days) {
     this.days = days;
     return this;
   }
@@ -108,11 +107,11 @@ public class AnalyzeQuery {
    * @return days
    */
   @javax.annotation.Nullable
-  public Integer getDays() {
+  public Long getDays() {
     return days;
   }
 
-  public void setDays(@javax.annotation.Nullable Integer days) {
+  public void setDays(@javax.annotation.Nullable Long days) {
     this.days = days;
   }
 

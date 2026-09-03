@@ -53,7 +53,7 @@ public class ReportResp {
   public static final String SERIALIZED_NAME_ACCEPTED = "accepted";
   @SerializedName(SERIALIZED_NAME_ACCEPTED)
   @javax.annotation.Nullable
-  private Integer accepted;
+  private Long accepted;
 
   public static final String SERIALIZED_NAME_STORED = "stored";
   @SerializedName(SERIALIZED_NAME_STORED)
@@ -63,7 +63,7 @@ public class ReportResp {
   public ReportResp() {
   }
 
-  public ReportResp accepted(@javax.annotation.Nullable Integer accepted) {
+  public ReportResp accepted(@javax.annotation.Nullable Long accepted) {
     this.accepted = accepted;
     return this;
   }
@@ -73,11 +73,11 @@ public class ReportResp {
    * @return accepted
    */
   @javax.annotation.Nullable
-  public Integer getAccepted() {
+  public Long getAccepted() {
     return accepted;
   }
 
-  public void setAccepted(@javax.annotation.Nullable Integer accepted) {
+  public void setAccepted(@javax.annotation.Nullable Long accepted) {
     this.accepted = accepted;
   }
 

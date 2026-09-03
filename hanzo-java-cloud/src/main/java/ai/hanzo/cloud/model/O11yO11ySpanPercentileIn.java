@@ -75,7 +75,7 @@ public class O11yO11ySpanPercentileIn {
   public static final String SERIALIZED_NAME_SPAN_DURATION = "spanDuration";
   @SerializedName(SERIALIZED_NAME_SPAN_DURATION)
   @javax.annotation.Nullable
-  private Integer spanDuration;
+  private Long spanDuration;
 
   public static final String SERIALIZED_NAME_START = "start";
   @SerializedName(SERIALIZED_NAME_START)
@@ -169,7 +169,7 @@ public class O11yO11ySpanPercentileIn {
   }
 
 
-  public O11yO11ySpanPercentileIn spanDuration(@javax.annotation.Nullable Integer spanDuration) {
+  public O11yO11ySpanPercentileIn spanDuration(@javax.annotation.Nullable Long spanDuration) {
     this.spanDuration = spanDuration;
     return this;
   }
@@ -179,11 +179,11 @@ public class O11yO11ySpanPercentileIn {
    * @return spanDuration
    */
   @javax.annotation.Nullable
-  public Integer getSpanDuration() {
+  public Long getSpanDuration() {
     return spanDuration;
   }
 
-  public void setSpanDuration(@javax.annotation.Nullable Integer spanDuration) {
+  public void setSpanDuration(@javax.annotation.Nullable Long spanDuration) {
     this.spanDuration = spanDuration;
   }
 

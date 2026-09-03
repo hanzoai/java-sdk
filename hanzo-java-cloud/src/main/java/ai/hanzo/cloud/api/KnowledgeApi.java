@@ -33,6 +33,7 @@ import ai.hanzo.cloud.model.GraphOut;
 import ai.hanzo.cloud.model.KbAuthorizeOut;
 import ai.hanzo.cloud.model.KbConnectorsOut;
 import ai.hanzo.cloud.model.KbSyncOut;
+import ai.hanzo.cloud.model.ReindexOut;
 import ai.hanzo.cloud.model.SearchIn;
 import ai.hanzo.cloud.model.SearchOut;
 
@@ -1056,6 +1057,123 @@ public class KnowledgeApi {
 
         okhttp3.Call localVarCall = postKnowledgeImportValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postKnowledgeReindex
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postKnowledgeReindexCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/knowledge/reindex";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postKnowledgeReindexValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postKnowledgeReindexCall(_callback);
+
+    }
+
+    /**
+     * Rebuilds the caller org&#39;s retrieval from its documents: the vector collection is dropped and created again at the configured embedding size and every page, memory and source is embedded into it; the lexical index is reconciled to the same set.
+     * Rebuilds the caller org&#39;s retrieval from its documents: the vector collection is dropped and created again at the configured embedding size and every page, memory and source is embedded into it; the lexical index is reconciled to the same set. It is what an operator runs after the embedding model or its dimension changes, and what puts an org&#39;s retrieval right after a vector outage. It requires ORG ADMIN and runs inline: an org&#39;s knowledge is a few thousand documents, and the answer is the count.  The request has no body. Response: {\&quot;vectors\&quot;: 412, \&quot;lexical\&quot;: 412, \&quot;removed\&quot;: 3, \&quot;failed\&quot;: 0}
+     * @return ReindexOut
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ReindexOut postKnowledgeReindex() throws ApiException {
+        ApiResponse<ReindexOut> localVarResp = postKnowledgeReindexWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * Rebuilds the caller org&#39;s retrieval from its documents: the vector collection is dropped and created again at the configured embedding size and every page, memory and source is embedded into it; the lexical index is reconciled to the same set.
+     * Rebuilds the caller org&#39;s retrieval from its documents: the vector collection is dropped and created again at the configured embedding size and every page, memory and source is embedded into it; the lexical index is reconciled to the same set. It is what an operator runs after the embedding model or its dimension changes, and what puts an org&#39;s retrieval right after a vector outage. It requires ORG ADMIN and runs inline: an org&#39;s knowledge is a few thousand documents, and the answer is the count.  The request has no body. Response: {\&quot;vectors\&quot;: 412, \&quot;lexical\&quot;: 412, \&quot;removed\&quot;: 3, \&quot;failed\&quot;: 0}
+     * @return ApiResponse&lt;ReindexOut&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ReindexOut> postKnowledgeReindexWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postKnowledgeReindexValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<ReindexOut>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Rebuilds the caller org&#39;s retrieval from its documents: the vector collection is dropped and created again at the configured embedding size and every page, memory and source is embedded into it; the lexical index is reconciled to the same set. (asynchronously)
+     * Rebuilds the caller org&#39;s retrieval from its documents: the vector collection is dropped and created again at the configured embedding size and every page, memory and source is embedded into it; the lexical index is reconciled to the same set. It is what an operator runs after the embedding model or its dimension changes, and what puts an org&#39;s retrieval right after a vector outage. It requires ORG ADMIN and runs inline: an org&#39;s knowledge is a few thousand documents, and the answer is the count.  The request has no body. Response: {\&quot;vectors\&quot;: 412, \&quot;lexical\&quot;: 412, \&quot;removed\&quot;: 3, \&quot;failed\&quot;: 0}
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postKnowledgeReindexAsync(final ApiCallback<ReindexOut> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postKnowledgeReindexValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<ReindexOut>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**

@@ -22,7 +22,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -69,12 +68,12 @@ public class O11yNodeRecord {
   public static final String SERIALIZED_NAME_NODE_C_P_U = "nodeCPU";
   @SerializedName(SERIALIZED_NAME_NODE_C_P_U)
   @javax.annotation.Nullable
-  private BigDecimal nodeCPU;
+  private Double nodeCPU;
 
   public static final String SERIALIZED_NAME_NODE_C_P_U_ALLOCATABLE = "nodeCPUAllocatable";
   @SerializedName(SERIALIZED_NAME_NODE_C_P_U_ALLOCATABLE)
   @javax.annotation.Nullable
-  private BigDecimal nodeCPUAllocatable;
+  private Double nodeCPUAllocatable;
 
   public static final String SERIALIZED_NAME_NODE_COUNTS_BY_READINESS = "nodeCountsByReadiness";
   @SerializedName(SERIALIZED_NAME_NODE_COUNTS_BY_READINESS)
@@ -84,12 +83,12 @@ public class O11yNodeRecord {
   public static final String SERIALIZED_NAME_NODE_MEMORY = "nodeMemory";
   @SerializedName(SERIALIZED_NAME_NODE_MEMORY)
   @javax.annotation.Nullable
-  private BigDecimal nodeMemory;
+  private Double nodeMemory;
 
   public static final String SERIALIZED_NAME_NODE_MEMORY_ALLOCATABLE = "nodeMemoryAllocatable";
   @SerializedName(SERIALIZED_NAME_NODE_MEMORY_ALLOCATABLE)
   @javax.annotation.Nullable
-  private BigDecimal nodeMemoryAllocatable;
+  private Double nodeMemoryAllocatable;
 
   public static final String SERIALIZED_NAME_NODE_NAME = "nodeName";
   @SerializedName(SERIALIZED_NAME_NODE_NAME)
@@ -150,7 +149,7 @@ public class O11yNodeRecord {
   }
 
 
-  public O11yNodeRecord nodeCPU(@javax.annotation.Nullable BigDecimal nodeCPU) {
+  public O11yNodeRecord nodeCPU(@javax.annotation.Nullable Double nodeCPU) {
     this.nodeCPU = nodeCPU;
     return this;
   }
@@ -160,16 +159,16 @@ public class O11yNodeRecord {
    * @return nodeCPU
    */
   @javax.annotation.Nullable
-  public BigDecimal getNodeCPU() {
+  public Double getNodeCPU() {
     return nodeCPU;
   }
 
-  public void setNodeCPU(@javax.annotation.Nullable BigDecimal nodeCPU) {
+  public void setNodeCPU(@javax.annotation.Nullable Double nodeCPU) {
     this.nodeCPU = nodeCPU;
   }
 
 
-  public O11yNodeRecord nodeCPUAllocatable(@javax.annotation.Nullable BigDecimal nodeCPUAllocatable) {
+  public O11yNodeRecord nodeCPUAllocatable(@javax.annotation.Nullable Double nodeCPUAllocatable) {
     this.nodeCPUAllocatable = nodeCPUAllocatable;
     return this;
   }
@@ -179,11 +178,11 @@ public class O11yNodeRecord {
    * @return nodeCPUAllocatable
    */
   @javax.annotation.Nullable
-  public BigDecimal getNodeCPUAllocatable() {
+  public Double getNodeCPUAllocatable() {
     return nodeCPUAllocatable;
   }
 
-  public void setNodeCPUAllocatable(@javax.annotation.Nullable BigDecimal nodeCPUAllocatable) {
+  public void setNodeCPUAllocatable(@javax.annotation.Nullable Double nodeCPUAllocatable) {
     this.nodeCPUAllocatable = nodeCPUAllocatable;
   }
 
@@ -207,7 +206,7 @@ public class O11yNodeRecord {
   }
 
 
-  public O11yNodeRecord nodeMemory(@javax.annotation.Nullable BigDecimal nodeMemory) {
+  public O11yNodeRecord nodeMemory(@javax.annotation.Nullable Double nodeMemory) {
     this.nodeMemory = nodeMemory;
     return this;
   }
@@ -217,16 +216,16 @@ public class O11yNodeRecord {
    * @return nodeMemory
    */
   @javax.annotation.Nullable
-  public BigDecimal getNodeMemory() {
+  public Double getNodeMemory() {
     return nodeMemory;
   }
 
-  public void setNodeMemory(@javax.annotation.Nullable BigDecimal nodeMemory) {
+  public void setNodeMemory(@javax.annotation.Nullable Double nodeMemory) {
     this.nodeMemory = nodeMemory;
   }
 
 
-  public O11yNodeRecord nodeMemoryAllocatable(@javax.annotation.Nullable BigDecimal nodeMemoryAllocatable) {
+  public O11yNodeRecord nodeMemoryAllocatable(@javax.annotation.Nullable Double nodeMemoryAllocatable) {
     this.nodeMemoryAllocatable = nodeMemoryAllocatable;
     return this;
   }
@@ -236,11 +235,11 @@ public class O11yNodeRecord {
    * @return nodeMemoryAllocatable
    */
   @javax.annotation.Nullable
-  public BigDecimal getNodeMemoryAllocatable() {
+  public Double getNodeMemoryAllocatable() {
     return nodeMemoryAllocatable;
   }
 
-  public void setNodeMemoryAllocatable(@javax.annotation.Nullable BigDecimal nodeMemoryAllocatable) {
+  public void setNodeMemoryAllocatable(@javax.annotation.Nullable Double nodeMemoryAllocatable) {
     this.nodeMemoryAllocatable = nodeMemoryAllocatable;
   }
 

@@ -21,7 +21,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -57,7 +56,7 @@ public class Analysis {
   public static final String SERIALIZED_NAME_ALPHA = "alpha";
   @SerializedName(SERIALIZED_NAME_ALPHA)
   @javax.annotation.Nullable
-  private BigDecimal alpha;
+  private Double alpha;
 
   public static final String SERIALIZED_NAME_EXPERIMENT = "experiment";
   @SerializedName(SERIALIZED_NAME_EXPERIMENT)
@@ -67,7 +66,7 @@ public class Analysis {
   public static final String SERIALIZED_NAME_EXPOSED_TOTAL = "exposedTotal";
   @SerializedName(SERIALIZED_NAME_EXPOSED_TOTAL)
   @javax.annotation.Nullable
-  private Integer exposedTotal;
+  private Long exposedTotal;
 
   public static final String SERIALIZED_NAME_METRIC = "metric";
   @SerializedName(SERIALIZED_NAME_METRIC)
@@ -87,7 +86,7 @@ public class Analysis {
   public Analysis() {
   }
 
-  public Analysis alpha(@javax.annotation.Nullable BigDecimal alpha) {
+  public Analysis alpha(@javax.annotation.Nullable Double alpha) {
     this.alpha = alpha;
     return this;
   }
@@ -97,11 +96,11 @@ public class Analysis {
    * @return alpha
    */
   @javax.annotation.Nullable
-  public BigDecimal getAlpha() {
+  public Double getAlpha() {
     return alpha;
   }
 
-  public void setAlpha(@javax.annotation.Nullable BigDecimal alpha) {
+  public void setAlpha(@javax.annotation.Nullable Double alpha) {
     this.alpha = alpha;
   }
 
@@ -125,7 +124,7 @@ public class Analysis {
   }
 
 
-  public Analysis exposedTotal(@javax.annotation.Nullable Integer exposedTotal) {
+  public Analysis exposedTotal(@javax.annotation.Nullable Long exposedTotal) {
     this.exposedTotal = exposedTotal;
     return this;
   }
@@ -135,11 +134,11 @@ public class Analysis {
    * @return exposedTotal
    */
   @javax.annotation.Nullable
-  public Integer getExposedTotal() {
+  public Long getExposedTotal() {
     return exposedTotal;
   }
 
-  public void setExposedTotal(@javax.annotation.Nullable Integer exposedTotal) {
+  public void setExposedTotal(@javax.annotation.Nullable Long exposedTotal) {
     this.exposedTotal = exposedTotal;
   }
 

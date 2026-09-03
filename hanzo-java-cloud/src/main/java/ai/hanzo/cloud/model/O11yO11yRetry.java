@@ -53,12 +53,12 @@ public class O11yO11yRetry {
   public static final String SERIALIZED_NAME_DELAY = "delay";
   @SerializedName(SERIALIZED_NAME_DELAY)
   @javax.annotation.Nullable
-  private Integer delay;
+  private Long delay;
 
   public O11yO11yRetry() {
   }
 
-  public O11yO11yRetry delay(@javax.annotation.Nullable Integer delay) {
+  public O11yO11yRetry delay(@javax.annotation.Nullable Long delay) {
     this.delay = delay;
     return this;
   }
@@ -68,11 +68,11 @@ public class O11yO11yRetry {
    * @return delay
    */
   @javax.annotation.Nullable
-  public Integer getDelay() {
+  public Long getDelay() {
     return delay;
   }
 
-  public void setDelay(@javax.annotation.Nullable Integer delay) {
+  public void setDelay(@javax.annotation.Nullable Long delay) {
     this.delay = delay;
   }
 

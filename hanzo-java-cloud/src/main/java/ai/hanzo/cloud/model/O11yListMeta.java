@@ -53,27 +53,27 @@ public class O11yListMeta {
   public static final String SERIALIZED_NAME_LIMIT = "limit";
   @SerializedName(SERIALIZED_NAME_LIMIT)
   @javax.annotation.Nullable
-  private Integer limit;
+  private Long limit;
 
   public static final String SERIALIZED_NAME_PAGE = "page";
   @SerializedName(SERIALIZED_NAME_PAGE)
   @javax.annotation.Nullable
-  private Integer page;
+  private Long page;
 
   public static final String SERIALIZED_NAME_TOTAL_ITEMS = "totalItems";
   @SerializedName(SERIALIZED_NAME_TOTAL_ITEMS)
   @javax.annotation.Nullable
-  private Integer totalItems;
+  private Long totalItems;
 
   public static final String SERIALIZED_NAME_TOTAL_PAGES = "totalPages";
   @SerializedName(SERIALIZED_NAME_TOTAL_PAGES)
   @javax.annotation.Nullable
-  private Integer totalPages;
+  private Long totalPages;
 
   public O11yListMeta() {
   }
 
-  public O11yListMeta limit(@javax.annotation.Nullable Integer limit) {
+  public O11yListMeta limit(@javax.annotation.Nullable Long limit) {
     this.limit = limit;
     return this;
   }
@@ -83,16 +83,16 @@ public class O11yListMeta {
    * @return limit
    */
   @javax.annotation.Nullable
-  public Integer getLimit() {
+  public Long getLimit() {
     return limit;
   }
 
-  public void setLimit(@javax.annotation.Nullable Integer limit) {
+  public void setLimit(@javax.annotation.Nullable Long limit) {
     this.limit = limit;
   }
 
 
-  public O11yListMeta page(@javax.annotation.Nullable Integer page) {
+  public O11yListMeta page(@javax.annotation.Nullable Long page) {
     this.page = page;
     return this;
   }
@@ -102,16 +102,16 @@ public class O11yListMeta {
    * @return page
    */
   @javax.annotation.Nullable
-  public Integer getPage() {
+  public Long getPage() {
     return page;
   }
 
-  public void setPage(@javax.annotation.Nullable Integer page) {
+  public void setPage(@javax.annotation.Nullable Long page) {
     this.page = page;
   }
 
 
-  public O11yListMeta totalItems(@javax.annotation.Nullable Integer totalItems) {
+  public O11yListMeta totalItems(@javax.annotation.Nullable Long totalItems) {
     this.totalItems = totalItems;
     return this;
   }
@@ -121,16 +121,16 @@ public class O11yListMeta {
    * @return totalItems
    */
   @javax.annotation.Nullable
-  public Integer getTotalItems() {
+  public Long getTotalItems() {
     return totalItems;
   }
 
-  public void setTotalItems(@javax.annotation.Nullable Integer totalItems) {
+  public void setTotalItems(@javax.annotation.Nullable Long totalItems) {
     this.totalItems = totalItems;
   }
 
 
-  public O11yListMeta totalPages(@javax.annotation.Nullable Integer totalPages) {
+  public O11yListMeta totalPages(@javax.annotation.Nullable Long totalPages) {
     this.totalPages = totalPages;
     return this;
   }
@@ -140,11 +140,11 @@ public class O11yListMeta {
    * @return totalPages
    */
   @javax.annotation.Nullable
-  public Integer getTotalPages() {
+  public Long getTotalPages() {
     return totalPages;
   }
 
-  public void setTotalPages(@javax.annotation.Nullable Integer totalPages) {
+  public void setTotalPages(@javax.annotation.Nullable Long totalPages) {
     this.totalPages = totalPages;
   }
 

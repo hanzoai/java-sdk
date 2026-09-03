@@ -70,7 +70,7 @@ public class RiskLabelVocabulary {
   public static final String SERIALIZED_NAME_RETENTION = "retention";
   @SerializedName(SERIALIZED_NAME_RETENTION)
   @javax.annotation.Nullable
-  private Integer retention;
+  private Long retention;
 
   public static final String SERIALIZED_NAME_RULE = "rule";
   @SerializedName(SERIALIZED_NAME_RULE)
@@ -161,7 +161,7 @@ public class RiskLabelVocabulary {
   }
 
 
-  public RiskLabelVocabulary retention(@javax.annotation.Nullable Integer retention) {
+  public RiskLabelVocabulary retention(@javax.annotation.Nullable Long retention) {
     this.retention = retention;
     return this;
   }
@@ -171,11 +171,11 @@ public class RiskLabelVocabulary {
    * @return retention
    */
   @javax.annotation.Nullable
-  public Integer getRetention() {
+  public Long getRetention() {
     return retention;
   }
 
-  public void setRetention(@javax.annotation.Nullable Integer retention) {
+  public void setRetention(@javax.annotation.Nullable Long retention) {
     this.retention = retention;
   }
 

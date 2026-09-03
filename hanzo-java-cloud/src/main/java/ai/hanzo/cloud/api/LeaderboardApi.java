@@ -94,7 +94,7 @@ public class LeaderboardApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getLeaderboardCall(@javax.annotation.Nullable String scope, @javax.annotation.Nullable String metric, @javax.annotation.Nullable String period, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getLeaderboardCall(@javax.annotation.Nullable String scope, @javax.annotation.Nullable String metric, @javax.annotation.Nullable String period, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -155,7 +155,7 @@ public class LeaderboardApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getLeaderboardValidateBeforeCall(@javax.annotation.Nullable String scope, @javax.annotation.Nullable String metric, @javax.annotation.Nullable String period, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getLeaderboardValidateBeforeCall(@javax.annotation.Nullable String scope, @javax.annotation.Nullable String metric, @javax.annotation.Nullable String period, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         return getLeaderboardCall(scope, metric, period, limit, _callback);
 
     }
@@ -176,7 +176,7 @@ public class LeaderboardApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public LeaderboardView getLeaderboard(@javax.annotation.Nullable String scope, @javax.annotation.Nullable String metric, @javax.annotation.Nullable String period, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public LeaderboardView getLeaderboard(@javax.annotation.Nullable String scope, @javax.annotation.Nullable String metric, @javax.annotation.Nullable String period, @javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<LeaderboardView> localVarResp = getLeaderboardWithHttpInfo(scope, metric, period, limit);
         return localVarResp.getData();
     }
@@ -197,7 +197,7 @@ public class LeaderboardApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<LeaderboardView> getLeaderboardWithHttpInfo(@javax.annotation.Nullable String scope, @javax.annotation.Nullable String metric, @javax.annotation.Nullable String period, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<LeaderboardView> getLeaderboardWithHttpInfo(@javax.annotation.Nullable String scope, @javax.annotation.Nullable String metric, @javax.annotation.Nullable String period, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getLeaderboardValidateBeforeCall(scope, metric, period, limit, null);
         Type localVarReturnType = new TypeToken<LeaderboardView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -220,7 +220,7 @@ public class LeaderboardApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getLeaderboardAsync(@javax.annotation.Nullable String scope, @javax.annotation.Nullable String metric, @javax.annotation.Nullable String period, @javax.annotation.Nullable Integer limit, final ApiCallback<LeaderboardView> _callback) throws ApiException {
+    public okhttp3.Call getLeaderboardAsync(@javax.annotation.Nullable String scope, @javax.annotation.Nullable String metric, @javax.annotation.Nullable String period, @javax.annotation.Nullable Long limit, final ApiCallback<LeaderboardView> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getLeaderboardValidateBeforeCall(scope, metric, period, limit, _callback);
         Type localVarReturnType = new TypeToken<LeaderboardView>(){}.getType();

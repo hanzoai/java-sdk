@@ -63,7 +63,7 @@ public class CartItemSet {
   public static final String SERIALIZED_NAME_QUANTITY = "quantity";
   @SerializedName(SERIALIZED_NAME_QUANTITY)
   @javax.annotation.Nullable
-  private Integer quantity;
+  private Long quantity;
 
   public static final String SERIALIZED_NAME_VARIANT = "variant";
   @SerializedName(SERIALIZED_NAME_VARIANT)
@@ -111,7 +111,7 @@ public class CartItemSet {
   }
 
 
-  public CartItemSet quantity(@javax.annotation.Nullable Integer quantity) {
+  public CartItemSet quantity(@javax.annotation.Nullable Long quantity) {
     this.quantity = quantity;
     return this;
   }
@@ -121,11 +121,11 @@ public class CartItemSet {
    * @return quantity
    */
   @javax.annotation.Nullable
-  public Integer getQuantity() {
+  public Long getQuantity() {
     return quantity;
   }
 
-  public void setQuantity(@javax.annotation.Nullable Integer quantity) {
+  public void setQuantity(@javax.annotation.Nullable Long quantity) {
     this.quantity = quantity;
   }
 

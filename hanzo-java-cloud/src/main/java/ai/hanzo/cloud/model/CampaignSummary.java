@@ -55,12 +55,12 @@ public class CampaignSummary {
   public static final String SERIALIZED_NAME_BUDGET = "budget";
   @SerializedName(SERIALIZED_NAME_BUDGET)
   @javax.annotation.Nullable
-  private Integer budget;
+  private Long budget;
 
   public static final String SERIALIZED_NAME_CAMPAIGNS = "campaigns";
   @SerializedName(SERIALIZED_NAME_CAMPAIGNS)
   @javax.annotation.Nullable
-  private Integer campaigns;
+  private Long campaigns;
 
   public static final String SERIALIZED_NAME_CHANNELS = "channels";
   @SerializedName(SERIALIZED_NAME_CHANNELS)
@@ -70,12 +70,12 @@ public class CampaignSummary {
   public static final String SERIALIZED_NAME_LIVE = "live";
   @SerializedName(SERIALIZED_NAME_LIVE)
   @javax.annotation.Nullable
-  private Integer live;
+  private Long live;
 
   public CampaignSummary() {
   }
 
-  public CampaignSummary budget(@javax.annotation.Nullable Integer budget) {
+  public CampaignSummary budget(@javax.annotation.Nullable Long budget) {
     this.budget = budget;
     return this;
   }
@@ -85,16 +85,16 @@ public class CampaignSummary {
    * @return budget
    */
   @javax.annotation.Nullable
-  public Integer getBudget() {
+  public Long getBudget() {
     return budget;
   }
 
-  public void setBudget(@javax.annotation.Nullable Integer budget) {
+  public void setBudget(@javax.annotation.Nullable Long budget) {
     this.budget = budget;
   }
 
 
-  public CampaignSummary campaigns(@javax.annotation.Nullable Integer campaigns) {
+  public CampaignSummary campaigns(@javax.annotation.Nullable Long campaigns) {
     this.campaigns = campaigns;
     return this;
   }
@@ -104,11 +104,11 @@ public class CampaignSummary {
    * @return campaigns
    */
   @javax.annotation.Nullable
-  public Integer getCampaigns() {
+  public Long getCampaigns() {
     return campaigns;
   }
 
-  public void setCampaigns(@javax.annotation.Nullable Integer campaigns) {
+  public void setCampaigns(@javax.annotation.Nullable Long campaigns) {
     this.campaigns = campaigns;
   }
 
@@ -140,7 +140,7 @@ public class CampaignSummary {
   }
 
 
-  public CampaignSummary live(@javax.annotation.Nullable Integer live) {
+  public CampaignSummary live(@javax.annotation.Nullable Long live) {
     this.live = live;
     return this;
   }
@@ -150,11 +150,11 @@ public class CampaignSummary {
    * @return live
    */
   @javax.annotation.Nullable
-  public Integer getLive() {
+  public Long getLive() {
     return live;
   }
 
-  public void setLive(@javax.annotation.Nullable Integer live) {
+  public void setLive(@javax.annotation.Nullable Long live) {
     this.live = live;
   }
 

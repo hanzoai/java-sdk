@@ -63,17 +63,17 @@ public class GLRow {
   public static final String SERIALIZED_NAME_CREDIT = "credit";
   @SerializedName(SERIALIZED_NAME_CREDIT)
   @javax.annotation.Nullable
-  private Integer credit;
+  private Long credit;
 
   public static final String SERIALIZED_NAME_DEBIT = "debit";
   @SerializedName(SERIALIZED_NAME_DEBIT)
   @javax.annotation.Nullable
-  private Integer debit;
+  private Long debit;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   @javax.annotation.Nullable
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_POSTING_AT = "postingAt";
   @SerializedName(SERIALIZED_NAME_POSTING_AT)
@@ -136,7 +136,7 @@ public class GLRow {
   }
 
 
-  public GLRow credit(@javax.annotation.Nullable Integer credit) {
+  public GLRow credit(@javax.annotation.Nullable Long credit) {
     this.credit = credit;
     return this;
   }
@@ -146,16 +146,16 @@ public class GLRow {
    * @return credit
    */
   @javax.annotation.Nullable
-  public Integer getCredit() {
+  public Long getCredit() {
     return credit;
   }
 
-  public void setCredit(@javax.annotation.Nullable Integer credit) {
+  public void setCredit(@javax.annotation.Nullable Long credit) {
     this.credit = credit;
   }
 
 
-  public GLRow debit(@javax.annotation.Nullable Integer debit) {
+  public GLRow debit(@javax.annotation.Nullable Long debit) {
     this.debit = debit;
     return this;
   }
@@ -165,16 +165,16 @@ public class GLRow {
    * @return debit
    */
   @javax.annotation.Nullable
-  public Integer getDebit() {
+  public Long getDebit() {
     return debit;
   }
 
-  public void setDebit(@javax.annotation.Nullable Integer debit) {
+  public void setDebit(@javax.annotation.Nullable Long debit) {
     this.debit = debit;
   }
 
 
-  public GLRow id(@javax.annotation.Nullable Integer id) {
+  public GLRow id(@javax.annotation.Nullable Long id) {
     this.id = id;
     return this;
   }
@@ -184,11 +184,11 @@ public class GLRow {
    * @return id
    */
   @javax.annotation.Nullable
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-  public void setId(@javax.annotation.Nullable Integer id) {
+  public void setId(@javax.annotation.Nullable Long id) {
     this.id = id;
   }
 

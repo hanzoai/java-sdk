@@ -53,12 +53,12 @@ public class Remittance {
   public static final String SERIALIZED_NAME_AMOUNT_CENTS = "amountCents";
   @SerializedName(SERIALIZED_NAME_AMOUNT_CENTS)
   @javax.annotation.Nullable
-  private Integer amountCents;
+  private Long amountCents;
 
   public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
   @javax.annotation.Nullable
-  private Integer createdAt;
+  private Long createdAt;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -83,7 +83,7 @@ public class Remittance {
   public Remittance() {
   }
 
-  public Remittance amountCents(@javax.annotation.Nullable Integer amountCents) {
+  public Remittance amountCents(@javax.annotation.Nullable Long amountCents) {
     this.amountCents = amountCents;
     return this;
   }
@@ -93,16 +93,16 @@ public class Remittance {
    * @return amountCents
    */
   @javax.annotation.Nullable
-  public Integer getAmountCents() {
+  public Long getAmountCents() {
     return amountCents;
   }
 
-  public void setAmountCents(@javax.annotation.Nullable Integer amountCents) {
+  public void setAmountCents(@javax.annotation.Nullable Long amountCents) {
     this.amountCents = amountCents;
   }
 
 
-  public Remittance createdAt(@javax.annotation.Nullable Integer createdAt) {
+  public Remittance createdAt(@javax.annotation.Nullable Long createdAt) {
     this.createdAt = createdAt;
     return this;
   }
@@ -112,11 +112,11 @@ public class Remittance {
    * @return createdAt
    */
   @javax.annotation.Nullable
-  public Integer getCreatedAt() {
+  public Long getCreatedAt() {
     return createdAt;
   }
 
-  public void setCreatedAt(@javax.annotation.Nullable Integer createdAt) {
+  public void setCreatedAt(@javax.annotation.Nullable Long createdAt) {
     this.createdAt = createdAt;
   }
 

@@ -53,7 +53,7 @@ public class FindingView {
   public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
   @javax.annotation.Nullable
-  private Integer createdAt;
+  private Long createdAt;
 
   public static final String SERIALIZED_NAME_FINGERPRINT = "fingerprint";
   @SerializedName(SERIALIZED_NAME_FINGERPRINT)
@@ -68,7 +68,7 @@ public class FindingView {
   public static final String SERIALIZED_NAME_LINE = "line";
   @SerializedName(SERIALIZED_NAME_LINE)
   @javax.annotation.Nullable
-  private Integer line;
+  private Long line;
 
   public static final String SERIALIZED_NAME_PATH = "path";
   @SerializedName(SERIALIZED_NAME_PATH)
@@ -103,7 +103,7 @@ public class FindingView {
   public FindingView() {
   }
 
-  public FindingView createdAt(@javax.annotation.Nullable Integer createdAt) {
+  public FindingView createdAt(@javax.annotation.Nullable Long createdAt) {
     this.createdAt = createdAt;
     return this;
   }
@@ -113,11 +113,11 @@ public class FindingView {
    * @return createdAt
    */
   @javax.annotation.Nullable
-  public Integer getCreatedAt() {
+  public Long getCreatedAt() {
     return createdAt;
   }
 
-  public void setCreatedAt(@javax.annotation.Nullable Integer createdAt) {
+  public void setCreatedAt(@javax.annotation.Nullable Long createdAt) {
     this.createdAt = createdAt;
   }
 
@@ -160,7 +160,7 @@ public class FindingView {
   }
 
 
-  public FindingView line(@javax.annotation.Nullable Integer line) {
+  public FindingView line(@javax.annotation.Nullable Long line) {
     this.line = line;
     return this;
   }
@@ -170,11 +170,11 @@ public class FindingView {
    * @return line
    */
   @javax.annotation.Nullable
-  public Integer getLine() {
+  public Long getLine() {
     return line;
   }
 
-  public void setLine(@javax.annotation.Nullable Integer line) {
+  public void setLine(@javax.annotation.Nullable Long line) {
     this.line = line;
   }
 

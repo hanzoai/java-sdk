@@ -73,7 +73,7 @@ public class ActivityRow {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   @javax.annotation.Nullable
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_KEY = "key";
   @SerializedName(SERIALIZED_NAME_KEY)
@@ -159,7 +159,7 @@ public class ActivityRow {
   }
 
 
-  public ActivityRow id(@javax.annotation.Nullable Integer id) {
+  public ActivityRow id(@javax.annotation.Nullable Long id) {
     this.id = id;
     return this;
   }
@@ -169,11 +169,11 @@ public class ActivityRow {
    * @return id
    */
   @javax.annotation.Nullable
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-  public void setId(@javax.annotation.Nullable Integer id) {
+  public void setId(@javax.annotation.Nullable Long id) {
     this.id = id;
   }
 

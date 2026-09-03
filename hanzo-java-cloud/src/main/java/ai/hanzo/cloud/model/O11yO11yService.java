@@ -21,7 +21,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -55,12 +54,12 @@ public class O11yO11yService {
   public static final String SERIALIZED_NAME_AVG_DURATION = "avgDuration";
   @SerializedName(SERIALIZED_NAME_AVG_DURATION)
   @javax.annotation.Nullable
-  private BigDecimal avgDuration;
+  private Double avgDuration;
 
   public static final String SERIALIZED_NAME_CALL_RATE = "callRate";
   @SerializedName(SERIALIZED_NAME_CALL_RATE)
   @javax.annotation.Nullable
-  private BigDecimal callRate;
+  private Double callRate;
 
   public static final String SERIALIZED_NAME_DATA_WARNING = "dataWarning";
   @SerializedName(SERIALIZED_NAME_DATA_WARNING)
@@ -70,12 +69,12 @@ public class O11yO11yService {
   public static final String SERIALIZED_NAME_ERROR_RATE = "errorRate";
   @SerializedName(SERIALIZED_NAME_ERROR_RATE)
   @javax.annotation.Nullable
-  private BigDecimal errorRate;
+  private Double errorRate;
 
   public static final String SERIALIZED_NAME_FOUR_X_X_RATE = "fourXXRate";
   @SerializedName(SERIALIZED_NAME_FOUR_X_X_RATE)
   @javax.annotation.Nullable
-  private BigDecimal fourXXRate;
+  private Double fourXXRate;
 
   public static final String SERIALIZED_NAME_NUM4_X_X = "num4XX";
   @SerializedName(SERIALIZED_NAME_NUM4_X_X)
@@ -95,7 +94,7 @@ public class O11yO11yService {
   public static final String SERIALIZED_NAME_P99 = "p99";
   @SerializedName(SERIALIZED_NAME_P99)
   @javax.annotation.Nullable
-  private BigDecimal p99;
+  private Double p99;
 
   public static final String SERIALIZED_NAME_SERVICE_NAME = "serviceName";
   @SerializedName(SERIALIZED_NAME_SERVICE_NAME)
@@ -105,7 +104,7 @@ public class O11yO11yService {
   public O11yO11yService() {
   }
 
-  public O11yO11yService avgDuration(@javax.annotation.Nullable BigDecimal avgDuration) {
+  public O11yO11yService avgDuration(@javax.annotation.Nullable Double avgDuration) {
     this.avgDuration = avgDuration;
     return this;
   }
@@ -115,16 +114,16 @@ public class O11yO11yService {
    * @return avgDuration
    */
   @javax.annotation.Nullable
-  public BigDecimal getAvgDuration() {
+  public Double getAvgDuration() {
     return avgDuration;
   }
 
-  public void setAvgDuration(@javax.annotation.Nullable BigDecimal avgDuration) {
+  public void setAvgDuration(@javax.annotation.Nullable Double avgDuration) {
     this.avgDuration = avgDuration;
   }
 
 
-  public O11yO11yService callRate(@javax.annotation.Nullable BigDecimal callRate) {
+  public O11yO11yService callRate(@javax.annotation.Nullable Double callRate) {
     this.callRate = callRate;
     return this;
   }
@@ -134,11 +133,11 @@ public class O11yO11yService {
    * @return callRate
    */
   @javax.annotation.Nullable
-  public BigDecimal getCallRate() {
+  public Double getCallRate() {
     return callRate;
   }
 
-  public void setCallRate(@javax.annotation.Nullable BigDecimal callRate) {
+  public void setCallRate(@javax.annotation.Nullable Double callRate) {
     this.callRate = callRate;
   }
 
@@ -162,7 +161,7 @@ public class O11yO11yService {
   }
 
 
-  public O11yO11yService errorRate(@javax.annotation.Nullable BigDecimal errorRate) {
+  public O11yO11yService errorRate(@javax.annotation.Nullable Double errorRate) {
     this.errorRate = errorRate;
     return this;
   }
@@ -172,16 +171,16 @@ public class O11yO11yService {
    * @return errorRate
    */
   @javax.annotation.Nullable
-  public BigDecimal getErrorRate() {
+  public Double getErrorRate() {
     return errorRate;
   }
 
-  public void setErrorRate(@javax.annotation.Nullable BigDecimal errorRate) {
+  public void setErrorRate(@javax.annotation.Nullable Double errorRate) {
     this.errorRate = errorRate;
   }
 
 
-  public O11yO11yService fourXXRate(@javax.annotation.Nullable BigDecimal fourXXRate) {
+  public O11yO11yService fourXXRate(@javax.annotation.Nullable Double fourXXRate) {
     this.fourXXRate = fourXXRate;
     return this;
   }
@@ -191,11 +190,11 @@ public class O11yO11yService {
    * @return fourXXRate
    */
   @javax.annotation.Nullable
-  public BigDecimal getFourXXRate() {
+  public Double getFourXXRate() {
     return fourXXRate;
   }
 
-  public void setFourXXRate(@javax.annotation.Nullable BigDecimal fourXXRate) {
+  public void setFourXXRate(@javax.annotation.Nullable Double fourXXRate) {
     this.fourXXRate = fourXXRate;
   }
 
@@ -257,7 +256,7 @@ public class O11yO11yService {
   }
 
 
-  public O11yO11yService p99(@javax.annotation.Nullable BigDecimal p99) {
+  public O11yO11yService p99(@javax.annotation.Nullable Double p99) {
     this.p99 = p99;
     return this;
   }
@@ -267,11 +266,11 @@ public class O11yO11yService {
    * @return p99
    */
   @javax.annotation.Nullable
-  public BigDecimal getP99() {
+  public Double getP99() {
     return p99;
   }
 
-  public void setP99(@javax.annotation.Nullable BigDecimal p99) {
+  public void setP99(@javax.annotation.Nullable Double p99) {
     this.p99 = p99;
   }
 

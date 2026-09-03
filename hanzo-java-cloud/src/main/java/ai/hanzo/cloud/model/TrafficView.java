@@ -58,7 +58,7 @@ public class TrafficView {
   public static final String SERIALIZED_NAME_BLIND = "blind";
   @SerializedName(SERIALIZED_NAME_BLIND)
   @javax.annotation.Nullable
-  private Integer blind;
+  private Long blind;
 
   public static final String SERIALIZED_NAME_CALLERS = "callers";
   @SerializedName(SERIALIZED_NAME_CALLERS)
@@ -68,17 +68,17 @@ public class TrafficView {
   public static final String SERIALIZED_NAME_CEILING = "ceiling";
   @SerializedName(SERIALIZED_NAME_CEILING)
   @javax.annotation.Nullable
-  private Integer ceiling;
+  private Long ceiling;
 
   public static final String SERIALIZED_NAME_DENIED = "denied";
   @SerializedName(SERIALIZED_NAME_DENIED)
   @javax.annotation.Nullable
-  private Integer denied;
+  private Long denied;
 
   public static final String SERIALIZED_NAME_LANES = "lanes";
   @SerializedName(SERIALIZED_NAME_LANES)
   @javax.annotation.Nullable
-  private Map<String, Integer> lanes = new HashMap<>();
+  private Map<String, Long> lanes = new HashMap<>();
 
   public static final String SERIALIZED_NAME_MODE = "mode";
   @SerializedName(SERIALIZED_NAME_MODE)
@@ -93,17 +93,17 @@ public class TrafficView {
   public static final String SERIALIZED_NAME_REFUSED = "refused";
   @SerializedName(SERIALIZED_NAME_REFUSED)
   @javax.annotation.Nullable
-  private Integer refused;
+  private Long refused;
 
   public static final String SERIALIZED_NAME_REQUESTS = "requests";
   @SerializedName(SERIALIZED_NAME_REQUESTS)
   @javax.annotation.Nullable
-  private Integer requests;
+  private Long requests;
 
   public static final String SERIALIZED_NAME_SCREENS = "screens";
   @SerializedName(SERIALIZED_NAME_SCREENS)
   @javax.annotation.Nullable
-  private Integer screens;
+  private Long screens;
 
   public static final String SERIALIZED_NAME_STRAIN = "strain";
   @SerializedName(SERIALIZED_NAME_STRAIN)
@@ -113,22 +113,22 @@ public class TrafficView {
   public static final String SERIALIZED_NAME_TRACKED = "tracked";
   @SerializedName(SERIALIZED_NAME_TRACKED)
   @javax.annotation.Nullable
-  private Integer tracked;
+  private Long tracked;
 
   public static final String SERIALIZED_NAME_UNSCORED = "unscored";
   @SerializedName(SERIALIZED_NAME_UNSCORED)
   @javax.annotation.Nullable
-  private Integer unscored;
+  private Long unscored;
 
   public static final String SERIALIZED_NAME_WINDOW_SEC = "window_sec";
   @SerializedName(SERIALIZED_NAME_WINDOW_SEC)
   @javax.annotation.Nullable
-  private Integer windowSec;
+  private Long windowSec;
 
   public TrafficView() {
   }
 
-  public TrafficView blind(@javax.annotation.Nullable Integer blind) {
+  public TrafficView blind(@javax.annotation.Nullable Long blind) {
     this.blind = blind;
     return this;
   }
@@ -138,11 +138,11 @@ public class TrafficView {
    * @return blind
    */
   @javax.annotation.Nullable
-  public Integer getBlind() {
+  public Long getBlind() {
     return blind;
   }
 
-  public void setBlind(@javax.annotation.Nullable Integer blind) {
+  public void setBlind(@javax.annotation.Nullable Long blind) {
     this.blind = blind;
   }
 
@@ -174,7 +174,7 @@ public class TrafficView {
   }
 
 
-  public TrafficView ceiling(@javax.annotation.Nullable Integer ceiling) {
+  public TrafficView ceiling(@javax.annotation.Nullable Long ceiling) {
     this.ceiling = ceiling;
     return this;
   }
@@ -184,16 +184,16 @@ public class TrafficView {
    * @return ceiling
    */
   @javax.annotation.Nullable
-  public Integer getCeiling() {
+  public Long getCeiling() {
     return ceiling;
   }
 
-  public void setCeiling(@javax.annotation.Nullable Integer ceiling) {
+  public void setCeiling(@javax.annotation.Nullable Long ceiling) {
     this.ceiling = ceiling;
   }
 
 
-  public TrafficView denied(@javax.annotation.Nullable Integer denied) {
+  public TrafficView denied(@javax.annotation.Nullable Long denied) {
     this.denied = denied;
     return this;
   }
@@ -203,21 +203,21 @@ public class TrafficView {
    * @return denied
    */
   @javax.annotation.Nullable
-  public Integer getDenied() {
+  public Long getDenied() {
     return denied;
   }
 
-  public void setDenied(@javax.annotation.Nullable Integer denied) {
+  public void setDenied(@javax.annotation.Nullable Long denied) {
     this.denied = denied;
   }
 
 
-  public TrafficView lanes(@javax.annotation.Nullable Map<String, Integer> lanes) {
+  public TrafficView lanes(@javax.annotation.Nullable Map<String, Long> lanes) {
     this.lanes = lanes;
     return this;
   }
 
-  public TrafficView putLanesItem(String key, Integer lanesItem) {
+  public TrafficView putLanesItem(String key, Long lanesItem) {
     if (this.lanes == null) {
       this.lanes = new HashMap<>();
     }
@@ -230,11 +230,11 @@ public class TrafficView {
    * @return lanes
    */
   @javax.annotation.Nullable
-  public Map<String, Integer> getLanes() {
+  public Map<String, Long> getLanes() {
     return lanes;
   }
 
-  public void setLanes(@javax.annotation.Nullable Map<String, Integer> lanes) {
+  public void setLanes(@javax.annotation.Nullable Map<String, Long> lanes) {
     this.lanes = lanes;
   }
 
@@ -277,7 +277,7 @@ public class TrafficView {
   }
 
 
-  public TrafficView refused(@javax.annotation.Nullable Integer refused) {
+  public TrafficView refused(@javax.annotation.Nullable Long refused) {
     this.refused = refused;
     return this;
   }
@@ -287,16 +287,16 @@ public class TrafficView {
    * @return refused
    */
   @javax.annotation.Nullable
-  public Integer getRefused() {
+  public Long getRefused() {
     return refused;
   }
 
-  public void setRefused(@javax.annotation.Nullable Integer refused) {
+  public void setRefused(@javax.annotation.Nullable Long refused) {
     this.refused = refused;
   }
 
 
-  public TrafficView requests(@javax.annotation.Nullable Integer requests) {
+  public TrafficView requests(@javax.annotation.Nullable Long requests) {
     this.requests = requests;
     return this;
   }
@@ -306,16 +306,16 @@ public class TrafficView {
    * @return requests
    */
   @javax.annotation.Nullable
-  public Integer getRequests() {
+  public Long getRequests() {
     return requests;
   }
 
-  public void setRequests(@javax.annotation.Nullable Integer requests) {
+  public void setRequests(@javax.annotation.Nullable Long requests) {
     this.requests = requests;
   }
 
 
-  public TrafficView screens(@javax.annotation.Nullable Integer screens) {
+  public TrafficView screens(@javax.annotation.Nullable Long screens) {
     this.screens = screens;
     return this;
   }
@@ -325,11 +325,11 @@ public class TrafficView {
    * @return screens
    */
   @javax.annotation.Nullable
-  public Integer getScreens() {
+  public Long getScreens() {
     return screens;
   }
 
-  public void setScreens(@javax.annotation.Nullable Integer screens) {
+  public void setScreens(@javax.annotation.Nullable Long screens) {
     this.screens = screens;
   }
 
@@ -353,7 +353,7 @@ public class TrafficView {
   }
 
 
-  public TrafficView tracked(@javax.annotation.Nullable Integer tracked) {
+  public TrafficView tracked(@javax.annotation.Nullable Long tracked) {
     this.tracked = tracked;
     return this;
   }
@@ -363,16 +363,16 @@ public class TrafficView {
    * @return tracked
    */
   @javax.annotation.Nullable
-  public Integer getTracked() {
+  public Long getTracked() {
     return tracked;
   }
 
-  public void setTracked(@javax.annotation.Nullable Integer tracked) {
+  public void setTracked(@javax.annotation.Nullable Long tracked) {
     this.tracked = tracked;
   }
 
 
-  public TrafficView unscored(@javax.annotation.Nullable Integer unscored) {
+  public TrafficView unscored(@javax.annotation.Nullable Long unscored) {
     this.unscored = unscored;
     return this;
   }
@@ -382,16 +382,16 @@ public class TrafficView {
    * @return unscored
    */
   @javax.annotation.Nullable
-  public Integer getUnscored() {
+  public Long getUnscored() {
     return unscored;
   }
 
-  public void setUnscored(@javax.annotation.Nullable Integer unscored) {
+  public void setUnscored(@javax.annotation.Nullable Long unscored) {
     this.unscored = unscored;
   }
 
 
-  public TrafficView windowSec(@javax.annotation.Nullable Integer windowSec) {
+  public TrafficView windowSec(@javax.annotation.Nullable Long windowSec) {
     this.windowSec = windowSec;
     return this;
   }
@@ -401,11 +401,11 @@ public class TrafficView {
    * @return windowSec
    */
   @javax.annotation.Nullable
-  public Integer getWindowSec() {
+  public Long getWindowSec() {
     return windowSec;
   }
 
-  public void setWindowSec(@javax.annotation.Nullable Integer windowSec) {
+  public void setWindowSec(@javax.annotation.Nullable Long windowSec) {
     this.windowSec = windowSec;
   }
 

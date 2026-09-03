@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -54,12 +53,12 @@ public class RiskTopology {
   public static final String SERIALIZED_NAME_BLEND = "blend";
   @SerializedName(SERIALIZED_NAME_BLEND)
   @javax.annotation.Nullable
-  private BigDecimal blend;
+  private Double blend;
 
   public static final String SERIALIZED_NAME_DEPTH = "depth";
   @SerializedName(SERIALIZED_NAME_DEPTH)
   @javax.annotation.Nullable
-  private Integer depth;
+  private Long depth;
 
   public static final String SERIALIZED_NAME_FAMILY = "family";
   @SerializedName(SERIALIZED_NAME_FAMILY)
@@ -69,22 +68,22 @@ public class RiskTopology {
   public static final String SERIALIZED_NAME_REVIEW = "review";
   @SerializedName(SERIALIZED_NAME_REVIEW)
   @javax.annotation.Nullable
-  private BigDecimal review;
+  private Double review;
 
   public static final String SERIALIZED_NAME_TREES = "trees";
   @SerializedName(SERIALIZED_NAME_TREES)
   @javax.annotation.Nullable
-  private Integer trees;
+  private Long trees;
 
   public static final String SERIALIZED_NAME_WINDOW = "window";
   @SerializedName(SERIALIZED_NAME_WINDOW)
   @javax.annotation.Nullable
-  private Integer window;
+  private Long window;
 
   public RiskTopology() {
   }
 
-  public RiskTopology blend(@javax.annotation.Nullable BigDecimal blend) {
+  public RiskTopology blend(@javax.annotation.Nullable Double blend) {
     this.blend = blend;
     return this;
   }
@@ -94,16 +93,16 @@ public class RiskTopology {
    * @return blend
    */
   @javax.annotation.Nullable
-  public BigDecimal getBlend() {
+  public Double getBlend() {
     return blend;
   }
 
-  public void setBlend(@javax.annotation.Nullable BigDecimal blend) {
+  public void setBlend(@javax.annotation.Nullable Double blend) {
     this.blend = blend;
   }
 
 
-  public RiskTopology depth(@javax.annotation.Nullable Integer depth) {
+  public RiskTopology depth(@javax.annotation.Nullable Long depth) {
     this.depth = depth;
     return this;
   }
@@ -113,11 +112,11 @@ public class RiskTopology {
    * @return depth
    */
   @javax.annotation.Nullable
-  public Integer getDepth() {
+  public Long getDepth() {
     return depth;
   }
 
-  public void setDepth(@javax.annotation.Nullable Integer depth) {
+  public void setDepth(@javax.annotation.Nullable Long depth) {
     this.depth = depth;
   }
 
@@ -141,7 +140,7 @@ public class RiskTopology {
   }
 
 
-  public RiskTopology review(@javax.annotation.Nullable BigDecimal review) {
+  public RiskTopology review(@javax.annotation.Nullable Double review) {
     this.review = review;
     return this;
   }
@@ -151,16 +150,16 @@ public class RiskTopology {
    * @return review
    */
   @javax.annotation.Nullable
-  public BigDecimal getReview() {
+  public Double getReview() {
     return review;
   }
 
-  public void setReview(@javax.annotation.Nullable BigDecimal review) {
+  public void setReview(@javax.annotation.Nullable Double review) {
     this.review = review;
   }
 
 
-  public RiskTopology trees(@javax.annotation.Nullable Integer trees) {
+  public RiskTopology trees(@javax.annotation.Nullable Long trees) {
     this.trees = trees;
     return this;
   }
@@ -170,16 +169,16 @@ public class RiskTopology {
    * @return trees
    */
   @javax.annotation.Nullable
-  public Integer getTrees() {
+  public Long getTrees() {
     return trees;
   }
 
-  public void setTrees(@javax.annotation.Nullable Integer trees) {
+  public void setTrees(@javax.annotation.Nullable Long trees) {
     this.trees = trees;
   }
 
 
-  public RiskTopology window(@javax.annotation.Nullable Integer window) {
+  public RiskTopology window(@javax.annotation.Nullable Long window) {
     this.window = window;
     return this;
   }
@@ -189,11 +188,11 @@ public class RiskTopology {
    * @return window
    */
   @javax.annotation.Nullable
-  public Integer getWindow() {
+  public Long getWindow() {
     return window;
   }
 
-  public void setWindow(@javax.annotation.Nullable Integer window) {
+  public void setWindow(@javax.annotation.Nullable Long window) {
     this.window = window;
   }
 

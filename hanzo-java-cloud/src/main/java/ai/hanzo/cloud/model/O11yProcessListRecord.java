@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -71,7 +70,7 @@ public class O11yProcessListRecord {
   public static final String SERIALIZED_NAME_PROCESS_C_P_U = "processCPU";
   @SerializedName(SERIALIZED_NAME_PROCESS_C_P_U)
   @javax.annotation.Nullable
-  private BigDecimal processCPU;
+  private Double processCPU;
 
   public static final String SERIALIZED_NAME_PROCESS_I_D = "processID";
   @SerializedName(SERIALIZED_NAME_PROCESS_I_D)
@@ -81,7 +80,7 @@ public class O11yProcessListRecord {
   public static final String SERIALIZED_NAME_PROCESS_MEMORY = "processMemory";
   @SerializedName(SERIALIZED_NAME_PROCESS_MEMORY)
   @javax.annotation.Nullable
-  private BigDecimal processMemory;
+  private Double processMemory;
 
   public static final String SERIALIZED_NAME_PROCESS_NAME = "processName";
   @SerializedName(SERIALIZED_NAME_PROCESS_NAME)
@@ -156,7 +155,7 @@ public class O11yProcessListRecord {
   }
 
 
-  public O11yProcessListRecord processCPU(@javax.annotation.Nullable BigDecimal processCPU) {
+  public O11yProcessListRecord processCPU(@javax.annotation.Nullable Double processCPU) {
     this.processCPU = processCPU;
     return this;
   }
@@ -166,11 +165,11 @@ public class O11yProcessListRecord {
    * @return processCPU
    */
   @javax.annotation.Nullable
-  public BigDecimal getProcessCPU() {
+  public Double getProcessCPU() {
     return processCPU;
   }
 
-  public void setProcessCPU(@javax.annotation.Nullable BigDecimal processCPU) {
+  public void setProcessCPU(@javax.annotation.Nullable Double processCPU) {
     this.processCPU = processCPU;
   }
 
@@ -194,7 +193,7 @@ public class O11yProcessListRecord {
   }
 
 
-  public O11yProcessListRecord processMemory(@javax.annotation.Nullable BigDecimal processMemory) {
+  public O11yProcessListRecord processMemory(@javax.annotation.Nullable Double processMemory) {
     this.processMemory = processMemory;
     return this;
   }
@@ -204,11 +203,11 @@ public class O11yProcessListRecord {
    * @return processMemory
    */
   @javax.annotation.Nullable
-  public BigDecimal getProcessMemory() {
+  public Double getProcessMemory() {
     return processMemory;
   }
 
-  public void setProcessMemory(@javax.annotation.Nullable BigDecimal processMemory) {
+  public void setProcessMemory(@javax.annotation.Nullable Double processMemory) {
     this.processMemory = processMemory;
   }
 

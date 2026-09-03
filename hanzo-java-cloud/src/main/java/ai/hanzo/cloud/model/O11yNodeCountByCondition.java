@@ -53,22 +53,22 @@ public class O11yNodeCountByCondition {
   public static final String SERIALIZED_NAME_NOT_READY = "notReady";
   @SerializedName(SERIALIZED_NAME_NOT_READY)
   @javax.annotation.Nullable
-  private Integer notReady;
+  private Long notReady;
 
   public static final String SERIALIZED_NAME_READY = "ready";
   @SerializedName(SERIALIZED_NAME_READY)
   @javax.annotation.Nullable
-  private Integer ready;
+  private Long ready;
 
   public static final String SERIALIZED_NAME_UNKNOWN = "unknown";
   @SerializedName(SERIALIZED_NAME_UNKNOWN)
   @javax.annotation.Nullable
-  private Integer unknown;
+  private Long unknown;
 
   public O11yNodeCountByCondition() {
   }
 
-  public O11yNodeCountByCondition notReady(@javax.annotation.Nullable Integer notReady) {
+  public O11yNodeCountByCondition notReady(@javax.annotation.Nullable Long notReady) {
     this.notReady = notReady;
     return this;
   }
@@ -78,16 +78,16 @@ public class O11yNodeCountByCondition {
    * @return notReady
    */
   @javax.annotation.Nullable
-  public Integer getNotReady() {
+  public Long getNotReady() {
     return notReady;
   }
 
-  public void setNotReady(@javax.annotation.Nullable Integer notReady) {
+  public void setNotReady(@javax.annotation.Nullable Long notReady) {
     this.notReady = notReady;
   }
 
 
-  public O11yNodeCountByCondition ready(@javax.annotation.Nullable Integer ready) {
+  public O11yNodeCountByCondition ready(@javax.annotation.Nullable Long ready) {
     this.ready = ready;
     return this;
   }
@@ -97,16 +97,16 @@ public class O11yNodeCountByCondition {
    * @return ready
    */
   @javax.annotation.Nullable
-  public Integer getReady() {
+  public Long getReady() {
     return ready;
   }
 
-  public void setReady(@javax.annotation.Nullable Integer ready) {
+  public void setReady(@javax.annotation.Nullable Long ready) {
     this.ready = ready;
   }
 
 
-  public O11yNodeCountByCondition unknown(@javax.annotation.Nullable Integer unknown) {
+  public O11yNodeCountByCondition unknown(@javax.annotation.Nullable Long unknown) {
     this.unknown = unknown;
     return this;
   }
@@ -116,11 +116,11 @@ public class O11yNodeCountByCondition {
    * @return unknown
    */
   @javax.annotation.Nullable
-  public Integer getUnknown() {
+  public Long getUnknown() {
     return unknown;
   }
 
-  public void setUnknown(@javax.annotation.Nullable Integer unknown) {
+  public void setUnknown(@javax.annotation.Nullable Long unknown) {
     this.unknown = unknown;
   }
 

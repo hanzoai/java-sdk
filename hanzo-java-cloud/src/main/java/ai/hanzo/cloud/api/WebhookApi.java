@@ -458,7 +458,7 @@ public class WebhookApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getWebhookByIdDeliveriesCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String status, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getWebhookByIdDeliveriesCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable String status, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -512,7 +512,7 @@ public class WebhookApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getWebhookByIdDeliveriesValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String status, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getWebhookByIdDeliveriesValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable String status, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling getWebhookByIdDeliveries(Async)");
@@ -537,7 +537,7 @@ public class WebhookApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public DeliveryList getWebhookByIdDeliveries(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String status) throws ApiException {
+    public DeliveryList getWebhookByIdDeliveries(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable String status) throws ApiException {
         ApiResponse<DeliveryList> localVarResp = getWebhookByIdDeliveriesWithHttpInfo(id, limit, status);
         return localVarResp.getData();
     }
@@ -557,7 +557,7 @@ public class WebhookApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DeliveryList> getWebhookByIdDeliveriesWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String status) throws ApiException {
+    public ApiResponse<DeliveryList> getWebhookByIdDeliveriesWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable String status) throws ApiException {
         okhttp3.Call localVarCall = getWebhookByIdDeliveriesValidateBeforeCall(id, limit, status, null);
         Type localVarReturnType = new TypeToken<DeliveryList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -579,7 +579,7 @@ public class WebhookApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getWebhookByIdDeliveriesAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String status, final ApiCallback<DeliveryList> _callback) throws ApiException {
+    public okhttp3.Call getWebhookByIdDeliveriesAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable String status, final ApiCallback<DeliveryList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getWebhookByIdDeliveriesValidateBeforeCall(id, limit, status, _callback);
         Type localVarReturnType = new TypeToken<DeliveryList>(){}.getType();

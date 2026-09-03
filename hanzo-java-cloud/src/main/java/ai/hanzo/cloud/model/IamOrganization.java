@@ -23,7 +23,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -75,7 +74,7 @@ public class IamOrganization {
   public static final String SERIALIZED_NAME_BALANCE_CREDIT = "balanceCredit";
   @SerializedName(SERIALIZED_NAME_BALANCE_CREDIT)
   @javax.annotation.Nullable
-  private BigDecimal balanceCredit;
+  private Double balanceCredit;
 
   public static final String SERIALIZED_NAME_BALANCE_CURRENCY = "balanceCurrency";
   @SerializedName(SERIALIZED_NAME_BALANCE_CURRENCY)
@@ -150,12 +149,12 @@ public class IamOrganization {
   public static final String SERIALIZED_NAME_FAILED_SIGNIN_FROZEN_TIME = "failedSigninFrozenTime";
   @SerializedName(SERIALIZED_NAME_FAILED_SIGNIN_FROZEN_TIME)
   @javax.annotation.Nullable
-  private Integer failedSigninFrozenTime;
+  private Long failedSigninFrozenTime;
 
   public static final String SERIALIZED_NAME_FAILED_SIGNIN_LIMIT = "failedSigninLimit";
   @SerializedName(SERIALIZED_NAME_FAILED_SIGNIN_LIMIT)
   @javax.annotation.Nullable
-  private Integer failedSigninLimit;
+  private Long failedSigninLimit;
 
   public static final String SERIALIZED_NAME_FAVICON = "favicon";
   @SerializedName(SERIALIZED_NAME_FAVICON)
@@ -180,7 +179,7 @@ public class IamOrganization {
   public static final String SERIALIZED_NAME_INIT_SCORE = "initScore";
   @SerializedName(SERIALIZED_NAME_INIT_SCORE)
   @javax.annotation.Nullable
-  private Integer initScore;
+  private Long initScore;
 
   public static final String SERIALIZED_NAME_IP_RESTRICTION = "ipRestriction";
   @SerializedName(SERIALIZED_NAME_IP_RESTRICTION)
@@ -260,7 +259,7 @@ public class IamOrganization {
   public static final String SERIALIZED_NAME_MFA_REMEMBER_IN_HOURS = "mfaRememberInHours";
   @SerializedName(SERIALIZED_NAME_MFA_REMEMBER_IN_HOURS)
   @javax.annotation.Nullable
-  private Integer mfaRememberInHours;
+  private Long mfaRememberInHours;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -275,7 +274,7 @@ public class IamOrganization {
   public static final String SERIALIZED_NAME_ORG_BALANCE = "orgBalance";
   @SerializedName(SERIALIZED_NAME_ORG_BALANCE)
   @javax.annotation.Nullable
-  private BigDecimal orgBalance;
+  private Double orgBalance;
 
   public static final String SERIALIZED_NAME_OWNER = "owner";
   @SerializedName(SERIALIZED_NAME_OWNER)
@@ -285,7 +284,7 @@ public class IamOrganization {
   public static final String SERIALIZED_NAME_PASSWORD_EXPIRE_DAYS = "passwordExpireDays";
   @SerializedName(SERIALIZED_NAME_PASSWORD_EXPIRE_DAYS)
   @javax.annotation.Nullable
-  private Integer passwordExpireDays;
+  private Long passwordExpireDays;
 
   public static final String SERIALIZED_NAME_PASSWORD_OBFUSCATOR_KEY = "passwordObfuscatorKey";
   @SerializedName(SERIALIZED_NAME_PASSWORD_OBFUSCATOR_KEY)
@@ -340,7 +339,7 @@ public class IamOrganization {
   public static final String SERIALIZED_NAME_USER_BALANCE = "userBalance";
   @SerializedName(SERIALIZED_NAME_USER_BALANCE)
   @javax.annotation.Nullable
-  private BigDecimal userBalance;
+  private Double userBalance;
 
   public static final String SERIALIZED_NAME_USER_NAV_ITEMS = "userNavItems";
   @SerializedName(SERIALIZED_NAME_USER_NAV_ITEMS)
@@ -430,7 +429,7 @@ public class IamOrganization {
   }
 
 
-  public IamOrganization balanceCredit(@javax.annotation.Nullable BigDecimal balanceCredit) {
+  public IamOrganization balanceCredit(@javax.annotation.Nullable Double balanceCredit) {
     this.balanceCredit = balanceCredit;
     return this;
   }
@@ -440,11 +439,11 @@ public class IamOrganization {
    * @return balanceCredit
    */
   @javax.annotation.Nullable
-  public BigDecimal getBalanceCredit() {
+  public Double getBalanceCredit() {
     return balanceCredit;
   }
 
-  public void setBalanceCredit(@javax.annotation.Nullable BigDecimal balanceCredit) {
+  public void setBalanceCredit(@javax.annotation.Nullable Double balanceCredit) {
     this.balanceCredit = balanceCredit;
   }
 
@@ -723,7 +722,7 @@ public class IamOrganization {
   }
 
 
-  public IamOrganization failedSigninFrozenTime(@javax.annotation.Nullable Integer failedSigninFrozenTime) {
+  public IamOrganization failedSigninFrozenTime(@javax.annotation.Nullable Long failedSigninFrozenTime) {
     this.failedSigninFrozenTime = failedSigninFrozenTime;
     return this;
   }
@@ -733,16 +732,16 @@ public class IamOrganization {
    * @return failedSigninFrozenTime
    */
   @javax.annotation.Nullable
-  public Integer getFailedSigninFrozenTime() {
+  public Long getFailedSigninFrozenTime() {
     return failedSigninFrozenTime;
   }
 
-  public void setFailedSigninFrozenTime(@javax.annotation.Nullable Integer failedSigninFrozenTime) {
+  public void setFailedSigninFrozenTime(@javax.annotation.Nullable Long failedSigninFrozenTime) {
     this.failedSigninFrozenTime = failedSigninFrozenTime;
   }
 
 
-  public IamOrganization failedSigninLimit(@javax.annotation.Nullable Integer failedSigninLimit) {
+  public IamOrganization failedSigninLimit(@javax.annotation.Nullable Long failedSigninLimit) {
     this.failedSigninLimit = failedSigninLimit;
     return this;
   }
@@ -752,11 +751,11 @@ public class IamOrganization {
    * @return failedSigninLimit
    */
   @javax.annotation.Nullable
-  public Integer getFailedSigninLimit() {
+  public Long getFailedSigninLimit() {
     return failedSigninLimit;
   }
 
-  public void setFailedSigninLimit(@javax.annotation.Nullable Integer failedSigninLimit) {
+  public void setFailedSigninLimit(@javax.annotation.Nullable Long failedSigninLimit) {
     this.failedSigninLimit = failedSigninLimit;
   }
 
@@ -837,7 +836,7 @@ public class IamOrganization {
   }
 
 
-  public IamOrganization initScore(@javax.annotation.Nullable Integer initScore) {
+  public IamOrganization initScore(@javax.annotation.Nullable Long initScore) {
     this.initScore = initScore;
     return this;
   }
@@ -847,11 +846,11 @@ public class IamOrganization {
    * @return initScore
    */
   @javax.annotation.Nullable
-  public Integer getInitScore() {
+  public Long getInitScore() {
     return initScore;
   }
 
-  public void setInitScore(@javax.annotation.Nullable Integer initScore) {
+  public void setInitScore(@javax.annotation.Nullable Long initScore) {
     this.initScore = initScore;
   }
 
@@ -1165,7 +1164,7 @@ public class IamOrganization {
   }
 
 
-  public IamOrganization mfaRememberInHours(@javax.annotation.Nullable Integer mfaRememberInHours) {
+  public IamOrganization mfaRememberInHours(@javax.annotation.Nullable Long mfaRememberInHours) {
     this.mfaRememberInHours = mfaRememberInHours;
     return this;
   }
@@ -1175,11 +1174,11 @@ public class IamOrganization {
    * @return mfaRememberInHours
    */
   @javax.annotation.Nullable
-  public Integer getMfaRememberInHours() {
+  public Long getMfaRememberInHours() {
     return mfaRememberInHours;
   }
 
-  public void setMfaRememberInHours(@javax.annotation.Nullable Integer mfaRememberInHours) {
+  public void setMfaRememberInHours(@javax.annotation.Nullable Long mfaRememberInHours) {
     this.mfaRememberInHours = mfaRememberInHours;
   }
 
@@ -1230,7 +1229,7 @@ public class IamOrganization {
   }
 
 
-  public IamOrganization orgBalance(@javax.annotation.Nullable BigDecimal orgBalance) {
+  public IamOrganization orgBalance(@javax.annotation.Nullable Double orgBalance) {
     this.orgBalance = orgBalance;
     return this;
   }
@@ -1240,11 +1239,11 @@ public class IamOrganization {
    * @return orgBalance
    */
   @javax.annotation.Nullable
-  public BigDecimal getOrgBalance() {
+  public Double getOrgBalance() {
     return orgBalance;
   }
 
-  public void setOrgBalance(@javax.annotation.Nullable BigDecimal orgBalance) {
+  public void setOrgBalance(@javax.annotation.Nullable Double orgBalance) {
     this.orgBalance = orgBalance;
   }
 
@@ -1268,7 +1267,7 @@ public class IamOrganization {
   }
 
 
-  public IamOrganization passwordExpireDays(@javax.annotation.Nullable Integer passwordExpireDays) {
+  public IamOrganization passwordExpireDays(@javax.annotation.Nullable Long passwordExpireDays) {
     this.passwordExpireDays = passwordExpireDays;
     return this;
   }
@@ -1278,11 +1277,11 @@ public class IamOrganization {
    * @return passwordExpireDays
    */
   @javax.annotation.Nullable
-  public Integer getPasswordExpireDays() {
+  public Long getPasswordExpireDays() {
     return passwordExpireDays;
   }
 
-  public void setPasswordExpireDays(@javax.annotation.Nullable Integer passwordExpireDays) {
+  public void setPasswordExpireDays(@javax.annotation.Nullable Long passwordExpireDays) {
     this.passwordExpireDays = passwordExpireDays;
   }
 
@@ -1493,7 +1492,7 @@ public class IamOrganization {
   }
 
 
-  public IamOrganization userBalance(@javax.annotation.Nullable BigDecimal userBalance) {
+  public IamOrganization userBalance(@javax.annotation.Nullable Double userBalance) {
     this.userBalance = userBalance;
     return this;
   }
@@ -1503,11 +1502,11 @@ public class IamOrganization {
    * @return userBalance
    */
   @javax.annotation.Nullable
-  public BigDecimal getUserBalance() {
+  public Double getUserBalance() {
     return userBalance;
   }
 
-  public void setUserBalance(@javax.annotation.Nullable BigDecimal userBalance) {
+  public void setUserBalance(@javax.annotation.Nullable Double userBalance) {
     this.userBalance = userBalance;
   }
 

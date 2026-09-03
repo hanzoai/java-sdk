@@ -53,12 +53,12 @@ public class ChainStatus {
   public static final String SERIALIZED_NAME_CHAIN_ID = "chainId";
   @SerializedName(SERIALIZED_NAME_CHAIN_ID)
   @javax.annotation.Nullable
-  private Integer chainId;
+  private Long chainId;
 
   public static final String SERIALIZED_NAME_HEIGHT = "height";
   @SerializedName(SERIALIZED_NAME_HEIGHT)
   @javax.annotation.Nullable
-  private Integer height;
+  private Long height;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -78,7 +78,7 @@ public class ChainStatus {
   public ChainStatus() {
   }
 
-  public ChainStatus chainId(@javax.annotation.Nullable Integer chainId) {
+  public ChainStatus chainId(@javax.annotation.Nullable Long chainId) {
     this.chainId = chainId;
     return this;
   }
@@ -88,16 +88,16 @@ public class ChainStatus {
    * @return chainId
    */
   @javax.annotation.Nullable
-  public Integer getChainId() {
+  public Long getChainId() {
     return chainId;
   }
 
-  public void setChainId(@javax.annotation.Nullable Integer chainId) {
+  public void setChainId(@javax.annotation.Nullable Long chainId) {
     this.chainId = chainId;
   }
 
 
-  public ChainStatus height(@javax.annotation.Nullable Integer height) {
+  public ChainStatus height(@javax.annotation.Nullable Long height) {
     this.height = height;
     return this;
   }
@@ -107,11 +107,11 @@ public class ChainStatus {
    * @return height
    */
   @javax.annotation.Nullable
-  public Integer getHeight() {
+  public Long getHeight() {
     return height;
   }
 
-  public void setHeight(@javax.annotation.Nullable Integer height) {
+  public void setHeight(@javax.annotation.Nullable Long height) {
     this.height = height;
   }
 

@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -54,27 +53,27 @@ public class ResourceUsage {
   public static final String SERIALIZED_NAME_COST_CENTS = "costCents";
   @SerializedName(SERIALIZED_NAME_COST_CENTS)
   @javax.annotation.Nullable
-  private BigDecimal costCents;
+  private Double costCents;
 
   public static final String SERIALIZED_NAME_CPU_VCPU_HOURS = "cpuVcpuHours";
   @SerializedName(SERIALIZED_NAME_CPU_VCPU_HOURS)
   @javax.annotation.Nullable
-  private BigDecimal cpuVcpuHours;
+  private Double cpuVcpuHours;
 
   public static final String SERIALIZED_NAME_MEM_GB_HOURS = "memGbHours";
   @SerializedName(SERIALIZED_NAME_MEM_GB_HOURS)
   @javax.annotation.Nullable
-  private BigDecimal memGbHours;
+  private Double memGbHours;
 
   public static final String SERIALIZED_NAME_STORAGE_IO_BYTES = "storageIoBytes";
   @SerializedName(SERIALIZED_NAME_STORAGE_IO_BYTES)
   @javax.annotation.Nullable
-  private BigDecimal storageIoBytes;
+  private Double storageIoBytes;
 
   public ResourceUsage() {
   }
 
-  public ResourceUsage costCents(@javax.annotation.Nullable BigDecimal costCents) {
+  public ResourceUsage costCents(@javax.annotation.Nullable Double costCents) {
     this.costCents = costCents;
     return this;
   }
@@ -84,16 +83,16 @@ public class ResourceUsage {
    * @return costCents
    */
   @javax.annotation.Nullable
-  public BigDecimal getCostCents() {
+  public Double getCostCents() {
     return costCents;
   }
 
-  public void setCostCents(@javax.annotation.Nullable BigDecimal costCents) {
+  public void setCostCents(@javax.annotation.Nullable Double costCents) {
     this.costCents = costCents;
   }
 
 
-  public ResourceUsage cpuVcpuHours(@javax.annotation.Nullable BigDecimal cpuVcpuHours) {
+  public ResourceUsage cpuVcpuHours(@javax.annotation.Nullable Double cpuVcpuHours) {
     this.cpuVcpuHours = cpuVcpuHours;
     return this;
   }
@@ -103,16 +102,16 @@ public class ResourceUsage {
    * @return cpuVcpuHours
    */
   @javax.annotation.Nullable
-  public BigDecimal getCpuVcpuHours() {
+  public Double getCpuVcpuHours() {
     return cpuVcpuHours;
   }
 
-  public void setCpuVcpuHours(@javax.annotation.Nullable BigDecimal cpuVcpuHours) {
+  public void setCpuVcpuHours(@javax.annotation.Nullable Double cpuVcpuHours) {
     this.cpuVcpuHours = cpuVcpuHours;
   }
 
 
-  public ResourceUsage memGbHours(@javax.annotation.Nullable BigDecimal memGbHours) {
+  public ResourceUsage memGbHours(@javax.annotation.Nullable Double memGbHours) {
     this.memGbHours = memGbHours;
     return this;
   }
@@ -122,16 +121,16 @@ public class ResourceUsage {
    * @return memGbHours
    */
   @javax.annotation.Nullable
-  public BigDecimal getMemGbHours() {
+  public Double getMemGbHours() {
     return memGbHours;
   }
 
-  public void setMemGbHours(@javax.annotation.Nullable BigDecimal memGbHours) {
+  public void setMemGbHours(@javax.annotation.Nullable Double memGbHours) {
     this.memGbHours = memGbHours;
   }
 
 
-  public ResourceUsage storageIoBytes(@javax.annotation.Nullable BigDecimal storageIoBytes) {
+  public ResourceUsage storageIoBytes(@javax.annotation.Nullable Double storageIoBytes) {
     this.storageIoBytes = storageIoBytes;
     return this;
   }
@@ -141,11 +140,11 @@ public class ResourceUsage {
    * @return storageIoBytes
    */
   @javax.annotation.Nullable
-  public BigDecimal getStorageIoBytes() {
+  public Double getStorageIoBytes() {
     return storageIoBytes;
   }
 
-  public void setStorageIoBytes(@javax.annotation.Nullable BigDecimal storageIoBytes) {
+  public void setStorageIoBytes(@javax.annotation.Nullable Double storageIoBytes) {
     this.storageIoBytes = storageIoBytes;
   }
 

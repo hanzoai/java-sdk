@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -54,7 +53,7 @@ public class O11yO11yLLMUser {
   public static final String SERIALIZED_NAME_COMPLETION_TOKENS = "completionTokens";
   @SerializedName(SERIALIZED_NAME_COMPLETION_TOKENS)
   @javax.annotation.Nullable
-  private Integer completionTokens;
+  private Long completionTokens;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -64,37 +63,37 @@ public class O11yO11yLLMUser {
   public static final String SERIALIZED_NAME_OBSERVATIONS = "observations";
   @SerializedName(SERIALIZED_NAME_OBSERVATIONS)
   @javax.annotation.Nullable
-  private Integer observations;
+  private Long observations;
 
   public static final String SERIALIZED_NAME_PROMPT_TOKENS = "promptTokens";
   @SerializedName(SERIALIZED_NAME_PROMPT_TOKENS)
   @javax.annotation.Nullable
-  private Integer promptTokens;
+  private Long promptTokens;
 
   public static final String SERIALIZED_NAME_SESSIONS = "sessions";
   @SerializedName(SERIALIZED_NAME_SESSIONS)
   @javax.annotation.Nullable
-  private Integer sessions;
+  private Long sessions;
 
   public static final String SERIALIZED_NAME_TOTAL_COST = "totalCost";
   @SerializedName(SERIALIZED_NAME_TOTAL_COST)
   @javax.annotation.Nullable
-  private BigDecimal totalCost;
+  private Double totalCost;
 
   public static final String SERIALIZED_NAME_TOTAL_TOKENS = "totalTokens";
   @SerializedName(SERIALIZED_NAME_TOTAL_TOKENS)
   @javax.annotation.Nullable
-  private Integer totalTokens;
+  private Long totalTokens;
 
   public static final String SERIALIZED_NAME_TRACES = "traces";
   @SerializedName(SERIALIZED_NAME_TRACES)
   @javax.annotation.Nullable
-  private Integer traces;
+  private Long traces;
 
   public O11yO11yLLMUser() {
   }
 
-  public O11yO11yLLMUser completionTokens(@javax.annotation.Nullable Integer completionTokens) {
+  public O11yO11yLLMUser completionTokens(@javax.annotation.Nullable Long completionTokens) {
     this.completionTokens = completionTokens;
     return this;
   }
@@ -104,11 +103,11 @@ public class O11yO11yLLMUser {
    * @return completionTokens
    */
   @javax.annotation.Nullable
-  public Integer getCompletionTokens() {
+  public Long getCompletionTokens() {
     return completionTokens;
   }
 
-  public void setCompletionTokens(@javax.annotation.Nullable Integer completionTokens) {
+  public void setCompletionTokens(@javax.annotation.Nullable Long completionTokens) {
     this.completionTokens = completionTokens;
   }
 
@@ -132,7 +131,7 @@ public class O11yO11yLLMUser {
   }
 
 
-  public O11yO11yLLMUser observations(@javax.annotation.Nullable Integer observations) {
+  public O11yO11yLLMUser observations(@javax.annotation.Nullable Long observations) {
     this.observations = observations;
     return this;
   }
@@ -142,16 +141,16 @@ public class O11yO11yLLMUser {
    * @return observations
    */
   @javax.annotation.Nullable
-  public Integer getObservations() {
+  public Long getObservations() {
     return observations;
   }
 
-  public void setObservations(@javax.annotation.Nullable Integer observations) {
+  public void setObservations(@javax.annotation.Nullable Long observations) {
     this.observations = observations;
   }
 
 
-  public O11yO11yLLMUser promptTokens(@javax.annotation.Nullable Integer promptTokens) {
+  public O11yO11yLLMUser promptTokens(@javax.annotation.Nullable Long promptTokens) {
     this.promptTokens = promptTokens;
     return this;
   }
@@ -161,16 +160,16 @@ public class O11yO11yLLMUser {
    * @return promptTokens
    */
   @javax.annotation.Nullable
-  public Integer getPromptTokens() {
+  public Long getPromptTokens() {
     return promptTokens;
   }
 
-  public void setPromptTokens(@javax.annotation.Nullable Integer promptTokens) {
+  public void setPromptTokens(@javax.annotation.Nullable Long promptTokens) {
     this.promptTokens = promptTokens;
   }
 
 
-  public O11yO11yLLMUser sessions(@javax.annotation.Nullable Integer sessions) {
+  public O11yO11yLLMUser sessions(@javax.annotation.Nullable Long sessions) {
     this.sessions = sessions;
     return this;
   }
@@ -180,16 +179,16 @@ public class O11yO11yLLMUser {
    * @return sessions
    */
   @javax.annotation.Nullable
-  public Integer getSessions() {
+  public Long getSessions() {
     return sessions;
   }
 
-  public void setSessions(@javax.annotation.Nullable Integer sessions) {
+  public void setSessions(@javax.annotation.Nullable Long sessions) {
     this.sessions = sessions;
   }
 
 
-  public O11yO11yLLMUser totalCost(@javax.annotation.Nullable BigDecimal totalCost) {
+  public O11yO11yLLMUser totalCost(@javax.annotation.Nullable Double totalCost) {
     this.totalCost = totalCost;
     return this;
   }
@@ -199,16 +198,16 @@ public class O11yO11yLLMUser {
    * @return totalCost
    */
   @javax.annotation.Nullable
-  public BigDecimal getTotalCost() {
+  public Double getTotalCost() {
     return totalCost;
   }
 
-  public void setTotalCost(@javax.annotation.Nullable BigDecimal totalCost) {
+  public void setTotalCost(@javax.annotation.Nullable Double totalCost) {
     this.totalCost = totalCost;
   }
 
 
-  public O11yO11yLLMUser totalTokens(@javax.annotation.Nullable Integer totalTokens) {
+  public O11yO11yLLMUser totalTokens(@javax.annotation.Nullable Long totalTokens) {
     this.totalTokens = totalTokens;
     return this;
   }
@@ -218,16 +217,16 @@ public class O11yO11yLLMUser {
    * @return totalTokens
    */
   @javax.annotation.Nullable
-  public Integer getTotalTokens() {
+  public Long getTotalTokens() {
     return totalTokens;
   }
 
-  public void setTotalTokens(@javax.annotation.Nullable Integer totalTokens) {
+  public void setTotalTokens(@javax.annotation.Nullable Long totalTokens) {
     this.totalTokens = totalTokens;
   }
 
 
-  public O11yO11yLLMUser traces(@javax.annotation.Nullable Integer traces) {
+  public O11yO11yLLMUser traces(@javax.annotation.Nullable Long traces) {
     this.traces = traces;
     return this;
   }
@@ -237,11 +236,11 @@ public class O11yO11yLLMUser {
    * @return traces
    */
   @javax.annotation.Nullable
-  public Integer getTraces() {
+  public Long getTraces() {
     return traces;
   }
 
-  public void setTraces(@javax.annotation.Nullable Integer traces) {
+  public void setTraces(@javax.annotation.Nullable Long traces) {
     this.traces = traces;
   }
 

@@ -346,7 +346,7 @@ public class DatasetApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call riskDatasetLineageCall(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Integer version, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call riskDatasetLineageCall(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Long version, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -396,7 +396,7 @@ public class DatasetApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call riskDatasetLineageValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Integer version, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call riskDatasetLineageValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Long version, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
             throw new ApiException("Missing the required parameter 'name' when calling riskDatasetLineage(Async)");
@@ -420,7 +420,7 @@ public class DatasetApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public RiskLineage riskDatasetLineage(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Integer version) throws ApiException {
+    public RiskLineage riskDatasetLineage(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Long version) throws ApiException {
         ApiResponse<RiskLineage> localVarResp = riskDatasetLineageWithHttpInfo(name, version);
         return localVarResp.getData();
     }
@@ -439,7 +439,7 @@ public class DatasetApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RiskLineage> riskDatasetLineageWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Integer version) throws ApiException {
+    public ApiResponse<RiskLineage> riskDatasetLineageWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Long version) throws ApiException {
         okhttp3.Call localVarCall = riskDatasetLineageValidateBeforeCall(name, version, null);
         Type localVarReturnType = new TypeToken<RiskLineage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -460,7 +460,7 @@ public class DatasetApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call riskDatasetLineageAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Integer version, final ApiCallback<RiskLineage> _callback) throws ApiException {
+    public okhttp3.Call riskDatasetLineageAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Long version, final ApiCallback<RiskLineage> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = riskDatasetLineageValidateBeforeCall(name, version, _callback);
         Type localVarReturnType = new TypeToken<RiskLineage>(){}.getType();
@@ -728,7 +728,7 @@ public class DatasetApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call riskExportDatasetCall(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Integer version, @javax.annotation.Nullable String split, @javax.annotation.Nullable Integer offset, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call riskExportDatasetCall(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Long version, @javax.annotation.Nullable String split, @javax.annotation.Nullable Long offset, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -790,7 +790,7 @@ public class DatasetApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call riskExportDatasetValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Integer version, @javax.annotation.Nullable String split, @javax.annotation.Nullable Integer offset, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call riskExportDatasetValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Long version, @javax.annotation.Nullable String split, @javax.annotation.Nullable Long offset, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
             throw new ApiException("Missing the required parameter 'name' when calling riskExportDataset(Async)");
@@ -817,7 +817,7 @@ public class DatasetApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public RiskDatasetRows riskExportDataset(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Integer version, @javax.annotation.Nullable String split, @javax.annotation.Nullable Integer offset, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public RiskDatasetRows riskExportDataset(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Long version, @javax.annotation.Nullable String split, @javax.annotation.Nullable Long offset, @javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<RiskDatasetRows> localVarResp = riskExportDatasetWithHttpInfo(name, version, split, offset, limit);
         return localVarResp.getData();
     }
@@ -839,7 +839,7 @@ public class DatasetApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RiskDatasetRows> riskExportDatasetWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Integer version, @javax.annotation.Nullable String split, @javax.annotation.Nullable Integer offset, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<RiskDatasetRows> riskExportDatasetWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Long version, @javax.annotation.Nullable String split, @javax.annotation.Nullable Long offset, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = riskExportDatasetValidateBeforeCall(name, version, split, offset, limit, null);
         Type localVarReturnType = new TypeToken<RiskDatasetRows>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -863,7 +863,7 @@ public class DatasetApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call riskExportDatasetAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Integer version, @javax.annotation.Nullable String split, @javax.annotation.Nullable Integer offset, @javax.annotation.Nullable Integer limit, final ApiCallback<RiskDatasetRows> _callback) throws ApiException {
+    public okhttp3.Call riskExportDatasetAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Long version, @javax.annotation.Nullable String split, @javax.annotation.Nullable Long offset, @javax.annotation.Nullable Long limit, final ApiCallback<RiskDatasetRows> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = riskExportDatasetValidateBeforeCall(name, version, split, offset, limit, _callback);
         Type localVarReturnType = new TypeToken<RiskDatasetRows>(){}.getType();

@@ -69,7 +69,7 @@ public class IamCert {
   public static final String SERIALIZED_NAME_BIT_SIZE = "bitSize";
   @SerializedName(SERIALIZED_NAME_BIT_SIZE)
   @javax.annotation.Nullable
-  private Integer bitSize;
+  private Long bitSize;
 
   public static final String SERIALIZED_NAME_CERTIFICATE = "certificate";
   @SerializedName(SERIALIZED_NAME_CERTIFICATE)
@@ -109,7 +109,7 @@ public class IamCert {
   public static final String SERIALIZED_NAME_EXPIRE_IN_YEARS = "expireInYears";
   @SerializedName(SERIALIZED_NAME_EXPIRE_IN_YEARS)
   @javax.annotation.Nullable
-  private Integer expireInYears;
+  private Long expireInYears;
 
   public static final String SERIALIZED_NAME_EXPIRE_TIME = "expireTime";
   @SerializedName(SERIALIZED_NAME_EXPIRE_TIME)
@@ -211,7 +211,7 @@ public class IamCert {
   }
 
 
-  public IamCert bitSize(@javax.annotation.Nullable Integer bitSize) {
+  public IamCert bitSize(@javax.annotation.Nullable Long bitSize) {
     this.bitSize = bitSize;
     return this;
   }
@@ -221,11 +221,11 @@ public class IamCert {
    * @return bitSize
    */
   @javax.annotation.Nullable
-  public Integer getBitSize() {
+  public Long getBitSize() {
     return bitSize;
   }
 
-  public void setBitSize(@javax.annotation.Nullable Integer bitSize) {
+  public void setBitSize(@javax.annotation.Nullable Long bitSize) {
     this.bitSize = bitSize;
   }
 
@@ -363,7 +363,7 @@ public class IamCert {
   }
 
 
-  public IamCert expireInYears(@javax.annotation.Nullable Integer expireInYears) {
+  public IamCert expireInYears(@javax.annotation.Nullable Long expireInYears) {
     this.expireInYears = expireInYears;
     return this;
   }
@@ -373,11 +373,11 @@ public class IamCert {
    * @return expireInYears
    */
   @javax.annotation.Nullable
-  public Integer getExpireInYears() {
+  public Long getExpireInYears() {
     return expireInYears;
   }
 
-  public void setExpireInYears(@javax.annotation.Nullable Integer expireInYears) {
+  public void setExpireInYears(@javax.annotation.Nullable Long expireInYears) {
     this.expireInYears = expireInYears;
   }
 

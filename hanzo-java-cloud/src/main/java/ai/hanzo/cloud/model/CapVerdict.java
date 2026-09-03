@@ -58,7 +58,7 @@ public class CapVerdict {
   public static final String SERIALIZED_NAME_CAP_CENTS = "capCents";
   @SerializedName(SERIALIZED_NAME_CAP_CENTS)
   @javax.annotation.Nullable
-  private Integer capCents;
+  private Long capCents;
 
   public static final String SERIALIZED_NAME_REASON = "reason";
   @SerializedName(SERIALIZED_NAME_REASON)
@@ -68,12 +68,12 @@ public class CapVerdict {
   public static final String SERIALIZED_NAME_SPENT_CENTS = "spentCents";
   @SerializedName(SERIALIZED_NAME_SPENT_CENTS)
   @javax.annotation.Nullable
-  private Integer spentCents;
+  private Long spentCents;
 
   public static final String SERIALIZED_NAME_WARN_PCT = "warnPct";
   @SerializedName(SERIALIZED_NAME_WARN_PCT)
   @javax.annotation.Nullable
-  private Integer warnPct;
+  private Long warnPct;
 
   public CapVerdict() {
   }
@@ -97,7 +97,7 @@ public class CapVerdict {
   }
 
 
-  public CapVerdict capCents(@javax.annotation.Nullable Integer capCents) {
+  public CapVerdict capCents(@javax.annotation.Nullable Long capCents) {
     this.capCents = capCents;
     return this;
   }
@@ -107,11 +107,11 @@ public class CapVerdict {
    * @return capCents
    */
   @javax.annotation.Nullable
-  public Integer getCapCents() {
+  public Long getCapCents() {
     return capCents;
   }
 
-  public void setCapCents(@javax.annotation.Nullable Integer capCents) {
+  public void setCapCents(@javax.annotation.Nullable Long capCents) {
     this.capCents = capCents;
   }
 
@@ -135,7 +135,7 @@ public class CapVerdict {
   }
 
 
-  public CapVerdict spentCents(@javax.annotation.Nullable Integer spentCents) {
+  public CapVerdict spentCents(@javax.annotation.Nullable Long spentCents) {
     this.spentCents = spentCents;
     return this;
   }
@@ -145,16 +145,16 @@ public class CapVerdict {
    * @return spentCents
    */
   @javax.annotation.Nullable
-  public Integer getSpentCents() {
+  public Long getSpentCents() {
     return spentCents;
   }
 
-  public void setSpentCents(@javax.annotation.Nullable Integer spentCents) {
+  public void setSpentCents(@javax.annotation.Nullable Long spentCents) {
     this.spentCents = spentCents;
   }
 
 
-  public CapVerdict warnPct(@javax.annotation.Nullable Integer warnPct) {
+  public CapVerdict warnPct(@javax.annotation.Nullable Long warnPct) {
     this.warnPct = warnPct;
     return this;
   }
@@ -164,11 +164,11 @@ public class CapVerdict {
    * @return warnPct
    */
   @javax.annotation.Nullable
-  public Integer getWarnPct() {
+  public Long getWarnPct() {
     return warnPct;
   }
 
-  public void setWarnPct(@javax.annotation.Nullable Integer warnPct) {
+  public void setWarnPct(@javax.annotation.Nullable Long warnPct) {
     this.warnPct = warnPct;
   }
 

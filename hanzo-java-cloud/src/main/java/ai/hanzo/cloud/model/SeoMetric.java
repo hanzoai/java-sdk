@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -54,17 +53,17 @@ public class SeoMetric {
   public static final String SERIALIZED_NAME_COMPETITION = "competition";
   @SerializedName(SERIALIZED_NAME_COMPETITION)
   @javax.annotation.Nullable
-  private BigDecimal competition;
+  private Double competition;
 
   public static final String SERIALIZED_NAME_CPC = "cpc";
   @SerializedName(SERIALIZED_NAME_CPC)
   @javax.annotation.Nullable
-  private BigDecimal cpc;
+  private Double cpc;
 
   public static final String SERIALIZED_NAME_DIFFICULTY = "difficulty";
   @SerializedName(SERIALIZED_NAME_DIFFICULTY)
   @javax.annotation.Nullable
-  private Integer difficulty;
+  private Long difficulty;
 
   public static final String SERIALIZED_NAME_KEYWORD = "keyword";
   @SerializedName(SERIALIZED_NAME_KEYWORD)
@@ -79,12 +78,12 @@ public class SeoMetric {
   public static final String SERIALIZED_NAME_VOLUME = "volume";
   @SerializedName(SERIALIZED_NAME_VOLUME)
   @javax.annotation.Nullable
-  private Integer volume;
+  private Long volume;
 
   public SeoMetric() {
   }
 
-  public SeoMetric competition(@javax.annotation.Nullable BigDecimal competition) {
+  public SeoMetric competition(@javax.annotation.Nullable Double competition) {
     this.competition = competition;
     return this;
   }
@@ -94,16 +93,16 @@ public class SeoMetric {
    * @return competition
    */
   @javax.annotation.Nullable
-  public BigDecimal getCompetition() {
+  public Double getCompetition() {
     return competition;
   }
 
-  public void setCompetition(@javax.annotation.Nullable BigDecimal competition) {
+  public void setCompetition(@javax.annotation.Nullable Double competition) {
     this.competition = competition;
   }
 
 
-  public SeoMetric cpc(@javax.annotation.Nullable BigDecimal cpc) {
+  public SeoMetric cpc(@javax.annotation.Nullable Double cpc) {
     this.cpc = cpc;
     return this;
   }
@@ -113,16 +112,16 @@ public class SeoMetric {
    * @return cpc
    */
   @javax.annotation.Nullable
-  public BigDecimal getCpc() {
+  public Double getCpc() {
     return cpc;
   }
 
-  public void setCpc(@javax.annotation.Nullable BigDecimal cpc) {
+  public void setCpc(@javax.annotation.Nullable Double cpc) {
     this.cpc = cpc;
   }
 
 
-  public SeoMetric difficulty(@javax.annotation.Nullable Integer difficulty) {
+  public SeoMetric difficulty(@javax.annotation.Nullable Long difficulty) {
     this.difficulty = difficulty;
     return this;
   }
@@ -132,11 +131,11 @@ public class SeoMetric {
    * @return difficulty
    */
   @javax.annotation.Nullable
-  public Integer getDifficulty() {
+  public Long getDifficulty() {
     return difficulty;
   }
 
-  public void setDifficulty(@javax.annotation.Nullable Integer difficulty) {
+  public void setDifficulty(@javax.annotation.Nullable Long difficulty) {
     this.difficulty = difficulty;
   }
 
@@ -179,7 +178,7 @@ public class SeoMetric {
   }
 
 
-  public SeoMetric volume(@javax.annotation.Nullable Integer volume) {
+  public SeoMetric volume(@javax.annotation.Nullable Long volume) {
     this.volume = volume;
     return this;
   }
@@ -189,11 +188,11 @@ public class SeoMetric {
    * @return volume
    */
   @javax.annotation.Nullable
-  public Integer getVolume() {
+  public Long getVolume() {
     return volume;
   }
 
-  public void setVolume(@javax.annotation.Nullable Integer volume) {
+  public void setVolume(@javax.annotation.Nullable Long volume) {
     this.volume = volume;
   }
 

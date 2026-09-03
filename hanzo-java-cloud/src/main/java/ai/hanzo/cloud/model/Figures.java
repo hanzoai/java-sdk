@@ -53,7 +53,7 @@ public class Figures {
   public static final String SERIALIZED_NAME_COUNT = "count";
   @SerializedName(SERIALIZED_NAME_COUNT)
   @javax.annotation.Nullable
-  private Integer count;
+  private Long count;
 
   public static final String SERIALIZED_NAME_LOCKED = "locked";
   @SerializedName(SERIALIZED_NAME_LOCKED)
@@ -63,7 +63,7 @@ public class Figures {
   public static final String SERIALIZED_NAME_POOLS = "pools";
   @SerializedName(SERIALIZED_NAME_POOLS)
   @javax.annotation.Nullable
-  private Integer pools;
+  private Long pools;
 
   public static final String SERIALIZED_NAME_VOLUME = "volume";
   @SerializedName(SERIALIZED_NAME_VOLUME)
@@ -73,7 +73,7 @@ public class Figures {
   public Figures() {
   }
 
-  public Figures count(@javax.annotation.Nullable Integer count) {
+  public Figures count(@javax.annotation.Nullable Long count) {
     this.count = count;
     return this;
   }
@@ -83,11 +83,11 @@ public class Figures {
    * @return count
    */
   @javax.annotation.Nullable
-  public Integer getCount() {
+  public Long getCount() {
     return count;
   }
 
-  public void setCount(@javax.annotation.Nullable Integer count) {
+  public void setCount(@javax.annotation.Nullable Long count) {
     this.count = count;
   }
 
@@ -111,7 +111,7 @@ public class Figures {
   }
 
 
-  public Figures pools(@javax.annotation.Nullable Integer pools) {
+  public Figures pools(@javax.annotation.Nullable Long pools) {
     this.pools = pools;
     return this;
   }
@@ -121,11 +121,11 @@ public class Figures {
    * @return pools
    */
   @javax.annotation.Nullable
-  public Integer getPools() {
+  public Long getPools() {
     return pools;
   }
 
-  public void setPools(@javax.annotation.Nullable Integer pools) {
+  public void setPools(@javax.annotation.Nullable Long pools) {
     this.pools = pools;
   }
 

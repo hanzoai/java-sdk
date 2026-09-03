@@ -66,7 +66,7 @@ public class UsageView {
   public static final String SERIALIZED_NAME_TOTAL_BYTES = "totalBytes";
   @SerializedName(SERIALIZED_NAME_TOTAL_BYTES)
   @javax.annotation.Nullable
-  private Integer totalBytes;
+  private Long totalBytes;
 
   public UsageView() {
   }
@@ -117,7 +117,7 @@ public class UsageView {
   }
 
 
-  public UsageView totalBytes(@javax.annotation.Nullable Integer totalBytes) {
+  public UsageView totalBytes(@javax.annotation.Nullable Long totalBytes) {
     this.totalBytes = totalBytes;
     return this;
   }
@@ -127,11 +127,11 @@ public class UsageView {
    * @return totalBytes
    */
   @javax.annotation.Nullable
-  public Integer getTotalBytes() {
+  public Long getTotalBytes() {
     return totalBytes;
   }
 
-  public void setTotalBytes(@javax.annotation.Nullable Integer totalBytes) {
+  public void setTotalBytes(@javax.annotation.Nullable Long totalBytes) {
     this.totalBytes = totalBytes;
   }
 

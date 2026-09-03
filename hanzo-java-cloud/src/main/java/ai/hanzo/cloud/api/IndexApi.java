@@ -1250,7 +1250,7 @@ public class IndexApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getIndexTasksByUidCall(@javax.annotation.Nonnull Integer uid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getIndexTasksByUidCall(@javax.annotation.Nonnull Long uid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1296,7 +1296,7 @@ public class IndexApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getIndexTasksByUidValidateBeforeCall(@javax.annotation.Nonnull Integer uid, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getIndexTasksByUidValidateBeforeCall(@javax.annotation.Nonnull Long uid, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'uid' is set
         if (uid == null) {
             throw new ApiException("Missing the required parameter 'uid' when calling getIndexTasksByUid(Async)");
@@ -1319,7 +1319,7 @@ public class IndexApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public IndexTask getIndexTasksByUid(@javax.annotation.Nonnull Integer uid) throws ApiException {
+    public IndexTask getIndexTasksByUid(@javax.annotation.Nonnull Long uid) throws ApiException {
         ApiResponse<IndexTask> localVarResp = getIndexTasksByUidWithHttpInfo(uid);
         return localVarResp.getData();
     }
@@ -1337,7 +1337,7 @@ public class IndexApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IndexTask> getIndexTasksByUidWithHttpInfo(@javax.annotation.Nonnull Integer uid) throws ApiException {
+    public ApiResponse<IndexTask> getIndexTasksByUidWithHttpInfo(@javax.annotation.Nonnull Long uid) throws ApiException {
         okhttp3.Call localVarCall = getIndexTasksByUidValidateBeforeCall(uid, null);
         Type localVarReturnType = new TypeToken<IndexTask>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -1357,7 +1357,7 @@ public class IndexApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getIndexTasksByUidAsync(@javax.annotation.Nonnull Integer uid, final ApiCallback<IndexTask> _callback) throws ApiException {
+    public okhttp3.Call getIndexTasksByUidAsync(@javax.annotation.Nonnull Long uid, final ApiCallback<IndexTask> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getIndexTasksByUidValidateBeforeCall(uid, _callback);
         Type localVarReturnType = new TypeToken<IndexTask>(){}.getType();

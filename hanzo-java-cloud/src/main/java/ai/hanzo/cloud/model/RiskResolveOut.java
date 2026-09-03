@@ -56,7 +56,7 @@ public class RiskResolveOut {
   public static final String SERIALIZED_NAME_HORIZON = "horizon";
   @SerializedName(SERIALIZED_NAME_HORIZON)
   @javax.annotation.Nullable
-  private Integer horizon;
+  private Long horizon;
 
   public static final String SERIALIZED_NAME_LABELS = "labels";
   @SerializedName(SERIALIZED_NAME_LABELS)
@@ -71,17 +71,17 @@ public class RiskResolveOut {
   public static final String SERIALIZED_NAME_UNLABELLED = "unlabelled";
   @SerializedName(SERIALIZED_NAME_UNLABELLED)
   @javax.annotation.Nullable
-  private Integer unlabelled;
+  private Long unlabelled;
 
   public static final String SERIALIZED_NAME_UNMATURED = "unmatured";
   @SerializedName(SERIALIZED_NAME_UNMATURED)
   @javax.annotation.Nullable
-  private Integer unmatured;
+  private Long unmatured;
 
   public RiskResolveOut() {
   }
 
-  public RiskResolveOut horizon(@javax.annotation.Nullable Integer horizon) {
+  public RiskResolveOut horizon(@javax.annotation.Nullable Long horizon) {
     this.horizon = horizon;
     return this;
   }
@@ -91,11 +91,11 @@ public class RiskResolveOut {
    * @return horizon
    */
   @javax.annotation.Nullable
-  public Integer getHorizon() {
+  public Long getHorizon() {
     return horizon;
   }
 
-  public void setHorizon(@javax.annotation.Nullable Integer horizon) {
+  public void setHorizon(@javax.annotation.Nullable Long horizon) {
     this.horizon = horizon;
   }
 
@@ -146,7 +146,7 @@ public class RiskResolveOut {
   }
 
 
-  public RiskResolveOut unlabelled(@javax.annotation.Nullable Integer unlabelled) {
+  public RiskResolveOut unlabelled(@javax.annotation.Nullable Long unlabelled) {
     this.unlabelled = unlabelled;
     return this;
   }
@@ -156,16 +156,16 @@ public class RiskResolveOut {
    * @return unlabelled
    */
   @javax.annotation.Nullable
-  public Integer getUnlabelled() {
+  public Long getUnlabelled() {
     return unlabelled;
   }
 
-  public void setUnlabelled(@javax.annotation.Nullable Integer unlabelled) {
+  public void setUnlabelled(@javax.annotation.Nullable Long unlabelled) {
     this.unlabelled = unlabelled;
   }
 
 
-  public RiskResolveOut unmatured(@javax.annotation.Nullable Integer unmatured) {
+  public RiskResolveOut unmatured(@javax.annotation.Nullable Long unmatured) {
     this.unmatured = unmatured;
     return this;
   }
@@ -175,11 +175,11 @@ public class RiskResolveOut {
    * @return unmatured
    */
   @javax.annotation.Nullable
-  public Integer getUnmatured() {
+  public Long getUnmatured() {
     return unmatured;
   }
 
-  public void setUnmatured(@javax.annotation.Nullable Integer unmatured) {
+  public void setUnmatured(@javax.annotation.Nullable Long unmatured) {
     this.unmatured = unmatured;
   }
 

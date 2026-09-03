@@ -53,7 +53,7 @@ public class BaseView {
   public static final String SERIALIZED_NAME_BYTES = "bytes";
   @SerializedName(SERIALIZED_NAME_BYTES)
   @javax.annotation.Nullable
-  private Integer bytes;
+  private Long bytes;
 
   public static final String SERIALIZED_NAME_EXISTS = "exists";
   @SerializedName(SERIALIZED_NAME_EXISTS)
@@ -68,7 +68,7 @@ public class BaseView {
   public BaseView() {
   }
 
-  public BaseView bytes(@javax.annotation.Nullable Integer bytes) {
+  public BaseView bytes(@javax.annotation.Nullable Long bytes) {
     this.bytes = bytes;
     return this;
   }
@@ -78,11 +78,11 @@ public class BaseView {
    * @return bytes
    */
   @javax.annotation.Nullable
-  public Integer getBytes() {
+  public Long getBytes() {
     return bytes;
   }
 
-  public void setBytes(@javax.annotation.Nullable Integer bytes) {
+  public void setBytes(@javax.annotation.Nullable Long bytes) {
     this.bytes = bytes;
   }
 

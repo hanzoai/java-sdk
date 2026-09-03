@@ -58,7 +58,7 @@ public class UpdateCampaignIn {
   public static final String SERIALIZED_NAME_BUDGET = "budget";
   @SerializedName(SERIALIZED_NAME_BUDGET)
   @javax.annotation.Nullable
-  private Integer budget;
+  private Long budget;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -78,7 +78,7 @@ public class UpdateCampaignIn {
   public static final String SERIALIZED_NAME_SPEND = "spend";
   @SerializedName(SERIALIZED_NAME_SPEND)
   @javax.annotation.Nullable
-  private Integer spend;
+  private Long spend;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
@@ -107,7 +107,7 @@ public class UpdateCampaignIn {
   }
 
 
-  public UpdateCampaignIn budget(@javax.annotation.Nullable Integer budget) {
+  public UpdateCampaignIn budget(@javax.annotation.Nullable Long budget) {
     this.budget = budget;
     return this;
   }
@@ -117,11 +117,11 @@ public class UpdateCampaignIn {
    * @return budget
    */
   @javax.annotation.Nullable
-  public Integer getBudget() {
+  public Long getBudget() {
     return budget;
   }
 
-  public void setBudget(@javax.annotation.Nullable Integer budget) {
+  public void setBudget(@javax.annotation.Nullable Long budget) {
     this.budget = budget;
   }
 
@@ -183,7 +183,7 @@ public class UpdateCampaignIn {
   }
 
 
-  public UpdateCampaignIn spend(@javax.annotation.Nullable Integer spend) {
+  public UpdateCampaignIn spend(@javax.annotation.Nullable Long spend) {
     this.spend = spend;
     return this;
   }
@@ -193,11 +193,11 @@ public class UpdateCampaignIn {
    * @return spend
    */
   @javax.annotation.Nullable
-  public Integer getSpend() {
+  public Long getSpend() {
     return spend;
   }
 
-  public void setSpend(@javax.annotation.Nullable Integer spend) {
+  public void setSpend(@javax.annotation.Nullable Long spend) {
     this.spend = spend;
   }
 

@@ -53,12 +53,12 @@ public class BlueprintRow {
   public static final String SERIALIZED_NAME_EST_CENTS_PER_MONTH = "estCentsPerMonth";
   @SerializedName(SERIALIZED_NAME_EST_CENTS_PER_MONTH)
   @javax.annotation.Nullable
-  private Integer estCentsPerMonth;
+  private Long estCentsPerMonth;
 
   public static final String SERIALIZED_NAME_SERVICES = "services";
   @SerializedName(SERIALIZED_NAME_SERVICES)
   @javax.annotation.Nullable
-  private Integer services;
+  private Long services;
 
   public static final String SERIALIZED_NAME_TEMPLATE_ID = "templateId";
   @SerializedName(SERIALIZED_NAME_TEMPLATE_ID)
@@ -68,7 +68,7 @@ public class BlueprintRow {
   public BlueprintRow() {
   }
 
-  public BlueprintRow estCentsPerMonth(@javax.annotation.Nullable Integer estCentsPerMonth) {
+  public BlueprintRow estCentsPerMonth(@javax.annotation.Nullable Long estCentsPerMonth) {
     this.estCentsPerMonth = estCentsPerMonth;
     return this;
   }
@@ -78,16 +78,16 @@ public class BlueprintRow {
    * @return estCentsPerMonth
    */
   @javax.annotation.Nullable
-  public Integer getEstCentsPerMonth() {
+  public Long getEstCentsPerMonth() {
     return estCentsPerMonth;
   }
 
-  public void setEstCentsPerMonth(@javax.annotation.Nullable Integer estCentsPerMonth) {
+  public void setEstCentsPerMonth(@javax.annotation.Nullable Long estCentsPerMonth) {
     this.estCentsPerMonth = estCentsPerMonth;
   }
 
 
-  public BlueprintRow services(@javax.annotation.Nullable Integer services) {
+  public BlueprintRow services(@javax.annotation.Nullable Long services) {
     this.services = services;
     return this;
   }
@@ -97,11 +97,11 @@ public class BlueprintRow {
    * @return services
    */
   @javax.annotation.Nullable
-  public Integer getServices() {
+  public Long getServices() {
     return services;
   }
 
-  public void setServices(@javax.annotation.Nullable Integer services) {
+  public void setServices(@javax.annotation.Nullable Long services) {
     this.services = services;
   }
 

@@ -58,7 +58,7 @@ public class PointView {
   public static final String SERIALIZED_NAME_V = "v";
   @SerializedName(SERIALIZED_NAME_V)
   @javax.annotation.Nullable
-  private Integer v;
+  private Long v;
 
   public PointView() {
   }
@@ -82,7 +82,7 @@ public class PointView {
   }
 
 
-  public PointView v(@javax.annotation.Nullable Integer v) {
+  public PointView v(@javax.annotation.Nullable Long v) {
     this.v = v;
     return this;
   }
@@ -92,11 +92,11 @@ public class PointView {
    * @return v
    */
   @javax.annotation.Nullable
-  public Integer getV() {
+  public Long getV() {
     return v;
   }
 
-  public void setV(@javax.annotation.Nullable Integer v) {
+  public void setV(@javax.annotation.Nullable Long v) {
     this.v = v;
   }
 

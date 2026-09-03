@@ -68,7 +68,7 @@ public class SessionProgress {
   public static final String SERIALIZED_NAME_PCT = "pct";
   @SerializedName(SERIALIZED_NAME_PCT)
   @javax.annotation.Nullable
-  private Integer pct;
+  private Long pct;
 
   public static final String SERIALIZED_NAME_PHASE = "phase";
   @SerializedName(SERIALIZED_NAME_PHASE)
@@ -135,7 +135,7 @@ public class SessionProgress {
   }
 
 
-  public SessionProgress pct(@javax.annotation.Nullable Integer pct) {
+  public SessionProgress pct(@javax.annotation.Nullable Long pct) {
     this.pct = pct;
     return this;
   }
@@ -145,11 +145,11 @@ public class SessionProgress {
    * @return pct
    */
   @javax.annotation.Nullable
-  public Integer getPct() {
+  public Long getPct() {
     return pct;
   }
 
-  public void setPct(@javax.annotation.Nullable Integer pct) {
+  public void setPct(@javax.annotation.Nullable Long pct) {
     this.pct = pct;
   }
 

@@ -53,7 +53,7 @@ public class SpendPoint {
   public static final String SERIALIZED_NAME_CENTS = "cents";
   @SerializedName(SERIALIZED_NAME_CENTS)
   @javax.annotation.Nullable
-  private Integer cents;
+  private Long cents;
 
   public static final String SERIALIZED_NAME_T = "t";
   @SerializedName(SERIALIZED_NAME_T)
@@ -63,7 +63,7 @@ public class SpendPoint {
   public SpendPoint() {
   }
 
-  public SpendPoint cents(@javax.annotation.Nullable Integer cents) {
+  public SpendPoint cents(@javax.annotation.Nullable Long cents) {
     this.cents = cents;
     return this;
   }
@@ -73,11 +73,11 @@ public class SpendPoint {
    * @return cents
    */
   @javax.annotation.Nullable
-  public Integer getCents() {
+  public Long getCents() {
     return cents;
   }
 
-  public void setCents(@javax.annotation.Nullable Integer cents) {
+  public void setCents(@javax.annotation.Nullable Long cents) {
     this.cents = cents;
   }
 

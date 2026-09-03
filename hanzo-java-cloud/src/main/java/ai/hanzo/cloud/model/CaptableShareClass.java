@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -74,17 +73,17 @@ public class CaptableShareClass {
   public static final String SERIALIZED_NAME_IDX = "idx";
   @SerializedName(SERIALIZED_NAME_IDX)
   @javax.annotation.Nullable
-  private Integer idx;
+  private Long idx;
 
   public static final String SERIALIZED_NAME_INITIAL_SHARES_AUTHORIZED = "initialSharesAuthorized";
   @SerializedName(SERIALIZED_NAME_INITIAL_SHARES_AUTHORIZED)
   @javax.annotation.Nullable
-  private Integer initialSharesAuthorized;
+  private Long initialSharesAuthorized;
 
   public static final String SERIALIZED_NAME_LIQUIDATION_PREFERENCE_MULTIPLE = "liquidationPreferenceMultiple";
   @SerializedName(SERIALIZED_NAME_LIQUIDATION_PREFERENCE_MULTIPLE)
   @javax.annotation.Nullable
-  private BigDecimal liquidationPreferenceMultiple;
+  private Double liquidationPreferenceMultiple;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -94,12 +93,12 @@ public class CaptableShareClass {
   public static final String SERIALIZED_NAME_PAR_VALUE = "parValue";
   @SerializedName(SERIALIZED_NAME_PAR_VALUE)
   @javax.annotation.Nullable
-  private BigDecimal parValue;
+  private Double parValue;
 
   public static final String SERIALIZED_NAME_PARTICIPATION_CAP_MULTIPLE = "participationCapMultiple";
   @SerializedName(SERIALIZED_NAME_PARTICIPATION_CAP_MULTIPLE)
   @javax.annotation.Nullable
-  private BigDecimal participationCapMultiple;
+  private Double participationCapMultiple;
 
   public static final String SERIALIZED_NAME_PREFIX = "prefix";
   @SerializedName(SERIALIZED_NAME_PREFIX)
@@ -109,17 +108,17 @@ public class CaptableShareClass {
   public static final String SERIALIZED_NAME_PRICE_PER_SHARE = "pricePerShare";
   @SerializedName(SERIALIZED_NAME_PRICE_PER_SHARE)
   @javax.annotation.Nullable
-  private BigDecimal pricePerShare;
+  private Double pricePerShare;
 
   public static final String SERIALIZED_NAME_SENIORITY = "seniority";
   @SerializedName(SERIALIZED_NAME_SENIORITY)
   @javax.annotation.Nullable
-  private Integer seniority;
+  private Long seniority;
 
   public static final String SERIALIZED_NAME_VOTES_PER_SHARE = "votesPerShare";
   @SerializedName(SERIALIZED_NAME_VOTES_PER_SHARE)
   @javax.annotation.Nullable
-  private Integer votesPerShare;
+  private Long votesPerShare;
 
   public CaptableShareClass() {
   }
@@ -200,7 +199,7 @@ public class CaptableShareClass {
   }
 
 
-  public CaptableShareClass idx(@javax.annotation.Nullable Integer idx) {
+  public CaptableShareClass idx(@javax.annotation.Nullable Long idx) {
     this.idx = idx;
     return this;
   }
@@ -210,16 +209,16 @@ public class CaptableShareClass {
    * @return idx
    */
   @javax.annotation.Nullable
-  public Integer getIdx() {
+  public Long getIdx() {
     return idx;
   }
 
-  public void setIdx(@javax.annotation.Nullable Integer idx) {
+  public void setIdx(@javax.annotation.Nullable Long idx) {
     this.idx = idx;
   }
 
 
-  public CaptableShareClass initialSharesAuthorized(@javax.annotation.Nullable Integer initialSharesAuthorized) {
+  public CaptableShareClass initialSharesAuthorized(@javax.annotation.Nullable Long initialSharesAuthorized) {
     this.initialSharesAuthorized = initialSharesAuthorized;
     return this;
   }
@@ -229,16 +228,16 @@ public class CaptableShareClass {
    * @return initialSharesAuthorized
    */
   @javax.annotation.Nullable
-  public Integer getInitialSharesAuthorized() {
+  public Long getInitialSharesAuthorized() {
     return initialSharesAuthorized;
   }
 
-  public void setInitialSharesAuthorized(@javax.annotation.Nullable Integer initialSharesAuthorized) {
+  public void setInitialSharesAuthorized(@javax.annotation.Nullable Long initialSharesAuthorized) {
     this.initialSharesAuthorized = initialSharesAuthorized;
   }
 
 
-  public CaptableShareClass liquidationPreferenceMultiple(@javax.annotation.Nullable BigDecimal liquidationPreferenceMultiple) {
+  public CaptableShareClass liquidationPreferenceMultiple(@javax.annotation.Nullable Double liquidationPreferenceMultiple) {
     this.liquidationPreferenceMultiple = liquidationPreferenceMultiple;
     return this;
   }
@@ -248,11 +247,11 @@ public class CaptableShareClass {
    * @return liquidationPreferenceMultiple
    */
   @javax.annotation.Nullable
-  public BigDecimal getLiquidationPreferenceMultiple() {
+  public Double getLiquidationPreferenceMultiple() {
     return liquidationPreferenceMultiple;
   }
 
-  public void setLiquidationPreferenceMultiple(@javax.annotation.Nullable BigDecimal liquidationPreferenceMultiple) {
+  public void setLiquidationPreferenceMultiple(@javax.annotation.Nullable Double liquidationPreferenceMultiple) {
     this.liquidationPreferenceMultiple = liquidationPreferenceMultiple;
   }
 
@@ -276,7 +275,7 @@ public class CaptableShareClass {
   }
 
 
-  public CaptableShareClass parValue(@javax.annotation.Nullable BigDecimal parValue) {
+  public CaptableShareClass parValue(@javax.annotation.Nullable Double parValue) {
     this.parValue = parValue;
     return this;
   }
@@ -286,16 +285,16 @@ public class CaptableShareClass {
    * @return parValue
    */
   @javax.annotation.Nullable
-  public BigDecimal getParValue() {
+  public Double getParValue() {
     return parValue;
   }
 
-  public void setParValue(@javax.annotation.Nullable BigDecimal parValue) {
+  public void setParValue(@javax.annotation.Nullable Double parValue) {
     this.parValue = parValue;
   }
 
 
-  public CaptableShareClass participationCapMultiple(@javax.annotation.Nullable BigDecimal participationCapMultiple) {
+  public CaptableShareClass participationCapMultiple(@javax.annotation.Nullable Double participationCapMultiple) {
     this.participationCapMultiple = participationCapMultiple;
     return this;
   }
@@ -305,11 +304,11 @@ public class CaptableShareClass {
    * @return participationCapMultiple
    */
   @javax.annotation.Nullable
-  public BigDecimal getParticipationCapMultiple() {
+  public Double getParticipationCapMultiple() {
     return participationCapMultiple;
   }
 
-  public void setParticipationCapMultiple(@javax.annotation.Nullable BigDecimal participationCapMultiple) {
+  public void setParticipationCapMultiple(@javax.annotation.Nullable Double participationCapMultiple) {
     this.participationCapMultiple = participationCapMultiple;
   }
 
@@ -333,7 +332,7 @@ public class CaptableShareClass {
   }
 
 
-  public CaptableShareClass pricePerShare(@javax.annotation.Nullable BigDecimal pricePerShare) {
+  public CaptableShareClass pricePerShare(@javax.annotation.Nullable Double pricePerShare) {
     this.pricePerShare = pricePerShare;
     return this;
   }
@@ -343,16 +342,16 @@ public class CaptableShareClass {
    * @return pricePerShare
    */
   @javax.annotation.Nullable
-  public BigDecimal getPricePerShare() {
+  public Double getPricePerShare() {
     return pricePerShare;
   }
 
-  public void setPricePerShare(@javax.annotation.Nullable BigDecimal pricePerShare) {
+  public void setPricePerShare(@javax.annotation.Nullable Double pricePerShare) {
     this.pricePerShare = pricePerShare;
   }
 
 
-  public CaptableShareClass seniority(@javax.annotation.Nullable Integer seniority) {
+  public CaptableShareClass seniority(@javax.annotation.Nullable Long seniority) {
     this.seniority = seniority;
     return this;
   }
@@ -362,16 +361,16 @@ public class CaptableShareClass {
    * @return seniority
    */
   @javax.annotation.Nullable
-  public Integer getSeniority() {
+  public Long getSeniority() {
     return seniority;
   }
 
-  public void setSeniority(@javax.annotation.Nullable Integer seniority) {
+  public void setSeniority(@javax.annotation.Nullable Long seniority) {
     this.seniority = seniority;
   }
 
 
-  public CaptableShareClass votesPerShare(@javax.annotation.Nullable Integer votesPerShare) {
+  public CaptableShareClass votesPerShare(@javax.annotation.Nullable Long votesPerShare) {
     this.votesPerShare = votesPerShare;
     return this;
   }
@@ -381,11 +380,11 @@ public class CaptableShareClass {
    * @return votesPerShare
    */
   @javax.annotation.Nullable
-  public Integer getVotesPerShare() {
+  public Long getVotesPerShare() {
     return votesPerShare;
   }
 
-  public void setVotesPerShare(@javax.annotation.Nullable Integer votesPerShare) {
+  public void setVotesPerShare(@javax.annotation.Nullable Long votesPerShare) {
     this.votesPerShare = votesPerShare;
   }
 

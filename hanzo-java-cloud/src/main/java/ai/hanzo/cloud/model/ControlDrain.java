@@ -61,7 +61,7 @@ public class ControlDrain {
   public static final String SERIALIZED_NAME_CURSOR = "cursor";
   @SerializedName(SERIALIZED_NAME_CURSOR)
   @javax.annotation.Nullable
-  private Integer cursor;
+  private Long cursor;
 
   public ControlDrain() {
   }
@@ -93,7 +93,7 @@ public class ControlDrain {
   }
 
 
-  public ControlDrain cursor(@javax.annotation.Nullable Integer cursor) {
+  public ControlDrain cursor(@javax.annotation.Nullable Long cursor) {
     this.cursor = cursor;
     return this;
   }
@@ -103,11 +103,11 @@ public class ControlDrain {
    * @return cursor
    */
   @javax.annotation.Nullable
-  public Integer getCursor() {
+  public Long getCursor() {
     return cursor;
   }
 
-  public void setCursor(@javax.annotation.Nullable Integer cursor) {
+  public void setCursor(@javax.annotation.Nullable Long cursor) {
     this.cursor = cursor;
   }
 

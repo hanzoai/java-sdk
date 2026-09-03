@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -59,17 +58,17 @@ public class LatencyStat {
   public static final String SERIALIZED_NAME_P50_MS = "p50Ms";
   @SerializedName(SERIALIZED_NAME_P50_MS)
   @javax.annotation.Nullable
-  private BigDecimal p50Ms;
+  private Double p50Ms;
 
   public static final String SERIALIZED_NAME_P95_MS = "p95Ms";
   @SerializedName(SERIALIZED_NAME_P95_MS)
   @javax.annotation.Nullable
-  private BigDecimal p95Ms;
+  private Double p95Ms;
 
   public static final String SERIALIZED_NAME_P99_MS = "p99Ms";
   @SerializedName(SERIALIZED_NAME_P99_MS)
   @javax.annotation.Nullable
-  private BigDecimal p99Ms;
+  private Double p99Ms;
 
   public LatencyStat() {
   }
@@ -93,7 +92,7 @@ public class LatencyStat {
   }
 
 
-  public LatencyStat p50Ms(@javax.annotation.Nullable BigDecimal p50Ms) {
+  public LatencyStat p50Ms(@javax.annotation.Nullable Double p50Ms) {
     this.p50Ms = p50Ms;
     return this;
   }
@@ -103,16 +102,16 @@ public class LatencyStat {
    * @return p50Ms
    */
   @javax.annotation.Nullable
-  public BigDecimal getP50Ms() {
+  public Double getP50Ms() {
     return p50Ms;
   }
 
-  public void setP50Ms(@javax.annotation.Nullable BigDecimal p50Ms) {
+  public void setP50Ms(@javax.annotation.Nullable Double p50Ms) {
     this.p50Ms = p50Ms;
   }
 
 
-  public LatencyStat p95Ms(@javax.annotation.Nullable BigDecimal p95Ms) {
+  public LatencyStat p95Ms(@javax.annotation.Nullable Double p95Ms) {
     this.p95Ms = p95Ms;
     return this;
   }
@@ -122,16 +121,16 @@ public class LatencyStat {
    * @return p95Ms
    */
   @javax.annotation.Nullable
-  public BigDecimal getP95Ms() {
+  public Double getP95Ms() {
     return p95Ms;
   }
 
-  public void setP95Ms(@javax.annotation.Nullable BigDecimal p95Ms) {
+  public void setP95Ms(@javax.annotation.Nullable Double p95Ms) {
     this.p95Ms = p95Ms;
   }
 
 
-  public LatencyStat p99Ms(@javax.annotation.Nullable BigDecimal p99Ms) {
+  public LatencyStat p99Ms(@javax.annotation.Nullable Double p99Ms) {
     this.p99Ms = p99Ms;
     return this;
   }
@@ -141,11 +140,11 @@ public class LatencyStat {
    * @return p99Ms
    */
   @javax.annotation.Nullable
-  public BigDecimal getP99Ms() {
+  public Double getP99Ms() {
     return p99Ms;
   }
 
-  public void setP99Ms(@javax.annotation.Nullable BigDecimal p99Ms) {
+  public void setP99Ms(@javax.annotation.Nullable Double p99Ms) {
     this.p99Ms = p99Ms;
   }
 

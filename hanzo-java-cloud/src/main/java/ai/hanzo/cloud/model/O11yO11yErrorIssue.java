@@ -59,7 +59,7 @@ public class O11yO11yErrorIssue {
   public static final String SERIALIZED_NAME_COUNT = "count";
   @SerializedName(SERIALIZED_NAME_COUNT)
   @javax.annotation.Nullable
-  private Integer count;
+  private Long count;
 
   public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
@@ -168,7 +168,7 @@ public class O11yO11yErrorIssue {
   }
 
 
-  public O11yO11yErrorIssue count(@javax.annotation.Nullable Integer count) {
+  public O11yO11yErrorIssue count(@javax.annotation.Nullable Long count) {
     this.count = count;
     return this;
   }
@@ -178,11 +178,11 @@ public class O11yO11yErrorIssue {
    * @return count
    */
   @javax.annotation.Nullable
-  public Integer getCount() {
+  public Long getCount() {
     return count;
   }
 
-  public void setCount(@javax.annotation.Nullable Integer count) {
+  public void setCount(@javax.annotation.Nullable Long count) {
     this.count = count;
   }
 

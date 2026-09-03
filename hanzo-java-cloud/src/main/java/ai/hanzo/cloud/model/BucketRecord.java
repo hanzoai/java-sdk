@@ -58,12 +58,12 @@ public class BucketRecord {
   public static final String SERIALIZED_NAME_HISTORY = "history";
   @SerializedName(SERIALIZED_NAME_HISTORY)
   @javax.annotation.Nullable
-  private Integer history;
+  private Long history;
 
   public static final String SERIALIZED_NAME_TTL = "ttl";
   @SerializedName(SERIALIZED_NAME_TTL)
   @javax.annotation.Nullable
-  private Integer ttl;
+  private Long ttl;
 
   public static final String SERIALIZED_NAME_VALUES = "values";
   @SerializedName(SERIALIZED_NAME_VALUES)
@@ -92,7 +92,7 @@ public class BucketRecord {
   }
 
 
-  public BucketRecord history(@javax.annotation.Nullable Integer history) {
+  public BucketRecord history(@javax.annotation.Nullable Long history) {
     this.history = history;
     return this;
   }
@@ -102,16 +102,16 @@ public class BucketRecord {
    * @return history
    */
   @javax.annotation.Nullable
-  public Integer getHistory() {
+  public Long getHistory() {
     return history;
   }
 
-  public void setHistory(@javax.annotation.Nullable Integer history) {
+  public void setHistory(@javax.annotation.Nullable Long history) {
     this.history = history;
   }
 
 
-  public BucketRecord ttl(@javax.annotation.Nullable Integer ttl) {
+  public BucketRecord ttl(@javax.annotation.Nullable Long ttl) {
     this.ttl = ttl;
     return this;
   }
@@ -121,11 +121,11 @@ public class BucketRecord {
    * @return ttl
    */
   @javax.annotation.Nullable
-  public Integer getTtl() {
+  public Long getTtl() {
     return ttl;
   }
 
-  public void setTtl(@javax.annotation.Nullable Integer ttl) {
+  public void setTtl(@javax.annotation.Nullable Long ttl) {
     this.ttl = ttl;
   }
 

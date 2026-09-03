@@ -53,17 +53,17 @@ public class Loss {
   public static final String SERIALIZED_NAME_EXHAUSTED = "exhausted";
   @SerializedName(SERIALIZED_NAME_EXHAUSTED)
   @javax.annotation.Nullable
-  private Integer exhausted;
+  private Long exhausted;
 
   public static final String SERIALIZED_NAME_UNDECODABLE = "undecodable";
   @SerializedName(SERIALIZED_NAME_UNDECODABLE)
   @javax.annotation.Nullable
-  private Integer undecodable;
+  private Long undecodable;
 
   public Loss() {
   }
 
-  public Loss exhausted(@javax.annotation.Nullable Integer exhausted) {
+  public Loss exhausted(@javax.annotation.Nullable Long exhausted) {
     this.exhausted = exhausted;
     return this;
   }
@@ -73,16 +73,16 @@ public class Loss {
    * @return exhausted
    */
   @javax.annotation.Nullable
-  public Integer getExhausted() {
+  public Long getExhausted() {
     return exhausted;
   }
 
-  public void setExhausted(@javax.annotation.Nullable Integer exhausted) {
+  public void setExhausted(@javax.annotation.Nullable Long exhausted) {
     this.exhausted = exhausted;
   }
 
 
-  public Loss undecodable(@javax.annotation.Nullable Integer undecodable) {
+  public Loss undecodable(@javax.annotation.Nullable Long undecodable) {
     this.undecodable = undecodable;
     return this;
   }
@@ -92,11 +92,11 @@ public class Loss {
    * @return undecodable
    */
   @javax.annotation.Nullable
-  public Integer getUndecodable() {
+  public Long getUndecodable() {
     return undecodable;
   }
 
-  public void setUndecodable(@javax.annotation.Nullable Integer undecodable) {
+  public void setUndecodable(@javax.annotation.Nullable Long undecodable) {
     this.undecodable = undecodable;
   }
 

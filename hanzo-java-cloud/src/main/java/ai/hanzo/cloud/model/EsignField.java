@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -65,7 +64,7 @@ public class EsignField {
   public static final String SERIALIZED_NAME_HEIGHT = "height";
   @SerializedName(SERIALIZED_NAME_HEIGHT)
   @javax.annotation.Nullable
-  private BigDecimal height;
+  private Double height;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -80,17 +79,17 @@ public class EsignField {
   public static final String SERIALIZED_NAME_PAGE = "page";
   @SerializedName(SERIALIZED_NAME_PAGE)
   @javax.annotation.Nullable
-  private BigDecimal page;
+  private Double page;
 
   public static final String SERIALIZED_NAME_POSITION_X = "positionX";
   @SerializedName(SERIALIZED_NAME_POSITION_X)
   @javax.annotation.Nullable
-  private BigDecimal positionX;
+  private Double positionX;
 
   public static final String SERIALIZED_NAME_POSITION_Y = "positionY";
   @SerializedName(SERIALIZED_NAME_POSITION_Y)
   @javax.annotation.Nullable
-  private BigDecimal positionY;
+  private Double positionY;
 
   public static final String SERIALIZED_NAME_RECIPIENT_ID = "recipientId";
   @SerializedName(SERIALIZED_NAME_RECIPIENT_ID)
@@ -105,7 +104,7 @@ public class EsignField {
   public static final String SERIALIZED_NAME_WIDTH = "width";
   @SerializedName(SERIALIZED_NAME_WIDTH)
   @javax.annotation.Nullable
-  private BigDecimal width;
+  private Double width;
 
   public EsignField() {
   }
@@ -148,7 +147,7 @@ public class EsignField {
   }
 
 
-  public EsignField height(@javax.annotation.Nullable BigDecimal height) {
+  public EsignField height(@javax.annotation.Nullable Double height) {
     this.height = height;
     return this;
   }
@@ -158,11 +157,11 @@ public class EsignField {
    * @return height
    */
   @javax.annotation.Nullable
-  public BigDecimal getHeight() {
+  public Double getHeight() {
     return height;
   }
 
-  public void setHeight(@javax.annotation.Nullable BigDecimal height) {
+  public void setHeight(@javax.annotation.Nullable Double height) {
     this.height = height;
   }
 
@@ -205,7 +204,7 @@ public class EsignField {
   }
 
 
-  public EsignField page(@javax.annotation.Nullable BigDecimal page) {
+  public EsignField page(@javax.annotation.Nullable Double page) {
     this.page = page;
     return this;
   }
@@ -215,16 +214,16 @@ public class EsignField {
    * @return page
    */
   @javax.annotation.Nullable
-  public BigDecimal getPage() {
+  public Double getPage() {
     return page;
   }
 
-  public void setPage(@javax.annotation.Nullable BigDecimal page) {
+  public void setPage(@javax.annotation.Nullable Double page) {
     this.page = page;
   }
 
 
-  public EsignField positionX(@javax.annotation.Nullable BigDecimal positionX) {
+  public EsignField positionX(@javax.annotation.Nullable Double positionX) {
     this.positionX = positionX;
     return this;
   }
@@ -234,16 +233,16 @@ public class EsignField {
    * @return positionX
    */
   @javax.annotation.Nullable
-  public BigDecimal getPositionX() {
+  public Double getPositionX() {
     return positionX;
   }
 
-  public void setPositionX(@javax.annotation.Nullable BigDecimal positionX) {
+  public void setPositionX(@javax.annotation.Nullable Double positionX) {
     this.positionX = positionX;
   }
 
 
-  public EsignField positionY(@javax.annotation.Nullable BigDecimal positionY) {
+  public EsignField positionY(@javax.annotation.Nullable Double positionY) {
     this.positionY = positionY;
     return this;
   }
@@ -253,11 +252,11 @@ public class EsignField {
    * @return positionY
    */
   @javax.annotation.Nullable
-  public BigDecimal getPositionY() {
+  public Double getPositionY() {
     return positionY;
   }
 
-  public void setPositionY(@javax.annotation.Nullable BigDecimal positionY) {
+  public void setPositionY(@javax.annotation.Nullable Double positionY) {
     this.positionY = positionY;
   }
 
@@ -300,7 +299,7 @@ public class EsignField {
   }
 
 
-  public EsignField width(@javax.annotation.Nullable BigDecimal width) {
+  public EsignField width(@javax.annotation.Nullable Double width) {
     this.width = width;
     return this;
   }
@@ -310,11 +309,11 @@ public class EsignField {
    * @return width
    */
   @javax.annotation.Nullable
-  public BigDecimal getWidth() {
+  public Double getWidth() {
     return width;
   }
 
-  public void setWidth(@javax.annotation.Nullable BigDecimal width) {
+  public void setWidth(@javax.annotation.Nullable Double width) {
     this.width = width;
   }
 

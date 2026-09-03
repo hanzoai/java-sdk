@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -70,7 +69,7 @@ public class Arm {
   public static final String SERIALIZED_NAME_WEIGHT = "weight";
   @SerializedName(SERIALIZED_NAME_WEIGHT)
   @javax.annotation.Nullable
-  private BigDecimal weight;
+  private Double weight;
 
   public Arm() {
   }
@@ -132,7 +131,7 @@ public class Arm {
   }
 
 
-  public Arm weight(@javax.annotation.Nullable BigDecimal weight) {
+  public Arm weight(@javax.annotation.Nullable Double weight) {
     this.weight = weight;
     return this;
   }
@@ -142,11 +141,11 @@ public class Arm {
    * @return weight
    */
   @javax.annotation.Nullable
-  public BigDecimal getWeight() {
+  public Double getWeight() {
     return weight;
   }
 
-  public void setWeight(@javax.annotation.Nullable BigDecimal weight) {
+  public void setWeight(@javax.annotation.Nullable Double weight) {
     this.weight = weight;
   }
 

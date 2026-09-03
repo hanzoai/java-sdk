@@ -59,7 +59,7 @@ public class FleetSummary {
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)
   @javax.annotation.Nullable
-  private Integer total;
+  private Long total;
 
   public FleetSummary() {
   }
@@ -83,7 +83,7 @@ public class FleetSummary {
   }
 
 
-  public FleetSummary total(@javax.annotation.Nullable Integer total) {
+  public FleetSummary total(@javax.annotation.Nullable Long total) {
     this.total = total;
     return this;
   }
@@ -93,11 +93,11 @@ public class FleetSummary {
    * @return total
    */
   @javax.annotation.Nullable
-  public Integer getTotal() {
+  public Long getTotal() {
     return total;
   }
 
-  public void setTotal(@javax.annotation.Nullable Integer total) {
+  public void setTotal(@javax.annotation.Nullable Long total) {
     this.total = total;
   }
 

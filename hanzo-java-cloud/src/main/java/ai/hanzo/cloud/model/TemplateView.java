@@ -86,7 +86,7 @@ public class TemplateView {
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
   @javax.annotation.Nullable
-  private Integer version;
+  private Long version;
 
   public TemplateView() {
   }
@@ -213,7 +213,7 @@ public class TemplateView {
   }
 
 
-  public TemplateView version(@javax.annotation.Nullable Integer version) {
+  public TemplateView version(@javax.annotation.Nullable Long version) {
     this.version = version;
     return this;
   }
@@ -223,11 +223,11 @@ public class TemplateView {
    * @return version
    */
   @javax.annotation.Nullable
-  public Integer getVersion() {
+  public Long getVersion() {
     return version;
   }
 
-  public void setVersion(@javax.annotation.Nullable Integer version) {
+  public void setVersion(@javax.annotation.Nullable Long version) {
     this.version = version;
   }
 

@@ -21,7 +21,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -57,12 +56,12 @@ public class O11yStatefulSetRecord {
   public static final String SERIALIZED_NAME_CURRENT_PODS = "currentPods";
   @SerializedName(SERIALIZED_NAME_CURRENT_PODS)
   @javax.annotation.Nullable
-  private Integer currentPods;
+  private Long currentPods;
 
   public static final String SERIALIZED_NAME_DESIRED_PODS = "desiredPods";
   @SerializedName(SERIALIZED_NAME_DESIRED_PODS)
   @javax.annotation.Nullable
-  private Integer desiredPods;
+  private Long desiredPods;
 
   public static final String SERIALIZED_NAME_META = "meta";
   @SerializedName(SERIALIZED_NAME_META)
@@ -77,32 +76,32 @@ public class O11yStatefulSetRecord {
   public static final String SERIALIZED_NAME_STATEFUL_SET_C_P_U = "statefulSetCPU";
   @SerializedName(SERIALIZED_NAME_STATEFUL_SET_C_P_U)
   @javax.annotation.Nullable
-  private BigDecimal statefulSetCPU;
+  private Double statefulSetCPU;
 
   public static final String SERIALIZED_NAME_STATEFUL_SET_C_P_U_LIMIT = "statefulSetCPULimit";
   @SerializedName(SERIALIZED_NAME_STATEFUL_SET_C_P_U_LIMIT)
   @javax.annotation.Nullable
-  private BigDecimal statefulSetCPULimit;
+  private Double statefulSetCPULimit;
 
   public static final String SERIALIZED_NAME_STATEFUL_SET_C_P_U_REQUEST = "statefulSetCPURequest";
   @SerializedName(SERIALIZED_NAME_STATEFUL_SET_C_P_U_REQUEST)
   @javax.annotation.Nullable
-  private BigDecimal statefulSetCPURequest;
+  private Double statefulSetCPURequest;
 
   public static final String SERIALIZED_NAME_STATEFUL_SET_MEMORY = "statefulSetMemory";
   @SerializedName(SERIALIZED_NAME_STATEFUL_SET_MEMORY)
   @javax.annotation.Nullable
-  private BigDecimal statefulSetMemory;
+  private Double statefulSetMemory;
 
   public static final String SERIALIZED_NAME_STATEFUL_SET_MEMORY_LIMIT = "statefulSetMemoryLimit";
   @SerializedName(SERIALIZED_NAME_STATEFUL_SET_MEMORY_LIMIT)
   @javax.annotation.Nullable
-  private BigDecimal statefulSetMemoryLimit;
+  private Double statefulSetMemoryLimit;
 
   public static final String SERIALIZED_NAME_STATEFUL_SET_MEMORY_REQUEST = "statefulSetMemoryRequest";
   @SerializedName(SERIALIZED_NAME_STATEFUL_SET_MEMORY_REQUEST)
   @javax.annotation.Nullable
-  private BigDecimal statefulSetMemoryRequest;
+  private Double statefulSetMemoryRequest;
 
   public static final String SERIALIZED_NAME_STATEFUL_SET_NAME = "statefulSetName";
   @SerializedName(SERIALIZED_NAME_STATEFUL_SET_NAME)
@@ -112,7 +111,7 @@ public class O11yStatefulSetRecord {
   public O11yStatefulSetRecord() {
   }
 
-  public O11yStatefulSetRecord currentPods(@javax.annotation.Nullable Integer currentPods) {
+  public O11yStatefulSetRecord currentPods(@javax.annotation.Nullable Long currentPods) {
     this.currentPods = currentPods;
     return this;
   }
@@ -122,16 +121,16 @@ public class O11yStatefulSetRecord {
    * @return currentPods
    */
   @javax.annotation.Nullable
-  public Integer getCurrentPods() {
+  public Long getCurrentPods() {
     return currentPods;
   }
 
-  public void setCurrentPods(@javax.annotation.Nullable Integer currentPods) {
+  public void setCurrentPods(@javax.annotation.Nullable Long currentPods) {
     this.currentPods = currentPods;
   }
 
 
-  public O11yStatefulSetRecord desiredPods(@javax.annotation.Nullable Integer desiredPods) {
+  public O11yStatefulSetRecord desiredPods(@javax.annotation.Nullable Long desiredPods) {
     this.desiredPods = desiredPods;
     return this;
   }
@@ -141,11 +140,11 @@ public class O11yStatefulSetRecord {
    * @return desiredPods
    */
   @javax.annotation.Nullable
-  public Integer getDesiredPods() {
+  public Long getDesiredPods() {
     return desiredPods;
   }
 
-  public void setDesiredPods(@javax.annotation.Nullable Integer desiredPods) {
+  public void setDesiredPods(@javax.annotation.Nullable Long desiredPods) {
     this.desiredPods = desiredPods;
   }
 
@@ -196,7 +195,7 @@ public class O11yStatefulSetRecord {
   }
 
 
-  public O11yStatefulSetRecord statefulSetCPU(@javax.annotation.Nullable BigDecimal statefulSetCPU) {
+  public O11yStatefulSetRecord statefulSetCPU(@javax.annotation.Nullable Double statefulSetCPU) {
     this.statefulSetCPU = statefulSetCPU;
     return this;
   }
@@ -206,16 +205,16 @@ public class O11yStatefulSetRecord {
    * @return statefulSetCPU
    */
   @javax.annotation.Nullable
-  public BigDecimal getStatefulSetCPU() {
+  public Double getStatefulSetCPU() {
     return statefulSetCPU;
   }
 
-  public void setStatefulSetCPU(@javax.annotation.Nullable BigDecimal statefulSetCPU) {
+  public void setStatefulSetCPU(@javax.annotation.Nullable Double statefulSetCPU) {
     this.statefulSetCPU = statefulSetCPU;
   }
 
 
-  public O11yStatefulSetRecord statefulSetCPULimit(@javax.annotation.Nullable BigDecimal statefulSetCPULimit) {
+  public O11yStatefulSetRecord statefulSetCPULimit(@javax.annotation.Nullable Double statefulSetCPULimit) {
     this.statefulSetCPULimit = statefulSetCPULimit;
     return this;
   }
@@ -225,16 +224,16 @@ public class O11yStatefulSetRecord {
    * @return statefulSetCPULimit
    */
   @javax.annotation.Nullable
-  public BigDecimal getStatefulSetCPULimit() {
+  public Double getStatefulSetCPULimit() {
     return statefulSetCPULimit;
   }
 
-  public void setStatefulSetCPULimit(@javax.annotation.Nullable BigDecimal statefulSetCPULimit) {
+  public void setStatefulSetCPULimit(@javax.annotation.Nullable Double statefulSetCPULimit) {
     this.statefulSetCPULimit = statefulSetCPULimit;
   }
 
 
-  public O11yStatefulSetRecord statefulSetCPURequest(@javax.annotation.Nullable BigDecimal statefulSetCPURequest) {
+  public O11yStatefulSetRecord statefulSetCPURequest(@javax.annotation.Nullable Double statefulSetCPURequest) {
     this.statefulSetCPURequest = statefulSetCPURequest;
     return this;
   }
@@ -244,16 +243,16 @@ public class O11yStatefulSetRecord {
    * @return statefulSetCPURequest
    */
   @javax.annotation.Nullable
-  public BigDecimal getStatefulSetCPURequest() {
+  public Double getStatefulSetCPURequest() {
     return statefulSetCPURequest;
   }
 
-  public void setStatefulSetCPURequest(@javax.annotation.Nullable BigDecimal statefulSetCPURequest) {
+  public void setStatefulSetCPURequest(@javax.annotation.Nullable Double statefulSetCPURequest) {
     this.statefulSetCPURequest = statefulSetCPURequest;
   }
 
 
-  public O11yStatefulSetRecord statefulSetMemory(@javax.annotation.Nullable BigDecimal statefulSetMemory) {
+  public O11yStatefulSetRecord statefulSetMemory(@javax.annotation.Nullable Double statefulSetMemory) {
     this.statefulSetMemory = statefulSetMemory;
     return this;
   }
@@ -263,16 +262,16 @@ public class O11yStatefulSetRecord {
    * @return statefulSetMemory
    */
   @javax.annotation.Nullable
-  public BigDecimal getStatefulSetMemory() {
+  public Double getStatefulSetMemory() {
     return statefulSetMemory;
   }
 
-  public void setStatefulSetMemory(@javax.annotation.Nullable BigDecimal statefulSetMemory) {
+  public void setStatefulSetMemory(@javax.annotation.Nullable Double statefulSetMemory) {
     this.statefulSetMemory = statefulSetMemory;
   }
 
 
-  public O11yStatefulSetRecord statefulSetMemoryLimit(@javax.annotation.Nullable BigDecimal statefulSetMemoryLimit) {
+  public O11yStatefulSetRecord statefulSetMemoryLimit(@javax.annotation.Nullable Double statefulSetMemoryLimit) {
     this.statefulSetMemoryLimit = statefulSetMemoryLimit;
     return this;
   }
@@ -282,16 +281,16 @@ public class O11yStatefulSetRecord {
    * @return statefulSetMemoryLimit
    */
   @javax.annotation.Nullable
-  public BigDecimal getStatefulSetMemoryLimit() {
+  public Double getStatefulSetMemoryLimit() {
     return statefulSetMemoryLimit;
   }
 
-  public void setStatefulSetMemoryLimit(@javax.annotation.Nullable BigDecimal statefulSetMemoryLimit) {
+  public void setStatefulSetMemoryLimit(@javax.annotation.Nullable Double statefulSetMemoryLimit) {
     this.statefulSetMemoryLimit = statefulSetMemoryLimit;
   }
 
 
-  public O11yStatefulSetRecord statefulSetMemoryRequest(@javax.annotation.Nullable BigDecimal statefulSetMemoryRequest) {
+  public O11yStatefulSetRecord statefulSetMemoryRequest(@javax.annotation.Nullable Double statefulSetMemoryRequest) {
     this.statefulSetMemoryRequest = statefulSetMemoryRequest;
     return this;
   }
@@ -301,11 +300,11 @@ public class O11yStatefulSetRecord {
    * @return statefulSetMemoryRequest
    */
   @javax.annotation.Nullable
-  public BigDecimal getStatefulSetMemoryRequest() {
+  public Double getStatefulSetMemoryRequest() {
     return statefulSetMemoryRequest;
   }
 
-  public void setStatefulSetMemoryRequest(@javax.annotation.Nullable BigDecimal statefulSetMemoryRequest) {
+  public void setStatefulSetMemoryRequest(@javax.annotation.Nullable Double statefulSetMemoryRequest) {
     this.statefulSetMemoryRequest = statefulSetMemoryRequest;
   }
 

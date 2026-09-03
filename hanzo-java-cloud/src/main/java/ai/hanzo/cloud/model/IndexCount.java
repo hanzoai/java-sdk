@@ -58,7 +58,7 @@ public class IndexCount {
   public static final String SERIALIZED_NAME_NUMBER_OF_DOCUMENTS = "numberOfDocuments";
   @SerializedName(SERIALIZED_NAME_NUMBER_OF_DOCUMENTS)
   @javax.annotation.Nullable
-  private Integer numberOfDocuments;
+  private Long numberOfDocuments;
 
   public IndexCount() {
   }
@@ -82,7 +82,7 @@ public class IndexCount {
   }
 
 
-  public IndexCount numberOfDocuments(@javax.annotation.Nullable Integer numberOfDocuments) {
+  public IndexCount numberOfDocuments(@javax.annotation.Nullable Long numberOfDocuments) {
     this.numberOfDocuments = numberOfDocuments;
     return this;
   }
@@ -92,11 +92,11 @@ public class IndexCount {
    * @return numberOfDocuments
    */
   @javax.annotation.Nullable
-  public Integer getNumberOfDocuments() {
+  public Long getNumberOfDocuments() {
     return numberOfDocuments;
   }
 
-  public void setNumberOfDocuments(@javax.annotation.Nullable Integer numberOfDocuments) {
+  public void setNumberOfDocuments(@javax.annotation.Nullable Long numberOfDocuments) {
     this.numberOfDocuments = numberOfDocuments;
   }
 

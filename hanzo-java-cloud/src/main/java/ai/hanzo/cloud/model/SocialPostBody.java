@@ -70,7 +70,7 @@ public class SocialPostBody {
   public static final String SERIALIZED_NAME_SCHEDULE_AT = "scheduleAt";
   @SerializedName(SERIALIZED_NAME_SCHEDULE_AT)
   @javax.annotation.Nullable
-  private Integer scheduleAt;
+  private Long scheduleAt;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
@@ -145,7 +145,7 @@ public class SocialPostBody {
   }
 
 
-  public SocialPostBody scheduleAt(@javax.annotation.Nullable Integer scheduleAt) {
+  public SocialPostBody scheduleAt(@javax.annotation.Nullable Long scheduleAt) {
     this.scheduleAt = scheduleAt;
     return this;
   }
@@ -155,11 +155,11 @@ public class SocialPostBody {
    * @return scheduleAt
    */
   @javax.annotation.Nullable
-  public Integer getScheduleAt() {
+  public Long getScheduleAt() {
     return scheduleAt;
   }
 
-  public void setScheduleAt(@javax.annotation.Nullable Integer scheduleAt) {
+  public void setScheduleAt(@javax.annotation.Nullable Long scheduleAt) {
     this.scheduleAt = scheduleAt;
   }
 

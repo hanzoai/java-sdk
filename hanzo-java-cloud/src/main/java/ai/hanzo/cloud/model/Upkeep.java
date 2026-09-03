@@ -81,7 +81,7 @@ public class Upkeep {
   public static final String SERIALIZED_NAME_YEARLY_CENTS = "yearlyCents";
   @SerializedName(SERIALIZED_NAME_YEARLY_CENTS)
   @javax.annotation.Nullable
-  private Integer yearlyCents;
+  private Long yearlyCents;
 
   public Upkeep() {
   }
@@ -189,7 +189,7 @@ public class Upkeep {
   }
 
 
-  public Upkeep yearlyCents(@javax.annotation.Nullable Integer yearlyCents) {
+  public Upkeep yearlyCents(@javax.annotation.Nullable Long yearlyCents) {
     this.yearlyCents = yearlyCents;
     return this;
   }
@@ -199,11 +199,11 @@ public class Upkeep {
    * @return yearlyCents
    */
   @javax.annotation.Nullable
-  public Integer getYearlyCents() {
+  public Long getYearlyCents() {
     return yearlyCents;
   }
 
-  public void setYearlyCents(@javax.annotation.Nullable Integer yearlyCents) {
+  public void setYearlyCents(@javax.annotation.Nullable Long yearlyCents) {
     this.yearlyCents = yearlyCents;
   }
 

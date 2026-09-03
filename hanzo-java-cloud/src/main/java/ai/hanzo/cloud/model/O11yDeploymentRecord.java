@@ -21,7 +21,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -57,37 +56,37 @@ public class O11yDeploymentRecord {
   public static final String SERIALIZED_NAME_AVAILABLE_PODS = "availablePods";
   @SerializedName(SERIALIZED_NAME_AVAILABLE_PODS)
   @javax.annotation.Nullable
-  private Integer availablePods;
+  private Long availablePods;
 
   public static final String SERIALIZED_NAME_DEPLOYMENT_C_P_U = "deploymentCPU";
   @SerializedName(SERIALIZED_NAME_DEPLOYMENT_C_P_U)
   @javax.annotation.Nullable
-  private BigDecimal deploymentCPU;
+  private Double deploymentCPU;
 
   public static final String SERIALIZED_NAME_DEPLOYMENT_C_P_U_LIMIT = "deploymentCPULimit";
   @SerializedName(SERIALIZED_NAME_DEPLOYMENT_C_P_U_LIMIT)
   @javax.annotation.Nullable
-  private BigDecimal deploymentCPULimit;
+  private Double deploymentCPULimit;
 
   public static final String SERIALIZED_NAME_DEPLOYMENT_C_P_U_REQUEST = "deploymentCPURequest";
   @SerializedName(SERIALIZED_NAME_DEPLOYMENT_C_P_U_REQUEST)
   @javax.annotation.Nullable
-  private BigDecimal deploymentCPURequest;
+  private Double deploymentCPURequest;
 
   public static final String SERIALIZED_NAME_DEPLOYMENT_MEMORY = "deploymentMemory";
   @SerializedName(SERIALIZED_NAME_DEPLOYMENT_MEMORY)
   @javax.annotation.Nullable
-  private BigDecimal deploymentMemory;
+  private Double deploymentMemory;
 
   public static final String SERIALIZED_NAME_DEPLOYMENT_MEMORY_LIMIT = "deploymentMemoryLimit";
   @SerializedName(SERIALIZED_NAME_DEPLOYMENT_MEMORY_LIMIT)
   @javax.annotation.Nullable
-  private BigDecimal deploymentMemoryLimit;
+  private Double deploymentMemoryLimit;
 
   public static final String SERIALIZED_NAME_DEPLOYMENT_MEMORY_REQUEST = "deploymentMemoryRequest";
   @SerializedName(SERIALIZED_NAME_DEPLOYMENT_MEMORY_REQUEST)
   @javax.annotation.Nullable
-  private BigDecimal deploymentMemoryRequest;
+  private Double deploymentMemoryRequest;
 
   public static final String SERIALIZED_NAME_DEPLOYMENT_NAME = "deploymentName";
   @SerializedName(SERIALIZED_NAME_DEPLOYMENT_NAME)
@@ -97,7 +96,7 @@ public class O11yDeploymentRecord {
   public static final String SERIALIZED_NAME_DESIRED_PODS = "desiredPods";
   @SerializedName(SERIALIZED_NAME_DESIRED_PODS)
   @javax.annotation.Nullable
-  private Integer desiredPods;
+  private Long desiredPods;
 
   public static final String SERIALIZED_NAME_META = "meta";
   @SerializedName(SERIALIZED_NAME_META)
@@ -112,7 +111,7 @@ public class O11yDeploymentRecord {
   public O11yDeploymentRecord() {
   }
 
-  public O11yDeploymentRecord availablePods(@javax.annotation.Nullable Integer availablePods) {
+  public O11yDeploymentRecord availablePods(@javax.annotation.Nullable Long availablePods) {
     this.availablePods = availablePods;
     return this;
   }
@@ -122,16 +121,16 @@ public class O11yDeploymentRecord {
    * @return availablePods
    */
   @javax.annotation.Nullable
-  public Integer getAvailablePods() {
+  public Long getAvailablePods() {
     return availablePods;
   }
 
-  public void setAvailablePods(@javax.annotation.Nullable Integer availablePods) {
+  public void setAvailablePods(@javax.annotation.Nullable Long availablePods) {
     this.availablePods = availablePods;
   }
 
 
-  public O11yDeploymentRecord deploymentCPU(@javax.annotation.Nullable BigDecimal deploymentCPU) {
+  public O11yDeploymentRecord deploymentCPU(@javax.annotation.Nullable Double deploymentCPU) {
     this.deploymentCPU = deploymentCPU;
     return this;
   }
@@ -141,16 +140,16 @@ public class O11yDeploymentRecord {
    * @return deploymentCPU
    */
   @javax.annotation.Nullable
-  public BigDecimal getDeploymentCPU() {
+  public Double getDeploymentCPU() {
     return deploymentCPU;
   }
 
-  public void setDeploymentCPU(@javax.annotation.Nullable BigDecimal deploymentCPU) {
+  public void setDeploymentCPU(@javax.annotation.Nullable Double deploymentCPU) {
     this.deploymentCPU = deploymentCPU;
   }
 
 
-  public O11yDeploymentRecord deploymentCPULimit(@javax.annotation.Nullable BigDecimal deploymentCPULimit) {
+  public O11yDeploymentRecord deploymentCPULimit(@javax.annotation.Nullable Double deploymentCPULimit) {
     this.deploymentCPULimit = deploymentCPULimit;
     return this;
   }
@@ -160,16 +159,16 @@ public class O11yDeploymentRecord {
    * @return deploymentCPULimit
    */
   @javax.annotation.Nullable
-  public BigDecimal getDeploymentCPULimit() {
+  public Double getDeploymentCPULimit() {
     return deploymentCPULimit;
   }
 
-  public void setDeploymentCPULimit(@javax.annotation.Nullable BigDecimal deploymentCPULimit) {
+  public void setDeploymentCPULimit(@javax.annotation.Nullable Double deploymentCPULimit) {
     this.deploymentCPULimit = deploymentCPULimit;
   }
 
 
-  public O11yDeploymentRecord deploymentCPURequest(@javax.annotation.Nullable BigDecimal deploymentCPURequest) {
+  public O11yDeploymentRecord deploymentCPURequest(@javax.annotation.Nullable Double deploymentCPURequest) {
     this.deploymentCPURequest = deploymentCPURequest;
     return this;
   }
@@ -179,16 +178,16 @@ public class O11yDeploymentRecord {
    * @return deploymentCPURequest
    */
   @javax.annotation.Nullable
-  public BigDecimal getDeploymentCPURequest() {
+  public Double getDeploymentCPURequest() {
     return deploymentCPURequest;
   }
 
-  public void setDeploymentCPURequest(@javax.annotation.Nullable BigDecimal deploymentCPURequest) {
+  public void setDeploymentCPURequest(@javax.annotation.Nullable Double deploymentCPURequest) {
     this.deploymentCPURequest = deploymentCPURequest;
   }
 
 
-  public O11yDeploymentRecord deploymentMemory(@javax.annotation.Nullable BigDecimal deploymentMemory) {
+  public O11yDeploymentRecord deploymentMemory(@javax.annotation.Nullable Double deploymentMemory) {
     this.deploymentMemory = deploymentMemory;
     return this;
   }
@@ -198,16 +197,16 @@ public class O11yDeploymentRecord {
    * @return deploymentMemory
    */
   @javax.annotation.Nullable
-  public BigDecimal getDeploymentMemory() {
+  public Double getDeploymentMemory() {
     return deploymentMemory;
   }
 
-  public void setDeploymentMemory(@javax.annotation.Nullable BigDecimal deploymentMemory) {
+  public void setDeploymentMemory(@javax.annotation.Nullable Double deploymentMemory) {
     this.deploymentMemory = deploymentMemory;
   }
 
 
-  public O11yDeploymentRecord deploymentMemoryLimit(@javax.annotation.Nullable BigDecimal deploymentMemoryLimit) {
+  public O11yDeploymentRecord deploymentMemoryLimit(@javax.annotation.Nullable Double deploymentMemoryLimit) {
     this.deploymentMemoryLimit = deploymentMemoryLimit;
     return this;
   }
@@ -217,16 +216,16 @@ public class O11yDeploymentRecord {
    * @return deploymentMemoryLimit
    */
   @javax.annotation.Nullable
-  public BigDecimal getDeploymentMemoryLimit() {
+  public Double getDeploymentMemoryLimit() {
     return deploymentMemoryLimit;
   }
 
-  public void setDeploymentMemoryLimit(@javax.annotation.Nullable BigDecimal deploymentMemoryLimit) {
+  public void setDeploymentMemoryLimit(@javax.annotation.Nullable Double deploymentMemoryLimit) {
     this.deploymentMemoryLimit = deploymentMemoryLimit;
   }
 
 
-  public O11yDeploymentRecord deploymentMemoryRequest(@javax.annotation.Nullable BigDecimal deploymentMemoryRequest) {
+  public O11yDeploymentRecord deploymentMemoryRequest(@javax.annotation.Nullable Double deploymentMemoryRequest) {
     this.deploymentMemoryRequest = deploymentMemoryRequest;
     return this;
   }
@@ -236,11 +235,11 @@ public class O11yDeploymentRecord {
    * @return deploymentMemoryRequest
    */
   @javax.annotation.Nullable
-  public BigDecimal getDeploymentMemoryRequest() {
+  public Double getDeploymentMemoryRequest() {
     return deploymentMemoryRequest;
   }
 
-  public void setDeploymentMemoryRequest(@javax.annotation.Nullable BigDecimal deploymentMemoryRequest) {
+  public void setDeploymentMemoryRequest(@javax.annotation.Nullable Double deploymentMemoryRequest) {
     this.deploymentMemoryRequest = deploymentMemoryRequest;
   }
 
@@ -264,7 +263,7 @@ public class O11yDeploymentRecord {
   }
 
 
-  public O11yDeploymentRecord desiredPods(@javax.annotation.Nullable Integer desiredPods) {
+  public O11yDeploymentRecord desiredPods(@javax.annotation.Nullable Long desiredPods) {
     this.desiredPods = desiredPods;
     return this;
   }
@@ -274,11 +273,11 @@ public class O11yDeploymentRecord {
    * @return desiredPods
    */
   @javax.annotation.Nullable
-  public Integer getDesiredPods() {
+  public Long getDesiredPods() {
     return desiredPods;
   }
 
-  public void setDesiredPods(@javax.annotation.Nullable Integer desiredPods) {
+  public void setDesiredPods(@javax.annotation.Nullable Long desiredPods) {
     this.desiredPods = desiredPods;
   }
 

@@ -67,6 +67,7 @@ import ai.hanzo.cloud.model.LinearCommentOut;
 import ai.hanzo.cloud.model.ListOut;
 import ai.hanzo.cloud.model.ProviderView;
 import ai.hanzo.cloud.model.RefreshOut;
+import ai.hanzo.cloud.model.SlackJoinOut;
 import ai.hanzo.cloud.model.VerifyOut;
 
 import java.lang.reflect.Type;
@@ -5548,6 +5549,123 @@ public class IntegrationsApi {
 
         okhttp3.Call localVarCall = postIntegrationsSlackEventsValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postIntegrationsSlackJoin
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postIntegrationsSlackJoinCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/integrations/slack/join";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postIntegrationsSlackJoinValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postIntegrationsSlackJoinCall(_callback);
+
+    }
+
+    /**
+     * Joins every public channel in the caller org&#39;s workspace.
+     * Joins every public channel in the caller org&#39;s workspace.  Org admin, because it changes what the whole workspace sees: after it the agent is a member of every public room and answers in all of them.
+     * @return SlackJoinOut
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public SlackJoinOut postIntegrationsSlackJoin() throws ApiException {
+        ApiResponse<SlackJoinOut> localVarResp = postIntegrationsSlackJoinWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * Joins every public channel in the caller org&#39;s workspace.
+     * Joins every public channel in the caller org&#39;s workspace.  Org admin, because it changes what the whole workspace sees: after it the agent is a member of every public room and answers in all of them.
+     * @return ApiResponse&lt;SlackJoinOut&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<SlackJoinOut> postIntegrationsSlackJoinWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postIntegrationsSlackJoinValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<SlackJoinOut>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Joins every public channel in the caller org&#39;s workspace. (asynchronously)
+     * Joins every public channel in the caller org&#39;s workspace.  Org admin, because it changes what the whole workspace sees: after it the agent is a member of every public room and answers in all of them.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postIntegrationsSlackJoinAsync(final ApiCallback<SlackJoinOut> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postIntegrationsSlackJoinValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<SlackJoinOut>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**

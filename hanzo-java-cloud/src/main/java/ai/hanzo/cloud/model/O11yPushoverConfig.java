@@ -66,7 +66,7 @@ public class O11yPushoverConfig {
   public static final String SERIALIZED_NAME_EXPIRE = "expire";
   @SerializedName(SERIALIZED_NAME_EXPIRE)
   @javax.annotation.Nullable
-  private Integer expire;
+  private Long expire;
 
   public static final String SERIALIZED_NAME_HTML = "html";
   @SerializedName(SERIALIZED_NAME_HTML)
@@ -96,7 +96,7 @@ public class O11yPushoverConfig {
   public static final String SERIALIZED_NAME_RETRY = "retry";
   @SerializedName(SERIALIZED_NAME_RETRY)
   @javax.annotation.Nullable
-  private Integer retry;
+  private Long retry;
 
   public static final String SERIALIZED_NAME_SOUND = "sound";
   @SerializedName(SERIALIZED_NAME_SOUND)
@@ -121,7 +121,7 @@ public class O11yPushoverConfig {
   public static final String SERIALIZED_NAME_TTL = "ttl";
   @SerializedName(SERIALIZED_NAME_TTL)
   @javax.annotation.Nullable
-  private Integer ttl;
+  private Long ttl;
 
   public static final String SERIALIZED_NAME_URL = "url";
   @SerializedName(SERIALIZED_NAME_URL)
@@ -184,7 +184,7 @@ public class O11yPushoverConfig {
   }
 
 
-  public O11yPushoverConfig expire(@javax.annotation.Nullable Integer expire) {
+  public O11yPushoverConfig expire(@javax.annotation.Nullable Long expire) {
     this.expire = expire;
     return this;
   }
@@ -194,11 +194,11 @@ public class O11yPushoverConfig {
    * @return expire
    */
   @javax.annotation.Nullable
-  public Integer getExpire() {
+  public Long getExpire() {
     return expire;
   }
 
-  public void setExpire(@javax.annotation.Nullable Integer expire) {
+  public void setExpire(@javax.annotation.Nullable Long expire) {
     this.expire = expire;
   }
 
@@ -298,7 +298,7 @@ public class O11yPushoverConfig {
   }
 
 
-  public O11yPushoverConfig retry(@javax.annotation.Nullable Integer retry) {
+  public O11yPushoverConfig retry(@javax.annotation.Nullable Long retry) {
     this.retry = retry;
     return this;
   }
@@ -308,11 +308,11 @@ public class O11yPushoverConfig {
    * @return retry
    */
   @javax.annotation.Nullable
-  public Integer getRetry() {
+  public Long getRetry() {
     return retry;
   }
 
-  public void setRetry(@javax.annotation.Nullable Integer retry) {
+  public void setRetry(@javax.annotation.Nullable Long retry) {
     this.retry = retry;
   }
 
@@ -393,7 +393,7 @@ public class O11yPushoverConfig {
   }
 
 
-  public O11yPushoverConfig ttl(@javax.annotation.Nullable Integer ttl) {
+  public O11yPushoverConfig ttl(@javax.annotation.Nullable Long ttl) {
     this.ttl = ttl;
     return this;
   }
@@ -403,11 +403,11 @@ public class O11yPushoverConfig {
    * @return ttl
    */
   @javax.annotation.Nullable
-  public Integer getTtl() {
+  public Long getTtl() {
     return ttl;
   }
 
-  public void setTtl(@javax.annotation.Nullable Integer ttl) {
+  public void setTtl(@javax.annotation.Nullable Long ttl) {
     this.ttl = ttl;
   }
 

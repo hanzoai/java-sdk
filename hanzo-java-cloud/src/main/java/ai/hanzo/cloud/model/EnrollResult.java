@@ -53,12 +53,12 @@ public class EnrollResult {
   public static final String SERIALIZED_NAME_ALREADY_ENROLLED = "alreadyEnrolled";
   @SerializedName(SERIALIZED_NAME_ALREADY_ENROLLED)
   @javax.annotation.Nullable
-  private Integer alreadyEnrolled;
+  private Long alreadyEnrolled;
 
   public static final String SERIALIZED_NAME_ENROLLED = "enrolled";
   @SerializedName(SERIALIZED_NAME_ENROLLED)
   @javax.annotation.Nullable
-  private Integer enrolled;
+  private Long enrolled;
 
   public static final String SERIALIZED_NAME_ENROLLMENT_ID = "enrollmentId";
   @SerializedName(SERIALIZED_NAME_ENROLLMENT_ID)
@@ -68,12 +68,12 @@ public class EnrollResult {
   public static final String SERIALIZED_NAME_RESOLVED = "resolved";
   @SerializedName(SERIALIZED_NAME_RESOLVED)
   @javax.annotation.Nullable
-  private Integer resolved;
+  private Long resolved;
 
   public EnrollResult() {
   }
 
-  public EnrollResult alreadyEnrolled(@javax.annotation.Nullable Integer alreadyEnrolled) {
+  public EnrollResult alreadyEnrolled(@javax.annotation.Nullable Long alreadyEnrolled) {
     this.alreadyEnrolled = alreadyEnrolled;
     return this;
   }
@@ -83,16 +83,16 @@ public class EnrollResult {
    * @return alreadyEnrolled
    */
   @javax.annotation.Nullable
-  public Integer getAlreadyEnrolled() {
+  public Long getAlreadyEnrolled() {
     return alreadyEnrolled;
   }
 
-  public void setAlreadyEnrolled(@javax.annotation.Nullable Integer alreadyEnrolled) {
+  public void setAlreadyEnrolled(@javax.annotation.Nullable Long alreadyEnrolled) {
     this.alreadyEnrolled = alreadyEnrolled;
   }
 
 
-  public EnrollResult enrolled(@javax.annotation.Nullable Integer enrolled) {
+  public EnrollResult enrolled(@javax.annotation.Nullable Long enrolled) {
     this.enrolled = enrolled;
     return this;
   }
@@ -102,11 +102,11 @@ public class EnrollResult {
    * @return enrolled
    */
   @javax.annotation.Nullable
-  public Integer getEnrolled() {
+  public Long getEnrolled() {
     return enrolled;
   }
 
-  public void setEnrolled(@javax.annotation.Nullable Integer enrolled) {
+  public void setEnrolled(@javax.annotation.Nullable Long enrolled) {
     this.enrolled = enrolled;
   }
 
@@ -130,7 +130,7 @@ public class EnrollResult {
   }
 
 
-  public EnrollResult resolved(@javax.annotation.Nullable Integer resolved) {
+  public EnrollResult resolved(@javax.annotation.Nullable Long resolved) {
     this.resolved = resolved;
     return this;
   }
@@ -140,11 +140,11 @@ public class EnrollResult {
    * @return resolved
    */
   @javax.annotation.Nullable
-  public Integer getResolved() {
+  public Long getResolved() {
     return resolved;
   }
 
-  public void setResolved(@javax.annotation.Nullable Integer resolved) {
+  public void setResolved(@javax.annotation.Nullable Long resolved) {
     this.resolved = resolved;
   }
 

@@ -56,12 +56,12 @@ public class IndexList {
   public static final String SERIALIZED_NAME_LIMIT = "limit";
   @SerializedName(SERIALIZED_NAME_LIMIT)
   @javax.annotation.Nullable
-  private Integer limit;
+  private Long limit;
 
   public static final String SERIALIZED_NAME_OFFSET = "offset";
   @SerializedName(SERIALIZED_NAME_OFFSET)
   @javax.annotation.Nullable
-  private Integer offset;
+  private Long offset;
 
   public static final String SERIALIZED_NAME_RESULTS = "results";
   @SerializedName(SERIALIZED_NAME_RESULTS)
@@ -71,12 +71,12 @@ public class IndexList {
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)
   @javax.annotation.Nullable
-  private Integer total;
+  private Long total;
 
   public IndexList() {
   }
 
-  public IndexList limit(@javax.annotation.Nullable Integer limit) {
+  public IndexList limit(@javax.annotation.Nullable Long limit) {
     this.limit = limit;
     return this;
   }
@@ -86,16 +86,16 @@ public class IndexList {
    * @return limit
    */
   @javax.annotation.Nullable
-  public Integer getLimit() {
+  public Long getLimit() {
     return limit;
   }
 
-  public void setLimit(@javax.annotation.Nullable Integer limit) {
+  public void setLimit(@javax.annotation.Nullable Long limit) {
     this.limit = limit;
   }
 
 
-  public IndexList offset(@javax.annotation.Nullable Integer offset) {
+  public IndexList offset(@javax.annotation.Nullable Long offset) {
     this.offset = offset;
     return this;
   }
@@ -105,11 +105,11 @@ public class IndexList {
    * @return offset
    */
   @javax.annotation.Nullable
-  public Integer getOffset() {
+  public Long getOffset() {
     return offset;
   }
 
-  public void setOffset(@javax.annotation.Nullable Integer offset) {
+  public void setOffset(@javax.annotation.Nullable Long offset) {
     this.offset = offset;
   }
 
@@ -141,7 +141,7 @@ public class IndexList {
   }
 
 
-  public IndexList total(@javax.annotation.Nullable Integer total) {
+  public IndexList total(@javax.annotation.Nullable Long total) {
     this.total = total;
     return this;
   }
@@ -151,11 +151,11 @@ public class IndexList {
    * @return total
    */
   @javax.annotation.Nullable
-  public Integer getTotal() {
+  public Long getTotal() {
     return total;
   }
 
-  public void setTotal(@javax.annotation.Nullable Integer total) {
+  public void setTotal(@javax.annotation.Nullable Long total) {
     this.total = total;
   }
 

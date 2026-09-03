@@ -83,7 +83,7 @@ public class BuildTurn {
   public static final String SERIALIZED_NAME_TURN = "turn";
   @SerializedName(SERIALIZED_NAME_TURN)
   @javax.annotation.Nullable
-  private Integer turn;
+  private Long turn;
 
   public BuildTurn() {
   }
@@ -202,7 +202,7 @@ public class BuildTurn {
   }
 
 
-  public BuildTurn turn(@javax.annotation.Nullable Integer turn) {
+  public BuildTurn turn(@javax.annotation.Nullable Long turn) {
     this.turn = turn;
     return this;
   }
@@ -212,11 +212,11 @@ public class BuildTurn {
    * @return turn
    */
   @javax.annotation.Nullable
-  public Integer getTurn() {
+  public Long getTurn() {
     return turn;
   }
 
-  public void setTurn(@javax.annotation.Nullable Integer turn) {
+  public void setTurn(@javax.annotation.Nullable Long turn) {
     this.turn = turn;
   }
 

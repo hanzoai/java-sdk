@@ -59,7 +59,7 @@ public class ProjectsDeployment {
   public static final String SERIALIZED_NAME_BYTES = "bytes";
   @SerializedName(SERIALIZED_NAME_BYTES)
   @javax.annotation.Nullable
-  private Integer bytes;
+  private Long bytes;
 
   public static final String SERIALIZED_NAME_COMMIT = "commit";
   @SerializedName(SERIALIZED_NAME_COMMIT)
@@ -69,12 +69,12 @@ public class ProjectsDeployment {
   public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
   @javax.annotation.Nullable
-  private Integer createdAt;
+  private Long createdAt;
 
   public static final String SERIALIZED_NAME_FILES = "files";
   @SerializedName(SERIALIZED_NAME_FILES)
   @javax.annotation.Nullable
-  private Integer files;
+  private Long files;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -114,7 +114,7 @@ public class ProjectsDeployment {
   public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)
   @javax.annotation.Nullable
-  private Integer updatedAt;
+  private Long updatedAt;
 
   public static final String SERIALIZED_NAME_UPLOAD = "upload";
   @SerializedName(SERIALIZED_NAME_UPLOAD)
@@ -124,7 +124,7 @@ public class ProjectsDeployment {
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
   @javax.annotation.Nullable
-  private Integer version;
+  private Long version;
 
   public ProjectsDeployment() {
   }
@@ -148,7 +148,7 @@ public class ProjectsDeployment {
   }
 
 
-  public ProjectsDeployment bytes(@javax.annotation.Nullable Integer bytes) {
+  public ProjectsDeployment bytes(@javax.annotation.Nullable Long bytes) {
     this.bytes = bytes;
     return this;
   }
@@ -158,11 +158,11 @@ public class ProjectsDeployment {
    * @return bytes
    */
   @javax.annotation.Nullable
-  public Integer getBytes() {
+  public Long getBytes() {
     return bytes;
   }
 
-  public void setBytes(@javax.annotation.Nullable Integer bytes) {
+  public void setBytes(@javax.annotation.Nullable Long bytes) {
     this.bytes = bytes;
   }
 
@@ -186,7 +186,7 @@ public class ProjectsDeployment {
   }
 
 
-  public ProjectsDeployment createdAt(@javax.annotation.Nullable Integer createdAt) {
+  public ProjectsDeployment createdAt(@javax.annotation.Nullable Long createdAt) {
     this.createdAt = createdAt;
     return this;
   }
@@ -196,16 +196,16 @@ public class ProjectsDeployment {
    * @return createdAt
    */
   @javax.annotation.Nullable
-  public Integer getCreatedAt() {
+  public Long getCreatedAt() {
     return createdAt;
   }
 
-  public void setCreatedAt(@javax.annotation.Nullable Integer createdAt) {
+  public void setCreatedAt(@javax.annotation.Nullable Long createdAt) {
     this.createdAt = createdAt;
   }
 
 
-  public ProjectsDeployment files(@javax.annotation.Nullable Integer files) {
+  public ProjectsDeployment files(@javax.annotation.Nullable Long files) {
     this.files = files;
     return this;
   }
@@ -215,11 +215,11 @@ public class ProjectsDeployment {
    * @return files
    */
   @javax.annotation.Nullable
-  public Integer getFiles() {
+  public Long getFiles() {
     return files;
   }
 
-  public void setFiles(@javax.annotation.Nullable Integer files) {
+  public void setFiles(@javax.annotation.Nullable Long files) {
     this.files = files;
   }
 
@@ -357,7 +357,7 @@ public class ProjectsDeployment {
   }
 
 
-  public ProjectsDeployment updatedAt(@javax.annotation.Nullable Integer updatedAt) {
+  public ProjectsDeployment updatedAt(@javax.annotation.Nullable Long updatedAt) {
     this.updatedAt = updatedAt;
     return this;
   }
@@ -367,11 +367,11 @@ public class ProjectsDeployment {
    * @return updatedAt
    */
   @javax.annotation.Nullable
-  public Integer getUpdatedAt() {
+  public Long getUpdatedAt() {
     return updatedAt;
   }
 
-  public void setUpdatedAt(@javax.annotation.Nullable Integer updatedAt) {
+  public void setUpdatedAt(@javax.annotation.Nullable Long updatedAt) {
     this.updatedAt = updatedAt;
   }
 
@@ -395,7 +395,7 @@ public class ProjectsDeployment {
   }
 
 
-  public ProjectsDeployment version(@javax.annotation.Nullable Integer version) {
+  public ProjectsDeployment version(@javax.annotation.Nullable Long version) {
     this.version = version;
     return this;
   }
@@ -405,11 +405,11 @@ public class ProjectsDeployment {
    * @return version
    */
   @javax.annotation.Nullable
-  public Integer getVersion() {
+  public Long getVersion() {
     return version;
   }
 
-  public void setVersion(@javax.annotation.Nullable Integer version) {
+  public void setVersion(@javax.annotation.Nullable Long version) {
     this.version = version;
   }
 

@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -59,7 +58,7 @@ public class EsignPlacement {
   public static final String SERIALIZED_NAME_PAGE = "page";
   @SerializedName(SERIALIZED_NAME_PAGE)
   @javax.annotation.Nullable
-  private BigDecimal page;
+  private Double page;
 
   public static final String SERIALIZED_NAME_RECIPIENT_ID = "recipientId";
   @SerializedName(SERIALIZED_NAME_RECIPIENT_ID)
@@ -93,7 +92,7 @@ public class EsignPlacement {
   }
 
 
-  public EsignPlacement page(@javax.annotation.Nullable BigDecimal page) {
+  public EsignPlacement page(@javax.annotation.Nullable Double page) {
     this.page = page;
     return this;
   }
@@ -103,11 +102,11 @@ public class EsignPlacement {
    * @return page
    */
   @javax.annotation.Nullable
-  public BigDecimal getPage() {
+  public Double getPage() {
     return page;
   }
 
-  public void setPage(@javax.annotation.Nullable BigDecimal page) {
+  public void setPage(@javax.annotation.Nullable Double page) {
     this.page = page;
   }
 

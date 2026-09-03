@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -105,12 +104,12 @@ public class O11yRuleStateHistory {
   public static final String SERIALIZED_NAME_UNIX_MILLI = "unixMilli";
   @SerializedName(SERIALIZED_NAME_UNIX_MILLI)
   @javax.annotation.Nullable
-  private Integer unixMilli;
+  private Long unixMilli;
 
   public static final String SERIALIZED_NAME_VALUE = "value";
   @SerializedName(SERIALIZED_NAME_VALUE)
   @javax.annotation.Nullable
-  private BigDecimal value;
+  private Double value;
 
   public O11yRuleStateHistory() {
   }
@@ -305,7 +304,7 @@ public class O11yRuleStateHistory {
   }
 
 
-  public O11yRuleStateHistory unixMilli(@javax.annotation.Nullable Integer unixMilli) {
+  public O11yRuleStateHistory unixMilli(@javax.annotation.Nullable Long unixMilli) {
     this.unixMilli = unixMilli;
     return this;
   }
@@ -315,16 +314,16 @@ public class O11yRuleStateHistory {
    * @return unixMilli
    */
   @javax.annotation.Nullable
-  public Integer getUnixMilli() {
+  public Long getUnixMilli() {
     return unixMilli;
   }
 
-  public void setUnixMilli(@javax.annotation.Nullable Integer unixMilli) {
+  public void setUnixMilli(@javax.annotation.Nullable Long unixMilli) {
     this.unixMilli = unixMilli;
   }
 
 
-  public O11yRuleStateHistory value(@javax.annotation.Nullable BigDecimal value) {
+  public O11yRuleStateHistory value(@javax.annotation.Nullable Double value) {
     this.value = value;
     return this;
   }
@@ -334,11 +333,11 @@ public class O11yRuleStateHistory {
    * @return value
    */
   @javax.annotation.Nullable
-  public BigDecimal getValue() {
+  public Double getValue() {
     return value;
   }
 
-  public void setValue(@javax.annotation.Nullable BigDecimal value) {
+  public void setValue(@javax.annotation.Nullable Double value) {
     this.value = value;
   }
 

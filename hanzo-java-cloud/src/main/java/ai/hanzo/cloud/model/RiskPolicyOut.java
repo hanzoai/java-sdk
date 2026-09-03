@@ -56,12 +56,12 @@ public class RiskPolicyOut {
   public static final String SERIALIZED_NAME_CHANGES = "changes";
   @SerializedName(SERIALIZED_NAME_CHANGES)
   @javax.annotation.Nullable
-  private Integer changes;
+  private Long changes;
 
   public static final String SERIALIZED_NAME_DISPOSED = "disposed";
   @SerializedName(SERIALIZED_NAME_DISPOSED)
   @javax.annotation.Nullable
-  private Integer disposed;
+  private Long disposed;
 
   public static final String SERIALIZED_NAME_HISTORY = "history";
   @SerializedName(SERIALIZED_NAME_HISTORY)
@@ -71,12 +71,12 @@ public class RiskPolicyOut {
   public static final String SERIALIZED_NAME_RETAINED = "retained";
   @SerializedName(SERIALIZED_NAME_RETAINED)
   @javax.annotation.Nullable
-  private Integer retained;
+  private Long retained;
 
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
   @javax.annotation.Nullable
-  private Integer version;
+  private Long version;
 
   public static final String SERIALIZED_NAME_WINDOW = "window";
   @SerializedName(SERIALIZED_NAME_WINDOW)
@@ -86,7 +86,7 @@ public class RiskPolicyOut {
   public RiskPolicyOut() {
   }
 
-  public RiskPolicyOut changes(@javax.annotation.Nullable Integer changes) {
+  public RiskPolicyOut changes(@javax.annotation.Nullable Long changes) {
     this.changes = changes;
     return this;
   }
@@ -96,16 +96,16 @@ public class RiskPolicyOut {
    * @return changes
    */
   @javax.annotation.Nullable
-  public Integer getChanges() {
+  public Long getChanges() {
     return changes;
   }
 
-  public void setChanges(@javax.annotation.Nullable Integer changes) {
+  public void setChanges(@javax.annotation.Nullable Long changes) {
     this.changes = changes;
   }
 
 
-  public RiskPolicyOut disposed(@javax.annotation.Nullable Integer disposed) {
+  public RiskPolicyOut disposed(@javax.annotation.Nullable Long disposed) {
     this.disposed = disposed;
     return this;
   }
@@ -115,11 +115,11 @@ public class RiskPolicyOut {
    * @return disposed
    */
   @javax.annotation.Nullable
-  public Integer getDisposed() {
+  public Long getDisposed() {
     return disposed;
   }
 
-  public void setDisposed(@javax.annotation.Nullable Integer disposed) {
+  public void setDisposed(@javax.annotation.Nullable Long disposed) {
     this.disposed = disposed;
   }
 
@@ -151,7 +151,7 @@ public class RiskPolicyOut {
   }
 
 
-  public RiskPolicyOut retained(@javax.annotation.Nullable Integer retained) {
+  public RiskPolicyOut retained(@javax.annotation.Nullable Long retained) {
     this.retained = retained;
     return this;
   }
@@ -161,16 +161,16 @@ public class RiskPolicyOut {
    * @return retained
    */
   @javax.annotation.Nullable
-  public Integer getRetained() {
+  public Long getRetained() {
     return retained;
   }
 
-  public void setRetained(@javax.annotation.Nullable Integer retained) {
+  public void setRetained(@javax.annotation.Nullable Long retained) {
     this.retained = retained;
   }
 
 
-  public RiskPolicyOut version(@javax.annotation.Nullable Integer version) {
+  public RiskPolicyOut version(@javax.annotation.Nullable Long version) {
     this.version = version;
     return this;
   }
@@ -180,11 +180,11 @@ public class RiskPolicyOut {
    * @return version
    */
   @javax.annotation.Nullable
-  public Integer getVersion() {
+  public Long getVersion() {
     return version;
   }
 
-  public void setVersion(@javax.annotation.Nullable Integer version) {
+  public void setVersion(@javax.annotation.Nullable Long version) {
     this.version = version;
   }
 

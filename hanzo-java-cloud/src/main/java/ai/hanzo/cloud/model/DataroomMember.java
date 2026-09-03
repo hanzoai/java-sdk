@@ -58,7 +58,7 @@ public class DataroomMember {
   public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
   @javax.annotation.Nullable
-  private Integer createdAt;
+  private Long createdAt;
 
   public static final String SERIALIZED_NAME_DATAROOM_DOCUMENT_ID = "dataroomDocumentId";
   @SerializedName(SERIALIZED_NAME_DATAROOM_DOCUMENT_ID)
@@ -73,7 +73,7 @@ public class DataroomMember {
   public static final String SERIALIZED_NAME_FILE_SIZE = "fileSize";
   @SerializedName(SERIALIZED_NAME_FILE_SIZE)
   @javax.annotation.Nullable
-  private Integer fileSize;
+  private Long fileSize;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -88,12 +88,12 @@ public class DataroomMember {
   public static final String SERIALIZED_NAME_NUM_PAGES = "numPages";
   @SerializedName(SERIALIZED_NAME_NUM_PAGES)
   @javax.annotation.Nullable
-  private Integer numPages;
+  private Long numPages;
 
   public static final String SERIALIZED_NAME_ORDER_INDEX = "orderIndex";
   @SerializedName(SERIALIZED_NAME_ORDER_INDEX)
   @javax.annotation.Nullable
-  private Integer orderIndex;
+  private Long orderIndex;
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
@@ -103,7 +103,7 @@ public class DataroomMember {
   public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)
   @javax.annotation.Nullable
-  private Integer updatedAt;
+  private Long updatedAt;
 
   public DataroomMember() {
   }
@@ -127,7 +127,7 @@ public class DataroomMember {
   }
 
 
-  public DataroomMember createdAt(@javax.annotation.Nullable Integer createdAt) {
+  public DataroomMember createdAt(@javax.annotation.Nullable Long createdAt) {
     this.createdAt = createdAt;
     return this;
   }
@@ -137,11 +137,11 @@ public class DataroomMember {
    * @return createdAt
    */
   @javax.annotation.Nullable
-  public Integer getCreatedAt() {
+  public Long getCreatedAt() {
     return createdAt;
   }
 
-  public void setCreatedAt(@javax.annotation.Nullable Integer createdAt) {
+  public void setCreatedAt(@javax.annotation.Nullable Long createdAt) {
     this.createdAt = createdAt;
   }
 
@@ -184,7 +184,7 @@ public class DataroomMember {
   }
 
 
-  public DataroomMember fileSize(@javax.annotation.Nullable Integer fileSize) {
+  public DataroomMember fileSize(@javax.annotation.Nullable Long fileSize) {
     this.fileSize = fileSize;
     return this;
   }
@@ -194,11 +194,11 @@ public class DataroomMember {
    * @return fileSize
    */
   @javax.annotation.Nullable
-  public Integer getFileSize() {
+  public Long getFileSize() {
     return fileSize;
   }
 
-  public void setFileSize(@javax.annotation.Nullable Integer fileSize) {
+  public void setFileSize(@javax.annotation.Nullable Long fileSize) {
     this.fileSize = fileSize;
   }
 
@@ -241,7 +241,7 @@ public class DataroomMember {
   }
 
 
-  public DataroomMember numPages(@javax.annotation.Nullable Integer numPages) {
+  public DataroomMember numPages(@javax.annotation.Nullable Long numPages) {
     this.numPages = numPages;
     return this;
   }
@@ -251,16 +251,16 @@ public class DataroomMember {
    * @return numPages
    */
   @javax.annotation.Nullable
-  public Integer getNumPages() {
+  public Long getNumPages() {
     return numPages;
   }
 
-  public void setNumPages(@javax.annotation.Nullable Integer numPages) {
+  public void setNumPages(@javax.annotation.Nullable Long numPages) {
     this.numPages = numPages;
   }
 
 
-  public DataroomMember orderIndex(@javax.annotation.Nullable Integer orderIndex) {
+  public DataroomMember orderIndex(@javax.annotation.Nullable Long orderIndex) {
     this.orderIndex = orderIndex;
     return this;
   }
@@ -270,11 +270,11 @@ public class DataroomMember {
    * @return orderIndex
    */
   @javax.annotation.Nullable
-  public Integer getOrderIndex() {
+  public Long getOrderIndex() {
     return orderIndex;
   }
 
-  public void setOrderIndex(@javax.annotation.Nullable Integer orderIndex) {
+  public void setOrderIndex(@javax.annotation.Nullable Long orderIndex) {
     this.orderIndex = orderIndex;
   }
 
@@ -298,7 +298,7 @@ public class DataroomMember {
   }
 
 
-  public DataroomMember updatedAt(@javax.annotation.Nullable Integer updatedAt) {
+  public DataroomMember updatedAt(@javax.annotation.Nullable Long updatedAt) {
     this.updatedAt = updatedAt;
     return this;
   }
@@ -308,11 +308,11 @@ public class DataroomMember {
    * @return updatedAt
    */
   @javax.annotation.Nullable
-  public Integer getUpdatedAt() {
+  public Long getUpdatedAt() {
     return updatedAt;
   }
 
-  public void setUpdatedAt(@javax.annotation.Nullable Integer updatedAt) {
+  public void setUpdatedAt(@javax.annotation.Nullable Long updatedAt) {
     this.updatedAt = updatedAt;
   }
 

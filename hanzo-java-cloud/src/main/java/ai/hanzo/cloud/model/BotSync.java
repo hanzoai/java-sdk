@@ -53,7 +53,7 @@ public class BotSync {
   public static final String SERIALIZED_NAME_PROJECTED = "projected";
   @SerializedName(SERIALIZED_NAME_PROJECTED)
   @javax.annotation.Nullable
-  private Integer projected;
+  private Long projected;
 
   public static final String SERIALIZED_NAME_SYNCED = "synced";
   @SerializedName(SERIALIZED_NAME_SYNCED)
@@ -63,7 +63,7 @@ public class BotSync {
   public BotSync() {
   }
 
-  public BotSync projected(@javax.annotation.Nullable Integer projected) {
+  public BotSync projected(@javax.annotation.Nullable Long projected) {
     this.projected = projected;
     return this;
   }
@@ -73,11 +73,11 @@ public class BotSync {
    * @return projected
    */
   @javax.annotation.Nullable
-  public Integer getProjected() {
+  public Long getProjected() {
     return projected;
   }
 
-  public void setProjected(@javax.annotation.Nullable Integer projected) {
+  public void setProjected(@javax.annotation.Nullable Long projected) {
     this.projected = projected;
   }
 

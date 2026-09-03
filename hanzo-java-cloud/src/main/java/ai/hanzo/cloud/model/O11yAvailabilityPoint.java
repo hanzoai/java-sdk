@@ -58,12 +58,12 @@ public class O11yAvailabilityPoint {
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)
   @javax.annotation.Nullable
-  private Integer total;
+  private Long total;
 
   public static final String SERIALIZED_NAME_UP = "up";
   @SerializedName(SERIALIZED_NAME_UP)
   @javax.annotation.Nullable
-  private Integer up;
+  private Long up;
 
   public O11yAvailabilityPoint() {
   }
@@ -87,7 +87,7 @@ public class O11yAvailabilityPoint {
   }
 
 
-  public O11yAvailabilityPoint total(@javax.annotation.Nullable Integer total) {
+  public O11yAvailabilityPoint total(@javax.annotation.Nullable Long total) {
     this.total = total;
     return this;
   }
@@ -97,16 +97,16 @@ public class O11yAvailabilityPoint {
    * @return total
    */
   @javax.annotation.Nullable
-  public Integer getTotal() {
+  public Long getTotal() {
     return total;
   }
 
-  public void setTotal(@javax.annotation.Nullable Integer total) {
+  public void setTotal(@javax.annotation.Nullable Long total) {
     this.total = total;
   }
 
 
-  public O11yAvailabilityPoint up(@javax.annotation.Nullable Integer up) {
+  public O11yAvailabilityPoint up(@javax.annotation.Nullable Long up) {
     this.up = up;
     return this;
   }
@@ -116,11 +116,11 @@ public class O11yAvailabilityPoint {
    * @return up
    */
   @javax.annotation.Nullable
-  public Integer getUp() {
+  public Long getUp() {
     return up;
   }
 
-  public void setUp(@javax.annotation.Nullable Integer up) {
+  public void setUp(@javax.annotation.Nullable Long up) {
     this.up = up;
   }
 

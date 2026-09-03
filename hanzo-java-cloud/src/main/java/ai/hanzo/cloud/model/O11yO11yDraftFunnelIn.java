@@ -56,22 +56,22 @@ public class O11yO11yDraftFunnelIn {
   public static final String SERIALIZED_NAME_END_TIME = "end_time";
   @SerializedName(SERIALIZED_NAME_END_TIME)
   @javax.annotation.Nullable
-  private Integer endTime;
+  private Long endTime;
 
   public static final String SERIALIZED_NAME_START_TIME = "start_time";
   @SerializedName(SERIALIZED_NAME_START_TIME)
   @javax.annotation.Nullable
-  private Integer startTime;
+  private Long startTime;
 
   public static final String SERIALIZED_NAME_STEP_END = "step_end";
   @SerializedName(SERIALIZED_NAME_STEP_END)
   @javax.annotation.Nullable
-  private Integer stepEnd;
+  private Long stepEnd;
 
   public static final String SERIALIZED_NAME_STEP_START = "step_start";
   @SerializedName(SERIALIZED_NAME_STEP_START)
   @javax.annotation.Nullable
-  private Integer stepStart;
+  private Long stepStart;
 
   public static final String SERIALIZED_NAME_STEPS = "steps";
   @SerializedName(SERIALIZED_NAME_STEPS)
@@ -81,7 +81,7 @@ public class O11yO11yDraftFunnelIn {
   public O11yO11yDraftFunnelIn() {
   }
 
-  public O11yO11yDraftFunnelIn endTime(@javax.annotation.Nullable Integer endTime) {
+  public O11yO11yDraftFunnelIn endTime(@javax.annotation.Nullable Long endTime) {
     this.endTime = endTime;
     return this;
   }
@@ -91,16 +91,16 @@ public class O11yO11yDraftFunnelIn {
    * @return endTime
    */
   @javax.annotation.Nullable
-  public Integer getEndTime() {
+  public Long getEndTime() {
     return endTime;
   }
 
-  public void setEndTime(@javax.annotation.Nullable Integer endTime) {
+  public void setEndTime(@javax.annotation.Nullable Long endTime) {
     this.endTime = endTime;
   }
 
 
-  public O11yO11yDraftFunnelIn startTime(@javax.annotation.Nullable Integer startTime) {
+  public O11yO11yDraftFunnelIn startTime(@javax.annotation.Nullable Long startTime) {
     this.startTime = startTime;
     return this;
   }
@@ -110,16 +110,16 @@ public class O11yO11yDraftFunnelIn {
    * @return startTime
    */
   @javax.annotation.Nullable
-  public Integer getStartTime() {
+  public Long getStartTime() {
     return startTime;
   }
 
-  public void setStartTime(@javax.annotation.Nullable Integer startTime) {
+  public void setStartTime(@javax.annotation.Nullable Long startTime) {
     this.startTime = startTime;
   }
 
 
-  public O11yO11yDraftFunnelIn stepEnd(@javax.annotation.Nullable Integer stepEnd) {
+  public O11yO11yDraftFunnelIn stepEnd(@javax.annotation.Nullable Long stepEnd) {
     this.stepEnd = stepEnd;
     return this;
   }
@@ -129,16 +129,16 @@ public class O11yO11yDraftFunnelIn {
    * @return stepEnd
    */
   @javax.annotation.Nullable
-  public Integer getStepEnd() {
+  public Long getStepEnd() {
     return stepEnd;
   }
 
-  public void setStepEnd(@javax.annotation.Nullable Integer stepEnd) {
+  public void setStepEnd(@javax.annotation.Nullable Long stepEnd) {
     this.stepEnd = stepEnd;
   }
 
 
-  public O11yO11yDraftFunnelIn stepStart(@javax.annotation.Nullable Integer stepStart) {
+  public O11yO11yDraftFunnelIn stepStart(@javax.annotation.Nullable Long stepStart) {
     this.stepStart = stepStart;
     return this;
   }
@@ -148,11 +148,11 @@ public class O11yO11yDraftFunnelIn {
    * @return stepStart
    */
   @javax.annotation.Nullable
-  public Integer getStepStart() {
+  public Long getStepStart() {
     return stepStart;
   }
 
-  public void setStepStart(@javax.annotation.Nullable Integer stepStart) {
+  public void setStepStart(@javax.annotation.Nullable Long stepStart) {
     this.stepStart = stepStart;
   }
 

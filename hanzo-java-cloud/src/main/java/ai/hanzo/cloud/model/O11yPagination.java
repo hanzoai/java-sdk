@@ -53,27 +53,27 @@ public class O11yPagination {
   public static final String SERIALIZED_NAME_PAGE = "page";
   @SerializedName(SERIALIZED_NAME_PAGE)
   @javax.annotation.Nullable
-  private Integer page;
+  private Long page;
 
   public static final String SERIALIZED_NAME_PAGES = "pages";
   @SerializedName(SERIALIZED_NAME_PAGES)
   @javax.annotation.Nullable
-  private Integer pages;
+  private Long pages;
 
   public static final String SERIALIZED_NAME_PER_PAGE = "per_page";
   @SerializedName(SERIALIZED_NAME_PER_PAGE)
   @javax.annotation.Nullable
-  private Integer perPage;
+  private Long perPage;
 
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)
   @javax.annotation.Nullable
-  private Integer total;
+  private Long total;
 
   public O11yPagination() {
   }
 
-  public O11yPagination page(@javax.annotation.Nullable Integer page) {
+  public O11yPagination page(@javax.annotation.Nullable Long page) {
     this.page = page;
     return this;
   }
@@ -83,16 +83,16 @@ public class O11yPagination {
    * @return page
    */
   @javax.annotation.Nullable
-  public Integer getPage() {
+  public Long getPage() {
     return page;
   }
 
-  public void setPage(@javax.annotation.Nullable Integer page) {
+  public void setPage(@javax.annotation.Nullable Long page) {
     this.page = page;
   }
 
 
-  public O11yPagination pages(@javax.annotation.Nullable Integer pages) {
+  public O11yPagination pages(@javax.annotation.Nullable Long pages) {
     this.pages = pages;
     return this;
   }
@@ -102,16 +102,16 @@ public class O11yPagination {
    * @return pages
    */
   @javax.annotation.Nullable
-  public Integer getPages() {
+  public Long getPages() {
     return pages;
   }
 
-  public void setPages(@javax.annotation.Nullable Integer pages) {
+  public void setPages(@javax.annotation.Nullable Long pages) {
     this.pages = pages;
   }
 
 
-  public O11yPagination perPage(@javax.annotation.Nullable Integer perPage) {
+  public O11yPagination perPage(@javax.annotation.Nullable Long perPage) {
     this.perPage = perPage;
     return this;
   }
@@ -121,16 +121,16 @@ public class O11yPagination {
    * @return perPage
    */
   @javax.annotation.Nullable
-  public Integer getPerPage() {
+  public Long getPerPage() {
     return perPage;
   }
 
-  public void setPerPage(@javax.annotation.Nullable Integer perPage) {
+  public void setPerPage(@javax.annotation.Nullable Long perPage) {
     this.perPage = perPage;
   }
 
 
-  public O11yPagination total(@javax.annotation.Nullable Integer total) {
+  public O11yPagination total(@javax.annotation.Nullable Long total) {
     this.total = total;
     return this;
   }
@@ -140,11 +140,11 @@ public class O11yPagination {
    * @return total
    */
   @javax.annotation.Nullable
-  public Integer getTotal() {
+  public Long getTotal() {
     return total;
   }
 
-  public void setTotal(@javax.annotation.Nullable Integer total) {
+  public void setTotal(@javax.annotation.Nullable Long total) {
     this.total = total;
   }
 

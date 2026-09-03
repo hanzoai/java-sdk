@@ -58,7 +58,7 @@ public class FleetSpec {
   public static final String SERIALIZED_NAME_CPUS = "cpus";
   @SerializedName(SERIALIZED_NAME_CPUS)
   @javax.annotation.Nullable
-  private Integer cpus;
+  private Long cpus;
 
   public static final String SERIALIZED_NAME_GPU_MODEL = "gpuModel";
   @SerializedName(SERIALIZED_NAME_GPU_MODEL)
@@ -68,12 +68,12 @@ public class FleetSpec {
   public static final String SERIALIZED_NAME_GPUS = "gpus";
   @SerializedName(SERIALIZED_NAME_GPUS)
   @javax.annotation.Nullable
-  private Integer gpus;
+  private Long gpus;
 
   public static final String SERIALIZED_NAME_MEMORY = "memory";
   @SerializedName(SERIALIZED_NAME_MEMORY)
   @javax.annotation.Nullable
-  private Integer memory;
+  private Long memory;
 
   public static final String SERIALIZED_NAME_OS = "os";
   @SerializedName(SERIALIZED_NAME_OS)
@@ -102,7 +102,7 @@ public class FleetSpec {
   }
 
 
-  public FleetSpec cpus(@javax.annotation.Nullable Integer cpus) {
+  public FleetSpec cpus(@javax.annotation.Nullable Long cpus) {
     this.cpus = cpus;
     return this;
   }
@@ -112,11 +112,11 @@ public class FleetSpec {
    * @return cpus
    */
   @javax.annotation.Nullable
-  public Integer getCpus() {
+  public Long getCpus() {
     return cpus;
   }
 
-  public void setCpus(@javax.annotation.Nullable Integer cpus) {
+  public void setCpus(@javax.annotation.Nullable Long cpus) {
     this.cpus = cpus;
   }
 
@@ -140,7 +140,7 @@ public class FleetSpec {
   }
 
 
-  public FleetSpec gpus(@javax.annotation.Nullable Integer gpus) {
+  public FleetSpec gpus(@javax.annotation.Nullable Long gpus) {
     this.gpus = gpus;
     return this;
   }
@@ -150,16 +150,16 @@ public class FleetSpec {
    * @return gpus
    */
   @javax.annotation.Nullable
-  public Integer getGpus() {
+  public Long getGpus() {
     return gpus;
   }
 
-  public void setGpus(@javax.annotation.Nullable Integer gpus) {
+  public void setGpus(@javax.annotation.Nullable Long gpus) {
     this.gpus = gpus;
   }
 
 
-  public FleetSpec memory(@javax.annotation.Nullable Integer memory) {
+  public FleetSpec memory(@javax.annotation.Nullable Long memory) {
     this.memory = memory;
     return this;
   }
@@ -169,11 +169,11 @@ public class FleetSpec {
    * @return memory
    */
   @javax.annotation.Nullable
-  public Integer getMemory() {
+  public Long getMemory() {
     return memory;
   }
 
-  public void setMemory(@javax.annotation.Nullable Integer memory) {
+  public void setMemory(@javax.annotation.Nullable Long memory) {
     this.memory = memory;
   }
 

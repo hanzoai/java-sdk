@@ -58,7 +58,7 @@ public class Skill {
   public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
   @javax.annotation.Nullable
-  private Integer createdAt;
+  private Long createdAt;
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
@@ -79,6 +79,11 @@ public class Skill {
   @SerializedName(SERIALIZED_NAME_ORG)
   @javax.annotation.Nullable
   private String org;
+
+  public static final String SERIALIZED_NAME_SOURCE = "source";
+  @SerializedName(SERIALIZED_NAME_SOURCE)
+  @javax.annotation.Nullable
+  private String source;
 
   public Skill() {
   }
@@ -102,7 +107,7 @@ public class Skill {
   }
 
 
-  public Skill createdAt(@javax.annotation.Nullable Integer createdAt) {
+  public Skill createdAt(@javax.annotation.Nullable Long createdAt) {
     this.createdAt = createdAt;
     return this;
   }
@@ -112,11 +117,11 @@ public class Skill {
    * @return createdAt
    */
   @javax.annotation.Nullable
-  public Integer getCreatedAt() {
+  public Long getCreatedAt() {
     return createdAt;
   }
 
-  public void setCreatedAt(@javax.annotation.Nullable Integer createdAt) {
+  public void setCreatedAt(@javax.annotation.Nullable Long createdAt) {
     this.createdAt = createdAt;
   }
 
@@ -197,6 +202,25 @@ public class Skill {
   }
 
 
+  public Skill source(@javax.annotation.Nullable String source) {
+    this.source = source;
+    return this;
+  }
+
+  /**
+   * Source is the repository the skill was read from, \&quot;&lt;project&gt;/&lt;name&gt;\&quot; or \&quot;&lt;name&gt;\&quot;; empty for a skill written through the API. A push replaces every skill of its source at once, so a skill leaves when its file does.
+   * @return source
+   */
+  @javax.annotation.Nullable
+  public String getSource() {
+    return source;
+  }
+
+  public void setSource(@javax.annotation.Nullable String source) {
+    this.source = source;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -212,12 +236,13 @@ public class Skill {
         Objects.equals(this.description, skill.description) &&
         Objects.equals(this.id, skill.id) &&
         Objects.equals(this.name, skill.name) &&
-        Objects.equals(this.org, skill.org);
+        Objects.equals(this.org, skill.org) &&
+        Objects.equals(this.source, skill.source);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(content, createdAt, description, id, name, org);
+    return Objects.hash(content, createdAt, description, id, name, org, source);
   }
 
   @Override
@@ -230,6 +255,7 @@ public class Skill {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    org: ").append(toIndentedString(org)).append("\n");
+    sb.append("    source: ").append(toIndentedString(source)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -251,7 +277,7 @@ public class Skill {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("content", "createdAt", "description", "id", "name", "org"));
+    openapiFields = new HashSet<String>(Arrays.asList("content", "createdAt", "description", "id", "name", "org", "source"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -292,6 +318,9 @@ public class Skill {
       }
       if ((jsonObj.get("org") != null && !jsonObj.get("org").isJsonNull()) && !jsonObj.get("org").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `org` to be a primitive type in the JSON string but got `%s`", jsonObj.get("org").toString()));
+      }
+      if ((jsonObj.get("source") != null && !jsonObj.get("source").isJsonNull()) && !jsonObj.get("source").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `source` to be a primitive type in the JSON string but got `%s`", jsonObj.get("source").toString()));
       }
   }
 

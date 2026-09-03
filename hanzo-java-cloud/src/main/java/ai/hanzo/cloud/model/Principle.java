@@ -68,7 +68,7 @@ public class Principle {
   public static final String SERIALIZED_NAME_N = "n";
   @SerializedName(SERIALIZED_NAME_N)
   @javax.annotation.Nullable
-  private Integer n;
+  private Long n;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -150,7 +150,7 @@ public class Principle {
   }
 
 
-  public Principle n(@javax.annotation.Nullable Integer n) {
+  public Principle n(@javax.annotation.Nullable Long n) {
     this.n = n;
     return this;
   }
@@ -160,11 +160,11 @@ public class Principle {
    * @return n
    */
   @javax.annotation.Nullable
-  public Integer getN() {
+  public Long getN() {
     return n;
   }
 
-  public void setN(@javax.annotation.Nullable Integer n) {
+  public void setN(@javax.annotation.Nullable Long n) {
     this.n = n;
   }
 

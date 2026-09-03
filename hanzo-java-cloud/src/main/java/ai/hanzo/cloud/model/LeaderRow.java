@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.Arrays;
 
@@ -55,32 +54,32 @@ public class LeaderRow {
   public static final String SERIALIZED_NAME_CI_HIGH = "ciHigh";
   @SerializedName(SERIALIZED_NAME_CI_HIGH)
   @javax.annotation.Nullable
-  private BigDecimal ciHigh;
+  private Double ciHigh;
 
   public static final String SERIALIZED_NAME_CI_LOW = "ciLow";
   @SerializedName(SERIALIZED_NAME_CI_LOW)
   @javax.annotation.Nullable
-  private BigDecimal ciLow;
+  private Double ciLow;
 
   public static final String SERIALIZED_NAME_CLAIMS = "claims";
   @SerializedName(SERIALIZED_NAME_CLAIMS)
   @javax.annotation.Nullable
-  private Integer claims;
+  private Long claims;
 
   public static final String SERIALIZED_NAME_GAP = "gap";
   @SerializedName(SERIALIZED_NAME_GAP)
   @javax.annotation.Nullable
-  private BigDecimal gap;
+  private Double gap;
 
   public static final String SERIALIZED_NAME_MEAN = "mean";
   @SerializedName(SERIALIZED_NAME_MEAN)
   @javax.annotation.Nullable
-  private BigDecimal mean;
+  private Double mean;
 
   public static final String SERIALIZED_NAME_MEASURED = "measured";
   @SerializedName(SERIALIZED_NAME_MEASURED)
   @javax.annotation.Nullable
-  private BigDecimal measured;
+  private Double measured;
 
   public static final String SERIALIZED_NAME_MEASURED_AT = "measuredAt";
   @SerializedName(SERIALIZED_NAME_MEASURED_AT)
@@ -95,7 +94,7 @@ public class LeaderRow {
   public static final String SERIALIZED_NAME_N = "n";
   @SerializedName(SERIALIZED_NAME_N)
   @javax.annotation.Nullable
-  private Integer n;
+  private Long n;
 
   public static final String SERIALIZED_NAME_PROTOCOL = "protocol";
   @SerializedName(SERIALIZED_NAME_PROTOCOL)
@@ -105,7 +104,7 @@ public class LeaderRow {
   public static final String SERIALIZED_NAME_PUBLISHED = "published";
   @SerializedName(SERIALIZED_NAME_PUBLISHED)
   @javax.annotation.Nullable
-  private BigDecimal published;
+  private Double published;
 
   public static final String SERIALIZED_NAME_RUN = "run";
   @SerializedName(SERIALIZED_NAME_RUN)
@@ -115,12 +114,12 @@ public class LeaderRow {
   public static final String SERIALIZED_NAME_SPREAD = "spread";
   @SerializedName(SERIALIZED_NAME_SPREAD)
   @javax.annotation.Nullable
-  private BigDecimal spread;
+  private Double spread;
 
   public LeaderRow() {
   }
 
-  public LeaderRow ciHigh(@javax.annotation.Nullable BigDecimal ciHigh) {
+  public LeaderRow ciHigh(@javax.annotation.Nullable Double ciHigh) {
     this.ciHigh = ciHigh;
     return this;
   }
@@ -130,16 +129,16 @@ public class LeaderRow {
    * @return ciHigh
    */
   @javax.annotation.Nullable
-  public BigDecimal getCiHigh() {
+  public Double getCiHigh() {
     return ciHigh;
   }
 
-  public void setCiHigh(@javax.annotation.Nullable BigDecimal ciHigh) {
+  public void setCiHigh(@javax.annotation.Nullable Double ciHigh) {
     this.ciHigh = ciHigh;
   }
 
 
-  public LeaderRow ciLow(@javax.annotation.Nullable BigDecimal ciLow) {
+  public LeaderRow ciLow(@javax.annotation.Nullable Double ciLow) {
     this.ciLow = ciLow;
     return this;
   }
@@ -149,16 +148,16 @@ public class LeaderRow {
    * @return ciLow
    */
   @javax.annotation.Nullable
-  public BigDecimal getCiLow() {
+  public Double getCiLow() {
     return ciLow;
   }
 
-  public void setCiLow(@javax.annotation.Nullable BigDecimal ciLow) {
+  public void setCiLow(@javax.annotation.Nullable Double ciLow) {
     this.ciLow = ciLow;
   }
 
 
-  public LeaderRow claims(@javax.annotation.Nullable Integer claims) {
+  public LeaderRow claims(@javax.annotation.Nullable Long claims) {
     this.claims = claims;
     return this;
   }
@@ -168,16 +167,16 @@ public class LeaderRow {
    * @return claims
    */
   @javax.annotation.Nullable
-  public Integer getClaims() {
+  public Long getClaims() {
     return claims;
   }
 
-  public void setClaims(@javax.annotation.Nullable Integer claims) {
+  public void setClaims(@javax.annotation.Nullable Long claims) {
     this.claims = claims;
   }
 
 
-  public LeaderRow gap(@javax.annotation.Nullable BigDecimal gap) {
+  public LeaderRow gap(@javax.annotation.Nullable Double gap) {
     this.gap = gap;
     return this;
   }
@@ -187,16 +186,16 @@ public class LeaderRow {
    * @return gap
    */
   @javax.annotation.Nullable
-  public BigDecimal getGap() {
+  public Double getGap() {
     return gap;
   }
 
-  public void setGap(@javax.annotation.Nullable BigDecimal gap) {
+  public void setGap(@javax.annotation.Nullable Double gap) {
     this.gap = gap;
   }
 
 
-  public LeaderRow mean(@javax.annotation.Nullable BigDecimal mean) {
+  public LeaderRow mean(@javax.annotation.Nullable Double mean) {
     this.mean = mean;
     return this;
   }
@@ -206,16 +205,16 @@ public class LeaderRow {
    * @return mean
    */
   @javax.annotation.Nullable
-  public BigDecimal getMean() {
+  public Double getMean() {
     return mean;
   }
 
-  public void setMean(@javax.annotation.Nullable BigDecimal mean) {
+  public void setMean(@javax.annotation.Nullable Double mean) {
     this.mean = mean;
   }
 
 
-  public LeaderRow measured(@javax.annotation.Nullable BigDecimal measured) {
+  public LeaderRow measured(@javax.annotation.Nullable Double measured) {
     this.measured = measured;
     return this;
   }
@@ -225,11 +224,11 @@ public class LeaderRow {
    * @return measured
    */
   @javax.annotation.Nullable
-  public BigDecimal getMeasured() {
+  public Double getMeasured() {
     return measured;
   }
 
-  public void setMeasured(@javax.annotation.Nullable BigDecimal measured) {
+  public void setMeasured(@javax.annotation.Nullable Double measured) {
     this.measured = measured;
   }
 
@@ -272,7 +271,7 @@ public class LeaderRow {
   }
 
 
-  public LeaderRow n(@javax.annotation.Nullable Integer n) {
+  public LeaderRow n(@javax.annotation.Nullable Long n) {
     this.n = n;
     return this;
   }
@@ -282,11 +281,11 @@ public class LeaderRow {
    * @return n
    */
   @javax.annotation.Nullable
-  public Integer getN() {
+  public Long getN() {
     return n;
   }
 
-  public void setN(@javax.annotation.Nullable Integer n) {
+  public void setN(@javax.annotation.Nullable Long n) {
     this.n = n;
   }
 
@@ -310,7 +309,7 @@ public class LeaderRow {
   }
 
 
-  public LeaderRow published(@javax.annotation.Nullable BigDecimal published) {
+  public LeaderRow published(@javax.annotation.Nullable Double published) {
     this.published = published;
     return this;
   }
@@ -320,11 +319,11 @@ public class LeaderRow {
    * @return published
    */
   @javax.annotation.Nullable
-  public BigDecimal getPublished() {
+  public Double getPublished() {
     return published;
   }
 
-  public void setPublished(@javax.annotation.Nullable BigDecimal published) {
+  public void setPublished(@javax.annotation.Nullable Double published) {
     this.published = published;
   }
 
@@ -348,7 +347,7 @@ public class LeaderRow {
   }
 
 
-  public LeaderRow spread(@javax.annotation.Nullable BigDecimal spread) {
+  public LeaderRow spread(@javax.annotation.Nullable Double spread) {
     this.spread = spread;
     return this;
   }
@@ -358,11 +357,11 @@ public class LeaderRow {
    * @return spread
    */
   @javax.annotation.Nullable
-  public BigDecimal getSpread() {
+  public Double getSpread() {
     return spread;
   }
 
-  public void setSpread(@javax.annotation.Nullable BigDecimal spread) {
+  public void setSpread(@javax.annotation.Nullable Double spread) {
     this.spread = spread;
   }
 

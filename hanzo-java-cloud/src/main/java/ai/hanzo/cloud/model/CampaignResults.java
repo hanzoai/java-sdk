@@ -21,7 +21,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -68,7 +67,7 @@ public class CampaignResults {
   public static final String SERIALIZED_NAME_CAC = "cac";
   @SerializedName(SERIALIZED_NAME_CAC)
   @javax.annotation.Nullable
-  private BigDecimal cac;
+  private Double cac;
 
   public static final String SERIALIZED_NAME_CAMPAIGN_ID = "campaignId";
   @SerializedName(SERIALIZED_NAME_CAMPAIGN_ID)
@@ -83,22 +82,22 @@ public class CampaignResults {
   public static final String SERIALIZED_NAME_CLICKS = "clicks";
   @SerializedName(SERIALIZED_NAME_CLICKS)
   @javax.annotation.Nullable
-  private Integer clicks;
+  private Long clicks;
 
   public static final String SERIALIZED_NAME_CONVERSIONS = "conversions";
   @SerializedName(SERIALIZED_NAME_CONVERSIONS)
   @javax.annotation.Nullable
-  private Integer conversions;
+  private Long conversions;
 
   public static final String SERIALIZED_NAME_CTR = "ctr";
   @SerializedName(SERIALIZED_NAME_CTR)
   @javax.annotation.Nullable
-  private BigDecimal ctr;
+  private Double ctr;
 
   public static final String SERIALIZED_NAME_CVR = "cvr";
   @SerializedName(SERIALIZED_NAME_CVR)
   @javax.annotation.Nullable
-  private BigDecimal cvr;
+  private Double cvr;
 
   public static final String SERIALIZED_NAME_END = "end";
   @SerializedName(SERIALIZED_NAME_END)
@@ -108,7 +107,7 @@ public class CampaignResults {
   public static final String SERIALIZED_NAME_IMPRESSIONS = "impressions";
   @SerializedName(SERIALIZED_NAME_IMPRESSIONS)
   @javax.annotation.Nullable
-  private Integer impressions;
+  private Long impressions;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -123,12 +122,12 @@ public class CampaignResults {
   public static final String SERIALIZED_NAME_REVENUE = "revenue";
   @SerializedName(SERIALIZED_NAME_REVENUE)
   @javax.annotation.Nullable
-  private BigDecimal revenue;
+  private Double revenue;
 
   public static final String SERIALIZED_NAME_ROAS = "roas";
   @SerializedName(SERIALIZED_NAME_ROAS)
   @javax.annotation.Nullable
-  private BigDecimal roas;
+  private Double roas;
 
   public static final String SERIALIZED_NAME_SOURCE = "source";
   @SerializedName(SERIALIZED_NAME_SOURCE)
@@ -138,7 +137,7 @@ public class CampaignResults {
   public static final String SERIALIZED_NAME_SPEND_CENTS = "spendCents";
   @SerializedName(SERIALIZED_NAME_SPEND_CENTS)
   @javax.annotation.Nullable
-  private Integer spendCents;
+  private Long spendCents;
 
   public static final String SERIALIZED_NAME_START = "start";
   @SerializedName(SERIALIZED_NAME_START)
@@ -153,7 +152,7 @@ public class CampaignResults {
   public static final String SERIALIZED_NAME_VISITORS = "visitors";
   @SerializedName(SERIALIZED_NAME_VISITORS)
   @javax.annotation.Nullable
-  private Integer visitors;
+  private Long visitors;
 
   public CampaignResults() {
   }
@@ -196,7 +195,7 @@ public class CampaignResults {
   }
 
 
-  public CampaignResults cac(@javax.annotation.Nullable BigDecimal cac) {
+  public CampaignResults cac(@javax.annotation.Nullable Double cac) {
     this.cac = cac;
     return this;
   }
@@ -206,11 +205,11 @@ public class CampaignResults {
    * @return cac
    */
   @javax.annotation.Nullable
-  public BigDecimal getCac() {
+  public Double getCac() {
     return cac;
   }
 
-  public void setCac(@javax.annotation.Nullable BigDecimal cac) {
+  public void setCac(@javax.annotation.Nullable Double cac) {
     this.cac = cac;
   }
 
@@ -261,7 +260,7 @@ public class CampaignResults {
   }
 
 
-  public CampaignResults clicks(@javax.annotation.Nullable Integer clicks) {
+  public CampaignResults clicks(@javax.annotation.Nullable Long clicks) {
     this.clicks = clicks;
     return this;
   }
@@ -271,16 +270,16 @@ public class CampaignResults {
    * @return clicks
    */
   @javax.annotation.Nullable
-  public Integer getClicks() {
+  public Long getClicks() {
     return clicks;
   }
 
-  public void setClicks(@javax.annotation.Nullable Integer clicks) {
+  public void setClicks(@javax.annotation.Nullable Long clicks) {
     this.clicks = clicks;
   }
 
 
-  public CampaignResults conversions(@javax.annotation.Nullable Integer conversions) {
+  public CampaignResults conversions(@javax.annotation.Nullable Long conversions) {
     this.conversions = conversions;
     return this;
   }
@@ -290,16 +289,16 @@ public class CampaignResults {
    * @return conversions
    */
   @javax.annotation.Nullable
-  public Integer getConversions() {
+  public Long getConversions() {
     return conversions;
   }
 
-  public void setConversions(@javax.annotation.Nullable Integer conversions) {
+  public void setConversions(@javax.annotation.Nullable Long conversions) {
     this.conversions = conversions;
   }
 
 
-  public CampaignResults ctr(@javax.annotation.Nullable BigDecimal ctr) {
+  public CampaignResults ctr(@javax.annotation.Nullable Double ctr) {
     this.ctr = ctr;
     return this;
   }
@@ -309,16 +308,16 @@ public class CampaignResults {
    * @return ctr
    */
   @javax.annotation.Nullable
-  public BigDecimal getCtr() {
+  public Double getCtr() {
     return ctr;
   }
 
-  public void setCtr(@javax.annotation.Nullable BigDecimal ctr) {
+  public void setCtr(@javax.annotation.Nullable Double ctr) {
     this.ctr = ctr;
   }
 
 
-  public CampaignResults cvr(@javax.annotation.Nullable BigDecimal cvr) {
+  public CampaignResults cvr(@javax.annotation.Nullable Double cvr) {
     this.cvr = cvr;
     return this;
   }
@@ -328,11 +327,11 @@ public class CampaignResults {
    * @return cvr
    */
   @javax.annotation.Nullable
-  public BigDecimal getCvr() {
+  public Double getCvr() {
     return cvr;
   }
 
-  public void setCvr(@javax.annotation.Nullable BigDecimal cvr) {
+  public void setCvr(@javax.annotation.Nullable Double cvr) {
     this.cvr = cvr;
   }
 
@@ -356,7 +355,7 @@ public class CampaignResults {
   }
 
 
-  public CampaignResults impressions(@javax.annotation.Nullable Integer impressions) {
+  public CampaignResults impressions(@javax.annotation.Nullable Long impressions) {
     this.impressions = impressions;
     return this;
   }
@@ -366,11 +365,11 @@ public class CampaignResults {
    * @return impressions
    */
   @javax.annotation.Nullable
-  public Integer getImpressions() {
+  public Long getImpressions() {
     return impressions;
   }
 
-  public void setImpressions(@javax.annotation.Nullable Integer impressions) {
+  public void setImpressions(@javax.annotation.Nullable Long impressions) {
     this.impressions = impressions;
   }
 
@@ -413,7 +412,7 @@ public class CampaignResults {
   }
 
 
-  public CampaignResults revenue(@javax.annotation.Nullable BigDecimal revenue) {
+  public CampaignResults revenue(@javax.annotation.Nullable Double revenue) {
     this.revenue = revenue;
     return this;
   }
@@ -423,16 +422,16 @@ public class CampaignResults {
    * @return revenue
    */
   @javax.annotation.Nullable
-  public BigDecimal getRevenue() {
+  public Double getRevenue() {
     return revenue;
   }
 
-  public void setRevenue(@javax.annotation.Nullable BigDecimal revenue) {
+  public void setRevenue(@javax.annotation.Nullable Double revenue) {
     this.revenue = revenue;
   }
 
 
-  public CampaignResults roas(@javax.annotation.Nullable BigDecimal roas) {
+  public CampaignResults roas(@javax.annotation.Nullable Double roas) {
     this.roas = roas;
     return this;
   }
@@ -442,11 +441,11 @@ public class CampaignResults {
    * @return roas
    */
   @javax.annotation.Nullable
-  public BigDecimal getRoas() {
+  public Double getRoas() {
     return roas;
   }
 
-  public void setRoas(@javax.annotation.Nullable BigDecimal roas) {
+  public void setRoas(@javax.annotation.Nullable Double roas) {
     this.roas = roas;
   }
 
@@ -470,7 +469,7 @@ public class CampaignResults {
   }
 
 
-  public CampaignResults spendCents(@javax.annotation.Nullable Integer spendCents) {
+  public CampaignResults spendCents(@javax.annotation.Nullable Long spendCents) {
     this.spendCents = spendCents;
     return this;
   }
@@ -480,11 +479,11 @@ public class CampaignResults {
    * @return spendCents
    */
   @javax.annotation.Nullable
-  public Integer getSpendCents() {
+  public Long getSpendCents() {
     return spendCents;
   }
 
-  public void setSpendCents(@javax.annotation.Nullable Integer spendCents) {
+  public void setSpendCents(@javax.annotation.Nullable Long spendCents) {
     this.spendCents = spendCents;
   }
 
@@ -527,7 +526,7 @@ public class CampaignResults {
   }
 
 
-  public CampaignResults visitors(@javax.annotation.Nullable Integer visitors) {
+  public CampaignResults visitors(@javax.annotation.Nullable Long visitors) {
     this.visitors = visitors;
     return this;
   }
@@ -537,11 +536,11 @@ public class CampaignResults {
    * @return visitors
    */
   @javax.annotation.Nullable
-  public Integer getVisitors() {
+  public Long getVisitors() {
     return visitors;
   }
 
-  public void setVisitors(@javax.annotation.Nullable Integer visitors) {
+  public void setVisitors(@javax.annotation.Nullable Long visitors) {
     this.visitors = visitors;
   }
 

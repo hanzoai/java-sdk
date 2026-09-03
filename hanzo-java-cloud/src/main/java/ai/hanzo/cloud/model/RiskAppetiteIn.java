@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -59,12 +58,12 @@ public class RiskAppetiteIn {
   public static final String SERIALIZED_NAME_REVIEW = "review";
   @SerializedName(SERIALIZED_NAME_REVIEW)
   @javax.annotation.Nullable
-  private BigDecimal review;
+  private Double review;
 
   public static final String SERIALIZED_NAME_SAMPLE = "sample";
   @SerializedName(SERIALIZED_NAME_SAMPLE)
   @javax.annotation.Nullable
-  private BigDecimal sample;
+  private Double sample;
 
   public RiskAppetiteIn() {
   }
@@ -88,7 +87,7 @@ public class RiskAppetiteIn {
   }
 
 
-  public RiskAppetiteIn review(@javax.annotation.Nullable BigDecimal review) {
+  public RiskAppetiteIn review(@javax.annotation.Nullable Double review) {
     this.review = review;
     return this;
   }
@@ -98,16 +97,16 @@ public class RiskAppetiteIn {
    * @return review
    */
   @javax.annotation.Nullable
-  public BigDecimal getReview() {
+  public Double getReview() {
     return review;
   }
 
-  public void setReview(@javax.annotation.Nullable BigDecimal review) {
+  public void setReview(@javax.annotation.Nullable Double review) {
     this.review = review;
   }
 
 
-  public RiskAppetiteIn sample(@javax.annotation.Nullable BigDecimal sample) {
+  public RiskAppetiteIn sample(@javax.annotation.Nullable Double sample) {
     this.sample = sample;
     return this;
   }
@@ -117,11 +116,11 @@ public class RiskAppetiteIn {
    * @return sample
    */
   @javax.annotation.Nullable
-  public BigDecimal getSample() {
+  public Double getSample() {
     return sample;
   }
 
-  public void setSample(@javax.annotation.Nullable BigDecimal sample) {
+  public void setSample(@javax.annotation.Nullable Double sample) {
     this.sample = sample;
   }
 

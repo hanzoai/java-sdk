@@ -68,7 +68,7 @@ public class Application {
   public static final String SERIALIZED_NAME_RATE_BPS = "rateBps";
   @SerializedName(SERIALIZED_NAME_RATE_BPS)
   @javax.annotation.Nullable
-  private Integer rateBps;
+  private Long rateBps;
 
   public static final String SERIALIZED_NAME_REQUESTED_CODE = "requestedCode";
   @SerializedName(SERIALIZED_NAME_REQUESTED_CODE)
@@ -140,7 +140,7 @@ public class Application {
   }
 
 
-  public Application rateBps(@javax.annotation.Nullable Integer rateBps) {
+  public Application rateBps(@javax.annotation.Nullable Long rateBps) {
     this.rateBps = rateBps;
     return this;
   }
@@ -150,11 +150,11 @@ public class Application {
    * @return rateBps
    */
   @javax.annotation.Nullable
-  public Integer getRateBps() {
+  public Long getRateBps() {
     return rateBps;
   }
 
-  public void setRateBps(@javax.annotation.Nullable Integer rateBps) {
+  public void setRateBps(@javax.annotation.Nullable Long rateBps) {
     this.rateBps = rateBps;
   }
 

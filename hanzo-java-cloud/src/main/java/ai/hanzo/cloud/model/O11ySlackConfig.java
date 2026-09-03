@@ -180,7 +180,7 @@ public class O11ySlackConfig {
   public static final String SERIALIZED_NAME_TIMEOUT = "timeout";
   @SerializedName(SERIALIZED_NAME_TIMEOUT)
   @javax.annotation.Nullable
-  private Integer timeout;
+  private Long timeout;
 
   public static final String SERIALIZED_NAME_TITLE = "title";
   @SerializedName(SERIALIZED_NAME_TITLE)
@@ -680,7 +680,7 @@ public class O11ySlackConfig {
   }
 
 
-  public O11ySlackConfig timeout(@javax.annotation.Nullable Integer timeout) {
+  public O11ySlackConfig timeout(@javax.annotation.Nullable Long timeout) {
     this.timeout = timeout;
     return this;
   }
@@ -690,11 +690,11 @@ public class O11ySlackConfig {
    * @return timeout
    */
   @javax.annotation.Nullable
-  public Integer getTimeout() {
+  public Long getTimeout() {
     return timeout;
   }
 
-  public void setTimeout(@javax.annotation.Nullable Integer timeout) {
+  public void setTimeout(@javax.annotation.Nullable Long timeout) {
     this.timeout = timeout;
   }
 

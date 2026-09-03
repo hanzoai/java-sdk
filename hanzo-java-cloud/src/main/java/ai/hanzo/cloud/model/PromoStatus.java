@@ -59,12 +59,12 @@ public class PromoStatus {
   public static final String SERIALIZED_NAME_REDEEMED = "redeemed";
   @SerializedName(SERIALIZED_NAME_REDEEMED)
   @javax.annotation.Nullable
-  private Integer redeemed;
+  private Long redeemed;
 
   public static final String SERIALIZED_NAME_REMAINING = "remaining";
   @SerializedName(SERIALIZED_NAME_REMAINING)
   @javax.annotation.Nullable
-  private Integer remaining;
+  private Long remaining;
 
   public PromoStatus() {
   }
@@ -88,7 +88,7 @@ public class PromoStatus {
   }
 
 
-  public PromoStatus redeemed(@javax.annotation.Nullable Integer redeemed) {
+  public PromoStatus redeemed(@javax.annotation.Nullable Long redeemed) {
     this.redeemed = redeemed;
     return this;
   }
@@ -98,16 +98,16 @@ public class PromoStatus {
    * @return redeemed
    */
   @javax.annotation.Nullable
-  public Integer getRedeemed() {
+  public Long getRedeemed() {
     return redeemed;
   }
 
-  public void setRedeemed(@javax.annotation.Nullable Integer redeemed) {
+  public void setRedeemed(@javax.annotation.Nullable Long redeemed) {
     this.redeemed = redeemed;
   }
 
 
-  public PromoStatus remaining(@javax.annotation.Nullable Integer remaining) {
+  public PromoStatus remaining(@javax.annotation.Nullable Long remaining) {
     this.remaining = remaining;
     return this;
   }
@@ -117,11 +117,11 @@ public class PromoStatus {
    * @return remaining
    */
   @javax.annotation.Nullable
-  public Integer getRemaining() {
+  public Long getRemaining() {
     return remaining;
   }
 
-  public void setRemaining(@javax.annotation.Nullable Integer remaining) {
+  public void setRemaining(@javax.annotation.Nullable Long remaining) {
     this.remaining = remaining;
   }
 

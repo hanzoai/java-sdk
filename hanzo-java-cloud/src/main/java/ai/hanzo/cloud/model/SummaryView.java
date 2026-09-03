@@ -53,17 +53,17 @@ public class SummaryView {
   public static final String SERIALIZED_NAME_DOCTYPES = "doctypes";
   @SerializedName(SERIALIZED_NAME_DOCTYPES)
   @javax.annotation.Nullable
-  private Integer doctypes;
+  private Long doctypes;
 
   public static final String SERIALIZED_NAME_DOCUMENTS = "documents";
   @SerializedName(SERIALIZED_NAME_DOCUMENTS)
   @javax.annotation.Nullable
-  private Integer documents;
+  private Long documents;
 
   public SummaryView() {
   }
 
-  public SummaryView doctypes(@javax.annotation.Nullable Integer doctypes) {
+  public SummaryView doctypes(@javax.annotation.Nullable Long doctypes) {
     this.doctypes = doctypes;
     return this;
   }
@@ -73,16 +73,16 @@ public class SummaryView {
    * @return doctypes
    */
   @javax.annotation.Nullable
-  public Integer getDoctypes() {
+  public Long getDoctypes() {
     return doctypes;
   }
 
-  public void setDoctypes(@javax.annotation.Nullable Integer doctypes) {
+  public void setDoctypes(@javax.annotation.Nullable Long doctypes) {
     this.doctypes = doctypes;
   }
 
 
-  public SummaryView documents(@javax.annotation.Nullable Integer documents) {
+  public SummaryView documents(@javax.annotation.Nullable Long documents) {
     this.documents = documents;
     return this;
   }
@@ -92,11 +92,11 @@ public class SummaryView {
    * @return documents
    */
   @javax.annotation.Nullable
-  public Integer getDocuments() {
+  public Long getDocuments() {
     return documents;
   }
 
-  public void setDocuments(@javax.annotation.Nullable Integer documents) {
+  public void setDocuments(@javax.annotation.Nullable Long documents) {
     this.documents = documents;
   }
 

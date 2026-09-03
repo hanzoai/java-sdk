@@ -60,7 +60,7 @@ public class IamListResponse {
   public static final String SERIALIZED_NAME_ITEMS_PER_PAGE = "itemsPerPage";
   @SerializedName(SERIALIZED_NAME_ITEMS_PER_PAGE)
   @javax.annotation.Nullable
-  private Integer itemsPerPage;
+  private Long itemsPerPage;
 
   public static final String SERIALIZED_NAME_SCHEMAS = "schemas";
   @SerializedName(SERIALIZED_NAME_SCHEMAS)
@@ -70,12 +70,12 @@ public class IamListResponse {
   public static final String SERIALIZED_NAME_START_INDEX = "startIndex";
   @SerializedName(SERIALIZED_NAME_START_INDEX)
   @javax.annotation.Nullable
-  private Integer startIndex;
+  private Long startIndex;
 
   public static final String SERIALIZED_NAME_TOTAL_RESULTS = "totalResults";
   @SerializedName(SERIALIZED_NAME_TOTAL_RESULTS)
   @javax.annotation.Nullable
-  private Integer totalResults;
+  private Long totalResults;
 
   public IamListResponse() {
   }
@@ -107,7 +107,7 @@ public class IamListResponse {
   }
 
 
-  public IamListResponse itemsPerPage(@javax.annotation.Nullable Integer itemsPerPage) {
+  public IamListResponse itemsPerPage(@javax.annotation.Nullable Long itemsPerPage) {
     this.itemsPerPage = itemsPerPage;
     return this;
   }
@@ -117,11 +117,11 @@ public class IamListResponse {
    * @return itemsPerPage
    */
   @javax.annotation.Nullable
-  public Integer getItemsPerPage() {
+  public Long getItemsPerPage() {
     return itemsPerPage;
   }
 
-  public void setItemsPerPage(@javax.annotation.Nullable Integer itemsPerPage) {
+  public void setItemsPerPage(@javax.annotation.Nullable Long itemsPerPage) {
     this.itemsPerPage = itemsPerPage;
   }
 
@@ -153,7 +153,7 @@ public class IamListResponse {
   }
 
 
-  public IamListResponse startIndex(@javax.annotation.Nullable Integer startIndex) {
+  public IamListResponse startIndex(@javax.annotation.Nullable Long startIndex) {
     this.startIndex = startIndex;
     return this;
   }
@@ -163,16 +163,16 @@ public class IamListResponse {
    * @return startIndex
    */
   @javax.annotation.Nullable
-  public Integer getStartIndex() {
+  public Long getStartIndex() {
     return startIndex;
   }
 
-  public void setStartIndex(@javax.annotation.Nullable Integer startIndex) {
+  public void setStartIndex(@javax.annotation.Nullable Long startIndex) {
     this.startIndex = startIndex;
   }
 
 
-  public IamListResponse totalResults(@javax.annotation.Nullable Integer totalResults) {
+  public IamListResponse totalResults(@javax.annotation.Nullable Long totalResults) {
     this.totalResults = totalResults;
     return this;
   }
@@ -182,11 +182,11 @@ public class IamListResponse {
    * @return totalResults
    */
   @javax.annotation.Nullable
-  public Integer getTotalResults() {
+  public Long getTotalResults() {
     return totalResults;
   }
 
-  public void setTotalResults(@javax.annotation.Nullable Integer totalResults) {
+  public void setTotalResults(@javax.annotation.Nullable Long totalResults) {
     this.totalResults = totalResults;
   }
 

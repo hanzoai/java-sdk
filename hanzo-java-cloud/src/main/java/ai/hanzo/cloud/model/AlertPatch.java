@@ -68,7 +68,7 @@ public class AlertPatch {
   public static final String SERIALIZED_NAME_RATE_LIMIT_RPM = "rateLimitRpm";
   @SerializedName(SERIALIZED_NAME_RATE_LIMIT_RPM)
   @javax.annotation.Nullable
-  private Integer rateLimitRpm;
+  private Long rateLimitRpm;
 
   public static final String SERIALIZED_NAME_SERVICE = "service";
   @SerializedName(SERIALIZED_NAME_SERVICE)
@@ -78,7 +78,7 @@ public class AlertPatch {
   public static final String SERIALIZED_NAME_SOFT_PCT = "softPct";
   @SerializedName(SERIALIZED_NAME_SOFT_PCT)
   @javax.annotation.Nullable
-  private Integer softPct;
+  private Long softPct;
 
   public static final String SERIALIZED_NAME_SUBJECT = "subject";
   @SerializedName(SERIALIZED_NAME_SUBJECT)
@@ -88,7 +88,7 @@ public class AlertPatch {
   public static final String SERIALIZED_NAME_THRESHOLD = "threshold";
   @SerializedName(SERIALIZED_NAME_THRESHOLD)
   @javax.annotation.Nullable
-  private Integer threshold;
+  private Long threshold;
 
   public static final String SERIALIZED_NAME_TITLE = "title";
   @SerializedName(SERIALIZED_NAME_TITLE)
@@ -155,7 +155,7 @@ public class AlertPatch {
   }
 
 
-  public AlertPatch rateLimitRpm(@javax.annotation.Nullable Integer rateLimitRpm) {
+  public AlertPatch rateLimitRpm(@javax.annotation.Nullable Long rateLimitRpm) {
     this.rateLimitRpm = rateLimitRpm;
     return this;
   }
@@ -165,11 +165,11 @@ public class AlertPatch {
    * @return rateLimitRpm
    */
   @javax.annotation.Nullable
-  public Integer getRateLimitRpm() {
+  public Long getRateLimitRpm() {
     return rateLimitRpm;
   }
 
-  public void setRateLimitRpm(@javax.annotation.Nullable Integer rateLimitRpm) {
+  public void setRateLimitRpm(@javax.annotation.Nullable Long rateLimitRpm) {
     this.rateLimitRpm = rateLimitRpm;
   }
 
@@ -193,7 +193,7 @@ public class AlertPatch {
   }
 
 
-  public AlertPatch softPct(@javax.annotation.Nullable Integer softPct) {
+  public AlertPatch softPct(@javax.annotation.Nullable Long softPct) {
     this.softPct = softPct;
     return this;
   }
@@ -203,11 +203,11 @@ public class AlertPatch {
    * @return softPct
    */
   @javax.annotation.Nullable
-  public Integer getSoftPct() {
+  public Long getSoftPct() {
     return softPct;
   }
 
-  public void setSoftPct(@javax.annotation.Nullable Integer softPct) {
+  public void setSoftPct(@javax.annotation.Nullable Long softPct) {
     this.softPct = softPct;
   }
 
@@ -231,7 +231,7 @@ public class AlertPatch {
   }
 
 
-  public AlertPatch threshold(@javax.annotation.Nullable Integer threshold) {
+  public AlertPatch threshold(@javax.annotation.Nullable Long threshold) {
     this.threshold = threshold;
     return this;
   }
@@ -241,11 +241,11 @@ public class AlertPatch {
    * @return threshold
    */
   @javax.annotation.Nullable
-  public Integer getThreshold() {
+  public Long getThreshold() {
     return threshold;
   }
 
-  public void setThreshold(@javax.annotation.Nullable Integer threshold) {
+  public void setThreshold(@javax.annotation.Nullable Long threshold) {
     this.threshold = threshold;
   }
 

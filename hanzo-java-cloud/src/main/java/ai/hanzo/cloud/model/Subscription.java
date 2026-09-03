@@ -94,7 +94,7 @@ public class Subscription {
   public static final String SERIALIZED_NAME_MRR_CENTS = "mrrCents";
   @SerializedName(SERIALIZED_NAME_MRR_CENTS)
   @javax.annotation.Nullable
-  private Integer mrrCents;
+  private Long mrrCents;
 
   public static final String SERIALIZED_NAME_PLAN = "plan";
   @SerializedName(SERIALIZED_NAME_PLAN)
@@ -114,7 +114,7 @@ public class Subscription {
   public static final String SERIALIZED_NAME_QUANTITY = "quantity";
   @SerializedName(SERIALIZED_NAME_QUANTITY)
   @javax.annotation.Nullable
-  private Integer quantity;
+  private Long quantity;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
@@ -296,7 +296,7 @@ public class Subscription {
   }
 
 
-  public Subscription mrrCents(@javax.annotation.Nullable Integer mrrCents) {
+  public Subscription mrrCents(@javax.annotation.Nullable Long mrrCents) {
     this.mrrCents = mrrCents;
     return this;
   }
@@ -306,11 +306,11 @@ public class Subscription {
    * @return mrrCents
    */
   @javax.annotation.Nullable
-  public Integer getMrrCents() {
+  public Long getMrrCents() {
     return mrrCents;
   }
 
-  public void setMrrCents(@javax.annotation.Nullable Integer mrrCents) {
+  public void setMrrCents(@javax.annotation.Nullable Long mrrCents) {
     this.mrrCents = mrrCents;
   }
 
@@ -372,7 +372,7 @@ public class Subscription {
   }
 
 
-  public Subscription quantity(@javax.annotation.Nullable Integer quantity) {
+  public Subscription quantity(@javax.annotation.Nullable Long quantity) {
     this.quantity = quantity;
     return this;
   }
@@ -382,11 +382,11 @@ public class Subscription {
    * @return quantity
    */
   @javax.annotation.Nullable
-  public Integer getQuantity() {
+  public Long getQuantity() {
     return quantity;
   }
 
-  public void setQuantity(@javax.annotation.Nullable Integer quantity) {
+  public void setQuantity(@javax.annotation.Nullable Long quantity) {
     this.quantity = quantity;
   }
 

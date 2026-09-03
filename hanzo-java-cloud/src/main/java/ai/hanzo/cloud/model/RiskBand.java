@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.Arrays;
 
@@ -80,17 +79,17 @@ public class RiskBand {
   public static final String SERIALIZED_NAME_Q10 = "q10";
   @SerializedName(SERIALIZED_NAME_Q10)
   @javax.annotation.Nullable
-  private BigDecimal q10;
+  private Double q10;
 
   public static final String SERIALIZED_NAME_Q50 = "q50";
   @SerializedName(SERIALIZED_NAME_Q50)
   @javax.annotation.Nullable
-  private BigDecimal q50;
+  private Double q50;
 
   public static final String SERIALIZED_NAME_Q90 = "q90";
   @SerializedName(SERIALIZED_NAME_Q90)
   @javax.annotation.Nullable
-  private BigDecimal q90;
+  private Double q90;
 
   public RiskBand() {
   }
@@ -190,7 +189,7 @@ public class RiskBand {
   }
 
 
-  public RiskBand q10(@javax.annotation.Nullable BigDecimal q10) {
+  public RiskBand q10(@javax.annotation.Nullable Double q10) {
     this.q10 = q10;
     return this;
   }
@@ -200,16 +199,16 @@ public class RiskBand {
    * @return q10
    */
   @javax.annotation.Nullable
-  public BigDecimal getQ10() {
+  public Double getQ10() {
     return q10;
   }
 
-  public void setQ10(@javax.annotation.Nullable BigDecimal q10) {
+  public void setQ10(@javax.annotation.Nullable Double q10) {
     this.q10 = q10;
   }
 
 
-  public RiskBand q50(@javax.annotation.Nullable BigDecimal q50) {
+  public RiskBand q50(@javax.annotation.Nullable Double q50) {
     this.q50 = q50;
     return this;
   }
@@ -219,16 +218,16 @@ public class RiskBand {
    * @return q50
    */
   @javax.annotation.Nullable
-  public BigDecimal getQ50() {
+  public Double getQ50() {
     return q50;
   }
 
-  public void setQ50(@javax.annotation.Nullable BigDecimal q50) {
+  public void setQ50(@javax.annotation.Nullable Double q50) {
     this.q50 = q50;
   }
 
 
-  public RiskBand q90(@javax.annotation.Nullable BigDecimal q90) {
+  public RiskBand q90(@javax.annotation.Nullable Double q90) {
     this.q90 = q90;
     return this;
   }
@@ -238,11 +237,11 @@ public class RiskBand {
    * @return q90
    */
   @javax.annotation.Nullable
-  public BigDecimal getQ90() {
+  public Double getQ90() {
     return q90;
   }
 
-  public void setQ90(@javax.annotation.Nullable BigDecimal q90) {
+  public void setQ90(@javax.annotation.Nullable Double q90) {
     this.q90 = q90;
   }
 

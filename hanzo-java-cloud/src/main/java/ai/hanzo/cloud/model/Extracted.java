@@ -86,12 +86,12 @@ public class Extracted {
   public static final String SERIALIZED_NAME_TAX_CENTS = "taxCents";
   @SerializedName(SERIALIZED_NAME_TAX_CENTS)
   @javax.annotation.Nullable
-  private Integer taxCents;
+  private Long taxCents;
 
   public static final String SERIALIZED_NAME_TOTAL_CENTS = "totalCents";
   @SerializedName(SERIALIZED_NAME_TOTAL_CENTS)
   @javax.annotation.Nullable
-  private Integer totalCents;
+  private Long totalCents;
 
   public Extracted() {
   }
@@ -218,7 +218,7 @@ public class Extracted {
   }
 
 
-  public Extracted taxCents(@javax.annotation.Nullable Integer taxCents) {
+  public Extracted taxCents(@javax.annotation.Nullable Long taxCents) {
     this.taxCents = taxCents;
     return this;
   }
@@ -228,16 +228,16 @@ public class Extracted {
    * @return taxCents
    */
   @javax.annotation.Nullable
-  public Integer getTaxCents() {
+  public Long getTaxCents() {
     return taxCents;
   }
 
-  public void setTaxCents(@javax.annotation.Nullable Integer taxCents) {
+  public void setTaxCents(@javax.annotation.Nullable Long taxCents) {
     this.taxCents = taxCents;
   }
 
 
-  public Extracted totalCents(@javax.annotation.Nullable Integer totalCents) {
+  public Extracted totalCents(@javax.annotation.Nullable Long totalCents) {
     this.totalCents = totalCents;
     return this;
   }
@@ -247,11 +247,11 @@ public class Extracted {
    * @return totalCents
    */
   @javax.annotation.Nullable
-  public Integer getTotalCents() {
+  public Long getTotalCents() {
     return totalCents;
   }
 
-  public void setTotalCents(@javax.annotation.Nullable Integer totalCents) {
+  public void setTotalCents(@javax.annotation.Nullable Long totalCents) {
     this.totalCents = totalCents;
   }
 

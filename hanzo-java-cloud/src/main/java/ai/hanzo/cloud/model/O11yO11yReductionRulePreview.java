@@ -21,7 +21,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -83,7 +82,7 @@ public class O11yO11yReductionRulePreview {
   public static final String SERIALIZED_NAME_REDUCTION_PERCENT = "reductionPercent";
   @SerializedName(SERIALIZED_NAME_REDUCTION_PERCENT)
   @javax.annotation.Nullable
-  private BigDecimal reductionPercent;
+  private Double reductionPercent;
 
   public static final String SERIALIZED_NAME_RETAINED_SERIES = "retainedSeries";
   @SerializedName(SERIALIZED_NAME_RETAINED_SERIES)
@@ -204,7 +203,7 @@ public class O11yO11yReductionRulePreview {
   }
 
 
-  public O11yO11yReductionRulePreview reductionPercent(@javax.annotation.Nullable BigDecimal reductionPercent) {
+  public O11yO11yReductionRulePreview reductionPercent(@javax.annotation.Nullable Double reductionPercent) {
     this.reductionPercent = reductionPercent;
     return this;
   }
@@ -214,11 +213,11 @@ public class O11yO11yReductionRulePreview {
    * @return reductionPercent
    */
   @javax.annotation.Nullable
-  public BigDecimal getReductionPercent() {
+  public Double getReductionPercent() {
     return reductionPercent;
   }
 
-  public void setReductionPercent(@javax.annotation.Nullable BigDecimal reductionPercent) {
+  public void setReductionPercent(@javax.annotation.Nullable Double reductionPercent) {
     this.reductionPercent = reductionPercent;
   }
 

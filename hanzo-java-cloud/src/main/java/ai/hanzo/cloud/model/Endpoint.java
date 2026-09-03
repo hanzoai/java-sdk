@@ -60,7 +60,7 @@ public class Endpoint {
   public static final String SERIALIZED_NAME_DELIVERIES7D = "deliveries7d";
   @SerializedName(SERIALIZED_NAME_DELIVERIES7D)
   @javax.annotation.Nullable
-  private Integer deliveries7d;
+  private Long deliveries7d;
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
@@ -75,7 +75,7 @@ public class Endpoint {
   public static final String SERIALIZED_NAME_FAILURES7D = "failures7d";
   @SerializedName(SERIALIZED_NAME_FAILURES7D)
   @javax.annotation.Nullable
-  private Integer failures7d;
+  private Long failures7d;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -129,7 +129,7 @@ public class Endpoint {
   }
 
 
-  public Endpoint deliveries7d(@javax.annotation.Nullable Integer deliveries7d) {
+  public Endpoint deliveries7d(@javax.annotation.Nullable Long deliveries7d) {
     this.deliveries7d = deliveries7d;
     return this;
   }
@@ -139,11 +139,11 @@ public class Endpoint {
    * @return deliveries7d
    */
   @javax.annotation.Nullable
-  public Integer getDeliveries7d() {
+  public Long getDeliveries7d() {
     return deliveries7d;
   }
 
-  public void setDeliveries7d(@javax.annotation.Nullable Integer deliveries7d) {
+  public void setDeliveries7d(@javax.annotation.Nullable Long deliveries7d) {
     this.deliveries7d = deliveries7d;
   }
 
@@ -194,7 +194,7 @@ public class Endpoint {
   }
 
 
-  public Endpoint failures7d(@javax.annotation.Nullable Integer failures7d) {
+  public Endpoint failures7d(@javax.annotation.Nullable Long failures7d) {
     this.failures7d = failures7d;
     return this;
   }
@@ -204,11 +204,11 @@ public class Endpoint {
    * @return failures7d
    */
   @javax.annotation.Nullable
-  public Integer getFailures7d() {
+  public Long getFailures7d() {
     return failures7d;
   }
 
-  public void setFailures7d(@javax.annotation.Nullable Integer failures7d) {
+  public void setFailures7d(@javax.annotation.Nullable Long failures7d) {
     this.failures7d = failures7d;
   }
 

@@ -53,7 +53,7 @@ public class CoverRow {
   public static final String SERIALIZED_NAME_AUTOMATED = "automated";
   @SerializedName(SERIALIZED_NAME_AUTOMATED)
   @javax.annotation.Nullable
-  private Integer automated;
+  private Long automated;
 
   public static final String SERIALIZED_NAME_EDITION = "edition";
   @SerializedName(SERIALIZED_NAME_EDITION)
@@ -73,7 +73,7 @@ public class CoverRow {
   public static final String SERIALIZED_NAME_NONE = "none";
   @SerializedName(SERIALIZED_NAME_NONE)
   @javax.annotation.Nullable
-  private Integer none;
+  private Long none;
 
   public static final String SERIALIZED_NAME_NOTE = "note";
   @SerializedName(SERIALIZED_NAME_NOTE)
@@ -83,7 +83,7 @@ public class CoverRow {
   public static final String SERIALIZED_NAME_PARTIAL = "partial";
   @SerializedName(SERIALIZED_NAME_PARTIAL)
   @javax.annotation.Nullable
-  private Integer partial;
+  private Long partial;
 
   public static final String SERIALIZED_NAME_PUBLISHER = "publisher";
   @SerializedName(SERIALIZED_NAME_PUBLISHER)
@@ -98,7 +98,7 @@ public class CoverRow {
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)
   @javax.annotation.Nullable
-  private Integer total;
+  private Long total;
 
   public static final String SERIALIZED_NAME_UNIT = "unit";
   @SerializedName(SERIALIZED_NAME_UNIT)
@@ -113,7 +113,7 @@ public class CoverRow {
   public CoverRow() {
   }
 
-  public CoverRow automated(@javax.annotation.Nullable Integer automated) {
+  public CoverRow automated(@javax.annotation.Nullable Long automated) {
     this.automated = automated;
     return this;
   }
@@ -123,11 +123,11 @@ public class CoverRow {
    * @return automated
    */
   @javax.annotation.Nullable
-  public Integer getAutomated() {
+  public Long getAutomated() {
     return automated;
   }
 
-  public void setAutomated(@javax.annotation.Nullable Integer automated) {
+  public void setAutomated(@javax.annotation.Nullable Long automated) {
     this.automated = automated;
   }
 
@@ -189,7 +189,7 @@ public class CoverRow {
   }
 
 
-  public CoverRow none(@javax.annotation.Nullable Integer none) {
+  public CoverRow none(@javax.annotation.Nullable Long none) {
     this.none = none;
     return this;
   }
@@ -199,11 +199,11 @@ public class CoverRow {
    * @return none
    */
   @javax.annotation.Nullable
-  public Integer getNone() {
+  public Long getNone() {
     return none;
   }
 
-  public void setNone(@javax.annotation.Nullable Integer none) {
+  public void setNone(@javax.annotation.Nullable Long none) {
     this.none = none;
   }
 
@@ -227,7 +227,7 @@ public class CoverRow {
   }
 
 
-  public CoverRow partial(@javax.annotation.Nullable Integer partial) {
+  public CoverRow partial(@javax.annotation.Nullable Long partial) {
     this.partial = partial;
     return this;
   }
@@ -237,11 +237,11 @@ public class CoverRow {
    * @return partial
    */
   @javax.annotation.Nullable
-  public Integer getPartial() {
+  public Long getPartial() {
     return partial;
   }
 
-  public void setPartial(@javax.annotation.Nullable Integer partial) {
+  public void setPartial(@javax.annotation.Nullable Long partial) {
     this.partial = partial;
   }
 
@@ -284,7 +284,7 @@ public class CoverRow {
   }
 
 
-  public CoverRow total(@javax.annotation.Nullable Integer total) {
+  public CoverRow total(@javax.annotation.Nullable Long total) {
     this.total = total;
     return this;
   }
@@ -294,11 +294,11 @@ public class CoverRow {
    * @return total
    */
   @javax.annotation.Nullable
-  public Integer getTotal() {
+  public Long getTotal() {
     return total;
   }
 
-  public void setTotal(@javax.annotation.Nullable Integer total) {
+  public void setTotal(@javax.annotation.Nullable Long total) {
     this.total = total;
   }
 

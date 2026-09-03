@@ -351,7 +351,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCampaignCall(@javax.annotation.Nullable String status, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCampaignCall(@javax.annotation.Nullable String status, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -404,7 +404,7 @@ public class CampaignApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getCampaignValidateBeforeCall(@javax.annotation.Nullable String status, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getCampaignValidateBeforeCall(@javax.annotation.Nullable String status, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         return getCampaignCall(status, limit, _callback);
 
     }
@@ -423,7 +423,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public CampaignPage getCampaign(@javax.annotation.Nullable String status, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public CampaignPage getCampaign(@javax.annotation.Nullable String status, @javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<CampaignPage> localVarResp = getCampaignWithHttpInfo(status, limit);
         return localVarResp.getData();
     }
@@ -442,7 +442,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CampaignPage> getCampaignWithHttpInfo(@javax.annotation.Nullable String status, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<CampaignPage> getCampaignWithHttpInfo(@javax.annotation.Nullable String status, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getCampaignValidateBeforeCall(status, limit, null);
         Type localVarReturnType = new TypeToken<CampaignPage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -463,7 +463,7 @@ public class CampaignApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCampaignAsync(@javax.annotation.Nullable String status, @javax.annotation.Nullable Integer limit, final ApiCallback<CampaignPage> _callback) throws ApiException {
+    public okhttp3.Call getCampaignAsync(@javax.annotation.Nullable String status, @javax.annotation.Nullable Long limit, final ApiCallback<CampaignPage> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getCampaignValidateBeforeCall(status, limit, _callback);
         Type localVarReturnType = new TypeToken<CampaignPage>(){}.getType();

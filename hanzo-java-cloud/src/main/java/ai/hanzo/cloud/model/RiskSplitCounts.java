@@ -53,47 +53,47 @@ public class RiskSplitCounts {
   public static final String SERIALIZED_NAME_JUDGED = "judged";
   @SerializedName(SERIALIZED_NAME_JUDGED)
   @javax.annotation.Nullable
-  private Integer judged;
+  private Long judged;
 
   public static final String SERIALIZED_NAME_PRODUCTIVE = "productive";
   @SerializedName(SERIALIZED_NAME_PRODUCTIVE)
   @javax.annotation.Nullable
-  private Integer productive;
+  private Long productive;
 
   public static final String SERIALIZED_NAME_ROWS = "rows";
   @SerializedName(SERIALIZED_NAME_ROWS)
   @javax.annotation.Nullable
-  private Integer rows;
+  private Long rows;
 
   public static final String SERIALIZED_NAME_SUBJECTS = "subjects";
   @SerializedName(SERIALIZED_NAME_SUBJECTS)
   @javax.annotation.Nullable
-  private Integer subjects;
+  private Long subjects;
 
   public static final String SERIALIZED_NAME_TEST = "test";
   @SerializedName(SERIALIZED_NAME_TEST)
   @javax.annotation.Nullable
-  private Integer test;
+  private Long test;
 
   public static final String SERIALIZED_NAME_TRAIN = "train";
   @SerializedName(SERIALIZED_NAME_TRAIN)
   @javax.annotation.Nullable
-  private Integer train;
+  private Long train;
 
   public static final String SERIALIZED_NAME_UNPRODUCTIVE = "unproductive";
   @SerializedName(SERIALIZED_NAME_UNPRODUCTIVE)
   @javax.annotation.Nullable
-  private Integer unproductive;
+  private Long unproductive;
 
   public static final String SERIALIZED_NAME_VAL = "val";
   @SerializedName(SERIALIZED_NAME_VAL)
   @javax.annotation.Nullable
-  private Integer val;
+  private Long val;
 
   public RiskSplitCounts() {
   }
 
-  public RiskSplitCounts judged(@javax.annotation.Nullable Integer judged) {
+  public RiskSplitCounts judged(@javax.annotation.Nullable Long judged) {
     this.judged = judged;
     return this;
   }
@@ -103,16 +103,16 @@ public class RiskSplitCounts {
    * @return judged
    */
   @javax.annotation.Nullable
-  public Integer getJudged() {
+  public Long getJudged() {
     return judged;
   }
 
-  public void setJudged(@javax.annotation.Nullable Integer judged) {
+  public void setJudged(@javax.annotation.Nullable Long judged) {
     this.judged = judged;
   }
 
 
-  public RiskSplitCounts productive(@javax.annotation.Nullable Integer productive) {
+  public RiskSplitCounts productive(@javax.annotation.Nullable Long productive) {
     this.productive = productive;
     return this;
   }
@@ -122,16 +122,16 @@ public class RiskSplitCounts {
    * @return productive
    */
   @javax.annotation.Nullable
-  public Integer getProductive() {
+  public Long getProductive() {
     return productive;
   }
 
-  public void setProductive(@javax.annotation.Nullable Integer productive) {
+  public void setProductive(@javax.annotation.Nullable Long productive) {
     this.productive = productive;
   }
 
 
-  public RiskSplitCounts rows(@javax.annotation.Nullable Integer rows) {
+  public RiskSplitCounts rows(@javax.annotation.Nullable Long rows) {
     this.rows = rows;
     return this;
   }
@@ -141,16 +141,16 @@ public class RiskSplitCounts {
    * @return rows
    */
   @javax.annotation.Nullable
-  public Integer getRows() {
+  public Long getRows() {
     return rows;
   }
 
-  public void setRows(@javax.annotation.Nullable Integer rows) {
+  public void setRows(@javax.annotation.Nullable Long rows) {
     this.rows = rows;
   }
 
 
-  public RiskSplitCounts subjects(@javax.annotation.Nullable Integer subjects) {
+  public RiskSplitCounts subjects(@javax.annotation.Nullable Long subjects) {
     this.subjects = subjects;
     return this;
   }
@@ -160,16 +160,16 @@ public class RiskSplitCounts {
    * @return subjects
    */
   @javax.annotation.Nullable
-  public Integer getSubjects() {
+  public Long getSubjects() {
     return subjects;
   }
 
-  public void setSubjects(@javax.annotation.Nullable Integer subjects) {
+  public void setSubjects(@javax.annotation.Nullable Long subjects) {
     this.subjects = subjects;
   }
 
 
-  public RiskSplitCounts test(@javax.annotation.Nullable Integer test) {
+  public RiskSplitCounts test(@javax.annotation.Nullable Long test) {
     this.test = test;
     return this;
   }
@@ -179,16 +179,16 @@ public class RiskSplitCounts {
    * @return test
    */
   @javax.annotation.Nullable
-  public Integer getTest() {
+  public Long getTest() {
     return test;
   }
 
-  public void setTest(@javax.annotation.Nullable Integer test) {
+  public void setTest(@javax.annotation.Nullable Long test) {
     this.test = test;
   }
 
 
-  public RiskSplitCounts train(@javax.annotation.Nullable Integer train) {
+  public RiskSplitCounts train(@javax.annotation.Nullable Long train) {
     this.train = train;
     return this;
   }
@@ -198,16 +198,16 @@ public class RiskSplitCounts {
    * @return train
    */
   @javax.annotation.Nullable
-  public Integer getTrain() {
+  public Long getTrain() {
     return train;
   }
 
-  public void setTrain(@javax.annotation.Nullable Integer train) {
+  public void setTrain(@javax.annotation.Nullable Long train) {
     this.train = train;
   }
 
 
-  public RiskSplitCounts unproductive(@javax.annotation.Nullable Integer unproductive) {
+  public RiskSplitCounts unproductive(@javax.annotation.Nullable Long unproductive) {
     this.unproductive = unproductive;
     return this;
   }
@@ -217,16 +217,16 @@ public class RiskSplitCounts {
    * @return unproductive
    */
   @javax.annotation.Nullable
-  public Integer getUnproductive() {
+  public Long getUnproductive() {
     return unproductive;
   }
 
-  public void setUnproductive(@javax.annotation.Nullable Integer unproductive) {
+  public void setUnproductive(@javax.annotation.Nullable Long unproductive) {
     this.unproductive = unproductive;
   }
 
 
-  public RiskSplitCounts val(@javax.annotation.Nullable Integer val) {
+  public RiskSplitCounts val(@javax.annotation.Nullable Long val) {
     this.val = val;
     return this;
   }
@@ -236,11 +236,11 @@ public class RiskSplitCounts {
    * @return val
    */
   @javax.annotation.Nullable
-  public Integer getVal() {
+  public Long getVal() {
     return val;
   }
 
-  public void setVal(@javax.annotation.Nullable Integer val) {
+  public void setVal(@javax.annotation.Nullable Long val) {
     this.val = val;
   }
 

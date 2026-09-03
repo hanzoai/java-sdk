@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -69,12 +68,12 @@ public class IamCartItem {
   public static final String SERIALIZED_NAME_PRICE = "price";
   @SerializedName(SERIALIZED_NAME_PRICE)
   @javax.annotation.Nullable
-  private BigDecimal price;
+  private Double price;
 
   public static final String SERIALIZED_NAME_QUANTITY = "quantity";
   @SerializedName(SERIALIZED_NAME_QUANTITY)
   @javax.annotation.Nullable
-  private Integer quantity;
+  private Long quantity;
 
   public IamCartItem() {
   }
@@ -136,7 +135,7 @@ public class IamCartItem {
   }
 
 
-  public IamCartItem price(@javax.annotation.Nullable BigDecimal price) {
+  public IamCartItem price(@javax.annotation.Nullable Double price) {
     this.price = price;
     return this;
   }
@@ -146,16 +145,16 @@ public class IamCartItem {
    * @return price
    */
   @javax.annotation.Nullable
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public void setPrice(@javax.annotation.Nullable BigDecimal price) {
+  public void setPrice(@javax.annotation.Nullable Double price) {
     this.price = price;
   }
 
 
-  public IamCartItem quantity(@javax.annotation.Nullable Integer quantity) {
+  public IamCartItem quantity(@javax.annotation.Nullable Long quantity) {
     this.quantity = quantity;
     return this;
   }
@@ -165,11 +164,11 @@ public class IamCartItem {
    * @return quantity
    */
   @javax.annotation.Nullable
-  public Integer getQuantity() {
+  public Long getQuantity() {
     return quantity;
   }
 
-  public void setQuantity(@javax.annotation.Nullable Integer quantity) {
+  public void setQuantity(@javax.annotation.Nullable Long quantity) {
     this.quantity = quantity;
   }
 

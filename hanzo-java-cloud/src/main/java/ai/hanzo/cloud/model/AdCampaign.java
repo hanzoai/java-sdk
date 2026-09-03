@@ -58,12 +58,12 @@ public class AdCampaign {
   public static final String SERIALIZED_NAME_BUDGET = "budget";
   @SerializedName(SERIALIZED_NAME_BUDGET)
   @javax.annotation.Nullable
-  private Integer budget;
+  private Long budget;
 
   public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
   @javax.annotation.Nullable
-  private Integer createdAt;
+  private Long createdAt;
 
   public static final String SERIALIZED_NAME_EXTERNAL_ID = "externalId";
   @SerializedName(SERIALIZED_NAME_EXTERNAL_ID)
@@ -93,7 +93,7 @@ public class AdCampaign {
   public static final String SERIALIZED_NAME_SPEND = "spend";
   @SerializedName(SERIALIZED_NAME_SPEND)
   @javax.annotation.Nullable
-  private Integer spend;
+  private Long spend;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
@@ -103,7 +103,7 @@ public class AdCampaign {
   public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)
   @javax.annotation.Nullable
-  private Integer updatedAt;
+  private Long updatedAt;
 
   public AdCampaign() {
   }
@@ -127,7 +127,7 @@ public class AdCampaign {
   }
 
 
-  public AdCampaign budget(@javax.annotation.Nullable Integer budget) {
+  public AdCampaign budget(@javax.annotation.Nullable Long budget) {
     this.budget = budget;
     return this;
   }
@@ -137,16 +137,16 @@ public class AdCampaign {
    * @return budget
    */
   @javax.annotation.Nullable
-  public Integer getBudget() {
+  public Long getBudget() {
     return budget;
   }
 
-  public void setBudget(@javax.annotation.Nullable Integer budget) {
+  public void setBudget(@javax.annotation.Nullable Long budget) {
     this.budget = budget;
   }
 
 
-  public AdCampaign createdAt(@javax.annotation.Nullable Integer createdAt) {
+  public AdCampaign createdAt(@javax.annotation.Nullable Long createdAt) {
     this.createdAt = createdAt;
     return this;
   }
@@ -156,11 +156,11 @@ public class AdCampaign {
    * @return createdAt
    */
   @javax.annotation.Nullable
-  public Integer getCreatedAt() {
+  public Long getCreatedAt() {
     return createdAt;
   }
 
-  public void setCreatedAt(@javax.annotation.Nullable Integer createdAt) {
+  public void setCreatedAt(@javax.annotation.Nullable Long createdAt) {
     this.createdAt = createdAt;
   }
 
@@ -260,7 +260,7 @@ public class AdCampaign {
   }
 
 
-  public AdCampaign spend(@javax.annotation.Nullable Integer spend) {
+  public AdCampaign spend(@javax.annotation.Nullable Long spend) {
     this.spend = spend;
     return this;
   }
@@ -270,11 +270,11 @@ public class AdCampaign {
    * @return spend
    */
   @javax.annotation.Nullable
-  public Integer getSpend() {
+  public Long getSpend() {
     return spend;
   }
 
-  public void setSpend(@javax.annotation.Nullable Integer spend) {
+  public void setSpend(@javax.annotation.Nullable Long spend) {
     this.spend = spend;
   }
 
@@ -298,7 +298,7 @@ public class AdCampaign {
   }
 
 
-  public AdCampaign updatedAt(@javax.annotation.Nullable Integer updatedAt) {
+  public AdCampaign updatedAt(@javax.annotation.Nullable Long updatedAt) {
     this.updatedAt = updatedAt;
     return this;
   }
@@ -308,11 +308,11 @@ public class AdCampaign {
    * @return updatedAt
    */
   @javax.annotation.Nullable
-  public Integer getUpdatedAt() {
+  public Long getUpdatedAt() {
     return updatedAt;
   }
 
-  public void setUpdatedAt(@javax.annotation.Nullable Integer updatedAt) {
+  public void setUpdatedAt(@javax.annotation.Nullable Long updatedAt) {
     this.updatedAt = updatedAt;
   }
 

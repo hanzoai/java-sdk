@@ -73,7 +73,7 @@ public class SubscriptionPlan {
   public static final String SERIALIZED_NAME_PRICE = "price";
   @SerializedName(SERIALIZED_NAME_PRICE)
   @javax.annotation.Nullable
-  private Integer price;
+  private Long price;
 
   public SubscriptionPlan() {
   }
@@ -154,7 +154,7 @@ public class SubscriptionPlan {
   }
 
 
-  public SubscriptionPlan price(@javax.annotation.Nullable Integer price) {
+  public SubscriptionPlan price(@javax.annotation.Nullable Long price) {
     this.price = price;
     return this;
   }
@@ -164,11 +164,11 @@ public class SubscriptionPlan {
    * @return price
    */
   @javax.annotation.Nullable
-  public Integer getPrice() {
+  public Long getPrice() {
     return price;
   }
 
-  public void setPrice(@javax.annotation.Nullable Integer price) {
+  public void setPrice(@javax.annotation.Nullable Long price) {
     this.price = price;
   }
 

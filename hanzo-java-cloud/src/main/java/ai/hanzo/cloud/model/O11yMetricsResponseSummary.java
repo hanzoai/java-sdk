@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -54,27 +53,27 @@ public class O11yMetricsResponseSummary {
   public static final String SERIALIZED_NAME_ERROR_RATE = "errorRate";
   @SerializedName(SERIALIZED_NAME_ERROR_RATE)
   @javax.annotation.Nullable
-  private BigDecimal errorRate;
+  private Double errorRate;
 
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
   @javax.annotation.Nullable
-  private Integer errors;
+  private Long errors;
 
   public static final String SERIALIZED_NAME_P95_MS = "p95Ms";
   @SerializedName(SERIALIZED_NAME_P95_MS)
   @javax.annotation.Nullable
-  private BigDecimal p95Ms;
+  private Double p95Ms;
 
   public static final String SERIALIZED_NAME_REQUESTS = "requests";
   @SerializedName(SERIALIZED_NAME_REQUESTS)
   @javax.annotation.Nullable
-  private Integer requests;
+  private Long requests;
 
   public O11yMetricsResponseSummary() {
   }
 
-  public O11yMetricsResponseSummary errorRate(@javax.annotation.Nullable BigDecimal errorRate) {
+  public O11yMetricsResponseSummary errorRate(@javax.annotation.Nullable Double errorRate) {
     this.errorRate = errorRate;
     return this;
   }
@@ -84,16 +83,16 @@ public class O11yMetricsResponseSummary {
    * @return errorRate
    */
   @javax.annotation.Nullable
-  public BigDecimal getErrorRate() {
+  public Double getErrorRate() {
     return errorRate;
   }
 
-  public void setErrorRate(@javax.annotation.Nullable BigDecimal errorRate) {
+  public void setErrorRate(@javax.annotation.Nullable Double errorRate) {
     this.errorRate = errorRate;
   }
 
 
-  public O11yMetricsResponseSummary errors(@javax.annotation.Nullable Integer errors) {
+  public O11yMetricsResponseSummary errors(@javax.annotation.Nullable Long errors) {
     this.errors = errors;
     return this;
   }
@@ -103,16 +102,16 @@ public class O11yMetricsResponseSummary {
    * @return errors
    */
   @javax.annotation.Nullable
-  public Integer getErrors() {
+  public Long getErrors() {
     return errors;
   }
 
-  public void setErrors(@javax.annotation.Nullable Integer errors) {
+  public void setErrors(@javax.annotation.Nullable Long errors) {
     this.errors = errors;
   }
 
 
-  public O11yMetricsResponseSummary p95Ms(@javax.annotation.Nullable BigDecimal p95Ms) {
+  public O11yMetricsResponseSummary p95Ms(@javax.annotation.Nullable Double p95Ms) {
     this.p95Ms = p95Ms;
     return this;
   }
@@ -122,16 +121,16 @@ public class O11yMetricsResponseSummary {
    * @return p95Ms
    */
   @javax.annotation.Nullable
-  public BigDecimal getP95Ms() {
+  public Double getP95Ms() {
     return p95Ms;
   }
 
-  public void setP95Ms(@javax.annotation.Nullable BigDecimal p95Ms) {
+  public void setP95Ms(@javax.annotation.Nullable Double p95Ms) {
     this.p95Ms = p95Ms;
   }
 
 
-  public O11yMetricsResponseSummary requests(@javax.annotation.Nullable Integer requests) {
+  public O11yMetricsResponseSummary requests(@javax.annotation.Nullable Long requests) {
     this.requests = requests;
     return this;
   }
@@ -141,11 +140,11 @@ public class O11yMetricsResponseSummary {
    * @return requests
    */
   @javax.annotation.Nullable
-  public Integer getRequests() {
+  public Long getRequests() {
     return requests;
   }
 
-  public void setRequests(@javax.annotation.Nullable Integer requests) {
+  public void setRequests(@javax.annotation.Nullable Long requests) {
     this.requests = requests;
   }
 

@@ -63,7 +63,7 @@ public class ClearReferenceOut {
   public static final String SERIALIZED_NAME_OVERRIDES = "overrides";
   @SerializedName(SERIALIZED_NAME_OVERRIDES)
   @javax.annotation.Nullable
-  private Integer overrides;
+  private Long overrides;
 
   public static final String SERIALIZED_NAME_SET = "set";
   @SerializedName(SERIALIZED_NAME_SET)
@@ -111,7 +111,7 @@ public class ClearReferenceOut {
   }
 
 
-  public ClearReferenceOut overrides(@javax.annotation.Nullable Integer overrides) {
+  public ClearReferenceOut overrides(@javax.annotation.Nullable Long overrides) {
     this.overrides = overrides;
     return this;
   }
@@ -121,11 +121,11 @@ public class ClearReferenceOut {
    * @return overrides
    */
   @javax.annotation.Nullable
-  public Integer getOverrides() {
+  public Long getOverrides() {
     return overrides;
   }
 
-  public void setOverrides(@javax.annotation.Nullable Integer overrides) {
+  public void setOverrides(@javax.annotation.Nullable Long overrides) {
     this.overrides = overrides;
   }
 

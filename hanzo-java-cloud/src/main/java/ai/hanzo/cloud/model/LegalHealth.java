@@ -58,7 +58,7 @@ public class LegalHealth {
   public static final String SERIALIZED_NAME_TEMPLATES = "templates";
   @SerializedName(SERIALIZED_NAME_TEMPLATES)
   @javax.annotation.Nullable
-  private Integer templates;
+  private Long templates;
 
   public LegalHealth() {
   }
@@ -82,7 +82,7 @@ public class LegalHealth {
   }
 
 
-  public LegalHealth templates(@javax.annotation.Nullable Integer templates) {
+  public LegalHealth templates(@javax.annotation.Nullable Long templates) {
     this.templates = templates;
     return this;
   }
@@ -92,11 +92,11 @@ public class LegalHealth {
    * @return templates
    */
   @javax.annotation.Nullable
-  public Integer getTemplates() {
+  public Long getTemplates() {
     return templates;
   }
 
-  public void setTemplates(@javax.annotation.Nullable Integer templates) {
+  public void setTemplates(@javax.annotation.Nullable Long templates) {
     this.templates = templates;
   }
 

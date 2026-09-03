@@ -22,7 +22,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -68,12 +67,12 @@ public class RiskScoreOut {
   public static final String SERIALIZED_NAME_CUT = "cut";
   @SerializedName(SERIALIZED_NAME_CUT)
   @javax.annotation.Nullable
-  private BigDecimal cut;
+  private Double cut;
 
   public static final String SERIALIZED_NAME_POLICY = "policy";
   @SerializedName(SERIALIZED_NAME_POLICY)
   @javax.annotation.Nullable
-  private Integer policy;
+  private Long policy;
 
   public static final String SERIALIZED_NAME_REFUSAL = "refusal";
   @SerializedName(SERIALIZED_NAME_REFUSAL)
@@ -83,7 +82,7 @@ public class RiskScoreOut {
   public static final String SERIALIZED_NAME_SCORE = "score";
   @SerializedName(SERIALIZED_NAME_SCORE)
   @javax.annotation.Nullable
-  private BigDecimal score;
+  private Double score;
 
   public static final String SERIALIZED_NAME_SCORED = "scored";
   @SerializedName(SERIALIZED_NAME_SCORED)
@@ -154,7 +153,7 @@ public class RiskScoreOut {
   }
 
 
-  public RiskScoreOut cut(@javax.annotation.Nullable BigDecimal cut) {
+  public RiskScoreOut cut(@javax.annotation.Nullable Double cut) {
     this.cut = cut;
     return this;
   }
@@ -164,16 +163,16 @@ public class RiskScoreOut {
    * @return cut
    */
   @javax.annotation.Nullable
-  public BigDecimal getCut() {
+  public Double getCut() {
     return cut;
   }
 
-  public void setCut(@javax.annotation.Nullable BigDecimal cut) {
+  public void setCut(@javax.annotation.Nullable Double cut) {
     this.cut = cut;
   }
 
 
-  public RiskScoreOut policy(@javax.annotation.Nullable Integer policy) {
+  public RiskScoreOut policy(@javax.annotation.Nullable Long policy) {
     this.policy = policy;
     return this;
   }
@@ -183,11 +182,11 @@ public class RiskScoreOut {
    * @return policy
    */
   @javax.annotation.Nullable
-  public Integer getPolicy() {
+  public Long getPolicy() {
     return policy;
   }
 
-  public void setPolicy(@javax.annotation.Nullable Integer policy) {
+  public void setPolicy(@javax.annotation.Nullable Long policy) {
     this.policy = policy;
   }
 
@@ -211,7 +210,7 @@ public class RiskScoreOut {
   }
 
 
-  public RiskScoreOut score(@javax.annotation.Nullable BigDecimal score) {
+  public RiskScoreOut score(@javax.annotation.Nullable Double score) {
     this.score = score;
     return this;
   }
@@ -221,11 +220,11 @@ public class RiskScoreOut {
    * @return score
    */
   @javax.annotation.Nullable
-  public BigDecimal getScore() {
+  public Double getScore() {
     return score;
   }
 
-  public void setScore(@javax.annotation.Nullable BigDecimal score) {
+  public void setScore(@javax.annotation.Nullable Double score) {
     this.score = score;
   }
 

@@ -56,7 +56,7 @@ public class O11yO11yRetentionOut {
   public static final String SERIALIZED_NAME_COLD_STORAGE_TTL_DAYS = "cold_storage_ttl_days";
   @SerializedName(SERIALIZED_NAME_COLD_STORAGE_TTL_DAYS)
   @javax.annotation.Nullable
-  private Integer coldStorageTtlDays;
+  private Long coldStorageTtlDays;
 
   public static final String SERIALIZED_NAME_COLD_STORAGE_VOLUME = "cold_storage_volume";
   @SerializedName(SERIALIZED_NAME_COLD_STORAGE_VOLUME)
@@ -66,17 +66,17 @@ public class O11yO11yRetentionOut {
   public static final String SERIALIZED_NAME_DEFAULT_TTL_DAYS = "default_ttl_days";
   @SerializedName(SERIALIZED_NAME_DEFAULT_TTL_DAYS)
   @javax.annotation.Nullable
-  private Integer defaultTtlDays;
+  private Long defaultTtlDays;
 
   public static final String SERIALIZED_NAME_EXPECTED_LOGS_MOVE_TTL_DURATION_HRS = "expected_logs_move_ttl_duration_hrs";
   @SerializedName(SERIALIZED_NAME_EXPECTED_LOGS_MOVE_TTL_DURATION_HRS)
   @javax.annotation.Nullable
-  private Integer expectedLogsMoveTtlDurationHrs;
+  private Long expectedLogsMoveTtlDurationHrs;
 
   public static final String SERIALIZED_NAME_EXPECTED_LOGS_TTL_DURATION_HRS = "expected_logs_ttl_duration_hrs";
   @SerializedName(SERIALIZED_NAME_EXPECTED_LOGS_TTL_DURATION_HRS)
   @javax.annotation.Nullable
-  private Integer expectedLogsTtlDurationHrs;
+  private Long expectedLogsTtlDurationHrs;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
@@ -96,7 +96,7 @@ public class O11yO11yRetentionOut {
   public O11yO11yRetentionOut() {
   }
 
-  public O11yO11yRetentionOut coldStorageTtlDays(@javax.annotation.Nullable Integer coldStorageTtlDays) {
+  public O11yO11yRetentionOut coldStorageTtlDays(@javax.annotation.Nullable Long coldStorageTtlDays) {
     this.coldStorageTtlDays = coldStorageTtlDays;
     return this;
   }
@@ -106,11 +106,11 @@ public class O11yO11yRetentionOut {
    * @return coldStorageTtlDays
    */
   @javax.annotation.Nullable
-  public Integer getColdStorageTtlDays() {
+  public Long getColdStorageTtlDays() {
     return coldStorageTtlDays;
   }
 
-  public void setColdStorageTtlDays(@javax.annotation.Nullable Integer coldStorageTtlDays) {
+  public void setColdStorageTtlDays(@javax.annotation.Nullable Long coldStorageTtlDays) {
     this.coldStorageTtlDays = coldStorageTtlDays;
   }
 
@@ -134,7 +134,7 @@ public class O11yO11yRetentionOut {
   }
 
 
-  public O11yO11yRetentionOut defaultTtlDays(@javax.annotation.Nullable Integer defaultTtlDays) {
+  public O11yO11yRetentionOut defaultTtlDays(@javax.annotation.Nullable Long defaultTtlDays) {
     this.defaultTtlDays = defaultTtlDays;
     return this;
   }
@@ -144,16 +144,16 @@ public class O11yO11yRetentionOut {
    * @return defaultTtlDays
    */
   @javax.annotation.Nullable
-  public Integer getDefaultTtlDays() {
+  public Long getDefaultTtlDays() {
     return defaultTtlDays;
   }
 
-  public void setDefaultTtlDays(@javax.annotation.Nullable Integer defaultTtlDays) {
+  public void setDefaultTtlDays(@javax.annotation.Nullable Long defaultTtlDays) {
     this.defaultTtlDays = defaultTtlDays;
   }
 
 
-  public O11yO11yRetentionOut expectedLogsMoveTtlDurationHrs(@javax.annotation.Nullable Integer expectedLogsMoveTtlDurationHrs) {
+  public O11yO11yRetentionOut expectedLogsMoveTtlDurationHrs(@javax.annotation.Nullable Long expectedLogsMoveTtlDurationHrs) {
     this.expectedLogsMoveTtlDurationHrs = expectedLogsMoveTtlDurationHrs;
     return this;
   }
@@ -163,16 +163,16 @@ public class O11yO11yRetentionOut {
    * @return expectedLogsMoveTtlDurationHrs
    */
   @javax.annotation.Nullable
-  public Integer getExpectedLogsMoveTtlDurationHrs() {
+  public Long getExpectedLogsMoveTtlDurationHrs() {
     return expectedLogsMoveTtlDurationHrs;
   }
 
-  public void setExpectedLogsMoveTtlDurationHrs(@javax.annotation.Nullable Integer expectedLogsMoveTtlDurationHrs) {
+  public void setExpectedLogsMoveTtlDurationHrs(@javax.annotation.Nullable Long expectedLogsMoveTtlDurationHrs) {
     this.expectedLogsMoveTtlDurationHrs = expectedLogsMoveTtlDurationHrs;
   }
 
 
-  public O11yO11yRetentionOut expectedLogsTtlDurationHrs(@javax.annotation.Nullable Integer expectedLogsTtlDurationHrs) {
+  public O11yO11yRetentionOut expectedLogsTtlDurationHrs(@javax.annotation.Nullable Long expectedLogsTtlDurationHrs) {
     this.expectedLogsTtlDurationHrs = expectedLogsTtlDurationHrs;
     return this;
   }
@@ -182,11 +182,11 @@ public class O11yO11yRetentionOut {
    * @return expectedLogsTtlDurationHrs
    */
   @javax.annotation.Nullable
-  public Integer getExpectedLogsTtlDurationHrs() {
+  public Long getExpectedLogsTtlDurationHrs() {
     return expectedLogsTtlDurationHrs;
   }
 
-  public void setExpectedLogsTtlDurationHrs(@javax.annotation.Nullable Integer expectedLogsTtlDurationHrs) {
+  public void setExpectedLogsTtlDurationHrs(@javax.annotation.Nullable Long expectedLogsTtlDurationHrs) {
     this.expectedLogsTtlDurationHrs = expectedLogsTtlDurationHrs;
   }
 

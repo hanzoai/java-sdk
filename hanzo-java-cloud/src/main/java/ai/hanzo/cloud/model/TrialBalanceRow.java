@@ -58,22 +58,22 @@ public class TrialBalanceRow {
   public static final String SERIALIZED_NAME_CLOSING_CREDIT = "closingCredit";
   @SerializedName(SERIALIZED_NAME_CLOSING_CREDIT)
   @javax.annotation.Nullable
-  private Integer closingCredit;
+  private Long closingCredit;
 
   public static final String SERIALIZED_NAME_CLOSING_DEBIT = "closingDebit";
   @SerializedName(SERIALIZED_NAME_CLOSING_DEBIT)
   @javax.annotation.Nullable
-  private Integer closingDebit;
+  private Long closingDebit;
 
   public static final String SERIALIZED_NAME_CREDIT = "credit";
   @SerializedName(SERIALIZED_NAME_CREDIT)
   @javax.annotation.Nullable
-  private Integer credit;
+  private Long credit;
 
   public static final String SERIALIZED_NAME_DEBIT = "debit";
   @SerializedName(SERIALIZED_NAME_DEBIT)
   @javax.annotation.Nullable
-  private Integer debit;
+  private Long debit;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -83,12 +83,12 @@ public class TrialBalanceRow {
   public static final String SERIALIZED_NAME_OPENING_CREDIT = "openingCredit";
   @SerializedName(SERIALIZED_NAME_OPENING_CREDIT)
   @javax.annotation.Nullable
-  private Integer openingCredit;
+  private Long openingCredit;
 
   public static final String SERIALIZED_NAME_OPENING_DEBIT = "openingDebit";
   @SerializedName(SERIALIZED_NAME_OPENING_DEBIT)
   @javax.annotation.Nullable
-  private Integer openingDebit;
+  private Long openingDebit;
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
@@ -117,7 +117,7 @@ public class TrialBalanceRow {
   }
 
 
-  public TrialBalanceRow closingCredit(@javax.annotation.Nullable Integer closingCredit) {
+  public TrialBalanceRow closingCredit(@javax.annotation.Nullable Long closingCredit) {
     this.closingCredit = closingCredit;
     return this;
   }
@@ -127,16 +127,16 @@ public class TrialBalanceRow {
    * @return closingCredit
    */
   @javax.annotation.Nullable
-  public Integer getClosingCredit() {
+  public Long getClosingCredit() {
     return closingCredit;
   }
 
-  public void setClosingCredit(@javax.annotation.Nullable Integer closingCredit) {
+  public void setClosingCredit(@javax.annotation.Nullable Long closingCredit) {
     this.closingCredit = closingCredit;
   }
 
 
-  public TrialBalanceRow closingDebit(@javax.annotation.Nullable Integer closingDebit) {
+  public TrialBalanceRow closingDebit(@javax.annotation.Nullable Long closingDebit) {
     this.closingDebit = closingDebit;
     return this;
   }
@@ -146,16 +146,16 @@ public class TrialBalanceRow {
    * @return closingDebit
    */
   @javax.annotation.Nullable
-  public Integer getClosingDebit() {
+  public Long getClosingDebit() {
     return closingDebit;
   }
 
-  public void setClosingDebit(@javax.annotation.Nullable Integer closingDebit) {
+  public void setClosingDebit(@javax.annotation.Nullable Long closingDebit) {
     this.closingDebit = closingDebit;
   }
 
 
-  public TrialBalanceRow credit(@javax.annotation.Nullable Integer credit) {
+  public TrialBalanceRow credit(@javax.annotation.Nullable Long credit) {
     this.credit = credit;
     return this;
   }
@@ -165,16 +165,16 @@ public class TrialBalanceRow {
    * @return credit
    */
   @javax.annotation.Nullable
-  public Integer getCredit() {
+  public Long getCredit() {
     return credit;
   }
 
-  public void setCredit(@javax.annotation.Nullable Integer credit) {
+  public void setCredit(@javax.annotation.Nullable Long credit) {
     this.credit = credit;
   }
 
 
-  public TrialBalanceRow debit(@javax.annotation.Nullable Integer debit) {
+  public TrialBalanceRow debit(@javax.annotation.Nullable Long debit) {
     this.debit = debit;
     return this;
   }
@@ -184,11 +184,11 @@ public class TrialBalanceRow {
    * @return debit
    */
   @javax.annotation.Nullable
-  public Integer getDebit() {
+  public Long getDebit() {
     return debit;
   }
 
-  public void setDebit(@javax.annotation.Nullable Integer debit) {
+  public void setDebit(@javax.annotation.Nullable Long debit) {
     this.debit = debit;
   }
 
@@ -212,7 +212,7 @@ public class TrialBalanceRow {
   }
 
 
-  public TrialBalanceRow openingCredit(@javax.annotation.Nullable Integer openingCredit) {
+  public TrialBalanceRow openingCredit(@javax.annotation.Nullable Long openingCredit) {
     this.openingCredit = openingCredit;
     return this;
   }
@@ -222,16 +222,16 @@ public class TrialBalanceRow {
    * @return openingCredit
    */
   @javax.annotation.Nullable
-  public Integer getOpeningCredit() {
+  public Long getOpeningCredit() {
     return openingCredit;
   }
 
-  public void setOpeningCredit(@javax.annotation.Nullable Integer openingCredit) {
+  public void setOpeningCredit(@javax.annotation.Nullable Long openingCredit) {
     this.openingCredit = openingCredit;
   }
 
 
-  public TrialBalanceRow openingDebit(@javax.annotation.Nullable Integer openingDebit) {
+  public TrialBalanceRow openingDebit(@javax.annotation.Nullable Long openingDebit) {
     this.openingDebit = openingDebit;
     return this;
   }
@@ -241,11 +241,11 @@ public class TrialBalanceRow {
    * @return openingDebit
    */
   @javax.annotation.Nullable
-  public Integer getOpeningDebit() {
+  public Long getOpeningDebit() {
     return openingDebit;
   }
 
-  public void setOpeningDebit(@javax.annotation.Nullable Integer openingDebit) {
+  public void setOpeningDebit(@javax.annotation.Nullable Long openingDebit) {
     this.openingDebit = openingDebit;
   }
 

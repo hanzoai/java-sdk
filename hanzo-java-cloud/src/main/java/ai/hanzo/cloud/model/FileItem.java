@@ -63,7 +63,7 @@ public class FileItem {
   public static final String SERIALIZED_NAME_MODIFIED_AT = "modifiedAt";
   @SerializedName(SERIALIZED_NAME_MODIFIED_AT)
   @javax.annotation.Nullable
-  private Integer modifiedAt;
+  private Long modifiedAt;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -73,7 +73,7 @@ public class FileItem {
   public static final String SERIALIZED_NAME_SIZE = "size";
   @SerializedName(SERIALIZED_NAME_SIZE)
   @javax.annotation.Nullable
-  private Integer size;
+  private Long size;
 
   public FileItem() {
   }
@@ -116,7 +116,7 @@ public class FileItem {
   }
 
 
-  public FileItem modifiedAt(@javax.annotation.Nullable Integer modifiedAt) {
+  public FileItem modifiedAt(@javax.annotation.Nullable Long modifiedAt) {
     this.modifiedAt = modifiedAt;
     return this;
   }
@@ -126,11 +126,11 @@ public class FileItem {
    * @return modifiedAt
    */
   @javax.annotation.Nullable
-  public Integer getModifiedAt() {
+  public Long getModifiedAt() {
     return modifiedAt;
   }
 
-  public void setModifiedAt(@javax.annotation.Nullable Integer modifiedAt) {
+  public void setModifiedAt(@javax.annotation.Nullable Long modifiedAt) {
     this.modifiedAt = modifiedAt;
   }
 
@@ -154,7 +154,7 @@ public class FileItem {
   }
 
 
-  public FileItem size(@javax.annotation.Nullable Integer size) {
+  public FileItem size(@javax.annotation.Nullable Long size) {
     this.size = size;
     return this;
   }
@@ -164,11 +164,11 @@ public class FileItem {
    * @return size
    */
   @javax.annotation.Nullable
-  public Integer getSize() {
+  public Long getSize() {
     return size;
   }
 
-  public void setSize(@javax.annotation.Nullable Integer size) {
+  public void setSize(@javax.annotation.Nullable Long size) {
     this.size = size;
   }
 

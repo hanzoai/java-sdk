@@ -55,7 +55,7 @@ public class ProjectsUploadGrant {
   public static final String SERIALIZED_NAME_EXPIRES_AT = "expiresAt";
   @SerializedName(SERIALIZED_NAME_EXPIRES_AT)
   @javax.annotation.Nullable
-  private Integer expiresAt;
+  private Long expiresAt;
 
   public static final String SERIALIZED_NAME_FIELDS = "fields";
   @SerializedName(SERIALIZED_NAME_FIELDS)
@@ -65,7 +65,7 @@ public class ProjectsUploadGrant {
   public static final String SERIALIZED_NAME_MAX_BYTES = "maxBytes";
   @SerializedName(SERIALIZED_NAME_MAX_BYTES)
   @javax.annotation.Nullable
-  private Integer maxBytes;
+  private Long maxBytes;
 
   public static final String SERIALIZED_NAME_PREFIX = "prefix";
   @SerializedName(SERIALIZED_NAME_PREFIX)
@@ -80,7 +80,7 @@ public class ProjectsUploadGrant {
   public ProjectsUploadGrant() {
   }
 
-  public ProjectsUploadGrant expiresAt(@javax.annotation.Nullable Integer expiresAt) {
+  public ProjectsUploadGrant expiresAt(@javax.annotation.Nullable Long expiresAt) {
     this.expiresAt = expiresAt;
     return this;
   }
@@ -90,11 +90,11 @@ public class ProjectsUploadGrant {
    * @return expiresAt
    */
   @javax.annotation.Nullable
-  public Integer getExpiresAt() {
+  public Long getExpiresAt() {
     return expiresAt;
   }
 
-  public void setExpiresAt(@javax.annotation.Nullable Integer expiresAt) {
+  public void setExpiresAt(@javax.annotation.Nullable Long expiresAt) {
     this.expiresAt = expiresAt;
   }
 
@@ -126,7 +126,7 @@ public class ProjectsUploadGrant {
   }
 
 
-  public ProjectsUploadGrant maxBytes(@javax.annotation.Nullable Integer maxBytes) {
+  public ProjectsUploadGrant maxBytes(@javax.annotation.Nullable Long maxBytes) {
     this.maxBytes = maxBytes;
     return this;
   }
@@ -136,11 +136,11 @@ public class ProjectsUploadGrant {
    * @return maxBytes
    */
   @javax.annotation.Nullable
-  public Integer getMaxBytes() {
+  public Long getMaxBytes() {
     return maxBytes;
   }
 
-  public void setMaxBytes(@javax.annotation.Nullable Integer maxBytes) {
+  public void setMaxBytes(@javax.annotation.Nullable Long maxBytes) {
     this.maxBytes = maxBytes;
   }
 

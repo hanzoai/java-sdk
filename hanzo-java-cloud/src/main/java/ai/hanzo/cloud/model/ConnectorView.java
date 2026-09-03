@@ -63,7 +63,7 @@ public class ConnectorView {
   public static final String SERIALIZED_NAME_DOC_COUNT = "docCount";
   @SerializedName(SERIALIZED_NAME_DOC_COUNT)
   @javax.annotation.Nullable
-  private Integer docCount;
+  private Long docCount;
 
   public static final String SERIALIZED_NAME_ERROR = "error";
   @SerializedName(SERIALIZED_NAME_ERROR)
@@ -131,7 +131,7 @@ public class ConnectorView {
   }
 
 
-  public ConnectorView docCount(@javax.annotation.Nullable Integer docCount) {
+  public ConnectorView docCount(@javax.annotation.Nullable Long docCount) {
     this.docCount = docCount;
     return this;
   }
@@ -141,11 +141,11 @@ public class ConnectorView {
    * @return docCount
    */
   @javax.annotation.Nullable
-  public Integer getDocCount() {
+  public Long getDocCount() {
     return docCount;
   }
 
-  public void setDocCount(@javax.annotation.Nullable Integer docCount) {
+  public void setDocCount(@javax.annotation.Nullable Long docCount) {
     this.docCount = docCount;
   }
 

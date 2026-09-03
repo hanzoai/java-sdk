@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -57,17 +56,17 @@ public class O11yHostRecord {
   public static final String SERIALIZED_NAME_ACTIVE_HOST_COUNT = "activeHostCount";
   @SerializedName(SERIALIZED_NAME_ACTIVE_HOST_COUNT)
   @javax.annotation.Nullable
-  private Integer activeHostCount;
+  private Long activeHostCount;
 
   public static final String SERIALIZED_NAME_CPU = "cpu";
   @SerializedName(SERIALIZED_NAME_CPU)
   @javax.annotation.Nullable
-  private BigDecimal cpu;
+  private Double cpu;
 
   public static final String SERIALIZED_NAME_DISK_USAGE = "diskUsage";
   @SerializedName(SERIALIZED_NAME_DISK_USAGE)
   @javax.annotation.Nullable
-  private BigDecimal diskUsage;
+  private Double diskUsage;
 
   public static final String SERIALIZED_NAME_HOST_NAME = "hostName";
   @SerializedName(SERIALIZED_NAME_HOST_NAME)
@@ -77,17 +76,17 @@ public class O11yHostRecord {
   public static final String SERIALIZED_NAME_INACTIVE_HOST_COUNT = "inactiveHostCount";
   @SerializedName(SERIALIZED_NAME_INACTIVE_HOST_COUNT)
   @javax.annotation.Nullable
-  private Integer inactiveHostCount;
+  private Long inactiveHostCount;
 
   public static final String SERIALIZED_NAME_LOAD15 = "load15";
   @SerializedName(SERIALIZED_NAME_LOAD15)
   @javax.annotation.Nullable
-  private BigDecimal load15;
+  private Double load15;
 
   public static final String SERIALIZED_NAME_MEMORY = "memory";
   @SerializedName(SERIALIZED_NAME_MEMORY)
   @javax.annotation.Nullable
-  private BigDecimal memory;
+  private Double memory;
 
   public static final String SERIALIZED_NAME_META = "meta";
   @SerializedName(SERIALIZED_NAME_META)
@@ -102,12 +101,12 @@ public class O11yHostRecord {
   public static final String SERIALIZED_NAME_WAIT = "wait";
   @SerializedName(SERIALIZED_NAME_WAIT)
   @javax.annotation.Nullable
-  private BigDecimal wait;
+  private Double wait;
 
   public O11yHostRecord() {
   }
 
-  public O11yHostRecord activeHostCount(@javax.annotation.Nullable Integer activeHostCount) {
+  public O11yHostRecord activeHostCount(@javax.annotation.Nullable Long activeHostCount) {
     this.activeHostCount = activeHostCount;
     return this;
   }
@@ -117,16 +116,16 @@ public class O11yHostRecord {
    * @return activeHostCount
    */
   @javax.annotation.Nullable
-  public Integer getActiveHostCount() {
+  public Long getActiveHostCount() {
     return activeHostCount;
   }
 
-  public void setActiveHostCount(@javax.annotation.Nullable Integer activeHostCount) {
+  public void setActiveHostCount(@javax.annotation.Nullable Long activeHostCount) {
     this.activeHostCount = activeHostCount;
   }
 
 
-  public O11yHostRecord cpu(@javax.annotation.Nullable BigDecimal cpu) {
+  public O11yHostRecord cpu(@javax.annotation.Nullable Double cpu) {
     this.cpu = cpu;
     return this;
   }
@@ -136,16 +135,16 @@ public class O11yHostRecord {
    * @return cpu
    */
   @javax.annotation.Nullable
-  public BigDecimal getCpu() {
+  public Double getCpu() {
     return cpu;
   }
 
-  public void setCpu(@javax.annotation.Nullable BigDecimal cpu) {
+  public void setCpu(@javax.annotation.Nullable Double cpu) {
     this.cpu = cpu;
   }
 
 
-  public O11yHostRecord diskUsage(@javax.annotation.Nullable BigDecimal diskUsage) {
+  public O11yHostRecord diskUsage(@javax.annotation.Nullable Double diskUsage) {
     this.diskUsage = diskUsage;
     return this;
   }
@@ -155,11 +154,11 @@ public class O11yHostRecord {
    * @return diskUsage
    */
   @javax.annotation.Nullable
-  public BigDecimal getDiskUsage() {
+  public Double getDiskUsage() {
     return diskUsage;
   }
 
-  public void setDiskUsage(@javax.annotation.Nullable BigDecimal diskUsage) {
+  public void setDiskUsage(@javax.annotation.Nullable Double diskUsage) {
     this.diskUsage = diskUsage;
   }
 
@@ -183,7 +182,7 @@ public class O11yHostRecord {
   }
 
 
-  public O11yHostRecord inactiveHostCount(@javax.annotation.Nullable Integer inactiveHostCount) {
+  public O11yHostRecord inactiveHostCount(@javax.annotation.Nullable Long inactiveHostCount) {
     this.inactiveHostCount = inactiveHostCount;
     return this;
   }
@@ -193,16 +192,16 @@ public class O11yHostRecord {
    * @return inactiveHostCount
    */
   @javax.annotation.Nullable
-  public Integer getInactiveHostCount() {
+  public Long getInactiveHostCount() {
     return inactiveHostCount;
   }
 
-  public void setInactiveHostCount(@javax.annotation.Nullable Integer inactiveHostCount) {
+  public void setInactiveHostCount(@javax.annotation.Nullable Long inactiveHostCount) {
     this.inactiveHostCount = inactiveHostCount;
   }
 
 
-  public O11yHostRecord load15(@javax.annotation.Nullable BigDecimal load15) {
+  public O11yHostRecord load15(@javax.annotation.Nullable Double load15) {
     this.load15 = load15;
     return this;
   }
@@ -212,16 +211,16 @@ public class O11yHostRecord {
    * @return load15
    */
   @javax.annotation.Nullable
-  public BigDecimal getLoad15() {
+  public Double getLoad15() {
     return load15;
   }
 
-  public void setLoad15(@javax.annotation.Nullable BigDecimal load15) {
+  public void setLoad15(@javax.annotation.Nullable Double load15) {
     this.load15 = load15;
   }
 
 
-  public O11yHostRecord memory(@javax.annotation.Nullable BigDecimal memory) {
+  public O11yHostRecord memory(@javax.annotation.Nullable Double memory) {
     this.memory = memory;
     return this;
   }
@@ -231,11 +230,11 @@ public class O11yHostRecord {
    * @return memory
    */
   @javax.annotation.Nullable
-  public BigDecimal getMemory() {
+  public Double getMemory() {
     return memory;
   }
 
-  public void setMemory(@javax.annotation.Nullable BigDecimal memory) {
+  public void setMemory(@javax.annotation.Nullable Double memory) {
     this.memory = memory;
   }
 
@@ -286,7 +285,7 @@ public class O11yHostRecord {
   }
 
 
-  public O11yHostRecord wait(@javax.annotation.Nullable BigDecimal wait) {
+  public O11yHostRecord wait(@javax.annotation.Nullable Double wait) {
     this.wait = wait;
     return this;
   }
@@ -296,11 +295,11 @@ public class O11yHostRecord {
    * @return wait
    */
   @javax.annotation.Nullable
-  public BigDecimal getWait() {
+  public Double getWait() {
     return wait;
   }
 
-  public void setWait(@javax.annotation.Nullable BigDecimal wait) {
+  public void setWait(@javax.annotation.Nullable Double wait) {
     this.wait = wait;
   }
 

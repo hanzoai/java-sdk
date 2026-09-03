@@ -53,7 +53,7 @@ public class Genesis {
   public static final String SERIALIZED_NAME_AT = "at";
   @SerializedName(SERIALIZED_NAME_AT)
   @javax.annotation.Nullable
-  private Integer at;
+  private Long at;
 
   public static final String SERIALIZED_NAME_BLOCK = "block";
   @SerializedName(SERIALIZED_NAME_BLOCK)
@@ -63,7 +63,7 @@ public class Genesis {
   public static final String SERIALIZED_NAME_CHAIN_ID = "chainId";
   @SerializedName(SERIALIZED_NAME_CHAIN_ID)
   @javax.annotation.Nullable
-  private Integer chainId;
+  private Long chainId;
 
   public static final String SERIALIZED_NAME_NOTE = "note";
   @SerializedName(SERIALIZED_NAME_NOTE)
@@ -88,7 +88,7 @@ public class Genesis {
   public Genesis() {
   }
 
-  public Genesis at(@javax.annotation.Nullable Integer at) {
+  public Genesis at(@javax.annotation.Nullable Long at) {
     this.at = at;
     return this;
   }
@@ -98,11 +98,11 @@ public class Genesis {
    * @return at
    */
   @javax.annotation.Nullable
-  public Integer getAt() {
+  public Long getAt() {
     return at;
   }
 
-  public void setAt(@javax.annotation.Nullable Integer at) {
+  public void setAt(@javax.annotation.Nullable Long at) {
     this.at = at;
   }
 
@@ -126,7 +126,7 @@ public class Genesis {
   }
 
 
-  public Genesis chainId(@javax.annotation.Nullable Integer chainId) {
+  public Genesis chainId(@javax.annotation.Nullable Long chainId) {
     this.chainId = chainId;
     return this;
   }
@@ -136,11 +136,11 @@ public class Genesis {
    * @return chainId
    */
   @javax.annotation.Nullable
-  public Integer getChainId() {
+  public Long getChainId() {
     return chainId;
   }
 
-  public void setChainId(@javax.annotation.Nullable Integer chainId) {
+  public void setChainId(@javax.annotation.Nullable Long chainId) {
     this.chainId = chainId;
   }
 

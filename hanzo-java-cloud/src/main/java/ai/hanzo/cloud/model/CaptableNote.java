@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -54,17 +53,17 @@ public class CaptableNote {
   public static final String SERIALIZED_NAME_CAPITAL = "capital";
   @SerializedName(SERIALIZED_NAME_CAPITAL)
   @javax.annotation.Nullable
-  private BigDecimal capital;
+  private Double capital;
 
   public static final String SERIALIZED_NAME_CONVERSION_CAP = "conversionCap";
   @SerializedName(SERIALIZED_NAME_CONVERSION_CAP)
   @javax.annotation.Nullable
-  private BigDecimal conversionCap;
+  private Double conversionCap;
 
   public static final String SERIALIZED_NAME_DISCOUNT_RATE = "discountRate";
   @SerializedName(SERIALIZED_NAME_DISCOUNT_RATE)
   @javax.annotation.Nullable
-  private BigDecimal discountRate;
+  private Double discountRate;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -74,7 +73,7 @@ public class CaptableNote {
   public static final String SERIALIZED_NAME_INTEREST_RATE = "interestRate";
   @SerializedName(SERIALIZED_NAME_INTEREST_RATE)
   @javax.annotation.Nullable
-  private BigDecimal interestRate;
+  private Double interestRate;
 
   public static final String SERIALIZED_NAME_ISSUE_DATE = "issueDate";
   @SerializedName(SERIALIZED_NAME_ISSUE_DATE)
@@ -109,7 +108,7 @@ public class CaptableNote {
   public CaptableNote() {
   }
 
-  public CaptableNote capital(@javax.annotation.Nullable BigDecimal capital) {
+  public CaptableNote capital(@javax.annotation.Nullable Double capital) {
     this.capital = capital;
     return this;
   }
@@ -119,16 +118,16 @@ public class CaptableNote {
    * @return capital
    */
   @javax.annotation.Nullable
-  public BigDecimal getCapital() {
+  public Double getCapital() {
     return capital;
   }
 
-  public void setCapital(@javax.annotation.Nullable BigDecimal capital) {
+  public void setCapital(@javax.annotation.Nullable Double capital) {
     this.capital = capital;
   }
 
 
-  public CaptableNote conversionCap(@javax.annotation.Nullable BigDecimal conversionCap) {
+  public CaptableNote conversionCap(@javax.annotation.Nullable Double conversionCap) {
     this.conversionCap = conversionCap;
     return this;
   }
@@ -138,16 +137,16 @@ public class CaptableNote {
    * @return conversionCap
    */
   @javax.annotation.Nullable
-  public BigDecimal getConversionCap() {
+  public Double getConversionCap() {
     return conversionCap;
   }
 
-  public void setConversionCap(@javax.annotation.Nullable BigDecimal conversionCap) {
+  public void setConversionCap(@javax.annotation.Nullable Double conversionCap) {
     this.conversionCap = conversionCap;
   }
 
 
-  public CaptableNote discountRate(@javax.annotation.Nullable BigDecimal discountRate) {
+  public CaptableNote discountRate(@javax.annotation.Nullable Double discountRate) {
     this.discountRate = discountRate;
     return this;
   }
@@ -157,11 +156,11 @@ public class CaptableNote {
    * @return discountRate
    */
   @javax.annotation.Nullable
-  public BigDecimal getDiscountRate() {
+  public Double getDiscountRate() {
     return discountRate;
   }
 
-  public void setDiscountRate(@javax.annotation.Nullable BigDecimal discountRate) {
+  public void setDiscountRate(@javax.annotation.Nullable Double discountRate) {
     this.discountRate = discountRate;
   }
 
@@ -185,7 +184,7 @@ public class CaptableNote {
   }
 
 
-  public CaptableNote interestRate(@javax.annotation.Nullable BigDecimal interestRate) {
+  public CaptableNote interestRate(@javax.annotation.Nullable Double interestRate) {
     this.interestRate = interestRate;
     return this;
   }
@@ -195,11 +194,11 @@ public class CaptableNote {
    * @return interestRate
    */
   @javax.annotation.Nullable
-  public BigDecimal getInterestRate() {
+  public Double getInterestRate() {
     return interestRate;
   }
 
-  public void setInterestRate(@javax.annotation.Nullable BigDecimal interestRate) {
+  public void setInterestRate(@javax.annotation.Nullable Double interestRate) {
     this.interestRate = interestRate;
   }
 

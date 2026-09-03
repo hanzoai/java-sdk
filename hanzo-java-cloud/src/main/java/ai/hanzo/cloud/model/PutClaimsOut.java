@@ -55,7 +55,7 @@ public class PutClaimsOut {
   public static final String SERIALIZED_NAME_RECORDED = "recorded";
   @SerializedName(SERIALIZED_NAME_RECORDED)
   @javax.annotation.Nullable
-  private Integer recorded;
+  private Long recorded;
 
   public static final String SERIALIZED_NAME_REJECTED = "rejected";
   @SerializedName(SERIALIZED_NAME_REJECTED)
@@ -65,7 +65,7 @@ public class PutClaimsOut {
   public PutClaimsOut() {
   }
 
-  public PutClaimsOut recorded(@javax.annotation.Nullable Integer recorded) {
+  public PutClaimsOut recorded(@javax.annotation.Nullable Long recorded) {
     this.recorded = recorded;
     return this;
   }
@@ -75,11 +75,11 @@ public class PutClaimsOut {
    * @return recorded
    */
   @javax.annotation.Nullable
-  public Integer getRecorded() {
+  public Long getRecorded() {
     return recorded;
   }
 
-  public void setRecorded(@javax.annotation.Nullable Integer recorded) {
+  public void setRecorded(@javax.annotation.Nullable Long recorded) {
     this.recorded = recorded;
   }
 

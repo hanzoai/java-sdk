@@ -65,7 +65,7 @@ public class SeoKeywordIn {
   public static final String SERIALIZED_NAME_LOCATION = "location";
   @SerializedName(SERIALIZED_NAME_LOCATION)
   @javax.annotation.Nullable
-  private Integer location;
+  private Long location;
 
   public SeoKeywordIn() {
   }
@@ -116,7 +116,7 @@ public class SeoKeywordIn {
   }
 
 
-  public SeoKeywordIn location(@javax.annotation.Nullable Integer location) {
+  public SeoKeywordIn location(@javax.annotation.Nullable Long location) {
     this.location = location;
     return this;
   }
@@ -126,11 +126,11 @@ public class SeoKeywordIn {
    * @return location
    */
   @javax.annotation.Nullable
-  public Integer getLocation() {
+  public Long getLocation() {
     return location;
   }
 
-  public void setLocation(@javax.annotation.Nullable Integer location) {
+  public void setLocation(@javax.annotation.Nullable Long location) {
     this.location = location;
   }
 

@@ -58,7 +58,7 @@ public class Token {
   public static final String SERIALIZED_NAME_DECIMALS = "decimals";
   @SerializedName(SERIALIZED_NAME_DECIMALS)
   @javax.annotation.Nullable
-  private Integer decimals;
+  private Long decimals;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -92,7 +92,7 @@ public class Token {
   }
 
 
-  public Token decimals(@javax.annotation.Nullable Integer decimals) {
+  public Token decimals(@javax.annotation.Nullable Long decimals) {
     this.decimals = decimals;
     return this;
   }
@@ -102,11 +102,11 @@ public class Token {
    * @return decimals
    */
   @javax.annotation.Nullable
-  public Integer getDecimals() {
+  public Long getDecimals() {
     return decimals;
   }
 
-  public void setDecimals(@javax.annotation.Nullable Integer decimals) {
+  public void setDecimals(@javax.annotation.Nullable Long decimals) {
     this.decimals = decimals;
   }
 

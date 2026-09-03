@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -59,7 +58,7 @@ public class O11yO11yDependency {
   public static final String SERIALIZED_NAME_CALL_RATE = "callRate";
   @SerializedName(SERIALIZED_NAME_CALL_RATE)
   @javax.annotation.Nullable
-  private BigDecimal callRate;
+  private Double callRate;
 
   public static final String SERIALIZED_NAME_CHILD = "child";
   @SerializedName(SERIALIZED_NAME_CHILD)
@@ -69,32 +68,32 @@ public class O11yO11yDependency {
   public static final String SERIALIZED_NAME_ERROR_RATE = "errorRate";
   @SerializedName(SERIALIZED_NAME_ERROR_RATE)
   @javax.annotation.Nullable
-  private BigDecimal errorRate;
+  private Double errorRate;
 
   public static final String SERIALIZED_NAME_P50 = "p50";
   @SerializedName(SERIALIZED_NAME_P50)
   @javax.annotation.Nullable
-  private BigDecimal p50;
+  private Double p50;
 
   public static final String SERIALIZED_NAME_P75 = "p75";
   @SerializedName(SERIALIZED_NAME_P75)
   @javax.annotation.Nullable
-  private BigDecimal p75;
+  private Double p75;
 
   public static final String SERIALIZED_NAME_P90 = "p90";
   @SerializedName(SERIALIZED_NAME_P90)
   @javax.annotation.Nullable
-  private BigDecimal p90;
+  private Double p90;
 
   public static final String SERIALIZED_NAME_P95 = "p95";
   @SerializedName(SERIALIZED_NAME_P95)
   @javax.annotation.Nullable
-  private BigDecimal p95;
+  private Double p95;
 
   public static final String SERIALIZED_NAME_P99 = "p99";
   @SerializedName(SERIALIZED_NAME_P99)
   @javax.annotation.Nullable
-  private BigDecimal p99;
+  private Double p99;
 
   public static final String SERIALIZED_NAME_PARENT = "parent";
   @SerializedName(SERIALIZED_NAME_PARENT)
@@ -123,7 +122,7 @@ public class O11yO11yDependency {
   }
 
 
-  public O11yO11yDependency callRate(@javax.annotation.Nullable BigDecimal callRate) {
+  public O11yO11yDependency callRate(@javax.annotation.Nullable Double callRate) {
     this.callRate = callRate;
     return this;
   }
@@ -133,11 +132,11 @@ public class O11yO11yDependency {
    * @return callRate
    */
   @javax.annotation.Nullable
-  public BigDecimal getCallRate() {
+  public Double getCallRate() {
     return callRate;
   }
 
-  public void setCallRate(@javax.annotation.Nullable BigDecimal callRate) {
+  public void setCallRate(@javax.annotation.Nullable Double callRate) {
     this.callRate = callRate;
   }
 
@@ -161,7 +160,7 @@ public class O11yO11yDependency {
   }
 
 
-  public O11yO11yDependency errorRate(@javax.annotation.Nullable BigDecimal errorRate) {
+  public O11yO11yDependency errorRate(@javax.annotation.Nullable Double errorRate) {
     this.errorRate = errorRate;
     return this;
   }
@@ -171,16 +170,16 @@ public class O11yO11yDependency {
    * @return errorRate
    */
   @javax.annotation.Nullable
-  public BigDecimal getErrorRate() {
+  public Double getErrorRate() {
     return errorRate;
   }
 
-  public void setErrorRate(@javax.annotation.Nullable BigDecimal errorRate) {
+  public void setErrorRate(@javax.annotation.Nullable Double errorRate) {
     this.errorRate = errorRate;
   }
 
 
-  public O11yO11yDependency p50(@javax.annotation.Nullable BigDecimal p50) {
+  public O11yO11yDependency p50(@javax.annotation.Nullable Double p50) {
     this.p50 = p50;
     return this;
   }
@@ -190,16 +189,16 @@ public class O11yO11yDependency {
    * @return p50
    */
   @javax.annotation.Nullable
-  public BigDecimal getP50() {
+  public Double getP50() {
     return p50;
   }
 
-  public void setP50(@javax.annotation.Nullable BigDecimal p50) {
+  public void setP50(@javax.annotation.Nullable Double p50) {
     this.p50 = p50;
   }
 
 
-  public O11yO11yDependency p75(@javax.annotation.Nullable BigDecimal p75) {
+  public O11yO11yDependency p75(@javax.annotation.Nullable Double p75) {
     this.p75 = p75;
     return this;
   }
@@ -209,16 +208,16 @@ public class O11yO11yDependency {
    * @return p75
    */
   @javax.annotation.Nullable
-  public BigDecimal getP75() {
+  public Double getP75() {
     return p75;
   }
 
-  public void setP75(@javax.annotation.Nullable BigDecimal p75) {
+  public void setP75(@javax.annotation.Nullable Double p75) {
     this.p75 = p75;
   }
 
 
-  public O11yO11yDependency p90(@javax.annotation.Nullable BigDecimal p90) {
+  public O11yO11yDependency p90(@javax.annotation.Nullable Double p90) {
     this.p90 = p90;
     return this;
   }
@@ -228,16 +227,16 @@ public class O11yO11yDependency {
    * @return p90
    */
   @javax.annotation.Nullable
-  public BigDecimal getP90() {
+  public Double getP90() {
     return p90;
   }
 
-  public void setP90(@javax.annotation.Nullable BigDecimal p90) {
+  public void setP90(@javax.annotation.Nullable Double p90) {
     this.p90 = p90;
   }
 
 
-  public O11yO11yDependency p95(@javax.annotation.Nullable BigDecimal p95) {
+  public O11yO11yDependency p95(@javax.annotation.Nullable Double p95) {
     this.p95 = p95;
     return this;
   }
@@ -247,16 +246,16 @@ public class O11yO11yDependency {
    * @return p95
    */
   @javax.annotation.Nullable
-  public BigDecimal getP95() {
+  public Double getP95() {
     return p95;
   }
 
-  public void setP95(@javax.annotation.Nullable BigDecimal p95) {
+  public void setP95(@javax.annotation.Nullable Double p95) {
     this.p95 = p95;
   }
 
 
-  public O11yO11yDependency p99(@javax.annotation.Nullable BigDecimal p99) {
+  public O11yO11yDependency p99(@javax.annotation.Nullable Double p99) {
     this.p99 = p99;
     return this;
   }
@@ -266,11 +265,11 @@ public class O11yO11yDependency {
    * @return p99
    */
   @javax.annotation.Nullable
-  public BigDecimal getP99() {
+  public Double getP99() {
     return p99;
   }
 
-  public void setP99(@javax.annotation.Nullable BigDecimal p99) {
+  public void setP99(@javax.annotation.Nullable Double p99) {
     this.p99 = p99;
   }
 

@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -54,7 +53,7 @@ public class RunRecord {
   public static final String SERIALIZED_NAME_AVG_SCORE = "avgScore";
   @SerializedName(SERIALIZED_NAME_AVG_SCORE)
   @javax.annotation.Nullable
-  private BigDecimal avgScore;
+  private Double avgScore;
 
   public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
@@ -69,7 +68,7 @@ public class RunRecord {
   public static final String SERIALIZED_NAME_ITEMS = "items";
   @SerializedName(SERIALIZED_NAME_ITEMS)
   @javax.annotation.Nullable
-  private Integer items;
+  private Long items;
 
   public static final String SERIALIZED_NAME_JUDGE_MODEL = "judgeModel";
   @SerializedName(SERIALIZED_NAME_JUDGE_MODEL)
@@ -89,7 +88,7 @@ public class RunRecord {
   public static final String SERIALIZED_NAME_SCORED = "scored";
   @SerializedName(SERIALIZED_NAME_SCORED)
   @javax.annotation.Nullable
-  private Integer scored;
+  private Long scored;
 
   public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)
@@ -99,7 +98,7 @@ public class RunRecord {
   public RunRecord() {
   }
 
-  public RunRecord avgScore(@javax.annotation.Nullable BigDecimal avgScore) {
+  public RunRecord avgScore(@javax.annotation.Nullable Double avgScore) {
     this.avgScore = avgScore;
     return this;
   }
@@ -109,11 +108,11 @@ public class RunRecord {
    * @return avgScore
    */
   @javax.annotation.Nullable
-  public BigDecimal getAvgScore() {
+  public Double getAvgScore() {
     return avgScore;
   }
 
-  public void setAvgScore(@javax.annotation.Nullable BigDecimal avgScore) {
+  public void setAvgScore(@javax.annotation.Nullable Double avgScore) {
     this.avgScore = avgScore;
   }
 
@@ -156,7 +155,7 @@ public class RunRecord {
   }
 
 
-  public RunRecord items(@javax.annotation.Nullable Integer items) {
+  public RunRecord items(@javax.annotation.Nullable Long items) {
     this.items = items;
     return this;
   }
@@ -166,11 +165,11 @@ public class RunRecord {
    * @return items
    */
   @javax.annotation.Nullable
-  public Integer getItems() {
+  public Long getItems() {
     return items;
   }
 
-  public void setItems(@javax.annotation.Nullable Integer items) {
+  public void setItems(@javax.annotation.Nullable Long items) {
     this.items = items;
   }
 
@@ -232,7 +231,7 @@ public class RunRecord {
   }
 
 
-  public RunRecord scored(@javax.annotation.Nullable Integer scored) {
+  public RunRecord scored(@javax.annotation.Nullable Long scored) {
     this.scored = scored;
     return this;
   }
@@ -242,11 +241,11 @@ public class RunRecord {
    * @return scored
    */
   @javax.annotation.Nullable
-  public Integer getScored() {
+  public Long getScored() {
     return scored;
   }
 
-  public void setScored(@javax.annotation.Nullable Integer scored) {
+  public void setScored(@javax.annotation.Nullable Long scored) {
     this.scored = scored;
   }
 

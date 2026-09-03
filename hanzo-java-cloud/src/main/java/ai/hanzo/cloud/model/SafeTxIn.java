@@ -53,7 +53,7 @@ public class SafeTxIn {
   public static final String SERIALIZED_NAME_CHAIN_ID = "chainId";
   @SerializedName(SERIALIZED_NAME_CHAIN_ID)
   @javax.annotation.Nullable
-  private Integer chainId;
+  private Long chainId;
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
@@ -63,7 +63,7 @@ public class SafeTxIn {
   public static final String SERIALIZED_NAME_NONCE = "nonce";
   @SerializedName(SERIALIZED_NAME_NONCE)
   @javax.annotation.Nullable
-  private Integer nonce;
+  private Long nonce;
 
   public static final String SERIALIZED_NAME_TO = "to";
   @SerializedName(SERIALIZED_NAME_TO)
@@ -78,7 +78,7 @@ public class SafeTxIn {
   public SafeTxIn() {
   }
 
-  public SafeTxIn chainId(@javax.annotation.Nullable Integer chainId) {
+  public SafeTxIn chainId(@javax.annotation.Nullable Long chainId) {
     this.chainId = chainId;
     return this;
   }
@@ -88,11 +88,11 @@ public class SafeTxIn {
    * @return chainId
    */
   @javax.annotation.Nullable
-  public Integer getChainId() {
+  public Long getChainId() {
     return chainId;
   }
 
-  public void setChainId(@javax.annotation.Nullable Integer chainId) {
+  public void setChainId(@javax.annotation.Nullable Long chainId) {
     this.chainId = chainId;
   }
 
@@ -116,7 +116,7 @@ public class SafeTxIn {
   }
 
 
-  public SafeTxIn nonce(@javax.annotation.Nullable Integer nonce) {
+  public SafeTxIn nonce(@javax.annotation.Nullable Long nonce) {
     this.nonce = nonce;
     return this;
   }
@@ -126,11 +126,11 @@ public class SafeTxIn {
    * @return nonce
    */
   @javax.annotation.Nullable
-  public Integer getNonce() {
+  public Long getNonce() {
     return nonce;
   }
 
-  public void setNonce(@javax.annotation.Nullable Integer nonce) {
+  public void setNonce(@javax.annotation.Nullable Long nonce) {
     this.nonce = nonce;
   }
 

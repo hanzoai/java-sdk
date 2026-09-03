@@ -68,7 +68,7 @@ public class IndexEnqueued {
   public static final String SERIALIZED_NAME_TASK_UID = "taskUid";
   @SerializedName(SERIALIZED_NAME_TASK_UID)
   @javax.annotation.Nullable
-  private Integer taskUid;
+  private Long taskUid;
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
@@ -135,7 +135,7 @@ public class IndexEnqueued {
   }
 
 
-  public IndexEnqueued taskUid(@javax.annotation.Nullable Integer taskUid) {
+  public IndexEnqueued taskUid(@javax.annotation.Nullable Long taskUid) {
     this.taskUid = taskUid;
     return this;
   }
@@ -145,11 +145,11 @@ public class IndexEnqueued {
    * @return taskUid
    */
   @javax.annotation.Nullable
-  public Integer getTaskUid() {
+  public Long getTaskUid() {
     return taskUid;
   }
 
-  public void setTaskUid(@javax.annotation.Nullable Integer taskUid) {
+  public void setTaskUid(@javax.annotation.Nullable Long taskUid) {
     this.taskUid = taskUid;
   }
 

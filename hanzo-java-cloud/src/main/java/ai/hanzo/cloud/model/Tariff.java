@@ -61,7 +61,7 @@ public class Tariff {
   public static final String SERIALIZED_NAME_DUE_NOW_CENTS = "dueNowCents";
   @SerializedName(SERIALIZED_NAME_DUE_NOW_CENTS)
   @javax.annotation.Nullable
-  private Integer dueNowCents;
+  private Long dueNowCents;
 
   public static final String SERIALIZED_NAME_JURISDICTION = "jurisdiction";
   @SerializedName(SERIALIZED_NAME_JURISDICTION)
@@ -81,7 +81,7 @@ public class Tariff {
   public static final String SERIALIZED_NAME_RECURRING_CENTS = "recurringCents";
   @SerializedName(SERIALIZED_NAME_RECURRING_CENTS)
   @javax.annotation.Nullable
-  private Integer recurringCents;
+  private Long recurringCents;
 
   public static final String SERIALIZED_NAME_STRUCTURE = "structure";
   @SerializedName(SERIALIZED_NAME_STRUCTURE)
@@ -110,7 +110,7 @@ public class Tariff {
   }
 
 
-  public Tariff dueNowCents(@javax.annotation.Nullable Integer dueNowCents) {
+  public Tariff dueNowCents(@javax.annotation.Nullable Long dueNowCents) {
     this.dueNowCents = dueNowCents;
     return this;
   }
@@ -120,11 +120,11 @@ public class Tariff {
    * @return dueNowCents
    */
   @javax.annotation.Nullable
-  public Integer getDueNowCents() {
+  public Long getDueNowCents() {
     return dueNowCents;
   }
 
-  public void setDueNowCents(@javax.annotation.Nullable Integer dueNowCents) {
+  public void setDueNowCents(@javax.annotation.Nullable Long dueNowCents) {
     this.dueNowCents = dueNowCents;
   }
 
@@ -194,7 +194,7 @@ public class Tariff {
   }
 
 
-  public Tariff recurringCents(@javax.annotation.Nullable Integer recurringCents) {
+  public Tariff recurringCents(@javax.annotation.Nullable Long recurringCents) {
     this.recurringCents = recurringCents;
     return this;
   }
@@ -204,11 +204,11 @@ public class Tariff {
    * @return recurringCents
    */
   @javax.annotation.Nullable
-  public Integer getRecurringCents() {
+  public Long getRecurringCents() {
     return recurringCents;
   }
 
-  public void setRecurringCents(@javax.annotation.Nullable Integer recurringCents) {
+  public void setRecurringCents(@javax.annotation.Nullable Long recurringCents) {
     this.recurringCents = recurringCents;
   }
 

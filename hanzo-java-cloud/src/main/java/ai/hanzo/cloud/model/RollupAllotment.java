@@ -53,27 +53,27 @@ public class RollupAllotment {
   public static final String SERIALIZED_NAME_CONSUMED_CENTS = "consumedCents";
   @SerializedName(SERIALIZED_NAME_CONSUMED_CENTS)
   @javax.annotation.Nullable
-  private Integer consumedCents;
+  private Long consumedCents;
 
   public static final String SERIALIZED_NAME_GRANTED_CENTS = "grantedCents";
   @SerializedName(SERIALIZED_NAME_GRANTED_CENTS)
   @javax.annotation.Nullable
-  private Integer grantedCents;
+  private Long grantedCents;
 
   public static final String SERIALIZED_NAME_MONTHLY_CENTS = "monthlyCents";
   @SerializedName(SERIALIZED_NAME_MONTHLY_CENTS)
   @javax.annotation.Nullable
-  private Integer monthlyCents;
+  private Long monthlyCents;
 
   public static final String SERIALIZED_NAME_REMAINING_CENTS = "remainingCents";
   @SerializedName(SERIALIZED_NAME_REMAINING_CENTS)
   @javax.annotation.Nullable
-  private Integer remainingCents;
+  private Long remainingCents;
 
   public RollupAllotment() {
   }
 
-  public RollupAllotment consumedCents(@javax.annotation.Nullable Integer consumedCents) {
+  public RollupAllotment consumedCents(@javax.annotation.Nullable Long consumedCents) {
     this.consumedCents = consumedCents;
     return this;
   }
@@ -83,16 +83,16 @@ public class RollupAllotment {
    * @return consumedCents
    */
   @javax.annotation.Nullable
-  public Integer getConsumedCents() {
+  public Long getConsumedCents() {
     return consumedCents;
   }
 
-  public void setConsumedCents(@javax.annotation.Nullable Integer consumedCents) {
+  public void setConsumedCents(@javax.annotation.Nullable Long consumedCents) {
     this.consumedCents = consumedCents;
   }
 
 
-  public RollupAllotment grantedCents(@javax.annotation.Nullable Integer grantedCents) {
+  public RollupAllotment grantedCents(@javax.annotation.Nullable Long grantedCents) {
     this.grantedCents = grantedCents;
     return this;
   }
@@ -102,16 +102,16 @@ public class RollupAllotment {
    * @return grantedCents
    */
   @javax.annotation.Nullable
-  public Integer getGrantedCents() {
+  public Long getGrantedCents() {
     return grantedCents;
   }
 
-  public void setGrantedCents(@javax.annotation.Nullable Integer grantedCents) {
+  public void setGrantedCents(@javax.annotation.Nullable Long grantedCents) {
     this.grantedCents = grantedCents;
   }
 
 
-  public RollupAllotment monthlyCents(@javax.annotation.Nullable Integer monthlyCents) {
+  public RollupAllotment monthlyCents(@javax.annotation.Nullable Long monthlyCents) {
     this.monthlyCents = monthlyCents;
     return this;
   }
@@ -121,16 +121,16 @@ public class RollupAllotment {
    * @return monthlyCents
    */
   @javax.annotation.Nullable
-  public Integer getMonthlyCents() {
+  public Long getMonthlyCents() {
     return monthlyCents;
   }
 
-  public void setMonthlyCents(@javax.annotation.Nullable Integer monthlyCents) {
+  public void setMonthlyCents(@javax.annotation.Nullable Long monthlyCents) {
     this.monthlyCents = monthlyCents;
   }
 
 
-  public RollupAllotment remainingCents(@javax.annotation.Nullable Integer remainingCents) {
+  public RollupAllotment remainingCents(@javax.annotation.Nullable Long remainingCents) {
     this.remainingCents = remainingCents;
     return this;
   }
@@ -140,11 +140,11 @@ public class RollupAllotment {
    * @return remainingCents
    */
   @javax.annotation.Nullable
-  public Integer getRemainingCents() {
+  public Long getRemainingCents() {
     return remainingCents;
   }
 
-  public void setRemainingCents(@javax.annotation.Nullable Integer remainingCents) {
+  public void setRemainingCents(@javax.annotation.Nullable Long remainingCents) {
     this.remainingCents = remainingCents;
   }
 

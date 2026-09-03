@@ -88,7 +88,7 @@ public class MemoryEntry {
   public static final String SERIALIZED_NAME_UPDATED_AT = "updated_at";
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)
   @javax.annotation.Nullable
-  private Integer updatedAt;
+  private Long updatedAt;
 
   public MemoryEntry() {
   }
@@ -226,7 +226,7 @@ public class MemoryEntry {
   }
 
 
-  public MemoryEntry updatedAt(@javax.annotation.Nullable Integer updatedAt) {
+  public MemoryEntry updatedAt(@javax.annotation.Nullable Long updatedAt) {
     this.updatedAt = updatedAt;
     return this;
   }
@@ -236,11 +236,11 @@ public class MemoryEntry {
    * @return updatedAt
    */
   @javax.annotation.Nullable
-  public Integer getUpdatedAt() {
+  public Long getUpdatedAt() {
     return updatedAt;
   }
 
-  public void setUpdatedAt(@javax.annotation.Nullable Integer updatedAt) {
+  public void setUpdatedAt(@javax.annotation.Nullable Long updatedAt) {
     this.updatedAt = updatedAt;
   }
 

@@ -111,7 +111,7 @@ public class AgentDetail {
   public static final String SERIALIZED_NAME_RUNS = "runs";
   @SerializedName(SERIALIZED_NAME_RUNS)
   @javax.annotation.Nullable
-  private Integer runs;
+  private Long runs;
 
   public static final String SERIALIZED_NAME_SCHEDULE = "schedule";
   @SerializedName(SERIALIZED_NAME_SCHEDULE)
@@ -358,7 +358,7 @@ public class AgentDetail {
   }
 
 
-  public AgentDetail runs(@javax.annotation.Nullable Integer runs) {
+  public AgentDetail runs(@javax.annotation.Nullable Long runs) {
     this.runs = runs;
     return this;
   }
@@ -368,11 +368,11 @@ public class AgentDetail {
    * @return runs
    */
   @javax.annotation.Nullable
-  public Integer getRuns() {
+  public Long getRuns() {
     return runs;
   }
 
-  public void setRuns(@javax.annotation.Nullable Integer runs) {
+  public void setRuns(@javax.annotation.Nullable Long runs) {
     this.runs = runs;
   }
 

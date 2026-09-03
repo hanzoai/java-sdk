@@ -79,7 +79,7 @@ public class LicensingIssueRequest {
   public static final String SERIALIZED_NAME_TTL_SECONDS = "ttl_seconds";
   @SerializedName(SERIALIZED_NAME_TTL_SECONDS)
   @javax.annotation.Nullable
-  private Integer ttlSeconds;
+  private Long ttlSeconds;
 
   public LicensingIssueRequest() {
   }
@@ -179,7 +179,7 @@ public class LicensingIssueRequest {
   }
 
 
-  public LicensingIssueRequest ttlSeconds(@javax.annotation.Nullable Integer ttlSeconds) {
+  public LicensingIssueRequest ttlSeconds(@javax.annotation.Nullable Long ttlSeconds) {
     this.ttlSeconds = ttlSeconds;
     return this;
   }
@@ -189,11 +189,11 @@ public class LicensingIssueRequest {
    * @return ttlSeconds
    */
   @javax.annotation.Nullable
-  public Integer getTtlSeconds() {
+  public Long getTtlSeconds() {
     return ttlSeconds;
   }
 
-  public void setTtlSeconds(@javax.annotation.Nullable Integer ttlSeconds) {
+  public void setTtlSeconds(@javax.annotation.Nullable Long ttlSeconds) {
     this.ttlSeconds = ttlSeconds;
   }
 

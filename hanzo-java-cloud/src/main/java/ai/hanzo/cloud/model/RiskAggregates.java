@@ -53,12 +53,12 @@ public class RiskAggregates {
   public static final String SERIALIZED_NAME_BOUND = "bound";
   @SerializedName(SERIALIZED_NAME_BOUND)
   @javax.annotation.Nullable
-  private Integer bound;
+  private Long bound;
 
   public static final String SERIALIZED_NAME_FORGOTTEN = "forgotten";
   @SerializedName(SERIALIZED_NAME_FORGOTTEN)
   @javax.annotation.Nullable
-  private Integer forgotten;
+  private Long forgotten;
 
   public static final String SERIALIZED_NAME_SATURATED = "saturated";
   @SerializedName(SERIALIZED_NAME_SATURATED)
@@ -68,12 +68,12 @@ public class RiskAggregates {
   public static final String SERIALIZED_NAME_SUBJECTS = "subjects";
   @SerializedName(SERIALIZED_NAME_SUBJECTS)
   @javax.annotation.Nullable
-  private Integer subjects;
+  private Long subjects;
 
   public RiskAggregates() {
   }
 
-  public RiskAggregates bound(@javax.annotation.Nullable Integer bound) {
+  public RiskAggregates bound(@javax.annotation.Nullable Long bound) {
     this.bound = bound;
     return this;
   }
@@ -83,16 +83,16 @@ public class RiskAggregates {
    * @return bound
    */
   @javax.annotation.Nullable
-  public Integer getBound() {
+  public Long getBound() {
     return bound;
   }
 
-  public void setBound(@javax.annotation.Nullable Integer bound) {
+  public void setBound(@javax.annotation.Nullable Long bound) {
     this.bound = bound;
   }
 
 
-  public RiskAggregates forgotten(@javax.annotation.Nullable Integer forgotten) {
+  public RiskAggregates forgotten(@javax.annotation.Nullable Long forgotten) {
     this.forgotten = forgotten;
     return this;
   }
@@ -102,11 +102,11 @@ public class RiskAggregates {
    * @return forgotten
    */
   @javax.annotation.Nullable
-  public Integer getForgotten() {
+  public Long getForgotten() {
     return forgotten;
   }
 
-  public void setForgotten(@javax.annotation.Nullable Integer forgotten) {
+  public void setForgotten(@javax.annotation.Nullable Long forgotten) {
     this.forgotten = forgotten;
   }
 
@@ -130,7 +130,7 @@ public class RiskAggregates {
   }
 
 
-  public RiskAggregates subjects(@javax.annotation.Nullable Integer subjects) {
+  public RiskAggregates subjects(@javax.annotation.Nullable Long subjects) {
     this.subjects = subjects;
     return this;
   }
@@ -140,11 +140,11 @@ public class RiskAggregates {
    * @return subjects
    */
   @javax.annotation.Nullable
-  public Integer getSubjects() {
+  public Long getSubjects() {
     return subjects;
   }
 
-  public void setSubjects(@javax.annotation.Nullable Integer subjects) {
+  public void setSubjects(@javax.annotation.Nullable Long subjects) {
     this.subjects = subjects;
   }
 

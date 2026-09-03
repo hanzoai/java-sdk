@@ -53,17 +53,17 @@ public class O11yNodeCountsByReadiness {
   public static final String SERIALIZED_NAME_NOT_READY = "notReady";
   @SerializedName(SERIALIZED_NAME_NOT_READY)
   @javax.annotation.Nullable
-  private Integer notReady;
+  private Long notReady;
 
   public static final String SERIALIZED_NAME_READY = "ready";
   @SerializedName(SERIALIZED_NAME_READY)
   @javax.annotation.Nullable
-  private Integer ready;
+  private Long ready;
 
   public O11yNodeCountsByReadiness() {
   }
 
-  public O11yNodeCountsByReadiness notReady(@javax.annotation.Nullable Integer notReady) {
+  public O11yNodeCountsByReadiness notReady(@javax.annotation.Nullable Long notReady) {
     this.notReady = notReady;
     return this;
   }
@@ -73,16 +73,16 @@ public class O11yNodeCountsByReadiness {
    * @return notReady
    */
   @javax.annotation.Nullable
-  public Integer getNotReady() {
+  public Long getNotReady() {
     return notReady;
   }
 
-  public void setNotReady(@javax.annotation.Nullable Integer notReady) {
+  public void setNotReady(@javax.annotation.Nullable Long notReady) {
     this.notReady = notReady;
   }
 
 
-  public O11yNodeCountsByReadiness ready(@javax.annotation.Nullable Integer ready) {
+  public O11yNodeCountsByReadiness ready(@javax.annotation.Nullable Long ready) {
     this.ready = ready;
     return this;
   }
@@ -92,11 +92,11 @@ public class O11yNodeCountsByReadiness {
    * @return ready
    */
   @javax.annotation.Nullable
-  public Integer getReady() {
+  public Long getReady() {
     return ready;
   }
 
-  public void setReady(@javax.annotation.Nullable Integer ready) {
+  public void setReady(@javax.annotation.Nullable Long ready) {
     this.ready = ready;
   }
 

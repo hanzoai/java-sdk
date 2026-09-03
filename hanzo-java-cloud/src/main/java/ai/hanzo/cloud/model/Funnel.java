@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -59,32 +58,32 @@ public class Funnel {
   public static final String SERIALIZED_NAME_ORDERS = "orders";
   @SerializedName(SERIALIZED_NAME_ORDERS)
   @javax.annotation.Nullable
-  private Integer orders;
+  private Long orders;
 
   public static final String SERIALIZED_NAME_PAGEVIEWS = "pageviews";
   @SerializedName(SERIALIZED_NAME_PAGEVIEWS)
   @javax.annotation.Nullable
-  private Integer pageviews;
+  private Long pageviews;
 
   public static final String SERIALIZED_NAME_REVENUE = "revenue";
   @SerializedName(SERIALIZED_NAME_REVENUE)
   @javax.annotation.Nullable
-  private BigDecimal revenue;
+  private Double revenue;
 
   public static final String SERIALIZED_NAME_SIGNUPS = "signups";
   @SerializedName(SERIALIZED_NAME_SIGNUPS)
   @javax.annotation.Nullable
-  private Integer signups;
+  private Long signups;
 
   public static final String SERIALIZED_NAME_VISITORS = "visitors";
   @SerializedName(SERIALIZED_NAME_VISITORS)
   @javax.annotation.Nullable
-  private Integer visitors;
+  private Long visitors;
 
   public static final String SERIALIZED_NAME_WINDOW_DAYS = "windowDays";
   @SerializedName(SERIALIZED_NAME_WINDOW_DAYS)
   @javax.annotation.Nullable
-  private Integer windowDays;
+  private Long windowDays;
 
   public Funnel() {
   }
@@ -108,7 +107,7 @@ public class Funnel {
   }
 
 
-  public Funnel orders(@javax.annotation.Nullable Integer orders) {
+  public Funnel orders(@javax.annotation.Nullable Long orders) {
     this.orders = orders;
     return this;
   }
@@ -118,16 +117,16 @@ public class Funnel {
    * @return orders
    */
   @javax.annotation.Nullable
-  public Integer getOrders() {
+  public Long getOrders() {
     return orders;
   }
 
-  public void setOrders(@javax.annotation.Nullable Integer orders) {
+  public void setOrders(@javax.annotation.Nullable Long orders) {
     this.orders = orders;
   }
 
 
-  public Funnel pageviews(@javax.annotation.Nullable Integer pageviews) {
+  public Funnel pageviews(@javax.annotation.Nullable Long pageviews) {
     this.pageviews = pageviews;
     return this;
   }
@@ -137,16 +136,16 @@ public class Funnel {
    * @return pageviews
    */
   @javax.annotation.Nullable
-  public Integer getPageviews() {
+  public Long getPageviews() {
     return pageviews;
   }
 
-  public void setPageviews(@javax.annotation.Nullable Integer pageviews) {
+  public void setPageviews(@javax.annotation.Nullable Long pageviews) {
     this.pageviews = pageviews;
   }
 
 
-  public Funnel revenue(@javax.annotation.Nullable BigDecimal revenue) {
+  public Funnel revenue(@javax.annotation.Nullable Double revenue) {
     this.revenue = revenue;
     return this;
   }
@@ -156,16 +155,16 @@ public class Funnel {
    * @return revenue
    */
   @javax.annotation.Nullable
-  public BigDecimal getRevenue() {
+  public Double getRevenue() {
     return revenue;
   }
 
-  public void setRevenue(@javax.annotation.Nullable BigDecimal revenue) {
+  public void setRevenue(@javax.annotation.Nullable Double revenue) {
     this.revenue = revenue;
   }
 
 
-  public Funnel signups(@javax.annotation.Nullable Integer signups) {
+  public Funnel signups(@javax.annotation.Nullable Long signups) {
     this.signups = signups;
     return this;
   }
@@ -175,16 +174,16 @@ public class Funnel {
    * @return signups
    */
   @javax.annotation.Nullable
-  public Integer getSignups() {
+  public Long getSignups() {
     return signups;
   }
 
-  public void setSignups(@javax.annotation.Nullable Integer signups) {
+  public void setSignups(@javax.annotation.Nullable Long signups) {
     this.signups = signups;
   }
 
 
-  public Funnel visitors(@javax.annotation.Nullable Integer visitors) {
+  public Funnel visitors(@javax.annotation.Nullable Long visitors) {
     this.visitors = visitors;
     return this;
   }
@@ -194,16 +193,16 @@ public class Funnel {
    * @return visitors
    */
   @javax.annotation.Nullable
-  public Integer getVisitors() {
+  public Long getVisitors() {
     return visitors;
   }
 
-  public void setVisitors(@javax.annotation.Nullable Integer visitors) {
+  public void setVisitors(@javax.annotation.Nullable Long visitors) {
     this.visitors = visitors;
   }
 
 
-  public Funnel windowDays(@javax.annotation.Nullable Integer windowDays) {
+  public Funnel windowDays(@javax.annotation.Nullable Long windowDays) {
     this.windowDays = windowDays;
     return this;
   }
@@ -213,11 +212,11 @@ public class Funnel {
    * @return windowDays
    */
   @javax.annotation.Nullable
-  public Integer getWindowDays() {
+  public Long getWindowDays() {
     return windowDays;
   }
 
-  public void setWindowDays(@javax.annotation.Nullable Integer windowDays) {
+  public void setWindowDays(@javax.annotation.Nullable Long windowDays) {
     this.windowDays = windowDays;
   }
 

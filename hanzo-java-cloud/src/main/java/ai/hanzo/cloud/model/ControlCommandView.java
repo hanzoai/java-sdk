@@ -69,7 +69,7 @@ public class ControlCommandView {
   public static final String SERIALIZED_NAME_SEQ = "seq";
   @SerializedName(SERIALIZED_NAME_SEQ)
   @javax.annotation.Nullable
-  private Integer seq;
+  private Long seq;
 
   public ControlCommandView() {
   }
@@ -131,7 +131,7 @@ public class ControlCommandView {
   }
 
 
-  public ControlCommandView seq(@javax.annotation.Nullable Integer seq) {
+  public ControlCommandView seq(@javax.annotation.Nullable Long seq) {
     this.seq = seq;
     return this;
   }
@@ -141,11 +141,11 @@ public class ControlCommandView {
    * @return seq
    */
   @javax.annotation.Nullable
-  public Integer getSeq() {
+  public Long getSeq() {
     return seq;
   }
 
-  public void setSeq(@javax.annotation.Nullable Integer seq) {
+  public void setSeq(@javax.annotation.Nullable Long seq) {
     this.seq = seq;
   }
 

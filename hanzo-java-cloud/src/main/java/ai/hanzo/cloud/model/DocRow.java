@@ -98,7 +98,7 @@ public class DocRow {
   public static final String SERIALIZED_NAME_UPDATED = "updated";
   @SerializedName(SERIALIZED_NAME_UPDATED)
   @javax.annotation.Nullable
-  private Integer updated;
+  private Long updated;
 
   public DocRow() {
   }
@@ -274,7 +274,7 @@ public class DocRow {
   }
 
 
-  public DocRow updated(@javax.annotation.Nullable Integer updated) {
+  public DocRow updated(@javax.annotation.Nullable Long updated) {
     this.updated = updated;
     return this;
   }
@@ -284,11 +284,11 @@ public class DocRow {
    * @return updated
    */
   @javax.annotation.Nullable
-  public Integer getUpdated() {
+  public Long getUpdated() {
     return updated;
   }
 
-  public void setUpdated(@javax.annotation.Nullable Integer updated) {
+  public void setUpdated(@javax.annotation.Nullable Long updated) {
     this.updated = updated;
   }
 

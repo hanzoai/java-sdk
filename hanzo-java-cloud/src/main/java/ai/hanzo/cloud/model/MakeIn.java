@@ -84,12 +84,12 @@ public class MakeIn {
   public static final String SERIALIZED_NAME_MAX_ACK_PENDING = "max_ack_pending";
   @SerializedName(SERIALIZED_NAME_MAX_ACK_PENDING)
   @javax.annotation.Nullable
-  private Integer maxAckPending;
+  private Long maxAckPending;
 
   public static final String SERIALIZED_NAME_MAX_DELIVER = "max_deliver";
   @SerializedName(SERIALIZED_NAME_MAX_DELIVER)
   @javax.annotation.Nullable
-  private Integer maxDeliver;
+  private Long maxDeliver;
 
   public static final String SERIALIZED_NAME_OPT_START_SEQ = "opt_start_seq";
   @SerializedName(SERIALIZED_NAME_OPT_START_SEQ)
@@ -228,7 +228,7 @@ public class MakeIn {
   }
 
 
-  public MakeIn maxAckPending(@javax.annotation.Nullable Integer maxAckPending) {
+  public MakeIn maxAckPending(@javax.annotation.Nullable Long maxAckPending) {
     this.maxAckPending = maxAckPending;
     return this;
   }
@@ -238,16 +238,16 @@ public class MakeIn {
    * @return maxAckPending
    */
   @javax.annotation.Nullable
-  public Integer getMaxAckPending() {
+  public Long getMaxAckPending() {
     return maxAckPending;
   }
 
-  public void setMaxAckPending(@javax.annotation.Nullable Integer maxAckPending) {
+  public void setMaxAckPending(@javax.annotation.Nullable Long maxAckPending) {
     this.maxAckPending = maxAckPending;
   }
 
 
-  public MakeIn maxDeliver(@javax.annotation.Nullable Integer maxDeliver) {
+  public MakeIn maxDeliver(@javax.annotation.Nullable Long maxDeliver) {
     this.maxDeliver = maxDeliver;
     return this;
   }
@@ -257,11 +257,11 @@ public class MakeIn {
    * @return maxDeliver
    */
   @javax.annotation.Nullable
-  public Integer getMaxDeliver() {
+  public Long getMaxDeliver() {
     return maxDeliver;
   }
 
-  public void setMaxDeliver(@javax.annotation.Nullable Integer maxDeliver) {
+  public void setMaxDeliver(@javax.annotation.Nullable Long maxDeliver) {
     this.maxDeliver = maxDeliver;
   }
 

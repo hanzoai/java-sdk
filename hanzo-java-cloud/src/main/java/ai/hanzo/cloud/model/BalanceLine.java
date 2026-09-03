@@ -58,7 +58,7 @@ public class BalanceLine {
   public static final String SERIALIZED_NAME_AMOUNT = "amount";
   @SerializedName(SERIALIZED_NAME_AMOUNT)
   @javax.annotation.Nullable
-  private Integer amount;
+  private Long amount;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -92,7 +92,7 @@ public class BalanceLine {
   }
 
 
-  public BalanceLine amount(@javax.annotation.Nullable Integer amount) {
+  public BalanceLine amount(@javax.annotation.Nullable Long amount) {
     this.amount = amount;
     return this;
   }
@@ -102,11 +102,11 @@ public class BalanceLine {
    * @return amount
    */
   @javax.annotation.Nullable
-  public Integer getAmount() {
+  public Long getAmount() {
     return amount;
   }
 
-  public void setAmount(@javax.annotation.Nullable Integer amount) {
+  public void setAmount(@javax.annotation.Nullable Long amount) {
     this.amount = amount;
   }
 

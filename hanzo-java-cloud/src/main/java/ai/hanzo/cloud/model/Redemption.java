@@ -58,7 +58,7 @@ public class Redemption {
   public static final String SERIALIZED_NAME_DISCOUNT_CENTS = "discountCents";
   @SerializedName(SERIALIZED_NAME_DISCOUNT_CENTS)
   @javax.annotation.Nullable
-  private Integer discountCents;
+  private Long discountCents;
 
   public static final String SERIALIZED_NAME_PLAN = "plan";
   @SerializedName(SERIALIZED_NAME_PLAN)
@@ -68,12 +68,12 @@ public class Redemption {
   public static final String SERIALIZED_NAME_REDEEMED_AT = "redeemedAt";
   @SerializedName(SERIALIZED_NAME_REDEEMED_AT)
   @javax.annotation.Nullable
-  private Integer redeemedAt;
+  private Long redeemedAt;
 
   public static final String SERIALIZED_NAME_SEATS = "seats";
   @SerializedName(SERIALIZED_NAME_SEATS)
   @javax.annotation.Nullable
-  private Integer seats;
+  private Long seats;
 
   public Redemption() {
   }
@@ -97,7 +97,7 @@ public class Redemption {
   }
 
 
-  public Redemption discountCents(@javax.annotation.Nullable Integer discountCents) {
+  public Redemption discountCents(@javax.annotation.Nullable Long discountCents) {
     this.discountCents = discountCents;
     return this;
   }
@@ -107,11 +107,11 @@ public class Redemption {
    * @return discountCents
    */
   @javax.annotation.Nullable
-  public Integer getDiscountCents() {
+  public Long getDiscountCents() {
     return discountCents;
   }
 
-  public void setDiscountCents(@javax.annotation.Nullable Integer discountCents) {
+  public void setDiscountCents(@javax.annotation.Nullable Long discountCents) {
     this.discountCents = discountCents;
   }
 
@@ -135,7 +135,7 @@ public class Redemption {
   }
 
 
-  public Redemption redeemedAt(@javax.annotation.Nullable Integer redeemedAt) {
+  public Redemption redeemedAt(@javax.annotation.Nullable Long redeemedAt) {
     this.redeemedAt = redeemedAt;
     return this;
   }
@@ -145,16 +145,16 @@ public class Redemption {
    * @return redeemedAt
    */
   @javax.annotation.Nullable
-  public Integer getRedeemedAt() {
+  public Long getRedeemedAt() {
     return redeemedAt;
   }
 
-  public void setRedeemedAt(@javax.annotation.Nullable Integer redeemedAt) {
+  public void setRedeemedAt(@javax.annotation.Nullable Long redeemedAt) {
     this.redeemedAt = redeemedAt;
   }
 
 
-  public Redemption seats(@javax.annotation.Nullable Integer seats) {
+  public Redemption seats(@javax.annotation.Nullable Long seats) {
     this.seats = seats;
     return this;
   }
@@ -164,11 +164,11 @@ public class Redemption {
    * @return seats
    */
   @javax.annotation.Nullable
-  public Integer getSeats() {
+  public Long getSeats() {
     return seats;
   }
 
-  public void setSeats(@javax.annotation.Nullable Integer seats) {
+  public void setSeats(@javax.annotation.Nullable Long seats) {
     this.seats = seats;
   }
 

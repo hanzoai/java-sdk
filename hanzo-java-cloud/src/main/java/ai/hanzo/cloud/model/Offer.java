@@ -73,12 +73,12 @@ public class Offer {
   public static final String SERIALIZED_NAME_PRICE_CENTS = "priceCents";
   @SerializedName(SERIALIZED_NAME_PRICE_CENTS)
   @javax.annotation.Nullable
-  private Integer priceCents;
+  private Long priceCents;
 
   public static final String SERIALIZED_NAME_RENEWAL_PRICE_CENTS = "renewalPriceCents";
   @SerializedName(SERIALIZED_NAME_RENEWAL_PRICE_CENTS)
   @javax.annotation.Nullable
-  private Integer renewalPriceCents;
+  private Long renewalPriceCents;
 
   public static final String SERIALIZED_NAME_TLD = "tld";
   @SerializedName(SERIALIZED_NAME_TLD)
@@ -164,7 +164,7 @@ public class Offer {
   }
 
 
-  public Offer priceCents(@javax.annotation.Nullable Integer priceCents) {
+  public Offer priceCents(@javax.annotation.Nullable Long priceCents) {
     this.priceCents = priceCents;
     return this;
   }
@@ -174,16 +174,16 @@ public class Offer {
    * @return priceCents
    */
   @javax.annotation.Nullable
-  public Integer getPriceCents() {
+  public Long getPriceCents() {
     return priceCents;
   }
 
-  public void setPriceCents(@javax.annotation.Nullable Integer priceCents) {
+  public void setPriceCents(@javax.annotation.Nullable Long priceCents) {
     this.priceCents = priceCents;
   }
 
 
-  public Offer renewalPriceCents(@javax.annotation.Nullable Integer renewalPriceCents) {
+  public Offer renewalPriceCents(@javax.annotation.Nullable Long renewalPriceCents) {
     this.renewalPriceCents = renewalPriceCents;
     return this;
   }
@@ -193,11 +193,11 @@ public class Offer {
    * @return renewalPriceCents
    */
   @javax.annotation.Nullable
-  public Integer getRenewalPriceCents() {
+  public Long getRenewalPriceCents() {
     return renewalPriceCents;
   }
 
-  public void setRenewalPriceCents(@javax.annotation.Nullable Integer renewalPriceCents) {
+  public void setRenewalPriceCents(@javax.annotation.Nullable Long renewalPriceCents) {
     this.renewalPriceCents = renewalPriceCents;
   }
 

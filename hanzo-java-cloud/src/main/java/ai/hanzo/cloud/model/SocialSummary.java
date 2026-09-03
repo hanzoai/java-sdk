@@ -53,27 +53,27 @@ public class SocialSummary {
   public static final String SERIALIZED_NAME_ACCOUNTS = "accounts";
   @SerializedName(SERIALIZED_NAME_ACCOUNTS)
   @javax.annotation.Nullable
-  private Integer accounts;
+  private Long accounts;
 
   public static final String SERIALIZED_NAME_POSTS = "posts";
   @SerializedName(SERIALIZED_NAME_POSTS)
   @javax.annotation.Nullable
-  private Integer posts;
+  private Long posts;
 
   public static final String SERIALIZED_NAME_PUBLISHED = "published";
   @SerializedName(SERIALIZED_NAME_PUBLISHED)
   @javax.annotation.Nullable
-  private Integer published;
+  private Long published;
 
   public static final String SERIALIZED_NAME_SCHEDULED = "scheduled";
   @SerializedName(SERIALIZED_NAME_SCHEDULED)
   @javax.annotation.Nullable
-  private Integer scheduled;
+  private Long scheduled;
 
   public SocialSummary() {
   }
 
-  public SocialSummary accounts(@javax.annotation.Nullable Integer accounts) {
+  public SocialSummary accounts(@javax.annotation.Nullable Long accounts) {
     this.accounts = accounts;
     return this;
   }
@@ -83,16 +83,16 @@ public class SocialSummary {
    * @return accounts
    */
   @javax.annotation.Nullable
-  public Integer getAccounts() {
+  public Long getAccounts() {
     return accounts;
   }
 
-  public void setAccounts(@javax.annotation.Nullable Integer accounts) {
+  public void setAccounts(@javax.annotation.Nullable Long accounts) {
     this.accounts = accounts;
   }
 
 
-  public SocialSummary posts(@javax.annotation.Nullable Integer posts) {
+  public SocialSummary posts(@javax.annotation.Nullable Long posts) {
     this.posts = posts;
     return this;
   }
@@ -102,16 +102,16 @@ public class SocialSummary {
    * @return posts
    */
   @javax.annotation.Nullable
-  public Integer getPosts() {
+  public Long getPosts() {
     return posts;
   }
 
-  public void setPosts(@javax.annotation.Nullable Integer posts) {
+  public void setPosts(@javax.annotation.Nullable Long posts) {
     this.posts = posts;
   }
 
 
-  public SocialSummary published(@javax.annotation.Nullable Integer published) {
+  public SocialSummary published(@javax.annotation.Nullable Long published) {
     this.published = published;
     return this;
   }
@@ -121,16 +121,16 @@ public class SocialSummary {
    * @return published
    */
   @javax.annotation.Nullable
-  public Integer getPublished() {
+  public Long getPublished() {
     return published;
   }
 
-  public void setPublished(@javax.annotation.Nullable Integer published) {
+  public void setPublished(@javax.annotation.Nullable Long published) {
     this.published = published;
   }
 
 
-  public SocialSummary scheduled(@javax.annotation.Nullable Integer scheduled) {
+  public SocialSummary scheduled(@javax.annotation.Nullable Long scheduled) {
     this.scheduled = scheduled;
     return this;
   }
@@ -140,11 +140,11 @@ public class SocialSummary {
    * @return scheduled
    */
   @javax.annotation.Nullable
-  public Integer getScheduled() {
+  public Long getScheduled() {
     return scheduled;
   }
 
-  public void setScheduled(@javax.annotation.Nullable Integer scheduled) {
+  public void setScheduled(@javax.annotation.Nullable Long scheduled) {
     this.scheduled = scheduled;
   }
 

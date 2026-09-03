@@ -63,7 +63,7 @@ public class Rollup {
   public static final String SERIALIZED_NAME_CONSUMED_CENTS = "consumedCents";
   @SerializedName(SERIALIZED_NAME_CONSUMED_CENTS)
   @javax.annotation.Nullable
-  private Integer consumedCents;
+  private Long consumedCents;
 
   public static final String SERIALIZED_NAME_CURRENCY = "currency";
   @SerializedName(SERIALIZED_NAME_CURRENCY)
@@ -78,7 +78,7 @@ public class Rollup {
   public static final String SERIALIZED_NAME_OVERAGE_CENTS = "overageCents";
   @SerializedName(SERIALIZED_NAME_OVERAGE_CENTS)
   @javax.annotation.Nullable
-  private Integer overageCents;
+  private Long overageCents;
 
   public static final String SERIALIZED_NAME_PERIOD = "period";
   @SerializedName(SERIALIZED_NAME_PERIOD)
@@ -122,7 +122,7 @@ public class Rollup {
   }
 
 
-  public Rollup consumedCents(@javax.annotation.Nullable Integer consumedCents) {
+  public Rollup consumedCents(@javax.annotation.Nullable Long consumedCents) {
     this.consumedCents = consumedCents;
     return this;
   }
@@ -132,11 +132,11 @@ public class Rollup {
    * @return consumedCents
    */
   @javax.annotation.Nullable
-  public Integer getConsumedCents() {
+  public Long getConsumedCents() {
     return consumedCents;
   }
 
-  public void setConsumedCents(@javax.annotation.Nullable Integer consumedCents) {
+  public void setConsumedCents(@javax.annotation.Nullable Long consumedCents) {
     this.consumedCents = consumedCents;
   }
 
@@ -179,7 +179,7 @@ public class Rollup {
   }
 
 
-  public Rollup overageCents(@javax.annotation.Nullable Integer overageCents) {
+  public Rollup overageCents(@javax.annotation.Nullable Long overageCents) {
     this.overageCents = overageCents;
     return this;
   }
@@ -189,11 +189,11 @@ public class Rollup {
    * @return overageCents
    */
   @javax.annotation.Nullable
-  public Integer getOverageCents() {
+  public Long getOverageCents() {
     return overageCents;
   }
 
-  public void setOverageCents(@javax.annotation.Nullable Integer overageCents) {
+  public void setOverageCents(@javax.annotation.Nullable Long overageCents) {
     this.overageCents = overageCents;
   }
 

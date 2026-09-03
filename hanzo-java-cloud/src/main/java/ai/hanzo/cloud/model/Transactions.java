@@ -56,7 +56,7 @@ public class Transactions {
   public static final String SERIALIZED_NAME_COUNT = "count";
   @SerializedName(SERIALIZED_NAME_COUNT)
   @javax.annotation.Nullable
-  private Integer count;
+  private Long count;
 
   public static final String SERIALIZED_NAME_TRANSACTIONS = "transactions";
   @SerializedName(SERIALIZED_NAME_TRANSACTIONS)
@@ -71,7 +71,7 @@ public class Transactions {
   public Transactions() {
   }
 
-  public Transactions count(@javax.annotation.Nullable Integer count) {
+  public Transactions count(@javax.annotation.Nullable Long count) {
     this.count = count;
     return this;
   }
@@ -81,11 +81,11 @@ public class Transactions {
    * @return count
    */
   @javax.annotation.Nullable
-  public Integer getCount() {
+  public Long getCount() {
     return count;
   }
 
-  public void setCount(@javax.annotation.Nullable Integer count) {
+  public void setCount(@javax.annotation.Nullable Long count) {
     this.count = count;
   }
 

@@ -55,7 +55,7 @@ public class GraphVocabularyOut {
   public static final String SERIALIZED_NAME_BOUND = "bound";
   @SerializedName(SERIALIZED_NAME_BOUND)
   @javax.annotation.Nullable
-  private Integer bound;
+  private Long bound;
 
   public static final String SERIALIZED_NAME_RELATIONS = "relations";
   @SerializedName(SERIALIZED_NAME_RELATIONS)
@@ -70,7 +70,7 @@ public class GraphVocabularyOut {
   public GraphVocabularyOut() {
   }
 
-  public GraphVocabularyOut bound(@javax.annotation.Nullable Integer bound) {
+  public GraphVocabularyOut bound(@javax.annotation.Nullable Long bound) {
     this.bound = bound;
     return this;
   }
@@ -80,11 +80,11 @@ public class GraphVocabularyOut {
    * @return bound
    */
   @javax.annotation.Nullable
-  public Integer getBound() {
+  public Long getBound() {
     return bound;
   }
 
-  public void setBound(@javax.annotation.Nullable Integer bound) {
+  public void setBound(@javax.annotation.Nullable Long bound) {
     this.bound = bound;
   }
 

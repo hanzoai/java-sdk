@@ -58,12 +58,12 @@ public class VersionMeta {
   public static final String SERIALIZED_NAME_UPDATED_AT = "updatedAt";
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)
   @javax.annotation.Nullable
-  private Integer updatedAt;
+  private Long updatedAt;
 
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
   @javax.annotation.Nullable
-  private Integer version;
+  private Long version;
 
   public VersionMeta() {
   }
@@ -87,7 +87,7 @@ public class VersionMeta {
   }
 
 
-  public VersionMeta updatedAt(@javax.annotation.Nullable Integer updatedAt) {
+  public VersionMeta updatedAt(@javax.annotation.Nullable Long updatedAt) {
     this.updatedAt = updatedAt;
     return this;
   }
@@ -97,16 +97,16 @@ public class VersionMeta {
    * @return updatedAt
    */
   @javax.annotation.Nullable
-  public Integer getUpdatedAt() {
+  public Long getUpdatedAt() {
     return updatedAt;
   }
 
-  public void setUpdatedAt(@javax.annotation.Nullable Integer updatedAt) {
+  public void setUpdatedAt(@javax.annotation.Nullable Long updatedAt) {
     this.updatedAt = updatedAt;
   }
 
 
-  public VersionMeta version(@javax.annotation.Nullable Integer version) {
+  public VersionMeta version(@javax.annotation.Nullable Long version) {
     this.version = version;
     return this;
   }
@@ -116,11 +116,11 @@ public class VersionMeta {
    * @return version
    */
   @javax.annotation.Nullable
-  public Integer getVersion() {
+  public Long getVersion() {
     return version;
   }
 
-  public void setVersion(@javax.annotation.Nullable Integer version) {
+  public void setVersion(@javax.annotation.Nullable Long version) {
     this.version = version;
   }
 

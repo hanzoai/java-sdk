@@ -53,7 +53,7 @@ public class RegistryToken {
   public static final String SERIALIZED_NAME_EXPIRES = "expires";
   @SerializedName(SERIALIZED_NAME_EXPIRES)
   @javax.annotation.Nullable
-  private Integer expires;
+  private Long expires;
 
   public static final String SERIALIZED_NAME_REF = "ref";
   @SerializedName(SERIALIZED_NAME_REF)
@@ -68,7 +68,7 @@ public class RegistryToken {
   public RegistryToken() {
   }
 
-  public RegistryToken expires(@javax.annotation.Nullable Integer expires) {
+  public RegistryToken expires(@javax.annotation.Nullable Long expires) {
     this.expires = expires;
     return this;
   }
@@ -78,11 +78,11 @@ public class RegistryToken {
    * @return expires
    */
   @javax.annotation.Nullable
-  public Integer getExpires() {
+  public Long getExpires() {
     return expires;
   }
 
-  public void setExpires(@javax.annotation.Nullable Integer expires) {
+  public void setExpires(@javax.annotation.Nullable Long expires) {
     this.expires = expires;
   }
 

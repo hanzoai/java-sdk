@@ -63,7 +63,7 @@ public class TreeEntry {
   public static final String SERIALIZED_NAME_SYMBOLS = "symbols";
   @SerializedName(SERIALIZED_NAME_SYMBOLS)
   @javax.annotation.Nullable
-  private Integer symbols;
+  private Long symbols;
 
   public TreeEntry() {
   }
@@ -106,7 +106,7 @@ public class TreeEntry {
   }
 
 
-  public TreeEntry symbols(@javax.annotation.Nullable Integer symbols) {
+  public TreeEntry symbols(@javax.annotation.Nullable Long symbols) {
     this.symbols = symbols;
     return this;
   }
@@ -116,11 +116,11 @@ public class TreeEntry {
    * @return symbols
    */
   @javax.annotation.Nullable
-  public Integer getSymbols() {
+  public Long getSymbols() {
     return symbols;
   }
 
-  public void setSymbols(@javax.annotation.Nullable Integer symbols) {
+  public void setSymbols(@javax.annotation.Nullable Long symbols) {
     this.symbols = symbols;
   }
 

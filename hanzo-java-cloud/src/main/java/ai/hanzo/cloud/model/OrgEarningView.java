@@ -53,7 +53,7 @@ public class OrgEarningView {
   public static final String SERIALIZED_NAME_COMMISSION_CENTS = "commissionCents";
   @SerializedName(SERIALIZED_NAME_COMMISSION_CENTS)
   @javax.annotation.Nullable
-  private Integer commissionCents;
+  private Long commissionCents;
 
   public static final String SERIALIZED_NAME_REFERRED_ORG = "referredOrg";
   @SerializedName(SERIALIZED_NAME_REFERRED_ORG)
@@ -63,7 +63,7 @@ public class OrgEarningView {
   public OrgEarningView() {
   }
 
-  public OrgEarningView commissionCents(@javax.annotation.Nullable Integer commissionCents) {
+  public OrgEarningView commissionCents(@javax.annotation.Nullable Long commissionCents) {
     this.commissionCents = commissionCents;
     return this;
   }
@@ -73,11 +73,11 @@ public class OrgEarningView {
    * @return commissionCents
    */
   @javax.annotation.Nullable
-  public Integer getCommissionCents() {
+  public Long getCommissionCents() {
     return commissionCents;
   }
 
-  public void setCommissionCents(@javax.annotation.Nullable Integer commissionCents) {
+  public void setCommissionCents(@javax.annotation.Nullable Long commissionCents) {
     this.commissionCents = commissionCents;
   }
 

@@ -63,7 +63,7 @@ public class Written {
   public static final String SERIALIZED_NAME_UPDATED = "updated";
   @SerializedName(SERIALIZED_NAME_UPDATED)
   @javax.annotation.Nullable
-  private Integer updated;
+  private Long updated;
 
   public Written() {
   }
@@ -106,7 +106,7 @@ public class Written {
   }
 
 
-  public Written updated(@javax.annotation.Nullable Integer updated) {
+  public Written updated(@javax.annotation.Nullable Long updated) {
     this.updated = updated;
     return this;
   }
@@ -116,11 +116,11 @@ public class Written {
    * @return updated
    */
   @javax.annotation.Nullable
-  public Integer getUpdated() {
+  public Long getUpdated() {
     return updated;
   }
 
-  public void setUpdated(@javax.annotation.Nullable Integer updated) {
+  public void setUpdated(@javax.annotation.Nullable Long updated) {
     this.updated = updated;
   }
 

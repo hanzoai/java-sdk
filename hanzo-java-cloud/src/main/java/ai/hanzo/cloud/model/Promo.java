@@ -63,7 +63,7 @@ public class Promo {
   public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
   @javax.annotation.Nullable
-  private Integer createdAt;
+  private Long createdAt;
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
@@ -73,12 +73,12 @@ public class Promo {
   public static final String SERIALIZED_NAME_MAX_REDEMPTIONS = "maxRedemptions";
   @SerializedName(SERIALIZED_NAME_MAX_REDEMPTIONS)
   @javax.annotation.Nullable
-  private Integer maxRedemptions;
+  private Long maxRedemptions;
 
   public static final String SERIALIZED_NAME_PERCENT_OFF = "percentOff";
   @SerializedName(SERIALIZED_NAME_PERCENT_OFF)
   @javax.annotation.Nullable
-  private Integer percentOff;
+  private Long percentOff;
 
   public static final String SERIALIZED_NAME_PLANS = "plans";
   @SerializedName(SERIALIZED_NAME_PLANS)
@@ -88,7 +88,7 @@ public class Promo {
   public static final String SERIALIZED_NAME_TEAM_SEAT_CAP = "teamSeatCap";
   @SerializedName(SERIALIZED_NAME_TEAM_SEAT_CAP)
   @javax.annotation.Nullable
-  private Integer teamSeatCap;
+  private Long teamSeatCap;
 
   public Promo() {
   }
@@ -131,7 +131,7 @@ public class Promo {
   }
 
 
-  public Promo createdAt(@javax.annotation.Nullable Integer createdAt) {
+  public Promo createdAt(@javax.annotation.Nullable Long createdAt) {
     this.createdAt = createdAt;
     return this;
   }
@@ -141,11 +141,11 @@ public class Promo {
    * @return createdAt
    */
   @javax.annotation.Nullable
-  public Integer getCreatedAt() {
+  public Long getCreatedAt() {
     return createdAt;
   }
 
-  public void setCreatedAt(@javax.annotation.Nullable Integer createdAt) {
+  public void setCreatedAt(@javax.annotation.Nullable Long createdAt) {
     this.createdAt = createdAt;
   }
 
@@ -169,7 +169,7 @@ public class Promo {
   }
 
 
-  public Promo maxRedemptions(@javax.annotation.Nullable Integer maxRedemptions) {
+  public Promo maxRedemptions(@javax.annotation.Nullable Long maxRedemptions) {
     this.maxRedemptions = maxRedemptions;
     return this;
   }
@@ -179,16 +179,16 @@ public class Promo {
    * @return maxRedemptions
    */
   @javax.annotation.Nullable
-  public Integer getMaxRedemptions() {
+  public Long getMaxRedemptions() {
     return maxRedemptions;
   }
 
-  public void setMaxRedemptions(@javax.annotation.Nullable Integer maxRedemptions) {
+  public void setMaxRedemptions(@javax.annotation.Nullable Long maxRedemptions) {
     this.maxRedemptions = maxRedemptions;
   }
 
 
-  public Promo percentOff(@javax.annotation.Nullable Integer percentOff) {
+  public Promo percentOff(@javax.annotation.Nullable Long percentOff) {
     this.percentOff = percentOff;
     return this;
   }
@@ -198,11 +198,11 @@ public class Promo {
    * @return percentOff
    */
   @javax.annotation.Nullable
-  public Integer getPercentOff() {
+  public Long getPercentOff() {
     return percentOff;
   }
 
-  public void setPercentOff(@javax.annotation.Nullable Integer percentOff) {
+  public void setPercentOff(@javax.annotation.Nullable Long percentOff) {
     this.percentOff = percentOff;
   }
 
@@ -226,7 +226,7 @@ public class Promo {
   }
 
 
-  public Promo teamSeatCap(@javax.annotation.Nullable Integer teamSeatCap) {
+  public Promo teamSeatCap(@javax.annotation.Nullable Long teamSeatCap) {
     this.teamSeatCap = teamSeatCap;
     return this;
   }
@@ -236,11 +236,11 @@ public class Promo {
    * @return teamSeatCap
    */
   @javax.annotation.Nullable
-  public Integer getTeamSeatCap() {
+  public Long getTeamSeatCap() {
     return teamSeatCap;
   }
 
-  public void setTeamSeatCap(@javax.annotation.Nullable Integer teamSeatCap) {
+  public void setTeamSeatCap(@javax.annotation.Nullable Long teamSeatCap) {
     this.teamSeatCap = teamSeatCap;
   }
 

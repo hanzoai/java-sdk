@@ -53,22 +53,22 @@ public class DriftTally {
   public static final String SERIALIZED_NAME_OK = "ok";
   @SerializedName(SERIALIZED_NAME_OK)
   @javax.annotation.Nullable
-  private Integer ok;
+  private Long ok;
 
   public static final String SERIALIZED_NAME_RED = "red";
   @SerializedName(SERIALIZED_NAME_RED)
   @javax.annotation.Nullable
-  private Integer red;
+  private Long red;
 
   public static final String SERIALIZED_NAME_YELLOW = "yellow";
   @SerializedName(SERIALIZED_NAME_YELLOW)
   @javax.annotation.Nullable
-  private Integer yellow;
+  private Long yellow;
 
   public DriftTally() {
   }
 
-  public DriftTally ok(@javax.annotation.Nullable Integer ok) {
+  public DriftTally ok(@javax.annotation.Nullable Long ok) {
     this.ok = ok;
     return this;
   }
@@ -78,16 +78,16 @@ public class DriftTally {
    * @return ok
    */
   @javax.annotation.Nullable
-  public Integer getOk() {
+  public Long getOk() {
     return ok;
   }
 
-  public void setOk(@javax.annotation.Nullable Integer ok) {
+  public void setOk(@javax.annotation.Nullable Long ok) {
     this.ok = ok;
   }
 
 
-  public DriftTally red(@javax.annotation.Nullable Integer red) {
+  public DriftTally red(@javax.annotation.Nullable Long red) {
     this.red = red;
     return this;
   }
@@ -97,16 +97,16 @@ public class DriftTally {
    * @return red
    */
   @javax.annotation.Nullable
-  public Integer getRed() {
+  public Long getRed() {
     return red;
   }
 
-  public void setRed(@javax.annotation.Nullable Integer red) {
+  public void setRed(@javax.annotation.Nullable Long red) {
     this.red = red;
   }
 
 
-  public DriftTally yellow(@javax.annotation.Nullable Integer yellow) {
+  public DriftTally yellow(@javax.annotation.Nullable Long yellow) {
     this.yellow = yellow;
     return this;
   }
@@ -116,11 +116,11 @@ public class DriftTally {
    * @return yellow
    */
   @javax.annotation.Nullable
-  public Integer getYellow() {
+  public Long getYellow() {
     return yellow;
   }
 
-  public void setYellow(@javax.annotation.Nullable Integer yellow) {
+  public void setYellow(@javax.annotation.Nullable Long yellow) {
     this.yellow = yellow;
   }
 

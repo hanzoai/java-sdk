@@ -67,7 +67,7 @@ public class TrustCoverage {
   public static final String SERIALIZED_NAME_GENERATED = "generated";
   @SerializedName(SERIALIZED_NAME_GENERATED)
   @javax.annotation.Nullable
-  private Integer generated;
+  private Long generated;
 
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
@@ -123,7 +123,7 @@ public class TrustCoverage {
   }
 
 
-  public TrustCoverage generated(@javax.annotation.Nullable Integer generated) {
+  public TrustCoverage generated(@javax.annotation.Nullable Long generated) {
     this.generated = generated;
     return this;
   }
@@ -133,11 +133,11 @@ public class TrustCoverage {
    * @return generated
    */
   @javax.annotation.Nullable
-  public Integer getGenerated() {
+  public Long getGenerated() {
     return generated;
   }
 
-  public void setGenerated(@javax.annotation.Nullable Integer generated) {
+  public void setGenerated(@javax.annotation.Nullable Long generated) {
     this.generated = generated;
   }
 

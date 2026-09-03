@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -56,7 +55,7 @@ public class CaptableShare {
   public static final String SERIALIZED_NAME_CAPITAL_CONTRIBUTION = "capitalContribution";
   @SerializedName(SERIALIZED_NAME_CAPITAL_CONTRIBUTION)
   @javax.annotation.Nullable
-  private BigDecimal capitalContribution;
+  private Double capitalContribution;
 
   public static final String SERIALIZED_NAME_CERTIFICATE_ID = "certificateId";
   @SerializedName(SERIALIZED_NAME_CERTIFICATE_ID)
@@ -81,12 +80,12 @@ public class CaptableShare {
   public static final String SERIALIZED_NAME_PRICE_PER_SHARE = "pricePerShare";
   @SerializedName(SERIALIZED_NAME_PRICE_PER_SHARE)
   @javax.annotation.Nullable
-  private BigDecimal pricePerShare;
+  private Double pricePerShare;
 
   public static final String SERIALIZED_NAME_QUANTITY = "quantity";
   @SerializedName(SERIALIZED_NAME_QUANTITY)
   @javax.annotation.Nullable
-  private Integer quantity;
+  private Long quantity;
 
   public static final String SERIALIZED_NAME_SHARE_CLASS_ID = "shareClassId";
   @SerializedName(SERIALIZED_NAME_SHARE_CLASS_ID)
@@ -121,7 +120,7 @@ public class CaptableShare {
   public CaptableShare() {
   }
 
-  public CaptableShare capitalContribution(@javax.annotation.Nullable BigDecimal capitalContribution) {
+  public CaptableShare capitalContribution(@javax.annotation.Nullable Double capitalContribution) {
     this.capitalContribution = capitalContribution;
     return this;
   }
@@ -131,11 +130,11 @@ public class CaptableShare {
    * @return capitalContribution
    */
   @javax.annotation.Nullable
-  public BigDecimal getCapitalContribution() {
+  public Double getCapitalContribution() {
     return capitalContribution;
   }
 
-  public void setCapitalContribution(@javax.annotation.Nullable BigDecimal capitalContribution) {
+  public void setCapitalContribution(@javax.annotation.Nullable Double capitalContribution) {
     this.capitalContribution = capitalContribution;
   }
 
@@ -224,7 +223,7 @@ public class CaptableShare {
   }
 
 
-  public CaptableShare pricePerShare(@javax.annotation.Nullable BigDecimal pricePerShare) {
+  public CaptableShare pricePerShare(@javax.annotation.Nullable Double pricePerShare) {
     this.pricePerShare = pricePerShare;
     return this;
   }
@@ -234,16 +233,16 @@ public class CaptableShare {
    * @return pricePerShare
    */
   @javax.annotation.Nullable
-  public BigDecimal getPricePerShare() {
+  public Double getPricePerShare() {
     return pricePerShare;
   }
 
-  public void setPricePerShare(@javax.annotation.Nullable BigDecimal pricePerShare) {
+  public void setPricePerShare(@javax.annotation.Nullable Double pricePerShare) {
     this.pricePerShare = pricePerShare;
   }
 
 
-  public CaptableShare quantity(@javax.annotation.Nullable Integer quantity) {
+  public CaptableShare quantity(@javax.annotation.Nullable Long quantity) {
     this.quantity = quantity;
     return this;
   }
@@ -253,11 +252,11 @@ public class CaptableShare {
    * @return quantity
    */
   @javax.annotation.Nullable
-  public Integer getQuantity() {
+  public Long getQuantity() {
     return quantity;
   }
 
-  public void setQuantity(@javax.annotation.Nullable Integer quantity) {
+  public void setQuantity(@javax.annotation.Nullable Long quantity) {
     this.quantity = quantity;
   }
 

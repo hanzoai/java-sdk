@@ -56,7 +56,7 @@ public class Catalog {
   public static final String SERIALIZED_NAME_CONNECTOR_COUNT = "connectorCount";
   @SerializedName(SERIALIZED_NAME_CONNECTOR_COUNT)
   @javax.annotation.Nullable
-  private Integer connectorCount;
+  private Long connectorCount;
 
   public static final String SERIALIZED_NAME_CONNECTORS = "connectors";
   @SerializedName(SERIALIZED_NAME_CONNECTORS)
@@ -66,7 +66,7 @@ public class Catalog {
   public Catalog() {
   }
 
-  public Catalog connectorCount(@javax.annotation.Nullable Integer connectorCount) {
+  public Catalog connectorCount(@javax.annotation.Nullable Long connectorCount) {
     this.connectorCount = connectorCount;
     return this;
   }
@@ -76,11 +76,11 @@ public class Catalog {
    * @return connectorCount
    */
   @javax.annotation.Nullable
-  public Integer getConnectorCount() {
+  public Long getConnectorCount() {
     return connectorCount;
   }
 
-  public void setConnectorCount(@javax.annotation.Nullable Integer connectorCount) {
+  public void setConnectorCount(@javax.annotation.Nullable Long connectorCount) {
     this.connectorCount = connectorCount;
   }
 

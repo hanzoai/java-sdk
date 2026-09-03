@@ -63,12 +63,12 @@ public class PairingView {
   public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
   @javax.annotation.Nullable
-  private Integer createdAt;
+  private Long createdAt;
 
   public static final String SERIALIZED_NAME_LAST_SEEN = "lastSeen";
   @SerializedName(SERIALIZED_NAME_LAST_SEEN)
   @javax.annotation.Nullable
-  private Integer lastSeen;
+  private Long lastSeen;
 
   public static final String SERIALIZED_NAME_SENDER = "sender";
   @SerializedName(SERIALIZED_NAME_SENDER)
@@ -116,7 +116,7 @@ public class PairingView {
   }
 
 
-  public PairingView createdAt(@javax.annotation.Nullable Integer createdAt) {
+  public PairingView createdAt(@javax.annotation.Nullable Long createdAt) {
     this.createdAt = createdAt;
     return this;
   }
@@ -126,16 +126,16 @@ public class PairingView {
    * @return createdAt
    */
   @javax.annotation.Nullable
-  public Integer getCreatedAt() {
+  public Long getCreatedAt() {
     return createdAt;
   }
 
-  public void setCreatedAt(@javax.annotation.Nullable Integer createdAt) {
+  public void setCreatedAt(@javax.annotation.Nullable Long createdAt) {
     this.createdAt = createdAt;
   }
 
 
-  public PairingView lastSeen(@javax.annotation.Nullable Integer lastSeen) {
+  public PairingView lastSeen(@javax.annotation.Nullable Long lastSeen) {
     this.lastSeen = lastSeen;
     return this;
   }
@@ -145,11 +145,11 @@ public class PairingView {
    * @return lastSeen
    */
   @javax.annotation.Nullable
-  public Integer getLastSeen() {
+  public Long getLastSeen() {
     return lastSeen;
   }
 
-  public void setLastSeen(@javax.annotation.Nullable Integer lastSeen) {
+  public void setLastSeen(@javax.annotation.Nullable Long lastSeen) {
     this.lastSeen = lastSeen;
   }
 

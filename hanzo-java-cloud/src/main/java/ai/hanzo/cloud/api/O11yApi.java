@@ -9804,7 +9804,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getIngestionKeysCall(@javax.annotation.Nullable Integer page, @javax.annotation.Nullable Integer perPage, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getIngestionKeysCall(@javax.annotation.Nullable Long page, @javax.annotation.Nullable Long perPage, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -9857,7 +9857,7 @@ public class O11yApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getIngestionKeysValidateBeforeCall(@javax.annotation.Nullable Integer page, @javax.annotation.Nullable Integer perPage, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getIngestionKeysValidateBeforeCall(@javax.annotation.Nullable Long page, @javax.annotation.Nullable Long perPage, final ApiCallback _callback) throws ApiException {
         return getIngestionKeysCall(page, perPage, _callback);
 
     }
@@ -9876,7 +9876,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yO11yIngestionKeysOut getIngestionKeys(@javax.annotation.Nullable Integer page, @javax.annotation.Nullable Integer perPage) throws ApiException {
+    public O11yO11yIngestionKeysOut getIngestionKeys(@javax.annotation.Nullable Long page, @javax.annotation.Nullable Long perPage) throws ApiException {
         ApiResponse<O11yO11yIngestionKeysOut> localVarResp = getIngestionKeysWithHttpInfo(page, perPage);
         return localVarResp.getData();
     }
@@ -9895,7 +9895,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yO11yIngestionKeysOut> getIngestionKeysWithHttpInfo(@javax.annotation.Nullable Integer page, @javax.annotation.Nullable Integer perPage) throws ApiException {
+    public ApiResponse<O11yO11yIngestionKeysOut> getIngestionKeysWithHttpInfo(@javax.annotation.Nullable Long page, @javax.annotation.Nullable Long perPage) throws ApiException {
         okhttp3.Call localVarCall = getIngestionKeysValidateBeforeCall(page, perPage, null);
         Type localVarReturnType = new TypeToken<O11yO11yIngestionKeysOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -9916,7 +9916,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getIngestionKeysAsync(@javax.annotation.Nullable Integer page, @javax.annotation.Nullable Integer perPage, final ApiCallback<O11yO11yIngestionKeysOut> _callback) throws ApiException {
+    public okhttp3.Call getIngestionKeysAsync(@javax.annotation.Nullable Long page, @javax.annotation.Nullable Long perPage, final ApiCallback<O11yO11yIngestionKeysOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getIngestionKeysValidateBeforeCall(page, perPage, _callback);
         Type localVarReturnType = new TypeToken<O11yO11yIngestionKeysOut>(){}.getType();
@@ -10064,7 +10064,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getIntegrationConnectionStatusCall(@javax.annotation.Nonnull String integrationId, @javax.annotation.Nullable Integer lookbackSeconds, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getIntegrationConnectionStatusCall(@javax.annotation.Nonnull String integrationId, @javax.annotation.Nullable Long lookbackSeconds, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -10114,7 +10114,7 @@ public class O11yApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getIntegrationConnectionStatusValidateBeforeCall(@javax.annotation.Nonnull String integrationId, @javax.annotation.Nullable Integer lookbackSeconds, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getIntegrationConnectionStatusValidateBeforeCall(@javax.annotation.Nonnull String integrationId, @javax.annotation.Nullable Long lookbackSeconds, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'integrationId' is set
         if (integrationId == null) {
             throw new ApiException("Missing the required parameter 'integrationId' when calling getIntegrationConnectionStatus(Async)");
@@ -10138,7 +10138,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yO11yConnectionStatusOut getIntegrationConnectionStatus(@javax.annotation.Nonnull String integrationId, @javax.annotation.Nullable Integer lookbackSeconds) throws ApiException {
+    public O11yO11yConnectionStatusOut getIntegrationConnectionStatus(@javax.annotation.Nonnull String integrationId, @javax.annotation.Nullable Long lookbackSeconds) throws ApiException {
         ApiResponse<O11yO11yConnectionStatusOut> localVarResp = getIntegrationConnectionStatusWithHttpInfo(integrationId, lookbackSeconds);
         return localVarResp.getData();
     }
@@ -10157,7 +10157,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yO11yConnectionStatusOut> getIntegrationConnectionStatusWithHttpInfo(@javax.annotation.Nonnull String integrationId, @javax.annotation.Nullable Integer lookbackSeconds) throws ApiException {
+    public ApiResponse<O11yO11yConnectionStatusOut> getIntegrationConnectionStatusWithHttpInfo(@javax.annotation.Nonnull String integrationId, @javax.annotation.Nullable Long lookbackSeconds) throws ApiException {
         okhttp3.Call localVarCall = getIntegrationConnectionStatusValidateBeforeCall(integrationId, lookbackSeconds, null);
         Type localVarReturnType = new TypeToken<O11yO11yConnectionStatusOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -10178,7 +10178,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getIntegrationConnectionStatusAsync(@javax.annotation.Nonnull String integrationId, @javax.annotation.Nullable Integer lookbackSeconds, final ApiCallback<O11yO11yConnectionStatusOut> _callback) throws ApiException {
+    public okhttp3.Call getIntegrationConnectionStatusAsync(@javax.annotation.Nonnull String integrationId, @javax.annotation.Nullable Long lookbackSeconds, final ApiCallback<O11yO11yConnectionStatusOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getIntegrationConnectionStatusValidateBeforeCall(integrationId, lookbackSeconds, _callback);
         Type localVarReturnType = new TypeToken<O11yO11yConnectionStatusOut>(){}.getType();
@@ -10584,7 +10584,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getMetricAttributesCall(@javax.annotation.Nonnull String metricName, @javax.annotation.Nullable Integer start, @javax.annotation.Nullable Integer end, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getMetricAttributesCall(@javax.annotation.Nonnull String metricName, @javax.annotation.Nullable Long start, @javax.annotation.Nullable Long end, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -10641,7 +10641,7 @@ public class O11yApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getMetricAttributesValidateBeforeCall(@javax.annotation.Nonnull String metricName, @javax.annotation.Nullable Integer start, @javax.annotation.Nullable Integer end, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getMetricAttributesValidateBeforeCall(@javax.annotation.Nonnull String metricName, @javax.annotation.Nullable Long start, @javax.annotation.Nullable Long end, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'metricName' is set
         if (metricName == null) {
             throw new ApiException("Missing the required parameter 'metricName' when calling getMetricAttributes(Async)");
@@ -10666,7 +10666,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yO11yMetricAttributesOut getMetricAttributes(@javax.annotation.Nonnull String metricName, @javax.annotation.Nullable Integer start, @javax.annotation.Nullable Integer end) throws ApiException {
+    public O11yO11yMetricAttributesOut getMetricAttributes(@javax.annotation.Nonnull String metricName, @javax.annotation.Nullable Long start, @javax.annotation.Nullable Long end) throws ApiException {
         ApiResponse<O11yO11yMetricAttributesOut> localVarResp = getMetricAttributesWithHttpInfo(metricName, start, end);
         return localVarResp.getData();
     }
@@ -10686,7 +10686,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yO11yMetricAttributesOut> getMetricAttributesWithHttpInfo(@javax.annotation.Nonnull String metricName, @javax.annotation.Nullable Integer start, @javax.annotation.Nullable Integer end) throws ApiException {
+    public ApiResponse<O11yO11yMetricAttributesOut> getMetricAttributesWithHttpInfo(@javax.annotation.Nonnull String metricName, @javax.annotation.Nullable Long start, @javax.annotation.Nullable Long end) throws ApiException {
         okhttp3.Call localVarCall = getMetricAttributesValidateBeforeCall(metricName, start, end, null);
         Type localVarReturnType = new TypeToken<O11yO11yMetricAttributesOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -10708,7 +10708,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getMetricAttributesAsync(@javax.annotation.Nonnull String metricName, @javax.annotation.Nullable Integer start, @javax.annotation.Nullable Integer end, final ApiCallback<O11yO11yMetricAttributesOut> _callback) throws ApiException {
+    public okhttp3.Call getMetricAttributesAsync(@javax.annotation.Nonnull String metricName, @javax.annotation.Nullable Long start, @javax.annotation.Nullable Long end, final ApiCallback<O11yO11yMetricAttributesOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getMetricAttributesValidateBeforeCall(metricName, start, end, _callback);
         Type localVarReturnType = new TypeToken<O11yO11yMetricAttributesOut>(){}.getType();
@@ -12409,7 +12409,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yAutocompleteAggregateAttributesCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getO11yAutocompleteAggregateAttributesCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -12470,7 +12470,7 @@ public class O11yApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getO11yAutocompleteAggregateAttributesValidateBeforeCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getO11yAutocompleteAggregateAttributesValidateBeforeCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         return getO11yAutocompleteAggregateAttributesCall(dataSource, aggregateOperator, searchText, limit, _callback);
 
     }
@@ -12491,7 +12491,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yO11yAggregateAttributesOut getO11yAutocompleteAggregateAttributes(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public O11yO11yAggregateAttributesOut getO11yAutocompleteAggregateAttributes(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<O11yO11yAggregateAttributesOut> localVarResp = getO11yAutocompleteAggregateAttributesWithHttpInfo(dataSource, aggregateOperator, searchText, limit);
         return localVarResp.getData();
     }
@@ -12512,7 +12512,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yO11yAggregateAttributesOut> getO11yAutocompleteAggregateAttributesWithHttpInfo(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<O11yO11yAggregateAttributesOut> getO11yAutocompleteAggregateAttributesWithHttpInfo(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getO11yAutocompleteAggregateAttributesValidateBeforeCall(dataSource, aggregateOperator, searchText, limit, null);
         Type localVarReturnType = new TypeToken<O11yO11yAggregateAttributesOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -12535,7 +12535,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yAutocompleteAggregateAttributesAsync(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable Integer limit, final ApiCallback<O11yO11yAggregateAttributesOut> _callback) throws ApiException {
+    public okhttp3.Call getO11yAutocompleteAggregateAttributesAsync(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable Long limit, final ApiCallback<O11yO11yAggregateAttributesOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getO11yAutocompleteAggregateAttributesValidateBeforeCall(dataSource, aggregateOperator, searchText, limit, _callback);
         Type localVarReturnType = new TypeToken<O11yO11yAggregateAttributesOut>(){}.getType();
@@ -12560,7 +12560,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yAutocompleteAttributeKeysCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getO11yAutocompleteAttributeKeysCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -12629,7 +12629,7 @@ public class O11yApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getO11yAutocompleteAttributeKeysValidateBeforeCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getO11yAutocompleteAttributeKeysValidateBeforeCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         return getO11yAutocompleteAttributeKeysCall(dataSource, aggregateOperator, aggregateAttribute, searchText, tagType, limit, _callback);
 
     }
@@ -12652,7 +12652,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yO11yAttributeKeysOut getO11yAutocompleteAttributeKeys(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public O11yO11yAttributeKeysOut getO11yAutocompleteAttributeKeys(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<O11yO11yAttributeKeysOut> localVarResp = getO11yAutocompleteAttributeKeysWithHttpInfo(dataSource, aggregateOperator, aggregateAttribute, searchText, tagType, limit);
         return localVarResp.getData();
     }
@@ -12675,7 +12675,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yO11yAttributeKeysOut> getO11yAutocompleteAttributeKeysWithHttpInfo(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<O11yO11yAttributeKeysOut> getO11yAutocompleteAttributeKeysWithHttpInfo(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getO11yAutocompleteAttributeKeysValidateBeforeCall(dataSource, aggregateOperator, aggregateAttribute, searchText, tagType, limit, null);
         Type localVarReturnType = new TypeToken<O11yO11yAttributeKeysOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -12700,7 +12700,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yAutocompleteAttributeKeysAsync(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback<O11yO11yAttributeKeysOut> _callback) throws ApiException {
+    public okhttp3.Call getO11yAutocompleteAttributeKeysAsync(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback<O11yO11yAttributeKeysOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getO11yAutocompleteAttributeKeysValidateBeforeCall(dataSource, aggregateOperator, aggregateAttribute, searchText, tagType, limit, _callback);
         Type localVarReturnType = new TypeToken<O11yO11yAttributeKeysOut>(){}.getType();
@@ -12727,7 +12727,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yAutocompleteAttributeValuesCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getO11yAutocompleteAttributeValuesCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -12804,7 +12804,7 @@ public class O11yApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getO11yAutocompleteAttributeValuesValidateBeforeCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getO11yAutocompleteAttributeValuesValidateBeforeCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         return getO11yAutocompleteAttributeValuesCall(dataSource, aggregateOperator, aggregateAttribute, attributeKey, filterAttributeKeyDataType, searchText, tagType, limit, _callback);
 
     }
@@ -12829,7 +12829,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yO11yAttributeValuesOut getO11yAutocompleteAttributeValues(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public O11yO11yAttributeValuesOut getO11yAutocompleteAttributeValues(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<O11yO11yAttributeValuesOut> localVarResp = getO11yAutocompleteAttributeValuesWithHttpInfo(dataSource, aggregateOperator, aggregateAttribute, attributeKey, filterAttributeKeyDataType, searchText, tagType, limit);
         return localVarResp.getData();
     }
@@ -12854,7 +12854,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yO11yAttributeValuesOut> getO11yAutocompleteAttributeValuesWithHttpInfo(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<O11yO11yAttributeValuesOut> getO11yAutocompleteAttributeValuesWithHttpInfo(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getO11yAutocompleteAttributeValuesValidateBeforeCall(dataSource, aggregateOperator, aggregateAttribute, attributeKey, filterAttributeKeyDataType, searchText, tagType, limit, null);
         Type localVarReturnType = new TypeToken<O11yO11yAttributeValuesOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -12881,7 +12881,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yAutocompleteAttributeValuesAsync(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback<O11yO11yAttributeValuesOut> _callback) throws ApiException {
+    public okhttp3.Call getO11yAutocompleteAttributeValuesAsync(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback<O11yO11yAttributeValuesOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getO11yAutocompleteAttributeValuesValidateBeforeCall(dataSource, aggregateOperator, aggregateAttribute, attributeKey, filterAttributeKeyDataType, searchText, tagType, limit, _callback);
         Type localVarReturnType = new TypeToken<O11yO11yAttributeValuesOut>(){}.getType();
@@ -12902,7 +12902,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yAvailabilityCall(@javax.annotation.Nullable Integer range, @javax.annotation.Nullable Integer stepSec, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getO11yAvailabilityCall(@javax.annotation.Nullable Long range, @javax.annotation.Nullable Long stepSec, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -12955,7 +12955,7 @@ public class O11yApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getO11yAvailabilityValidateBeforeCall(@javax.annotation.Nullable Integer range, @javax.annotation.Nullable Integer stepSec, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getO11yAvailabilityValidateBeforeCall(@javax.annotation.Nullable Long range, @javax.annotation.Nullable Long stepSec, final ApiCallback _callback) throws ApiException {
         return getO11yAvailabilityCall(range, stepSec, _callback);
 
     }
@@ -12974,7 +12974,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yAvailabilityResponse getO11yAvailability(@javax.annotation.Nullable Integer range, @javax.annotation.Nullable Integer stepSec) throws ApiException {
+    public O11yAvailabilityResponse getO11yAvailability(@javax.annotation.Nullable Long range, @javax.annotation.Nullable Long stepSec) throws ApiException {
         ApiResponse<O11yAvailabilityResponse> localVarResp = getO11yAvailabilityWithHttpInfo(range, stepSec);
         return localVarResp.getData();
     }
@@ -12993,7 +12993,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yAvailabilityResponse> getO11yAvailabilityWithHttpInfo(@javax.annotation.Nullable Integer range, @javax.annotation.Nullable Integer stepSec) throws ApiException {
+    public ApiResponse<O11yAvailabilityResponse> getO11yAvailabilityWithHttpInfo(@javax.annotation.Nullable Long range, @javax.annotation.Nullable Long stepSec) throws ApiException {
         okhttp3.Call localVarCall = getO11yAvailabilityValidateBeforeCall(range, stepSec, null);
         Type localVarReturnType = new TypeToken<O11yAvailabilityResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -13014,7 +13014,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yAvailabilityAsync(@javax.annotation.Nullable Integer range, @javax.annotation.Nullable Integer stepSec, final ApiCallback<O11yAvailabilityResponse> _callback) throws ApiException {
+    public okhttp3.Call getO11yAvailabilityAsync(@javax.annotation.Nullable Long range, @javax.annotation.Nullable Long stepSec, final ApiCallback<O11yAvailabilityResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getO11yAvailabilityValidateBeforeCall(range, stepSec, _callback);
         Type localVarReturnType = new TypeToken<O11yAvailabilityResponse>(){}.getType();
@@ -13039,7 +13039,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yClustersAttributeKeysCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getO11yClustersAttributeKeysCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -13108,7 +13108,7 @@ public class O11yApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getO11yClustersAttributeKeysValidateBeforeCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getO11yClustersAttributeKeysValidateBeforeCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         return getO11yClustersAttributeKeysCall(dataSource, aggregateOperator, aggregateAttribute, searchText, tagType, limit, _callback);
 
     }
@@ -13131,7 +13131,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yO11yInfraAttributeKeysOut getO11yClustersAttributeKeys(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public O11yO11yInfraAttributeKeysOut getO11yClustersAttributeKeys(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<O11yO11yInfraAttributeKeysOut> localVarResp = getO11yClustersAttributeKeysWithHttpInfo(dataSource, aggregateOperator, aggregateAttribute, searchText, tagType, limit);
         return localVarResp.getData();
     }
@@ -13154,7 +13154,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yO11yInfraAttributeKeysOut> getO11yClustersAttributeKeysWithHttpInfo(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<O11yO11yInfraAttributeKeysOut> getO11yClustersAttributeKeysWithHttpInfo(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getO11yClustersAttributeKeysValidateBeforeCall(dataSource, aggregateOperator, aggregateAttribute, searchText, tagType, limit, null);
         Type localVarReturnType = new TypeToken<O11yO11yInfraAttributeKeysOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -13179,7 +13179,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yClustersAttributeKeysAsync(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback<O11yO11yInfraAttributeKeysOut> _callback) throws ApiException {
+    public okhttp3.Call getO11yClustersAttributeKeysAsync(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback<O11yO11yInfraAttributeKeysOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getO11yClustersAttributeKeysValidateBeforeCall(dataSource, aggregateOperator, aggregateAttribute, searchText, tagType, limit, _callback);
         Type localVarReturnType = new TypeToken<O11yO11yInfraAttributeKeysOut>(){}.getType();
@@ -13206,7 +13206,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yClustersAttributeValuesCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getO11yClustersAttributeValuesCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -13283,7 +13283,7 @@ public class O11yApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getO11yClustersAttributeValuesValidateBeforeCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getO11yClustersAttributeValuesValidateBeforeCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         return getO11yClustersAttributeValuesCall(dataSource, aggregateOperator, aggregateAttribute, attributeKey, filterAttributeKeyDataType, searchText, tagType, limit, _callback);
 
     }
@@ -13308,7 +13308,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yO11yInfraAttributeValuesOut getO11yClustersAttributeValues(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public O11yO11yInfraAttributeValuesOut getO11yClustersAttributeValues(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<O11yO11yInfraAttributeValuesOut> localVarResp = getO11yClustersAttributeValuesWithHttpInfo(dataSource, aggregateOperator, aggregateAttribute, attributeKey, filterAttributeKeyDataType, searchText, tagType, limit);
         return localVarResp.getData();
     }
@@ -13333,7 +13333,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yO11yInfraAttributeValuesOut> getO11yClustersAttributeValuesWithHttpInfo(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<O11yO11yInfraAttributeValuesOut> getO11yClustersAttributeValuesWithHttpInfo(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getO11yClustersAttributeValuesValidateBeforeCall(dataSource, aggregateOperator, aggregateAttribute, attributeKey, filterAttributeKeyDataType, searchText, tagType, limit, null);
         Type localVarReturnType = new TypeToken<O11yO11yInfraAttributeValuesOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -13360,7 +13360,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yClustersAttributeValuesAsync(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback<O11yO11yInfraAttributeValuesOut> _callback) throws ApiException {
+    public okhttp3.Call getO11yClustersAttributeValuesAsync(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback<O11yO11yInfraAttributeValuesOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getO11yClustersAttributeValuesValidateBeforeCall(dataSource, aggregateOperator, aggregateAttribute, attributeKey, filterAttributeKeyDataType, searchText, tagType, limit, _callback);
         Type localVarReturnType = new TypeToken<O11yO11yInfraAttributeValuesOut>(){}.getType();
@@ -13561,7 +13561,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yDaemonsetsAttributeKeysCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getO11yDaemonsetsAttributeKeysCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -13630,7 +13630,7 @@ public class O11yApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getO11yDaemonsetsAttributeKeysValidateBeforeCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getO11yDaemonsetsAttributeKeysValidateBeforeCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         return getO11yDaemonsetsAttributeKeysCall(dataSource, aggregateOperator, aggregateAttribute, searchText, tagType, limit, _callback);
 
     }
@@ -13653,7 +13653,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yO11yInfraAttributeKeysOut getO11yDaemonsetsAttributeKeys(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public O11yO11yInfraAttributeKeysOut getO11yDaemonsetsAttributeKeys(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<O11yO11yInfraAttributeKeysOut> localVarResp = getO11yDaemonsetsAttributeKeysWithHttpInfo(dataSource, aggregateOperator, aggregateAttribute, searchText, tagType, limit);
         return localVarResp.getData();
     }
@@ -13676,7 +13676,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yO11yInfraAttributeKeysOut> getO11yDaemonsetsAttributeKeysWithHttpInfo(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<O11yO11yInfraAttributeKeysOut> getO11yDaemonsetsAttributeKeysWithHttpInfo(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getO11yDaemonsetsAttributeKeysValidateBeforeCall(dataSource, aggregateOperator, aggregateAttribute, searchText, tagType, limit, null);
         Type localVarReturnType = new TypeToken<O11yO11yInfraAttributeKeysOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -13701,7 +13701,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yDaemonsetsAttributeKeysAsync(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback<O11yO11yInfraAttributeKeysOut> _callback) throws ApiException {
+    public okhttp3.Call getO11yDaemonsetsAttributeKeysAsync(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback<O11yO11yInfraAttributeKeysOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getO11yDaemonsetsAttributeKeysValidateBeforeCall(dataSource, aggregateOperator, aggregateAttribute, searchText, tagType, limit, _callback);
         Type localVarReturnType = new TypeToken<O11yO11yInfraAttributeKeysOut>(){}.getType();
@@ -13728,7 +13728,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yDaemonsetsAttributeValuesCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getO11yDaemonsetsAttributeValuesCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -13805,7 +13805,7 @@ public class O11yApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getO11yDaemonsetsAttributeValuesValidateBeforeCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getO11yDaemonsetsAttributeValuesValidateBeforeCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         return getO11yDaemonsetsAttributeValuesCall(dataSource, aggregateOperator, aggregateAttribute, attributeKey, filterAttributeKeyDataType, searchText, tagType, limit, _callback);
 
     }
@@ -13830,7 +13830,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yO11yInfraAttributeValuesOut getO11yDaemonsetsAttributeValues(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public O11yO11yInfraAttributeValuesOut getO11yDaemonsetsAttributeValues(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<O11yO11yInfraAttributeValuesOut> localVarResp = getO11yDaemonsetsAttributeValuesWithHttpInfo(dataSource, aggregateOperator, aggregateAttribute, attributeKey, filterAttributeKeyDataType, searchText, tagType, limit);
         return localVarResp.getData();
     }
@@ -13855,7 +13855,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yO11yInfraAttributeValuesOut> getO11yDaemonsetsAttributeValuesWithHttpInfo(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<O11yO11yInfraAttributeValuesOut> getO11yDaemonsetsAttributeValuesWithHttpInfo(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getO11yDaemonsetsAttributeValuesValidateBeforeCall(dataSource, aggregateOperator, aggregateAttribute, attributeKey, filterAttributeKeyDataType, searchText, tagType, limit, null);
         Type localVarReturnType = new TypeToken<O11yO11yInfraAttributeValuesOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -13882,7 +13882,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yDaemonsetsAttributeValuesAsync(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback<O11yO11yInfraAttributeValuesOut> _callback) throws ApiException {
+    public okhttp3.Call getO11yDaemonsetsAttributeValuesAsync(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback<O11yO11yInfraAttributeValuesOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getO11yDaemonsetsAttributeValuesValidateBeforeCall(dataSource, aggregateOperator, aggregateAttribute, attributeKey, filterAttributeKeyDataType, searchText, tagType, limit, _callback);
         Type localVarReturnType = new TypeToken<O11yO11yInfraAttributeValuesOut>(){}.getType();
@@ -13907,7 +13907,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yDeploymentsAttributeKeysCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getO11yDeploymentsAttributeKeysCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -13976,7 +13976,7 @@ public class O11yApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getO11yDeploymentsAttributeKeysValidateBeforeCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getO11yDeploymentsAttributeKeysValidateBeforeCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         return getO11yDeploymentsAttributeKeysCall(dataSource, aggregateOperator, aggregateAttribute, searchText, tagType, limit, _callback);
 
     }
@@ -13999,7 +13999,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yO11yInfraAttributeKeysOut getO11yDeploymentsAttributeKeys(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public O11yO11yInfraAttributeKeysOut getO11yDeploymentsAttributeKeys(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<O11yO11yInfraAttributeKeysOut> localVarResp = getO11yDeploymentsAttributeKeysWithHttpInfo(dataSource, aggregateOperator, aggregateAttribute, searchText, tagType, limit);
         return localVarResp.getData();
     }
@@ -14022,7 +14022,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yO11yInfraAttributeKeysOut> getO11yDeploymentsAttributeKeysWithHttpInfo(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<O11yO11yInfraAttributeKeysOut> getO11yDeploymentsAttributeKeysWithHttpInfo(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getO11yDeploymentsAttributeKeysValidateBeforeCall(dataSource, aggregateOperator, aggregateAttribute, searchText, tagType, limit, null);
         Type localVarReturnType = new TypeToken<O11yO11yInfraAttributeKeysOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -14047,7 +14047,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yDeploymentsAttributeKeysAsync(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback<O11yO11yInfraAttributeKeysOut> _callback) throws ApiException {
+    public okhttp3.Call getO11yDeploymentsAttributeKeysAsync(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback<O11yO11yInfraAttributeKeysOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getO11yDeploymentsAttributeKeysValidateBeforeCall(dataSource, aggregateOperator, aggregateAttribute, searchText, tagType, limit, _callback);
         Type localVarReturnType = new TypeToken<O11yO11yInfraAttributeKeysOut>(){}.getType();
@@ -14074,7 +14074,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yDeploymentsAttributeValuesCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getO11yDeploymentsAttributeValuesCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -14151,7 +14151,7 @@ public class O11yApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getO11yDeploymentsAttributeValuesValidateBeforeCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getO11yDeploymentsAttributeValuesValidateBeforeCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         return getO11yDeploymentsAttributeValuesCall(dataSource, aggregateOperator, aggregateAttribute, attributeKey, filterAttributeKeyDataType, searchText, tagType, limit, _callback);
 
     }
@@ -14176,7 +14176,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yO11yInfraAttributeValuesOut getO11yDeploymentsAttributeValues(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public O11yO11yInfraAttributeValuesOut getO11yDeploymentsAttributeValues(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<O11yO11yInfraAttributeValuesOut> localVarResp = getO11yDeploymentsAttributeValuesWithHttpInfo(dataSource, aggregateOperator, aggregateAttribute, attributeKey, filterAttributeKeyDataType, searchText, tagType, limit);
         return localVarResp.getData();
     }
@@ -14201,7 +14201,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yO11yInfraAttributeValuesOut> getO11yDeploymentsAttributeValuesWithHttpInfo(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<O11yO11yInfraAttributeValuesOut> getO11yDeploymentsAttributeValuesWithHttpInfo(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getO11yDeploymentsAttributeValuesValidateBeforeCall(dataSource, aggregateOperator, aggregateAttribute, attributeKey, filterAttributeKeyDataType, searchText, tagType, limit, null);
         Type localVarReturnType = new TypeToken<O11yO11yInfraAttributeValuesOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -14228,7 +14228,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yDeploymentsAttributeValuesAsync(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback<O11yO11yInfraAttributeValuesOut> _callback) throws ApiException {
+    public okhttp3.Call getO11yDeploymentsAttributeValuesAsync(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback<O11yO11yInfraAttributeValuesOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getO11yDeploymentsAttributeValuesValidateBeforeCall(dataSource, aggregateOperator, aggregateAttribute, attributeKey, filterAttributeKeyDataType, searchText, tagType, limit, _callback);
         Type localVarReturnType = new TypeToken<O11yO11yInfraAttributeValuesOut>(){}.getType();
@@ -14674,7 +14674,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yErrortrackingIssuesCall(@javax.annotation.Nullable String status, @javax.annotation.Nullable String level, @javax.annotation.Nullable String environment, @javax.annotation.Nullable String serviceName, @javax.annotation.Nullable String query, @javax.annotation.Nullable String sort, @javax.annotation.Nullable Integer offset, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getO11yErrortrackingIssuesCall(@javax.annotation.Nullable String status, @javax.annotation.Nullable String level, @javax.annotation.Nullable String environment, @javax.annotation.Nullable String serviceName, @javax.annotation.Nullable String query, @javax.annotation.Nullable String sort, @javax.annotation.Nullable Long offset, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -14751,7 +14751,7 @@ public class O11yApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getO11yErrortrackingIssuesValidateBeforeCall(@javax.annotation.Nullable String status, @javax.annotation.Nullable String level, @javax.annotation.Nullable String environment, @javax.annotation.Nullable String serviceName, @javax.annotation.Nullable String query, @javax.annotation.Nullable String sort, @javax.annotation.Nullable Integer offset, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getO11yErrortrackingIssuesValidateBeforeCall(@javax.annotation.Nullable String status, @javax.annotation.Nullable String level, @javax.annotation.Nullable String environment, @javax.annotation.Nullable String serviceName, @javax.annotation.Nullable String query, @javax.annotation.Nullable String sort, @javax.annotation.Nullable Long offset, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         return getO11yErrortrackingIssuesCall(status, level, environment, serviceName, query, sort, offset, limit, _callback);
 
     }
@@ -14776,7 +14776,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yO11yErrorIssuesOut getO11yErrortrackingIssues(@javax.annotation.Nullable String status, @javax.annotation.Nullable String level, @javax.annotation.Nullable String environment, @javax.annotation.Nullable String serviceName, @javax.annotation.Nullable String query, @javax.annotation.Nullable String sort, @javax.annotation.Nullable Integer offset, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public O11yO11yErrorIssuesOut getO11yErrortrackingIssues(@javax.annotation.Nullable String status, @javax.annotation.Nullable String level, @javax.annotation.Nullable String environment, @javax.annotation.Nullable String serviceName, @javax.annotation.Nullable String query, @javax.annotation.Nullable String sort, @javax.annotation.Nullable Long offset, @javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<O11yO11yErrorIssuesOut> localVarResp = getO11yErrortrackingIssuesWithHttpInfo(status, level, environment, serviceName, query, sort, offset, limit);
         return localVarResp.getData();
     }
@@ -14801,7 +14801,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yO11yErrorIssuesOut> getO11yErrortrackingIssuesWithHttpInfo(@javax.annotation.Nullable String status, @javax.annotation.Nullable String level, @javax.annotation.Nullable String environment, @javax.annotation.Nullable String serviceName, @javax.annotation.Nullable String query, @javax.annotation.Nullable String sort, @javax.annotation.Nullable Integer offset, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<O11yO11yErrorIssuesOut> getO11yErrortrackingIssuesWithHttpInfo(@javax.annotation.Nullable String status, @javax.annotation.Nullable String level, @javax.annotation.Nullable String environment, @javax.annotation.Nullable String serviceName, @javax.annotation.Nullable String query, @javax.annotation.Nullable String sort, @javax.annotation.Nullable Long offset, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getO11yErrortrackingIssuesValidateBeforeCall(status, level, environment, serviceName, query, sort, offset, limit, null);
         Type localVarReturnType = new TypeToken<O11yO11yErrorIssuesOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -14828,7 +14828,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yErrortrackingIssuesAsync(@javax.annotation.Nullable String status, @javax.annotation.Nullable String level, @javax.annotation.Nullable String environment, @javax.annotation.Nullable String serviceName, @javax.annotation.Nullable String query, @javax.annotation.Nullable String sort, @javax.annotation.Nullable Integer offset, @javax.annotation.Nullable Integer limit, final ApiCallback<O11yO11yErrorIssuesOut> _callback) throws ApiException {
+    public okhttp3.Call getO11yErrortrackingIssuesAsync(@javax.annotation.Nullable String status, @javax.annotation.Nullable String level, @javax.annotation.Nullable String environment, @javax.annotation.Nullable String serviceName, @javax.annotation.Nullable String query, @javax.annotation.Nullable String sort, @javax.annotation.Nullable Long offset, @javax.annotation.Nullable Long limit, final ApiCallback<O11yO11yErrorIssuesOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getO11yErrortrackingIssuesValidateBeforeCall(status, level, environment, serviceName, query, sort, offset, limit, _callback);
         Type localVarReturnType = new TypeToken<O11yO11yErrorIssuesOut>(){}.getType();
@@ -15369,7 +15369,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yFieldsKeysCall(@javax.annotation.Nullable String signal, @javax.annotation.Nullable String source, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer startUnixMilli, @javax.annotation.Nullable Integer endUnixMilli, @javax.annotation.Nullable String fieldContext, @javax.annotation.Nullable String fieldDataType, @javax.annotation.Nullable String metricName, @javax.annotation.Nullable String metricNamespace, @javax.annotation.Nullable String searchText, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getO11yFieldsKeysCall(@javax.annotation.Nullable String signal, @javax.annotation.Nullable String source, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable Long startUnixMilli, @javax.annotation.Nullable Long endUnixMilli, @javax.annotation.Nullable String fieldContext, @javax.annotation.Nullable String fieldDataType, @javax.annotation.Nullable String metricName, @javax.annotation.Nullable String metricNamespace, @javax.annotation.Nullable String searchText, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -15454,7 +15454,7 @@ public class O11yApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getO11yFieldsKeysValidateBeforeCall(@javax.annotation.Nullable String signal, @javax.annotation.Nullable String source, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer startUnixMilli, @javax.annotation.Nullable Integer endUnixMilli, @javax.annotation.Nullable String fieldContext, @javax.annotation.Nullable String fieldDataType, @javax.annotation.Nullable String metricName, @javax.annotation.Nullable String metricNamespace, @javax.annotation.Nullable String searchText, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getO11yFieldsKeysValidateBeforeCall(@javax.annotation.Nullable String signal, @javax.annotation.Nullable String source, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable Long startUnixMilli, @javax.annotation.Nullable Long endUnixMilli, @javax.annotation.Nullable String fieldContext, @javax.annotation.Nullable String fieldDataType, @javax.annotation.Nullable String metricName, @javax.annotation.Nullable String metricNamespace, @javax.annotation.Nullable String searchText, final ApiCallback _callback) throws ApiException {
         return getO11yFieldsKeysCall(signal, source, limit, startUnixMilli, endUnixMilli, fieldContext, fieldDataType, metricName, metricNamespace, searchText, _callback);
 
     }
@@ -15481,7 +15481,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yO11yFieldKeysOut getO11yFieldsKeys(@javax.annotation.Nullable String signal, @javax.annotation.Nullable String source, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer startUnixMilli, @javax.annotation.Nullable Integer endUnixMilli, @javax.annotation.Nullable String fieldContext, @javax.annotation.Nullable String fieldDataType, @javax.annotation.Nullable String metricName, @javax.annotation.Nullable String metricNamespace, @javax.annotation.Nullable String searchText) throws ApiException {
+    public O11yO11yFieldKeysOut getO11yFieldsKeys(@javax.annotation.Nullable String signal, @javax.annotation.Nullable String source, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable Long startUnixMilli, @javax.annotation.Nullable Long endUnixMilli, @javax.annotation.Nullable String fieldContext, @javax.annotation.Nullable String fieldDataType, @javax.annotation.Nullable String metricName, @javax.annotation.Nullable String metricNamespace, @javax.annotation.Nullable String searchText) throws ApiException {
         ApiResponse<O11yO11yFieldKeysOut> localVarResp = getO11yFieldsKeysWithHttpInfo(signal, source, limit, startUnixMilli, endUnixMilli, fieldContext, fieldDataType, metricName, metricNamespace, searchText);
         return localVarResp.getData();
     }
@@ -15508,7 +15508,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yO11yFieldKeysOut> getO11yFieldsKeysWithHttpInfo(@javax.annotation.Nullable String signal, @javax.annotation.Nullable String source, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer startUnixMilli, @javax.annotation.Nullable Integer endUnixMilli, @javax.annotation.Nullable String fieldContext, @javax.annotation.Nullable String fieldDataType, @javax.annotation.Nullable String metricName, @javax.annotation.Nullable String metricNamespace, @javax.annotation.Nullable String searchText) throws ApiException {
+    public ApiResponse<O11yO11yFieldKeysOut> getO11yFieldsKeysWithHttpInfo(@javax.annotation.Nullable String signal, @javax.annotation.Nullable String source, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable Long startUnixMilli, @javax.annotation.Nullable Long endUnixMilli, @javax.annotation.Nullable String fieldContext, @javax.annotation.Nullable String fieldDataType, @javax.annotation.Nullable String metricName, @javax.annotation.Nullable String metricNamespace, @javax.annotation.Nullable String searchText) throws ApiException {
         okhttp3.Call localVarCall = getO11yFieldsKeysValidateBeforeCall(signal, source, limit, startUnixMilli, endUnixMilli, fieldContext, fieldDataType, metricName, metricNamespace, searchText, null);
         Type localVarReturnType = new TypeToken<O11yO11yFieldKeysOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -15537,7 +15537,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yFieldsKeysAsync(@javax.annotation.Nullable String signal, @javax.annotation.Nullable String source, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer startUnixMilli, @javax.annotation.Nullable Integer endUnixMilli, @javax.annotation.Nullable String fieldContext, @javax.annotation.Nullable String fieldDataType, @javax.annotation.Nullable String metricName, @javax.annotation.Nullable String metricNamespace, @javax.annotation.Nullable String searchText, final ApiCallback<O11yO11yFieldKeysOut> _callback) throws ApiException {
+    public okhttp3.Call getO11yFieldsKeysAsync(@javax.annotation.Nullable String signal, @javax.annotation.Nullable String source, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable Long startUnixMilli, @javax.annotation.Nullable Long endUnixMilli, @javax.annotation.Nullable String fieldContext, @javax.annotation.Nullable String fieldDataType, @javax.annotation.Nullable String metricName, @javax.annotation.Nullable String metricNamespace, @javax.annotation.Nullable String searchText, final ApiCallback<O11yO11yFieldKeysOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getO11yFieldsKeysValidateBeforeCall(signal, source, limit, startUnixMilli, endUnixMilli, fieldContext, fieldDataType, metricName, metricNamespace, searchText, _callback);
         Type localVarReturnType = new TypeToken<O11yO11yFieldKeysOut>(){}.getType();
@@ -15568,7 +15568,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yFieldsValuesCall(@javax.annotation.Nullable String signal, @javax.annotation.Nullable String source, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer startUnixMilli, @javax.annotation.Nullable Integer endUnixMilli, @javax.annotation.Nullable String fieldContext, @javax.annotation.Nullable String fieldDataType, @javax.annotation.Nullable String metricName, @javax.annotation.Nullable String metricNamespace, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String name, @javax.annotation.Nullable String existingQuery, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getO11yFieldsValuesCall(@javax.annotation.Nullable String signal, @javax.annotation.Nullable String source, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable Long startUnixMilli, @javax.annotation.Nullable Long endUnixMilli, @javax.annotation.Nullable String fieldContext, @javax.annotation.Nullable String fieldDataType, @javax.annotation.Nullable String metricName, @javax.annotation.Nullable String metricNamespace, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String name, @javax.annotation.Nullable String existingQuery, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -15661,7 +15661,7 @@ public class O11yApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getO11yFieldsValuesValidateBeforeCall(@javax.annotation.Nullable String signal, @javax.annotation.Nullable String source, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer startUnixMilli, @javax.annotation.Nullable Integer endUnixMilli, @javax.annotation.Nullable String fieldContext, @javax.annotation.Nullable String fieldDataType, @javax.annotation.Nullable String metricName, @javax.annotation.Nullable String metricNamespace, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String name, @javax.annotation.Nullable String existingQuery, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getO11yFieldsValuesValidateBeforeCall(@javax.annotation.Nullable String signal, @javax.annotation.Nullable String source, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable Long startUnixMilli, @javax.annotation.Nullable Long endUnixMilli, @javax.annotation.Nullable String fieldContext, @javax.annotation.Nullable String fieldDataType, @javax.annotation.Nullable String metricName, @javax.annotation.Nullable String metricNamespace, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String name, @javax.annotation.Nullable String existingQuery, final ApiCallback _callback) throws ApiException {
         return getO11yFieldsValuesCall(signal, source, limit, startUnixMilli, endUnixMilli, fieldContext, fieldDataType, metricName, metricNamespace, searchText, name, existingQuery, _callback);
 
     }
@@ -15690,7 +15690,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yO11yFieldValuesOut getO11yFieldsValues(@javax.annotation.Nullable String signal, @javax.annotation.Nullable String source, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer startUnixMilli, @javax.annotation.Nullable Integer endUnixMilli, @javax.annotation.Nullable String fieldContext, @javax.annotation.Nullable String fieldDataType, @javax.annotation.Nullable String metricName, @javax.annotation.Nullable String metricNamespace, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String name, @javax.annotation.Nullable String existingQuery) throws ApiException {
+    public O11yO11yFieldValuesOut getO11yFieldsValues(@javax.annotation.Nullable String signal, @javax.annotation.Nullable String source, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable Long startUnixMilli, @javax.annotation.Nullable Long endUnixMilli, @javax.annotation.Nullable String fieldContext, @javax.annotation.Nullable String fieldDataType, @javax.annotation.Nullable String metricName, @javax.annotation.Nullable String metricNamespace, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String name, @javax.annotation.Nullable String existingQuery) throws ApiException {
         ApiResponse<O11yO11yFieldValuesOut> localVarResp = getO11yFieldsValuesWithHttpInfo(signal, source, limit, startUnixMilli, endUnixMilli, fieldContext, fieldDataType, metricName, metricNamespace, searchText, name, existingQuery);
         return localVarResp.getData();
     }
@@ -15719,7 +15719,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yO11yFieldValuesOut> getO11yFieldsValuesWithHttpInfo(@javax.annotation.Nullable String signal, @javax.annotation.Nullable String source, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer startUnixMilli, @javax.annotation.Nullable Integer endUnixMilli, @javax.annotation.Nullable String fieldContext, @javax.annotation.Nullable String fieldDataType, @javax.annotation.Nullable String metricName, @javax.annotation.Nullable String metricNamespace, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String name, @javax.annotation.Nullable String existingQuery) throws ApiException {
+    public ApiResponse<O11yO11yFieldValuesOut> getO11yFieldsValuesWithHttpInfo(@javax.annotation.Nullable String signal, @javax.annotation.Nullable String source, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable Long startUnixMilli, @javax.annotation.Nullable Long endUnixMilli, @javax.annotation.Nullable String fieldContext, @javax.annotation.Nullable String fieldDataType, @javax.annotation.Nullable String metricName, @javax.annotation.Nullable String metricNamespace, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String name, @javax.annotation.Nullable String existingQuery) throws ApiException {
         okhttp3.Call localVarCall = getO11yFieldsValuesValidateBeforeCall(signal, source, limit, startUnixMilli, endUnixMilli, fieldContext, fieldDataType, metricName, metricNamespace, searchText, name, existingQuery, null);
         Type localVarReturnType = new TypeToken<O11yO11yFieldValuesOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -15750,7 +15750,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yFieldsValuesAsync(@javax.annotation.Nullable String signal, @javax.annotation.Nullable String source, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer startUnixMilli, @javax.annotation.Nullable Integer endUnixMilli, @javax.annotation.Nullable String fieldContext, @javax.annotation.Nullable String fieldDataType, @javax.annotation.Nullable String metricName, @javax.annotation.Nullable String metricNamespace, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String name, @javax.annotation.Nullable String existingQuery, final ApiCallback<O11yO11yFieldValuesOut> _callback) throws ApiException {
+    public okhttp3.Call getO11yFieldsValuesAsync(@javax.annotation.Nullable String signal, @javax.annotation.Nullable String source, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable Long startUnixMilli, @javax.annotation.Nullable Long endUnixMilli, @javax.annotation.Nullable String fieldContext, @javax.annotation.Nullable String fieldDataType, @javax.annotation.Nullable String metricName, @javax.annotation.Nullable String metricNamespace, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String name, @javax.annotation.Nullable String existingQuery, final ApiCallback<O11yO11yFieldValuesOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getO11yFieldsValuesValidateBeforeCall(signal, source, limit, startUnixMilli, endUnixMilli, fieldContext, fieldDataType, metricName, metricNamespace, searchText, name, existingQuery, _callback);
         Type localVarReturnType = new TypeToken<O11yO11yFieldValuesOut>(){}.getType();
@@ -15774,7 +15774,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yFilterSuggestionsCall(@javax.annotation.Nonnull String dataSource, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String existingFilter, @javax.annotation.Nullable Integer attributesLimit, @javax.annotation.Nullable Integer examplesLimit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getO11yFilterSuggestionsCall(@javax.annotation.Nonnull String dataSource, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String existingFilter, @javax.annotation.Nullable Long attributesLimit, @javax.annotation.Nullable Long examplesLimit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -15839,7 +15839,7 @@ public class O11yApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getO11yFilterSuggestionsValidateBeforeCall(@javax.annotation.Nonnull String dataSource, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String existingFilter, @javax.annotation.Nullable Integer attributesLimit, @javax.annotation.Nullable Integer examplesLimit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getO11yFilterSuggestionsValidateBeforeCall(@javax.annotation.Nonnull String dataSource, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String existingFilter, @javax.annotation.Nullable Long attributesLimit, @javax.annotation.Nullable Long examplesLimit, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'dataSource' is set
         if (dataSource == null) {
             throw new ApiException("Missing the required parameter 'dataSource' when calling getO11yFilterSuggestions(Async)");
@@ -15866,7 +15866,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yO11yFilterSuggestionsOut getO11yFilterSuggestions(@javax.annotation.Nonnull String dataSource, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String existingFilter, @javax.annotation.Nullable Integer attributesLimit, @javax.annotation.Nullable Integer examplesLimit) throws ApiException {
+    public O11yO11yFilterSuggestionsOut getO11yFilterSuggestions(@javax.annotation.Nonnull String dataSource, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String existingFilter, @javax.annotation.Nullable Long attributesLimit, @javax.annotation.Nullable Long examplesLimit) throws ApiException {
         ApiResponse<O11yO11yFilterSuggestionsOut> localVarResp = getO11yFilterSuggestionsWithHttpInfo(dataSource, searchText, existingFilter, attributesLimit, examplesLimit);
         return localVarResp.getData();
     }
@@ -15888,7 +15888,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yO11yFilterSuggestionsOut> getO11yFilterSuggestionsWithHttpInfo(@javax.annotation.Nonnull String dataSource, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String existingFilter, @javax.annotation.Nullable Integer attributesLimit, @javax.annotation.Nullable Integer examplesLimit) throws ApiException {
+    public ApiResponse<O11yO11yFilterSuggestionsOut> getO11yFilterSuggestionsWithHttpInfo(@javax.annotation.Nonnull String dataSource, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String existingFilter, @javax.annotation.Nullable Long attributesLimit, @javax.annotation.Nullable Long examplesLimit) throws ApiException {
         okhttp3.Call localVarCall = getO11yFilterSuggestionsValidateBeforeCall(dataSource, searchText, existingFilter, attributesLimit, examplesLimit, null);
         Type localVarReturnType = new TypeToken<O11yO11yFilterSuggestionsOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -15912,7 +15912,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yFilterSuggestionsAsync(@javax.annotation.Nonnull String dataSource, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String existingFilter, @javax.annotation.Nullable Integer attributesLimit, @javax.annotation.Nullable Integer examplesLimit, final ApiCallback<O11yO11yFilterSuggestionsOut> _callback) throws ApiException {
+    public okhttp3.Call getO11yFilterSuggestionsAsync(@javax.annotation.Nonnull String dataSource, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String existingFilter, @javax.annotation.Nullable Long attributesLimit, @javax.annotation.Nullable Long examplesLimit, final ApiCallback<O11yO11yFilterSuggestionsOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getO11yFilterSuggestionsValidateBeforeCall(dataSource, searchText, existingFilter, attributesLimit, examplesLimit, _callback);
         Type localVarReturnType = new TypeToken<O11yO11yFilterSuggestionsOut>(){}.getType();
@@ -16267,7 +16267,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yHostsAttributeKeysCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getO11yHostsAttributeKeysCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -16336,7 +16336,7 @@ public class O11yApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getO11yHostsAttributeKeysValidateBeforeCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getO11yHostsAttributeKeysValidateBeforeCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         return getO11yHostsAttributeKeysCall(dataSource, aggregateOperator, aggregateAttribute, searchText, tagType, limit, _callback);
 
     }
@@ -16359,7 +16359,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yO11yInfraAttributeKeysOut getO11yHostsAttributeKeys(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public O11yO11yInfraAttributeKeysOut getO11yHostsAttributeKeys(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<O11yO11yInfraAttributeKeysOut> localVarResp = getO11yHostsAttributeKeysWithHttpInfo(dataSource, aggregateOperator, aggregateAttribute, searchText, tagType, limit);
         return localVarResp.getData();
     }
@@ -16382,7 +16382,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yO11yInfraAttributeKeysOut> getO11yHostsAttributeKeysWithHttpInfo(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<O11yO11yInfraAttributeKeysOut> getO11yHostsAttributeKeysWithHttpInfo(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getO11yHostsAttributeKeysValidateBeforeCall(dataSource, aggregateOperator, aggregateAttribute, searchText, tagType, limit, null);
         Type localVarReturnType = new TypeToken<O11yO11yInfraAttributeKeysOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -16407,7 +16407,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yHostsAttributeKeysAsync(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback<O11yO11yInfraAttributeKeysOut> _callback) throws ApiException {
+    public okhttp3.Call getO11yHostsAttributeKeysAsync(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback<O11yO11yInfraAttributeKeysOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getO11yHostsAttributeKeysValidateBeforeCall(dataSource, aggregateOperator, aggregateAttribute, searchText, tagType, limit, _callback);
         Type localVarReturnType = new TypeToken<O11yO11yInfraAttributeKeysOut>(){}.getType();
@@ -16434,7 +16434,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yHostsAttributeValuesCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getO11yHostsAttributeValuesCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -16511,7 +16511,7 @@ public class O11yApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getO11yHostsAttributeValuesValidateBeforeCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getO11yHostsAttributeValuesValidateBeforeCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         return getO11yHostsAttributeValuesCall(dataSource, aggregateOperator, aggregateAttribute, attributeKey, filterAttributeKeyDataType, searchText, tagType, limit, _callback);
 
     }
@@ -16536,7 +16536,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yO11yInfraAttributeValuesOut getO11yHostsAttributeValues(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public O11yO11yInfraAttributeValuesOut getO11yHostsAttributeValues(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<O11yO11yInfraAttributeValuesOut> localVarResp = getO11yHostsAttributeValuesWithHttpInfo(dataSource, aggregateOperator, aggregateAttribute, attributeKey, filterAttributeKeyDataType, searchText, tagType, limit);
         return localVarResp.getData();
     }
@@ -16561,7 +16561,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yO11yInfraAttributeValuesOut> getO11yHostsAttributeValuesWithHttpInfo(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<O11yO11yInfraAttributeValuesOut> getO11yHostsAttributeValuesWithHttpInfo(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getO11yHostsAttributeValuesValidateBeforeCall(dataSource, aggregateOperator, aggregateAttribute, attributeKey, filterAttributeKeyDataType, searchText, tagType, limit, null);
         Type localVarReturnType = new TypeToken<O11yO11yInfraAttributeValuesOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -16588,7 +16588,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yHostsAttributeValuesAsync(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback<O11yO11yInfraAttributeValuesOut> _callback) throws ApiException {
+    public okhttp3.Call getO11yHostsAttributeValuesAsync(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback<O11yO11yInfraAttributeValuesOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getO11yHostsAttributeValuesValidateBeforeCall(dataSource, aggregateOperator, aggregateAttribute, attributeKey, filterAttributeKeyDataType, searchText, tagType, limit, _callback);
         Type localVarReturnType = new TypeToken<O11yO11yInfraAttributeValuesOut>(){}.getType();
@@ -16860,7 +16860,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yJobsAttributeKeysCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getO11yJobsAttributeKeysCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -16929,7 +16929,7 @@ public class O11yApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getO11yJobsAttributeKeysValidateBeforeCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getO11yJobsAttributeKeysValidateBeforeCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         return getO11yJobsAttributeKeysCall(dataSource, aggregateOperator, aggregateAttribute, searchText, tagType, limit, _callback);
 
     }
@@ -16952,7 +16952,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yO11yInfraAttributeKeysOut getO11yJobsAttributeKeys(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public O11yO11yInfraAttributeKeysOut getO11yJobsAttributeKeys(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<O11yO11yInfraAttributeKeysOut> localVarResp = getO11yJobsAttributeKeysWithHttpInfo(dataSource, aggregateOperator, aggregateAttribute, searchText, tagType, limit);
         return localVarResp.getData();
     }
@@ -16975,7 +16975,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yO11yInfraAttributeKeysOut> getO11yJobsAttributeKeysWithHttpInfo(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<O11yO11yInfraAttributeKeysOut> getO11yJobsAttributeKeysWithHttpInfo(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getO11yJobsAttributeKeysValidateBeforeCall(dataSource, aggregateOperator, aggregateAttribute, searchText, tagType, limit, null);
         Type localVarReturnType = new TypeToken<O11yO11yInfraAttributeKeysOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -17000,7 +17000,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yJobsAttributeKeysAsync(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback<O11yO11yInfraAttributeKeysOut> _callback) throws ApiException {
+    public okhttp3.Call getO11yJobsAttributeKeysAsync(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback<O11yO11yInfraAttributeKeysOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getO11yJobsAttributeKeysValidateBeforeCall(dataSource, aggregateOperator, aggregateAttribute, searchText, tagType, limit, _callback);
         Type localVarReturnType = new TypeToken<O11yO11yInfraAttributeKeysOut>(){}.getType();
@@ -17027,7 +17027,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yJobsAttributeValuesCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getO11yJobsAttributeValuesCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -17104,7 +17104,7 @@ public class O11yApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getO11yJobsAttributeValuesValidateBeforeCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getO11yJobsAttributeValuesValidateBeforeCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         return getO11yJobsAttributeValuesCall(dataSource, aggregateOperator, aggregateAttribute, attributeKey, filterAttributeKeyDataType, searchText, tagType, limit, _callback);
 
     }
@@ -17129,7 +17129,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yO11yInfraAttributeValuesOut getO11yJobsAttributeValues(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public O11yO11yInfraAttributeValuesOut getO11yJobsAttributeValues(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<O11yO11yInfraAttributeValuesOut> localVarResp = getO11yJobsAttributeValuesWithHttpInfo(dataSource, aggregateOperator, aggregateAttribute, attributeKey, filterAttributeKeyDataType, searchText, tagType, limit);
         return localVarResp.getData();
     }
@@ -17154,7 +17154,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yO11yInfraAttributeValuesOut> getO11yJobsAttributeValuesWithHttpInfo(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<O11yO11yInfraAttributeValuesOut> getO11yJobsAttributeValuesWithHttpInfo(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getO11yJobsAttributeValuesValidateBeforeCall(dataSource, aggregateOperator, aggregateAttribute, attributeKey, filterAttributeKeyDataType, searchText, tagType, limit, null);
         Type localVarReturnType = new TypeToken<O11yO11yInfraAttributeValuesOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -17181,7 +17181,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yJobsAttributeValuesAsync(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback<O11yO11yInfraAttributeValuesOut> _callback) throws ApiException {
+    public okhttp3.Call getO11yJobsAttributeValuesAsync(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback<O11yO11yInfraAttributeValuesOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getO11yJobsAttributeValuesValidateBeforeCall(dataSource, aggregateOperator, aggregateAttribute, attributeKey, filterAttributeKeyDataType, searchText, tagType, limit, _callback);
         Type localVarReturnType = new TypeToken<O11yO11yInfraAttributeValuesOut>(){}.getType();
@@ -17613,7 +17613,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yLogsCall(@javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer timestampStart, @javax.annotation.Nullable Integer timestampEnd, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getO11yLogsCall(@javax.annotation.Nullable Long limit, @javax.annotation.Nullable Long timestampStart, @javax.annotation.Nullable Long timestampEnd, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -17670,7 +17670,7 @@ public class O11yApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getO11yLogsValidateBeforeCall(@javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer timestampStart, @javax.annotation.Nullable Integer timestampEnd, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getO11yLogsValidateBeforeCall(@javax.annotation.Nullable Long limit, @javax.annotation.Nullable Long timestampStart, @javax.annotation.Nullable Long timestampEnd, final ApiCallback _callback) throws ApiException {
         return getO11yLogsCall(limit, timestampStart, timestampEnd, _callback);
 
     }
@@ -17690,7 +17690,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yO11yLogRecordsOut getO11yLogs(@javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer timestampStart, @javax.annotation.Nullable Integer timestampEnd) throws ApiException {
+    public O11yO11yLogRecordsOut getO11yLogs(@javax.annotation.Nullable Long limit, @javax.annotation.Nullable Long timestampStart, @javax.annotation.Nullable Long timestampEnd) throws ApiException {
         ApiResponse<O11yO11yLogRecordsOut> localVarResp = getO11yLogsWithHttpInfo(limit, timestampStart, timestampEnd);
         return localVarResp.getData();
     }
@@ -17710,7 +17710,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yO11yLogRecordsOut> getO11yLogsWithHttpInfo(@javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer timestampStart, @javax.annotation.Nullable Integer timestampEnd) throws ApiException {
+    public ApiResponse<O11yO11yLogRecordsOut> getO11yLogsWithHttpInfo(@javax.annotation.Nullable Long limit, @javax.annotation.Nullable Long timestampStart, @javax.annotation.Nullable Long timestampEnd) throws ApiException {
         okhttp3.Call localVarCall = getO11yLogsValidateBeforeCall(limit, timestampStart, timestampEnd, null);
         Type localVarReturnType = new TypeToken<O11yO11yLogRecordsOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -17732,7 +17732,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yLogsAsync(@javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer timestampStart, @javax.annotation.Nullable Integer timestampEnd, final ApiCallback<O11yO11yLogRecordsOut> _callback) throws ApiException {
+    public okhttp3.Call getO11yLogsAsync(@javax.annotation.Nullable Long limit, @javax.annotation.Nullable Long timestampStart, @javax.annotation.Nullable Long timestampEnd, final ApiCallback<O11yO11yLogRecordsOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getO11yLogsValidateBeforeCall(limit, timestampStart, timestampEnd, _callback);
         Type localVarReturnType = new TypeToken<O11yO11yLogRecordsOut>(){}.getType();
@@ -18456,7 +18456,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yNamespacesAttributeKeysCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getO11yNamespacesAttributeKeysCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -18525,7 +18525,7 @@ public class O11yApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getO11yNamespacesAttributeKeysValidateBeforeCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getO11yNamespacesAttributeKeysValidateBeforeCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         return getO11yNamespacesAttributeKeysCall(dataSource, aggregateOperator, aggregateAttribute, searchText, tagType, limit, _callback);
 
     }
@@ -18548,7 +18548,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yO11yInfraAttributeKeysOut getO11yNamespacesAttributeKeys(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public O11yO11yInfraAttributeKeysOut getO11yNamespacesAttributeKeys(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<O11yO11yInfraAttributeKeysOut> localVarResp = getO11yNamespacesAttributeKeysWithHttpInfo(dataSource, aggregateOperator, aggregateAttribute, searchText, tagType, limit);
         return localVarResp.getData();
     }
@@ -18571,7 +18571,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yO11yInfraAttributeKeysOut> getO11yNamespacesAttributeKeysWithHttpInfo(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<O11yO11yInfraAttributeKeysOut> getO11yNamespacesAttributeKeysWithHttpInfo(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getO11yNamespacesAttributeKeysValidateBeforeCall(dataSource, aggregateOperator, aggregateAttribute, searchText, tagType, limit, null);
         Type localVarReturnType = new TypeToken<O11yO11yInfraAttributeKeysOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -18596,7 +18596,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yNamespacesAttributeKeysAsync(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback<O11yO11yInfraAttributeKeysOut> _callback) throws ApiException {
+    public okhttp3.Call getO11yNamespacesAttributeKeysAsync(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback<O11yO11yInfraAttributeKeysOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getO11yNamespacesAttributeKeysValidateBeforeCall(dataSource, aggregateOperator, aggregateAttribute, searchText, tagType, limit, _callback);
         Type localVarReturnType = new TypeToken<O11yO11yInfraAttributeKeysOut>(){}.getType();
@@ -18623,7 +18623,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yNamespacesAttributeValuesCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getO11yNamespacesAttributeValuesCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -18700,7 +18700,7 @@ public class O11yApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getO11yNamespacesAttributeValuesValidateBeforeCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getO11yNamespacesAttributeValuesValidateBeforeCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         return getO11yNamespacesAttributeValuesCall(dataSource, aggregateOperator, aggregateAttribute, attributeKey, filterAttributeKeyDataType, searchText, tagType, limit, _callback);
 
     }
@@ -18725,7 +18725,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yO11yInfraAttributeValuesOut getO11yNamespacesAttributeValues(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public O11yO11yInfraAttributeValuesOut getO11yNamespacesAttributeValues(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<O11yO11yInfraAttributeValuesOut> localVarResp = getO11yNamespacesAttributeValuesWithHttpInfo(dataSource, aggregateOperator, aggregateAttribute, attributeKey, filterAttributeKeyDataType, searchText, tagType, limit);
         return localVarResp.getData();
     }
@@ -18750,7 +18750,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yO11yInfraAttributeValuesOut> getO11yNamespacesAttributeValuesWithHttpInfo(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<O11yO11yInfraAttributeValuesOut> getO11yNamespacesAttributeValuesWithHttpInfo(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getO11yNamespacesAttributeValuesValidateBeforeCall(dataSource, aggregateOperator, aggregateAttribute, attributeKey, filterAttributeKeyDataType, searchText, tagType, limit, null);
         Type localVarReturnType = new TypeToken<O11yO11yInfraAttributeValuesOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -18777,7 +18777,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yNamespacesAttributeValuesAsync(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback<O11yO11yInfraAttributeValuesOut> _callback) throws ApiException {
+    public okhttp3.Call getO11yNamespacesAttributeValuesAsync(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback<O11yO11yInfraAttributeValuesOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getO11yNamespacesAttributeValuesValidateBeforeCall(dataSource, aggregateOperator, aggregateAttribute, attributeKey, filterAttributeKeyDataType, searchText, tagType, limit, _callback);
         Type localVarReturnType = new TypeToken<O11yO11yInfraAttributeValuesOut>(){}.getType();
@@ -18953,7 +18953,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yNodesAttributeKeysCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getO11yNodesAttributeKeysCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -19022,7 +19022,7 @@ public class O11yApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getO11yNodesAttributeKeysValidateBeforeCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getO11yNodesAttributeKeysValidateBeforeCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         return getO11yNodesAttributeKeysCall(dataSource, aggregateOperator, aggregateAttribute, searchText, tagType, limit, _callback);
 
     }
@@ -19045,7 +19045,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yO11yInfraAttributeKeysOut getO11yNodesAttributeKeys(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public O11yO11yInfraAttributeKeysOut getO11yNodesAttributeKeys(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<O11yO11yInfraAttributeKeysOut> localVarResp = getO11yNodesAttributeKeysWithHttpInfo(dataSource, aggregateOperator, aggregateAttribute, searchText, tagType, limit);
         return localVarResp.getData();
     }
@@ -19068,7 +19068,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yO11yInfraAttributeKeysOut> getO11yNodesAttributeKeysWithHttpInfo(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<O11yO11yInfraAttributeKeysOut> getO11yNodesAttributeKeysWithHttpInfo(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getO11yNodesAttributeKeysValidateBeforeCall(dataSource, aggregateOperator, aggregateAttribute, searchText, tagType, limit, null);
         Type localVarReturnType = new TypeToken<O11yO11yInfraAttributeKeysOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -19093,7 +19093,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yNodesAttributeKeysAsync(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback<O11yO11yInfraAttributeKeysOut> _callback) throws ApiException {
+    public okhttp3.Call getO11yNodesAttributeKeysAsync(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback<O11yO11yInfraAttributeKeysOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getO11yNodesAttributeKeysValidateBeforeCall(dataSource, aggregateOperator, aggregateAttribute, searchText, tagType, limit, _callback);
         Type localVarReturnType = new TypeToken<O11yO11yInfraAttributeKeysOut>(){}.getType();
@@ -19120,7 +19120,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yNodesAttributeValuesCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getO11yNodesAttributeValuesCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -19197,7 +19197,7 @@ public class O11yApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getO11yNodesAttributeValuesValidateBeforeCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getO11yNodesAttributeValuesValidateBeforeCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         return getO11yNodesAttributeValuesCall(dataSource, aggregateOperator, aggregateAttribute, attributeKey, filterAttributeKeyDataType, searchText, tagType, limit, _callback);
 
     }
@@ -19222,7 +19222,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yO11yInfraAttributeValuesOut getO11yNodesAttributeValues(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public O11yO11yInfraAttributeValuesOut getO11yNodesAttributeValues(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<O11yO11yInfraAttributeValuesOut> localVarResp = getO11yNodesAttributeValuesWithHttpInfo(dataSource, aggregateOperator, aggregateAttribute, attributeKey, filterAttributeKeyDataType, searchText, tagType, limit);
         return localVarResp.getData();
     }
@@ -19247,7 +19247,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yO11yInfraAttributeValuesOut> getO11yNodesAttributeValuesWithHttpInfo(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<O11yO11yInfraAttributeValuesOut> getO11yNodesAttributeValuesWithHttpInfo(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getO11yNodesAttributeValuesValidateBeforeCall(dataSource, aggregateOperator, aggregateAttribute, attributeKey, filterAttributeKeyDataType, searchText, tagType, limit, null);
         Type localVarReturnType = new TypeToken<O11yO11yInfraAttributeValuesOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -19274,7 +19274,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yNodesAttributeValuesAsync(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback<O11yO11yInfraAttributeValuesOut> _callback) throws ApiException {
+    public okhttp3.Call getO11yNodesAttributeValuesAsync(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback<O11yO11yInfraAttributeValuesOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getO11yNodesAttributeValuesValidateBeforeCall(dataSource, aggregateOperator, aggregateAttribute, attributeKey, filterAttributeKeyDataType, searchText, tagType, limit, _callback);
         Type localVarReturnType = new TypeToken<O11yO11yInfraAttributeValuesOut>(){}.getType();
@@ -19299,7 +19299,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yPodsAttributeKeysCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getO11yPodsAttributeKeysCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -19368,7 +19368,7 @@ public class O11yApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getO11yPodsAttributeKeysValidateBeforeCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getO11yPodsAttributeKeysValidateBeforeCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         return getO11yPodsAttributeKeysCall(dataSource, aggregateOperator, aggregateAttribute, searchText, tagType, limit, _callback);
 
     }
@@ -19391,7 +19391,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yO11yInfraAttributeKeysOut getO11yPodsAttributeKeys(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public O11yO11yInfraAttributeKeysOut getO11yPodsAttributeKeys(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<O11yO11yInfraAttributeKeysOut> localVarResp = getO11yPodsAttributeKeysWithHttpInfo(dataSource, aggregateOperator, aggregateAttribute, searchText, tagType, limit);
         return localVarResp.getData();
     }
@@ -19414,7 +19414,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yO11yInfraAttributeKeysOut> getO11yPodsAttributeKeysWithHttpInfo(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<O11yO11yInfraAttributeKeysOut> getO11yPodsAttributeKeysWithHttpInfo(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getO11yPodsAttributeKeysValidateBeforeCall(dataSource, aggregateOperator, aggregateAttribute, searchText, tagType, limit, null);
         Type localVarReturnType = new TypeToken<O11yO11yInfraAttributeKeysOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -19439,7 +19439,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yPodsAttributeKeysAsync(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback<O11yO11yInfraAttributeKeysOut> _callback) throws ApiException {
+    public okhttp3.Call getO11yPodsAttributeKeysAsync(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback<O11yO11yInfraAttributeKeysOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getO11yPodsAttributeKeysValidateBeforeCall(dataSource, aggregateOperator, aggregateAttribute, searchText, tagType, limit, _callback);
         Type localVarReturnType = new TypeToken<O11yO11yInfraAttributeKeysOut>(){}.getType();
@@ -19466,7 +19466,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yPodsAttributeValuesCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getO11yPodsAttributeValuesCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -19543,7 +19543,7 @@ public class O11yApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getO11yPodsAttributeValuesValidateBeforeCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getO11yPodsAttributeValuesValidateBeforeCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         return getO11yPodsAttributeValuesCall(dataSource, aggregateOperator, aggregateAttribute, attributeKey, filterAttributeKeyDataType, searchText, tagType, limit, _callback);
 
     }
@@ -19568,7 +19568,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yO11yInfraAttributeValuesOut getO11yPodsAttributeValues(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public O11yO11yInfraAttributeValuesOut getO11yPodsAttributeValues(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<O11yO11yInfraAttributeValuesOut> localVarResp = getO11yPodsAttributeValuesWithHttpInfo(dataSource, aggregateOperator, aggregateAttribute, attributeKey, filterAttributeKeyDataType, searchText, tagType, limit);
         return localVarResp.getData();
     }
@@ -19593,7 +19593,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yO11yInfraAttributeValuesOut> getO11yPodsAttributeValuesWithHttpInfo(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<O11yO11yInfraAttributeValuesOut> getO11yPodsAttributeValuesWithHttpInfo(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getO11yPodsAttributeValuesValidateBeforeCall(dataSource, aggregateOperator, aggregateAttribute, attributeKey, filterAttributeKeyDataType, searchText, tagType, limit, null);
         Type localVarReturnType = new TypeToken<O11yO11yInfraAttributeValuesOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -19620,7 +19620,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yPodsAttributeValuesAsync(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback<O11yO11yInfraAttributeValuesOut> _callback) throws ApiException {
+    public okhttp3.Call getO11yPodsAttributeValuesAsync(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback<O11yO11yInfraAttributeValuesOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getO11yPodsAttributeValuesValidateBeforeCall(dataSource, aggregateOperator, aggregateAttribute, attributeKey, filterAttributeKeyDataType, searchText, tagType, limit, _callback);
         Type localVarReturnType = new TypeToken<O11yO11yInfraAttributeValuesOut>(){}.getType();
@@ -19645,7 +19645,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yProcessesAttributeKeysCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getO11yProcessesAttributeKeysCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -19714,7 +19714,7 @@ public class O11yApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getO11yProcessesAttributeKeysValidateBeforeCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getO11yProcessesAttributeKeysValidateBeforeCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         return getO11yProcessesAttributeKeysCall(dataSource, aggregateOperator, aggregateAttribute, searchText, tagType, limit, _callback);
 
     }
@@ -19737,7 +19737,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yO11yInfraAttributeKeysOut getO11yProcessesAttributeKeys(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public O11yO11yInfraAttributeKeysOut getO11yProcessesAttributeKeys(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<O11yO11yInfraAttributeKeysOut> localVarResp = getO11yProcessesAttributeKeysWithHttpInfo(dataSource, aggregateOperator, aggregateAttribute, searchText, tagType, limit);
         return localVarResp.getData();
     }
@@ -19760,7 +19760,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yO11yInfraAttributeKeysOut> getO11yProcessesAttributeKeysWithHttpInfo(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<O11yO11yInfraAttributeKeysOut> getO11yProcessesAttributeKeysWithHttpInfo(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getO11yProcessesAttributeKeysValidateBeforeCall(dataSource, aggregateOperator, aggregateAttribute, searchText, tagType, limit, null);
         Type localVarReturnType = new TypeToken<O11yO11yInfraAttributeKeysOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -19785,7 +19785,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yProcessesAttributeKeysAsync(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback<O11yO11yInfraAttributeKeysOut> _callback) throws ApiException {
+    public okhttp3.Call getO11yProcessesAttributeKeysAsync(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback<O11yO11yInfraAttributeKeysOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getO11yProcessesAttributeKeysValidateBeforeCall(dataSource, aggregateOperator, aggregateAttribute, searchText, tagType, limit, _callback);
         Type localVarReturnType = new TypeToken<O11yO11yInfraAttributeKeysOut>(){}.getType();
@@ -19812,7 +19812,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yProcessesAttributeValuesCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getO11yProcessesAttributeValuesCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -19889,7 +19889,7 @@ public class O11yApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getO11yProcessesAttributeValuesValidateBeforeCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getO11yProcessesAttributeValuesValidateBeforeCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         return getO11yProcessesAttributeValuesCall(dataSource, aggregateOperator, aggregateAttribute, attributeKey, filterAttributeKeyDataType, searchText, tagType, limit, _callback);
 
     }
@@ -19914,7 +19914,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yO11yInfraAttributeValuesOut getO11yProcessesAttributeValues(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public O11yO11yInfraAttributeValuesOut getO11yProcessesAttributeValues(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<O11yO11yInfraAttributeValuesOut> localVarResp = getO11yProcessesAttributeValuesWithHttpInfo(dataSource, aggregateOperator, aggregateAttribute, attributeKey, filterAttributeKeyDataType, searchText, tagType, limit);
         return localVarResp.getData();
     }
@@ -19939,7 +19939,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yO11yInfraAttributeValuesOut> getO11yProcessesAttributeValuesWithHttpInfo(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<O11yO11yInfraAttributeValuesOut> getO11yProcessesAttributeValuesWithHttpInfo(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getO11yProcessesAttributeValuesValidateBeforeCall(dataSource, aggregateOperator, aggregateAttribute, attributeKey, filterAttributeKeyDataType, searchText, tagType, limit, null);
         Type localVarReturnType = new TypeToken<O11yO11yInfraAttributeValuesOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -19966,7 +19966,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yProcessesAttributeValuesAsync(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback<O11yO11yInfraAttributeValuesOut> _callback) throws ApiException {
+    public okhttp3.Call getO11yProcessesAttributeValuesAsync(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback<O11yO11yInfraAttributeValuesOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getO11yProcessesAttributeValuesValidateBeforeCall(dataSource, aggregateOperator, aggregateAttribute, attributeKey, filterAttributeKeyDataType, searchText, tagType, limit, _callback);
         Type localVarReturnType = new TypeToken<O11yO11yInfraAttributeValuesOut>(){}.getType();
@@ -19988,7 +19988,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yProductMetricsCall(@javax.annotation.Nullable String product, @javax.annotation.Nullable Integer range, @javax.annotation.Nullable Integer stepSec, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getO11yProductMetricsCall(@javax.annotation.Nullable String product, @javax.annotation.Nullable Long range, @javax.annotation.Nullable Long stepSec, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -20045,7 +20045,7 @@ public class O11yApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getO11yProductMetricsValidateBeforeCall(@javax.annotation.Nullable String product, @javax.annotation.Nullable Integer range, @javax.annotation.Nullable Integer stepSec, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getO11yProductMetricsValidateBeforeCall(@javax.annotation.Nullable String product, @javax.annotation.Nullable Long range, @javax.annotation.Nullable Long stepSec, final ApiCallback _callback) throws ApiException {
         return getO11yProductMetricsCall(product, range, stepSec, _callback);
 
     }
@@ -20065,7 +20065,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yMetricsResponse getO11yProductMetrics(@javax.annotation.Nullable String product, @javax.annotation.Nullable Integer range, @javax.annotation.Nullable Integer stepSec) throws ApiException {
+    public O11yMetricsResponse getO11yProductMetrics(@javax.annotation.Nullable String product, @javax.annotation.Nullable Long range, @javax.annotation.Nullable Long stepSec) throws ApiException {
         ApiResponse<O11yMetricsResponse> localVarResp = getO11yProductMetricsWithHttpInfo(product, range, stepSec);
         return localVarResp.getData();
     }
@@ -20085,7 +20085,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yMetricsResponse> getO11yProductMetricsWithHttpInfo(@javax.annotation.Nullable String product, @javax.annotation.Nullable Integer range, @javax.annotation.Nullable Integer stepSec) throws ApiException {
+    public ApiResponse<O11yMetricsResponse> getO11yProductMetricsWithHttpInfo(@javax.annotation.Nullable String product, @javax.annotation.Nullable Long range, @javax.annotation.Nullable Long stepSec) throws ApiException {
         okhttp3.Call localVarCall = getO11yProductMetricsValidateBeforeCall(product, range, stepSec, null);
         Type localVarReturnType = new TypeToken<O11yMetricsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -20107,7 +20107,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yProductMetricsAsync(@javax.annotation.Nullable String product, @javax.annotation.Nullable Integer range, @javax.annotation.Nullable Integer stepSec, final ApiCallback<O11yMetricsResponse> _callback) throws ApiException {
+    public okhttp3.Call getO11yProductMetricsAsync(@javax.annotation.Nullable String product, @javax.annotation.Nullable Long range, @javax.annotation.Nullable Long stepSec, final ApiCallback<O11yMetricsResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getO11yProductMetricsValidateBeforeCall(product, range, stepSec, _callback);
         Type localVarReturnType = new TypeToken<O11yMetricsResponse>(){}.getType();
@@ -20132,7 +20132,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yPvcsAttributeKeysCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getO11yPvcsAttributeKeysCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -20201,7 +20201,7 @@ public class O11yApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getO11yPvcsAttributeKeysValidateBeforeCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getO11yPvcsAttributeKeysValidateBeforeCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         return getO11yPvcsAttributeKeysCall(dataSource, aggregateOperator, aggregateAttribute, searchText, tagType, limit, _callback);
 
     }
@@ -20224,7 +20224,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yO11yInfraAttributeKeysOut getO11yPvcsAttributeKeys(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public O11yO11yInfraAttributeKeysOut getO11yPvcsAttributeKeys(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<O11yO11yInfraAttributeKeysOut> localVarResp = getO11yPvcsAttributeKeysWithHttpInfo(dataSource, aggregateOperator, aggregateAttribute, searchText, tagType, limit);
         return localVarResp.getData();
     }
@@ -20247,7 +20247,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yO11yInfraAttributeKeysOut> getO11yPvcsAttributeKeysWithHttpInfo(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<O11yO11yInfraAttributeKeysOut> getO11yPvcsAttributeKeysWithHttpInfo(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getO11yPvcsAttributeKeysValidateBeforeCall(dataSource, aggregateOperator, aggregateAttribute, searchText, tagType, limit, null);
         Type localVarReturnType = new TypeToken<O11yO11yInfraAttributeKeysOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -20272,7 +20272,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yPvcsAttributeKeysAsync(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback<O11yO11yInfraAttributeKeysOut> _callback) throws ApiException {
+    public okhttp3.Call getO11yPvcsAttributeKeysAsync(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback<O11yO11yInfraAttributeKeysOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getO11yPvcsAttributeKeysValidateBeforeCall(dataSource, aggregateOperator, aggregateAttribute, searchText, tagType, limit, _callback);
         Type localVarReturnType = new TypeToken<O11yO11yInfraAttributeKeysOut>(){}.getType();
@@ -20299,7 +20299,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yPvcsAttributeValuesCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getO11yPvcsAttributeValuesCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -20376,7 +20376,7 @@ public class O11yApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getO11yPvcsAttributeValuesValidateBeforeCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getO11yPvcsAttributeValuesValidateBeforeCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         return getO11yPvcsAttributeValuesCall(dataSource, aggregateOperator, aggregateAttribute, attributeKey, filterAttributeKeyDataType, searchText, tagType, limit, _callback);
 
     }
@@ -20401,7 +20401,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yO11yInfraAttributeValuesOut getO11yPvcsAttributeValues(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public O11yO11yInfraAttributeValuesOut getO11yPvcsAttributeValues(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<O11yO11yInfraAttributeValuesOut> localVarResp = getO11yPvcsAttributeValuesWithHttpInfo(dataSource, aggregateOperator, aggregateAttribute, attributeKey, filterAttributeKeyDataType, searchText, tagType, limit);
         return localVarResp.getData();
     }
@@ -20426,7 +20426,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yO11yInfraAttributeValuesOut> getO11yPvcsAttributeValuesWithHttpInfo(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<O11yO11yInfraAttributeValuesOut> getO11yPvcsAttributeValuesWithHttpInfo(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getO11yPvcsAttributeValuesValidateBeforeCall(dataSource, aggregateOperator, aggregateAttribute, attributeKey, filterAttributeKeyDataType, searchText, tagType, limit, null);
         Type localVarReturnType = new TypeToken<O11yO11yInfraAttributeValuesOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -20453,7 +20453,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yPvcsAttributeValuesAsync(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback<O11yO11yInfraAttributeValuesOut> _callback) throws ApiException {
+    public okhttp3.Call getO11yPvcsAttributeValuesAsync(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback<O11yO11yInfraAttributeValuesOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getO11yPvcsAttributeValuesValidateBeforeCall(dataSource, aggregateOperator, aggregateAttribute, attributeKey, filterAttributeKeyDataType, searchText, tagType, limit, _callback);
         Type localVarReturnType = new TypeToken<O11yO11yInfraAttributeValuesOut>(){}.getType();
@@ -20989,7 +20989,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yReviewsCall(@javax.annotation.Nullable Integer page, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getO11yReviewsCall(@javax.annotation.Nullable Long page, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -21042,7 +21042,7 @@ public class O11yApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getO11yReviewsValidateBeforeCall(@javax.annotation.Nullable Integer page, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getO11yReviewsValidateBeforeCall(@javax.annotation.Nullable Long page, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         return getO11yReviewsCall(page, limit, _callback);
 
     }
@@ -21061,7 +21061,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yAnnQueueList getO11yReviews(@javax.annotation.Nullable Integer page, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public O11yAnnQueueList getO11yReviews(@javax.annotation.Nullable Long page, @javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<O11yAnnQueueList> localVarResp = getO11yReviewsWithHttpInfo(page, limit);
         return localVarResp.getData();
     }
@@ -21080,7 +21080,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yAnnQueueList> getO11yReviewsWithHttpInfo(@javax.annotation.Nullable Integer page, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<O11yAnnQueueList> getO11yReviewsWithHttpInfo(@javax.annotation.Nullable Long page, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getO11yReviewsValidateBeforeCall(page, limit, null);
         Type localVarReturnType = new TypeToken<O11yAnnQueueList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -21101,7 +21101,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yReviewsAsync(@javax.annotation.Nullable Integer page, @javax.annotation.Nullable Integer limit, final ApiCallback<O11yAnnQueueList> _callback) throws ApiException {
+    public okhttp3.Call getO11yReviewsAsync(@javax.annotation.Nullable Long page, @javax.annotation.Nullable Long limit, final ApiCallback<O11yAnnQueueList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getO11yReviewsValidateBeforeCall(page, limit, _callback);
         Type localVarReturnType = new TypeToken<O11yAnnQueueList>(){}.getType();
@@ -21251,7 +21251,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yReviewsByIdItemsCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable String status, @javax.annotation.Nullable Integer page, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getO11yReviewsByIdItemsCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable String status, @javax.annotation.Nullable Long page, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -21309,7 +21309,7 @@ public class O11yApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getO11yReviewsByIdItemsValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable String status, @javax.annotation.Nullable Integer page, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getO11yReviewsByIdItemsValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable String status, @javax.annotation.Nullable Long page, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling getO11yReviewsByIdItems(Async)");
@@ -21335,7 +21335,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yAnnItemList getO11yReviewsByIdItems(@javax.annotation.Nonnull String id, @javax.annotation.Nullable String status, @javax.annotation.Nullable Integer page, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public O11yAnnItemList getO11yReviewsByIdItems(@javax.annotation.Nonnull String id, @javax.annotation.Nullable String status, @javax.annotation.Nullable Long page, @javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<O11yAnnItemList> localVarResp = getO11yReviewsByIdItemsWithHttpInfo(id, status, page, limit);
         return localVarResp.getData();
     }
@@ -21356,7 +21356,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yAnnItemList> getO11yReviewsByIdItemsWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nullable String status, @javax.annotation.Nullable Integer page, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<O11yAnnItemList> getO11yReviewsByIdItemsWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nullable String status, @javax.annotation.Nullable Long page, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getO11yReviewsByIdItemsValidateBeforeCall(id, status, page, limit, null);
         Type localVarReturnType = new TypeToken<O11yAnnItemList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -21379,7 +21379,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yReviewsByIdItemsAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nullable String status, @javax.annotation.Nullable Integer page, @javax.annotation.Nullable Integer limit, final ApiCallback<O11yAnnItemList> _callback) throws ApiException {
+    public okhttp3.Call getO11yReviewsByIdItemsAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nullable String status, @javax.annotation.Nullable Long page, @javax.annotation.Nullable Long limit, final ApiCallback<O11yAnnItemList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getO11yReviewsByIdItemsValidateBeforeCall(id, status, page, limit, _callback);
         Type localVarReturnType = new TypeToken<O11yAnnItemList>(){}.getType();
@@ -21548,7 +21548,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11ySentinelIssuesCall(@javax.annotation.Nullable String status, @javax.annotation.Nullable String level, @javax.annotation.Nullable String environment, @javax.annotation.Nullable String serviceName, @javax.annotation.Nullable String query, @javax.annotation.Nullable String sort, @javax.annotation.Nullable Integer offset, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String project, @javax.annotation.Nullable String period, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getO11ySentinelIssuesCall(@javax.annotation.Nullable String status, @javax.annotation.Nullable String level, @javax.annotation.Nullable String environment, @javax.annotation.Nullable String serviceName, @javax.annotation.Nullable String query, @javax.annotation.Nullable String sort, @javax.annotation.Nullable Long offset, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable String project, @javax.annotation.Nullable String period, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -21633,7 +21633,7 @@ public class O11yApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getO11ySentinelIssuesValidateBeforeCall(@javax.annotation.Nullable String status, @javax.annotation.Nullable String level, @javax.annotation.Nullable String environment, @javax.annotation.Nullable String serviceName, @javax.annotation.Nullable String query, @javax.annotation.Nullable String sort, @javax.annotation.Nullable Integer offset, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String project, @javax.annotation.Nullable String period, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getO11ySentinelIssuesValidateBeforeCall(@javax.annotation.Nullable String status, @javax.annotation.Nullable String level, @javax.annotation.Nullable String environment, @javax.annotation.Nullable String serviceName, @javax.annotation.Nullable String query, @javax.annotation.Nullable String sort, @javax.annotation.Nullable Long offset, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable String project, @javax.annotation.Nullable String period, final ApiCallback _callback) throws ApiException {
         return getO11ySentinelIssuesCall(status, level, environment, serviceName, query, sort, offset, limit, project, period, _callback);
 
     }
@@ -21660,7 +21660,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yO11yErrorIssuesOut getO11ySentinelIssues(@javax.annotation.Nullable String status, @javax.annotation.Nullable String level, @javax.annotation.Nullable String environment, @javax.annotation.Nullable String serviceName, @javax.annotation.Nullable String query, @javax.annotation.Nullable String sort, @javax.annotation.Nullable Integer offset, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String project, @javax.annotation.Nullable String period) throws ApiException {
+    public O11yO11yErrorIssuesOut getO11ySentinelIssues(@javax.annotation.Nullable String status, @javax.annotation.Nullable String level, @javax.annotation.Nullable String environment, @javax.annotation.Nullable String serviceName, @javax.annotation.Nullable String query, @javax.annotation.Nullable String sort, @javax.annotation.Nullable Long offset, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable String project, @javax.annotation.Nullable String period) throws ApiException {
         ApiResponse<O11yO11yErrorIssuesOut> localVarResp = getO11ySentinelIssuesWithHttpInfo(status, level, environment, serviceName, query, sort, offset, limit, project, period);
         return localVarResp.getData();
     }
@@ -21687,7 +21687,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yO11yErrorIssuesOut> getO11ySentinelIssuesWithHttpInfo(@javax.annotation.Nullable String status, @javax.annotation.Nullable String level, @javax.annotation.Nullable String environment, @javax.annotation.Nullable String serviceName, @javax.annotation.Nullable String query, @javax.annotation.Nullable String sort, @javax.annotation.Nullable Integer offset, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String project, @javax.annotation.Nullable String period) throws ApiException {
+    public ApiResponse<O11yO11yErrorIssuesOut> getO11ySentinelIssuesWithHttpInfo(@javax.annotation.Nullable String status, @javax.annotation.Nullable String level, @javax.annotation.Nullable String environment, @javax.annotation.Nullable String serviceName, @javax.annotation.Nullable String query, @javax.annotation.Nullable String sort, @javax.annotation.Nullable Long offset, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable String project, @javax.annotation.Nullable String period) throws ApiException {
         okhttp3.Call localVarCall = getO11ySentinelIssuesValidateBeforeCall(status, level, environment, serviceName, query, sort, offset, limit, project, period, null);
         Type localVarReturnType = new TypeToken<O11yO11yErrorIssuesOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -21716,7 +21716,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11ySentinelIssuesAsync(@javax.annotation.Nullable String status, @javax.annotation.Nullable String level, @javax.annotation.Nullable String environment, @javax.annotation.Nullable String serviceName, @javax.annotation.Nullable String query, @javax.annotation.Nullable String sort, @javax.annotation.Nullable Integer offset, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String project, @javax.annotation.Nullable String period, final ApiCallback<O11yO11yErrorIssuesOut> _callback) throws ApiException {
+    public okhttp3.Call getO11ySentinelIssuesAsync(@javax.annotation.Nullable String status, @javax.annotation.Nullable String level, @javax.annotation.Nullable String environment, @javax.annotation.Nullable String serviceName, @javax.annotation.Nullable String query, @javax.annotation.Nullable String sort, @javax.annotation.Nullable Long offset, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable String project, @javax.annotation.Nullable String period, final ApiCallback<O11yO11yErrorIssuesOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getO11ySentinelIssuesValidateBeforeCall(status, level, environment, serviceName, query, sort, offset, limit, project, period, _callback);
         Type localVarReturnType = new TypeToken<O11yO11yErrorIssuesOut>(){}.getType();
@@ -21865,7 +21865,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11ySentinelIssuesByIdEventsCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String project, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getO11ySentinelIssuesByIdEventsCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String project, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -21919,7 +21919,7 @@ public class O11yApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getO11ySentinelIssuesByIdEventsValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String project, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getO11ySentinelIssuesByIdEventsValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String project, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling getO11ySentinelIssuesByIdEvents(Async)");
@@ -21949,7 +21949,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yO11ySentryIssueEventsOut getO11ySentinelIssuesByIdEvents(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String project, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public O11yO11ySentryIssueEventsOut getO11ySentinelIssuesByIdEvents(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String project, @javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<O11yO11ySentryIssueEventsOut> localVarResp = getO11ySentinelIssuesByIdEventsWithHttpInfo(id, project, limit);
         return localVarResp.getData();
     }
@@ -21969,7 +21969,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yO11ySentryIssueEventsOut> getO11ySentinelIssuesByIdEventsWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String project, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<O11yO11ySentryIssueEventsOut> getO11ySentinelIssuesByIdEventsWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String project, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getO11ySentinelIssuesByIdEventsValidateBeforeCall(id, project, limit, null);
         Type localVarReturnType = new TypeToken<O11yO11ySentryIssueEventsOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -21991,7 +21991,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11ySentinelIssuesByIdEventsAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String project, @javax.annotation.Nullable Integer limit, final ApiCallback<O11yO11ySentryIssueEventsOut> _callback) throws ApiException {
+    public okhttp3.Call getO11ySentinelIssuesByIdEventsAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String project, @javax.annotation.Nullable Long limit, final ApiCallback<O11yO11ySentryIssueEventsOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getO11ySentinelIssuesByIdEventsValidateBeforeCall(id, project, limit, _callback);
         Type localVarReturnType = new TypeToken<O11yO11ySentryIssueEventsOut>(){}.getType();
@@ -22014,7 +22014,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11ySentinelLogsCall(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String query, @javax.annotation.Nullable String period, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getO11ySentinelLogsCall(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String query, @javax.annotation.Nullable String period, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -22075,7 +22075,7 @@ public class O11yApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getO11ySentinelLogsValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String query, @javax.annotation.Nullable String period, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getO11ySentinelLogsValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String query, @javax.annotation.Nullable String period, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'project' is set
         if (project == null) {
             throw new ApiException("Missing the required parameter 'project' when calling getO11ySentinelLogs(Async)");
@@ -22101,7 +22101,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yO11yLogsOut getO11ySentinelLogs(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String query, @javax.annotation.Nullable String period, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public O11yO11yLogsOut getO11ySentinelLogs(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String query, @javax.annotation.Nullable String period, @javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<O11yO11yLogsOut> localVarResp = getO11ySentinelLogsWithHttpInfo(project, query, period, limit);
         return localVarResp.getData();
     }
@@ -22122,7 +22122,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yO11yLogsOut> getO11ySentinelLogsWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String query, @javax.annotation.Nullable String period, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<O11yO11yLogsOut> getO11ySentinelLogsWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String query, @javax.annotation.Nullable String period, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getO11ySentinelLogsValidateBeforeCall(project, query, period, limit, null);
         Type localVarReturnType = new TypeToken<O11yO11yLogsOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -22145,7 +22145,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11ySentinelLogsAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String query, @javax.annotation.Nullable String period, @javax.annotation.Nullable Integer limit, final ApiCallback<O11yO11yLogsOut> _callback) throws ApiException {
+    public okhttp3.Call getO11ySentinelLogsAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String query, @javax.annotation.Nullable String period, @javax.annotation.Nullable Long limit, final ApiCallback<O11yO11yLogsOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getO11ySentinelLogsValidateBeforeCall(project, query, period, limit, _callback);
         Type localVarReturnType = new TypeToken<O11yO11yLogsOut>(){}.getType();
@@ -22557,7 +22557,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11ySentinelTracesCall(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String period, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getO11ySentinelTracesCall(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String period, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -22614,7 +22614,7 @@ public class O11yApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getO11ySentinelTracesValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String period, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getO11ySentinelTracesValidateBeforeCall(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String period, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'project' is set
         if (project == null) {
             throw new ApiException("Missing the required parameter 'project' when calling getO11ySentinelTraces(Async)");
@@ -22639,7 +22639,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yO11yTracesOut getO11ySentinelTraces(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String period, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public O11yO11yTracesOut getO11ySentinelTraces(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String period, @javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<O11yO11yTracesOut> localVarResp = getO11ySentinelTracesWithHttpInfo(project, period, limit);
         return localVarResp.getData();
     }
@@ -22659,7 +22659,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yO11yTracesOut> getO11ySentinelTracesWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String period, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<O11yO11yTracesOut> getO11ySentinelTracesWithHttpInfo(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String period, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getO11ySentinelTracesValidateBeforeCall(project, period, limit, null);
         Type localVarReturnType = new TypeToken<O11yO11yTracesOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -22681,7 +22681,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11ySentinelTracesAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String period, @javax.annotation.Nullable Integer limit, final ApiCallback<O11yO11yTracesOut> _callback) throws ApiException {
+    public okhttp3.Call getO11ySentinelTracesAsync(@javax.annotation.Nonnull String project, @javax.annotation.Nullable String period, @javax.annotation.Nullable Long limit, final ApiCallback<O11yO11yTracesOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getO11ySentinelTracesValidateBeforeCall(project, period, limit, _callback);
         Type localVarReturnType = new TypeToken<O11yO11yTracesOut>(){}.getType();
@@ -23293,7 +23293,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yStatefulsetsAttributeKeysCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getO11yStatefulsetsAttributeKeysCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -23362,7 +23362,7 @@ public class O11yApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getO11yStatefulsetsAttributeKeysValidateBeforeCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getO11yStatefulsetsAttributeKeysValidateBeforeCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         return getO11yStatefulsetsAttributeKeysCall(dataSource, aggregateOperator, aggregateAttribute, searchText, tagType, limit, _callback);
 
     }
@@ -23385,7 +23385,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yO11yInfraAttributeKeysOut getO11yStatefulsetsAttributeKeys(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public O11yO11yInfraAttributeKeysOut getO11yStatefulsetsAttributeKeys(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<O11yO11yInfraAttributeKeysOut> localVarResp = getO11yStatefulsetsAttributeKeysWithHttpInfo(dataSource, aggregateOperator, aggregateAttribute, searchText, tagType, limit);
         return localVarResp.getData();
     }
@@ -23408,7 +23408,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yO11yInfraAttributeKeysOut> getO11yStatefulsetsAttributeKeysWithHttpInfo(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<O11yO11yInfraAttributeKeysOut> getO11yStatefulsetsAttributeKeysWithHttpInfo(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getO11yStatefulsetsAttributeKeysValidateBeforeCall(dataSource, aggregateOperator, aggregateAttribute, searchText, tagType, limit, null);
         Type localVarReturnType = new TypeToken<O11yO11yInfraAttributeKeysOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -23433,7 +23433,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yStatefulsetsAttributeKeysAsync(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback<O11yO11yInfraAttributeKeysOut> _callback) throws ApiException {
+    public okhttp3.Call getO11yStatefulsetsAttributeKeysAsync(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback<O11yO11yInfraAttributeKeysOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getO11yStatefulsetsAttributeKeysValidateBeforeCall(dataSource, aggregateOperator, aggregateAttribute, searchText, tagType, limit, _callback);
         Type localVarReturnType = new TypeToken<O11yO11yInfraAttributeKeysOut>(){}.getType();
@@ -23460,7 +23460,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yStatefulsetsAttributeValuesCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getO11yStatefulsetsAttributeValuesCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -23537,7 +23537,7 @@ public class O11yApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getO11yStatefulsetsAttributeValuesValidateBeforeCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getO11yStatefulsetsAttributeValuesValidateBeforeCall(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         return getO11yStatefulsetsAttributeValuesCall(dataSource, aggregateOperator, aggregateAttribute, attributeKey, filterAttributeKeyDataType, searchText, tagType, limit, _callback);
 
     }
@@ -23562,7 +23562,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yO11yInfraAttributeValuesOut getO11yStatefulsetsAttributeValues(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public O11yO11yInfraAttributeValuesOut getO11yStatefulsetsAttributeValues(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<O11yO11yInfraAttributeValuesOut> localVarResp = getO11yStatefulsetsAttributeValuesWithHttpInfo(dataSource, aggregateOperator, aggregateAttribute, attributeKey, filterAttributeKeyDataType, searchText, tagType, limit);
         return localVarResp.getData();
     }
@@ -23587,7 +23587,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yO11yInfraAttributeValuesOut> getO11yStatefulsetsAttributeValuesWithHttpInfo(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<O11yO11yInfraAttributeValuesOut> getO11yStatefulsetsAttributeValuesWithHttpInfo(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getO11yStatefulsetsAttributeValuesValidateBeforeCall(dataSource, aggregateOperator, aggregateAttribute, attributeKey, filterAttributeKeyDataType, searchText, tagType, limit, null);
         Type localVarReturnType = new TypeToken<O11yO11yInfraAttributeValuesOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -23614,7 +23614,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yStatefulsetsAttributeValuesAsync(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Integer limit, final ApiCallback<O11yO11yInfraAttributeValuesOut> _callback) throws ApiException {
+    public okhttp3.Call getO11yStatefulsetsAttributeValuesAsync(@javax.annotation.Nullable String dataSource, @javax.annotation.Nullable String aggregateOperator, @javax.annotation.Nullable String aggregateAttribute, @javax.annotation.Nullable String attributeKey, @javax.annotation.Nullable String filterAttributeKeyDataType, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String tagType, @javax.annotation.Nullable Long limit, final ApiCallback<O11yO11yInfraAttributeValuesOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getO11yStatefulsetsAttributeValuesValidateBeforeCall(dataSource, aggregateOperator, aggregateAttribute, attributeKey, filterAttributeKeyDataType, searchText, tagType, limit, _callback);
         Type localVarReturnType = new TypeToken<O11yO11yInfraAttributeValuesOut>(){}.getType();
@@ -23995,7 +23995,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yTracesCall(@javax.annotation.Nullable Integer range, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer minDurationMs, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getO11yTracesCall(@javax.annotation.Nullable Long range, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable Long minDurationMs, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -24052,7 +24052,7 @@ public class O11yApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getO11yTracesValidateBeforeCall(@javax.annotation.Nullable Integer range, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer minDurationMs, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getO11yTracesValidateBeforeCall(@javax.annotation.Nullable Long range, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable Long minDurationMs, final ApiCallback _callback) throws ApiException {
         return getO11yTracesCall(range, limit, minDurationMs, _callback);
 
     }
@@ -24072,7 +24072,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yTracesOut getO11yTraces(@javax.annotation.Nullable Integer range, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer minDurationMs) throws ApiException {
+    public O11yTracesOut getO11yTraces(@javax.annotation.Nullable Long range, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable Long minDurationMs) throws ApiException {
         ApiResponse<O11yTracesOut> localVarResp = getO11yTracesWithHttpInfo(range, limit, minDurationMs);
         return localVarResp.getData();
     }
@@ -24092,7 +24092,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yTracesOut> getO11yTracesWithHttpInfo(@javax.annotation.Nullable Integer range, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer minDurationMs) throws ApiException {
+    public ApiResponse<O11yTracesOut> getO11yTracesWithHttpInfo(@javax.annotation.Nullable Long range, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable Long minDurationMs) throws ApiException {
         okhttp3.Call localVarCall = getO11yTracesValidateBeforeCall(range, limit, minDurationMs, null);
         Type localVarReturnType = new TypeToken<O11yTracesOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -24114,7 +24114,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yTracesAsync(@javax.annotation.Nullable Integer range, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer minDurationMs, final ApiCallback<O11yTracesOut> _callback) throws ApiException {
+    public okhttp3.Call getO11yTracesAsync(@javax.annotation.Nullable Long range, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable Long minDurationMs, final ApiCallback<O11yTracesOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getO11yTracesValidateBeforeCall(range, limit, minDurationMs, _callback);
         Type localVarReturnType = new TypeToken<O11yTracesOut>(){}.getType();
@@ -24137,7 +24137,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yUsageCall(@javax.annotation.Nonnull String start, @javax.annotation.Nonnull String end, @javax.annotation.Nullable Integer step, @javax.annotation.Nullable String service, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getO11yUsageCall(@javax.annotation.Nonnull String start, @javax.annotation.Nonnull String end, @javax.annotation.Nullable Long step, @javax.annotation.Nullable String service, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -24198,7 +24198,7 @@ public class O11yApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getO11yUsageValidateBeforeCall(@javax.annotation.Nonnull String start, @javax.annotation.Nonnull String end, @javax.annotation.Nullable Integer step, @javax.annotation.Nullable String service, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getO11yUsageValidateBeforeCall(@javax.annotation.Nonnull String start, @javax.annotation.Nonnull String end, @javax.annotation.Nullable Long step, @javax.annotation.Nullable String service, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'start' is set
         if (start == null) {
             throw new ApiException("Missing the required parameter 'start' when calling getO11yUsage(Async)");
@@ -24229,7 +24229,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public List<O11yO11yUsageItem> getO11yUsage(@javax.annotation.Nonnull String start, @javax.annotation.Nonnull String end, @javax.annotation.Nullable Integer step, @javax.annotation.Nullable String service) throws ApiException {
+    public List<O11yO11yUsageItem> getO11yUsage(@javax.annotation.Nonnull String start, @javax.annotation.Nonnull String end, @javax.annotation.Nullable Long step, @javax.annotation.Nullable String service) throws ApiException {
         ApiResponse<List<O11yO11yUsageItem>> localVarResp = getO11yUsageWithHttpInfo(start, end, step, service);
         return localVarResp.getData();
     }
@@ -24250,7 +24250,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<O11yO11yUsageItem>> getO11yUsageWithHttpInfo(@javax.annotation.Nonnull String start, @javax.annotation.Nonnull String end, @javax.annotation.Nullable Integer step, @javax.annotation.Nullable String service) throws ApiException {
+    public ApiResponse<List<O11yO11yUsageItem>> getO11yUsageWithHttpInfo(@javax.annotation.Nonnull String start, @javax.annotation.Nonnull String end, @javax.annotation.Nullable Long step, @javax.annotation.Nullable String service) throws ApiException {
         okhttp3.Call localVarCall = getO11yUsageValidateBeforeCall(start, end, step, service, null);
         Type localVarReturnType = new TypeToken<List<O11yO11yUsageItem>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -24273,7 +24273,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getO11yUsageAsync(@javax.annotation.Nonnull String start, @javax.annotation.Nonnull String end, @javax.annotation.Nullable Integer step, @javax.annotation.Nullable String service, final ApiCallback<List<O11yO11yUsageItem>> _callback) throws ApiException {
+    public okhttp3.Call getO11yUsageAsync(@javax.annotation.Nonnull String start, @javax.annotation.Nonnull String end, @javax.annotation.Nullable Long step, @javax.annotation.Nullable String service, final ApiCallback<List<O11yO11yUsageItem>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getO11yUsageValidateBeforeCall(start, end, step, service, _callback);
         Type localVarReturnType = new TypeToken<List<O11yO11yUsageItem>>(){}.getType();
@@ -25964,7 +25964,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getRuleHistoryFilterKeysCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Integer startUnixMilli, @javax.annotation.Nullable Integer endUnixMilli, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getRuleHistoryFilterKeysCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long startUnixMilli, @javax.annotation.Nullable Long endUnixMilli, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -26026,7 +26026,7 @@ public class O11yApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getRuleHistoryFilterKeysValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Integer startUnixMilli, @javax.annotation.Nullable Integer endUnixMilli, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getRuleHistoryFilterKeysValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long startUnixMilli, @javax.annotation.Nullable Long endUnixMilli, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling getRuleHistoryFilterKeys(Async)");
@@ -26053,7 +26053,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yO11yRuleHistoryFilterKeysOut getRuleHistoryFilterKeys(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Integer startUnixMilli, @javax.annotation.Nullable Integer endUnixMilli, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public O11yO11yRuleHistoryFilterKeysOut getRuleHistoryFilterKeys(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long startUnixMilli, @javax.annotation.Nullable Long endUnixMilli, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<O11yO11yRuleHistoryFilterKeysOut> localVarResp = getRuleHistoryFilterKeysWithHttpInfo(id, startUnixMilli, endUnixMilli, searchText, limit);
         return localVarResp.getData();
     }
@@ -26075,7 +26075,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yO11yRuleHistoryFilterKeysOut> getRuleHistoryFilterKeysWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Integer startUnixMilli, @javax.annotation.Nullable Integer endUnixMilli, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<O11yO11yRuleHistoryFilterKeysOut> getRuleHistoryFilterKeysWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long startUnixMilli, @javax.annotation.Nullable Long endUnixMilli, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getRuleHistoryFilterKeysValidateBeforeCall(id, startUnixMilli, endUnixMilli, searchText, limit, null);
         Type localVarReturnType = new TypeToken<O11yO11yRuleHistoryFilterKeysOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -26099,7 +26099,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getRuleHistoryFilterKeysAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Integer startUnixMilli, @javax.annotation.Nullable Integer endUnixMilli, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable Integer limit, final ApiCallback<O11yO11yRuleHistoryFilterKeysOut> _callback) throws ApiException {
+    public okhttp3.Call getRuleHistoryFilterKeysAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long startUnixMilli, @javax.annotation.Nullable Long endUnixMilli, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable Long limit, final ApiCallback<O11yO11yRuleHistoryFilterKeysOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getRuleHistoryFilterKeysValidateBeforeCall(id, startUnixMilli, endUnixMilli, searchText, limit, _callback);
         Type localVarReturnType = new TypeToken<O11yO11yRuleHistoryFilterKeysOut>(){}.getType();
@@ -26125,7 +26125,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getRuleHistoryFilterValuesCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String name, @javax.annotation.Nullable Integer startUnixMilli, @javax.annotation.Nullable Integer endUnixMilli, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String existingQuery, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getRuleHistoryFilterValuesCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String name, @javax.annotation.Nullable Long startUnixMilli, @javax.annotation.Nullable Long endUnixMilli, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable String existingQuery, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -26195,7 +26195,7 @@ public class O11yApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getRuleHistoryFilterValuesValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String name, @javax.annotation.Nullable Integer startUnixMilli, @javax.annotation.Nullable Integer endUnixMilli, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String existingQuery, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getRuleHistoryFilterValuesValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String name, @javax.annotation.Nullable Long startUnixMilli, @javax.annotation.Nullable Long endUnixMilli, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable String existingQuery, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling getRuleHistoryFilterValues(Async)");
@@ -26229,7 +26229,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yO11yRuleHistoryFilterValuesOut getRuleHistoryFilterValues(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String name, @javax.annotation.Nullable Integer startUnixMilli, @javax.annotation.Nullable Integer endUnixMilli, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String existingQuery) throws ApiException {
+    public O11yO11yRuleHistoryFilterValuesOut getRuleHistoryFilterValues(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String name, @javax.annotation.Nullable Long startUnixMilli, @javax.annotation.Nullable Long endUnixMilli, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable String existingQuery) throws ApiException {
         ApiResponse<O11yO11yRuleHistoryFilterValuesOut> localVarResp = getRuleHistoryFilterValuesWithHttpInfo(id, name, startUnixMilli, endUnixMilli, searchText, limit, existingQuery);
         return localVarResp.getData();
     }
@@ -26253,7 +26253,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yO11yRuleHistoryFilterValuesOut> getRuleHistoryFilterValuesWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String name, @javax.annotation.Nullable Integer startUnixMilli, @javax.annotation.Nullable Integer endUnixMilli, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String existingQuery) throws ApiException {
+    public ApiResponse<O11yO11yRuleHistoryFilterValuesOut> getRuleHistoryFilterValuesWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String name, @javax.annotation.Nullable Long startUnixMilli, @javax.annotation.Nullable Long endUnixMilli, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable String existingQuery) throws ApiException {
         okhttp3.Call localVarCall = getRuleHistoryFilterValuesValidateBeforeCall(id, name, startUnixMilli, endUnixMilli, searchText, limit, existingQuery, null);
         Type localVarReturnType = new TypeToken<O11yO11yRuleHistoryFilterValuesOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -26279,7 +26279,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getRuleHistoryFilterValuesAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String name, @javax.annotation.Nullable Integer startUnixMilli, @javax.annotation.Nullable Integer endUnixMilli, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String existingQuery, final ApiCallback<O11yO11yRuleHistoryFilterValuesOut> _callback) throws ApiException {
+    public okhttp3.Call getRuleHistoryFilterValuesAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String name, @javax.annotation.Nullable Long startUnixMilli, @javax.annotation.Nullable Long endUnixMilli, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable String existingQuery, final ApiCallback<O11yO11yRuleHistoryFilterValuesOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getRuleHistoryFilterValuesValidateBeforeCall(id, name, startUnixMilli, endUnixMilli, searchText, limit, existingQuery, _callback);
         Type localVarReturnType = new TypeToken<O11yO11yRuleHistoryFilterValuesOut>(){}.getType();
@@ -26301,7 +26301,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getRuleHistoryOverallStatusCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Integer start, @javax.annotation.Nullable Integer end, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getRuleHistoryOverallStatusCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long start, @javax.annotation.Nullable Long end, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -26355,7 +26355,7 @@ public class O11yApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getRuleHistoryOverallStatusValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Integer start, @javax.annotation.Nullable Integer end, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getRuleHistoryOverallStatusValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long start, @javax.annotation.Nullable Long end, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling getRuleHistoryOverallStatus(Async)");
@@ -26380,7 +26380,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yO11yRuleHistoryOverallStatusOut getRuleHistoryOverallStatus(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Integer start, @javax.annotation.Nullable Integer end) throws ApiException {
+    public O11yO11yRuleHistoryOverallStatusOut getRuleHistoryOverallStatus(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long start, @javax.annotation.Nullable Long end) throws ApiException {
         ApiResponse<O11yO11yRuleHistoryOverallStatusOut> localVarResp = getRuleHistoryOverallStatusWithHttpInfo(id, start, end);
         return localVarResp.getData();
     }
@@ -26400,7 +26400,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yO11yRuleHistoryOverallStatusOut> getRuleHistoryOverallStatusWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Integer start, @javax.annotation.Nullable Integer end) throws ApiException {
+    public ApiResponse<O11yO11yRuleHistoryOverallStatusOut> getRuleHistoryOverallStatusWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long start, @javax.annotation.Nullable Long end) throws ApiException {
         okhttp3.Call localVarCall = getRuleHistoryOverallStatusValidateBeforeCall(id, start, end, null);
         Type localVarReturnType = new TypeToken<O11yO11yRuleHistoryOverallStatusOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -26422,7 +26422,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getRuleHistoryOverallStatusAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Integer start, @javax.annotation.Nullable Integer end, final ApiCallback<O11yO11yRuleHistoryOverallStatusOut> _callback) throws ApiException {
+    public okhttp3.Call getRuleHistoryOverallStatusAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long start, @javax.annotation.Nullable Long end, final ApiCallback<O11yO11yRuleHistoryOverallStatusOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getRuleHistoryOverallStatusValidateBeforeCall(id, start, end, _callback);
         Type localVarReturnType = new TypeToken<O11yO11yRuleHistoryOverallStatusOut>(){}.getType();
@@ -26444,7 +26444,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getRuleHistoryStatsCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Integer start, @javax.annotation.Nullable Integer end, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getRuleHistoryStatsCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long start, @javax.annotation.Nullable Long end, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -26498,7 +26498,7 @@ public class O11yApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getRuleHistoryStatsValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Integer start, @javax.annotation.Nullable Integer end, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getRuleHistoryStatsValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long start, @javax.annotation.Nullable Long end, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling getRuleHistoryStats(Async)");
@@ -26523,7 +26523,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yO11yRuleHistoryStatsOut getRuleHistoryStats(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Integer start, @javax.annotation.Nullable Integer end) throws ApiException {
+    public O11yO11yRuleHistoryStatsOut getRuleHistoryStats(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long start, @javax.annotation.Nullable Long end) throws ApiException {
         ApiResponse<O11yO11yRuleHistoryStatsOut> localVarResp = getRuleHistoryStatsWithHttpInfo(id, start, end);
         return localVarResp.getData();
     }
@@ -26543,7 +26543,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yO11yRuleHistoryStatsOut> getRuleHistoryStatsWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Integer start, @javax.annotation.Nullable Integer end) throws ApiException {
+    public ApiResponse<O11yO11yRuleHistoryStatsOut> getRuleHistoryStatsWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long start, @javax.annotation.Nullable Long end) throws ApiException {
         okhttp3.Call localVarCall = getRuleHistoryStatsValidateBeforeCall(id, start, end, null);
         Type localVarReturnType = new TypeToken<O11yO11yRuleHistoryStatsOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -26565,7 +26565,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getRuleHistoryStatsAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Integer start, @javax.annotation.Nullable Integer end, final ApiCallback<O11yO11yRuleHistoryStatsOut> _callback) throws ApiException {
+    public okhttp3.Call getRuleHistoryStatsAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long start, @javax.annotation.Nullable Long end, final ApiCallback<O11yO11yRuleHistoryStatsOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getRuleHistoryStatsValidateBeforeCall(id, start, end, _callback);
         Type localVarReturnType = new TypeToken<O11yO11yRuleHistoryStatsOut>(){}.getType();
@@ -26592,7 +26592,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getRuleHistoryTimelineCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Integer start, @javax.annotation.Nullable Integer end, @javax.annotation.Nullable String state, @javax.annotation.Nullable String filterExpression, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String order, @javax.annotation.Nullable String cursor, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getRuleHistoryTimelineCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long start, @javax.annotation.Nullable Long end, @javax.annotation.Nullable String state, @javax.annotation.Nullable String filterExpression, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable String order, @javax.annotation.Nullable String cursor, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -26666,7 +26666,7 @@ public class O11yApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getRuleHistoryTimelineValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Integer start, @javax.annotation.Nullable Integer end, @javax.annotation.Nullable String state, @javax.annotation.Nullable String filterExpression, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String order, @javax.annotation.Nullable String cursor, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getRuleHistoryTimelineValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long start, @javax.annotation.Nullable Long end, @javax.annotation.Nullable String state, @javax.annotation.Nullable String filterExpression, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable String order, @javax.annotation.Nullable String cursor, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling getRuleHistoryTimeline(Async)");
@@ -26696,7 +26696,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yO11yRuleHistoryTimelineOut getRuleHistoryTimeline(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Integer start, @javax.annotation.Nullable Integer end, @javax.annotation.Nullable String state, @javax.annotation.Nullable String filterExpression, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String order, @javax.annotation.Nullable String cursor) throws ApiException {
+    public O11yO11yRuleHistoryTimelineOut getRuleHistoryTimeline(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long start, @javax.annotation.Nullable Long end, @javax.annotation.Nullable String state, @javax.annotation.Nullable String filterExpression, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable String order, @javax.annotation.Nullable String cursor) throws ApiException {
         ApiResponse<O11yO11yRuleHistoryTimelineOut> localVarResp = getRuleHistoryTimelineWithHttpInfo(id, start, end, state, filterExpression, limit, order, cursor);
         return localVarResp.getData();
     }
@@ -26721,7 +26721,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yO11yRuleHistoryTimelineOut> getRuleHistoryTimelineWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Integer start, @javax.annotation.Nullable Integer end, @javax.annotation.Nullable String state, @javax.annotation.Nullable String filterExpression, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String order, @javax.annotation.Nullable String cursor) throws ApiException {
+    public ApiResponse<O11yO11yRuleHistoryTimelineOut> getRuleHistoryTimelineWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long start, @javax.annotation.Nullable Long end, @javax.annotation.Nullable String state, @javax.annotation.Nullable String filterExpression, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable String order, @javax.annotation.Nullable String cursor) throws ApiException {
         okhttp3.Call localVarCall = getRuleHistoryTimelineValidateBeforeCall(id, start, end, state, filterExpression, limit, order, cursor, null);
         Type localVarReturnType = new TypeToken<O11yO11yRuleHistoryTimelineOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -26748,7 +26748,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getRuleHistoryTimelineAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Integer start, @javax.annotation.Nullable Integer end, @javax.annotation.Nullable String state, @javax.annotation.Nullable String filterExpression, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String order, @javax.annotation.Nullable String cursor, final ApiCallback<O11yO11yRuleHistoryTimelineOut> _callback) throws ApiException {
+    public okhttp3.Call getRuleHistoryTimelineAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long start, @javax.annotation.Nullable Long end, @javax.annotation.Nullable String state, @javax.annotation.Nullable String filterExpression, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable String order, @javax.annotation.Nullable String cursor, final ApiCallback<O11yO11yRuleHistoryTimelineOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getRuleHistoryTimelineValidateBeforeCall(id, start, end, state, filterExpression, limit, order, cursor, _callback);
         Type localVarReturnType = new TypeToken<O11yO11yRuleHistoryTimelineOut>(){}.getType();
@@ -26770,7 +26770,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getRuleHistoryTopContributorsCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Integer start, @javax.annotation.Nullable Integer end, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getRuleHistoryTopContributorsCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long start, @javax.annotation.Nullable Long end, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -26824,7 +26824,7 @@ public class O11yApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getRuleHistoryTopContributorsValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Integer start, @javax.annotation.Nullable Integer end, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getRuleHistoryTopContributorsValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long start, @javax.annotation.Nullable Long end, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling getRuleHistoryTopContributors(Async)");
@@ -26849,7 +26849,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yO11yRuleHistoryContributorsOut getRuleHistoryTopContributors(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Integer start, @javax.annotation.Nullable Integer end) throws ApiException {
+    public O11yO11yRuleHistoryContributorsOut getRuleHistoryTopContributors(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long start, @javax.annotation.Nullable Long end) throws ApiException {
         ApiResponse<O11yO11yRuleHistoryContributorsOut> localVarResp = getRuleHistoryTopContributorsWithHttpInfo(id, start, end);
         return localVarResp.getData();
     }
@@ -26869,7 +26869,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yO11yRuleHistoryContributorsOut> getRuleHistoryTopContributorsWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Integer start, @javax.annotation.Nullable Integer end) throws ApiException {
+    public ApiResponse<O11yO11yRuleHistoryContributorsOut> getRuleHistoryTopContributorsWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long start, @javax.annotation.Nullable Long end) throws ApiException {
         okhttp3.Call localVarCall = getRuleHistoryTopContributorsValidateBeforeCall(id, start, end, null);
         Type localVarReturnType = new TypeToken<O11yO11yRuleHistoryContributorsOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -26891,7 +26891,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getRuleHistoryTopContributorsAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Integer start, @javax.annotation.Nullable Integer end, final ApiCallback<O11yO11yRuleHistoryContributorsOut> _callback) throws ApiException {
+    public okhttp3.Call getRuleHistoryTopContributorsAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long start, @javax.annotation.Nullable Long end, final ApiCallback<O11yO11yRuleHistoryContributorsOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getRuleHistoryTopContributorsValidateBeforeCall(id, start, end, _callback);
         Type localVarReturnType = new TypeToken<O11yO11yRuleHistoryContributorsOut>(){}.getType();
@@ -30565,7 +30565,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listDashboardsForUserV2Call(@javax.annotation.Nullable String query, @javax.annotation.Nullable String sort, @javax.annotation.Nullable String order, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer offset, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call listDashboardsForUserV2Call(@javax.annotation.Nullable String query, @javax.annotation.Nullable String sort, @javax.annotation.Nullable String order, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable Long offset, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -30630,7 +30630,7 @@ public class O11yApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listDashboardsForUserV2ValidateBeforeCall(@javax.annotation.Nullable String query, @javax.annotation.Nullable String sort, @javax.annotation.Nullable String order, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer offset, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listDashboardsForUserV2ValidateBeforeCall(@javax.annotation.Nullable String query, @javax.annotation.Nullable String sort, @javax.annotation.Nullable String order, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable Long offset, final ApiCallback _callback) throws ApiException {
         return listDashboardsForUserV2Call(query, sort, order, limit, offset, _callback);
 
     }
@@ -30652,7 +30652,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yO11yDashboardListForUserOut listDashboardsForUserV2(@javax.annotation.Nullable String query, @javax.annotation.Nullable String sort, @javax.annotation.Nullable String order, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer offset) throws ApiException {
+    public O11yO11yDashboardListForUserOut listDashboardsForUserV2(@javax.annotation.Nullable String query, @javax.annotation.Nullable String sort, @javax.annotation.Nullable String order, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable Long offset) throws ApiException {
         ApiResponse<O11yO11yDashboardListForUserOut> localVarResp = listDashboardsForUserV2WithHttpInfo(query, sort, order, limit, offset);
         return localVarResp.getData();
     }
@@ -30674,7 +30674,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yO11yDashboardListForUserOut> listDashboardsForUserV2WithHttpInfo(@javax.annotation.Nullable String query, @javax.annotation.Nullable String sort, @javax.annotation.Nullable String order, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer offset) throws ApiException {
+    public ApiResponse<O11yO11yDashboardListForUserOut> listDashboardsForUserV2WithHttpInfo(@javax.annotation.Nullable String query, @javax.annotation.Nullable String sort, @javax.annotation.Nullable String order, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable Long offset) throws ApiException {
         okhttp3.Call localVarCall = listDashboardsForUserV2ValidateBeforeCall(query, sort, order, limit, offset, null);
         Type localVarReturnType = new TypeToken<O11yO11yDashboardListForUserOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -30698,7 +30698,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listDashboardsForUserV2Async(@javax.annotation.Nullable String query, @javax.annotation.Nullable String sort, @javax.annotation.Nullable String order, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer offset, final ApiCallback<O11yO11yDashboardListForUserOut> _callback) throws ApiException {
+    public okhttp3.Call listDashboardsForUserV2Async(@javax.annotation.Nullable String query, @javax.annotation.Nullable String sort, @javax.annotation.Nullable String order, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable Long offset, final ApiCallback<O11yO11yDashboardListForUserOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listDashboardsForUserV2ValidateBeforeCall(query, sort, order, limit, offset, _callback);
         Type localVarReturnType = new TypeToken<O11yO11yDashboardListForUserOut>(){}.getType();
@@ -30722,7 +30722,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listDashboardsV2Call(@javax.annotation.Nullable String query, @javax.annotation.Nullable String sort, @javax.annotation.Nullable String order, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer offset, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call listDashboardsV2Call(@javax.annotation.Nullable String query, @javax.annotation.Nullable String sort, @javax.annotation.Nullable String order, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable Long offset, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -30787,7 +30787,7 @@ public class O11yApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listDashboardsV2ValidateBeforeCall(@javax.annotation.Nullable String query, @javax.annotation.Nullable String sort, @javax.annotation.Nullable String order, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer offset, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listDashboardsV2ValidateBeforeCall(@javax.annotation.Nullable String query, @javax.annotation.Nullable String sort, @javax.annotation.Nullable String order, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable Long offset, final ApiCallback _callback) throws ApiException {
         return listDashboardsV2Call(query, sort, order, limit, offset, _callback);
 
     }
@@ -30809,7 +30809,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yO11yDashboardListOut listDashboardsV2(@javax.annotation.Nullable String query, @javax.annotation.Nullable String sort, @javax.annotation.Nullable String order, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer offset) throws ApiException {
+    public O11yO11yDashboardListOut listDashboardsV2(@javax.annotation.Nullable String query, @javax.annotation.Nullable String sort, @javax.annotation.Nullable String order, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable Long offset) throws ApiException {
         ApiResponse<O11yO11yDashboardListOut> localVarResp = listDashboardsV2WithHttpInfo(query, sort, order, limit, offset);
         return localVarResp.getData();
     }
@@ -30831,7 +30831,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yO11yDashboardListOut> listDashboardsV2WithHttpInfo(@javax.annotation.Nullable String query, @javax.annotation.Nullable String sort, @javax.annotation.Nullable String order, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer offset) throws ApiException {
+    public ApiResponse<O11yO11yDashboardListOut> listDashboardsV2WithHttpInfo(@javax.annotation.Nullable String query, @javax.annotation.Nullable String sort, @javax.annotation.Nullable String order, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable Long offset) throws ApiException {
         okhttp3.Call localVarCall = listDashboardsV2ValidateBeforeCall(query, sort, order, limit, offset, null);
         Type localVarReturnType = new TypeToken<O11yO11yDashboardListOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -30855,7 +30855,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listDashboardsV2Async(@javax.annotation.Nullable String query, @javax.annotation.Nullable String sort, @javax.annotation.Nullable String order, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable Integer offset, final ApiCallback<O11yO11yDashboardListOut> _callback) throws ApiException {
+    public okhttp3.Call listDashboardsV2Async(@javax.annotation.Nullable String query, @javax.annotation.Nullable String sort, @javax.annotation.Nullable String order, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable Long offset, final ApiCallback<O11yO11yDashboardListOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listDashboardsV2ValidateBeforeCall(query, sort, order, limit, offset, _callback);
         Type localVarReturnType = new TypeToken<O11yO11yDashboardListOut>(){}.getType();
@@ -31137,7 +31137,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listLLMAnnotationsCall(@javax.annotation.Nullable String traceId, @javax.annotation.Nullable String queue, @javax.annotation.Nullable String status, @javax.annotation.Nullable Integer offset, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call listLLMAnnotationsCall(@javax.annotation.Nullable String traceId, @javax.annotation.Nullable String queue, @javax.annotation.Nullable String status, @javax.annotation.Nullable Long offset, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -31202,7 +31202,7 @@ public class O11yApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listLLMAnnotationsValidateBeforeCall(@javax.annotation.Nullable String traceId, @javax.annotation.Nullable String queue, @javax.annotation.Nullable String status, @javax.annotation.Nullable Integer offset, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listLLMAnnotationsValidateBeforeCall(@javax.annotation.Nullable String traceId, @javax.annotation.Nullable String queue, @javax.annotation.Nullable String status, @javax.annotation.Nullable Long offset, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         return listLLMAnnotationsCall(traceId, queue, status, offset, limit, _callback);
 
     }
@@ -31224,7 +31224,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yO11yLLMAnnotationsOut listLLMAnnotations(@javax.annotation.Nullable String traceId, @javax.annotation.Nullable String queue, @javax.annotation.Nullable String status, @javax.annotation.Nullable Integer offset, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public O11yO11yLLMAnnotationsOut listLLMAnnotations(@javax.annotation.Nullable String traceId, @javax.annotation.Nullable String queue, @javax.annotation.Nullable String status, @javax.annotation.Nullable Long offset, @javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<O11yO11yLLMAnnotationsOut> localVarResp = listLLMAnnotationsWithHttpInfo(traceId, queue, status, offset, limit);
         return localVarResp.getData();
     }
@@ -31246,7 +31246,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yO11yLLMAnnotationsOut> listLLMAnnotationsWithHttpInfo(@javax.annotation.Nullable String traceId, @javax.annotation.Nullable String queue, @javax.annotation.Nullable String status, @javax.annotation.Nullable Integer offset, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<O11yO11yLLMAnnotationsOut> listLLMAnnotationsWithHttpInfo(@javax.annotation.Nullable String traceId, @javax.annotation.Nullable String queue, @javax.annotation.Nullable String status, @javax.annotation.Nullable Long offset, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = listLLMAnnotationsValidateBeforeCall(traceId, queue, status, offset, limit, null);
         Type localVarReturnType = new TypeToken<O11yO11yLLMAnnotationsOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -31270,7 +31270,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listLLMAnnotationsAsync(@javax.annotation.Nullable String traceId, @javax.annotation.Nullable String queue, @javax.annotation.Nullable String status, @javax.annotation.Nullable Integer offset, @javax.annotation.Nullable Integer limit, final ApiCallback<O11yO11yLLMAnnotationsOut> _callback) throws ApiException {
+    public okhttp3.Call listLLMAnnotationsAsync(@javax.annotation.Nullable String traceId, @javax.annotation.Nullable String queue, @javax.annotation.Nullable String status, @javax.annotation.Nullable Long offset, @javax.annotation.Nullable Long limit, final ApiCallback<O11yO11yLLMAnnotationsOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listLLMAnnotationsValidateBeforeCall(traceId, queue, status, offset, limit, _callback);
         Type localVarReturnType = new TypeToken<O11yO11yLLMAnnotationsOut>(){}.getType();
@@ -31298,7 +31298,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listLLMObservationsCall(@javax.annotation.Nullable Integer start, @javax.annotation.Nullable Integer end, @javax.annotation.Nullable String traceId, @javax.annotation.Nullable String sessionId, @javax.annotation.Nullable String userId, @javax.annotation.Nullable String name, @javax.annotation.Nullable String model, @javax.annotation.Nullable Integer offset, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call listLLMObservationsCall(@javax.annotation.Nullable Long start, @javax.annotation.Nullable Long end, @javax.annotation.Nullable String traceId, @javax.annotation.Nullable String sessionId, @javax.annotation.Nullable String userId, @javax.annotation.Nullable String name, @javax.annotation.Nullable String model, @javax.annotation.Nullable Long offset, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -31379,7 +31379,7 @@ public class O11yApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listLLMObservationsValidateBeforeCall(@javax.annotation.Nullable Integer start, @javax.annotation.Nullable Integer end, @javax.annotation.Nullable String traceId, @javax.annotation.Nullable String sessionId, @javax.annotation.Nullable String userId, @javax.annotation.Nullable String name, @javax.annotation.Nullable String model, @javax.annotation.Nullable Integer offset, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listLLMObservationsValidateBeforeCall(@javax.annotation.Nullable Long start, @javax.annotation.Nullable Long end, @javax.annotation.Nullable String traceId, @javax.annotation.Nullable String sessionId, @javax.annotation.Nullable String userId, @javax.annotation.Nullable String name, @javax.annotation.Nullable String model, @javax.annotation.Nullable Long offset, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         return listLLMObservationsCall(start, end, traceId, sessionId, userId, name, model, offset, limit, _callback);
 
     }
@@ -31405,7 +31405,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yO11yLLMObservationsOut listLLMObservations(@javax.annotation.Nullable Integer start, @javax.annotation.Nullable Integer end, @javax.annotation.Nullable String traceId, @javax.annotation.Nullable String sessionId, @javax.annotation.Nullable String userId, @javax.annotation.Nullable String name, @javax.annotation.Nullable String model, @javax.annotation.Nullable Integer offset, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public O11yO11yLLMObservationsOut listLLMObservations(@javax.annotation.Nullable Long start, @javax.annotation.Nullable Long end, @javax.annotation.Nullable String traceId, @javax.annotation.Nullable String sessionId, @javax.annotation.Nullable String userId, @javax.annotation.Nullable String name, @javax.annotation.Nullable String model, @javax.annotation.Nullable Long offset, @javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<O11yO11yLLMObservationsOut> localVarResp = listLLMObservationsWithHttpInfo(start, end, traceId, sessionId, userId, name, model, offset, limit);
         return localVarResp.getData();
     }
@@ -31431,7 +31431,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yO11yLLMObservationsOut> listLLMObservationsWithHttpInfo(@javax.annotation.Nullable Integer start, @javax.annotation.Nullable Integer end, @javax.annotation.Nullable String traceId, @javax.annotation.Nullable String sessionId, @javax.annotation.Nullable String userId, @javax.annotation.Nullable String name, @javax.annotation.Nullable String model, @javax.annotation.Nullable Integer offset, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<O11yO11yLLMObservationsOut> listLLMObservationsWithHttpInfo(@javax.annotation.Nullable Long start, @javax.annotation.Nullable Long end, @javax.annotation.Nullable String traceId, @javax.annotation.Nullable String sessionId, @javax.annotation.Nullable String userId, @javax.annotation.Nullable String name, @javax.annotation.Nullable String model, @javax.annotation.Nullable Long offset, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = listLLMObservationsValidateBeforeCall(start, end, traceId, sessionId, userId, name, model, offset, limit, null);
         Type localVarReturnType = new TypeToken<O11yO11yLLMObservationsOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -31459,7 +31459,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listLLMObservationsAsync(@javax.annotation.Nullable Integer start, @javax.annotation.Nullable Integer end, @javax.annotation.Nullable String traceId, @javax.annotation.Nullable String sessionId, @javax.annotation.Nullable String userId, @javax.annotation.Nullable String name, @javax.annotation.Nullable String model, @javax.annotation.Nullable Integer offset, @javax.annotation.Nullable Integer limit, final ApiCallback<O11yO11yLLMObservationsOut> _callback) throws ApiException {
+    public okhttp3.Call listLLMObservationsAsync(@javax.annotation.Nullable Long start, @javax.annotation.Nullable Long end, @javax.annotation.Nullable String traceId, @javax.annotation.Nullable String sessionId, @javax.annotation.Nullable String userId, @javax.annotation.Nullable String name, @javax.annotation.Nullable String model, @javax.annotation.Nullable Long offset, @javax.annotation.Nullable Long limit, final ApiCallback<O11yO11yLLMObservationsOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listLLMObservationsValidateBeforeCall(start, end, traceId, sessionId, userId, name, model, offset, limit, _callback);
         Type localVarReturnType = new TypeToken<O11yO11yLLMObservationsOut>(){}.getType();
@@ -31482,7 +31482,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listLLMPricingRulesCall(@javax.annotation.Nullable String q, @javax.annotation.Nullable String isOverride, @javax.annotation.Nullable Integer offset, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call listLLMPricingRulesCall(@javax.annotation.Nullable String q, @javax.annotation.Nullable String isOverride, @javax.annotation.Nullable Long offset, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -31543,7 +31543,7 @@ public class O11yApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listLLMPricingRulesValidateBeforeCall(@javax.annotation.Nullable String q, @javax.annotation.Nullable String isOverride, @javax.annotation.Nullable Integer offset, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listLLMPricingRulesValidateBeforeCall(@javax.annotation.Nullable String q, @javax.annotation.Nullable String isOverride, @javax.annotation.Nullable Long offset, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         return listLLMPricingRulesCall(q, isOverride, offset, limit, _callback);
 
     }
@@ -31564,7 +31564,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yO11yLLMPricingRulesOut listLLMPricingRules(@javax.annotation.Nullable String q, @javax.annotation.Nullable String isOverride, @javax.annotation.Nullable Integer offset, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public O11yO11yLLMPricingRulesOut listLLMPricingRules(@javax.annotation.Nullable String q, @javax.annotation.Nullable String isOverride, @javax.annotation.Nullable Long offset, @javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<O11yO11yLLMPricingRulesOut> localVarResp = listLLMPricingRulesWithHttpInfo(q, isOverride, offset, limit);
         return localVarResp.getData();
     }
@@ -31585,7 +31585,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yO11yLLMPricingRulesOut> listLLMPricingRulesWithHttpInfo(@javax.annotation.Nullable String q, @javax.annotation.Nullable String isOverride, @javax.annotation.Nullable Integer offset, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<O11yO11yLLMPricingRulesOut> listLLMPricingRulesWithHttpInfo(@javax.annotation.Nullable String q, @javax.annotation.Nullable String isOverride, @javax.annotation.Nullable Long offset, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = listLLMPricingRulesValidateBeforeCall(q, isOverride, offset, limit, null);
         Type localVarReturnType = new TypeToken<O11yO11yLLMPricingRulesOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -31608,7 +31608,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listLLMPricingRulesAsync(@javax.annotation.Nullable String q, @javax.annotation.Nullable String isOverride, @javax.annotation.Nullable Integer offset, @javax.annotation.Nullable Integer limit, final ApiCallback<O11yO11yLLMPricingRulesOut> _callback) throws ApiException {
+    public okhttp3.Call listLLMPricingRulesAsync(@javax.annotation.Nullable String q, @javax.annotation.Nullable String isOverride, @javax.annotation.Nullable Long offset, @javax.annotation.Nullable Long limit, final ApiCallback<O11yO11yLLMPricingRulesOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listLLMPricingRulesValidateBeforeCall(q, isOverride, offset, limit, _callback);
         Type localVarReturnType = new TypeToken<O11yO11yLLMPricingRulesOut>(){}.getType();
@@ -31633,7 +31633,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listLLMScoresCall(@javax.annotation.Nullable String traceId, @javax.annotation.Nullable String observationId, @javax.annotation.Nullable String name, @javax.annotation.Nullable String source, @javax.annotation.Nullable Integer offset, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call listLLMScoresCall(@javax.annotation.Nullable String traceId, @javax.annotation.Nullable String observationId, @javax.annotation.Nullable String name, @javax.annotation.Nullable String source, @javax.annotation.Nullable Long offset, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -31702,7 +31702,7 @@ public class O11yApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listLLMScoresValidateBeforeCall(@javax.annotation.Nullable String traceId, @javax.annotation.Nullable String observationId, @javax.annotation.Nullable String name, @javax.annotation.Nullable String source, @javax.annotation.Nullable Integer offset, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listLLMScoresValidateBeforeCall(@javax.annotation.Nullable String traceId, @javax.annotation.Nullable String observationId, @javax.annotation.Nullable String name, @javax.annotation.Nullable String source, @javax.annotation.Nullable Long offset, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         return listLLMScoresCall(traceId, observationId, name, source, offset, limit, _callback);
 
     }
@@ -31725,7 +31725,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yO11yLLMScoresOut listLLMScores(@javax.annotation.Nullable String traceId, @javax.annotation.Nullable String observationId, @javax.annotation.Nullable String name, @javax.annotation.Nullable String source, @javax.annotation.Nullable Integer offset, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public O11yO11yLLMScoresOut listLLMScores(@javax.annotation.Nullable String traceId, @javax.annotation.Nullable String observationId, @javax.annotation.Nullable String name, @javax.annotation.Nullable String source, @javax.annotation.Nullable Long offset, @javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<O11yO11yLLMScoresOut> localVarResp = listLLMScoresWithHttpInfo(traceId, observationId, name, source, offset, limit);
         return localVarResp.getData();
     }
@@ -31748,7 +31748,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yO11yLLMScoresOut> listLLMScoresWithHttpInfo(@javax.annotation.Nullable String traceId, @javax.annotation.Nullable String observationId, @javax.annotation.Nullable String name, @javax.annotation.Nullable String source, @javax.annotation.Nullable Integer offset, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<O11yO11yLLMScoresOut> listLLMScoresWithHttpInfo(@javax.annotation.Nullable String traceId, @javax.annotation.Nullable String observationId, @javax.annotation.Nullable String name, @javax.annotation.Nullable String source, @javax.annotation.Nullable Long offset, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = listLLMScoresValidateBeforeCall(traceId, observationId, name, source, offset, limit, null);
         Type localVarReturnType = new TypeToken<O11yO11yLLMScoresOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -31773,7 +31773,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listLLMScoresAsync(@javax.annotation.Nullable String traceId, @javax.annotation.Nullable String observationId, @javax.annotation.Nullable String name, @javax.annotation.Nullable String source, @javax.annotation.Nullable Integer offset, @javax.annotation.Nullable Integer limit, final ApiCallback<O11yO11yLLMScoresOut> _callback) throws ApiException {
+    public okhttp3.Call listLLMScoresAsync(@javax.annotation.Nullable String traceId, @javax.annotation.Nullable String observationId, @javax.annotation.Nullable String name, @javax.annotation.Nullable String source, @javax.annotation.Nullable Long offset, @javax.annotation.Nullable Long limit, final ApiCallback<O11yO11yLLMScoresOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listLLMScoresValidateBeforeCall(traceId, observationId, name, source, offset, limit, _callback);
         Type localVarReturnType = new TypeToken<O11yO11yLLMScoresOut>(){}.getType();
@@ -31801,7 +31801,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listLLMSessionsCall(@javax.annotation.Nullable Integer start, @javax.annotation.Nullable Integer end, @javax.annotation.Nullable String traceId, @javax.annotation.Nullable String sessionId, @javax.annotation.Nullable String userId, @javax.annotation.Nullable String name, @javax.annotation.Nullable String model, @javax.annotation.Nullable Integer offset, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call listLLMSessionsCall(@javax.annotation.Nullable Long start, @javax.annotation.Nullable Long end, @javax.annotation.Nullable String traceId, @javax.annotation.Nullable String sessionId, @javax.annotation.Nullable String userId, @javax.annotation.Nullable String name, @javax.annotation.Nullable String model, @javax.annotation.Nullable Long offset, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -31882,7 +31882,7 @@ public class O11yApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listLLMSessionsValidateBeforeCall(@javax.annotation.Nullable Integer start, @javax.annotation.Nullable Integer end, @javax.annotation.Nullable String traceId, @javax.annotation.Nullable String sessionId, @javax.annotation.Nullable String userId, @javax.annotation.Nullable String name, @javax.annotation.Nullable String model, @javax.annotation.Nullable Integer offset, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listLLMSessionsValidateBeforeCall(@javax.annotation.Nullable Long start, @javax.annotation.Nullable Long end, @javax.annotation.Nullable String traceId, @javax.annotation.Nullable String sessionId, @javax.annotation.Nullable String userId, @javax.annotation.Nullable String name, @javax.annotation.Nullable String model, @javax.annotation.Nullable Long offset, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         return listLLMSessionsCall(start, end, traceId, sessionId, userId, name, model, offset, limit, _callback);
 
     }
@@ -31908,7 +31908,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yO11yLLMSessionsOut listLLMSessions(@javax.annotation.Nullable Integer start, @javax.annotation.Nullable Integer end, @javax.annotation.Nullable String traceId, @javax.annotation.Nullable String sessionId, @javax.annotation.Nullable String userId, @javax.annotation.Nullable String name, @javax.annotation.Nullable String model, @javax.annotation.Nullable Integer offset, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public O11yO11yLLMSessionsOut listLLMSessions(@javax.annotation.Nullable Long start, @javax.annotation.Nullable Long end, @javax.annotation.Nullable String traceId, @javax.annotation.Nullable String sessionId, @javax.annotation.Nullable String userId, @javax.annotation.Nullable String name, @javax.annotation.Nullable String model, @javax.annotation.Nullable Long offset, @javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<O11yO11yLLMSessionsOut> localVarResp = listLLMSessionsWithHttpInfo(start, end, traceId, sessionId, userId, name, model, offset, limit);
         return localVarResp.getData();
     }
@@ -31934,7 +31934,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yO11yLLMSessionsOut> listLLMSessionsWithHttpInfo(@javax.annotation.Nullable Integer start, @javax.annotation.Nullable Integer end, @javax.annotation.Nullable String traceId, @javax.annotation.Nullable String sessionId, @javax.annotation.Nullable String userId, @javax.annotation.Nullable String name, @javax.annotation.Nullable String model, @javax.annotation.Nullable Integer offset, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<O11yO11yLLMSessionsOut> listLLMSessionsWithHttpInfo(@javax.annotation.Nullable Long start, @javax.annotation.Nullable Long end, @javax.annotation.Nullable String traceId, @javax.annotation.Nullable String sessionId, @javax.annotation.Nullable String userId, @javax.annotation.Nullable String name, @javax.annotation.Nullable String model, @javax.annotation.Nullable Long offset, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = listLLMSessionsValidateBeforeCall(start, end, traceId, sessionId, userId, name, model, offset, limit, null);
         Type localVarReturnType = new TypeToken<O11yO11yLLMSessionsOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -31962,7 +31962,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listLLMSessionsAsync(@javax.annotation.Nullable Integer start, @javax.annotation.Nullable Integer end, @javax.annotation.Nullable String traceId, @javax.annotation.Nullable String sessionId, @javax.annotation.Nullable String userId, @javax.annotation.Nullable String name, @javax.annotation.Nullable String model, @javax.annotation.Nullable Integer offset, @javax.annotation.Nullable Integer limit, final ApiCallback<O11yO11yLLMSessionsOut> _callback) throws ApiException {
+    public okhttp3.Call listLLMSessionsAsync(@javax.annotation.Nullable Long start, @javax.annotation.Nullable Long end, @javax.annotation.Nullable String traceId, @javax.annotation.Nullable String sessionId, @javax.annotation.Nullable String userId, @javax.annotation.Nullable String name, @javax.annotation.Nullable String model, @javax.annotation.Nullable Long offset, @javax.annotation.Nullable Long limit, final ApiCallback<O11yO11yLLMSessionsOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listLLMSessionsValidateBeforeCall(start, end, traceId, sessionId, userId, name, model, offset, limit, _callback);
         Type localVarReturnType = new TypeToken<O11yO11yLLMSessionsOut>(){}.getType();
@@ -31990,7 +31990,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listLLMTracesCall(@javax.annotation.Nullable Integer start, @javax.annotation.Nullable Integer end, @javax.annotation.Nullable String traceId, @javax.annotation.Nullable String sessionId, @javax.annotation.Nullable String userId, @javax.annotation.Nullable String name, @javax.annotation.Nullable String model, @javax.annotation.Nullable Integer offset, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call listLLMTracesCall(@javax.annotation.Nullable Long start, @javax.annotation.Nullable Long end, @javax.annotation.Nullable String traceId, @javax.annotation.Nullable String sessionId, @javax.annotation.Nullable String userId, @javax.annotation.Nullable String name, @javax.annotation.Nullable String model, @javax.annotation.Nullable Long offset, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -32071,7 +32071,7 @@ public class O11yApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listLLMTracesValidateBeforeCall(@javax.annotation.Nullable Integer start, @javax.annotation.Nullable Integer end, @javax.annotation.Nullable String traceId, @javax.annotation.Nullable String sessionId, @javax.annotation.Nullable String userId, @javax.annotation.Nullable String name, @javax.annotation.Nullable String model, @javax.annotation.Nullable Integer offset, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listLLMTracesValidateBeforeCall(@javax.annotation.Nullable Long start, @javax.annotation.Nullable Long end, @javax.annotation.Nullable String traceId, @javax.annotation.Nullable String sessionId, @javax.annotation.Nullable String userId, @javax.annotation.Nullable String name, @javax.annotation.Nullable String model, @javax.annotation.Nullable Long offset, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         return listLLMTracesCall(start, end, traceId, sessionId, userId, name, model, offset, limit, _callback);
 
     }
@@ -32097,7 +32097,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yO11yLLMTracesOut listLLMTraces(@javax.annotation.Nullable Integer start, @javax.annotation.Nullable Integer end, @javax.annotation.Nullable String traceId, @javax.annotation.Nullable String sessionId, @javax.annotation.Nullable String userId, @javax.annotation.Nullable String name, @javax.annotation.Nullable String model, @javax.annotation.Nullable Integer offset, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public O11yO11yLLMTracesOut listLLMTraces(@javax.annotation.Nullable Long start, @javax.annotation.Nullable Long end, @javax.annotation.Nullable String traceId, @javax.annotation.Nullable String sessionId, @javax.annotation.Nullable String userId, @javax.annotation.Nullable String name, @javax.annotation.Nullable String model, @javax.annotation.Nullable Long offset, @javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<O11yO11yLLMTracesOut> localVarResp = listLLMTracesWithHttpInfo(start, end, traceId, sessionId, userId, name, model, offset, limit);
         return localVarResp.getData();
     }
@@ -32123,7 +32123,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yO11yLLMTracesOut> listLLMTracesWithHttpInfo(@javax.annotation.Nullable Integer start, @javax.annotation.Nullable Integer end, @javax.annotation.Nullable String traceId, @javax.annotation.Nullable String sessionId, @javax.annotation.Nullable String userId, @javax.annotation.Nullable String name, @javax.annotation.Nullable String model, @javax.annotation.Nullable Integer offset, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<O11yO11yLLMTracesOut> listLLMTracesWithHttpInfo(@javax.annotation.Nullable Long start, @javax.annotation.Nullable Long end, @javax.annotation.Nullable String traceId, @javax.annotation.Nullable String sessionId, @javax.annotation.Nullable String userId, @javax.annotation.Nullable String name, @javax.annotation.Nullable String model, @javax.annotation.Nullable Long offset, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = listLLMTracesValidateBeforeCall(start, end, traceId, sessionId, userId, name, model, offset, limit, null);
         Type localVarReturnType = new TypeToken<O11yO11yLLMTracesOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -32151,7 +32151,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listLLMTracesAsync(@javax.annotation.Nullable Integer start, @javax.annotation.Nullable Integer end, @javax.annotation.Nullable String traceId, @javax.annotation.Nullable String sessionId, @javax.annotation.Nullable String userId, @javax.annotation.Nullable String name, @javax.annotation.Nullable String model, @javax.annotation.Nullable Integer offset, @javax.annotation.Nullable Integer limit, final ApiCallback<O11yO11yLLMTracesOut> _callback) throws ApiException {
+    public okhttp3.Call listLLMTracesAsync(@javax.annotation.Nullable Long start, @javax.annotation.Nullable Long end, @javax.annotation.Nullable String traceId, @javax.annotation.Nullable String sessionId, @javax.annotation.Nullable String userId, @javax.annotation.Nullable String name, @javax.annotation.Nullable String model, @javax.annotation.Nullable Long offset, @javax.annotation.Nullable Long limit, final ApiCallback<O11yO11yLLMTracesOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listLLMTracesValidateBeforeCall(start, end, traceId, sessionId, userId, name, model, offset, limit, _callback);
         Type localVarReturnType = new TypeToken<O11yO11yLLMTracesOut>(){}.getType();
@@ -32179,7 +32179,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listLLMUsersCall(@javax.annotation.Nullable Integer start, @javax.annotation.Nullable Integer end, @javax.annotation.Nullable String traceId, @javax.annotation.Nullable String sessionId, @javax.annotation.Nullable String userId, @javax.annotation.Nullable String name, @javax.annotation.Nullable String model, @javax.annotation.Nullable Integer offset, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call listLLMUsersCall(@javax.annotation.Nullable Long start, @javax.annotation.Nullable Long end, @javax.annotation.Nullable String traceId, @javax.annotation.Nullable String sessionId, @javax.annotation.Nullable String userId, @javax.annotation.Nullable String name, @javax.annotation.Nullable String model, @javax.annotation.Nullable Long offset, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -32260,7 +32260,7 @@ public class O11yApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listLLMUsersValidateBeforeCall(@javax.annotation.Nullable Integer start, @javax.annotation.Nullable Integer end, @javax.annotation.Nullable String traceId, @javax.annotation.Nullable String sessionId, @javax.annotation.Nullable String userId, @javax.annotation.Nullable String name, @javax.annotation.Nullable String model, @javax.annotation.Nullable Integer offset, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listLLMUsersValidateBeforeCall(@javax.annotation.Nullable Long start, @javax.annotation.Nullable Long end, @javax.annotation.Nullable String traceId, @javax.annotation.Nullable String sessionId, @javax.annotation.Nullable String userId, @javax.annotation.Nullable String name, @javax.annotation.Nullable String model, @javax.annotation.Nullable Long offset, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         return listLLMUsersCall(start, end, traceId, sessionId, userId, name, model, offset, limit, _callback);
 
     }
@@ -32286,7 +32286,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yO11yLLMUsersOut listLLMUsers(@javax.annotation.Nullable Integer start, @javax.annotation.Nullable Integer end, @javax.annotation.Nullable String traceId, @javax.annotation.Nullable String sessionId, @javax.annotation.Nullable String userId, @javax.annotation.Nullable String name, @javax.annotation.Nullable String model, @javax.annotation.Nullable Integer offset, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public O11yO11yLLMUsersOut listLLMUsers(@javax.annotation.Nullable Long start, @javax.annotation.Nullable Long end, @javax.annotation.Nullable String traceId, @javax.annotation.Nullable String sessionId, @javax.annotation.Nullable String userId, @javax.annotation.Nullable String name, @javax.annotation.Nullable String model, @javax.annotation.Nullable Long offset, @javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<O11yO11yLLMUsersOut> localVarResp = listLLMUsersWithHttpInfo(start, end, traceId, sessionId, userId, name, model, offset, limit);
         return localVarResp.getData();
     }
@@ -32312,7 +32312,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yO11yLLMUsersOut> listLLMUsersWithHttpInfo(@javax.annotation.Nullable Integer start, @javax.annotation.Nullable Integer end, @javax.annotation.Nullable String traceId, @javax.annotation.Nullable String sessionId, @javax.annotation.Nullable String userId, @javax.annotation.Nullable String name, @javax.annotation.Nullable String model, @javax.annotation.Nullable Integer offset, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<O11yO11yLLMUsersOut> listLLMUsersWithHttpInfo(@javax.annotation.Nullable Long start, @javax.annotation.Nullable Long end, @javax.annotation.Nullable String traceId, @javax.annotation.Nullable String sessionId, @javax.annotation.Nullable String userId, @javax.annotation.Nullable String name, @javax.annotation.Nullable String model, @javax.annotation.Nullable Long offset, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = listLLMUsersValidateBeforeCall(start, end, traceId, sessionId, userId, name, model, offset, limit, null);
         Type localVarReturnType = new TypeToken<O11yO11yLLMUsersOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -32340,7 +32340,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listLLMUsersAsync(@javax.annotation.Nullable Integer start, @javax.annotation.Nullable Integer end, @javax.annotation.Nullable String traceId, @javax.annotation.Nullable String sessionId, @javax.annotation.Nullable String userId, @javax.annotation.Nullable String name, @javax.annotation.Nullable String model, @javax.annotation.Nullable Integer offset, @javax.annotation.Nullable Integer limit, final ApiCallback<O11yO11yLLMUsersOut> _callback) throws ApiException {
+    public okhttp3.Call listLLMUsersAsync(@javax.annotation.Nullable Long start, @javax.annotation.Nullable Long end, @javax.annotation.Nullable String traceId, @javax.annotation.Nullable String sessionId, @javax.annotation.Nullable String userId, @javax.annotation.Nullable String name, @javax.annotation.Nullable String model, @javax.annotation.Nullable Long offset, @javax.annotation.Nullable Long limit, final ApiCallback<O11yO11yLLMUsersOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listLLMUsersValidateBeforeCall(start, end, traceId, sessionId, userId, name, model, offset, limit, _callback);
         Type localVarReturnType = new TypeToken<O11yO11yLLMUsersOut>(){}.getType();
@@ -32365,7 +32365,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listMetricReductionRulesCall(@javax.annotation.Nullable String orderBy, @javax.annotation.Nullable String order, @javax.annotation.Nullable String search, @javax.annotation.Nullable String metricName, @javax.annotation.Nullable Integer offset, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call listMetricReductionRulesCall(@javax.annotation.Nullable String orderBy, @javax.annotation.Nullable String order, @javax.annotation.Nullable String search, @javax.annotation.Nullable String metricName, @javax.annotation.Nullable Long offset, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -32434,7 +32434,7 @@ public class O11yApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listMetricReductionRulesValidateBeforeCall(@javax.annotation.Nullable String orderBy, @javax.annotation.Nullable String order, @javax.annotation.Nullable String search, @javax.annotation.Nullable String metricName, @javax.annotation.Nullable Integer offset, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listMetricReductionRulesValidateBeforeCall(@javax.annotation.Nullable String orderBy, @javax.annotation.Nullable String order, @javax.annotation.Nullable String search, @javax.annotation.Nullable String metricName, @javax.annotation.Nullable Long offset, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         return listMetricReductionRulesCall(orderBy, order, search, metricName, offset, limit, _callback);
 
     }
@@ -32457,7 +32457,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yO11yReductionRuleListOut listMetricReductionRules(@javax.annotation.Nullable String orderBy, @javax.annotation.Nullable String order, @javax.annotation.Nullable String search, @javax.annotation.Nullable String metricName, @javax.annotation.Nullable Integer offset, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public O11yO11yReductionRuleListOut listMetricReductionRules(@javax.annotation.Nullable String orderBy, @javax.annotation.Nullable String order, @javax.annotation.Nullable String search, @javax.annotation.Nullable String metricName, @javax.annotation.Nullable Long offset, @javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<O11yO11yReductionRuleListOut> localVarResp = listMetricReductionRulesWithHttpInfo(orderBy, order, search, metricName, offset, limit);
         return localVarResp.getData();
     }
@@ -32480,7 +32480,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yO11yReductionRuleListOut> listMetricReductionRulesWithHttpInfo(@javax.annotation.Nullable String orderBy, @javax.annotation.Nullable String order, @javax.annotation.Nullable String search, @javax.annotation.Nullable String metricName, @javax.annotation.Nullable Integer offset, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<O11yO11yReductionRuleListOut> listMetricReductionRulesWithHttpInfo(@javax.annotation.Nullable String orderBy, @javax.annotation.Nullable String order, @javax.annotation.Nullable String search, @javax.annotation.Nullable String metricName, @javax.annotation.Nullable Long offset, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = listMetricReductionRulesValidateBeforeCall(orderBy, order, search, metricName, offset, limit, null);
         Type localVarReturnType = new TypeToken<O11yO11yReductionRuleListOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -32505,7 +32505,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listMetricReductionRulesAsync(@javax.annotation.Nullable String orderBy, @javax.annotation.Nullable String order, @javax.annotation.Nullable String search, @javax.annotation.Nullable String metricName, @javax.annotation.Nullable Integer offset, @javax.annotation.Nullable Integer limit, final ApiCallback<O11yO11yReductionRuleListOut> _callback) throws ApiException {
+    public okhttp3.Call listMetricReductionRulesAsync(@javax.annotation.Nullable String orderBy, @javax.annotation.Nullable String order, @javax.annotation.Nullable String search, @javax.annotation.Nullable String metricName, @javax.annotation.Nullable Long offset, @javax.annotation.Nullable Long limit, final ApiCallback<O11yO11yReductionRuleListOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listMetricReductionRulesValidateBeforeCall(orderBy, order, search, metricName, offset, limit, _callback);
         Type localVarReturnType = new TypeToken<O11yO11yReductionRuleListOut>(){}.getType();
@@ -32529,7 +32529,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listMetricsCall(@javax.annotation.Nullable Integer start, @javax.annotation.Nullable Integer end, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String source, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call listMetricsCall(@javax.annotation.Nullable Long start, @javax.annotation.Nullable Long end, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String source, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -32594,7 +32594,7 @@ public class O11yApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listMetricsValidateBeforeCall(@javax.annotation.Nullable Integer start, @javax.annotation.Nullable Integer end, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String source, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listMetricsValidateBeforeCall(@javax.annotation.Nullable Long start, @javax.annotation.Nullable Long end, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String source, final ApiCallback _callback) throws ApiException {
         return listMetricsCall(start, end, limit, searchText, source, _callback);
 
     }
@@ -32616,7 +32616,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yO11yMetricListOut listMetrics(@javax.annotation.Nullable Integer start, @javax.annotation.Nullable Integer end, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String source) throws ApiException {
+    public O11yO11yMetricListOut listMetrics(@javax.annotation.Nullable Long start, @javax.annotation.Nullable Long end, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String source) throws ApiException {
         ApiResponse<O11yO11yMetricListOut> localVarResp = listMetricsWithHttpInfo(start, end, limit, searchText, source);
         return localVarResp.getData();
     }
@@ -32638,7 +32638,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yO11yMetricListOut> listMetricsWithHttpInfo(@javax.annotation.Nullable Integer start, @javax.annotation.Nullable Integer end, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String source) throws ApiException {
+    public ApiResponse<O11yO11yMetricListOut> listMetricsWithHttpInfo(@javax.annotation.Nullable Long start, @javax.annotation.Nullable Long end, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String source) throws ApiException {
         okhttp3.Call localVarCall = listMetricsValidateBeforeCall(start, end, limit, searchText, source, null);
         Type localVarReturnType = new TypeToken<O11yO11yMetricListOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -32662,7 +32662,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listMetricsAsync(@javax.annotation.Nullable Integer start, @javax.annotation.Nullable Integer end, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String source, final ApiCallback<O11yO11yMetricListOut> _callback) throws ApiException {
+    public okhttp3.Call listMetricsAsync(@javax.annotation.Nullable Long start, @javax.annotation.Nullable Long end, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable String searchText, @javax.annotation.Nullable String source, final ApiCallback<O11yO11yMetricListOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listMetricsValidateBeforeCall(start, end, limit, searchText, source, _callback);
         Type localVarReturnType = new TypeToken<O11yO11yMetricListOut>(){}.getType();
@@ -45093,7 +45093,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchIngestionKeysCall(@javax.annotation.Nullable String name, @javax.annotation.Nullable Integer page, @javax.annotation.Nullable Integer perPage, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call searchIngestionKeysCall(@javax.annotation.Nullable String name, @javax.annotation.Nullable Long page, @javax.annotation.Nullable Long perPage, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -45150,7 +45150,7 @@ public class O11yApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call searchIngestionKeysValidateBeforeCall(@javax.annotation.Nullable String name, @javax.annotation.Nullable Integer page, @javax.annotation.Nullable Integer perPage, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call searchIngestionKeysValidateBeforeCall(@javax.annotation.Nullable String name, @javax.annotation.Nullable Long page, @javax.annotation.Nullable Long perPage, final ApiCallback _callback) throws ApiException {
         return searchIngestionKeysCall(name, page, perPage, _callback);
 
     }
@@ -45170,7 +45170,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public O11yO11yIngestionKeysOut searchIngestionKeys(@javax.annotation.Nullable String name, @javax.annotation.Nullable Integer page, @javax.annotation.Nullable Integer perPage) throws ApiException {
+    public O11yO11yIngestionKeysOut searchIngestionKeys(@javax.annotation.Nullable String name, @javax.annotation.Nullable Long page, @javax.annotation.Nullable Long perPage) throws ApiException {
         ApiResponse<O11yO11yIngestionKeysOut> localVarResp = searchIngestionKeysWithHttpInfo(name, page, perPage);
         return localVarResp.getData();
     }
@@ -45190,7 +45190,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<O11yO11yIngestionKeysOut> searchIngestionKeysWithHttpInfo(@javax.annotation.Nullable String name, @javax.annotation.Nullable Integer page, @javax.annotation.Nullable Integer perPage) throws ApiException {
+    public ApiResponse<O11yO11yIngestionKeysOut> searchIngestionKeysWithHttpInfo(@javax.annotation.Nullable String name, @javax.annotation.Nullable Long page, @javax.annotation.Nullable Long perPage) throws ApiException {
         okhttp3.Call localVarCall = searchIngestionKeysValidateBeforeCall(name, page, perPage, null);
         Type localVarReturnType = new TypeToken<O11yO11yIngestionKeysOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -45212,7 +45212,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchIngestionKeysAsync(@javax.annotation.Nullable String name, @javax.annotation.Nullable Integer page, @javax.annotation.Nullable Integer perPage, final ApiCallback<O11yO11yIngestionKeysOut> _callback) throws ApiException {
+    public okhttp3.Call searchIngestionKeysAsync(@javax.annotation.Nullable String name, @javax.annotation.Nullable Long page, @javax.annotation.Nullable Long perPage, final ApiCallback<O11yO11yIngestionKeysOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = searchIngestionKeysValidateBeforeCall(name, page, perPage, _callback);
         Type localVarReturnType = new TypeToken<O11yO11yIngestionKeysOut>(){}.getType();
@@ -45236,7 +45236,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchTracesCall(@javax.annotation.Nonnull String traceId, @javax.annotation.Nullable String spanId, @javax.annotation.Nullable Integer levelUp, @javax.annotation.Nullable Integer levelDown, @javax.annotation.Nullable Integer spanRenderLimit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call searchTracesCall(@javax.annotation.Nonnull String traceId, @javax.annotation.Nullable String spanId, @javax.annotation.Nullable Long levelUp, @javax.annotation.Nullable Long levelDown, @javax.annotation.Nullable Long spanRenderLimit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -45298,7 +45298,7 @@ public class O11yApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call searchTracesValidateBeforeCall(@javax.annotation.Nonnull String traceId, @javax.annotation.Nullable String spanId, @javax.annotation.Nullable Integer levelUp, @javax.annotation.Nullable Integer levelDown, @javax.annotation.Nullable Integer spanRenderLimit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call searchTracesValidateBeforeCall(@javax.annotation.Nonnull String traceId, @javax.annotation.Nullable String spanId, @javax.annotation.Nullable Long levelUp, @javax.annotation.Nullable Long levelDown, @javax.annotation.Nullable Long spanRenderLimit, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'traceId' is set
         if (traceId == null) {
             throw new ApiException("Missing the required parameter 'traceId' when calling searchTraces(Async)");
@@ -45325,7 +45325,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public List<O11yO11yTraceSpanWindow> searchTraces(@javax.annotation.Nonnull String traceId, @javax.annotation.Nullable String spanId, @javax.annotation.Nullable Integer levelUp, @javax.annotation.Nullable Integer levelDown, @javax.annotation.Nullable Integer spanRenderLimit) throws ApiException {
+    public List<O11yO11yTraceSpanWindow> searchTraces(@javax.annotation.Nonnull String traceId, @javax.annotation.Nullable String spanId, @javax.annotation.Nullable Long levelUp, @javax.annotation.Nullable Long levelDown, @javax.annotation.Nullable Long spanRenderLimit) throws ApiException {
         ApiResponse<List<O11yO11yTraceSpanWindow>> localVarResp = searchTracesWithHttpInfo(traceId, spanId, levelUp, levelDown, spanRenderLimit);
         return localVarResp.getData();
     }
@@ -45347,7 +45347,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<O11yO11yTraceSpanWindow>> searchTracesWithHttpInfo(@javax.annotation.Nonnull String traceId, @javax.annotation.Nullable String spanId, @javax.annotation.Nullable Integer levelUp, @javax.annotation.Nullable Integer levelDown, @javax.annotation.Nullable Integer spanRenderLimit) throws ApiException {
+    public ApiResponse<List<O11yO11yTraceSpanWindow>> searchTracesWithHttpInfo(@javax.annotation.Nonnull String traceId, @javax.annotation.Nullable String spanId, @javax.annotation.Nullable Long levelUp, @javax.annotation.Nullable Long levelDown, @javax.annotation.Nullable Long spanRenderLimit) throws ApiException {
         okhttp3.Call localVarCall = searchTracesValidateBeforeCall(traceId, spanId, levelUp, levelDown, spanRenderLimit, null);
         Type localVarReturnType = new TypeToken<List<O11yO11yTraceSpanWindow>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -45371,7 +45371,7 @@ public class O11yApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchTracesAsync(@javax.annotation.Nonnull String traceId, @javax.annotation.Nullable String spanId, @javax.annotation.Nullable Integer levelUp, @javax.annotation.Nullable Integer levelDown, @javax.annotation.Nullable Integer spanRenderLimit, final ApiCallback<List<O11yO11yTraceSpanWindow>> _callback) throws ApiException {
+    public okhttp3.Call searchTracesAsync(@javax.annotation.Nonnull String traceId, @javax.annotation.Nullable String spanId, @javax.annotation.Nullable Long levelUp, @javax.annotation.Nullable Long levelDown, @javax.annotation.Nullable Long spanRenderLimit, final ApiCallback<List<O11yO11yTraceSpanWindow>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = searchTracesValidateBeforeCall(traceId, spanId, levelUp, levelDown, spanRenderLimit, _callback);
         Type localVarReturnType = new TypeToken<List<O11yO11yTraceSpanWindow>>(){}.getType();

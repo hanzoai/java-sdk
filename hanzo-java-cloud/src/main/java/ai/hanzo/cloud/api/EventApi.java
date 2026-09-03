@@ -95,7 +95,7 @@ public class EventApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getEventErrorsCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getEventErrorsCall(@javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -144,7 +144,7 @@ public class EventApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getEventErrorsValidateBeforeCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getEventErrorsValidateBeforeCall(@javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         return getEventErrorsCall(limit, _callback);
 
     }
@@ -162,7 +162,7 @@ public class EventApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ErrorList getEventErrors(@javax.annotation.Nullable Integer limit) throws ApiException {
+    public ErrorList getEventErrors(@javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<ErrorList> localVarResp = getEventErrorsWithHttpInfo(limit);
         return localVarResp.getData();
     }
@@ -180,7 +180,7 @@ public class EventApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ErrorList> getEventErrorsWithHttpInfo(@javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<ErrorList> getEventErrorsWithHttpInfo(@javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getEventErrorsValidateBeforeCall(limit, null);
         Type localVarReturnType = new TypeToken<ErrorList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -200,7 +200,7 @@ public class EventApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getEventErrorsAsync(@javax.annotation.Nullable Integer limit, final ApiCallback<ErrorList> _callback) throws ApiException {
+    public okhttp3.Call getEventErrorsAsync(@javax.annotation.Nullable Long limit, final ApiCallback<ErrorList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getEventErrorsValidateBeforeCall(limit, _callback);
         Type localVarReturnType = new TypeToken<ErrorList>(){}.getType();
@@ -341,7 +341,7 @@ public class EventApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getEventInsightsEventsCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getEventInsightsEventsCall(@javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -390,7 +390,7 @@ public class EventApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getEventInsightsEventsValidateBeforeCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getEventInsightsEventsValidateBeforeCall(@javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         return getEventInsightsEventsCall(limit, _callback);
 
     }
@@ -408,7 +408,7 @@ public class EventApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public EventList getEventInsightsEvents(@javax.annotation.Nullable Integer limit) throws ApiException {
+    public EventList getEventInsightsEvents(@javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<EventList> localVarResp = getEventInsightsEventsWithHttpInfo(limit);
         return localVarResp.getData();
     }
@@ -426,7 +426,7 @@ public class EventApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<EventList> getEventInsightsEventsWithHttpInfo(@javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<EventList> getEventInsightsEventsWithHttpInfo(@javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getEventInsightsEventsValidateBeforeCall(limit, null);
         Type localVarReturnType = new TypeToken<EventList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -446,7 +446,7 @@ public class EventApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getEventInsightsEventsAsync(@javax.annotation.Nullable Integer limit, final ApiCallback<EventList> _callback) throws ApiException {
+    public okhttp3.Call getEventInsightsEventsAsync(@javax.annotation.Nullable Long limit, final ApiCallback<EventList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getEventInsightsEventsValidateBeforeCall(limit, _callback);
         Type localVarReturnType = new TypeToken<EventList>(){}.getType();
@@ -985,7 +985,7 @@ public class EventApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getEventTopCall(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getEventTopCall(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1046,7 +1046,7 @@ public class EventApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getEventTopValidateBeforeCall(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getEventTopValidateBeforeCall(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         return getEventTopCall(range, start, end, limit, _callback);
 
     }
@@ -1067,7 +1067,7 @@ public class EventApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Top getEventTop(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public Top getEventTop(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end, @javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<Top> localVarResp = getEventTopWithHttpInfo(range, start, end, limit);
         return localVarResp.getData();
     }
@@ -1088,7 +1088,7 @@ public class EventApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Top> getEventTopWithHttpInfo(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<Top> getEventTopWithHttpInfo(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getEventTopValidateBeforeCall(range, start, end, limit, null);
         Type localVarReturnType = new TypeToken<Top>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -1111,7 +1111,7 @@ public class EventApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getEventTopAsync(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end, @javax.annotation.Nullable Integer limit, final ApiCallback<Top> _callback) throws ApiException {
+    public okhttp3.Call getEventTopAsync(@javax.annotation.Nullable String range, @javax.annotation.Nullable String start, @javax.annotation.Nullable String end, @javax.annotation.Nullable Long limit, final ApiCallback<Top> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getEventTopValidateBeforeCall(range, start, end, limit, _callback);
         Type localVarReturnType = new TypeToken<Top>(){}.getType();

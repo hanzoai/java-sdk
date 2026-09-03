@@ -138,7 +138,7 @@ public class Wire {
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
   @javax.annotation.Nullable
-  private Integer status;
+  private Long status;
 
   public static final String SERIALIZED_NAME_SUB = "sub";
   @SerializedName(SERIALIZED_NAME_SUB)
@@ -481,7 +481,7 @@ public class Wire {
   }
 
 
-  public Wire status(@javax.annotation.Nullable Integer status) {
+  public Wire status(@javax.annotation.Nullable Long status) {
     this.status = status;
     return this;
   }
@@ -491,11 +491,11 @@ public class Wire {
    * @return status
    */
   @javax.annotation.Nullable
-  public Integer getStatus() {
+  public Long getStatus() {
     return status;
   }
 
-  public void setStatus(@javax.annotation.Nullable Integer status) {
+  public void setStatus(@javax.annotation.Nullable Long status) {
     this.status = status;
   }
 

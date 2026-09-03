@@ -53,17 +53,17 @@ public class Position {
   public static final String SERIALIZED_NAME_CHARACTER = "character";
   @SerializedName(SERIALIZED_NAME_CHARACTER)
   @javax.annotation.Nullable
-  private Integer character;
+  private Long character;
 
   public static final String SERIALIZED_NAME_LINE = "line";
   @SerializedName(SERIALIZED_NAME_LINE)
   @javax.annotation.Nullable
-  private Integer line;
+  private Long line;
 
   public Position() {
   }
 
-  public Position character(@javax.annotation.Nullable Integer character) {
+  public Position character(@javax.annotation.Nullable Long character) {
     this.character = character;
     return this;
   }
@@ -73,16 +73,16 @@ public class Position {
    * @return character
    */
   @javax.annotation.Nullable
-  public Integer getCharacter() {
+  public Long getCharacter() {
     return character;
   }
 
-  public void setCharacter(@javax.annotation.Nullable Integer character) {
+  public void setCharacter(@javax.annotation.Nullable Long character) {
     this.character = character;
   }
 
 
-  public Position line(@javax.annotation.Nullable Integer line) {
+  public Position line(@javax.annotation.Nullable Long line) {
     this.line = line;
     return this;
   }
@@ -92,11 +92,11 @@ public class Position {
    * @return line
    */
   @javax.annotation.Nullable
-  public Integer getLine() {
+  public Long getLine() {
     return line;
   }
 
-  public void setLine(@javax.annotation.Nullable Integer line) {
+  public void setLine(@javax.annotation.Nullable Long line) {
     this.line = line;
   }
 

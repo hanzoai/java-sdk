@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -54,7 +53,7 @@ public class RiskCause {
   public static final String SERIALIZED_NAME_BASELINE = "baseline";
   @SerializedName(SERIALIZED_NAME_BASELINE)
   @javax.annotation.Nullable
-  private BigDecimal baseline;
+  private Double baseline;
 
   public static final String SERIALIZED_NAME_CITATION = "citation";
   @SerializedName(SERIALIZED_NAME_CITATION)
@@ -74,7 +73,7 @@ public class RiskCause {
   public static final String SERIALIZED_NAME_OBSERVED = "observed";
   @SerializedName(SERIALIZED_NAME_OBSERVED)
   @javax.annotation.Nullable
-  private BigDecimal observed;
+  private Double observed;
 
   public static final String SERIALIZED_NAME_SEVERITY = "severity";
   @SerializedName(SERIALIZED_NAME_SEVERITY)
@@ -84,7 +83,7 @@ public class RiskCause {
   public static final String SERIALIZED_NAME_SHARE = "share";
   @SerializedName(SERIALIZED_NAME_SHARE)
   @javax.annotation.Nullable
-  private BigDecimal share;
+  private Double share;
 
   public static final String SERIALIZED_NAME_TYPOLOGY = "typology";
   @SerializedName(SERIALIZED_NAME_TYPOLOGY)
@@ -99,12 +98,12 @@ public class RiskCause {
   public static final String SERIALIZED_NAME_WITHOUT = "without";
   @SerializedName(SERIALIZED_NAME_WITHOUT)
   @javax.annotation.Nullable
-  private BigDecimal without;
+  private Double without;
 
   public RiskCause() {
   }
 
-  public RiskCause baseline(@javax.annotation.Nullable BigDecimal baseline) {
+  public RiskCause baseline(@javax.annotation.Nullable Double baseline) {
     this.baseline = baseline;
     return this;
   }
@@ -114,11 +113,11 @@ public class RiskCause {
    * @return baseline
    */
   @javax.annotation.Nullable
-  public BigDecimal getBaseline() {
+  public Double getBaseline() {
     return baseline;
   }
 
-  public void setBaseline(@javax.annotation.Nullable BigDecimal baseline) {
+  public void setBaseline(@javax.annotation.Nullable Double baseline) {
     this.baseline = baseline;
   }
 
@@ -180,7 +179,7 @@ public class RiskCause {
   }
 
 
-  public RiskCause observed(@javax.annotation.Nullable BigDecimal observed) {
+  public RiskCause observed(@javax.annotation.Nullable Double observed) {
     this.observed = observed;
     return this;
   }
@@ -190,11 +189,11 @@ public class RiskCause {
    * @return observed
    */
   @javax.annotation.Nullable
-  public BigDecimal getObserved() {
+  public Double getObserved() {
     return observed;
   }
 
-  public void setObserved(@javax.annotation.Nullable BigDecimal observed) {
+  public void setObserved(@javax.annotation.Nullable Double observed) {
     this.observed = observed;
   }
 
@@ -218,7 +217,7 @@ public class RiskCause {
   }
 
 
-  public RiskCause share(@javax.annotation.Nullable BigDecimal share) {
+  public RiskCause share(@javax.annotation.Nullable Double share) {
     this.share = share;
     return this;
   }
@@ -228,11 +227,11 @@ public class RiskCause {
    * @return share
    */
   @javax.annotation.Nullable
-  public BigDecimal getShare() {
+  public Double getShare() {
     return share;
   }
 
-  public void setShare(@javax.annotation.Nullable BigDecimal share) {
+  public void setShare(@javax.annotation.Nullable Double share) {
     this.share = share;
   }
 
@@ -275,7 +274,7 @@ public class RiskCause {
   }
 
 
-  public RiskCause without(@javax.annotation.Nullable BigDecimal without) {
+  public RiskCause without(@javax.annotation.Nullable Double without) {
     this.without = without;
     return this;
   }
@@ -285,11 +284,11 @@ public class RiskCause {
    * @return without
    */
   @javax.annotation.Nullable
-  public BigDecimal getWithout() {
+  public Double getWithout() {
     return without;
   }
 
-  public void setWithout(@javax.annotation.Nullable BigDecimal without) {
+  public void setWithout(@javax.annotation.Nullable Double without) {
     this.without = without;
   }
 

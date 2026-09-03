@@ -101,7 +101,7 @@ public class Declaration {
   public static final String SERIALIZED_NAME_REPLICAS = "replicas";
   @SerializedName(SERIALIZED_NAME_REPLICAS)
   @javax.annotation.Nullable
-  private Integer replicas;
+  private Long replicas;
 
   public static final String SERIALIZED_NAME_REPOSITORY = "repository";
   @SerializedName(SERIALIZED_NAME_REPOSITORY)
@@ -303,7 +303,7 @@ public class Declaration {
   }
 
 
-  public Declaration replicas(@javax.annotation.Nullable Integer replicas) {
+  public Declaration replicas(@javax.annotation.Nullable Long replicas) {
     this.replicas = replicas;
     return this;
   }
@@ -313,11 +313,11 @@ public class Declaration {
    * @return replicas
    */
   @javax.annotation.Nullable
-  public Integer getReplicas() {
+  public Long getReplicas() {
     return replicas;
   }
 
-  public void setReplicas(@javax.annotation.Nullable Integer replicas) {
+  public void setReplicas(@javax.annotation.Nullable Long replicas) {
     this.replicas = replicas;
   }
 

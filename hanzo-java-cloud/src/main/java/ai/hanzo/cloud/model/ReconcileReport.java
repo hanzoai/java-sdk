@@ -57,12 +57,12 @@ public class ReconcileReport {
   public static final String SERIALIZED_NAME_DECLARED = "declared";
   @SerializedName(SERIALIZED_NAME_DECLARED)
   @javax.annotation.Nullable
-  private Integer declared;
+  private Long declared;
 
   public static final String SERIALIZED_NAME_FAILED = "failed";
   @SerializedName(SERIALIZED_NAME_FAILED)
   @javax.annotation.Nullable
-  private Integer failed;
+  private Long failed;
 
   public static final String SERIALIZED_NAME_INSTANCE = "instance";
   @SerializedName(SERIALIZED_NAME_INSTANCE)
@@ -77,7 +77,7 @@ public class ReconcileReport {
   public static final String SERIALIZED_NAME_PRUNED = "pruned";
   @SerializedName(SERIALIZED_NAME_PRUNED)
   @javax.annotation.Nullable
-  private Integer pruned;
+  private Long pruned;
 
   public static final String SERIALIZED_NAME_RESULTS = "results";
   @SerializedName(SERIALIZED_NAME_RESULTS)
@@ -97,12 +97,12 @@ public class ReconcileReport {
   public static final String SERIALIZED_NAME_SYNCED = "synced";
   @SerializedName(SERIALIZED_NAME_SYNCED)
   @javax.annotation.Nullable
-  private Integer synced;
+  private Long synced;
 
   public ReconcileReport() {
   }
 
-  public ReconcileReport declared(@javax.annotation.Nullable Integer declared) {
+  public ReconcileReport declared(@javax.annotation.Nullable Long declared) {
     this.declared = declared;
     return this;
   }
@@ -112,16 +112,16 @@ public class ReconcileReport {
    * @return declared
    */
   @javax.annotation.Nullable
-  public Integer getDeclared() {
+  public Long getDeclared() {
     return declared;
   }
 
-  public void setDeclared(@javax.annotation.Nullable Integer declared) {
+  public void setDeclared(@javax.annotation.Nullable Long declared) {
     this.declared = declared;
   }
 
 
-  public ReconcileReport failed(@javax.annotation.Nullable Integer failed) {
+  public ReconcileReport failed(@javax.annotation.Nullable Long failed) {
     this.failed = failed;
     return this;
   }
@@ -131,11 +131,11 @@ public class ReconcileReport {
    * @return failed
    */
   @javax.annotation.Nullable
-  public Integer getFailed() {
+  public Long getFailed() {
     return failed;
   }
 
-  public void setFailed(@javax.annotation.Nullable Integer failed) {
+  public void setFailed(@javax.annotation.Nullable Long failed) {
     this.failed = failed;
   }
 
@@ -178,7 +178,7 @@ public class ReconcileReport {
   }
 
 
-  public ReconcileReport pruned(@javax.annotation.Nullable Integer pruned) {
+  public ReconcileReport pruned(@javax.annotation.Nullable Long pruned) {
     this.pruned = pruned;
     return this;
   }
@@ -188,11 +188,11 @@ public class ReconcileReport {
    * @return pruned
    */
   @javax.annotation.Nullable
-  public Integer getPruned() {
+  public Long getPruned() {
     return pruned;
   }
 
-  public void setPruned(@javax.annotation.Nullable Integer pruned) {
+  public void setPruned(@javax.annotation.Nullable Long pruned) {
     this.pruned = pruned;
   }
 
@@ -262,7 +262,7 @@ public class ReconcileReport {
   }
 
 
-  public ReconcileReport synced(@javax.annotation.Nullable Integer synced) {
+  public ReconcileReport synced(@javax.annotation.Nullable Long synced) {
     this.synced = synced;
     return this;
   }
@@ -272,11 +272,11 @@ public class ReconcileReport {
    * @return synced
    */
   @javax.annotation.Nullable
-  public Integer getSynced() {
+  public Long getSynced() {
     return synced;
   }
 
-  public void setSynced(@javax.annotation.Nullable Integer synced) {
+  public void setSynced(@javax.annotation.Nullable Long synced) {
     this.synced = synced;
   }
 

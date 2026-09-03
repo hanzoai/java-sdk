@@ -21,7 +21,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -57,22 +56,22 @@ public class RiskLabelCoverage {
   public static final String SERIALIZED_NAME_CONTESTED = "contested";
   @SerializedName(SERIALIZED_NAME_CONTESTED)
   @javax.annotation.Nullable
-  private Integer contested;
+  private Long contested;
 
   public static final String SERIALIZED_NAME_EVENTS = "events";
   @SerializedName(SERIALIZED_NAME_EVENTS)
   @javax.annotation.Nullable
-  private Integer events;
+  private Long events;
 
   public static final String SERIALIZED_NAME_EXPLORE = "explore";
   @SerializedName(SERIALIZED_NAME_EXPLORE)
   @javax.annotation.Nullable
-  private BigDecimal explore;
+  private Double explore;
 
   public static final String SERIALIZED_NAME_FACTS = "facts";
   @SerializedName(SERIALIZED_NAME_FACTS)
   @javax.annotation.Nullable
-  private Integer facts;
+  private Long facts;
 
   public static final String SERIALIZED_NAME_FROM = "from";
   @SerializedName(SERIALIZED_NAME_FROM)
@@ -82,27 +81,27 @@ public class RiskLabelCoverage {
   public static final String SERIALIZED_NAME_HORIZON = "horizon";
   @SerializedName(SERIALIZED_NAME_HORIZON)
   @javax.annotation.Nullable
-  private Integer horizon;
+  private Long horizon;
 
   public static final String SERIALIZED_NAME_JUDGED = "judged";
   @SerializedName(SERIALIZED_NAME_JUDGED)
   @javax.annotation.Nullable
-  private Integer judged;
+  private Long judged;
 
   public static final String SERIALIZED_NAME_MATURED = "matured";
   @SerializedName(SERIALIZED_NAME_MATURED)
   @javax.annotation.Nullable
-  private Integer matured;
+  private Long matured;
 
   public static final String SERIALIZED_NAME_PENDING = "pending";
   @SerializedName(SERIALIZED_NAME_PENDING)
   @javax.annotation.Nullable
-  private Integer pending;
+  private Long pending;
 
   public static final String SERIALIZED_NAME_PRODUCTIVE = "productive";
   @SerializedName(SERIALIZED_NAME_PRODUCTIVE)
   @javax.annotation.Nullable
-  private Integer productive;
+  private Long productive;
 
   public static final String SERIALIZED_NAME_SOURCES = "sources";
   @SerializedName(SERIALIZED_NAME_SOURCES)
@@ -117,22 +116,22 @@ public class RiskLabelCoverage {
   public static final String SERIALIZED_NAME_UNLABELLED = "unlabelled";
   @SerializedName(SERIALIZED_NAME_UNLABELLED)
   @javax.annotation.Nullable
-  private Integer unlabelled;
+  private Long unlabelled;
 
   public static final String SERIALIZED_NAME_UNMATURED = "unmatured";
   @SerializedName(SERIALIZED_NAME_UNMATURED)
   @javax.annotation.Nullable
-  private Integer unmatured;
+  private Long unmatured;
 
   public static final String SERIALIZED_NAME_UNPRODUCTIVE = "unproductive";
   @SerializedName(SERIALIZED_NAME_UNPRODUCTIVE)
   @javax.annotation.Nullable
-  private Integer unproductive;
+  private Long unproductive;
 
   public RiskLabelCoverage() {
   }
 
-  public RiskLabelCoverage contested(@javax.annotation.Nullable Integer contested) {
+  public RiskLabelCoverage contested(@javax.annotation.Nullable Long contested) {
     this.contested = contested;
     return this;
   }
@@ -142,16 +141,16 @@ public class RiskLabelCoverage {
    * @return contested
    */
   @javax.annotation.Nullable
-  public Integer getContested() {
+  public Long getContested() {
     return contested;
   }
 
-  public void setContested(@javax.annotation.Nullable Integer contested) {
+  public void setContested(@javax.annotation.Nullable Long contested) {
     this.contested = contested;
   }
 
 
-  public RiskLabelCoverage events(@javax.annotation.Nullable Integer events) {
+  public RiskLabelCoverage events(@javax.annotation.Nullable Long events) {
     this.events = events;
     return this;
   }
@@ -161,16 +160,16 @@ public class RiskLabelCoverage {
    * @return events
    */
   @javax.annotation.Nullable
-  public Integer getEvents() {
+  public Long getEvents() {
     return events;
   }
 
-  public void setEvents(@javax.annotation.Nullable Integer events) {
+  public void setEvents(@javax.annotation.Nullable Long events) {
     this.events = events;
   }
 
 
-  public RiskLabelCoverage explore(@javax.annotation.Nullable BigDecimal explore) {
+  public RiskLabelCoverage explore(@javax.annotation.Nullable Double explore) {
     this.explore = explore;
     return this;
   }
@@ -180,16 +179,16 @@ public class RiskLabelCoverage {
    * @return explore
    */
   @javax.annotation.Nullable
-  public BigDecimal getExplore() {
+  public Double getExplore() {
     return explore;
   }
 
-  public void setExplore(@javax.annotation.Nullable BigDecimal explore) {
+  public void setExplore(@javax.annotation.Nullable Double explore) {
     this.explore = explore;
   }
 
 
-  public RiskLabelCoverage facts(@javax.annotation.Nullable Integer facts) {
+  public RiskLabelCoverage facts(@javax.annotation.Nullable Long facts) {
     this.facts = facts;
     return this;
   }
@@ -199,11 +198,11 @@ public class RiskLabelCoverage {
    * @return facts
    */
   @javax.annotation.Nullable
-  public Integer getFacts() {
+  public Long getFacts() {
     return facts;
   }
 
-  public void setFacts(@javax.annotation.Nullable Integer facts) {
+  public void setFacts(@javax.annotation.Nullable Long facts) {
     this.facts = facts;
   }
 
@@ -227,7 +226,7 @@ public class RiskLabelCoverage {
   }
 
 
-  public RiskLabelCoverage horizon(@javax.annotation.Nullable Integer horizon) {
+  public RiskLabelCoverage horizon(@javax.annotation.Nullable Long horizon) {
     this.horizon = horizon;
     return this;
   }
@@ -237,16 +236,16 @@ public class RiskLabelCoverage {
    * @return horizon
    */
   @javax.annotation.Nullable
-  public Integer getHorizon() {
+  public Long getHorizon() {
     return horizon;
   }
 
-  public void setHorizon(@javax.annotation.Nullable Integer horizon) {
+  public void setHorizon(@javax.annotation.Nullable Long horizon) {
     this.horizon = horizon;
   }
 
 
-  public RiskLabelCoverage judged(@javax.annotation.Nullable Integer judged) {
+  public RiskLabelCoverage judged(@javax.annotation.Nullable Long judged) {
     this.judged = judged;
     return this;
   }
@@ -256,16 +255,16 @@ public class RiskLabelCoverage {
    * @return judged
    */
   @javax.annotation.Nullable
-  public Integer getJudged() {
+  public Long getJudged() {
     return judged;
   }
 
-  public void setJudged(@javax.annotation.Nullable Integer judged) {
+  public void setJudged(@javax.annotation.Nullable Long judged) {
     this.judged = judged;
   }
 
 
-  public RiskLabelCoverage matured(@javax.annotation.Nullable Integer matured) {
+  public RiskLabelCoverage matured(@javax.annotation.Nullable Long matured) {
     this.matured = matured;
     return this;
   }
@@ -275,16 +274,16 @@ public class RiskLabelCoverage {
    * @return matured
    */
   @javax.annotation.Nullable
-  public Integer getMatured() {
+  public Long getMatured() {
     return matured;
   }
 
-  public void setMatured(@javax.annotation.Nullable Integer matured) {
+  public void setMatured(@javax.annotation.Nullable Long matured) {
     this.matured = matured;
   }
 
 
-  public RiskLabelCoverage pending(@javax.annotation.Nullable Integer pending) {
+  public RiskLabelCoverage pending(@javax.annotation.Nullable Long pending) {
     this.pending = pending;
     return this;
   }
@@ -294,16 +293,16 @@ public class RiskLabelCoverage {
    * @return pending
    */
   @javax.annotation.Nullable
-  public Integer getPending() {
+  public Long getPending() {
     return pending;
   }
 
-  public void setPending(@javax.annotation.Nullable Integer pending) {
+  public void setPending(@javax.annotation.Nullable Long pending) {
     this.pending = pending;
   }
 
 
-  public RiskLabelCoverage productive(@javax.annotation.Nullable Integer productive) {
+  public RiskLabelCoverage productive(@javax.annotation.Nullable Long productive) {
     this.productive = productive;
     return this;
   }
@@ -313,11 +312,11 @@ public class RiskLabelCoverage {
    * @return productive
    */
   @javax.annotation.Nullable
-  public Integer getProductive() {
+  public Long getProductive() {
     return productive;
   }
 
-  public void setProductive(@javax.annotation.Nullable Integer productive) {
+  public void setProductive(@javax.annotation.Nullable Long productive) {
     this.productive = productive;
   }
 
@@ -368,7 +367,7 @@ public class RiskLabelCoverage {
   }
 
 
-  public RiskLabelCoverage unlabelled(@javax.annotation.Nullable Integer unlabelled) {
+  public RiskLabelCoverage unlabelled(@javax.annotation.Nullable Long unlabelled) {
     this.unlabelled = unlabelled;
     return this;
   }
@@ -378,16 +377,16 @@ public class RiskLabelCoverage {
    * @return unlabelled
    */
   @javax.annotation.Nullable
-  public Integer getUnlabelled() {
+  public Long getUnlabelled() {
     return unlabelled;
   }
 
-  public void setUnlabelled(@javax.annotation.Nullable Integer unlabelled) {
+  public void setUnlabelled(@javax.annotation.Nullable Long unlabelled) {
     this.unlabelled = unlabelled;
   }
 
 
-  public RiskLabelCoverage unmatured(@javax.annotation.Nullable Integer unmatured) {
+  public RiskLabelCoverage unmatured(@javax.annotation.Nullable Long unmatured) {
     this.unmatured = unmatured;
     return this;
   }
@@ -397,16 +396,16 @@ public class RiskLabelCoverage {
    * @return unmatured
    */
   @javax.annotation.Nullable
-  public Integer getUnmatured() {
+  public Long getUnmatured() {
     return unmatured;
   }
 
-  public void setUnmatured(@javax.annotation.Nullable Integer unmatured) {
+  public void setUnmatured(@javax.annotation.Nullable Long unmatured) {
     this.unmatured = unmatured;
   }
 
 
-  public RiskLabelCoverage unproductive(@javax.annotation.Nullable Integer unproductive) {
+  public RiskLabelCoverage unproductive(@javax.annotation.Nullable Long unproductive) {
     this.unproductive = unproductive;
     return this;
   }
@@ -416,11 +415,11 @@ public class RiskLabelCoverage {
    * @return unproductive
    */
   @javax.annotation.Nullable
-  public Integer getUnproductive() {
+  public Long getUnproductive() {
     return unproductive;
   }
 
-  public void setUnproductive(@javax.annotation.Nullable Integer unproductive) {
+  public void setUnproductive(@javax.annotation.Nullable Long unproductive) {
     this.unproductive = unproductive;
   }
 

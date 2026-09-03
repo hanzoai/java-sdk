@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -54,22 +53,22 @@ public class O11yO11yPercentiles {
   public static final String SERIALIZED_NAME_P50 = "p50";
   @SerializedName(SERIALIZED_NAME_P50)
   @javax.annotation.Nullable
-  private BigDecimal p50;
+  private Double p50;
 
   public static final String SERIALIZED_NAME_P90 = "p90";
   @SerializedName(SERIALIZED_NAME_P90)
   @javax.annotation.Nullable
-  private BigDecimal p90;
+  private Double p90;
 
   public static final String SERIALIZED_NAME_P99 = "p99";
   @SerializedName(SERIALIZED_NAME_P99)
   @javax.annotation.Nullable
-  private BigDecimal p99;
+  private Double p99;
 
   public O11yO11yPercentiles() {
   }
 
-  public O11yO11yPercentiles p50(@javax.annotation.Nullable BigDecimal p50) {
+  public O11yO11yPercentiles p50(@javax.annotation.Nullable Double p50) {
     this.p50 = p50;
     return this;
   }
@@ -79,16 +78,16 @@ public class O11yO11yPercentiles {
    * @return p50
    */
   @javax.annotation.Nullable
-  public BigDecimal getP50() {
+  public Double getP50() {
     return p50;
   }
 
-  public void setP50(@javax.annotation.Nullable BigDecimal p50) {
+  public void setP50(@javax.annotation.Nullable Double p50) {
     this.p50 = p50;
   }
 
 
-  public O11yO11yPercentiles p90(@javax.annotation.Nullable BigDecimal p90) {
+  public O11yO11yPercentiles p90(@javax.annotation.Nullable Double p90) {
     this.p90 = p90;
     return this;
   }
@@ -98,16 +97,16 @@ public class O11yO11yPercentiles {
    * @return p90
    */
   @javax.annotation.Nullable
-  public BigDecimal getP90() {
+  public Double getP90() {
     return p90;
   }
 
-  public void setP90(@javax.annotation.Nullable BigDecimal p90) {
+  public void setP90(@javax.annotation.Nullable Double p90) {
     this.p90 = p90;
   }
 
 
-  public O11yO11yPercentiles p99(@javax.annotation.Nullable BigDecimal p99) {
+  public O11yO11yPercentiles p99(@javax.annotation.Nullable Double p99) {
     this.p99 = p99;
     return this;
   }
@@ -117,11 +116,11 @@ public class O11yO11yPercentiles {
    * @return p99
    */
   @javax.annotation.Nullable
-  public BigDecimal getP99() {
+  public Double getP99() {
     return p99;
   }
 
-  public void setP99(@javax.annotation.Nullable BigDecimal p99) {
+  public void setP99(@javax.annotation.Nullable Double p99) {
     this.p99 = p99;
   }
 

@@ -55,7 +55,7 @@ public class GithubImportOut {
   public static final String SERIALIZED_NAME_QUEUED = "queued";
   @SerializedName(SERIALIZED_NAME_QUEUED)
   @javax.annotation.Nullable
-  private Integer queued;
+  private Long queued;
 
   public static final String SERIALIZED_NAME_REPOS = "repos";
   @SerializedName(SERIALIZED_NAME_REPOS)
@@ -65,7 +65,7 @@ public class GithubImportOut {
   public GithubImportOut() {
   }
 
-  public GithubImportOut queued(@javax.annotation.Nullable Integer queued) {
+  public GithubImportOut queued(@javax.annotation.Nullable Long queued) {
     this.queued = queued;
     return this;
   }
@@ -75,11 +75,11 @@ public class GithubImportOut {
    * @return queued
    */
   @javax.annotation.Nullable
-  public Integer getQueued() {
+  public Long getQueued() {
     return queued;
   }
 
-  public void setQueued(@javax.annotation.Nullable Integer queued) {
+  public void setQueued(@javax.annotation.Nullable Long queued) {
     this.queued = queued;
   }
 

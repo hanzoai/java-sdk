@@ -66,7 +66,7 @@ public class O11yTelegramConfig {
   public static final String SERIALIZED_NAME_CHAT = "chat";
   @SerializedName(SERIALIZED_NAME_CHAT)
   @javax.annotation.Nullable
-  private Integer chat;
+  private Long chat;
 
   public static final String SERIALIZED_NAME_CHAT_FILE = "chat_file";
   @SerializedName(SERIALIZED_NAME_CHAT_FILE)
@@ -91,7 +91,7 @@ public class O11yTelegramConfig {
   public static final String SERIALIZED_NAME_MESSAGE_THREAD_ID = "message_thread_id";
   @SerializedName(SERIALIZED_NAME_MESSAGE_THREAD_ID)
   @javax.annotation.Nullable
-  private Integer messageThreadId;
+  private Long messageThreadId;
 
   public static final String SERIALIZED_NAME_PARSE_MODE = "parse_mode";
   @SerializedName(SERIALIZED_NAME_PARSE_MODE)
@@ -149,7 +149,7 @@ public class O11yTelegramConfig {
   }
 
 
-  public O11yTelegramConfig chat(@javax.annotation.Nullable Integer chat) {
+  public O11yTelegramConfig chat(@javax.annotation.Nullable Long chat) {
     this.chat = chat;
     return this;
   }
@@ -159,11 +159,11 @@ public class O11yTelegramConfig {
    * @return chat
    */
   @javax.annotation.Nullable
-  public Integer getChat() {
+  public Long getChat() {
     return chat;
   }
 
-  public void setChat(@javax.annotation.Nullable Integer chat) {
+  public void setChat(@javax.annotation.Nullable Long chat) {
     this.chat = chat;
   }
 
@@ -244,7 +244,7 @@ public class O11yTelegramConfig {
   }
 
 
-  public O11yTelegramConfig messageThreadId(@javax.annotation.Nullable Integer messageThreadId) {
+  public O11yTelegramConfig messageThreadId(@javax.annotation.Nullable Long messageThreadId) {
     this.messageThreadId = messageThreadId;
     return this;
   }
@@ -254,11 +254,11 @@ public class O11yTelegramConfig {
    * @return messageThreadId
    */
   @javax.annotation.Nullable
-  public Integer getMessageThreadId() {
+  public Long getMessageThreadId() {
     return messageThreadId;
   }
 
-  public void setMessageThreadId(@javax.annotation.Nullable Integer messageThreadId) {
+  public void setMessageThreadId(@javax.annotation.Nullable Long messageThreadId) {
     this.messageThreadId = messageThreadId;
   }
 

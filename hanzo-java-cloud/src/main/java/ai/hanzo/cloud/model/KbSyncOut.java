@@ -53,7 +53,7 @@ public class KbSyncOut {
   public static final String SERIALIZED_NAME_INGESTED = "ingested";
   @SerializedName(SERIALIZED_NAME_INGESTED)
   @javax.annotation.Nullable
-  private Integer ingested;
+  private Long ingested;
 
   public static final String SERIALIZED_NAME_PROVIDER = "provider";
   @SerializedName(SERIALIZED_NAME_PROVIDER)
@@ -63,7 +63,7 @@ public class KbSyncOut {
   public KbSyncOut() {
   }
 
-  public KbSyncOut ingested(@javax.annotation.Nullable Integer ingested) {
+  public KbSyncOut ingested(@javax.annotation.Nullable Long ingested) {
     this.ingested = ingested;
     return this;
   }
@@ -73,11 +73,11 @@ public class KbSyncOut {
    * @return ingested
    */
   @javax.annotation.Nullable
-  public Integer getIngested() {
+  public Long getIngested() {
     return ingested;
   }
 
-  public void setIngested(@javax.annotation.Nullable Integer ingested) {
+  public void setIngested(@javax.annotation.Nullable Long ingested) {
     this.ingested = ingested;
   }
 

@@ -53,7 +53,7 @@ public class TierBalance {
   public static final String SERIALIZED_NAME_CREDITS_REMAINING = "creditsRemaining";
   @SerializedName(SERIALIZED_NAME_CREDITS_REMAINING)
   @javax.annotation.Nullable
-  private Integer creditsRemaining;
+  private Long creditsRemaining;
 
   public static final String SERIALIZED_NAME_CURRENCY = "currency";
   @SerializedName(SERIALIZED_NAME_CURRENCY)
@@ -63,22 +63,22 @@ public class TierBalance {
   public static final String SERIALIZED_NAME_DAILY_REMAINING = "dailyRemaining";
   @SerializedName(SERIALIZED_NAME_DAILY_REMAINING)
   @javax.annotation.Nullable
-  private Integer dailyRemaining;
+  private Long dailyRemaining;
 
   public static final String SERIALIZED_NAME_EFFECTIVE_AVAILABLE = "effectiveAvailable";
   @SerializedName(SERIALIZED_NAME_EFFECTIVE_AVAILABLE)
   @javax.annotation.Nullable
-  private Integer effectiveAvailable;
+  private Long effectiveAvailable;
 
   public static final String SERIALIZED_NAME_PREPAID_AVAILABLE = "prepaidAvailable";
   @SerializedName(SERIALIZED_NAME_PREPAID_AVAILABLE)
   @javax.annotation.Nullable
-  private Integer prepaidAvailable;
+  private Long prepaidAvailable;
 
   public TierBalance() {
   }
 
-  public TierBalance creditsRemaining(@javax.annotation.Nullable Integer creditsRemaining) {
+  public TierBalance creditsRemaining(@javax.annotation.Nullable Long creditsRemaining) {
     this.creditsRemaining = creditsRemaining;
     return this;
   }
@@ -88,11 +88,11 @@ public class TierBalance {
    * @return creditsRemaining
    */
   @javax.annotation.Nullable
-  public Integer getCreditsRemaining() {
+  public Long getCreditsRemaining() {
     return creditsRemaining;
   }
 
-  public void setCreditsRemaining(@javax.annotation.Nullable Integer creditsRemaining) {
+  public void setCreditsRemaining(@javax.annotation.Nullable Long creditsRemaining) {
     this.creditsRemaining = creditsRemaining;
   }
 
@@ -116,7 +116,7 @@ public class TierBalance {
   }
 
 
-  public TierBalance dailyRemaining(@javax.annotation.Nullable Integer dailyRemaining) {
+  public TierBalance dailyRemaining(@javax.annotation.Nullable Long dailyRemaining) {
     this.dailyRemaining = dailyRemaining;
     return this;
   }
@@ -126,16 +126,16 @@ public class TierBalance {
    * @return dailyRemaining
    */
   @javax.annotation.Nullable
-  public Integer getDailyRemaining() {
+  public Long getDailyRemaining() {
     return dailyRemaining;
   }
 
-  public void setDailyRemaining(@javax.annotation.Nullable Integer dailyRemaining) {
+  public void setDailyRemaining(@javax.annotation.Nullable Long dailyRemaining) {
     this.dailyRemaining = dailyRemaining;
   }
 
 
-  public TierBalance effectiveAvailable(@javax.annotation.Nullable Integer effectiveAvailable) {
+  public TierBalance effectiveAvailable(@javax.annotation.Nullable Long effectiveAvailable) {
     this.effectiveAvailable = effectiveAvailable;
     return this;
   }
@@ -145,16 +145,16 @@ public class TierBalance {
    * @return effectiveAvailable
    */
   @javax.annotation.Nullable
-  public Integer getEffectiveAvailable() {
+  public Long getEffectiveAvailable() {
     return effectiveAvailable;
   }
 
-  public void setEffectiveAvailable(@javax.annotation.Nullable Integer effectiveAvailable) {
+  public void setEffectiveAvailable(@javax.annotation.Nullable Long effectiveAvailable) {
     this.effectiveAvailable = effectiveAvailable;
   }
 
 
-  public TierBalance prepaidAvailable(@javax.annotation.Nullable Integer prepaidAvailable) {
+  public TierBalance prepaidAvailable(@javax.annotation.Nullable Long prepaidAvailable) {
     this.prepaidAvailable = prepaidAvailable;
     return this;
   }
@@ -164,11 +164,11 @@ public class TierBalance {
    * @return prepaidAvailable
    */
   @javax.annotation.Nullable
-  public Integer getPrepaidAvailable() {
+  public Long getPrepaidAvailable() {
     return prepaidAvailable;
   }
 
-  public void setPrepaidAvailable(@javax.annotation.Nullable Integer prepaidAvailable) {
+  public void setPrepaidAvailable(@javax.annotation.Nullable Long prepaidAvailable) {
     this.prepaidAvailable = prepaidAvailable;
   }
 

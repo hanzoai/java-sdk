@@ -58,7 +58,7 @@ public class ScheduleInput {
   public static final String SERIALIZED_NAME_SCHEDULED_AT = "scheduledAt";
   @SerializedName(SERIALIZED_NAME_SCHEDULED_AT)
   @javax.annotation.Nullable
-  private Integer scheduledAt;
+  private Long scheduledAt;
 
   public ScheduleInput() {
   }
@@ -82,7 +82,7 @@ public class ScheduleInput {
   }
 
 
-  public ScheduleInput scheduledAt(@javax.annotation.Nullable Integer scheduledAt) {
+  public ScheduleInput scheduledAt(@javax.annotation.Nullable Long scheduledAt) {
     this.scheduledAt = scheduledAt;
     return this;
   }
@@ -92,11 +92,11 @@ public class ScheduleInput {
    * @return scheduledAt
    */
   @javax.annotation.Nullable
-  public Integer getScheduledAt() {
+  public Long getScheduledAt() {
     return scheduledAt;
   }
 
-  public void setScheduledAt(@javax.annotation.Nullable Integer scheduledAt) {
+  public void setScheduledAt(@javax.annotation.Nullable Long scheduledAt) {
     this.scheduledAt = scheduledAt;
   }
 

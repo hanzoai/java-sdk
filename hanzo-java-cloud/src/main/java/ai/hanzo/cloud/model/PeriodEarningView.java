@@ -53,12 +53,12 @@ public class PeriodEarningView {
   public static final String SERIALIZED_NAME_COMMISSION_CENTS = "commissionCents";
   @SerializedName(SERIALIZED_NAME_COMMISSION_CENTS)
   @javax.annotation.Nullable
-  private Integer commissionCents;
+  private Long commissionCents;
 
   public static final String SERIALIZED_NAME_MARGIN_CENTS = "marginCents";
   @SerializedName(SERIALIZED_NAME_MARGIN_CENTS)
   @javax.annotation.Nullable
-  private Integer marginCents;
+  private Long marginCents;
 
   public static final String SERIALIZED_NAME_PERIOD = "period";
   @SerializedName(SERIALIZED_NAME_PERIOD)
@@ -68,7 +68,7 @@ public class PeriodEarningView {
   public PeriodEarningView() {
   }
 
-  public PeriodEarningView commissionCents(@javax.annotation.Nullable Integer commissionCents) {
+  public PeriodEarningView commissionCents(@javax.annotation.Nullable Long commissionCents) {
     this.commissionCents = commissionCents;
     return this;
   }
@@ -78,16 +78,16 @@ public class PeriodEarningView {
    * @return commissionCents
    */
   @javax.annotation.Nullable
-  public Integer getCommissionCents() {
+  public Long getCommissionCents() {
     return commissionCents;
   }
 
-  public void setCommissionCents(@javax.annotation.Nullable Integer commissionCents) {
+  public void setCommissionCents(@javax.annotation.Nullable Long commissionCents) {
     this.commissionCents = commissionCents;
   }
 
 
-  public PeriodEarningView marginCents(@javax.annotation.Nullable Integer marginCents) {
+  public PeriodEarningView marginCents(@javax.annotation.Nullable Long marginCents) {
     this.marginCents = marginCents;
     return this;
   }
@@ -97,11 +97,11 @@ public class PeriodEarningView {
    * @return marginCents
    */
   @javax.annotation.Nullable
-  public Integer getMarginCents() {
+  public Long getMarginCents() {
     return marginCents;
   }
 
-  public void setMarginCents(@javax.annotation.Nullable Integer marginCents) {
+  public void setMarginCents(@javax.annotation.Nullable Long marginCents) {
     this.marginCents = marginCents;
   }
 

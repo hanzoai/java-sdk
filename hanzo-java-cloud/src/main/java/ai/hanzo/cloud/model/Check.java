@@ -64,7 +64,7 @@ public class Check {
   public static final String SERIALIZED_NAME_NUMBER = "number";
   @SerializedName(SERIALIZED_NAME_NUMBER)
   @javax.annotation.Nullable
-  private Integer number;
+  private Long number;
 
   public static final String SERIALIZED_NAME_STATE = "state";
   @SerializedName(SERIALIZED_NAME_STATE)
@@ -127,7 +127,7 @@ public class Check {
   }
 
 
-  public Check number(@javax.annotation.Nullable Integer number) {
+  public Check number(@javax.annotation.Nullable Long number) {
     this.number = number;
     return this;
   }
@@ -137,11 +137,11 @@ public class Check {
    * @return number
    */
   @javax.annotation.Nullable
-  public Integer getNumber() {
+  public Long getNumber() {
     return number;
   }
 
-  public void setNumber(@javax.annotation.Nullable Integer number) {
+  public void setNumber(@javax.annotation.Nullable Long number) {
     this.number = number;
   }
 

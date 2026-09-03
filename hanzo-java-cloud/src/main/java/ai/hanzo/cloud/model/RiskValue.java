@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -54,7 +53,7 @@ public class RiskValue {
   public static final String SERIALIZED_NAME_BASELINE = "baseline";
   @SerializedName(SERIALIZED_NAME_BASELINE)
   @javax.annotation.Nullable
-  private BigDecimal baseline;
+  private Double baseline;
 
   public static final String SERIALIZED_NAME_BLIND = "blind";
   @SerializedName(SERIALIZED_NAME_BLIND)
@@ -69,7 +68,7 @@ public class RiskValue {
   public static final String SERIALIZED_NAME_OBSERVED = "observed";
   @SerializedName(SERIALIZED_NAME_OBSERVED)
   @javax.annotation.Nullable
-  private BigDecimal observed;
+  private Double observed;
 
   public static final String SERIALIZED_NAME_UNIT = "unit";
   @SerializedName(SERIALIZED_NAME_UNIT)
@@ -79,12 +78,12 @@ public class RiskValue {
   public static final String SERIALIZED_NAME_X = "x";
   @SerializedName(SERIALIZED_NAME_X)
   @javax.annotation.Nullable
-  private BigDecimal x;
+  private Double x;
 
   public RiskValue() {
   }
 
-  public RiskValue baseline(@javax.annotation.Nullable BigDecimal baseline) {
+  public RiskValue baseline(@javax.annotation.Nullable Double baseline) {
     this.baseline = baseline;
     return this;
   }
@@ -94,11 +93,11 @@ public class RiskValue {
    * @return baseline
    */
   @javax.annotation.Nullable
-  public BigDecimal getBaseline() {
+  public Double getBaseline() {
     return baseline;
   }
 
-  public void setBaseline(@javax.annotation.Nullable BigDecimal baseline) {
+  public void setBaseline(@javax.annotation.Nullable Double baseline) {
     this.baseline = baseline;
   }
 
@@ -141,7 +140,7 @@ public class RiskValue {
   }
 
 
-  public RiskValue observed(@javax.annotation.Nullable BigDecimal observed) {
+  public RiskValue observed(@javax.annotation.Nullable Double observed) {
     this.observed = observed;
     return this;
   }
@@ -151,11 +150,11 @@ public class RiskValue {
    * @return observed
    */
   @javax.annotation.Nullable
-  public BigDecimal getObserved() {
+  public Double getObserved() {
     return observed;
   }
 
-  public void setObserved(@javax.annotation.Nullable BigDecimal observed) {
+  public void setObserved(@javax.annotation.Nullable Double observed) {
     this.observed = observed;
   }
 
@@ -179,7 +178,7 @@ public class RiskValue {
   }
 
 
-  public RiskValue x(@javax.annotation.Nullable BigDecimal x) {
+  public RiskValue x(@javax.annotation.Nullable Double x) {
     this.x = x;
     return this;
   }
@@ -189,11 +188,11 @@ public class RiskValue {
    * @return x
    */
   @javax.annotation.Nullable
-  public BigDecimal getX() {
+  public Double getX() {
     return x;
   }
 
-  public void setX(@javax.annotation.Nullable BigDecimal x) {
+  public void setX(@javax.annotation.Nullable Double x) {
     this.x = x;
   }
 

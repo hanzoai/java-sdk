@@ -58,7 +58,7 @@ public class TeamMessage {
   public static final String SERIALIZED_NAME_CREATED_ON = "createdOn";
   @SerializedName(SERIALIZED_NAME_CREATED_ON)
   @javax.annotation.Nullable
-  private Integer createdOn;
+  private Long createdOn;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -97,7 +97,7 @@ public class TeamMessage {
   }
 
 
-  public TeamMessage createdOn(@javax.annotation.Nullable Integer createdOn) {
+  public TeamMessage createdOn(@javax.annotation.Nullable Long createdOn) {
     this.createdOn = createdOn;
     return this;
   }
@@ -107,11 +107,11 @@ public class TeamMessage {
    * @return createdOn
    */
   @javax.annotation.Nullable
-  public Integer getCreatedOn() {
+  public Long getCreatedOn() {
     return createdOn;
   }
 
-  public void setCreatedOn(@javax.annotation.Nullable Integer createdOn) {
+  public void setCreatedOn(@javax.annotation.Nullable Long createdOn) {
     this.createdOn = createdOn;
   }
 

@@ -58,7 +58,7 @@ public class Completion {
   public static final String SERIALIZED_NAME_KIND = "kind";
   @SerializedName(SERIALIZED_NAME_KIND)
   @javax.annotation.Nullable
-  private Integer kind;
+  private Long kind;
 
   public static final String SERIALIZED_NAME_LABEL = "label";
   @SerializedName(SERIALIZED_NAME_LABEL)
@@ -87,7 +87,7 @@ public class Completion {
   }
 
 
-  public Completion kind(@javax.annotation.Nullable Integer kind) {
+  public Completion kind(@javax.annotation.Nullable Long kind) {
     this.kind = kind;
     return this;
   }
@@ -97,11 +97,11 @@ public class Completion {
    * @return kind
    */
   @javax.annotation.Nullable
-  public Integer getKind() {
+  public Long getKind() {
     return kind;
   }
 
-  public void setKind(@javax.annotation.Nullable Integer kind) {
+  public void setKind(@javax.annotation.Nullable Long kind) {
     this.kind = kind;
   }
 

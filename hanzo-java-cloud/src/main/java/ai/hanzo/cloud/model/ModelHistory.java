@@ -21,7 +21,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -67,7 +66,7 @@ public class ModelHistory {
   public static final String SERIALIZED_NAME_TREND = "trend";
   @SerializedName(SERIALIZED_NAME_TREND)
   @javax.annotation.Nullable
-  private BigDecimal trend;
+  private Double trend;
 
   public ModelHistory() {
   }
@@ -118,7 +117,7 @@ public class ModelHistory {
   }
 
 
-  public ModelHistory trend(@javax.annotation.Nullable BigDecimal trend) {
+  public ModelHistory trend(@javax.annotation.Nullable Double trend) {
     this.trend = trend;
     return this;
   }
@@ -128,11 +127,11 @@ public class ModelHistory {
    * @return trend
    */
   @javax.annotation.Nullable
-  public BigDecimal getTrend() {
+  public Double getTrend() {
     return trend;
   }
 
-  public void setTrend(@javax.annotation.Nullable BigDecimal trend) {
+  public void setTrend(@javax.annotation.Nullable Double trend) {
     this.trend = trend;
   }
 

@@ -56,7 +56,7 @@ public class ClauseCoverage {
   public static final String SERIALIZED_NAME_AUTOMATED = "automated";
   @SerializedName(SERIALIZED_NAME_AUTOMATED)
   @javax.annotation.Nullable
-  private Integer automated;
+  private Long automated;
 
   public static final String SERIALIZED_NAME_CLAUSES = "clauses";
   @SerializedName(SERIALIZED_NAME_CLAUSES)
@@ -76,7 +76,7 @@ public class ClauseCoverage {
   public static final String SERIALIZED_NAME_GENERATED = "generated";
   @SerializedName(SERIALIZED_NAME_GENERATED)
   @javax.annotation.Nullable
-  private Integer generated;
+  private Long generated;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -86,7 +86,7 @@ public class ClauseCoverage {
   public static final String SERIALIZED_NAME_NONE = "none";
   @SerializedName(SERIALIZED_NAME_NONE)
   @javax.annotation.Nullable
-  private Integer none;
+  private Long none;
 
   public static final String SERIALIZED_NAME_NOTE = "note";
   @SerializedName(SERIALIZED_NAME_NOTE)
@@ -96,7 +96,7 @@ public class ClauseCoverage {
   public static final String SERIALIZED_NAME_PARTIAL = "partial";
   @SerializedName(SERIALIZED_NAME_PARTIAL)
   @javax.annotation.Nullable
-  private Integer partial;
+  private Long partial;
 
   public static final String SERIALIZED_NAME_PUBLISHER = "publisher";
   @SerializedName(SERIALIZED_NAME_PUBLISHER)
@@ -111,7 +111,7 @@ public class ClauseCoverage {
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)
   @javax.annotation.Nullable
-  private Integer total;
+  private Long total;
 
   public static final String SERIALIZED_NAME_UNIT = "unit";
   @SerializedName(SERIALIZED_NAME_UNIT)
@@ -131,7 +131,7 @@ public class ClauseCoverage {
   public ClauseCoverage() {
   }
 
-  public ClauseCoverage automated(@javax.annotation.Nullable Integer automated) {
+  public ClauseCoverage automated(@javax.annotation.Nullable Long automated) {
     this.automated = automated;
     return this;
   }
@@ -141,11 +141,11 @@ public class ClauseCoverage {
    * @return automated
    */
   @javax.annotation.Nullable
-  public Integer getAutomated() {
+  public Long getAutomated() {
     return automated;
   }
 
-  public void setAutomated(@javax.annotation.Nullable Integer automated) {
+  public void setAutomated(@javax.annotation.Nullable Long automated) {
     this.automated = automated;
   }
 
@@ -215,7 +215,7 @@ public class ClauseCoverage {
   }
 
 
-  public ClauseCoverage generated(@javax.annotation.Nullable Integer generated) {
+  public ClauseCoverage generated(@javax.annotation.Nullable Long generated) {
     this.generated = generated;
     return this;
   }
@@ -225,11 +225,11 @@ public class ClauseCoverage {
    * @return generated
    */
   @javax.annotation.Nullable
-  public Integer getGenerated() {
+  public Long getGenerated() {
     return generated;
   }
 
-  public void setGenerated(@javax.annotation.Nullable Integer generated) {
+  public void setGenerated(@javax.annotation.Nullable Long generated) {
     this.generated = generated;
   }
 
@@ -253,7 +253,7 @@ public class ClauseCoverage {
   }
 
 
-  public ClauseCoverage none(@javax.annotation.Nullable Integer none) {
+  public ClauseCoverage none(@javax.annotation.Nullable Long none) {
     this.none = none;
     return this;
   }
@@ -263,11 +263,11 @@ public class ClauseCoverage {
    * @return none
    */
   @javax.annotation.Nullable
-  public Integer getNone() {
+  public Long getNone() {
     return none;
   }
 
-  public void setNone(@javax.annotation.Nullable Integer none) {
+  public void setNone(@javax.annotation.Nullable Long none) {
     this.none = none;
   }
 
@@ -291,7 +291,7 @@ public class ClauseCoverage {
   }
 
 
-  public ClauseCoverage partial(@javax.annotation.Nullable Integer partial) {
+  public ClauseCoverage partial(@javax.annotation.Nullable Long partial) {
     this.partial = partial;
     return this;
   }
@@ -301,11 +301,11 @@ public class ClauseCoverage {
    * @return partial
    */
   @javax.annotation.Nullable
-  public Integer getPartial() {
+  public Long getPartial() {
     return partial;
   }
 
-  public void setPartial(@javax.annotation.Nullable Integer partial) {
+  public void setPartial(@javax.annotation.Nullable Long partial) {
     this.partial = partial;
   }
 
@@ -348,7 +348,7 @@ public class ClauseCoverage {
   }
 
 
-  public ClauseCoverage total(@javax.annotation.Nullable Integer total) {
+  public ClauseCoverage total(@javax.annotation.Nullable Long total) {
     this.total = total;
     return this;
   }
@@ -358,11 +358,11 @@ public class ClauseCoverage {
    * @return total
    */
   @javax.annotation.Nullable
-  public Integer getTotal() {
+  public Long getTotal() {
     return total;
   }
 
-  public void setTotal(@javax.annotation.Nullable Integer total) {
+  public void setTotal(@javax.annotation.Nullable Long total) {
     this.total = total;
   }
 

@@ -72,7 +72,7 @@ public class ByoWorker {
   public static final String SERIALIZED_NAME_CPUS = "cpus";
   @SerializedName(SERIALIZED_NAME_CPUS)
   @javax.annotation.Nullable
-  private Integer cpus;
+  private Long cpus;
 
   public static final String SERIALIZED_NAME_CUDA = "cuda";
   @SerializedName(SERIALIZED_NAME_CUDA)
@@ -132,7 +132,7 @@ public class ByoWorker {
   public static final String SERIALIZED_NAME_MEMORY = "memory";
   @SerializedName(SERIALIZED_NAME_MEMORY)
   @javax.annotation.Nullable
-  private Integer memory;
+  private Long memory;
 
   public static final String SERIALIZED_NAME_OS = "os";
   @SerializedName(SERIALIZED_NAME_OS)
@@ -227,7 +227,7 @@ public class ByoWorker {
   }
 
 
-  public ByoWorker cpus(@javax.annotation.Nullable Integer cpus) {
+  public ByoWorker cpus(@javax.annotation.Nullable Long cpus) {
     this.cpus = cpus;
     return this;
   }
@@ -237,11 +237,11 @@ public class ByoWorker {
    * @return cpus
    */
   @javax.annotation.Nullable
-  public Integer getCpus() {
+  public Long getCpus() {
     return cpus;
   }
 
-  public void setCpus(@javax.annotation.Nullable Integer cpus) {
+  public void setCpus(@javax.annotation.Nullable Long cpus) {
     this.cpus = cpus;
   }
 
@@ -463,7 +463,7 @@ public class ByoWorker {
   }
 
 
-  public ByoWorker memory(@javax.annotation.Nullable Integer memory) {
+  public ByoWorker memory(@javax.annotation.Nullable Long memory) {
     this.memory = memory;
     return this;
   }
@@ -473,11 +473,11 @@ public class ByoWorker {
    * @return memory
    */
   @javax.annotation.Nullable
-  public Integer getMemory() {
+  public Long getMemory() {
     return memory;
   }
 
-  public void setMemory(@javax.annotation.Nullable Integer memory) {
+  public void setMemory(@javax.annotation.Nullable Long memory) {
     this.memory = memory;
   }
 

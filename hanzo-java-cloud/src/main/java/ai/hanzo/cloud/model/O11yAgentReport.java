@@ -60,7 +60,7 @@ public class O11yAgentReport {
   public static final String SERIALIZED_NAME_TIMESTAMP_MILLIS = "timestampMillis";
   @SerializedName(SERIALIZED_NAME_TIMESTAMP_MILLIS)
   @javax.annotation.Nullable
-  private Integer timestampMillis;
+  private Long timestampMillis;
 
   public O11yAgentReport() {
   }
@@ -92,7 +92,7 @@ public class O11yAgentReport {
   }
 
 
-  public O11yAgentReport timestampMillis(@javax.annotation.Nullable Integer timestampMillis) {
+  public O11yAgentReport timestampMillis(@javax.annotation.Nullable Long timestampMillis) {
     this.timestampMillis = timestampMillis;
     return this;
   }
@@ -102,11 +102,11 @@ public class O11yAgentReport {
    * @return timestampMillis
    */
   @javax.annotation.Nullable
-  public Integer getTimestampMillis() {
+  public Long getTimestampMillis() {
     return timestampMillis;
   }
 
-  public void setTimestampMillis(@javax.annotation.Nullable Integer timestampMillis) {
+  public void setTimestampMillis(@javax.annotation.Nullable Long timestampMillis) {
     this.timestampMillis = timestampMillis;
   }
 

@@ -67,7 +67,7 @@ public class O11yO11yAggregation {
   public static final String SERIALIZED_NAME_INDEX = "index";
   @SerializedName(SERIALIZED_NAME_INDEX)
   @javax.annotation.Nullable
-  private Integer index;
+  private Long index;
 
   public static final String SERIALIZED_NAME_LOWER_BOUND_SERIES = "lowerBoundSeries";
   @SerializedName(SERIALIZED_NAME_LOWER_BOUND_SERIES)
@@ -143,7 +143,7 @@ public class O11yO11yAggregation {
   }
 
 
-  public O11yO11yAggregation index(@javax.annotation.Nullable Integer index) {
+  public O11yO11yAggregation index(@javax.annotation.Nullable Long index) {
     this.index = index;
     return this;
   }
@@ -153,11 +153,11 @@ public class O11yO11yAggregation {
    * @return index
    */
   @javax.annotation.Nullable
-  public Integer getIndex() {
+  public Long getIndex() {
     return index;
   }
 
-  public void setIndex(@javax.annotation.Nullable Integer index) {
+  public void setIndex(@javax.annotation.Nullable Long index) {
     this.index = index;
   }
 

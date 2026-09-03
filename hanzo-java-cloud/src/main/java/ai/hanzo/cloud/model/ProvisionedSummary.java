@@ -53,7 +53,7 @@ public class ProvisionedSummary {
   public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
   @javax.annotation.Nullable
-  private Integer createdAt;
+  private Long createdAt;
 
   public static final String SERIALIZED_NAME_HOST = "host";
   @SerializedName(SERIALIZED_NAME_HOST)
@@ -78,7 +78,7 @@ public class ProvisionedSummary {
   public static final String SERIALIZED_NAME_PORT = "port";
   @SerializedName(SERIALIZED_NAME_PORT)
   @javax.annotation.Nullable
-  private Integer port;
+  private Long port;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
@@ -88,7 +88,7 @@ public class ProvisionedSummary {
   public ProvisionedSummary() {
   }
 
-  public ProvisionedSummary createdAt(@javax.annotation.Nullable Integer createdAt) {
+  public ProvisionedSummary createdAt(@javax.annotation.Nullable Long createdAt) {
     this.createdAt = createdAt;
     return this;
   }
@@ -98,11 +98,11 @@ public class ProvisionedSummary {
    * @return createdAt
    */
   @javax.annotation.Nullable
-  public Integer getCreatedAt() {
+  public Long getCreatedAt() {
     return createdAt;
   }
 
-  public void setCreatedAt(@javax.annotation.Nullable Integer createdAt) {
+  public void setCreatedAt(@javax.annotation.Nullable Long createdAt) {
     this.createdAt = createdAt;
   }
 
@@ -183,7 +183,7 @@ public class ProvisionedSummary {
   }
 
 
-  public ProvisionedSummary port(@javax.annotation.Nullable Integer port) {
+  public ProvisionedSummary port(@javax.annotation.Nullable Long port) {
     this.port = port;
     return this;
   }
@@ -193,11 +193,11 @@ public class ProvisionedSummary {
    * @return port
    */
   @javax.annotation.Nullable
-  public Integer getPort() {
+  public Long getPort() {
     return port;
   }
 
-  public void setPort(@javax.annotation.Nullable Integer port) {
+  public void setPort(@javax.annotation.Nullable Long port) {
     this.port = port;
   }
 

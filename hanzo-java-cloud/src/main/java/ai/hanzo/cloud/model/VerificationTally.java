@@ -55,22 +55,22 @@ public class VerificationTally {
   public static final String SERIALIZED_NAME_BY_STATUS = "byStatus";
   @SerializedName(SERIALIZED_NAME_BY_STATUS)
   @javax.annotation.Nullable
-  private Map<String, Integer> byStatus = new HashMap<>();
+  private Map<String, Long> byStatus = new HashMap<>();
 
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)
   @javax.annotation.Nullable
-  private Integer total;
+  private Long total;
 
   public VerificationTally() {
   }
 
-  public VerificationTally byStatus(@javax.annotation.Nullable Map<String, Integer> byStatus) {
+  public VerificationTally byStatus(@javax.annotation.Nullable Map<String, Long> byStatus) {
     this.byStatus = byStatus;
     return this;
   }
 
-  public VerificationTally putByStatusItem(String key, Integer byStatusItem) {
+  public VerificationTally putByStatusItem(String key, Long byStatusItem) {
     if (this.byStatus == null) {
       this.byStatus = new HashMap<>();
     }
@@ -83,16 +83,16 @@ public class VerificationTally {
    * @return byStatus
    */
   @javax.annotation.Nullable
-  public Map<String, Integer> getByStatus() {
+  public Map<String, Long> getByStatus() {
     return byStatus;
   }
 
-  public void setByStatus(@javax.annotation.Nullable Map<String, Integer> byStatus) {
+  public void setByStatus(@javax.annotation.Nullable Map<String, Long> byStatus) {
     this.byStatus = byStatus;
   }
 
 
-  public VerificationTally total(@javax.annotation.Nullable Integer total) {
+  public VerificationTally total(@javax.annotation.Nullable Long total) {
     this.total = total;
     return this;
   }
@@ -102,11 +102,11 @@ public class VerificationTally {
    * @return total
    */
   @javax.annotation.Nullable
-  public Integer getTotal() {
+  public Long getTotal() {
     return total;
   }
 
-  public void setTotal(@javax.annotation.Nullable Integer total) {
+  public void setTotal(@javax.annotation.Nullable Long total) {
     this.total = total;
   }
 

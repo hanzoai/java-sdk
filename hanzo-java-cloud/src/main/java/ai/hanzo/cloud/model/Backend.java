@@ -58,7 +58,7 @@ public class Backend {
   public static final String SERIALIZED_NAME_WEIGHT = "weight";
   @SerializedName(SERIALIZED_NAME_WEIGHT)
   @javax.annotation.Nullable
-  private Integer weight;
+  private Long weight;
 
   public Backend() {
   }
@@ -82,7 +82,7 @@ public class Backend {
   }
 
 
-  public Backend weight(@javax.annotation.Nullable Integer weight) {
+  public Backend weight(@javax.annotation.Nullable Long weight) {
     this.weight = weight;
     return this;
   }
@@ -92,11 +92,11 @@ public class Backend {
    * @return weight
    */
   @javax.annotation.Nullable
-  public Integer getWeight() {
+  public Long getWeight() {
     return weight;
   }
 
-  public void setWeight(@javax.annotation.Nullable Integer weight) {
+  public void setWeight(@javax.annotation.Nullable Long weight) {
     this.weight = weight;
   }
 

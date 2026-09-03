@@ -78,7 +78,7 @@ public class ProvisionedResource {
   public static final String SERIALIZED_NAME_PORT = "port";
   @SerializedName(SERIALIZED_NAME_PORT)
   @javax.annotation.Nullable
-  private Integer port;
+  private Long port;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
@@ -188,7 +188,7 @@ public class ProvisionedResource {
   }
 
 
-  public ProvisionedResource port(@javax.annotation.Nullable Integer port) {
+  public ProvisionedResource port(@javax.annotation.Nullable Long port) {
     this.port = port;
     return this;
   }
@@ -198,11 +198,11 @@ public class ProvisionedResource {
    * @return port
    */
   @javax.annotation.Nullable
-  public Integer getPort() {
+  public Long getPort() {
     return port;
   }
 
-  public void setPort(@javax.annotation.Nullable Integer port) {
+  public void setPort(@javax.annotation.Nullable Long port) {
     this.port = port;
   }
 

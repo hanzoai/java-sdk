@@ -63,7 +63,7 @@ public class CaptableEquityPlan {
   public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
   @javax.annotation.Nullable
-  private Integer createdAt;
+  private Long createdAt;
 
   public static final String SERIALIZED_NAME_DEFAULT_CANCELLATON_BEHAVIOR = "defaultCancellatonBehavior";
   @SerializedName(SERIALIZED_NAME_DEFAULT_CANCELLATON_BEHAVIOR)
@@ -78,7 +78,7 @@ public class CaptableEquityPlan {
   public static final String SERIALIZED_NAME_INITIAL_SHARES_RESERVED = "initialSharesReserved";
   @SerializedName(SERIALIZED_NAME_INITIAL_SHARES_RESERVED)
   @javax.annotation.Nullable
-  private Integer initialSharesReserved;
+  private Long initialSharesReserved;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -136,7 +136,7 @@ public class CaptableEquityPlan {
   }
 
 
-  public CaptableEquityPlan createdAt(@javax.annotation.Nullable Integer createdAt) {
+  public CaptableEquityPlan createdAt(@javax.annotation.Nullable Long createdAt) {
     this.createdAt = createdAt;
     return this;
   }
@@ -146,11 +146,11 @@ public class CaptableEquityPlan {
    * @return createdAt
    */
   @javax.annotation.Nullable
-  public Integer getCreatedAt() {
+  public Long getCreatedAt() {
     return createdAt;
   }
 
-  public void setCreatedAt(@javax.annotation.Nullable Integer createdAt) {
+  public void setCreatedAt(@javax.annotation.Nullable Long createdAt) {
     this.createdAt = createdAt;
   }
 
@@ -193,7 +193,7 @@ public class CaptableEquityPlan {
   }
 
 
-  public CaptableEquityPlan initialSharesReserved(@javax.annotation.Nullable Integer initialSharesReserved) {
+  public CaptableEquityPlan initialSharesReserved(@javax.annotation.Nullable Long initialSharesReserved) {
     this.initialSharesReserved = initialSharesReserved;
     return this;
   }
@@ -203,11 +203,11 @@ public class CaptableEquityPlan {
    * @return initialSharesReserved
    */
   @javax.annotation.Nullable
-  public Integer getInitialSharesReserved() {
+  public Long getInitialSharesReserved() {
     return initialSharesReserved;
   }
 
-  public void setInitialSharesReserved(@javax.annotation.Nullable Integer initialSharesReserved) {
+  public void setInitialSharesReserved(@javax.annotation.Nullable Long initialSharesReserved) {
     this.initialSharesReserved = initialSharesReserved;
   }
 

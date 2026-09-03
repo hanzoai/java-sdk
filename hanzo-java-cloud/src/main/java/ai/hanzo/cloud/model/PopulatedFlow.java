@@ -55,7 +55,7 @@ public class PopulatedFlow {
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
   @javax.annotation.Nullable
-  private Integer created;
+  private Long created;
 
   public static final String SERIALIZED_NAME_EXTERNAL_ID = "externalId";
   @SerializedName(SERIALIZED_NAME_EXTERNAL_ID)
@@ -95,7 +95,7 @@ public class PopulatedFlow {
   public static final String SERIALIZED_NAME_UPDATED = "updated";
   @SerializedName(SERIALIZED_NAME_UPDATED)
   @javax.annotation.Nullable
-  private Integer updated;
+  private Long updated;
 
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
@@ -105,7 +105,7 @@ public class PopulatedFlow {
   public PopulatedFlow() {
   }
 
-  public PopulatedFlow created(@javax.annotation.Nullable Integer created) {
+  public PopulatedFlow created(@javax.annotation.Nullable Long created) {
     this.created = created;
     return this;
   }
@@ -115,11 +115,11 @@ public class PopulatedFlow {
    * @return created
    */
   @javax.annotation.Nullable
-  public Integer getCreated() {
+  public Long getCreated() {
     return created;
   }
 
-  public void setCreated(@javax.annotation.Nullable Integer created) {
+  public void setCreated(@javax.annotation.Nullable Long created) {
     this.created = created;
   }
 
@@ -257,7 +257,7 @@ public class PopulatedFlow {
   }
 
 
-  public PopulatedFlow updated(@javax.annotation.Nullable Integer updated) {
+  public PopulatedFlow updated(@javax.annotation.Nullable Long updated) {
     this.updated = updated;
     return this;
   }
@@ -267,11 +267,11 @@ public class PopulatedFlow {
    * @return updated
    */
   @javax.annotation.Nullable
-  public Integer getUpdated() {
+  public Long getUpdated() {
     return updated;
   }
 
-  public void setUpdated(@javax.annotation.Nullable Integer updated) {
+  public void setUpdated(@javax.annotation.Nullable Long updated) {
     this.updated = updated;
   }
 

@@ -129,7 +129,7 @@ public class BotView {
   public static final String SERIALIZED_NAME_VCPU = "vcpu";
   @SerializedName(SERIALIZED_NAME_VCPU)
   @javax.annotation.Nullable
-  private Integer vcpu;
+  private Long vcpu;
 
   public BotView() {
   }
@@ -419,7 +419,7 @@ public class BotView {
   }
 
 
-  public BotView vcpu(@javax.annotation.Nullable Integer vcpu) {
+  public BotView vcpu(@javax.annotation.Nullable Long vcpu) {
     this.vcpu = vcpu;
     return this;
   }
@@ -429,11 +429,11 @@ public class BotView {
    * @return vcpu
    */
   @javax.annotation.Nullable
-  public Integer getVcpu() {
+  public Long getVcpu() {
     return vcpu;
   }
 
-  public void setVcpu(@javax.annotation.Nullable Integer vcpu) {
+  public void setVcpu(@javax.annotation.Nullable Long vcpu) {
     this.vcpu = vcpu;
   }
 

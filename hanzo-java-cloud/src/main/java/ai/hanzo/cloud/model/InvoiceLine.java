@@ -53,7 +53,7 @@ public class InvoiceLine {
   public static final String SERIALIZED_NAME_AMOUNT = "amount";
   @SerializedName(SERIALIZED_NAME_AMOUNT)
   @javax.annotation.Nullable
-  private Integer amount;
+  private Long amount;
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
@@ -63,17 +63,17 @@ public class InvoiceLine {
   public static final String SERIALIZED_NAME_QUANTITY = "quantity";
   @SerializedName(SERIALIZED_NAME_QUANTITY)
   @javax.annotation.Nullable
-  private Integer quantity;
+  private Long quantity;
 
   public static final String SERIALIZED_NAME_UNIT_PRICE = "unitPrice";
   @SerializedName(SERIALIZED_NAME_UNIT_PRICE)
   @javax.annotation.Nullable
-  private Integer unitPrice;
+  private Long unitPrice;
 
   public InvoiceLine() {
   }
 
-  public InvoiceLine amount(@javax.annotation.Nullable Integer amount) {
+  public InvoiceLine amount(@javax.annotation.Nullable Long amount) {
     this.amount = amount;
     return this;
   }
@@ -83,11 +83,11 @@ public class InvoiceLine {
    * @return amount
    */
   @javax.annotation.Nullable
-  public Integer getAmount() {
+  public Long getAmount() {
     return amount;
   }
 
-  public void setAmount(@javax.annotation.Nullable Integer amount) {
+  public void setAmount(@javax.annotation.Nullable Long amount) {
     this.amount = amount;
   }
 
@@ -111,7 +111,7 @@ public class InvoiceLine {
   }
 
 
-  public InvoiceLine quantity(@javax.annotation.Nullable Integer quantity) {
+  public InvoiceLine quantity(@javax.annotation.Nullable Long quantity) {
     this.quantity = quantity;
     return this;
   }
@@ -121,16 +121,16 @@ public class InvoiceLine {
    * @return quantity
    */
   @javax.annotation.Nullable
-  public Integer getQuantity() {
+  public Long getQuantity() {
     return quantity;
   }
 
-  public void setQuantity(@javax.annotation.Nullable Integer quantity) {
+  public void setQuantity(@javax.annotation.Nullable Long quantity) {
     this.quantity = quantity;
   }
 
 
-  public InvoiceLine unitPrice(@javax.annotation.Nullable Integer unitPrice) {
+  public InvoiceLine unitPrice(@javax.annotation.Nullable Long unitPrice) {
     this.unitPrice = unitPrice;
     return this;
   }
@@ -140,11 +140,11 @@ public class InvoiceLine {
    * @return unitPrice
    */
   @javax.annotation.Nullable
-  public Integer getUnitPrice() {
+  public Long getUnitPrice() {
     return unitPrice;
   }
 
-  public void setUnitPrice(@javax.annotation.Nullable Integer unitPrice) {
+  public void setUnitPrice(@javax.annotation.Nullable Long unitPrice) {
     this.unitPrice = unitPrice;
   }
 

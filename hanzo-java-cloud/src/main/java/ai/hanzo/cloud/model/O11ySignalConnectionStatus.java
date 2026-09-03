@@ -58,7 +58,7 @@ public class O11ySignalConnectionStatus {
   public static final String SERIALIZED_NAME_LAST_RECEIVED_TS_MS = "last_received_ts_ms";
   @SerializedName(SERIALIZED_NAME_LAST_RECEIVED_TS_MS)
   @javax.annotation.Nullable
-  private Integer lastReceivedTsMs;
+  private Long lastReceivedTsMs;
 
   public O11ySignalConnectionStatus() {
   }
@@ -82,7 +82,7 @@ public class O11ySignalConnectionStatus {
   }
 
 
-  public O11ySignalConnectionStatus lastReceivedTsMs(@javax.annotation.Nullable Integer lastReceivedTsMs) {
+  public O11ySignalConnectionStatus lastReceivedTsMs(@javax.annotation.Nullable Long lastReceivedTsMs) {
     this.lastReceivedTsMs = lastReceivedTsMs;
     return this;
   }
@@ -92,11 +92,11 @@ public class O11ySignalConnectionStatus {
    * @return lastReceivedTsMs
    */
   @javax.annotation.Nullable
-  public Integer getLastReceivedTsMs() {
+  public Long getLastReceivedTsMs() {
     return lastReceivedTsMs;
   }
 
-  public void setLastReceivedTsMs(@javax.annotation.Nullable Integer lastReceivedTsMs) {
+  public void setLastReceivedTsMs(@javax.annotation.Nullable Long lastReceivedTsMs) {
     this.lastReceivedTsMs = lastReceivedTsMs;
   }
 

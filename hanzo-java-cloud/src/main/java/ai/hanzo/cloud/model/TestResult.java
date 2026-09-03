@@ -58,7 +58,7 @@ public class TestResult {
   public static final String SERIALIZED_NAME_DURATION_MS = "durationMs";
   @SerializedName(SERIALIZED_NAME_DURATION_MS)
   @javax.annotation.Nullable
-  private Integer durationMs;
+  private Long durationMs;
 
   public static final String SERIALIZED_NAME_ERROR = "error";
   @SerializedName(SERIALIZED_NAME_ERROR)
@@ -68,7 +68,7 @@ public class TestResult {
   public static final String SERIALIZED_NAME_HTTP_STATUS = "httpStatus";
   @SerializedName(SERIALIZED_NAME_HTTP_STATUS)
   @javax.annotation.Nullable
-  private Integer httpStatus;
+  private Long httpStatus;
 
   public TestResult() {
   }
@@ -92,7 +92,7 @@ public class TestResult {
   }
 
 
-  public TestResult durationMs(@javax.annotation.Nullable Integer durationMs) {
+  public TestResult durationMs(@javax.annotation.Nullable Long durationMs) {
     this.durationMs = durationMs;
     return this;
   }
@@ -102,11 +102,11 @@ public class TestResult {
    * @return durationMs
    */
   @javax.annotation.Nullable
-  public Integer getDurationMs() {
+  public Long getDurationMs() {
     return durationMs;
   }
 
-  public void setDurationMs(@javax.annotation.Nullable Integer durationMs) {
+  public void setDurationMs(@javax.annotation.Nullable Long durationMs) {
     this.durationMs = durationMs;
   }
 
@@ -130,7 +130,7 @@ public class TestResult {
   }
 
 
-  public TestResult httpStatus(@javax.annotation.Nullable Integer httpStatus) {
+  public TestResult httpStatus(@javax.annotation.Nullable Long httpStatus) {
     this.httpStatus = httpStatus;
     return this;
   }
@@ -140,11 +140,11 @@ public class TestResult {
    * @return httpStatus
    */
   @javax.annotation.Nullable
-  public Integer getHttpStatus() {
+  public Long getHttpStatus() {
     return httpStatus;
   }
 
-  public void setHttpStatus(@javax.annotation.Nullable Integer httpStatus) {
+  public void setHttpStatus(@javax.annotation.Nullable Long httpStatus) {
     this.httpStatus = httpStatus;
   }
 

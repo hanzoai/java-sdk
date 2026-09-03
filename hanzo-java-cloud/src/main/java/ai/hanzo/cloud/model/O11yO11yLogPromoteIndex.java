@@ -58,7 +58,7 @@ public class O11yO11yLogPromoteIndex {
   public static final String SERIALIZED_NAME_GRANULARITY = "granularity";
   @SerializedName(SERIALIZED_NAME_GRANULARITY)
   @javax.annotation.Nullable
-  private Integer granularity;
+  private Long granularity;
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
@@ -87,7 +87,7 @@ public class O11yO11yLogPromoteIndex {
   }
 
 
-  public O11yO11yLogPromoteIndex granularity(@javax.annotation.Nullable Integer granularity) {
+  public O11yO11yLogPromoteIndex granularity(@javax.annotation.Nullable Long granularity) {
     this.granularity = granularity;
     return this;
   }
@@ -97,11 +97,11 @@ public class O11yO11yLogPromoteIndex {
    * @return granularity
    */
   @javax.annotation.Nullable
-  public Integer getGranularity() {
+  public Long getGranularity() {
     return granularity;
   }
 
-  public void setGranularity(@javax.annotation.Nullable Integer granularity) {
+  public void setGranularity(@javax.annotation.Nullable Long granularity) {
     this.granularity = granularity;
   }
 

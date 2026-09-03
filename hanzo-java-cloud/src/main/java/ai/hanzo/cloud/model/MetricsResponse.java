@@ -56,27 +56,27 @@ public class MetricsResponse {
   public static final String SERIALIZED_NAME_ARR = "arr";
   @SerializedName(SERIALIZED_NAME_ARR)
   @javax.annotation.Nullable
-  private Integer arr;
+  private Long arr;
 
   public static final String SERIALIZED_NAME_BURN = "burn";
   @SerializedName(SERIALIZED_NAME_BURN)
   @javax.annotation.Nullable
-  private Integer burn;
+  private Long burn;
 
   public static final String SERIALIZED_NAME_CASH = "cash";
   @SerializedName(SERIALIZED_NAME_CASH)
   @javax.annotation.Nullable
-  private Integer cash;
+  private Long cash;
 
   public static final String SERIALIZED_NAME_COGS = "cogs";
   @SerializedName(SERIALIZED_NAME_COGS)
   @javax.annotation.Nullable
-  private Integer cogs;
+  private Long cogs;
 
   public static final String SERIALIZED_NAME_DEFERRED_REVENUE = "deferredRevenue";
   @SerializedName(SERIALIZED_NAME_DEFERRED_REVENUE)
   @javax.annotation.Nullable
-  private Integer deferredRevenue;
+  private Long deferredRevenue;
 
   public static final String SERIALIZED_NAME_FIGURES = "figures";
   @SerializedName(SERIALIZED_NAME_FIGURES)
@@ -91,32 +91,32 @@ public class MetricsResponse {
   public static final String SERIALIZED_NAME_GROSS_MARGIN_BPS = "grossMarginBps";
   @SerializedName(SERIALIZED_NAME_GROSS_MARGIN_BPS)
   @javax.annotation.Nullable
-  private Integer grossMarginBps;
+  private Long grossMarginBps;
 
   public static final String SERIALIZED_NAME_GROSS_PROFIT = "grossProfit";
   @SerializedName(SERIALIZED_NAME_GROSS_PROFIT)
   @javax.annotation.Nullable
-  private Integer grossProfit;
+  private Long grossProfit;
 
   public static final String SERIALIZED_NAME_MONTHLY_BURN = "monthlyBurn";
   @SerializedName(SERIALIZED_NAME_MONTHLY_BURN)
   @javax.annotation.Nullable
-  private Integer monthlyBurn;
+  private Long monthlyBurn;
 
   public static final String SERIALIZED_NAME_MONTHS = "months";
   @SerializedName(SERIALIZED_NAME_MONTHS)
   @javax.annotation.Nullable
-  private Integer months;
+  private Long months;
 
   public static final String SERIALIZED_NAME_MRR = "mrr";
   @SerializedName(SERIALIZED_NAME_MRR)
   @javax.annotation.Nullable
-  private Integer mrr;
+  private Long mrr;
 
   public static final String SERIALIZED_NAME_NET_INCOME = "netIncome";
   @SerializedName(SERIALIZED_NAME_NET_INCOME)
   @javax.annotation.Nullable
-  private Integer netIncome;
+  private Long netIncome;
 
   public static final String SERIALIZED_NAME_PERIOD = "period";
   @SerializedName(SERIALIZED_NAME_PERIOD)
@@ -126,12 +126,12 @@ public class MetricsResponse {
   public static final String SERIALIZED_NAME_REVENUE = "revenue";
   @SerializedName(SERIALIZED_NAME_REVENUE)
   @javax.annotation.Nullable
-  private Integer revenue;
+  private Long revenue;
 
   public static final String SERIALIZED_NAME_RUNWAY_MONTHS = "runwayMonths";
   @SerializedName(SERIALIZED_NAME_RUNWAY_MONTHS)
   @javax.annotation.Nullable
-  private Integer runwayMonths;
+  private Long runwayMonths;
 
   public static final String SERIALIZED_NAME_TO = "to";
   @SerializedName(SERIALIZED_NAME_TO)
@@ -141,7 +141,7 @@ public class MetricsResponse {
   public MetricsResponse() {
   }
 
-  public MetricsResponse arr(@javax.annotation.Nullable Integer arr) {
+  public MetricsResponse arr(@javax.annotation.Nullable Long arr) {
     this.arr = arr;
     return this;
   }
@@ -151,16 +151,16 @@ public class MetricsResponse {
    * @return arr
    */
   @javax.annotation.Nullable
-  public Integer getArr() {
+  public Long getArr() {
     return arr;
   }
 
-  public void setArr(@javax.annotation.Nullable Integer arr) {
+  public void setArr(@javax.annotation.Nullable Long arr) {
     this.arr = arr;
   }
 
 
-  public MetricsResponse burn(@javax.annotation.Nullable Integer burn) {
+  public MetricsResponse burn(@javax.annotation.Nullable Long burn) {
     this.burn = burn;
     return this;
   }
@@ -170,16 +170,16 @@ public class MetricsResponse {
    * @return burn
    */
   @javax.annotation.Nullable
-  public Integer getBurn() {
+  public Long getBurn() {
     return burn;
   }
 
-  public void setBurn(@javax.annotation.Nullable Integer burn) {
+  public void setBurn(@javax.annotation.Nullable Long burn) {
     this.burn = burn;
   }
 
 
-  public MetricsResponse cash(@javax.annotation.Nullable Integer cash) {
+  public MetricsResponse cash(@javax.annotation.Nullable Long cash) {
     this.cash = cash;
     return this;
   }
@@ -189,16 +189,16 @@ public class MetricsResponse {
    * @return cash
    */
   @javax.annotation.Nullable
-  public Integer getCash() {
+  public Long getCash() {
     return cash;
   }
 
-  public void setCash(@javax.annotation.Nullable Integer cash) {
+  public void setCash(@javax.annotation.Nullable Long cash) {
     this.cash = cash;
   }
 
 
-  public MetricsResponse cogs(@javax.annotation.Nullable Integer cogs) {
+  public MetricsResponse cogs(@javax.annotation.Nullable Long cogs) {
     this.cogs = cogs;
     return this;
   }
@@ -208,16 +208,16 @@ public class MetricsResponse {
    * @return cogs
    */
   @javax.annotation.Nullable
-  public Integer getCogs() {
+  public Long getCogs() {
     return cogs;
   }
 
-  public void setCogs(@javax.annotation.Nullable Integer cogs) {
+  public void setCogs(@javax.annotation.Nullable Long cogs) {
     this.cogs = cogs;
   }
 
 
-  public MetricsResponse deferredRevenue(@javax.annotation.Nullable Integer deferredRevenue) {
+  public MetricsResponse deferredRevenue(@javax.annotation.Nullable Long deferredRevenue) {
     this.deferredRevenue = deferredRevenue;
     return this;
   }
@@ -227,11 +227,11 @@ public class MetricsResponse {
    * @return deferredRevenue
    */
   @javax.annotation.Nullable
-  public Integer getDeferredRevenue() {
+  public Long getDeferredRevenue() {
     return deferredRevenue;
   }
 
-  public void setDeferredRevenue(@javax.annotation.Nullable Integer deferredRevenue) {
+  public void setDeferredRevenue(@javax.annotation.Nullable Long deferredRevenue) {
     this.deferredRevenue = deferredRevenue;
   }
 
@@ -282,7 +282,7 @@ public class MetricsResponse {
   }
 
 
-  public MetricsResponse grossMarginBps(@javax.annotation.Nullable Integer grossMarginBps) {
+  public MetricsResponse grossMarginBps(@javax.annotation.Nullable Long grossMarginBps) {
     this.grossMarginBps = grossMarginBps;
     return this;
   }
@@ -292,16 +292,16 @@ public class MetricsResponse {
    * @return grossMarginBps
    */
   @javax.annotation.Nullable
-  public Integer getGrossMarginBps() {
+  public Long getGrossMarginBps() {
     return grossMarginBps;
   }
 
-  public void setGrossMarginBps(@javax.annotation.Nullable Integer grossMarginBps) {
+  public void setGrossMarginBps(@javax.annotation.Nullable Long grossMarginBps) {
     this.grossMarginBps = grossMarginBps;
   }
 
 
-  public MetricsResponse grossProfit(@javax.annotation.Nullable Integer grossProfit) {
+  public MetricsResponse grossProfit(@javax.annotation.Nullable Long grossProfit) {
     this.grossProfit = grossProfit;
     return this;
   }
@@ -311,16 +311,16 @@ public class MetricsResponse {
    * @return grossProfit
    */
   @javax.annotation.Nullable
-  public Integer getGrossProfit() {
+  public Long getGrossProfit() {
     return grossProfit;
   }
 
-  public void setGrossProfit(@javax.annotation.Nullable Integer grossProfit) {
+  public void setGrossProfit(@javax.annotation.Nullable Long grossProfit) {
     this.grossProfit = grossProfit;
   }
 
 
-  public MetricsResponse monthlyBurn(@javax.annotation.Nullable Integer monthlyBurn) {
+  public MetricsResponse monthlyBurn(@javax.annotation.Nullable Long monthlyBurn) {
     this.monthlyBurn = monthlyBurn;
     return this;
   }
@@ -330,16 +330,16 @@ public class MetricsResponse {
    * @return monthlyBurn
    */
   @javax.annotation.Nullable
-  public Integer getMonthlyBurn() {
+  public Long getMonthlyBurn() {
     return monthlyBurn;
   }
 
-  public void setMonthlyBurn(@javax.annotation.Nullable Integer monthlyBurn) {
+  public void setMonthlyBurn(@javax.annotation.Nullable Long monthlyBurn) {
     this.monthlyBurn = monthlyBurn;
   }
 
 
-  public MetricsResponse months(@javax.annotation.Nullable Integer months) {
+  public MetricsResponse months(@javax.annotation.Nullable Long months) {
     this.months = months;
     return this;
   }
@@ -349,16 +349,16 @@ public class MetricsResponse {
    * @return months
    */
   @javax.annotation.Nullable
-  public Integer getMonths() {
+  public Long getMonths() {
     return months;
   }
 
-  public void setMonths(@javax.annotation.Nullable Integer months) {
+  public void setMonths(@javax.annotation.Nullable Long months) {
     this.months = months;
   }
 
 
-  public MetricsResponse mrr(@javax.annotation.Nullable Integer mrr) {
+  public MetricsResponse mrr(@javax.annotation.Nullable Long mrr) {
     this.mrr = mrr;
     return this;
   }
@@ -368,16 +368,16 @@ public class MetricsResponse {
    * @return mrr
    */
   @javax.annotation.Nullable
-  public Integer getMrr() {
+  public Long getMrr() {
     return mrr;
   }
 
-  public void setMrr(@javax.annotation.Nullable Integer mrr) {
+  public void setMrr(@javax.annotation.Nullable Long mrr) {
     this.mrr = mrr;
   }
 
 
-  public MetricsResponse netIncome(@javax.annotation.Nullable Integer netIncome) {
+  public MetricsResponse netIncome(@javax.annotation.Nullable Long netIncome) {
     this.netIncome = netIncome;
     return this;
   }
@@ -387,11 +387,11 @@ public class MetricsResponse {
    * @return netIncome
    */
   @javax.annotation.Nullable
-  public Integer getNetIncome() {
+  public Long getNetIncome() {
     return netIncome;
   }
 
-  public void setNetIncome(@javax.annotation.Nullable Integer netIncome) {
+  public void setNetIncome(@javax.annotation.Nullable Long netIncome) {
     this.netIncome = netIncome;
   }
 
@@ -415,7 +415,7 @@ public class MetricsResponse {
   }
 
 
-  public MetricsResponse revenue(@javax.annotation.Nullable Integer revenue) {
+  public MetricsResponse revenue(@javax.annotation.Nullable Long revenue) {
     this.revenue = revenue;
     return this;
   }
@@ -425,16 +425,16 @@ public class MetricsResponse {
    * @return revenue
    */
   @javax.annotation.Nullable
-  public Integer getRevenue() {
+  public Long getRevenue() {
     return revenue;
   }
 
-  public void setRevenue(@javax.annotation.Nullable Integer revenue) {
+  public void setRevenue(@javax.annotation.Nullable Long revenue) {
     this.revenue = revenue;
   }
 
 
-  public MetricsResponse runwayMonths(@javax.annotation.Nullable Integer runwayMonths) {
+  public MetricsResponse runwayMonths(@javax.annotation.Nullable Long runwayMonths) {
     this.runwayMonths = runwayMonths;
     return this;
   }
@@ -444,11 +444,11 @@ public class MetricsResponse {
    * @return runwayMonths
    */
   @javax.annotation.Nullable
-  public Integer getRunwayMonths() {
+  public Long getRunwayMonths() {
     return runwayMonths;
   }
 
-  public void setRunwayMonths(@javax.annotation.Nullable Integer runwayMonths) {
+  public void setRunwayMonths(@javax.annotation.Nullable Long runwayMonths) {
     this.runwayMonths = runwayMonths;
   }
 

@@ -53,7 +53,7 @@ public class RpcError {
   public static final String SERIALIZED_NAME_CODE = "code";
   @SerializedName(SERIALIZED_NAME_CODE)
   @javax.annotation.Nullable
-  private Integer code;
+  private Long code;
 
   public static final String SERIALIZED_NAME_MESSAGE = "message";
   @SerializedName(SERIALIZED_NAME_MESSAGE)
@@ -63,7 +63,7 @@ public class RpcError {
   public RpcError() {
   }
 
-  public RpcError code(@javax.annotation.Nullable Integer code) {
+  public RpcError code(@javax.annotation.Nullable Long code) {
     this.code = code;
     return this;
   }
@@ -73,11 +73,11 @@ public class RpcError {
    * @return code
    */
   @javax.annotation.Nullable
-  public Integer getCode() {
+  public Long getCode() {
     return code;
   }
 
-  public void setCode(@javax.annotation.Nullable Integer code) {
+  public void setCode(@javax.annotation.Nullable Long code) {
     this.code = code;
   }
 

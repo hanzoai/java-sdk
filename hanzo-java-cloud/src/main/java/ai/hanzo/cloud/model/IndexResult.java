@@ -53,22 +53,22 @@ public class IndexResult {
   public static final String SERIALIZED_NAME_CHUNKS = "chunks";
   @SerializedName(SERIALIZED_NAME_CHUNKS)
   @javax.annotation.Nullable
-  private Integer chunks;
+  private Long chunks;
 
   public static final String SERIALIZED_NAME_FILES = "files";
   @SerializedName(SERIALIZED_NAME_FILES)
   @javax.annotation.Nullable
-  private Integer files;
+  private Long files;
 
   public static final String SERIALIZED_NAME_INDEXED = "indexed";
   @SerializedName(SERIALIZED_NAME_INDEXED)
   @javax.annotation.Nullable
-  private Integer indexed;
+  private Long indexed;
 
   public static final String SERIALIZED_NAME_PRUNED = "pruned";
   @SerializedName(SERIALIZED_NAME_PRUNED)
   @javax.annotation.Nullable
-  private Integer pruned;
+  private Long pruned;
 
   public static final String SERIALIZED_NAME_REPO = "repo";
   @SerializedName(SERIALIZED_NAME_REPO)
@@ -83,22 +83,22 @@ public class IndexResult {
   public static final String SERIALIZED_NAME_SKIPPED = "skipped";
   @SerializedName(SERIALIZED_NAME_SKIPPED)
   @javax.annotation.Nullable
-  private Integer skipped;
+  private Long skipped;
 
   public static final String SERIALIZED_NAME_SYMBOLS = "symbols";
   @SerializedName(SERIALIZED_NAME_SYMBOLS)
   @javax.annotation.Nullable
-  private Integer symbols;
+  private Long symbols;
 
   public static final String SERIALIZED_NAME_VECTORS = "vectors";
   @SerializedName(SERIALIZED_NAME_VECTORS)
   @javax.annotation.Nullable
-  private Integer vectors;
+  private Long vectors;
 
   public IndexResult() {
   }
 
-  public IndexResult chunks(@javax.annotation.Nullable Integer chunks) {
+  public IndexResult chunks(@javax.annotation.Nullable Long chunks) {
     this.chunks = chunks;
     return this;
   }
@@ -108,16 +108,16 @@ public class IndexResult {
    * @return chunks
    */
   @javax.annotation.Nullable
-  public Integer getChunks() {
+  public Long getChunks() {
     return chunks;
   }
 
-  public void setChunks(@javax.annotation.Nullable Integer chunks) {
+  public void setChunks(@javax.annotation.Nullable Long chunks) {
     this.chunks = chunks;
   }
 
 
-  public IndexResult files(@javax.annotation.Nullable Integer files) {
+  public IndexResult files(@javax.annotation.Nullable Long files) {
     this.files = files;
     return this;
   }
@@ -127,16 +127,16 @@ public class IndexResult {
    * @return files
    */
   @javax.annotation.Nullable
-  public Integer getFiles() {
+  public Long getFiles() {
     return files;
   }
 
-  public void setFiles(@javax.annotation.Nullable Integer files) {
+  public void setFiles(@javax.annotation.Nullable Long files) {
     this.files = files;
   }
 
 
-  public IndexResult indexed(@javax.annotation.Nullable Integer indexed) {
+  public IndexResult indexed(@javax.annotation.Nullable Long indexed) {
     this.indexed = indexed;
     return this;
   }
@@ -146,16 +146,16 @@ public class IndexResult {
    * @return indexed
    */
   @javax.annotation.Nullable
-  public Integer getIndexed() {
+  public Long getIndexed() {
     return indexed;
   }
 
-  public void setIndexed(@javax.annotation.Nullable Integer indexed) {
+  public void setIndexed(@javax.annotation.Nullable Long indexed) {
     this.indexed = indexed;
   }
 
 
-  public IndexResult pruned(@javax.annotation.Nullable Integer pruned) {
+  public IndexResult pruned(@javax.annotation.Nullable Long pruned) {
     this.pruned = pruned;
     return this;
   }
@@ -165,11 +165,11 @@ public class IndexResult {
    * @return pruned
    */
   @javax.annotation.Nullable
-  public Integer getPruned() {
+  public Long getPruned() {
     return pruned;
   }
 
-  public void setPruned(@javax.annotation.Nullable Integer pruned) {
+  public void setPruned(@javax.annotation.Nullable Long pruned) {
     this.pruned = pruned;
   }
 
@@ -212,7 +212,7 @@ public class IndexResult {
   }
 
 
-  public IndexResult skipped(@javax.annotation.Nullable Integer skipped) {
+  public IndexResult skipped(@javax.annotation.Nullable Long skipped) {
     this.skipped = skipped;
     return this;
   }
@@ -222,16 +222,16 @@ public class IndexResult {
    * @return skipped
    */
   @javax.annotation.Nullable
-  public Integer getSkipped() {
+  public Long getSkipped() {
     return skipped;
   }
 
-  public void setSkipped(@javax.annotation.Nullable Integer skipped) {
+  public void setSkipped(@javax.annotation.Nullable Long skipped) {
     this.skipped = skipped;
   }
 
 
-  public IndexResult symbols(@javax.annotation.Nullable Integer symbols) {
+  public IndexResult symbols(@javax.annotation.Nullable Long symbols) {
     this.symbols = symbols;
     return this;
   }
@@ -241,16 +241,16 @@ public class IndexResult {
    * @return symbols
    */
   @javax.annotation.Nullable
-  public Integer getSymbols() {
+  public Long getSymbols() {
     return symbols;
   }
 
-  public void setSymbols(@javax.annotation.Nullable Integer symbols) {
+  public void setSymbols(@javax.annotation.Nullable Long symbols) {
     this.symbols = symbols;
   }
 
 
-  public IndexResult vectors(@javax.annotation.Nullable Integer vectors) {
+  public IndexResult vectors(@javax.annotation.Nullable Long vectors) {
     this.vectors = vectors;
     return this;
   }
@@ -260,11 +260,11 @@ public class IndexResult {
    * @return vectors
    */
   @javax.annotation.Nullable
-  public Integer getVectors() {
+  public Long getVectors() {
     return vectors;
   }
 
-  public void setVectors(@javax.annotation.Nullable Integer vectors) {
+  public void setVectors(@javax.annotation.Nullable Long vectors) {
     this.vectors = vectors;
   }
 

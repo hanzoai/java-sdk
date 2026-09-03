@@ -53,7 +53,7 @@ public class DeliveryRow {
   public static final String SERIALIZED_NAME_ATTEMPT = "attempt";
   @SerializedName(SERIALIZED_NAME_ATTEMPT)
   @javax.annotation.Nullable
-  private Integer attempt;
+  private Long attempt;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -68,7 +68,7 @@ public class DeliveryRow {
   public static final String SERIALIZED_NAME_DURATION_MS = "durationMs";
   @SerializedName(SERIALIZED_NAME_DURATION_MS)
   @javax.annotation.Nullable
-  private Integer durationMs;
+  private Long durationMs;
 
   public static final String SERIALIZED_NAME_ENDPOINT = "endpoint";
   @SerializedName(SERIALIZED_NAME_ENDPOINT)
@@ -83,7 +83,7 @@ public class DeliveryRow {
   public static final String SERIALIZED_NAME_HTTP_STATUS = "httpStatus";
   @SerializedName(SERIALIZED_NAME_HTTP_STATUS)
   @javax.annotation.Nullable
-  private Integer httpStatus;
+  private Long httpStatus;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
@@ -98,7 +98,7 @@ public class DeliveryRow {
   public DeliveryRow() {
   }
 
-  public DeliveryRow attempt(@javax.annotation.Nullable Integer attempt) {
+  public DeliveryRow attempt(@javax.annotation.Nullable Long attempt) {
     this.attempt = attempt;
     return this;
   }
@@ -108,11 +108,11 @@ public class DeliveryRow {
    * @return attempt
    */
   @javax.annotation.Nullable
-  public Integer getAttempt() {
+  public Long getAttempt() {
     return attempt;
   }
 
-  public void setAttempt(@javax.annotation.Nullable Integer attempt) {
+  public void setAttempt(@javax.annotation.Nullable Long attempt) {
     this.attempt = attempt;
   }
 
@@ -155,7 +155,7 @@ public class DeliveryRow {
   }
 
 
-  public DeliveryRow durationMs(@javax.annotation.Nullable Integer durationMs) {
+  public DeliveryRow durationMs(@javax.annotation.Nullable Long durationMs) {
     this.durationMs = durationMs;
     return this;
   }
@@ -165,11 +165,11 @@ public class DeliveryRow {
    * @return durationMs
    */
   @javax.annotation.Nullable
-  public Integer getDurationMs() {
+  public Long getDurationMs() {
     return durationMs;
   }
 
-  public void setDurationMs(@javax.annotation.Nullable Integer durationMs) {
+  public void setDurationMs(@javax.annotation.Nullable Long durationMs) {
     this.durationMs = durationMs;
   }
 
@@ -212,7 +212,7 @@ public class DeliveryRow {
   }
 
 
-  public DeliveryRow httpStatus(@javax.annotation.Nullable Integer httpStatus) {
+  public DeliveryRow httpStatus(@javax.annotation.Nullable Long httpStatus) {
     this.httpStatus = httpStatus;
     return this;
   }
@@ -222,11 +222,11 @@ public class DeliveryRow {
    * @return httpStatus
    */
   @javax.annotation.Nullable
-  public Integer getHttpStatus() {
+  public Long getHttpStatus() {
     return httpStatus;
   }
 
-  public void setHttpStatus(@javax.annotation.Nullable Integer httpStatus) {
+  public void setHttpStatus(@javax.annotation.Nullable Long httpStatus) {
     this.httpStatus = httpStatus;
   }
 

@@ -98,7 +98,7 @@ public class CreateAppReq {
   public static final String SERIALIZED_NAME_PORT = "port";
   @SerializedName(SERIALIZED_NAME_PORT)
   @javax.annotation.Nullable
-  private Integer port;
+  private Long port;
 
   public static final String SERIALIZED_NAME_PROJECT = "project";
   @SerializedName(SERIALIZED_NAME_PROJECT)
@@ -108,7 +108,7 @@ public class CreateAppReq {
   public static final String SERIALIZED_NAME_REPLICAS = "replicas";
   @SerializedName(SERIALIZED_NAME_REPLICAS)
   @javax.annotation.Nullable
-  private Integer replicas;
+  private Long replicas;
 
   public static final String SERIALIZED_NAME_REPO = "repo";
   @SerializedName(SERIALIZED_NAME_REPO)
@@ -128,7 +128,7 @@ public class CreateAppReq {
   public static final String SERIALIZED_NAME_STORAGE_GB = "storageGb";
   @SerializedName(SERIALIZED_NAME_STORAGE_GB)
   @javax.annotation.Nullable
-  private Integer storageGb;
+  private Long storageGb;
 
   public CreateAppReq() {
   }
@@ -301,7 +301,7 @@ public class CreateAppReq {
   }
 
 
-  public CreateAppReq port(@javax.annotation.Nullable Integer port) {
+  public CreateAppReq port(@javax.annotation.Nullable Long port) {
     this.port = port;
     return this;
   }
@@ -311,11 +311,11 @@ public class CreateAppReq {
    * @return port
    */
   @javax.annotation.Nullable
-  public Integer getPort() {
+  public Long getPort() {
     return port;
   }
 
-  public void setPort(@javax.annotation.Nullable Integer port) {
+  public void setPort(@javax.annotation.Nullable Long port) {
     this.port = port;
   }
 
@@ -339,7 +339,7 @@ public class CreateAppReq {
   }
 
 
-  public CreateAppReq replicas(@javax.annotation.Nullable Integer replicas) {
+  public CreateAppReq replicas(@javax.annotation.Nullable Long replicas) {
     this.replicas = replicas;
     return this;
   }
@@ -349,11 +349,11 @@ public class CreateAppReq {
    * @return replicas
    */
   @javax.annotation.Nullable
-  public Integer getReplicas() {
+  public Long getReplicas() {
     return replicas;
   }
 
-  public void setReplicas(@javax.annotation.Nullable Integer replicas) {
+  public void setReplicas(@javax.annotation.Nullable Long replicas) {
     this.replicas = replicas;
   }
 
@@ -415,7 +415,7 @@ public class CreateAppReq {
   }
 
 
-  public CreateAppReq storageGb(@javax.annotation.Nullable Integer storageGb) {
+  public CreateAppReq storageGb(@javax.annotation.Nullable Long storageGb) {
     this.storageGb = storageGb;
     return this;
   }
@@ -425,11 +425,11 @@ public class CreateAppReq {
    * @return storageGb
    */
   @javax.annotation.Nullable
-  public Integer getStorageGb() {
+  public Long getStorageGb() {
     return storageGb;
   }
 
-  public void setStorageGb(@javax.annotation.Nullable Integer storageGb) {
+  public void setStorageGb(@javax.annotation.Nullable Long storageGb) {
     this.storageGb = storageGb;
   }
 

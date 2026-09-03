@@ -91,7 +91,7 @@ public class TelApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteTelCallsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -121,7 +121,6 @@ public class TelApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -154,37 +153,34 @@ public class TelApi {
      * Ends a call this org placed.
      * Ends a call this org placed. The holding is read for THIS org before the carrier is asked, for the reason releaseNumber gives one surface up: an id belonging to another tenant would otherwise be hung up by whoever guessed it.
      * @param id  (required)
-     * @return Object
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public Object deleteTelCallsById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<Object> localVarResp = deleteTelCallsByIdWithHttpInfo(id);
-        return localVarResp.getData();
+    public void deleteTelCallsById(@javax.annotation.Nonnull String id) throws ApiException {
+        deleteTelCallsByIdWithHttpInfo(id);
     }
 
     /**
      * Ends a call this org placed.
      * Ends a call this org placed. The holding is read for THIS org before the carrier is asked, for the reason releaseNumber gives one surface up: an id belonging to another tenant would otherwise be hung up by whoever guessed it.
      * @param id  (required)
-     * @return ApiResponse&lt;Object&gt;
+     * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> deleteTelCallsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<Void> deleteTelCallsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = deleteTelCallsByIdValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<Object>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
+        return localVarApiClient.execute(localVarCall);
     }
 
     /**
@@ -198,14 +194,13 @@ public class TelApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteTelCallsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call deleteTelCallsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteTelCallsByIdValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<Object>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
@@ -218,7 +213,7 @@ public class TelApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call deleteTelNumbersByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
@@ -248,7 +243,6 @@ public class TelApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -281,37 +275,34 @@ public class TelApi {
      * Checks the holding is THIS org&#39;s before it reaches the carrier.
      * Checks the holding is THIS org&#39;s before it reaches the carrier. Without that read, an id belonging to another tenant would be released by whoever guessed it.
      * @param id  (required)
-     * @return Object
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public Object deleteTelNumbersById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<Object> localVarResp = deleteTelNumbersByIdWithHttpInfo(id);
-        return localVarResp.getData();
+    public void deleteTelNumbersById(@javax.annotation.Nonnull String id) throws ApiException {
+        deleteTelNumbersByIdWithHttpInfo(id);
     }
 
     /**
      * Checks the holding is THIS org&#39;s before it reaches the carrier.
      * Checks the holding is THIS org&#39;s before it reaches the carrier. Without that read, an id belonging to another tenant would be released by whoever guessed it.
      * @param id  (required)
-     * @return ApiResponse&lt;Object&gt;
+     * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Object> deleteTelNumbersByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+    public ApiResponse<Void> deleteTelNumbersByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
         okhttp3.Call localVarCall = deleteTelNumbersByIdValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<Object>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
+        return localVarApiClient.execute(localVarCall);
     }
 
     /**
@@ -325,14 +316,13 @@ public class TelApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteTelNumbersByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Object> _callback) throws ApiException {
+    public okhttp3.Call deleteTelNumbersByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteTelNumbersByIdValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<Object>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
@@ -702,7 +692,7 @@ public class TelApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getTelNumbersAvailableCall(@javax.annotation.Nullable String country, @javax.annotation.Nullable String area, @javax.annotation.Nullable String type, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getTelNumbersAvailableCall(@javax.annotation.Nullable String country, @javax.annotation.Nullable String area, @javax.annotation.Nullable String type, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -763,7 +753,7 @@ public class TelApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getTelNumbersAvailableValidateBeforeCall(@javax.annotation.Nullable String country, @javax.annotation.Nullable String area, @javax.annotation.Nullable String type, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getTelNumbersAvailableValidateBeforeCall(@javax.annotation.Nullable String country, @javax.annotation.Nullable String area, @javax.annotation.Nullable String type, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         return getTelNumbersAvailableCall(country, area, type, limit, _callback);
 
     }
@@ -784,7 +774,7 @@ public class TelApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public NumberList getTelNumbersAvailable(@javax.annotation.Nullable String country, @javax.annotation.Nullable String area, @javax.annotation.Nullable String type, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public NumberList getTelNumbersAvailable(@javax.annotation.Nullable String country, @javax.annotation.Nullable String area, @javax.annotation.Nullable String type, @javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<NumberList> localVarResp = getTelNumbersAvailableWithHttpInfo(country, area, type, limit);
         return localVarResp.getData();
     }
@@ -805,7 +795,7 @@ public class TelApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<NumberList> getTelNumbersAvailableWithHttpInfo(@javax.annotation.Nullable String country, @javax.annotation.Nullable String area, @javax.annotation.Nullable String type, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<NumberList> getTelNumbersAvailableWithHttpInfo(@javax.annotation.Nullable String country, @javax.annotation.Nullable String area, @javax.annotation.Nullable String type, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getTelNumbersAvailableValidateBeforeCall(country, area, type, limit, null);
         Type localVarReturnType = new TypeToken<NumberList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -828,7 +818,7 @@ public class TelApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getTelNumbersAvailableAsync(@javax.annotation.Nullable String country, @javax.annotation.Nullable String area, @javax.annotation.Nullable String type, @javax.annotation.Nullable Integer limit, final ApiCallback<NumberList> _callback) throws ApiException {
+    public okhttp3.Call getTelNumbersAvailableAsync(@javax.annotation.Nullable String country, @javax.annotation.Nullable String area, @javax.annotation.Nullable String type, @javax.annotation.Nullable Long limit, final ApiCallback<NumberList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getTelNumbersAvailableValidateBeforeCall(country, area, type, limit, _callback);
         Type localVarReturnType = new TypeToken<NumberList>(){}.getType();

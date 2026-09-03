@@ -53,12 +53,12 @@ public class RiskLearnOut {
   public static final String SERIALIZED_NAME_LEARNED = "learned";
   @SerializedName(SERIALIZED_NAME_LEARNED)
   @javax.annotation.Nullable
-  private Integer learned;
+  private Long learned;
 
   public RiskLearnOut() {
   }
 
-  public RiskLearnOut learned(@javax.annotation.Nullable Integer learned) {
+  public RiskLearnOut learned(@javax.annotation.Nullable Long learned) {
     this.learned = learned;
     return this;
   }
@@ -68,11 +68,11 @@ public class RiskLearnOut {
    * @return learned
    */
   @javax.annotation.Nullable
-  public Integer getLearned() {
+  public Long getLearned() {
     return learned;
   }
 
-  public void setLearned(@javax.annotation.Nullable Integer learned) {
+  public void setLearned(@javax.annotation.Nullable Long learned) {
     this.learned = learned;
   }
 

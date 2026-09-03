@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -61,22 +60,22 @@ public class O11yClusterListRecord {
   public static final String SERIALIZED_NAME_CPU_ALLOCATABLE = "cpuAllocatable";
   @SerializedName(SERIALIZED_NAME_CPU_ALLOCATABLE)
   @javax.annotation.Nullable
-  private BigDecimal cpuAllocatable;
+  private Double cpuAllocatable;
 
   public static final String SERIALIZED_NAME_CPU_USAGE = "cpuUsage";
   @SerializedName(SERIALIZED_NAME_CPU_USAGE)
   @javax.annotation.Nullable
-  private BigDecimal cpuUsage;
+  private Double cpuUsage;
 
   public static final String SERIALIZED_NAME_MEMORY_ALLOCATABLE = "memoryAllocatable";
   @SerializedName(SERIALIZED_NAME_MEMORY_ALLOCATABLE)
   @javax.annotation.Nullable
-  private BigDecimal memoryAllocatable;
+  private Double memoryAllocatable;
 
   public static final String SERIALIZED_NAME_MEMORY_USAGE = "memoryUsage";
   @SerializedName(SERIALIZED_NAME_MEMORY_USAGE)
   @javax.annotation.Nullable
-  private BigDecimal memoryUsage;
+  private Double memoryUsage;
 
   public static final String SERIALIZED_NAME_META = "meta";
   @SerializedName(SERIALIZED_NAME_META)
@@ -105,7 +104,7 @@ public class O11yClusterListRecord {
   }
 
 
-  public O11yClusterListRecord cpuAllocatable(@javax.annotation.Nullable BigDecimal cpuAllocatable) {
+  public O11yClusterListRecord cpuAllocatable(@javax.annotation.Nullable Double cpuAllocatable) {
     this.cpuAllocatable = cpuAllocatable;
     return this;
   }
@@ -115,16 +114,16 @@ public class O11yClusterListRecord {
    * @return cpuAllocatable
    */
   @javax.annotation.Nullable
-  public BigDecimal getCpuAllocatable() {
+  public Double getCpuAllocatable() {
     return cpuAllocatable;
   }
 
-  public void setCpuAllocatable(@javax.annotation.Nullable BigDecimal cpuAllocatable) {
+  public void setCpuAllocatable(@javax.annotation.Nullable Double cpuAllocatable) {
     this.cpuAllocatable = cpuAllocatable;
   }
 
 
-  public O11yClusterListRecord cpuUsage(@javax.annotation.Nullable BigDecimal cpuUsage) {
+  public O11yClusterListRecord cpuUsage(@javax.annotation.Nullable Double cpuUsage) {
     this.cpuUsage = cpuUsage;
     return this;
   }
@@ -134,16 +133,16 @@ public class O11yClusterListRecord {
    * @return cpuUsage
    */
   @javax.annotation.Nullable
-  public BigDecimal getCpuUsage() {
+  public Double getCpuUsage() {
     return cpuUsage;
   }
 
-  public void setCpuUsage(@javax.annotation.Nullable BigDecimal cpuUsage) {
+  public void setCpuUsage(@javax.annotation.Nullable Double cpuUsage) {
     this.cpuUsage = cpuUsage;
   }
 
 
-  public O11yClusterListRecord memoryAllocatable(@javax.annotation.Nullable BigDecimal memoryAllocatable) {
+  public O11yClusterListRecord memoryAllocatable(@javax.annotation.Nullable Double memoryAllocatable) {
     this.memoryAllocatable = memoryAllocatable;
     return this;
   }
@@ -153,16 +152,16 @@ public class O11yClusterListRecord {
    * @return memoryAllocatable
    */
   @javax.annotation.Nullable
-  public BigDecimal getMemoryAllocatable() {
+  public Double getMemoryAllocatable() {
     return memoryAllocatable;
   }
 
-  public void setMemoryAllocatable(@javax.annotation.Nullable BigDecimal memoryAllocatable) {
+  public void setMemoryAllocatable(@javax.annotation.Nullable Double memoryAllocatable) {
     this.memoryAllocatable = memoryAllocatable;
   }
 
 
-  public O11yClusterListRecord memoryUsage(@javax.annotation.Nullable BigDecimal memoryUsage) {
+  public O11yClusterListRecord memoryUsage(@javax.annotation.Nullable Double memoryUsage) {
     this.memoryUsage = memoryUsage;
     return this;
   }
@@ -172,11 +171,11 @@ public class O11yClusterListRecord {
    * @return memoryUsage
    */
   @javax.annotation.Nullable
-  public BigDecimal getMemoryUsage() {
+  public Double getMemoryUsage() {
     return memoryUsage;
   }
 
-  public void setMemoryUsage(@javax.annotation.Nullable BigDecimal memoryUsage) {
+  public void setMemoryUsage(@javax.annotation.Nullable Double memoryUsage) {
     this.memoryUsage = memoryUsage;
   }
 

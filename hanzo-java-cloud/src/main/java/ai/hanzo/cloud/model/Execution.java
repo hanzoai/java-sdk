@@ -79,12 +79,12 @@ public class Execution {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   @javax.annotation.Nullable
-  private Integer id;
+  private Long id;
 
   public static final String SERIALIZED_NAME_NUMBER = "number";
   @SerializedName(SERIALIZED_NAME_NUMBER)
   @javax.annotation.Nullable
-  private Integer number;
+  private Long number;
 
   public static final String SERIALIZED_NAME_ORG = "org";
   @SerializedName(SERIALIZED_NAME_ORG)
@@ -224,7 +224,7 @@ public class Execution {
   }
 
 
-  public Execution id(@javax.annotation.Nullable Integer id) {
+  public Execution id(@javax.annotation.Nullable Long id) {
     this.id = id;
     return this;
   }
@@ -234,16 +234,16 @@ public class Execution {
    * @return id
    */
   @javax.annotation.Nullable
-  public Integer getId() {
+  public Long getId() {
     return id;
   }
 
-  public void setId(@javax.annotation.Nullable Integer id) {
+  public void setId(@javax.annotation.Nullable Long id) {
     this.id = id;
   }
 
 
-  public Execution number(@javax.annotation.Nullable Integer number) {
+  public Execution number(@javax.annotation.Nullable Long number) {
     this.number = number;
     return this;
   }
@@ -253,11 +253,11 @@ public class Execution {
    * @return number
    */
   @javax.annotation.Nullable
-  public Integer getNumber() {
+  public Long getNumber() {
     return number;
   }
 
-  public void setNumber(@javax.annotation.Nullable Integer number) {
+  public void setNumber(@javax.annotation.Nullable Long number) {
     this.number = number;
   }
 

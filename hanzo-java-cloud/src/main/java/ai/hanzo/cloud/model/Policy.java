@@ -57,12 +57,12 @@ public class Policy {
   public static final String SERIALIZED_NAME_CACHE_PATHS = "cache_paths";
   @SerializedName(SERIALIZED_NAME_CACHE_PATHS)
   @javax.annotation.Nullable
-  private Map<String, Integer> cachePaths = new HashMap<>();
+  private Map<String, Long> cachePaths = new HashMap<>();
 
   public static final String SERIALIZED_NAME_CACHE_TTL_SEC = "cache_ttl_sec";
   @SerializedName(SERIALIZED_NAME_CACHE_TTL_SEC)
   @javax.annotation.Nullable
-  private Integer cacheTtlSec;
+  private Long cacheTtlSec;
 
   public static final String SERIALIZED_NAME_CORS_ORIGINS = "cors_origins";
   @SerializedName(SERIALIZED_NAME_CORS_ORIGINS)
@@ -82,17 +82,17 @@ public class Policy {
   public static final String SERIALIZED_NAME_ORG_RPM = "org_rpm";
   @SerializedName(SERIALIZED_NAME_ORG_RPM)
   @javax.annotation.Nullable
-  private Integer orgRpm;
+  private Long orgRpm;
 
   public static final String SERIALIZED_NAME_PER_IP_RPM = "per_ip_rpm";
   @SerializedName(SERIALIZED_NAME_PER_IP_RPM)
   @javax.annotation.Nullable
-  private Integer perIpRpm;
+  private Long perIpRpm;
 
   public static final String SERIALIZED_NAME_UPDATED_AT = "updated_at";
   @SerializedName(SERIALIZED_NAME_UPDATED_AT)
   @javax.annotation.Nullable
-  private Integer updatedAt;
+  private Long updatedAt;
 
   public static final String SERIALIZED_NAME_UPDATED_BY = "updated_by";
   @SerializedName(SERIALIZED_NAME_UPDATED_BY)
@@ -102,17 +102,17 @@ public class Policy {
   public static final String SERIALIZED_NAME_WINDOW_SEC = "window_sec";
   @SerializedName(SERIALIZED_NAME_WINDOW_SEC)
   @javax.annotation.Nullable
-  private Integer windowSec;
+  private Long windowSec;
 
   public Policy() {
   }
 
-  public Policy cachePaths(@javax.annotation.Nullable Map<String, Integer> cachePaths) {
+  public Policy cachePaths(@javax.annotation.Nullable Map<String, Long> cachePaths) {
     this.cachePaths = cachePaths;
     return this;
   }
 
-  public Policy putCachePathsItem(String key, Integer cachePathsItem) {
+  public Policy putCachePathsItem(String key, Long cachePathsItem) {
     if (this.cachePaths == null) {
       this.cachePaths = new HashMap<>();
     }
@@ -125,16 +125,16 @@ public class Policy {
    * @return cachePaths
    */
   @javax.annotation.Nullable
-  public Map<String, Integer> getCachePaths() {
+  public Map<String, Long> getCachePaths() {
     return cachePaths;
   }
 
-  public void setCachePaths(@javax.annotation.Nullable Map<String, Integer> cachePaths) {
+  public void setCachePaths(@javax.annotation.Nullable Map<String, Long> cachePaths) {
     this.cachePaths = cachePaths;
   }
 
 
-  public Policy cacheTtlSec(@javax.annotation.Nullable Integer cacheTtlSec) {
+  public Policy cacheTtlSec(@javax.annotation.Nullable Long cacheTtlSec) {
     this.cacheTtlSec = cacheTtlSec;
     return this;
   }
@@ -144,11 +144,11 @@ public class Policy {
    * @return cacheTtlSec
    */
   @javax.annotation.Nullable
-  public Integer getCacheTtlSec() {
+  public Long getCacheTtlSec() {
     return cacheTtlSec;
   }
 
-  public void setCacheTtlSec(@javax.annotation.Nullable Integer cacheTtlSec) {
+  public void setCacheTtlSec(@javax.annotation.Nullable Long cacheTtlSec) {
     this.cacheTtlSec = cacheTtlSec;
   }
 
@@ -226,7 +226,7 @@ public class Policy {
   }
 
 
-  public Policy orgRpm(@javax.annotation.Nullable Integer orgRpm) {
+  public Policy orgRpm(@javax.annotation.Nullable Long orgRpm) {
     this.orgRpm = orgRpm;
     return this;
   }
@@ -236,16 +236,16 @@ public class Policy {
    * @return orgRpm
    */
   @javax.annotation.Nullable
-  public Integer getOrgRpm() {
+  public Long getOrgRpm() {
     return orgRpm;
   }
 
-  public void setOrgRpm(@javax.annotation.Nullable Integer orgRpm) {
+  public void setOrgRpm(@javax.annotation.Nullable Long orgRpm) {
     this.orgRpm = orgRpm;
   }
 
 
-  public Policy perIpRpm(@javax.annotation.Nullable Integer perIpRpm) {
+  public Policy perIpRpm(@javax.annotation.Nullable Long perIpRpm) {
     this.perIpRpm = perIpRpm;
     return this;
   }
@@ -255,16 +255,16 @@ public class Policy {
    * @return perIpRpm
    */
   @javax.annotation.Nullable
-  public Integer getPerIpRpm() {
+  public Long getPerIpRpm() {
     return perIpRpm;
   }
 
-  public void setPerIpRpm(@javax.annotation.Nullable Integer perIpRpm) {
+  public void setPerIpRpm(@javax.annotation.Nullable Long perIpRpm) {
     this.perIpRpm = perIpRpm;
   }
 
 
-  public Policy updatedAt(@javax.annotation.Nullable Integer updatedAt) {
+  public Policy updatedAt(@javax.annotation.Nullable Long updatedAt) {
     this.updatedAt = updatedAt;
     return this;
   }
@@ -274,11 +274,11 @@ public class Policy {
    * @return updatedAt
    */
   @javax.annotation.Nullable
-  public Integer getUpdatedAt() {
+  public Long getUpdatedAt() {
     return updatedAt;
   }
 
-  public void setUpdatedAt(@javax.annotation.Nullable Integer updatedAt) {
+  public void setUpdatedAt(@javax.annotation.Nullable Long updatedAt) {
     this.updatedAt = updatedAt;
   }
 
@@ -302,7 +302,7 @@ public class Policy {
   }
 
 
-  public Policy windowSec(@javax.annotation.Nullable Integer windowSec) {
+  public Policy windowSec(@javax.annotation.Nullable Long windowSec) {
     this.windowSec = windowSec;
     return this;
   }
@@ -312,11 +312,11 @@ public class Policy {
    * @return windowSec
    */
   @javax.annotation.Nullable
-  public Integer getWindowSec() {
+  public Long getWindowSec() {
     return windowSec;
   }
 
-  public void setWindowSec(@javax.annotation.Nullable Integer windowSec) {
+  public void setWindowSec(@javax.annotation.Nullable Long windowSec) {
     this.windowSec = windowSec;
   }
 

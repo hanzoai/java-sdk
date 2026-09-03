@@ -21,7 +21,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -55,7 +54,7 @@ public class O11yGettableRuleStateHistoryStats {
   public static final String SERIALIZED_NAME_CURRENT_AVG_RESOLUTION_TIME = "currentAvgResolutionTime";
   @SerializedName(SERIALIZED_NAME_CURRENT_AVG_RESOLUTION_TIME)
   @javax.annotation.Nullable
-  private BigDecimal currentAvgResolutionTime;
+  private Double currentAvgResolutionTime;
 
   public static final String SERIALIZED_NAME_CURRENT_AVG_RESOLUTION_TIME_SERIES = "currentAvgResolutionTimeSeries";
   @SerializedName(SERIALIZED_NAME_CURRENT_AVG_RESOLUTION_TIME_SERIES)
@@ -70,7 +69,7 @@ public class O11yGettableRuleStateHistoryStats {
   public static final String SERIALIZED_NAME_PAST_AVG_RESOLUTION_TIME = "pastAvgResolutionTime";
   @SerializedName(SERIALIZED_NAME_PAST_AVG_RESOLUTION_TIME)
   @javax.annotation.Nullable
-  private BigDecimal pastAvgResolutionTime;
+  private Double pastAvgResolutionTime;
 
   public static final String SERIALIZED_NAME_PAST_AVG_RESOLUTION_TIME_SERIES = "pastAvgResolutionTimeSeries";
   @SerializedName(SERIALIZED_NAME_PAST_AVG_RESOLUTION_TIME_SERIES)
@@ -95,7 +94,7 @@ public class O11yGettableRuleStateHistoryStats {
   public O11yGettableRuleStateHistoryStats() {
   }
 
-  public O11yGettableRuleStateHistoryStats currentAvgResolutionTime(@javax.annotation.Nullable BigDecimal currentAvgResolutionTime) {
+  public O11yGettableRuleStateHistoryStats currentAvgResolutionTime(@javax.annotation.Nullable Double currentAvgResolutionTime) {
     this.currentAvgResolutionTime = currentAvgResolutionTime;
     return this;
   }
@@ -105,11 +104,11 @@ public class O11yGettableRuleStateHistoryStats {
    * @return currentAvgResolutionTime
    */
   @javax.annotation.Nullable
-  public BigDecimal getCurrentAvgResolutionTime() {
+  public Double getCurrentAvgResolutionTime() {
     return currentAvgResolutionTime;
   }
 
-  public void setCurrentAvgResolutionTime(@javax.annotation.Nullable BigDecimal currentAvgResolutionTime) {
+  public void setCurrentAvgResolutionTime(@javax.annotation.Nullable Double currentAvgResolutionTime) {
     this.currentAvgResolutionTime = currentAvgResolutionTime;
   }
 
@@ -152,7 +151,7 @@ public class O11yGettableRuleStateHistoryStats {
   }
 
 
-  public O11yGettableRuleStateHistoryStats pastAvgResolutionTime(@javax.annotation.Nullable BigDecimal pastAvgResolutionTime) {
+  public O11yGettableRuleStateHistoryStats pastAvgResolutionTime(@javax.annotation.Nullable Double pastAvgResolutionTime) {
     this.pastAvgResolutionTime = pastAvgResolutionTime;
     return this;
   }
@@ -162,11 +161,11 @@ public class O11yGettableRuleStateHistoryStats {
    * @return pastAvgResolutionTime
    */
   @javax.annotation.Nullable
-  public BigDecimal getPastAvgResolutionTime() {
+  public Double getPastAvgResolutionTime() {
     return pastAvgResolutionTime;
   }
 
-  public void setPastAvgResolutionTime(@javax.annotation.Nullable BigDecimal pastAvgResolutionTime) {
+  public void setPastAvgResolutionTime(@javax.annotation.Nullable Double pastAvgResolutionTime) {
     this.pastAvgResolutionTime = pastAvgResolutionTime;
   }
 

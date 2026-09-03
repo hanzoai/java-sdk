@@ -20,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -54,17 +53,17 @@ public class CaptableInstrumentTotal {
   public static final String SERIALIZED_NAME_CAPITAL = "capital";
   @SerializedName(SERIALIZED_NAME_CAPITAL)
   @javax.annotation.Nullable
-  private BigDecimal capital;
+  private Double capital;
 
   public static final String SERIALIZED_NAME_COUNT = "count";
   @SerializedName(SERIALIZED_NAME_COUNT)
   @javax.annotation.Nullable
-  private Integer count;
+  private Long count;
 
   public CaptableInstrumentTotal() {
   }
 
-  public CaptableInstrumentTotal capital(@javax.annotation.Nullable BigDecimal capital) {
+  public CaptableInstrumentTotal capital(@javax.annotation.Nullable Double capital) {
     this.capital = capital;
     return this;
   }
@@ -74,16 +73,16 @@ public class CaptableInstrumentTotal {
    * @return capital
    */
   @javax.annotation.Nullable
-  public BigDecimal getCapital() {
+  public Double getCapital() {
     return capital;
   }
 
-  public void setCapital(@javax.annotation.Nullable BigDecimal capital) {
+  public void setCapital(@javax.annotation.Nullable Double capital) {
     this.capital = capital;
   }
 
 
-  public CaptableInstrumentTotal count(@javax.annotation.Nullable Integer count) {
+  public CaptableInstrumentTotal count(@javax.annotation.Nullable Long count) {
     this.count = count;
     return this;
   }
@@ -93,11 +92,11 @@ public class CaptableInstrumentTotal {
    * @return count
    */
   @javax.annotation.Nullable
-  public Integer getCount() {
+  public Long getCount() {
     return count;
   }
 
-  public void setCount(@javax.annotation.Nullable Integer count) {
+  public void setCount(@javax.annotation.Nullable Long count) {
     this.count = count;
   }
 

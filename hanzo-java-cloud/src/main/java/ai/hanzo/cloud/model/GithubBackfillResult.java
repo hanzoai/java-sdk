@@ -53,22 +53,22 @@ public class GithubBackfillResult {
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
   @javax.annotation.Nullable
-  private Integer created;
+  private Long created;
 
   public static final String SERIALIZED_NAME_FAILED = "failed";
   @SerializedName(SERIALIZED_NAME_FAILED)
   @javax.annotation.Nullable
-  private Integer failed;
+  private Long failed;
 
   public static final String SERIALIZED_NAME_ISSUES = "issues";
   @SerializedName(SERIALIZED_NAME_ISSUES)
   @javax.annotation.Nullable
-  private Integer issues;
+  private Long issues;
 
   public static final String SERIALIZED_NAME_REPOS = "repos";
   @SerializedName(SERIALIZED_NAME_REPOS)
   @javax.annotation.Nullable
-  private Integer repos;
+  private Long repos;
 
   public static final String SERIALIZED_NAME_TRUNCATED = "truncated";
   @SerializedName(SERIALIZED_NAME_TRUNCATED)
@@ -78,12 +78,12 @@ public class GithubBackfillResult {
   public static final String SERIALIZED_NAME_UPDATED = "updated";
   @SerializedName(SERIALIZED_NAME_UPDATED)
   @javax.annotation.Nullable
-  private Integer updated;
+  private Long updated;
 
   public GithubBackfillResult() {
   }
 
-  public GithubBackfillResult created(@javax.annotation.Nullable Integer created) {
+  public GithubBackfillResult created(@javax.annotation.Nullable Long created) {
     this.created = created;
     return this;
   }
@@ -93,16 +93,16 @@ public class GithubBackfillResult {
    * @return created
    */
   @javax.annotation.Nullable
-  public Integer getCreated() {
+  public Long getCreated() {
     return created;
   }
 
-  public void setCreated(@javax.annotation.Nullable Integer created) {
+  public void setCreated(@javax.annotation.Nullable Long created) {
     this.created = created;
   }
 
 
-  public GithubBackfillResult failed(@javax.annotation.Nullable Integer failed) {
+  public GithubBackfillResult failed(@javax.annotation.Nullable Long failed) {
     this.failed = failed;
     return this;
   }
@@ -112,16 +112,16 @@ public class GithubBackfillResult {
    * @return failed
    */
   @javax.annotation.Nullable
-  public Integer getFailed() {
+  public Long getFailed() {
     return failed;
   }
 
-  public void setFailed(@javax.annotation.Nullable Integer failed) {
+  public void setFailed(@javax.annotation.Nullable Long failed) {
     this.failed = failed;
   }
 
 
-  public GithubBackfillResult issues(@javax.annotation.Nullable Integer issues) {
+  public GithubBackfillResult issues(@javax.annotation.Nullable Long issues) {
     this.issues = issues;
     return this;
   }
@@ -131,16 +131,16 @@ public class GithubBackfillResult {
    * @return issues
    */
   @javax.annotation.Nullable
-  public Integer getIssues() {
+  public Long getIssues() {
     return issues;
   }
 
-  public void setIssues(@javax.annotation.Nullable Integer issues) {
+  public void setIssues(@javax.annotation.Nullable Long issues) {
     this.issues = issues;
   }
 
 
-  public GithubBackfillResult repos(@javax.annotation.Nullable Integer repos) {
+  public GithubBackfillResult repos(@javax.annotation.Nullable Long repos) {
     this.repos = repos;
     return this;
   }
@@ -150,11 +150,11 @@ public class GithubBackfillResult {
    * @return repos
    */
   @javax.annotation.Nullable
-  public Integer getRepos() {
+  public Long getRepos() {
     return repos;
   }
 
-  public void setRepos(@javax.annotation.Nullable Integer repos) {
+  public void setRepos(@javax.annotation.Nullable Long repos) {
     this.repos = repos;
   }
 
@@ -178,7 +178,7 @@ public class GithubBackfillResult {
   }
 
 
-  public GithubBackfillResult updated(@javax.annotation.Nullable Integer updated) {
+  public GithubBackfillResult updated(@javax.annotation.Nullable Long updated) {
     this.updated = updated;
     return this;
   }
@@ -188,11 +188,11 @@ public class GithubBackfillResult {
    * @return updated
    */
   @javax.annotation.Nullable
-  public Integer getUpdated() {
+  public Long getUpdated() {
     return updated;
   }
 
-  public void setUpdated(@javax.annotation.Nullable Integer updated) {
+  public void setUpdated(@javax.annotation.Nullable Long updated) {
     this.updated = updated;
   }
 

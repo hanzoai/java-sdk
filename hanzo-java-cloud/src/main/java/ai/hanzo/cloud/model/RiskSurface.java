@@ -53,7 +53,7 @@ public class RiskSurface {
   public static final String SERIALIZED_NAME_FOLDED = "folded";
   @SerializedName(SERIALIZED_NAME_FOLDED)
   @javax.annotation.Nullable
-  private Integer folded;
+  private Long folded;
 
   public static final String SERIALIZED_NAME_GAP = "gap";
   @SerializedName(SERIALIZED_NAME_GAP)
@@ -63,17 +63,17 @@ public class RiskSurface {
   public static final String SERIALIZED_NAME_REFUSED = "refused";
   @SerializedName(SERIALIZED_NAME_REFUSED)
   @javax.annotation.Nullable
-  private Integer refused;
+  private Long refused;
 
   public static final String SERIALIZED_NAME_REPLAYED = "replayed";
   @SerializedName(SERIALIZED_NAME_REPLAYED)
   @javax.annotation.Nullable
-  private Integer replayed;
+  private Long replayed;
 
   public static final String SERIALIZED_NAME_ROLLED = "rolled";
   @SerializedName(SERIALIZED_NAME_ROLLED)
   @javax.annotation.Nullable
-  private Integer rolled;
+  private Long rolled;
 
   public static final String SERIALIZED_NAME_WINDOW = "window";
   @SerializedName(SERIALIZED_NAME_WINDOW)
@@ -83,7 +83,7 @@ public class RiskSurface {
   public RiskSurface() {
   }
 
-  public RiskSurface folded(@javax.annotation.Nullable Integer folded) {
+  public RiskSurface folded(@javax.annotation.Nullable Long folded) {
     this.folded = folded;
     return this;
   }
@@ -93,11 +93,11 @@ public class RiskSurface {
    * @return folded
    */
   @javax.annotation.Nullable
-  public Integer getFolded() {
+  public Long getFolded() {
     return folded;
   }
 
-  public void setFolded(@javax.annotation.Nullable Integer folded) {
+  public void setFolded(@javax.annotation.Nullable Long folded) {
     this.folded = folded;
   }
 
@@ -121,7 +121,7 @@ public class RiskSurface {
   }
 
 
-  public RiskSurface refused(@javax.annotation.Nullable Integer refused) {
+  public RiskSurface refused(@javax.annotation.Nullable Long refused) {
     this.refused = refused;
     return this;
   }
@@ -131,16 +131,16 @@ public class RiskSurface {
    * @return refused
    */
   @javax.annotation.Nullable
-  public Integer getRefused() {
+  public Long getRefused() {
     return refused;
   }
 
-  public void setRefused(@javax.annotation.Nullable Integer refused) {
+  public void setRefused(@javax.annotation.Nullable Long refused) {
     this.refused = refused;
   }
 
 
-  public RiskSurface replayed(@javax.annotation.Nullable Integer replayed) {
+  public RiskSurface replayed(@javax.annotation.Nullable Long replayed) {
     this.replayed = replayed;
     return this;
   }
@@ -150,16 +150,16 @@ public class RiskSurface {
    * @return replayed
    */
   @javax.annotation.Nullable
-  public Integer getReplayed() {
+  public Long getReplayed() {
     return replayed;
   }
 
-  public void setReplayed(@javax.annotation.Nullable Integer replayed) {
+  public void setReplayed(@javax.annotation.Nullable Long replayed) {
     this.replayed = replayed;
   }
 
 
-  public RiskSurface rolled(@javax.annotation.Nullable Integer rolled) {
+  public RiskSurface rolled(@javax.annotation.Nullable Long rolled) {
     this.rolled = rolled;
     return this;
   }
@@ -169,11 +169,11 @@ public class RiskSurface {
    * @return rolled
    */
   @javax.annotation.Nullable
-  public Integer getRolled() {
+  public Long getRolled() {
     return rolled;
   }
 
-  public void setRolled(@javax.annotation.Nullable Integer rolled) {
+  public void setRolled(@javax.annotation.Nullable Long rolled) {
     this.rolled = rolled;
   }
 

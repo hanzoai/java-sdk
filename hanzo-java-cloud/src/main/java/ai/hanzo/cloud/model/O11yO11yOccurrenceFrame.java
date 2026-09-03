@@ -58,7 +58,7 @@ public class O11yO11yOccurrenceFrame {
   public static final String SERIALIZED_NAME_COLNO = "colno";
   @SerializedName(SERIALIZED_NAME_COLNO)
   @javax.annotation.Nullable
-  private Integer colno;
+  private Long colno;
 
   public static final String SERIALIZED_NAME_FILENAME = "filename";
   @SerializedName(SERIALIZED_NAME_FILENAME)
@@ -78,7 +78,7 @@ public class O11yO11yOccurrenceFrame {
   public static final String SERIALIZED_NAME_LINENO = "lineno";
   @SerializedName(SERIALIZED_NAME_LINENO)
   @javax.annotation.Nullable
-  private Integer lineno;
+  private Long lineno;
 
   public static final String SERIALIZED_NAME_MODULE = "module";
   @SerializedName(SERIALIZED_NAME_MODULE)
@@ -107,7 +107,7 @@ public class O11yO11yOccurrenceFrame {
   }
 
 
-  public O11yO11yOccurrenceFrame colno(@javax.annotation.Nullable Integer colno) {
+  public O11yO11yOccurrenceFrame colno(@javax.annotation.Nullable Long colno) {
     this.colno = colno;
     return this;
   }
@@ -117,11 +117,11 @@ public class O11yO11yOccurrenceFrame {
    * @return colno
    */
   @javax.annotation.Nullable
-  public Integer getColno() {
+  public Long getColno() {
     return colno;
   }
 
-  public void setColno(@javax.annotation.Nullable Integer colno) {
+  public void setColno(@javax.annotation.Nullable Long colno) {
     this.colno = colno;
   }
 
@@ -183,7 +183,7 @@ public class O11yO11yOccurrenceFrame {
   }
 
 
-  public O11yO11yOccurrenceFrame lineno(@javax.annotation.Nullable Integer lineno) {
+  public O11yO11yOccurrenceFrame lineno(@javax.annotation.Nullable Long lineno) {
     this.lineno = lineno;
     return this;
   }
@@ -193,11 +193,11 @@ public class O11yO11yOccurrenceFrame {
    * @return lineno
    */
   @javax.annotation.Nullable
-  public Integer getLineno() {
+  public Long getLineno() {
     return lineno;
   }
 
-  public void setLineno(@javax.annotation.Nullable Integer lineno) {
+  public void setLineno(@javax.annotation.Nullable Long lineno) {
     this.lineno = lineno;
   }
 

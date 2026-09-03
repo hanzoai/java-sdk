@@ -79,7 +79,7 @@ public class EventView {
   public static final String SERIALIZED_NAME_SEQ = "seq";
   @SerializedName(SERIALIZED_NAME_SEQ)
   @javax.annotation.Nullable
-  private Integer seq;
+  private Long seq;
 
   public static final String SERIALIZED_NAME_SESSION_ID = "sessionId";
   @SerializedName(SERIALIZED_NAME_SESSION_ID)
@@ -184,7 +184,7 @@ public class EventView {
   }
 
 
-  public EventView seq(@javax.annotation.Nullable Integer seq) {
+  public EventView seq(@javax.annotation.Nullable Long seq) {
     this.seq = seq;
     return this;
   }
@@ -194,11 +194,11 @@ public class EventView {
    * @return seq
    */
   @javax.annotation.Nullable
-  public Integer getSeq() {
+  public Long getSeq() {
     return seq;
   }
 
-  public void setSeq(@javax.annotation.Nullable Integer seq) {
+  public void setSeq(@javax.annotation.Nullable Long seq) {
     this.seq = seq;
   }
 

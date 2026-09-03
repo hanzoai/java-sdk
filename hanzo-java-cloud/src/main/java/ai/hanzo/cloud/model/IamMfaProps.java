@@ -68,7 +68,7 @@ public class IamMfaProps {
   public static final String SERIALIZED_NAME_MFA_REMEMBER_IN_HOURS = "mfaRememberInHours";
   @SerializedName(SERIALIZED_NAME_MFA_REMEMBER_IN_HOURS)
   @javax.annotation.Nullable
-  private Integer mfaRememberInHours;
+  private Long mfaRememberInHours;
 
   public static final String SERIALIZED_NAME_MFA_TYPE = "mfaType";
   @SerializedName(SERIALIZED_NAME_MFA_TYPE)
@@ -140,7 +140,7 @@ public class IamMfaProps {
   }
 
 
-  public IamMfaProps mfaRememberInHours(@javax.annotation.Nullable Integer mfaRememberInHours) {
+  public IamMfaProps mfaRememberInHours(@javax.annotation.Nullable Long mfaRememberInHours) {
     this.mfaRememberInHours = mfaRememberInHours;
     return this;
   }
@@ -150,11 +150,11 @@ public class IamMfaProps {
    * @return mfaRememberInHours
    */
   @javax.annotation.Nullable
-  public Integer getMfaRememberInHours() {
+  public Long getMfaRememberInHours() {
     return mfaRememberInHours;
   }
 
-  public void setMfaRememberInHours(@javax.annotation.Nullable Integer mfaRememberInHours) {
+  public void setMfaRememberInHours(@javax.annotation.Nullable Long mfaRememberInHours) {
     this.mfaRememberInHours = mfaRememberInHours;
   }
 

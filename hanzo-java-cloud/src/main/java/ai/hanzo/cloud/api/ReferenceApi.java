@@ -230,7 +230,7 @@ public class ReferenceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call riskReferenceCall(@javax.annotation.Nonnull String set, @javax.annotation.Nullable String after, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call riskReferenceCall(@javax.annotation.Nonnull String set, @javax.annotation.Nullable String after, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -284,7 +284,7 @@ public class ReferenceApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call riskReferenceValidateBeforeCall(@javax.annotation.Nonnull String set, @javax.annotation.Nullable String after, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call riskReferenceValidateBeforeCall(@javax.annotation.Nonnull String set, @javax.annotation.Nullable String after, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'set' is set
         if (set == null) {
             throw new ApiException("Missing the required parameter 'set' when calling riskReference(Async)");
@@ -309,7 +309,7 @@ public class ReferenceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ReferenceOut riskReference(@javax.annotation.Nonnull String set, @javax.annotation.Nullable String after, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public ReferenceOut riskReference(@javax.annotation.Nonnull String set, @javax.annotation.Nullable String after, @javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<ReferenceOut> localVarResp = riskReferenceWithHttpInfo(set, after, limit);
         return localVarResp.getData();
     }
@@ -329,7 +329,7 @@ public class ReferenceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ReferenceOut> riskReferenceWithHttpInfo(@javax.annotation.Nonnull String set, @javax.annotation.Nullable String after, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<ReferenceOut> riskReferenceWithHttpInfo(@javax.annotation.Nonnull String set, @javax.annotation.Nullable String after, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = riskReferenceValidateBeforeCall(set, after, limit, null);
         Type localVarReturnType = new TypeToken<ReferenceOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -351,7 +351,7 @@ public class ReferenceApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call riskReferenceAsync(@javax.annotation.Nonnull String set, @javax.annotation.Nullable String after, @javax.annotation.Nullable Integer limit, final ApiCallback<ReferenceOut> _callback) throws ApiException {
+    public okhttp3.Call riskReferenceAsync(@javax.annotation.Nonnull String set, @javax.annotation.Nullable String after, @javax.annotation.Nullable Long limit, final ApiCallback<ReferenceOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = riskReferenceValidateBeforeCall(set, after, limit, _callback);
         Type localVarReturnType = new TypeToken<ReferenceOut>(){}.getType();

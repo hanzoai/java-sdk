@@ -235,7 +235,7 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBooksBankTransactionsCall(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getBooksBankTransactionsCall(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -288,7 +288,7 @@ public class BooksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getBooksBankTransactionsValidateBeforeCall(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getBooksBankTransactionsValidateBeforeCall(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         return getBooksBankTransactionsCall(sandbox, limit, _callback);
 
     }
@@ -307,7 +307,7 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public List<BankTxnRow> getBooksBankTransactions(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public List<BankTxnRow> getBooksBankTransactions(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<List<BankTxnRow>> localVarResp = getBooksBankTransactionsWithHttpInfo(sandbox, limit);
         return localVarResp.getData();
     }
@@ -326,7 +326,7 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<BankTxnRow>> getBooksBankTransactionsWithHttpInfo(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<List<BankTxnRow>> getBooksBankTransactionsWithHttpInfo(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getBooksBankTransactionsValidateBeforeCall(sandbox, limit, null);
         Type localVarReturnType = new TypeToken<List<BankTxnRow>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -347,7 +347,7 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBooksBankTransactionsAsync(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable Integer limit, final ApiCallback<List<BankTxnRow>> _callback) throws ApiException {
+    public okhttp3.Call getBooksBankTransactionsAsync(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable Long limit, final ApiCallback<List<BankTxnRow>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getBooksBankTransactionsValidateBeforeCall(sandbox, limit, _callback);
         Type localVarReturnType = new TypeToken<List<BankTxnRow>>(){}.getType();
@@ -496,7 +496,7 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBooksExportCall(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable String format, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getBooksExportCall(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable String format, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -561,7 +561,7 @@ public class BooksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getBooksExportValidateBeforeCall(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable String format, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getBooksExportValidateBeforeCall(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable String format, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         return getBooksExportCall(sandbox, from, to, format, limit, _callback);
 
     }
@@ -583,7 +583,7 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public FinancialPackage getBooksExport(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable String format, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public FinancialPackage getBooksExport(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable String format, @javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<FinancialPackage> localVarResp = getBooksExportWithHttpInfo(sandbox, from, to, format, limit);
         return localVarResp.getData();
     }
@@ -605,7 +605,7 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<FinancialPackage> getBooksExportWithHttpInfo(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable String format, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<FinancialPackage> getBooksExportWithHttpInfo(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable String format, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getBooksExportValidateBeforeCall(sandbox, from, to, format, limit, null);
         Type localVarReturnType = new TypeToken<FinancialPackage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -629,7 +629,7 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBooksExportAsync(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable String format, @javax.annotation.Nullable Integer limit, final ApiCallback<FinancialPackage> _callback) throws ApiException {
+    public okhttp3.Call getBooksExportAsync(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable String format, @javax.annotation.Nullable Long limit, final ApiCallback<FinancialPackage> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getBooksExportValidateBeforeCall(sandbox, from, to, format, limit, _callback);
         Type localVarReturnType = new TypeToken<FinancialPackage>(){}.getType();
@@ -650,7 +650,7 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBooksGlCall(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getBooksGlCall(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -703,7 +703,7 @@ public class BooksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getBooksGlValidateBeforeCall(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getBooksGlValidateBeforeCall(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         return getBooksGlCall(sandbox, limit, _callback);
 
     }
@@ -722,7 +722,7 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public List<GLRow> getBooksGl(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public List<GLRow> getBooksGl(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<List<GLRow>> localVarResp = getBooksGlWithHttpInfo(sandbox, limit);
         return localVarResp.getData();
     }
@@ -741,7 +741,7 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<GLRow>> getBooksGlWithHttpInfo(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<List<GLRow>> getBooksGlWithHttpInfo(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getBooksGlValidateBeforeCall(sandbox, limit, null);
         Type localVarReturnType = new TypeToken<List<GLRow>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -762,7 +762,7 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBooksGlAsync(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable Integer limit, final ApiCallback<List<GLRow>> _callback) throws ApiException {
+    public okhttp3.Call getBooksGlAsync(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable Long limit, final ApiCallback<List<GLRow>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getBooksGlValidateBeforeCall(sandbox, limit, _callback);
         Type localVarReturnType = new TypeToken<List<GLRow>>(){}.getType();
@@ -1577,7 +1577,7 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBooksTransactionsCall(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable String category, @javax.annotation.Nullable String vendor, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getBooksTransactionsCall(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable String category, @javax.annotation.Nullable String vendor, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1646,7 +1646,7 @@ public class BooksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getBooksTransactionsValidateBeforeCall(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable String category, @javax.annotation.Nullable String vendor, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getBooksTransactionsValidateBeforeCall(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable String category, @javax.annotation.Nullable String vendor, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         return getBooksTransactionsCall(sandbox, from, to, category, vendor, limit, _callback);
 
     }
@@ -1669,7 +1669,7 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public TransactionsOut getBooksTransactions(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable String category, @javax.annotation.Nullable String vendor, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public TransactionsOut getBooksTransactions(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable String category, @javax.annotation.Nullable String vendor, @javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<TransactionsOut> localVarResp = getBooksTransactionsWithHttpInfo(sandbox, from, to, category, vendor, limit);
         return localVarResp.getData();
     }
@@ -1692,7 +1692,7 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<TransactionsOut> getBooksTransactionsWithHttpInfo(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable String category, @javax.annotation.Nullable String vendor, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<TransactionsOut> getBooksTransactionsWithHttpInfo(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable String category, @javax.annotation.Nullable String vendor, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getBooksTransactionsValidateBeforeCall(sandbox, from, to, category, vendor, limit, null);
         Type localVarReturnType = new TypeToken<TransactionsOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -1717,7 +1717,7 @@ public class BooksApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBooksTransactionsAsync(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable String category, @javax.annotation.Nullable String vendor, @javax.annotation.Nullable Integer limit, final ApiCallback<TransactionsOut> _callback) throws ApiException {
+    public okhttp3.Call getBooksTransactionsAsync(@javax.annotation.Nullable String sandbox, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable String category, @javax.annotation.Nullable String vendor, @javax.annotation.Nullable Long limit, final ApiCallback<TransactionsOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getBooksTransactionsValidateBeforeCall(sandbox, from, to, category, vendor, limit, _callback);
         Type localVarReturnType = new TypeToken<TransactionsOut>(){}.getType();

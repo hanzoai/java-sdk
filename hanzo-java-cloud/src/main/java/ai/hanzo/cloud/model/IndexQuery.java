@@ -59,12 +59,12 @@ public class IndexQuery {
   public static final String SERIALIZED_NAME_LIMIT = "limit";
   @SerializedName(SERIALIZED_NAME_LIMIT)
   @javax.annotation.Nullable
-  private Integer limit;
+  private Long limit;
 
   public static final String SERIALIZED_NAME_OFFSET = "offset";
   @SerializedName(SERIALIZED_NAME_OFFSET)
   @javax.annotation.Nullable
-  private Integer offset;
+  private Long offset;
 
   public static final String SERIALIZED_NAME_Q = "q";
   @SerializedName(SERIALIZED_NAME_Q)
@@ -93,7 +93,7 @@ public class IndexQuery {
   }
 
 
-  public IndexQuery limit(@javax.annotation.Nullable Integer limit) {
+  public IndexQuery limit(@javax.annotation.Nullable Long limit) {
     this.limit = limit;
     return this;
   }
@@ -103,16 +103,16 @@ public class IndexQuery {
    * @return limit
    */
   @javax.annotation.Nullable
-  public Integer getLimit() {
+  public Long getLimit() {
     return limit;
   }
 
-  public void setLimit(@javax.annotation.Nullable Integer limit) {
+  public void setLimit(@javax.annotation.Nullable Long limit) {
     this.limit = limit;
   }
 
 
-  public IndexQuery offset(@javax.annotation.Nullable Integer offset) {
+  public IndexQuery offset(@javax.annotation.Nullable Long offset) {
     this.offset = offset;
     return this;
   }
@@ -122,11 +122,11 @@ public class IndexQuery {
    * @return offset
    */
   @javax.annotation.Nullable
-  public Integer getOffset() {
+  public Long getOffset() {
     return offset;
   }
 
-  public void setOffset(@javax.annotation.Nullable Integer offset) {
+  public void setOffset(@javax.annotation.Nullable Long offset) {
     this.offset = offset;
   }
 

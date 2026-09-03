@@ -60,7 +60,7 @@ public class GraphNeighborsIn {
   public static final String SERIALIZED_NAME_DEPTH = "depth";
   @SerializedName(SERIALIZED_NAME_DEPTH)
   @javax.annotation.Nullable
-  private Integer depth;
+  private Long depth;
 
   public static final String SERIALIZED_NAME_DIRECTION = "direction";
   @SerializedName(SERIALIZED_NAME_DIRECTION)
@@ -99,7 +99,7 @@ public class GraphNeighborsIn {
   }
 
 
-  public GraphNeighborsIn depth(@javax.annotation.Nullable Integer depth) {
+  public GraphNeighborsIn depth(@javax.annotation.Nullable Long depth) {
     this.depth = depth;
     return this;
   }
@@ -109,11 +109,11 @@ public class GraphNeighborsIn {
    * @return depth
    */
   @javax.annotation.Nullable
-  public Integer getDepth() {
+  public Long getDepth() {
     return depth;
   }
 
-  public void setDepth(@javax.annotation.Nullable Integer depth) {
+  public void setDepth(@javax.annotation.Nullable Long depth) {
     this.depth = depth;
   }
 

@@ -90,7 +90,7 @@ public class TaxonIn {
   public static final String SERIALIZED_NAME_ORDER = "order";
   @SerializedName(SERIALIZED_NAME_ORDER)
   @javax.annotation.Nullable
-  private Integer order;
+  private Long order;
 
   public static final String SERIALIZED_NAME_PUBLISHED = "published";
   @SerializedName(SERIALIZED_NAME_PUBLISHED)
@@ -251,7 +251,7 @@ public class TaxonIn {
   }
 
 
-  public TaxonIn order(@javax.annotation.Nullable Integer order) {
+  public TaxonIn order(@javax.annotation.Nullable Long order) {
     this.order = order;
     return this;
   }
@@ -261,11 +261,11 @@ public class TaxonIn {
    * @return order
    */
   @javax.annotation.Nullable
-  public Integer getOrder() {
+  public Long getOrder() {
     return order;
   }
 
-  public void setOrder(@javax.annotation.Nullable Integer order) {
+  public void setOrder(@javax.annotation.Nullable Long order) {
     this.order = order;
   }
 

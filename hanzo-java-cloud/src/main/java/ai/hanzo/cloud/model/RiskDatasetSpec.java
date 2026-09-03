@@ -70,7 +70,7 @@ public class RiskDatasetSpec {
   public static final String SERIALIZED_NAME_HORIZON = "horizon";
   @SerializedName(SERIALIZED_NAME_HORIZON)
   @javax.annotation.Nullable
-  private Integer horizon;
+  private Long horizon;
 
   public static final String SERIALIZED_NAME_KIND = "kind";
   @SerializedName(SERIALIZED_NAME_KIND)
@@ -85,7 +85,7 @@ public class RiskDatasetSpec {
   public static final String SERIALIZED_NAME_ROWS = "rows";
   @SerializedName(SERIALIZED_NAME_ROWS)
   @javax.annotation.Nullable
-  private Integer rows;
+  private Long rows;
 
   public static final String SERIALIZED_NAME_SEED = "seed";
   @SerializedName(SERIALIZED_NAME_SEED)
@@ -173,7 +173,7 @@ public class RiskDatasetSpec {
   }
 
 
-  public RiskDatasetSpec horizon(@javax.annotation.Nullable Integer horizon) {
+  public RiskDatasetSpec horizon(@javax.annotation.Nullable Long horizon) {
     this.horizon = horizon;
     return this;
   }
@@ -183,11 +183,11 @@ public class RiskDatasetSpec {
    * @return horizon
    */
   @javax.annotation.Nullable
-  public Integer getHorizon() {
+  public Long getHorizon() {
     return horizon;
   }
 
-  public void setHorizon(@javax.annotation.Nullable Integer horizon) {
+  public void setHorizon(@javax.annotation.Nullable Long horizon) {
     this.horizon = horizon;
   }
 
@@ -230,7 +230,7 @@ public class RiskDatasetSpec {
   }
 
 
-  public RiskDatasetSpec rows(@javax.annotation.Nullable Integer rows) {
+  public RiskDatasetSpec rows(@javax.annotation.Nullable Long rows) {
     this.rows = rows;
     return this;
   }
@@ -240,11 +240,11 @@ public class RiskDatasetSpec {
    * @return rows
    */
   @javax.annotation.Nullable
-  public Integer getRows() {
+  public Long getRows() {
     return rows;
   }
 
-  public void setRows(@javax.annotation.Nullable Integer rows) {
+  public void setRows(@javax.annotation.Nullable Long rows) {
     this.rows = rows;
   }
 

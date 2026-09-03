@@ -53,22 +53,22 @@ public class LevelView {
   public static final String SERIALIZED_NAME_DOWNLINE_COUNT = "downlineCount";
   @SerializedName(SERIALIZED_NAME_DOWNLINE_COUNT)
   @javax.annotation.Nullable
-  private Integer downlineCount;
+  private Long downlineCount;
 
   public static final String SERIALIZED_NAME_LEVEL = "level";
   @SerializedName(SERIALIZED_NAME_LEVEL)
   @javax.annotation.Nullable
-  private Integer level;
+  private Long level;
 
   public static final String SERIALIZED_NAME_RATE_BPS = "rateBps";
   @SerializedName(SERIALIZED_NAME_RATE_BPS)
   @javax.annotation.Nullable
-  private Integer rateBps;
+  private Long rateBps;
 
   public LevelView() {
   }
 
-  public LevelView downlineCount(@javax.annotation.Nullable Integer downlineCount) {
+  public LevelView downlineCount(@javax.annotation.Nullable Long downlineCount) {
     this.downlineCount = downlineCount;
     return this;
   }
@@ -78,16 +78,16 @@ public class LevelView {
    * @return downlineCount
    */
   @javax.annotation.Nullable
-  public Integer getDownlineCount() {
+  public Long getDownlineCount() {
     return downlineCount;
   }
 
-  public void setDownlineCount(@javax.annotation.Nullable Integer downlineCount) {
+  public void setDownlineCount(@javax.annotation.Nullable Long downlineCount) {
     this.downlineCount = downlineCount;
   }
 
 
-  public LevelView level(@javax.annotation.Nullable Integer level) {
+  public LevelView level(@javax.annotation.Nullable Long level) {
     this.level = level;
     return this;
   }
@@ -97,16 +97,16 @@ public class LevelView {
    * @return level
    */
   @javax.annotation.Nullable
-  public Integer getLevel() {
+  public Long getLevel() {
     return level;
   }
 
-  public void setLevel(@javax.annotation.Nullable Integer level) {
+  public void setLevel(@javax.annotation.Nullable Long level) {
     this.level = level;
   }
 
 
-  public LevelView rateBps(@javax.annotation.Nullable Integer rateBps) {
+  public LevelView rateBps(@javax.annotation.Nullable Long rateBps) {
     this.rateBps = rateBps;
     return this;
   }
@@ -116,11 +116,11 @@ public class LevelView {
    * @return rateBps
    */
   @javax.annotation.Nullable
-  public Integer getRateBps() {
+  public Long getRateBps() {
     return rateBps;
   }
 
-  public void setRateBps(@javax.annotation.Nullable Integer rateBps) {
+  public void setRateBps(@javax.annotation.Nullable Long rateBps) {
     this.rateBps = rateBps;
   }
 

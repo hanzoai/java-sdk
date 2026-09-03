@@ -56,7 +56,7 @@ public class RiskResolveIn {
   public static final String SERIALIZED_NAME_HORIZON = "horizon";
   @SerializedName(SERIALIZED_NAME_HORIZON)
   @javax.annotation.Nullable
-  private Integer horizon;
+  private Long horizon;
 
   public static final String SERIALIZED_NAME_NOW = "now";
   @SerializedName(SERIALIZED_NAME_NOW)
@@ -71,7 +71,7 @@ public class RiskResolveIn {
   public RiskResolveIn() {
   }
 
-  public RiskResolveIn horizon(@javax.annotation.Nullable Integer horizon) {
+  public RiskResolveIn horizon(@javax.annotation.Nullable Long horizon) {
     this.horizon = horizon;
     return this;
   }
@@ -81,11 +81,11 @@ public class RiskResolveIn {
    * @return horizon
    */
   @javax.annotation.Nullable
-  public Integer getHorizon() {
+  public Long getHorizon() {
     return horizon;
   }
 
-  public void setHorizon(@javax.annotation.Nullable Integer horizon) {
+  public void setHorizon(@javax.annotation.Nullable Long horizon) {
     this.horizon = horizon;
   }
 

@@ -60,7 +60,7 @@ public class O11yO11yReductionRulePreviewIn {
   public static final String SERIALIZED_NAME_LOOKBACK_MS = "lookbackMs";
   @SerializedName(SERIALIZED_NAME_LOOKBACK_MS)
   @javax.annotation.Nullable
-  private Integer lookbackMs;
+  private Long lookbackMs;
 
   public static final String SERIALIZED_NAME_MATCH_TYPE = "matchType";
   @SerializedName(SERIALIZED_NAME_MATCH_TYPE)
@@ -102,7 +102,7 @@ public class O11yO11yReductionRulePreviewIn {
   }
 
 
-  public O11yO11yReductionRulePreviewIn lookbackMs(@javax.annotation.Nullable Integer lookbackMs) {
+  public O11yO11yReductionRulePreviewIn lookbackMs(@javax.annotation.Nullable Long lookbackMs) {
     this.lookbackMs = lookbackMs;
     return this;
   }
@@ -112,11 +112,11 @@ public class O11yO11yReductionRulePreviewIn {
    * @return lookbackMs
    */
   @javax.annotation.Nullable
-  public Integer getLookbackMs() {
+  public Long getLookbackMs() {
     return lookbackMs;
   }
 
-  public void setLookbackMs(@javax.annotation.Nullable Integer lookbackMs) {
+  public void setLookbackMs(@javax.annotation.Nullable Long lookbackMs) {
     this.lookbackMs = lookbackMs;
   }
 

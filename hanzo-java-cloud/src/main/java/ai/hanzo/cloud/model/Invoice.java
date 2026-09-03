@@ -56,12 +56,12 @@ public class Invoice {
   public static final String SERIALIZED_NAME_AMOUNT_DUE_CENTS = "amountDueCents";
   @SerializedName(SERIALIZED_NAME_AMOUNT_DUE_CENTS)
   @javax.annotation.Nullable
-  private Integer amountDueCents;
+  private Long amountDueCents;
 
   public static final String SERIALIZED_NAME_AMOUNT_PAID_CENTS = "amountPaidCents";
   @SerializedName(SERIALIZED_NAME_AMOUNT_PAID_CENTS)
   @javax.annotation.Nullable
-  private Integer amountPaidCents;
+  private Long amountPaidCents;
 
   public static final String SERIALIZED_NAME_CREATED_AT = "createdAt";
   @SerializedName(SERIALIZED_NAME_CREATED_AT)
@@ -106,7 +106,7 @@ public class Invoice {
   public static final String SERIALIZED_NAME_SUBTOTAL_CENTS = "subtotalCents";
   @SerializedName(SERIALIZED_NAME_SUBTOTAL_CENTS)
   @javax.annotation.Nullable
-  private Integer subtotalCents;
+  private Long subtotalCents;
 
   public static final String SERIALIZED_NAME_USER_ID = "userId";
   @SerializedName(SERIALIZED_NAME_USER_ID)
@@ -116,7 +116,7 @@ public class Invoice {
   public Invoice() {
   }
 
-  public Invoice amountDueCents(@javax.annotation.Nullable Integer amountDueCents) {
+  public Invoice amountDueCents(@javax.annotation.Nullable Long amountDueCents) {
     this.amountDueCents = amountDueCents;
     return this;
   }
@@ -126,16 +126,16 @@ public class Invoice {
    * @return amountDueCents
    */
   @javax.annotation.Nullable
-  public Integer getAmountDueCents() {
+  public Long getAmountDueCents() {
     return amountDueCents;
   }
 
-  public void setAmountDueCents(@javax.annotation.Nullable Integer amountDueCents) {
+  public void setAmountDueCents(@javax.annotation.Nullable Long amountDueCents) {
     this.amountDueCents = amountDueCents;
   }
 
 
-  public Invoice amountPaidCents(@javax.annotation.Nullable Integer amountPaidCents) {
+  public Invoice amountPaidCents(@javax.annotation.Nullable Long amountPaidCents) {
     this.amountPaidCents = amountPaidCents;
     return this;
   }
@@ -145,11 +145,11 @@ public class Invoice {
    * @return amountPaidCents
    */
   @javax.annotation.Nullable
-  public Integer getAmountPaidCents() {
+  public Long getAmountPaidCents() {
     return amountPaidCents;
   }
 
-  public void setAmountPaidCents(@javax.annotation.Nullable Integer amountPaidCents) {
+  public void setAmountPaidCents(@javax.annotation.Nullable Long amountPaidCents) {
     this.amountPaidCents = amountPaidCents;
   }
 
@@ -314,7 +314,7 @@ public class Invoice {
   }
 
 
-  public Invoice subtotalCents(@javax.annotation.Nullable Integer subtotalCents) {
+  public Invoice subtotalCents(@javax.annotation.Nullable Long subtotalCents) {
     this.subtotalCents = subtotalCents;
     return this;
   }
@@ -324,11 +324,11 @@ public class Invoice {
    * @return subtotalCents
    */
   @javax.annotation.Nullable
-  public Integer getSubtotalCents() {
+  public Long getSubtotalCents() {
     return subtotalCents;
   }
 
-  public void setSubtotalCents(@javax.annotation.Nullable Integer subtotalCents) {
+  public void setSubtotalCents(@javax.annotation.Nullable Long subtotalCents) {
     this.subtotalCents = subtotalCents;
   }
 

@@ -478,7 +478,7 @@ public class LabelApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call riskLabelCoverageCall(@javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable Integer horizon, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call riskLabelCoverageCall(@javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable Long horizon, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -535,7 +535,7 @@ public class LabelApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call riskLabelCoverageValidateBeforeCall(@javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable Integer horizon, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call riskLabelCoverageValidateBeforeCall(@javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable Long horizon, final ApiCallback _callback) throws ApiException {
         return riskLabelCoverageCall(from, to, horizon, _callback);
 
     }
@@ -555,7 +555,7 @@ public class LabelApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public RiskLabelCoverage riskLabelCoverage(@javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable Integer horizon) throws ApiException {
+    public RiskLabelCoverage riskLabelCoverage(@javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable Long horizon) throws ApiException {
         ApiResponse<RiskLabelCoverage> localVarResp = riskLabelCoverageWithHttpInfo(from, to, horizon);
         return localVarResp.getData();
     }
@@ -575,7 +575,7 @@ public class LabelApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RiskLabelCoverage> riskLabelCoverageWithHttpInfo(@javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable Integer horizon) throws ApiException {
+    public ApiResponse<RiskLabelCoverage> riskLabelCoverageWithHttpInfo(@javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable Long horizon) throws ApiException {
         okhttp3.Call localVarCall = riskLabelCoverageValidateBeforeCall(from, to, horizon, null);
         Type localVarReturnType = new TypeToken<RiskLabelCoverage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -597,7 +597,7 @@ public class LabelApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call riskLabelCoverageAsync(@javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable Integer horizon, final ApiCallback<RiskLabelCoverage> _callback) throws ApiException {
+    public okhttp3.Call riskLabelCoverageAsync(@javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable Long horizon, final ApiCallback<RiskLabelCoverage> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = riskLabelCoverageValidateBeforeCall(from, to, horizon, _callback);
         Type localVarReturnType = new TypeToken<RiskLabelCoverage>(){}.getType();
@@ -739,7 +739,7 @@ public class LabelApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call riskLabelsCall(@javax.annotation.Nullable String kind, @javax.annotation.Nullable String subject, @javax.annotation.Nullable String source, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call riskLabelsCall(@javax.annotation.Nullable String kind, @javax.annotation.Nullable String subject, @javax.annotation.Nullable String source, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -808,7 +808,7 @@ public class LabelApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call riskLabelsValidateBeforeCall(@javax.annotation.Nullable String kind, @javax.annotation.Nullable String subject, @javax.annotation.Nullable String source, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call riskLabelsValidateBeforeCall(@javax.annotation.Nullable String kind, @javax.annotation.Nullable String subject, @javax.annotation.Nullable String source, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         return riskLabelsCall(kind, subject, source, from, to, limit, _callback);
 
     }
@@ -831,7 +831,7 @@ public class LabelApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public RiskLabelsOut riskLabels(@javax.annotation.Nullable String kind, @javax.annotation.Nullable String subject, @javax.annotation.Nullable String source, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public RiskLabelsOut riskLabels(@javax.annotation.Nullable String kind, @javax.annotation.Nullable String subject, @javax.annotation.Nullable String source, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<RiskLabelsOut> localVarResp = riskLabelsWithHttpInfo(kind, subject, source, from, to, limit);
         return localVarResp.getData();
     }
@@ -854,7 +854,7 @@ public class LabelApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RiskLabelsOut> riskLabelsWithHttpInfo(@javax.annotation.Nullable String kind, @javax.annotation.Nullable String subject, @javax.annotation.Nullable String source, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<RiskLabelsOut> riskLabelsWithHttpInfo(@javax.annotation.Nullable String kind, @javax.annotation.Nullable String subject, @javax.annotation.Nullable String source, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = riskLabelsValidateBeforeCall(kind, subject, source, from, to, limit, null);
         Type localVarReturnType = new TypeToken<RiskLabelsOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -879,7 +879,7 @@ public class LabelApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call riskLabelsAsync(@javax.annotation.Nullable String kind, @javax.annotation.Nullable String subject, @javax.annotation.Nullable String source, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable Integer limit, final ApiCallback<RiskLabelsOut> _callback) throws ApiException {
+    public okhttp3.Call riskLabelsAsync(@javax.annotation.Nullable String kind, @javax.annotation.Nullable String subject, @javax.annotation.Nullable String source, @javax.annotation.Nullable String from, @javax.annotation.Nullable String to, @javax.annotation.Nullable Long limit, final ApiCallback<RiskLabelsOut> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = riskLabelsValidateBeforeCall(kind, subject, source, from, to, limit, _callback);
         Type localVarReturnType = new TypeToken<RiskLabelsOut>(){}.getType();

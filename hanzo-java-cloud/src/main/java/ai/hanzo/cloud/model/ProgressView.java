@@ -53,7 +53,7 @@ public class ProgressView {
   public static final String SERIALIZED_NAME_DONE = "done";
   @SerializedName(SERIALIZED_NAME_DONE)
   @javax.annotation.Nullable
-  private Integer done;
+  private Long done;
 
   public static final String SERIALIZED_NAME_NEXT = "next";
   @SerializedName(SERIALIZED_NAME_NEXT)
@@ -63,17 +63,17 @@ public class ProgressView {
   public static final String SERIALIZED_NAME_PERCENT = "percent";
   @SerializedName(SERIALIZED_NAME_PERCENT)
   @javax.annotation.Nullable
-  private Integer percent;
+  private Long percent;
 
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)
   @javax.annotation.Nullable
-  private Integer total;
+  private Long total;
 
   public ProgressView() {
   }
 
-  public ProgressView done(@javax.annotation.Nullable Integer done) {
+  public ProgressView done(@javax.annotation.Nullable Long done) {
     this.done = done;
     return this;
   }
@@ -83,11 +83,11 @@ public class ProgressView {
    * @return done
    */
   @javax.annotation.Nullable
-  public Integer getDone() {
+  public Long getDone() {
     return done;
   }
 
-  public void setDone(@javax.annotation.Nullable Integer done) {
+  public void setDone(@javax.annotation.Nullable Long done) {
     this.done = done;
   }
 
@@ -111,7 +111,7 @@ public class ProgressView {
   }
 
 
-  public ProgressView percent(@javax.annotation.Nullable Integer percent) {
+  public ProgressView percent(@javax.annotation.Nullable Long percent) {
     this.percent = percent;
     return this;
   }
@@ -121,16 +121,16 @@ public class ProgressView {
    * @return percent
    */
   @javax.annotation.Nullable
-  public Integer getPercent() {
+  public Long getPercent() {
     return percent;
   }
 
-  public void setPercent(@javax.annotation.Nullable Integer percent) {
+  public void setPercent(@javax.annotation.Nullable Long percent) {
     this.percent = percent;
   }
 
 
-  public ProgressView total(@javax.annotation.Nullable Integer total) {
+  public ProgressView total(@javax.annotation.Nullable Long total) {
     this.total = total;
     return this;
   }
@@ -140,11 +140,11 @@ public class ProgressView {
    * @return total
    */
   @javax.annotation.Nullable
-  public Integer getTotal() {
+  public Long getTotal() {
     return total;
   }
 
-  public void setTotal(@javax.annotation.Nullable Integer total) {
+  public void setTotal(@javax.annotation.Nullable Long total) {
     this.total = total;
   }
 

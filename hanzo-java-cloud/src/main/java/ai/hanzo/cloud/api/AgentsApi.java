@@ -600,7 +600,7 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAgentsBuildsCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAgentsBuildsCall(@javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -649,7 +649,7 @@ public class AgentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getAgentsBuildsValidateBeforeCall(@javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getAgentsBuildsValidateBeforeCall(@javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         return getAgentsBuildsCall(limit, _callback);
 
     }
@@ -667,7 +667,7 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public BuildList getAgentsBuilds(@javax.annotation.Nullable Integer limit) throws ApiException {
+    public BuildList getAgentsBuilds(@javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<BuildList> localVarResp = getAgentsBuildsWithHttpInfo(limit);
         return localVarResp.getData();
     }
@@ -685,7 +685,7 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BuildList> getAgentsBuildsWithHttpInfo(@javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<BuildList> getAgentsBuildsWithHttpInfo(@javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getAgentsBuildsValidateBeforeCall(limit, null);
         Type localVarReturnType = new TypeToken<BuildList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -705,7 +705,7 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAgentsBuildsAsync(@javax.annotation.Nullable Integer limit, final ApiCallback<BuildList> _callback) throws ApiException {
+    public okhttp3.Call getAgentsBuildsAsync(@javax.annotation.Nullable Long limit, final ApiCallback<BuildList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getAgentsBuildsValidateBeforeCall(limit, _callback);
         Type localVarReturnType = new TypeToken<BuildList>(){}.getType();
@@ -990,7 +990,7 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAgentsByRefRunsCall(@javax.annotation.Nonnull String ref, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAgentsByRefRunsCall(@javax.annotation.Nonnull String ref, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1040,7 +1040,7 @@ public class AgentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getAgentsByRefRunsValidateBeforeCall(@javax.annotation.Nonnull String ref, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getAgentsByRefRunsValidateBeforeCall(@javax.annotation.Nonnull String ref, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'ref' is set
         if (ref == null) {
             throw new ApiException("Missing the required parameter 'ref' when calling getAgentsByRefRuns(Async)");
@@ -1064,7 +1064,7 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public RunList getAgentsByRefRuns(@javax.annotation.Nonnull String ref, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public RunList getAgentsByRefRuns(@javax.annotation.Nonnull String ref, @javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<RunList> localVarResp = getAgentsByRefRunsWithHttpInfo(ref, limit);
         return localVarResp.getData();
     }
@@ -1083,7 +1083,7 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RunList> getAgentsByRefRunsWithHttpInfo(@javax.annotation.Nonnull String ref, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<RunList> getAgentsByRefRunsWithHttpInfo(@javax.annotation.Nonnull String ref, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getAgentsByRefRunsValidateBeforeCall(ref, limit, null);
         Type localVarReturnType = new TypeToken<RunList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -1104,7 +1104,7 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAgentsByRefRunsAsync(@javax.annotation.Nonnull String ref, @javax.annotation.Nullable Integer limit, final ApiCallback<RunList> _callback) throws ApiException {
+    public okhttp3.Call getAgentsByRefRunsAsync(@javax.annotation.Nonnull String ref, @javax.annotation.Nullable Long limit, final ApiCallback<RunList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getAgentsByRefRunsValidateBeforeCall(ref, limit, _callback);
         Type localVarReturnType = new TypeToken<RunList>(){}.getType();
@@ -1524,7 +1524,7 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAgentsRunsCall(@javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String status, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAgentsRunsCall(@javax.annotation.Nullable Long limit, @javax.annotation.Nullable String status, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1577,7 +1577,7 @@ public class AgentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getAgentsRunsValidateBeforeCall(@javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String status, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getAgentsRunsValidateBeforeCall(@javax.annotation.Nullable Long limit, @javax.annotation.Nullable String status, final ApiCallback _callback) throws ApiException {
         return getAgentsRunsCall(limit, status, _callback);
 
     }
@@ -1596,7 +1596,7 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public RunList getAgentsRuns(@javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String status) throws ApiException {
+    public RunList getAgentsRuns(@javax.annotation.Nullable Long limit, @javax.annotation.Nullable String status) throws ApiException {
         ApiResponse<RunList> localVarResp = getAgentsRunsWithHttpInfo(limit, status);
         return localVarResp.getData();
     }
@@ -1615,7 +1615,7 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RunList> getAgentsRunsWithHttpInfo(@javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String status) throws ApiException {
+    public ApiResponse<RunList> getAgentsRunsWithHttpInfo(@javax.annotation.Nullable Long limit, @javax.annotation.Nullable String status) throws ApiException {
         okhttp3.Call localVarCall = getAgentsRunsValidateBeforeCall(limit, status, null);
         Type localVarReturnType = new TypeToken<RunList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -1636,7 +1636,7 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAgentsRunsAsync(@javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String status, final ApiCallback<RunList> _callback) throws ApiException {
+    public okhttp3.Call getAgentsRunsAsync(@javax.annotation.Nullable Long limit, @javax.annotation.Nullable String status, final ApiCallback<RunList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getAgentsRunsValidateBeforeCall(limit, status, _callback);
         Type localVarReturnType = new TypeToken<RunList>(){}.getType();
@@ -1661,7 +1661,7 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAgentsSessionsCall(@javax.annotation.Nullable String root, @javax.annotation.Nullable String parent, @javax.annotation.Nullable String status, @javax.annotation.Nullable String project, @javax.annotation.Nullable String room, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAgentsSessionsCall(@javax.annotation.Nullable String root, @javax.annotation.Nullable String parent, @javax.annotation.Nullable String status, @javax.annotation.Nullable String project, @javax.annotation.Nullable String room, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1730,7 +1730,7 @@ public class AgentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getAgentsSessionsValidateBeforeCall(@javax.annotation.Nullable String root, @javax.annotation.Nullable String parent, @javax.annotation.Nullable String status, @javax.annotation.Nullable String project, @javax.annotation.Nullable String room, @javax.annotation.Nullable Integer limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getAgentsSessionsValidateBeforeCall(@javax.annotation.Nullable String root, @javax.annotation.Nullable String parent, @javax.annotation.Nullable String status, @javax.annotation.Nullable String project, @javax.annotation.Nullable String room, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         return getAgentsSessionsCall(root, parent, status, project, room, limit, _callback);
 
     }
@@ -1753,7 +1753,7 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public SessionList getAgentsSessions(@javax.annotation.Nullable String root, @javax.annotation.Nullable String parent, @javax.annotation.Nullable String status, @javax.annotation.Nullable String project, @javax.annotation.Nullable String room, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public SessionList getAgentsSessions(@javax.annotation.Nullable String root, @javax.annotation.Nullable String parent, @javax.annotation.Nullable String status, @javax.annotation.Nullable String project, @javax.annotation.Nullable String room, @javax.annotation.Nullable Long limit) throws ApiException {
         ApiResponse<SessionList> localVarResp = getAgentsSessionsWithHttpInfo(root, parent, status, project, room, limit);
         return localVarResp.getData();
     }
@@ -1776,7 +1776,7 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SessionList> getAgentsSessionsWithHttpInfo(@javax.annotation.Nullable String root, @javax.annotation.Nullable String parent, @javax.annotation.Nullable String status, @javax.annotation.Nullable String project, @javax.annotation.Nullable String room, @javax.annotation.Nullable Integer limit) throws ApiException {
+    public ApiResponse<SessionList> getAgentsSessionsWithHttpInfo(@javax.annotation.Nullable String root, @javax.annotation.Nullable String parent, @javax.annotation.Nullable String status, @javax.annotation.Nullable String project, @javax.annotation.Nullable String room, @javax.annotation.Nullable Long limit) throws ApiException {
         okhttp3.Call localVarCall = getAgentsSessionsValidateBeforeCall(root, parent, status, project, room, limit, null);
         Type localVarReturnType = new TypeToken<SessionList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -1801,7 +1801,7 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAgentsSessionsAsync(@javax.annotation.Nullable String root, @javax.annotation.Nullable String parent, @javax.annotation.Nullable String status, @javax.annotation.Nullable String project, @javax.annotation.Nullable String room, @javax.annotation.Nullable Integer limit, final ApiCallback<SessionList> _callback) throws ApiException {
+    public okhttp3.Call getAgentsSessionsAsync(@javax.annotation.Nullable String root, @javax.annotation.Nullable String parent, @javax.annotation.Nullable String status, @javax.annotation.Nullable String project, @javax.annotation.Nullable String room, @javax.annotation.Nullable Long limit, final ApiCallback<SessionList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getAgentsSessionsValidateBeforeCall(root, parent, status, project, room, limit, _callback);
         Type localVarReturnType = new TypeToken<SessionList>(){}.getType();
@@ -1949,7 +1949,7 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAgentsSessionsByIdControlCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Integer after, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAgentsSessionsByIdControlCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long after, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1999,7 +1999,7 @@ public class AgentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getAgentsSessionsByIdControlValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Integer after, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getAgentsSessionsByIdControlValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long after, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id' when calling getAgentsSessionsByIdControl(Async)");
@@ -2023,7 +2023,7 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ControlDrain getAgentsSessionsByIdControl(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Integer after) throws ApiException {
+    public ControlDrain getAgentsSessionsByIdControl(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long after) throws ApiException {
         ApiResponse<ControlDrain> localVarResp = getAgentsSessionsByIdControlWithHttpInfo(id, after);
         return localVarResp.getData();
     }
@@ -2042,7 +2042,7 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ControlDrain> getAgentsSessionsByIdControlWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Integer after) throws ApiException {
+    public ApiResponse<ControlDrain> getAgentsSessionsByIdControlWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long after) throws ApiException {
         okhttp3.Call localVarCall = getAgentsSessionsByIdControlValidateBeforeCall(id, after, null);
         Type localVarReturnType = new TypeToken<ControlDrain>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -2063,7 +2063,7 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAgentsSessionsByIdControlAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Integer after, final ApiCallback<ControlDrain> _callback) throws ApiException {
+    public okhttp3.Call getAgentsSessionsByIdControlAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long after, final ApiCallback<ControlDrain> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getAgentsSessionsByIdControlValidateBeforeCall(id, after, _callback);
         Type localVarReturnType = new TypeToken<ControlDrain>(){}.getType();
@@ -3539,7 +3539,7 @@ public class AgentsApi {
 
     /**
      * Start one autonomous coding run against a repo in the caller&#39;s org
-     * Runs a coding task on a repository: clones it into a sandbox, lets a model read and edit the code, run the tests, and push the work to a branch. Say the thing you want done — \&quot;fix the failing auth test in hanzoai/cloud\&quot; — and the run infers the repo, the branch and the plan. No prefix, no ceremony.  It answers 202 with the run&#39;s handle the moment the run is ADMITTED — not when it finishes. A coding run takes minutes; holding a request open for one would tie a connection to a model loop and give the caller nothing it cannot get better from the session stream.  The handle is a session id, and that is deliberate: the session is already the run&#39;s durable record and its live stream (/v1/agents/sessions/{id}/stream), so this op does not grow a progress endpoint, a status endpoint or a cancel endpoint of its own. One way to watch a run, whoever started it.  It is also how work CONTINUES. Pass an earlier run&#39;s session as &#x60;after&#x60; and this one starts from where that one stopped, so \&quot;now add tests for it\&quot; builds on the branch already pushed instead of a fresh clone. The follow-up still gets its own branch and its own session — one run, one branch, always reviewable on its own.
+     * 
      * @param codingStartIn  (required)
      * @return CodingStarted
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3557,7 +3557,7 @@ public class AgentsApi {
 
     /**
      * Start one autonomous coding run against a repo in the caller&#39;s org
-     * Runs a coding task on a repository: clones it into a sandbox, lets a model read and edit the code, run the tests, and push the work to a branch. Say the thing you want done — \&quot;fix the failing auth test in hanzoai/cloud\&quot; — and the run infers the repo, the branch and the plan. No prefix, no ceremony.  It answers 202 with the run&#39;s handle the moment the run is ADMITTED — not when it finishes. A coding run takes minutes; holding a request open for one would tie a connection to a model loop and give the caller nothing it cannot get better from the session stream.  The handle is a session id, and that is deliberate: the session is already the run&#39;s durable record and its live stream (/v1/agents/sessions/{id}/stream), so this op does not grow a progress endpoint, a status endpoint or a cancel endpoint of its own. One way to watch a run, whoever started it.  It is also how work CONTINUES. Pass an earlier run&#39;s session as &#x60;after&#x60; and this one starts from where that one stopped, so \&quot;now add tests for it\&quot; builds on the branch already pushed instead of a fresh clone. The follow-up still gets its own branch and its own session — one run, one branch, always reviewable on its own.
+     * 
      * @param codingStartIn  (required)
      * @return ApiResponse&lt;CodingStarted&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -3576,7 +3576,7 @@ public class AgentsApi {
 
     /**
      * Start one autonomous coding run against a repo in the caller&#39;s org (asynchronously)
-     * Runs a coding task on a repository: clones it into a sandbox, lets a model read and edit the code, run the tests, and push the work to a branch. Say the thing you want done — \&quot;fix the failing auth test in hanzoai/cloud\&quot; — and the run infers the repo, the branch and the plan. No prefix, no ceremony.  It answers 202 with the run&#39;s handle the moment the run is ADMITTED — not when it finishes. A coding run takes minutes; holding a request open for one would tie a connection to a model loop and give the caller nothing it cannot get better from the session stream.  The handle is a session id, and that is deliberate: the session is already the run&#39;s durable record and its live stream (/v1/agents/sessions/{id}/stream), so this op does not grow a progress endpoint, a status endpoint or a cancel endpoint of its own. One way to watch a run, whoever started it.  It is also how work CONTINUES. Pass an earlier run&#39;s session as &#x60;after&#x60; and this one starts from where that one stopped, so \&quot;now add tests for it\&quot; builds on the branch already pushed instead of a fresh clone. The follow-up still gets its own branch and its own session — one run, one branch, always reviewable on its own.
+     * 
      * @param codingStartIn  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
