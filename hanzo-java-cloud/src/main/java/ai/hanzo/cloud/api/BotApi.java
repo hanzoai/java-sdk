@@ -27,8 +27,10 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import ai.hanzo.cloud.model.BotRoster;
 import ai.hanzo.cloud.model.BotRuns;
 import ai.hanzo.cloud.model.BotStopped;
+import ai.hanzo.cloud.model.BotSync;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -73,6 +75,123 @@ public class BotApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
+    /**
+     * Build call for getBotMembers
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getBotMembersCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/bot/members";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getBotMembersValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getBotMembersCall(_callback);
+
+    }
+
+    /**
+     * Returns the caller org&#39;s bots as space members — each with the member account uuid and the Person reference the roster addresses it by.
+     * Returns the caller org&#39;s bots as space members — each with the member account uuid and the Person reference the roster addresses it by.  A deployment that runs no team subsystem has no spaces and therefore no roster, which is an empty list rather than an error: ErrNoPeer is the ONE error that means \&quot;this deployment does not run that app\&quot;, and every other failure is an outage and says so.
+     * @return BotRoster
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public BotRoster getBotMembers() throws ApiException {
+        ApiResponse<BotRoster> localVarResp = getBotMembersWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * Returns the caller org&#39;s bots as space members — each with the member account uuid and the Person reference the roster addresses it by.
+     * Returns the caller org&#39;s bots as space members — each with the member account uuid and the Person reference the roster addresses it by.  A deployment that runs no team subsystem has no spaces and therefore no roster, which is an empty list rather than an error: ErrNoPeer is the ONE error that means \&quot;this deployment does not run that app\&quot;, and every other failure is an outage and says so.
+     * @return ApiResponse&lt;BotRoster&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<BotRoster> getBotMembersWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getBotMembersValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<BotRoster>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Returns the caller org&#39;s bots as space members — each with the member account uuid and the Person reference the roster addresses it by. (asynchronously)
+     * Returns the caller org&#39;s bots as space members — each with the member account uuid and the Person reference the roster addresses it by.  A deployment that runs no team subsystem has no spaces and therefore no roster, which is an empty list rather than an error: ErrNoPeer is the ONE error that means \&quot;this deployment does not run that app\&quot;, and every other failure is an outage and says so.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getBotMembersAsync(final ApiCallback<BotRoster> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getBotMembersValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<BotRoster>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
     /**
      * Build call for getBotRuns
      * @param _callback Callback for upload/download progress
@@ -187,6 +306,123 @@ public class BotApi {
 
         okhttp3.Call localVarCall = getBotRunsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<BotRuns>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postBotMembersSync
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postBotMembersSyncCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/bot/members/sync";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postBotMembersSyncValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postBotMembersSyncCall(_callback);
+
+    }
+
+    /**
+     * Re-projects the caller org&#39;s bots as members into every space of the org and removes the ones whose agent is gone.
+     * Re-projects the caller org&#39;s bots as members into every space of the org and removes the ones whose agent is gone. Idempotent, and admin only — the admin bit rides the caller to team, which is what decides it.
+     * @return BotSync
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public BotSync postBotMembersSync() throws ApiException {
+        ApiResponse<BotSync> localVarResp = postBotMembersSyncWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * Re-projects the caller org&#39;s bots as members into every space of the org and removes the ones whose agent is gone.
+     * Re-projects the caller org&#39;s bots as members into every space of the org and removes the ones whose agent is gone. Idempotent, and admin only — the admin bit rides the caller to team, which is what decides it.
+     * @return ApiResponse&lt;BotSync&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<BotSync> postBotMembersSyncWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postBotMembersSyncValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<BotSync>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Re-projects the caller org&#39;s bots as members into every space of the org and removes the ones whose agent is gone. (asynchronously)
+     * Re-projects the caller org&#39;s bots as members into every space of the org and removes the ones whose agent is gone. Idempotent, and admin only — the admin bit rides the caller to team, which is what decides it.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postBotMembersSyncAsync(final ApiCallback<BotSync> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postBotMembersSyncValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<BotSync>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

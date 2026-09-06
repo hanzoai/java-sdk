@@ -14,16 +14,13 @@
 package ai.hanzo.cloud.model;
 
 import java.util.Objects;
-import ai.hanzo.cloud.model.BotView;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -49,42 +46,58 @@ import java.util.Set;
 import ai.hanzo.cloud.JSON;
 
 /**
- * BotList
+ * ForgeJobRepositoryOwner
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
-public class BotList {
-  public static final String SERIALIZED_NAME_BOTS = "bots";
-  @SerializedName(SERIALIZED_NAME_BOTS)
+public class ForgeJobRepositoryOwner {
+  public static final String SERIALIZED_NAME_LOGIN = "login";
+  @SerializedName(SERIALIZED_NAME_LOGIN)
   @javax.annotation.Nullable
-  private List<BotView> bots = new ArrayList<>();
+  private String login;
 
-  public BotList() {
+  public static final String SERIALIZED_NAME_USERNAME = "username";
+  @SerializedName(SERIALIZED_NAME_USERNAME)
+  @javax.annotation.Nullable
+  private String username;
+
+  public ForgeJobRepositoryOwner() {
   }
 
-  public BotList bots(@javax.annotation.Nullable List<BotView> bots) {
-    this.bots = bots;
-    return this;
-  }
-
-  public BotList addBotsItem(BotView botsItem) {
-    if (this.bots == null) {
-      this.bots = new ArrayList<>();
-    }
-    this.bots.add(botsItem);
+  public ForgeJobRepositoryOwner login(@javax.annotation.Nullable String login) {
+    this.login = login;
     return this;
   }
 
   /**
-   * Bots is one row per kind&#x3D;bot machine, each joined with its agent binding when it has one.
-   * @return bots
+   * Get login
+   * @return login
    */
   @javax.annotation.Nullable
-  public List<BotView> getBots() {
-    return bots;
+  public String getLogin() {
+    return login;
   }
 
-  public void setBots(@javax.annotation.Nullable List<BotView> bots) {
-    this.bots = bots;
+  public void setLogin(@javax.annotation.Nullable String login) {
+    this.login = login;
+  }
+
+
+  public ForgeJobRepositoryOwner username(@javax.annotation.Nullable String username) {
+    this.username = username;
+    return this;
+  }
+
+  /**
+   * Get username
+   * @return username
+   */
+  @javax.annotation.Nullable
+  public String getUsername() {
+    return username;
+  }
+
+  public void setUsername(@javax.annotation.Nullable String username) {
+    this.username = username;
   }
 
 
@@ -97,20 +110,22 @@ public class BotList {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    BotList botList = (BotList) o;
-    return Objects.equals(this.bots, botList.bots);
+    ForgeJobRepositoryOwner forgeJobRepositoryOwner = (ForgeJobRepositoryOwner) o;
+    return Objects.equals(this.login, forgeJobRepositoryOwner.login) &&
+        Objects.equals(this.username, forgeJobRepositoryOwner.username);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(bots);
+    return Objects.hash(login, username);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class BotList {\n");
-    sb.append("    bots: ").append(toIndentedString(bots)).append("\n");
+    sb.append("class ForgeJobRepositoryOwner {\n");
+    sb.append("    login: ").append(toIndentedString(login)).append("\n");
+    sb.append("    username: ").append(toIndentedString(username)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -132,7 +147,7 @@ public class BotList {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("bots"));
+    openapiFields = new HashSet<String>(Arrays.asList("login", "username"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -142,36 +157,28 @@ public class BotList {
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to BotList
+   * @throws IOException if the JSON Element is invalid with respect to ForgeJobRepositoryOwner
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!BotList.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in BotList is not found in the empty JSON string", BotList.openapiRequiredFields.toString()));
+        if (!ForgeJobRepositoryOwner.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in ForgeJobRepositoryOwner is not found in the empty JSON string", ForgeJobRepositoryOwner.openapiRequiredFields.toString()));
         }
       }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!BotList.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `BotList` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!ForgeJobRepositoryOwner.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ForgeJobRepositoryOwner` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (jsonObj.get("bots") != null && !jsonObj.get("bots").isJsonNull()) {
-        JsonArray jsonArraybots = jsonObj.getAsJsonArray("bots");
-        if (jsonArraybots != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("bots").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `bots` to be an array in the JSON string but got `%s`", jsonObj.get("bots").toString()));
-          }
-
-          // validate the optional field `bots` (array)
-          for (int i = 0; i < jsonArraybots.size(); i++) {
-            BotView.validateJsonElement(jsonArraybots.get(i));
-          };
-        }
+      if ((jsonObj.get("login") != null && !jsonObj.get("login").isJsonNull()) && !jsonObj.get("login").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `login` to be a primitive type in the JSON string but got `%s`", jsonObj.get("login").toString()));
+      }
+      if ((jsonObj.get("username") != null && !jsonObj.get("username").isJsonNull()) && !jsonObj.get("username").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `username` to be a primitive type in the JSON string but got `%s`", jsonObj.get("username").toString()));
       }
   }
 
@@ -179,22 +186,22 @@ public class BotList {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!BotList.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'BotList' and its subtypes
+       if (!ForgeJobRepositoryOwner.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'ForgeJobRepositoryOwner' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<BotList> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(BotList.class));
+       final TypeAdapter<ForgeJobRepositoryOwner> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(ForgeJobRepositoryOwner.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<BotList>() {
+       return (TypeAdapter<T>) new TypeAdapter<ForgeJobRepositoryOwner>() {
            @Override
-           public void write(JsonWriter out, BotList value) throws IOException {
+           public void write(JsonWriter out, ForgeJobRepositoryOwner value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public BotList read(JsonReader in) throws IOException {
+           public ForgeJobRepositoryOwner read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -205,18 +212,18 @@ public class BotList {
   }
 
   /**
-   * Create an instance of BotList given an JSON string
+   * Create an instance of ForgeJobRepositoryOwner given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of BotList
-   * @throws IOException if the JSON string is invalid with respect to BotList
+   * @return An instance of ForgeJobRepositoryOwner
+   * @throws IOException if the JSON string is invalid with respect to ForgeJobRepositoryOwner
    */
-  public static BotList fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, BotList.class);
+  public static ForgeJobRepositoryOwner fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, ForgeJobRepositoryOwner.class);
   }
 
   /**
-   * Convert an instance of BotList to an JSON string
+   * Convert an instance of ForgeJobRepositoryOwner to an JSON string
    *
    * @return JSON string
    */

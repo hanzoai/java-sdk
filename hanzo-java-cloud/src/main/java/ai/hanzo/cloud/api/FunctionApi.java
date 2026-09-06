@@ -45,16 +45,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class FunctionsApi {
+public class FunctionApi {
     private ApiClient localVarApiClient;
     private int localHostIndex;
     private String localCustomBaseUrl;
 
-    public FunctionsApi() {
+    public FunctionApi() {
         this(Configuration.getDefaultApiClient());
     }
 
-    public FunctionsApi(ApiClient apiClient) {
+    public FunctionApi(ApiClient apiClient) {
         this.localVarApiClient = apiClient;
     }
 
@@ -83,7 +83,7 @@ public class FunctionsApi {
     }
 
     /**
-     * Build call for deleteFunctionsByName
+     * Build call for deleteFunctionByName
      * @param name Name is the function the URL names. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -95,7 +95,7 @@ public class FunctionsApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteFunctionsByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteFunctionByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -112,7 +112,7 @@ public class FunctionsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/functions/{name}"
+        String localVarPath = "/v1/function/{name}"
             .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -140,13 +140,13 @@ public class FunctionsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteFunctionsByNameValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteFunctionByNameValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling deleteFunctionsByName(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling deleteFunctionByName(Async)");
         }
 
-        return deleteFunctionsByNameCall(name, _callback);
+        return deleteFunctionByNameCall(name, _callback);
 
     }
 
@@ -162,8 +162,8 @@ public class FunctionsApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteFunctionsByName(@javax.annotation.Nonnull String name) throws ApiException {
-        deleteFunctionsByNameWithHttpInfo(name);
+    public void deleteFunctionByName(@javax.annotation.Nonnull String name) throws ApiException {
+        deleteFunctionByNameWithHttpInfo(name);
     }
 
     /**
@@ -179,8 +179,8 @@ public class FunctionsApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteFunctionsByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
-        okhttp3.Call localVarCall = deleteFunctionsByNameValidateBeforeCall(name, null);
+    public ApiResponse<Void> deleteFunctionByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = deleteFunctionByNameValidateBeforeCall(name, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -198,14 +198,14 @@ public class FunctionsApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteFunctionsByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteFunctionByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteFunctionsByNameValidateBeforeCall(name, _callback);
+        okhttp3.Call localVarCall = deleteFunctionByNameValidateBeforeCall(name, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getFunctions
+     * Build call for getFunction
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -216,7 +216,7 @@ public class FunctionsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getFunctionsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getFunctionCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -233,7 +233,7 @@ public class FunctionsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/functions";
+        String localVarPath = "/v1/function";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -261,8 +261,8 @@ public class FunctionsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getFunctionsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getFunctionsCall(_callback);
+    private okhttp3.Call getFunctionValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getFunctionCall(_callback);
 
     }
 
@@ -278,8 +278,8 @@ public class FunctionsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public FnList getFunctions() throws ApiException {
-        ApiResponse<FnList> localVarResp = getFunctionsWithHttpInfo();
+    public FnList getFunction() throws ApiException {
+        ApiResponse<FnList> localVarResp = getFunctionWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -295,8 +295,8 @@ public class FunctionsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<FnList> getFunctionsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getFunctionsValidateBeforeCall(null);
+    public ApiResponse<FnList> getFunctionWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getFunctionValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<FnList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -314,15 +314,15 @@ public class FunctionsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getFunctionsAsync(final ApiCallback<FnList> _callback) throws ApiException {
+    public okhttp3.Call getFunctionAsync(final ApiCallback<FnList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getFunctionsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getFunctionValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<FnList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getFunctionsByName
+     * Build call for getFunctionByName
      * @param name Name is the function the URL names. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -334,7 +334,7 @@ public class FunctionsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getFunctionsByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getFunctionByNameCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -351,7 +351,7 @@ public class FunctionsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/functions/{name}"
+        String localVarPath = "/v1/function/{name}"
             .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -380,13 +380,13 @@ public class FunctionsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getFunctionsByNameValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getFunctionByNameValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling getFunctionsByName(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling getFunctionByName(Async)");
         }
 
-        return getFunctionsByNameCall(name, _callback);
+        return getFunctionByNameCall(name, _callback);
 
     }
 
@@ -403,8 +403,8 @@ public class FunctionsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public FunctionDetail getFunctionsByName(@javax.annotation.Nonnull String name) throws ApiException {
-        ApiResponse<FunctionDetail> localVarResp = getFunctionsByNameWithHttpInfo(name);
+    public FunctionDetail getFunctionByName(@javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<FunctionDetail> localVarResp = getFunctionByNameWithHttpInfo(name);
         return localVarResp.getData();
     }
 
@@ -421,8 +421,8 @@ public class FunctionsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<FunctionDetail> getFunctionsByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
-        okhttp3.Call localVarCall = getFunctionsByNameValidateBeforeCall(name, null);
+    public ApiResponse<FunctionDetail> getFunctionByNameWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = getFunctionByNameValidateBeforeCall(name, null);
         Type localVarReturnType = new TypeToken<FunctionDetail>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -441,15 +441,15 @@ public class FunctionsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getFunctionsByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<FunctionDetail> _callback) throws ApiException {
+    public okhttp3.Call getFunctionByNameAsync(@javax.annotation.Nonnull String name, final ApiCallback<FunctionDetail> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getFunctionsByNameValidateBeforeCall(name, _callback);
+        okhttp3.Call localVarCall = getFunctionByNameValidateBeforeCall(name, _callback);
         Type localVarReturnType = new TypeToken<FunctionDetail>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getFunctionsByNameInvocations
+     * Build call for getFunctionByNameInvocations
      * @param name Name is the function the URL names. (required)
      * @param limit Limit caps the page, defaulting to 100. (optional)
      * @param _callback Callback for upload/download progress
@@ -462,7 +462,7 @@ public class FunctionsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getFunctionsByNameInvocationsCall(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getFunctionByNameInvocationsCall(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -479,7 +479,7 @@ public class FunctionsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/functions/{name}/invocations"
+        String localVarPath = "/v1/function/{name}/invocations"
             .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -512,13 +512,13 @@ public class FunctionsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getFunctionsByNameInvocationsValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getFunctionByNameInvocationsValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling getFunctionsByNameInvocations(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling getFunctionByNameInvocations(Async)");
         }
 
-        return getFunctionsByNameInvocationsCall(name, limit, _callback);
+        return getFunctionByNameInvocationsCall(name, limit, _callback);
 
     }
 
@@ -536,8 +536,8 @@ public class FunctionsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public InvocationList getFunctionsByNameInvocations(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Long limit) throws ApiException {
-        ApiResponse<InvocationList> localVarResp = getFunctionsByNameInvocationsWithHttpInfo(name, limit);
+    public InvocationList getFunctionByNameInvocations(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Long limit) throws ApiException {
+        ApiResponse<InvocationList> localVarResp = getFunctionByNameInvocationsWithHttpInfo(name, limit);
         return localVarResp.getData();
     }
 
@@ -555,8 +555,8 @@ public class FunctionsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InvocationList> getFunctionsByNameInvocationsWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Long limit) throws ApiException {
-        okhttp3.Call localVarCall = getFunctionsByNameInvocationsValidateBeforeCall(name, limit, null);
+    public ApiResponse<InvocationList> getFunctionByNameInvocationsWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Long limit) throws ApiException {
+        okhttp3.Call localVarCall = getFunctionByNameInvocationsValidateBeforeCall(name, limit, null);
         Type localVarReturnType = new TypeToken<InvocationList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -576,15 +576,15 @@ public class FunctionsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getFunctionsByNameInvocationsAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Long limit, final ApiCallback<InvocationList> _callback) throws ApiException {
+    public okhttp3.Call getFunctionByNameInvocationsAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nullable Long limit, final ApiCallback<InvocationList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getFunctionsByNameInvocationsValidateBeforeCall(name, limit, _callback);
+        okhttp3.Call localVarCall = getFunctionByNameInvocationsValidateBeforeCall(name, limit, _callback);
         Type localVarReturnType = new TypeToken<InvocationList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getFunctionsByNameLogs
+     * Build call for getFunctionByNameLogs
      * @param name Name is the function the URL names. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -596,7 +596,7 @@ public class FunctionsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getFunctionsByNameLogsCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getFunctionByNameLogsCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -613,7 +613,7 @@ public class FunctionsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/functions/{name}/logs"
+        String localVarPath = "/v1/function/{name}/logs"
             .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -642,13 +642,13 @@ public class FunctionsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getFunctionsByNameLogsValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getFunctionByNameLogsValidateBeforeCall(@javax.annotation.Nonnull String name, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling getFunctionsByNameLogs(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling getFunctionByNameLogs(Async)");
         }
 
-        return getFunctionsByNameLogsCall(name, _callback);
+        return getFunctionByNameLogsCall(name, _callback);
 
     }
 
@@ -665,8 +665,8 @@ public class FunctionsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public LogLines getFunctionsByNameLogs(@javax.annotation.Nonnull String name) throws ApiException {
-        ApiResponse<LogLines> localVarResp = getFunctionsByNameLogsWithHttpInfo(name);
+    public LogLines getFunctionByNameLogs(@javax.annotation.Nonnull String name) throws ApiException {
+        ApiResponse<LogLines> localVarResp = getFunctionByNameLogsWithHttpInfo(name);
         return localVarResp.getData();
     }
 
@@ -683,8 +683,8 @@ public class FunctionsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<LogLines> getFunctionsByNameLogsWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
-        okhttp3.Call localVarCall = getFunctionsByNameLogsValidateBeforeCall(name, null);
+    public ApiResponse<LogLines> getFunctionByNameLogsWithHttpInfo(@javax.annotation.Nonnull String name) throws ApiException {
+        okhttp3.Call localVarCall = getFunctionByNameLogsValidateBeforeCall(name, null);
         Type localVarReturnType = new TypeToken<LogLines>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -703,15 +703,15 @@ public class FunctionsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getFunctionsByNameLogsAsync(@javax.annotation.Nonnull String name, final ApiCallback<LogLines> _callback) throws ApiException {
+    public okhttp3.Call getFunctionByNameLogsAsync(@javax.annotation.Nonnull String name, final ApiCallback<LogLines> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getFunctionsByNameLogsValidateBeforeCall(name, _callback);
+        okhttp3.Call localVarCall = getFunctionByNameLogsValidateBeforeCall(name, _callback);
         Type localVarReturnType = new TypeToken<LogLines>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getFunctionsDeployments
+     * Build call for getFunctionDeployments
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -722,7 +722,7 @@ public class FunctionsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getFunctionsDeploymentsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getFunctionDeploymentsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -739,7 +739,7 @@ public class FunctionsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/functions/deployments";
+        String localVarPath = "/v1/function/deployments";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -767,8 +767,8 @@ public class FunctionsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getFunctionsDeploymentsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getFunctionsDeploymentsCall(_callback);
+    private okhttp3.Call getFunctionDeploymentsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getFunctionDeploymentsCall(_callback);
 
     }
 
@@ -784,8 +784,8 @@ public class FunctionsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public FnList getFunctionsDeployments() throws ApiException {
-        ApiResponse<FnList> localVarResp = getFunctionsDeploymentsWithHttpInfo();
+    public FnList getFunctionDeployments() throws ApiException {
+        ApiResponse<FnList> localVarResp = getFunctionDeploymentsWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -801,8 +801,8 @@ public class FunctionsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<FnList> getFunctionsDeploymentsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getFunctionsDeploymentsValidateBeforeCall(null);
+    public ApiResponse<FnList> getFunctionDeploymentsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getFunctionDeploymentsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<FnList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -820,15 +820,15 @@ public class FunctionsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getFunctionsDeploymentsAsync(final ApiCallback<FnList> _callback) throws ApiException {
+    public okhttp3.Call getFunctionDeploymentsAsync(final ApiCallback<FnList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getFunctionsDeploymentsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getFunctionDeploymentsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<FnList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getFunctionsMetrics
+     * Build call for getFunctionMetrics
      * @param range Range is 1H, 6H, 24H (the default), 7D or 30D. Anything else falls back to 24H rather than failing. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -840,7 +840,7 @@ public class FunctionsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getFunctionsMetricsCall(@javax.annotation.Nullable String range, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getFunctionMetricsCall(@javax.annotation.Nullable String range, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -857,7 +857,7 @@ public class FunctionsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/functions/metrics";
+        String localVarPath = "/v1/function/metrics";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -889,8 +889,8 @@ public class FunctionsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getFunctionsMetricsValidateBeforeCall(@javax.annotation.Nullable String range, final ApiCallback _callback) throws ApiException {
-        return getFunctionsMetricsCall(range, _callback);
+    private okhttp3.Call getFunctionMetricsValidateBeforeCall(@javax.annotation.Nullable String range, final ApiCallback _callback) throws ApiException {
+        return getFunctionMetricsCall(range, _callback);
 
     }
 
@@ -907,8 +907,8 @@ public class FunctionsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public Usage getFunctionsMetrics(@javax.annotation.Nullable String range) throws ApiException {
-        ApiResponse<Usage> localVarResp = getFunctionsMetricsWithHttpInfo(range);
+    public Usage getFunctionMetrics(@javax.annotation.Nullable String range) throws ApiException {
+        ApiResponse<Usage> localVarResp = getFunctionMetricsWithHttpInfo(range);
         return localVarResp.getData();
     }
 
@@ -925,8 +925,8 @@ public class FunctionsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Usage> getFunctionsMetricsWithHttpInfo(@javax.annotation.Nullable String range) throws ApiException {
-        okhttp3.Call localVarCall = getFunctionsMetricsValidateBeforeCall(range, null);
+    public ApiResponse<Usage> getFunctionMetricsWithHttpInfo(@javax.annotation.Nullable String range) throws ApiException {
+        okhttp3.Call localVarCall = getFunctionMetricsValidateBeforeCall(range, null);
         Type localVarReturnType = new TypeToken<Usage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -945,15 +945,15 @@ public class FunctionsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getFunctionsMetricsAsync(@javax.annotation.Nullable String range, final ApiCallback<Usage> _callback) throws ApiException {
+    public okhttp3.Call getFunctionMetricsAsync(@javax.annotation.Nullable String range, final ApiCallback<Usage> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getFunctionsMetricsValidateBeforeCall(range, _callback);
+        okhttp3.Call localVarCall = getFunctionMetricsValidateBeforeCall(range, _callback);
         Type localVarReturnType = new TypeToken<Usage>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getFunctionsSecrets
+     * Build call for getFunctionSecrets
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -964,7 +964,7 @@ public class FunctionsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getFunctionsSecretsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getFunctionSecretsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -981,7 +981,7 @@ public class FunctionsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/functions/secrets";
+        String localVarPath = "/v1/function/secrets";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1009,8 +1009,8 @@ public class FunctionsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getFunctionsSecretsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getFunctionsSecretsCall(_callback);
+    private okhttp3.Call getFunctionSecretsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getFunctionSecretsCall(_callback);
 
     }
 
@@ -1026,8 +1026,8 @@ public class FunctionsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public SecretList getFunctionsSecrets() throws ApiException {
-        ApiResponse<SecretList> localVarResp = getFunctionsSecretsWithHttpInfo();
+    public SecretList getFunctionSecrets() throws ApiException {
+        ApiResponse<SecretList> localVarResp = getFunctionSecretsWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -1043,8 +1043,8 @@ public class FunctionsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SecretList> getFunctionsSecretsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getFunctionsSecretsValidateBeforeCall(null);
+    public ApiResponse<SecretList> getFunctionSecretsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getFunctionSecretsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<SecretList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1062,15 +1062,15 @@ public class FunctionsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getFunctionsSecretsAsync(final ApiCallback<SecretList> _callback) throws ApiException {
+    public okhttp3.Call getFunctionSecretsAsync(final ApiCallback<SecretList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getFunctionsSecretsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getFunctionSecretsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<SecretList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getFunctionsTriggers
+     * Build call for getFunctionTriggers
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1081,7 +1081,7 @@ public class FunctionsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getFunctionsTriggersCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getFunctionTriggersCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1098,7 +1098,7 @@ public class FunctionsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/functions/triggers";
+        String localVarPath = "/v1/function/triggers";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1126,8 +1126,8 @@ public class FunctionsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getFunctionsTriggersValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getFunctionsTriggersCall(_callback);
+    private okhttp3.Call getFunctionTriggersValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getFunctionTriggersCall(_callback);
 
     }
 
@@ -1143,8 +1143,8 @@ public class FunctionsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public TriggerList getFunctionsTriggers() throws ApiException {
-        ApiResponse<TriggerList> localVarResp = getFunctionsTriggersWithHttpInfo();
+    public TriggerList getFunctionTriggers() throws ApiException {
+        ApiResponse<TriggerList> localVarResp = getFunctionTriggersWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -1160,8 +1160,8 @@ public class FunctionsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<TriggerList> getFunctionsTriggersWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getFunctionsTriggersValidateBeforeCall(null);
+    public ApiResponse<TriggerList> getFunctionTriggersWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getFunctionTriggersValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<TriggerList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1179,15 +1179,15 @@ public class FunctionsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getFunctionsTriggersAsync(final ApiCallback<TriggerList> _callback) throws ApiException {
+    public okhttp3.Call getFunctionTriggersAsync(final ApiCallback<TriggerList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getFunctionsTriggersValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getFunctionTriggersValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<TriggerList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postFunctions
+     * Build call for postFunction
      * @param definition  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1199,7 +1199,7 @@ public class FunctionsApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postFunctionsCall(@javax.annotation.Nonnull Definition definition, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postFunctionCall(@javax.annotation.Nonnull Definition definition, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1216,7 +1216,7 @@ public class FunctionsApi {
         Object localVarPostBody = definition;
 
         // create path and map variables
-        String localVarPath = "/v1/functions";
+        String localVarPath = "/v1/function";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1245,13 +1245,13 @@ public class FunctionsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postFunctionsValidateBeforeCall(@javax.annotation.Nonnull Definition definition, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postFunctionValidateBeforeCall(@javax.annotation.Nonnull Definition definition, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'definition' is set
         if (definition == null) {
-            throw new ApiException("Missing the required parameter 'definition' when calling postFunctions(Async)");
+            throw new ApiException("Missing the required parameter 'definition' when calling postFunction(Async)");
         }
 
-        return postFunctionsCall(definition, _callback);
+        return postFunctionCall(definition, _callback);
 
     }
 
@@ -1268,8 +1268,8 @@ public class FunctionsApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public FunctionView postFunctions(@javax.annotation.Nonnull Definition definition) throws ApiException {
-        ApiResponse<FunctionView> localVarResp = postFunctionsWithHttpInfo(definition);
+    public FunctionView postFunction(@javax.annotation.Nonnull Definition definition) throws ApiException {
+        ApiResponse<FunctionView> localVarResp = postFunctionWithHttpInfo(definition);
         return localVarResp.getData();
     }
 
@@ -1286,8 +1286,8 @@ public class FunctionsApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<FunctionView> postFunctionsWithHttpInfo(@javax.annotation.Nonnull Definition definition) throws ApiException {
-        okhttp3.Call localVarCall = postFunctionsValidateBeforeCall(definition, null);
+    public ApiResponse<FunctionView> postFunctionWithHttpInfo(@javax.annotation.Nonnull Definition definition) throws ApiException {
+        okhttp3.Call localVarCall = postFunctionValidateBeforeCall(definition, null);
         Type localVarReturnType = new TypeToken<FunctionView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1306,15 +1306,15 @@ public class FunctionsApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postFunctionsAsync(@javax.annotation.Nonnull Definition definition, final ApiCallback<FunctionView> _callback) throws ApiException {
+    public okhttp3.Call postFunctionAsync(@javax.annotation.Nonnull Definition definition, final ApiCallback<FunctionView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postFunctionsValidateBeforeCall(definition, _callback);
+        okhttp3.Call localVarCall = postFunctionValidateBeforeCall(definition, _callback);
         Type localVarReturnType = new TypeToken<FunctionView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postFunctionsByNameInvoke
+     * Build call for postFunctionByNameInvoke
      * @param name  (required)
      * @param invokeReq  (required)
      * @param _callback Callback for upload/download progress
@@ -1329,7 +1329,7 @@ public class FunctionsApi {
         <tr><td> 503 </td><td> service unavailable </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postFunctionsByNameInvokeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull InvokeReq invokeReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postFunctionByNameInvokeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull InvokeReq invokeReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1346,7 +1346,7 @@ public class FunctionsApi {
         Object localVarPostBody = invokeReq;
 
         // create path and map variables
-        String localVarPath = "/v1/functions/{name}/invoke"
+        String localVarPath = "/v1/function/{name}/invoke"
             .replace("{" + "name" + "}", localVarApiClient.escapeString(name.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -1376,18 +1376,18 @@ public class FunctionsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postFunctionsByNameInvokeValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull InvokeReq invokeReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postFunctionByNameInvokeValidateBeforeCall(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull InvokeReq invokeReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'name' is set
         if (name == null) {
-            throw new ApiException("Missing the required parameter 'name' when calling postFunctionsByNameInvoke(Async)");
+            throw new ApiException("Missing the required parameter 'name' when calling postFunctionByNameInvoke(Async)");
         }
 
         // verify the required parameter 'invokeReq' is set
         if (invokeReq == null) {
-            throw new ApiException("Missing the required parameter 'invokeReq' when calling postFunctionsByNameInvoke(Async)");
+            throw new ApiException("Missing the required parameter 'invokeReq' when calling postFunctionByNameInvoke(Async)");
         }
 
-        return postFunctionsByNameInvokeCall(name, invokeReq, _callback);
+        return postFunctionByNameInvokeCall(name, invokeReq, _callback);
 
     }
 
@@ -1407,8 +1407,8 @@ public class FunctionsApi {
         <tr><td> 503 </td><td> service unavailable </td><td>  -  </td></tr>
      </table>
      */
-    public InvocationView postFunctionsByNameInvoke(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull InvokeReq invokeReq) throws ApiException {
-        ApiResponse<InvocationView> localVarResp = postFunctionsByNameInvokeWithHttpInfo(name, invokeReq);
+    public InvocationView postFunctionByNameInvoke(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull InvokeReq invokeReq) throws ApiException {
+        ApiResponse<InvocationView> localVarResp = postFunctionByNameInvokeWithHttpInfo(name, invokeReq);
         return localVarResp.getData();
     }
 
@@ -1428,8 +1428,8 @@ public class FunctionsApi {
         <tr><td> 503 </td><td> service unavailable </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InvocationView> postFunctionsByNameInvokeWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull InvokeReq invokeReq) throws ApiException {
-        okhttp3.Call localVarCall = postFunctionsByNameInvokeValidateBeforeCall(name, invokeReq, null);
+    public ApiResponse<InvocationView> postFunctionByNameInvokeWithHttpInfo(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull InvokeReq invokeReq) throws ApiException {
+        okhttp3.Call localVarCall = postFunctionByNameInvokeValidateBeforeCall(name, invokeReq, null);
         Type localVarReturnType = new TypeToken<InvocationView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1451,9 +1451,9 @@ public class FunctionsApi {
         <tr><td> 503 </td><td> service unavailable </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postFunctionsByNameInvokeAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull InvokeReq invokeReq, final ApiCallback<InvocationView> _callback) throws ApiException {
+    public okhttp3.Call postFunctionByNameInvokeAsync(@javax.annotation.Nonnull String name, @javax.annotation.Nonnull InvokeReq invokeReq, final ApiCallback<InvocationView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postFunctionsByNameInvokeValidateBeforeCall(name, invokeReq, _callback);
+        okhttp3.Call localVarCall = postFunctionByNameInvokeValidateBeforeCall(name, invokeReq, _callback);
         Type localVarReturnType = new TypeToken<InvocationView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

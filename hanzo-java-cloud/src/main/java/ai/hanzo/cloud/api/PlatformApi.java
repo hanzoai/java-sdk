@@ -46,7 +46,6 @@ import ai.hanzo.cloud.model.PreviewReq;
 import ai.hanzo.cloud.model.PreviewView;
 import ai.hanzo.cloud.model.ProjectView;
 import ai.hanzo.cloud.model.PromoteReq;
-import ai.hanzo.cloud.model.Push;
 import ai.hanzo.cloud.model.Readiness;
 import ai.hanzo.cloud.model.ReleaseBoard;
 import ai.hanzo.cloud.model.RestartRef;
@@ -57,7 +56,6 @@ import ai.hanzo.cloud.model.RunView;
 import ai.hanzo.cloud.model.RunnerBuildReq;
 import ai.hanzo.cloud.model.RunnerBuildResp;
 import ai.hanzo.cloud.model.SetEnvReq;
-import ai.hanzo.cloud.model.Verdict;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -3147,128 +3145,6 @@ public class PlatformApi {
 
         okhttp3.Call localVarCall = postPlatformFleetByAppDeployValidateBeforeCall(app, restartRef, _callback);
         Type localVarReturnType = new TypeToken<Restarted>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postPlatformHook
-     * @param push  (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postPlatformHookCall(@javax.annotation.Nullable Push push, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = push;
-
-        // create path and map variables
-        String localVarPath = "/v1/platform/hook";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postPlatformHookValidateBeforeCall(@javax.annotation.Nullable Push push, final ApiCallback _callback) throws ApiException {
-        return postPlatformHookCall(push, _callback);
-
-    }
-
-    /**
-     * Receive a push from the forge and trigger its build
-     * The forge&#39;s push-to-deploy endpoint. git.hanzo.ai runs as a separate server, so its pushes never reach this fleet&#39;s own receive-pack; without this a push to the host we call canonical builds nothing. A verified push is handed to the SAME two clients a native push travels — the single-registrant deploy trigger, and the many-subscriber lifecycle stream that notifies and indexes — and the build decision itself stays downstream in the one place that knows what a push means.  PUBLIC at the JWT layer, because the forge carries no Hanzo session: AUTHENTICATION IS THE SIGNATURE. The HMAC covers the raw bytes and is verified BEFORE the payload is parsed, so an unauthenticated body is never decoded. The secret is read from KMS; a deployment that cannot read it answers 503 and processes nothing, rather than trusting a delivery it could not check. The body is read UNCOMPRESSED — a request declaring a Content-Encoding is refused 415 before it is touched, because decoding one is unbounded work bought with a few bytes and no credential. A bad signature is 401, a payload over 8 MiB is 413, and a malformed one 400.  A verified push that reaches both clients answers 200 with fired true and the NUMBER OF BUILDS it launched — zero is ordinary, since most pushes track no application, and it is the answer &#39;fired&#39; cannot give. A push that could not be dispatched answers 500: the delivery page shows it red, and the Replay that prompts reaches a fresh attempt rather than being declined as already landed.  The deliveries deliberately ignored answer 200 with a reason and nothing else: a payload that is not a push, a ref DELETE (a zero &#x60;after&#x60; has no commit to build), a BOT-authored push (release automation pushes as the forge&#39;s own Actions user, and a release must never rebuild itself), a push from a forge namespace that maps to no org, and a redelivery of a push already fired. Branches and tags both reach the build trigger, because releases are cut by tag and filtering here would silently stop publishing.
-     * @param push  (optional)
-     * @return Verdict
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public Verdict postPlatformHook(@javax.annotation.Nullable Push push) throws ApiException {
-        ApiResponse<Verdict> localVarResp = postPlatformHookWithHttpInfo(push);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Receive a push from the forge and trigger its build
-     * The forge&#39;s push-to-deploy endpoint. git.hanzo.ai runs as a separate server, so its pushes never reach this fleet&#39;s own receive-pack; without this a push to the host we call canonical builds nothing. A verified push is handed to the SAME two clients a native push travels — the single-registrant deploy trigger, and the many-subscriber lifecycle stream that notifies and indexes — and the build decision itself stays downstream in the one place that knows what a push means.  PUBLIC at the JWT layer, because the forge carries no Hanzo session: AUTHENTICATION IS THE SIGNATURE. The HMAC covers the raw bytes and is verified BEFORE the payload is parsed, so an unauthenticated body is never decoded. The secret is read from KMS; a deployment that cannot read it answers 503 and processes nothing, rather than trusting a delivery it could not check. The body is read UNCOMPRESSED — a request declaring a Content-Encoding is refused 415 before it is touched, because decoding one is unbounded work bought with a few bytes and no credential. A bad signature is 401, a payload over 8 MiB is 413, and a malformed one 400.  A verified push that reaches both clients answers 200 with fired true and the NUMBER OF BUILDS it launched — zero is ordinary, since most pushes track no application, and it is the answer &#39;fired&#39; cannot give. A push that could not be dispatched answers 500: the delivery page shows it red, and the Replay that prompts reaches a fresh attempt rather than being declined as already landed.  The deliveries deliberately ignored answer 200 with a reason and nothing else: a payload that is not a push, a ref DELETE (a zero &#x60;after&#x60; has no commit to build), a BOT-authored push (release automation pushes as the forge&#39;s own Actions user, and a release must never rebuild itself), a push from a forge namespace that maps to no org, and a redelivery of a push already fired. Branches and tags both reach the build trigger, because releases are cut by tag and filtering here would silently stop publishing.
-     * @param push  (optional)
-     * @return ApiResponse&lt;Verdict&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Verdict> postPlatformHookWithHttpInfo(@javax.annotation.Nullable Push push) throws ApiException {
-        okhttp3.Call localVarCall = postPlatformHookValidateBeforeCall(push, null);
-        Type localVarReturnType = new TypeToken<Verdict>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Receive a push from the forge and trigger its build (asynchronously)
-     * The forge&#39;s push-to-deploy endpoint. git.hanzo.ai runs as a separate server, so its pushes never reach this fleet&#39;s own receive-pack; without this a push to the host we call canonical builds nothing. A verified push is handed to the SAME two clients a native push travels — the single-registrant deploy trigger, and the many-subscriber lifecycle stream that notifies and indexes — and the build decision itself stays downstream in the one place that knows what a push means.  PUBLIC at the JWT layer, because the forge carries no Hanzo session: AUTHENTICATION IS THE SIGNATURE. The HMAC covers the raw bytes and is verified BEFORE the payload is parsed, so an unauthenticated body is never decoded. The secret is read from KMS; a deployment that cannot read it answers 503 and processes nothing, rather than trusting a delivery it could not check. The body is read UNCOMPRESSED — a request declaring a Content-Encoding is refused 415 before it is touched, because decoding one is unbounded work bought with a few bytes and no credential. A bad signature is 401, a payload over 8 MiB is 413, and a malformed one 400.  A verified push that reaches both clients answers 200 with fired true and the NUMBER OF BUILDS it launched — zero is ordinary, since most pushes track no application, and it is the answer &#39;fired&#39; cannot give. A push that could not be dispatched answers 500: the delivery page shows it red, and the Replay that prompts reaches a fresh attempt rather than being declined as already landed.  The deliveries deliberately ignored answer 200 with a reason and nothing else: a payload that is not a push, a ref DELETE (a zero &#x60;after&#x60; has no commit to build), a BOT-authored push (release automation pushes as the forge&#39;s own Actions user, and a release must never rebuild itself), a push from a forge namespace that maps to no org, and a redelivery of a push already fired. Branches and tags both reach the build trigger, because releases are cut by tag and filtering here would silently stop publishing.
-     * @param push  (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 2XX </td><td> Success </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call postPlatformHookAsync(@javax.annotation.Nullable Push push, final ApiCallback<Verdict> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postPlatformHookValidateBeforeCall(push, _callback);
-        Type localVarReturnType = new TypeToken<Verdict>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

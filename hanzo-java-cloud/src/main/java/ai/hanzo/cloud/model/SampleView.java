@@ -95,15 +95,15 @@ public class SampleView {
   @javax.annotation.Nullable
   private Double load1;
 
-  public static final String SERIALIZED_NAME_LOAD5 = "load5";
-  @SerializedName(SERIALIZED_NAME_LOAD5)
-  @javax.annotation.Nullable
-  private Double load5;
-
   public static final String SERIALIZED_NAME_LOAD15 = "load15";
   @SerializedName(SERIALIZED_NAME_LOAD15)
   @javax.annotation.Nullable
   private Double load15;
+
+  public static final String SERIALIZED_NAME_LOAD5 = "load5";
+  @SerializedName(SERIALIZED_NAME_LOAD5)
+  @javax.annotation.Nullable
+  private Double load5;
 
   public static final String SERIALIZED_NAME_MEM_FREE = "memFree";
   @SerializedName(SERIALIZED_NAME_MEM_FREE)
@@ -304,25 +304,6 @@ public class SampleView {
   }
 
 
-  public SampleView load5(@javax.annotation.Nullable Double load5) {
-    this.load5 = load5;
-    return this;
-  }
-
-  /**
-   * Load5 is the 5-minute load average, the same units as Load1.
-   * @return load5
-   */
-  @javax.annotation.Nullable
-  public Double getLoad5() {
-    return load5;
-  }
-
-  public void setLoad5(@javax.annotation.Nullable Double load5) {
-    this.load5 = load5;
-  }
-
-
   public SampleView load15(@javax.annotation.Nullable Double load15) {
     this.load15 = load15;
     return this;
@@ -339,6 +320,25 @@ public class SampleView {
 
   public void setLoad15(@javax.annotation.Nullable Double load15) {
     this.load15 = load15;
+  }
+
+
+  public SampleView load5(@javax.annotation.Nullable Double load5) {
+    this.load5 = load5;
+    return this;
+  }
+
+  /**
+   * Load5 is the 5-minute load average, the same units as Load1.
+   * @return load5
+   */
+  @javax.annotation.Nullable
+  public Double getLoad5() {
+    return load5;
+  }
+
+  public void setLoad5(@javax.annotation.Nullable Double load5) {
+    this.load5 = load5;
   }
 
 
@@ -456,8 +456,8 @@ public class SampleView {
         Objects.equals(this.host, sampleView.host) &&
         Objects.equals(this.kind, sampleView.kind) &&
         Objects.equals(this.load1, sampleView.load1) &&
-        Objects.equals(this.load5, sampleView.load5) &&
         Objects.equals(this.load15, sampleView.load15) &&
+        Objects.equals(this.load5, sampleView.load5) &&
         Objects.equals(this.memFree, sampleView.memFree) &&
         Objects.equals(this.memUsed, sampleView.memUsed) &&
         Objects.equals(this.memory, sampleView.memory) &&
@@ -467,7 +467,7 @@ public class SampleView {
 
   @Override
   public int hashCode() {
-    return Objects.hash(at, costCents, cpus, gpuModel, gpuUtil, gpus, host, kind, load1, load5, load15, memFree, memUsed, memory, source, unit);
+    return Objects.hash(at, costCents, cpus, gpuModel, gpuUtil, gpus, host, kind, load1, load15, load5, memFree, memUsed, memory, source, unit);
   }
 
   @Override
@@ -483,8 +483,8 @@ public class SampleView {
     sb.append("    host: ").append(toIndentedString(host)).append("\n");
     sb.append("    kind: ").append(toIndentedString(kind)).append("\n");
     sb.append("    load1: ").append(toIndentedString(load1)).append("\n");
-    sb.append("    load5: ").append(toIndentedString(load5)).append("\n");
     sb.append("    load15: ").append(toIndentedString(load15)).append("\n");
+    sb.append("    load5: ").append(toIndentedString(load5)).append("\n");
     sb.append("    memFree: ").append(toIndentedString(memFree)).append("\n");
     sb.append("    memUsed: ").append(toIndentedString(memUsed)).append("\n");
     sb.append("    memory: ").append(toIndentedString(memory)).append("\n");
@@ -511,7 +511,7 @@ public class SampleView {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("at", "costCents", "cpus", "gpuModel", "gpuUtil", "gpus", "host", "kind", "load1", "load5", "load15", "memFree", "memUsed", "memory", "source", "unit"));
+    openapiFields = new HashSet<String>(Arrays.asList("at", "costCents", "cpus", "gpuModel", "gpuUtil", "gpus", "host", "kind", "load1", "load15", "load5", "memFree", "memUsed", "memory", "source", "unit"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);

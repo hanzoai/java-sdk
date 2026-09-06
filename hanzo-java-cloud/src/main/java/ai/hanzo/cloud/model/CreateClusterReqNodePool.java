@@ -46,7 +46,7 @@ import java.util.Set;
 import ai.hanzo.cloud.JSON;
 
 /**
- * NodePool is the ONE pool the cluster is born with — a cluster with no nodes runs nothing, so it is not optional. More pools are added afterwards through POST /v1/visor/clusters/:clusterId/pools.
+ * NodePool is the ONE pool the cluster is born with — a cluster with no nodes runs nothing, so it is not optional. More pools are added afterwards through POST /v1/compute/clusters/:clusterId/pools.
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class CreateClusterReqNodePool {

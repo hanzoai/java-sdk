@@ -119,7 +119,7 @@ public class AgentBinding {
   }
 
   /**
-   * AgentName is the cloud Agent (/v1/agents) this machine runs — the agent a message to the bot is actually run against. It is the one field that decides what the bot DOES.
+   * AgentName is the cloud Agent (/v1/agent) this machine runs — the agent a message to the bot is actually run against. It is the one field that decides what the bot DOES.
    * @return agentName
    */
   @javax.annotation.Nullable

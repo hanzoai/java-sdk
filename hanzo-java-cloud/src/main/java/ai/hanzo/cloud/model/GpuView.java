@@ -142,7 +142,7 @@ public class GpuView {
   }
 
   /**
-   * Machine is the id of the machine holding this card, addressable as-is on /v1/visor/machines/:id.
+   * Machine is the id of the machine holding this card, addressable as-is on /v1/compute/machines/:id.
    * @return machine
    */
   @javax.annotation.Nullable

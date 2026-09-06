@@ -84,7 +84,7 @@ public class BotMember {
   }
 
   /**
-   * Active is whether the agent projects as a LIVE space member, derived from its registry status: empty, \&quot;active\&quot; and \&quot;ready\&quot; are live, anything else (archived/retired) is not. An inactive bot drops out of the Team list while its past authorship survives.
+   * Active is whether the agent projects as a LIVE space member, derived from its registry status: empty, \&quot;active\&quot; and \&quot;ready\&quot; are live, anything else (archived/retired) is not. An inactive bot drops out of the roster while its past authorship survives.
    * @return active
    */
   @javax.annotation.Nullable
@@ -103,7 +103,7 @@ public class BotMember {
   }
 
   /**
-   * the agent id
+   * ID is the agent id.
    * @return id
    */
   @javax.annotation.Nullable
@@ -122,7 +122,7 @@ public class BotMember {
   }
 
   /**
-   * display name
+   * Name is the display name.
    * @return name
    */
   @javax.annotation.Nullable
@@ -141,7 +141,7 @@ public class BotMember {
   }
 
   /**
-   * the projected Person _id
+   * PersonRef is the projected Person _id.
    * @return personRef
    */
   @javax.annotation.Nullable
@@ -160,7 +160,7 @@ public class BotMember {
   }
 
   /**
-   * derived member account uuid (personUuid)
+   * UserID is the derived member account uuid (personUuid).
    * @return userId
    */
   @javax.annotation.Nullable

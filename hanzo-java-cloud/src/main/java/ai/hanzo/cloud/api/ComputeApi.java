@@ -30,8 +30,6 @@ import java.io.IOException;
 import ai.hanzo.cloud.model.AgentBinding;
 import ai.hanzo.cloud.model.BindAgentReq;
 import ai.hanzo.cloud.model.BindingList;
-import ai.hanzo.cloud.model.BotList;
-import ai.hanzo.cloud.model.BotView;
 import ai.hanzo.cloud.model.ClusterAttach;
 import ai.hanzo.cloud.model.ClusterDetached;
 import ai.hanzo.cloud.model.ClusterDetailView;
@@ -61,16 +59,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class VisorApi {
+public class ComputeApi {
     private ApiClient localVarApiClient;
     private int localHostIndex;
     private String localCustomBaseUrl;
 
-    public VisorApi() {
+    public ComputeApi() {
         this(Configuration.getDefaultApiClient());
     }
 
-    public VisorApi(ApiClient apiClient) {
+    public ComputeApi(ApiClient apiClient) {
         this.localVarApiClient = apiClient;
     }
 
@@ -128,7 +126,7 @@ public class VisorApi {
         Object localVarPostBody = clusterAttach;
 
         // create path and map variables
-        String localVarPath = "/v1/visor/clusters";
+        String localVarPath = "/v1/compute/clusters";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -168,8 +166,8 @@ public class VisorApi {
     }
 
     /**
-     * Attaches a BYO cluster to the caller&#39;s org — the kubeconfig is validated, KMS-sealed and added to the fleet — and answers 201 with the cluster as it now appears on GET /v1/visor/clusters.
-     * Attaches a BYO cluster to the caller&#39;s org — the kubeconfig is validated, KMS-sealed and added to the fleet — and answers 201 with the cluster as it now appears on GET /v1/visor/clusters. Billed the nominal management fee: the customer brings the compute, Hanzo meters the management plane.
+     * Attaches a BYO cluster to the caller&#39;s org — the kubeconfig is validated, KMS-sealed and added to the fleet — and answers 201 with the cluster as it now appears on GET /v1/compute/clusters.
+     * Attaches a BYO cluster to the caller&#39;s org — the kubeconfig is validated, KMS-sealed and added to the fleet — and answers 201 with the cluster as it now appears on GET /v1/compute/clusters. Billed the nominal management fee: the customer brings the compute, Hanzo meters the management plane.
      * @param clusterAttach  (required)
      * @return ClusterView
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -186,8 +184,8 @@ public class VisorApi {
     }
 
     /**
-     * Attaches a BYO cluster to the caller&#39;s org — the kubeconfig is validated, KMS-sealed and added to the fleet — and answers 201 with the cluster as it now appears on GET /v1/visor/clusters.
-     * Attaches a BYO cluster to the caller&#39;s org — the kubeconfig is validated, KMS-sealed and added to the fleet — and answers 201 with the cluster as it now appears on GET /v1/visor/clusters. Billed the nominal management fee: the customer brings the compute, Hanzo meters the management plane.
+     * Attaches a BYO cluster to the caller&#39;s org — the kubeconfig is validated, KMS-sealed and added to the fleet — and answers 201 with the cluster as it now appears on GET /v1/compute/clusters.
+     * Attaches a BYO cluster to the caller&#39;s org — the kubeconfig is validated, KMS-sealed and added to the fleet — and answers 201 with the cluster as it now appears on GET /v1/compute/clusters. Billed the nominal management fee: the customer brings the compute, Hanzo meters the management plane.
      * @param clusterAttach  (required)
      * @return ApiResponse&lt;ClusterView&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -205,8 +203,8 @@ public class VisorApi {
     }
 
     /**
-     * Attaches a BYO cluster to the caller&#39;s org — the kubeconfig is validated, KMS-sealed and added to the fleet — and answers 201 with the cluster as it now appears on GET /v1/visor/clusters. (asynchronously)
-     * Attaches a BYO cluster to the caller&#39;s org — the kubeconfig is validated, KMS-sealed and added to the fleet — and answers 201 with the cluster as it now appears on GET /v1/visor/clusters. Billed the nominal management fee: the customer brings the compute, Hanzo meters the management plane.
+     * Attaches a BYO cluster to the caller&#39;s org — the kubeconfig is validated, KMS-sealed and added to the fleet — and answers 201 with the cluster as it now appears on GET /v1/compute/clusters. (asynchronously)
+     * Attaches a BYO cluster to the caller&#39;s org — the kubeconfig is validated, KMS-sealed and added to the fleet — and answers 201 with the cluster as it now appears on GET /v1/compute/clusters. Billed the nominal management fee: the customer brings the compute, Hanzo meters the management plane.
      * @param clusterAttach  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -256,7 +254,7 @@ public class VisorApi {
         Object localVarPostBody = bindAgentReq;
 
         // create path and map variables
-        String localVarPath = "/v1/visor/machines/{id}/agent"
+        String localVarPath = "/v1/compute/machines/{id}/agent"
             .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -393,7 +391,7 @@ public class VisorApi {
         Object localVarPostBody = jobCancel;
 
         // create path and map variables
-        String localVarPath = "/v1/visor/fleet/jobs/{id}/cancel"
+        String localVarPath = "/v1/compute/fleet/jobs/{id}/cancel"
             .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -529,7 +527,7 @@ public class VisorApi {
         Object localVarPostBody = createClusterReq;
 
         // create path and map variables
-        String localVarPath = "/v1/visor/k8s/clusters";
+        String localVarPath = "/v1/compute/k8s/clusters";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -657,7 +655,7 @@ public class VisorApi {
         Object localVarPostBody = poolCreate;
 
         // create path and map variables
-        String localVarPath = "/v1/visor/clusters/{clusterId}/pools"
+        String localVarPath = "/v1/compute/clusters/{clusterId}/pools"
             .replace("{" + "clusterId" + "}", localVarApiClient.escapeString(clusterId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -764,128 +762,6 @@ public class VisorApi {
         return localVarCall;
     }
     /**
-     * Build call for deleteBot
-     * @param id ID is the bot machine&#39;s id — the same id the machines surface addresses it by. Scoped to the caller&#39;s org upstream, so another tenant&#39;s id is 404. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteBotCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/visor/compute/bots/{id}"
-            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteBotValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'id' is set
-        if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling deleteBot(Async)");
-        }
-
-        return deleteBotCall(id, _callback);
-
-    }
-
-    /**
-     * Tears down both halves of a bot: it unbinds the agent (best-effort — a bot with no binding still deletes), then terminates the machine.
-     * Tears down both halves of a bot: it unbinds the agent (best-effort — a bot with no binding still deletes), then terminates the machine. Answers 204.
-     * @param id ID is the bot machine&#39;s id — the same id the machines surface addresses it by. Scoped to the caller&#39;s org upstream, so another tenant&#39;s id is 404. (required)
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
-     </table>
-     */
-    public void deleteBot(@javax.annotation.Nonnull String id) throws ApiException {
-        deleteBotWithHttpInfo(id);
-    }
-
-    /**
-     * Tears down both halves of a bot: it unbinds the agent (best-effort — a bot with no binding still deletes), then terminates the machine.
-     * Tears down both halves of a bot: it unbinds the agent (best-effort — a bot with no binding still deletes), then terminates the machine. Answers 204.
-     * @param id ID is the bot machine&#39;s id — the same id the machines surface addresses it by. Scoped to the caller&#39;s org upstream, so another tenant&#39;s id is 404. (required)
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Void> deleteBotWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = deleteBotValidateBeforeCall(id, null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * Tears down both halves of a bot: it unbinds the agent (best-effort — a bot with no binding still deletes), then terminates the machine. (asynchronously)
-     * Tears down both halves of a bot: it unbinds the agent (best-effort — a bot with no binding still deletes), then terminates the machine. Answers 204.
-     * @param id ID is the bot machine&#39;s id — the same id the machines surface addresses it by. Scoped to the caller&#39;s org upstream, so another tenant&#39;s id is 404. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call deleteBotAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = deleteBotValidateBeforeCall(id, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
      * Build call for deleteKubernetesCluster
      * @param id ID is the provider&#39;s DOKS cluster id. Visor scopes the lookup to the caller&#39;s org, so another tenant&#39;s id resolves to not-found rather than their cluster. (required)
      * @param _callback Callback for upload/download progress
@@ -915,7 +791,7 @@ public class VisorApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/visor/k8s/clusters/{id}"
+        String localVarPath = "/v1/compute/k8s/clusters/{id}"
             .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -1037,7 +913,7 @@ public class VisorApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/visor/machines/{id}"
+        String localVarPath = "/v1/compute/machines/{id}"
             .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -1161,7 +1037,7 @@ public class VisorApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/visor/clusters/{clusterId}/pools/{poolId}"
+        String localVarPath = "/v1/compute/clusters/{clusterId}/pools/{poolId}"
             .replace("{" + "clusterId" + "}", localVarApiClient.escapeString(clusterId.toString()))
             .replace("{" + "poolId" + "}", localVarApiClient.escapeString(poolId.toString()));
 
@@ -1299,7 +1175,7 @@ public class VisorApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/visor/clusters/{id}"
+        String localVarPath = "/v1/compute/clusters/{id}"
             .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -1397,8 +1273,7 @@ public class VisorApi {
         return localVarCall;
     }
     /**
-     * Build call for getBot
-     * @param id ID is the bot machine&#39;s id — the same id the machines surface addresses it by. Scoped to the caller&#39;s org upstream, so another tenant&#39;s id is 404. (required)
+     * Build call for getComputeRegions
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1409,7 +1284,7 @@ public class VisorApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBotCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getComputeRegionsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1426,8 +1301,7 @@ public class VisorApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/visor/compute/bots/{id}"
-            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+        String localVarPath = "/v1/compute/regions";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1455,21 +1329,15 @@ public class VisorApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getBotValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'id' is set
-        if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getBot(Async)");
-        }
-
-        return getBotCall(id, _callback);
+    private okhttp3.Call getComputeRegionsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getComputeRegionsCall(_callback);
 
     }
 
     /**
-     * Returns one of the caller org&#39;s bot machines with its agent binding.
-     * Returns one of the caller org&#39;s bot machines with its agent binding.  A machine counts as a Bot if it carries the hanzo-kind:bot tag OR has an agent binding — either signal is authoritative, so a bot resolves even before its cloud-init has stamped every tag. A machine that is neither is 404: this route answers for bots, not for machines.
-     * @param id ID is the bot machine&#39;s id — the same id the machines surface addresses it by. Scoped to the caller&#39;s org upstream, so another tenant&#39;s id is 404. (required)
-     * @return BotView
+     * Regions lists the regions a machine can be launched in.
+     * Regions lists the regions a machine can be launched in.  The catalog is GLOBAL — identical for every tenant — so no owner is forwarded upstream. It is still org-gated, because a catalog is a map of what this deployment can spend money in and an anonymous caller has no business reading it.
+     * @return Object
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -1478,16 +1346,15 @@ public class VisorApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public BotView getBot(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<BotView> localVarResp = getBotWithHttpInfo(id);
+    public Object getComputeRegions() throws ApiException {
+        ApiResponse<Object> localVarResp = getComputeRegionsWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
-     * Returns one of the caller org&#39;s bot machines with its agent binding.
-     * Returns one of the caller org&#39;s bot machines with its agent binding.  A machine counts as a Bot if it carries the hanzo-kind:bot tag OR has an agent binding — either signal is authoritative, so a bot resolves even before its cloud-init has stamped every tag. A machine that is neither is 404: this route answers for bots, not for machines.
-     * @param id ID is the bot machine&#39;s id — the same id the machines surface addresses it by. Scoped to the caller&#39;s org upstream, so another tenant&#39;s id is 404. (required)
-     * @return ApiResponse&lt;BotView&gt;
+     * Regions lists the regions a machine can be launched in.
+     * Regions lists the regions a machine can be launched in.  The catalog is GLOBAL — identical for every tenant — so no owner is forwarded upstream. It is still org-gated, because a catalog is a map of what this deployment can spend money in and an anonymous caller has no business reading it.
+     * @return ApiResponse&lt;Object&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -1496,16 +1363,15 @@ public class VisorApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BotView> getBotWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = getBotValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<BotView>(){}.getType();
+    public ApiResponse<Object> getComputeRegionsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getComputeRegionsValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<Object>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Returns one of the caller org&#39;s bot machines with its agent binding. (asynchronously)
-     * Returns one of the caller org&#39;s bot machines with its agent binding.  A machine counts as a Bot if it carries the hanzo-kind:bot tag OR has an agent binding — either signal is authoritative, so a bot resolves even before its cloud-init has stamped every tag. A machine that is neither is 404: this route answers for bots, not for machines.
-     * @param id ID is the bot machine&#39;s id — the same id the machines surface addresses it by. Scoped to the caller&#39;s org upstream, so another tenant&#39;s id is 404. (required)
+     * Regions lists the regions a machine can be launched in. (asynchronously)
+     * Regions lists the regions a machine can be launched in.  The catalog is GLOBAL — identical for every tenant — so no owner is forwarded upstream. It is still org-gated, because a catalog is a map of what this deployment can spend money in and an anonymous caller has no business reading it.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1516,10 +1382,127 @@ public class VisorApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getBotAsync(@javax.annotation.Nonnull String id, final ApiCallback<BotView> _callback) throws ApiException {
+    public okhttp3.Call getComputeRegionsAsync(final ApiCallback<Object> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getBotValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<BotView>(){}.getType();
+        okhttp3.Call localVarCall = getComputeRegionsValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<Object>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getComputeSizes
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getComputeSizesCall(final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/compute/sizes";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getComputeSizesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getComputeSizesCall(_callback);
+
+    }
+
+    /**
+     * Sizes lists the machine sizes available to launch, with their specifications.
+     * Sizes lists the machine sizes available to launch, with their specifications.  Global and org-gated, exactly as the region catalog is, and for the same reasons.
+     * @return Object
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public Object getComputeSizes() throws ApiException {
+        ApiResponse<Object> localVarResp = getComputeSizesWithHttpInfo();
+        return localVarResp.getData();
+    }
+
+    /**
+     * Sizes lists the machine sizes available to launch, with their specifications.
+     * Sizes lists the machine sizes available to launch, with their specifications.  Global and org-gated, exactly as the region catalog is, and for the same reasons.
+     * @return ApiResponse&lt;Object&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Object> getComputeSizesWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getComputeSizesValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<Object>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Sizes lists the machine sizes available to launch, with their specifications. (asynchronously)
+     * Sizes lists the machine sizes available to launch, with their specifications.  Global and org-gated, exactly as the region catalog is, and for the same reasons.
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getComputeSizesAsync(final ApiCallback<Object> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getComputeSizesValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<Object>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1553,7 +1536,7 @@ public class VisorApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/visor/k8s/clusters/{id}"
+        String localVarPath = "/v1/compute/k8s/clusters/{id}"
             .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -1680,7 +1663,7 @@ public class VisorApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/visor/machines/{id}"
+        String localVarPath = "/v1/compute/machines/{id}"
             .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -1807,7 +1790,7 @@ public class VisorApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/visor/machines/{id}/agent"
+        String localVarPath = "/v1/compute/machines/{id}/agent"
             .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -1905,357 +1888,6 @@ public class VisorApi {
         return localVarCall;
     }
     /**
-     * Build call for getVisorComputeRegions
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getVisorComputeRegionsCall(final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/visor/compute/regions";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getVisorComputeRegionsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getVisorComputeRegionsCall(_callback);
-
-    }
-
-    /**
-     * Regions lists the regions a machine can be launched in.
-     * Regions lists the regions a machine can be launched in.  The catalog is GLOBAL — identical for every tenant — so no owner is forwarded upstream. It is still org-gated, because a catalog is a map of what this deployment can spend money in and an anonymous caller has no business reading it.
-     * @return Object
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public Object getVisorComputeRegions() throws ApiException {
-        ApiResponse<Object> localVarResp = getVisorComputeRegionsWithHttpInfo();
-        return localVarResp.getData();
-    }
-
-    /**
-     * Regions lists the regions a machine can be launched in.
-     * Regions lists the regions a machine can be launched in.  The catalog is GLOBAL — identical for every tenant — so no owner is forwarded upstream. It is still org-gated, because a catalog is a map of what this deployment can spend money in and an anonymous caller has no business reading it.
-     * @return ApiResponse&lt;Object&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Object> getVisorComputeRegionsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getVisorComputeRegionsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<Object>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Regions lists the regions a machine can be launched in. (asynchronously)
-     * Regions lists the regions a machine can be launched in.  The catalog is GLOBAL — identical for every tenant — so no owner is forwarded upstream. It is still org-gated, because a catalog is a map of what this deployment can spend money in and an anonymous caller has no business reading it.
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getVisorComputeRegionsAsync(final ApiCallback<Object> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getVisorComputeRegionsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<Object>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for getVisorComputeSizes
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getVisorComputeSizesCall(final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/visor/compute/sizes";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call getVisorComputeSizesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getVisorComputeSizesCall(_callback);
-
-    }
-
-    /**
-     * Sizes lists the machine sizes available to launch, with their specifications.
-     * Sizes lists the machine sizes available to launch, with their specifications.  Global and org-gated, exactly as the region catalog is, and for the same reasons.
-     * @return Object
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public Object getVisorComputeSizes() throws ApiException {
-        ApiResponse<Object> localVarResp = getVisorComputeSizesWithHttpInfo();
-        return localVarResp.getData();
-    }
-
-    /**
-     * Sizes lists the machine sizes available to launch, with their specifications.
-     * Sizes lists the machine sizes available to launch, with their specifications.  Global and org-gated, exactly as the region catalog is, and for the same reasons.
-     * @return ApiResponse&lt;Object&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Object> getVisorComputeSizesWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getVisorComputeSizesValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<Object>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Sizes lists the machine sizes available to launch, with their specifications. (asynchronously)
-     * Sizes lists the machine sizes available to launch, with their specifications.  Global and org-gated, exactly as the region catalog is, and for the same reasons.
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call getVisorComputeSizesAsync(final ApiCallback<Object> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = getVisorComputeSizesValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<Object>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for listBots
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listBotsCall(final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/visor/compute/bots";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call listBotsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return listBotsCall(_callback);
-
-    }
-
-    /**
-     * Returns the caller org&#39;s bot machines — the kind&#x3D;bot machines — each joined with the agent binding that says which cloud Agent it runs.
-     * Returns the caller org&#39;s bot machines — the kind&#x3D;bot machines — each joined with the agent binding that says which cloud Agent it runs.  The bindings are read ONCE and joined by machine id, so the list is O(1) upstream calls, not N+1. A bindings read that fails only costs the reconciled status: a bot still lists without it.
-     * @return BotList
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public BotList listBots() throws ApiException {
-        ApiResponse<BotList> localVarResp = listBotsWithHttpInfo();
-        return localVarResp.getData();
-    }
-
-    /**
-     * Returns the caller org&#39;s bot machines — the kind&#x3D;bot machines — each joined with the agent binding that says which cloud Agent it runs.
-     * Returns the caller org&#39;s bot machines — the kind&#x3D;bot machines — each joined with the agent binding that says which cloud Agent it runs.  The bindings are read ONCE and joined by machine id, so the list is O(1) upstream calls, not N+1. A bindings read that fails only costs the reconciled status: a bot still lists without it.
-     * @return ApiResponse&lt;BotList&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<BotList> listBotsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = listBotsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<BotList>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Returns the caller org&#39;s bot machines — the kind&#x3D;bot machines — each joined with the agent binding that says which cloud Agent it runs. (asynchronously)
-     * Returns the caller org&#39;s bot machines — the kind&#x3D;bot machines — each joined with the agent binding that says which cloud Agent it runs.  The bindings are read ONCE and joined by machine id, so the list is O(1) upstream calls, not N+1. A bindings read that fails only costs the reconciled status: a bot still lists without it.
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listBotsAsync(final ApiCallback<BotList> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = listBotsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<BotList>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
      * Build call for listClusters
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2284,7 +1916,7 @@ public class VisorApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/visor/clusters";
+        String localVarPath = "/v1/compute/clusters";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2401,7 +2033,7 @@ public class VisorApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/visor/fleet";
+        String localVarPath = "/v1/compute/fleet";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2520,7 +2152,7 @@ public class VisorApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/visor/fleet/jobs";
+        String localVarPath = "/v1/compute/fleet/jobs";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2654,7 +2286,7 @@ public class VisorApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/visor/fleet/samples";
+        String localVarPath = "/v1/compute/fleet/samples";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2792,7 +2424,7 @@ public class VisorApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/visor/fleet/workers";
+        String localVarPath = "/v1/compute/fleet/workers";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2909,7 +2541,7 @@ public class VisorApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/visor/gpus/alerts";
+        String localVarPath = "/v1/compute/gpus/alerts";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -3026,7 +2658,7 @@ public class VisorApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/visor/gpus";
+        String localVarPath = "/v1/compute/gpus";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -3143,7 +2775,7 @@ public class VisorApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/visor/k8s/clusters";
+        String localVarPath = "/v1/compute/k8s/clusters";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -3260,7 +2892,7 @@ public class VisorApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/visor/k8s/nodes";
+        String localVarPath = "/v1/compute/k8s/nodes";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -3377,7 +3009,7 @@ public class VisorApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/visor/machines/agents";
+        String localVarPath = "/v1/compute/machines/agents";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -3467,6 +3099,7 @@ public class VisorApi {
     }
     /**
      * Build call for listMachines
+     * @param kind  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -3477,7 +3110,7 @@ public class VisorApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listMachinesCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call listMachinesCall(@javax.annotation.Nullable String kind, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3494,13 +3127,17 @@ public class VisorApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/visor/machines";
+        String localVarPath = "/v1/compute/machines";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (kind != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("kind", kind));
+        }
 
         final String[] localVarAccepts = {
             "application/json"
@@ -3522,14 +3159,15 @@ public class VisorApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listMachinesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return listMachinesCall(_callback);
+    private okhttp3.Call listMachinesValidateBeforeCall(@javax.annotation.Nullable String kind, final ApiCallback _callback) throws ApiException {
+        return listMachinesCall(kind, _callback);
 
     }
 
     /**
      * Returns every machine the caller&#39;s org has — Visor&#39;s registry, the live DigitalOcean droplets and the DOKS worker nodes (deduped into one union), plus the BYO machines that dialed in via &#x60;hanzo link&#x60; (provider \&quot;byo\&quot;).
      * Returns every machine the caller&#39;s org has — Visor&#39;s registry, the live DigitalOcean droplets and the DOKS worker nodes (deduped into one union), plus the BYO machines that dialed in via &#x60;hanzo link&#x60; (provider \&quot;byo\&quot;).  A source Visor cannot answer for is logged and skipped, never an error: one wedged upstream must not hide the machines the other sources can see.
+     * @param kind  (optional)
      * @return MachineList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3539,14 +3177,15 @@ public class VisorApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public MachineList listMachines() throws ApiException {
-        ApiResponse<MachineList> localVarResp = listMachinesWithHttpInfo();
+    public MachineList listMachines(@javax.annotation.Nullable String kind) throws ApiException {
+        ApiResponse<MachineList> localVarResp = listMachinesWithHttpInfo(kind);
         return localVarResp.getData();
     }
 
     /**
      * Returns every machine the caller&#39;s org has — Visor&#39;s registry, the live DigitalOcean droplets and the DOKS worker nodes (deduped into one union), plus the BYO machines that dialed in via &#x60;hanzo link&#x60; (provider \&quot;byo\&quot;).
      * Returns every machine the caller&#39;s org has — Visor&#39;s registry, the live DigitalOcean droplets and the DOKS worker nodes (deduped into one union), plus the BYO machines that dialed in via &#x60;hanzo link&#x60; (provider \&quot;byo\&quot;).  A source Visor cannot answer for is logged and skipped, never an error: one wedged upstream must not hide the machines the other sources can see.
+     * @param kind  (optional)
      * @return ApiResponse&lt;MachineList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3556,8 +3195,8 @@ public class VisorApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<MachineList> listMachinesWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = listMachinesValidateBeforeCall(null);
+    public ApiResponse<MachineList> listMachinesWithHttpInfo(@javax.annotation.Nullable String kind) throws ApiException {
+        okhttp3.Call localVarCall = listMachinesValidateBeforeCall(kind, null);
         Type localVarReturnType = new TypeToken<MachineList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -3565,6 +3204,7 @@ public class VisorApi {
     /**
      * Returns every machine the caller&#39;s org has — Visor&#39;s registry, the live DigitalOcean droplets and the DOKS worker nodes (deduped into one union), plus the BYO machines that dialed in via &#x60;hanzo link&#x60; (provider \&quot;byo\&quot;). (asynchronously)
      * Returns every machine the caller&#39;s org has — Visor&#39;s registry, the live DigitalOcean droplets and the DOKS worker nodes (deduped into one union), plus the BYO machines that dialed in via &#x60;hanzo link&#x60; (provider \&quot;byo\&quot;).  A source Visor cannot answer for is logged and skipped, never an error: one wedged upstream must not hide the machines the other sources can see.
+     * @param kind  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3575,22 +3215,20 @@ public class VisorApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listMachinesAsync(final ApiCallback<MachineList> _callback) throws ApiException {
+    public okhttp3.Call listMachinesAsync(@javax.annotation.Nullable String kind, final ApiCallback<MachineList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listMachinesValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = listMachinesValidateBeforeCall(kind, _callback);
         Type localVarReturnType = new TypeToken<MachineList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postVisorComputeBotsByIdByAction
-     * @param id  (required)
-     * @param action  (required)
+     * Build call for postComputeMachines
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postVisorComputeBotsByIdByActionCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String action, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postComputeMachinesCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3607,7 +3245,97 @@ public class VisorApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/visor/compute/bots/{id}/{action}"
+        String localVarPath = "/v1/compute/machines";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postComputeMachinesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postComputeMachinesCall(_callback);
+
+    }
+
+    /**
+     * Launch a metered machine for your org, or price one first with dryRun
+     * Provisions a machine owned by the caller&#39;s org and answers 201 with the machine. Send &#x60;dryRun: true&#x60; to get a PRICE QUOTE instead: 200 with the upstream quote passed through verbatim, nothing launched and nothing spent. Two response shapes on one address is the rule to know, and it is why this is not a typed op.  Metering is not this plane&#39;s: the launch fronts the compute provider&#39;s resell endpoint, which owns the balance gate and the per-hour meter, and cloud only forwards the tenant. Ownership is the validated principal&#39;s org and is never read from the body, so a launch always lands in the caller&#39;s OWN tenant and the machine it creates is only ever visible to that tenant. Fails closed: a validated principal is required (403 without one) and &#x60;size&#x60; (or its &#x60;instanceType&#x60; alias) is required (400).
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void postComputeMachines() throws ApiException {
+        postComputeMachinesWithHttpInfo();
+    }
+
+    /**
+     * Launch a metered machine for your org, or price one first with dryRun
+     * Provisions a machine owned by the caller&#39;s org and answers 201 with the machine. Send &#x60;dryRun: true&#x60; to get a PRICE QUOTE instead: 200 with the upstream quote passed through verbatim, nothing launched and nothing spent. Two response shapes on one address is the rule to know, and it is why this is not a typed op.  Metering is not this plane&#39;s: the launch fronts the compute provider&#39;s resell endpoint, which owns the balance gate and the per-hour meter, and cloud only forwards the tenant. Ownership is the validated principal&#39;s org and is never read from the body, so a launch always lands in the caller&#39;s OWN tenant and the machine it creates is only ever visible to that tenant. Fails closed: a validated principal is required (403 without one) and &#x60;size&#x60; (or its &#x60;instanceType&#x60; alias) is required (400).
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> postComputeMachinesWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postComputeMachinesValidateBeforeCall(null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Launch a metered machine for your org, or price one first with dryRun (asynchronously)
+     * Provisions a machine owned by the caller&#39;s org and answers 201 with the machine. Send &#x60;dryRun: true&#x60; to get a PRICE QUOTE instead: 200 with the upstream quote passed through verbatim, nothing launched and nothing spent. Two response shapes on one address is the rule to know, and it is why this is not a typed op.  Metering is not this plane&#39;s: the launch fronts the compute provider&#39;s resell endpoint, which owns the balance gate and the per-hour meter, and cloud only forwards the tenant. Ownership is the validated principal&#39;s org and is never read from the body, so a launch always lands in the caller&#39;s OWN tenant and the machine it creates is only ever visible to that tenant. Fails closed: a validated principal is required (403 without one) and &#x60;size&#x60; (or its &#x60;instanceType&#x60; alias) is required (400).
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public okhttp3.Call postComputeMachinesAsync(final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postComputeMachinesValidateBeforeCall(_callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postComputeMachinesByIdByAction
+     * @param id  (required)
+     * @param action  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public okhttp3.Call postComputeMachinesByIdByActionCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String action, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/compute/machines/{id}/{action}"
             .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()))
             .replace("{" + "action" + "}", localVarApiClient.escapeString(action.toString()));
 
@@ -3636,18 +3364,18 @@ public class VisorApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postVisorComputeBotsByIdByActionValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String action, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postComputeMachinesByIdByActionValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String action, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling postVisorComputeBotsByIdByAction(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling postComputeMachinesByIdByAction(Async)");
         }
 
         // verify the required parameter 'action' is set
         if (action == null) {
-            throw new ApiException("Missing the required parameter 'action' when calling postVisorComputeBotsByIdByAction(Async)");
+            throw new ApiException("Missing the required parameter 'action' when calling postComputeMachinesByIdByAction(Async)");
         }
 
-        return postVisorComputeBotsByIdByActionCall(id, action, _callback);
+        return postComputeMachinesByIdByActionCall(id, action, _callback);
 
     }
 
@@ -3658,8 +3386,8 @@ public class VisorApi {
      * @param action  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postVisorComputeBotsByIdByAction(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String action) throws ApiException {
-        postVisorComputeBotsByIdByActionWithHttpInfo(id, action);
+    public void postComputeMachinesByIdByAction(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String action) throws ApiException {
+        postComputeMachinesByIdByActionWithHttpInfo(id, action);
     }
 
     /**
@@ -3670,8 +3398,8 @@ public class VisorApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postVisorComputeBotsByIdByActionWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String action) throws ApiException {
-        okhttp3.Call localVarCall = postVisorComputeBotsByIdByActionValidateBeforeCall(id, action, null);
+    public ApiResponse<Void> postComputeMachinesByIdByActionWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String action) throws ApiException {
+        okhttp3.Call localVarCall = postComputeMachinesByIdByActionValidateBeforeCall(id, action, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -3684,185 +3412,9 @@ public class VisorApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postVisorComputeBotsByIdByActionAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String action, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postComputeMachinesByIdByActionAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String action, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postVisorComputeBotsByIdByActionValidateBeforeCall(id, action, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postVisorComputeBotsLaunch
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public okhttp3.Call postVisorComputeBotsLaunchCall(final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/visor/compute/bots/launch";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postVisorComputeBotsLaunchValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postVisorComputeBotsLaunchCall(_callback);
-
-    }
-
-    /**
-     * Launch a bot machine — an agent plus the machine that runs it — or price one
-     * Creates BOTH halves of a bot in one call and answers 201 with the bot: the cloud agent it runs, then a bot-kind machine bootstrapped with the bot runtime, then the binding between them, so a launched bot is immediately messageable. Send &#x60;dryRun: true&#x60; for a price quote instead — 200 with the upstream quote verbatim, no agent created, no machine launched, nothing spent.  The agent is created FIRST and on purpose: it is create-if-absent (an agent that already exists is reused, so a relaunch is fine and several bots may share one explicit &#x60;agent&#x60;), and doing it before the machine means a bad request — a model that is not in the catalog, say — fails with the real reason BEFORE any metered machine is provisioned. &#x60;agent&#x60; defaults to the bot&#39;s name and an empty &#x60;model&#x60; takes the deployment default.  Org-scoped and fails closed: a validated principal is required (403 without one), the owning org is that principal&#39;s and never a body field, &#x60;size&#x60; is required (400), and &#x60;name&#x60; is required for a real launch though not for a quote.
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public void postVisorComputeBotsLaunch() throws ApiException {
-        postVisorComputeBotsLaunchWithHttpInfo();
-    }
-
-    /**
-     * Launch a bot machine — an agent plus the machine that runs it — or price one
-     * Creates BOTH halves of a bot in one call and answers 201 with the bot: the cloud agent it runs, then a bot-kind machine bootstrapped with the bot runtime, then the binding between them, so a launched bot is immediately messageable. Send &#x60;dryRun: true&#x60; for a price quote instead — 200 with the upstream quote verbatim, no agent created, no machine launched, nothing spent.  The agent is created FIRST and on purpose: it is create-if-absent (an agent that already exists is reused, so a relaunch is fine and several bots may share one explicit &#x60;agent&#x60;), and doing it before the machine means a bad request — a model that is not in the catalog, say — fails with the real reason BEFORE any metered machine is provisioned. &#x60;agent&#x60; defaults to the bot&#39;s name and an empty &#x60;model&#x60; takes the deployment default.  Org-scoped and fails closed: a validated principal is required (403 without one), the owning org is that principal&#39;s and never a body field, &#x60;size&#x60; is required (400), and &#x60;name&#x60; is required for a real launch though not for a quote.
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Void> postVisorComputeBotsLaunchWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postVisorComputeBotsLaunchValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * Launch a bot machine — an agent plus the machine that runs it — or price one (asynchronously)
-     * Creates BOTH halves of a bot in one call and answers 201 with the bot: the cloud agent it runs, then a bot-kind machine bootstrapped with the bot runtime, then the binding between them, so a launched bot is immediately messageable. Send &#x60;dryRun: true&#x60; for a price quote instead — 200 with the upstream quote verbatim, no agent created, no machine launched, nothing spent.  The agent is created FIRST and on purpose: it is create-if-absent (an agent that already exists is reused, so a relaunch is fine and several bots may share one explicit &#x60;agent&#x60;), and doing it before the machine means a bad request — a model that is not in the catalog, say — fails with the real reason BEFORE any metered machine is provisioned. &#x60;agent&#x60; defaults to the bot&#39;s name and an empty &#x60;model&#x60; takes the deployment default.  Org-scoped and fails closed: a validated principal is required (403 without one), the owning org is that principal&#39;s and never a body field, &#x60;size&#x60; is required (400), and &#x60;name&#x60; is required for a real launch though not for a quote.
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public okhttp3.Call postVisorComputeBotsLaunchAsync(final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postVisorComputeBotsLaunchValidateBeforeCall(_callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for postVisorMachines
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public okhttp3.Call postVisorMachinesCall(final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/v1/visor/machines";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "bearer" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call postVisorMachinesValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postVisorMachinesCall(_callback);
-
-    }
-
-    /**
-     * Launch a metered machine for your org, or price one first with dryRun
-     * Provisions a machine owned by the caller&#39;s org and answers 201 with the machine. Send &#x60;dryRun: true&#x60; to get a PRICE QUOTE instead: 200 with the upstream quote passed through verbatim, nothing launched and nothing spent. Two response shapes on one address is the rule to know, and it is why this is not a typed op.  Metering is not this plane&#39;s: the launch fronts the compute provider&#39;s resell endpoint, which owns the balance gate and the per-hour meter, and cloud only forwards the tenant. Ownership is the validated principal&#39;s org and is never read from the body, so a launch always lands in the caller&#39;s OWN tenant and the machine it creates is only ever visible to that tenant. Fails closed: a validated principal is required (403 without one) and &#x60;size&#x60; (or its &#x60;instanceType&#x60; alias) is required (400).
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public void postVisorMachines() throws ApiException {
-        postVisorMachinesWithHttpInfo();
-    }
-
-    /**
-     * Launch a metered machine for your org, or price one first with dryRun
-     * Provisions a machine owned by the caller&#39;s org and answers 201 with the machine. Send &#x60;dryRun: true&#x60; to get a PRICE QUOTE instead: 200 with the upstream quote passed through verbatim, nothing launched and nothing spent. Two response shapes on one address is the rule to know, and it is why this is not a typed op.  Metering is not this plane&#39;s: the launch fronts the compute provider&#39;s resell endpoint, which owns the balance gate and the per-hour meter, and cloud only forwards the tenant. Ownership is the validated principal&#39;s org and is never read from the body, so a launch always lands in the caller&#39;s OWN tenant and the machine it creates is only ever visible to that tenant. Fails closed: a validated principal is required (403 without one) and &#x60;size&#x60; (or its &#x60;instanceType&#x60; alias) is required (400).
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Void> postVisorMachinesWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postVisorMachinesValidateBeforeCall(null);
-        return localVarApiClient.execute(localVarCall);
-    }
-
-    /**
-     * Launch a metered machine for your org, or price one first with dryRun (asynchronously)
-     * Provisions a machine owned by the caller&#39;s org and answers 201 with the machine. Send &#x60;dryRun: true&#x60; to get a PRICE QUOTE instead: 200 with the upstream quote passed through verbatim, nothing launched and nothing spent. Two response shapes on one address is the rule to know, and it is why this is not a typed op.  Metering is not this plane&#39;s: the launch fronts the compute provider&#39;s resell endpoint, which owns the balance gate and the per-hour meter, and cloud only forwards the tenant. Ownership is the validated principal&#39;s org and is never read from the body, so a launch always lands in the caller&#39;s OWN tenant and the machine it creates is only ever visible to that tenant. Fails closed: a validated principal is required (403 without one) and &#x60;size&#x60; (or its &#x60;instanceType&#x60; alias) is required (400).
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public okhttp3.Call postVisorMachinesAsync(final ApiCallback<Void> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postVisorMachinesValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postComputeMachinesByIdByActionValidateBeforeCall(id, action, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
@@ -3896,7 +3448,7 @@ public class VisorApi {
         Object localVarPostBody = sampleIngest;
 
         // create path and map variables
-        String localVarPath = "/v1/visor/fleet/samples";
+        String localVarPath = "/v1/compute/fleet/samples";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -4025,7 +3577,7 @@ public class VisorApi {
         Object localVarPostBody = poolScale;
 
         // create path and map variables
-        String localVarPath = "/v1/visor/clusters/{clusterId}/pools/{poolId}/scale"
+        String localVarPath = "/v1/compute/clusters/{clusterId}/pools/{poolId}/scale"
             .replace("{" + "clusterId" + "}", localVarApiClient.escapeString(clusterId.toString()))
             .replace("{" + "poolId" + "}", localVarApiClient.escapeString(poolId.toString()));
 
@@ -4170,7 +3722,7 @@ public class VisorApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/visor/machines/{id}/agent"
+        String localVarPath = "/v1/compute/machines/{id}/agent"
             .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();

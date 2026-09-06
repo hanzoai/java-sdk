@@ -14,7 +14,7 @@
 package ai.hanzo.cloud.model;
 
 import java.util.Objects;
-import ai.hanzo.cloud.model.PushPusher;
+import ai.hanzo.cloud.model.ForgeJobRepositoryOwner;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -47,10 +47,10 @@ import java.util.Set;
 import ai.hanzo.cloud.JSON;
 
 /**
- * PushRepository
+ * ForgeJobRepository
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
-public class PushRepository {
+public class ForgeJobRepository {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   @javax.annotation.Nullable
@@ -59,12 +59,12 @@ public class PushRepository {
   public static final String SERIALIZED_NAME_OWNER = "owner";
   @SerializedName(SERIALIZED_NAME_OWNER)
   @javax.annotation.Nullable
-  private PushPusher owner;
+  private ForgeJobRepositoryOwner owner;
 
-  public PushRepository() {
+  public ForgeJobRepository() {
   }
 
-  public PushRepository name(@javax.annotation.Nullable String name) {
+  public ForgeJobRepository name(@javax.annotation.Nullable String name) {
     this.name = name;
     return this;
   }
@@ -83,7 +83,7 @@ public class PushRepository {
   }
 
 
-  public PushRepository owner(@javax.annotation.Nullable PushPusher owner) {
+  public ForgeJobRepository owner(@javax.annotation.Nullable ForgeJobRepositoryOwner owner) {
     this.owner = owner;
     return this;
   }
@@ -93,11 +93,11 @@ public class PushRepository {
    * @return owner
    */
   @javax.annotation.Nullable
-  public PushPusher getOwner() {
+  public ForgeJobRepositoryOwner getOwner() {
     return owner;
   }
 
-  public void setOwner(@javax.annotation.Nullable PushPusher owner) {
+  public void setOwner(@javax.annotation.Nullable ForgeJobRepositoryOwner owner) {
     this.owner = owner;
   }
 
@@ -111,9 +111,9 @@ public class PushRepository {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    PushRepository pushRepository = (PushRepository) o;
-    return Objects.equals(this.name, pushRepository.name) &&
-        Objects.equals(this.owner, pushRepository.owner);
+    ForgeJobRepository forgeJobRepository = (ForgeJobRepository) o;
+    return Objects.equals(this.name, forgeJobRepository.name) &&
+        Objects.equals(this.owner, forgeJobRepository.owner);
   }
 
   @Override
@@ -124,7 +124,7 @@ public class PushRepository {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class PushRepository {\n");
+    sb.append("class ForgeJobRepository {\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    owner: ").append(toIndentedString(owner)).append("\n");
     sb.append("}");
@@ -158,20 +158,20 @@ public class PushRepository {
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to PushRepository
+   * @throws IOException if the JSON Element is invalid with respect to ForgeJobRepository
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!PushRepository.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in PushRepository is not found in the empty JSON string", PushRepository.openapiRequiredFields.toString()));
+        if (!ForgeJobRepository.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in ForgeJobRepository is not found in the empty JSON string", ForgeJobRepository.openapiRequiredFields.toString()));
         }
       }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!PushRepository.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `PushRepository` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!ForgeJobRepository.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ForgeJobRepository` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
@@ -180,7 +180,7 @@ public class PushRepository {
       }
       // validate the optional field `owner`
       if (jsonObj.get("owner") != null && !jsonObj.get("owner").isJsonNull()) {
-        PushPusher.validateJsonElement(jsonObj.get("owner"));
+        ForgeJobRepositoryOwner.validateJsonElement(jsonObj.get("owner"));
       }
   }
 
@@ -188,22 +188,22 @@ public class PushRepository {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!PushRepository.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'PushRepository' and its subtypes
+       if (!ForgeJobRepository.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'ForgeJobRepository' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<PushRepository> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(PushRepository.class));
+       final TypeAdapter<ForgeJobRepository> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(ForgeJobRepository.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<PushRepository>() {
+       return (TypeAdapter<T>) new TypeAdapter<ForgeJobRepository>() {
            @Override
-           public void write(JsonWriter out, PushRepository value) throws IOException {
+           public void write(JsonWriter out, ForgeJobRepository value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public PushRepository read(JsonReader in) throws IOException {
+           public ForgeJobRepository read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -214,18 +214,18 @@ public class PushRepository {
   }
 
   /**
-   * Create an instance of PushRepository given an JSON string
+   * Create an instance of ForgeJobRepository given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of PushRepository
-   * @throws IOException if the JSON string is invalid with respect to PushRepository
+   * @return An instance of ForgeJobRepository
+   * @throws IOException if the JSON string is invalid with respect to ForgeJobRepository
    */
-  public static PushRepository fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, PushRepository.class);
+  public static ForgeJobRepository fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, ForgeJobRepository.class);
   }
 
   /**
-   * Convert an instance of PushRepository to an JSON string
+   * Convert an instance of ForgeJobRepository to an JSON string
    *
    * @return JSON string
    */

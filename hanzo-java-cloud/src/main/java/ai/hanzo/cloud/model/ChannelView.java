@@ -195,7 +195,7 @@ public class ChannelView {
   }
 
   /**
-   * GroupPolicy is how this org admits group and thread rooms here: \&quot;open\&quot;, \&quot;allowlist\&quot; or \&quot;disabled\&quot;, defaulting to \&quot;open\&quot;. Both policy fields come back EMPTY — rather than the listing failing — when the policy cannot be read; GET /v1/channels/allowlist carries the same two with the entries they consult.
+   * GroupPolicy is how this org admits group and thread rooms here: \&quot;open\&quot;, \&quot;allowlist\&quot; or \&quot;disabled\&quot;, defaulting to \&quot;open\&quot;. Both policy fields come back EMPTY — rather than the listing failing — when the policy cannot be read; GET /v1/channel/allowlist carries the same two with the entries they consult.
    * @return groupPolicy
    */
   @javax.annotation.Nullable
@@ -233,7 +233,7 @@ public class ChannelView {
   }
 
   /**
-   * PendingPairing counts the org&#39;s UNEXPIRED pairing requests on this channel: exactly the rows GET /v1/channels/pairing returns for it, one per person waiting on an admin. It never exceeds three — the pending cap per (org, channel) — and expired requests are not counted.
+   * PendingPairing counts the org&#39;s UNEXPIRED pairing requests on this channel: exactly the rows GET /v1/channel/pairing returns for it, one per person waiting on an admin. It never exceeds three — the pending cap per (org, channel) — and expired requests are not counted.
    * @return pendingPairing
    */
   @javax.annotation.Nullable

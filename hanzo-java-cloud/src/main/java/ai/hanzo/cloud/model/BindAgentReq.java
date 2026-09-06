@@ -74,7 +74,7 @@ public class BindAgentReq {
   }
 
   /**
-   * AgentName is the cloud Agent (/v1/agents) the machine will run. Required.
+   * AgentName is the cloud Agent (/v1/agent) the machine will run. Required.
    * @return agentName
    */
   @javax.annotation.Nullable

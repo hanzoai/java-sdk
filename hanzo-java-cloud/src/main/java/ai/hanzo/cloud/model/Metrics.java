@@ -65,15 +65,15 @@ public class Metrics {
   @javax.annotation.Nullable
   private Double load1;
 
-  public static final String SERIALIZED_NAME_LOAD5 = "load5";
-  @SerializedName(SERIALIZED_NAME_LOAD5)
-  @javax.annotation.Nullable
-  private Double load5;
-
   public static final String SERIALIZED_NAME_LOAD15 = "load15";
   @SerializedName(SERIALIZED_NAME_LOAD15)
   @javax.annotation.Nullable
   private Double load15;
+
+  public static final String SERIALIZED_NAME_LOAD5 = "load5";
+  @SerializedName(SERIALIZED_NAME_LOAD5)
+  @javax.annotation.Nullable
+  private Double load5;
 
   public static final String SERIALIZED_NAME_MEM_FREE = "memFree";
   @SerializedName(SERIALIZED_NAME_MEM_FREE)
@@ -145,25 +145,6 @@ public class Metrics {
   }
 
 
-  public Metrics load5(@javax.annotation.Nullable Double load5) {
-    this.load5 = load5;
-    return this;
-  }
-
-  /**
-   * Load5 is the same figure averaged over five minutes.
-   * @return load5
-   */
-  @javax.annotation.Nullable
-  public Double getLoad5() {
-    return load5;
-  }
-
-  public void setLoad5(@javax.annotation.Nullable Double load5) {
-    this.load5 = load5;
-  }
-
-
   public Metrics load15(@javax.annotation.Nullable Double load15) {
     this.load15 = load15;
     return this;
@@ -180,6 +161,25 @@ public class Metrics {
 
   public void setLoad15(@javax.annotation.Nullable Double load15) {
     this.load15 = load15;
+  }
+
+
+  public Metrics load5(@javax.annotation.Nullable Double load5) {
+    this.load5 = load5;
+    return this;
+  }
+
+  /**
+   * Load5 is the same figure averaged over five minutes.
+   * @return load5
+   */
+  @javax.annotation.Nullable
+  public Double getLoad5() {
+    return load5;
+  }
+
+  public void setLoad5(@javax.annotation.Nullable Double load5) {
+    this.load5 = load5;
   }
 
 
@@ -234,15 +234,15 @@ public class Metrics {
     return Objects.equals(this.at, metrics.at) &&
         Objects.equals(this.gpuUtil, metrics.gpuUtil) &&
         Objects.equals(this.load1, metrics.load1) &&
-        Objects.equals(this.load5, metrics.load5) &&
         Objects.equals(this.load15, metrics.load15) &&
+        Objects.equals(this.load5, metrics.load5) &&
         Objects.equals(this.memFree, metrics.memFree) &&
         Objects.equals(this.memUsed, metrics.memUsed);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(at, gpuUtil, load1, load5, load15, memFree, memUsed);
+    return Objects.hash(at, gpuUtil, load1, load15, load5, memFree, memUsed);
   }
 
   @Override
@@ -252,8 +252,8 @@ public class Metrics {
     sb.append("    at: ").append(toIndentedString(at)).append("\n");
     sb.append("    gpuUtil: ").append(toIndentedString(gpuUtil)).append("\n");
     sb.append("    load1: ").append(toIndentedString(load1)).append("\n");
-    sb.append("    load5: ").append(toIndentedString(load5)).append("\n");
     sb.append("    load15: ").append(toIndentedString(load15)).append("\n");
+    sb.append("    load5: ").append(toIndentedString(load5)).append("\n");
     sb.append("    memFree: ").append(toIndentedString(memFree)).append("\n");
     sb.append("    memUsed: ").append(toIndentedString(memUsed)).append("\n");
     sb.append("}");
@@ -277,7 +277,7 @@ public class Metrics {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("at", "gpuUtil", "load1", "load5", "load15", "memFree", "memUsed"));
+    openapiFields = new HashSet<String>(Arrays.asList("at", "gpuUtil", "load1", "load15", "load5", "memFree", "memUsed"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);

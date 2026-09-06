@@ -56,16 +56,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ToolsApi {
+public class ToolApi {
     private ApiClient localVarApiClient;
     private int localHostIndex;
     private String localCustomBaseUrl;
 
-    public ToolsApi() {
+    public ToolApi() {
         this(Configuration.getDefaultApiClient());
     }
 
-    public ToolsApi(ApiClient apiClient) {
+    public ToolApi(ApiClient apiClient) {
         this.localVarApiClient = apiClient;
     }
 
@@ -94,7 +94,7 @@ public class ToolsApi {
     }
 
     /**
-     * Build call for deleteToolsMcpServersById
+     * Build call for deleteToolMcpServersById
      * @param id ID is the server to deregister, from the path. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -106,7 +106,7 @@ public class ToolsApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteToolsMcpServersByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteToolMcpServersByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -123,7 +123,7 @@ public class ToolsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/tools/mcp/servers/{id}"
+        String localVarPath = "/v1/tool/mcp/servers/{id}"
             .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -151,13 +151,13 @@ public class ToolsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteToolsMcpServersByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteToolMcpServersByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling deleteToolsMcpServersById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling deleteToolMcpServersById(Async)");
         }
 
-        return deleteToolsMcpServersByIdCall(id, _callback);
+        return deleteToolMcpServersByIdCall(id, _callback);
 
     }
 
@@ -173,8 +173,8 @@ public class ToolsApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteToolsMcpServersById(@javax.annotation.Nonnull String id) throws ApiException {
-        deleteToolsMcpServersByIdWithHttpInfo(id);
+    public void deleteToolMcpServersById(@javax.annotation.Nonnull String id) throws ApiException {
+        deleteToolMcpServersByIdWithHttpInfo(id);
     }
 
     /**
@@ -190,8 +190,8 @@ public class ToolsApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteToolsMcpServersByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = deleteToolsMcpServersByIdValidateBeforeCall(id, null);
+    public ApiResponse<Void> deleteToolMcpServersByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = deleteToolMcpServersByIdValidateBeforeCall(id, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -209,14 +209,14 @@ public class ToolsApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteToolsMcpServersByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteToolMcpServersByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteToolsMcpServersByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = deleteToolMcpServersByIdValidateBeforeCall(id, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for deleteToolsPluginsAuthoredById
+     * Build call for deleteToolPluginsAuthoredById
      * @param id ID is the plugin to remove, from the path. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -228,7 +228,7 @@ public class ToolsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteToolsPluginsAuthoredByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteToolPluginsAuthoredByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -245,7 +245,7 @@ public class ToolsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/tools/plugins/authored/{id}"
+        String localVarPath = "/v1/tool/plugins/authored/{id}"
             .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -274,13 +274,13 @@ public class ToolsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteToolsPluginsAuthoredByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteToolPluginsAuthoredByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling deleteToolsPluginsAuthoredById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling deleteToolPluginsAuthoredById(Async)");
         }
 
-        return deleteToolsPluginsAuthoredByIdCall(id, _callback);
+        return deleteToolPluginsAuthoredByIdCall(id, _callback);
 
     }
 
@@ -297,8 +297,8 @@ public class ToolsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public PluginDeleted deleteToolsPluginsAuthoredById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<PluginDeleted> localVarResp = deleteToolsPluginsAuthoredByIdWithHttpInfo(id);
+    public PluginDeleted deleteToolPluginsAuthoredById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<PluginDeleted> localVarResp = deleteToolPluginsAuthoredByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -315,8 +315,8 @@ public class ToolsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PluginDeleted> deleteToolsPluginsAuthoredByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = deleteToolsPluginsAuthoredByIdValidateBeforeCall(id, null);
+    public ApiResponse<PluginDeleted> deleteToolPluginsAuthoredByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = deleteToolPluginsAuthoredByIdValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<PluginDeleted>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -335,15 +335,15 @@ public class ToolsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteToolsPluginsAuthoredByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<PluginDeleted> _callback) throws ApiException {
+    public okhttp3.Call deleteToolPluginsAuthoredByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<PluginDeleted> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteToolsPluginsAuthoredByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = deleteToolPluginsAuthoredByIdValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<PluginDeleted>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for deleteToolsSkillsById
+     * Build call for deleteToolSkillsById
      * @param id ID is the skill to remove, from the path. It is the skill&#39;s name. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -355,7 +355,7 @@ public class ToolsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteToolsSkillsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteToolSkillsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -372,7 +372,7 @@ public class ToolsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/tools/skills/{id}"
+        String localVarPath = "/v1/tool/skills/{id}"
             .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -401,13 +401,13 @@ public class ToolsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteToolsSkillsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteToolSkillsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling deleteToolsSkillsById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling deleteToolSkillsById(Async)");
         }
 
-        return deleteToolsSkillsByIdCall(id, _callback);
+        return deleteToolSkillsByIdCall(id, _callback);
 
     }
 
@@ -424,8 +424,8 @@ public class ToolsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public SkillDeleted deleteToolsSkillsById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<SkillDeleted> localVarResp = deleteToolsSkillsByIdWithHttpInfo(id);
+    public SkillDeleted deleteToolSkillsById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<SkillDeleted> localVarResp = deleteToolSkillsByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -442,8 +442,8 @@ public class ToolsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SkillDeleted> deleteToolsSkillsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = deleteToolsSkillsByIdValidateBeforeCall(id, null);
+    public ApiResponse<SkillDeleted> deleteToolSkillsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = deleteToolSkillsByIdValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<SkillDeleted>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -462,15 +462,15 @@ public class ToolsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteToolsSkillsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<SkillDeleted> _callback) throws ApiException {
+    public okhttp3.Call deleteToolSkillsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<SkillDeleted> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteToolsSkillsByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = deleteToolSkillsByIdValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<SkillDeleted>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getTools
+     * Build call for getTool
      * @param source Source keeps only tools from one source — connector, function, zap-service, agent, skill or mcp. Empty keeps every source. (optional)
      * @param activated Activated keeps only the tools activated for the caller&#39;s org and project, and only when it is exactly the string \&quot;true\&quot;. (optional)
      * @param _callback Callback for upload/download progress
@@ -483,7 +483,7 @@ public class ToolsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getToolsCall(@javax.annotation.Nullable String source, @javax.annotation.Nullable String activated, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getToolCall(@javax.annotation.Nullable String source, @javax.annotation.Nullable String activated, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -500,7 +500,7 @@ public class ToolsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/tools";
+        String localVarPath = "/v1/tool";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -536,14 +536,14 @@ public class ToolsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getToolsValidateBeforeCall(@javax.annotation.Nullable String source, @javax.annotation.Nullable String activated, final ApiCallback _callback) throws ApiException {
-        return getToolsCall(source, activated, _callback);
+    private okhttp3.Call getToolValidateBeforeCall(@javax.annotation.Nullable String source, @javax.annotation.Nullable String activated, final ApiCallback _callback) throws ApiException {
+        return getToolCall(source, activated, _callback);
 
     }
 
     /**
      * Lists every tool the caller&#39;s org and project can reach, from every source, each flagged with whether it is activated.
-     * Lists every tool the caller&#39;s org and project can reach, from every source, each flagged with whether it is activated. This is the discovery surface: one flat set of names spanning connector actions, user functions, zap-service routes, agents, skills and the org&#39;s own external MCP servers, deduplicated by name so the highest-precedence source wins a collision. It lists; it does not call — dispatch is POST /v1/tools/call.
+     * Lists every tool the caller&#39;s org and project can reach, from every source, each flagged with whether it is activated. This is the discovery surface: one flat set of names spanning connector actions, user functions, zap-service routes, agents, skills and the org&#39;s own external MCP servers, deduplicated by name so the highest-precedence source wins a collision. It lists; it does not call — dispatch is POST /v1/tool/call.
      * @param source Source keeps only tools from one source — connector, function, zap-service, agent, skill or mcp. Empty keeps every source. (optional)
      * @param activated Activated keeps only the tools activated for the caller&#39;s org and project, and only when it is exactly the string \&quot;true\&quot;. (optional)
      * @return ToolList
@@ -555,14 +555,14 @@ public class ToolsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ToolList getTools(@javax.annotation.Nullable String source, @javax.annotation.Nullable String activated) throws ApiException {
-        ApiResponse<ToolList> localVarResp = getToolsWithHttpInfo(source, activated);
+    public ToolList getTool(@javax.annotation.Nullable String source, @javax.annotation.Nullable String activated) throws ApiException {
+        ApiResponse<ToolList> localVarResp = getToolWithHttpInfo(source, activated);
         return localVarResp.getData();
     }
 
     /**
      * Lists every tool the caller&#39;s org and project can reach, from every source, each flagged with whether it is activated.
-     * Lists every tool the caller&#39;s org and project can reach, from every source, each flagged with whether it is activated. This is the discovery surface: one flat set of names spanning connector actions, user functions, zap-service routes, agents, skills and the org&#39;s own external MCP servers, deduplicated by name so the highest-precedence source wins a collision. It lists; it does not call — dispatch is POST /v1/tools/call.
+     * Lists every tool the caller&#39;s org and project can reach, from every source, each flagged with whether it is activated. This is the discovery surface: one flat set of names spanning connector actions, user functions, zap-service routes, agents, skills and the org&#39;s own external MCP servers, deduplicated by name so the highest-precedence source wins a collision. It lists; it does not call — dispatch is POST /v1/tool/call.
      * @param source Source keeps only tools from one source — connector, function, zap-service, agent, skill or mcp. Empty keeps every source. (optional)
      * @param activated Activated keeps only the tools activated for the caller&#39;s org and project, and only when it is exactly the string \&quot;true\&quot;. (optional)
      * @return ApiResponse&lt;ToolList&gt;
@@ -574,15 +574,15 @@ public class ToolsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ToolList> getToolsWithHttpInfo(@javax.annotation.Nullable String source, @javax.annotation.Nullable String activated) throws ApiException {
-        okhttp3.Call localVarCall = getToolsValidateBeforeCall(source, activated, null);
+    public ApiResponse<ToolList> getToolWithHttpInfo(@javax.annotation.Nullable String source, @javax.annotation.Nullable String activated) throws ApiException {
+        okhttp3.Call localVarCall = getToolValidateBeforeCall(source, activated, null);
         Type localVarReturnType = new TypeToken<ToolList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Lists every tool the caller&#39;s org and project can reach, from every source, each flagged with whether it is activated. (asynchronously)
-     * Lists every tool the caller&#39;s org and project can reach, from every source, each flagged with whether it is activated. This is the discovery surface: one flat set of names spanning connector actions, user functions, zap-service routes, agents, skills and the org&#39;s own external MCP servers, deduplicated by name so the highest-precedence source wins a collision. It lists; it does not call — dispatch is POST /v1/tools/call.
+     * Lists every tool the caller&#39;s org and project can reach, from every source, each flagged with whether it is activated. This is the discovery surface: one flat set of names spanning connector actions, user functions, zap-service routes, agents, skills and the org&#39;s own external MCP servers, deduplicated by name so the highest-precedence source wins a collision. It lists; it does not call — dispatch is POST /v1/tool/call.
      * @param source Source keeps only tools from one source — connector, function, zap-service, agent, skill or mcp. Empty keeps every source. (optional)
      * @param activated Activated keeps only the tools activated for the caller&#39;s org and project, and only when it is exactly the string \&quot;true\&quot;. (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -595,15 +595,15 @@ public class ToolsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getToolsAsync(@javax.annotation.Nullable String source, @javax.annotation.Nullable String activated, final ApiCallback<ToolList> _callback) throws ApiException {
+    public okhttp3.Call getToolAsync(@javax.annotation.Nullable String source, @javax.annotation.Nullable String activated, final ApiCallback<ToolList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getToolsValidateBeforeCall(source, activated, _callback);
+        okhttp3.Call localVarCall = getToolValidateBeforeCall(source, activated, _callback);
         Type localVarReturnType = new TypeToken<ToolList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getToolsActivation
+     * Build call for getToolActivation
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -614,7 +614,7 @@ public class ToolsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getToolsActivationCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getToolActivationCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -631,7 +631,7 @@ public class ToolsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/tools/activation";
+        String localVarPath = "/v1/tool/activation";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -659,8 +659,8 @@ public class ToolsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getToolsActivationValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getToolsActivationCall(_callback);
+    private okhttp3.Call getToolActivationValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getToolActivationCall(_callback);
 
     }
 
@@ -676,8 +676,8 @@ public class ToolsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ActivationSet getToolsActivation() throws ApiException {
-        ApiResponse<ActivationSet> localVarResp = getToolsActivationWithHttpInfo();
+    public ActivationSet getToolActivation() throws ApiException {
+        ApiResponse<ActivationSet> localVarResp = getToolActivationWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -693,8 +693,8 @@ public class ToolsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ActivationSet> getToolsActivationWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getToolsActivationValidateBeforeCall(null);
+    public ApiResponse<ActivationSet> getToolActivationWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getToolActivationValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<ActivationSet>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -712,15 +712,15 @@ public class ToolsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getToolsActivationAsync(final ApiCallback<ActivationSet> _callback) throws ApiException {
+    public okhttp3.Call getToolActivationAsync(final ApiCallback<ActivationSet> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getToolsActivationValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getToolActivationValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<ActivationSet>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getToolsCatalog
+     * Build call for getToolCatalog
      * @param q Q matches the name, title or description, case-insensitively. (optional)
      * @param featured Featured keeps only the listings we put on the front of the shelf, and only when it is exactly the string \&quot;true\&quot;. (optional)
      * @param official Official keeps only the vendors&#39; OWN servers — not third-party copies of them — and only when it is exactly the string \&quot;true\&quot;. (optional)
@@ -736,7 +736,7 @@ public class ToolsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getToolsCatalogCall(@javax.annotation.Nullable String q, @javax.annotation.Nullable String featured, @javax.annotation.Nullable String official, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable Long offset, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getToolCatalogCall(@javax.annotation.Nullable String q, @javax.annotation.Nullable String featured, @javax.annotation.Nullable String official, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable Long offset, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -753,7 +753,7 @@ public class ToolsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/tools/catalog";
+        String localVarPath = "/v1/tool/catalog";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -801,14 +801,14 @@ public class ToolsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getToolsCatalogValidateBeforeCall(@javax.annotation.Nullable String q, @javax.annotation.Nullable String featured, @javax.annotation.Nullable String official, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable Long offset, final ApiCallback _callback) throws ApiException {
-        return getToolsCatalogCall(q, featured, official, limit, offset, _callback);
+    private okhttp3.Call getToolCatalogValidateBeforeCall(@javax.annotation.Nullable String q, @javax.annotation.Nullable String featured, @javax.annotation.Nullable String official, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable Long offset, final ApiCallback _callback) throws ApiException {
+        return getToolCatalogCall(q, featured, official, limit, offset, _callback);
 
     }
 
     /**
      * Lists the MCP servers the public registries publish, as we hold them: our canonical copy of registry.modelcontextprotocol.io, plus what we decided about each entry.
-     * Lists the MCP servers the public registries publish, as we hold them: our canonical copy of registry.modelcontextprotocol.io, plus what we decided about each entry.  This is the SHELF an org picks from. A listing with a streamable-http endpoint can be enabled as-is — POST /v1/tools/mcp/servers with its id — and its tools then join the org&#39;s tool plane and the fleet&#39;s MCP server. A listing that only ships a stdio package needs a process to run it, which is why the transports are on every entry rather than implied.  Hidden entries are absent: they are the ones we took off the shelf. A platform SuperAdmin sees them, because the same query answers \&quot;what is on the shelf\&quot; and \&quot;what is in the catalog\&quot; and two queries would drift apart.  It is PAGED — 50 by default, 200 at most. The public registry publishes tens of thousands of servers, so an unbounded answer is a twenty-megabyte response and a storefront that renders in a minute. total is the whole match, not the page.
+     * Lists the MCP servers the public registries publish, as we hold them: our canonical copy of registry.modelcontextprotocol.io, plus what we decided about each entry.  This is the SHELF an org picks from. A listing with a streamable-http endpoint can be enabled as-is — POST /v1/tool/mcp/servers with its id — and its tools then join the org&#39;s tool plane and the fleet&#39;s MCP server. A listing that only ships a stdio package needs a process to run it, which is why the transports are on every entry rather than implied.  Hidden entries are absent: they are the ones we took off the shelf. A platform SuperAdmin sees them, because the same query answers \&quot;what is on the shelf\&quot; and \&quot;what is in the catalog\&quot; and two queries would drift apart.  It is PAGED — 50 by default, 200 at most. The public registry publishes tens of thousands of servers, so an unbounded answer is a twenty-megabyte response and a storefront that renders in a minute. total is the whole match, not the page.
      * @param q Q matches the name, title or description, case-insensitively. (optional)
      * @param featured Featured keeps only the listings we put on the front of the shelf, and only when it is exactly the string \&quot;true\&quot;. (optional)
      * @param official Official keeps only the vendors&#39; OWN servers — not third-party copies of them — and only when it is exactly the string \&quot;true\&quot;. (optional)
@@ -823,14 +823,14 @@ public class ToolsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public McpCatalog getToolsCatalog(@javax.annotation.Nullable String q, @javax.annotation.Nullable String featured, @javax.annotation.Nullable String official, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable Long offset) throws ApiException {
-        ApiResponse<McpCatalog> localVarResp = getToolsCatalogWithHttpInfo(q, featured, official, limit, offset);
+    public McpCatalog getToolCatalog(@javax.annotation.Nullable String q, @javax.annotation.Nullable String featured, @javax.annotation.Nullable String official, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable Long offset) throws ApiException {
+        ApiResponse<McpCatalog> localVarResp = getToolCatalogWithHttpInfo(q, featured, official, limit, offset);
         return localVarResp.getData();
     }
 
     /**
      * Lists the MCP servers the public registries publish, as we hold them: our canonical copy of registry.modelcontextprotocol.io, plus what we decided about each entry.
-     * Lists the MCP servers the public registries publish, as we hold them: our canonical copy of registry.modelcontextprotocol.io, plus what we decided about each entry.  This is the SHELF an org picks from. A listing with a streamable-http endpoint can be enabled as-is — POST /v1/tools/mcp/servers with its id — and its tools then join the org&#39;s tool plane and the fleet&#39;s MCP server. A listing that only ships a stdio package needs a process to run it, which is why the transports are on every entry rather than implied.  Hidden entries are absent: they are the ones we took off the shelf. A platform SuperAdmin sees them, because the same query answers \&quot;what is on the shelf\&quot; and \&quot;what is in the catalog\&quot; and two queries would drift apart.  It is PAGED — 50 by default, 200 at most. The public registry publishes tens of thousands of servers, so an unbounded answer is a twenty-megabyte response and a storefront that renders in a minute. total is the whole match, not the page.
+     * Lists the MCP servers the public registries publish, as we hold them: our canonical copy of registry.modelcontextprotocol.io, plus what we decided about each entry.  This is the SHELF an org picks from. A listing with a streamable-http endpoint can be enabled as-is — POST /v1/tool/mcp/servers with its id — and its tools then join the org&#39;s tool plane and the fleet&#39;s MCP server. A listing that only ships a stdio package needs a process to run it, which is why the transports are on every entry rather than implied.  Hidden entries are absent: they are the ones we took off the shelf. A platform SuperAdmin sees them, because the same query answers \&quot;what is on the shelf\&quot; and \&quot;what is in the catalog\&quot; and two queries would drift apart.  It is PAGED — 50 by default, 200 at most. The public registry publishes tens of thousands of servers, so an unbounded answer is a twenty-megabyte response and a storefront that renders in a minute. total is the whole match, not the page.
      * @param q Q matches the name, title or description, case-insensitively. (optional)
      * @param featured Featured keeps only the listings we put on the front of the shelf, and only when it is exactly the string \&quot;true\&quot;. (optional)
      * @param official Official keeps only the vendors&#39; OWN servers — not third-party copies of them — and only when it is exactly the string \&quot;true\&quot;. (optional)
@@ -845,15 +845,15 @@ public class ToolsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<McpCatalog> getToolsCatalogWithHttpInfo(@javax.annotation.Nullable String q, @javax.annotation.Nullable String featured, @javax.annotation.Nullable String official, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable Long offset) throws ApiException {
-        okhttp3.Call localVarCall = getToolsCatalogValidateBeforeCall(q, featured, official, limit, offset, null);
+    public ApiResponse<McpCatalog> getToolCatalogWithHttpInfo(@javax.annotation.Nullable String q, @javax.annotation.Nullable String featured, @javax.annotation.Nullable String official, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable Long offset) throws ApiException {
+        okhttp3.Call localVarCall = getToolCatalogValidateBeforeCall(q, featured, official, limit, offset, null);
         Type localVarReturnType = new TypeToken<McpCatalog>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Lists the MCP servers the public registries publish, as we hold them: our canonical copy of registry.modelcontextprotocol.io, plus what we decided about each entry. (asynchronously)
-     * Lists the MCP servers the public registries publish, as we hold them: our canonical copy of registry.modelcontextprotocol.io, plus what we decided about each entry.  This is the SHELF an org picks from. A listing with a streamable-http endpoint can be enabled as-is — POST /v1/tools/mcp/servers with its id — and its tools then join the org&#39;s tool plane and the fleet&#39;s MCP server. A listing that only ships a stdio package needs a process to run it, which is why the transports are on every entry rather than implied.  Hidden entries are absent: they are the ones we took off the shelf. A platform SuperAdmin sees them, because the same query answers \&quot;what is on the shelf\&quot; and \&quot;what is in the catalog\&quot; and two queries would drift apart.  It is PAGED — 50 by default, 200 at most. The public registry publishes tens of thousands of servers, so an unbounded answer is a twenty-megabyte response and a storefront that renders in a minute. total is the whole match, not the page.
+     * Lists the MCP servers the public registries publish, as we hold them: our canonical copy of registry.modelcontextprotocol.io, plus what we decided about each entry.  This is the SHELF an org picks from. A listing with a streamable-http endpoint can be enabled as-is — POST /v1/tool/mcp/servers with its id — and its tools then join the org&#39;s tool plane and the fleet&#39;s MCP server. A listing that only ships a stdio package needs a process to run it, which is why the transports are on every entry rather than implied.  Hidden entries are absent: they are the ones we took off the shelf. A platform SuperAdmin sees them, because the same query answers \&quot;what is on the shelf\&quot; and \&quot;what is in the catalog\&quot; and two queries would drift apart.  It is PAGED — 50 by default, 200 at most. The public registry publishes tens of thousands of servers, so an unbounded answer is a twenty-megabyte response and a storefront that renders in a minute. total is the whole match, not the page.
      * @param q Q matches the name, title or description, case-insensitively. (optional)
      * @param featured Featured keeps only the listings we put on the front of the shelf, and only when it is exactly the string \&quot;true\&quot;. (optional)
      * @param official Official keeps only the vendors&#39; OWN servers — not third-party copies of them — and only when it is exactly the string \&quot;true\&quot;. (optional)
@@ -869,15 +869,15 @@ public class ToolsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getToolsCatalogAsync(@javax.annotation.Nullable String q, @javax.annotation.Nullable String featured, @javax.annotation.Nullable String official, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable Long offset, final ApiCallback<McpCatalog> _callback) throws ApiException {
+    public okhttp3.Call getToolCatalogAsync(@javax.annotation.Nullable String q, @javax.annotation.Nullable String featured, @javax.annotation.Nullable String official, @javax.annotation.Nullable Long limit, @javax.annotation.Nullable Long offset, final ApiCallback<McpCatalog> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getToolsCatalogValidateBeforeCall(q, featured, official, limit, offset, _callback);
+        okhttp3.Call localVarCall = getToolCatalogValidateBeforeCall(q, featured, official, limit, offset, _callback);
         Type localVarReturnType = new TypeToken<McpCatalog>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getToolsCatalogById
+     * Build call for getToolCatalogById
      * @param id ID is the listing, from the path. It is the publisher&#39;s reverse-DNS name with its one slash written as an underscore — \&quot;com.stripe_mcp\&quot;. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -889,7 +889,7 @@ public class ToolsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getToolsCatalogByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getToolCatalogByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -906,7 +906,7 @@ public class ToolsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/tools/catalog/{id}"
+        String localVarPath = "/v1/tool/catalog/{id}"
             .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -935,13 +935,13 @@ public class ToolsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getToolsCatalogByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getToolCatalogByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getToolsCatalogById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getToolCatalogById(Async)");
         }
 
-        return getToolsCatalogByIdCall(id, _callback);
+        return getToolCatalogByIdCall(id, _callback);
 
     }
 
@@ -958,8 +958,8 @@ public class ToolsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public MCPListing getToolsCatalogById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<MCPListing> localVarResp = getToolsCatalogByIdWithHttpInfo(id);
+    public MCPListing getToolCatalogById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<MCPListing> localVarResp = getToolCatalogByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -976,8 +976,8 @@ public class ToolsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<MCPListing> getToolsCatalogByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = getToolsCatalogByIdValidateBeforeCall(id, null);
+    public ApiResponse<MCPListing> getToolCatalogByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getToolCatalogByIdValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<MCPListing>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -996,15 +996,15 @@ public class ToolsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getToolsCatalogByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<MCPListing> _callback) throws ApiException {
+    public okhttp3.Call getToolCatalogByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<MCPListing> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getToolsCatalogByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = getToolCatalogByIdValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<MCPListing>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getToolsMcpServers
+     * Build call for getToolMcpServers
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1015,7 +1015,7 @@ public class ToolsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getToolsMcpServersCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getToolMcpServersCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1032,7 +1032,7 @@ public class ToolsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/tools/mcp/servers";
+        String localVarPath = "/v1/tool/mcp/servers";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1060,8 +1060,8 @@ public class ToolsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getToolsMcpServersValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getToolsMcpServersCall(_callback);
+    private okhttp3.Call getToolMcpServersValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getToolMcpServersCall(_callback);
 
     }
 
@@ -1077,8 +1077,8 @@ public class ToolsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public McpServerList getToolsMcpServers() throws ApiException {
-        ApiResponse<McpServerList> localVarResp = getToolsMcpServersWithHttpInfo();
+    public McpServerList getToolMcpServers() throws ApiException {
+        ApiResponse<McpServerList> localVarResp = getToolMcpServersWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -1094,8 +1094,8 @@ public class ToolsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<McpServerList> getToolsMcpServersWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getToolsMcpServersValidateBeforeCall(null);
+    public ApiResponse<McpServerList> getToolMcpServersWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getToolMcpServersValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<McpServerList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1113,15 +1113,15 @@ public class ToolsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getToolsMcpServersAsync(final ApiCallback<McpServerList> _callback) throws ApiException {
+    public okhttp3.Call getToolMcpServersAsync(final ApiCallback<McpServerList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getToolsMcpServersValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getToolMcpServersValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<McpServerList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getToolsPlugins
+     * Build call for getToolPlugins
      * @param all All includes the configured-but-disabled subsystems too, but only when it is exactly the string \&quot;true\&quot;. Otherwise only the running ones are reported. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1133,7 +1133,7 @@ public class ToolsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getToolsPluginsCall(@javax.annotation.Nullable String all, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getToolPluginsCall(@javax.annotation.Nullable String all, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1150,7 +1150,7 @@ public class ToolsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/tools/plugins";
+        String localVarPath = "/v1/tool/plugins";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1182,8 +1182,8 @@ public class ToolsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getToolsPluginsValidateBeforeCall(@javax.annotation.Nullable String all, final ApiCallback _callback) throws ApiException {
-        return getToolsPluginsCall(all, _callback);
+    private okhttp3.Call getToolPluginsValidateBeforeCall(@javax.annotation.Nullable String all, final ApiCallback _callback) throws ApiException {
+        return getToolPluginsCall(all, _callback);
 
     }
 
@@ -1200,8 +1200,8 @@ public class ToolsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public PluginMountList getToolsPlugins(@javax.annotation.Nullable String all) throws ApiException {
-        ApiResponse<PluginMountList> localVarResp = getToolsPluginsWithHttpInfo(all);
+    public PluginMountList getToolPlugins(@javax.annotation.Nullable String all) throws ApiException {
+        ApiResponse<PluginMountList> localVarResp = getToolPluginsWithHttpInfo(all);
         return localVarResp.getData();
     }
 
@@ -1218,8 +1218,8 @@ public class ToolsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PluginMountList> getToolsPluginsWithHttpInfo(@javax.annotation.Nullable String all) throws ApiException {
-        okhttp3.Call localVarCall = getToolsPluginsValidateBeforeCall(all, null);
+    public ApiResponse<PluginMountList> getToolPluginsWithHttpInfo(@javax.annotation.Nullable String all) throws ApiException {
+        okhttp3.Call localVarCall = getToolPluginsValidateBeforeCall(all, null);
         Type localVarReturnType = new TypeToken<PluginMountList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1238,15 +1238,15 @@ public class ToolsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getToolsPluginsAsync(@javax.annotation.Nullable String all, final ApiCallback<PluginMountList> _callback) throws ApiException {
+    public okhttp3.Call getToolPluginsAsync(@javax.annotation.Nullable String all, final ApiCallback<PluginMountList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getToolsPluginsValidateBeforeCall(all, _callback);
+        okhttp3.Call localVarCall = getToolPluginsValidateBeforeCall(all, _callback);
         Type localVarReturnType = new TypeToken<PluginMountList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getToolsPluginsAuthored
+     * Build call for getToolPluginsAuthored
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1257,7 +1257,7 @@ public class ToolsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getToolsPluginsAuthoredCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getToolPluginsAuthoredCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1274,7 +1274,7 @@ public class ToolsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/tools/plugins/authored";
+        String localVarPath = "/v1/tool/plugins/authored";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1302,14 +1302,14 @@ public class ToolsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getToolsPluginsAuthoredValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getToolsPluginsAuthoredCall(_callback);
+    private okhttp3.Call getToolPluginsAuthoredValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getToolPluginsAuthoredCall(_callback);
 
     }
 
     /**
      * Lists the plugins the caller&#39;s org BUILT, newest first, each with the TypeScript as authored.
-     * Lists the plugins the caller&#39;s org BUILT, newest first, each with the TypeScript as authored. That is a different set with a different lifecycle from GET /v1/tools/plugins, which reports the subsystems this deployment mounted. The bundled CommonJS the runtime executes is never included, and neither is any credential — a plugin names the connectors provider it needs and reads the credential from ctx.auth at run time.
+     * Lists the plugins the caller&#39;s org BUILT, newest first, each with the TypeScript as authored. That is a different set with a different lifecycle from GET /v1/tool/plugins, which reports the subsystems this deployment mounted. The bundled CommonJS the runtime executes is never included, and neither is any credential — a plugin names the connectors provider it needs and reads the credential from ctx.auth at run time.
      * @return AuthoredPluginList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1319,14 +1319,14 @@ public class ToolsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public AuthoredPluginList getToolsPluginsAuthored() throws ApiException {
-        ApiResponse<AuthoredPluginList> localVarResp = getToolsPluginsAuthoredWithHttpInfo();
+    public AuthoredPluginList getToolPluginsAuthored() throws ApiException {
+        ApiResponse<AuthoredPluginList> localVarResp = getToolPluginsAuthoredWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Lists the plugins the caller&#39;s org BUILT, newest first, each with the TypeScript as authored.
-     * Lists the plugins the caller&#39;s org BUILT, newest first, each with the TypeScript as authored. That is a different set with a different lifecycle from GET /v1/tools/plugins, which reports the subsystems this deployment mounted. The bundled CommonJS the runtime executes is never included, and neither is any credential — a plugin names the connectors provider it needs and reads the credential from ctx.auth at run time.
+     * Lists the plugins the caller&#39;s org BUILT, newest first, each with the TypeScript as authored. That is a different set with a different lifecycle from GET /v1/tool/plugins, which reports the subsystems this deployment mounted. The bundled CommonJS the runtime executes is never included, and neither is any credential — a plugin names the connectors provider it needs and reads the credential from ctx.auth at run time.
      * @return ApiResponse&lt;AuthoredPluginList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1336,15 +1336,15 @@ public class ToolsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AuthoredPluginList> getToolsPluginsAuthoredWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getToolsPluginsAuthoredValidateBeforeCall(null);
+    public ApiResponse<AuthoredPluginList> getToolPluginsAuthoredWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getToolPluginsAuthoredValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<AuthoredPluginList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Lists the plugins the caller&#39;s org BUILT, newest first, each with the TypeScript as authored. (asynchronously)
-     * Lists the plugins the caller&#39;s org BUILT, newest first, each with the TypeScript as authored. That is a different set with a different lifecycle from GET /v1/tools/plugins, which reports the subsystems this deployment mounted. The bundled CommonJS the runtime executes is never included, and neither is any credential — a plugin names the connectors provider it needs and reads the credential from ctx.auth at run time.
+     * Lists the plugins the caller&#39;s org BUILT, newest first, each with the TypeScript as authored. That is a different set with a different lifecycle from GET /v1/tool/plugins, which reports the subsystems this deployment mounted. The bundled CommonJS the runtime executes is never included, and neither is any credential — a plugin names the connectors provider it needs and reads the credential from ctx.auth at run time.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1355,15 +1355,15 @@ public class ToolsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getToolsPluginsAuthoredAsync(final ApiCallback<AuthoredPluginList> _callback) throws ApiException {
+    public okhttp3.Call getToolPluginsAuthoredAsync(final ApiCallback<AuthoredPluginList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getToolsPluginsAuthoredValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getToolPluginsAuthoredValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<AuthoredPluginList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getToolsSkills
+     * Build call for getToolSkills
      * @param activated Activated keeps only the tools activated for the caller&#39;s org and project, and only when it is exactly the string \&quot;true\&quot;. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1375,7 +1375,7 @@ public class ToolsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getToolsSkillsCall(@javax.annotation.Nullable String activated, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getToolSkillsCall(@javax.annotation.Nullable String activated, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1392,7 +1392,7 @@ public class ToolsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/tools/skills";
+        String localVarPath = "/v1/tool/skills";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1424,14 +1424,14 @@ public class ToolsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getToolsSkillsValidateBeforeCall(@javax.annotation.Nullable String activated, final ApiCallback _callback) throws ApiException {
-        return getToolsSkillsCall(activated, _callback);
+    private okhttp3.Call getToolSkillsValidateBeforeCall(@javax.annotation.Nullable String activated, final ApiCallback _callback) throws ApiException {
+        return getToolSkillsCall(activated, _callback);
 
     }
 
     /**
      * Lists the skills the caller&#39;s org can reach — the brand&#39;s embedded catalogue plus the org&#39;s own authored ones — with each one&#39;s activation flag.
-     * Lists the skills the caller&#39;s org can reach — the brand&#39;s embedded catalogue plus the org&#39;s own authored ones — with each one&#39;s activation flag. A skill is discovery and activation metadata attached to an agent, never called directly, so every entry here is non-dispatchable. It is GET /v1/tools narrowed to one source, not a second store: a name a caller sees here is the same entry, with the same activation state, that discovery reports.
+     * Lists the skills the caller&#39;s org can reach — the brand&#39;s embedded catalogue plus the org&#39;s own authored ones — with each one&#39;s activation flag. A skill is discovery and activation metadata attached to an agent, never called directly, so every entry here is non-dispatchable. It is GET /v1/tool narrowed to one source, not a second store: a name a caller sees here is the same entry, with the same activation state, that discovery reports.
      * @param activated Activated keeps only the tools activated for the caller&#39;s org and project, and only when it is exactly the string \&quot;true\&quot;. (optional)
      * @return SourceToolList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1442,14 +1442,14 @@ public class ToolsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public SourceToolList getToolsSkills(@javax.annotation.Nullable String activated) throws ApiException {
-        ApiResponse<SourceToolList> localVarResp = getToolsSkillsWithHttpInfo(activated);
+    public SourceToolList getToolSkills(@javax.annotation.Nullable String activated) throws ApiException {
+        ApiResponse<SourceToolList> localVarResp = getToolSkillsWithHttpInfo(activated);
         return localVarResp.getData();
     }
 
     /**
      * Lists the skills the caller&#39;s org can reach — the brand&#39;s embedded catalogue plus the org&#39;s own authored ones — with each one&#39;s activation flag.
-     * Lists the skills the caller&#39;s org can reach — the brand&#39;s embedded catalogue plus the org&#39;s own authored ones — with each one&#39;s activation flag. A skill is discovery and activation metadata attached to an agent, never called directly, so every entry here is non-dispatchable. It is GET /v1/tools narrowed to one source, not a second store: a name a caller sees here is the same entry, with the same activation state, that discovery reports.
+     * Lists the skills the caller&#39;s org can reach — the brand&#39;s embedded catalogue plus the org&#39;s own authored ones — with each one&#39;s activation flag. A skill is discovery and activation metadata attached to an agent, never called directly, so every entry here is non-dispatchable. It is GET /v1/tool narrowed to one source, not a second store: a name a caller sees here is the same entry, with the same activation state, that discovery reports.
      * @param activated Activated keeps only the tools activated for the caller&#39;s org and project, and only when it is exactly the string \&quot;true\&quot;. (optional)
      * @return ApiResponse&lt;SourceToolList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1460,15 +1460,15 @@ public class ToolsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SourceToolList> getToolsSkillsWithHttpInfo(@javax.annotation.Nullable String activated) throws ApiException {
-        okhttp3.Call localVarCall = getToolsSkillsValidateBeforeCall(activated, null);
+    public ApiResponse<SourceToolList> getToolSkillsWithHttpInfo(@javax.annotation.Nullable String activated) throws ApiException {
+        okhttp3.Call localVarCall = getToolSkillsValidateBeforeCall(activated, null);
         Type localVarReturnType = new TypeToken<SourceToolList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Lists the skills the caller&#39;s org can reach — the brand&#39;s embedded catalogue plus the org&#39;s own authored ones — with each one&#39;s activation flag. (asynchronously)
-     * Lists the skills the caller&#39;s org can reach — the brand&#39;s embedded catalogue plus the org&#39;s own authored ones — with each one&#39;s activation flag. A skill is discovery and activation metadata attached to an agent, never called directly, so every entry here is non-dispatchable. It is GET /v1/tools narrowed to one source, not a second store: a name a caller sees here is the same entry, with the same activation state, that discovery reports.
+     * Lists the skills the caller&#39;s org can reach — the brand&#39;s embedded catalogue plus the org&#39;s own authored ones — with each one&#39;s activation flag. A skill is discovery and activation metadata attached to an agent, never called directly, so every entry here is non-dispatchable. It is GET /v1/tool narrowed to one source, not a second store: a name a caller sees here is the same entry, with the same activation state, that discovery reports.
      * @param activated Activated keeps only the tools activated for the caller&#39;s org and project, and only when it is exactly the string \&quot;true\&quot;. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1480,15 +1480,15 @@ public class ToolsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getToolsSkillsAsync(@javax.annotation.Nullable String activated, final ApiCallback<SourceToolList> _callback) throws ApiException {
+    public okhttp3.Call getToolSkillsAsync(@javax.annotation.Nullable String activated, final ApiCallback<SourceToolList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getToolsSkillsValidateBeforeCall(activated, _callback);
+        okhttp3.Call localVarCall = getToolSkillsValidateBeforeCall(activated, _callback);
         Type localVarReturnType = new TypeToken<SourceToolList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getToolsSkillsAuthored
+     * Build call for getToolSkillsAuthored
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1499,7 +1499,7 @@ public class ToolsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getToolsSkillsAuthoredCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getToolSkillsAuthoredCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1516,7 +1516,7 @@ public class ToolsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/tools/skills/authored";
+        String localVarPath = "/v1/tool/skills/authored";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1544,14 +1544,14 @@ public class ToolsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getToolsSkillsAuthoredValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getToolsSkillsAuthoredCall(_callback);
+    private okhttp3.Call getToolSkillsAuthoredValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getToolSkillsAuthoredCall(_callback);
 
     }
 
     /**
      * Lists the caller org&#39;s OWN skills with their SKILL.md bodies.
-     * Lists the caller org&#39;s OWN skills with their SKILL.md bodies. GET /v1/tools/skills is the registry view — the brand&#39;s catalogue plus this org&#39;s, with activation flags and no bodies; this is the EDITABLE set, so it carries the content that view omits and nothing the org did not write.
+     * Lists the caller org&#39;s OWN skills with their SKILL.md bodies. GET /v1/tool/skills is the registry view — the brand&#39;s catalogue plus this org&#39;s, with activation flags and no bodies; this is the EDITABLE set, so it carries the content that view omits and nothing the org did not write.
      * @return AuthoredSkillList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1561,14 +1561,14 @@ public class ToolsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public AuthoredSkillList getToolsSkillsAuthored() throws ApiException {
-        ApiResponse<AuthoredSkillList> localVarResp = getToolsSkillsAuthoredWithHttpInfo();
+    public AuthoredSkillList getToolSkillsAuthored() throws ApiException {
+        ApiResponse<AuthoredSkillList> localVarResp = getToolSkillsAuthoredWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Lists the caller org&#39;s OWN skills with their SKILL.md bodies.
-     * Lists the caller org&#39;s OWN skills with their SKILL.md bodies. GET /v1/tools/skills is the registry view — the brand&#39;s catalogue plus this org&#39;s, with activation flags and no bodies; this is the EDITABLE set, so it carries the content that view omits and nothing the org did not write.
+     * Lists the caller org&#39;s OWN skills with their SKILL.md bodies. GET /v1/tool/skills is the registry view — the brand&#39;s catalogue plus this org&#39;s, with activation flags and no bodies; this is the EDITABLE set, so it carries the content that view omits and nothing the org did not write.
      * @return ApiResponse&lt;AuthoredSkillList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1578,15 +1578,15 @@ public class ToolsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AuthoredSkillList> getToolsSkillsAuthoredWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getToolsSkillsAuthoredValidateBeforeCall(null);
+    public ApiResponse<AuthoredSkillList> getToolSkillsAuthoredWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getToolSkillsAuthoredValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<AuthoredSkillList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Lists the caller org&#39;s OWN skills with their SKILL.md bodies. (asynchronously)
-     * Lists the caller org&#39;s OWN skills with their SKILL.md bodies. GET /v1/tools/skills is the registry view — the brand&#39;s catalogue plus this org&#39;s, with activation flags and no bodies; this is the EDITABLE set, so it carries the content that view omits and nothing the org did not write.
+     * Lists the caller org&#39;s OWN skills with their SKILL.md bodies. GET /v1/tool/skills is the registry view — the brand&#39;s catalogue plus this org&#39;s, with activation flags and no bodies; this is the EDITABLE set, so it carries the content that view omits and nothing the org did not write.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1597,15 +1597,15 @@ public class ToolsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getToolsSkillsAuthoredAsync(final ApiCallback<AuthoredSkillList> _callback) throws ApiException {
+    public okhttp3.Call getToolSkillsAuthoredAsync(final ApiCallback<AuthoredSkillList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getToolsSkillsAuthoredValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getToolSkillsAuthoredValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<AuthoredSkillList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for patchToolsCatalogById
+     * Build call for patchToolCatalogById
      * @param id ID is the listing to curate, from the path. (required)
      * @param curateReq  (required)
      * @param _callback Callback for upload/download progress
@@ -1618,7 +1618,7 @@ public class ToolsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call patchToolsCatalogByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CurateReq curateReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call patchToolCatalogByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CurateReq curateReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1635,7 +1635,7 @@ public class ToolsApi {
         Object localVarPostBody = curateReq;
 
         // create path and map variables
-        String localVarPath = "/v1/tools/catalog/{id}"
+        String localVarPath = "/v1/tool/catalog/{id}"
             .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -1665,18 +1665,18 @@ public class ToolsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchToolsCatalogByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CurateReq curateReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call patchToolCatalogByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CurateReq curateReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling patchToolsCatalogById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling patchToolCatalogById(Async)");
         }
 
         // verify the required parameter 'curateReq' is set
         if (curateReq == null) {
-            throw new ApiException("Missing the required parameter 'curateReq' when calling patchToolsCatalogById(Async)");
+            throw new ApiException("Missing the required parameter 'curateReq' when calling patchToolCatalogById(Async)");
         }
 
-        return patchToolsCatalogByIdCall(id, curateReq, _callback);
+        return patchToolCatalogByIdCall(id, curateReq, _callback);
 
     }
 
@@ -1694,8 +1694,8 @@ public class ToolsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public MCPListing patchToolsCatalogById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CurateReq curateReq) throws ApiException {
-        ApiResponse<MCPListing> localVarResp = patchToolsCatalogByIdWithHttpInfo(id, curateReq);
+    public MCPListing patchToolCatalogById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CurateReq curateReq) throws ApiException {
+        ApiResponse<MCPListing> localVarResp = patchToolCatalogByIdWithHttpInfo(id, curateReq);
         return localVarResp.getData();
     }
 
@@ -1713,8 +1713,8 @@ public class ToolsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<MCPListing> patchToolsCatalogByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CurateReq curateReq) throws ApiException {
-        okhttp3.Call localVarCall = patchToolsCatalogByIdValidateBeforeCall(id, curateReq, null);
+    public ApiResponse<MCPListing> patchToolCatalogByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CurateReq curateReq) throws ApiException {
+        okhttp3.Call localVarCall = patchToolCatalogByIdValidateBeforeCall(id, curateReq, null);
         Type localVarReturnType = new TypeToken<MCPListing>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1734,15 +1734,15 @@ public class ToolsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call patchToolsCatalogByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CurateReq curateReq, final ApiCallback<MCPListing> _callback) throws ApiException {
+    public okhttp3.Call patchToolCatalogByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull CurateReq curateReq, final ApiCallback<MCPListing> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchToolsCatalogByIdValidateBeforeCall(id, curateReq, _callback);
+        okhttp3.Call localVarCall = patchToolCatalogByIdValidateBeforeCall(id, curateReq, _callback);
         Type localVarReturnType = new TypeToken<MCPListing>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postToolsCall
+     * Build call for postToolCall
      * @param toolCall  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1754,7 +1754,7 @@ public class ToolsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postToolsCallCall(@javax.annotation.Nonnull ToolCall toolCall, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postToolCallCall(@javax.annotation.Nonnull ToolCall toolCall, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1771,7 +1771,7 @@ public class ToolsApi {
         Object localVarPostBody = toolCall;
 
         // create path and map variables
-        String localVarPath = "/v1/tools/call";
+        String localVarPath = "/v1/tool/call";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1800,19 +1800,19 @@ public class ToolsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postToolsCallValidateBeforeCall(@javax.annotation.Nonnull ToolCall toolCall, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postToolCallValidateBeforeCall(@javax.annotation.Nonnull ToolCall toolCall, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'toolCall' is set
         if (toolCall == null) {
-            throw new ApiException("Missing the required parameter 'toolCall' when calling postToolsCall(Async)");
+            throw new ApiException("Missing the required parameter 'toolCall' when calling postToolCall(Async)");
         }
 
-        return postToolsCallCall(toolCall, _callback);
+        return postToolCallCall(toolCall, _callback);
 
     }
 
     /**
      * Runs one of the caller&#39;s activated tools and answers with its output.
-     * Runs one of the caller&#39;s activated tools and answers with its output.  This is the endpoint onto the tool plane&#39;s DYNAMIC half — the half no build-time catalogue can hold, because it is per-tenant: an org&#39;s connected connector actions, its authored skills, its agents and functions, and the tools of every external MCP server it registered. A tool&#39;s existence, its price and its activation are all rows, not code, so they cannot be known until the caller is.  One policy, the registry&#39;s: resolve by precedence, refuse an unactivated tool 403, settle a priced one through the x402 client or fail closed 402, then dispatch to the winning source bound to the caller&#39;s own (org, project). One metered unit, one audit record. A caller can only ever dispatch its own tools.  Discovery is GET /v1/tools — ?activated&#x3D;true for the callable set.
+     * Runs one of the caller&#39;s activated tools and answers with its output.  This is the endpoint onto the tool plane&#39;s DYNAMIC half — the half no build-time catalogue can hold, because it is per-tenant: an org&#39;s connected connector actions, its authored skills, its agents and functions, and the tools of every external MCP server it registered. A tool&#39;s existence, its price and its activation are all rows, not code, so they cannot be known until the caller is.  One policy, the registry&#39;s: resolve by precedence, refuse an unactivated tool 403, settle a priced one through the x402 client or fail closed 402, then dispatch to the winning source bound to the caller&#39;s own (org, project). One metered unit, one audit record. A caller can only ever dispatch its own tools.  Discovery is GET /v1/tool — ?activated&#x3D;true for the callable set.
      * @param toolCall  (required)
      * @return ToolResult
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1823,14 +1823,14 @@ public class ToolsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ToolResult postToolsCall(@javax.annotation.Nonnull ToolCall toolCall) throws ApiException {
-        ApiResponse<ToolResult> localVarResp = postToolsCallWithHttpInfo(toolCall);
+    public ToolResult postToolCall(@javax.annotation.Nonnull ToolCall toolCall) throws ApiException {
+        ApiResponse<ToolResult> localVarResp = postToolCallWithHttpInfo(toolCall);
         return localVarResp.getData();
     }
 
     /**
      * Runs one of the caller&#39;s activated tools and answers with its output.
-     * Runs one of the caller&#39;s activated tools and answers with its output.  This is the endpoint onto the tool plane&#39;s DYNAMIC half — the half no build-time catalogue can hold, because it is per-tenant: an org&#39;s connected connector actions, its authored skills, its agents and functions, and the tools of every external MCP server it registered. A tool&#39;s existence, its price and its activation are all rows, not code, so they cannot be known until the caller is.  One policy, the registry&#39;s: resolve by precedence, refuse an unactivated tool 403, settle a priced one through the x402 client or fail closed 402, then dispatch to the winning source bound to the caller&#39;s own (org, project). One metered unit, one audit record. A caller can only ever dispatch its own tools.  Discovery is GET /v1/tools — ?activated&#x3D;true for the callable set.
+     * Runs one of the caller&#39;s activated tools and answers with its output.  This is the endpoint onto the tool plane&#39;s DYNAMIC half — the half no build-time catalogue can hold, because it is per-tenant: an org&#39;s connected connector actions, its authored skills, its agents and functions, and the tools of every external MCP server it registered. A tool&#39;s existence, its price and its activation are all rows, not code, so they cannot be known until the caller is.  One policy, the registry&#39;s: resolve by precedence, refuse an unactivated tool 403, settle a priced one through the x402 client or fail closed 402, then dispatch to the winning source bound to the caller&#39;s own (org, project). One metered unit, one audit record. A caller can only ever dispatch its own tools.  Discovery is GET /v1/tool — ?activated&#x3D;true for the callable set.
      * @param toolCall  (required)
      * @return ApiResponse&lt;ToolResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1841,15 +1841,15 @@ public class ToolsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ToolResult> postToolsCallWithHttpInfo(@javax.annotation.Nonnull ToolCall toolCall) throws ApiException {
-        okhttp3.Call localVarCall = postToolsCallValidateBeforeCall(toolCall, null);
+    public ApiResponse<ToolResult> postToolCallWithHttpInfo(@javax.annotation.Nonnull ToolCall toolCall) throws ApiException {
+        okhttp3.Call localVarCall = postToolCallValidateBeforeCall(toolCall, null);
         Type localVarReturnType = new TypeToken<ToolResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Runs one of the caller&#39;s activated tools and answers with its output. (asynchronously)
-     * Runs one of the caller&#39;s activated tools and answers with its output.  This is the endpoint onto the tool plane&#39;s DYNAMIC half — the half no build-time catalogue can hold, because it is per-tenant: an org&#39;s connected connector actions, its authored skills, its agents and functions, and the tools of every external MCP server it registered. A tool&#39;s existence, its price and its activation are all rows, not code, so they cannot be known until the caller is.  One policy, the registry&#39;s: resolve by precedence, refuse an unactivated tool 403, settle a priced one through the x402 client or fail closed 402, then dispatch to the winning source bound to the caller&#39;s own (org, project). One metered unit, one audit record. A caller can only ever dispatch its own tools.  Discovery is GET /v1/tools — ?activated&#x3D;true for the callable set.
+     * Runs one of the caller&#39;s activated tools and answers with its output.  This is the endpoint onto the tool plane&#39;s DYNAMIC half — the half no build-time catalogue can hold, because it is per-tenant: an org&#39;s connected connector actions, its authored skills, its agents and functions, and the tools of every external MCP server it registered. A tool&#39;s existence, its price and its activation are all rows, not code, so they cannot be known until the caller is.  One policy, the registry&#39;s: resolve by precedence, refuse an unactivated tool 403, settle a priced one through the x402 client or fail closed 402, then dispatch to the winning source bound to the caller&#39;s own (org, project). One metered unit, one audit record. A caller can only ever dispatch its own tools.  Discovery is GET /v1/tool — ?activated&#x3D;true for the callable set.
      * @param toolCall  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1861,15 +1861,15 @@ public class ToolsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postToolsCallAsync(@javax.annotation.Nonnull ToolCall toolCall, final ApiCallback<ToolResult> _callback) throws ApiException {
+    public okhttp3.Call postToolCallAsync(@javax.annotation.Nonnull ToolCall toolCall, final ApiCallback<ToolResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postToolsCallValidateBeforeCall(toolCall, _callback);
+        okhttp3.Call localVarCall = postToolCallValidateBeforeCall(toolCall, _callback);
         Type localVarReturnType = new TypeToken<ToolResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postToolsCatalogSync
+     * Build call for postToolCatalogSync
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1880,7 +1880,7 @@ public class ToolsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postToolsCatalogSyncCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postToolCatalogSyncCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1897,7 +1897,7 @@ public class ToolsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/tools/catalog/sync";
+        String localVarPath = "/v1/tool/catalog/sync";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1925,8 +1925,8 @@ public class ToolsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postToolsCatalogSyncValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postToolsCatalogSyncCall(_callback);
+    private okhttp3.Call postToolCatalogSyncValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postToolCatalogSyncCall(_callback);
 
     }
 
@@ -1942,8 +1942,8 @@ public class ToolsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public McpCatalogSync postToolsCatalogSync() throws ApiException {
-        ApiResponse<McpCatalogSync> localVarResp = postToolsCatalogSyncWithHttpInfo();
+    public McpCatalogSync postToolCatalogSync() throws ApiException {
+        ApiResponse<McpCatalogSync> localVarResp = postToolCatalogSyncWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -1959,8 +1959,8 @@ public class ToolsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<McpCatalogSync> postToolsCatalogSyncWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postToolsCatalogSyncValidateBeforeCall(null);
+    public ApiResponse<McpCatalogSync> postToolCatalogSyncWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postToolCatalogSyncValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<McpCatalogSync>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1978,15 +1978,15 @@ public class ToolsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postToolsCatalogSyncAsync(final ApiCallback<McpCatalogSync> _callback) throws ApiException {
+    public okhttp3.Call postToolCatalogSyncAsync(final ApiCallback<McpCatalogSync> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postToolsCatalogSyncValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postToolCatalogSyncValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<McpCatalogSync>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postToolsMcpServers
+     * Build call for postToolMcpServers
      * @param createServerReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1998,7 +1998,7 @@ public class ToolsApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postToolsMcpServersCall(@javax.annotation.Nonnull CreateServerReq createServerReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postToolMcpServersCall(@javax.annotation.Nonnull CreateServerReq createServerReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2015,7 +2015,7 @@ public class ToolsApi {
         Object localVarPostBody = createServerReq;
 
         // create path and map variables
-        String localVarPath = "/v1/tools/mcp/servers";
+        String localVarPath = "/v1/tool/mcp/servers";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2044,13 +2044,13 @@ public class ToolsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postToolsMcpServersValidateBeforeCall(@javax.annotation.Nonnull CreateServerReq createServerReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postToolMcpServersValidateBeforeCall(@javax.annotation.Nonnull CreateServerReq createServerReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'createServerReq' is set
         if (createServerReq == null) {
-            throw new ApiException("Missing the required parameter 'createServerReq' when calling postToolsMcpServers(Async)");
+            throw new ApiException("Missing the required parameter 'createServerReq' when calling postToolMcpServers(Async)");
         }
 
-        return postToolsMcpServersCall(createServerReq, _callback);
+        return postToolMcpServersCall(createServerReq, _callback);
 
     }
 
@@ -2067,8 +2067,8 @@ public class ToolsApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public MCPServer postToolsMcpServers(@javax.annotation.Nonnull CreateServerReq createServerReq) throws ApiException {
-        ApiResponse<MCPServer> localVarResp = postToolsMcpServersWithHttpInfo(createServerReq);
+    public MCPServer postToolMcpServers(@javax.annotation.Nonnull CreateServerReq createServerReq) throws ApiException {
+        ApiResponse<MCPServer> localVarResp = postToolMcpServersWithHttpInfo(createServerReq);
         return localVarResp.getData();
     }
 
@@ -2085,8 +2085,8 @@ public class ToolsApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<MCPServer> postToolsMcpServersWithHttpInfo(@javax.annotation.Nonnull CreateServerReq createServerReq) throws ApiException {
-        okhttp3.Call localVarCall = postToolsMcpServersValidateBeforeCall(createServerReq, null);
+    public ApiResponse<MCPServer> postToolMcpServersWithHttpInfo(@javax.annotation.Nonnull CreateServerReq createServerReq) throws ApiException {
+        okhttp3.Call localVarCall = postToolMcpServersValidateBeforeCall(createServerReq, null);
         Type localVarReturnType = new TypeToken<MCPServer>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2105,15 +2105,15 @@ public class ToolsApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postToolsMcpServersAsync(@javax.annotation.Nonnull CreateServerReq createServerReq, final ApiCallback<MCPServer> _callback) throws ApiException {
+    public okhttp3.Call postToolMcpServersAsync(@javax.annotation.Nonnull CreateServerReq createServerReq, final ApiCallback<MCPServer> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postToolsMcpServersValidateBeforeCall(createServerReq, _callback);
+        okhttp3.Call localVarCall = postToolMcpServersValidateBeforeCall(createServerReq, _callback);
         Type localVarReturnType = new TypeToken<MCPServer>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postToolsPluginsBuild
+     * Build call for postToolPluginsBuild
      * @param buildRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2125,7 +2125,7 @@ public class ToolsApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postToolsPluginsBuildCall(@javax.annotation.Nonnull BuildRequest buildRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postToolPluginsBuildCall(@javax.annotation.Nonnull BuildRequest buildRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2142,7 +2142,7 @@ public class ToolsApi {
         Object localVarPostBody = buildRequest;
 
         // create path and map variables
-        String localVarPath = "/v1/tools/plugins/build";
+        String localVarPath = "/v1/tool/plugins/build";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2171,13 +2171,13 @@ public class ToolsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postToolsPluginsBuildValidateBeforeCall(@javax.annotation.Nonnull BuildRequest buildRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postToolPluginsBuildValidateBeforeCall(@javax.annotation.Nonnull BuildRequest buildRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'buildRequest' is set
         if (buildRequest == null) {
-            throw new ApiException("Missing the required parameter 'buildRequest' when calling postToolsPluginsBuild(Async)");
+            throw new ApiException("Missing the required parameter 'buildRequest' when calling postToolPluginsBuild(Async)");
         }
 
-        return postToolsPluginsBuildCall(buildRequest, _callback);
+        return postToolPluginsBuildCall(buildRequest, _callback);
 
     }
 
@@ -2194,8 +2194,8 @@ public class ToolsApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public BuildOut postToolsPluginsBuild(@javax.annotation.Nonnull BuildRequest buildRequest) throws ApiException {
-        ApiResponse<BuildOut> localVarResp = postToolsPluginsBuildWithHttpInfo(buildRequest);
+    public BuildOut postToolPluginsBuild(@javax.annotation.Nonnull BuildRequest buildRequest) throws ApiException {
+        ApiResponse<BuildOut> localVarResp = postToolPluginsBuildWithHttpInfo(buildRequest);
         return localVarResp.getData();
     }
 
@@ -2212,8 +2212,8 @@ public class ToolsApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BuildOut> postToolsPluginsBuildWithHttpInfo(@javax.annotation.Nonnull BuildRequest buildRequest) throws ApiException {
-        okhttp3.Call localVarCall = postToolsPluginsBuildValidateBeforeCall(buildRequest, null);
+    public ApiResponse<BuildOut> postToolPluginsBuildWithHttpInfo(@javax.annotation.Nonnull BuildRequest buildRequest) throws ApiException {
+        okhttp3.Call localVarCall = postToolPluginsBuildValidateBeforeCall(buildRequest, null);
         Type localVarReturnType = new TypeToken<BuildOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2232,15 +2232,15 @@ public class ToolsApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postToolsPluginsBuildAsync(@javax.annotation.Nonnull BuildRequest buildRequest, final ApiCallback<BuildOut> _callback) throws ApiException {
+    public okhttp3.Call postToolPluginsBuildAsync(@javax.annotation.Nonnull BuildRequest buildRequest, final ApiCallback<BuildOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postToolsPluginsBuildValidateBeforeCall(buildRequest, _callback);
+        okhttp3.Call localVarCall = postToolPluginsBuildValidateBeforeCall(buildRequest, _callback);
         Type localVarReturnType = new TypeToken<BuildOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postToolsSkills
+     * Build call for postToolSkills
      * @param skillIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2252,7 +2252,7 @@ public class ToolsApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postToolsSkillsCall(@javax.annotation.Nonnull SkillIn skillIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postToolSkillsCall(@javax.annotation.Nonnull SkillIn skillIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2269,7 +2269,7 @@ public class ToolsApi {
         Object localVarPostBody = skillIn;
 
         // create path and map variables
-        String localVarPath = "/v1/tools/skills";
+        String localVarPath = "/v1/tool/skills";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2298,13 +2298,13 @@ public class ToolsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postToolsSkillsValidateBeforeCall(@javax.annotation.Nonnull SkillIn skillIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postToolSkillsValidateBeforeCall(@javax.annotation.Nonnull SkillIn skillIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'skillIn' is set
         if (skillIn == null) {
-            throw new ApiException("Missing the required parameter 'skillIn' when calling postToolsSkills(Async)");
+            throw new ApiException("Missing the required parameter 'skillIn' when calling postToolSkills(Async)");
         }
 
-        return postToolsSkillsCall(skillIn, _callback);
+        return postToolSkillsCall(skillIn, _callback);
 
     }
 
@@ -2321,8 +2321,8 @@ public class ToolsApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public SkillWritten postToolsSkills(@javax.annotation.Nonnull SkillIn skillIn) throws ApiException {
-        ApiResponse<SkillWritten> localVarResp = postToolsSkillsWithHttpInfo(skillIn);
+    public SkillWritten postToolSkills(@javax.annotation.Nonnull SkillIn skillIn) throws ApiException {
+        ApiResponse<SkillWritten> localVarResp = postToolSkillsWithHttpInfo(skillIn);
         return localVarResp.getData();
     }
 
@@ -2339,8 +2339,8 @@ public class ToolsApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SkillWritten> postToolsSkillsWithHttpInfo(@javax.annotation.Nonnull SkillIn skillIn) throws ApiException {
-        okhttp3.Call localVarCall = postToolsSkillsValidateBeforeCall(skillIn, null);
+    public ApiResponse<SkillWritten> postToolSkillsWithHttpInfo(@javax.annotation.Nonnull SkillIn skillIn) throws ApiException {
+        okhttp3.Call localVarCall = postToolSkillsValidateBeforeCall(skillIn, null);
         Type localVarReturnType = new TypeToken<SkillWritten>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2359,15 +2359,15 @@ public class ToolsApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postToolsSkillsAsync(@javax.annotation.Nonnull SkillIn skillIn, final ApiCallback<SkillWritten> _callback) throws ApiException {
+    public okhttp3.Call postToolSkillsAsync(@javax.annotation.Nonnull SkillIn skillIn, final ApiCallback<SkillWritten> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postToolsSkillsValidateBeforeCall(skillIn, _callback);
+        okhttp3.Call localVarCall = postToolSkillsValidateBeforeCall(skillIn, _callback);
         Type localVarReturnType = new TypeToken<SkillWritten>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putToolsActivation
+     * Build call for putToolActivation
      * @param activationReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2379,7 +2379,7 @@ public class ToolsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putToolsActivationCall(@javax.annotation.Nonnull ActivationReq activationReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putToolActivationCall(@javax.annotation.Nonnull ActivationReq activationReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2396,7 +2396,7 @@ public class ToolsApi {
         Object localVarPostBody = activationReq;
 
         // create path and map variables
-        String localVarPath = "/v1/tools/activation";
+        String localVarPath = "/v1/tool/activation";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2425,13 +2425,13 @@ public class ToolsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putToolsActivationValidateBeforeCall(@javax.annotation.Nonnull ActivationReq activationReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putToolActivationValidateBeforeCall(@javax.annotation.Nonnull ActivationReq activationReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'activationReq' is set
         if (activationReq == null) {
-            throw new ApiException("Missing the required parameter 'activationReq' when calling putToolsActivation(Async)");
+            throw new ApiException("Missing the required parameter 'activationReq' when calling putToolActivation(Async)");
         }
 
-        return putToolsActivationCall(activationReq, _callback);
+        return putToolActivationCall(activationReq, _callback);
 
     }
 
@@ -2448,8 +2448,8 @@ public class ToolsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ActivationSet putToolsActivation(@javax.annotation.Nonnull ActivationReq activationReq) throws ApiException {
-        ApiResponse<ActivationSet> localVarResp = putToolsActivationWithHttpInfo(activationReq);
+    public ActivationSet putToolActivation(@javax.annotation.Nonnull ActivationReq activationReq) throws ApiException {
+        ApiResponse<ActivationSet> localVarResp = putToolActivationWithHttpInfo(activationReq);
         return localVarResp.getData();
     }
 
@@ -2466,8 +2466,8 @@ public class ToolsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ActivationSet> putToolsActivationWithHttpInfo(@javax.annotation.Nonnull ActivationReq activationReq) throws ApiException {
-        okhttp3.Call localVarCall = putToolsActivationValidateBeforeCall(activationReq, null);
+    public ApiResponse<ActivationSet> putToolActivationWithHttpInfo(@javax.annotation.Nonnull ActivationReq activationReq) throws ApiException {
+        okhttp3.Call localVarCall = putToolActivationValidateBeforeCall(activationReq, null);
         Type localVarReturnType = new TypeToken<ActivationSet>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2486,9 +2486,9 @@ public class ToolsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putToolsActivationAsync(@javax.annotation.Nonnull ActivationReq activationReq, final ApiCallback<ActivationSet> _callback) throws ApiException {
+    public okhttp3.Call putToolActivationAsync(@javax.annotation.Nonnull ActivationReq activationReq, final ApiCallback<ActivationSet> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putToolsActivationValidateBeforeCall(activationReq, _callback);
+        okhttp3.Call localVarCall = putToolActivationValidateBeforeCall(activationReq, _callback);
         Type localVarReturnType = new TypeToken<ActivationSet>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

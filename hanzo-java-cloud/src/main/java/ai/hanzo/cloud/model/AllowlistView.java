@@ -128,7 +128,7 @@ public class AllowlistView {
   }
 
   /**
-   * DM is the CONFIG-managed DM allow entries — the list PUT /v1/channels/allowlist owns and replaces wholesale. An entry matches a sender either EXACTLY, as the transport-native id inbox messages carry, or as &#x60;accessGroup:&lt;name&gt;&#x60; resolved through AccessGroups. A bare &#x60;*&#x60; admits everyone, but only while DMPolicy is \&quot;open\&quot;: it is gate syntax, not an identity, so under \&quot;allowlist\&quot; it matches nobody.
+   * DM is the CONFIG-managed DM allow entries — the list PUT /v1/channel/allowlist owns and replaces wholesale. An entry matches a sender either EXACTLY, as the transport-native id inbox messages carry, or as &#x60;accessGroup:&lt;name&gt;&#x60; resolved through AccessGroups. A bare &#x60;*&#x60; admits everyone, but only while DMPolicy is \&quot;open\&quot;: it is gate syntax, not an identity, so under \&quot;allowlist\&quot; it matches nobody.
    * @return dm
    */
   @javax.annotation.Nullable
@@ -220,7 +220,7 @@ public class AllowlistView {
   }
 
   /**
-   * Paired is the senders admitted by PAIRING — the entries POST /v1/channels/pairing/approve minted, DM scope only. READ-ONLY on this endpoint: the PUT writes config entries and can never revoke one of these (listing a paired sender under DM instead promotes that entry to config, which the admin then owns). They admit only while DMPolicy is \&quot;pairing\&quot;.
+   * Paired is the senders admitted by PAIRING — the entries POST /v1/channel/pairing/approve minted, DM scope only. READ-ONLY on this endpoint: the PUT writes config entries and can never revoke one of these (listing a paired sender under DM instead promotes that entry to config, which the admin then owns). They admit only while DMPolicy is \&quot;pairing\&quot;.
    * @return paired
    */
   @javax.annotation.Nullable

@@ -43,16 +43,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ChannelsApi {
+public class ChannelApi {
     private ApiClient localVarApiClient;
     private int localHostIndex;
     private String localCustomBaseUrl;
 
-    public ChannelsApi() {
+    public ChannelApi() {
         this(Configuration.getDefaultApiClient());
     }
 
-    public ChannelsApi(ApiClient apiClient) {
+    public ChannelApi(ApiClient apiClient) {
         this.localVarApiClient = apiClient;
     }
 
@@ -81,7 +81,7 @@ public class ChannelsApi {
     }
 
     /**
-     * Build call for getChannels
+     * Build call for getChannel
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -92,7 +92,7 @@ public class ChannelsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getChannelsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getChannelCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -109,7 +109,7 @@ public class ChannelsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/channels";
+        String localVarPath = "/v1/channel";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -137,8 +137,8 @@ public class ChannelsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getChannelsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getChannelsCall(_callback);
+    private okhttp3.Call getChannelValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getChannelCall(_callback);
 
     }
 
@@ -154,8 +154,8 @@ public class ChannelsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ChatChannels getChannels() throws ApiException {
-        ApiResponse<ChatChannels> localVarResp = getChannelsWithHttpInfo();
+    public ChatChannels getChannel() throws ApiException {
+        ApiResponse<ChatChannels> localVarResp = getChannelWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -171,8 +171,8 @@ public class ChannelsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ChatChannels> getChannelsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getChannelsValidateBeforeCall(null);
+    public ApiResponse<ChatChannels> getChannelWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getChannelValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<ChatChannels>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -190,15 +190,15 @@ public class ChannelsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getChannelsAsync(final ApiCallback<ChatChannels> _callback) throws ApiException {
+    public okhttp3.Call getChannelAsync(final ApiCallback<ChatChannels> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getChannelsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getChannelValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<ChatChannels>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getChannelsAgent
+     * Build call for getChannelAgent
      * @param channel Channel is the transport: discord, github, linear, slack, teams, telegram or whatsapp. Required; an unknown value is a 404. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -210,7 +210,7 @@ public class ChannelsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getChannelsAgentCall(@javax.annotation.Nullable String channel, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getChannelAgentCall(@javax.annotation.Nullable String channel, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -227,7 +227,7 @@ public class ChannelsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/channels/agent";
+        String localVarPath = "/v1/channel/agent";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -259,8 +259,8 @@ public class ChannelsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getChannelsAgentValidateBeforeCall(@javax.annotation.Nullable String channel, final ApiCallback _callback) throws ApiException {
-        return getChannelsAgentCall(channel, _callback);
+    private okhttp3.Call getChannelAgentValidateBeforeCall(@javax.annotation.Nullable String channel, final ApiCallback _callback) throws ApiException {
+        return getChannelAgentCall(channel, _callback);
 
     }
 
@@ -277,8 +277,8 @@ public class ChannelsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ChannelAgents getChannelsAgent(@javax.annotation.Nullable String channel) throws ApiException {
-        ApiResponse<ChannelAgents> localVarResp = getChannelsAgentWithHttpInfo(channel);
+    public ChannelAgents getChannelAgent(@javax.annotation.Nullable String channel) throws ApiException {
+        ApiResponse<ChannelAgents> localVarResp = getChannelAgentWithHttpInfo(channel);
         return localVarResp.getData();
     }
 
@@ -295,8 +295,8 @@ public class ChannelsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ChannelAgents> getChannelsAgentWithHttpInfo(@javax.annotation.Nullable String channel) throws ApiException {
-        okhttp3.Call localVarCall = getChannelsAgentValidateBeforeCall(channel, null);
+    public ApiResponse<ChannelAgents> getChannelAgentWithHttpInfo(@javax.annotation.Nullable String channel) throws ApiException {
+        okhttp3.Call localVarCall = getChannelAgentValidateBeforeCall(channel, null);
         Type localVarReturnType = new TypeToken<ChannelAgents>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -315,15 +315,15 @@ public class ChannelsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getChannelsAgentAsync(@javax.annotation.Nullable String channel, final ApiCallback<ChannelAgents> _callback) throws ApiException {
+    public okhttp3.Call getChannelAgentAsync(@javax.annotation.Nullable String channel, final ApiCallback<ChannelAgents> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getChannelsAgentValidateBeforeCall(channel, _callback);
+        okhttp3.Call localVarCall = getChannelAgentValidateBeforeCall(channel, _callback);
         Type localVarReturnType = new TypeToken<ChannelAgents>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getChannelsAllowlist
+     * Build call for getChannelAllowlist
      * @param channel Channel is the transport to read: discord, github, linear, slack, teams, telegram or whatsapp. Required; an unknown value is a 404. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -335,7 +335,7 @@ public class ChannelsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getChannelsAllowlistCall(@javax.annotation.Nullable String channel, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getChannelAllowlistCall(@javax.annotation.Nullable String channel, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -352,7 +352,7 @@ public class ChannelsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/channels/allowlist";
+        String localVarPath = "/v1/channel/allowlist";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -384,8 +384,8 @@ public class ChannelsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getChannelsAllowlistValidateBeforeCall(@javax.annotation.Nullable String channel, final ApiCallback _callback) throws ApiException {
-        return getChannelsAllowlistCall(channel, _callback);
+    private okhttp3.Call getChannelAllowlistValidateBeforeCall(@javax.annotation.Nullable String channel, final ApiCallback _callback) throws ApiException {
+        return getChannelAllowlistCall(channel, _callback);
 
     }
 
@@ -402,8 +402,8 @@ public class ChannelsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public AllowlistView getChannelsAllowlist(@javax.annotation.Nullable String channel) throws ApiException {
-        ApiResponse<AllowlistView> localVarResp = getChannelsAllowlistWithHttpInfo(channel);
+    public AllowlistView getChannelAllowlist(@javax.annotation.Nullable String channel) throws ApiException {
+        ApiResponse<AllowlistView> localVarResp = getChannelAllowlistWithHttpInfo(channel);
         return localVarResp.getData();
     }
 
@@ -420,8 +420,8 @@ public class ChannelsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AllowlistView> getChannelsAllowlistWithHttpInfo(@javax.annotation.Nullable String channel) throws ApiException {
-        okhttp3.Call localVarCall = getChannelsAllowlistValidateBeforeCall(channel, null);
+    public ApiResponse<AllowlistView> getChannelAllowlistWithHttpInfo(@javax.annotation.Nullable String channel) throws ApiException {
+        okhttp3.Call localVarCall = getChannelAllowlistValidateBeforeCall(channel, null);
         Type localVarReturnType = new TypeToken<AllowlistView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -440,15 +440,15 @@ public class ChannelsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getChannelsAllowlistAsync(@javax.annotation.Nullable String channel, final ApiCallback<AllowlistView> _callback) throws ApiException {
+    public okhttp3.Call getChannelAllowlistAsync(@javax.annotation.Nullable String channel, final ApiCallback<AllowlistView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getChannelsAllowlistValidateBeforeCall(channel, _callback);
+        okhttp3.Call localVarCall = getChannelAllowlistValidateBeforeCall(channel, _callback);
         Type localVarReturnType = new TypeToken<AllowlistView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getChannelsInbox
+     * Build call for getChannelInbox
      * @param since Since is the exclusive cursor: only messages with a higher row id come back. Empty starts at the beginning. Must parse as an integer. (optional)
      * @param limit Limit caps how many messages come back. Empty or 0 uses the store&#39;s default page size. Must parse as an integer. (optional)
      * @param _callback Callback for upload/download progress
@@ -461,7 +461,7 @@ public class ChannelsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getChannelsInboxCall(@javax.annotation.Nullable String since, @javax.annotation.Nullable String limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getChannelInboxCall(@javax.annotation.Nullable String since, @javax.annotation.Nullable String limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -478,7 +478,7 @@ public class ChannelsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/channels/inbox";
+        String localVarPath = "/v1/channel/inbox";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -514,8 +514,8 @@ public class ChannelsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getChannelsInboxValidateBeforeCall(@javax.annotation.Nullable String since, @javax.annotation.Nullable String limit, final ApiCallback _callback) throws ApiException {
-        return getChannelsInboxCall(since, limit, _callback);
+    private okhttp3.Call getChannelInboxValidateBeforeCall(@javax.annotation.Nullable String since, @javax.annotation.Nullable String limit, final ApiCallback _callback) throws ApiException {
+        return getChannelInboxCall(since, limit, _callback);
 
     }
 
@@ -533,8 +533,8 @@ public class ChannelsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public InboxPage getChannelsInbox(@javax.annotation.Nullable String since, @javax.annotation.Nullable String limit) throws ApiException {
-        ApiResponse<InboxPage> localVarResp = getChannelsInboxWithHttpInfo(since, limit);
+    public InboxPage getChannelInbox(@javax.annotation.Nullable String since, @javax.annotation.Nullable String limit) throws ApiException {
+        ApiResponse<InboxPage> localVarResp = getChannelInboxWithHttpInfo(since, limit);
         return localVarResp.getData();
     }
 
@@ -552,8 +552,8 @@ public class ChannelsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InboxPage> getChannelsInboxWithHttpInfo(@javax.annotation.Nullable String since, @javax.annotation.Nullable String limit) throws ApiException {
-        okhttp3.Call localVarCall = getChannelsInboxValidateBeforeCall(since, limit, null);
+    public ApiResponse<InboxPage> getChannelInboxWithHttpInfo(@javax.annotation.Nullable String since, @javax.annotation.Nullable String limit) throws ApiException {
+        okhttp3.Call localVarCall = getChannelInboxValidateBeforeCall(since, limit, null);
         Type localVarReturnType = new TypeToken<InboxPage>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -573,15 +573,15 @@ public class ChannelsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getChannelsInboxAsync(@javax.annotation.Nullable String since, @javax.annotation.Nullable String limit, final ApiCallback<InboxPage> _callback) throws ApiException {
+    public okhttp3.Call getChannelInboxAsync(@javax.annotation.Nullable String since, @javax.annotation.Nullable String limit, final ApiCallback<InboxPage> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getChannelsInboxValidateBeforeCall(since, limit, _callback);
+        okhttp3.Call localVarCall = getChannelInboxValidateBeforeCall(since, limit, _callback);
         Type localVarReturnType = new TypeToken<InboxPage>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getChannelsPairing
+     * Build call for getChannelPairing
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -592,7 +592,7 @@ public class ChannelsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getChannelsPairingCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getChannelPairingCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -609,7 +609,7 @@ public class ChannelsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/channels/pairing";
+        String localVarPath = "/v1/channel/pairing";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -637,14 +637,14 @@ public class ChannelsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getChannelsPairingValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getChannelsPairingCall(_callback);
+    private okhttp3.Call getChannelPairingValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getChannelPairingCall(_callback);
 
     }
 
     /**
      * Returns the pairing requests waiting for the caller org to approve — one per person who messaged a connected bot on a channel whose DM policy is \&quot;pairing\&quot; and who is not allowed yet.
-     * Returns the pairing requests waiting for the caller org to approve — one per person who messaged a connected bot on a channel whose DM policy is \&quot;pairing\&quot; and who is not allowed yet. Each row carries the CODE an org admin passes to POST /v1/channels/pairing/approve. Expired requests are not returned. Codes are capability strings: they are shown here, and never logged.
+     * Returns the pairing requests waiting for the caller org to approve — one per person who messaged a connected bot on a channel whose DM policy is \&quot;pairing\&quot; and who is not allowed yet. Each row carries the CODE an org admin passes to POST /v1/channel/pairing/approve. Expired requests are not returned. Codes are capability strings: they are shown here, and never logged.
      * @return PairingQueue
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -654,14 +654,14 @@ public class ChannelsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public PairingQueue getChannelsPairing() throws ApiException {
-        ApiResponse<PairingQueue> localVarResp = getChannelsPairingWithHttpInfo();
+    public PairingQueue getChannelPairing() throws ApiException {
+        ApiResponse<PairingQueue> localVarResp = getChannelPairingWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * Returns the pairing requests waiting for the caller org to approve — one per person who messaged a connected bot on a channel whose DM policy is \&quot;pairing\&quot; and who is not allowed yet.
-     * Returns the pairing requests waiting for the caller org to approve — one per person who messaged a connected bot on a channel whose DM policy is \&quot;pairing\&quot; and who is not allowed yet. Each row carries the CODE an org admin passes to POST /v1/channels/pairing/approve. Expired requests are not returned. Codes are capability strings: they are shown here, and never logged.
+     * Returns the pairing requests waiting for the caller org to approve — one per person who messaged a connected bot on a channel whose DM policy is \&quot;pairing\&quot; and who is not allowed yet. Each row carries the CODE an org admin passes to POST /v1/channel/pairing/approve. Expired requests are not returned. Codes are capability strings: they are shown here, and never logged.
      * @return ApiResponse&lt;PairingQueue&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -671,15 +671,15 @@ public class ChannelsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PairingQueue> getChannelsPairingWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getChannelsPairingValidateBeforeCall(null);
+    public ApiResponse<PairingQueue> getChannelPairingWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getChannelPairingValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<PairingQueue>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Returns the pairing requests waiting for the caller org to approve — one per person who messaged a connected bot on a channel whose DM policy is \&quot;pairing\&quot; and who is not allowed yet. (asynchronously)
-     * Returns the pairing requests waiting for the caller org to approve — one per person who messaged a connected bot on a channel whose DM policy is \&quot;pairing\&quot; and who is not allowed yet. Each row carries the CODE an org admin passes to POST /v1/channels/pairing/approve. Expired requests are not returned. Codes are capability strings: they are shown here, and never logged.
+     * Returns the pairing requests waiting for the caller org to approve — one per person who messaged a connected bot on a channel whose DM policy is \&quot;pairing\&quot; and who is not allowed yet. Each row carries the CODE an org admin passes to POST /v1/channel/pairing/approve. Expired requests are not returned. Codes are capability strings: they are shown here, and never logged.
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -690,21 +690,21 @@ public class ChannelsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getChannelsPairingAsync(final ApiCallback<PairingQueue> _callback) throws ApiException {
+    public okhttp3.Call getChannelPairingAsync(final ApiCallback<PairingQueue> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getChannelsPairingValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getChannelPairingValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<PairingQueue>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postChannelsByChannelSend
+     * Build call for postChannelByChannelSend
      * @param channel  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postChannelsByChannelSendCall(@javax.annotation.Nonnull String channel, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postChannelByChannelSendCall(@javax.annotation.Nonnull String channel, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -721,7 +721,7 @@ public class ChannelsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/channels/{channel}/send"
+        String localVarPath = "/v1/channel/{channel}/send"
             .replace("{" + "channel" + "}", localVarApiClient.escapeString(channel.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -749,13 +749,13 @@ public class ChannelsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postChannelsByChannelSendValidateBeforeCall(@javax.annotation.Nonnull String channel, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postChannelByChannelSendValidateBeforeCall(@javax.annotation.Nonnull String channel, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'channel' is set
         if (channel == null) {
-            throw new ApiException("Missing the required parameter 'channel' when calling postChannelsByChannelSend(Async)");
+            throw new ApiException("Missing the required parameter 'channel' when calling postChannelByChannelSend(Async)");
         }
 
-        return postChannelsByChannelSendCall(channel, _callback);
+        return postChannelByChannelSendCall(channel, _callback);
 
     }
 
@@ -765,8 +765,8 @@ public class ChannelsApi {
      * @param channel  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postChannelsByChannelSend(@javax.annotation.Nonnull String channel) throws ApiException {
-        postChannelsByChannelSendWithHttpInfo(channel);
+    public void postChannelByChannelSend(@javax.annotation.Nonnull String channel) throws ApiException {
+        postChannelByChannelSendWithHttpInfo(channel);
     }
 
     /**
@@ -776,8 +776,8 @@ public class ChannelsApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postChannelsByChannelSendWithHttpInfo(@javax.annotation.Nonnull String channel) throws ApiException {
-        okhttp3.Call localVarCall = postChannelsByChannelSendValidateBeforeCall(channel, null);
+    public ApiResponse<Void> postChannelByChannelSendWithHttpInfo(@javax.annotation.Nonnull String channel) throws ApiException {
+        okhttp3.Call localVarCall = postChannelByChannelSendValidateBeforeCall(channel, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -789,14 +789,14 @@ public class ChannelsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postChannelsByChannelSendAsync(@javax.annotation.Nonnull String channel, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postChannelByChannelSendAsync(@javax.annotation.Nonnull String channel, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postChannelsByChannelSendValidateBeforeCall(channel, _callback);
+        okhttp3.Call localVarCall = postChannelByChannelSendValidateBeforeCall(channel, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postChannelsPairingApprove
+     * Build call for postChannelPairingApprove
      * @param approvePairingIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -808,7 +808,7 @@ public class ChannelsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postChannelsPairingApproveCall(@javax.annotation.Nonnull ApprovePairingIn approvePairingIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postChannelPairingApproveCall(@javax.annotation.Nonnull ApprovePairingIn approvePairingIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -825,7 +825,7 @@ public class ChannelsApi {
         Object localVarPostBody = approvePairingIn;
 
         // create path and map variables
-        String localVarPath = "/v1/channels/pairing/approve";
+        String localVarPath = "/v1/channel/pairing/approve";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -854,13 +854,13 @@ public class ChannelsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postChannelsPairingApproveValidateBeforeCall(@javax.annotation.Nonnull ApprovePairingIn approvePairingIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postChannelPairingApproveValidateBeforeCall(@javax.annotation.Nonnull ApprovePairingIn approvePairingIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'approvePairingIn' is set
         if (approvePairingIn == null) {
-            throw new ApiException("Missing the required parameter 'approvePairingIn' when calling postChannelsPairingApprove(Async)");
+            throw new ApiException("Missing the required parameter 'approvePairingIn' when calling postChannelPairingApprove(Async)");
         }
 
-        return postChannelsPairingApproveCall(approvePairingIn, _callback);
+        return postChannelPairingApproveCall(approvePairingIn, _callback);
 
     }
 
@@ -877,8 +877,8 @@ public class ChannelsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public PairingApproved postChannelsPairingApprove(@javax.annotation.Nonnull ApprovePairingIn approvePairingIn) throws ApiException {
-        ApiResponse<PairingApproved> localVarResp = postChannelsPairingApproveWithHttpInfo(approvePairingIn);
+    public PairingApproved postChannelPairingApprove(@javax.annotation.Nonnull ApprovePairingIn approvePairingIn) throws ApiException {
+        ApiResponse<PairingApproved> localVarResp = postChannelPairingApproveWithHttpInfo(approvePairingIn);
         return localVarResp.getData();
     }
 
@@ -895,8 +895,8 @@ public class ChannelsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PairingApproved> postChannelsPairingApproveWithHttpInfo(@javax.annotation.Nonnull ApprovePairingIn approvePairingIn) throws ApiException {
-        okhttp3.Call localVarCall = postChannelsPairingApproveValidateBeforeCall(approvePairingIn, null);
+    public ApiResponse<PairingApproved> postChannelPairingApproveWithHttpInfo(@javax.annotation.Nonnull ApprovePairingIn approvePairingIn) throws ApiException {
+        okhttp3.Call localVarCall = postChannelPairingApproveValidateBeforeCall(approvePairingIn, null);
         Type localVarReturnType = new TypeToken<PairingApproved>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -915,15 +915,15 @@ public class ChannelsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postChannelsPairingApproveAsync(@javax.annotation.Nonnull ApprovePairingIn approvePairingIn, final ApiCallback<PairingApproved> _callback) throws ApiException {
+    public okhttp3.Call postChannelPairingApproveAsync(@javax.annotation.Nonnull ApprovePairingIn approvePairingIn, final ApiCallback<PairingApproved> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postChannelsPairingApproveValidateBeforeCall(approvePairingIn, _callback);
+        okhttp3.Call localVarCall = postChannelPairingApproveValidateBeforeCall(approvePairingIn, _callback);
         Type localVarReturnType = new TypeToken<PairingApproved>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putChannelsAgent
+     * Build call for putChannelAgent
      * @param channelAgentsPut  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -935,7 +935,7 @@ public class ChannelsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putChannelsAgentCall(@javax.annotation.Nonnull ChannelAgentsPut channelAgentsPut, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putChannelAgentCall(@javax.annotation.Nonnull ChannelAgentsPut channelAgentsPut, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -952,7 +952,7 @@ public class ChannelsApi {
         Object localVarPostBody = channelAgentsPut;
 
         // create path and map variables
-        String localVarPath = "/v1/channels/agent";
+        String localVarPath = "/v1/channel/agent";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -981,19 +981,19 @@ public class ChannelsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putChannelsAgentValidateBeforeCall(@javax.annotation.Nonnull ChannelAgentsPut channelAgentsPut, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putChannelAgentValidateBeforeCall(@javax.annotation.Nonnull ChannelAgentsPut channelAgentsPut, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'channelAgentsPut' is set
         if (channelAgentsPut == null) {
-            throw new ApiException("Missing the required parameter 'channelAgentsPut' when calling putChannelsAgent(Async)");
+            throw new ApiException("Missing the required parameter 'channelAgentsPut' when calling putChannelAgent(Async)");
         }
 
-        return putChannelsAgentCall(channelAgentsPut, _callback);
+        return putChannelAgentCall(channelAgentsPut, _callback);
 
     }
 
     /**
      * Binds agents to the caller org&#39;s channel and answers the bindings as GET would.
-     * Binds agents to the caller org&#39;s channel and answers the bindings as GET would. It requires ORG ADMIN. The agent is named by its ref — the name an org gave it at POST /v1/agents, or a built-in such as dev, des or vi.
+     * Binds agents to the caller org&#39;s channel and answers the bindings as GET would. It requires ORG ADMIN. The agent is named by its ref — the name an org gave it at POST /v1/agent, or a built-in such as dev, des or vi.
      * @param channelAgentsPut  (required)
      * @return ChannelAgents
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1004,14 +1004,14 @@ public class ChannelsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ChannelAgents putChannelsAgent(@javax.annotation.Nonnull ChannelAgentsPut channelAgentsPut) throws ApiException {
-        ApiResponse<ChannelAgents> localVarResp = putChannelsAgentWithHttpInfo(channelAgentsPut);
+    public ChannelAgents putChannelAgent(@javax.annotation.Nonnull ChannelAgentsPut channelAgentsPut) throws ApiException {
+        ApiResponse<ChannelAgents> localVarResp = putChannelAgentWithHttpInfo(channelAgentsPut);
         return localVarResp.getData();
     }
 
     /**
      * Binds agents to the caller org&#39;s channel and answers the bindings as GET would.
-     * Binds agents to the caller org&#39;s channel and answers the bindings as GET would. It requires ORG ADMIN. The agent is named by its ref — the name an org gave it at POST /v1/agents, or a built-in such as dev, des or vi.
+     * Binds agents to the caller org&#39;s channel and answers the bindings as GET would. It requires ORG ADMIN. The agent is named by its ref — the name an org gave it at POST /v1/agent, or a built-in such as dev, des or vi.
      * @param channelAgentsPut  (required)
      * @return ApiResponse&lt;ChannelAgents&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1022,15 +1022,15 @@ public class ChannelsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ChannelAgents> putChannelsAgentWithHttpInfo(@javax.annotation.Nonnull ChannelAgentsPut channelAgentsPut) throws ApiException {
-        okhttp3.Call localVarCall = putChannelsAgentValidateBeforeCall(channelAgentsPut, null);
+    public ApiResponse<ChannelAgents> putChannelAgentWithHttpInfo(@javax.annotation.Nonnull ChannelAgentsPut channelAgentsPut) throws ApiException {
+        okhttp3.Call localVarCall = putChannelAgentValidateBeforeCall(channelAgentsPut, null);
         Type localVarReturnType = new TypeToken<ChannelAgents>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Binds agents to the caller org&#39;s channel and answers the bindings as GET would. (asynchronously)
-     * Binds agents to the caller org&#39;s channel and answers the bindings as GET would. It requires ORG ADMIN. The agent is named by its ref — the name an org gave it at POST /v1/agents, or a built-in such as dev, des or vi.
+     * Binds agents to the caller org&#39;s channel and answers the bindings as GET would. It requires ORG ADMIN. The agent is named by its ref — the name an org gave it at POST /v1/agent, or a built-in such as dev, des or vi.
      * @param channelAgentsPut  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1042,15 +1042,15 @@ public class ChannelsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putChannelsAgentAsync(@javax.annotation.Nonnull ChannelAgentsPut channelAgentsPut, final ApiCallback<ChannelAgents> _callback) throws ApiException {
+    public okhttp3.Call putChannelAgentAsync(@javax.annotation.Nonnull ChannelAgentsPut channelAgentsPut, final ApiCallback<ChannelAgents> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putChannelsAgentValidateBeforeCall(channelAgentsPut, _callback);
+        okhttp3.Call localVarCall = putChannelAgentValidateBeforeCall(channelAgentsPut, _callback);
         Type localVarReturnType = new TypeToken<ChannelAgents>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for putChannelsAllowlist
+     * Build call for putChannelAllowlist
      * @param allowlistPutIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1062,7 +1062,7 @@ public class ChannelsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putChannelsAllowlistCall(@javax.annotation.Nonnull AllowlistPutIn allowlistPutIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call putChannelAllowlistCall(@javax.annotation.Nonnull AllowlistPutIn allowlistPutIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1079,7 +1079,7 @@ public class ChannelsApi {
         Object localVarPostBody = allowlistPutIn;
 
         // create path and map variables
-        String localVarPath = "/v1/channels/allowlist";
+        String localVarPath = "/v1/channel/allowlist";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1108,13 +1108,13 @@ public class ChannelsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call putChannelsAllowlistValidateBeforeCall(@javax.annotation.Nonnull AllowlistPutIn allowlistPutIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call putChannelAllowlistValidateBeforeCall(@javax.annotation.Nonnull AllowlistPutIn allowlistPutIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'allowlistPutIn' is set
         if (allowlistPutIn == null) {
-            throw new ApiException("Missing the required parameter 'allowlistPutIn' when calling putChannelsAllowlist(Async)");
+            throw new ApiException("Missing the required parameter 'allowlistPutIn' when calling putChannelAllowlist(Async)");
         }
 
-        return putChannelsAllowlistCall(allowlistPutIn, _callback);
+        return putChannelAllowlistCall(allowlistPutIn, _callback);
 
     }
 
@@ -1131,8 +1131,8 @@ public class ChannelsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public AllowlistView putChannelsAllowlist(@javax.annotation.Nonnull AllowlistPutIn allowlistPutIn) throws ApiException {
-        ApiResponse<AllowlistView> localVarResp = putChannelsAllowlistWithHttpInfo(allowlistPutIn);
+    public AllowlistView putChannelAllowlist(@javax.annotation.Nonnull AllowlistPutIn allowlistPutIn) throws ApiException {
+        ApiResponse<AllowlistView> localVarResp = putChannelAllowlistWithHttpInfo(allowlistPutIn);
         return localVarResp.getData();
     }
 
@@ -1149,8 +1149,8 @@ public class ChannelsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AllowlistView> putChannelsAllowlistWithHttpInfo(@javax.annotation.Nonnull AllowlistPutIn allowlistPutIn) throws ApiException {
-        okhttp3.Call localVarCall = putChannelsAllowlistValidateBeforeCall(allowlistPutIn, null);
+    public ApiResponse<AllowlistView> putChannelAllowlistWithHttpInfo(@javax.annotation.Nonnull AllowlistPutIn allowlistPutIn) throws ApiException {
+        okhttp3.Call localVarCall = putChannelAllowlistValidateBeforeCall(allowlistPutIn, null);
         Type localVarReturnType = new TypeToken<AllowlistView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1169,9 +1169,9 @@ public class ChannelsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call putChannelsAllowlistAsync(@javax.annotation.Nonnull AllowlistPutIn allowlistPutIn, final ApiCallback<AllowlistView> _callback) throws ApiException {
+    public okhttp3.Call putChannelAllowlistAsync(@javax.annotation.Nonnull AllowlistPutIn allowlistPutIn, final ApiCallback<AllowlistView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = putChannelsAllowlistValidateBeforeCall(allowlistPutIn, _callback);
+        okhttp3.Call localVarCall = putChannelAllowlistValidateBeforeCall(allowlistPutIn, _callback);
         Type localVarReturnType = new TypeToken<AllowlistView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

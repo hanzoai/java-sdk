@@ -14,6 +14,7 @@
 package ai.hanzo.cloud.model;
 
 import java.util.Objects;
+import ai.hanzo.cloud.model.AgentBinding;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -50,6 +51,16 @@ import ai.hanzo.cloud.JSON;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
 public class MachineView {
+  public static final String SERIALIZED_NAME_AGENT = "agent";
+  @SerializedName(SERIALIZED_NAME_AGENT)
+  @javax.annotation.Nullable
+  private String agent;
+
+  public static final String SERIALIZED_NAME_BINDING = "binding";
+  @SerializedName(SERIALIZED_NAME_BINDING)
+  @javax.annotation.Nullable
+  private AgentBinding binding;
+
   public static final String SERIALIZED_NAME_CREATED_TIME = "createdTime";
   @SerializedName(SERIALIZED_NAME_CREATED_TIME)
   @javax.annotation.Nullable
@@ -123,6 +134,44 @@ public class MachineView {
   public MachineView() {
   }
 
+  public MachineView agent(@javax.annotation.Nullable String agent) {
+    this.agent = agent;
+    return this;
+  }
+
+  /**
+   * Agent is the cloud Agent this machine runs, lifted out of the binding so a list reads without following one. Empty means nothing is bound — for a kind&#x3D;bot machine that means it costs money and answers nothing.
+   * @return agent
+   */
+  @javax.annotation.Nullable
+  public String getAgent() {
+    return agent;
+  }
+
+  public void setAgent(@javax.annotation.Nullable String agent) {
+    this.agent = agent;
+  }
+
+
+  public MachineView binding(@javax.annotation.Nullable AgentBinding binding) {
+    this.binding = binding;
+    return this;
+  }
+
+  /**
+   * Binding is the record joining this machine to that agent, carrying vm&#39;s own reconciled status and its reason. Absent means no runtime is bound, which is also what a stopped bot looks like: stopping unbinds and leaves the machine running.
+   * @return binding
+   */
+  @javax.annotation.Nullable
+  public AgentBinding getBinding() {
+    return binding;
+  }
+
+  public void setBinding(@javax.annotation.Nullable AgentBinding binding) {
+    this.binding = binding;
+  }
+
+
   public MachineView createdTime(@javax.annotation.Nullable String createdTime) {
     this.createdTime = createdTime;
     return this;
@@ -167,7 +216,7 @@ public class MachineView {
   }
 
   /**
-   * ID addresses this machine on the /v1/visor/machines/:id routes: the org-scoped NAME Visor keys a machine by, falling back to the provider id for a machine that has no name. A BYO machine&#39;s is the id it dialed in under.
+   * ID addresses this machine on the /v1/compute/machines/:id routes: the org-scoped NAME Visor keys a machine by, falling back to the provider id for a machine that has no name. A BYO machine&#39;s is the id it dialed in under.
    * @return id
    */
   @javax.annotation.Nullable
@@ -205,7 +254,7 @@ public class MachineView {
   }
 
   /**
-   * Mem is system RAM rendered for a human (\&quot;8 GB\&quot;), not a number to compute with. Empty when the provider&#39;s figure is ambiguous, or when the only figure available is a GPU slug&#39;s gb — that is VRAM, and reporting it as system RAM would be a fabrication. A BYO machine&#39;s RAM is on /v1/visor/fleet/workers.
+   * Mem is system RAM rendered for a human (\&quot;8 GB\&quot;), not a number to compute with. Empty when the provider&#39;s figure is ambiguous, or when the only figure available is a GPU slug&#39;s gb — that is VRAM, and reporting it as system RAM would be a fabrication. A BYO machine&#39;s RAM is on /v1/compute/fleet/workers.
    * @return mem
    */
   @javax.annotation.Nullable
@@ -376,7 +425,7 @@ public class MachineView {
   }
 
   /**
-   * Vcpu is logical cores — the provider&#39;s own cpuSize when that is a clean integer, else the count read out of the size slug (4 from \&quot;s-4vcpu-8gb\&quot;). ABSENT, never 0, when neither says. A BYO machine leaves it absent here; its real core count is on GET /v1/visor/fleet/workers.
+   * Vcpu is logical cores — the provider&#39;s own cpuSize when that is a clean integer, else the count read out of the size slug (4 from \&quot;s-4vcpu-8gb\&quot;). ABSENT, never 0, when neither says. A BYO machine leaves it absent here; its real core count is on GET /v1/compute/fleet/workers.
    * @return vcpu
    */
   @javax.annotation.Nullable
@@ -399,7 +448,9 @@ public class MachineView {
       return false;
     }
     MachineView machineView = (MachineView) o;
-    return Objects.equals(this.createdTime, machineView.createdTime) &&
+    return Objects.equals(this.agent, machineView.agent) &&
+        Objects.equals(this.binding, machineView.binding) &&
+        Objects.equals(this.createdTime, machineView.createdTime) &&
         Objects.equals(this.gpu, machineView.gpu) &&
         Objects.equals(this.id, machineView.id) &&
         Objects.equals(this.image, machineView.image) &&
@@ -417,13 +468,15 @@ public class MachineView {
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdTime, gpu, id, image, mem, name, os, privateIp, provider, publicIp, region, status, type, vcpu);
+    return Objects.hash(agent, binding, createdTime, gpu, id, image, mem, name, os, privateIp, provider, publicIp, region, status, type, vcpu);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class MachineView {\n");
+    sb.append("    agent: ").append(toIndentedString(agent)).append("\n");
+    sb.append("    binding: ").append(toIndentedString(binding)).append("\n");
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("    gpu: ").append(toIndentedString(gpu)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
@@ -459,7 +512,7 @@ public class MachineView {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("createdTime", "gpu", "id", "image", "mem", "name", "os", "privateIp", "provider", "publicIp", "region", "status", "type", "vcpu"));
+    openapiFields = new HashSet<String>(Arrays.asList("agent", "binding", "createdTime", "gpu", "id", "image", "mem", "name", "os", "privateIp", "provider", "publicIp", "region", "status", "type", "vcpu"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -486,6 +539,13 @@ public class MachineView {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if ((jsonObj.get("agent") != null && !jsonObj.get("agent").isJsonNull()) && !jsonObj.get("agent").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `agent` to be a primitive type in the JSON string but got `%s`", jsonObj.get("agent").toString()));
+      }
+      // validate the optional field `binding`
+      if (jsonObj.get("binding") != null && !jsonObj.get("binding").isJsonNull()) {
+        AgentBinding.validateJsonElement(jsonObj.get("binding"));
+      }
       if ((jsonObj.get("createdTime") != null && !jsonObj.get("createdTime").isJsonNull()) && !jsonObj.get("createdTime").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `createdTime` to be a primitive type in the JSON string but got `%s`", jsonObj.get("createdTime").toString()));
       }

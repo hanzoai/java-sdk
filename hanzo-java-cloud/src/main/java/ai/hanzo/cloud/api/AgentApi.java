@@ -67,16 +67,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class AgentsApi {
+public class AgentApi {
     private ApiClient localVarApiClient;
     private int localHostIndex;
     private String localCustomBaseUrl;
 
-    public AgentsApi() {
+    public AgentApi() {
         this(Configuration.getDefaultApiClient());
     }
 
-    public AgentsApi(ApiClient apiClient) {
+    public AgentApi(ApiClient apiClient) {
         this.localVarApiClient = apiClient;
     }
 
@@ -105,7 +105,7 @@ public class AgentsApi {
     }
 
     /**
-     * Build call for deleteAgentsByRef
+     * Build call for deleteAgentByRef
      * @param ref Ref is the agent&#39;s public id (the agent_… handle create and list return) or its org-unique name, from the path. Either resolves the same agent. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -117,7 +117,7 @@ public class AgentsApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteAgentsByRefCall(@javax.annotation.Nonnull String ref, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteAgentByRefCall(@javax.annotation.Nonnull String ref, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -134,7 +134,7 @@ public class AgentsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/agents/{ref}"
+        String localVarPath = "/v1/agent/{ref}"
             .replace("{" + "ref" + "}", localVarApiClient.escapeString(ref.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -162,13 +162,13 @@ public class AgentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteAgentsByRefValidateBeforeCall(@javax.annotation.Nonnull String ref, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteAgentByRefValidateBeforeCall(@javax.annotation.Nonnull String ref, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'ref' is set
         if (ref == null) {
-            throw new ApiException("Missing the required parameter 'ref' when calling deleteAgentsByRef(Async)");
+            throw new ApiException("Missing the required parameter 'ref' when calling deleteAgentByRef(Async)");
         }
 
-        return deleteAgentsByRefCall(ref, _callback);
+        return deleteAgentByRefCall(ref, _callback);
 
     }
 
@@ -184,8 +184,8 @@ public class AgentsApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteAgentsByRef(@javax.annotation.Nonnull String ref) throws ApiException {
-        deleteAgentsByRefWithHttpInfo(ref);
+    public void deleteAgentByRef(@javax.annotation.Nonnull String ref) throws ApiException {
+        deleteAgentByRefWithHttpInfo(ref);
     }
 
     /**
@@ -201,8 +201,8 @@ public class AgentsApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteAgentsByRefWithHttpInfo(@javax.annotation.Nonnull String ref) throws ApiException {
-        okhttp3.Call localVarCall = deleteAgentsByRefValidateBeforeCall(ref, null);
+    public ApiResponse<Void> deleteAgentByRefWithHttpInfo(@javax.annotation.Nonnull String ref) throws ApiException {
+        okhttp3.Call localVarCall = deleteAgentByRefValidateBeforeCall(ref, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -220,14 +220,14 @@ public class AgentsApi {
         <tr><td> 204 </td><td> no content </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteAgentsByRefAsync(@javax.annotation.Nonnull String ref, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteAgentByRefAsync(@javax.annotation.Nonnull String ref, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteAgentsByRefValidateBeforeCall(ref, _callback);
+        okhttp3.Call localVarCall = deleteAgentByRefValidateBeforeCall(ref, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for deleteAgentsTargetsById
+     * Build call for deleteAgentTargetsById
      * @param id ID is the target to act on, from the path. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -239,7 +239,7 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteAgentsTargetsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteAgentTargetsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -256,7 +256,7 @@ public class AgentsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/agents/targets/{id}"
+        String localVarPath = "/v1/agent/targets/{id}"
             .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -285,13 +285,13 @@ public class AgentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteAgentsTargetsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteAgentTargetsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling deleteAgentsTargetsById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling deleteAgentTargetsById(Async)");
         }
 
-        return deleteAgentsTargetsByIdCall(id, _callback);
+        return deleteAgentTargetsByIdCall(id, _callback);
 
     }
 
@@ -308,8 +308,8 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public TargetDeleted deleteAgentsTargetsById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<TargetDeleted> localVarResp = deleteAgentsTargetsByIdWithHttpInfo(id);
+    public TargetDeleted deleteAgentTargetsById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<TargetDeleted> localVarResp = deleteAgentTargetsByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -326,8 +326,8 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<TargetDeleted> deleteAgentsTargetsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = deleteAgentsTargetsByIdValidateBeforeCall(id, null);
+    public ApiResponse<TargetDeleted> deleteAgentTargetsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = deleteAgentTargetsByIdValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<TargetDeleted>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -346,15 +346,15 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteAgentsTargetsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<TargetDeleted> _callback) throws ApiException {
+    public okhttp3.Call deleteAgentTargetsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<TargetDeleted> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteAgentsTargetsByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = deleteAgentTargetsByIdValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<TargetDeleted>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getAgents
+     * Build call for getAgent
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -365,7 +365,7 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAgentsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAgentCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -382,7 +382,7 @@ public class AgentsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/agents";
+        String localVarPath = "/v1/agent";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -410,8 +410,8 @@ public class AgentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getAgentsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getAgentsCall(_callback);
+    private okhttp3.Call getAgentValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getAgentCall(_callback);
 
     }
 
@@ -427,8 +427,8 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public AgentList getAgents() throws ApiException {
-        ApiResponse<AgentList> localVarResp = getAgentsWithHttpInfo();
+    public AgentList getAgent() throws ApiException {
+        ApiResponse<AgentList> localVarResp = getAgentWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -444,8 +444,8 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AgentList> getAgentsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getAgentsValidateBeforeCall(null);
+    public ApiResponse<AgentList> getAgentWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getAgentValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<AgentList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -463,15 +463,15 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAgentsAsync(final ApiCallback<AgentList> _callback) throws ApiException {
+    public okhttp3.Call getAgentAsync(final ApiCallback<AgentList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getAgentsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getAgentValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<AgentList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getAgentsActivity
+     * Build call for getAgentActivity
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -482,7 +482,7 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAgentsActivityCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAgentActivityCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -499,7 +499,7 @@ public class AgentsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/agents/activity";
+        String localVarPath = "/v1/agent/activity";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -527,8 +527,8 @@ public class AgentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getAgentsActivityValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getAgentsActivityCall(_callback);
+    private okhttp3.Call getAgentActivityValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getAgentActivityCall(_callback);
 
     }
 
@@ -544,8 +544,8 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ActivityFeed getAgentsActivity() throws ApiException {
-        ApiResponse<ActivityFeed> localVarResp = getAgentsActivityWithHttpInfo();
+    public ActivityFeed getAgentActivity() throws ApiException {
+        ApiResponse<ActivityFeed> localVarResp = getAgentActivityWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -561,8 +561,8 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ActivityFeed> getAgentsActivityWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getAgentsActivityValidateBeforeCall(null);
+    public ApiResponse<ActivityFeed> getAgentActivityWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getAgentActivityValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<ActivityFeed>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -580,15 +580,15 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAgentsActivityAsync(final ApiCallback<ActivityFeed> _callback) throws ApiException {
+    public okhttp3.Call getAgentActivityAsync(final ApiCallback<ActivityFeed> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getAgentsActivityValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getAgentActivityValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<ActivityFeed>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getAgentsBuilds
+     * Build call for getAgentBuilds
      * @param limit Limit caps the page. Absent, zero or over 500 reads as 100. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -600,7 +600,7 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAgentsBuildsCall(@javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAgentBuildsCall(@javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -617,7 +617,7 @@ public class AgentsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/agents/builds";
+        String localVarPath = "/v1/agent/builds";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -649,8 +649,8 @@ public class AgentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getAgentsBuildsValidateBeforeCall(@javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
-        return getAgentsBuildsCall(limit, _callback);
+    private okhttp3.Call getAgentBuildsValidateBeforeCall(@javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
+        return getAgentBuildsCall(limit, _callback);
 
     }
 
@@ -667,8 +667,8 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public BuildList getAgentsBuilds(@javax.annotation.Nullable Long limit) throws ApiException {
-        ApiResponse<BuildList> localVarResp = getAgentsBuildsWithHttpInfo(limit);
+    public BuildList getAgentBuilds(@javax.annotation.Nullable Long limit) throws ApiException {
+        ApiResponse<BuildList> localVarResp = getAgentBuildsWithHttpInfo(limit);
         return localVarResp.getData();
     }
 
@@ -685,8 +685,8 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BuildList> getAgentsBuildsWithHttpInfo(@javax.annotation.Nullable Long limit) throws ApiException {
-        okhttp3.Call localVarCall = getAgentsBuildsValidateBeforeCall(limit, null);
+    public ApiResponse<BuildList> getAgentBuildsWithHttpInfo(@javax.annotation.Nullable Long limit) throws ApiException {
+        okhttp3.Call localVarCall = getAgentBuildsValidateBeforeCall(limit, null);
         Type localVarReturnType = new TypeToken<BuildList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -705,15 +705,15 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAgentsBuildsAsync(@javax.annotation.Nullable Long limit, final ApiCallback<BuildList> _callback) throws ApiException {
+    public okhttp3.Call getAgentBuildsAsync(@javax.annotation.Nullable Long limit, final ApiCallback<BuildList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getAgentsBuildsValidateBeforeCall(limit, _callback);
+        okhttp3.Call localVarCall = getAgentBuildsValidateBeforeCall(limit, _callback);
         Type localVarReturnType = new TypeToken<BuildList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getAgentsBuildsByOrgByProject
+     * Build call for getAgentBuildsByOrgByProject
      * @param org Org is the org that published the build, from the path. (required)
      * @param project Project is the product&#39;s slug, from the path. (required)
      * @param _callback Callback for upload/download progress
@@ -726,7 +726,7 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAgentsBuildsByOrgByProjectCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String project, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAgentBuildsByOrgByProjectCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String project, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -743,7 +743,7 @@ public class AgentsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/agents/builds/{org}/{project}"
+        String localVarPath = "/v1/agent/builds/{org}/{project}"
             .replace("{" + "org" + "}", localVarApiClient.escapeString(org.toString()))
             .replace("{" + "project" + "}", localVarApiClient.escapeString(project.toString()));
 
@@ -773,24 +773,24 @@ public class AgentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getAgentsBuildsByOrgByProjectValidateBeforeCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String project, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getAgentBuildsByOrgByProjectValidateBeforeCall(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String project, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'org' is set
         if (org == null) {
-            throw new ApiException("Missing the required parameter 'org' when calling getAgentsBuildsByOrgByProject(Async)");
+            throw new ApiException("Missing the required parameter 'org' when calling getAgentBuildsByOrgByProject(Async)");
         }
 
         // verify the required parameter 'project' is set
         if (project == null) {
-            throw new ApiException("Missing the required parameter 'project' when calling getAgentsBuildsByOrgByProject(Async)");
+            throw new ApiException("Missing the required parameter 'project' when calling getAgentBuildsByOrgByProject(Async)");
         }
 
-        return getAgentsBuildsByOrgByProjectCall(org, project, _callback);
+        return getAgentBuildsByOrgByProjectCall(org, project, _callback);
 
     }
 
     /**
      * Returns the readable build of one product: the agent session that produced it, turn by turn — the prompts, the reasoning, the commits each turn produced — plus the exact &#x60;git log&#x60; that re-derives every commit binding from git itself, so nothing here has to be taken on trust.
-     * Returns the readable build of one product: the agent session that produced it, turn by turn — the prompts, the reasoning, the commits each turn produced — plus the exact &#x60;git log&#x60; that re-derives every commit binding from git itself, so nothing here has to be taken on trust.  PUBLIC, no tenancy: it answers only for a session its author explicitly published, which is what makes it safe to be anonymous. An unpublished session is invisible here no matter who asks; its owner reads it through the org-scoped /v1/agents/sessions routes, which need a validated principal.
+     * Returns the readable build of one product: the agent session that produced it, turn by turn — the prompts, the reasoning, the commits each turn produced — plus the exact &#x60;git log&#x60; that re-derives every commit binding from git itself, so nothing here has to be taken on trust.  PUBLIC, no tenancy: it answers only for a session its author explicitly published, which is what makes it safe to be anonymous. An unpublished session is invisible here no matter who asks; its owner reads it through the org-scoped /v1/agent/sessions routes, which need a validated principal.
      * @param org Org is the org that published the build, from the path. (required)
      * @param project Project is the product&#39;s slug, from the path. (required)
      * @return BuildView
@@ -802,14 +802,14 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public BuildView getAgentsBuildsByOrgByProject(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String project) throws ApiException {
-        ApiResponse<BuildView> localVarResp = getAgentsBuildsByOrgByProjectWithHttpInfo(org, project);
+    public BuildView getAgentBuildsByOrgByProject(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String project) throws ApiException {
+        ApiResponse<BuildView> localVarResp = getAgentBuildsByOrgByProjectWithHttpInfo(org, project);
         return localVarResp.getData();
     }
 
     /**
      * Returns the readable build of one product: the agent session that produced it, turn by turn — the prompts, the reasoning, the commits each turn produced — plus the exact &#x60;git log&#x60; that re-derives every commit binding from git itself, so nothing here has to be taken on trust.
-     * Returns the readable build of one product: the agent session that produced it, turn by turn — the prompts, the reasoning, the commits each turn produced — plus the exact &#x60;git log&#x60; that re-derives every commit binding from git itself, so nothing here has to be taken on trust.  PUBLIC, no tenancy: it answers only for a session its author explicitly published, which is what makes it safe to be anonymous. An unpublished session is invisible here no matter who asks; its owner reads it through the org-scoped /v1/agents/sessions routes, which need a validated principal.
+     * Returns the readable build of one product: the agent session that produced it, turn by turn — the prompts, the reasoning, the commits each turn produced — plus the exact &#x60;git log&#x60; that re-derives every commit binding from git itself, so nothing here has to be taken on trust.  PUBLIC, no tenancy: it answers only for a session its author explicitly published, which is what makes it safe to be anonymous. An unpublished session is invisible here no matter who asks; its owner reads it through the org-scoped /v1/agent/sessions routes, which need a validated principal.
      * @param org Org is the org that published the build, from the path. (required)
      * @param project Project is the product&#39;s slug, from the path. (required)
      * @return ApiResponse&lt;BuildView&gt;
@@ -821,15 +821,15 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<BuildView> getAgentsBuildsByOrgByProjectWithHttpInfo(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String project) throws ApiException {
-        okhttp3.Call localVarCall = getAgentsBuildsByOrgByProjectValidateBeforeCall(org, project, null);
+    public ApiResponse<BuildView> getAgentBuildsByOrgByProjectWithHttpInfo(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String project) throws ApiException {
+        okhttp3.Call localVarCall = getAgentBuildsByOrgByProjectValidateBeforeCall(org, project, null);
         Type localVarReturnType = new TypeToken<BuildView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      * Returns the readable build of one product: the agent session that produced it, turn by turn — the prompts, the reasoning, the commits each turn produced — plus the exact &#x60;git log&#x60; that re-derives every commit binding from git itself, so nothing here has to be taken on trust. (asynchronously)
-     * Returns the readable build of one product: the agent session that produced it, turn by turn — the prompts, the reasoning, the commits each turn produced — plus the exact &#x60;git log&#x60; that re-derives every commit binding from git itself, so nothing here has to be taken on trust.  PUBLIC, no tenancy: it answers only for a session its author explicitly published, which is what makes it safe to be anonymous. An unpublished session is invisible here no matter who asks; its owner reads it through the org-scoped /v1/agents/sessions routes, which need a validated principal.
+     * Returns the readable build of one product: the agent session that produced it, turn by turn — the prompts, the reasoning, the commits each turn produced — plus the exact &#x60;git log&#x60; that re-derives every commit binding from git itself, so nothing here has to be taken on trust.  PUBLIC, no tenancy: it answers only for a session its author explicitly published, which is what makes it safe to be anonymous. An unpublished session is invisible here no matter who asks; its owner reads it through the org-scoped /v1/agent/sessions routes, which need a validated principal.
      * @param org Org is the org that published the build, from the path. (required)
      * @param project Project is the product&#39;s slug, from the path. (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -842,15 +842,15 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAgentsBuildsByOrgByProjectAsync(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String project, final ApiCallback<BuildView> _callback) throws ApiException {
+    public okhttp3.Call getAgentBuildsByOrgByProjectAsync(@javax.annotation.Nonnull String org, @javax.annotation.Nonnull String project, final ApiCallback<BuildView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getAgentsBuildsByOrgByProjectValidateBeforeCall(org, project, _callback);
+        okhttp3.Call localVarCall = getAgentBuildsByOrgByProjectValidateBeforeCall(org, project, _callback);
         Type localVarReturnType = new TypeToken<BuildView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getAgentsByRef
+     * Build call for getAgentByRef
      * @param ref Ref is the agent&#39;s public id (the agent_… handle create and list return) or its org-unique name, from the path. Either resolves the same agent. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -862,7 +862,7 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAgentsByRefCall(@javax.annotation.Nonnull String ref, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAgentByRefCall(@javax.annotation.Nonnull String ref, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -879,7 +879,7 @@ public class AgentsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/agents/{ref}"
+        String localVarPath = "/v1/agent/{ref}"
             .replace("{" + "ref" + "}", localVarApiClient.escapeString(ref.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -908,13 +908,13 @@ public class AgentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getAgentsByRefValidateBeforeCall(@javax.annotation.Nonnull String ref, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getAgentByRefValidateBeforeCall(@javax.annotation.Nonnull String ref, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'ref' is set
         if (ref == null) {
-            throw new ApiException("Missing the required parameter 'ref' when calling getAgentsByRef(Async)");
+            throw new ApiException("Missing the required parameter 'ref' when calling getAgentByRef(Async)");
         }
 
-        return getAgentsByRefCall(ref, _callback);
+        return getAgentByRefCall(ref, _callback);
 
     }
 
@@ -931,8 +931,8 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public AgentDetail getAgentsByRef(@javax.annotation.Nonnull String ref) throws ApiException {
-        ApiResponse<AgentDetail> localVarResp = getAgentsByRefWithHttpInfo(ref);
+    public AgentDetail getAgentByRef(@javax.annotation.Nonnull String ref) throws ApiException {
+        ApiResponse<AgentDetail> localVarResp = getAgentByRefWithHttpInfo(ref);
         return localVarResp.getData();
     }
 
@@ -949,8 +949,8 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AgentDetail> getAgentsByRefWithHttpInfo(@javax.annotation.Nonnull String ref) throws ApiException {
-        okhttp3.Call localVarCall = getAgentsByRefValidateBeforeCall(ref, null);
+    public ApiResponse<AgentDetail> getAgentByRefWithHttpInfo(@javax.annotation.Nonnull String ref) throws ApiException {
+        okhttp3.Call localVarCall = getAgentByRefValidateBeforeCall(ref, null);
         Type localVarReturnType = new TypeToken<AgentDetail>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -969,15 +969,15 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAgentsByRefAsync(@javax.annotation.Nonnull String ref, final ApiCallback<AgentDetail> _callback) throws ApiException {
+    public okhttp3.Call getAgentByRefAsync(@javax.annotation.Nonnull String ref, final ApiCallback<AgentDetail> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getAgentsByRefValidateBeforeCall(ref, _callback);
+        okhttp3.Call localVarCall = getAgentByRefValidateBeforeCall(ref, _callback);
         Type localVarReturnType = new TypeToken<AgentDetail>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getAgentsByRefRuns
+     * Build call for getAgentByRefRuns
      * @param ref Ref is the agent&#39;s public id or its org-unique name, from the path. (required)
      * @param limit Limit caps how many runs come back, newest first. Absent, zero or out of range (1..200) reads as 50. (optional)
      * @param _callback Callback for upload/download progress
@@ -990,7 +990,7 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAgentsByRefRunsCall(@javax.annotation.Nonnull String ref, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAgentByRefRunsCall(@javax.annotation.Nonnull String ref, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1007,7 +1007,7 @@ public class AgentsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/agents/{ref}/runs"
+        String localVarPath = "/v1/agent/{ref}/runs"
             .replace("{" + "ref" + "}", localVarApiClient.escapeString(ref.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -1040,13 +1040,13 @@ public class AgentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getAgentsByRefRunsValidateBeforeCall(@javax.annotation.Nonnull String ref, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getAgentByRefRunsValidateBeforeCall(@javax.annotation.Nonnull String ref, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'ref' is set
         if (ref == null) {
-            throw new ApiException("Missing the required parameter 'ref' when calling getAgentsByRefRuns(Async)");
+            throw new ApiException("Missing the required parameter 'ref' when calling getAgentByRefRuns(Async)");
         }
 
-        return getAgentsByRefRunsCall(ref, limit, _callback);
+        return getAgentByRefRunsCall(ref, limit, _callback);
 
     }
 
@@ -1064,8 +1064,8 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public RunList getAgentsByRefRuns(@javax.annotation.Nonnull String ref, @javax.annotation.Nullable Long limit) throws ApiException {
-        ApiResponse<RunList> localVarResp = getAgentsByRefRunsWithHttpInfo(ref, limit);
+    public RunList getAgentByRefRuns(@javax.annotation.Nonnull String ref, @javax.annotation.Nullable Long limit) throws ApiException {
+        ApiResponse<RunList> localVarResp = getAgentByRefRunsWithHttpInfo(ref, limit);
         return localVarResp.getData();
     }
 
@@ -1083,8 +1083,8 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RunList> getAgentsByRefRunsWithHttpInfo(@javax.annotation.Nonnull String ref, @javax.annotation.Nullable Long limit) throws ApiException {
-        okhttp3.Call localVarCall = getAgentsByRefRunsValidateBeforeCall(ref, limit, null);
+    public ApiResponse<RunList> getAgentByRefRunsWithHttpInfo(@javax.annotation.Nonnull String ref, @javax.annotation.Nullable Long limit) throws ApiException {
+        okhttp3.Call localVarCall = getAgentByRefRunsValidateBeforeCall(ref, limit, null);
         Type localVarReturnType = new TypeToken<RunList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1104,20 +1104,20 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAgentsByRefRunsAsync(@javax.annotation.Nonnull String ref, @javax.annotation.Nullable Long limit, final ApiCallback<RunList> _callback) throws ApiException {
+    public okhttp3.Call getAgentByRefRunsAsync(@javax.annotation.Nonnull String ref, @javax.annotation.Nullable Long limit, final ApiCallback<RunList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getAgentsByRefRunsValidateBeforeCall(ref, limit, _callback);
+        okhttp3.Call localVarCall = getAgentByRefRunsValidateBeforeCall(ref, limit, _callback);
         Type localVarReturnType = new TypeToken<RunList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getAgentsChatConversations
+     * Build call for getAgentChatConversations
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getAgentsChatConversationsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAgentChatConversationsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1134,7 +1134,7 @@ public class AgentsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/agents/chat/conversations";
+        String localVarPath = "/v1/agent/chat/conversations";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1161,8 +1161,8 @@ public class AgentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getAgentsChatConversationsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getAgentsChatConversationsCall(_callback);
+    private okhttp3.Call getAgentChatConversationsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getAgentChatConversationsCall(_callback);
 
     }
 
@@ -1171,8 +1171,8 @@ public class AgentsApi {
      * Returns a summary of every agent conversation in the caller&#39;s org — id, derived title, and when it was last appended to — for populating a thread list.  Scoped to the caller&#39;s org and nothing else, and that isolation is structural rather than a filter: conversations are persisted in a store opened PER ORG, so there is no query in which another tenant&#39;s threads could appear. A validated principal with a non-empty org is required; 403 without one.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getAgentsChatConversations() throws ApiException {
-        getAgentsChatConversationsWithHttpInfo();
+    public void getAgentChatConversations() throws ApiException {
+        getAgentChatConversationsWithHttpInfo();
     }
 
     /**
@@ -1181,8 +1181,8 @@ public class AgentsApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getAgentsChatConversationsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getAgentsChatConversationsValidateBeforeCall(null);
+    public ApiResponse<Void> getAgentChatConversationsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getAgentChatConversationsValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1193,20 +1193,20 @@ public class AgentsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getAgentsChatConversationsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getAgentChatConversationsAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getAgentsChatConversationsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getAgentChatConversationsValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getAgentsChatConversationsById
+     * Build call for getAgentChatConversationsById
      * @param id  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getAgentsChatConversationsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAgentChatConversationsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1223,7 +1223,7 @@ public class AgentsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/agents/chat/conversations/{id}"
+        String localVarPath = "/v1/agent/chat/conversations/{id}"
             .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -1251,13 +1251,13 @@ public class AgentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getAgentsChatConversationsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getAgentChatConversationsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getAgentsChatConversationsById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getAgentChatConversationsById(Async)");
         }
 
-        return getAgentsChatConversationsByIdCall(id, _callback);
+        return getAgentChatConversationsByIdCall(id, _callback);
 
     }
 
@@ -1267,8 +1267,8 @@ public class AgentsApi {
      * @param id  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getAgentsChatConversationsById(@javax.annotation.Nonnull String id) throws ApiException {
-        getAgentsChatConversationsByIdWithHttpInfo(id);
+    public void getAgentChatConversationsById(@javax.annotation.Nonnull String id) throws ApiException {
+        getAgentChatConversationsByIdWithHttpInfo(id);
     }
 
     /**
@@ -1278,8 +1278,8 @@ public class AgentsApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getAgentsChatConversationsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = getAgentsChatConversationsByIdValidateBeforeCall(id, null);
+    public ApiResponse<Void> getAgentChatConversationsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getAgentChatConversationsByIdValidateBeforeCall(id, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1291,19 +1291,19 @@ public class AgentsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getAgentsChatConversationsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getAgentChatConversationsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getAgentsChatConversationsByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = getAgentChatConversationsByIdValidateBeforeCall(id, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getAgentsChatPresets
+     * Build call for getAgentChatPresets
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getAgentsChatPresetsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAgentChatPresetsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1320,7 +1320,7 @@ public class AgentsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/agents/chat/presets";
+        String localVarPath = "/v1/agent/chat/presets";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1347,8 +1347,8 @@ public class AgentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getAgentsChatPresetsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getAgentsChatPresetsCall(_callback);
+    private okhttp3.Call getAgentChatPresetsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getAgentChatPresetsCall(_callback);
 
     }
 
@@ -1357,8 +1357,8 @@ public class AgentsApi {
      * Returns the preset catalog: each entry&#39;s id, its description and whether it is server-executing — the flag that decides if a preset&#39;s tool calls run here or come back for the client to apply. The ids are what the round accepts in &#x60;preset&#x60;.  The catalog is compiled into the build, identical for every caller, and this is the one read in the group that needs no principal.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getAgentsChatPresets() throws ApiException {
-        getAgentsChatPresetsWithHttpInfo();
+    public void getAgentChatPresets() throws ApiException {
+        getAgentChatPresetsWithHttpInfo();
     }
 
     /**
@@ -1367,8 +1367,8 @@ public class AgentsApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getAgentsChatPresetsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getAgentsChatPresetsValidateBeforeCall(null);
+    public ApiResponse<Void> getAgentChatPresetsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getAgentChatPresetsValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -1379,14 +1379,14 @@ public class AgentsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getAgentsChatPresetsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getAgentChatPresetsAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getAgentsChatPresetsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getAgentChatPresetsValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getAgentsMetrics
+     * Build call for getAgentMetrics
      * @param range Range is the window to bucket: 24H, 7D or 30D. Anything else reads as 30D. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1398,7 +1398,7 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAgentsMetricsCall(@javax.annotation.Nullable String range, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAgentMetricsCall(@javax.annotation.Nullable String range, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1415,7 +1415,7 @@ public class AgentsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/agents/metrics";
+        String localVarPath = "/v1/agent/metrics";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1447,8 +1447,8 @@ public class AgentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getAgentsMetricsValidateBeforeCall(@javax.annotation.Nullable String range, final ApiCallback _callback) throws ApiException {
-        return getAgentsMetricsCall(range, _callback);
+    private okhttp3.Call getAgentMetricsValidateBeforeCall(@javax.annotation.Nullable String range, final ApiCallback _callback) throws ApiException {
+        return getAgentMetricsCall(range, _callback);
 
     }
 
@@ -1465,8 +1465,8 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public MetricsView getAgentsMetrics(@javax.annotation.Nullable String range) throws ApiException {
-        ApiResponse<MetricsView> localVarResp = getAgentsMetricsWithHttpInfo(range);
+    public MetricsView getAgentMetrics(@javax.annotation.Nullable String range) throws ApiException {
+        ApiResponse<MetricsView> localVarResp = getAgentMetricsWithHttpInfo(range);
         return localVarResp.getData();
     }
 
@@ -1483,8 +1483,8 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<MetricsView> getAgentsMetricsWithHttpInfo(@javax.annotation.Nullable String range) throws ApiException {
-        okhttp3.Call localVarCall = getAgentsMetricsValidateBeforeCall(range, null);
+    public ApiResponse<MetricsView> getAgentMetricsWithHttpInfo(@javax.annotation.Nullable String range) throws ApiException {
+        okhttp3.Call localVarCall = getAgentMetricsValidateBeforeCall(range, null);
         Type localVarReturnType = new TypeToken<MetricsView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1503,15 +1503,15 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAgentsMetricsAsync(@javax.annotation.Nullable String range, final ApiCallback<MetricsView> _callback) throws ApiException {
+    public okhttp3.Call getAgentMetricsAsync(@javax.annotation.Nullable String range, final ApiCallback<MetricsView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getAgentsMetricsValidateBeforeCall(range, _callback);
+        okhttp3.Call localVarCall = getAgentMetricsValidateBeforeCall(range, _callback);
         Type localVarReturnType = new TypeToken<MetricsView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getAgentsRuns
+     * Build call for getAgentRuns
      * @param limit Limit caps how many runs come back, newest first. Absent, zero or out of range (1..200) reads as 50. (optional)
      * @param status Status keeps only runs with this outcome (\&quot;ok\&quot; or \&quot;error\&quot;). Empty keeps both. It is the filter an operator reaches for first — \&quot;show me what broke\&quot; — and answering it here rather than by paging the whole history client-side is the difference between a usable feed and a download. (optional)
      * @param _callback Callback for upload/download progress
@@ -1524,7 +1524,7 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAgentsRunsCall(@javax.annotation.Nullable Long limit, @javax.annotation.Nullable String status, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAgentRunsCall(@javax.annotation.Nullable Long limit, @javax.annotation.Nullable String status, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1541,7 +1541,7 @@ public class AgentsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/agents/runs";
+        String localVarPath = "/v1/agent/runs";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1577,8 +1577,8 @@ public class AgentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getAgentsRunsValidateBeforeCall(@javax.annotation.Nullable Long limit, @javax.annotation.Nullable String status, final ApiCallback _callback) throws ApiException {
-        return getAgentsRunsCall(limit, status, _callback);
+    private okhttp3.Call getAgentRunsValidateBeforeCall(@javax.annotation.Nullable Long limit, @javax.annotation.Nullable String status, final ApiCallback _callback) throws ApiException {
+        return getAgentRunsCall(limit, status, _callback);
 
     }
 
@@ -1596,8 +1596,8 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public RunList getAgentsRuns(@javax.annotation.Nullable Long limit, @javax.annotation.Nullable String status) throws ApiException {
-        ApiResponse<RunList> localVarResp = getAgentsRunsWithHttpInfo(limit, status);
+    public RunList getAgentRuns(@javax.annotation.Nullable Long limit, @javax.annotation.Nullable String status) throws ApiException {
+        ApiResponse<RunList> localVarResp = getAgentRunsWithHttpInfo(limit, status);
         return localVarResp.getData();
     }
 
@@ -1615,8 +1615,8 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RunList> getAgentsRunsWithHttpInfo(@javax.annotation.Nullable Long limit, @javax.annotation.Nullable String status) throws ApiException {
-        okhttp3.Call localVarCall = getAgentsRunsValidateBeforeCall(limit, status, null);
+    public ApiResponse<RunList> getAgentRunsWithHttpInfo(@javax.annotation.Nullable Long limit, @javax.annotation.Nullable String status) throws ApiException {
+        okhttp3.Call localVarCall = getAgentRunsValidateBeforeCall(limit, status, null);
         Type localVarReturnType = new TypeToken<RunList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1636,15 +1636,15 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAgentsRunsAsync(@javax.annotation.Nullable Long limit, @javax.annotation.Nullable String status, final ApiCallback<RunList> _callback) throws ApiException {
+    public okhttp3.Call getAgentRunsAsync(@javax.annotation.Nullable Long limit, @javax.annotation.Nullable String status, final ApiCallback<RunList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getAgentsRunsValidateBeforeCall(limit, status, _callback);
+        okhttp3.Call localVarCall = getAgentRunsValidateBeforeCall(limit, status, _callback);
         Type localVarReturnType = new TypeToken<RunList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getAgentsSessions
+     * Build call for getAgentSessions
      * @param root Root scopes the page to one subagent tree (its root session id). (optional)
      * @param parent Parent scopes the page to the direct children of one session. Ignored when root is set; with neither, only ROOT sessions come back. (optional)
      * @param status Status filters to running, paused, done or error. (optional)
@@ -1661,7 +1661,7 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAgentsSessionsCall(@javax.annotation.Nullable String root, @javax.annotation.Nullable String parent, @javax.annotation.Nullable String status, @javax.annotation.Nullable String project, @javax.annotation.Nullable String room, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAgentSessionsCall(@javax.annotation.Nullable String root, @javax.annotation.Nullable String parent, @javax.annotation.Nullable String status, @javax.annotation.Nullable String project, @javax.annotation.Nullable String room, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1678,7 +1678,7 @@ public class AgentsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/agents/sessions";
+        String localVarPath = "/v1/agent/sessions";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1730,8 +1730,8 @@ public class AgentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getAgentsSessionsValidateBeforeCall(@javax.annotation.Nullable String root, @javax.annotation.Nullable String parent, @javax.annotation.Nullable String status, @javax.annotation.Nullable String project, @javax.annotation.Nullable String room, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
-        return getAgentsSessionsCall(root, parent, status, project, room, limit, _callback);
+    private okhttp3.Call getAgentSessionsValidateBeforeCall(@javax.annotation.Nullable String root, @javax.annotation.Nullable String parent, @javax.annotation.Nullable String status, @javax.annotation.Nullable String project, @javax.annotation.Nullable String room, @javax.annotation.Nullable Long limit, final ApiCallback _callback) throws ApiException {
+        return getAgentSessionsCall(root, parent, status, project, room, limit, _callback);
 
     }
 
@@ -1753,8 +1753,8 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public SessionList getAgentsSessions(@javax.annotation.Nullable String root, @javax.annotation.Nullable String parent, @javax.annotation.Nullable String status, @javax.annotation.Nullable String project, @javax.annotation.Nullable String room, @javax.annotation.Nullable Long limit) throws ApiException {
-        ApiResponse<SessionList> localVarResp = getAgentsSessionsWithHttpInfo(root, parent, status, project, room, limit);
+    public SessionList getAgentSessions(@javax.annotation.Nullable String root, @javax.annotation.Nullable String parent, @javax.annotation.Nullable String status, @javax.annotation.Nullable String project, @javax.annotation.Nullable String room, @javax.annotation.Nullable Long limit) throws ApiException {
+        ApiResponse<SessionList> localVarResp = getAgentSessionsWithHttpInfo(root, parent, status, project, room, limit);
         return localVarResp.getData();
     }
 
@@ -1776,8 +1776,8 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SessionList> getAgentsSessionsWithHttpInfo(@javax.annotation.Nullable String root, @javax.annotation.Nullable String parent, @javax.annotation.Nullable String status, @javax.annotation.Nullable String project, @javax.annotation.Nullable String room, @javax.annotation.Nullable Long limit) throws ApiException {
-        okhttp3.Call localVarCall = getAgentsSessionsValidateBeforeCall(root, parent, status, project, room, limit, null);
+    public ApiResponse<SessionList> getAgentSessionsWithHttpInfo(@javax.annotation.Nullable String root, @javax.annotation.Nullable String parent, @javax.annotation.Nullable String status, @javax.annotation.Nullable String project, @javax.annotation.Nullable String room, @javax.annotation.Nullable Long limit) throws ApiException {
+        okhttp3.Call localVarCall = getAgentSessionsValidateBeforeCall(root, parent, status, project, room, limit, null);
         Type localVarReturnType = new TypeToken<SessionList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1801,15 +1801,15 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAgentsSessionsAsync(@javax.annotation.Nullable String root, @javax.annotation.Nullable String parent, @javax.annotation.Nullable String status, @javax.annotation.Nullable String project, @javax.annotation.Nullable String room, @javax.annotation.Nullable Long limit, final ApiCallback<SessionList> _callback) throws ApiException {
+    public okhttp3.Call getAgentSessionsAsync(@javax.annotation.Nullable String root, @javax.annotation.Nullable String parent, @javax.annotation.Nullable String status, @javax.annotation.Nullable String project, @javax.annotation.Nullable String room, @javax.annotation.Nullable Long limit, final ApiCallback<SessionList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getAgentsSessionsValidateBeforeCall(root, parent, status, project, room, limit, _callback);
+        okhttp3.Call localVarCall = getAgentSessionsValidateBeforeCall(root, parent, status, project, room, limit, _callback);
         Type localVarReturnType = new TypeToken<SessionList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getAgentsSessionsById
+     * Build call for getAgentSessionsById
      * @param id ID is the session to act on, from the path. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1821,7 +1821,7 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAgentsSessionsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAgentSessionsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1838,7 +1838,7 @@ public class AgentsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/agents/sessions/{id}"
+        String localVarPath = "/v1/agent/sessions/{id}"
             .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -1867,13 +1867,13 @@ public class AgentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getAgentsSessionsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getAgentSessionsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getAgentsSessionsById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getAgentSessionsById(Async)");
         }
 
-        return getAgentsSessionsByIdCall(id, _callback);
+        return getAgentSessionsByIdCall(id, _callback);
 
     }
 
@@ -1890,8 +1890,8 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public SessionDetail getAgentsSessionsById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<SessionDetail> localVarResp = getAgentsSessionsByIdWithHttpInfo(id);
+    public SessionDetail getAgentSessionsById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<SessionDetail> localVarResp = getAgentSessionsByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -1908,8 +1908,8 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SessionDetail> getAgentsSessionsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = getAgentsSessionsByIdValidateBeforeCall(id, null);
+    public ApiResponse<SessionDetail> getAgentSessionsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getAgentSessionsByIdValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<SessionDetail>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1928,15 +1928,15 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAgentsSessionsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<SessionDetail> _callback) throws ApiException {
+    public okhttp3.Call getAgentSessionsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<SessionDetail> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getAgentsSessionsByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = getAgentSessionsByIdValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<SessionDetail>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getAgentsSessionsByIdControl
+     * Build call for getAgentSessionsByIdControl
      * @param id ID is the session whose commands are being drained, from the path. (required)
      * @param after After is the last seq this poller applied; only commands newer than it come back. Absent or negative reads as 0, which drains from the beginning. (optional)
      * @param _callback Callback for upload/download progress
@@ -1949,7 +1949,7 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAgentsSessionsByIdControlCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long after, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAgentSessionsByIdControlCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long after, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1966,7 +1966,7 @@ public class AgentsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/agents/sessions/{id}/control"
+        String localVarPath = "/v1/agent/sessions/{id}/control"
             .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -1999,13 +1999,13 @@ public class AgentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getAgentsSessionsByIdControlValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long after, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getAgentSessionsByIdControlValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long after, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getAgentsSessionsByIdControl(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getAgentSessionsByIdControl(Async)");
         }
 
-        return getAgentsSessionsByIdControlCall(id, after, _callback);
+        return getAgentSessionsByIdControlCall(id, after, _callback);
 
     }
 
@@ -2023,8 +2023,8 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ControlDrain getAgentsSessionsByIdControl(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long after) throws ApiException {
-        ApiResponse<ControlDrain> localVarResp = getAgentsSessionsByIdControlWithHttpInfo(id, after);
+    public ControlDrain getAgentSessionsByIdControl(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long after) throws ApiException {
+        ApiResponse<ControlDrain> localVarResp = getAgentSessionsByIdControlWithHttpInfo(id, after);
         return localVarResp.getData();
     }
 
@@ -2042,8 +2042,8 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ControlDrain> getAgentsSessionsByIdControlWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long after) throws ApiException {
-        okhttp3.Call localVarCall = getAgentsSessionsByIdControlValidateBeforeCall(id, after, null);
+    public ApiResponse<ControlDrain> getAgentSessionsByIdControlWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long after) throws ApiException {
+        okhttp3.Call localVarCall = getAgentSessionsByIdControlValidateBeforeCall(id, after, null);
         Type localVarReturnType = new TypeToken<ControlDrain>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2063,15 +2063,15 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAgentsSessionsByIdControlAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long after, final ApiCallback<ControlDrain> _callback) throws ApiException {
+    public okhttp3.Call getAgentSessionsByIdControlAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nullable Long after, final ApiCallback<ControlDrain> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getAgentsSessionsByIdControlValidateBeforeCall(id, after, _callback);
+        okhttp3.Call localVarCall = getAgentSessionsByIdControlValidateBeforeCall(id, after, _callback);
         Type localVarReturnType = new TypeToken<ControlDrain>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getAgentsSessionsByIdProgress
+     * Build call for getAgentSessionsByIdProgress
      * @param id ID is the session to act on, from the path. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2083,7 +2083,7 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAgentsSessionsByIdProgressCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAgentSessionsByIdProgressCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2100,7 +2100,7 @@ public class AgentsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/agents/sessions/{id}/progress"
+        String localVarPath = "/v1/agent/sessions/{id}/progress"
             .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -2129,13 +2129,13 @@ public class AgentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getAgentsSessionsByIdProgressValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getAgentSessionsByIdProgressValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getAgentsSessionsByIdProgress(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getAgentSessionsByIdProgress(Async)");
         }
 
-        return getAgentsSessionsByIdProgressCall(id, _callback);
+        return getAgentSessionsByIdProgressCall(id, _callback);
 
     }
 
@@ -2152,8 +2152,8 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public SessionProgress getAgentsSessionsByIdProgress(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<SessionProgress> localVarResp = getAgentsSessionsByIdProgressWithHttpInfo(id);
+    public SessionProgress getAgentSessionsByIdProgress(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<SessionProgress> localVarResp = getAgentSessionsByIdProgressWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -2170,8 +2170,8 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SessionProgress> getAgentsSessionsByIdProgressWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = getAgentsSessionsByIdProgressValidateBeforeCall(id, null);
+    public ApiResponse<SessionProgress> getAgentSessionsByIdProgressWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getAgentSessionsByIdProgressValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<SessionProgress>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2190,15 +2190,15 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAgentsSessionsByIdProgressAsync(@javax.annotation.Nonnull String id, final ApiCallback<SessionProgress> _callback) throws ApiException {
+    public okhttp3.Call getAgentSessionsByIdProgressAsync(@javax.annotation.Nonnull String id, final ApiCallback<SessionProgress> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getAgentsSessionsByIdProgressValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = getAgentSessionsByIdProgressValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<SessionProgress>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getAgentsSessionsByIdTree
+     * Build call for getAgentSessionsByIdTree
      * @param id ID is the session to act on, from the path. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2210,7 +2210,7 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAgentsSessionsByIdTreeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAgentSessionsByIdTreeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2227,7 +2227,7 @@ public class AgentsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/agents/sessions/{id}/tree"
+        String localVarPath = "/v1/agent/sessions/{id}/tree"
             .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -2256,13 +2256,13 @@ public class AgentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getAgentsSessionsByIdTreeValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getAgentSessionsByIdTreeValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getAgentsSessionsByIdTree(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getAgentSessionsByIdTree(Async)");
         }
 
-        return getAgentsSessionsByIdTreeCall(id, _callback);
+        return getAgentSessionsByIdTreeCall(id, _callback);
 
     }
 
@@ -2279,8 +2279,8 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public TreeNode getAgentsSessionsByIdTree(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<TreeNode> localVarResp = getAgentsSessionsByIdTreeWithHttpInfo(id);
+    public TreeNode getAgentSessionsByIdTree(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<TreeNode> localVarResp = getAgentSessionsByIdTreeWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -2297,8 +2297,8 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<TreeNode> getAgentsSessionsByIdTreeWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = getAgentsSessionsByIdTreeValidateBeforeCall(id, null);
+    public ApiResponse<TreeNode> getAgentSessionsByIdTreeWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getAgentSessionsByIdTreeValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<TreeNode>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2317,20 +2317,20 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAgentsSessionsByIdTreeAsync(@javax.annotation.Nonnull String id, final ApiCallback<TreeNode> _callback) throws ApiException {
+    public okhttp3.Call getAgentSessionsByIdTreeAsync(@javax.annotation.Nonnull String id, final ApiCallback<TreeNode> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getAgentsSessionsByIdTreeValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = getAgentSessionsByIdTreeValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<TreeNode>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getAgentsSessionsStream
+     * Build call for getAgentSessionsStream
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call getAgentsSessionsStreamCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAgentSessionsStreamCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2347,7 +2347,7 @@ public class AgentsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/agents/sessions/stream";
+        String localVarPath = "/v1/agent/sessions/stream";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2374,8 +2374,8 @@ public class AgentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getAgentsSessionsStreamValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getAgentsSessionsStreamCall(_callback);
+    private okhttp3.Call getAgentSessionsStreamValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getAgentSessionsStreamCall(_callback);
 
     }
 
@@ -2384,8 +2384,8 @@ public class AgentsApi {
      * Holds the connection open as text/event-stream and pushes a frame each time the org&#39;s registry moves: an &#x60;event: session&#x60; frame carrying the same session shape the list and detail reads answer with (a registration, an update, or a login-manager revoke tearing a session down), and an &#x60;event: event&#x60; frame carrying one appended turn. Optional ?root&#x3D;&lt;session id&gt; narrows the feed to a single subagent tree.  Requires a validated principal carrying an org; 403 without one. Org-scoped fail-closed: the bus filters on tenant before it fans out, so a subscriber only ever receives its own org&#39;s updates, and ?root&#x3D; narrows that further but can never widen it.  Delivery is best-effort and the GET reads remain the source of truth. A subscriber that falls more than 256 frames behind is DROPPED — its channel is closed and the stream ends — so one stuck dashboard can never back-pressure a session write; the client reconnects and re-reads the session endpoints to resynchronise. A &#x60;: ping&#x60; comment every 25 seconds holds the connection open through proxies and is how a departed client is noticed.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void getAgentsSessionsStream() throws ApiException {
-        getAgentsSessionsStreamWithHttpInfo();
+    public void getAgentSessionsStream() throws ApiException {
+        getAgentSessionsStreamWithHttpInfo();
     }
 
     /**
@@ -2394,8 +2394,8 @@ public class AgentsApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> getAgentsSessionsStreamWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getAgentsSessionsStreamValidateBeforeCall(null);
+    public ApiResponse<Void> getAgentSessionsStreamWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getAgentSessionsStreamValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -2406,14 +2406,14 @@ public class AgentsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call getAgentsSessionsStreamAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call getAgentSessionsStreamAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getAgentsSessionsStreamValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getAgentSessionsStreamValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getAgentsTargets
+     * Build call for getAgentTargets
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -2424,7 +2424,7 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAgentsTargetsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAgentTargetsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2441,7 +2441,7 @@ public class AgentsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/agents/targets";
+        String localVarPath = "/v1/agent/targets";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2469,8 +2469,8 @@ public class AgentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getAgentsTargetsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return getAgentsTargetsCall(_callback);
+    private okhttp3.Call getAgentTargetsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return getAgentTargetsCall(_callback);
 
     }
 
@@ -2486,8 +2486,8 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public TargetList getAgentsTargets() throws ApiException {
-        ApiResponse<TargetList> localVarResp = getAgentsTargetsWithHttpInfo();
+    public TargetList getAgentTargets() throws ApiException {
+        ApiResponse<TargetList> localVarResp = getAgentTargetsWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -2503,8 +2503,8 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<TargetList> getAgentsTargetsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = getAgentsTargetsValidateBeforeCall(null);
+    public ApiResponse<TargetList> getAgentTargetsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = getAgentTargetsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<TargetList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2522,15 +2522,15 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAgentsTargetsAsync(final ApiCallback<TargetList> _callback) throws ApiException {
+    public okhttp3.Call getAgentTargetsAsync(final ApiCallback<TargetList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getAgentsTargetsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = getAgentTargetsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<TargetList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for getAgentsTargetsById
+     * Build call for getAgentTargetsById
      * @param id ID is the target to act on, from the path. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -2542,7 +2542,7 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAgentsTargetsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getAgentTargetsByIdCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2559,7 +2559,7 @@ public class AgentsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/agents/targets/{id}"
+        String localVarPath = "/v1/agent/targets/{id}"
             .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -2588,13 +2588,13 @@ public class AgentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getAgentsTargetsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getAgentTargetsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling getAgentsTargetsById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling getAgentTargetsById(Async)");
         }
 
-        return getAgentsTargetsByIdCall(id, _callback);
+        return getAgentTargetsByIdCall(id, _callback);
 
     }
 
@@ -2611,8 +2611,8 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public TargetView getAgentsTargetsById(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<TargetView> localVarResp = getAgentsTargetsByIdWithHttpInfo(id);
+    public TargetView getAgentTargetsById(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<TargetView> localVarResp = getAgentTargetsByIdWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -2629,8 +2629,8 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<TargetView> getAgentsTargetsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = getAgentsTargetsByIdValidateBeforeCall(id, null);
+    public ApiResponse<TargetView> getAgentTargetsByIdWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = getAgentTargetsByIdValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<TargetView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2649,15 +2649,15 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAgentsTargetsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<TargetView> _callback) throws ApiException {
+    public okhttp3.Call getAgentTargetsByIdAsync(@javax.annotation.Nonnull String id, final ApiCallback<TargetView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getAgentsTargetsByIdValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = getAgentTargetsByIdValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<TargetView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for patchAgentsByRef
+     * Build call for patchAgentByRef
      * @param ref Ref is the agent to update — its public id or org-unique name, from the path. (required)
      * @param updateAgentIn  (required)
      * @param _callback Callback for upload/download progress
@@ -2670,7 +2670,7 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call patchAgentsByRefCall(@javax.annotation.Nonnull String ref, @javax.annotation.Nonnull UpdateAgentIn updateAgentIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call patchAgentByRefCall(@javax.annotation.Nonnull String ref, @javax.annotation.Nonnull UpdateAgentIn updateAgentIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2687,7 +2687,7 @@ public class AgentsApi {
         Object localVarPostBody = updateAgentIn;
 
         // create path and map variables
-        String localVarPath = "/v1/agents/{ref}"
+        String localVarPath = "/v1/agent/{ref}"
             .replace("{" + "ref" + "}", localVarApiClient.escapeString(ref.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -2717,18 +2717,18 @@ public class AgentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchAgentsByRefValidateBeforeCall(@javax.annotation.Nonnull String ref, @javax.annotation.Nonnull UpdateAgentIn updateAgentIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call patchAgentByRefValidateBeforeCall(@javax.annotation.Nonnull String ref, @javax.annotation.Nonnull UpdateAgentIn updateAgentIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'ref' is set
         if (ref == null) {
-            throw new ApiException("Missing the required parameter 'ref' when calling patchAgentsByRef(Async)");
+            throw new ApiException("Missing the required parameter 'ref' when calling patchAgentByRef(Async)");
         }
 
         // verify the required parameter 'updateAgentIn' is set
         if (updateAgentIn == null) {
-            throw new ApiException("Missing the required parameter 'updateAgentIn' when calling patchAgentsByRef(Async)");
+            throw new ApiException("Missing the required parameter 'updateAgentIn' when calling patchAgentByRef(Async)");
         }
 
-        return patchAgentsByRefCall(ref, updateAgentIn, _callback);
+        return patchAgentByRefCall(ref, updateAgentIn, _callback);
 
     }
 
@@ -2746,8 +2746,8 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public AgentView patchAgentsByRef(@javax.annotation.Nonnull String ref, @javax.annotation.Nonnull UpdateAgentIn updateAgentIn) throws ApiException {
-        ApiResponse<AgentView> localVarResp = patchAgentsByRefWithHttpInfo(ref, updateAgentIn);
+    public AgentView patchAgentByRef(@javax.annotation.Nonnull String ref, @javax.annotation.Nonnull UpdateAgentIn updateAgentIn) throws ApiException {
+        ApiResponse<AgentView> localVarResp = patchAgentByRefWithHttpInfo(ref, updateAgentIn);
         return localVarResp.getData();
     }
 
@@ -2765,8 +2765,8 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AgentView> patchAgentsByRefWithHttpInfo(@javax.annotation.Nonnull String ref, @javax.annotation.Nonnull UpdateAgentIn updateAgentIn) throws ApiException {
-        okhttp3.Call localVarCall = patchAgentsByRefValidateBeforeCall(ref, updateAgentIn, null);
+    public ApiResponse<AgentView> patchAgentByRefWithHttpInfo(@javax.annotation.Nonnull String ref, @javax.annotation.Nonnull UpdateAgentIn updateAgentIn) throws ApiException {
+        okhttp3.Call localVarCall = patchAgentByRefValidateBeforeCall(ref, updateAgentIn, null);
         Type localVarReturnType = new TypeToken<AgentView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2786,15 +2786,15 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call patchAgentsByRefAsync(@javax.annotation.Nonnull String ref, @javax.annotation.Nonnull UpdateAgentIn updateAgentIn, final ApiCallback<AgentView> _callback) throws ApiException {
+    public okhttp3.Call patchAgentByRefAsync(@javax.annotation.Nonnull String ref, @javax.annotation.Nonnull UpdateAgentIn updateAgentIn, final ApiCallback<AgentView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchAgentsByRefValidateBeforeCall(ref, updateAgentIn, _callback);
+        okhttp3.Call localVarCall = patchAgentByRefValidateBeforeCall(ref, updateAgentIn, _callback);
         Type localVarReturnType = new TypeToken<AgentView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for patchAgentsSessionsById
+     * Build call for patchAgentSessionsById
      * @param id ID is the session to update, from the path. (required)
      * @param patchSessionIn  (required)
      * @param _callback Callback for upload/download progress
@@ -2807,7 +2807,7 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call patchAgentsSessionsByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull PatchSessionIn patchSessionIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call patchAgentSessionsByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull PatchSessionIn patchSessionIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2824,7 +2824,7 @@ public class AgentsApi {
         Object localVarPostBody = patchSessionIn;
 
         // create path and map variables
-        String localVarPath = "/v1/agents/sessions/{id}"
+        String localVarPath = "/v1/agent/sessions/{id}"
             .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -2854,18 +2854,18 @@ public class AgentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchAgentsSessionsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull PatchSessionIn patchSessionIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call patchAgentSessionsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull PatchSessionIn patchSessionIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling patchAgentsSessionsById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling patchAgentSessionsById(Async)");
         }
 
         // verify the required parameter 'patchSessionIn' is set
         if (patchSessionIn == null) {
-            throw new ApiException("Missing the required parameter 'patchSessionIn' when calling patchAgentsSessionsById(Async)");
+            throw new ApiException("Missing the required parameter 'patchSessionIn' when calling patchAgentSessionsById(Async)");
         }
 
-        return patchAgentsSessionsByIdCall(id, patchSessionIn, _callback);
+        return patchAgentSessionsByIdCall(id, patchSessionIn, _callback);
 
     }
 
@@ -2883,8 +2883,8 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public SessionView patchAgentsSessionsById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull PatchSessionIn patchSessionIn) throws ApiException {
-        ApiResponse<SessionView> localVarResp = patchAgentsSessionsByIdWithHttpInfo(id, patchSessionIn);
+    public SessionView patchAgentSessionsById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull PatchSessionIn patchSessionIn) throws ApiException {
+        ApiResponse<SessionView> localVarResp = patchAgentSessionsByIdWithHttpInfo(id, patchSessionIn);
         return localVarResp.getData();
     }
 
@@ -2902,8 +2902,8 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SessionView> patchAgentsSessionsByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull PatchSessionIn patchSessionIn) throws ApiException {
-        okhttp3.Call localVarCall = patchAgentsSessionsByIdValidateBeforeCall(id, patchSessionIn, null);
+    public ApiResponse<SessionView> patchAgentSessionsByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull PatchSessionIn patchSessionIn) throws ApiException {
+        okhttp3.Call localVarCall = patchAgentSessionsByIdValidateBeforeCall(id, patchSessionIn, null);
         Type localVarReturnType = new TypeToken<SessionView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -2923,15 +2923,15 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call patchAgentsSessionsByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull PatchSessionIn patchSessionIn, final ApiCallback<SessionView> _callback) throws ApiException {
+    public okhttp3.Call patchAgentSessionsByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull PatchSessionIn patchSessionIn, final ApiCallback<SessionView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchAgentsSessionsByIdValidateBeforeCall(id, patchSessionIn, _callback);
+        okhttp3.Call localVarCall = patchAgentSessionsByIdValidateBeforeCall(id, patchSessionIn, _callback);
         Type localVarReturnType = new TypeToken<SessionView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for patchAgentsTargetsById
+     * Build call for patchAgentTargetsById
      * @param id ID is the target to update, from the path. (required)
      * @param patchTargetIn  (required)
      * @param _callback Callback for upload/download progress
@@ -2944,7 +2944,7 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call patchAgentsTargetsByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull PatchTargetIn patchTargetIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call patchAgentTargetsByIdCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull PatchTargetIn patchTargetIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2961,7 +2961,7 @@ public class AgentsApi {
         Object localVarPostBody = patchTargetIn;
 
         // create path and map variables
-        String localVarPath = "/v1/agents/targets/{id}"
+        String localVarPath = "/v1/agent/targets/{id}"
             .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -2991,18 +2991,18 @@ public class AgentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call patchAgentsTargetsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull PatchTargetIn patchTargetIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call patchAgentTargetsByIdValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull PatchTargetIn patchTargetIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling patchAgentsTargetsById(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling patchAgentTargetsById(Async)");
         }
 
         // verify the required parameter 'patchTargetIn' is set
         if (patchTargetIn == null) {
-            throw new ApiException("Missing the required parameter 'patchTargetIn' when calling patchAgentsTargetsById(Async)");
+            throw new ApiException("Missing the required parameter 'patchTargetIn' when calling patchAgentTargetsById(Async)");
         }
 
-        return patchAgentsTargetsByIdCall(id, patchTargetIn, _callback);
+        return patchAgentTargetsByIdCall(id, patchTargetIn, _callback);
 
     }
 
@@ -3020,8 +3020,8 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public TargetView patchAgentsTargetsById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull PatchTargetIn patchTargetIn) throws ApiException {
-        ApiResponse<TargetView> localVarResp = patchAgentsTargetsByIdWithHttpInfo(id, patchTargetIn);
+    public TargetView patchAgentTargetsById(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull PatchTargetIn patchTargetIn) throws ApiException {
+        ApiResponse<TargetView> localVarResp = patchAgentTargetsByIdWithHttpInfo(id, patchTargetIn);
         return localVarResp.getData();
     }
 
@@ -3039,8 +3039,8 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<TargetView> patchAgentsTargetsByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull PatchTargetIn patchTargetIn) throws ApiException {
-        okhttp3.Call localVarCall = patchAgentsTargetsByIdValidateBeforeCall(id, patchTargetIn, null);
+    public ApiResponse<TargetView> patchAgentTargetsByIdWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull PatchTargetIn patchTargetIn) throws ApiException {
+        okhttp3.Call localVarCall = patchAgentTargetsByIdValidateBeforeCall(id, patchTargetIn, null);
         Type localVarReturnType = new TypeToken<TargetView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -3060,15 +3060,15 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call patchAgentsTargetsByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull PatchTargetIn patchTargetIn, final ApiCallback<TargetView> _callback) throws ApiException {
+    public okhttp3.Call patchAgentTargetsByIdAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull PatchTargetIn patchTargetIn, final ApiCallback<TargetView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = patchAgentsTargetsByIdValidateBeforeCall(id, patchTargetIn, _callback);
+        okhttp3.Call localVarCall = patchAgentTargetsByIdValidateBeforeCall(id, patchTargetIn, _callback);
         Type localVarReturnType = new TypeToken<TargetView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postAgents
+     * Build call for postAgent
      * @param createAgentIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -3080,7 +3080,7 @@ public class AgentsApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postAgentsCall(@javax.annotation.Nonnull CreateAgentIn createAgentIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAgentCall(@javax.annotation.Nonnull CreateAgentIn createAgentIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3097,7 +3097,7 @@ public class AgentsApi {
         Object localVarPostBody = createAgentIn;
 
         // create path and map variables
-        String localVarPath = "/v1/agents";
+        String localVarPath = "/v1/agent";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -3126,13 +3126,13 @@ public class AgentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postAgentsValidateBeforeCall(@javax.annotation.Nonnull CreateAgentIn createAgentIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postAgentValidateBeforeCall(@javax.annotation.Nonnull CreateAgentIn createAgentIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'createAgentIn' is set
         if (createAgentIn == null) {
-            throw new ApiException("Missing the required parameter 'createAgentIn' when calling postAgents(Async)");
+            throw new ApiException("Missing the required parameter 'createAgentIn' when calling postAgent(Async)");
         }
 
-        return postAgentsCall(createAgentIn, _callback);
+        return postAgentCall(createAgentIn, _callback);
 
     }
 
@@ -3149,8 +3149,8 @@ public class AgentsApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public AgentView postAgents(@javax.annotation.Nonnull CreateAgentIn createAgentIn) throws ApiException {
-        ApiResponse<AgentView> localVarResp = postAgentsWithHttpInfo(createAgentIn);
+    public AgentView postAgent(@javax.annotation.Nonnull CreateAgentIn createAgentIn) throws ApiException {
+        ApiResponse<AgentView> localVarResp = postAgentWithHttpInfo(createAgentIn);
         return localVarResp.getData();
     }
 
@@ -3167,8 +3167,8 @@ public class AgentsApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AgentView> postAgentsWithHttpInfo(@javax.annotation.Nonnull CreateAgentIn createAgentIn) throws ApiException {
-        okhttp3.Call localVarCall = postAgentsValidateBeforeCall(createAgentIn, null);
+    public ApiResponse<AgentView> postAgentWithHttpInfo(@javax.annotation.Nonnull CreateAgentIn createAgentIn) throws ApiException {
+        okhttp3.Call localVarCall = postAgentValidateBeforeCall(createAgentIn, null);
         Type localVarReturnType = new TypeToken<AgentView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -3187,21 +3187,21 @@ public class AgentsApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postAgentsAsync(@javax.annotation.Nonnull CreateAgentIn createAgentIn, final ApiCallback<AgentView> _callback) throws ApiException {
+    public okhttp3.Call postAgentAsync(@javax.annotation.Nonnull CreateAgentIn createAgentIn, final ApiCallback<AgentView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postAgentsValidateBeforeCall(createAgentIn, _callback);
+        okhttp3.Call localVarCall = postAgentValidateBeforeCall(createAgentIn, _callback);
         Type localVarReturnType = new TypeToken<AgentView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postAgentsByRefRun
+     * Build call for postAgentByRefRun
      * @param ref  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postAgentsByRefRunCall(@javax.annotation.Nonnull String ref, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAgentByRefRunCall(@javax.annotation.Nonnull String ref, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3218,7 +3218,7 @@ public class AgentsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/agents/{ref}/run"
+        String localVarPath = "/v1/agent/{ref}/run"
             .replace("{" + "ref" + "}", localVarApiClient.escapeString(ref.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -3246,13 +3246,13 @@ public class AgentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postAgentsByRefRunValidateBeforeCall(@javax.annotation.Nonnull String ref, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postAgentByRefRunValidateBeforeCall(@javax.annotation.Nonnull String ref, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'ref' is set
         if (ref == null) {
-            throw new ApiException("Missing the required parameter 'ref' when calling postAgentsByRefRun(Async)");
+            throw new ApiException("Missing the required parameter 'ref' when calling postAgentByRefRun(Async)");
         }
 
-        return postAgentsByRefRunCall(ref, _callback);
+        return postAgentByRefRunCall(ref, _callback);
 
     }
 
@@ -3262,8 +3262,8 @@ public class AgentsApi {
      * @param ref  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postAgentsByRefRun(@javax.annotation.Nonnull String ref) throws ApiException {
-        postAgentsByRefRunWithHttpInfo(ref);
+    public void postAgentByRefRun(@javax.annotation.Nonnull String ref) throws ApiException {
+        postAgentByRefRunWithHttpInfo(ref);
     }
 
     /**
@@ -3273,8 +3273,8 @@ public class AgentsApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postAgentsByRefRunWithHttpInfo(@javax.annotation.Nonnull String ref) throws ApiException {
-        okhttp3.Call localVarCall = postAgentsByRefRunValidateBeforeCall(ref, null);
+    public ApiResponse<Void> postAgentByRefRunWithHttpInfo(@javax.annotation.Nonnull String ref) throws ApiException {
+        okhttp3.Call localVarCall = postAgentByRefRunValidateBeforeCall(ref, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -3286,19 +3286,19 @@ public class AgentsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postAgentsByRefRunAsync(@javax.annotation.Nonnull String ref, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postAgentByRefRunAsync(@javax.annotation.Nonnull String ref, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postAgentsByRefRunValidateBeforeCall(ref, _callback);
+        okhttp3.Call localVarCall = postAgentByRefRunValidateBeforeCall(ref, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postAgentsChat
+     * Build call for postAgentChat
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postAgentsChatCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAgentChatCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3315,7 +3315,7 @@ public class AgentsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/agents/chat";
+        String localVarPath = "/v1/agent/chat";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -3342,8 +3342,8 @@ public class AgentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postAgentsChatValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postAgentsChatCall(_callback);
+    private okhttp3.Call postAgentChatValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postAgentChatCall(_callback);
 
     }
 
@@ -3352,8 +3352,8 @@ public class AgentsApi {
      * Answers one turn of a conversation with four things: the model&#39;s &#x60;reply&#x60;, the &#x60;actions&#x60; the server executed on the caller&#39;s behalf, the &#x60;ops&#x60; the client must apply itself, and the &#x60;conversationId&#x60; the turn was recorded under.  The split between actions and ops is the rule most easily got wrong. A tool call is executed HERE only when the chosen preset is server-executing AND the tool resolves in the caller&#39;s own scope; every other call is handed back as an op for the client to apply to its own graph or UI. A tool that fails still comes back as an action, carrying its error rather than failing the round.  &#x60;preset&#x60; selects the system prompt and the tool set (&#x60;capability&#x60; is a legacy alias for it); an unknown one is refused. &#x60;conversationId&#x60; continues an existing thread, and its absence starts one. A validated principal with a non-empty org is required — the org is the sole authority for both persistence and tool scope, and is NEVER read from the body.  A completion refused for the caller&#39;s own reason — 402 insufficient balance, 429, 403 — is relayed with its own status and body verbatim, so the real billing message reaches the client instead of an opaque gateway error. Only a genuine upstream fault becomes a 502.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postAgentsChat() throws ApiException {
-        postAgentsChatWithHttpInfo();
+    public void postAgentChat() throws ApiException {
+        postAgentChatWithHttpInfo();
     }
 
     /**
@@ -3362,8 +3362,8 @@ public class AgentsApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postAgentsChatWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postAgentsChatValidateBeforeCall(null);
+    public ApiResponse<Void> postAgentChatWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postAgentChatValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -3374,19 +3374,19 @@ public class AgentsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postAgentsChatAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postAgentChatAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postAgentsChatValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postAgentChatValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postAgentsChatConversations
+     * Build call for postAgentChatConversations
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public okhttp3.Call postAgentsChatConversationsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAgentChatConversationsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3403,7 +3403,7 @@ public class AgentsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/agents/chat/conversations";
+        String localVarPath = "/v1/agent/chat/conversations";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -3430,8 +3430,8 @@ public class AgentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postAgentsChatConversationsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        return postAgentsChatConversationsCall(_callback);
+    private okhttp3.Call postAgentChatConversationsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return postAgentChatConversationsCall(_callback);
 
     }
 
@@ -3440,8 +3440,8 @@ public class AgentsApi {
      * Writes turns to the caller&#39;s thread store without running a completion, and answers the &#x60;conversationId&#x60; they were written under. An absent &#x60;conversationId&#x60; opens a new thread; supplying one appends to it.  This is for a client that streams its own turn through /v1/chat/completions and still wants the conversation in its history — the round records what IT answers, and is otherwise the only writer. It takes the same store, the same per-org isolation and the same notion of a thread: what is recorded here reads back through the two GETs beside it and the round can continue it by id. A validated principal with a non-empty org is required; 403 without one.
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void postAgentsChatConversations() throws ApiException {
-        postAgentsChatConversationsWithHttpInfo();
+    public void postAgentChatConversations() throws ApiException {
+        postAgentChatConversationsWithHttpInfo();
     }
 
     /**
@@ -3450,8 +3450,8 @@ public class AgentsApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> postAgentsChatConversationsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = postAgentsChatConversationsValidateBeforeCall(null);
+    public ApiResponse<Void> postAgentChatConversationsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = postAgentChatConversationsValidateBeforeCall(null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -3462,14 +3462,14 @@ public class AgentsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public okhttp3.Call postAgentsChatConversationsAsync(final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call postAgentChatConversationsAsync(final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postAgentsChatConversationsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = postAgentChatConversationsValidateBeforeCall(_callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postAgentsCoding
+     * Build call for postAgentCoding
      * @param codingStartIn  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -3481,7 +3481,7 @@ public class AgentsApi {
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postAgentsCodingCall(@javax.annotation.Nonnull CodingStartIn codingStartIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAgentCodingCall(@javax.annotation.Nonnull CodingStartIn codingStartIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3498,7 +3498,7 @@ public class AgentsApi {
         Object localVarPostBody = codingStartIn;
 
         // create path and map variables
-        String localVarPath = "/v1/agents/coding";
+        String localVarPath = "/v1/agent/coding";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -3527,13 +3527,13 @@ public class AgentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postAgentsCodingValidateBeforeCall(@javax.annotation.Nonnull CodingStartIn codingStartIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postAgentCodingValidateBeforeCall(@javax.annotation.Nonnull CodingStartIn codingStartIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'codingStartIn' is set
         if (codingStartIn == null) {
-            throw new ApiException("Missing the required parameter 'codingStartIn' when calling postAgentsCoding(Async)");
+            throw new ApiException("Missing the required parameter 'codingStartIn' when calling postAgentCoding(Async)");
         }
 
-        return postAgentsCodingCall(codingStartIn, _callback);
+        return postAgentCodingCall(codingStartIn, _callback);
 
     }
 
@@ -3550,8 +3550,8 @@ public class AgentsApi {
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
      </table>
      */
-    public CodingStarted postAgentsCoding(@javax.annotation.Nonnull CodingStartIn codingStartIn) throws ApiException {
-        ApiResponse<CodingStarted> localVarResp = postAgentsCodingWithHttpInfo(codingStartIn);
+    public CodingStarted postAgentCoding(@javax.annotation.Nonnull CodingStartIn codingStartIn) throws ApiException {
+        ApiResponse<CodingStarted> localVarResp = postAgentCodingWithHttpInfo(codingStartIn);
         return localVarResp.getData();
     }
 
@@ -3568,8 +3568,8 @@ public class AgentsApi {
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CodingStarted> postAgentsCodingWithHttpInfo(@javax.annotation.Nonnull CodingStartIn codingStartIn) throws ApiException {
-        okhttp3.Call localVarCall = postAgentsCodingValidateBeforeCall(codingStartIn, null);
+    public ApiResponse<CodingStarted> postAgentCodingWithHttpInfo(@javax.annotation.Nonnull CodingStartIn codingStartIn) throws ApiException {
+        okhttp3.Call localVarCall = postAgentCodingValidateBeforeCall(codingStartIn, null);
         Type localVarReturnType = new TypeToken<CodingStarted>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -3588,15 +3588,15 @@ public class AgentsApi {
         <tr><td> 202 </td><td> accepted </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postAgentsCodingAsync(@javax.annotation.Nonnull CodingStartIn codingStartIn, final ApiCallback<CodingStarted> _callback) throws ApiException {
+    public okhttp3.Call postAgentCodingAsync(@javax.annotation.Nonnull CodingStartIn codingStartIn, final ApiCallback<CodingStarted> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postAgentsCodingValidateBeforeCall(codingStartIn, _callback);
+        okhttp3.Call localVarCall = postAgentCodingValidateBeforeCall(codingStartIn, _callback);
         Type localVarReturnType = new TypeToken<CodingStarted>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postAgentsSessions
+     * Build call for postAgentSessions
      * @param registerReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -3608,7 +3608,7 @@ public class AgentsApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postAgentsSessionsCall(@javax.annotation.Nonnull RegisterReq registerReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAgentSessionsCall(@javax.annotation.Nonnull RegisterReq registerReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3625,7 +3625,7 @@ public class AgentsApi {
         Object localVarPostBody = registerReq;
 
         // create path and map variables
-        String localVarPath = "/v1/agents/sessions";
+        String localVarPath = "/v1/agent/sessions";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -3654,13 +3654,13 @@ public class AgentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postAgentsSessionsValidateBeforeCall(@javax.annotation.Nonnull RegisterReq registerReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postAgentSessionsValidateBeforeCall(@javax.annotation.Nonnull RegisterReq registerReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'registerReq' is set
         if (registerReq == null) {
-            throw new ApiException("Missing the required parameter 'registerReq' when calling postAgentsSessions(Async)");
+            throw new ApiException("Missing the required parameter 'registerReq' when calling postAgentSessions(Async)");
         }
 
-        return postAgentsSessionsCall(registerReq, _callback);
+        return postAgentSessionsCall(registerReq, _callback);
 
     }
 
@@ -3677,8 +3677,8 @@ public class AgentsApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public SessionView postAgentsSessions(@javax.annotation.Nonnull RegisterReq registerReq) throws ApiException {
-        ApiResponse<SessionView> localVarResp = postAgentsSessionsWithHttpInfo(registerReq);
+    public SessionView postAgentSessions(@javax.annotation.Nonnull RegisterReq registerReq) throws ApiException {
+        ApiResponse<SessionView> localVarResp = postAgentSessionsWithHttpInfo(registerReq);
         return localVarResp.getData();
     }
 
@@ -3695,8 +3695,8 @@ public class AgentsApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SessionView> postAgentsSessionsWithHttpInfo(@javax.annotation.Nonnull RegisterReq registerReq) throws ApiException {
-        okhttp3.Call localVarCall = postAgentsSessionsValidateBeforeCall(registerReq, null);
+    public ApiResponse<SessionView> postAgentSessionsWithHttpInfo(@javax.annotation.Nonnull RegisterReq registerReq) throws ApiException {
+        okhttp3.Call localVarCall = postAgentSessionsValidateBeforeCall(registerReq, null);
         Type localVarReturnType = new TypeToken<SessionView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -3715,15 +3715,15 @@ public class AgentsApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postAgentsSessionsAsync(@javax.annotation.Nonnull RegisterReq registerReq, final ApiCallback<SessionView> _callback) throws ApiException {
+    public okhttp3.Call postAgentSessionsAsync(@javax.annotation.Nonnull RegisterReq registerReq, final ApiCallback<SessionView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postAgentsSessionsValidateBeforeCall(registerReq, _callback);
+        okhttp3.Call localVarCall = postAgentSessionsValidateBeforeCall(registerReq, _callback);
         Type localVarReturnType = new TypeToken<SessionView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postAgentsSessionsByIdEvents
+     * Build call for postAgentSessionsByIdEvents
      * @param id ID is the session to append to, from the path. (required)
      * @param eventIn  (required)
      * @param _callback Callback for upload/download progress
@@ -3736,7 +3736,7 @@ public class AgentsApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postAgentsSessionsByIdEventsCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull EventIn eventIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAgentSessionsByIdEventsCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull EventIn eventIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3753,7 +3753,7 @@ public class AgentsApi {
         Object localVarPostBody = eventIn;
 
         // create path and map variables
-        String localVarPath = "/v1/agents/sessions/{id}/events"
+        String localVarPath = "/v1/agent/sessions/{id}/events"
             .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -3783,18 +3783,18 @@ public class AgentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postAgentsSessionsByIdEventsValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull EventIn eventIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postAgentSessionsByIdEventsValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull EventIn eventIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling postAgentsSessionsByIdEvents(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling postAgentSessionsByIdEvents(Async)");
         }
 
         // verify the required parameter 'eventIn' is set
         if (eventIn == null) {
-            throw new ApiException("Missing the required parameter 'eventIn' when calling postAgentsSessionsByIdEvents(Async)");
+            throw new ApiException("Missing the required parameter 'eventIn' when calling postAgentSessionsByIdEvents(Async)");
         }
 
-        return postAgentsSessionsByIdEventsCall(id, eventIn, _callback);
+        return postAgentSessionsByIdEventsCall(id, eventIn, _callback);
 
     }
 
@@ -3812,8 +3812,8 @@ public class AgentsApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public EventView postAgentsSessionsByIdEvents(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull EventIn eventIn) throws ApiException {
-        ApiResponse<EventView> localVarResp = postAgentsSessionsByIdEventsWithHttpInfo(id, eventIn);
+    public EventView postAgentSessionsByIdEvents(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull EventIn eventIn) throws ApiException {
+        ApiResponse<EventView> localVarResp = postAgentSessionsByIdEventsWithHttpInfo(id, eventIn);
         return localVarResp.getData();
     }
 
@@ -3831,8 +3831,8 @@ public class AgentsApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<EventView> postAgentsSessionsByIdEventsWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull EventIn eventIn) throws ApiException {
-        okhttp3.Call localVarCall = postAgentsSessionsByIdEventsValidateBeforeCall(id, eventIn, null);
+    public ApiResponse<EventView> postAgentSessionsByIdEventsWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull EventIn eventIn) throws ApiException {
+        okhttp3.Call localVarCall = postAgentSessionsByIdEventsValidateBeforeCall(id, eventIn, null);
         Type localVarReturnType = new TypeToken<EventView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -3852,15 +3852,15 @@ public class AgentsApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postAgentsSessionsByIdEventsAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull EventIn eventIn, final ApiCallback<EventView> _callback) throws ApiException {
+    public okhttp3.Call postAgentSessionsByIdEventsAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull EventIn eventIn, final ApiCallback<EventView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postAgentsSessionsByIdEventsValidateBeforeCall(id, eventIn, _callback);
+        okhttp3.Call localVarCall = postAgentSessionsByIdEventsValidateBeforeCall(id, eventIn, _callback);
         Type localVarReturnType = new TypeToken<EventView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postAgentsSessionsByIdMessage
+     * Build call for postAgentSessionsByIdMessage
      * @param id ID is the session to steer, from the path. (required)
      * @param controlIn  (required)
      * @param _callback Callback for upload/download progress
@@ -3873,7 +3873,7 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postAgentsSessionsByIdMessageCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ControlIn controlIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAgentSessionsByIdMessageCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ControlIn controlIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3890,7 +3890,7 @@ public class AgentsApi {
         Object localVarPostBody = controlIn;
 
         // create path and map variables
-        String localVarPath = "/v1/agents/sessions/{id}/message"
+        String localVarPath = "/v1/agent/sessions/{id}/message"
             .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -3920,18 +3920,18 @@ public class AgentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postAgentsSessionsByIdMessageValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ControlIn controlIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postAgentSessionsByIdMessageValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ControlIn controlIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling postAgentsSessionsByIdMessage(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling postAgentSessionsByIdMessage(Async)");
         }
 
         // verify the required parameter 'controlIn' is set
         if (controlIn == null) {
-            throw new ApiException("Missing the required parameter 'controlIn' when calling postAgentsSessionsByIdMessage(Async)");
+            throw new ApiException("Missing the required parameter 'controlIn' when calling postAgentSessionsByIdMessage(Async)");
         }
 
-        return postAgentsSessionsByIdMessageCall(id, controlIn, _callback);
+        return postAgentSessionsByIdMessageCall(id, controlIn, _callback);
 
     }
 
@@ -3949,8 +3949,8 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ControlResult postAgentsSessionsByIdMessage(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ControlIn controlIn) throws ApiException {
-        ApiResponse<ControlResult> localVarResp = postAgentsSessionsByIdMessageWithHttpInfo(id, controlIn);
+    public ControlResult postAgentSessionsByIdMessage(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ControlIn controlIn) throws ApiException {
+        ApiResponse<ControlResult> localVarResp = postAgentSessionsByIdMessageWithHttpInfo(id, controlIn);
         return localVarResp.getData();
     }
 
@@ -3968,8 +3968,8 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ControlResult> postAgentsSessionsByIdMessageWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ControlIn controlIn) throws ApiException {
-        okhttp3.Call localVarCall = postAgentsSessionsByIdMessageValidateBeforeCall(id, controlIn, null);
+    public ApiResponse<ControlResult> postAgentSessionsByIdMessageWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ControlIn controlIn) throws ApiException {
+        okhttp3.Call localVarCall = postAgentSessionsByIdMessageValidateBeforeCall(id, controlIn, null);
         Type localVarReturnType = new TypeToken<ControlResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -3989,15 +3989,15 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postAgentsSessionsByIdMessageAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ControlIn controlIn, final ApiCallback<ControlResult> _callback) throws ApiException {
+    public okhttp3.Call postAgentSessionsByIdMessageAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ControlIn controlIn, final ApiCallback<ControlResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postAgentsSessionsByIdMessageValidateBeforeCall(id, controlIn, _callback);
+        okhttp3.Call localVarCall = postAgentSessionsByIdMessageValidateBeforeCall(id, controlIn, _callback);
         Type localVarReturnType = new TypeToken<ControlResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postAgentsSessionsByIdPause
+     * Build call for postAgentSessionsByIdPause
      * @param id ID is the session to steer, from the path. (required)
      * @param controlIn  (required)
      * @param _callback Callback for upload/download progress
@@ -4010,7 +4010,7 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postAgentsSessionsByIdPauseCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ControlIn controlIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAgentSessionsByIdPauseCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ControlIn controlIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4027,7 +4027,7 @@ public class AgentsApi {
         Object localVarPostBody = controlIn;
 
         // create path and map variables
-        String localVarPath = "/v1/agents/sessions/{id}/pause"
+        String localVarPath = "/v1/agent/sessions/{id}/pause"
             .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -4057,18 +4057,18 @@ public class AgentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postAgentsSessionsByIdPauseValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ControlIn controlIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postAgentSessionsByIdPauseValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ControlIn controlIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling postAgentsSessionsByIdPause(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling postAgentSessionsByIdPause(Async)");
         }
 
         // verify the required parameter 'controlIn' is set
         if (controlIn == null) {
-            throw new ApiException("Missing the required parameter 'controlIn' when calling postAgentsSessionsByIdPause(Async)");
+            throw new ApiException("Missing the required parameter 'controlIn' when calling postAgentSessionsByIdPause(Async)");
         }
 
-        return postAgentsSessionsByIdPauseCall(id, controlIn, _callback);
+        return postAgentSessionsByIdPauseCall(id, controlIn, _callback);
 
     }
 
@@ -4086,8 +4086,8 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ControlResult postAgentsSessionsByIdPause(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ControlIn controlIn) throws ApiException {
-        ApiResponse<ControlResult> localVarResp = postAgentsSessionsByIdPauseWithHttpInfo(id, controlIn);
+    public ControlResult postAgentSessionsByIdPause(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ControlIn controlIn) throws ApiException {
+        ApiResponse<ControlResult> localVarResp = postAgentSessionsByIdPauseWithHttpInfo(id, controlIn);
         return localVarResp.getData();
     }
 
@@ -4105,8 +4105,8 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ControlResult> postAgentsSessionsByIdPauseWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ControlIn controlIn) throws ApiException {
-        okhttp3.Call localVarCall = postAgentsSessionsByIdPauseValidateBeforeCall(id, controlIn, null);
+    public ApiResponse<ControlResult> postAgentSessionsByIdPauseWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ControlIn controlIn) throws ApiException {
+        okhttp3.Call localVarCall = postAgentSessionsByIdPauseValidateBeforeCall(id, controlIn, null);
         Type localVarReturnType = new TypeToken<ControlResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -4126,15 +4126,15 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postAgentsSessionsByIdPauseAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ControlIn controlIn, final ApiCallback<ControlResult> _callback) throws ApiException {
+    public okhttp3.Call postAgentSessionsByIdPauseAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ControlIn controlIn, final ApiCallback<ControlResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postAgentsSessionsByIdPauseValidateBeforeCall(id, controlIn, _callback);
+        okhttp3.Call localVarCall = postAgentSessionsByIdPauseValidateBeforeCall(id, controlIn, _callback);
         Type localVarReturnType = new TypeToken<ControlResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postAgentsSessionsByIdResume
+     * Build call for postAgentSessionsByIdResume
      * @param id ID is the session to steer, from the path. (required)
      * @param controlIn  (required)
      * @param _callback Callback for upload/download progress
@@ -4147,7 +4147,7 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postAgentsSessionsByIdResumeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ControlIn controlIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAgentSessionsByIdResumeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ControlIn controlIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4164,7 +4164,7 @@ public class AgentsApi {
         Object localVarPostBody = controlIn;
 
         // create path and map variables
-        String localVarPath = "/v1/agents/sessions/{id}/resume"
+        String localVarPath = "/v1/agent/sessions/{id}/resume"
             .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -4194,18 +4194,18 @@ public class AgentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postAgentsSessionsByIdResumeValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ControlIn controlIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postAgentSessionsByIdResumeValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ControlIn controlIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling postAgentsSessionsByIdResume(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling postAgentSessionsByIdResume(Async)");
         }
 
         // verify the required parameter 'controlIn' is set
         if (controlIn == null) {
-            throw new ApiException("Missing the required parameter 'controlIn' when calling postAgentsSessionsByIdResume(Async)");
+            throw new ApiException("Missing the required parameter 'controlIn' when calling postAgentSessionsByIdResume(Async)");
         }
 
-        return postAgentsSessionsByIdResumeCall(id, controlIn, _callback);
+        return postAgentSessionsByIdResumeCall(id, controlIn, _callback);
 
     }
 
@@ -4223,8 +4223,8 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ControlResult postAgentsSessionsByIdResume(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ControlIn controlIn) throws ApiException {
-        ApiResponse<ControlResult> localVarResp = postAgentsSessionsByIdResumeWithHttpInfo(id, controlIn);
+    public ControlResult postAgentSessionsByIdResume(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ControlIn controlIn) throws ApiException {
+        ApiResponse<ControlResult> localVarResp = postAgentSessionsByIdResumeWithHttpInfo(id, controlIn);
         return localVarResp.getData();
     }
 
@@ -4242,8 +4242,8 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ControlResult> postAgentsSessionsByIdResumeWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ControlIn controlIn) throws ApiException {
-        okhttp3.Call localVarCall = postAgentsSessionsByIdResumeValidateBeforeCall(id, controlIn, null);
+    public ApiResponse<ControlResult> postAgentSessionsByIdResumeWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ControlIn controlIn) throws ApiException {
+        okhttp3.Call localVarCall = postAgentSessionsByIdResumeValidateBeforeCall(id, controlIn, null);
         Type localVarReturnType = new TypeToken<ControlResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -4263,15 +4263,15 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postAgentsSessionsByIdResumeAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ControlIn controlIn, final ApiCallback<ControlResult> _callback) throws ApiException {
+    public okhttp3.Call postAgentSessionsByIdResumeAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ControlIn controlIn, final ApiCallback<ControlResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postAgentsSessionsByIdResumeValidateBeforeCall(id, controlIn, _callback);
+        okhttp3.Call localVarCall = postAgentSessionsByIdResumeValidateBeforeCall(id, controlIn, _callback);
         Type localVarReturnType = new TypeToken<ControlResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postAgentsSessionsByIdStop
+     * Build call for postAgentSessionsByIdStop
      * @param id ID is the session to steer, from the path. (required)
      * @param controlIn  (required)
      * @param _callback Callback for upload/download progress
@@ -4284,7 +4284,7 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postAgentsSessionsByIdStopCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ControlIn controlIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAgentSessionsByIdStopCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ControlIn controlIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4301,7 +4301,7 @@ public class AgentsApi {
         Object localVarPostBody = controlIn;
 
         // create path and map variables
-        String localVarPath = "/v1/agents/sessions/{id}/stop"
+        String localVarPath = "/v1/agent/sessions/{id}/stop"
             .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -4331,18 +4331,18 @@ public class AgentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postAgentsSessionsByIdStopValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ControlIn controlIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postAgentSessionsByIdStopValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ControlIn controlIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling postAgentsSessionsByIdStop(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling postAgentSessionsByIdStop(Async)");
         }
 
         // verify the required parameter 'controlIn' is set
         if (controlIn == null) {
-            throw new ApiException("Missing the required parameter 'controlIn' when calling postAgentsSessionsByIdStop(Async)");
+            throw new ApiException("Missing the required parameter 'controlIn' when calling postAgentSessionsByIdStop(Async)");
         }
 
-        return postAgentsSessionsByIdStopCall(id, controlIn, _callback);
+        return postAgentSessionsByIdStopCall(id, controlIn, _callback);
 
     }
 
@@ -4360,8 +4360,8 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ControlResult postAgentsSessionsByIdStop(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ControlIn controlIn) throws ApiException {
-        ApiResponse<ControlResult> localVarResp = postAgentsSessionsByIdStopWithHttpInfo(id, controlIn);
+    public ControlResult postAgentSessionsByIdStop(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ControlIn controlIn) throws ApiException {
+        ApiResponse<ControlResult> localVarResp = postAgentSessionsByIdStopWithHttpInfo(id, controlIn);
         return localVarResp.getData();
     }
 
@@ -4379,8 +4379,8 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ControlResult> postAgentsSessionsByIdStopWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ControlIn controlIn) throws ApiException {
-        okhttp3.Call localVarCall = postAgentsSessionsByIdStopValidateBeforeCall(id, controlIn, null);
+    public ApiResponse<ControlResult> postAgentSessionsByIdStopWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ControlIn controlIn) throws ApiException {
+        okhttp3.Call localVarCall = postAgentSessionsByIdStopValidateBeforeCall(id, controlIn, null);
         Type localVarReturnType = new TypeToken<ControlResult>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -4400,15 +4400,15 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postAgentsSessionsByIdStopAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ControlIn controlIn, final ApiCallback<ControlResult> _callback) throws ApiException {
+    public okhttp3.Call postAgentSessionsByIdStopAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull ControlIn controlIn, final ApiCallback<ControlResult> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postAgentsSessionsByIdStopValidateBeforeCall(id, controlIn, _callback);
+        okhttp3.Call localVarCall = postAgentSessionsByIdStopValidateBeforeCall(id, controlIn, _callback);
         Type localVarReturnType = new TypeToken<ControlResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postAgentsTargets
+     * Build call for postAgentTargets
      * @param targetReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -4420,7 +4420,7 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postAgentsTargetsCall(@javax.annotation.Nonnull TargetReq targetReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAgentTargetsCall(@javax.annotation.Nonnull TargetReq targetReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4437,7 +4437,7 @@ public class AgentsApi {
         Object localVarPostBody = targetReq;
 
         // create path and map variables
-        String localVarPath = "/v1/agents/targets";
+        String localVarPath = "/v1/agent/targets";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -4466,13 +4466,13 @@ public class AgentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postAgentsTargetsValidateBeforeCall(@javax.annotation.Nonnull TargetReq targetReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postAgentTargetsValidateBeforeCall(@javax.annotation.Nonnull TargetReq targetReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'targetReq' is set
         if (targetReq == null) {
-            throw new ApiException("Missing the required parameter 'targetReq' when calling postAgentsTargets(Async)");
+            throw new ApiException("Missing the required parameter 'targetReq' when calling postAgentTargets(Async)");
         }
 
-        return postAgentsTargetsCall(targetReq, _callback);
+        return postAgentTargetsCall(targetReq, _callback);
 
     }
 
@@ -4489,8 +4489,8 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public TargetView postAgentsTargets(@javax.annotation.Nonnull TargetReq targetReq) throws ApiException {
-        ApiResponse<TargetView> localVarResp = postAgentsTargetsWithHttpInfo(targetReq);
+    public TargetView postAgentTargets(@javax.annotation.Nonnull TargetReq targetReq) throws ApiException {
+        ApiResponse<TargetView> localVarResp = postAgentTargetsWithHttpInfo(targetReq);
         return localVarResp.getData();
     }
 
@@ -4507,8 +4507,8 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<TargetView> postAgentsTargetsWithHttpInfo(@javax.annotation.Nonnull TargetReq targetReq) throws ApiException {
-        okhttp3.Call localVarCall = postAgentsTargetsValidateBeforeCall(targetReq, null);
+    public ApiResponse<TargetView> postAgentTargetsWithHttpInfo(@javax.annotation.Nonnull TargetReq targetReq) throws ApiException {
+        okhttp3.Call localVarCall = postAgentTargetsValidateBeforeCall(targetReq, null);
         Type localVarReturnType = new TypeToken<TargetView>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -4527,15 +4527,15 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postAgentsTargetsAsync(@javax.annotation.Nonnull TargetReq targetReq, final ApiCallback<TargetView> _callback) throws ApiException {
+    public okhttp3.Call postAgentTargetsAsync(@javax.annotation.Nonnull TargetReq targetReq, final ApiCallback<TargetView> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postAgentsTargetsValidateBeforeCall(targetReq, _callback);
+        okhttp3.Call localVarCall = postAgentTargetsValidateBeforeCall(targetReq, _callback);
         Type localVarReturnType = new TypeToken<TargetView>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postAgentsTargetsByIdClaim
+     * Build call for postAgentTargetsByIdClaim
      * @param id ID is the target to act on, from the path. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -4547,7 +4547,7 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postAgentsTargetsByIdClaimCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAgentTargetsByIdClaimCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4564,7 +4564,7 @@ public class AgentsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/agents/targets/{id}/claim"
+        String localVarPath = "/v1/agent/targets/{id}/claim"
             .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -4593,13 +4593,13 @@ public class AgentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postAgentsTargetsByIdClaimValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postAgentTargetsByIdClaimValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling postAgentsTargetsByIdClaim(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling postAgentTargetsByIdClaim(Async)");
         }
 
-        return postAgentsTargetsByIdClaimCall(id, _callback);
+        return postAgentTargetsByIdClaimCall(id, _callback);
 
     }
 
@@ -4616,8 +4616,8 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public RoutedRunOut postAgentsTargetsByIdClaim(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<RoutedRunOut> localVarResp = postAgentsTargetsByIdClaimWithHttpInfo(id);
+    public RoutedRunOut postAgentTargetsByIdClaim(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<RoutedRunOut> localVarResp = postAgentTargetsByIdClaimWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -4634,8 +4634,8 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<RoutedRunOut> postAgentsTargetsByIdClaimWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = postAgentsTargetsByIdClaimValidateBeforeCall(id, null);
+    public ApiResponse<RoutedRunOut> postAgentTargetsByIdClaimWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = postAgentTargetsByIdClaimValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<RoutedRunOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -4654,15 +4654,15 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postAgentsTargetsByIdClaimAsync(@javax.annotation.Nonnull String id, final ApiCallback<RoutedRunOut> _callback) throws ApiException {
+    public okhttp3.Call postAgentTargetsByIdClaimAsync(@javax.annotation.Nonnull String id, final ApiCallback<RoutedRunOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postAgentsTargetsByIdClaimValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = postAgentTargetsByIdClaimValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<RoutedRunOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postAgentsTargetsByIdKey
+     * Build call for postAgentTargetsByIdKey
      * @param id ID is the target to act on, from the path. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -4674,7 +4674,7 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postAgentsTargetsByIdKeyCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAgentTargetsByIdKeyCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4691,7 +4691,7 @@ public class AgentsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/v1/agents/targets/{id}/key"
+        String localVarPath = "/v1/agent/targets/{id}/key"
             .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -4720,13 +4720,13 @@ public class AgentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postAgentsTargetsByIdKeyValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postAgentTargetsByIdKeyValidateBeforeCall(@javax.annotation.Nonnull String id, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling postAgentsTargetsByIdKey(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling postAgentTargetsByIdKey(Async)");
         }
 
-        return postAgentsTargetsByIdKeyCall(id, _callback);
+        return postAgentTargetsByIdKeyCall(id, _callback);
 
     }
 
@@ -4743,8 +4743,8 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ClaimKeyOut postAgentsTargetsByIdKey(@javax.annotation.Nonnull String id) throws ApiException {
-        ApiResponse<ClaimKeyOut> localVarResp = postAgentsTargetsByIdKeyWithHttpInfo(id);
+    public ClaimKeyOut postAgentTargetsByIdKey(@javax.annotation.Nonnull String id) throws ApiException {
+        ApiResponse<ClaimKeyOut> localVarResp = postAgentTargetsByIdKeyWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -4761,8 +4761,8 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ClaimKeyOut> postAgentsTargetsByIdKeyWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
-        okhttp3.Call localVarCall = postAgentsTargetsByIdKeyValidateBeforeCall(id, null);
+    public ApiResponse<ClaimKeyOut> postAgentTargetsByIdKeyWithHttpInfo(@javax.annotation.Nonnull String id) throws ApiException {
+        okhttp3.Call localVarCall = postAgentTargetsByIdKeyValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<ClaimKeyOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -4781,15 +4781,15 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postAgentsTargetsByIdKeyAsync(@javax.annotation.Nonnull String id, final ApiCallback<ClaimKeyOut> _callback) throws ApiException {
+    public okhttp3.Call postAgentTargetsByIdKeyAsync(@javax.annotation.Nonnull String id, final ApiCallback<ClaimKeyOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postAgentsTargetsByIdKeyValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = postAgentTargetsByIdKeyValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<ClaimKeyOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for postAgentsTargetsByIdRunsByRunidReport
+     * Build call for postAgentTargetsByIdRunsByRunidReport
      * @param id ID is the machine reporting, from the path. (required)
      * @param runId RunID is the routed run being completed, from the path. (required)
      * @param reportRunIn  (required)
@@ -4803,7 +4803,7 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postAgentsTargetsByIdRunsByRunidReportCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String runId, @javax.annotation.Nonnull ReportRunIn reportRunIn, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postAgentTargetsByIdRunsByRunidReportCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String runId, @javax.annotation.Nonnull ReportRunIn reportRunIn, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -4820,7 +4820,7 @@ public class AgentsApi {
         Object localVarPostBody = reportRunIn;
 
         // create path and map variables
-        String localVarPath = "/v1/agents/targets/{id}/runs/{runId}/report"
+        String localVarPath = "/v1/agent/targets/{id}/runs/{runId}/report"
             .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()))
             .replace("{" + "runId" + "}", localVarApiClient.escapeString(runId.toString()));
 
@@ -4851,23 +4851,23 @@ public class AgentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postAgentsTargetsByIdRunsByRunidReportValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String runId, @javax.annotation.Nonnull ReportRunIn reportRunIn, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postAgentTargetsByIdRunsByRunidReportValidateBeforeCall(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String runId, @javax.annotation.Nonnull ReportRunIn reportRunIn, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling postAgentsTargetsByIdRunsByRunidReport(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling postAgentTargetsByIdRunsByRunidReport(Async)");
         }
 
         // verify the required parameter 'runId' is set
         if (runId == null) {
-            throw new ApiException("Missing the required parameter 'runId' when calling postAgentsTargetsByIdRunsByRunidReport(Async)");
+            throw new ApiException("Missing the required parameter 'runId' when calling postAgentTargetsByIdRunsByRunidReport(Async)");
         }
 
         // verify the required parameter 'reportRunIn' is set
         if (reportRunIn == null) {
-            throw new ApiException("Missing the required parameter 'reportRunIn' when calling postAgentsTargetsByIdRunsByRunidReport(Async)");
+            throw new ApiException("Missing the required parameter 'reportRunIn' when calling postAgentTargetsByIdRunsByRunidReport(Async)");
         }
 
-        return postAgentsTargetsByIdRunsByRunidReportCall(id, runId, reportRunIn, _callback);
+        return postAgentTargetsByIdRunsByRunidReportCall(id, runId, reportRunIn, _callback);
 
     }
 
@@ -4886,8 +4886,8 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ReportOut postAgentsTargetsByIdRunsByRunidReport(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String runId, @javax.annotation.Nonnull ReportRunIn reportRunIn) throws ApiException {
-        ApiResponse<ReportOut> localVarResp = postAgentsTargetsByIdRunsByRunidReportWithHttpInfo(id, runId, reportRunIn);
+    public ReportOut postAgentTargetsByIdRunsByRunidReport(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String runId, @javax.annotation.Nonnull ReportRunIn reportRunIn) throws ApiException {
+        ApiResponse<ReportOut> localVarResp = postAgentTargetsByIdRunsByRunidReportWithHttpInfo(id, runId, reportRunIn);
         return localVarResp.getData();
     }
 
@@ -4906,8 +4906,8 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ReportOut> postAgentsTargetsByIdRunsByRunidReportWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String runId, @javax.annotation.Nonnull ReportRunIn reportRunIn) throws ApiException {
-        okhttp3.Call localVarCall = postAgentsTargetsByIdRunsByRunidReportValidateBeforeCall(id, runId, reportRunIn, null);
+    public ApiResponse<ReportOut> postAgentTargetsByIdRunsByRunidReportWithHttpInfo(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String runId, @javax.annotation.Nonnull ReportRunIn reportRunIn) throws ApiException {
+        okhttp3.Call localVarCall = postAgentTargetsByIdRunsByRunidReportValidateBeforeCall(id, runId, reportRunIn, null);
         Type localVarReturnType = new TypeToken<ReportOut>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -4928,9 +4928,9 @@ public class AgentsApi {
         <tr><td> 200 </td><td> ok </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postAgentsTargetsByIdRunsByRunidReportAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String runId, @javax.annotation.Nonnull ReportRunIn reportRunIn, final ApiCallback<ReportOut> _callback) throws ApiException {
+    public okhttp3.Call postAgentTargetsByIdRunsByRunidReportAsync(@javax.annotation.Nonnull String id, @javax.annotation.Nonnull String runId, @javax.annotation.Nonnull ReportRunIn reportRunIn, final ApiCallback<ReportOut> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postAgentsTargetsByIdRunsByRunidReportValidateBeforeCall(id, runId, reportRunIn, _callback);
+        okhttp3.Call localVarCall = postAgentTargetsByIdRunsByRunidReportValidateBeforeCall(id, runId, reportRunIn, _callback);
         Type localVarReturnType = new TypeToken<ReportOut>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

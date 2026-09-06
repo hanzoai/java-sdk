@@ -20,9 +20,9 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -48,57 +48,86 @@ import java.util.Set;
 import ai.hanzo.cloud.JSON;
 
 /**
- * ToolCall
+ * ForgeJobWorkflowJob
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.14.0")
-public class ToolCall {
-  public static final String SERIALIZED_NAME_ARGUMENTS = "arguments";
-  @SerializedName(SERIALIZED_NAME_ARGUMENTS)
+public class ForgeJobWorkflowJob {
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
   @javax.annotation.Nullable
-  private Map<String, Object> arguments = new HashMap<>();
+  private Integer id;
+
+  public static final String SERIALIZED_NAME_LABELS = "labels";
+  @SerializedName(SERIALIZED_NAME_LABELS)
+  @javax.annotation.Nullable
+  private List<String> labels = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   @javax.annotation.Nullable
   private String name;
 
-  public ToolCall() {
+  public static final String SERIALIZED_NAME_RUN_ID = "run_id";
+  @SerializedName(SERIALIZED_NAME_RUN_ID)
+  @javax.annotation.Nullable
+  private Integer runId;
+
+  public ForgeJobWorkflowJob() {
   }
 
-  public ToolCall arguments(@javax.annotation.Nullable Map<String, Object> arguments) {
-    this.arguments = arguments;
-    return this;
-  }
-
-  public ToolCall putArgumentsItem(String key, Object argumentsItem) {
-    if (this.arguments == null) {
-      this.arguments = new HashMap<>();
-    }
-    this.arguments.put(key, argumentsItem);
+  public ForgeJobWorkflowJob id(@javax.annotation.Nullable Integer id) {
+    this.id = id;
     return this;
   }
 
   /**
-   * Arguments is the tool&#39;s own input object, passed through verbatim to whichever source owns it.
-   * @return arguments
+   * Get id
+   * @return id
    */
   @javax.annotation.Nullable
-  public Map<String, Object> getArguments() {
-    return arguments;
+  public Integer getId() {
+    return id;
   }
 
-  public void setArguments(@javax.annotation.Nullable Map<String, Object> arguments) {
-    this.arguments = arguments;
+  public void setId(@javax.annotation.Nullable Integer id) {
+    this.id = id;
   }
 
 
-  public ToolCall name(@javax.annotation.Nullable String name) {
+  public ForgeJobWorkflowJob labels(@javax.annotation.Nullable List<String> labels) {
+    this.labels = labels;
+    return this;
+  }
+
+  public ForgeJobWorkflowJob addLabelsItem(String labelsItem) {
+    if (this.labels == null) {
+      this.labels = new ArrayList<>();
+    }
+    this.labels.add(labelsItem);
+    return this;
+  }
+
+  /**
+   * Get labels
+   * @return labels
+   */
+  @javax.annotation.Nullable
+  public List<String> getLabels() {
+    return labels;
+  }
+
+  public void setLabels(@javax.annotation.Nullable List<String> labels) {
+    this.labels = labels;
+  }
+
+
+  public ForgeJobWorkflowJob name(@javax.annotation.Nullable String name) {
     this.name = name;
     return this;
   }
 
   /**
-   * Name is the tool to run, exactly as GET /v1/tool reports it.
+   * Get name
    * @return name
    */
   @javax.annotation.Nullable
@@ -111,6 +140,25 @@ public class ToolCall {
   }
 
 
+  public ForgeJobWorkflowJob runId(@javax.annotation.Nullable Integer runId) {
+    this.runId = runId;
+    return this;
+  }
+
+  /**
+   * Get runId
+   * @return runId
+   */
+  @javax.annotation.Nullable
+  public Integer getRunId() {
+    return runId;
+  }
+
+  public void setRunId(@javax.annotation.Nullable Integer runId) {
+    this.runId = runId;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -120,22 +168,26 @@ public class ToolCall {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ToolCall toolCall = (ToolCall) o;
-    return Objects.equals(this.arguments, toolCall.arguments) &&
-        Objects.equals(this.name, toolCall.name);
+    ForgeJobWorkflowJob forgeJobWorkflowJob = (ForgeJobWorkflowJob) o;
+    return Objects.equals(this.id, forgeJobWorkflowJob.id) &&
+        Objects.equals(this.labels, forgeJobWorkflowJob.labels) &&
+        Objects.equals(this.name, forgeJobWorkflowJob.name) &&
+        Objects.equals(this.runId, forgeJobWorkflowJob.runId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(arguments, name);
+    return Objects.hash(id, labels, name, runId);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ToolCall {\n");
-    sb.append("    arguments: ").append(toIndentedString(arguments)).append("\n");
+    sb.append("class ForgeJobWorkflowJob {\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    labels: ").append(toIndentedString(labels)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    runId: ").append(toIndentedString(runId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -157,7 +209,7 @@ public class ToolCall {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("arguments", "name"));
+    openapiFields = new HashSet<String>(Arrays.asList("id", "labels", "name", "run_id"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -167,23 +219,27 @@ public class ToolCall {
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to ToolCall
+   * @throws IOException if the JSON Element is invalid with respect to ForgeJobWorkflowJob
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!ToolCall.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ToolCall is not found in the empty JSON string", ToolCall.openapiRequiredFields.toString()));
+        if (!ForgeJobWorkflowJob.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in ForgeJobWorkflowJob is not found in the empty JSON string", ForgeJobWorkflowJob.openapiRequiredFields.toString()));
         }
       }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!ToolCall.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ToolCall` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!ForgeJobWorkflowJob.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ForgeJobWorkflowJob` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("labels") != null && !jsonObj.get("labels").isJsonNull() && !jsonObj.get("labels").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `labels` to be an array in the JSON string but got `%s`", jsonObj.get("labels").toString()));
+      }
       if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
@@ -193,22 +249,22 @@ public class ToolCall {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!ToolCall.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'ToolCall' and its subtypes
+       if (!ForgeJobWorkflowJob.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'ForgeJobWorkflowJob' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<ToolCall> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(ToolCall.class));
+       final TypeAdapter<ForgeJobWorkflowJob> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(ForgeJobWorkflowJob.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<ToolCall>() {
+       return (TypeAdapter<T>) new TypeAdapter<ForgeJobWorkflowJob>() {
            @Override
-           public void write(JsonWriter out, ToolCall value) throws IOException {
+           public void write(JsonWriter out, ForgeJobWorkflowJob value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public ToolCall read(JsonReader in) throws IOException {
+           public ForgeJobWorkflowJob read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -219,18 +275,18 @@ public class ToolCall {
   }
 
   /**
-   * Create an instance of ToolCall given an JSON string
+   * Create an instance of ForgeJobWorkflowJob given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of ToolCall
-   * @throws IOException if the JSON string is invalid with respect to ToolCall
+   * @return An instance of ForgeJobWorkflowJob
+   * @throws IOException if the JSON string is invalid with respect to ForgeJobWorkflowJob
    */
-  public static ToolCall fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, ToolCall.class);
+  public static ForgeJobWorkflowJob fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, ForgeJobWorkflowJob.class);
   }
 
   /**
-   * Convert an instance of ToolCall to an JSON string
+   * Convert an instance of ForgeJobWorkflowJob to an JSON string
    *
    * @return JSON string
    */

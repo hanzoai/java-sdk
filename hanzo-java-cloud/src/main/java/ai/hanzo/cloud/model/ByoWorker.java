@@ -168,7 +168,7 @@ public class ByoWorker {
   }
 
   /**
-   * Arch/CPUs/Memory are the connecting host&#39;s static CPU spec, mirrored from the registration: Arch is runtime.GOARCH (amd64 | arm64), Memory is total RAM in BYTES — the same fields a code-linked run-target carries, so the /v1/visor/fleet board renders a linked node&#39;s arch + cores + RAM like any other unit.
+   * Arch/CPUs/Memory are the connecting host&#39;s static CPU spec, mirrored from the registration: Arch is runtime.GOARCH (amd64 | arm64), Memory is total RAM in BYTES — the same fields a code-linked run-target carries, so the /v1/compute/fleet board renders a linked node&#39;s arch + cores + RAM like any other unit.
    * @return arch
    */
   @javax.annotation.Nullable
