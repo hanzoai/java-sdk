@@ -1,0 +1,70 @@
+// File generated from our OpenAPI spec by Stainless.
+
+package ai.hanzo.api.services.async
+
+import ai.hanzo.api.client.okhttp.HanzoOkHttpClientAsync
+import org.junit.jupiter.api.Disabled
+import org.junit.jupiter.api.Test
+
+internal class EuAssemblyaiServiceAsyncTest {
+
+    @Disabled("Mock server tests are disabled")
+    @Test
+    fun create() {
+        val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
+        val euAssemblyaiServiceAsync = client.euAssemblyai()
+
+        val euAssemblyaiFuture = euAssemblyaiServiceAsync.create("endpoint")
+
+        val euAssemblyai = euAssemblyaiFuture.get()
+        euAssemblyai.validate()
+    }
+
+    @Disabled("Mock server tests are disabled")
+    @Test
+    fun retrieve() {
+        val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
+        val euAssemblyaiServiceAsync = client.euAssemblyai()
+
+        val euAssemblyaiFuture = euAssemblyaiServiceAsync.retrieve("endpoint")
+
+        val euAssemblyai = euAssemblyaiFuture.get()
+        euAssemblyai.validate()
+    }
+
+    @Disabled("Mock server tests are disabled")
+    @Test
+    fun update() {
+        val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
+        val euAssemblyaiServiceAsync = client.euAssemblyai()
+
+        val euAssemblyaiFuture = euAssemblyaiServiceAsync.update("endpoint")
+
+        val euAssemblyai = euAssemblyaiFuture.get()
+        euAssemblyai.validate()
+    }
+
+    @Disabled("Mock server tests are disabled")
+    @Test
+    fun delete() {
+        val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
+        val euAssemblyaiServiceAsync = client.euAssemblyai()
+
+        val euAssemblyaiFuture = euAssemblyaiServiceAsync.delete("endpoint")
+
+        val euAssemblyai = euAssemblyaiFuture.get()
+        euAssemblyai.validate()
+    }
+
+    @Disabled("Mock server tests are disabled")
+    @Test
+    fun patch() {
+        val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
+        val euAssemblyaiServiceAsync = client.euAssemblyai()
+
+        val responseFuture = euAssemblyaiServiceAsync.patch("endpoint")
+
+        val response = responseFuture.get()
+        response.validate()
+    }
+}

@@ -1,0 +1,56 @@
+// File generated from our OpenAPI spec by Stainless.
+
+package ai.hanzo.api.services.async
+
+import ai.hanzo.api.client.okhttp.HanzoOkHttpClientAsync
+import ai.hanzo.api.core.JsonValue
+import ai.hanzo.api.models.credentials.CredentialCreateParams
+import org.junit.jupiter.api.Disabled
+import org.junit.jupiter.api.Test
+
+internal class CredentialServiceAsyncTest {
+
+    @Disabled("Mock server tests are disabled")
+    @Test
+    fun create() {
+        val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
+        val credentialServiceAsync = client.credentials()
+
+        val credentialFuture =
+            credentialServiceAsync.create(
+                CredentialCreateParams.builder()
+                    .credentialInfo(JsonValue.from(mapOf<String, Any>()))
+                    .credentialName("credential_name")
+                    .credentialValues(JsonValue.from(mapOf<String, Any>()))
+                    .modelId("model_id")
+                    .build()
+            )
+
+        val credential = credentialFuture.get()
+        credential.validate()
+    }
+
+    @Disabled("Mock server tests are disabled")
+    @Test
+    fun list() {
+        val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
+        val credentialServiceAsync = client.credentials()
+
+        val credentialsFuture = credentialServiceAsync.list()
+
+        val credentials = credentialsFuture.get()
+        credentials.validate()
+    }
+
+    @Disabled("Mock server tests are disabled")
+    @Test
+    fun delete() {
+        val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
+        val credentialServiceAsync = client.credentials()
+
+        val credentialFuture = credentialServiceAsync.delete("credential_name")
+
+        val credential = credentialFuture.get()
+        credential.validate()
+    }
+}

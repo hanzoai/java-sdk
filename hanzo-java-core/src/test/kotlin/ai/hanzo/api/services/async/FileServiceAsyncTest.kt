@@ -1,0 +1,79 @@
+// File generated from our OpenAPI spec by Stainless.
+
+package ai.hanzo.api.services.async
+
+import ai.hanzo.api.client.okhttp.HanzoOkHttpClientAsync
+import ai.hanzo.api.models.files.FileCreateParams
+import ai.hanzo.api.models.files.FileDeleteParams
+import ai.hanzo.api.models.files.FileListParams
+import ai.hanzo.api.models.files.FileRetrieveParams
+import org.junit.jupiter.api.Disabled
+import org.junit.jupiter.api.Test
+
+internal class FileServiceAsyncTest {
+
+    @Disabled("Mock server tests are disabled")
+    @Test
+    fun create() {
+        val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
+        val fileServiceAsync = client.files()
+
+        val fileFuture =
+            fileServiceAsync.create(
+                FileCreateParams.builder()
+                    .provider("provider")
+                    .file("Example data".byteInputStream())
+                    .purpose("purpose")
+                    .customLlmProvider("custom_llm_provider")
+                    .build()
+            )
+
+        val file = fileFuture.get()
+        file.validate()
+    }
+
+    @Disabled("Mock server tests are disabled")
+    @Test
+    fun retrieve() {
+        val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
+        val fileServiceAsync = client.files()
+
+        val fileFuture =
+            fileServiceAsync.retrieve(
+                FileRetrieveParams.builder().provider("provider").fileId("file_id").build()
+            )
+
+        val file = fileFuture.get()
+        file.validate()
+    }
+
+    @Disabled("Mock server tests are disabled")
+    @Test
+    fun list() {
+        val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
+        val fileServiceAsync = client.files()
+
+        val filesFuture =
+            fileServiceAsync.list(
+                FileListParams.builder().provider("provider").purpose("purpose").build()
+            )
+
+        val files = filesFuture.get()
+        files.validate()
+    }
+
+    @Disabled("Mock server tests are disabled")
+    @Test
+    fun delete() {
+        val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
+        val fileServiceAsync = client.files()
+
+        val fileFuture =
+            fileServiceAsync.delete(
+                FileDeleteParams.builder().provider("provider").fileId("file_id").build()
+            )
+
+        val file = fileFuture.get()
+        file.validate()
+    }
+}

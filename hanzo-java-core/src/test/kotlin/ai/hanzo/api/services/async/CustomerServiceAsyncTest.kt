@@ -1,0 +1,148 @@
+// File generated from our OpenAPI spec by Stainless.
+
+package ai.hanzo.api.services.async
+
+import ai.hanzo.api.client.okhttp.HanzoOkHttpClientAsync
+import ai.hanzo.api.core.JsonValue
+import ai.hanzo.api.models.customer.BlockUsers
+import ai.hanzo.api.models.customer.CustomerCreateParams
+import ai.hanzo.api.models.customer.CustomerDeleteParams
+import ai.hanzo.api.models.customer.CustomerRetrieveInfoParams
+import ai.hanzo.api.models.customer.CustomerUpdateParams
+import org.junit.jupiter.api.Disabled
+import org.junit.jupiter.api.Test
+
+internal class CustomerServiceAsyncTest {
+
+    @Disabled("Mock server tests are disabled")
+    @Test
+    fun create() {
+        val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
+        val customerServiceAsync = client.customer()
+
+        val customerFuture =
+            customerServiceAsync.create(
+                CustomerCreateParams.builder()
+                    .userId("user_id")
+                    .alias("alias")
+                    .allowedModelRegion(CustomerCreateParams.AllowedModelRegion.EU)
+                    .blocked(true)
+                    .budgetDuration("budget_duration")
+                    .budgetId("budget_id")
+                    .defaultModel("default_model")
+                    .maxBudget(0.0)
+                    .maxParallelRequests(0L)
+                    .modelMaxBudget(
+                        CustomerCreateParams.ModelMaxBudget.builder()
+                            .putAdditionalProperty(
+                                "foo",
+                                JsonValue.from(
+                                    mapOf(
+                                        "budget_duration" to "budget_duration",
+                                        "max_budget" to 0,
+                                        "rpm_limit" to 0,
+                                        "tpm_limit" to 0,
+                                    )
+                                ),
+                            )
+                            .build()
+                    )
+                    .rpmLimit(0L)
+                    .softBudget(0.0)
+                    .tpmLimit(0L)
+                    .build()
+            )
+
+        val customer = customerFuture.get()
+        customer.validate()
+    }
+
+    @Disabled("Mock server tests are disabled")
+    @Test
+    fun update() {
+        val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
+        val customerServiceAsync = client.customer()
+
+        val customerFuture =
+            customerServiceAsync.update(
+                CustomerUpdateParams.builder()
+                    .userId("user_id")
+                    .alias("alias")
+                    .allowedModelRegion(CustomerUpdateParams.AllowedModelRegion.EU)
+                    .blocked(true)
+                    .budgetId("budget_id")
+                    .defaultModel("default_model")
+                    .maxBudget(0.0)
+                    .build()
+            )
+
+        val customer = customerFuture.get()
+        customer.validate()
+    }
+
+    @Disabled("Mock server tests are disabled")
+    @Test
+    fun list() {
+        val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
+        val customerServiceAsync = client.customer()
+
+        val customersFuture = customerServiceAsync.list()
+
+        val customers = customersFuture.get()
+        customers.forEach { it.validate() }
+    }
+
+    @Disabled("Mock server tests are disabled")
+    @Test
+    fun delete() {
+        val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
+        val customerServiceAsync = client.customer()
+
+        val customerFuture =
+            customerServiceAsync.delete(CustomerDeleteParams.builder().addUserId("string").build())
+
+        val customer = customerFuture.get()
+        customer.validate()
+    }
+
+    @Disabled("Mock server tests are disabled")
+    @Test
+    fun block() {
+        val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
+        val customerServiceAsync = client.customer()
+
+        val responseFuture =
+            customerServiceAsync.block(BlockUsers.builder().addUserId("string").build())
+
+        val response = responseFuture.get()
+        response.validate()
+    }
+
+    @Disabled("Mock server tests are disabled")
+    @Test
+    fun retrieveInfo() {
+        val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
+        val customerServiceAsync = client.customer()
+
+        val responseFuture =
+            customerServiceAsync.retrieveInfo(
+                CustomerRetrieveInfoParams.builder().endUserId("end_user_id").build()
+            )
+
+        val response = responseFuture.get()
+        response.validate()
+    }
+
+    @Disabled("Mock server tests are disabled")
+    @Test
+    fun unblock() {
+        val client = HanzoOkHttpClientAsync.builder().apiKey("My API Key").build()
+        val customerServiceAsync = client.customer()
+
+        val responseFuture =
+            customerServiceAsync.unblock(BlockUsers.builder().addUserId("string").build())
+
+        val response = responseFuture.get()
+        response.validate()
+    }
+}
