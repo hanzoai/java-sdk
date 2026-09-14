@@ -1,5 +1,32 @@
 # Changelog
 
+## 0.1.0-alpha.6 (2026-09-14)
+
+Full Changelog: [v0.1.0-alpha.5...v0.1.0-alpha.6](https://github.com/hanzoai/java-sdk/compare/v0.1.0-alpha.5...v0.1.0-alpha.6)
+
+### Features
+
+* the Hanzo Cloud Java SDK, generated from hanzoai/openapi ([f5b2594](https://github.com/hanzoai/java-sdk/commit/f5b25946c7ba77ef2e78572ad1d61f4966a2c9da))
+
+
+### Bug Fixes
+
+* call the pipeline at the address it actually lives ([260f39a](https://github.com/hanzoai/java-sdk/commit/260f39a8fc219443a4c0dfce3d566ddbda1c20e5))
+* regenerate the client from hanzoai/cloud@6a719cdc ([94dd179](https://github.com/hanzoai/java-sdk/commit/94dd1795e6de5dd871b67e49ddbb5e790df7e3ab))
+
+
+### Chores
+
+* **ci:** confirm a push creates a run ([d0f5087](https://github.com/hanzoai/java-sdk/commit/d0f50870efc061b022c7800d0a90df0561672ed1))
+* sync repo ([2d8a364](https://github.com/hanzoai/java-sdk/commit/2d8a364ad6507909e72129aaf39c628dcc09154b))
+
+
+### Documentation
+
+* cut the explanatory prose from the README, one security policy ([4e19e57](https://github.com/hanzoai/java-sdk/commit/4e19e5705bfaa164a7c6397c2d3f2cd9537fcd1f))
+* **readme:** flag that the default model id is not a real model ([083644b](https://github.com/hanzoai/java-sdk/commit/083644b6561e41b99d5e91b4975d5c697f5ca75a))
+* **readme:** unlink hanzoai/openapi — the repo is private ([9b02608](https://github.com/hanzoai/java-sdk/commit/9b02608c2c4bb1e8d21639b88be0970cf883e149))
+
 ## 0.1.0-alpha.5 (2026-06-17)
 
 Full Changelog: [v0.1.0-alpha.4...v0.1.0-alpha.5](https://github.com/hanzoai/java-sdk/compare/v0.1.0-alpha.4...v0.1.0-alpha.5)
