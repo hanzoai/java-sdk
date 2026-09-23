@@ -1,0 +1,19 @@
+#!/bin/sh
+# README.md prints the coordinate a reader pastes, so every version it names is
+# the one hanzo-java-cloud/build.gradle publishes. It named 8.5.89, which Maven
+# Central never served, while Central served 8.5.156.
+set -eu
+cd "$(dirname "$0")/.."
+
+want=$(sed -n "s/^version = '\(.*\)'/\1/p" hanzo-java-cloud/build.gradle)
+[ -n "$want" ] || { echo "no version in hanzo-java-cloud/build.gradle" >&2; exit 1; }
+
+named=$( {
+  grep -oE 'ai\.hanzo:hanzo-java-cloud:[0-9][0-9A-Za-z.+-]*' README.md | sed 's/.*://'
+  grep -oE '<version>[^<]+</version>' README.md | sed -E 's#</?version>##g'
+} | sort -u)
+[ -n "$named" ] || { echo "README.md names no version of ai.hanzo:hanzo-java-cloud" >&2; exit 1; }
+
+wrong=$(printf '%s\n' "$named" | grep -vxF "$want" || true)
+[ -z "$wrong" ] || { echo "README.md names $(echo $wrong); this build publishes $want" >&2; exit 1; }
+echo "README.md names $want"

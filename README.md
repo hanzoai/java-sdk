@@ -12,36 +12,24 @@ was cut from.
 
 ## Install
 
-**Not on Maven Central yet.** `ai.hanzo:hanzo-java-cloud` resolves nowhere, so
-build it and install it into your own local Maven repository:
-
-```bash
-git clone https://github.com/hanzoai/java-sdk
-cd java-sdk
-./gradlew :hanzo-java-cloud:publishToMavenLocal
-```
-
-That writes `ai.hanzo:hanzo-java-cloud:8.5.89` — jar, sources and javadoc — to
-`~/.m2/repository/ai/hanzo/hanzo-java-cloud/8.5.89/`. Depend on it from your own
-build:
+On Maven Central. Java 11 or newer.
 
 ```groovy
-repositories { mavenLocal(); mavenCentral() }
+repositories { mavenCentral() }
 
-dependencies { implementation 'ai.hanzo:hanzo-java-cloud:8.5.89' }
+dependencies { implementation 'ai.hanzo:hanzo-java-cloud:8.5.156' }
 ```
-
-Maven reads `~/.m2` first, so there it is the coordinates and nothing else:
 
 ```xml
 <dependency>
   <groupId>ai.hanzo</groupId>
   <artifactId>hanzo-java-cloud</artifactId>
-  <version>8.5.89</version>
+  <version>8.5.156</version>
 </dependency>
 ```
 
-Java 11 or newer.
+To build this tree instead, `./gradlew :hanzo-java-cloud:publishToMavenLocal`
+writes the same coordinates, with sources and javadoc, to `~/.m2`.
 
 ## Authenticate
 

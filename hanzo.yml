@@ -16,6 +16,10 @@ test:
     # rather than merely committed.
     run: ./gradlew --no-daemon :examples:compileJava
 
+  - name: readme
+    # The coordinate the README prints is the version this build publishes.
+    run: ./scripts/readme
+
 binaries:
   - name: hanzo-java-cloud
     # Built on every push, published only on a tag. `publish` signs with the PGP
