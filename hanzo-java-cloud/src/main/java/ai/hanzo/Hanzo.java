@@ -24,7 +24,7 @@ import ai.hanzo.cloud.ApiClient;
  *
  * <pre>
  *   ApiClient hanzo = Hanzo.client();
- *   new KeysApi(hanzo).getKeys();
+ *   new AccountApi(hanzo).getAccountKeys();
  * </pre>
  */
 public final class Hanzo {

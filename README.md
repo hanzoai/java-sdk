@@ -4,8 +4,8 @@ Java client for the [Hanzo Cloud](https://hanzo.ai) API, covering every `/v1`
 route the gateway serves. It is generated from the API's own OpenAPI document —
 the one published at
 [`/v1/openapi.json`](https://api.hanzo.ai/v1/openapi.json) — so method names are
-that document's operation ids camel-cased: `get_keys` → `getKeys`,
-`get_kv_by_name` → `getKvByName`.
+that document's operation ids camel-cased: `get_account_keys` → `getAccountKeys`,
+`get_kv_by_bucket_by_key` → `getKvByBucketByKey`.
 
 [`.spec-lock`](.spec-lock) names the ref and the digest of the bytes this client
 was cut from.
@@ -39,7 +39,7 @@ operation except four. `setBearerToken` is the one place a token goes in:
 ```java
 ApiClient hanzo = new ApiClient();
 hanzo.setBearerToken(token);          // Authorization: Bearer …
-new ModelsApi(hanzo).getModels();     // one of the four that need no token
+new AiApi(hanzo).getModels();         // one of the four that need no token
 ```
 
 [`ai.hanzo.Hanzo`](hanzo-java-cloud/src/main/java/ai/hanzo/Hanzo.java) is the
@@ -73,7 +73,7 @@ tenant, and no scheme declares it.
 import ai.hanzo.Hanzo;
 import ai.hanzo.cloud.ApiClient;
 import ai.hanzo.cloud.ApiException;
-import ai.hanzo.cloud.api.KeysApi;
+import ai.hanzo.cloud.api.AccountApi;
 import ai.hanzo.cloud.model.ApiKey;
 
 import java.util.List;
@@ -83,7 +83,7 @@ public class Whoami {
     public static void main(String[] args) throws ApiException {
         ApiClient hanzo = Hanzo.client();
 
-        List<ApiKey> keys = Objects.requireNonNullElse(new KeysApi(hanzo).getKeys().getKeys(), List.of());
+        List<ApiKey> keys = Objects.requireNonNullElse(new AccountApi(hanzo).getAccountKeys().getKeys(), List.of());
         keys.forEach(key -> System.out.println(key.getType() + " " + key.getPrefix()));
     }
 }
@@ -93,8 +93,8 @@ public class Whoami {
 HANZO_API_KEY=… ./gradlew :examples:hello   # the same call, in this repo
 ```
 
-`GET /v1/keys` refuses without a credential — `403
-{"status":403,"code":"forbidden","error":"sign in to manage API keys"}` — so
+`GET /v1/account/keys` refuses without a credential — `403
+{"code":"forbidden","detail":"sign in to manage API keys","status":403,…}` — so
 reaching the loop at all proves the key works.
 
 Getters carry the document's own answer about a field:
@@ -111,7 +111,7 @@ against the client.
 
 | flow | what it does |
 |---|---|
-| [`hello`](examples/hello) | `GET /v1/keys` — prove the key works |
+| [`hello`](examples/hello) | `GET /v1/account/keys` — prove the key works |
 | [`chat`](examples/chat) | `POST /v1/chat/completions` — one completion |
 | [`money`](examples/money) | `GET /v1/billing/balance`, `GET /v1/billing/usage` |
 | [`store`](examples/store) | `POST /v1/kv`, then `GET` and `DELETE /v1/kv/{name}` |

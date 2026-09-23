@@ -11,11 +11,11 @@ import java.util.List;
 /**
  * hello — prove the key works, and print what it can reach.
  *
- * <p>Operation: {@code get_keys} — GET /v1/keys.
+ * <p>Operation: {@code get_account_keys} — GET /v1/account/keys.
  *
  * <p>This is the call that says no. With no key, or a bogus one, the route
  * answers 403 {@code {"status":403,"code":"forbidden","error":"sign in to
- * manage API keys"}} while GET /v1/keys-zzq9 answers 404 — so the refusal is
+ * manage API keys"}} while GET /v1/account/keys-zzq9 answers 404 — so the refusal is
  * this route refusing rather than a wildcard door, which is what makes it a
  * usable proof that a credential works. The three obvious identity routes were
  * disqualified for answering 200 to a caller with no credential at all;
