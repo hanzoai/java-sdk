@@ -238,11 +238,6 @@ public class IamUser {
   @javax.annotation.Nullable
   private String custom;
 
-  public static final String SERIALIZED_NAME_CUSTOM10 = "custom10";
-  @SerializedName(SERIALIZED_NAME_CUSTOM10)
-  @javax.annotation.Nullable
-  private String custom10;
-
   public static final String SERIALIZED_NAME_CUSTOM2 = "custom2";
   @SerializedName(SERIALIZED_NAME_CUSTOM2)
   @javax.annotation.Nullable
@@ -282,6 +277,11 @@ public class IamUser {
   @SerializedName(SERIALIZED_NAME_CUSTOM9)
   @javax.annotation.Nullable
   private String custom9;
+
+  public static final String SERIALIZED_NAME_CUSTOM10 = "custom10";
+  @SerializedName(SERIALIZED_NAME_CUSTOM10)
+  @javax.annotation.Nullable
+  private String custom10;
 
   public static final String SERIALIZED_NAME_DAILYMOTION = "dailymotion";
   @SerializedName(SERIALIZED_NAME_DAILYMOTION)
@@ -1683,25 +1683,6 @@ public class IamUser {
   }
 
 
-  public IamUser custom10(@javax.annotation.Nullable String custom10) {
-    this.custom10 = custom10;
-    return this;
-  }
-
-  /**
-   * Get custom10
-   * @return custom10
-   */
-  @javax.annotation.Nullable
-  public String getCustom10() {
-    return custom10;
-  }
-
-  public void setCustom10(@javax.annotation.Nullable String custom10) {
-    this.custom10 = custom10;
-  }
-
-
   public IamUser custom2(@javax.annotation.Nullable String custom2) {
     this.custom2 = custom2;
     return this;
@@ -1851,6 +1832,25 @@ public class IamUser {
 
   public void setCustom9(@javax.annotation.Nullable String custom9) {
     this.custom9 = custom9;
+  }
+
+
+  public IamUser custom10(@javax.annotation.Nullable String custom10) {
+    this.custom10 = custom10;
+    return this;
+  }
+
+  /**
+   * Get custom10
+   * @return custom10
+   */
+  @javax.annotation.Nullable
+  public String getCustom10() {
+    return custom10;
+  }
+
+  public void setCustom10(@javax.annotation.Nullable String custom10) {
+    this.custom10 = custom10;
   }
 
 
@@ -4577,6 +4577,50 @@ public class IamUser {
     this.zoom = zoom;
   }
 
+  /**
+   * A container for additional, undeclared properties.
+   * This is a holder for any undeclared properties as specified with
+   * the 'additionalProperties' keyword in the OAS document.
+   */
+  private Map<String, Object> additionalProperties;
+
+  /**
+   * Set the additional (undeclared) property with the specified name and value.
+   * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the IamUser instance itself
+   */
+  public IamUser putAdditionalProperty(String key, Object value) {
+    if (this.additionalProperties == null) {
+        this.additionalProperties = new HashMap<String, Object>();
+    }
+    this.additionalProperties.put(key, value);
+    return this;
+  }
+
+  /**
+   * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
+   */
+  public Map<String, Object> getAdditionalProperties() {
+    return additionalProperties;
+  }
+
+  /**
+   * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
+   */
+  public Object getAdditionalProperty(String key) {
+    if (this.additionalProperties == null) {
+        return null;
+    }
+    return this.additionalProperties.get(key);
+  }
 
 
   @Override
@@ -4623,7 +4667,6 @@ public class IamUser {
         Objects.equals(this.createdTime, iamUser.createdTime) &&
         Objects.equals(this.currency, iamUser.currency) &&
         Objects.equals(this.custom, iamUser.custom) &&
-        Objects.equals(this.custom10, iamUser.custom10) &&
         Objects.equals(this.custom2, iamUser.custom2) &&
         Objects.equals(this.custom3, iamUser.custom3) &&
         Objects.equals(this.custom4, iamUser.custom4) &&
@@ -4632,6 +4675,7 @@ public class IamUser {
         Objects.equals(this.custom7, iamUser.custom7) &&
         Objects.equals(this.custom8, iamUser.custom8) &&
         Objects.equals(this.custom9, iamUser.custom9) &&
+        Objects.equals(this.custom10, iamUser.custom10) &&
         Objects.equals(this.dailymotion, iamUser.dailymotion) &&
         Objects.equals(this.deezer, iamUser.deezer) &&
         Objects.equals(this.deleted, iamUser.deleted) &&
@@ -4771,12 +4815,13 @@ public class IamUser {
         Objects.equals(this.yahoo, iamUser.yahoo) &&
         Objects.equals(this.yammer, iamUser.yammer) &&
         Objects.equals(this.yandex, iamUser.yandex) &&
-        Objects.equals(this.zoom, iamUser.zoom);
+        Objects.equals(this.zoom, iamUser.zoom)&&
+        Objects.equals(this.additionalProperties, iamUser.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(accessKey, accessSecret, accessSecretHash, accessToken, address, addresses, adfs, affiliation, alipay, amazon, apple, applicationScopes, auth0, avatar, avatarType, azuread, azureadb2c, baidu, balance, balanceCredit, balanceCurrency, battlenet, bilibili, bio, birthday, bitbucket, box, cart, cloudfoundry, countryCode, createdAt, createdIp, createdTime, currency, custom, custom10, custom2, custom3, custom4, custom5, custom6, custom7, custom8, custom9, dailymotion, deezer, deleted, deletedTime, digitalocean, dingtalk, discord, displayName, douyin, dropbox, education, email, emailVerified, eveonline, externalId, faceIds, facebook, firstName, fitbit, gender, gitea, gitee, github, gitlab, google, hash, heroku, homepage, iam, id, idCard, idCardType, influxcloud, infoflow, instagram, intercom, invitation, invitationCode, ipWhitelist, isAdmin, isDefaultAvatar, isDeleted, isForbidden, isOnline, isVerified, kakao, karma, kwai, language, lark, lastChangePasswordTime, lastName, lastSigninIp, lastSigninTime, lastSigninWrongTime, lastfm, ldap, line, linkedin, location, mailru, managedAccounts, meetup, mfaAccounts, mfaEmailEnabled, mfaItems, mfaPhoneEnabled, mfaPushEnabled, mfaPushProvider, mfaPushReceiver, mfaRadiusEnabled, mfaRadiusProvider, mfaRadiusUsername, mfaRememberDeadline, mfaRememberDigest, microsoftonline, multiFactorAuths, name, naver, needUpdatePassword, nextcloud, okta, onedrive, originalRefreshToken, originalToken, oura, owner, passwordHash, passwordSalt, passwordType, patreon, paypal, permanentAvatar, phone, preHash, preferredMfaType, properties, qq, ranking, realName, recoveryCodes, region, registerSource, registerType, salesforce, score, shopify, signinWrongTimes, signupApplication, slack, soundcloud, spotify, steam, strava, stripe, tag, telegram, tiktok, title, totpSecret, tumblr, twitch, twitter, type, typetalk, uber, updatedAt, updatedTime, verificationCode, vk, webauthnCredentials, wechat, wecom, weibo, wepay, xero, yahoo, yammer, yandex, zoom);
+    return Objects.hash(accessKey, accessSecret, accessSecretHash, accessToken, address, addresses, adfs, affiliation, alipay, amazon, apple, applicationScopes, auth0, avatar, avatarType, azuread, azureadb2c, baidu, balance, balanceCredit, balanceCurrency, battlenet, bilibili, bio, birthday, bitbucket, box, cart, cloudfoundry, countryCode, createdAt, createdIp, createdTime, currency, custom, custom2, custom3, custom4, custom5, custom6, custom7, custom8, custom9, custom10, dailymotion, deezer, deleted, deletedTime, digitalocean, dingtalk, discord, displayName, douyin, dropbox, education, email, emailVerified, eveonline, externalId, faceIds, facebook, firstName, fitbit, gender, gitea, gitee, github, gitlab, google, hash, heroku, homepage, iam, id, idCard, idCardType, influxcloud, infoflow, instagram, intercom, invitation, invitationCode, ipWhitelist, isAdmin, isDefaultAvatar, isDeleted, isForbidden, isOnline, isVerified, kakao, karma, kwai, language, lark, lastChangePasswordTime, lastName, lastSigninIp, lastSigninTime, lastSigninWrongTime, lastfm, ldap, line, linkedin, location, mailru, managedAccounts, meetup, mfaAccounts, mfaEmailEnabled, mfaItems, mfaPhoneEnabled, mfaPushEnabled, mfaPushProvider, mfaPushReceiver, mfaRadiusEnabled, mfaRadiusProvider, mfaRadiusUsername, mfaRememberDeadline, mfaRememberDigest, microsoftonline, multiFactorAuths, name, naver, needUpdatePassword, nextcloud, okta, onedrive, originalRefreshToken, originalToken, oura, owner, passwordHash, passwordSalt, passwordType, patreon, paypal, permanentAvatar, phone, preHash, preferredMfaType, properties, qq, ranking, realName, recoveryCodes, region, registerSource, registerType, salesforce, score, shopify, signinWrongTimes, signupApplication, slack, soundcloud, spotify, steam, strava, stripe, tag, telegram, tiktok, title, totpSecret, tumblr, twitch, twitter, type, typetalk, uber, updatedAt, updatedTime, verificationCode, vk, webauthnCredentials, wechat, wecom, weibo, wepay, xero, yahoo, yammer, yandex, zoom, additionalProperties);
   }
 
   @Override
@@ -4818,7 +4863,6 @@ public class IamUser {
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
     sb.append("    custom: ").append(toIndentedString(custom)).append("\n");
-    sb.append("    custom10: ").append(toIndentedString(custom10)).append("\n");
     sb.append("    custom2: ").append(toIndentedString(custom2)).append("\n");
     sb.append("    custom3: ").append(toIndentedString(custom3)).append("\n");
     sb.append("    custom4: ").append(toIndentedString(custom4)).append("\n");
@@ -4827,6 +4871,7 @@ public class IamUser {
     sb.append("    custom7: ").append(toIndentedString(custom7)).append("\n");
     sb.append("    custom8: ").append(toIndentedString(custom8)).append("\n");
     sb.append("    custom9: ").append(toIndentedString(custom9)).append("\n");
+    sb.append("    custom10: ").append(toIndentedString(custom10)).append("\n");
     sb.append("    dailymotion: ").append(toIndentedString(dailymotion)).append("\n");
     sb.append("    deezer: ").append(toIndentedString(deezer)).append("\n");
     sb.append("    deleted: ").append(toIndentedString(deleted)).append("\n");
@@ -4967,6 +5012,7 @@ public class IamUser {
     sb.append("    yammer: ").append(toIndentedString(yammer)).append("\n");
     sb.append("    yandex: ").append(toIndentedString(yandex)).append("\n");
     sb.append("    zoom: ").append(toIndentedString(zoom)).append("\n");
+    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -4988,7 +5034,7 @@ public class IamUser {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("accessKey", "accessSecret", "accessSecretHash", "accessToken", "address", "addresses", "adfs", "affiliation", "alipay", "amazon", "apple", "applicationScopes", "auth0", "avatar", "avatarType", "azuread", "azureadb2c", "baidu", "balance", "balanceCredit", "balanceCurrency", "battlenet", "bilibili", "bio", "birthday", "bitbucket", "box", "cart", "cloudfoundry", "countryCode", "createdAt", "createdIp", "createdTime", "currency", "custom", "custom10", "custom2", "custom3", "custom4", "custom5", "custom6", "custom7", "custom8", "custom9", "dailymotion", "deezer", "deleted", "deletedTime", "digitalocean", "dingtalk", "discord", "displayName", "douyin", "dropbox", "education", "email", "emailVerified", "eveonline", "externalId", "faceIds", "facebook", "firstName", "fitbit", "gender", "gitea", "gitee", "github", "gitlab", "google", "hash", "heroku", "homepage", "iam", "id", "idCard", "idCardType", "influxcloud", "infoflow", "instagram", "intercom", "invitation", "invitationCode", "ipWhitelist", "isAdmin", "isDefaultAvatar", "isDeleted", "isForbidden", "isOnline", "isVerified", "kakao", "karma", "kwai", "language", "lark", "lastChangePasswordTime", "lastName", "lastSigninIp", "lastSigninTime", "lastSigninWrongTime", "lastfm", "ldap", "line", "linkedin", "location", "mailru", "managedAccounts", "meetup", "mfaAccounts", "mfaEmailEnabled", "mfaItems", "mfaPhoneEnabled", "mfaPushEnabled", "mfaPushProvider", "mfaPushReceiver", "mfaRadiusEnabled", "mfaRadiusProvider", "mfaRadiusUsername", "mfaRememberDeadline", "mfaRememberDigest", "microsoftonline", "multiFactorAuths", "name", "naver", "needUpdatePassword", "nextcloud", "okta", "onedrive", "originalRefreshToken", "originalToken", "oura", "owner", "passwordHash", "passwordSalt", "passwordType", "patreon", "paypal", "permanentAvatar", "phone", "preHash", "preferredMfaType", "properties", "qq", "ranking", "realName", "recoveryCodes", "region", "registerSource", "registerType", "salesforce", "score", "shopify", "signinWrongTimes", "signupApplication", "slack", "soundcloud", "spotify", "steam", "strava", "stripe", "tag", "telegram", "tiktok", "title", "totpSecret", "tumblr", "twitch", "twitter", "type", "typetalk", "uber", "updatedAt", "updatedTime", "verificationCode", "vk", "webauthnCredentials", "wechat", "wecom", "weibo", "wepay", "xero", "yahoo", "yammer", "yandex", "zoom"));
+    openapiFields = new HashSet<String>(Arrays.asList("accessKey", "accessSecret", "accessSecretHash", "accessToken", "address", "addresses", "adfs", "affiliation", "alipay", "amazon", "apple", "applicationScopes", "auth0", "avatar", "avatarType", "azuread", "azureadb2c", "baidu", "balance", "balanceCredit", "balanceCurrency", "battlenet", "bilibili", "bio", "birthday", "bitbucket", "box", "cart", "cloudfoundry", "countryCode", "createdAt", "createdIp", "createdTime", "currency", "custom", "custom2", "custom3", "custom4", "custom5", "custom6", "custom7", "custom8", "custom9", "custom10", "dailymotion", "deezer", "deleted", "deletedTime", "digitalocean", "dingtalk", "discord", "displayName", "douyin", "dropbox", "education", "email", "emailVerified", "eveonline", "externalId", "faceIds", "facebook", "firstName", "fitbit", "gender", "gitea", "gitee", "github", "gitlab", "google", "hash", "heroku", "homepage", "iam", "id", "idCard", "idCardType", "influxcloud", "infoflow", "instagram", "intercom", "invitation", "invitationCode", "ipWhitelist", "isAdmin", "isDefaultAvatar", "isDeleted", "isForbidden", "isOnline", "isVerified", "kakao", "karma", "kwai", "language", "lark", "lastChangePasswordTime", "lastName", "lastSigninIp", "lastSigninTime", "lastSigninWrongTime", "lastfm", "ldap", "line", "linkedin", "location", "mailru", "managedAccounts", "meetup", "mfaAccounts", "mfaEmailEnabled", "mfaItems", "mfaPhoneEnabled", "mfaPushEnabled", "mfaPushProvider", "mfaPushReceiver", "mfaRadiusEnabled", "mfaRadiusProvider", "mfaRadiusUsername", "mfaRememberDeadline", "mfaRememberDigest", "microsoftonline", "multiFactorAuths", "name", "naver", "needUpdatePassword", "nextcloud", "okta", "onedrive", "originalRefreshToken", "originalToken", "oura", "owner", "passwordHash", "passwordSalt", "passwordType", "patreon", "paypal", "permanentAvatar", "phone", "preHash", "preferredMfaType", "properties", "qq", "ranking", "realName", "recoveryCodes", "region", "registerSource", "registerType", "salesforce", "score", "shopify", "signinWrongTimes", "signupApplication", "slack", "soundcloud", "spotify", "steam", "strava", "stripe", "tag", "telegram", "tiktok", "title", "totpSecret", "tumblr", "twitch", "twitter", "type", "typetalk", "uber", "updatedAt", "updatedTime", "verificationCode", "vk", "webauthnCredentials", "wechat", "wecom", "weibo", "wepay", "xero", "yahoo", "yammer", "yandex", "zoom"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -5004,14 +5050,6 @@ public class IamUser {
       if (jsonElement == null) {
         if (!IamUser.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in IamUser is not found in the empty JSON string", IamUser.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!IamUser.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `IamUser` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
@@ -5145,9 +5183,6 @@ public class IamUser {
       if ((jsonObj.get("custom") != null && !jsonObj.get("custom").isJsonNull()) && !jsonObj.get("custom").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `custom` to be a primitive type in the JSON string but got `%s`", jsonObj.get("custom").toString()));
       }
-      if ((jsonObj.get("custom10") != null && !jsonObj.get("custom10").isJsonNull()) && !jsonObj.get("custom10").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `custom10` to be a primitive type in the JSON string but got `%s`", jsonObj.get("custom10").toString()));
-      }
       if ((jsonObj.get("custom2") != null && !jsonObj.get("custom2").isJsonNull()) && !jsonObj.get("custom2").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `custom2` to be a primitive type in the JSON string but got `%s`", jsonObj.get("custom2").toString()));
       }
@@ -5171,6 +5206,9 @@ public class IamUser {
       }
       if ((jsonObj.get("custom9") != null && !jsonObj.get("custom9").isJsonNull()) && !jsonObj.get("custom9").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `custom9` to be a primitive type in the JSON string but got `%s`", jsonObj.get("custom9").toString()));
+      }
+      if ((jsonObj.get("custom10") != null && !jsonObj.get("custom10").isJsonNull()) && !jsonObj.get("custom10").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `custom10` to be a primitive type in the JSON string but got `%s`", jsonObj.get("custom10").toString()));
       }
       if ((jsonObj.get("dailymotion") != null && !jsonObj.get("dailymotion").isJsonNull()) && !jsonObj.get("dailymotion").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `dailymotion` to be a primitive type in the JSON string but got `%s`", jsonObj.get("dailymotion").toString()));
@@ -5609,6 +5647,28 @@ public class IamUser {
            @Override
            public void write(JsonWriter out, IamUser value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             obj.remove("additionalProperties");
+             // serialize additional properties
+             if (value.getAdditionalProperties() != null) {
+               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
+                 if (entry.getValue() instanceof String)
+                   obj.addProperty(entry.getKey(), (String) entry.getValue());
+                 else if (entry.getValue() instanceof Number)
+                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
+                 else if (entry.getValue() instanceof Boolean)
+                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
+                 else if (entry.getValue() instanceof Character)
+                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
+                 else {
+                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
+                   if (jsonElement.isJsonArray()) {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
+                   } else {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
+                   }
+                 }
+               }
+             }
              elementAdapter.write(out, obj);
            }
 
@@ -5616,7 +5676,28 @@ public class IamUser {
            public IamUser read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
+             JsonObject jsonObj = jsonElement.getAsJsonObject();
+             // store additional fields in the deserialized instance
+             IamUser instance = thisAdapter.fromJsonTree(jsonObj);
+             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
+               if (!openapiFields.contains(entry.getKey())) {
+                 if (entry.getValue().isJsonPrimitive()) { // primitive type
+                   if (entry.getValue().getAsJsonPrimitive().isString())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
+                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
+                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
+                   else
+                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 }
+               }
+             }
+             return instance;
            }
 
        }.nullSafe();

@@ -58,40 +58,40 @@ public class O11yGettableAgentCheckIn {
   @javax.annotation.Nullable
   private String accountId;
 
-  public static final String SERIALIZED_NAME_CLOUD_INTEGRATION_ID = "cloudIntegrationId";
-  @SerializedName(SERIALIZED_NAME_CLOUD_INTEGRATION_ID)
-  @javax.annotation.Nullable
-  private String cloudIntegrationId;
-
   public static final String SERIALIZED_NAME_CLOUD_ACCOUNT_ID = "cloud_account_id";
   @SerializedName(SERIALIZED_NAME_CLOUD_ACCOUNT_ID)
   @javax.annotation.Nullable
   private String cloudAccountId;
 
-  public static final String SERIALIZED_NAME_INTEGRATION_CONFIG = "integrationConfig";
-  @SerializedName(SERIALIZED_NAME_INTEGRATION_CONFIG)
+  public static final String SERIALIZED_NAME_CLOUD_INTEGRATION_ID = "cloudIntegrationId";
+  @SerializedName(SERIALIZED_NAME_CLOUD_INTEGRATION_ID)
   @javax.annotation.Nullable
-  private O11yProviderIntegrationConfig integrationConfig;
+  private String cloudIntegrationId;
 
   public static final String SERIALIZED_NAME_INTEGRATION_CONFIG_LEGACY = "integration_config";
   @SerializedName(SERIALIZED_NAME_INTEGRATION_CONFIG_LEGACY)
   @javax.annotation.Nullable
   private O11yIntegrationConfig integration_config_legacy;
 
+  public static final String SERIALIZED_NAME_INTEGRATION_CONFIG = "integrationConfig";
+  @SerializedName(SERIALIZED_NAME_INTEGRATION_CONFIG)
+  @javax.annotation.Nullable
+  private O11yProviderIntegrationConfig integrationConfig;
+
   public static final String SERIALIZED_NAME_PROVIDER_ACCOUNT_ID = "providerAccountId";
   @SerializedName(SERIALIZED_NAME_PROVIDER_ACCOUNT_ID)
   @javax.annotation.Nullable
   private String providerAccountId;
 
-  public static final String SERIALIZED_NAME_REMOVED_AT = "removedAt";
-  @SerializedName(SERIALIZED_NAME_REMOVED_AT)
-  @javax.annotation.Nullable
-  private OffsetDateTime removedAt;
-
   public static final String SERIALIZED_NAME_REMOVED_AT_LEGACY = "removed_at";
   @SerializedName(SERIALIZED_NAME_REMOVED_AT_LEGACY)
   @javax.annotation.Nullable
   private OffsetDateTime removed_at_legacy;
+
+  public static final String SERIALIZED_NAME_REMOVED_AT = "removedAt";
+  @SerializedName(SERIALIZED_NAME_REMOVED_AT)
+  @javax.annotation.Nullable
+  private OffsetDateTime removedAt;
 
   public O11yGettableAgentCheckIn() {
   }
@@ -115,25 +115,6 @@ public class O11yGettableAgentCheckIn {
   }
 
 
-  public O11yGettableAgentCheckIn cloudIntegrationId(@javax.annotation.Nullable String cloudIntegrationId) {
-    this.cloudIntegrationId = cloudIntegrationId;
-    return this;
-  }
-
-  /**
-   * Get cloudIntegrationId
-   * @return cloudIntegrationId
-   */
-  @javax.annotation.Nullable
-  public String getCloudIntegrationId() {
-    return cloudIntegrationId;
-  }
-
-  public void setCloudIntegrationId(@javax.annotation.Nullable String cloudIntegrationId) {
-    this.cloudIntegrationId = cloudIntegrationId;
-  }
-
-
   public O11yGettableAgentCheckIn cloudAccountId(@javax.annotation.Nullable String cloudAccountId) {
     this.cloudAccountId = cloudAccountId;
     return this;
@@ -153,22 +134,22 @@ public class O11yGettableAgentCheckIn {
   }
 
 
-  public O11yGettableAgentCheckIn integrationConfig(@javax.annotation.Nullable O11yProviderIntegrationConfig integrationConfig) {
-    this.integrationConfig = integrationConfig;
+  public O11yGettableAgentCheckIn cloudIntegrationId(@javax.annotation.Nullable String cloudIntegrationId) {
+    this.cloudIntegrationId = cloudIntegrationId;
     return this;
   }
 
   /**
-   * Get integrationConfig
-   * @return integrationConfig
+   * Get cloudIntegrationId
+   * @return cloudIntegrationId
    */
   @javax.annotation.Nullable
-  public O11yProviderIntegrationConfig getIntegrationConfig() {
-    return integrationConfig;
+  public String getCloudIntegrationId() {
+    return cloudIntegrationId;
   }
 
-  public void setIntegrationConfig(@javax.annotation.Nullable O11yProviderIntegrationConfig integrationConfig) {
-    this.integrationConfig = integrationConfig;
+  public void setCloudIntegrationId(@javax.annotation.Nullable String cloudIntegrationId) {
+    this.cloudIntegrationId = cloudIntegrationId;
   }
 
 
@@ -191,6 +172,25 @@ public class O11yGettableAgentCheckIn {
   }
 
 
+  public O11yGettableAgentCheckIn integrationConfig(@javax.annotation.Nullable O11yProviderIntegrationConfig integrationConfig) {
+    this.integrationConfig = integrationConfig;
+    return this;
+  }
+
+  /**
+   * Get integrationConfig
+   * @return integrationConfig
+   */
+  @javax.annotation.Nullable
+  public O11yProviderIntegrationConfig getIntegrationConfig() {
+    return integrationConfig;
+  }
+
+  public void setIntegrationConfig(@javax.annotation.Nullable O11yProviderIntegrationConfig integrationConfig) {
+    this.integrationConfig = integrationConfig;
+  }
+
+
   public O11yGettableAgentCheckIn providerAccountId(@javax.annotation.Nullable String providerAccountId) {
     this.providerAccountId = providerAccountId;
     return this;
@@ -207,25 +207,6 @@ public class O11yGettableAgentCheckIn {
 
   public void setProviderAccountId(@javax.annotation.Nullable String providerAccountId) {
     this.providerAccountId = providerAccountId;
-  }
-
-
-  public O11yGettableAgentCheckIn removedAt(@javax.annotation.Nullable OffsetDateTime removedAt) {
-    this.removedAt = removedAt;
-    return this;
-  }
-
-  /**
-   * Get removedAt
-   * @return removedAt
-   */
-  @javax.annotation.Nullable
-  public OffsetDateTime getRemovedAt() {
-    return removedAt;
-  }
-
-  public void setRemovedAt(@javax.annotation.Nullable OffsetDateTime removedAt) {
-    this.removedAt = removedAt;
   }
 
 
@@ -248,6 +229,69 @@ public class O11yGettableAgentCheckIn {
   }
 
 
+  public O11yGettableAgentCheckIn removedAt(@javax.annotation.Nullable OffsetDateTime removedAt) {
+    this.removedAt = removedAt;
+    return this;
+  }
+
+  /**
+   * Get removedAt
+   * @return removedAt
+   */
+  @javax.annotation.Nullable
+  public OffsetDateTime getRemovedAt() {
+    return removedAt;
+  }
+
+  public void setRemovedAt(@javax.annotation.Nullable OffsetDateTime removedAt) {
+    this.removedAt = removedAt;
+  }
+
+  /**
+   * A container for additional, undeclared properties.
+   * This is a holder for any undeclared properties as specified with
+   * the 'additionalProperties' keyword in the OAS document.
+   */
+  private Map<String, Object> additionalProperties;
+
+  /**
+   * Set the additional (undeclared) property with the specified name and value.
+   * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the O11yGettableAgentCheckIn instance itself
+   */
+  public O11yGettableAgentCheckIn putAdditionalProperty(String key, Object value) {
+    if (this.additionalProperties == null) {
+        this.additionalProperties = new HashMap<String, Object>();
+    }
+    this.additionalProperties.put(key, value);
+    return this;
+  }
+
+  /**
+   * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
+   */
+  public Map<String, Object> getAdditionalProperties() {
+    return additionalProperties;
+  }
+
+  /**
+   * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
+   */
+  public Object getAdditionalProperty(String key) {
+    if (this.additionalProperties == null) {
+        return null;
+    }
+    return this.additionalProperties.get(key);
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -259,18 +303,19 @@ public class O11yGettableAgentCheckIn {
     }
     O11yGettableAgentCheckIn o11yGettableAgentCheckIn = (O11yGettableAgentCheckIn) o;
     return Objects.equals(this.accountId, o11yGettableAgentCheckIn.accountId) &&
-        Objects.equals(this.cloudIntegrationId, o11yGettableAgentCheckIn.cloudIntegrationId) &&
         Objects.equals(this.cloudAccountId, o11yGettableAgentCheckIn.cloudAccountId) &&
-        Objects.equals(this.integrationConfig, o11yGettableAgentCheckIn.integrationConfig) &&
+        Objects.equals(this.cloudIntegrationId, o11yGettableAgentCheckIn.cloudIntegrationId) &&
         Objects.equals(this.integration_config_legacy, o11yGettableAgentCheckIn.integration_config_legacy) &&
+        Objects.equals(this.integrationConfig, o11yGettableAgentCheckIn.integrationConfig) &&
         Objects.equals(this.providerAccountId, o11yGettableAgentCheckIn.providerAccountId) &&
-        Objects.equals(this.removedAt, o11yGettableAgentCheckIn.removedAt) &&
-        Objects.equals(this.removed_at_legacy, o11yGettableAgentCheckIn.removed_at_legacy);
+        Objects.equals(this.removed_at_legacy, o11yGettableAgentCheckIn.removed_at_legacy) &&
+        Objects.equals(this.removedAt, o11yGettableAgentCheckIn.removedAt)&&
+        Objects.equals(this.additionalProperties, o11yGettableAgentCheckIn.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountId, cloudIntegrationId, cloudAccountId, integrationConfig, integration_config_legacy, providerAccountId, removedAt, removed_at_legacy);
+    return Objects.hash(accountId, cloudAccountId, cloudIntegrationId, integration_config_legacy, integrationConfig, providerAccountId, removed_at_legacy, removedAt, additionalProperties);
   }
 
   @Override
@@ -278,13 +323,14 @@ public class O11yGettableAgentCheckIn {
     StringBuilder sb = new StringBuilder();
     sb.append("class O11yGettableAgentCheckIn {\n");
     sb.append("    accountId: ").append(toIndentedString(accountId)).append("\n");
-    sb.append("    cloudIntegrationId: ").append(toIndentedString(cloudIntegrationId)).append("\n");
     sb.append("    cloudAccountId: ").append(toIndentedString(cloudAccountId)).append("\n");
-    sb.append("    integrationConfig: ").append(toIndentedString(integrationConfig)).append("\n");
+    sb.append("    cloudIntegrationId: ").append(toIndentedString(cloudIntegrationId)).append("\n");
     sb.append("    integration_config_legacy: ").append(toIndentedString(integration_config_legacy)).append("\n");
+    sb.append("    integrationConfig: ").append(toIndentedString(integrationConfig)).append("\n");
     sb.append("    providerAccountId: ").append(toIndentedString(providerAccountId)).append("\n");
-    sb.append("    removedAt: ").append(toIndentedString(removedAt)).append("\n");
     sb.append("    removed_at_legacy: ").append(toIndentedString(removed_at_legacy)).append("\n");
+    sb.append("    removedAt: ").append(toIndentedString(removedAt)).append("\n");
+    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -306,7 +352,7 @@ public class O11yGettableAgentCheckIn {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("account_id", "cloudIntegrationId", "cloud_account_id", "integrationConfig", "integration_config", "providerAccountId", "removedAt", "removed_at"));
+    openapiFields = new HashSet<String>(Arrays.asList("account_id", "cloud_account_id", "cloudIntegrationId", "integration_config", "integrationConfig", "providerAccountId", "removed_at", "removedAt"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -324,31 +370,23 @@ public class O11yGettableAgentCheckIn {
           throw new IllegalArgumentException(String.format("The required field(s) %s in O11yGettableAgentCheckIn is not found in the empty JSON string", O11yGettableAgentCheckIn.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!O11yGettableAgentCheckIn.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `O11yGettableAgentCheckIn` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("account_id") != null && !jsonObj.get("account_id").isJsonNull()) && !jsonObj.get("account_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `account_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("account_id").toString()));
       }
-      if ((jsonObj.get("cloudIntegrationId") != null && !jsonObj.get("cloudIntegrationId").isJsonNull()) && !jsonObj.get("cloudIntegrationId").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `cloudIntegrationId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cloudIntegrationId").toString()));
-      }
       if ((jsonObj.get("cloud_account_id") != null && !jsonObj.get("cloud_account_id").isJsonNull()) && !jsonObj.get("cloud_account_id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `cloud_account_id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cloud_account_id").toString()));
       }
-      // validate the optional field `integrationConfig`
-      if (jsonObj.get("integrationConfig") != null && !jsonObj.get("integrationConfig").isJsonNull()) {
-        O11yProviderIntegrationConfig.validateJsonElement(jsonObj.get("integrationConfig"));
+      if ((jsonObj.get("cloudIntegrationId") != null && !jsonObj.get("cloudIntegrationId").isJsonNull()) && !jsonObj.get("cloudIntegrationId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `cloudIntegrationId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cloudIntegrationId").toString()));
       }
       // validate the optional field `integration_config`
       if (jsonObj.get("integration_config") != null && !jsonObj.get("integration_config").isJsonNull()) {
         O11yIntegrationConfig.validateJsonElement(jsonObj.get("integration_config"));
+      }
+      // validate the optional field `integrationConfig`
+      if (jsonObj.get("integrationConfig") != null && !jsonObj.get("integrationConfig").isJsonNull()) {
+        O11yProviderIntegrationConfig.validateJsonElement(jsonObj.get("integrationConfig"));
       }
       if ((jsonObj.get("providerAccountId") != null && !jsonObj.get("providerAccountId").isJsonNull()) && !jsonObj.get("providerAccountId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `providerAccountId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("providerAccountId").toString()));
@@ -370,6 +408,28 @@ public class O11yGettableAgentCheckIn {
            @Override
            public void write(JsonWriter out, O11yGettableAgentCheckIn value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             obj.remove("additionalProperties");
+             // serialize additional properties
+             if (value.getAdditionalProperties() != null) {
+               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
+                 if (entry.getValue() instanceof String)
+                   obj.addProperty(entry.getKey(), (String) entry.getValue());
+                 else if (entry.getValue() instanceof Number)
+                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
+                 else if (entry.getValue() instanceof Boolean)
+                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
+                 else if (entry.getValue() instanceof Character)
+                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
+                 else {
+                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
+                   if (jsonElement.isJsonArray()) {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
+                   } else {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
+                   }
+                 }
+               }
+             }
              elementAdapter.write(out, obj);
            }
 
@@ -377,7 +437,28 @@ public class O11yGettableAgentCheckIn {
            public O11yGettableAgentCheckIn read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
+             JsonObject jsonObj = jsonElement.getAsJsonObject();
+             // store additional fields in the deserialized instance
+             O11yGettableAgentCheckIn instance = thisAdapter.fromJsonTree(jsonObj);
+             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
+               if (!openapiFields.contains(entry.getKey())) {
+                 if (entry.getValue().isJsonPrimitive()) { // primitive type
+                   if (entry.getValue().getAsJsonPrimitive().isString())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
+                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
+                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
+                   else
+                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 }
+               }
+             }
+             return instance;
            }
 
        }.nullSafe();

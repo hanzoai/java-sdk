@@ -1194,7 +1194,6 @@ hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/NodeView.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/NodesView.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/NotifyHealth.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/NotifySend.java
-hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/Number.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/NumberList.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/O11yAWSAccountConfig.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/O11yAWSCloudWatchLogsSubscription.java
@@ -2572,6 +2571,7 @@ hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/TeamRoom.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/TeamRoomBind.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/TeamRoomNew.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/TeamRooms.java
+hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/TelNumber.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/Template.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/TemplateCatalog.java
 hanzo-java-cloud/src/main/java/ai/hanzo/cloud/model/TemplateConfigOption.java

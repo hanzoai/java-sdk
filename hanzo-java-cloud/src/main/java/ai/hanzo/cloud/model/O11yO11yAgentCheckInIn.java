@@ -58,15 +58,15 @@ public class O11yO11yAgentCheckInIn {
   @javax.annotation.Nullable
   private String accountId;
 
-  public static final String SERIALIZED_NAME_CLOUD_INTEGRATION_ID = "cloudIntegrationId";
-  @SerializedName(SERIALIZED_NAME_CLOUD_INTEGRATION_ID)
-  @javax.annotation.Nullable
-  private Object cloudIntegrationId = null;
-
   public static final String SERIALIZED_NAME_CLOUD_ACCOUNT_ID = "cloud_account_id";
   @SerializedName(SERIALIZED_NAME_CLOUD_ACCOUNT_ID)
   @javax.annotation.Nullable
   private String cloudAccountId;
+
+  public static final String SERIALIZED_NAME_CLOUD_INTEGRATION_ID = "cloudIntegrationId";
+  @SerializedName(SERIALIZED_NAME_CLOUD_INTEGRATION_ID)
+  @javax.annotation.Nullable
+  private Object cloudIntegrationId = null;
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
@@ -100,25 +100,6 @@ public class O11yO11yAgentCheckInIn {
   }
 
 
-  public O11yO11yAgentCheckInIn cloudIntegrationId(@javax.annotation.Nullable Object cloudIntegrationId) {
-    this.cloudIntegrationId = cloudIntegrationId;
-    return this;
-  }
-
-  /**
-   * Get cloudIntegrationId
-   * @return cloudIntegrationId
-   */
-  @javax.annotation.Nullable
-  public Object getCloudIntegrationId() {
-    return cloudIntegrationId;
-  }
-
-  public void setCloudIntegrationId(@javax.annotation.Nullable Object cloudIntegrationId) {
-    this.cloudIntegrationId = cloudIntegrationId;
-  }
-
-
   public O11yO11yAgentCheckInIn cloudAccountId(@javax.annotation.Nullable String cloudAccountId) {
     this.cloudAccountId = cloudAccountId;
     return this;
@@ -135,6 +116,25 @@ public class O11yO11yAgentCheckInIn {
 
   public void setCloudAccountId(@javax.annotation.Nullable String cloudAccountId) {
     this.cloudAccountId = cloudAccountId;
+  }
+
+
+  public O11yO11yAgentCheckInIn cloudIntegrationId(@javax.annotation.Nullable Object cloudIntegrationId) {
+    this.cloudIntegrationId = cloudIntegrationId;
+    return this;
+  }
+
+  /**
+   * Get cloudIntegrationId
+   * @return cloudIntegrationId
+   */
+  @javax.annotation.Nullable
+  public Object getCloudIntegrationId() {
+    return cloudIntegrationId;
+  }
+
+  public void setCloudIntegrationId(@javax.annotation.Nullable Object cloudIntegrationId) {
+    this.cloudIntegrationId = cloudIntegrationId;
   }
 
 
@@ -183,6 +183,50 @@ public class O11yO11yAgentCheckInIn {
     this.providerAccountId = providerAccountId;
   }
 
+  /**
+   * A container for additional, undeclared properties.
+   * This is a holder for any undeclared properties as specified with
+   * the 'additionalProperties' keyword in the OAS document.
+   */
+  private Map<String, Object> additionalProperties;
+
+  /**
+   * Set the additional (undeclared) property with the specified name and value.
+   * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the O11yO11yAgentCheckInIn instance itself
+   */
+  public O11yO11yAgentCheckInIn putAdditionalProperty(String key, Object value) {
+    if (this.additionalProperties == null) {
+        this.additionalProperties = new HashMap<String, Object>();
+    }
+    this.additionalProperties.put(key, value);
+    return this;
+  }
+
+  /**
+   * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
+   */
+  public Map<String, Object> getAdditionalProperties() {
+    return additionalProperties;
+  }
+
+  /**
+   * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
+   */
+  public Object getAdditionalProperty(String key) {
+    if (this.additionalProperties == null) {
+        return null;
+    }
+    return this.additionalProperties.get(key);
+  }
 
 
   @Override
@@ -195,10 +239,11 @@ public class O11yO11yAgentCheckInIn {
     }
     O11yO11yAgentCheckInIn o11yO11yAgentCheckInIn = (O11yO11yAgentCheckInIn) o;
     return Objects.equals(this.accountId, o11yO11yAgentCheckInIn.accountId) &&
-        Objects.equals(this.cloudIntegrationId, o11yO11yAgentCheckInIn.cloudIntegrationId) &&
         Objects.equals(this.cloudAccountId, o11yO11yAgentCheckInIn.cloudAccountId) &&
+        Objects.equals(this.cloudIntegrationId, o11yO11yAgentCheckInIn.cloudIntegrationId) &&
         Objects.equals(this.data, o11yO11yAgentCheckInIn.data) &&
-        Objects.equals(this.providerAccountId, o11yO11yAgentCheckInIn.providerAccountId);
+        Objects.equals(this.providerAccountId, o11yO11yAgentCheckInIn.providerAccountId)&&
+        Objects.equals(this.additionalProperties, o11yO11yAgentCheckInIn.additionalProperties);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -207,7 +252,7 @@ public class O11yO11yAgentCheckInIn {
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountId, cloudIntegrationId, cloudAccountId, data, providerAccountId);
+    return Objects.hash(accountId, cloudAccountId, cloudIntegrationId, data, providerAccountId, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -222,10 +267,11 @@ public class O11yO11yAgentCheckInIn {
     StringBuilder sb = new StringBuilder();
     sb.append("class O11yO11yAgentCheckInIn {\n");
     sb.append("    accountId: ").append(toIndentedString(accountId)).append("\n");
-    sb.append("    cloudIntegrationId: ").append(toIndentedString(cloudIntegrationId)).append("\n");
     sb.append("    cloudAccountId: ").append(toIndentedString(cloudAccountId)).append("\n");
+    sb.append("    cloudIntegrationId: ").append(toIndentedString(cloudIntegrationId)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("    providerAccountId: ").append(toIndentedString(providerAccountId)).append("\n");
+    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -247,7 +293,7 @@ public class O11yO11yAgentCheckInIn {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("account_id", "cloudIntegrationId", "cloud_account_id", "data", "providerAccountId"));
+    openapiFields = new HashSet<String>(Arrays.asList("account_id", "cloud_account_id", "cloudIntegrationId", "data", "providerAccountId"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -263,14 +309,6 @@ public class O11yO11yAgentCheckInIn {
       if (jsonElement == null) {
         if (!O11yO11yAgentCheckInIn.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in O11yO11yAgentCheckInIn is not found in the empty JSON string", O11yO11yAgentCheckInIn.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!O11yO11yAgentCheckInIn.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `O11yO11yAgentCheckInIn` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
@@ -300,6 +338,28 @@ public class O11yO11yAgentCheckInIn {
            @Override
            public void write(JsonWriter out, O11yO11yAgentCheckInIn value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             obj.remove("additionalProperties");
+             // serialize additional properties
+             if (value.getAdditionalProperties() != null) {
+               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
+                 if (entry.getValue() instanceof String)
+                   obj.addProperty(entry.getKey(), (String) entry.getValue());
+                 else if (entry.getValue() instanceof Number)
+                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
+                 else if (entry.getValue() instanceof Boolean)
+                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
+                 else if (entry.getValue() instanceof Character)
+                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
+                 else {
+                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
+                   if (jsonElement.isJsonArray()) {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
+                   } else {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
+                   }
+                 }
+               }
+             }
              elementAdapter.write(out, obj);
            }
 
@@ -307,7 +367,28 @@ public class O11yO11yAgentCheckInIn {
            public O11yO11yAgentCheckInIn read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
+             JsonObject jsonObj = jsonElement.getAsJsonObject();
+             // store additional fields in the deserialized instance
+             O11yO11yAgentCheckInIn instance = thisAdapter.fromJsonTree(jsonObj);
+             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
+               if (!openapiFields.contains(entry.getKey())) {
+                 if (entry.getValue().isJsonPrimitive()) { // primitive type
+                   if (entry.getValue().getAsJsonPrimitive().isString())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
+                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
+                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
+                   else
+                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 }
+               }
+             }
+             return instance;
            }
 
        }.nullSafe();

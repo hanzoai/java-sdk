@@ -33,10 +33,10 @@ import ai.hanzo.cloud.model.CallInput;
 import ai.hanzo.cloud.model.CallList;
 import ai.hanzo.cloud.model.MessageInput;
 import ai.hanzo.cloud.model.MessageList;
-import ai.hanzo.cloud.model.Number;
 import ai.hanzo.cloud.model.NumberList;
 import ai.hanzo.cloud.model.SMS;
 import ai.hanzo.cloud.model.Summary;
+import ai.hanzo.cloud.model.TelNumber;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -1269,7 +1269,7 @@ public class TelApi {
      * Provisions with the carrier FIRST and records second.
      * Provisions with the carrier FIRST and records second. The other order records a holding that may not exist, and a number the platform believes it owns but cannot use is worse than one it failed to buy.
      * @param buyInput  (required)
-     * @return Number
+     * @return TelNumber
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -1278,8 +1278,8 @@ public class TelApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public Number postTelNumbers(@javax.annotation.Nonnull BuyInput buyInput) throws ApiException {
-        ApiResponse<Number> localVarResp = postTelNumbersWithHttpInfo(buyInput);
+    public TelNumber postTelNumbers(@javax.annotation.Nonnull BuyInput buyInput) throws ApiException {
+        ApiResponse<TelNumber> localVarResp = postTelNumbersWithHttpInfo(buyInput);
         return localVarResp.getData();
     }
 
@@ -1287,7 +1287,7 @@ public class TelApi {
      * Provisions with the carrier FIRST and records second.
      * Provisions with the carrier FIRST and records second. The other order records a holding that may not exist, and a number the platform believes it owns but cannot use is worse than one it failed to buy.
      * @param buyInput  (required)
-     * @return ApiResponse&lt;Number&gt;
+     * @return ApiResponse&lt;TelNumber&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -1296,9 +1296,9 @@ public class TelApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Number> postTelNumbersWithHttpInfo(@javax.annotation.Nonnull BuyInput buyInput) throws ApiException {
+    public ApiResponse<TelNumber> postTelNumbersWithHttpInfo(@javax.annotation.Nonnull BuyInput buyInput) throws ApiException {
         okhttp3.Call localVarCall = postTelNumbersValidateBeforeCall(buyInput, null);
-        Type localVarReturnType = new TypeToken<Number>(){}.getType();
+        Type localVarReturnType = new TypeToken<TelNumber>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -1316,10 +1316,10 @@ public class TelApi {
         <tr><td> 201 </td><td> created </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postTelNumbersAsync(@javax.annotation.Nonnull BuyInput buyInput, final ApiCallback<Number> _callback) throws ApiException {
+    public okhttp3.Call postTelNumbersAsync(@javax.annotation.Nonnull BuyInput buyInput, final ApiCallback<TelNumber> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = postTelNumbersValidateBeforeCall(buyInput, _callback);
-        Type localVarReturnType = new TypeToken<Number>(){}.getType();
+        Type localVarReturnType = new TypeToken<TelNumber>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

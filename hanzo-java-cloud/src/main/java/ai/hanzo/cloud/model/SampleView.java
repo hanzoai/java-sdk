@@ -95,15 +95,15 @@ public class SampleView {
   @javax.annotation.Nullable
   private Double load1;
 
-  public static final String SERIALIZED_NAME_LOAD15 = "load15";
-  @SerializedName(SERIALIZED_NAME_LOAD15)
-  @javax.annotation.Nullable
-  private Double load15;
-
   public static final String SERIALIZED_NAME_LOAD5 = "load5";
   @SerializedName(SERIALIZED_NAME_LOAD5)
   @javax.annotation.Nullable
   private Double load5;
+
+  public static final String SERIALIZED_NAME_LOAD15 = "load15";
+  @SerializedName(SERIALIZED_NAME_LOAD15)
+  @javax.annotation.Nullable
+  private Double load15;
 
   public static final String SERIALIZED_NAME_MEM_FREE = "memFree";
   @SerializedName(SERIALIZED_NAME_MEM_FREE)
@@ -304,25 +304,6 @@ public class SampleView {
   }
 
 
-  public SampleView load15(@javax.annotation.Nullable Double load15) {
-    this.load15 = load15;
-    return this;
-  }
-
-  /**
-   * Load15 is the 15-minute load average, the same units as Load1.
-   * @return load15
-   */
-  @javax.annotation.Nullable
-  public Double getLoad15() {
-    return load15;
-  }
-
-  public void setLoad15(@javax.annotation.Nullable Double load15) {
-    this.load15 = load15;
-  }
-
-
   public SampleView load5(@javax.annotation.Nullable Double load5) {
     this.load5 = load5;
     return this;
@@ -339,6 +320,25 @@ public class SampleView {
 
   public void setLoad5(@javax.annotation.Nullable Double load5) {
     this.load5 = load5;
+  }
+
+
+  public SampleView load15(@javax.annotation.Nullable Double load15) {
+    this.load15 = load15;
+    return this;
+  }
+
+  /**
+   * Load15 is the 15-minute load average, the same units as Load1.
+   * @return load15
+   */
+  @javax.annotation.Nullable
+  public Double getLoad15() {
+    return load15;
+  }
+
+  public void setLoad15(@javax.annotation.Nullable Double load15) {
+    this.load15 = load15;
   }
 
 
@@ -436,6 +436,50 @@ public class SampleView {
     this.unit = unit;
   }
 
+  /**
+   * A container for additional, undeclared properties.
+   * This is a holder for any undeclared properties as specified with
+   * the 'additionalProperties' keyword in the OAS document.
+   */
+  private Map<String, Object> additionalProperties;
+
+  /**
+   * Set the additional (undeclared) property with the specified name and value.
+   * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the SampleView instance itself
+   */
+  public SampleView putAdditionalProperty(String key, Object value) {
+    if (this.additionalProperties == null) {
+        this.additionalProperties = new HashMap<String, Object>();
+    }
+    this.additionalProperties.put(key, value);
+    return this;
+  }
+
+  /**
+   * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
+   */
+  public Map<String, Object> getAdditionalProperties() {
+    return additionalProperties;
+  }
+
+  /**
+   * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
+   */
+  public Object getAdditionalProperty(String key) {
+    if (this.additionalProperties == null) {
+        return null;
+    }
+    return this.additionalProperties.get(key);
+  }
 
 
   @Override
@@ -456,18 +500,19 @@ public class SampleView {
         Objects.equals(this.host, sampleView.host) &&
         Objects.equals(this.kind, sampleView.kind) &&
         Objects.equals(this.load1, sampleView.load1) &&
-        Objects.equals(this.load15, sampleView.load15) &&
         Objects.equals(this.load5, sampleView.load5) &&
+        Objects.equals(this.load15, sampleView.load15) &&
         Objects.equals(this.memFree, sampleView.memFree) &&
         Objects.equals(this.memUsed, sampleView.memUsed) &&
         Objects.equals(this.memory, sampleView.memory) &&
         Objects.equals(this.source, sampleView.source) &&
-        Objects.equals(this.unit, sampleView.unit);
+        Objects.equals(this.unit, sampleView.unit)&&
+        Objects.equals(this.additionalProperties, sampleView.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(at, costCents, cpus, gpuModel, gpuUtil, gpus, host, kind, load1, load15, load5, memFree, memUsed, memory, source, unit);
+    return Objects.hash(at, costCents, cpus, gpuModel, gpuUtil, gpus, host, kind, load1, load5, load15, memFree, memUsed, memory, source, unit, additionalProperties);
   }
 
   @Override
@@ -483,13 +528,14 @@ public class SampleView {
     sb.append("    host: ").append(toIndentedString(host)).append("\n");
     sb.append("    kind: ").append(toIndentedString(kind)).append("\n");
     sb.append("    load1: ").append(toIndentedString(load1)).append("\n");
-    sb.append("    load15: ").append(toIndentedString(load15)).append("\n");
     sb.append("    load5: ").append(toIndentedString(load5)).append("\n");
+    sb.append("    load15: ").append(toIndentedString(load15)).append("\n");
     sb.append("    memFree: ").append(toIndentedString(memFree)).append("\n");
     sb.append("    memUsed: ").append(toIndentedString(memUsed)).append("\n");
     sb.append("    memory: ").append(toIndentedString(memory)).append("\n");
     sb.append("    source: ").append(toIndentedString(source)).append("\n");
     sb.append("    unit: ").append(toIndentedString(unit)).append("\n");
+    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -511,7 +557,7 @@ public class SampleView {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("at", "costCents", "cpus", "gpuModel", "gpuUtil", "gpus", "host", "kind", "load1", "load15", "load5", "memFree", "memUsed", "memory", "source", "unit"));
+    openapiFields = new HashSet<String>(Arrays.asList("at", "costCents", "cpus", "gpuModel", "gpuUtil", "gpus", "host", "kind", "load1", "load5", "load15", "memFree", "memUsed", "memory", "source", "unit"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -527,14 +573,6 @@ public class SampleView {
       if (jsonElement == null) {
         if (!SampleView.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in SampleView is not found in the empty JSON string", SampleView.openapiRequiredFields.toString()));
-        }
-      }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!SampleView.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `SampleView` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
@@ -573,6 +611,28 @@ public class SampleView {
            @Override
            public void write(JsonWriter out, SampleView value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             obj.remove("additionalProperties");
+             // serialize additional properties
+             if (value.getAdditionalProperties() != null) {
+               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
+                 if (entry.getValue() instanceof String)
+                   obj.addProperty(entry.getKey(), (String) entry.getValue());
+                 else if (entry.getValue() instanceof Number)
+                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
+                 else if (entry.getValue() instanceof Boolean)
+                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
+                 else if (entry.getValue() instanceof Character)
+                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
+                 else {
+                   JsonElement jsonElement = gson.toJsonTree(entry.getValue());
+                   if (jsonElement.isJsonArray()) {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonArray());
+                   } else {
+                     obj.add(entry.getKey(), jsonElement.getAsJsonObject());
+                   }
+                 }
+               }
+             }
              elementAdapter.write(out, obj);
            }
 
@@ -580,7 +640,28 @@ public class SampleView {
            public SampleView read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
+             JsonObject jsonObj = jsonElement.getAsJsonObject();
+             // store additional fields in the deserialized instance
+             SampleView instance = thisAdapter.fromJsonTree(jsonObj);
+             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
+               if (!openapiFields.contains(entry.getKey())) {
+                 if (entry.getValue().isJsonPrimitive()) { // primitive type
+                   if (entry.getValue().getAsJsonPrimitive().isString())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
+                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
+                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
+                   else
+                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 }
+               }
+             }
+             return instance;
            }
 
        }.nullSafe();
